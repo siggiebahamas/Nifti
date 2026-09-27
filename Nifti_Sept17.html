@@ -1151,9 +1151,11 @@
   .rl-stop.here.open .rl-card{border-color:#F2B705;}
   .rl-hint{font-size:12.5px;opacity:.65;text-align:center;margin-top:8px;}
   .rt-result.done{color:var(--green);} .rt-result.failed{color:var(--danger);}
-  .rt-undo{width:100%;margin-top:8px;padding:10px !important;font-size:14px !important;}
-  .rt-undobar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(84px + env(safe-area-inset-bottom,0px));z-index:2500;background:#1B2427;color:#fff;border-radius:12px;padding:10px 12px 10px 16px;display:flex;gap:14px;align-items:center;box-shadow:0 8px 24px rgba(0,0,0,.3);font-size:14.5px;max-width:calc(100% - 32px);}
-  .rt-undobar span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;} .rt-undobar button{background:#F2B705;color:#2B2100;border:none;border-radius:8px;padding:8px 14px;font-weight:800;font-family:inherit;cursor:pointer;flex-shrink:0;}
+  .rt-fix{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;} .rt-fix .btn{padding:10px 6px !important;font-size:14.5px !important;}
+  .rl-last{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;background:rgba(255,255,255,.6);border-radius:10px;padding:7px 8px 7px 10px;font-size:13.5px;margin-top:6px;}
+  .rl-last-btns{display:flex;gap:6px;} .rl-last-btns button{border:none;background:#1B2427;color:#fff;border-radius:8px;padding:7px 10px;font-weight:800;font-size:13px;font-family:inherit;cursor:pointer;}
+  .rt-seg2{grid-template-columns:1fr 1fr;}
+  .rt-amt-hint{font-size:13.5px;font-weight:700;color:#8A5A00;background:#FBEFD2;border-radius:8px;padding:6px 10px;margin-top:6px;}
   .suspended-screen{position:fixed;inset:0;z-index:5000;background:var(--bg);display:grid;place-items:center;padding:16px;}
   .suspended-box{max-width:420px;text-align:center;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:24px;}
   .disc-featured{font-size:12px;font-weight:700;background:var(--green-soft);color:var(--green);border-radius:6px;padding:1px 6px;vertical-align:middle;}
@@ -9427,12 +9429,42 @@ function routeTotals(r){
 }
 
 // ---------- the driver's checklist ----------
-function openRouteSheet(routeId, stopId, mode){
+function openRouteSheet(routeId, stopId, mode, editing){
   const r = (routesCache || []).find(x => x.id === routeId); const s = r && (r.stops || []).find(x => x.id === stopId);
   if(!s) return;
-  const bounced = s.buyer_business_id ? bouncedCountFor(s.buyer_business_id) : 0;
-  routeSheet = {routeId, stopId, mode, method: Number(s.amount_due) >= 1 ? (bounced ? 'cash' : 'cash') : 'none', amount: Number(s.amount_due) || '', photo: null, reason: '', delivered: true};
+  const res = editing ? (s.result || {}) : {};
+  const col = res.collected || null;
+  const due = editing && col ? Number(col.amount) : Number(s.amount_due) || '';
+  routeSheet = {routeId, stopId, mode, editing: !!editing, delivered: res.delivered !== false, reason: res.reason || '', note: res.note || '', recv: res.received_by || '', short: res.short_reason || '',
+    method: col ? col.method : (editing ? 'none' : (Number(s.amount_due) >= 1 ? 'cash' : 'none')), amount: due, bank: col ? col.bank || '' : '', chq: col ? col.check_no || '' : '', chqDate: col ? col.check_date || '' : '', ref: col ? col.reference || '' : '', photo: null};
   renderRoutesPage();
+}
+function routeSheetStop(){ const sh = routeSheet; const r = sh && (routesCache || []).find(x => x.id === sh.routeId); return r && (r.stops || []).find(x => x.id === sh.stopId); }
+// the save button always says exactly what will be recorded, so a wrong tap is caught before it happens
+function routeSaveLabel(){
+  const sh = routeSheet, s = routeSheetStop(); if(!sh || !s) return 'Save';
+  const parts = [];
+  if((s.deliver_po_ids || []).length) parts.push(sh.delivered !== false ? 'delivered' : 'not delivered');
+  const amt = Number(sh.amount);
+  if(sh.method !== 'none' && amt > 0) parts.push(fmtPHP(amt) + ' ' + (sh.method === 'check' ? 'cheque' : sh.method === 'gcash' ? 'GCash' : 'cash'));
+  else if(Number(s.amount_due) >= 1 || sh.editing) parts.push('no payment');
+  return 'Save: ' + (parts.join(' + ') || 'done');
+}
+function routeAmountHint(){
+  const sh = routeSheet, s = routeSheetStop(); if(!sh || !s) return '';
+  const due = Number(s.amount_due) || 0, amt = Number(sh.amount) || 0;
+  if(due < 1 || !amt || Math.abs(amt - due) < 0.5) return '';
+  const tenth = Math.abs(amt * 10 - due) < 1 || Math.abs(amt - due * 10) < 1;
+  return `<div class="rt-amt-hint">${amt < due ? `${fmtPHP(due - amt)} less than the ${fmtPHP(due)} due` : `${fmtPHP(amt - due)} more than the ${fmtPHP(due)} due`}${tenth ? '. Check the zeros.' : '.'}</div>`;
+}
+function routeResultLabel(s){
+  const res = s.result || {};
+  if(s.status === 'failed') return '✕ Not done · ' + (res.reason || '');
+  const bits = [];
+  if(res.delivered !== false && (s.deliver_po_ids || []).length) bits.push('Delivered');
+  if(res.collected) bits.push(fmtPHP(res.collected.amount) + ' ' + (res.collected.method === 'check' ? 'cheque' : res.collected.method === 'gcash' ? 'GCash' : 'cash'));
+  else if(Number(s.amount_due) >= 1) bits.push('no payment');
+  return '✓ ' + (bits.join(' · ') || 'Done');
 }
 function renderRouteSheet(){
   const host = document.getElementById('routeSheetHost'); if(!host || !routeSheet) return;
@@ -9442,21 +9474,22 @@ function renderRouteSheet(){
   const methods = [['cash', 'Cash'], ['gcash', 'GCash'], ['check', 'Cheque'], ['none', "Didn't pay"]];
   host.innerHTML = `<div class="rt-dim" onclick="closeRouteSheet()"></div><div class="rt-sheet" role="dialog" aria-label="${escapeHtml(s.buyer_name)}">
     <div class="rt-sheet-grab"></div>
-    <div class="rt-sheet-title">${escapeHtml(s.buyer_name)}</div>
+    <div class="rt-sheet-title">${sh.editing ? 'Fix: ' : ''}${escapeHtml(s.buyer_name)}</div>
+    ${sh.editing ? `<div class="rt-seg rt-seg2"><button class="${sh.mode === 'done' ? 'on' : ''}" onclick="routeSheetField(); routeSheet.mode='done'; renderRouteSheet()">✓ Done here</button><button class="${sh.mode === 'failed' ? 'on' : ''}" onclick="routeSheetField(); routeSheet.mode='failed'; renderRouteSheet()">✕ Not done</button></div>` : ''}
     ${sh.mode === 'failed' ? `<div class="rt-lbl">What happened?</div>
       <div class="rt-chips">${ROUTE_FAIL_REASONS.map(x => `<button class="${sh.reason === x ? 'on' : ''}" onclick="routeSheet.reason=${escapeHtml(JSON.stringify(x))}; renderRouteSheet()">${escapeHtml(x)}</button>`).join('')}</div>
       <textarea id="rtNote" rows="2" placeholder="Note for the office (optional)">${escapeHtml(sh.note || '')}</textarea>
-      <button class="btn btn-primary rt-save" onclick="saveRouteStop()" ${sh.reason ? '' : 'disabled'}>Move to "not done"</button>`
-    : `${(s.deliver_po_ids || []).length ? `<label class="rt-check"><input type="checkbox" id="rtDelivered" ${sh.delivered ? 'checked' : ''} onchange="routeSheet.delivered=this.checked"> Goods delivered</label>` : ''}
+      <button class="btn btn-primary rt-save" onclick="saveRouteStop()" ${sh.reason ? '' : 'disabled'}>${sh.reason ? 'Save: not done · ' + escapeHtml(sh.reason) : 'Pick what happened'}</button>`
+    : `${(s.deliver_po_ids || []).length ? `<label class="rt-check"><input type="checkbox" id="rtDelivered" ${sh.delivered ? 'checked' : ''} onchange="routeSheet.delivered=this.checked; const b=document.querySelector('.rt-save'); if(b) b.textContent=routeSaveLabel();"> Goods delivered</label>` : ''}
       ${due >= 1 || (s.deliver_po_ids || []).length ? `<div class="rt-lbl">Payment${due >= 1 ? ` · ${fmtPHP(due)} due` : ''}</div>
         <div class="rt-seg">${methods.map(m => `<button class="${sh.method === m[0] ? 'on' : ''}" onclick="routeSheetField(); routeSheet.method='${m[0]}'; renderRouteSheet()">${m[1]}</button>`).join('')}</div>
-        ${sh.method !== 'none' ? `<input id="rtAmt" type="number" inputmode="decimal" min="0" step="0.01" value="${escapeHtml(String(sh.amount))}" aria-label="Amount collected" placeholder="Amount">` : ''}
+        ${sh.method !== 'none' ? `<input id="rtAmt" type="number" inputmode="decimal" min="0" step="0.01" value="${escapeHtml(String(sh.amount))}" aria-label="Amount collected" placeholder="Amount" oninput="routeSheet.amount=this.value; const b=document.querySelector('.rt-save'); if(b) b.textContent=routeSaveLabel(); const h=document.getElementById('rtAmtHint'); if(h) h.innerHTML=routeAmountHint();"><div id="rtAmtHint">${routeAmountHint()}</div>` : ''}
         ${sh.method === 'check' ? `<div class="rt-row"><input id="rtBank" placeholder="Bank" value="${escapeHtml(sh.bank || '')}"><input id="rtChqNo" placeholder="Cheque no." value="${escapeHtml(sh.chq || '')}"></div><label class="rt-lbl" for="rtChqDate">Date on the cheque</label><input id="rtChqDate" type="date" value="${escapeHtml(sh.chqDate || APP_TODAY)}">` : ''}
         ${sh.method === 'gcash' ? `<input id="rtRef" placeholder="GCash reference no." value="${escapeHtml(sh.ref || '')}">` : ''}
         ${due >= 1 ? `<div class="rt-lbl">If they paid less, why? (optional)</div><div class="rt-chips small">${['Partial only', 'Will pay next week', 'Owner not around', 'Disputes the amount'].map(x => `<button class="${sh.short === x ? 'on' : ''}" onclick="routeSheetField(); routeSheet.short=${escapeHtml(JSON.stringify(x))}; renderRouteSheet()">${x}</button>`).join('')}</div>` : ''}` : ''}
       <input id="rtRecv" placeholder="Received by (name)" value="${escapeHtml(sh.recv || '')}">
       <label class="rt-photo ${sh.photo ? 'ok' : ''}">${sh.photo ? '✓ Photo of signed receipt added. Tap to retake' : '📷 Photo of the signed receipt'}<input type="file" accept="image/*" capture="environment" onchange="routeSheetPhoto(this)" hidden></label>
-      <button class="btn btn-primary rt-save" onclick="saveRouteStop()">Done at this stop</button>`}
+      <button class="btn btn-primary rt-save" onclick="saveRouteStop()">${escapeHtml(routeSaveLabel())}</button>`}
     <button class="btn btn-outline rt-cancel" onclick="closeRouteSheet()">Cancel</button>
   </div>`;
 }
@@ -9492,16 +9525,15 @@ async function saveRouteStop(){
     result = {outcome: 'done', delivered: sh.delivered !== false, received_by: (sh.recv || '').trim(), note: sh.note || '', short_reason: amt < Number(s.amount_due) - 0.5 ? (sh.short || '') : '',
       collected: sh.method === 'none' || !amt ? null : {method: sh.method, amount: amt, bank: sh.bank || '', check_no: sh.chq || '', check_date: sh.chqDate || '', reference: sh.ref || ''}};
   }
-  const undoLabel = (result.outcome === 'failed' ? '✕ ' : '✓ ') + s.buyer_name + (result.outcome === 'failed' ? ': not done' : result.collected ? ': ' + fmtPHP(result.collected.amount) + ' collected' : ': done');
-  if(!myBusiness){ demoCompleteStop(r, s, result, sh.photo); routeSheet = null; routeOpenStop = null; renderRoutesPage(); showRouteUndoBar(r.id, s.id, undoLabel); return; }
+  if(!myBusiness){ const keepProof = s._proof; if(sh.editing) demoUndoStop(r, s); demoCompleteStop(r, s, result, sh.photo || (sh.editing ? keepProof : null)); routeSheet = null; routeOpenStop = null; renderRoutesPage(); if(sh.editing) showToast('Fixed.', 'success'); return; }
   const btn = document.querySelector('.rt-save'); if(btn){ btn.disabled = true; btn.textContent = 'Saving…'; }
-  const { data, error } = await sb.rpc('complete_route_stop', {p_stop: s.id, p_result: result, p_proof: sh.photo || null});
-  if(error){ if(btn){ btn.disabled = false; btn.textContent = 'Done at this stop'; } showToast(error.message, 'error'); return; }
+  const { data, error } = await sb.rpc(sh.editing ? 'edit_route_stop' : 'complete_route_stop', {p_stop: s.id, p_result: result, p_proof: sh.photo || null});
+  if(error){ if(btn){ btn.disabled = false; btn.textContent = routeSaveLabel(); } showToast(error.message, 'error'); return; }
   routeSheet = null; routeOpenStop = null;
   await refreshPOsById([...(s.deliver_po_ids || []), ...(s.collect_po_ids || [])]);
   await loadRoutes(true);
   renderRoutesPage();
-  showRouteUndoBar(r.id, s.id, data && data.route_done ? '🏁 Route done! ' + undoLabel : undoLabel);
+  if(sh.editing) showToast('Fixed.', 'success');
 }
 async function refreshPOsById(ids){
   if(!myBusiness || !ids.length) return;
@@ -10314,16 +10346,19 @@ function renderDriverRun(body, routes){
   if(!routeOpenStop || !stops.some(s => s.id === routeOpenStop)) routeOpenStop = next ? next.id : null;
   const firstPending = stops.findIndex(s => s.status === 'pending');
   const pendingDue = stops.filter(s => s.status === 'pending').reduce((a, s) => a + (Number(s.amount_due) || 0), 0);
+  const last = stops.filter(s => s.status !== 'pending' && s.done_at).sort((a, b) => String(b.done_at).localeCompare(String(a.done_at)))[0];
   const filled = firstPending === -1 ? stops.length - 1 : Math.max(0, firstPending);
   body.innerHTML = `<div class="rl-head">
       <div class="rl-eyebrow">${r.route_date === APP_TODAY ? 'TODAY' : chequeDayLabel(r.route_date).toUpperCase()} · ${escapeHtml([r.driver_name, r.vehicle].filter(Boolean).join(' · ') || 'YOUR RUN')}</div>
       <div class="rl-title">${t.done} of ${t.n} stops</div>
       <div class="rl-sub">${fmtPHP(t.got)} collected${pendingDue >= 1 ? ` · ${fmtPHP(pendingDue)} still to collect` : ''}${t.failed ? ` · ${t.failed} not done` : ''}</div>
       <div class="rt-track rl-track"><i style="width:${t.n ? t.done / t.n * 100 : 0}%"></i></div>
+      ${last && !r.remit ? `<div class="rl-last"><span><b>Last saved:</b> ${escapeHtml(last.buyer_name)} · ${escapeHtml(routeResultLabel(last))}</span>
+        <span class="rl-last-btns"><button onclick="openRouteSheet('${r.id}','${last.id}','${last.status === 'failed' ? 'failed' : 'done'}', true)">✏️ Fix</button><button onclick="undoRouteStop('${r.id}','${last.id}')">↩ Undo</button></span></div>` : ''}
       ${t.done === t.n && t.n ? `<div class="rl-finish">🏁 Route done. Hand over <b>${fmtPHP(t.cash)}</b> cash${t.cheque ? ` and <b>${fmtPHP(t.cheque)}</b> in cheques` : ''} to the office.</div>` : ''}
     </div>
     <div class="rl-line" style="--fill:${filled}">${stops.map((s, i) => routeStationHtml(r, s, i, next && next.id === s.id)).join('')}</div>
-    <div class="rl-hint">Tap a stop to open it. Pressed the wrong button? Open the stop and tap Undo.</div>`;
+    <div class="rl-hint">Tap any stop to open it. Finished stops can be fixed or undone anytime before the cash handover.</div>`;
   const line = body.querySelector('.rl-line'); const dots = body.querySelectorAll('.rl-dot');
   if(line && dots.length){
     const base = line.getBoundingClientRect().top, mid = d => { const b = d.getBoundingClientRect(); return b.top + b.height / 2 - base; };
@@ -10367,29 +10402,20 @@ function routeStopCardHtml(r, s){
       ? `<div class="rt-acts"><button class="btn btn-primary" onclick="openRouteSheet('${r.id}','${s.id}','done')">${handledElsewhere ? 'Mark done' : due >= 1 ? ((s.deliver_po_ids || []).length ? 'Delivered + collect' : 'Collect') : 'Delivered'}</button><button class="btn btn-outline" onclick="openRouteSheet('${r.id}','${s.id}','failed')">Can't</button></div>`
       : `<div class="rt-result ${s.status}">${s.status === 'done' ? `${res.delivered !== false && (s.deliver_po_ids || []).length ? 'Delivered' : ''}${col ? `${res.delivered !== false && (s.deliver_po_ids || []).length ? ' · ' : ''}Collected ${fmtPHP(col.amount)} ${col.method === 'check' ? 'cheque' : col.method}` : ''}${!col && Number(s.amount_due) >= 1 ? ' · nothing collected' : ''}` : '✕ ' + escapeHtml(res.reason || 'Not done')}
           ${s.done_at ? ` · ${new Date(s.done_at).toLocaleTimeString('en-PH', {hour: 'numeric', minute: '2-digit'})}` : ''}${s.has_proof ? ` · <span class="row-action" onclick="viewStopProof('${s.id}')">📷 Photo</span>` : ''}</div>
-        ${canUndo ? `<button class="btn btn-outline rt-undo" onclick="undoRouteStop('${r.id}','${s.id}')">↩ Undo, I pressed the wrong button</button>` : r.remit ? '<div class="adm-sub">Cash already handed over. The office can fix it on the order.</div>' : ''}`}`;
+        ${canUndo ? `<div class="rt-fix"><button class="btn btn-outline" onclick="openRouteSheet('${r.id}','${s.id}','${s.status === 'failed' ? 'failed' : 'done'}', true)">✏️ Fix details</button><button class="btn btn-outline" onclick="undoRouteStop('${r.id}','${s.id}')">↩ Undo</button></div>
+            <div class="adm-sub" style="margin-top:4px;">You can fix or undo this until the office confirms the cash handover.</div>` : r.remit ? '<div class="adm-sub">Cash already handed over. The office can fix it on the order.</div>' : ''}`}`;
 }
 async function undoRouteStop(routeId, stopId){
   const r = (routesCache || []).find(x => x.id === routeId); const s = r && (r.stops || []).find(x => x.id === stopId);
   if(!s) return;
-  if(!confirm(`Undo ${s.buyer_name}? ${s.status === 'done' ? 'Any delivery and payment recorded at this stop is taken back.' : 'It goes back to not done yet.'}`)) return;
-  hideRouteUndoBar();
-  if(!myBusiness){ demoUndoStop(r, s); routeOpenStop = s.id; renderRoutesPage(); showToast('Undone. The stop is open again.', 'success'); return; }
+  if(!myBusiness){ demoUndoStop(r, s); routeOpenStop = s.id; renderRoutesPage(); showToast('Undone. The stop is open again, nothing was recorded.', 'success'); return; }
   const { error } = await sb.rpc('undo_route_stop', {p_stop: stopId});
   if(error){ showToast(error.message, 'error'); return; }
   await refreshPOsById([...(s.deliver_po_ids || []), ...(s.collect_po_ids || [])]);
   await loadRoutes(true);
   routeOpenStop = stopId; renderRoutesPage();
-  showToast('Undone. The stop is open again.', 'success');
+  showToast('Undone. The stop is open again, nothing was recorded.', 'success');
 }
-function showRouteUndoBar(routeId, stopId, label){
-  hideRouteUndoBar();
-  const bar = document.createElement('div'); bar.id = 'routeUndoBar'; bar.className = 'rt-undobar';
-  bar.innerHTML = `<span>${escapeHtml(label)}</span><button onclick="undoRouteStop('${routeId}','${stopId}')">Undo</button>`;
-  document.body.appendChild(bar);
-  window._routeUndoTimer = setTimeout(hideRouteUndoBar, 10000);
-}
-function hideRouteUndoBar(){ clearTimeout(window._routeUndoTimer); const b = document.getElementById('routeUndoBar'); if(b) b.remove(); }
 function demoUndoStop(r, s){
   (s._snap || []).forEach(sn => { const po = getPO(sn.id); if(!po) return; po.status = sn.status; po.invoice = sn.invoice ? JSON.parse(sn.invoice) : po.invoice; po.history.push({date: APP_TODAY, time: 'Just now', actor: 'supplier', action: '↩ Route stop undone (wrong tap)'}); });
   s.status = 'pending'; s.result = null; s.done_at = null; s.has_proof = false; s._proof = null; s._snap = null;
