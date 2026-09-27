@@ -3451,6 +3451,16 @@
           <div id="auditLogContent"></div>
         </div>
 
+        <div class="settings-card" id="myDataCard">
+          <h2>🔐 Your data</h2>
+          <div class="sub">Everything Nifti holds about your business is yours. Download a full copy anytime, or delete your account.</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <button class="btn btn-outline" onclick="downloadMyData()">⬇ Download all my data</button>
+            <button class="btn btn-outline" style="color:var(--danger);border-color:var(--danger);" onclick="deleteMyBusiness()">Delete my business account</button>
+          </div>
+          <div style="font-size:13.5px;opacity:.75;margin-top:8px;">Deleting removes your business, team logins, catalog and store. Partners you traded with keep their own copy of shared orders, shown as "Deleted business".</div>
+        </div>
+
         <h3 class="settings-section-title">Plan &amp; help</h3>
 
         <div class="settings-card">
@@ -10429,6 +10439,27 @@ function setRoutesHidden(off){
   if(off){ showToast('Routes hidden from your menu. Turn it back on anytime in Settings.', 'success'); if(document.getElementById('page-routes').classList.contains('active')) navigate('dashboard'); }
 }
 
+async function downloadMyData(){
+  if(!myBusiness){ showToast('Sign in to download your data. (Demo)'); return; }
+  const { data, error } = await sb.rpc('my_data_export');
+  if(error){ showToast(error.message, 'error'); return; }
+  const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'nifti-data-' + (myBusiness.name || 'business').replace(/[^a-z0-9]+/gi, '-').toLowerCase() + '-' + APP_TODAY + '.json';
+  document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+  showToast('Downloaded. Keep it somewhere safe.', 'success');
+}
+async function deleteMyBusiness(){
+  if(!myBusiness){ showToast('Sign in first. (Demo)'); return; }
+  if(!getCurrentUserRoles().includes('Owner')){ showToast('Only the Owner can delete the business account.', 'error'); return; }
+  if(!confirm('Delete your business account? This can\'t be undone. Download your data first if you want a copy.')) return;
+  const typed = prompt(`Type your business name to confirm:\n${myBusiness.name}`);
+  if(!typed) return;
+  const { error } = await sb.rpc('delete_my_business', {p_confirm: typed});
+  if(error){ showToast(error.message, 'error'); return; }
+  try{ await sb.auth.signOut(); }catch(e){}
+  alert('Your business account was deleted. Salamat for trying Nifti.');
+  location.href = appBaseUrl();
+}
 function renderSidebarForViewAsRole(){
   const allowed = computeAllowedPages(getEffectiveRoles());
   document.querySelectorAll('.nav-item[data-page], .bnav-item[data-page], .more-sheet-item[data-page]').forEach(el => {
