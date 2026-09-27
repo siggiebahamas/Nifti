@@ -1040,8 +1040,98 @@
   .pricing-hero p{font-size:20px;}
   #view-pricing .role-toggle button{font-size:17px;}
   .store-tabs{display:flex;max-width:100%;}
-  .regular-row{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--border);}
-  .regular-btns{display:flex;gap:6px;flex-shrink:0;} .regular-btns .btn{padding:6px 10px;font-size:13.5px;}
+  .adm-tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin-bottom:12px;scrollbar-width:thin;}
+  .adm-tabs button{flex-shrink:0;border:1.5px solid var(--border);background:var(--surface);color:var(--ink);border-radius:999px;padding:8px 14px;font-weight:700;font-size:14.5px;font-family:inherit;cursor:pointer;}
+  .adm-tabs button.active{background:var(--ink);color:var(--surface);border-color:var(--ink);}
+  .cq-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;}
+  .cq-tile{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:12px 14px;border-top:4px solid var(--border);}
+  .cq-tile.cq-due{border-top-color:#E0A21B;} .cq-tile.cq-hold{border-top-color:#6B7C85;} .cq-tile.cq-dep{border-top-color:#2F7FD8;} .cq-tile.cq-ok{border-top-color:var(--green);} .cq-tile.cq-bad{border-top-color:var(--danger);}
+  .cq-tile-l{font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;opacity:.7;} .cq-tile-v{font-size:22px;font-weight:800;font-variant-numeric:tabular-nums;margin-top:2px;} .cq-tile-n{font-size:13px;opacity:.7;}
+  .cq-strip{margin-top:0;} .cq-bars{display:grid;grid-template-columns:repeat(35,1fr);gap:2px;height:70px;align-items:end;margin-top:10px;}
+  .cq-bar{height:100%;display:flex;align-items:flex-end;background:var(--bg);border-radius:2px;} .cq-bar i{display:block;width:100%;background:var(--green);border-radius:2px;} .cq-bar.today{outline:2px solid #E0A21B;outline-offset:1px;}
+  .cq-bars-axis{display:flex;justify-content:space-between;font-size:12px;opacity:.65;margin-top:4px;}
+  .cq-week{margin-top:14px;} .cq-week-h{display:flex;justify-content:space-between;font-weight:800;font-size:14px;text-transform:uppercase;letter-spacing:.04em;opacity:.8;margin-bottom:6px;}
+  .cq-day{display:grid;grid-template-columns:92px 1fr;gap:10px;margin-bottom:8px;} .cq-day-l{font-weight:800;font-size:14px;padding-top:12px;} .cq-day-l.today{color:#B07A00;}
+  @media (max-width:520px){ .cq-day{grid-template-columns:1fr;gap:2px;} .cq-day-l{padding-top:0;} }
+  .cq-day-items{display:grid;gap:8px;}
+  .cq-row{background:var(--surface);border:1px solid var(--border);border-left:5px solid var(--border);border-radius:12px;padding:10px 12px;display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap;}
+  .cq-row.cq-due{border-left-color:#E0A21B;} .cq-row.cq-hold{border-left-color:#6B7C85;} .cq-row.cq-dep{border-left-color:#2F7FD8;} .cq-row.cq-ok{border-left-color:var(--green);} .cq-row.cq-bad{border-left-color:var(--danger);}
+  .panel-card .cq-row{margin:8px 0;}
+  .cq-row-main{flex:1;min-width:200px;cursor:pointer;} .cq-row-top{display:flex;justify-content:space-between;gap:8px;} .cq-party{font-weight:800;} .cq-amt{font-weight:800;font-variant-numeric:tabular-nums;}
+  .cq-row-sub{font-size:13px;opacity:.75;margin:2px 0 4px;} .cq-pill{display:inline-block;font-size:12px;font-weight:800;padding:2px 8px;border-radius:999px;background:var(--bg);}
+  .cq-due .cq-pill{background:#FBEFD2;color:#7A5200;} .cq-dep .cq-pill{background:#DDEBFA;color:#1D5A9E;} .cq-ok .cq-pill{background:var(--green-soft);color:var(--green);} .cq-bad .cq-pill{background:#F8E1DC;color:var(--danger);}
+  .cq-reason{font-size:12.5px;opacity:.8;} .cq-acts{display:flex;gap:6px;flex-wrap:wrap;} .cq-act{padding:7px 12px !important;font-size:14px !important;}
+  .cq-danger{color:var(--danger) !important;border-color:var(--danger) !important;}
+  .cq-bouncer{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);}
+  .rt-head{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:14px;display:grid;gap:10px;margin-bottom:12px;}
+  .rt-head-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;} .rt-title{font-weight:800;font-size:22px;line-height:1.1;} .rt-sub{font-size:13.5px;opacity:.75;}
+  .rt-date{font-size:12.5px;font-weight:800;background:var(--bg);border-radius:8px;padding:4px 8px;white-space:nowrap;}
+  .rt-bars{display:grid;grid-template-columns:1fr 1fr;gap:8px;} .rt-bar{background:var(--bg);border-radius:12px;padding:8px 10px;}
+  .rt-bar small{display:block;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;opacity:.65;} .rt-bar strong{font-size:18px;font-variant-numeric:tabular-nums;}
+  .rt-track{height:7px;background:var(--border);border-radius:4px;overflow:hidden;margin-top:6px;} .rt-track i{display:block;height:100%;background:var(--green);transition:width .3s;}
+  .rt-finish{background:var(--green-soft);border-radius:10px;padding:10px 12px;font-size:14.5px;}
+  .rt-list{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;}
+  .rt-stop{display:grid;grid-template-columns:36px 1fr;gap:10px;padding:14px;border-bottom:1px solid var(--border);} .rt-stop:last-child{border-bottom:none;}
+  .rt-no{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-weight:800;border:2px solid var(--border);background:var(--bg);}
+  .rt-stop.done .rt-no{background:var(--green);border-color:var(--green);color:#fff;} .rt-stop.fail .rt-no{background:var(--danger);border-color:var(--danger);color:#fff;}
+  .rt-stop.next{background:#FFF9E6;} .rt-stop.next .rt-no{background:#F2B705;border-color:#F2B705;color:#3A2C00;}
+  .rt-stop.done .rt-stop-body, .rt-stop.fail .rt-stop-body{opacity:.8;}
+  .rt-name{font-weight:800;font-size:16px;line-height:1.25;} .rt-addr{font-size:13.5px;margin-top:2px;} .rt-addr a{color:inherit;}
+  .rt-tags{display:flex;flex-wrap:wrap;gap:5px;margin:7px 0;} .rt-tag{font-size:12.5px;font-weight:700;border-radius:6px;padding:2px 8px;background:var(--bg);}
+  .rt-tag.money{background:var(--green-soft);color:var(--green);} .rt-tag.late{background:#F8E1DC;color:var(--danger);}
+  .rt-note{font-size:13.5px;opacity:.85;margin-bottom:6px;}
+  .rt-acts{display:grid;grid-template-columns:2fr 1fr;gap:8px;} .rt-acts .btn{padding:12px 8px;font-size:15px;}
+  .rt-result{font-size:13.5px;font-weight:700;} .rt-stop.done .rt-result{color:var(--green);} .rt-stop.fail .rt-result{color:var(--danger);}
+  .rt-dim{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:2000;}
+  .rt-sheet{position:fixed;left:0;right:0;bottom:0;z-index:2001;background:var(--surface);border-radius:20px 20px 0 0;padding:10px 16px calc(16px + env(safe-area-inset-bottom,0px));max-height:88vh;overflow-y:auto;display:grid;gap:10px;max-width:560px;margin:0 auto;box-shadow:0 -12px 30px rgba(0,0,0,.2);}
+  .rt-sheet-grab{width:40px;height:5px;border-radius:3px;background:var(--border);margin:0 auto 4px;} .rt-sheet-title{font-weight:800;font-size:18px;}
+  .rt-sheet input, .rt-sheet textarea, .rt-inline{width:100%;box-sizing:border-box;padding:11px 12px;border:1.5px solid var(--border);border-radius:10px;font-size:16px;font-family:inherit;background:var(--surface);color:var(--ink);}
+  .rt-lbl{font-size:13px;font-weight:800;opacity:.75;text-transform:uppercase;letter-spacing:.04em;}
+  .rt-seg{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;} .rt-seg button, .rt-chips button{border:1.5px solid var(--border);background:var(--surface);color:var(--ink);border-radius:10px;padding:10px 4px;font-weight:700;font-size:14px;font-family:inherit;cursor:pointer;}
+  .rt-seg button.on, .rt-chips button.on{border-color:var(--green);background:var(--green-soft);color:var(--green);}
+  .rt-chips{display:flex;flex-wrap:wrap;gap:6px;} .rt-chips button{padding:8px 12px;} .rt-chips.small button{font-size:13px;padding:6px 10px;}
+  .rt-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .rt-check{display:flex;gap:8px;align-items:center;font-weight:700;} .rt-check input{width:20px;height:20px;}
+  .rt-photo{display:block;border:1.5px dashed var(--border);border-radius:10px;padding:12px;text-align:center;font-size:14px;cursor:pointer;background:var(--bg);}
+  .rt-photo.ok{border-color:var(--green);color:var(--green);font-weight:700;}
+  .rt-save{padding:15px !important;font-size:17px !important;} .rt-cancel{padding:10px !important;}
+  .rt-proof{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:3000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:#fff;padding:16px;} .rt-proof img{max-width:100%;max-height:80vh;border-radius:8px;}
+  .rt-section{font-weight:800;font-size:14px;text-transform:uppercase;letter-spacing:.05em;opacity:.75;margin:16px 0 8px;}
+  .rt-card-h{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;}
+  .rt-pill-road{background:#FBEFD2 !important;color:#7A5200;} .rt-pill-done{background:var(--green-soft) !important;color:var(--green);}
+  .rt-line{display:flex;gap:4px;margin:10px 0 2px;} .rt-dot{flex:1;height:8px;border-radius:4px;background:var(--border);min-width:8px;} .rt-dot.done{background:var(--green);} .rt-dot.failed{background:var(--danger);}
+  .rt-board-stop{display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);} .rt-board-stop .rt-dot{flex:0 0 10px;height:10px;}
+  .rt-remit{margin-top:10px;background:var(--bg);border-radius:12px;padding:10px 12px;} .rt-remit input{padding:9px 10px;border:1.5px solid var(--border);border-radius:8px;font-size:16px;}
+  .rt-small{padding:6px 12px !important;font-size:14px !important;}
+  .rt-plan-stop{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--border);} .rt-plan-stop:last-child{border-bottom:none;}
+  .rt-plan-order{display:flex;flex-direction:column;align-items:center;gap:2px;} .rt-plan-order span{font-weight:800;}
+  .rt-plan-order button, .rt-x{border:1px solid var(--border);background:var(--surface);border-radius:6px;width:30px;height:26px;cursor:pointer;color:var(--ink);font-size:12px;} .rt-plan-order button:disabled{opacity:.3;}
+  .rt-inline{padding:7px 10px;font-size:14.5px;margin-top:6px;}
+  .rt-cand{margin-bottom:10px;} .rt-hist{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);}
+  .pc-list{display:grid;gap:6px;} .pc-row{display:grid;grid-template-columns:1fr 110px;gap:10px;align-items:center;padding:6px 0;border-bottom:1px solid var(--border);}
+  .pc-row input{padding:9px 10px;border:1.5px solid var(--border);border-radius:8px;font-size:16px;width:100%;box-sizing:border-box;}
+  .pc-preview{white-space:pre-line;background:var(--bg);border-radius:12px;padding:10px 12px;font-size:14px;margin-top:4px;}
+  .pc-bar{display:grid;grid-template-columns:150px 1fr 30px;gap:8px;align-items:center;margin:6px 0;font-size:14px;} .pc-bar div{height:10px;background:var(--bg);border-radius:5px;overflow:hidden;} .pc-bar i{display:block;height:100%;background:var(--danger);}
+  .cap-row{padding:10px 0;border-bottom:1px solid var(--border);} .cap-edit{display:flex;gap:8px;margin:6px 0;} .cap-edit input{flex:1;min-width:0;padding:9px 10px;border:1.5px solid var(--border);border-radius:8px;font-size:16px;} .cap-mode{padding:8px;border-radius:8px;}
+  .cap-bar{height:8px;background:var(--bg);border-radius:4px;overflow:hidden;margin-top:4px;} .cap-bar i{display:block;height:100%;background:var(--green);} .cap-bar.warn i{background:#E0A21B;} .cap-bar.bad i{background:var(--danger);}
+  .sc-card{display:flex;gap:14px;align-items:flex-start;} .sc-grade{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font-size:26px;font-weight:800;flex-shrink:0;background:var(--bg);}
+  .sc-grade.g-A{background:var(--green-soft);color:var(--green);} .sc-grade.g-B{background:#DDEBFA;color:#1D5A9E;} .sc-grade.g-C{background:#FBEFD2;color:#7A5200;} .sc-grade.g-D{background:#F8E1DC;color:var(--danger);}
+  .sc-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px;} .sc-stats div{background:var(--bg);border-radius:8px;padding:6px;text-align:center;} .sc-stats b{display:block;font-size:15px;} .sc-stats span{font-size:11.5px;opacity:.75;}
+  @media (max-width:420px){ .sc-stats{grid-template-columns:repeat(2,1fr);} }
+  .bk-table{width:100%;border-collapse:collapse;font-size:13.5px;font-variant-numeric:tabular-nums;} .bk-table th, .bk-table td{padding:6px 8px;border-bottom:1px solid var(--border);text-align:right;white-space:nowrap;}
+  .bk-table th:nth-child(-n+4), .bk-table td:nth-child(-n+4){text-align:left;} .bk-table tfoot td{font-weight:800;border-top:2px solid var(--ink);}
+  .adm-search{display:flex;gap:8px;} .adm-search input{flex:1;min-width:0;padding:10px 12px;border:1.5px solid var(--border);border-radius:10px;font-size:16px;}
+  .adm-row{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border);cursor:pointer;} .adm-row.static{cursor:default;} .adm-row:last-child{border-bottom:none;}
+  .adm-name{font-weight:800;} .adm-sub{font-size:13px;opacity:.75;} .adm-side{font-size:12.5px;text-align:right;white-space:nowrap;opacity:.85;}
+  .adm-badge{font-size:11.5px;font-weight:800;padding:2px 7px;border-radius:999px;background:#FBEFD2;color:#7A5200;vertical-align:middle;} .adm-badge.bad{background:#F8E1DC;color:var(--danger);} .adm-badge.ok{background:var(--green-soft);color:var(--green);}
+  .adm-h{font-weight:800;font-size:15px;margin-bottom:6px;} .adm-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+  .adm-actions select, .adm-actions input{padding:8px 10px;border:1.5px solid var(--border);border-radius:8px;font-size:15px;}
+  .adm-log{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid var(--border);font-size:14px;} .adm-log span:last-child{white-space:nowrap;opacity:.8;}
+  .adm-todo{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border);font-weight:700;cursor:pointer;} .adm-todo span{color:var(--green);}
+  .adm-msg{padding:10px 0;border-bottom:1px solid var(--border);}
+  #page-admin input, #page-admin textarea{font-family:inherit;}
+  .suspended-screen{position:fixed;inset:0;z-index:5000;background:var(--bg);display:grid;place-items:center;padding:16px;}
+  .suspended-box{max-width:420px;text-align:center;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:24px;}
   .disc-featured{font-size:12px;font-weight:700;background:var(--green-soft);color:var(--green);border-radius:6px;padding:1px 6px;vertical-align:middle;}
   .store-tabs button{flex:1;padding:10px 8px;font-size:15px;}
   #view-pricing .plan-name{font-size:20.5px;}
@@ -2034,6 +2124,9 @@
           <li><span class="check">✓</span>Promo prices on your store</li>
           <li><span class="check">✓</span>One-tap statements of account</li>
           <li><span class="check">✓</span>Credit limits per buyer, checked on every order</li>
+          <li><span class="check">✓</span>Delivery &amp; collection routes with photo proof</li>
+          <li><span class="check">✓</span>Cheque tracker with deposit reminders</li>
+          <li><span class="check">✓</span>Price-change announcements and reorder reminders</li>
           <li><span class="check">✓</span>BIR 2307 tracker for certificates buyers owe you</li>
           <li><span class="check">✓</span>Who pays late, and automatic reminders</li>
           <li><span class="check">✓</span>Up to 15 teammates</li>
@@ -2048,8 +2141,9 @@
         <ul class="plan-list">
           <li><span class="check">✓</span>Owner's watchdog: alerts when staff overpay or skip approval</li>
           <li><span class="check">✓</span>Market price check vs other buyers</li>
-          <li><span class="check">✓</span>Price-increase alerts</li>
-          <li><span class="check">✓</span>BIR 2307 tracker for certificates you owe</li>
+          <li><span class="check">✓</span>Spending caps per teammate or supplier</li>
+          <li><span class="check">✓</span>Supplier scorecard</li>
+          <li><span class="check">✓</span>Cheque tracker, BIR 2307 and purchase book</li>
           <li><span class="check">✓</span>Up to 15 teammates</li>
         </ul>
         <button class="plan-btn outline" onclick="navigate('login')">Start free in the pilot</button>
@@ -2493,9 +2587,15 @@
     <div class="nav-group">
       <div class="heading">More</div>
       <div class="nav-item hidden" id="salesNavItem" data-page="sales" onclick="navigate('sales')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Sales</span></div>
+      <div class="nav-item owner-only" data-page="admin" onclick="navigate('admin')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 3 6v6c0 5 4 9 9 10 5-1 9-5 9-10V6z"/><path d="m9 12 2 2 4-4"/></svg><span>Admin console</span></div>
       <div class="nav-item owner-only" data-page="growth" onclick="navigate('growth')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg><span>Growth desk</span></div>
       <div class="nav-item" data-page="store" onclick="navigate('store')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l1.5-5h15L21 9"/><path d="M4 9v11h16V9"/><path d="M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0"/><path d="M10 20v-6h4v6"/></svg><span>Online store</span></div>
       <div class="nav-item only-buyer" data-page="watchdog" onclick="navigate('watchdog')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Watchdog</span></div>
+      <div class="nav-item" data-page="cheques" onclick="navigate('cheques')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 14h6"/><path d="M15 14h3"/><path d="M6 10h12"/></svg><span>Cheques</span></div>
+      <div class="nav-item only-supplier" data-page="routes" onclick="navigate('routes')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="7" width="13" height="10" rx="1"/><path d="M14 10h4l3 3v4h-7"/><circle cx="5.5" cy="18" r="1.8"/><circle cx="17.5" cy="18" r="1.8"/></svg><span>Routes</span></div>
+      <div class="nav-item" data-page="prices" onclick="navigate('prices')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg><span>Price changes</span></div>
+      <div class="nav-item" data-page="returns" onclick="navigate('returns')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/></svg><span>Returns & credits</span></div>
+      <div class="nav-item" data-page="books" onclick="navigate('books')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M8 7h8M8 11h6"/></svg><span>Sales & purchase books</span></div>
       <div class="nav-item" data-page="taxforms" onclick="navigate('taxforms')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/></svg><span>BIR 2307s</span></div>
       <div class="nav-item" data-page="team" onclick="navigate('team')" style="position:relative;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Team</span><span id="teamNavBadge" class="nav-badge" style="display:none;"></span></div>
       <div class="nav-item" data-page="analytics" onclick="navigate('analytics')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg><span data-i18n="nav_analytics">Analytics</span></div>
@@ -2531,6 +2631,12 @@
       <button class="more-sheet-item owner-only" data-page="growth" onclick="closeMoreSheet(); navigate('growth')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg><span>Growth</span></button>
       <button class="more-sheet-item" data-page="store" onclick="closeMoreSheet(); navigate('store')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l1.5-5h15L21 9"/><path d="M4 9v11h16V9"/><path d="M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0"/><path d="M10 20v-6h4v6"/></svg><span>Store</span></button>
       <button class="more-sheet-item only-buyer" data-page="watchdog" onclick="closeMoreSheet(); navigate('watchdog')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Watchdog</span></button>
+      <button class="more-sheet-item owner-only" data-page="admin" onclick="closeMoreSheet(); navigate('admin')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 3 6v6c0 5 4 9 9 10 5-1 9-5 9-10V6z"/><path d="m9 12 2 2 4-4"/></svg><span>Admin</span></button>
+      <button class="more-sheet-item only-supplier" data-page="routes" onclick="closeMoreSheet(); navigate('routes')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="7" width="13" height="10" rx="1"/><path d="M14 10h4l3 3v4h-7"/><circle cx="5.5" cy="18" r="1.8"/><circle cx="17.5" cy="18" r="1.8"/></svg><span>Routes</span></button>
+      <button class="more-sheet-item" data-page="cheques" onclick="closeMoreSheet(); navigate('cheques')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 14h6"/><path d="M15 14h3"/><path d="M6 10h12"/></svg><span>Cheques</span></button>
+      <button class="more-sheet-item" data-page="prices" onclick="closeMoreSheet(); navigate('prices')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg><span>Prices</span></button>
+      <button class="more-sheet-item" data-page="returns" onclick="closeMoreSheet(); navigate('returns')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/></svg><span>Returns</span></button>
+      <button class="more-sheet-item" data-page="books" onclick="closeMoreSheet(); navigate('books')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M8 7h8M8 11h6"/></svg><span>Books</span></button>
       <button class="more-sheet-item" data-page="taxforms" onclick="closeMoreSheet(); navigate('taxforms')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/></svg><span>2307s</span></button>
       <button class="more-sheet-item" data-page="team" onclick="closeMoreSheet(); navigate('team')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Team</span></button>
       <button class="more-sheet-item" data-page="analytics" onclick="closeMoreSheet(); navigate('analytics')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg><span>Analytics</span></button>
@@ -2606,6 +2712,7 @@
           <div id="buyerRecentMessagesBox"></div>
         </div>
         <div id="billsToPayPanel"></div>
+        <div id="priceNewsCard"></div>
         <div id="watchdogDashCard"></div>
         <div id="buyerPostCard"></div>
         <div id="homeInviteNudge"></div>
@@ -3180,21 +3287,10 @@
       <div id="page-settings" class="app-page">
         <div class="page-head"><h1 data-i18n="head_settings">Settings</h1><p>Manage your business profile, privacy, and connected partners.</p></div>
 
-        <div class="settings-card hidden" id="ownerEmailCard">
-          <h2>📧 Email sending <span style="font-size:13px;font-weight:700;opacity:.6;">(only you see this)</span></h2>
-          <div class="sub">Nifti sends password resets, email alerts, morning summaries and Help messages from a Gmail account. Free, about 500 emails a day. One-time setup, about 2 minutes.</div>
-          <div id="ownerEmailContent"></div>
-        </div>
-
-        <div class="settings-card hidden" id="ownerBackupCard">
-          <h2>🗄 Backups <span style="font-size:13px;font-weight:700;opacity:.6;">(only you see this)</span></h2>
-          <div class="sub">A full copy of everything in Nifti is saved every Sunday at 2am, and the last 10 are kept. Download one now and then to keep a copy outside Nifti too (laptop or Google Drive).</div>
-          <div id="ownerBackupContent"></div>
-        </div>
-
-        <div class="settings-card hidden" id="ownerBillingCard">
-          <h2>💰 Customers &amp; upgrades <span style="font-size:13px;font-weight:700;opacity:.6;">(only you see this)</span></h2>
-          <div id="ownerBillingContent"></div>
+        <div class="settings-card owner-only">
+          <h2>🛠 Admin console <span style="font-size:13px;font-weight:700;opacity:.6;">(only you see this)</span></h2>
+          <div class="sub">Every business and person on Nifti, plans and payments, bans and deletes, Help messages, notices, email and backups.</div>
+          <button class="btn btn-primary" onclick="navigate('admin')">Open admin console →</button>
         </div>
 
         <h3 class="settings-section-title">Your business</h3>
@@ -3386,7 +3482,7 @@
       </div>
 
       <div id="page-watchdog" class="app-page">
-        <div class="page-head"><h1>Owner's watchdog <span id="watchdogBadge"></span></h1><p>Orders that cost more than they should, or skipped your rules.</p></div>
+        <div class="page-head"><h1>Owner's control <span id="watchdogBadge"></span></h1><p>Overpaying, spending caps, and how your suppliers really perform.</p></div>
         <div id="watchdogContent"></div>
       </div>
 
@@ -3398,6 +3494,57 @@
       <div id="page-growth" class="app-page">
         <div class="page-head"><h1>Growth desk</h1><p>Only you see this. Who's joining, who's stuck, and who to reach next.</p></div>
         <div id="growthContent"></div>
+      </div>
+
+      <div id="page-cheques" class="app-page">
+        <div class="page-head"><h1>Cheques <span id="chequesBadge"></span></h1><p id="chequesSub">Post-dated cheques, what to deposit today, and who bounces.</p></div>
+        <div id="chequesContent"></div>
+      </div>
+
+      <div id="page-routes" class="app-page">
+        <div class="page-head"><h1>Routes <span id="routesBadge"></span></h1><p>Deliveries and collections for your drivers, with photo proof and cash remittance.</p></div>
+        <div id="routesContent"></div>
+      </div>
+
+      <div id="page-prices" class="app-page">
+        <div class="page-head"><h1>Price changes <span id="pricesBadge"></span></h1><p id="pricesSub">Tell every buyer about new prices at once, with a start date.</p></div>
+        <div id="pricesContent"></div>
+      </div>
+
+      <div id="page-returns" class="app-page">
+        <div class="page-head"><h1>Returns &amp; credits</h1><p>Bad orders, credit memos, and credits carried to the next invoice.</p></div>
+        <div id="returnsContent"></div>
+      </div>
+
+      <div id="page-books" class="app-page">
+        <div class="page-head"><h1>Sales &amp; purchase books <span id="booksBadge"></span></h1><p>Monthly books from your invoices, VAT and tax withheld, ready for Excel.</p></div>
+        <div id="booksContent"></div>
+      </div>
+
+      <div id="page-admin" class="app-page">
+        <div class="page-head"><h1>Admin console</h1><p>Only you see this. Everyone and everything on Nifti.</p></div>
+        <div id="adminContent"></div>
+        <div class="adm-host hidden" data-tab="money">
+        <div class="settings-card hidden" id="ownerBillingCard">
+          <h2>💰 Customers &amp; upgrades <span style="font-size:13px;font-weight:700;opacity:.6;">(only you see this)</span></h2>
+          <div id="ownerBillingContent"></div>
+        </div>
+
+        </div>
+        <div class="adm-host hidden" data-tab="site">
+                <div class="settings-card hidden" id="ownerEmailCard">
+          <h2>📧 Email sending <span style="font-size:13px;font-weight:700;opacity:.6;">(only you see this)</span></h2>
+          <div class="sub">Nifti sends password resets, email alerts, morning summaries and Help messages from a Gmail account. Free, about 500 emails a day. One-time setup, about 2 minutes.</div>
+          <div id="ownerEmailContent"></div>
+        </div>
+
+        <div class="settings-card hidden" id="ownerBackupCard">
+          <h2>🗄 Backups <span style="font-size:13px;font-weight:700;opacity:.6;">(only you see this)</span></h2>
+          <div class="sub">A full copy of everything in Nifti is saved every Sunday at 2am, and the last 10 are kept. Download one now and then to keep a copy outside Nifti too (laptop or Google Drive).</div>
+          <div id="ownerBackupContent"></div>
+        </div>
+
+        </div>
       </div>
 
       <div id="page-status" class="app-page">
@@ -3464,6 +3611,10 @@ window.addEventListener('unhandledrejection', (event)=>{
 async function loadMyBusinessContext(){
   const { data: { user } } = await sb.auth.getUser();
   if(!user) return false;
+  try{
+    const { data: acct } = await sb.rpc('my_account_status');
+    if(acct && acct.banned){ showSuspendedScreen(acct); return false; }
+  }catch(e){}
   const { data: tm, error } = await sb.from('team_members')
     .select('*, businesses(*)')
     .eq('auth_user_id', user.id)
@@ -4536,7 +4687,7 @@ window.addEventListener('online', () => {
   if(document.getElementById('supplierOrderRows')) renderSupplierOrdersTable();
   if(activeConvId){ const conv = getConversations().find(c=>c.id===activeConvId); if(conv) renderThread(conv); }
 });
-const appPages = ['dashboard','messages','suppliers','orders','inventory','invite','discover','analytics','datacenter','settings','status','team','sales','taxforms','watchdog','store','growth'];
+const appPages = ['dashboard','messages','suppliers','orders','inventory','invite','discover','analytics','datacenter','settings','status','team','sales','taxforms','watchdog','store','growth','cheques','routes','prices','returns','books','admin'];
 
 /* ============ SETTINGS PAGE ACTIONS ============ */
 let currentAvatarPhoto = null;
@@ -5143,8 +5294,10 @@ function renderSupplierDashboard(){
       <div class="panel-head"><h2>💬 Messages</h2><span class="lnk" onclick="navigate('messages')">Open Messages →</span></div>
       <div id="supplierRecentMessagesBox"></div>
     </div>
+    <div id="routeDashCard"></div>
     <div id="whoOwesMePanel"></div>
     <div id="storeDashCard"></div>
+    <div id="reorderDashCard"></div>
     <div id="homeInviteNudgeSupplier"></div>
     <div id="supplierTodayPanel"></div>
     <div class="stat-row">
@@ -5413,9 +5566,10 @@ function closeMobileSidebar(){
 const ROLE_PERMISSIONS = {
   'Owner': null, // null = every app page, no restriction
   'General Manager': null,
-  'Purchasing Agent': ['dashboard','messages','suppliers','orders','inventory','invite','discover','analytics'],
-  'Warehouse Manager': ['dashboard','messages','orders','inventory'],
-  'Finance': ['dashboard','orders','suppliers','analytics','taxforms'],
+  'Purchasing Agent': ['dashboard','messages','suppliers','orders','inventory','invite','discover','analytics','prices','returns'],
+  'Warehouse Manager': ['dashboard','messages','orders','inventory','routes','returns'],
+  'Finance': ['dashboard','orders','suppliers','analytics','taxforms','cheques','returns','books','prices'],
+  'Driver': ['dashboard','routes','messages'],
   'Viewer': ['dashboard','analytics'],
 };
 const PRIVILEGED_ROLES = ['Owner','General Manager'];
@@ -5424,7 +5578,7 @@ const PRIVILEGED_ROLES = ['Owner','General Manager'];
 const PAGE_DISPLAY_NAMES = {
   dashboard:'Dashboard', messages:'Messages', suppliers:'My Suppliers', orders:'Orders',
   inventory:'Inventory', invite:'Invite a Supplier', discover:'Discover', analytics:'Analytics',
-  datacenter:'Upload Data', settings:'Settings', taxforms:'BIR 2307 tracker', watchdog:"Owner's watchdog", store:'Online store',
+  datacenter:'Upload Data', settings:'Settings', taxforms:'BIR 2307 tracker', watchdog:"Owner's control", store:'Online store', cheques:'Cheques', routes:'Routes', prices:'Price changes', returns:'Returns & credits', books:'Sales & purchase books',
 };
 // Owner-defined roles, built around exactly what one person should do — e.g. Messages only, for
 // someone who just manages chats. A custom role is never privileged: it can't manage other
@@ -7222,12 +7376,14 @@ const PRO_FEATURE_LABELS = {
   statements: 'Statements of account', bir2307: 'BIR 2307 tracker', store_insights: 'Store visitors & sales', store_promos: 'Store promos',
   auto_reminders: 'Automatic payment reminders', late_payers: 'Who pays late', credit_limits: 'Credit limits per buyer', full_history: 'Full history & exports',
   watchdog: "Owner's watchdog", market_price: 'Market price check', price_alerts: 'Price-increase alerts',
+  cheques: 'Cheque tracker', routes: 'Delivery & collection routes', price_blast: 'Price-change announcements', credit_memos: 'Credits on account',
+  reorder_reminders: 'Reorder reminders', vat_books: 'Sales & purchase books', spending_caps: 'Spending caps', scorecard: 'Supplier scorecard',
 };
 const PRO_PLANS = {
   supplier_pro: {name: 'Supplier Pro', forType: 'supplier', tagline: 'Get paid faster and sell more.',
-    features: ['Online store insights: visitors, orders, top products', 'Promo prices with an end date on your store', 'One-tap statements of account', 'Credit limits per buyer: hold orders when they owe too much or pay late', 'BIR 2307 tracker: see every certificate buyers owe you', 'Who pays late, and by how much', 'Automatic payment reminders', 'Up to 15 teammates']},
+    features: ['Online store insights: visitors, orders, top products', 'Promo prices with an end date on your store', 'One-tap statements of account', 'Credit limits per buyer: hold orders when they owe too much or pay late', 'Delivery & collection routes with photo proof and cash remittance', 'Cheque tracker: post-dated calendar, deposit reminders, bounced alerts', 'Price-change announcements to every buyer at once', 'Reorder reminders when a buyer goes quiet', 'Credits carried to the next invoice', 'BIR 2307 tracker and monthly sales book (VAT)', 'Who pays late, and automatic payment reminders', 'Up to 15 teammates']},
   buyer_pro: {name: 'Buyer Pro', forType: 'buyer', tagline: 'Pay less and stop leaks.',
-    features: ["Owner's watchdog: alerts when staff overpay or skip approval", 'Market price check vs other Nifti buyers', 'Price-increase alerts', 'BIR 2307 tracker: never miss a certificate you owe', 'Full history and exports', 'Up to 15 teammates']},
+    features: ["Owner's watchdog: alerts when staff overpay or skip approval", 'Spending caps you set per business, teammate or supplier', 'Supplier scorecard: late, short, returns, price hikes', 'Cheque tracker: know when each cheque hits your bank', 'Market price check vs other Nifti buyers', 'BIR 2307 tracker and monthly purchase book (VAT)', 'Up to 15 teammates']},
   business: {name: 'Business', forType: 'any', tagline: 'For distributors and multi-branch businesses. Everything in Supplier Pro and Buyer Pro, plus:',
     features: ['Up to 50 teammates', 'Verified badge (green ✔) included', 'Featured at the top of Discover', 'Priority support: we reply first', 'Free done-for-you setup on yearly']},
 };
@@ -7776,12 +7932,16 @@ async function renderWatchdogPage(){
   const b = document.getElementById('watchdogBadge'); if(b) b.innerHTML = proBadge('watchdog');
   if(!hasFeature('watchdog')){ el.innerHTML = lockedPanelHtml('watchdog', 'Get told the moment a teammate orders above your agreed price, pays more than last time, or switches to a pricier supplier. Plus how your prices compare with other buyers.'); return; }
   if(myBusiness && !isPrivilegedUser()){ el.innerHTML = '<div class="panel-card">Only the Owner or General Manager sees the watchdog.</div>'; return; }
-  el.innerHTML = `<div class="role-toggle" style="margin-bottom:14px;">
+  el.innerHTML = `<div class="adm-tabs" style="margin-bottom:14px;">
       <button class="${watchdogTab === 'alerts' ? 'active' : ''}" onclick="watchdogTab='alerts'; renderWatchdogPage()">🛡 Alerts</button>
+      <button class="${watchdogTab === 'caps' ? 'active' : ''}" onclick="watchdogTab='caps'; renderWatchdogPage()">💰 Caps</button>
+      <button class="${watchdogTab === 'score' ? 'active' : ''}" onclick="watchdogTab='score'; renderWatchdogPage()">⭐ Suppliers</button>
       <button class="${watchdogTab === 'market' ? 'active' : ''}" onclick="watchdogTab='market'; renderWatchdogPage()">📊 Prices</button>
       <button class="${watchdogTab === 'settings' ? 'active' : ''}" onclick="watchdogTab='settings'; renderWatchdogPage()">⚙️ Rules</button>
     </div><div id="watchdogTabBody"><div class="panel-card">Loading…</div></div>`;
   if(watchdogTab === 'alerts') return renderWatchdogAlerts();
+  if(watchdogTab === 'caps') return renderCapsTab();
+  if(watchdogTab === 'score') return renderScorecardTab();
   if(watchdogTab === 'market') return renderMarketPrices();
   return renderWatchdogRules();
 }
@@ -8173,7 +8333,7 @@ function renderStorePage(){
     <div id="storeTabBody"></div>`;
   const body = document.getElementById('storeTabBody');
   if(storeTab === 'kit') storeTab = 'posts';
-  if(storeTab === 'posts'){ body.innerHTML = '<div id="postComposer"></div><div id="postReach"></div><div id="shareMore"></div>'; renderPostComposer(document.getElementById('postComposer')); regularsCache = null; regularsShowAll = false; renderPostReach(document.getElementById('postReach')); return renderStoreKit(document.getElementById('shareMore'), slug, st, live); }
+  if(storeTab === 'posts'){ body.innerHTML = '<div id="postComposer"></div><div id="postReach"></div><div id="shareMore"></div>'; renderPostComposer(document.getElementById('postComposer')); renderPostReach(document.getElementById('postReach')); return renderStoreKit(document.getElementById('shareMore'), slug, st, live); }
   if(storeTab === 'orders' && !isSup) return renderShopOrders(body);
   if(storeTab === 'stats') return renderStoreStats(body);
   body.innerHTML = `${!isSup ? '<div id="shopProducts"></div>' : ''}<div class="panel-card">
@@ -8875,65 +9035,24 @@ async function saveServicePrices(){
   showToast(error ? error.message : 'Saved.', error ? 'error' : 'success');
 }
 
-/* ============ REACH: send a post to buyers on Nifti, and to regulars one by one ============
+/* ============ REACH: send a post to every buyer on Nifti ============
    Suppliers: one tap drops the post into every Nifti buyer's chat (they get a phone notification).
-   Once a day, so buyers don't mute them. Everyone: customers who aren't on Nifti (store orders,
-   your Sales customers) with one-tap Viber / SMS / WhatsApp, pre-filled. Free, uses their own phone. */
-let regularsCache = null, regularsShowAll = false, broadcastInfo = null;
-function phPhone(p){
-  let d = String(p || '').replace(/\D/g, '');
-  if(d.length === 11 && d[0] === '0') d = '63' + d.slice(1);
-  else if(d.length === 10 && d[0] === '9') d = '63' + d;
-  return d.length >= 11 ? d : '';
-}
-async function loadRegulars(){
-  const list = [];
-  const seen = new Set();
-  const add = (name, phone, note) => { const d = phPhone(phone); if(!d || seen.has(d)) return; seen.add(d); list.push({name, phone: d, note}); };
-  if(myBusiness){
-    const { data } = await sb.rpc('my_regulars');
-    (data || []).forEach(r => add(r.name, r.phone, r.orders ? `${r.orders} order${r.orders > 1 ? 's' : ''}` : 'Store customer'));
-  } else if(currentAppRole === 'supplier'){
-    [{name: 'Aling Nena Store', phone: '0917 222 1010', note: '3 orders'}, {name: 'Boy Hardware (Cainta)', phone: '0918 555 8080', note: '1 order'}].forEach(r => add(r.name, r.phone, r.note));
-  }
-  if(currentAppRole === 'buyer') (downstreamCustomers || []).forEach(c => add(c.name, c.phone, c.terms || 'Customer'));
-  if(currentAppRole === 'supplier') (buyersData || []).filter(b => b.isOutside && b.outsideContact && b.outsideContact.phone).forEach(b => add(b.name, b.outsideContact.phone, 'Not on Nifti yet'));
-  regularsCache = list;
-  return list;
-}
+   Once a day, so buyers don't mute them. */
+let broadcastInfo = null;
 async function renderPostReach(el){
   if(!el) return;
   const isSup = currentAppRole === 'supplier';
-  if(isSup && myBusiness && isPrivilegedUser()){ try{ const { data } = await sb.rpc('broadcast_status'); broadcastInfo = data; }catch(e){} }
+  if(!isSup){ el.innerHTML = ''; return; }
+  if(myBusiness && isPrivilegedUser()){ try{ const { data } = await sb.rpc('broadcast_status'); broadcastInfo = data; }catch(e){} }
   const nBuyers = isSup ? (myBusiness ? (broadcastInfo ? broadcastInfo.buyers : 0) : (buyersData || []).filter(b => !b.isOutside).length) : 0;
   const nextAt = broadcastInfo && broadcastInfo.next_at ? new Date(broadcastInfo.next_at) : null;
-  const regs = regularsCache || await loadRegulars();
-  const shown = regularsShowAll ? regs : regs.slice(0, 8);
   el.innerHTML = `${isSup ? `<div class="panel-card" style="margin-top:12px;">
       <div style="font-weight:800;font-size:16px;">📨 Send this post to all your buyers on Nifti</div>
       <div style="font-size:14px;opacity:.85;margin:2px 0 8px;">It lands in each buyer's Nifti chat and pings their phone. Free. Once a day, so nobody mutes you.</div>
       ${nextAt && nextAt > new Date() ? `<div class="notif-phone">✓ Sent today. Next one after ${nextAt.toLocaleString('en-PH', {weekday:'short', hour:'numeric', minute:'2-digit'})}.</div>`
         : myBusiness && !isPrivilegedUser() ? `<div style="font-size:14px;opacity:.7;">Your Owner or General Manager can send this.</div>`
         : `<button class="btn btn-primary" onclick="broadcastPost()" ${nBuyers ? '' : 'disabled'}>Send to ${nBuyers} buyer${nBuyers === 1 ? '' : 's'}</button>${nBuyers ? '' : '<div style="font-size:13.5px;opacity:.75;margin-top:6px;">Connect with your buyers first (Buyers → Invite).</div>'}`}
-    </div>` : ''}
-    <div class="panel-card" style="margin-top:12px;">
-      <div style="font-weight:800;font-size:16px;">📱 Send to your regulars, one tap each</div>
-      <div style="font-size:14px;opacity:.85;margin:2px 0 8px;">${isSup ? 'Buyers who order by phone or through your store but aren\'t on Nifti.' : 'Your customers from Sales and from your shop.'} The post opens ready to send from your own phone.</div>
-      ${regs.length ? shown.map((r, i) => `<div class="regular-row"><div style="min-width:0;"><div style="font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escapeHtml(r.name)}</div><div style="font-size:13px;opacity:.7;">+${r.phone} · ${escapeHtml(r.note || '')}</div></div>
-          <div class="regular-btns"><button class="btn btn-outline" onclick="sendToRegular(${regs.indexOf(r)}, 'viber')">Viber</button><button class="btn btn-outline" onclick="sendToRegular(${regs.indexOf(r)}, 'sms')">SMS</button><button class="btn btn-outline" onclick="sendToRegular(${regs.indexOf(r)}, 'whatsapp')">WA</button></div></div>`).join('')
-        + (regs.length > 8 && !regularsShowAll ? `<span class="row-action" style="display:block;margin-top:8px;" onclick="regularsShowAll = true; renderPostReach(document.getElementById('postReach'))">Show all ${regs.length}</span>` : '')
-        : `<div style="font-size:14px;opacity:.75;">No one yet. ${isSup ? 'Customers who order through your store link show up here with their number.' : `Add your customers in <span class="row-action" onclick="navigate('sales')">Sales</span> and they show up here.`}</div>`}
-    </div>`;
-}
-function sendToRegular(i, ch){
-  const r = (regularsCache || [])[i];
-  const text = (document.getElementById('postText') || {}).value || '';
-  if(!r || !text.trim()) return;
-  trackEvent('content_post_regular', {channel: ch, role: currentAppRole});
-  markStoreShared();
-  if(ch === 'viber'){ copyPlainText(text, 'Post copied. Paste it in the Viber chat.'); setTimeout(() => { window.location.href = 'viber://chat?number=%2B' + r.phone; }, 400); }
-  else if(ch === 'sms') window.location.href = 'sms:+' + r.phone + (isIOSDevice() ? '&' : '?') + 'body=' + encodeURIComponent(text);
-  else window.open('https://wa.me/' + r.phone + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
+    </div>` : ''}`;
 }
 async function broadcastPost(){
   const text = ((document.getElementById('postText') || {}).value || '').trim();
@@ -8953,6 +9072,1234 @@ async function broadcastPost(){
   renderPostReach(document.getElementById('postReach'));
 }
 
+
+/* ============ CHEQUES (post-dated cheques, deposit reminders, bounced alerts) ============
+   Built on the cheque payments already recorded on invoices, deposits and COD (method 'check').
+   Supplier: a calendar of cheques coming in, what to deposit today, what's waiting to clear,
+   one tap to mark deposited / cleared / bounced, and who bounces. Buyer: every cheque you issued,
+   when it will hit your account, so nothing bounces. The server sends the morning reminders
+   (send_cheque_reminders) and puts them in the daily summary. */
+let chequeTab = 'calendar', chequeFilter = 'due';
+function chequeStatus(p){
+  if(p.confirmStatus === 'rejected' || p.checkStatus === 'bounced') return 'bounced';
+  if(p.checkStatus === 'cleared' || (p.confirmStatus === 'confirmed' && p.checkStatus !== 'pending')) return 'cleared';
+  if(p.depositedAt) return 'deposited';
+  if(p.checkDate && p.checkDate.slice(0, 10) > APP_TODAY) return 'hold';
+  return 'due';
+}
+const CHEQUE_STATUS = {
+  due: {label: 'Deposit now', cls: 'cq-due'}, hold: {label: 'Post-dated', cls: 'cq-hold'}, deposited: {label: 'Waiting to clear', cls: 'cq-dep'},
+  cleared: {label: 'Cleared', cls: 'cq-ok'}, bounced: {label: 'Bounced', cls: 'cq-bad'},
+};
+function collectCheques(side){
+  const pos = side === 'supplier' ? getSupplierPOs() : getBuyerPOs();
+  const out = [];
+  pos.forEach(po => {
+    if(po.status === 'cancelled') return;
+    const seen = new Set();
+    const add = (p, kind, key) => {
+      if(!p || p.method !== 'check') return;
+      if(p.id && seen.has(p.id)) return;
+      if(p.id) seen.add(p.id);
+      out.push({po, kind, key, p, party: side === 'supplier' ? po.buyerName : po.supplierName, partyId: side === 'supplier' ? po.buyerId : po.supplierId,
+        amount: Number(p.amount) || 0, no: p.reference || '', bank: p.bank || '', date: (p.checkDate || p.date || '').slice(0, 10), status: chequeStatus(p)});
+    };
+    ((po.invoice && po.invoice.payments) || []).forEach((p, i) => add(p, 'invoice', paymentKey(p, i)));
+    (po.depositPayments || []).forEach((p, i) => add(p, 'deposit', paymentKey(p, i)));
+    if(po.codPayment) add(po.codPayment, 'cod', 'cod');
+  });
+  return out.sort((a, b) => (a.date || '9999').localeCompare(b.date || '9999'));
+}
+function seedDemoCheques(){
+  if(myBusiness || window._demoChequesSeeded) return;
+  window._demoChequesSeeded = true;
+  const plusDays = n => { const d = new Date(APP_TODAY + 'T00:00:00'); d.setDate(d.getDate() + n); return d.toISOString().slice(0, 10); };
+  const seed = (pos, specs) => {
+    let i = 0;
+    pos.filter(po => po.invoice && po.status !== 'cancelled' && po.status !== 'paid').forEach(po => {
+      const spec = specs[i]; if(!spec) return;
+      const bal = computeInvoicePayments(po).balance - computeInvoicePayments(po).pendingAmount;
+      if(bal < 500) return;
+      const amt = Math.round(Math.min(bal, spec.max));
+      paymentListFor(po, 'invoice').push({id: newRecordId(), method: 'check', amount: amt, reference: spec.no, bank: spec.bank, checkDate: plusDays(spec.d), date: plusDays(Math.min(spec.d, 0) - 3),
+        confirmStatus: spec.st === 'bounced' ? 'rejected' : 'pending', checkStatus: spec.st || 'pending', depositedAt: spec.dep ? plusDays(spec.dep) : undefined, rejectReason: spec.st === 'bounced' ? 'DAIF (drawn against insufficient funds)' : undefined, submittedBy: 'supplier'});
+      i++;
+    });
+  };
+  seed(getSupplierPOs(), [{no: '004512', bank: 'BDO', d: 0, max: 18200}, {no: '118834', bank: 'Metrobank', d: 5, max: 10500}, {no: '220190', bank: 'BPI', d: 12, max: 7400},
+    {no: '004513', bank: 'BDO', d: -4, dep: -3, max: 9100}, {no: '771002', bank: 'Security Bank', d: -9, st: 'bounced', max: 6200}, {no: '118835', bank: 'Metrobank', d: 26, max: 12000}]);
+  seed(getBuyerPOs(), [{no: '000781', bank: 'BPI', d: 1, max: 15400}, {no: '000782', bank: 'BPI', d: 9, max: 8800}, {no: '000779', bank: 'BPI', d: -6, dep: -5, max: 5200}]);
+}
+function renderChequesPage(){
+  const el = document.getElementById('chequesContent');
+  if(!el) return;
+  const badge = document.getElementById('chequesBadge'); if(badge) badge.innerHTML = proBadge('cheques');
+  if(!hasFeature('cheques')){ el.innerHTML = lockedPanelHtml('cheques', 'Every post-dated cheque in one calendar, a reminder the morning each one can be deposited, and an alert the moment one bounces.'); return; }
+  seedDemoCheques();
+  const side = currentAppRole === 'supplier' ? 'supplier' : 'buyer';
+  const all = collectCheques(side);
+  const sum = list => list.reduce((s, c) => s + c.amount, 0);
+  const in30 = (() => { const d = new Date(APP_TODAY + 'T00:00:00'); d.setDate(d.getDate() + 30); return d.toISOString().slice(0, 10); })();
+  const back90 = (() => { const d = new Date(APP_TODAY + 'T00:00:00'); d.setDate(d.getDate() - 90); return d.toISOString().slice(0, 10); })();
+  const due = all.filter(c => c.status === 'due'), hold = all.filter(c => c.status === 'hold'), dep = all.filter(c => c.status === 'deposited');
+  const bounced = all.filter(c => c.status === 'bounced' && (c.date || APP_TODAY) >= back90);
+  const tiles = side === 'supplier'
+    ? [['cq-due', 'Deposit today', due.length, sum(due)], ['cq-hold', 'Post-dated (30 days)', hold.filter(c => c.date <= in30).length, sum(hold.filter(c => c.date <= in30))],
+       ['cq-dep', 'Waiting to clear', dep.length, sum(dep)], ['cq-bad', 'Bounced (90 days)', bounced.length, sum(bounced)]]
+    : [['cq-due', 'Hits your bank in 7 days', all.filter(c => ['due', 'hold', 'deposited'].includes(c.status) && c.date <= addDaysIso(APP_TODAY, 7)).length, sum(all.filter(c => ['due', 'hold', 'deposited'].includes(c.status) && c.date <= addDaysIso(APP_TODAY, 7)))],
+       ['cq-hold', 'Post-dated, later', hold.filter(c => c.date > addDaysIso(APP_TODAY, 7)).length, sum(hold.filter(c => c.date > addDaysIso(APP_TODAY, 7)))],
+       ['cq-dep', 'Deposited, not cleared', dep.length, sum(dep)], ['cq-bad', 'Bounced (90 days)', bounced.length, sum(bounced)]];
+  el.innerHTML = `<div class="cq-tiles">${tiles.map(t => `<div class="cq-tile ${t[0]}"><div class="cq-tile-l">${t[1]}</div><div class="cq-tile-v">${fmtPHP(t[3])}</div><div class="cq-tile-n">${t[2]} cheque${t[2] === 1 ? '' : 's'}</div></div>`).join('')}</div>
+    <div class="role-toggle store-tabs" style="margin:14px 0;">
+      <button class="${chequeTab === 'calendar' ? 'active' : ''}" onclick="chequeTab='calendar'; renderChequesPage()">📅 Calendar</button>
+      <button class="${chequeTab === 'list' ? 'active' : ''}" onclick="chequeTab='list'; renderChequesPage()">📋 All</button>
+      <button class="${chequeTab === 'bounced' ? 'active' : ''}" onclick="chequeTab='bounced'; renderChequesPage()">⚠ ${side === 'supplier' ? 'Who bounces' : 'Bounced'}</button>
+    </div>
+    <div id="chequeBody"></div>`;
+  const body = document.getElementById('chequeBody');
+  if(chequeTab === 'calendar') body.innerHTML = chequeCalendarHtml(all, side);
+  else if(chequeTab === 'list') body.innerHTML = chequeListHtml(all, side);
+  else body.innerHTML = side === 'supplier' ? chequeBouncersHtml(all) : chequeListHtml(all.filter(c => c.status === 'bounced'), side, true);
+}
+function addDaysIso(iso, n){ const d = new Date(iso + 'T00:00:00'); d.setDate(d.getDate() + n); return d.toISOString().slice(0, 10); }
+function chequeDayLabel(iso){
+  if(iso === APP_TODAY) return 'Today';
+  if(iso === addDaysIso(APP_TODAY, 1)) return 'Tomorrow';
+  const d = new Date(iso + 'T00:00:00');
+  return d.toLocaleDateString('en-PH', {weekday: 'short', month: 'short', day: 'numeric'});
+}
+function chequeCalendarHtml(all, side){
+  const open = all.filter(c => ['due', 'hold', 'deposited'].includes(c.status));
+  const overdue = open.filter(c => c.status === 'due' && c.date < APP_TODAY);
+  const days = [];
+  for(let i = 0; i < 35; i++) days.push(addDaysIso(APP_TODAY, i));
+  const byDay = {};
+  open.filter(c => c.status !== 'deposited' || side === 'buyer').forEach(c => { const k = c.date < APP_TODAY ? APP_TODAY : c.date; (byDay[k] = byDay[k] || []).push(c); });
+  const max = Math.max(1, ...Object.values(byDay).map(l => l.reduce((s, c) => s + c.amount, 0)));
+  const weeks = [];
+  for(let w = 0; w < 5; w++) weeks.push(days.slice(w * 7, w * 7 + 7));
+  const strip = `<div class="panel-card cq-strip">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px;flex-wrap:wrap;"><div style="font-weight:800;font-size:16px;">${side === 'supplier' ? 'Cash coming in from cheques' : 'Money leaving your bank'}</div>
+        <div style="font-size:13.5px;opacity:.75;">Next 5 weeks · ${fmtPHP(open.filter(c => c.date <= addDaysIso(APP_TODAY, 34)).reduce((s, c) => s + c.amount, 0))}</div></div>
+      <div class="cq-bars">${days.map(d => { const t = (byDay[d] || []).reduce((s, c) => s + c.amount, 0);
+        return `<div class="cq-bar${d === APP_TODAY ? ' today' : ''}" title="${chequeDayLabel(d)}: ${fmtPHP(t)}"><i style="height:${t ? Math.max(8, Math.round(t / max * 100)) : 0}%"></i></div>`; }).join('')}</div>
+      <div class="cq-bars-axis"><span>Today</span><span>${chequeDayLabel(addDaysIso(APP_TODAY, 14))}</span><span>${chequeDayLabel(addDaysIso(APP_TODAY, 34))}</span></div>
+    </div>`;
+  const list = weeks.map((wk, wi) => {
+    const items = wk.flatMap(d => (byDay[d] || []).map(c => ({d, c})));
+    if(!items.length) return '';
+    const tot = items.reduce((s, x) => s + x.c.amount, 0);
+    return `<div class="cq-week"><div class="cq-week-h"><span>${wi === 0 ? 'This week' : wi === 1 ? 'Next week' : 'Week of ' + chequeDayLabel(wk[0])}</span><b>${fmtPHP(tot)}</b></div>
+      ${wk.filter(d => byDay[d]).map(d => `<div class="cq-day"><div class="cq-day-l${d === APP_TODAY ? ' today' : ''}">${chequeDayLabel(d)}</div><div class="cq-day-items">${byDay[d].map(c => chequeRowHtml(c, side, true)).join('')}</div></div>`).join('')}
+    </div>`;
+  }).join('');
+  const depositing = side === 'supplier' && open.filter(c => c.status === 'deposited').length
+    ? `<div class="cq-week"><div class="cq-week-h"><span>Deposited, waiting to clear</span><b>${fmtPHP(open.filter(c => c.status === 'deposited').reduce((s, c) => s + c.amount, 0))}</b></div>
+       <div class="cq-day-items">${open.filter(c => c.status === 'deposited').map(c => chequeRowHtml(c, side)).join('')}</div></div>` : '';
+  return `${strip}
+    ${overdue.length && side === 'supplier' ? `<div class="notif-phone warn" style="margin-bottom:10px;">⏰ ${overdue.length} cheque${overdue.length > 1 ? 's are' : ' is'} past ${overdue.length > 1 ? 'their dates' : 'its date'} and not deposited yet. They're under Today.</div>` : ''}
+    ${list || depositing ? list + depositing : `<div class="panel-card" style="text-align:center;opacity:.8;">No cheques coming up. ${side === 'supplier' ? 'Cheques you record on invoices, or that drivers collect on routes, show up here.' : 'Cheques you pay suppliers with show up here.'}</div>`}
+    ${side === 'supplier' ? chequeQuickAddHtml() : ''}`;
+}
+function chequeRowHtml(c, side, compact){
+  const st = CHEQUE_STATUS[c.status];
+  const late = c.status === 'due' && c.date < APP_TODAY ? ` · ${daysBetween(c.date, APP_TODAY)}d late` : '';
+  const key = `'${c.po.id}','${c.kind}','${c.key}'`;
+  let acts = '';
+  if(side === 'supplier'){
+    if(c.status === 'due') acts = `<button class="btn btn-primary cq-act" onclick="chequeDeposited(${key})">Mark deposited</button>`;
+    else if(c.status === 'hold') acts = `<button class="btn btn-outline cq-act" onclick="chequeDeposited(${key}, true)">Deposit early</button>`;
+    else if(c.status === 'deposited') acts = `<button class="btn btn-primary cq-act" onclick="chequeCleared(${key})">Cleared ✓</button><button class="btn btn-outline cq-act cq-danger" onclick="chequeBounced(${key})">Bounced</button>`;
+    else if(c.status === 'bounced') acts = `<button class="btn btn-outline cq-act" onclick="askReplacementCheque(${key})">Ask for replacement</button>`;
+  } else if(c.status === 'bounced') acts = `<button class="btn btn-primary cq-act" onclick="openOrderDetailModal('${c.po.id}', false)">Pay again</button>`;
+  return `<div class="cq-row ${st.cls}">
+    <div class="cq-row-main" onclick="openOrderDetailModal('${c.po.id}', ${side === 'supplier'})">
+      <div class="cq-row-top"><span class="cq-party">${escapeHtml(c.party)}</span><span class="cq-amt">${fmtPHP(c.amount)}</span></div>
+      <div class="cq-row-sub">${escapeHtml([c.bank, c.no ? '#' + c.no : ''].filter(Boolean).join(' ')) || 'Cheque'} · ${compact ? '' : 'dated ' + stmtDate(c.date) + ' · '}${escapeHtml(c.po.poNumber)}${late}</div>
+      <div><span class="cq-pill">${st.label}${c.status === 'deposited' && c.p.depositedAt ? ' · since ' + stmtDate(c.p.depositedAt) : ''}</span>${c.status === 'bounced' && c.p.rejectReason ? ` <span class="cq-reason">${escapeHtml(c.p.rejectReason)}</span>` : ''}${side === 'buyer' && ['due', 'hold'].includes(c.status) ? ` <span class="cq-reason">Have ${fmtPHP(c.amount)} in the bank by ${chequeDayLabel(c.date < APP_TODAY ? APP_TODAY : c.date)}</span>` : ''}</div>
+    </div>
+    ${acts ? `<div class="cq-acts">${acts}</div>` : ''}
+  </div>`;
+}
+function chequeListHtml(all, side, onlyBounced){
+  const filters = [['due', 'Deposit now'], ['hold', 'Post-dated'], ['deposited', 'Waiting to clear'], ['cleared', 'Cleared'], ['bounced', 'Bounced'], ['all', 'All']];
+  const list = onlyBounced ? all : chequeFilter === 'all' ? all : all.filter(c => c.status === chequeFilter);
+  return `${onlyBounced ? '' : `<div class="chip-filter" style="margin-bottom:10px;">${filters.map(f => `<div class="chip ${chequeFilter === f[0] ? 'active' : ''}" onclick="chequeFilter='${f[0]}'; renderChequesPage()">${f[1]} (${f[0] === 'all' ? all.length : all.filter(c => c.status === f[0]).length})</div>`).join('')}</div>`}
+    ${list.length ? `<div class="panel-card" style="padding:6px 12px;">${list.map(c => chequeRowHtml(c, side)).join('')}</div>` : '<div class="panel-card" style="opacity:.75;">Nothing here.</div>'}`;
+}
+function chequeBouncersHtml(all){
+  const by = {};
+  all.forEach(c => { const b = by[c.partyId] || (by[c.partyId] = {name: c.party, total: 0, n: 0, bounced: 0, bAmt: 0, last: ''}); b.n++; b.total += c.amount; if(c.status === 'bounced'){ b.bounced++; b.bAmt += c.amount; if(c.date > b.last) b.last = c.date; } });
+  const rows = Object.values(by).sort((a, b) => b.bounced - a.bounced || b.bAmt - a.bAmt);
+  const risky = rows.filter(r => r.bounced);
+  return `<div class="panel-card">
+    <div style="font-weight:800;font-size:16px;margin-bottom:2px;">Who bounces cheques</div>
+    <div style="font-size:14px;opacity:.8;margin-bottom:10px;">Ask for cash or a manager's cheque from anyone with 2 or more bounces. Nifti also warns drivers on the route.</div>
+    ${risky.length ? risky.map(r => `<div class="cq-bouncer"><div><div style="font-weight:800;">${escapeHtml(r.name)}</div><div style="font-size:13px;opacity:.75;">${r.bounced} of ${r.n} cheques bounced · last ${stmtDate(r.last)}</div></div>
+        <div style="text-align:right;"><div style="font-weight:800;color:var(--danger);">${fmtPHP(r.bAmt)}</div><span class="cq-pill" style="background:${r.bounced >= 2 ? 'var(--danger)' : 'var(--lowstock-soft)'};color:${r.bounced >= 2 ? '#fff' : 'var(--ink)'};">${r.bounced >= 2 ? 'Cash only' : 'Watch'}</span></div></div>`).join('')
+      : '<div style="opacity:.75;">No bounced cheques in your records. 👍</div>'}
+    ${rows.filter(r => !r.bounced).length ? `<div style="font-size:13.5px;opacity:.7;margin-top:10px;">${rows.filter(r => !r.bounced).length} other buyer${rows.filter(r => !r.bounced).length > 1 ? 's have' : ' has'} never bounced a cheque.</div>` : ''}
+  </div>`;
+}
+function bouncedCountFor(buyerId){
+  return collectCheques('supplier').filter(c => c.partyId === buyerId && c.status === 'bounced').length;
+}
+function chequeQuickAddHtml(){
+  const buyers = [...new Map(getSupplierPOs().filter(po => po.invoice && !['paid', 'cancelled'].includes(po.status) && computeInvoicePayments(po).balance - computeInvoicePayments(po).pendingAmount >= 1).map(po => [po.buyerId, po.buyerName])).entries()];
+  if(!buyers.length) return '';
+  return `<details class="panel-card" style="margin-top:12px;"><summary style="cursor:pointer;font-weight:800;">＋ Record a cheque you received</summary>
+    <div style="margin-top:10px;">
+      <div class="field"><label>From</label><select id="cqBuyer" onchange="renderChequeInvoices()">${buyers.map(([id, n]) => `<option value="${escapeHtml(id)}">${escapeHtml(n)}</option>`).join('')}</select></div>
+      <div class="field"><label>For invoice</label><select id="cqPo"></select></div>
+      <div class="row-2"><div class="field"><label>Amount</label><input id="cqAmt" type="number" min="1" step="0.01"></div><div class="field"><label>Date on the cheque</label><input id="cqDate" type="date" value="${APP_TODAY}"></div></div>
+      <div class="row-2"><div class="field"><label>Bank</label><input id="cqBank" maxlength="40" placeholder="BDO, BPI, Metrobank…"></div><div class="field"><label>Cheque number</label><input id="cqNo" maxlength="40"></div></div>
+      <div id="cqWarn"></div>
+      <button class="btn btn-primary" onclick="saveQuickCheque()">Save cheque</button>
+    </div></details>`;
+}
+function renderChequeInvoices(){
+  const sel = document.getElementById('cqPo'), b = document.getElementById('cqBuyer');
+  if(!sel || !b) return;
+  const pos = getSupplierPOs().filter(po => po.buyerId === b.value && po.invoice && !['paid', 'cancelled'].includes(po.status));
+  sel.innerHTML = pos.map(po => { const c = computeInvoicePayments(po); const room = c.balance - c.pendingAmount; return room >= 1 ? `<option value="${po.id}" data-room="${room}">${escapeHtml(po.invoice.number || po.poNumber)} · ${fmtPHP(room)} open</option>` : ''; }).join('');
+  const first = sel.options[0]; const amt = document.getElementById('cqAmt'); if(first && amt && !amt.value) amt.value = first.dataset.room;
+  const n = bouncedCountFor(b.value);
+  document.getElementById('cqWarn').innerHTML = n ? `<div class="notif-phone warn" style="margin-bottom:8px;">⚠ This buyer bounced ${n} cheque${n > 1 ? 's' : ''} before.</div>` : '';
+}
+function saveQuickCheque(){
+  if(!requirePermission('markInvoicePaid')) return;
+  const po = getPO((document.getElementById('cqPo') || {}).value);
+  if(!po){ showToast('Pick an invoice.'); return; }
+  const amount = Number(document.getElementById('cqAmt').value), date = document.getElementById('cqDate').value;
+  const no = stripMarkup(document.getElementById('cqNo').value).slice(0, 40), bank = stripMarkup(document.getElementById('cqBank').value).slice(0, 40);
+  const c = computeInvoicePayments(po), room = c.balance - c.pendingAmount;
+  if(!(amount > 0)){ markFieldInvalid('cqAmt', 'Enter the amount on the cheque.'); return; }
+  if(amount > room + 0.5){ markFieldInvalid('cqAmt', `Only ${fmtPHP(room)} is still open on this invoice.`); return; }
+  if(!no){ markFieldInvalid('cqNo', 'Enter the cheque number.'); return; }
+  if(!date){ markFieldInvalid('cqDate', 'Enter the date written on the cheque.'); return; }
+  snapshotPO(po);
+  const entry = {id: newRecordId(), method: 'check', amount, reference: no, bank, checkDate: date, date: APP_TODAY, confirmStatus: 'pending', checkStatus: 'pending', submittedBy: 'supplier'};
+  paymentListFor(po, 'invoice').push(entry);
+  poLogHistory(po, 'supplier', `Cheque received — ${bank ? bank + ' ' : ''}#${no} ${fmtPHP(amount)} dated ${date}`);
+  afterPaymentChange(po);
+  showToast(date > APP_TODAY ? `Saved. We'll remind you on ${stmtDate(date)} to deposit it.` : 'Saved. Deposit it today.', 'success');
+  renderChequesPage();
+}
+function findChequePayment(po, kind, key){ return kind === 'cod' ? po.codPayment : findPayment(po, kind, key); }
+function chequeDeposited(poId, kind, key, early){
+  if(!requirePermission('markInvoicePaid')) return;
+  const po = getPO(poId); const p = po && findChequePayment(po, kind, key);
+  if(!p) return;
+  if(early && !confirm(`This cheque is dated ${stmtDate(p.checkDate)}. Banks usually return cheques deposited before their date. Deposit it anyway?`)) return;
+  const acct = prompt('Deposited to which account? (optional)', (myBusiness && (myBusiness.payment_methods || []).filter(m => m.type === 'bank').map(m => m.bankName).join(' / ')) || '');
+  if(acct === null) return;
+  snapshotPO(po);
+  p.depositedAt = APP_TODAY; if(acct) p.depositedTo = stripMarkup(acct).slice(0, 60);
+  mirrorChequeFields(po, kind, p);
+  poLogHistory(po, 'supplier', `🏦 Cheque ${p.reference ? '#' + stripMarkup(p.reference) + ' ' : ''}${fmtPHP(p.amount)} deposited${p.depositedTo ? ' to ' + p.depositedTo : ''}`);
+  showToast("Marked deposited. We'll ask you in 3 days if it cleared.", 'success');
+  renderChequesPage();
+}
+function mirrorChequeFields(po, kind, p){
+  if(!p.id) return;
+  [...((po.invoice && po.invoice.payments) || []), ...(po.depositPayments || [])].forEach(x => { if(x !== p && x.id === p.id){ ['depositedAt', 'depositedTo', 'checkStatus', 'confirmStatus', 'confirmedAt', 'rejectReason', 'rejectedAt'].forEach(k => { if(p[k] !== undefined) x[k] = p[k]; }); } });
+}
+function chequeCleared(poId, kind, key){
+  const po = getPO(poId); if(!po) return;
+  if(kind === 'cod'){
+    if(!requirePermission('markInvoicePaid')) return;
+    snapshotPO(po); po.codPayment.checkStatus = 'cleared'; po.codPayment.confirmStatus = 'confirmed'; po.codPayment.confirmedAt = APP_TODAY;
+    poLogHistory(po, 'supplier', `Cheque cleared — ${paymentSummaryText(po.codPayment)}`);
+    afterPaymentChange(po);
+  } else confirmPaymentReceived(poId, kind, key);
+  renderChequesPage();
+}
+function chequeBounced(poId, kind, key){
+  if(!requirePermission('markInvoicePaid')) return;
+  const po = getPO(poId); const p = po && findChequePayment(po, kind, key);
+  if(!p) return;
+  const reason = prompt('Why did it bounce? The buyer sees this.', 'DAIF (drawn against insufficient funds)');
+  if(!reason) return;
+  snapshotPO(po);
+  p.confirmStatus = 'rejected'; p.checkStatus = 'bounced'; p.rejectReason = stripMarkup(reason).slice(0, 200); p.rejectedAt = APP_TODAY;
+  if(kind !== 'cod') mirrorPaymentStatus(po, kind, p);
+  mirrorChequeFields(po, kind, p);
+  settleInvoiceStatus(po);
+  poLogHistory(po, 'supplier', `⚠ Check bounced — ${paymentSummaryText(p)} — "${p.rejectReason}"`);
+  afterPaymentChange(po);
+  const n = bouncedCountFor(po.buyerId);
+  showToast(`Marked bounced. ${po.buyerName} was told why.${n >= 2 ? ` That's ${n} bounced cheques from them.` : ''}`, 'success');
+  renderChequesPage();
+}
+function askReplacementCheque(poId, kind, key){
+  const po = getPO(poId); const p = po && findChequePayment(po, kind, key);
+  if(!p) return;
+  const text = `Hi po! Yung cheque ${p.bank ? p.bank + ' ' : ''}#${p.reference || ''} (${fmtPHP(p.amount)}) for ${po.invoice ? po.invoice.number || po.poNumber : po.poNumber} bounced (${p.rejectReason || 'returned by the bank'}). Pwede po ba palitan ng cash, GCash o bagong cheque? Salamat po.`;
+  if(sendTextInChat(po.buyerId, text)) showToast('Sent in chat.', 'success');
+  else copyPlainText(text, 'Message copied. Send it on Viber.');
+}
+
+/* ============ ROUTES: delivery + collection runs (Supplier Pro) ============
+   The office plans a day's run from open deliveries and unpaid invoices, grouped per buyer, and
+   assigns a driver or collector. The driver works through a checklist on their phone: delivered,
+   collected (cash, GCash or cheque), a photo of the signed receipt, or why it couldn't be done.
+   Everything posts straight to the orders and invoices on the server (complete_route_stop), cheques
+   land in the Cheque tracker, and at the end the office confirms the cash remittance. */
+let routeTab = 'today', routesCache = null, routeDraft = null, routeSheet = null, routeShowAllUnpaid = false;
+const demoRoutes = [];
+const ROUTE_FAIL_REASONS = ['Closed', 'Owner not around', 'No payment ready', 'Refused delivery', "Couldn't find the place", 'Ran out of time'];
+function isRoutePlanner(){
+  if(!myBusiness) return true;
+  return getCurrentUserRoles().some(r => ['Owner', 'General Manager', 'Warehouse Manager', 'Dispatcher'].includes(r));
+}
+function routeTeam(){ return (currentAppRole === 'supplier' ? (typeof supplierTeamMembers !== 'undefined' ? supplierTeamMembers : []) : teamMembers) || []; }
+function mapsLink(addr){ return 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(addr || ''); }
+async function loadRoutes(force){
+  if(routesCache && !force) return routesCache;
+  if(!myBusiness){ routesCache = demoRoutes; return routesCache; }
+  const { data, error } = await sb.rpc('my_routes', {p_from: addDaysIso(APP_TODAY, -30), p_to: addDaysIso(APP_TODAY, 14)});
+  if(error){ showToast("Couldn't load routes: " + error.message, 'error'); routesCache = []; return routesCache; }
+  routesCache = data || [];
+  return routesCache;
+}
+async function renderRoutesPage(){
+  const el = document.getElementById('routesContent');
+  if(!el) return;
+  const badge = document.getElementById('routesBadge'); if(badge) badge.innerHTML = proBadge('routes');
+  if(currentAppRole !== 'supplier'){ el.innerHTML = '<div class="panel-card">Routes are for suppliers who deliver and collect.</div>'; return; }
+  if(!hasFeature('routes')){ el.innerHTML = lockedPanelHtml('routes', 'Plan the day\'s deliveries and collections, give your driver a checklist on their phone, and see every peso collected, with photo proof, the moment it happens.'); return; }
+  const routes = await loadRoutes();
+  const planner = isRoutePlanner();
+  if(!planner){ routeTab = 'mine'; }
+  const mineToday = routes.filter(r => r.mine && r.route_date >= APP_TODAY);
+  el.innerHTML = `${planner ? `<div class="role-toggle store-tabs" style="margin-bottom:14px;">
+      <button class="${routeTab === 'today' ? 'active' : ''}" onclick="routeTab='today'; renderRoutesPage()">🚚 Today</button>
+      <button class="${routeTab === 'plan' ? 'active' : ''}" onclick="routeTab='plan'; if(!routeDraft) newRouteDraft(); renderRoutesPage()">＋ Plan</button>
+      ${mineToday.length ? `<button class="${routeTab === 'mine' ? 'active' : ''}" onclick="routeTab='mine'; renderRoutesPage()">📋 My run</button>` : ''}
+      <button class="${routeTab === 'history' ? 'active' : ''}" onclick="routeTab='history'; renderRoutesPage()">🗂 Past</button>
+    </div>` : ''}<div id="routeBody"></div>${routeSheet ? '<div id="routeSheetHost"></div>' : ''}`;
+  const body = document.getElementById('routeBody');
+  if(routeTab === 'plan' && planner) renderRoutePlanner(body);
+  else if(routeTab === 'history' && planner) renderRouteHistory(body, routes);
+  else if(routeTab === 'mine' || !planner) renderDriverRun(body, routes);
+  else renderRouteBoard(body, routes);
+  if(routeSheet) renderRouteSheet();
+}
+function routeTotals(r){
+  const stops = r.stops || [];
+  const done = stops.filter(s => s.status !== 'pending').length;
+  const due = stops.reduce((a, s) => a + Number(s.amount_due || 0), 0);
+  let cash = 0, cheque = 0;
+  stops.forEach(s => { const c = s.result && s.result.collected; if(c){ if(c.method === 'check') cheque += Number(c.amount); else cash += Number(c.amount); } });
+  return {n: stops.length, done, due, cash, cheque, got: cash + cheque, failed: stops.filter(s => s.status === 'failed').length};
+}
+
+// ---------- the driver's checklist ----------
+function renderDriverRun(body, routes){
+  const mine = routes.filter(r => (r.mine || !myBusiness) && r.route_date >= APP_TODAY).sort((a, b) => a.route_date.localeCompare(b.route_date));
+  const r = mine.find(x => x.route_date === APP_TODAY) || mine[0];
+  if(!r){ body.innerHTML = `<div class="panel-card" style="text-align:center;padding:30px 16px;"><div style="font-size:40px;">🚚</div><div style="font-weight:800;font-size:17px;margin-top:6px;">No route for you today</div><div style="opacity:.75;margin-top:4px;">When the office gives you a route, it shows up here and your phone gets a notification.</div></div>`; return; }
+  const t = routeTotals(r);
+  const next = (r.stops || []).find(s => s.status === 'pending');
+  body.innerHTML = `<div class="rt-head">
+      <div class="rt-head-top"><div><div class="rt-title">${r.route_date === APP_TODAY ? "Today's route" : 'Route for ' + chequeDayLabel(r.route_date)}</div>
+        <div class="rt-sub">${escapeHtml([r.driver_name, r.vehicle].filter(Boolean).join(' · ') || 'Your run')}</div></div>
+        <span class="rt-date">${new Date(r.route_date + 'T00:00:00').toLocaleDateString('en-PH', {weekday: 'short', month: 'short', day: 'numeric'})}</span></div>
+      <div class="rt-bars">
+        <div class="rt-bar"><small>Stops</small><strong>${t.done} of ${t.n}</strong><div class="rt-track"><i style="width:${t.n ? t.done / t.n * 100 : 0}%"></i></div></div>
+        <div class="rt-bar"><small>Collected</small><strong>${fmtPHP(t.got)}</strong><div class="rt-track"><i style="width:${t.due ? Math.min(100, t.got / t.due * 100) : 0}%"></i></div></div>
+      </div>
+      ${t.done === t.n && t.n ? `<div class="rt-finish">🏁 Route done. Hand over <b>${fmtPHP(t.cash)}</b> cash${t.cheque ? ` and <b>${fmtPHP(t.cheque)}</b> in cheques` : ''} to the office.</div>` : ''}
+    </div>
+    <div class="rt-list">${(r.stops || []).map((s, i) => driverStopHtml(r, s, i, next && next.id === s.id)).join('')}</div>`;
+}
+function driverStopHtml(r, s, i, isNext){
+  const res = s.result || {};
+  const cls = s.status === 'done' ? 'done' : s.status === 'failed' ? 'fail' : isNext ? 'next' : '';
+  const items = (s.items || []).slice(0, 6);
+  const bounced = s.buyer_business_id ? bouncedCountFor(s.buyer_business_id) : 0;
+  const col = res.collected;
+  return `<div class="rt-stop ${cls}">
+    <div class="rt-no">${s.status === 'done' ? '✓' : s.status === 'failed' ? '!' : i + 1}</div>
+    <div class="rt-stop-body">
+      <div class="rt-name">${escapeHtml(s.buyer_name)}</div>
+      <div class="rt-addr">${s.address ? `<a href="${mapsLink(s.address)}" target="_blank" rel="noopener">📍 ${escapeHtml(s.address)}</a>` : '<span style="opacity:.6;">No address</span>'}${s.phone ? ` · <a href="tel:${escapeHtml(String(s.phone).replace(/[^\d+]/g, ''))}">📞 Call</a>` : ''}</div>
+      <div class="rt-tags">${items.map(it => `<span class="rt-tag">${escapeHtml(String(it.qty || ''))} ${escapeHtml(it.unit || '')} ${escapeHtml(it.product || '')}</span>`).join('')}
+        ${Number(s.amount_due) >= 1 ? `<span class="rt-tag money">Collect ${fmtPHP(s.amount_due)}</span>` : (s.deliver_po_ids || []).length ? '<span class="rt-tag">Nothing to collect</span>' : ''}
+        ${bounced ? `<span class="rt-tag late">⚠ Bounced ${bounced} cheque${bounced > 1 ? 's' : ''}. Ask for cash</span>` : ''}</div>
+      ${s.note ? `<div class="rt-note">📝 ${escapeHtml(s.note)}</div>` : ''}
+      ${s.status === 'pending' ? `<div class="rt-acts"><button class="btn btn-primary" onclick="openRouteSheet('${r.id}','${s.id}','done')">${Number(s.amount_due) >= 1 ? ((s.deliver_po_ids || []).length ? 'Delivered + collect' : 'Collect') : 'Delivered'}</button><button class="btn btn-outline" onclick="openRouteSheet('${r.id}','${s.id}','failed')">Can't</button></div>`
+        : `<div class="rt-result">${s.status === 'done' ? `${res.delivered !== false && (s.deliver_po_ids || []).length ? 'Delivered' : ''}${col ? `${res.delivered !== false && (s.deliver_po_ids || []).length ? ' · ' : ''}Collected ${fmtPHP(col.amount)} ${col.method === 'check' ? 'cheque' : col.method}` : ''}${!col && Number(s.amount_due) >= 1 ? ' · nothing collected' : ''}` : '✕ ' + escapeHtml(res.reason || 'Not done')}
+            ${s.done_at ? ` · ${new Date(s.done_at).toLocaleTimeString('en-PH', {hour: 'numeric', minute: '2-digit'})}` : ''}${s.has_proof ? ` · <span class="row-action" onclick="viewStopProof('${s.id}')">📷 Photo</span>` : ''}</div>`}
+    </div></div>`;
+}
+function openRouteSheet(routeId, stopId, mode){
+  const r = (routesCache || []).find(x => x.id === routeId); const s = r && (r.stops || []).find(x => x.id === stopId);
+  if(!s) return;
+  const bounced = s.buyer_business_id ? bouncedCountFor(s.buyer_business_id) : 0;
+  routeSheet = {routeId, stopId, mode, method: Number(s.amount_due) >= 1 ? (bounced ? 'cash' : 'cash') : 'none', amount: Number(s.amount_due) || '', photo: null, reason: '', delivered: true};
+  renderRoutesPage();
+}
+function renderRouteSheet(){
+  const host = document.getElementById('routeSheetHost'); if(!host || !routeSheet) return;
+  const r = (routesCache || []).find(x => x.id === routeSheet.routeId); const s = r && (r.stops || []).find(x => x.id === routeSheet.stopId);
+  if(!s){ routeSheet = null; host.innerHTML = ''; return; }
+  const sh = routeSheet, due = Number(s.amount_due) || 0;
+  const methods = [['cash', 'Cash'], ['gcash', 'GCash'], ['check', 'Cheque'], ['none', "Didn't pay"]];
+  host.innerHTML = `<div class="rt-dim" onclick="closeRouteSheet()"></div><div class="rt-sheet" role="dialog" aria-label="${escapeHtml(s.buyer_name)}">
+    <div class="rt-sheet-grab"></div>
+    <div class="rt-sheet-title">${escapeHtml(s.buyer_name)}</div>
+    ${sh.mode === 'failed' ? `<div class="rt-lbl">What happened?</div>
+      <div class="rt-chips">${ROUTE_FAIL_REASONS.map(x => `<button class="${sh.reason === x ? 'on' : ''}" onclick="routeSheet.reason=${escapeHtml(JSON.stringify(x))}; renderRouteSheet()">${escapeHtml(x)}</button>`).join('')}</div>
+      <textarea id="rtNote" rows="2" placeholder="Note for the office (optional)">${escapeHtml(sh.note || '')}</textarea>
+      <button class="btn btn-primary rt-save" onclick="saveRouteStop()" ${sh.reason ? '' : 'disabled'}>Move to "not done"</button>`
+    : `${(s.deliver_po_ids || []).length ? `<label class="rt-check"><input type="checkbox" id="rtDelivered" ${sh.delivered ? 'checked' : ''} onchange="routeSheet.delivered=this.checked"> Goods delivered</label>` : ''}
+      ${due >= 1 || (s.deliver_po_ids || []).length ? `<div class="rt-lbl">Payment${due >= 1 ? ` · ${fmtPHP(due)} due` : ''}</div>
+        <div class="rt-seg">${methods.map(m => `<button class="${sh.method === m[0] ? 'on' : ''}" onclick="routeSheetField(); routeSheet.method='${m[0]}'; renderRouteSheet()">${m[1]}</button>`).join('')}</div>
+        ${sh.method !== 'none' ? `<input id="rtAmt" type="number" inputmode="decimal" min="0" step="0.01" value="${escapeHtml(String(sh.amount))}" aria-label="Amount collected" placeholder="Amount">` : ''}
+        ${sh.method === 'check' ? `<div class="rt-row"><input id="rtBank" placeholder="Bank" value="${escapeHtml(sh.bank || '')}"><input id="rtChqNo" placeholder="Cheque no." value="${escapeHtml(sh.chq || '')}"></div><label class="rt-lbl" for="rtChqDate">Date on the cheque</label><input id="rtChqDate" type="date" value="${escapeHtml(sh.chqDate || APP_TODAY)}">` : ''}
+        ${sh.method === 'gcash' ? `<input id="rtRef" placeholder="GCash reference no." value="${escapeHtml(sh.ref || '')}">` : ''}
+        ${due >= 1 ? `<div class="rt-lbl">If they paid less, why? (optional)</div><div class="rt-chips small">${['Partial only', 'Will pay next week', 'Owner not around', 'Disputes the amount'].map(x => `<button class="${sh.short === x ? 'on' : ''}" onclick="routeSheetField(); routeSheet.short=${escapeHtml(JSON.stringify(x))}; renderRouteSheet()">${x}</button>`).join('')}</div>` : ''}` : ''}
+      <input id="rtRecv" placeholder="Received by (name)" value="${escapeHtml(sh.recv || '')}">
+      <label class="rt-photo ${sh.photo ? 'ok' : ''}">${sh.photo ? '✓ Photo of signed receipt added. Tap to retake' : '📷 Photo of the signed receipt'}<input type="file" accept="image/*" capture="environment" onchange="routeSheetPhoto(this)" hidden></label>
+      <button class="btn btn-primary rt-save" onclick="saveRouteStop()">Done at this stop</button>`}
+    <button class="btn btn-outline rt-cancel" onclick="closeRouteSheet()">Cancel</button>
+  </div>`;
+}
+function routeSheetField(){
+  const v = id => { const e = document.getElementById(id); return e ? e.value : undefined; };
+  if(!routeSheet) return;
+  if(v('rtAmt') !== undefined) routeSheet.amount = v('rtAmt');
+  if(v('rtBank') !== undefined) routeSheet.bank = v('rtBank');
+  if(v('rtChqNo') !== undefined) routeSheet.chq = v('rtChqNo');
+  if(v('rtChqDate') !== undefined) routeSheet.chqDate = v('rtChqDate');
+  if(v('rtRef') !== undefined) routeSheet.ref = v('rtRef');
+  if(v('rtRecv') !== undefined) routeSheet.recv = v('rtRecv');
+  if(v('rtNote') !== undefined) routeSheet.note = v('rtNote');
+}
+function routeSheetPhoto(input){
+  const f = input.files && input.files[0]; if(!f) return;
+  routeSheetField();
+  readImageFileCompressed(f, url => { routeSheet.photo = url; renderRouteSheet(); }, 1100, 0.6);
+}
+function closeRouteSheet(){ routeSheet = null; const h = document.getElementById('routeSheetHost'); if(h) h.remove(); }
+async function saveRouteStop(){
+  routeSheetField();
+  const sh = routeSheet; if(!sh) return;
+  const r = (routesCache || []).find(x => x.id === sh.routeId); const s = r && (r.stops || []).find(x => x.id === sh.stopId);
+  if(!s) return;
+  let result;
+  if(sh.mode === 'failed') result = {outcome: 'failed', reason: sh.reason, note: sh.note || ''};
+  else {
+    const amt = sh.method === 'none' ? 0 : Number(sh.amount);
+    if(sh.method !== 'none' && !(amt > 0)){ showToast('Enter the amount collected, or pick "Didn\'t pay".'); return; }
+    if(sh.method === 'check' && (!(sh.chq || '').trim() || !sh.chqDate)){ showToast('Enter the cheque number and the date on the cheque.'); return; }
+    if(amt > Number(s.amount_due) + 0.5 && !(s.deliver_po_ids || []).length){ showToast(`That's more than the ${fmtPHP(s.amount_due)} they owe.`); return; }
+    result = {outcome: 'done', delivered: sh.delivered !== false, received_by: (sh.recv || '').trim(), note: sh.note || '', short_reason: amt < Number(s.amount_due) - 0.5 ? (sh.short || '') : '',
+      collected: sh.method === 'none' || !amt ? null : {method: sh.method, amount: amt, bank: sh.bank || '', check_no: sh.chq || '', check_date: sh.chqDate || '', reference: sh.ref || ''}};
+  }
+  if(!myBusiness){ demoCompleteStop(r, s, result, sh.photo); routeSheet = null; renderRoutesPage(); showToast(result.outcome === 'failed' ? 'Noted. The office was told.' : 'Saved. The office sees it now.', 'success'); return; }
+  const btn = document.querySelector('.rt-save'); if(btn){ btn.disabled = true; btn.textContent = 'Saving…'; }
+  const { data, error } = await sb.rpc('complete_route_stop', {p_stop: s.id, p_result: result, p_proof: sh.photo || null});
+  if(error){ if(btn){ btn.disabled = false; btn.textContent = 'Done at this stop'; } showToast(error.message, 'error'); return; }
+  routeSheet = null;
+  await refreshPOsById([...(s.deliver_po_ids || []), ...(s.collect_po_ids || [])]);
+  await loadRoutes(true);
+  renderRoutesPage();
+  showToast(result.outcome === 'failed' ? 'Noted. The office was told.' : data && data.route_done ? '🏁 Route done! Hand over the collection to the office.' : 'Saved. Next stop!', 'success');
+}
+async function refreshPOsById(ids){
+  if(!myBusiness || !ids.length) return;
+  const { data } = await sb.from('purchase_orders').select('*').in('id', ids);
+  for(const row of data || []){
+    const mapped = await mapPoRowToJs(row);
+    const i = purchaseOrders.findIndex(p => p.id === row.id);
+    if(i > -1) purchaseOrders[i] = mapped; else purchaseOrders.push(mapped);
+  }
+}
+async function viewStopProof(stopId){
+  let url = null;
+  if(!myBusiness){ for(const r of demoRoutes) for(const s of r.stops) if(s.id === stopId) url = s._proof; }
+  else { const { data } = await sb.rpc('route_stop_proof', {p_stop: stopId}); url = data; }
+  if(!url){ showToast('No photo.'); return; }
+  const w = document.createElement('div'); w.className = 'rt-proof'; w.onclick = () => w.remove();
+  w.innerHTML = `<img src="${url}" alt="Signed receipt"><div>Tap to close</div>`;
+  document.body.appendChild(w);
+}
+// demo mode: the same bookkeeping the server does, on the local sample orders
+function demoCompleteStop(r, s, result, photo){
+  s.status = result.outcome === 'failed' ? 'failed' : 'done';
+  s.result = result.outcome === 'failed' ? {outcome: 'failed', reason: result.reason} : {outcome: 'done', delivered: result.delivered, collected: result.collected};
+  s.done_at = new Date().toISOString(); s.has_proof = !!photo; s._proof = photo;
+  if(result.outcome !== 'done') return;
+  if(result.delivered) (s.deliver_po_ids || []).forEach(id => { const po = getPO(id); if(po && ['confirmed', 'preparing', 'shipped'].includes(po.status)){ po.status = 'delivered'; po.history.push({date: APP_TODAY, time: 'Just now', actor: 'supplier', action: '📦 Delivered by ' + (r.driver_name || 'driver') + ' (route)'}); } });
+  let left = result.collected ? Number(result.collected.amount) : 0;
+  (s.collect_po_ids || []).map(getPO).filter(Boolean).forEach(po => {
+    if(left < 0.5 || !po.invoice) return;
+    const c = computeInvoicePayments(po); const take = Math.min(left, c.balance - c.pendingAmount); if(take < 0.5) return;
+    const m = result.collected.method;
+    paymentListFor(po, 'invoice').push(Object.assign({id: newRecordId(), method: m, amount: take, date: APP_TODAY, submittedBy: 'supplier', via: 'route', reference: m === 'check' ? result.collected.check_no : 'Collected by ' + (r.driver_name || 'driver')},
+      m === 'check' ? {confirmStatus: 'pending', checkStatus: 'pending', checkDate: result.collected.check_date, bank: result.collected.bank} : {confirmStatus: 'confirmed', confirmedAt: APP_TODAY}));
+    settleInvoiceStatus(po);
+    left -= take;
+  });
+  if((r.stops || []).every(x => x.status !== 'pending')) r.status = 'done'; else r.status = 'on_road';
+}
+
+// ---------- the office board ----------
+function renderRouteBoard(body, routes){
+  const today = routes.filter(r => r.route_date === APP_TODAY);
+  const upcoming = routes.filter(r => r.route_date > APP_TODAY);
+  const all = [...today];
+  const tot = all.reduce((a, r) => { const t = routeTotals(r); a.n += t.n; a.done += t.done; a.got += t.got; a.due += t.due; a.failed += t.failed; return a; }, {n: 0, done: 0, got: 0, due: 0, failed: 0});
+  body.innerHTML = `${today.length ? `<div class="cq-tiles">
+      <div class="cq-tile cq-dep"><div class="cq-tile-l">Stops done</div><div class="cq-tile-v">${tot.done} / ${tot.n}</div><div class="cq-tile-n">${today.length} route${today.length > 1 ? 's' : ''} today</div></div>
+      <div class="cq-tile cq-ok"><div class="cq-tile-l">Collected</div><div class="cq-tile-v">${fmtPHP(tot.got)}</div><div class="cq-tile-n">of ${fmtPHP(tot.due)} due</div></div>
+      <div class="cq-tile cq-bad"><div class="cq-tile-l">Not done</div><div class="cq-tile-v">${tot.failed}</div><div class="cq-tile-n">stop${tot.failed === 1 ? '' : 's'}</div></div>
+    </div>` : ''}
+    ${today.map(routeBoardCard).join('') || `<div class="panel-card" style="text-align:center;padding:26px 16px;"><div style="font-size:38px;">🗺</div><div style="font-weight:800;font-size:17px;margin-top:4px;">No route today</div>
+      <div style="opacity:.75;margin:4px 0 12px;">Pick the day's deliveries and unpaid invoices, and send the run to your driver's phone.</div><button class="btn btn-primary" onclick="routeTab='plan'; newRouteDraft(); renderRoutesPage()">Plan a route</button></div>`}
+    ${upcoming.length ? `<div class="rt-section">Coming up</div>${upcoming.map(routeBoardCard).join('')}` : ''}`;
+}
+function routeBoardCard(r){
+  const t = routeTotals(r);
+  const rem = r.remit;
+  const canRemit = t.n && t.done === t.n && (t.cash > 0 || t.cheque > 0) && !rem;
+  return `<div class="panel-card rt-card">
+    <div class="rt-card-h"><div><div style="font-weight:800;font-size:16px;">${escapeHtml(r.driver_name || 'No driver yet')}${r.vehicle ? ` <span style="font-weight:500;opacity:.7;">· ${escapeHtml(r.vehicle)}</span>` : ''}</div>
+      <div style="font-size:13px;opacity:.75;">${chequeDayLabel(r.route_date)} · ${t.n} stop${t.n === 1 ? '' : 's'} · ${fmtPHP(t.due)} to collect</div></div>
+      <span class="cq-pill ${r.status === 'done' ? 'rt-pill-done' : r.status === 'on_road' ? 'rt-pill-road' : ''}">${r.status === 'done' ? 'Done' : r.status === 'on_road' ? 'On the road' : 'Planned'}</span></div>
+    <div class="rt-line">${(r.stops || []).map(s => `<span class="rt-dot ${s.status}" title="${escapeHtml(s.buyer_name)}"></span>`).join('')}</div>
+    <div style="font-size:14px;margin:6px 0;">Collected <b>${fmtPHP(t.got)}</b>${t.cheque ? ` (cash ${fmtPHP(t.cash)}, cheques ${fmtPHP(t.cheque)})` : ''}</div>
+    <details><summary style="cursor:pointer;font-weight:700;font-size:14px;">Stops</summary>
+      ${(r.stops || []).map((s, i) => `<div class="rt-board-stop"><span class="rt-dot ${s.status}"></span><div style="flex:1;min-width:0;"><div style="font-weight:700;">${i + 1}. ${escapeHtml(s.buyer_name)}</div>
+        <div style="font-size:13px;opacity:.8;">${s.status === 'pending' ? (Number(s.amount_due) >= 1 ? 'Collect ' + fmtPHP(s.amount_due) : 'Deliver') : s.status === 'failed' ? '✕ ' + escapeHtml((s.result || {}).reason || '') : (s.result && s.result.collected ? 'Got ' + fmtPHP(s.result.collected.amount) + ' ' + (s.result.collected.method === 'check' ? 'cheque' : s.result.collected.method) : 'Done')}${s.done_by ? ' · ' + escapeHtml(s.done_by) : ''}${s.done_at ? ' · ' + new Date(s.done_at).toLocaleTimeString('en-PH', {hour: 'numeric', minute: '2-digit'}) : ''}</div></div>
+        ${s.has_proof ? `<span class="row-action" onclick="viewStopProof('${s.id}')">📷</span>` : ''}${s.status === 'failed' ? `<span class="row-action" onclick="reopenStop('${s.id}')">Retry</span>` : ''}</div>`).join('')}
+    </details>
+    ${rem ? `<div class="notif-phone ${Math.abs(rem.diff) >= 1 ? 'warn' : ''}" style="margin-top:8px;">${Math.abs(rem.diff) >= 1 ? `⚠ Remittance ${rem.diff < 0 ? 'short' : 'over'} by ${fmtPHP(Math.abs(rem.diff))}` : '✓ Remittance matches'}: counted ${fmtPHP(rem.counted_cash)} of ${fmtPHP(rem.expected_cash)} cash${rem.cheques ? ` + ${rem.cheques} cheque${rem.cheques > 1 ? 's' : ''}` : ''} · ${escapeHtml(rem.by || '')}</div>` : ''}
+    ${canRemit ? `<div class="rt-remit"><div style="font-weight:800;">Confirm remittance</div><div style="font-size:13.5px;opacity:.8;">Expect ${fmtPHP(t.cash)} in cash/e-wallet${t.cheque ? ` and ${fmtPHP(t.cheque)} in cheques` : ''}. Count the cash, then enter it.</div>
+      <div style="display:flex;gap:8px;margin-top:6px;"><input id="remit_${r.id}" type="number" inputmode="decimal" value="${t.cash}" style="flex:1;min-width:0;"><button class="btn btn-primary" onclick="confirmRemit('${r.id}')">Confirm</button></div></div>` : ''}
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;">
+      ${r.status !== 'done' ? `<button class="btn btn-outline rt-small" onclick="editRoute('${r.id}')">Edit stops</button>` : ''}
+      <button class="btn btn-outline rt-small" onclick="shareRouteText('${r.id}')">Send list on Viber</button>
+      ${!t.done ? `<button class="btn btn-outline rt-small cq-danger" onclick="deleteRoute('${r.id}')">Delete</button>` : ''}
+    </div>
+  </div>`;
+}
+async function confirmRemit(id){
+  const v = Number((document.getElementById('remit_' + id) || {}).value);
+  if(!(v >= 0)){ showToast('Enter the cash you counted.'); return; }
+  if(!myBusiness){ const r = demoRoutes.find(x => x.id === id); const t = routeTotals(r); r.remit = {expected_cash: t.cash, counted_cash: v, diff: v - t.cash, cheques: 0, by: 'You'}; renderRoutesPage(); return; }
+  const { error } = await sb.rpc('remit_route', {p_route: id, p_cash: v, p_note: null});
+  if(error){ showToast(error.message, 'error'); return; }
+  await loadRoutes(true); renderRoutesPage();
+}
+async function reopenStop(stopId){
+  if(!myBusiness){ for(const r of demoRoutes) for(const s of r.stops) if(s.id === stopId){ s.status = 'pending'; s.result = null; r.status = 'on_road'; } renderRoutesPage(); return; }
+  const { error } = await sb.rpc('reopen_route_stop', {p_stop: stopId});
+  if(error){ showToast(error.message, 'error'); return; }
+  await loadRoutes(true); renderRoutesPage();
+}
+async function deleteRoute(id){
+  if(!confirm('Delete this route?')) return;
+  if(!myBusiness){ const i = demoRoutes.findIndex(x => x.id === id); if(i > -1) demoRoutes.splice(i, 1); renderRoutesPage(); return; }
+  const { error } = await sb.rpc('delete_route', {p_route: id});
+  if(error){ showToast(error.message, 'error'); return; }
+  await loadRoutes(true); renderRoutesPage();
+}
+function shareRouteText(id){
+  const r = (routesCache || []).find(x => x.id === id); if(!r) return;
+  const lines = (r.stops || []).map((s, i) => `${i + 1}. ${s.buyer_name}${s.address ? ' — ' + s.address : ''}${(s.items || []).length ? '\n   Drop: ' + s.items.map(it => `${it.qty} ${it.unit || ''} ${it.product}`.replace(/\s+/g, ' ')).join(', ') : ''}${Number(s.amount_due) >= 1 ? '\n   Collect: ' + fmtPHP(s.amount_due) : ''}`);
+  const text = `🚚 Route ${chequeDayLabel(r.route_date)}${r.vehicle ? ' · ' + r.vehicle : ''}\n\n${lines.join('\n')}\n\nMark each stop in Nifti → Routes: ${appBaseUrl()}#routes`;
+  copyPlainText(text, 'Route copied. Paste it in Viber.');
+}
+function renderRouteHistory(body, routes){
+  const past = routes.filter(r => r.route_date < APP_TODAY);
+  body.innerHTML = past.length ? `<div class="panel-card" style="padding:6px 14px;">${past.map(r => { const t = routeTotals(r); return `<div class="rt-hist"><div><div style="font-weight:800;">${chequeDayLabel(r.route_date)} · ${escapeHtml(r.driver_name || '—')}</div>
+      <div style="font-size:13px;opacity:.8;">${t.done - t.failed}/${t.n} done${t.failed ? ` · ${t.failed} not done` : ''} · collected ${fmtPHP(t.got)} of ${fmtPHP(t.due)}</div></div>
+      <div style="text-align:right;font-size:13px;">${r.remit ? (Math.abs(r.remit.diff) >= 1 ? `<span style="color:var(--danger);font-weight:700;">${r.remit.diff < 0 ? 'Short' : 'Over'} ${fmtPHP(Math.abs(r.remit.diff))}</span>` : '<span style="color:var(--green);font-weight:700;">Remit OK</span>') : t.got ? '<span style="opacity:.7;">Not remitted</span>' : ''}</div></div>`; }).join('')}</div>`
+    : '<div class="panel-card" style="opacity:.75;">Past routes from the last 30 days show here.</div>';
+}
+
+// ---------- planning ----------
+function newRouteDraft(){
+  const hour = new Date().getHours();
+  routeDraft = {id: null, date: hour >= 15 ? addDaysIso(APP_TODAY, 1) : APP_TODAY, driver: '', vehicle: '', stops: []};
+}
+function editRoute(id){
+  const r = (routesCache || []).find(x => x.id === id); if(!r) return;
+  routeDraft = {id: r.id, date: r.route_date, driver: r.driver_member_id || '', vehicle: r.vehicle || '',
+    stops: (r.stops || []).filter(s => s.status === 'pending').map(s => ({buyer_business_id: s.buyer_business_id, buyer_name: s.buyer_name, address: s.address || '', phone: s.phone || '',
+      deliver_po_ids: s.deliver_po_ids || [], collect_po_ids: s.collect_po_ids || [], items: s.items || [], note: s.note || ''}))};
+  routeTab = 'plan'; renderRoutesPage();
+}
+function routeOnOtherRoute(poId){
+  return (routesCache || []).some(r => r.id !== (routeDraft && routeDraft.id) && r.status !== 'done' && (r.stops || []).some(s => s.status === 'pending' && ((s.deliver_po_ids || []).includes(poId) || (s.collect_po_ids || []).includes(poId))));
+}
+function routeCandidates(){
+  const date = routeDraft.date;
+  const inDraft = new Set(routeDraft.stops.flatMap(s => [...s.deliver_po_ids, ...s.collect_po_ids]));
+  const by = {};
+  const buyerRec = id => (buyersData || []).find(b => b.id === id) || {};
+  const ensure = po => by[po.buyerId] || (by[po.buyerId] = {buyer_business_id: po.buyerId, buyer_name: po.buyerName, address: po.deliveryAddress || buyerRec(po.buyerId).location || '', phone: (buyerRec(po.buyerId).outsideContact || {}).phone || '', deliver: [], collect: []});
+  getSupplierPOs().forEach(po => {
+    if(inDraft.has(po.id) || routeOnOtherRoute(po.id)) return;
+    if(['confirmed', 'preparing', 'shipped'].includes(po.status)) ensure(po).deliver.push(po);
+    if(po.invoice && !['paid', 'cancelled', 'draft'].includes(po.status)){
+      const c = computeInvoicePayments(po); const open = c.balance - c.pendingAmount;
+      const due = /^\d{4}-\d{2}-\d{2}/.test(po.invoice.dueDate || '') ? po.invoice.dueDate.slice(0, 10) : null;
+      if(open >= 1 && (routeShowAllUnpaid || !due || due <= addDaysIso(date, 3))) ensure(po).collect.push({po, open, due, late: due && due < date ? daysBetween(due, date) : 0});
+    }
+  });
+  return Object.values(by).filter(b => b.deliver.length || b.collect.length)
+    .sort((a, b) => Math.max(0, ...b.collect.map(c => c.late)) - Math.max(0, ...a.collect.map(c => c.late)) || a.buyer_name.localeCompare(b.buyer_name));
+}
+function renderRoutePlanner(body){
+  if(!routeDraft) newRouteDraft();
+  const d = routeDraft;
+  const team = routeTeam().filter(m => m.status !== 'removed');
+  const cands = routeCandidates();
+  const draftDue = d.stops.reduce((a, s) => a + s.collect_po_ids.reduce((x, id) => { const po = getPO(id); if(!po) return x; const c = computeInvoicePayments(po); return x + Math.max(0, c.balance - c.pendingAmount); }, 0), 0);
+  body.innerHTML = `<div class="panel-card">
+      <div style="font-weight:800;font-size:16px;margin-bottom:8px;">${d.id ? 'Edit route' : 'New route'}</div>
+      <div class="row-2"><div class="field"><label for="rtDate">Day</label><input id="rtDate" type="date" value="${d.date}" onchange="routeDraft.date=this.value; renderRoutesPage()"></div>
+        <div class="field"><label for="rtDriver">Driver / collector</label><select id="rtDriver" onchange="routeDraft.driver=this.value"><option value="">Choose…</option>${team.map(m => `<option value="${escapeHtml(m.id)}" ${d.driver === m.id ? 'selected' : ''}>${escapeHtml(m.name)}${(m.roles || []).includes('Driver') ? ' (driver)' : ''}</option>`).join('')}</select></div></div>
+      <div class="field"><label for="rtVehicle">Vehicle (optional)</label><input id="rtVehicle" maxlength="40" placeholder="e.g. Truck NBX 4821" value="${escapeHtml(d.vehicle)}" oninput="routeDraft.vehicle=this.value"></div>
+      ${!team.some(m => (m.roles || []).includes('Driver')) ? `<div style="font-size:13px;opacity:.75;">Tip: add your drivers in Team with the <b>Driver</b> role. They only see their route and messages.</div>` : ''}
+    </div>
+    <div class="rt-section">Stops on this route (${d.stops.length})${draftDue >= 1 ? ` · ${fmtPHP(draftDue)} to collect` : ''}</div>
+    ${d.stops.length ? `<div class="panel-card" style="padding:6px 12px;">${d.stops.map((s, i) => `<div class="rt-plan-stop">
+        <div class="rt-plan-order"><button aria-label="Move up" onclick="moveDraftStop(${i}, -1)" ${i === 0 ? 'disabled' : ''}>▲</button><span>${i + 1}</span><button aria-label="Move down" onclick="moveDraftStop(${i}, 1)" ${i === d.stops.length - 1 ? 'disabled' : ''}>▼</button></div>
+        <div style="flex:1;min-width:0;"><div style="font-weight:800;">${escapeHtml(s.buyer_name)}</div>
+          <div style="font-size:13px;opacity:.8;">${s.deliver_po_ids.length ? `Deliver ${s.deliver_po_ids.length} order${s.deliver_po_ids.length > 1 ? 's' : ''}` : ''}${s.deliver_po_ids.length && s.collect_po_ids.length ? ' · ' : ''}${s.collect_po_ids.length ? `Collect ${s.collect_po_ids.length} invoice${s.collect_po_ids.length > 1 ? 's' : ''}` : ''}</div>
+          <input class="rt-inline" placeholder="Address for the driver" value="${escapeHtml(s.address)}" oninput="routeDraft.stops[${i}].address=this.value">
+          <input class="rt-inline" placeholder="Note (e.g. gate code, ask for Nena)" value="${escapeHtml(s.note)}" oninput="routeDraft.stops[${i}].note=this.value"></div>
+        <button class="rt-x" aria-label="Remove stop" onclick="routeDraft.stops.splice(${i}, 1); renderRoutesPage()">✕</button></div>`).join('')}</div>
+      <button class="btn btn-primary" style="width:100%;margin-top:10px;padding:14px;" onclick="saveRouteDraft()">${d.id ? 'Save changes' : 'Save & send to driver'}</button>`
+      : '<div class="panel-card" style="opacity:.75;">Tap buyers below to add them as stops.</div>'}
+    <div class="rt-section" style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;"><span>Add stops</span>
+      <label style="font-size:13.5px;font-weight:600;display:flex;gap:6px;align-items:center;"><input type="checkbox" ${routeShowAllUnpaid ? 'checked' : ''} onchange="routeShowAllUnpaid=this.checked; renderRoutesPage()"> Show all unpaid, not just due</label></div>
+    ${cands.length ? cands.map((b, bi) => {
+      const late = Math.max(0, ...b.collect.map(c => c.late));
+      const collect = b.collect.reduce((a, c) => a + c.open, 0);
+      const bounced = bouncedCountFor(b.buyer_business_id);
+      return `<div class="panel-card rt-cand">
+        <div style="display:flex;justify-content:space-between;gap:8px;align-items:flex-start;"><div style="min-width:0;"><div style="font-weight:800;">${escapeHtml(b.buyer_name)}</div>
+          <div style="font-size:13px;opacity:.8;">${escapeHtml(b.address || 'No address yet')}</div></div>
+          <button class="btn btn-primary rt-small" onclick="addCandidateStop(${bi})">＋ Add</button></div>
+        <div class="rt-tags" style="margin-top:6px;">${b.deliver.length ? `<span class="rt-tag">🚚 ${b.deliver.length} to deliver</span>` : ''}${collect >= 1 ? `<span class="rt-tag money">💰 ${fmtPHP(collect)} to collect</span>` : ''}${late ? `<span class="rt-tag late">${late} days overdue</span>` : ''}${bounced ? `<span class="rt-tag late">⚠ ${bounced} bounced cheque${bounced > 1 ? 's' : ''}</span>` : ''}</div>
+        <div style="font-size:13px;opacity:.75;margin-top:4px;">${[...b.deliver.map(po => po.poNumber), ...b.collect.map(c => (c.po.invoice.number || c.po.poNumber) + ' ' + fmtPHP(c.open))].join(' · ')}</div>
+      </div>`; }).join('')
+      : '<div class="panel-card" style="opacity:.75;">Nothing waiting: no confirmed orders to deliver and no invoices due. Tick "Show all unpaid" to add collections anyway.</div>'}`;
+  window._routeCands = cands;
+}
+function addCandidateStop(i){
+  const b = (window._routeCands || [])[i]; if(!b) return;
+  const taken = new Set(routeDraft.stops.flatMap(s => [...s.deliver_po_ids, ...s.collect_po_ids]));
+  b.deliver = b.deliver.filter(po => !taken.has(po.id)); b.collect = b.collect.filter(c => !taken.has(c.po.id));
+  if(!b.deliver.length && !b.collect.length) return;
+  window._routeCands = window._routeCands.filter(x => x !== b);
+  const items = [];
+  b.deliver.forEach(po => (po.lineItems || []).forEach(li => items.push({product: li.product, qty: li.qty, unit: li.unit || ''})));
+  routeDraft.stops.push({buyer_business_id: b.buyer_business_id, buyer_name: b.buyer_name, address: b.address, phone: b.phone, deliver_po_ids: b.deliver.map(po => po.id), collect_po_ids: b.collect.map(c => c.po.id), items: items.slice(0, 20), note: ''});
+  renderRoutesPage();
+}
+function moveDraftStop(i, dir){
+  const s = routeDraft.stops; const j = i + dir; if(j < 0 || j >= s.length) return;
+  [s[i], s[j]] = [s[j], s[i]]; renderRoutesPage();
+}
+async function saveRouteDraft(){
+  const d = routeDraft;
+  d.driver = (document.getElementById('rtDriver') || {}).value || d.driver;
+  if(!d.driver){ markFieldInvalid('rtDriver', 'Pick who drives this route.'); return; }
+  if(!d.stops.length){ showToast('Add at least one stop.'); return; }
+  const driver = routeTeam().find(m => m.id === d.driver);
+  if(!myBusiness){
+    const stops = d.stops.map((s, i) => Object.assign({}, s, {id: 'st' + Date.now() + i, seq: i + 1, status: 'pending', amount_due: s.collect_po_ids.reduce((x, id) => { const po = getPO(id); if(!po) return x; const c = computeInvoicePayments(po); return x + Math.max(0, c.balance - c.pendingAmount); }, 0)}));
+    if(d.id){ const r = demoRoutes.find(x => x.id === d.id); r.stops = r.stops.filter(s => s.status !== 'pending').concat(stops); r.driver_name = driver ? driver.name : ''; r.vehicle = d.vehicle; }
+    else demoRoutes.push({id: 'rt' + Date.now(), route_date: d.date, driver_member_id: d.driver, driver_name: driver ? driver.name : '', vehicle: d.vehicle, status: 'planned', mine: true, stops});
+    routeDraft = null; routeTab = 'today'; renderRoutesPage();
+    showToast(`Route saved. ${driver ? driver.name : 'The driver'} gets it on their phone.`, 'success');
+    return;
+  }
+  const { error } = await sb.rpc('save_route', {p_route: d.id, p_date: d.date, p_driver: d.driver, p_vehicle: d.vehicle || null, p_stops: d.stops});
+  if(error){ showToast(error.message, 'error'); return; }
+  routeDraft = null; routeTab = 'today';
+  await loadRoutes(true); renderRoutesPage();
+  showToast(`Route saved. ${driver ? driver.name : 'The driver'} got a notification.`, 'success');
+}
+async function renderRouteDashCard(){
+  const el = document.getElementById('routeDashCard'); if(!el) return;
+  if(currentAppRole !== 'supplier' || !hasFeature('routes')){ el.innerHTML = ''; return; }
+  const routes = await loadRoutes();
+  const today = routes.filter(r => r.route_date === APP_TODAY && (isRoutePlanner() || r.mine));
+  if(!today.length){ el.innerHTML = ''; return; }
+  const t = today.reduce((a, r) => { const x = routeTotals(r); a.n += x.n; a.done += x.done; a.got += x.got; return a; }, {n: 0, done: 0, got: 0});
+  el.innerHTML = `<div class="panel-card" style="margin-bottom:14px;cursor:pointer;" onclick="routeTab='${isRoutePlanner() ? 'today' : 'mine'}'; navigate('routes')">
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;"><div><div style="font-weight:800;font-size:16px;">🚚 ${isRoutePlanner() ? "Today's routes" : 'Your route today'}</div>
+      <div style="font-size:14px;opacity:.8;">${t.done} of ${t.n} stops · ${fmtPHP(t.got)} collected</div></div><span style="font-weight:800;color:var(--green);">Open →</span></div>
+    <div class="rt-track" style="margin-top:8px;"><i style="width:${t.n ? t.done / t.n * 100 : 0}%"></i></div></div>`;
+}
+
+/* ============ PRICE CHANGES: tell every buyer at once (Supplier Pro) ============
+   Change prices once with a start date. Every buyer on Nifti gets the list in chat (and a phone
+   notification), the store and catalog switch on the date by themselves, and buyers see what's
+   changing on their Home screen. */
+let priceDraftDate = null, priceChangesCache = null, incomingPricesCache = null;
+const demoPriceChanges = [];
+async function renderPricesPage(){
+  const el = document.getElementById('pricesContent');
+  if(!el) return;
+  const badge = document.getElementById('pricesBadge');
+  if(currentAppRole === 'buyer'){ if(badge) badge.innerHTML = ''; return renderIncomingPrices(el); }
+  if(badge) badge.innerHTML = proBadge('price_blast');
+  if(!hasFeature('price_blast')){ el.innerHTML = lockedPanelHtml('price_blast', 'Change prices once, pick the start date, and every buyer gets the new list in chat. Your store updates by itself on that day.'); return; }
+  if(!priceDraftDate) priceDraftDate = APP_TODAY;
+  const cat = (myCatalog || []).filter(c => c.product);
+  if(myBusiness && priceChangesCache === null){ const { data } = await sb.from('price_changes').select('*').order('created_at', {ascending: false}).limit(60); priceChangesCache = data || []; }
+  const history = myBusiness ? priceChangesCache : demoPriceChanges;
+  const buyers = (buyersData || []).filter(b => !b.isOutside).length;
+  const quick = [[APP_TODAY, 'Today'], [addDaysIso(APP_TODAY, 3), 'In 3 days'], [addDaysIso(APP_TODAY, 7), 'In a week'], [(() => { const d = new Date(APP_TODAY + 'T00:00:00'); d.setMonth(d.getMonth() + 1, 1); return d.toISOString().slice(0, 10); })(), '1st of next month']];
+  el.innerHTML = `<div class="panel-card">
+      <div style="font-weight:800;font-size:16px;">📢 Announce new prices</div>
+      <div style="font-size:14px;opacity:.8;margin:2px 0 10px;">Type the new price only for what changes. Buyers get one clean message, and orders sent before the start date keep the old price.</div>
+      ${cat.length ? `<div class="pc-list">${cat.map((c, i) => `<div class="pc-row"><div style="min-width:0;"><div style="font-weight:700;">${escapeHtml(c.product)}</div><div style="font-size:13px;opacity:.7;">Now ${fmtPHP(c.price)}${c.unit ? '/' + escapeHtml(c.unit) : ''}</div></div>
+          <input type="number" min="0" step="0.01" inputmode="decimal" placeholder="New ₱" data-pc-i="${i}" aria-label="New price for ${escapeHtml(c.product)}" oninput="renderPricePreview()"></div>`).join('')}</div>
+        <div class="rt-lbl" style="margin-top:12px;">Starts</div>
+        <div class="rt-chips small">${quick.map(q => `<button class="${priceDraftDate === q[0] ? 'on' : ''}" onclick="priceDraftDate='${q[0]}'; document.querySelectorAll('#pricesContent .rt-chips button').forEach(b=>b.classList.remove('on')); this.classList.add('on'); document.getElementById('pcDate').value='${q[0]}'; renderPricePreview()">${q[1]}</button>`).join('')}
+          <input id="pcDate" type="date" min="${APP_TODAY}" value="${priceDraftDate}" onchange="priceDraftDate=this.value; renderPricePreview()" style="padding:6px 8px;"></div>
+        <textarea id="pcNote" rows="2" placeholder="Reason (optional), e.g. Cement plant raised prices" oninput="renderPricePreview()" style="width:100%;box-sizing:border-box;margin-top:8px;padding:9px;border:1px solid var(--border);border-radius:8px;font-family:inherit;"></textarea>
+        <div id="pcPreview"></div>
+        <button class="btn btn-primary" style="width:100%;margin-top:8px;padding:13px;" onclick="sendPriceChanges()">Send to ${buyers} buyer${buyers === 1 ? '' : 's'}</button>`
+      : `<div style="opacity:.8;">Add your products and prices first (Inventory → Your catalog).</div>`}
+    </div>
+    <div class="rt-section">Sent</div>
+    ${history.length ? `<div class="panel-card" style="padding:4px 12px;">${history.map(h => { const up = h.old_price != null && Number(h.new_price) > Number(h.old_price); const live = h.applied_at || h.effective_date <= APP_TODAY;
+        return `<div class="adm-log"><span><b>${escapeHtml(h.product)}</b> ${h.old_price != null ? fmtPHP(h.old_price) + ' → ' : ''}${fmtPHP(h.new_price)} <span style="color:${up ? 'var(--danger)' : 'var(--green)'};">${h.old_price != null ? (up ? '▲' : '▼') : ''}</span></span>
+          <span>${h.cancelled_at ? 'cancelled' : live ? 'live since ' + stmtDate(h.effective_date) : `starts ${stmtDate(h.effective_date)} · <span class="row-action" onclick="cancelPriceChange('${h.id}')">Cancel</span>`}</span></div>`; }).join('')}</div>`
+      : '<div class="panel-card" style="opacity:.75;">Nothing sent yet.</div>'}`;
+  renderPricePreview();
+}
+function priceDraftChanges(){
+  const cat = (myCatalog || []).filter(c => c.product);
+  return [...document.querySelectorAll('[data-pc-i]')].map(i => ({c: cat[Number(i.dataset.pcI)], v: Number(i.value)})).filter(x => x.c && i_ok(x.v) && Math.abs(x.v - Number(x.c.price)) >= 0.01);
+  function i_ok(v){ return v > 0; }
+}
+function priceMessageText(changes, date, note){
+  const name = myBusiness ? myBusiness.name : 'Metro Steel Co.';
+  return `📢 Price update from ${name}, effective ${date === APP_TODAY ? 'today' : stmtDate(date)}:\n` + changes.map(x => `• ${x.c.product}: ${fmtPHP(x.c.price)} → ${fmtPHP(x.v)}${x.c.unit ? '/' + x.c.unit : ''} ${x.v > x.c.price ? '▲' : '▼'}`).join('\n')
+    + (note ? '\n\n' + note : '') + (date > APP_TODAY ? '\n\nOrders sent before then keep the old price.' : '');
+}
+function renderPricePreview(){
+  const el = document.getElementById('pcPreview'); if(!el) return;
+  const ch = priceDraftChanges();
+  el.innerHTML = ch.length ? `<div class="rt-lbl" style="margin-top:10px;">Buyers will see</div><div class="pc-preview">${escapeHtml(priceMessageText(ch, priceDraftDate || APP_TODAY, (document.getElementById('pcNote') || {}).value || ''))}</div>` : '';
+}
+async function sendPriceChanges(){
+  const ch = priceDraftChanges();
+  if(!ch.length){ showToast('Type a new price for at least one product.'); return; }
+  const date = priceDraftDate || APP_TODAY, note = ((document.getElementById('pcNote') || {}).value || '').trim();
+  if(!confirm(`Send ${ch.length} price change${ch.length > 1 ? 's' : ''} to all your buyers?`)) return;
+  if(!myBusiness){
+    ch.forEach(x => demoPriceChanges.unshift({id: 'pc' + Date.now() + x.c.product, product: x.c.product, old_price: x.c.price, new_price: x.v, effective_date: date, applied_at: date <= APP_TODAY ? new Date().toISOString() : null}));
+    if(date <= APP_TODAY) ch.forEach(x => { x.c.price = x.v; x.c.updatedAt = APP_TODAY; });
+    getConversations().forEach(c => sendTextInChat(c.id, priceMessageText(ch, date, note)));
+    showToast('Sent to your buyers. (Demo)', 'success'); renderPricesPage(); return;
+  }
+  const { data, error } = await sb.rpc('announce_price_changes', {p_changes: ch.map(x => ({product: x.c.product, new_price: x.v})), p_effective: date, p_note: note || null});
+  if(error){ showToast(error.message, 'error'); return; }
+  if(date <= APP_TODAY) ch.forEach(x => { x.c.price = x.v; x.c.updatedAt = APP_TODAY; });
+  priceChangesCache = null;
+  showToast(`Sent to ${data.buyers} buyer${data.buyers === 1 ? '' : 's'}.${date > APP_TODAY ? ' Your prices switch on ' + stmtDate(date) + '.' : ''}`, 'success');
+  renderPricesPage();
+}
+async function cancelPriceChange(id){
+  if(!confirm('Cancel this price change? Buyers were already told, so send them a message too.')) return;
+  if(!myBusiness){ const h = demoPriceChanges.find(x => x.id === id); if(h) h.cancelled_at = new Date().toISOString(); return renderPricesPage(); }
+  const { error } = await sb.rpc('cancel_price_change', {p_id: id});
+  if(error){ showToast(error.message, 'error'); return; }
+  priceChangesCache = null; renderPricesPage();
+}
+async function loadIncomingPrices(){
+  if(incomingPricesCache) return incomingPricesCache;
+  if(!myBusiness){
+    incomingPricesCache = [{supplier_name: 'Metro Steel Co.', product: 'Portland Cement 40kg', old_price: 245, new_price: 258, unit: 'bag', effective_date: addDaysIso(APP_TODAY, 4), applied: false},
+      {supplier_name: 'Metro Steel Co.', product: 'Steel Rebar 10mm', old_price: 182, new_price: 176, unit: 'pc', effective_date: addDaysIso(APP_TODAY, 4), applied: false},
+      {supplier_name: 'Quezon Produce Traders', product: 'Red Onions (Grade A)', old_price: 62, new_price: 70, unit: 'kg', effective_date: addDaysIso(APP_TODAY, -2), applied: true}];
+    return incomingPricesCache;
+  }
+  const { data } = await sb.rpc('incoming_price_changes');
+  incomingPricesCache = data || [];
+  return incomingPricesCache;
+}
+async function renderIncomingPrices(el){
+  const list = await loadIncomingPrices();
+  const upcoming = list.filter(x => x.effective_date > APP_TODAY), recent = list.filter(x => x.effective_date <= APP_TODAY);
+  const row = (x, when) => { const up = x.old_price != null && Number(x.new_price) > Number(x.old_price); const pct = x.old_price ? Math.round((x.new_price - x.old_price) / x.old_price * 1000) / 10 : null;
+    return `<div class="adm-log"><span><b>${escapeHtml(x.product)}</b> · ${escapeHtml(x.supplier_name)}</span><span>${x.old_price != null ? fmtPHP(x.old_price) + ' → ' : ''}<b>${fmtPHP(x.new_price)}</b>${pct != null ? ` <span style="color:${up ? 'var(--danger)' : 'var(--green)'};font-weight:700;">${up ? '▲' : '▼'} ${Math.abs(pct)}%</span>` : ''}${when ? ' · ' + stmtDate(x.effective_date) : ''}</span></div>`; };
+  const ups = upcoming.filter(x => x.old_price != null && Number(x.new_price) > Number(x.old_price));
+  el.innerHTML = `${ups.length ? `<div class="notif-phone warn" style="margin-bottom:12px;">💡 ${ups.length} price increase${ups.length > 1 ? 's start' : ' starts'} ${stmtDate(ups.map(x => x.effective_date).sort()[0])}. Order before then to keep today's price.</div>` : ''}
+    <div class="rt-section">Coming up</div>${upcoming.length ? `<div class="panel-card" style="padding:4px 12px;">${upcoming.map(x => row(x, true)).join('')}</div>` : '<div class="panel-card" style="opacity:.75;">No price changes announced.</div>'}
+    <div class="rt-section">Last 2 weeks</div>${recent.length ? `<div class="panel-card" style="padding:4px 12px;">${recent.map(x => row(x)).join('')}</div>` : '<div class="panel-card" style="opacity:.75;">None.</div>'}`;
+}
+async function renderPriceNewsCard(){
+  const el = document.getElementById('priceNewsCard'); if(!el) return;
+  if(currentAppRole !== 'buyer'){ el.innerHTML = ''; return; }
+  const list = (await loadIncomingPrices()).filter(x => x.effective_date > APP_TODAY && x.old_price != null && Number(x.new_price) > Number(x.old_price));
+  if(!list.length){ el.innerHTML = ''; return; }
+  el.innerHTML = `<div class="panel-card" style="margin-bottom:14px;cursor:pointer;" onclick="navigate('prices')"><div style="font-weight:800;font-size:16px;">📈 ${list.length} price increase${list.length > 1 ? 's' : ''} coming</div>
+    <div style="font-size:14px;opacity:.85;margin-top:2px;">${list.slice(0, 3).map(x => `${escapeHtml(x.product)} ${fmtPHP(x.old_price)} → ${fmtPHP(x.new_price)} from ${stmtDate(x.effective_date)}`).join('<br>')}</div>
+    <div style="font-size:13.5px;font-weight:700;color:var(--green);margin-top:6px;">Order before then to keep today's price →</div></div>`;
+}
+
+/* ============ RETURNS, BAD ORDERS & CREDITS ============
+   Bad orders are filed on the order itself (existing return/dispute flow). This page adds the
+   report across all orders, and credits on account: when a credit is bigger than what's left on
+   the invoice (or the invoice is already paid), the rest is kept as a credit memo and comes off
+   the buyer's next invoice. */
+let creditMemosCache = null;
+const demoCreditMemos = [];
+async function loadCreditMemos(force){
+  if(creditMemosCache && !force) return creditMemosCache;
+  if(!myBusiness){ creditMemosCache = demoCreditMemos; return creditMemosCache; }
+  const { data } = await sb.from('credit_memos').select('*').order('created_at', {ascending: false}).limit(200);
+  creditMemosCache = data || [];
+  return creditMemosCache;
+}
+async function renderReturnsPage(){
+  const el = document.getElementById('returnsContent'); if(!el) return;
+  const side = currentAppRole === 'supplier' ? 'supplier' : 'buyer';
+  const memos = await loadCreditMemos();
+  const pos = side === 'supplier' ? getSupplierPOs() : getBuyerPOs();
+  const since = addDaysIso(APP_TODAY, -180);
+  const rmas = pos.filter(po => po.rma && (po.rma.filedDate || po.createdDate) >= since);
+  const reasons = {};
+  rmas.forEach(po => { const r = po.rma.reason || 'Other'; reasons[r] = (reasons[r] || 0) + 1; });
+  const maxR = Math.max(1, ...Object.values(reasons));
+  const open = memos.filter(m => m.status === 'open');
+  const partyName = m => { const id = side === 'supplier' ? m.buyer_business_id : m.supplier_business_id; const po = pos.find(p => (side === 'supplier' ? p.buyerId : p.supplierId) === id); return po ? (side === 'supplier' ? po.buyerName : po.supplierName) : (m._party || 'Partner'); };
+  el.innerHTML = `<div class="rt-section" style="margin-top:0;">Credits on account</div>
+    ${open.length ? `<div class="panel-card" style="padding:4px 12px;">${open.map(m => `<div class="adm-row static"><div style="min-width:0;flex:1;"><div class="adm-name">${escapeHtml(partyName(m))} · ${fmtPHP(m.remaining)} left</div>
+        <div class="adm-sub">${escapeHtml(m.number)} · ${fmtPHP(m.amount)} · ${escapeHtml(m.reason || '')} · ${stmtDate(m.created_at)}</div></div>
+        ${side === 'supplier' ? `<button class="btn btn-primary rt-small" onclick="applyCreditMemo('${m.id}')">Apply to invoice</button>${Number(m.remaining) === Number(m.amount) ? `<button class="btn btn-outline rt-small" onclick="voidCreditMemo('${m.id}')">Cancel</button>` : ''}` : '<span class="adm-sub">Comes off your next invoice</span>'}</div>`).join('')}</div>`
+      : `<div class="panel-card" style="opacity:.75;">${side === 'supplier' ? 'No open credits. When a bad-order credit is more than what\'s left on the invoice, the rest waits here for their next invoice.' : 'No credits from suppliers right now.'}</div>`}
+    ${side === 'supplier' ? `<details class="panel-card"><summary style="cursor:pointer;font-weight:800;">＋ Give a buyer a credit</summary>
+      <div style="margin-top:10px;"><div class="field"><label for="cmBuyer">Buyer</label><select id="cmBuyer">${[...new Map(getSupplierPOs().map(p => [p.buyerId, p.buyerName])).entries()].map(([id, n]) => `<option value="${escapeHtml(id)}">${escapeHtml(n)}</option>`).join('')}</select></div>
+        <div class="row-2"><div class="field"><label for="cmAmt">Amount</label><input id="cmAmt" type="number" min="1" step="0.01"></div>
+          <div class="field"><label for="cmReason">Reason</label><select id="cmReason">${['Damaged goods', 'Expired / near expiry', 'Wrong item', 'Short delivery', 'Price correction', 'Goodwill'].map(r => `<option>${r}</option>`).join('')}</select></div></div>
+        <button class="btn btn-primary" onclick="giveCreditMemo()">Give credit</button></div></details>` : ''}
+    <div class="rt-section">Bad orders, last 6 months (${rmas.length})</div>
+    ${rmas.length ? `<div class="panel-card">${Object.entries(reasons).sort((a, b) => b[1] - a[1]).map(([r, n]) => `<div class="pc-bar"><span>${escapeHtml(r)}</span><div><i style="width:${n / maxR * 100}%"></i></div><b>${n}</b></div>`).join('')}</div>
+      <div class="panel-card" style="padding:4px 12px;">${rmas.map(po => `<div class="adm-row" onclick="openOrderDetailModal('${po.id}', ${side === 'supplier'})"><div style="min-width:0;flex:1;"><div class="adm-name">${escapeHtml(po.poNumber)} · ${escapeHtml(side === 'supplier' ? po.buyerName : po.supplierName)}</div>
+        <div class="adm-sub">${escapeHtml(po.rma.reason || '')}${po.rma.desc ? ' · ' + escapeHtml(po.rma.desc) : ''}</div></div>
+        <div class="adm-side">${po.rma.status === 'resolved' ? (po.rma.outcome === 'credit_note' ? 'Credited' : po.rma.outcome === 'replacement' ? 'Replaced' : 'Resolved') : '<b style="color:var(--danger);">Open</b>'}<br>${stmtDate(po.rma.filedDate)}</div></div>`).join('')}</div>`
+      : `<div class="panel-card" style="opacity:.75;">No bad orders. ${side === 'buyer' ? 'If a delivery comes damaged, short or wrong, open the order and tap "Report a problem".' : ''}</div>`}`;
+}
+async function giveCreditMemo(){
+  const buyer = document.getElementById('cmBuyer').value, amt = Number(document.getElementById('cmAmt').value), reason = document.getElementById('cmReason').value;
+  if(!(amt > 0)){ markFieldInvalid('cmAmt', 'Enter the credit amount.'); return; }
+  const ok = await createCreditMemo(buyer, amt, null, reason);
+  if(ok){ showToast('Credit saved. The buyer was told.', 'success'); renderReturnsPage(); }
+}
+async function createCreditMemo(buyerId, amount, poId, reason){
+  if(!myBusiness){ demoCreditMemos.unshift({id: 'cm' + Date.now(), buyer_business_id: buyerId, supplier_business_id: ME_SUPPLIER, number: 'CM-' + String(demoCreditMemos.length + 1).padStart(5, '0'), amount, remaining: amount, reason, status: 'open', created_at: new Date().toISOString()}); return true; }
+  const { error } = await sb.rpc('issue_credit_memo', {p_buyer: buyerId, p_amount: amount, p_source_po: poId, p_reason: reason});
+  if(error){ showToast(error.message, 'error'); return false; }
+  creditMemosCache = null; return true;
+}
+async function applyCreditMemo(id){
+  const m = (await loadCreditMemos()).find(x => x.id === id); if(!m) return;
+  const pos = getSupplierPOs().filter(po => po.buyerId === m.buyer_business_id && po.invoice && !['paid', 'cancelled'].includes(po.status)).map(po => ({po, room: computeInvoicePayments(po).balance - computeInvoicePayments(po).pendingAmount})).filter(x => x.room >= 1);
+  if(!pos.length){ showToast('This buyer has no open invoice yet. The credit waits for the next one.'); return; }
+  const x = pos[0];
+  const amt = Math.min(Number(m.remaining), x.room);
+  if(!confirm(`Apply ${fmtPHP(amt)} of ${m.number} to ${x.po.invoice.number || x.po.poNumber}?`)) return;
+  if(myBusiness){ const { error } = await sb.rpc('use_credit_memo', {p_memo: m.id, p_amount: amt, p_po: x.po.id}); if(error){ showToast(error.message, 'error'); return; } }
+  else { m.remaining = Number(m.remaining) - amt; if(m.remaining <= 0.005) m.status = 'used'; }
+  snapshotPO(x.po);
+  paymentListFor(x.po, 'invoice').push({id: newRecordId(), method: 'credit_note', amount: amt, reference: m.number, checkDate: null, date: APP_TODAY, confirmStatus: 'confirmed', confirmedAt: APP_TODAY, submittedBy: 'supplier'});
+  settleInvoiceStatus(x.po);
+  poLogHistory(x.po, 'supplier', `Credit ${m.number} applied — ${fmtPHP(amt)}`);
+  afterPaymentChange(x.po);
+  creditMemosCache = myBusiness ? null : creditMemosCache;
+  showToast('Credit applied.', 'success'); renderReturnsPage();
+}
+async function voidCreditMemo(id){
+  if(!confirm('Cancel this credit?')) return;
+  if(!myBusiness){ const m = demoCreditMemos.find(x => x.id === id); if(m) m.status = 'void'; return renderReturnsPage(); }
+  const { error } = await sb.rpc('void_credit_memo', {p_memo: id});
+  if(error){ showToast(error.message, 'error'); return; }
+  creditMemosCache = null; renderReturnsPage();
+}
+
+/* ============ REORDER REMINDERS (suppliers) ============
+   From each buyer's own rhythm: 3+ orders, usual gap between orders, and it's now well past it. */
+function localReorderDue(){
+  const by = {};
+  getSupplierPOs().filter(po => !['draft', 'cancelled'].includes(po.status)).forEach(po => { (by[po.buyerId] = by[po.buyerId] || {name: po.buyerName, dates: new Set()}).dates.add(po.createdDate); });
+  const out = [];
+  Object.entries(by).forEach(([id, b]) => {
+    const d = [...b.dates].sort(); if(d.length < 3) return;
+    const gaps = d.slice(1).map((x, i) => daysBetween(d[i], x)).sort((a, c) => a - c);
+    const med = gaps[Math.floor(gaps.length / 2)]; const since = daysBetween(d[d.length - 1], APP_TODAY);
+    if(since >= Math.max(med * 1.3, med + 3) && since <= med * 4 + 14) out.push({buyer_id: id, buyer_name: b.name, orders: d.length, usual_gap: med, days_since: since, last_order: d[d.length - 1]});
+  });
+  return out.sort((a, b) => (b.days_since - b.usual_gap) - (a.days_since - a.usual_gap));
+}
+async function renderReorderCard(){
+  const el = document.getElementById('reorderDashCard'); if(!el) return;
+  if(currentAppRole !== 'supplier' || !hasFeature('reorder_reminders')){ el.innerHTML = ''; return; }
+  let list;
+  if(myBusiness){ const { data } = await sb.rpc('my_reorder_due'); list = data || []; } else list = localReorderDue();
+  if(!list.length){ el.innerHTML = ''; return; }
+  window._reorderList = list;
+  el.innerHTML = `<div class="panel-card" style="margin-bottom:14px;"><div style="font-weight:800;font-size:16px;">🔁 Due to reorder ${proBadge('reorder_reminders')}</div>
+    <div style="font-size:13.5px;opacity:.75;margin-bottom:6px;">Past their usual ordering rhythm. A quick message now often brings the order back.</div>
+    ${list.slice(0, 5).map((r, i) => `<div class="adm-row static"><div style="min-width:0;flex:1;"><div class="adm-name">${escapeHtml(r.buyer_name)}</div><div class="adm-sub">Usually every ${r.usual_gap} days · last order ${r.days_since} days ago</div></div>
+      <button class="btn btn-outline rt-small" onclick="nudgeReorder(${i})">Message</button></div>`).join('')}</div>`;
+}
+function nudgeReorder(i){
+  const r = (window._reorderList || [])[i]; if(!r) return;
+  const text = `Hi po! Kumusta? Napansin namin ${r.days_since} days na since your last order. Need po ba ng restock? Pwede ko i-prepare today. 😊`;
+  if(sendTextInChat(r.buyer_id, text)){ showToast('Sent in chat.', 'success'); trackEvent('reorder_nudge_sent', {}); }
+  else copyPlainText(text, 'Message copied. Send it on Viber.');
+}
+
+/* ============ SPENDING CAPS + SUPPLIER SCORECARD (buyers, in the watchdog page) ============
+   The owner sets each cap: the whole business, a teammate, or a supplier, per month. Warn or block.
+   The server checks every order when it's sent (guard_spending_caps), and tells the owner at 80%
+   and when a cap is passed. The scorecard grades each supplier from your own order history. */
+let capsCache = null;
+async function renderCapsTab(){
+  const body = document.getElementById('watchdogTabBody'); if(!body) return;
+  if(!hasFeature('spending_caps')){ body.innerHTML = lockedPanelHtml('spending_caps', 'Set a monthly spending limit for your business, each teammate, or each supplier.'); return; }
+  let st;
+  if(myBusiness){ const { data, error } = await sb.rpc('spending_status'); if(error){ body.innerHTML = `<div class="panel-card">${escapeHtml(error.message)}</div>`; return; } st = data || {}; }
+  else {
+    const month = APP_TODAY.slice(0, 7);
+    const pos = getBuyerPOs().filter(po => !['draft', 'cancelled'].includes(po.status) && (po.createdDate || '').slice(0, 7) === month);
+    const bySup = {}; pos.forEach(po => { bySup[po.supplierId] = (bySup[po.supplierId] || 0) + poTotal(po); });
+    st = capsCache || {caps: {business: {amount: 600000, mode: 'warn'}, members: {tm2: {amount: 60000, mode: 'block'}}, suppliers: {}}, month_total: pos.reduce((a, po) => a + poTotal(po), 0), by_member: {tm2: 41800}, by_supplier: bySup};
+    capsCache = st;
+  }
+  const caps = st.caps || {};
+  const bar = (spent, cap) => { if(!cap) return ''; const pct = spent / cap * 100; const cls = pct >= 100 ? 'bad' : pct >= 80 ? 'warn' : 'ok';
+    return `<div class="cap-bar ${cls}"><i style="width:${Math.min(100, pct)}%"></i></div><div class="adm-sub">${fmtPHP(spent)} of ${fmtPHP(cap)} · ${Math.round(pct)}%</div>`; };
+  const modeSel = (id, m) => `<select id="${id}" class="cap-mode"><option value="warn" ${m !== 'block' ? 'selected' : ''}>Warn me</option><option value="block" ${m === 'block' ? 'selected' : ''}>Block orders</option></select>`;
+  const team = (teamMembers || []).filter(m => !(m.roles || []).includes('Owner'));
+  const sups = (suppliersData || []).filter(s => s.id);
+  const monthName = new Date(APP_TODAY + 'T00:00:00').toLocaleDateString('en-PH', {month: 'long'});
+  body.innerHTML = `<div class="panel-card"><div style="font-weight:800;font-size:16px;">Whole business · ${monthName}</div>
+      <div class="cap-edit"><input id="capBiz" type="number" min="0" step="1000" placeholder="No cap" value="${caps.business ? caps.business.amount : ''}">${modeSel('capBizMode', caps.business && caps.business.mode)}</div>
+      ${bar(st.month_total || 0, caps.business && caps.business.amount) || `<div class="adm-sub">Spent ${fmtPHP(st.month_total || 0)} so far this month.</div>`}</div>
+    <div class="panel-card"><div style="font-weight:800;font-size:16px;">Per teammate</div><div class="adm-sub" style="margin-bottom:6px;">"Block orders" stops their order and tells them to ask you. Your own orders are never blocked.</div>
+      ${team.length ? team.map(m => { const c = (caps.members || {})[m.id]; const sp = (st.by_member || {})[m.id] || 0;
+        return `<div class="cap-row"><div class="adm-name">${escapeHtml(m.name)}</div><div class="cap-edit"><input type="number" min="0" step="1000" placeholder="No cap" data-cap-m="${escapeHtml(m.id)}" value="${c ? c.amount : ''}">${modeSel('capM_' + m.id, c && c.mode)}</div>${bar(sp, c && c.amount)}</div>`; }).join('') : '<div class="adm-sub">Add teammates in Team first.</div>'}</div>
+    <div class="panel-card"><div style="font-weight:800;font-size:16px;">Per supplier</div>
+      ${sups.map(s => { const c = (caps.suppliers || {})[s.id]; const sp = (st.by_supplier || {})[s.id] || 0;
+        return `<div class="cap-row"><div class="adm-name">${escapeHtml(s.name)}</div><div class="cap-edit"><input type="number" min="0" step="1000" placeholder="No cap" data-cap-s="${escapeHtml(s.id)}" value="${c ? c.amount : ''}">${modeSel('capS_' + s.id, c && c.mode)}</div>${bar(sp, c && c.amount) || (sp ? `<div class="adm-sub">${fmtPHP(sp)} this month</div>` : '')}</div>`; }).join('') || '<div class="adm-sub">No suppliers yet.</div>'}</div>
+    <button class="btn btn-primary" style="width:100%;padding:13px;" onclick="saveCaps()">Save caps</button>
+    <div class="adm-sub" style="margin-top:6px;text-align:center;">You get a notification at 80% and when a cap is passed. Caps reset on the 1st.</div>`;
+}
+async function saveCaps(){
+  const num = id => Number((document.getElementById(id) || {}).value) || 0;
+  const caps = {business: num('capBiz') > 0 ? {amount: num('capBiz'), mode: document.getElementById('capBizMode').value} : null, members: {}, suppliers: {}};
+  document.querySelectorAll('[data-cap-m]').forEach(i => { const v = Number(i.value); if(v > 0) caps.members[i.dataset.capM] = {amount: v, mode: document.getElementById('capM_' + i.dataset.capM).value}; });
+  document.querySelectorAll('[data-cap-s]').forEach(i => { const v = Number(i.value); if(v > 0) caps.suppliers[i.dataset.capS] = {amount: v, mode: document.getElementById('capS_' + i.dataset.capS).value}; });
+  if(!myBusiness){ capsCache = Object.assign({}, capsCache, {caps}); showToast('Caps saved. (Demo)', 'success'); return renderCapsTab(); }
+  const { error } = await sb.rpc('set_spending_caps', {p_caps: caps});
+  if(error){ showToast(error.message, 'error'); return; }
+  showToast('Caps saved.', 'success'); renderCapsTab();
+}
+function supplierScores(){
+  const since = addDaysIso(APP_TODAY, -180);
+  const by = {};
+  getBuyerPOs().filter(po => !['draft', 'cancelled'].includes(po.status) && (po.createdDate || '') >= since).forEach(po => { (by[po.supplierId] = by[po.supplierId] || {id: po.supplierId, name: po.supplierName, pos: []}).pos.push(po); });
+  return Object.values(by).map(s => {
+    const delivered = s.pos.filter(po => ['delivered', 'partially_delivered', 'invoiced', 'paid'].includes(po.status));
+    let onTime = 0, timed = 0;
+    delivered.forEach(po => {
+      if(!po.requestedDeliveryDate) return;
+      const h = (po.history || []).find(x => /deliver/i.test(x.action || '') && !/partial|note|update/i.test(x.action || ''));
+      const when = (po.deliveryConfirmation && po.deliveryConfirmation.date) || (h && h.date);
+      if(!when) return;
+      timed++; if(String(when).slice(0, 10) <= po.requestedDeliveryDate) onTime++;
+    });
+    const short = delivered.filter(po => po.status === 'partially_delivered' || (po.rma && /short|missing/i.test(po.rma.reason || ''))).length;
+    const returns = s.pos.filter(po => po.rma).length;
+    const prices = {};
+    s.pos.slice().sort((a, b) => (a.createdDate || '').localeCompare(b.createdDate || '')).forEach(po => (po.lineItems || []).forEach(li => { if(li.product && li.unitPrice > 0) (prices[li.product] = prices[li.product] || []).push(Number(li.unitPrice)); }));
+    let incr = 0, chg = [];
+    Object.values(prices).forEach(list => { for(let i = 1; i < list.length; i++) if(list[i] > list[i - 1] * 1.005) incr++; if(list.length > 1) chg.push((list[list.length - 1] - list[0]) / list[0] * 100); });
+    const avgChg = chg.length ? chg.reduce((a, b) => a + b, 0) / chg.length : 0;
+    const onTimePct = timed ? onTime / timed * 100 : null, fillPct = delivered.length ? (1 - short / delivered.length) * 100 : null, retPct = s.pos.length ? returns / s.pos.length * 100 : 0;
+    let score = null, grade = '—';
+    if(s.pos.length >= 3){
+      score = (onTimePct == null ? 30 : onTimePct * 0.4) + (fillPct == null ? 22 : fillPct * 0.3) + (retPct <= 5 ? 15 : retPct <= 15 ? 8 : 0) + (avgChg <= 2 ? 15 : avgChg <= 5 ? 8 : 0);
+      grade = score >= 85 ? 'A' : score >= 70 ? 'B' : score >= 55 ? 'C' : 'D';
+    }
+    return {id: s.id, name: s.name, orders: s.pos.length, spend: s.pos.reduce((a, po) => a + poTotal(po), 0), onTimePct, timed, fillPct, returns, incr, avgChg, score, grade};
+  }).sort((a, b) => (b.score == null ? -1 : b.score) - (a.score == null ? -1 : a.score));
+}
+function renderScorecardTab(){
+  const body = document.getElementById('watchdogTabBody'); if(!body) return;
+  if(!hasFeature('scorecard')){ body.innerHTML = lockedPanelHtml('scorecard', 'Grade every supplier on late deliveries, short deliveries, returns and price increases, from your own orders.'); return; }
+  const rows = supplierScores();
+  const pct = v => v == null ? '—' : Math.round(v) + '%';
+  body.innerHTML = rows.length ? `<div class="adm-sub" style="margin-bottom:8px;">From your orders in the last 6 months. Needs 3+ orders for a grade.</div>
+    ${rows.map(r => `<div class="panel-card sc-card"><div class="sc-grade g-${r.grade === '—' ? 'n' : r.grade}">${r.grade}</div>
+      <div style="flex:1;min-width:0;"><div style="font-weight:800;font-size:16px;">${escapeHtml(r.name)}</div><div class="adm-sub">${r.orders} orders · ${fmtPHP(r.spend)}</div>
+        <div class="sc-stats"><div><b>${pct(r.onTimePct)}</b><span>on time${r.timed ? '' : ' (no dates)'}</span></div><div><b>${pct(r.fillPct)}</b><span>complete</span></div>
+          <div><b>${r.returns}</b><span>returns</span></div><div><b style="color:${r.avgChg > 2 ? 'var(--danger)' : 'inherit'};">${r.avgChg >= 0 ? '+' : ''}${Math.round(r.avgChg * 10) / 10}%</b><span>price change</span></div></div></div></div>`).join('')}`
+    : '<div class="panel-card" style="opacity:.75;">Once you have orders with suppliers, their scores show here.</div>';
+}
+
+/* ============ VAT-READY SALES & PURCHASE BOOKS ============
+   Month by month from the invoices in Nifti: date, invoice no., customer/supplier, TIN, gross,
+   VAT-exempt, vatable sales/purchases, 12% VAT and tax withheld. Download for Excel or print. */
+let booksMonth = null;
+function booksRows(month){
+  const side = currentAppRole === 'supplier' ? 'supplier' : 'buyer';
+  const pos = (side === 'supplier' ? getSupplierPOs() : getBuyerPOs()).filter(po => po.invoice && po.status !== 'cancelled');
+  return pos.map(po => {
+    const date = (po.invoice.issuedDate || po.createdDate || '').slice(0, 10);
+    if(date.slice(0, 7) !== month) return null;
+    const gross = po.invoice.statedTotal != null ? Number(po.invoice.statedTotal) : poTotal(po);
+    const rate = Number(po.taxRate) || 0;
+    const vatable = rate > 0 ? gross / (1 + rate) : 0;
+    const ewt = ((po.invoice.payments) || []).filter(p => p.method === 'ewt' && p.confirmStatus !== 'rejected').reduce((a, p) => a + Number(p.amount || 0), 0);
+    return {date, number: po.invoice.number || po.poNumber, party: side === 'supplier' ? po.buyerName : po.supplierName, tin: '', gross, exempt: rate > 0 ? 0 : gross, vatable, vat: rate > 0 ? gross - vatable : 0, ewt, poId: po.id};
+  }).filter(Boolean).sort((a, b) => a.date.localeCompare(b.date));
+}
+function renderBooksPage(){
+  const el = document.getElementById('booksContent'); if(!el) return;
+  const badge = document.getElementById('booksBadge'); if(badge) badge.innerHTML = proBadge('vat_books');
+  if(!hasFeature('vat_books')){ el.innerHTML = lockedPanelHtml('vat_books', 'Your monthly sales and purchase books from the invoices already in Nifti, ready for your bookkeeper and your VAT return.'); return; }
+  const months = [];
+  for(let i = 0; i < 12; i++){ const d = new Date(APP_TODAY + 'T00:00:00'); d.setDate(1); d.setMonth(d.getMonth() - i); months.push(d.toISOString().slice(0, 7)); }
+  if(!booksMonth) booksMonth = months[0];
+  const rows = booksRows(booksMonth);
+  const side = currentAppRole === 'supplier' ? 'supplier' : 'buyer';
+  const t = rows.reduce((a, r) => { ['gross', 'exempt', 'vatable', 'vat', 'ewt'].forEach(k => a[k] += r[k]); return a; }, {gross: 0, exempt: 0, vatable: 0, vat: 0, ewt: 0});
+  const f = n => (Math.round(n * 100) / 100).toLocaleString('en-PH', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+  el.innerHTML = `<div class="adm-actions" style="margin-bottom:12px;"><select id="bkMonth" onchange="booksMonth=this.value; renderBooksPage()">${months.map(m => `<option value="${m}" ${m === booksMonth ? 'selected' : ''}>${new Date(m + '-01T00:00:00').toLocaleDateString('en-PH', {month: 'long', year: 'numeric'})}</option>`).join('')}</select>
+      <button class="btn btn-primary" onclick="downloadBooks()" ${rows.length ? '' : 'disabled'}>⬇ Download for Excel</button><button class="btn btn-outline" onclick="window.print()" ${rows.length ? '' : 'disabled'}>🖨 Print</button></div>
+    <div class="cq-tiles"><div class="cq-tile"><div class="cq-tile-l">${side === 'supplier' ? 'Sales' : 'Purchases'} (gross)</div><div class="cq-tile-v">${fmtPHP(t.gross)}</div><div class="cq-tile-n">${rows.length} invoice${rows.length === 1 ? '' : 's'}</div></div>
+      <div class="cq-tile"><div class="cq-tile-l">${side === 'supplier' ? 'Output' : 'Input'} VAT 12%</div><div class="cq-tile-v">${fmtPHP(t.vat)}</div><div class="cq-tile-n">on ${fmtPHP(t.vatable)} vatable</div></div>
+      <div class="cq-tile"><div class="cq-tile-l">VAT-exempt</div><div class="cq-tile-v">${fmtPHP(t.exempt)}</div><div class="cq-tile-n">&nbsp;</div></div>
+      <div class="cq-tile"><div class="cq-tile-l">Tax withheld (2307)</div><div class="cq-tile-v">${fmtPHP(t.ewt)}</div><div class="cq-tile-n">&nbsp;</div></div></div>
+    <div class="panel-card bk-wrap" id="booksPrint"><div style="font-weight:800;font-size:16px;margin-bottom:6px;">${side === 'supplier' ? 'Sales book' : 'Purchase book'} · ${new Date(booksMonth + '-01T00:00:00').toLocaleDateString('en-PH', {month: 'long', year: 'numeric'})}</div>
+      ${rows.length ? `<div style="overflow-x:auto;"><table class="bk-table"><thead><tr><th>Date</th><th>Invoice</th><th>${side === 'supplier' ? 'Customer' : 'Supplier'}</th><th>TIN</th><th>Gross</th><th>Exempt</th><th>${side === 'supplier' ? 'Vatable sales' : 'Vatable purchases'}</th><th>VAT</th><th>Withheld</th></tr></thead>
+        <tbody>${rows.map(r => `<tr><td>${r.date}</td><td>${escapeHtml(r.number)}</td><td>${escapeHtml(r.party)}</td><td>${escapeHtml(r.tin)}</td><td>${f(r.gross)}</td><td>${f(r.exempt)}</td><td>${f(r.vatable)}</td><td>${f(r.vat)}</td><td>${f(r.ewt)}</td></tr>`).join('')}</tbody>
+        <tfoot><tr><td colspan="4">Total</td><td>${f(t.gross)}</td><td>${f(t.exempt)}</td><td>${f(t.vatable)}</td><td>${f(t.vat)}</td><td>${f(t.ewt)}</td></tr></tfoot></table></div>`
+      : '<div style="opacity:.75;">No invoices this month.</div>'}
+      <div class="adm-sub" style="margin-top:8px;">From invoices recorded in Nifti. Invoices marked with 0% tax count as VAT-exempt. Add each partner's TIN in the file before filing.</div></div>`;
+}
+function downloadBooks(){
+  const rows = booksRows(booksMonth);
+  const side = currentAppRole === 'supplier' ? 'supplier' : 'buyer';
+  const esc = v => { const s = String(v == null ? '' : v); return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
+  const r2 = n => (Math.round(n * 100) / 100).toFixed(2);
+  const head = ['Date', 'Invoice No.', side === 'supplier' ? 'Customer' : 'Supplier', 'TIN', 'Gross Amount', 'VAT-Exempt', side === 'supplier' ? 'Vatable Sales' : 'Vatable Purchases', side === 'supplier' ? 'Output VAT' : 'Input VAT', 'Tax Withheld'];
+  const lines = [head.map(esc).join(','), ...rows.map(r => [r.date, r.number, r.party, r.tin, r2(r.gross), r2(r.exempt), r2(r.vatable), r2(r.vat), r2(r.ewt)].map(esc).join(','))];
+  const blob = new Blob(['﻿' + lines.join('\r\n')], {type: 'text/csv;charset=utf-8'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `nifti-${side === 'supplier' ? 'sales' : 'purchase'}-book-${booksMonth}.csv`;
+  document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+}
+
+/* ============ ADMIN CONSOLE (only the Nifti owner) ============
+   One place to run the whole site: every business and person, their plan, activity and history;
+   vet new sign-ups, verify, suspend (ban) or delete a business, ban a single login, change anyone's
+   plan and dates, confirm payments and paid extras, answer Help messages, post a notice to all
+   users, and site switches (pilot, "new stores need my approval", email, backups). Every action is
+   checked on the server (is_platform_admin) and written to an audit log. */
+let adminTab = 'overview', adminFilter = 'all', adminQuery = '', adminOpenBiz = null, adminCache = {};
+const SUPABASE_DASHBOARD = 'https://supabase.com/dashboard/project/ctryvcloavfpecbrbzxy';
+function adminAgo(ts){
+  if(!ts) return '—';
+  const d = (Date.now() - new Date(ts).getTime()) / 86400000;
+  if(d < 1/24) return 'just now'; if(d < 1) return Math.round(d * 24) + 'h ago'; if(d < 45) return Math.round(d) + 'd ago';
+  return new Date(ts).toLocaleDateString('en-PH', {month: 'short', day: 'numeric', year: 'numeric'});
+}
+async function renderAdminPage(){
+  const el = document.getElementById('adminContent');
+  if(!el) return;
+  if(!myBusiness || document.body.getAttribute('data-owner') !== '1'){ el.innerHTML = '<div class="panel-card">Only the Nifti owner can open this.</div>'; return; }
+  const tabs = [['overview', '📊 Overview'], ['biz', '🏢 Businesses'], ['people', '👤 People'], ['money', '💰 Money'], ['support', '💬 Help'], ['site', '⚙️ Site']];
+  el.innerHTML = `<div class="adm-tabs">${tabs.map(t => `<button class="${adminTab === t[0] ? 'active' : ''}" onclick="adminTab='${t[0]}'; adminOpenBiz=null; renderAdminPage()">${t[1]}</button>`).join('')}</div><div id="adminBody"><div class="panel-card">Loading…</div></div>`;
+  document.querySelectorAll('#page-admin .adm-host').forEach(h => h.classList.toggle('hidden', !((adminTab === 'money' && h.dataset.tab === 'money') || (adminTab === 'site' && h.dataset.tab === 'site'))));
+  const body = document.getElementById('adminBody');
+  try{
+    if(adminTab === 'overview') await renderAdminOverview(body);
+    else if(adminTab === 'biz') await (adminOpenBiz ? renderAdminBizDetail(body, adminOpenBiz) : renderAdminBusinesses(body));
+    else if(adminTab === 'people') await renderAdminPeople(body);
+    else if(adminTab === 'money'){ body.innerHTML = ''; await renderOwnerEmailCard(); renderOwnerBillingCard(); }
+    else if(adminTab === 'support') await renderAdminSupport(body);
+    else if(adminTab === 'site') await renderAdminSite(body);
+  }catch(e){ body.innerHTML = `<div class="panel-card">${escapeHtml(e.message || String(e))}</div>`; }
+}
+async function adminRpc(name, args){
+  const { data, error } = await sb.rpc(name, args || {});
+  if(error) throw new Error(error.message);
+  return data;
+}
+async function renderAdminOverview(body){
+  const [o, acts] = await Promise.all([adminRpc('admin_overview'), adminRpc('admin_recent_actions')]);
+  const tile = (label, v, sub, onclick, cls) => `<div class="cq-tile ${cls || ''}" ${onclick ? `style="cursor:pointer;" onclick="${onclick}"` : ''}><div class="cq-tile-l">${label}</div><div class="cq-tile-v">${v}</div><div class="cq-tile-n">${sub || ''}</div></div>`;
+  const todo = [
+    o.unreviewed ? [`${o.unreviewed} new business${o.unreviewed > 1 ? 'es' : ''} to review`, "adminTab='biz'; adminFilter='unreviewed'; renderAdminPage()"] : null,
+    o.pending_payments ? [`${o.pending_payments} payment${o.pending_payments > 1 ? 's' : ''} to confirm`, "adminTab='money'; renderAdminPage()"] : null,
+    o.open_services ? [`${o.open_services} setup / verification request${o.open_services > 1 ? 's' : ''}`, "adminTab='money'; renderAdminPage()"] : null,
+    o.support_7d ? [`${o.support_7d} Help message${o.support_7d > 1 ? 's' : ''} this week`, "adminTab='support'; renderAdminPage()"] : null,
+    o.errors_24h ? [`${o.errors_24h} app error${o.errors_24h > 1 ? 's' : ''} in 24h`, `window.open('${SUPABASE_DASHBOARD}/editor', '_blank')`] : null,
+    o.push_errors_24h ? [`${o.push_errors_24h} notification${o.push_errors_24h > 1 ? 's' : ''} failed in 24h`, "adminTab='site'; renderAdminPage()"] : null,
+  ].filter(Boolean);
+  body.innerHTML = `<div class="cq-tiles">
+      ${tile('Businesses', o.businesses, `${o.suppliers} suppliers · ${o.buyers} buyers`, "adminTab='biz'; adminFilter='all'; renderAdminPage()", 'cq-dep')}
+      ${tile('New this week', o.new_7d, `${o.new_30d} this month`, "adminTab='biz'; adminFilter='new'; renderAdminPage()", 'cq-hold')}
+      ${tile('Active this week', o.active_7d, `${o.orders_7d} orders`, null, 'cq-ok')}
+      ${tile('Paying', o.paying, `≈ ${fmtPHP(o.mrr)}/month`, "adminTab='biz'; adminFilter='paying'; renderAdminPage()", 'cq-ok')}
+      ${tile('Order value, 30 days', fmtPHP(o.gmv_30d), 'through Nifti', null, 'cq-dep')}
+      ${tile('People', o.people, `${o.outside} outside contacts`, "adminTab='people'; renderAdminPage()", 'cq-hold')}
+      ${tile('Suspended', o.banned, 'businesses', "adminTab='biz'; adminFilter='banned'; renderAdminPage()", 'cq-bad')}
+      ${tile('Pilot', o.pilot ? 'On' : 'Off', o.pilot ? 'everything free' : 'plans active', "adminTab='site'; renderAdminPage()", o.pilot ? 'cq-hold' : 'cq-ok')}
+    </div>
+    <div class="panel-card" style="margin-top:12px;"><div style="font-weight:800;font-size:16px;margin-bottom:6px;">Needs you</div>
+      ${todo.length ? todo.map(t => `<div class="adm-todo" onclick="${t[1]}">${t[0]} <span>→</span></div>`).join('') : '<div style="opacity:.75;">All clear. 👍</div>'}</div>
+    <div class="panel-card" style="margin-top:12px;"><div style="font-weight:800;font-size:16px;margin-bottom:6px;">Your recent actions</div>
+      ${(acts || []).slice(0, 12).map(a => `<div class="adm-log"><span>${escapeHtml(adminActionLabel(a.action))}${a.business ? ' · ' + escapeHtml(a.business) : ''}${a.target ? ' · ' + escapeHtml(a.target) : ''}</span><span>${adminAgo(a.at)}</span></div>`).join('') || '<div style="opacity:.7;">Nothing yet.</div>'}
+      <div style="font-size:13px;opacity:.7;margin-top:8px;">Raw tables, logs and SQL: <a href="${SUPABASE_DASHBOARD}" target="_blank" rel="noopener">Supabase dashboard</a></div></div>`;
+}
+function adminActionLabel(a){
+  return ({ban_business: '⛔ Suspended', unban_business: '✅ Restored', ban_person: '⛔ Blocked login', unban_person: '✅ Unblocked login', delete_business: '🗑 Deleted', reviewed: '✔ Reviewed', unreviewed: 'Marked for review',
+    set_plan: '💳 Plan changed', support_reply: '💬 Replied', notice: '📢 Notice posted', require_review: '⚙️ Review switch'})[a] || a;
+}
+async function renderAdminBusinesses(body){
+  const list = await adminRpc('admin_businesses', {p_query: adminQuery, p_filter: adminFilter, p_limit: 100, p_offset: 0});
+  const filters = [['all', 'All'], ['new', 'New'], ['unreviewed', 'To review'], ['paying', 'Paying'], ['suppliers', 'Suppliers'], ['buyers', 'Buyers'], ['inactive', 'Quiet 30d'], ['banned', 'Suspended']];
+  body.innerHTML = `<div class="adm-search"><input id="admQ" placeholder="Search name or email" value="${escapeHtml(adminQuery)}" onkeydown="if(event.key==='Enter'){ adminQuery=this.value.trim(); renderAdminPage(); }"><button class="btn btn-outline" onclick="adminQuery=document.getElementById('admQ').value.trim(); renderAdminPage()">Search</button></div>
+    <div class="chip-filter" style="margin:10px 0;">${filters.map(f => `<div class="chip ${adminFilter === f[0] ? 'active' : ''}" onclick="adminFilter='${f[0]}'; renderAdminPage()">${f[1]}</div>`).join('')}</div>
+    <div class="panel-card" style="padding:4px 12px;">${(list || []).map(b => `<div class="adm-row" onclick="adminOpenBiz='${b.id}'; renderAdminPage()">
+        <div style="min-width:0;flex:1;"><div class="adm-name">${escapeHtml(b.name)} ${b.verified ? '<span style="color:var(--green);">✔</span>' : ''}${b.banned_at ? ' <span class="adm-badge bad">Suspended</span>' : ''}${!b.reviewed_at && !b.banned_at ? ' <span class="adm-badge">New</span>' : ''}</div>
+          <div class="adm-sub">${b.type} · ${planLabel(b.plan)}${b.paid_until ? ' to ' + stmtDate(b.paid_until) : ''} · ${b.members} ${b.members === 1 ? 'person' : 'people'} · ${b.orders_30d} orders/30d${b.owner_email ? ' · ' + escapeHtml(b.owner_email) : ''}</div></div>
+        <div class="adm-side">${adminAgo(b.last_active)}<br><span style="opacity:.6;">joined ${adminAgo(b.created_at)}</span></div></div>`).join('') || '<div style="padding:14px 0;opacity:.7;">No businesses match.</div>'}</div>`;
+}
+async function renderAdminBizDetail(body, id){
+  const d = await adminRpc('admin_business_detail', {p_id: id});
+  const b = d.business, st = d.stats;
+  adminCache.biz = b;
+  const plusMonth = addDaysIso(APP_TODAY, 31);
+  body.innerHTML = `<button class="btn btn-outline" style="padding:6px 12px;margin-bottom:10px;" onclick="adminOpenBiz=null; renderAdminPage()">← All businesses</button>
+    <div class="panel-card">
+      <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;"><div><div style="font-weight:800;font-size:20px;">${escapeHtml(b.name)} ${b.verified ? '<span style="color:var(--green);" title="Verified">✔</span>' : ''}</div>
+        <div class="adm-sub">${b.type} · joined ${stmtDate(b.created_at)} · last active ${adminAgo(st.last_active)}${b.store_slug ? ` · <a href="${storeUrl(b.store_slug)}" target="_blank" rel="noopener">store</a>${b.store_on ? '' : ' (off)'}` : ''}</div></div>
+        <div>${b.banned_at ? `<span class="adm-badge bad">Suspended ${adminAgo(b.banned_at)}</span>` : b.reviewed_at ? '<span class="adm-badge ok">Reviewed</span>' : '<span class="adm-badge">Not reviewed</span>'}</div></div>
+      ${b.banned_at ? `<div class="notif-phone warn" style="margin-top:8px;">Reason: ${escapeHtml(b.ban_reason || '')}</div>` : ''}
+      <div class="cq-tiles" style="margin-top:10px;">
+        <div class="cq-tile"><div class="cq-tile-l">Orders</div><div class="cq-tile-v">${st.orders}</div><div class="cq-tile-n">${st.orders_30d} in 30 days</div></div>
+        <div class="cq-tile"><div class="cq-tile-l">Order value 30d</div><div class="cq-tile-v">${fmtPHP(st.gmv_30d)}</div><div class="cq-tile-n">${st.partners} partners</div></div>
+        <div class="cq-tile"><div class="cq-tile-l">Messages 30d</div><div class="cq-tile-v">${st.messages_30d}</div><div class="cq-tile-n">${st.store_views_30d} store visits</div></div>
+        <div class="cq-tile"><div class="cq-tile-l">Plan</div><div class="cq-tile-v" style="font-size:18px;">${planLabel(b.plan)}</div><div class="cq-tile-n">${b.paid_until ? 'until ' + stmtDate(b.paid_until) : ''}</div></div>
+      </div>
+      ${b.profile && (b.profile.category || b.profile.location) ? `<div class="adm-sub" style="margin-top:8px;">${escapeHtml([b.profile.category, b.profile.location, b.contact && b.contact.phone].filter(Boolean).join(' · '))}</div>` : ''}
+    </div>
+    <div class="panel-card"><div class="adm-h">Actions</div>
+      <div class="adm-actions">
+        ${b.reviewed_at ? `<button class="btn btn-outline" onclick="adminAct('admin_mark_reviewed', {p_id:'${b.id}', p_ok:false})">Mark not reviewed</button>` : `<button class="btn btn-primary" onclick="adminAct('admin_mark_reviewed', {p_id:'${b.id}', p_ok:true})">✔ Looks legit, mark reviewed</button>`}
+        <button class="btn btn-outline" onclick="adminAct('admin_set_verified', {p_business:'${b.id}', p_on:${!b.verified}})">${b.verified ? 'Remove Verified badge' : '✔ Give Verified badge (1 year)'}</button>
+        ${b.banned_at ? `<button class="btn btn-primary" onclick="adminAct('admin_unban_business', {p_id:'${b.id}'})">Restore access</button>` : `<button class="btn btn-outline cq-danger" onclick="adminBan('${b.id}')">⛔ Suspend business</button>`}
+        <button class="btn btn-outline cq-danger" onclick="adminDelete('${b.id}')">🗑 Delete</button>
+      </div>
+      <div class="adm-h" style="margin-top:14px;">Plan</div>
+      <div class="adm-actions"><select id="admPlan">${['free', 'supplier_pro', 'buyer_pro', 'business'].map(p => `<option value="${p}" ${b.plan === p ? 'selected' : ''}>${planLabel(p)}</option>`).join('')}</select>
+        <input id="admUntil" type="date" value="${b.paid_until || plusMonth}"><button class="btn btn-primary" onclick="adminAct('admin_set_plan_until', {p_id:'${b.id}', p_plan: document.getElementById('admPlan').value, p_until: document.getElementById('admUntil').value})">Save plan</button></div>
+      <div class="adm-sub" style="margin-top:4px;">${escapeHtml(b.plan_note || '')}</div>
+      <div class="adm-h" style="margin-top:14px;">Private note (only you see this)</div>
+      <textarea id="admNote" rows="2" style="width:100%;box-sizing:border-box;padding:9px;border:1px solid var(--border);border-radius:8px;font-family:inherit;">${escapeHtml(b.admin_note || '')}</textarea>
+      <button class="btn btn-outline" style="padding:6px 12px;margin-top:6px;" onclick="adminAct('admin_set_note', {p_id:'${b.id}', p_note: document.getElementById('admNote').value}, 'Note saved.')">Save note</button>
+    </div>
+    <div class="panel-card"><div class="adm-h">People (${d.members.length})</div>
+      ${d.members.map(m => `<div class="adm-row static"><div style="min-width:0;flex:1;"><div class="adm-name">${escapeHtml(m.name || '—')} ${m.banned ? '<span class="adm-badge bad">Blocked</span>' : ''}</div>
+        <div class="adm-sub">${escapeHtml(m.email || 'no email')} · ${escapeHtml((m.roles || []).join(', '))} · ${m.auth ? 'last sign-in ' + adminAgo(m.last_sign_in) : 'invited, not signed up'}</div></div>
+        ${m.auth ? `<button class="btn btn-outline rt-small ${m.banned ? '' : 'cq-danger'}" onclick="adminAct('admin_ban_person', {p_member:'${m.id}', p_ban:${!m.banned}})">${m.banned ? 'Unblock' : 'Block login'}</button>` : ''}</div>`).join('')}
+    </div>
+    <div class="panel-card"><div class="adm-h">Latest orders</div>
+      ${d.orders.map(o => `<div class="adm-log"><span>${escapeHtml(o.po_number)} · ${escapeHtml(o.who)} · ${escapeHtml(o.status)}</span><span>${fmtPHP(o.total)} · ${stmtDate(o.created_date)}</span></div>`).join('') || '<div style="opacity:.7;">No orders yet.</div>'}
+    </div>
+    <div class="panel-card"><div class="adm-h">Payments & extras</div>
+      ${[...d.payments.map(p => `<div class="adm-log"><span>${planLabel(p.plan)} (${p.cycle}) · ${escapeHtml(p.method || '')} ${escapeHtml(p.reference || '')}</span><span>${fmtPHP(p.amount)} · ${p.status} · ${adminAgo(p.created_at)}</span></div>`),
+         ...d.services.map(s => `<div class="adm-log"><span>${s.kind === 'setup' ? '🛠 Setup' : '✔ Verification'}</span><span>${fmtPHP(s.amount)} · ${s.status} · ${adminAgo(s.created_at)}</span></div>`)].join('') || '<div style="opacity:.7;">None.</div>'}
+    </div>
+    <div class="panel-card"><div class="adm-h">Help messages</div>
+      ${d.support.map(m => `<div class="adm-msg"><div class="adm-sub">${escapeHtml(m.from_name || '')} · ${escapeHtml(m.category || '')} · ${adminAgo(m.created_at)}</div><div>${escapeHtml(m.message)}</div></div>`).join('') || '<div style="opacity:.7;">None.</div>'}
+      <div style="display:flex;gap:8px;margin-top:8px;"><input id="admReply" placeholder="Message them (arrives as a notification)" style="flex:1;min-width:0;"><button class="btn btn-primary" onclick="adminAct('admin_reply_support', {p_business:'${b.id}', p_text: document.getElementById('admReply').value}, 'Sent.')">Send</button></div>
+    </div>
+    <div class="panel-card"><div class="adm-h">History of your actions</div>
+      ${d.actions.map(a => `<div class="adm-log"><span>${escapeHtml(adminActionLabel(a.action))}${a.target ? ' · ' + escapeHtml(a.target) : ''}</span><span>${adminAgo(a.at)}</span></div>`).join('') || '<div style="opacity:.7;">Nothing yet.</div>'}
+    </div>`;
+}
+async function adminAct(fn, args, okMsg){
+  try{ await adminRpc(fn, args); showToast(okMsg || 'Done.', 'success'); renderAdminPage(); }
+  catch(e){ showToast(e.message, 'error'); }
+}
+async function adminBan(id){
+  const reason = prompt('Why are you suspending them? (They see this.)', 'Reports of not delivering after payment');
+  if(reason === null) return;
+  if(!confirm('Suspend this business? Everyone on their team is signed out and blocked, their store and listing disappear, and nobody can send them orders.')) return;
+  adminAct('admin_ban_business', {p_id: id, p_reason: reason}, 'Suspended.');
+}
+async function adminDelete(id){
+  const b = adminCache.biz || {};
+  const typed = prompt(`This can't be undone. Type the business name to delete it:\n${b.name}`);
+  if(!typed) return;
+  try{
+    const r = await adminRpc('admin_delete_business', {p_id: id, p_confirm: typed});
+    showToast(r === 'anonymized' ? 'Deleted. Their partners keep their own order records, shown as "Deleted business".' : 'Deleted completely.', 'success');
+    adminOpenBiz = null; renderAdminPage();
+  }catch(e){ showToast(e.message, 'error'); }
+}
+async function renderAdminPeople(body){
+  const q = adminCache.peopleQ || '';
+  const list = await adminRpc('admin_people', {p_query: q});
+  body.innerHTML = `<div class="adm-search"><input id="admPQ" placeholder="Search email, name or business" value="${escapeHtml(q)}" onkeydown="if(event.key==='Enter'){ adminCache.peopleQ=this.value.trim(); renderAdminPage(); }"><button class="btn btn-outline" onclick="adminCache.peopleQ=document.getElementById('admPQ').value.trim(); renderAdminPage()">Search</button></div>
+    <div class="panel-card" style="padding:4px 12px;margin-top:10px;">${(list || []).map(p => `<div class="adm-row static"><div style="min-width:0;flex:1;"><div class="adm-name">${escapeHtml(p.email || '—')} ${p.banned ? '<span class="adm-badge bad">Blocked</span>' : ''}</div>
+        <div class="adm-sub">${escapeHtml(p.name || '')}${p.business_name ? ` · <span class="row-action" onclick="adminTab='biz'; adminOpenBiz='${p.business_id}'; renderAdminPage()">${escapeHtml(p.business_name)}</span> (${p.business_type})` : ' · no business yet'} · ${escapeHtml((p.roles || []).join(', '))} · joined ${adminAgo(p.created_at)} · last sign-in ${adminAgo(p.last_sign_in_at)}</div></div>
+        ${p.member_id ? `<button class="btn btn-outline rt-small ${p.banned ? '' : 'cq-danger'}" onclick="adminAct('admin_ban_person', {p_member:'${p.member_id}', p_ban:${!p.banned}})">${p.banned ? 'Unblock' : 'Block'}</button>` : ''}</div>`).join('') || '<div style="padding:14px 0;opacity:.7;">Nobody matches.</div>'}</div>`;
+}
+async function renderAdminSupport(body){
+  const list = await adminRpc('admin_support_inbox');
+  body.innerHTML = `<div class="panel-card" style="padding:4px 12px;">${(list || []).map((m, i) => `<div class="adm-msg">
+      <div class="adm-sub">${m.plan === 'business' ? '⭐ ' : ''}<span class="row-action" onclick="adminTab='biz'; adminOpenBiz='${m.business_id}'; renderAdminPage()">${escapeHtml(m.business_name || 'Unknown')}</span> · ${escapeHtml(m.from_name || '')} · ${escapeHtml(m.category || '')} · ${adminAgo(m.created_at)}</div>
+      <div style="margin:4px 0;white-space:pre-line;">${escapeHtml(m.message)}</div>
+      <div style="display:flex;gap:8px;"><input id="admRep${i}" placeholder="Reply (they get a notification)" style="flex:1;min-width:0;"><button class="btn btn-outline rt-small" onclick="adminAct('admin_reply_support', {p_business:'${m.business_id}', p_text: document.getElementById('admRep${i}').value}, 'Reply sent.')">Reply</button></div>
+    </div>`).join('') || '<div style="padding:14px 0;opacity:.7;">No Help messages yet.</div>'}</div>`;
+}
+async function renderAdminSite(body){
+  const [o, notices] = await Promise.all([adminRpc('admin_overview'), adminRpc('admin_notices')]);
+  body.innerHTML = `<div class="panel-card">
+      <div class="toggle-row"><div><div class="toggle-txt">New stores need my approval</div><div class="toggle-sub">When on, a new business's store and Discover listing stay hidden until you mark it reviewed. Chat and orders with people they invite still work.</div></div>
+        <div class="switch ${o.require_review ? 'on' : ''}" onclick="adminAct('admin_set_require_review', {p_on:${!o.require_review}})"><div class="knob"></div></div></div>
+    </div>
+    <div class="panel-card"><div class="adm-h">Notice to every user</div>
+      <div class="adm-sub" style="margin-bottom:6px;">Shows at the top of the app, e.g. planned maintenance or a new feature.</div>
+      <input id="admNT" placeholder="Title" maxlength="120" style="width:100%;box-sizing:border-box;margin-bottom:6px;">
+      <textarea id="admNB" rows="2" placeholder="Message" style="width:100%;box-sizing:border-box;padding:9px;border:1px solid var(--border);border-radius:8px;font-family:inherit;"></textarea>
+      <div class="adm-actions" style="margin-top:6px;"><select id="admNL"><option value="info">Info</option><option value="maintenance">Maintenance</option><option value="incident">Problem</option></select>
+        <select id="admNH"><option value="24">for 1 day</option><option value="72">for 3 days</option><option value="168">for a week</option><option value="0">until I end it</option></select>
+        <button class="btn btn-primary" onclick="adminAct('admin_notice', {p_title: document.getElementById('admNT').value, p_body: document.getElementById('admNB').value, p_level: document.getElementById('admNL').value, p_hours: Number(document.getElementById('admNH').value)}, 'Posted.')">Post</button></div>
+      ${(notices || []).map(n => `<div class="adm-log"><span>${escapeHtml(n.title)} <span style="opacity:.6;">(${escapeHtml(n.level)})</span></span><span>${n.ends_at && new Date(n.ends_at) < new Date() ? 'ended' : `<span class="row-action" onclick="adminAct('admin_end_notice', {p_id:'${n.id}'}, 'Ended.')">End now</span>`}</span></div>`).join('')}
+    </div>
+    <div class="panel-card"><div class="adm-h">Raw data</div><div class="adm-sub">Every table, the logs and backups live in your <a href="${SUPABASE_DASHBOARD}" target="_blank" rel="noopener">Supabase dashboard</a> (Table Editor for data, Logs for errors). Use it for anything this console doesn't cover.</div></div>`;
+  await renderOwnerEmailCard(); renderOwnerBackupCard();
+}
+
+function showSuspendedScreen(acct){
+  const w = document.createElement('div'); w.className = 'suspended-screen';
+  w.innerHTML = `<div class="suspended-box"><div style="font-size:44px;">⛔</div><h2>${escapeHtml(acct.business || 'This account')} is suspended</h2>
+    <p>${escapeHtml(acct.reason || 'This account was suspended by Nifti.')}</p><p style="opacity:.75;">If you think this is a mistake, email support@nifti.ph.</p>
+    <button class="btn btn-outline" onclick="sb.auth.signOut().then(() => location.reload())">Sign out</button></div>`;
+  document.body.appendChild(w);
+}
 function renderSidebarForViewAsRole(){
   const allowed = computeAllowedPages(getEffectiveRoles());
   document.querySelectorAll('.nav-item[data-page], .bnav-item[data-page], .more-sheet-item[data-page]').forEach(el => {
@@ -9031,6 +10378,12 @@ function navigate(page){
     if(page==='team'){ renderTeamPage(); }
     if(page==='taxforms') renderTaxFormsPage();
     if(page==='growth') renderGrowthPage();
+    if(page==='cheques'){ const sub = document.getElementById('chequesSub'); if(sub) sub.textContent = currentAppRole === 'supplier' ? 'Post-dated cheques, what to deposit today, and who bounces.' : 'Every cheque you issued, and when it hits your bank.'; renderChequesPage(); }
+    if(page==='routes'){ routesCache = null; renderRoutesPage(); }
+    if(page==='prices'){ priceChangesCache = null; incomingPricesCache = null; const sub = document.getElementById('pricesSub'); if(sub) sub.textContent = currentAppRole === 'supplier' ? 'Tell every buyer about new prices at once, with a start date.' : "What your suppliers are changing, and when."; renderPricesPage(); }
+    if(page==='returns'){ creditMemosCache = null; renderReturnsPage(); }
+    if(page==='books') renderBooksPage();
+    if(page==='admin') renderAdminPage();
     if(page==='watchdog'){ watchdogAlerts = null; marketRows = null; renderWatchdogPage(); }
     if(page==='store' && typeof renderStorePage === 'function') renderStorePage();
     if(page==='sales'){ renderSalesPage(); }
@@ -9068,7 +10421,7 @@ function navigate(page){
       renderHomeInviteNudge();
       renderPhoneNotifNudge();
       renderGetStartedCard();
-      if(currentAppRole === 'supplier'){ renderWhoOwesMe(); renderStoreDashCard(); } else { renderBillsToPay(); renderWatchdogDashCard(); renderBuyerPostCard(); }
+      if(currentAppRole === 'supplier'){ renderWhoOwesMe(); renderStoreDashCard(); routesCache = null; renderRouteDashCard(); renderReorderCard(); } else { renderBillsToPay(); renderWatchdogDashCard(); renderBuyerPostCard(); incomingPricesCache = null; renderPriceNewsCard(); }
     }
     if(page==='messages' && !window._msgInit){
       renderConversationList();
@@ -12029,7 +13382,7 @@ function confirmDeleteAgreement(id, partyId){
 }
 
 /* ============ TEAM & ROLES (multi-user accounts — UI/UX layer, not an auth gate) ============ */
-const AVAILABLE_ROLES = ['Owner','General Manager','Purchasing Agent','Warehouse Manager','Finance','Viewer'];
+const AVAILABLE_ROLES = ['Owner','General Manager','Purchasing Agent','Warehouse Manager','Finance','Driver','Viewer'];
 let teamMembers = [
   {id:'tm1', name:'Dela Cruz (You)', email:'you@delacruzhardware.ph', roles:['Owner','Purchasing Agent']},
   {id:'tm2', name:'Ana Reyes', email:'ana@delacruzhardware.ph', roles:['Purchasing Agent']},
@@ -14283,7 +15636,22 @@ async function submitRmaCreditNote(id){
   if(!amount || amount<=0){ markFieldInvalid('rmaCreditAmount_'+id, 'Please enter a valid credit amount.'); return; }
   if(po.invoice){
     const {balance} = computeInvoicePayments(po);
-    if(amount > balance){ markFieldInvalid('rmaCreditAmount_'+id, 'This is more than the remaining balance ('+fmtPHP(balance)+') — a credit note can\'t exceed what\'s actually owed.'); return; }
+    if(amount > balance + 0.5){
+      if(!confirm(`${fmtPHP(balance)} is left on this invoice. Take ${fmtPHP(balance)} off it and keep the other ${fmtPHP(amount - balance)} as credit for ${po.buyerName}'s next invoice?`)) return;
+      const extra = roundPeso(amount - balance);
+      const ok = await createCreditMemo(po.buyerId, extra, myBusiness ? po.id : null, 'Bad order on ' + po.poNumber + (po.rma && po.rma.reason ? ' (' + po.rma.reason + ')' : ''));
+      if(!ok) return;
+      creditMemosCache = null;
+      if(balance < 1){
+        snapshotPO(po); po.rma.status = 'resolved'; po.rma.outcome = 'credit_note'; po.rma.creditNote = {amount: extra, onAccount: true, issuedAt: APP_TODAY};
+        poLogHistory(po, 'supplier', 'Credit of ' + fmtPHP(extra) + ' put on account for the next invoice');
+        const f0 = document.getElementById('rmaResolveForm_'+id); if(f0) f0.innerHTML = '';
+        refreshOrderModalIfOpen(po.id); showToast('Credit saved for their next invoice.', 'success');
+        return;
+      }
+      document.getElementById('rmaCreditAmount_'+id).value = balance;
+      return submitRmaCreditNote(id);
+    }
   }
   const profile = taxProfiles.supplier;
   const cnNumber = await getNextDocumentNumber('credit_note', 1, () => { const n = profile.nextCnNumber; profile.nextCnNumber += 1; return n; });
