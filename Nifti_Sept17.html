@@ -228,7 +228,7 @@
   .foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
   .foot-brand{display:flex;align-items:center;gap:9px;font-size:15.5px;color:var(--body);}
   .foot-brand strong{font-family:var(--font-h);color:var(--ink);font-weight:700;}
-  .foot-links{display:flex;gap:26px;font-size:15.5px;font-weight:500;color:var(--body);}
+  .foot-links{display:flex;flex-wrap:wrap;gap:10px 26px;font-size:15.5px;font-weight:500;color:var(--body);}
 
   /* ============ FEATURES PAGE (v2 layout: icon+title row, desc row, detail row) ============ */
   .features-hero{padding:72px 0 60px;text-align:center;border-top:none;}
@@ -239,6 +239,7 @@
   .cat-head{display:flex;align-items:baseline;gap:14px;margin-bottom:32px;}
   .cat-num{font-family:var(--font-m);font-size:30px;color:var(--green);font-weight:800;}
   .feat-row-v2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+  .feat-row-v2 > *{min-width:0;} .feat-card-v2{overflow-wrap:anywhere;}
   .feat-card-v2{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:24px;}
   .feat-card-v2 .icon-title{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
   .feat-card-v2 .big-icon{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
@@ -1039,6 +1040,9 @@
   .pricing-hero p{font-size:20px;}
   #view-pricing .role-toggle button{font-size:17px;}
   .store-tabs{display:flex;max-width:100%;}
+  .regular-row{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--border);}
+  .regular-btns{display:flex;gap:6px;flex-shrink:0;} .regular-btns .btn{padding:6px 10px;font-size:13.5px;}
+  .disc-featured{font-size:12px;font-weight:700;background:var(--green-soft);color:var(--green);border-radius:6px;padding:1px 6px;vertical-align:middle;}
   .store-tabs button{flex:1;padding:10px 8px;font-size:15px;}
   #view-pricing .plan-name{font-size:20.5px;}
   #view-pricing .plan-price{font-size:35px;}
@@ -2050,8 +2054,26 @@
         </ul>
         <button class="plan-btn outline" onclick="navigate('login')">Start free in the pilot</button>
       </div>
+      <div class="plan-card">
+        <span class="featured-tag" style="background:var(--clay);">For distributors</span>
+        <div class="plan-name">Business</div>
+        <div class="plan-price">₱2,990<span>/month</span></div>
+        <div class="plan-sub">For big distributors and multi-branch businesses. Everything in Supplier Pro and Buyer Pro, plus:</div>
+        <ul class="plan-list">
+          <li><span class="check">✓</span>Up to 50 teammates</li>
+          <li><span class="check">✓</span>Verified badge (green ✔) included</li>
+          <li><span class="check">✓</span>Featured at the top of Discover</li>
+          <li><span class="check">✓</span>Priority support: we reply first</li>
+          <li><span class="check">✓</span>Free done-for-you setup on yearly</li>
+        </ul>
+        <button class="plan-btn outline" onclick="navigate('login')">Start free in the pilot</button>
+      </div>
     </div>
-    <div style="font-size:14px;opacity:.7;margin-top:14px;text-align:center;">Yearly: ₱9,900 (2 months free). Nifti never holds your money. You pay suppliers directly, like you do today.</div>
+    <div style="max-width:760px;margin:18px auto 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;">
+      <div style="border:1px solid var(--border);border-radius:12px;padding:14px;background:var(--card, #fff);"><div style="font-weight:800;">🛠 Done-for-you setup · ₱3,500 one-time</div><div style="font-size:14.5px;opacity:.85;margin-top:4px;">Send us your price list and customer list in any form. We load everything in 2 working days.</div></div>
+      <div style="border:1px solid var(--border);border-radius:12px;padding:14px;background:var(--card, #fff);"><div style="font-weight:800;">✔ Verified badge · ₱1,490/year</div><div style="font-size:14.5px;opacity:.85;margin-top:4px;">We check your DTI/SEC papers. Buyers see a green ✔ on your store and order links.</div></div>
+    </div>
+    <div style="font-size:14px;opacity:.7;margin-top:14px;text-align:center;">Yearly: ₱9,900 for Pro, ₱29,900 for Business (2 months free). Nifti never holds your money. You pay suppliers directly, like you do today.</div>
   </div>
 </section>
 
@@ -6436,7 +6458,7 @@ async function loadRealDiscover(mode){
     const prof = r.profile || {};
     return {id: r.id, n: r.name, cat: prof.category || 'Other', badge: prof.category || 'Business',
       desc: [prof.location, prof.description].filter(Boolean).join(' · ') || 'On Nifti',
-      catalogPublic: (r.catalog || []).length > 0, catalog: r.catalog || [], connected: r.connected, requestStatus: r.request_status || null};
+      catalogPublic: (r.catalog || []).length > 0, catalog: r.catalog || [], connected: r.connected, requestStatus: r.request_status || null, verified: !!r.verified, featured: !!r.featured};
   });
 }
 function renderDiscAction(p, idx, mode){
@@ -7206,6 +7228,8 @@ const PRO_PLANS = {
     features: ['Online store insights: visitors, orders, top products', 'Promo prices with an end date on your store', 'One-tap statements of account', 'Credit limits per buyer: hold orders when they owe too much or pay late', 'BIR 2307 tracker: see every certificate buyers owe you', 'Who pays late, and by how much', 'Automatic payment reminders', 'Up to 15 teammates']},
   buyer_pro: {name: 'Buyer Pro', forType: 'buyer', tagline: 'Pay less and stop leaks.',
     features: ["Owner's watchdog: alerts when staff overpay or skip approval", 'Market price check vs other Nifti buyers', 'Price-increase alerts', 'BIR 2307 tracker: never miss a certificate you owe', 'Full history and exports', 'Up to 15 teammates']},
+  business: {name: 'Business', forType: 'any', tagline: 'For distributors and multi-branch businesses. Everything in Supplier Pro and Buyer Pro, plus:',
+    features: ['Up to 50 teammates', 'Verified badge (green ✔) included', 'Featured at the top of Discover', 'Priority support: we reply first', 'Free done-for-you setup on yearly']},
 };
 const FREE_PLAN_FEATURES = ['Unlimited suppliers and buyers', 'Chat, orders and order links, no limits', 'Payment tracking confirmed by your supplier', 'Your own online store link + ready-to-post content', 'Delivery links and proof of delivery', 'Up to 3 teammates'];
 async function loadMyPlan(){
@@ -7241,51 +7265,6 @@ function lockedPanelHtml(key, pitch){
 
 // ---- Settings → Your plan ----
 let upgradeCycle = 'monthly';
-async function renderBillingSettings(){
-  const el = document.getElementById('billingPlanContent');
-  if(!el) return;
-  if(myBusiness && !myPlanInfo) await loadMyPlan();
-  const planKey = proPlanFor();
-  const pro = PRO_PLANS[planKey];
-  const info = myPlanInfo || {plan: 'free', pilot: true, seats_used: 0, seat_limit: 3};
-  const onPro = info.plan === 'supplier_pro' || info.plan === 'buyer_pro';
-  const paidUntil = info.paid_until ? new Date(info.paid_until + 'T00:00:00').toLocaleDateString('en-PH', {month:'short', day:'numeric', year:'numeric'}) : null;
-  let instructions = '';
-  if(myBusiness){ try{ const { data } = await sb.rpc('billing_instructions'); instructions = data || ''; }catch(e){} }
-  const head = info.pilot
-    ? `<div class="pilot-banner"><div style="font-weight:800;font-size:17px;">🎉 Pilot: every Pro feature is free right now</div>
-        <div style="font-size:14.5px;margin-top:4px;">When the pilot ends, chat, orders and your partners stay free forever. Pro features move to ${pro.name}. Pay now to lock the founding price of ₱990/month for as long as you stay.</div></div>`
-    : onPro
-      ? `<div class="pilot-banner"><div style="font-weight:800;font-size:17px;">✓ You're on ${PRO_PLANS[info.plan].name}</div><div style="font-size:14.5px;margin-top:4px;">Paid until ${paidUntil || '—'}. Renew anytime below; extra time is added on.</div></div>`
-      : `<div style="font-size:15px;margin-bottom:10px;">You're on <strong>Free</strong>: chat, orders and unlimited partners, forever.</div>`;
-  const pending = info.pending_request;
-  const upgradeBox = !myBusiness ? `<div style="font-size:14px;opacity:.7;margin-top:10px;">Sign in to upgrade.</div>`
-    : pending ? `<div class="notif-phone" style="margin-top:12px;">⏳ Payment sent for ${PRO_PLANS[pending.plan].name} (${pending.cycle}). We'll confirm it within a day and you'll get a notification.</div>`
-    : !isPrivilegedUser() ? `<div style="font-size:14px;opacity:.7;margin-top:10px;">Ask your Owner or General Manager to upgrade.</div>`
-    : `<div class="upgrade-box">
-        <div class="role-toggle" style="margin-bottom:10px;">
-          <button class="${upgradeCycle==='monthly'?'active':''}" onclick="upgradeCycle='monthly'; renderBillingSettings()">Monthly · ₱990</button>
-          <button class="${upgradeCycle==='yearly'?'active':''}" onclick="upgradeCycle='yearly'; renderBillingSettings()">Yearly · ₱9,900 (2 months free)</button>
-        </div>
-        ${instructions ? `<div style="font-size:14.5px;white-space:pre-line;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:10px 12px;margin-bottom:10px;"><strong>How to pay</strong>\n${escapeHtml(instructions)}</div>` : `<div style="font-size:14px;opacity:.75;margin-bottom:8px;">Payment details will appear here soon. Message us from Help in the meantime.</div>`}
-        <div class="row-2">
-          <div class="field"><label>Paid with</label><select id="upMethod"><option>GCash</option><option>Maya</option><option>Bank transfer</option></select></div>
-          <div class="field"><label>Reference number</label><input id="upRef" maxlength="80" placeholder="From your GCash/bank receipt"></div>
-        </div>
-        <button class="btn btn-primary" onclick="submitUpgradeRequest('${planKey}')">I've paid ₱${upgradeCycle==='yearly' ? '9,900' : '990'} → activate ${pro.name}</button>
-        <div id="upResult" style="margin-top:8px;"></div>
-      </div>`;
-  el.innerHTML = `${head}
-    <div class="plan-compare">
-      <div class="plan-col"><div class="plan-col-name">Free</div><div class="plan-col-price">₱0 <span>forever</span></div>
-        <ul>${FREE_PLAN_FEATURES.map(f => `<li>✓ ${f}</li>`).join('')}</ul></div>
-      <div class="plan-col featured"><div class="plan-col-name">${pro.name}</div><div class="plan-col-price">₱990 <span>/month</span></div>
-        <div style="font-size:13.5px;opacity:.8;margin-bottom:6px;">${pro.tagline} Everything in Free, plus:</div>
-        <ul>${pro.features.map(f => `<li>✓ ${f}</li>`).join('')}</ul></div>
-    </div>
-    ${myBusiness ? `<div style="font-size:14px;opacity:.75;margin-top:8px;">Teammates: ${info.seats_used || 0} of ${info.pilot ? 'unlimited during pilot' : info.seat_limit}</div>` : ''}
-    ${upgradeBox}`;
-}
 async function submitUpgradeRequest(plan){
   const ref = document.getElementById('upRef').value.trim();
   const method = document.getElementById('upMethod').value;
@@ -7310,11 +7289,12 @@ async function renderOwnerBillingCard(){
   el.innerHTML = `
     <div style="font-weight:800;font-size:15px;margin-bottom:4px;">Payments to confirm ${pending.length ? `<span style="color:var(--green);">(${pending.length})</span>` : ''}</div>
     ${pending.length ? pending.map(r => `<div style="padding:10px 0;border-bottom:1px solid var(--border);">
-        <div style="font-weight:700;">${escapeHtml(r.business_name)} → ${r.plan === 'supplier_pro' ? 'Supplier Pro' : 'Buyer Pro'} (${r.cycle})</div>
+        <div style="font-weight:700;">${escapeHtml(r.business_name)} → ${planLabel(r.plan)} (${r.cycle})</div>
         <div style="font-size:14px;opacity:.8;">${fmtPHP(r.amount)} by ${escapeHtml(r.method || '?')} · ref <strong>${escapeHtml(r.reference || '')}</strong> · ${escapeHtml(r.created_by_name || '')} · ${new Date(r.created_at).toLocaleString('en-PH',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'})}</div>
         <div style="display:flex;gap:8px;margin-top:6px;"><button class="btn btn-primary" style="padding:6px 12px;font-size:14px;" onclick="decideUpgrade('${r.id}', true)">Money received, activate</button>
         <button class="btn btn-outline" style="padding:6px 12px;font-size:14px;" onclick="decideUpgrade('${r.id}', false)">Not received</button></div></div>`).join('')
       : '<div style="font-size:14px;opacity:.7;">None right now. You get an email when someone pays.</div>'}
+    <div id="ownerServicesContent"></div>
     <div style="font-weight:800;font-size:15px;margin:16px 0 4px;">How customers pay you</div>
     <textarea id="obInstr" rows="3" style="width:100%;box-sizing:border-box;padding:10px;border:1px solid var(--border);border-radius:8px;font-size:15px;" placeholder="GCash 0917 123 4567 (Juan D.)&#10;BPI 1234-5678-90 (Nifti / Juan Dela Cruz)">${escapeHtml(instr || '')}</textarea>
     <button class="btn btn-outline" style="padding:7px 14px;margin-top:6px;" onclick="saveBillingInstructions()">Save</button>
@@ -7323,6 +7303,7 @@ async function renderOwnerBillingCard(){
     <div id="obFindResult"></div>
     <div style="font-weight:800;font-size:15px;margin:16px 0 4px;">Pilot</div>
     <div class="toggle-row"><div><div class="toggle-txt">Everything free for everyone</div><div class="toggle-sub">Turn off when the pilot ends. Paid customers keep Pro; everyone else moves to Free (chat and orders stay free).</div></div><div class="switch ${pilot ? 'on' : ''}" onclick="togglePilot(${pilot ? 'false' : 'true'})"><div class="knob"></div></div></div>`;
+  renderOwnerServicesSection();
 }
 async function renderOwnerBackupCard(){
   const card = document.getElementById('ownerBackupCard');
@@ -7367,11 +7348,16 @@ async function findBusinessesForPlan(){
   const out = document.getElementById('obFindResult');
   if(error){ out.innerHTML = escapeHtml(error.message); return; }
   out.innerHTML = (data || []).map(b => `<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--border);flex-wrap:wrap;">
-      <div><div style="font-weight:700;">${escapeHtml(b.name)}</div><div style="font-size:13px;opacity:.7;">${b.type} · ${b.plan}${b.paid_until ? ' until ' + b.paid_until : ''} · ${b.members} people</div></div>
-      <select onchange="adminSetPlan('${b.id}', this.value)"><option value="">Change plan…</option><option value="free">Free</option><option value="supplier_pro">Supplier Pro (1 month)</option><option value="buyer_pro">Buyer Pro (1 month)</option></select></div>`).join('') || '<div style="font-size:14px;opacity:.7;">No match.</div>';
+      <div><div style="font-weight:700;">${escapeHtml(b.name)}</div><div style="font-size:13px;opacity:.7;">${b.type} · ${planLabel(b.plan)}${b.paid_until ? ' until ' + b.paid_until : ''} · ${b.members} people${b.verified ? ' · ✔ verified' : ''}</div></div>
+      <select onchange="adminSetPlan('${b.id}', this.value)"><option value="">Change…</option><option value="free">Free</option><option value="supplier_pro">Supplier Pro (1 month)</option><option value="buyer_pro">Buyer Pro (1 month)</option><option value="business">Business (1 month)</option><option value="verify_on">✔ Give Verified badge (1 year)</option><option value="verify_off">Remove Verified badge</option></select></div>`).join('') || '<div style="font-size:14px;opacity:.7;">No match.</div>';
 }
 async function adminSetPlan(id, plan){
   if(!plan) return;
+  if(plan === 'verify_on' || plan === 'verify_off'){
+    const { error } = await sb.rpc('admin_set_verified', {p_business: id, p_on: plan === 'verify_on'});
+    showToast(error ? error.message : 'Badge updated.', error ? 'error' : 'success');
+    return findBusinessesForPlan();
+  }
   const until = plan === 'free' ? null : new Date(Date.now() + 31 * 86400000).toISOString().slice(0, 10);
   const { error } = await sb.rpc('admin_set_plan', {p_business: id, p_plan: plan, p_paid_until: until, p_note: 'Set by hand'});
   showToast(error ? error.message : 'Plan updated.', error ? 'error' : 'success');
@@ -8187,7 +8173,7 @@ function renderStorePage(){
     <div id="storeTabBody"></div>`;
   const body = document.getElementById('storeTabBody');
   if(storeTab === 'kit') storeTab = 'posts';
-  if(storeTab === 'posts'){ body.innerHTML = '<div id="postComposer"></div><div id="shareMore"></div>'; renderPostComposer(document.getElementById('postComposer')); return renderStoreKit(document.getElementById('shareMore'), slug, st, live); }
+  if(storeTab === 'posts'){ body.innerHTML = '<div id="postComposer"></div><div id="postReach"></div><div id="shareMore"></div>'; renderPostComposer(document.getElementById('postComposer')); regularsCache = null; regularsShowAll = false; renderPostReach(document.getElementById('postReach')); return renderStoreKit(document.getElementById('shareMore'), slug, st, live); }
   if(storeTab === 'orders' && !isSup) return renderShopOrders(body);
   if(storeTab === 'stats') return renderStoreStats(body);
   body.innerHTML = `${!isSup ? '<div id="shopProducts"></div>' : ''}<div class="panel-card">
@@ -8700,6 +8686,271 @@ async function setShopOrderStatus(id, status){
   if(error){ showToast("Couldn't update: " + error.message, 'error'); return; }
   showToast('Updated. Your customer sees it on their tracking link.', 'success');
   renderShopOrders(document.getElementById('storeTabBody'));
+}
+
+
+/* ============ BUSINESS PLAN + PAID EXTRAS ============
+   Business (₱2,990/month): for big distributors and multi-branch buyers. Everything in Supplier Pro
+   and Buyer Pro, 50 teammates, Verified badge included, featured in Discover, priority support, and
+   free done-for-you setup on yearly. Two extras anyone can buy: done-for-you setup (one-time) and the
+   Verified badge (yearly, after Nifti checks their papers). Prices live on the server (my_services). */
+let upgradePlanChoice = null;
+let myServicesInfo = null;
+function planLabel(p){ return p === 'business' ? 'Business' : (PRO_PLANS[p] ? PRO_PLANS[p].name : 'Free'); }
+function planPriceText(plan, cycle){ const b = plan === 'business'; return cycle === 'yearly' ? (b ? '₱29,900' : '₱9,900') : (b ? '₱2,990' : '₱990'); }
+async function loadMyServices(){
+  if(!myBusiness){ myServicesInfo = {prices: {setup: 3500, verify: 1490}, due: {setup: 3500, verify: 1490}, verified: false, requests: []}; return myServicesInfo; }
+  const { data } = await sb.rpc('my_services');
+  myServicesInfo = data || {prices: {setup: 3500, verify: 1490}, due: {setup: 3500, verify: 1490}, verified: false, requests: []};
+  return myServicesInfo;
+}
+async function renderBillingSettings(){
+  const el = document.getElementById('billingPlanContent');
+  if(!el) return;
+  if(myBusiness && !myPlanInfo) await loadMyPlan();
+  const roleKey = proPlanFor();
+  if(!upgradePlanChoice) upgradePlanChoice = roleKey;
+  if(upgradePlanChoice !== 'business') upgradePlanChoice = roleKey;
+  const info = myPlanInfo || {plan: 'free', pilot: true, seats_used: 0, seat_limit: 3};
+  const onPaid = ['supplier_pro', 'buyer_pro', 'business'].includes(info.plan);
+  const paidUntil = info.paid_until ? new Date(info.paid_until + 'T00:00:00').toLocaleDateString('en-PH', {month:'short', day:'numeric', year:'numeric'}) : null;
+  let instructions = '';
+  if(myBusiness){ try{ const { data } = await sb.rpc('billing_instructions'); instructions = data || ''; }catch(e){} }
+  window._billingInstructions = instructions;
+  const pro = PRO_PLANS[roleKey];
+  const biz = PRO_PLANS.business;
+  const head = info.pilot
+    ? `<div class="pilot-banner"><div style="font-weight:800;font-size:17px;">🎉 Pilot: every Pro feature is free right now</div>
+        <div style="font-size:14.5px;margin-top:4px;">When the pilot ends, chat, orders and your partners stay free forever. Pay now to lock the founding price for as long as you stay.</div></div>`
+    : onPaid
+      ? `<div class="pilot-banner"><div style="font-weight:800;font-size:17px;">✓ You're on ${planLabel(info.plan)}</div><div style="font-size:14.5px;margin-top:4px;">Paid until ${paidUntil || '—'}. Renew anytime below; extra time is added on.</div></div>`
+      : `<div style="font-size:15px;margin-bottom:10px;">You're on <strong>Free</strong>: chat, orders and unlimited partners, forever.</div>`;
+  const pending = info.pending_request;
+  const pick = upgradePlanChoice;
+  const upgradeBox = !myBusiness ? `<div style="font-size:14px;opacity:.7;margin-top:10px;">Sign in to upgrade.</div>`
+    : pending ? `<div class="notif-phone" style="margin-top:12px;">⏳ Payment sent for ${planLabel(pending.plan)} (${pending.cycle}). We'll confirm it within a day and you'll get a notification.</div>`
+    : !isPrivilegedUser() ? `<div style="font-size:14px;opacity:.7;margin-top:10px;">Ask your Owner or General Manager to upgrade.</div>`
+    : `<div class="upgrade-box">
+        <div style="font-weight:800;font-size:15px;margin-bottom:6px;">Upgrade</div>
+        <div class="role-toggle store-tabs" style="margin-bottom:8px;">
+          <button class="${pick !== 'business' ? 'active' : ''}" onclick="upgradePlanChoice='${roleKey}'; renderBillingSettings()">${pro.name}</button>
+          <button class="${pick === 'business' ? 'active' : ''}" onclick="upgradePlanChoice='business'; renderBillingSettings()">Business</button>
+        </div>
+        <div class="role-toggle store-tabs" style="margin-bottom:10px;">
+          <button class="${upgradeCycle==='monthly'?'active':''}" onclick="upgradeCycle='monthly'; renderBillingSettings()">Monthly · ${planPriceText(pick, 'monthly')}</button>
+          <button class="${upgradeCycle==='yearly'?'active':''}" onclick="upgradeCycle='yearly'; renderBillingSettings()">Yearly · ${planPriceText(pick, 'yearly')}</button>
+        </div>
+        <div style="font-size:13.5px;opacity:.8;margin-bottom:8px;">Yearly = 2 months free.${pick === 'business' ? ' Business yearly includes done-for-you setup.' : ''}</div>
+        ${payHowHtml(instructions)}
+        <div class="row-2">
+          <div class="field"><label>Paid with</label><select id="upMethod"><option>GCash</option><option>Maya</option><option>Bank transfer</option></select></div>
+          <div class="field"><label>Reference number</label><input id="upRef" maxlength="80" placeholder="From your GCash/bank receipt"></div>
+        </div>
+        <button class="btn btn-primary" onclick="submitUpgradeRequest('${pick}')">I've paid ${planPriceText(pick, upgradeCycle)} → activate ${planLabel(pick)}</button>
+        <div id="upResult" style="margin-top:8px;"></div>
+      </div>`;
+  el.innerHTML = `${head}
+    <div class="plan-compare">
+      <div class="plan-col"><div class="plan-col-name">Free</div><div class="plan-col-price">₱0 <span>forever</span></div>
+        <ul>${FREE_PLAN_FEATURES.map(f => `<li>✓ ${f}</li>`).join('')}</ul></div>
+      <div class="plan-col ${info.plan !== 'business' ? 'featured' : ''}"><div class="plan-col-name">${pro.name}</div><div class="plan-col-price">₱990 <span>/month</span></div>
+        <div style="font-size:13.5px;opacity:.8;margin-bottom:6px;">${pro.tagline} Everything in Free, plus:</div>
+        <ul>${pro.features.map(f => `<li>✓ ${f}</li>`).join('')}</ul></div>
+      <div class="plan-col ${info.plan === 'business' ? 'featured' : ''}"><div class="plan-col-name">Business</div><div class="plan-col-price">₱2,990 <span>/month</span></div>
+        <div style="font-size:13.5px;opacity:.8;margin-bottom:6px;">${biz.tagline}</div>
+        <ul>${biz.features.map(f => `<li>✓ ${f}</li>`).join('')}</ul></div>
+    </div>
+    ${myBusiness ? `<div style="font-size:14px;opacity:.75;margin-top:8px;">Teammates: ${info.seats_used || 0} of ${info.pilot ? 'unlimited during pilot' : info.seat_limit}</div>` : ''}
+    ${upgradeBox}
+    <div id="servicesContent" style="margin-top:18px;"></div>`;
+  renderServicesSection();
+}
+function payHowHtml(instructions){
+  return instructions ? `<div style="font-size:14.5px;white-space:pre-line;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:10px 12px;margin-bottom:10px;"><strong>How to pay</strong>\n${escapeHtml(instructions)}</div>`
+    : `<div style="font-size:14px;opacity:.75;margin-bottom:8px;">Payment details will appear here soon. Message us from Help in the meantime.</div>`;
+}
+let servicesOpen = null;
+const SERVICE_STATUS = {pending: '⏳ Sent, waiting for us to confirm', in_progress: '🛠 We\'re working on it', done: '✅ Done', rejected: '✕ Not completed'};
+async function renderServicesSection(){
+  const el = document.getElementById('servicesContent');
+  if(!el) return;
+  const s = await loadMyServices();
+  const open = kind => (s.requests || []).find(r => r.kind === kind && (r.status === 'pending' || r.status === 'in_progress'));
+  const last = kind => (s.requests || []).find(r => r.kind === kind);
+  const price = (kind, per) => s.due[kind] === 0 ? `<span style="color:var(--green);font-weight:800;">Included in your plan</span>` : `<strong>${fmtPHP(s.due[kind])}</strong>${per}`;
+  const card = (kind, icon, title, pitch, per, extra) => {
+    const o = open(kind), l = last(kind);
+    return `<div class="panel-card" style="margin-bottom:10px;">
+      <div style="display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap;">
+        <div style="flex:1;min-width:200px;"><div style="font-weight:800;font-size:16px;">${icon} ${title}</div>
+          <div style="font-size:14px;opacity:.85;margin-top:2px;">${pitch}</div>
+          <div style="font-size:14.5px;margin-top:6px;">${price(kind, per)}${extra || ''}</div></div>
+        ${o ? '' : myBusiness && !isPrivilegedUser() ? '' : `<button class="btn ${servicesOpen === kind ? 'btn-outline' : 'btn-primary'}" style="padding:8px 14px;" onclick="servicesOpen = servicesOpen === '${kind}' ? null : '${kind}'; renderServicesSection()">${servicesOpen === kind ? 'Close' : kind === 'setup' ? 'Get setup help' : s.verified ? 'Renew badge' : 'Get verified'}</button>`}
+      </div>
+      ${o ? `<div class="notif-phone" style="margin-top:8px;">${SERVICE_STATUS[o.status]}${o.admin_note ? ' · ' + escapeHtml(o.admin_note) : ''}</div>`
+        : l && l.status === 'rejected' && l.admin_note ? `<div style="font-size:13.5px;opacity:.8;margin-top:6px;">Last request: ${escapeHtml(l.admin_note)}</div>` : ''}
+      ${servicesOpen === kind && !o ? `<div id="svcForm_${kind}" style="margin-top:10px;">${serviceFormHtml(kind, s.due[kind])}</div>` : ''}
+    </div>`;
+  };
+  el.innerHTML = `<div style="font-weight:800;font-size:17px;margin-bottom:8px;">Extras</div>
+    ${card('setup', '🛠', 'Done-for-you setup', 'Send us your price list, customer list and suppliers in any form (Excel, photo, Viber message). We load everything into Nifti within 2 working days and walk your team through it.', ' one-time', ' <span style="font-size:13px;opacity:.75;">· free with Business yearly</span>')}
+    ${card('verify', '✔', s.verified ? 'Verified business ✔' : 'Verified badge',
+      s.verified ? `Your badge shows on your store, profile and order links${s.verified_until ? ' until ' + new Date(s.verified_until + 'T00:00:00').toLocaleDateString('en-PH', {month:'short', day:'numeric', year:'numeric'}) : ''}.`
+        : 'A green ✔ on your store, profile and order links. Buyers trust verified sellers and order faster. We check your DTI/SEC papers and call your number.', ' / year', ' <span style="font-size:13px;opacity:.75;">· included in Business</span>')}`;
+}
+function serviceFormHtml(kind, due){
+  const inp = (id, label, ph, val) => `<div class="field"><label>${label}</label><input id="${id}" maxlength="200" placeholder="${ph}" value="${escapeHtml(val || '')}"></div>`;
+  const phone = (myBusiness && myBusiness.shared_contact && myBusiness.shared_contact.phone) || '';
+  const body = kind === 'setup'
+    ? `<div class="field"><label>What should we load?</label>
+        <div style="display:flex;flex-wrap:wrap;gap:6px 14px;font-size:14.5px;">${['Products & prices', 'Customers / buyers', 'Suppliers', 'Unpaid balances', 'Teammates'].map((x, i) => `<label style="display:inline-flex;gap:6px;align-items:center;font-weight:500;margin:0;"><input type="checkbox" data-svc-load value="${x}" ${i < 2 ? 'checked' : ''} style="width:18px;height:18px;margin:0;flex-shrink:0;"> ${x}</label>`).join('')}</div></div>
+      <div class="field"><label>Paste your list here, or tell us how you'll send it</label><textarea id="svcNotes" rows="4" maxlength="3000" style="font-family:inherit;width:100%;box-sizing:border-box;padding:9px;border:1px solid var(--border);border-radius:8px;font-size:15px;" placeholder="e.g. I'll send our Excel price list on Viber. About 120 products, 40 customers."></textarea></div>
+      <div class="row-2">${inp('svcPhone', 'Best number to reach you', '0917 123 4567', phone)}${inp('svcTime', 'Best time to call', 'Weekdays after 2pm')}</div>`
+    : `${inp('svcRegName', 'Registered business name', 'As written on your DTI/SEC certificate', myBusiness ? myBusiness.name : '')}
+      <div class="row-2">${inp('svcRegNo', 'DTI or SEC registration no.', 'e.g. 1234567')}${inp('svcTin', 'TIN (optional)', '000-000-000-000')}</div>
+      ${inp('svcAddress', 'Business address', 'Street, barangay, city')}
+      <div class="row-2">${inp('svcPhone', 'Number we can call to confirm', '0917 123 4567', phone)}${inp('svcPermit', "Mayor's permit no. (optional)", '')}</div>
+      <div style="font-size:13.5px;opacity:.75;margin-bottom:8px;">Have your DTI/SEC certificate ready. We may ask for a photo of it on Viber or email.</div>`;
+  const pay = due > 0 ? `${payHowHtml(window._billingInstructions || '')}
+      <div class="row-2"><div class="field"><label>Paid with</label><select id="svcMethod"><option>GCash</option><option>Maya</option><option>Bank transfer</option></select></div>
+      <div class="field"><label>Reference number</label><input id="svcRef" maxlength="80" placeholder="From your receipt"></div></div>` : '';
+  return `${body}${pay}<button class="btn btn-primary" onclick="submitServiceRequest('${kind}')">${due > 0 ? `I've paid ${fmtPHP(due)} → send request` : 'Send request'}</button><div id="svcResult" style="margin-top:8px;"></div>`;
+}
+async function submitServiceRequest(kind){
+  const v = id => ((document.getElementById(id) || {}).value || '').trim();
+  const details = kind === 'setup'
+    ? {load: [...document.querySelectorAll('[data-svc-load]:checked')].map(x => x.value).join(', '), notes: v('svcNotes'), phone: v('svcPhone'), best_time: v('svcTime')}
+    : {registered_name: v('svcRegName'), reg_number: v('svcRegNo'), tin: v('svcTin'), address: v('svcAddress'), phone: v('svcPhone'), mayors_permit: v('svcPermit')};
+  if(kind === 'verify'){
+    if(details.registered_name.length < 3){ markFieldInvalid('svcRegName', 'Enter your registered name.'); return; }
+    if(details.reg_number.length < 4){ markFieldInvalid('svcRegNo', 'Enter your DTI or SEC number.'); return; }
+    if(details.address.length < 6){ markFieldInvalid('svcAddress', 'Enter your business address.'); return; }
+  }
+  if(details.phone.replace(/\D/g, '').length < 10){ markFieldInvalid('svcPhone', 'Enter a number we can call.'); return; }
+  const due = myServicesInfo ? myServicesInfo.due[kind] : 1;
+  if(due > 0 && v('svcRef').length < 4){ markFieldInvalid('svcRef', 'Enter the reference number from your receipt.'); return; }
+  if(!myBusiness){ showToast('Sign in to send this. (Demo)', 'success'); return; }
+  const { error } = await sb.rpc('request_service', {p_kind: kind, p_details: details, p_method: v('svcMethod') || null, p_reference: v('svcRef') || null});
+  if(error){ document.getElementById('svcResult').innerHTML = `<div class="notif-phone warn">${escapeHtml(error.message)}</div>`; return; }
+  servicesOpen = null;
+  await renderServicesSection();
+  showToast(kind === 'setup' ? "Got it! We'll message you within a working day." : "Got it! We'll check your papers and call you within 1–2 working days.", 'success');
+}
+
+// ---- Owner-only: setup & verification requests, extra prices ----
+async function renderOwnerServicesSection(){
+  const el = document.getElementById('ownerServicesContent');
+  if(!el) return;
+  const [{ data: reqs }, { data: prices }] = await Promise.all([sb.rpc('admin_service_requests'), sb.rpc('my_services')]);
+  const open = (reqs || []).filter(r => r.status === 'pending' || r.status === 'in_progress');
+  const pr = (prices && prices.prices) || {setup: 3500, verify: 1490};
+  const labels = {registered_name: 'Registered name', reg_number: 'DTI/SEC no.', tin: 'TIN', address: 'Address', phone: 'Phone', mayors_permit: "Mayor's permit", load: 'Load', notes: 'Notes', best_time: 'Best time'};
+  el.innerHTML = `<div style="font-weight:800;font-size:15px;margin:16px 0 4px;">Setup & verification requests ${open.length ? `<span style="color:var(--green);">(${open.length})</span>` : ''}</div>
+    ${open.length ? open.map(r => `<div style="padding:10px 0;border-bottom:1px solid var(--border);">
+        <div style="font-weight:700;">${r.plan === 'business' ? '⭐ ' : ''}${escapeHtml(r.business_name)} · ${r.kind === 'setup' ? '🛠 Setup' : '✔ Verification'} <span style="font-weight:500;opacity:.7;">(${r.status === 'pending' ? 'new' : 'in progress'})</span></div>
+        <div style="font-size:14px;opacity:.85;">${r.amount > 0 ? `${fmtPHP(r.amount)} by ${escapeHtml(r.method || '?')} · ref <strong>${escapeHtml(r.reference || '')}</strong>` : 'Included in their plan'} · ${escapeHtml(r.created_by_name || '')} · ${new Date(r.created_at).toLocaleString('en-PH',{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'})}</div>
+        <div style="font-size:14px;margin-top:4px;white-space:pre-line;">${Object.entries(r.details || {}).filter(([k, v]) => v).map(([k, v]) => `<strong>${escapeHtml(labels[k] || k)}:</strong> ${escapeHtml(v)}`).join('\n')}</div>
+        <div style="display:flex;gap:8px;margin-top:6px;flex-wrap:wrap;">
+          ${r.status === 'pending' ? `<button class="btn btn-outline" style="padding:6px 12px;font-size:14px;" onclick="adminService('${r.id}', 'start')">${r.amount > 0 ? 'Money received, start' : 'Start'}</button>` : ''}
+          <button class="btn btn-primary" style="padding:6px 12px;font-size:14px;" onclick="adminService('${r.id}', 'done')">${r.kind === 'verify' ? 'Papers OK → verify' : 'Setup done'}</button>
+          <button class="btn btn-outline" style="padding:6px 12px;font-size:14px;" onclick="adminService('${r.id}', 'reject')">Can't complete</button></div></div>`).join('')
+      : '<div style="font-size:14px;opacity:.7;">None right now. You get an email when one comes in.</div>'}
+    <div style="font-weight:800;font-size:15px;margin:16px 0 4px;">Extra prices</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end;">
+      <div class="field" style="margin:0;"><label>Setup (one-time) ₱</label><input id="obSetupPrice" type="number" min="0" value="${pr.setup}" style="width:120px;"></div>
+      <div class="field" style="margin:0;"><label>Verified (yearly) ₱</label><input id="obVerifyPrice" type="number" min="0" value="${pr.verify}" style="width:120px;"></div>
+      <button class="btn btn-outline" style="padding:7px 14px;" onclick="saveServicePrices()">Save</button></div>
+    <div style="font-size:13px;opacity:.7;margin-top:4px;">Set 0 to give it free (e.g. to founding customers during the pilot).</div>`;
+}
+async function adminService(id, action){
+  const note = action === 'reject' ? prompt('Tell them why:', "We couldn't confirm your papers. Please message us from Help.")
+    : action === 'done' ? (prompt('Message to them (optional):', '') || null) : null;
+  if(action === 'reject' && note === null) return;
+  const { error } = await sb.rpc('admin_update_service', {p_id: id, p_action: action, p_note: note});
+  showToast(error ? error.message : 'Updated. They were notified.', error ? 'error' : 'success');
+  renderOwnerServicesSection();
+}
+async function saveServicePrices(){
+  const { error } = await sb.rpc('admin_set_service_prices', {p_setup: Number(document.getElementById('obSetupPrice').value), p_verify: Number(document.getElementById('obVerifyPrice').value)});
+  showToast(error ? error.message : 'Saved.', error ? 'error' : 'success');
+}
+
+/* ============ REACH: send a post to buyers on Nifti, and to regulars one by one ============
+   Suppliers: one tap drops the post into every Nifti buyer's chat (they get a phone notification).
+   Once a day, so buyers don't mute them. Everyone: customers who aren't on Nifti (store orders,
+   your Sales customers) with one-tap Viber / SMS / WhatsApp, pre-filled. Free, uses their own phone. */
+let regularsCache = null, regularsShowAll = false, broadcastInfo = null;
+function phPhone(p){
+  let d = String(p || '').replace(/\D/g, '');
+  if(d.length === 11 && d[0] === '0') d = '63' + d.slice(1);
+  else if(d.length === 10 && d[0] === '9') d = '63' + d;
+  return d.length >= 11 ? d : '';
+}
+async function loadRegulars(){
+  const list = [];
+  const seen = new Set();
+  const add = (name, phone, note) => { const d = phPhone(phone); if(!d || seen.has(d)) return; seen.add(d); list.push({name, phone: d, note}); };
+  if(myBusiness){
+    const { data } = await sb.rpc('my_regulars');
+    (data || []).forEach(r => add(r.name, r.phone, r.orders ? `${r.orders} order${r.orders > 1 ? 's' : ''}` : 'Store customer'));
+  } else if(currentAppRole === 'supplier'){
+    [{name: 'Aling Nena Store', phone: '0917 222 1010', note: '3 orders'}, {name: 'Boy Hardware (Cainta)', phone: '0918 555 8080', note: '1 order'}].forEach(r => add(r.name, r.phone, r.note));
+  }
+  if(currentAppRole === 'buyer') (downstreamCustomers || []).forEach(c => add(c.name, c.phone, c.terms || 'Customer'));
+  if(currentAppRole === 'supplier') (buyersData || []).filter(b => b.isOutside && b.outsideContact && b.outsideContact.phone).forEach(b => add(b.name, b.outsideContact.phone, 'Not on Nifti yet'));
+  regularsCache = list;
+  return list;
+}
+async function renderPostReach(el){
+  if(!el) return;
+  const isSup = currentAppRole === 'supplier';
+  if(isSup && myBusiness && isPrivilegedUser()){ try{ const { data } = await sb.rpc('broadcast_status'); broadcastInfo = data; }catch(e){} }
+  const nBuyers = isSup ? (myBusiness ? (broadcastInfo ? broadcastInfo.buyers : 0) : (buyersData || []).filter(b => !b.isOutside).length) : 0;
+  const nextAt = broadcastInfo && broadcastInfo.next_at ? new Date(broadcastInfo.next_at) : null;
+  const regs = regularsCache || await loadRegulars();
+  const shown = regularsShowAll ? regs : regs.slice(0, 8);
+  el.innerHTML = `${isSup ? `<div class="panel-card" style="margin-top:12px;">
+      <div style="font-weight:800;font-size:16px;">📨 Send this post to all your buyers on Nifti</div>
+      <div style="font-size:14px;opacity:.85;margin:2px 0 8px;">It lands in each buyer's Nifti chat and pings their phone. Free. Once a day, so nobody mutes you.</div>
+      ${nextAt && nextAt > new Date() ? `<div class="notif-phone">✓ Sent today. Next one after ${nextAt.toLocaleString('en-PH', {weekday:'short', hour:'numeric', minute:'2-digit'})}.</div>`
+        : myBusiness && !isPrivilegedUser() ? `<div style="font-size:14px;opacity:.7;">Your Owner or General Manager can send this.</div>`
+        : `<button class="btn btn-primary" onclick="broadcastPost()" ${nBuyers ? '' : 'disabled'}>Send to ${nBuyers} buyer${nBuyers === 1 ? '' : 's'}</button>${nBuyers ? '' : '<div style="font-size:13.5px;opacity:.75;margin-top:6px;">Connect with your buyers first (Buyers → Invite).</div>'}`}
+    </div>` : ''}
+    <div class="panel-card" style="margin-top:12px;">
+      <div style="font-weight:800;font-size:16px;">📱 Send to your regulars, one tap each</div>
+      <div style="font-size:14px;opacity:.85;margin:2px 0 8px;">${isSup ? 'Buyers who order by phone or through your store but aren\'t on Nifti.' : 'Your customers from Sales and from your shop.'} The post opens ready to send from your own phone.</div>
+      ${regs.length ? shown.map((r, i) => `<div class="regular-row"><div style="min-width:0;"><div style="font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${escapeHtml(r.name)}</div><div style="font-size:13px;opacity:.7;">+${r.phone} · ${escapeHtml(r.note || '')}</div></div>
+          <div class="regular-btns"><button class="btn btn-outline" onclick="sendToRegular(${regs.indexOf(r)}, 'viber')">Viber</button><button class="btn btn-outline" onclick="sendToRegular(${regs.indexOf(r)}, 'sms')">SMS</button><button class="btn btn-outline" onclick="sendToRegular(${regs.indexOf(r)}, 'whatsapp')">WA</button></div></div>`).join('')
+        + (regs.length > 8 && !regularsShowAll ? `<span class="row-action" style="display:block;margin-top:8px;" onclick="regularsShowAll = true; renderPostReach(document.getElementById('postReach'))">Show all ${regs.length}</span>` : '')
+        : `<div style="font-size:14px;opacity:.75;">No one yet. ${isSup ? 'Customers who order through your store link show up here with their number.' : `Add your customers in <span class="row-action" onclick="navigate('sales')">Sales</span> and they show up here.`}</div>`}
+    </div>`;
+}
+function sendToRegular(i, ch){
+  const r = (regularsCache || [])[i];
+  const text = (document.getElementById('postText') || {}).value || '';
+  if(!r || !text.trim()) return;
+  trackEvent('content_post_regular', {channel: ch, role: currentAppRole});
+  markStoreShared();
+  if(ch === 'viber'){ copyPlainText(text, 'Post copied. Paste it in the Viber chat.'); setTimeout(() => { window.location.href = 'viber://chat?number=%2B' + r.phone; }, 400); }
+  else if(ch === 'sms') window.location.href = 'sms:+' + r.phone + (isIOSDevice() ? '&' : '?') + 'body=' + encodeURIComponent(text);
+  else window.open('https://wa.me/' + r.phone + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
+}
+async function broadcastPost(){
+  const text = ((document.getElementById('postText') || {}).value || '').trim();
+  if(text.length < 5){ showToast('Write the post first.'); return; }
+  if(!confirm('Send this post to all your buyers on Nifti? They get it as a chat message.')) return;
+  if(!myBusiness){
+    let n = 0; getConversations().forEach(c => { if(sendTextInChat(c.id, text)) n++; });
+    broadcastInfo = {buyers: n, next_at: new Date(Date.now() + 20 * 3600000).toISOString()};
+    showToast(`Sent to ${n} buyers. (Demo)`, 'success');
+  } else {
+    const { data, error } = await sb.rpc('broadcast_to_buyers', {p_text: text});
+    if(error){ showToast(error.message, 'error'); return; }
+    trackEvent('content_post_broadcast', {count: data});
+    showToast(`Sent to ${data} buyer${data === 1 ? '' : 's'}. They'll see it in chat.`, 'success');
+    if(typeof loadMyConversations === 'function') loadMyConversations();
+  }
+  renderPostReach(document.getElementById('postReach'));
 }
 
 function renderSidebarForViewAsRole(){
@@ -18187,7 +18438,7 @@ function renderDiscover(list, mode){
     const catalogToggle = (p.catalogPublic && p.catalog && p.catalog.length) ? `<span class="row-action" style="display:block;margin-top:10px;" onclick="toggleDiscCatalog(${realIdx})">${'View catalog & pricing (' + p.catalog.length + ' items) ▾'}</span><div id="discCatalog_${realIdx}" class="hidden" style="margin-top:8px;"></div>` : '';
     return `
     <div class="disc-card">
-      <div class="disc-top"><div><div class="disc-name">${escapeHtml(p.n)}</div><div class="disc-cat">${escapeHtml(p.cat)}</div></div><span class="disc-badge" style="background:${c.bg};">${escapeHtml(p.badge)}</span></div>
+      <div class="disc-top"><div><div class="disc-name">${escapeHtml(p.n)}${p.verified ? ' <span style="color:var(--green);" title="Verified business">✔</span>' : ''}${p.featured ? ' <span class="disc-featured">⭐ Featured</span>' : ''}</div><div class="disc-cat">${escapeHtml(p.cat)}</div></div><span class="disc-badge" style="background:${c.bg};">${escapeHtml(p.badge)}</span></div>
       <div class="disc-desc">${escapeHtml(p.desc)}</div>
       ${catalogToggle}
       ${renderDiscAction(p, realIdx, mode)}
@@ -23455,6 +23706,7 @@ function renderSupportContactForm(prefill){
       <option value="other">Something else</option>
     </select>
     <textarea id="supportMessage" rows="4" placeholder="What's going on?" style="width:100%;padding:8px;border:1px solid var(--border);border-radius:8px;font-family:var(--font-b);box-sizing:border-box;margin-bottom:8px;">${prefill||''}</textarea>
+    ${myPlanInfo && myPlanInfo.plan === 'business' ? '<div class="notif-phone" style="margin-bottom:8px;">⭐ Business: your message goes to the top of our list.</div>' : ''}
     <button class="btn btn-primary" onclick="submitSupportMessage()">Send →</button>
     <a href="mailto:support@nifti.ph" style="margin-left:10px;font-size:14px;color:var(--ink);opacity:.7;">or email support@nifti.ph directly</a>
     <div id="supportMessageConfirm"></div>
