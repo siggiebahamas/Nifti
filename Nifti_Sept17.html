@@ -1130,6 +1130,30 @@
   .adm-todo{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border);font-weight:700;cursor:pointer;} .adm-todo span{color:var(--green);}
   .adm-msg{padding:10px 0;border-bottom:1px solid var(--border);}
   #page-admin input, #page-admin textarea{font-family:inherit;}
+  body.routes-off [data-page="routes"]{display:none !important;}
+  .rl-head{background:#F2B705;color:#2B2100;border-radius:16px;padding:14px 16px;display:grid;gap:4px;margin-bottom:12px;}
+  .rl-eyebrow{font-size:12px;font-weight:800;letter-spacing:.08em;} .rl-title{font-size:28px;font-weight:800;line-height:1;} .rl-sub{font-size:14.5px;font-weight:700;}
+  .rl-track{background:rgba(0,0,0,.15);} .rl-track i{background:#1B2427;}
+  .rl-finish{background:rgba(255,255,255,.55);border-radius:10px;padding:8px 10px;font-size:14px;margin-top:6px;}
+  .rl-line{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:6px 0;}
+  .rl-line::before{content:"";position:absolute;left:31px;top:var(--fill-top,26px);height:var(--line-h,0);width:6px;border-radius:3px;background:var(--border);}
+  .rl-line::after{content:"";position:absolute;left:31px;top:var(--fill-top,26px);height:var(--fill-h,0);width:6px;border-radius:3px;background:var(--green);transition:height .35s;}
+  .rl-stop{position:relative;z-index:1;}
+  .rl-station{display:grid;grid-template-columns:44px 1fr auto;gap:10px;align-items:center;width:100%;background:none;border:none;padding:10px 14px 10px 12px;text-align:left;cursor:pointer;color:var(--ink);font-family:inherit;}
+  .rl-dot{width:30px;height:30px;margin-left:5px;border-radius:50%;background:var(--surface);border:4px solid var(--border);display:grid;place-items:center;font-size:12.5px;font-weight:800;box-sizing:border-box;}
+  .rl-stop.done .rl-dot{border-color:var(--green);background:var(--green);color:#fff;} .rl-stop.fail .rl-dot{border-color:var(--danger);background:var(--danger);color:#fff;}
+  .rl-stop.here .rl-dot{border-color:#F2B705;width:36px;height:36px;margin-left:2px;font-size:16px;}
+  .rl-info{min-width:0;display:grid;} .rl-name{font-weight:800;font-size:15.5px;line-height:1.2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;} .rl-meta{font-size:12.5px;opacity:.7;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .rl-amt{font-weight:800;font-size:14px;font-variant-numeric:tabular-nums;white-space:nowrap;} .rl-amt.due{background:var(--green-soft);color:var(--green);border-radius:8px;padding:3px 8px;}
+  .rl-stop.done .rl-name, .rl-stop.fail .rl-name{opacity:.7;}
+  .rl-stop.open{background:var(--bg);} .rl-stop.open .rl-station{padding-bottom:4px;}
+  .rl-card{margin:0 12px 12px 56px;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:12px;box-shadow:0 4px 14px rgba(0,0,0,.06);}
+  .rl-stop.here.open .rl-card{border-color:#F2B705;}
+  .rl-hint{font-size:12.5px;opacity:.65;text-align:center;margin-top:8px;}
+  .rt-result.done{color:var(--green);} .rt-result.failed{color:var(--danger);}
+  .rt-undo{width:100%;margin-top:8px;padding:10px !important;font-size:14px !important;}
+  .rt-undobar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(84px + env(safe-area-inset-bottom,0px));z-index:2500;background:#1B2427;color:#fff;border-radius:12px;padding:10px 12px 10px 16px;display:flex;gap:14px;align-items:center;box-shadow:0 8px 24px rgba(0,0,0,.3);font-size:14.5px;max-width:calc(100% - 32px);}
+  .rt-undobar span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;} .rt-undobar button{background:#F2B705;color:#2B2100;border:none;border-radius:8px;padding:8px 14px;font-weight:800;font-family:inherit;cursor:pointer;flex-shrink:0;}
   .suspended-screen{position:fixed;inset:0;z-index:5000;background:var(--bg);display:grid;place-items:center;padding:16px;}
   .suspended-box{max-width:420px;text-align:center;background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:24px;}
   .disc-featured{font-size:12px;font-weight:700;background:var(--green-soft);color:var(--green);border-radius:6px;padding:1px 6px;vertical-align:middle;}
@@ -3291,6 +3315,12 @@
           <h2>🛠 Admin console <span style="font-size:13px;font-weight:700;opacity:.6;">(only you see this)</span></h2>
           <div class="sub">Every business and person on Nifti, plans and payments, bans and deletes, Help messages, notices, email and backups.</div>
           <button class="btn btn-primary" onclick="navigate('admin')">Open admin console →</button>
+        </div>
+
+        <div class="settings-card only-supplier">
+          <h2>🧰 Optional tools</h2>
+          <div class="toggle-row"><div><div class="toggle-txt">Routes for drivers and collectors</div><div class="toggle-sub">Plan delivery and collection runs with a checklist for your drivers. Off if you already have your own way; nothing else changes.</div></div>
+            <div class="switch on" id="routesMenuToggle" onclick="setRoutesHidden(!document.body.classList.contains('routes-off'))"><div class="knob"></div></div></div>
         </div>
 
         <h3 class="settings-section-title">Your business</h3>
@@ -7904,6 +7934,8 @@ async function open2307Worksheet(cpId, quarter){
 // Role-specific menu items (store for suppliers, watchdog for buyers).
 function syncRoleNavVisibility(){
   document.body.setAttribute('data-role', currentAppRole);
+  document.body.classList.toggle('routes-off', routesHidden());
+  const rmt = document.getElementById('routesMenuToggle'); if(rmt) rmt.classList.toggle('on', !routesHidden());
 }
 
 /* ============ OWNER'S WATCHDOG + MARKET PRICE CHECK (Buyer Pro) ============
@@ -9395,44 +9427,6 @@ function routeTotals(r){
 }
 
 // ---------- the driver's checklist ----------
-function renderDriverRun(body, routes){
-  const mine = routes.filter(r => (r.mine || !myBusiness) && r.route_date >= APP_TODAY).sort((a, b) => a.route_date.localeCompare(b.route_date));
-  const r = mine.find(x => x.route_date === APP_TODAY) || mine[0];
-  if(!r){ body.innerHTML = `<div class="panel-card" style="text-align:center;padding:30px 16px;"><div style="font-size:40px;">🚚</div><div style="font-weight:800;font-size:17px;margin-top:6px;">No route for you today</div><div style="opacity:.75;margin-top:4px;">When the office gives you a route, it shows up here and your phone gets a notification.</div></div>`; return; }
-  const t = routeTotals(r);
-  const next = (r.stops || []).find(s => s.status === 'pending');
-  body.innerHTML = `<div class="rt-head">
-      <div class="rt-head-top"><div><div class="rt-title">${r.route_date === APP_TODAY ? "Today's route" : 'Route for ' + chequeDayLabel(r.route_date)}</div>
-        <div class="rt-sub">${escapeHtml([r.driver_name, r.vehicle].filter(Boolean).join(' · ') || 'Your run')}</div></div>
-        <span class="rt-date">${new Date(r.route_date + 'T00:00:00').toLocaleDateString('en-PH', {weekday: 'short', month: 'short', day: 'numeric'})}</span></div>
-      <div class="rt-bars">
-        <div class="rt-bar"><small>Stops</small><strong>${t.done} of ${t.n}</strong><div class="rt-track"><i style="width:${t.n ? t.done / t.n * 100 : 0}%"></i></div></div>
-        <div class="rt-bar"><small>Collected</small><strong>${fmtPHP(t.got)}</strong><div class="rt-track"><i style="width:${t.due ? Math.min(100, t.got / t.due * 100) : 0}%"></i></div></div>
-      </div>
-      ${t.done === t.n && t.n ? `<div class="rt-finish">🏁 Route done. Hand over <b>${fmtPHP(t.cash)}</b> cash${t.cheque ? ` and <b>${fmtPHP(t.cheque)}</b> in cheques` : ''} to the office.</div>` : ''}
-    </div>
-    <div class="rt-list">${(r.stops || []).map((s, i) => driverStopHtml(r, s, i, next && next.id === s.id)).join('')}</div>`;
-}
-function driverStopHtml(r, s, i, isNext){
-  const res = s.result || {};
-  const cls = s.status === 'done' ? 'done' : s.status === 'failed' ? 'fail' : isNext ? 'next' : '';
-  const items = (s.items || []).slice(0, 6);
-  const bounced = s.buyer_business_id ? bouncedCountFor(s.buyer_business_id) : 0;
-  const col = res.collected;
-  return `<div class="rt-stop ${cls}">
-    <div class="rt-no">${s.status === 'done' ? '✓' : s.status === 'failed' ? '!' : i + 1}</div>
-    <div class="rt-stop-body">
-      <div class="rt-name">${escapeHtml(s.buyer_name)}</div>
-      <div class="rt-addr">${s.address ? `<a href="${mapsLink(s.address)}" target="_blank" rel="noopener">📍 ${escapeHtml(s.address)}</a>` : '<span style="opacity:.6;">No address</span>'}${s.phone ? ` · <a href="tel:${escapeHtml(String(s.phone).replace(/[^\d+]/g, ''))}">📞 Call</a>` : ''}</div>
-      <div class="rt-tags">${items.map(it => `<span class="rt-tag">${escapeHtml(String(it.qty || ''))} ${escapeHtml(it.unit || '')} ${escapeHtml(it.product || '')}</span>`).join('')}
-        ${Number(s.amount_due) >= 1 ? `<span class="rt-tag money">Collect ${fmtPHP(s.amount_due)}</span>` : (s.deliver_po_ids || []).length ? '<span class="rt-tag">Nothing to collect</span>' : ''}
-        ${bounced ? `<span class="rt-tag late">⚠ Bounced ${bounced} cheque${bounced > 1 ? 's' : ''}. Ask for cash</span>` : ''}</div>
-      ${s.note ? `<div class="rt-note">📝 ${escapeHtml(s.note)}</div>` : ''}
-      ${s.status === 'pending' ? `<div class="rt-acts"><button class="btn btn-primary" onclick="openRouteSheet('${r.id}','${s.id}','done')">${Number(s.amount_due) >= 1 ? ((s.deliver_po_ids || []).length ? 'Delivered + collect' : 'Collect') : 'Delivered'}</button><button class="btn btn-outline" onclick="openRouteSheet('${r.id}','${s.id}','failed')">Can't</button></div>`
-        : `<div class="rt-result">${s.status === 'done' ? `${res.delivered !== false && (s.deliver_po_ids || []).length ? 'Delivered' : ''}${col ? `${res.delivered !== false && (s.deliver_po_ids || []).length ? ' · ' : ''}Collected ${fmtPHP(col.amount)} ${col.method === 'check' ? 'cheque' : col.method}` : ''}${!col && Number(s.amount_due) >= 1 ? ' · nothing collected' : ''}` : '✕ ' + escapeHtml(res.reason || 'Not done')}
-            ${s.done_at ? ` · ${new Date(s.done_at).toLocaleTimeString('en-PH', {hour: 'numeric', minute: '2-digit'})}` : ''}${s.has_proof ? ` · <span class="row-action" onclick="viewStopProof('${s.id}')">📷 Photo</span>` : ''}</div>`}
-    </div></div>`;
-}
 function openRouteSheet(routeId, stopId, mode){
   const r = (routesCache || []).find(x => x.id === routeId); const s = r && (r.stops || []).find(x => x.id === stopId);
   if(!s) return;
@@ -9498,15 +9492,16 @@ async function saveRouteStop(){
     result = {outcome: 'done', delivered: sh.delivered !== false, received_by: (sh.recv || '').trim(), note: sh.note || '', short_reason: amt < Number(s.amount_due) - 0.5 ? (sh.short || '') : '',
       collected: sh.method === 'none' || !amt ? null : {method: sh.method, amount: amt, bank: sh.bank || '', check_no: sh.chq || '', check_date: sh.chqDate || '', reference: sh.ref || ''}};
   }
-  if(!myBusiness){ demoCompleteStop(r, s, result, sh.photo); routeSheet = null; renderRoutesPage(); showToast(result.outcome === 'failed' ? 'Noted. The office was told.' : 'Saved. The office sees it now.', 'success'); return; }
+  const undoLabel = (result.outcome === 'failed' ? '✕ ' : '✓ ') + s.buyer_name + (result.outcome === 'failed' ? ': not done' : result.collected ? ': ' + fmtPHP(result.collected.amount) + ' collected' : ': done');
+  if(!myBusiness){ demoCompleteStop(r, s, result, sh.photo); routeSheet = null; routeOpenStop = null; renderRoutesPage(); showRouteUndoBar(r.id, s.id, undoLabel); return; }
   const btn = document.querySelector('.rt-save'); if(btn){ btn.disabled = true; btn.textContent = 'Saving…'; }
   const { data, error } = await sb.rpc('complete_route_stop', {p_stop: s.id, p_result: result, p_proof: sh.photo || null});
   if(error){ if(btn){ btn.disabled = false; btn.textContent = 'Done at this stop'; } showToast(error.message, 'error'); return; }
-  routeSheet = null;
+  routeSheet = null; routeOpenStop = null;
   await refreshPOsById([...(s.deliver_po_ids || []), ...(s.collect_po_ids || [])]);
   await loadRoutes(true);
   renderRoutesPage();
-  showToast(result.outcome === 'failed' ? 'Noted. The office was told.' : data && data.route_done ? '🏁 Route done! Hand over the collection to the office.' : 'Saved. Next stop!', 'success');
+  showRouteUndoBar(r.id, s.id, data && data.route_done ? '🏁 Route done! ' + undoLabel : undoLabel);
 }
 async function refreshPOsById(ids){
   if(!myBusiness || !ids.length) return;
@@ -9528,6 +9523,7 @@ async function viewStopProof(stopId){
 }
 // demo mode: the same bookkeeping the server does, on the local sample orders
 function demoCompleteStop(r, s, result, photo){
+  s._snap = [...(s.deliver_po_ids || []), ...(s.collect_po_ids || [])].map(id => { const po = getPO(id); return po && {id, status: po.status, invoice: po.invoice ? JSON.stringify(po.invoice) : null}; }).filter(Boolean);
   s.status = result.outcome === 'failed' ? 'failed' : 'done';
   s.result = result.outcome === 'failed' ? {outcome: 'failed', reason: result.reason} : {outcome: 'done', delivered: result.delivered, collected: result.collected};
   s.done_at = new Date().toISOString(); s.has_proof = !!photo; s._proof = photo;
@@ -9559,7 +9555,8 @@ function renderRouteBoard(body, routes){
     </div>` : ''}
     ${today.map(routeBoardCard).join('') || `<div class="panel-card" style="text-align:center;padding:26px 16px;"><div style="font-size:38px;">🗺</div><div style="font-weight:800;font-size:17px;margin-top:4px;">No route today</div>
       <div style="opacity:.75;margin:4px 0 12px;">Pick the day's deliveries and unpaid invoices, and send the run to your driver's phone.</div><button class="btn btn-primary" onclick="routeTab='plan'; newRouteDraft(); renderRoutesPage()">Plan a route</button></div>`}
-    ${upcoming.length ? `<div class="rt-section">Coming up</div>${upcoming.map(routeBoardCard).join('')}` : ''}`;
+    ${upcoming.length ? `<div class="rt-section">Coming up</div>${upcoming.map(routeBoardCard).join('')}` : ''}
+    <div class="adm-sub" style="text-align:center;margin-top:14px;">Routes are optional. Orders, deliveries and payments work the same without them. <span class="row-action" onclick="setRoutesHidden(true)">Hide Routes from my menu</span></div>`;
 }
 function routeBoardCard(r){
   const t = routeTotals(r);
@@ -9754,15 +9751,15 @@ async function renderPricesPage(){
   if(currentAppRole === 'buyer'){ if(badge) badge.innerHTML = ''; return renderIncomingPrices(el); }
   if(badge) badge.innerHTML = proBadge('price_blast');
   if(!hasFeature('price_blast')){ el.innerHTML = lockedPanelHtml('price_blast', 'Change prices once, pick the start date, and every buyer gets the new list in chat. Your store updates by itself on that day.'); return; }
-  if(!priceDraftDate) priceDraftDate = APP_TODAY;
+  if(!priceDraftDate) priceDraftDate = addDaysIso(APP_TODAY, 7);
   const cat = (myCatalog || []).filter(c => c.product);
   if(myBusiness && priceChangesCache === null){ const { data } = await sb.from('price_changes').select('*').order('created_at', {ascending: false}).limit(60); priceChangesCache = data || []; }
   const history = myBusiness ? priceChangesCache : demoPriceChanges;
   const buyers = (buyersData || []).filter(b => !b.isOutside).length;
-  const quick = [[APP_TODAY, 'Today'], [addDaysIso(APP_TODAY, 3), 'In 3 days'], [addDaysIso(APP_TODAY, 7), 'In a week'], [(() => { const d = new Date(APP_TODAY + 'T00:00:00'); d.setMonth(d.getMonth() + 1, 1); return d.toISOString().slice(0, 10); })(), '1st of next month']];
+  const quick = [[addDaysIso(APP_TODAY, 3), 'In 3 days'], [addDaysIso(APP_TODAY, 7), 'In a week'], [addDaysIso(APP_TODAY, 14), 'In 2 weeks'], [(() => { const d = new Date(APP_TODAY + 'T00:00:00'); d.setMonth(d.getMonth() + 1, 1); return d.toISOString().slice(0, 10); })(), '1st of next month'], [APP_TODAY, 'Same day']];
   el.innerHTML = `<div class="panel-card">
       <div style="font-weight:800;font-size:16px;">📢 Announce new prices</div>
-      <div style="font-size:14px;opacity:.8;margin:2px 0 10px;">Type the new price only for what changes. Buyers get one clean message, and orders sent before the start date keep the old price.</div>
+      <div style="font-size:14px;opacity:.8;margin:2px 0 10px;">Type the new price only for what changes. Buyers get the list now, a reminder the day before it starts, and orders sent before the start date keep the old price.</div>
       ${cat.length ? `<div class="pc-list">${cat.map((c, i) => `<div class="pc-row"><div style="min-width:0;"><div style="font-weight:700;">${escapeHtml(c.product)}</div><div style="font-size:13px;opacity:.7;">Now ${fmtPHP(c.price)}${c.unit ? '/' + escapeHtml(c.unit) : ''}</div></div>
           <input type="number" min="0" step="0.01" inputmode="decimal" placeholder="New ₱" data-pc-i="${i}" aria-label="New price for ${escapeHtml(c.product)}" oninput="renderPricePreview()"></div>`).join('')}</div>
         <div class="rt-lbl" style="margin-top:12px;">Starts</div>
@@ -9793,13 +9790,17 @@ function priceMessageText(changes, date, note){
 function renderPricePreview(){
   const el = document.getElementById('pcPreview'); if(!el) return;
   const ch = priceDraftChanges();
-  el.innerHTML = ch.length ? `<div class="rt-lbl" style="margin-top:10px;">Buyers will see</div><div class="pc-preview">${escapeHtml(priceMessageText(ch, priceDraftDate || APP_TODAY, (document.getElementById('pcNote') || {}).value || ''))}</div>` : '';
+  const d = priceDraftDate || APP_TODAY, days = daysBetween(APP_TODAY, d);
+  const notice = d <= APP_TODAY ? `<div class="notif-phone warn" style="margin-top:8px;">⚠ Same-day changes catch buyers off guard, especially increases. Giving a week's notice keeps them ordering and trusting you.</div>`
+    : `<div class="adm-sub" style="margin-top:8px;">✓ ${days} day${days === 1 ? '' : 's'} notice. Buyers can order at today's price until ${stmtDate(addDaysIso(d, -1))}.</div>`;
+  el.innerHTML = notice + (ch.length ? `<div class="rt-lbl" style="margin-top:10px;">Buyers will see</div><div class="pc-preview">${escapeHtml(priceMessageText(ch, priceDraftDate || APP_TODAY, (document.getElementById('pcNote') || {}).value || ''))}</div>` : '');
 }
 async function sendPriceChanges(){
   const ch = priceDraftChanges();
   if(!ch.length){ showToast('Type a new price for at least one product.'); return; }
   const date = priceDraftDate || APP_TODAY, note = ((document.getElementById('pcNote') || {}).value || '').trim();
-  if(!confirm(`Send ${ch.length} price change${ch.length > 1 ? 's' : ''} to all your buyers?`)) return;
+  if(date <= APP_TODAY && ch.some(x => x.v > x.c.price) && !confirm('These increases start TODAY, with no notice for your buyers. Send anyway? (A week ahead is kinder.)')) return;
+  if(!confirm(`Send ${ch.length} price change${ch.length > 1 ? 's' : ''} to all your buyers, starting ${date <= APP_TODAY ? 'today' : stmtDate(date)}?`)) return;
   if(!myBusiness){
     ch.forEach(x => demoPriceChanges.unshift({id: 'pc' + Date.now() + x.c.product, product: x.c.product, old_price: x.c.price, new_price: x.v, effective_date: date, applied_at: date <= APP_TODAY ? new Date().toISOString() : null}));
     if(date <= APP_TODAY) ch.forEach(x => { x.c.price = x.v; x.c.updatedAt = APP_TODAY; });
@@ -10300,6 +10301,108 @@ function showSuspendedScreen(acct){
     <button class="btn btn-outline" onclick="sb.auth.signOut().then(() => location.reload())">Sign out</button></div>`;
   document.body.appendChild(w);
 }
+
+// ---------- the driver's run: route line (every stop and what to collect at a glance); tap a stop to open its card ----------
+let routeOpenStop = null;
+function renderDriverRun(body, routes){
+  const mine = routes.filter(r => (r.mine || !myBusiness) && r.route_date >= APP_TODAY).sort((a, b) => a.route_date.localeCompare(b.route_date));
+  const r = mine.find(x => x.route_date === APP_TODAY) || mine[0];
+  if(!r){ body.innerHTML = `<div class="panel-card" style="text-align:center;padding:30px 16px;"><div style="font-size:40px;">🚚</div><div style="font-weight:800;font-size:17px;margin-top:6px;">No route for you today</div><div style="opacity:.75;margin-top:4px;">When the office gives you a route, it shows up here and your phone gets a notification.</div></div>`; return; }
+  const t = routeTotals(r);
+  const stops = r.stops || [];
+  const next = stops.find(s => s.status === 'pending');
+  if(!routeOpenStop || !stops.some(s => s.id === routeOpenStop)) routeOpenStop = next ? next.id : null;
+  const firstPending = stops.findIndex(s => s.status === 'pending');
+  const pendingDue = stops.filter(s => s.status === 'pending').reduce((a, s) => a + (Number(s.amount_due) || 0), 0);
+  const filled = firstPending === -1 ? stops.length - 1 : Math.max(0, firstPending);
+  body.innerHTML = `<div class="rl-head">
+      <div class="rl-eyebrow">${r.route_date === APP_TODAY ? 'TODAY' : chequeDayLabel(r.route_date).toUpperCase()} · ${escapeHtml([r.driver_name, r.vehicle].filter(Boolean).join(' · ') || 'YOUR RUN')}</div>
+      <div class="rl-title">${t.done} of ${t.n} stops</div>
+      <div class="rl-sub">${fmtPHP(t.got)} collected${pendingDue >= 1 ? ` · ${fmtPHP(pendingDue)} still to collect` : ''}${t.failed ? ` · ${t.failed} not done` : ''}</div>
+      <div class="rt-track rl-track"><i style="width:${t.n ? t.done / t.n * 100 : 0}%"></i></div>
+      ${t.done === t.n && t.n ? `<div class="rl-finish">🏁 Route done. Hand over <b>${fmtPHP(t.cash)}</b> cash${t.cheque ? ` and <b>${fmtPHP(t.cheque)}</b> in cheques` : ''} to the office.</div>` : ''}
+    </div>
+    <div class="rl-line" style="--fill:${filled}">${stops.map((s, i) => routeStationHtml(r, s, i, next && next.id === s.id)).join('')}</div>
+    <div class="rl-hint">Tap a stop to open it. Pressed the wrong button? Open the stop and tap Undo.</div>`;
+  const line = body.querySelector('.rl-line'); const dots = body.querySelectorAll('.rl-dot');
+  if(line && dots.length){
+    const base = line.getBoundingClientRect().top, mid = d => { const b = d.getBoundingClientRect(); return b.top + b.height / 2 - base; };
+    const top = mid(dots[0]), last = mid(dots[dots.length - 1]);
+    line.style.setProperty('--fill-top', top + 'px'); line.style.setProperty('--line-h', Math.max(0, last - top) + 'px');
+    line.style.setProperty('--fill-h', Math.max(0, mid(dots[Math.min(filled, dots.length - 1)]) - top) + 'px');
+  }
+}
+function routeStationHtml(r, s, i, isNext){
+  const open = routeOpenStop === s.id;
+  const res = s.result || {};
+  const due = Number(s.amount_due) || 0;
+  const col = res.collected;
+  const kind = (s.deliver_po_ids || []).length && (s.collect_po_ids || []).length ? 'Deliver + collect' : (s.deliver_po_ids || []).length ? 'Deliver' : 'Collect';
+  const cls = s.status === 'done' ? 'done' : s.status === 'failed' ? 'fail' : isNext ? 'here' : '';
+  const right = s.status === 'done' ? (col ? fmtPHP(col.amount) : '✓') : s.status === 'failed' ? '—' : due >= 1 ? fmtPHP(due) : '';
+  return `<div class="rl-stop ${cls}${open ? ' open' : ''}">
+    <button class="rl-station" onclick="routeOpenStop = routeOpenStop === '${s.id}' ? null : '${s.id}'; renderRoutesPage()" aria-expanded="${open}">
+      <span class="rl-dot">${s.status === 'done' ? '✓' : s.status === 'failed' ? '✕' : isNext ? '🚚' : i + 1}</span>
+      <span class="rl-info"><span class="rl-name">${escapeHtml(s.buyer_name)}</span><span class="rl-meta">${escapeHtml((s.address || '').split(',')[0] || kind)} · ${kind}</span></span>
+      <span class="rl-amt ${s.status === 'pending' && due >= 1 ? 'due' : ''}">${right}</span>
+    </button>
+    ${open ? `<div class="rl-card">${routeStopCardHtml(r, s)}</div>` : ''}
+  </div>`;
+}
+function routeStopCardHtml(r, s){
+  const res = s.result || {};
+  const due = Number(s.amount_due) || 0;
+  const items = (s.items || []).slice(0, 8);
+  const bounced = s.buyer_business_id ? bouncedCountFor(s.buyer_business_id) : 0;
+  const handledElsewhere = s.status === 'pending' && due < 1 && !(s.deliver_open > 0) && (s.deliver_po_ids || []).length + (s.collect_po_ids || []).length > 0 && s.deliver_open !== undefined;
+  const col = res.collected;
+  const canUndo = s.status !== 'pending' && !r.remit;
+  return `<div class="rt-addr">${s.address ? `<a href="${mapsLink(s.address)}" target="_blank" rel="noopener">📍 ${escapeHtml(s.address)}</a>` : '<span style="opacity:.6;">No address</span>'}${s.phone ? ` · <a href="tel:${escapeHtml(String(s.phone).replace(/[^\d+]/g, ''))}">📞 Call</a>` : ''}</div>
+    <div class="rt-tags">${items.map(it => `<span class="rt-tag">${escapeHtml(String(it.qty || ''))} ${escapeHtml(it.unit || '')} ${escapeHtml(it.product || '')}</span>`).join('')}
+      ${due >= 1 && s.status === 'pending' ? `<span class="rt-tag money">Collect ${fmtPHP(due)}</span>` : ''}
+      ${handledElsewhere ? '<span class="rt-tag">Already delivered and paid outside the route</span>' : ''}
+      ${bounced && s.status === 'pending' && due >= 1 ? `<span class="rt-tag late">⚠ Bounced ${bounced} cheque${bounced > 1 ? 's' : ''}. Ask for cash</span>` : ''}</div>
+    ${s.note ? `<div class="rt-note">📝 ${escapeHtml(s.note)}</div>` : ''}
+    ${s.status === 'pending'
+      ? `<div class="rt-acts"><button class="btn btn-primary" onclick="openRouteSheet('${r.id}','${s.id}','done')">${handledElsewhere ? 'Mark done' : due >= 1 ? ((s.deliver_po_ids || []).length ? 'Delivered + collect' : 'Collect') : 'Delivered'}</button><button class="btn btn-outline" onclick="openRouteSheet('${r.id}','${s.id}','failed')">Can't</button></div>`
+      : `<div class="rt-result ${s.status}">${s.status === 'done' ? `${res.delivered !== false && (s.deliver_po_ids || []).length ? 'Delivered' : ''}${col ? `${res.delivered !== false && (s.deliver_po_ids || []).length ? ' · ' : ''}Collected ${fmtPHP(col.amount)} ${col.method === 'check' ? 'cheque' : col.method}` : ''}${!col && Number(s.amount_due) >= 1 ? ' · nothing collected' : ''}` : '✕ ' + escapeHtml(res.reason || 'Not done')}
+          ${s.done_at ? ` · ${new Date(s.done_at).toLocaleTimeString('en-PH', {hour: 'numeric', minute: '2-digit'})}` : ''}${s.has_proof ? ` · <span class="row-action" onclick="viewStopProof('${s.id}')">📷 Photo</span>` : ''}</div>
+        ${canUndo ? `<button class="btn btn-outline rt-undo" onclick="undoRouteStop('${r.id}','${s.id}')">↩ Undo, I pressed the wrong button</button>` : r.remit ? '<div class="adm-sub">Cash already handed over. The office can fix it on the order.</div>' : ''}`}`;
+}
+async function undoRouteStop(routeId, stopId){
+  const r = (routesCache || []).find(x => x.id === routeId); const s = r && (r.stops || []).find(x => x.id === stopId);
+  if(!s) return;
+  if(!confirm(`Undo ${s.buyer_name}? ${s.status === 'done' ? 'Any delivery and payment recorded at this stop is taken back.' : 'It goes back to not done yet.'}`)) return;
+  hideRouteUndoBar();
+  if(!myBusiness){ demoUndoStop(r, s); routeOpenStop = s.id; renderRoutesPage(); showToast('Undone. The stop is open again.', 'success'); return; }
+  const { error } = await sb.rpc('undo_route_stop', {p_stop: stopId});
+  if(error){ showToast(error.message, 'error'); return; }
+  await refreshPOsById([...(s.deliver_po_ids || []), ...(s.collect_po_ids || [])]);
+  await loadRoutes(true);
+  routeOpenStop = stopId; renderRoutesPage();
+  showToast('Undone. The stop is open again.', 'success');
+}
+function showRouteUndoBar(routeId, stopId, label){
+  hideRouteUndoBar();
+  const bar = document.createElement('div'); bar.id = 'routeUndoBar'; bar.className = 'rt-undobar';
+  bar.innerHTML = `<span>${escapeHtml(label)}</span><button onclick="undoRouteStop('${routeId}','${stopId}')">Undo</button>`;
+  document.body.appendChild(bar);
+  window._routeUndoTimer = setTimeout(hideRouteUndoBar, 10000);
+}
+function hideRouteUndoBar(){ clearTimeout(window._routeUndoTimer); const b = document.getElementById('routeUndoBar'); if(b) b.remove(); }
+function demoUndoStop(r, s){
+  (s._snap || []).forEach(sn => { const po = getPO(sn.id); if(!po) return; po.status = sn.status; po.invoice = sn.invoice ? JSON.parse(sn.invoice) : po.invoice; po.history.push({date: APP_TODAY, time: 'Just now', actor: 'supplier', action: '↩ Route stop undone (wrong tap)'}); });
+  s.status = 'pending'; s.result = null; s.done_at = null; s.has_proof = false; s._proof = null; s._snap = null;
+  r.status = (r.stops || []).some(x => x.status !== 'pending') ? 'on_road' : 'planned';
+}
+function routesHidden(){ try{ return localStorage.getItem('nifti_routes_off_' + (myBusiness ? myBusiness.id : 'demo')) === '1'; }catch(e){ return false; } }
+function setRoutesHidden(off){
+  try{ localStorage.setItem('nifti_routes_off_' + (myBusiness ? myBusiness.id : 'demo'), off ? '1' : '0'); }catch(e){}
+  document.body.classList.toggle('routes-off', off);
+  const t = document.getElementById('routesMenuToggle'); if(t) t.classList.toggle('on', !off);
+  if(off){ showToast('Routes hidden from your menu. Turn it back on anytime in Settings.', 'success'); if(document.getElementById('page-routes').classList.contains('active')) navigate('dashboard'); }
+}
+
 function renderSidebarForViewAsRole(){
   const allowed = computeAllowedPages(getEffectiveRoles());
   document.querySelectorAll('.nav-item[data-page], .bnav-item[data-page], .more-sheet-item[data-page]').forEach(el => {
