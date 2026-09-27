@@ -1038,6 +1038,8 @@
   .pricing-hero h1{font-size:42px;}
   .pricing-hero p{font-size:20px;}
   #view-pricing .role-toggle button{font-size:17px;}
+  .store-tabs{display:flex;max-width:100%;}
+  .store-tabs button{flex:1;padding:10px 8px;font-size:15px;}
   #view-pricing .plan-name{font-size:20.5px;}
   #view-pricing .plan-price{font-size:35px;}
   #view-pricing .plan-sub{font-size:16.5px;}
@@ -2012,7 +2014,7 @@
           <li><span class="check">✓</span>Chat, orders and order links, no limits</li>
           <li><span class="check">✓</span>Send orders to suppliers who aren't on Nifti</li>
           <li><span class="check">✓</span>Payment tracking, confirmed by your supplier</li>
-          <li><span class="check">✓</span>Your own online store link (suppliers)</li>
+          <li><span class="check">✓</span>Your own online store link + ready-to-post content</li>
           <li><span class="check">✓</span>Delivery links and proof of delivery</li>
           <li><span class="check">✓</span>Up to 3 teammates</li>
         </ul>
@@ -2470,7 +2472,7 @@
       <div class="heading">More</div>
       <div class="nav-item hidden" id="salesNavItem" data-page="sales" onclick="navigate('sales')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Sales</span></div>
       <div class="nav-item owner-only" data-page="growth" onclick="navigate('growth')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg><span>Growth desk</span></div>
-      <div class="nav-item only-supplier" data-page="store" onclick="navigate('store')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l1.5-5h15L21 9"/><path d="M4 9v11h16V9"/><path d="M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0"/><path d="M10 20v-6h4v6"/></svg><span>Online store</span></div>
+      <div class="nav-item" data-page="store" onclick="navigate('store')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l1.5-5h15L21 9"/><path d="M4 9v11h16V9"/><path d="M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0"/><path d="M10 20v-6h4v6"/></svg><span>Online store</span></div>
       <div class="nav-item only-buyer" data-page="watchdog" onclick="navigate('watchdog')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Watchdog</span></div>
       <div class="nav-item" data-page="taxforms" onclick="navigate('taxforms')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/></svg><span>BIR 2307s</span></div>
       <div class="nav-item" data-page="team" onclick="navigate('team')" style="position:relative;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Team</span><span id="teamNavBadge" class="nav-badge" style="display:none;"></span></div>
@@ -2505,7 +2507,7 @@
       <button class="more-sheet-item" data-page="inventory" onclick="closeMoreSheet(); navigate('inventory')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg><span>Inventory</span></button>
       <button class="more-sheet-item" data-page="sales" id="moreSheetSales" onclick="closeMoreSheet(); navigate('sales')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Sales</span></button>
       <button class="more-sheet-item owner-only" data-page="growth" onclick="closeMoreSheet(); navigate('growth')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg><span>Growth</span></button>
-      <button class="more-sheet-item only-supplier" data-page="store" onclick="closeMoreSheet(); navigate('store')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l1.5-5h15L21 9"/><path d="M4 9v11h16V9"/><path d="M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0"/><path d="M10 20v-6h4v6"/></svg><span>Store</span></button>
+      <button class="more-sheet-item" data-page="store" onclick="closeMoreSheet(); navigate('store')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l1.5-5h15L21 9"/><path d="M4 9v11h16V9"/><path d="M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0"/><path d="M10 20v-6h4v6"/></svg><span>Store</span></button>
       <button class="more-sheet-item only-buyer" data-page="watchdog" onclick="closeMoreSheet(); navigate('watchdog')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Watchdog</span></button>
       <button class="more-sheet-item" data-page="taxforms" onclick="closeMoreSheet(); navigate('taxforms')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/></svg><span>2307s</span></button>
       <button class="more-sheet-item" data-page="team" onclick="closeMoreSheet(); navigate('team')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Team</span></button>
@@ -2583,6 +2585,7 @@
         </div>
         <div id="billsToPayPanel"></div>
         <div id="watchdogDashCard"></div>
+        <div id="buyerPostCard"></div>
         <div id="homeInviteNudge"></div>
         <div id="buyerTodayPanel"></div>
         <div id="priceProtectionCard"></div>
@@ -3366,7 +3369,7 @@
       </div>
 
       <div id="page-store" class="app-page">
-        <div class="page-head"><h1>Your online store</h1><p>One link for Facebook, Viber and Messenger. Buyers order in a minute, and it lands here.</p></div>
+        <div class="page-head"><h1 id="storePageTitle">Your online store</h1><p id="storePageSub">One link for Facebook, Viber and Messenger. Buyers order in a minute, and it lands here.</p></div>
         <div id="storeContent"></div>
       </div>
 
@@ -7204,7 +7207,7 @@ const PRO_PLANS = {
   buyer_pro: {name: 'Buyer Pro', forType: 'buyer', tagline: 'Pay less and stop leaks.',
     features: ["Owner's watchdog: alerts when staff overpay or skip approval", 'Market price check vs other Nifti buyers', 'Price-increase alerts', 'BIR 2307 tracker: never miss a certificate you owe', 'Full history and exports', 'Up to 15 teammates']},
 };
-const FREE_PLAN_FEATURES = ['Unlimited suppliers and buyers', 'Chat, orders and order links, no limits', 'Payment tracking confirmed by your supplier', 'Your own online store link (suppliers)', 'Delivery links and proof of delivery', 'Up to 3 teammates'];
+const FREE_PLAN_FEATURES = ['Unlimited suppliers and buyers', 'Chat, orders and order links, no limits', 'Payment tracking confirmed by your supplier', 'Your own online store link + ready-to-post content', 'Delivery links and proof of delivery', 'Up to 3 teammates'];
 async function loadMyPlan(){
   if(!myBusiness) return null;
   const { data } = await sb.rpc('my_plan');
@@ -7922,7 +7925,7 @@ async function saveWatchdogRules(){
    public, only after a free sign-up, or on request), tap quantities and order in about a minute
    without an account; the order lands in the supplier's Orders like any other, with a tracking
    link for the buyer and a one-tap way to claim a free Nifti account later. The share kit makes
-   the link, a price-list image with a QR code, a printable QR poster and ready-to-paste texts for
+   the link, ready-to-post content for Facebook and Viber, a printable QR poster and ready-to-paste texts for
    Facebook posts, Messenger auto-replies and comment replies. */
 function storeUrl(slug, src){ return appBaseUrl() + 's/' + encodeURIComponent(slug) + '/' + (src ? '?src=' + encodeURIComponent(src) : ''); }
 function storeSrcFromUrl(){
@@ -8154,17 +8157,19 @@ let storeStatsCache = null;
 function renderStorePage(){
   const el = document.getElementById('storeContent');
   if(!el) return;
-  if(currentAppRole !== 'supplier'){ el.innerHTML = '<div class="panel-card">Online stores are for suppliers.</div>'; return; }
-  const st = myBusiness ? (myBusiness.store || {}) : (window._demoStore || {enabled: true, headline: 'Cement, steel & hardware. Same-day delivery in Metro Manila.', delivery_areas: 'Metro Manila, Bulacan', delivery_days: 'Mon–Sat', lead_time: 'Order by 2pm, delivered next day', min_order: 5000, price_mode: 'public', cod: true, show_phone: true});
-  const slug = myBusiness ? (myBusiness.store_slug || slugify(myBusiness.name)) : (window._demoStoreSlug || 'metro-steel-co');
+  { const t = document.getElementById('storePageTitle'), p = document.getElementById('storePageSub'); if(t) t.textContent = currentAppRole === 'supplier' ? 'Your online store' : 'Your shop & posts'; if(p) p.textContent = currentAppRole === 'supplier' ? 'One link for Facebook, Viber and Messenger. Buyers order in a minute, and it lands here.' : 'Posts that bring your customers in, and a shop link they can order from.'; }
+  const isSup = currentAppRole === 'supplier';
+  if(!isSup && !myBusiness && !window._demoShop) window._demoShop = {enabled: false, delivery_areas: 'Marikina', cod: true};
+  const st = myBusiness ? (myBusiness.store || {}) : (!isSup ? window._demoShop : window._demoStore || {enabled: true, headline: 'Cement, steel & hardware. Same-day delivery in Metro Manila.', delivery_areas: 'Metro Manila, Bulacan', delivery_days: 'Mon–Sat', lead_time: 'Order by 2pm, delivered next day', min_order: 5000, price_mode: 'public', cod: true, show_phone: true});
+  const slug = myBusiness ? (myBusiness.store_slug || slugify(myBusiness.name)) : (isSup ? (window._demoStoreSlug || 'metro-steel-co') : (window._demoShopSlug || 'dela-cruz-hardware'));
   const live = !!(st.enabled && (myBusiness ? myBusiness.store_slug : true));
-  const products = (myCatalog || []).map(c => c.product);
+  const products = (isSup ? (myCatalog || []) : shopCatalog()).map(c => c.product);
   const url = storeUrl(slug);
   const promos = st.promos || {};
   el.innerHTML = `
-    ${!products.length ? `<div class="panel-card" style="margin-bottom:14px;"><div style="font-weight:800;">First, add your products</div><div style="font-size:14.5px;margin:4px 0 8px;">Your store shows your product list with prices.</div><button class="btn btn-primary" onclick="navigate('inventory')">Add products →</button></div>` : ''}
+    ${!products.length && isSup ? `<div class="panel-card" style="margin-bottom:14px;"><div style="font-weight:800;">First, add your products</div><div style="font-size:14.5px;margin:4px 0 8px;">Your store shows your product list with prices.</div><button class="btn btn-primary" onclick="navigate('inventory')">Add products →</button></div>` : ''}
     ${live ? `<div class="panel-card store-linkcard" style="margin-bottom:14px;">
-      <div style="font-size:13px;opacity:.7;">Your store link</div>
+      <div style="font-size:13px;opacity:.7;">Your ${isSup ? 'store' : 'shop'} link</div>
       <div style="font-weight:800;font-size:17px;word-break:break-all;margin:2px 0 8px;">${escapeHtml(url)}</div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;">
         <a class="btn btn-outline" style="padding:7px 12px;font-size:14px;text-decoration:none;" href="${myBusiness ? escapeHtml(url) : '#'}" target="_blank" rel="noopener" onclick="${myBusiness ? '' : 'event.preventDefault(); showToast(\'Demo: sign in to open your real store.\');'}">👀 Preview</a>
@@ -8173,17 +8178,20 @@ function renderStorePage(){
         <a class="btn btn-outline" style="padding:7px 12px;font-size:14px;text-decoration:none;" href="fb-messenger://share?link=${encodeURIComponent(storeUrl(slug, 'messenger'))}" onclick="markStoreShared()">Messenger</a>
         <a class="btn btn-outline" style="padding:7px 12px;font-size:14px;text-decoration:none;" href="viber://forward?text=${encodeURIComponent('Order from us online, prices and stock here: ' + storeUrl(slug, 'viber'))}" onclick="markStoreShared()">Viber</a>
       </div></div>` : ''}
-    <div class="role-toggle" style="margin-bottom:14px;">
+    <div class="role-toggle store-tabs" style="margin-bottom:14px;">
       <button class="${storeTab === 'setup' ? 'active' : ''}" onclick="storeTab='setup'; renderStorePage()">⚙️ Setup</button>
-      <button class="${storeTab === 'kit' ? 'active' : ''}" onclick="storeTab='kit'; renderStorePage()">📣 FB kit</button>
-      <button class="${storeTab === 'stats' ? 'active' : ''}" onclick="storeTab='stats'; renderStorePage()">📈 Results</button>
+      <button class="${storeTab === 'posts' ? 'active' : ''}" onclick="storeTab='posts'; renderStorePage()">📣 Posts</button>
+      ${!isSup ? `<button class="${storeTab === 'orders' ? 'active' : ''}" onclick="storeTab='orders'; renderStorePage()">🧾 Orders</button>` : ''}
+      <button class="${storeTab === 'stats' ? 'active' : ''}" onclick="storeTab='stats'; renderStorePage()">📈 ${isSup ? 'Results' : 'Stats'}</button>
     </div>
     <div id="storeTabBody"></div>`;
   const body = document.getElementById('storeTabBody');
-  if(storeTab === 'kit') return renderStoreKit(body, slug, st, live);
+  if(storeTab === 'kit') storeTab = 'posts';
+  if(storeTab === 'posts'){ body.innerHTML = '<div id="postComposer"></div><div id="shareMore"></div>'; renderPostComposer(document.getElementById('postComposer')); return renderStoreKit(document.getElementById('shareMore'), slug, st, live); }
+  if(storeTab === 'orders' && !isSup) return renderShopOrders(body);
   if(storeTab === 'stats') return renderStoreStats(body);
-  body.innerHTML = `<div class="panel-card">
-    <div class="toggle-row"><div><div class="toggle-txt">Store is open</div><div class="toggle-sub">Anyone with the link can see it and order.</div></div><div class="switch ${st.enabled ? 'on' : ''}" id="stEnabled" onclick="this.classList.toggle('on')"><div class="knob"></div></div></div>
+  body.innerHTML = `${!isSup ? '<div id="shopProducts"></div>' : ''}<div class="panel-card">
+    <div class="toggle-row"><div><div class="toggle-txt">${isSup ? 'Store is open' : 'Shop is open'}</div><div class="toggle-sub">Anyone with the link can see it and order.</div></div><div class="switch ${st.enabled ? 'on' : ''}" id="stEnabled" onclick="this.classList.toggle('on')"><div class="knob"></div></div></div>
     <div class="field"><label>Your link name</label><div style="display:flex;align-items:center;gap:4px;flex-wrap:wrap;"><span style="font-size:13.5px;opacity:.7;">${escapeHtml(appBaseUrl())}s/</span><input id="stSlug" maxlength="40" value="${escapeHtml(slug)}" style="flex:1;min-width:140px;" oninput="this.value=this.value.toLowerCase().replace(/[^a-z0-9-]/g,'-')"></div></div>
     <div class="field"><label>Headline (one line buyers see first)</label><input id="stHeadline" maxlength="90" value="${escapeHtml(st.headline || '')}" placeholder="e.g. Cement & steel, delivered same day in Valenzuela"></div>
     <div class="field"><label>About you</label><textarea id="stAbout" rows="3" maxlength="500" placeholder="e.g. Family business since 1998. Pickup at our Karuhatan warehouse or we deliver.">${escapeHtml(st.about || '')}</textarea></div>
@@ -8207,19 +8215,29 @@ function renderStorePage(){
         <div class="store-promos">${products.map(p => `<div class="store-promo-row"><span>${escapeHtml(p)}</span><input type="number" min="0" step="0.01" placeholder="Sale ₱" data-promo-price="${escapeHtml(p)}" value="${promos[p] ? promos[p].price : ''}"><input type="date" data-promo-until="${escapeHtml(p)}" value="${promos[p] ? promos[p].until : ''}"></div>`).join('')}</div>`
         : '<div style="font-size:14px;opacity:.75;">Run limited-time sale prices with Supplier Pro.</div>'}</div>` : ''}
     <div id="stErr" style="color:var(--danger);font-weight:600;font-size:14px;margin:6px 0;"></div>
-    <button class="btn btn-primary" onclick="saveStoreSettings()">Save store</button>
+    <button class="btn btn-primary" onclick="saveStoreSettings()">Save ${isSup ? 'store' : 'shop'}</button>
   </div>`;
+  if(!isSup) renderShopProductsEditor(document.getElementById('shopProducts'));
 }
 let storeTab = 'setup';
+function renderBuyerPostCard(){
+  const el = document.getElementById('buyerPostCard');
+  if(!el) return;
+  const recent = getBuyerPOs().filter(p => ['delivered', 'partially_delivered', 'invoiced', 'paid'].includes(p.status)).sort((a, b) => String(b.createdDate).localeCompare(String(a.createdDate)))[0];
+  el.innerHTML = `<div class="panel-card" style="margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;">
+    <div style="flex:1;min-width:200px;"><div style="font-weight:800;font-size:16px;">📣 Sell more to your customers</div>
+    <div style="font-size:14px;opacity:.8;">${recent ? `New stock from ${escapeHtml(recent.supplierName)}? Tell your customers in one tap.` : 'Ready-made posts for Facebook and Viber, plus a shop link your customers can order from.'}</div></div>
+    ${recent ? `<button class="btn btn-primary" style="padding:8px 14px;" onclick="postNewStock('${recent.id}')">Post new stock</button>` : `<button class="btn btn-primary" style="padding:8px 14px;" onclick="storeTab='posts'; navigate('store')">Make a post</button>`}</div>`;
+}
 function renderStoreDashCard(){
   const el = document.getElementById('storeDashCard');
   if(!el) return;
   const st = myBusiness ? (myBusiness.store || {}) : (window._demoStore || null);
   const live = st && st.enabled && (!myBusiness || myBusiness.store_slug);
-  el.innerHTML = `<div class="panel-card" style="margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;cursor:pointer;" onclick="navigate('store')">
+  el.innerHTML = `<div class="panel-card" style="margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;cursor:pointer;" onclick="storeTab = live ? 'posts' : 'setup'; navigate('store')">
     <div><div style="font-weight:800;font-size:16px;">🛍 ${live ? 'Your online store is open' : 'Get orders from Facebook'}</div>
     <div style="font-size:14px;opacity:.8;">${live ? 'Share your link on your Page, in Messenger and Viber.' : 'Your own order page in 2 minutes. Buyers order without messaging you.'}</div></div>
-    <span class="lnk">${live ? 'Share kit →' : 'Open my store →'}</span></div>`;
+    <span class="lnk">${live ? 'Get a post →' : 'Open my store →'}</span></div>`;
 }
 function slugify(name){ return String(name || 'my-store').toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 40) || 'my-store'; }
 function copyText(t){ if(String(t).includes('/s/')) markStoreShared(); try{ navigator.clipboard.writeText(t); showToast('Copied.', 'success'); }catch(e){ prompt('Copy this:', t); } }
@@ -8236,46 +8254,39 @@ async function saveStoreSettings(){
     cod: document.getElementById('stCod').classList.contains('on'), show_phone: document.getElementById('stPhone').classList.contains('on'), featured, promos};
   const slug = document.getElementById('stSlug').value.trim().replace(/^-+|-+$/g, '');
   if(myBusiness){
-    await syncCatalogToServer();
+    if(currentAppRole === 'supplier') await syncCatalogToServer();
     const { data, error } = await sb.rpc('set_store', {p_store: store, p_slug: slug});
     if(error){ document.getElementById('stErr').textContent = error.message; return; }
     myBusiness.store = data; myBusiness.store_slug = slug;
-  } else { window._demoStore = store; window._demoStoreSlug = slug; }
+  } else if(currentAppRole === 'supplier'){ window._demoStore = store; window._demoStoreSlug = slug; } else { window._demoShop = store; window._demoShopSlug = slug; }
   showToast(store.enabled ? 'Store saved and open. Share your link!' : 'Store saved (closed).', 'success');
   renderStorePage();
 }
 function renderStoreKit(body, slug, st, live){
-  const name = myBusiness ? myBusiness.name : 'Metro Steel Co.';
-  const url = storeUrl(slug, 'fb');
-  const top = (myCatalog || []).slice(0, 4).map(c => `✅ ${c.product}${st.price_mode === 'public' || !st.price_mode ? ` – ${fmtPHP(c.price)}/${c.unit}` : ''}`).join('\n');
+  const name = myBusiness ? myBusiness.name : (currentAppRole === 'supplier' ? 'Metro Steel Co.' : 'Dela Cruz Hardware');
+  const isSup = currentAppRole === 'supplier';
   const texts = [
-    {title: 'Facebook post (pin it to the top of your Page)', text: `📢 Pwede na mag-order online! Order anytime, no need to PM.\n\n${top}\n\n👉 Order here: ${url}\n🚚 ${st.delivery_areas ? 'Delivery to ' + st.delivery_areas : 'We deliver'}${st.cod ? ' · COD available' : ''}\n\n#${slugify(name).replace(/-/g, '')} #wholesale`},
-    {title: 'Messenger auto-reply (Page settings → Messaging → Instant reply)', text: `Hi! 👋 Salamat sa message. See our prices and order in 1 minute here: ${storeUrl(slug, 'messenger')}\nWe'll confirm your order within the day. 😊`},
+    {title: 'Messenger auto-reply (Page settings → Messaging → Instant reply)', text: `Hi! 👋 Salamat sa message. See our prices and order in 1 minute here: ${storeUrl(slug, 'messenger')}
+We'll confirm your order within the day. 😊`},
     {title: 'Reply to "HM?" / "PM sent" comments', text: `Hi po! 😊 Prices and ordering here, no need to wait for our reply: ${storeUrl(slug, 'fbcomment')}`},
-    {title: 'Viber / SMS to your regular buyers', text: `Hi! ${name} here. You can now order from us anytime, even at night: ${storeUrl(slug, 'viber')}\nSame prices, and you can track your delivery. Salamat!`},
+    {title: `Viber / SMS to your regular ${isSup ? 'buyers' : 'customers'}`, text: `Hi! ${name} here. You can now order from us anytime, even at night: ${storeUrl(slug, 'viber')}
+You can track your delivery too. Salamat!`},
   ];
-  body.innerHTML = `${!live ? '<div class="panel-card" style="margin-bottom:12px;">Open your store in Setup first, then come back here.</div>' : ''}
-    <div class="panel-card" style="margin-bottom:12px;">
-      <div style="font-weight:800;font-size:16px;margin-bottom:6px;">1. Post your price list as a picture</div>
-      <div style="font-size:14.5px;opacity:.85;margin-bottom:8px;">Picture posts get far more reach on Facebook than text. This makes one with your products, prices and a QR code to your store.</div>
-      <button class="btn btn-primary" onclick="makePriceListImage()">🖼 Make price list image</button> <button class="btn btn-outline" onclick="printStorePoster()">🖨 QR poster for your counter / truck</button>
-      <div id="priceImgOut" style="margin-top:10px;"></div>
-    </div>
-    <div class="panel-card" style="margin-bottom:12px;">
-      <div style="font-weight:800;font-size:16px;margin-bottom:6px;">2. Add an "Order online" button to your Facebook Page</div>
-      <ol style="font-size:14.5px;line-height:1.6;margin:0;padding-left:20px;">
-        <li>Open your Page → <strong>Edit</strong> (or ⋯) → <strong>Add action button</strong>.</li>
-        <li>Choose <strong>Shop now</strong> or <strong>Order food/Order now</strong> → <strong>Link to website</strong>.</li>
-        <li>Paste your link: <span class="row-action" onclick="copyText(${escapeHtml(JSON.stringify(storeUrl(slug, 'fbbutton')))})">copy it here</span>. Save.</li>
-        <li>Also paste it in your Page's <strong>Intro / Website</strong> and in your <strong>Marketplace</strong> listing descriptions.</li>
-      </ol>
-    </div>
-    <div class="panel-card">
-      <div style="font-weight:800;font-size:16px;margin-bottom:6px;">3. Ready-to-paste messages</div>
+  body.innerHTML = `<div class="panel-card">
+      <div style="font-weight:800;font-size:16px;margin-bottom:6px;">More ways to get orders</div>
+      ${!live ? `<div style="font-size:14px;opacity:.8;margin-bottom:8px;">Open your ${isSup ? 'store' : 'shop'} in Setup first so these links work.</div>` : ''}
+      <details style="margin-bottom:10px;"><summary style="cursor:pointer;font-weight:700;">Add an "Order online" button to your Facebook Page</summary>
+        <ol style="font-size:14.5px;line-height:1.6;margin:6px 0 0;padding-left:20px;">
+          <li>Open your Page → <strong>Edit</strong> (or ⋯) → <strong>Add action button</strong>.</li>
+          <li>Choose <strong>Shop now</strong> or <strong>Order now</strong> → <strong>Link to website</strong>.</li>
+          <li>Paste your link: <span class="row-action" onclick="copyText(${escapeHtml(JSON.stringify(storeUrl(slug, 'fbbutton')))})">copy it here</span>. Save.</li>
+          <li>Also put it in your Page's <strong>Intro</strong>, your TikTok bio and your <strong>Marketplace</strong> listings.</li>
+        </ol></details>
       ${texts.map((t, i) => `<div style="margin-bottom:12px;"><div style="font-weight:700;font-size:14.5px;">${t.title}</div>
-        <textarea id="kitText${i}" rows="4" style="width:100%;box-sizing:border-box;padding:9px;border:1px solid var(--border);border-radius:8px;font-size:14.5px;margin:4px 0;">${escapeHtml(t.text)}</textarea>
+        <textarea id="kitText${i}" rows="3" style="width:100%;box-sizing:border-box;padding:9px;border:1px solid var(--border);border-radius:8px;font-size:14.5px;margin:4px 0;">${escapeHtml(t.text)}</textarea>
         <button class="btn btn-outline" style="padding:6px 12px;font-size:14px;" onclick="copyText(document.getElementById('kitText${i}').value)">📋 Copy</button></div>`).join('')}
-      <div style="font-size:13.5px;opacity:.75;">Each link carries a small tag (fb, messenger, viber…) so Results shows where your buyers come from.</div>
+      <button class="btn btn-outline" onclick="printStorePoster()">🖨 QR poster for your counter or truck</button>
+      <div style="font-size:13.5px;opacity:.75;margin-top:8px;">Each link carries a small tag (fb, messenger, viber…) so Results shows where orders come from.</div>
     </div>`;
 }
 function loadScriptOnce(src){
@@ -8289,63 +8300,10 @@ async function qrDataUrl(text, cell){
   const qr = qrcode(0, 'M'); qr.addData(text); qr.make();
   return qr.createDataURL(cell || 8, 2);
 }
-async function makePriceListImage(){
-  markStoreShared();
-  const st = myBusiness ? (myBusiness.store || {}) : (window._demoStore || {});
-  const slug = myBusiness ? myBusiness.store_slug : (window._demoStoreSlug || 'metro-steel-co');
-  if(!slug){ showToast('Save your store first.'); return; }
-  const name = myBusiness ? myBusiness.name : 'Metro Steel Co.';
-  const showPrices = (st.price_mode || 'public') === 'public';
-  const promos = st.promos || {};
-  const featured = new Set(st.featured || []);
-  const items = (myCatalog || []).slice().sort((a, b) => featured.has(b.product) - featured.has(a.product)).slice(0, 12);
-  const W = 1080, H = 1350, cv = document.createElement('canvas'); cv.width = W; cv.height = H;
-  const g = cv.getContext('2d');
-  g.fillStyle = '#F4F7F5'; g.fillRect(0, 0, W, H);
-  g.fillStyle = '#1B6B40'; g.fillRect(0, 0, W, 250);
-  g.fillStyle = '#fff'; g.font = '800 64px Arial, sans-serif'; g.fillText(name.slice(0, 26), 60, 110);
-  g.font = '500 36px Arial, sans-serif'; g.fillText((st.headline || 'Order online, anytime').slice(0, 48), 60, 170);
-  g.font = '700 30px Arial, sans-serif'; g.fillText('PRICE LIST · ' + new Date().toLocaleDateString('en-PH', {month: 'long', day: 'numeric', year: 'numeric'}), 60, 222);
-  let y = 320;
-  items.forEach((c, i) => {
-    g.fillStyle = i % 2 ? '#FFFFFF' : '#E9F1EC'; g.fillRect(40, y - 52, W - 80, 74);
-    g.fillStyle = '#1B1D21'; g.font = '700 36px Arial, sans-serif'; g.fillText((featured.has(c.product) ? '★ ' : '') + String(c.product).slice(0, 34), 64, y);
-    g.textAlign = 'right';
-    const promo = promos[c.product] && promos[c.product].until >= APP_TODAY ? promos[c.product] : null;
-    if(showPrices){
-      g.fillStyle = promo ? '#C0392B' : '#1B1D21'; g.font = '800 38px Arial, sans-serif';
-      g.fillText('₱' + Number(promo ? promo.price : c.price).toLocaleString('en-PH') + (c.unit ? '/' + c.unit : ''), W - 64, y);
-      if(promo){ g.font = '700 22px Arial, sans-serif'; g.fillText('SALE until ' + promo.until, W - 64, y + 20); }
-    } else { g.fillStyle = '#1B6B40'; g.font = '700 30px Arial, sans-serif'; g.fillText(st.price_mode === 'signup' ? 'See price online' : 'Ask for price', W - 64, y); }
-    g.textAlign = 'left'; y += 80;
-  });
-  const qrImg = new Image();
-  qrImg.src = await qrDataUrl(storeUrl(slug, 'qr'), 7);
-  await new Promise(r => { qrImg.onload = r; qrImg.onerror = r; });
-  const by = H - 260;
-  g.fillStyle = '#1B1D21'; g.fillRect(0, by, W, 260);
-  g.drawImage(qrImg, W - 250, by + 25, 210, 210);
-  g.fillStyle = '#fff'; g.font = '800 46px Arial, sans-serif'; g.fillText('Order online in 1 minute', 60, by + 85);
-  g.font = '500 30px Arial, sans-serif'; g.fillText('Scan the code, or tap the link in the post.', 60, by + 135);
-  g.font = '700 26px Arial, sans-serif'; g.fillText([st.delivery_areas && 'Delivery: ' + st.delivery_areas, st.cod && 'COD'].filter(Boolean).join(' · ').slice(0, 52), 60, by + 190);
-  const dataUrl = cv.toDataURL('image/png');
-  const out = document.getElementById('priceImgOut');
-  out.innerHTML = `<img src="${dataUrl}" style="width:100%;max-width:360px;border-radius:10px;border:1px solid var(--border);display:block;margin-bottom:8px;">
-    <div style="display:flex;gap:8px;flex-wrap:wrap;"><a class="btn btn-primary" style="text-decoration:none;" download="${escapeHtml(slugify(name))}-price-list.png" href="${dataUrl}">⬇ Download</a>
-    <button class="btn btn-outline" onclick="sharePriceListImage()">↗ Share to Facebook / Viber</button></div>
-    <div style="font-size:13px;opacity:.7;margin-top:6px;">Post it with the Facebook post text from step 3, so the link is right there.</div>`;
-  window._priceListBlob = await (await fetch(dataUrl)).blob();
-}
-async function sharePriceListImage(){
-  const blob = window._priceListBlob; if(!blob) return;
-  const file = new File([blob], 'price-list.png', {type: 'image/png'});
-  if(navigator.canShare && navigator.canShare({files: [file]})){ try{ await navigator.share({files: [file], text: (document.getElementById('kitText0') || {}).value || ''}); }catch(e){} }
-  else showToast('Your browser can\'t share pictures directly. Download it, then post it on Facebook.');
-}
 async function printStorePoster(){
-  const slug = myBusiness ? myBusiness.store_slug : (window._demoStoreSlug || 'metro-steel-co');
+  const slug = myBusiness ? myBusiness.store_slug : (currentAppRole === 'supplier' ? (window._demoStoreSlug || 'metro-steel-co') : (window._demoShopSlug || 'dela-cruz-hardware'));
   if(!slug){ showToast('Save your store first.'); return; }
-  const name = myBusiness ? myBusiness.name : 'Metro Steel Co.';
+  const name = myBusiness ? myBusiness.name : (currentAppRole === 'supplier' ? 'Metro Steel Co.' : 'Dela Cruz Hardware');
   const qr = await qrDataUrl(storeUrl(slug, 'poster'), 12);
   let host = document.getElementById('statementView');
   if(!host){ host = document.createElement('div'); host.id = 'statementView'; document.body.appendChild(host); }
@@ -8380,7 +8338,7 @@ async function renderStoreStats(body){
         <div><div style="font-size:13px;opacity:.7;">New buyers</div><div style="font-size:22px;font-weight:800;">${s.new_buyers}</div></div>
       </div><div style="font-size:13.5px;opacity:.8;margin-top:6px;">${conv}% of visits became an order.</div></div>
     <div class="panel-card" style="margin-bottom:12px;"><div style="font-weight:800;margin-bottom:8px;">Where visitors come from</div>
-      ${Object.entries(s.by_source || {}).sort((a, b) => b[1] - a[1]).map(([k, v]) => `<div style="margin-bottom:6px;"><div style="display:flex;justify-content:space-between;font-size:14px;"><span>${escapeHtml(srcNames[k] || k)}</span><span>${v}</span></div><div style="height:8px;background:var(--bg);border-radius:4px;"><div style="height:8px;width:${Math.round(v / srcTotal * 100)}%;background:var(--green);border-radius:4px;"></div></div></div>`).join('') || '<div style="font-size:14px;opacity:.7;">No visits yet. Share your link from the Facebook kit.</div>'}</div>
+      ${Object.entries(s.by_source || {}).sort((a, b) => b[1] - a[1]).map(([k, v]) => `<div style="margin-bottom:6px;"><div style="display:flex;justify-content:space-between;font-size:14px;"><span>${escapeHtml(srcNames[k] || k)}</span><span>${v}</span></div><div style="height:8px;background:var(--bg);border-radius:4px;"><div style="height:8px;width:${Math.round(v / srcTotal * 100)}%;background:var(--green);border-radius:4px;"></div></div></div>`).join('') || '<div style="font-size:14px;opacity:.7;">No visits yet. Share a post from the Posts tab.</div>'}</div>
     <div class="panel-card"><div style="font-weight:800;margin-bottom:8px;">Most ordered from your store</div>
       ${(s.top_products || []).map(p => `<div style="display:flex;justify-content:space-between;font-size:14.5px;padding:5px 0;border-bottom:1px solid var(--border);"><span>${escapeHtml(p.product)}</span><span>${p.orders} order${p.orders > 1 ? 's' : ''} · ${Number(p.qty).toLocaleString('en-PH')}</span></div>`).join('') || '<div style="font-size:14px;opacity:.7;">No store orders yet.</div>'}</div>`;
 }
@@ -8400,8 +8358,8 @@ function setupSteps(){
       {label: 'Add your products and prices', done: (myCatalog || []).length > 0, go: "navigate('inventory')"},
       {label: 'Add how buyers pay you (GCash, bank…)', done: (getMyPaymentAccounts() || []).length > 0, go: "navigate('settings'); setTimeout(()=>{ const e=document.getElementById('paymentDetailsCard'); if(e) e.scrollIntoView({behavior:'smooth'}); }, 200)"},
       {label: 'Open your online store', done: !!(st.enabled && (!myBusiness || myBusiness.store_slug)), go: "navigate('store')"},
-      {label: 'Share your store on Facebook or Viber', done: shared, go: "storeTab='kit'; navigate('store')"},
-      {label: 'Get your first order', done: getSupplierPOs().some(p => p.status !== 'draft'), go: "storeTab='kit'; navigate('store')"},
+      {label: 'Share a post on Facebook or Viber', done: shared, go: "storeTab='posts'; navigate('store')"},
+      {label: 'Get your first order', done: getSupplierPOs().some(p => p.status !== 'draft'), go: "storeTab='posts'; navigate('store')"},
     ];
   }
   const members = (typeof getActiveTeamMembers === 'function') ? getActiveTeamMembers().length : 1;
@@ -8443,8 +8401,8 @@ const STAGE_MSG = {
   add_supplier: n => `Hi ${n}! Si Sigmund ito from Nifti. Salamat sa pag-sign up! 😊 Pwede kitang tulungan i-add yung unang supplier mo, 5 minutes lang. Kahit hindi pa sila naka-Nifti, makaka-order ka na via link sa Viber. Anong oras ka free today or tomorrow?`,
   first_order: n => `Hi ${n}! Nakita ko naka-add na yung supplier mo sa Nifti. 🎉 Try mo i-paste yung usual Viber order mo sa "+ Create → Paste from Viber", gagawin niyang order agad. Gusto mo sabay natin gawin yung una?`,
   add_products: n => `Hi ${n}! Salamat sa pag-join sa Nifti. 😊 Pwede kong i-upload yung price list mo para sa'yo, send mo lang yung picture o Excel dito. Tapos may online store ka na na pwede i-post sa Facebook.`,
-  open_store: n => `Hi ${n}! Naka-upload na yung products mo. 👍 Isang tap na lang para ma-open yung online store mo (Store → Setup). Pwede ko rin gawin yung price-list picture na pang-FB post. Game?`,
-  first_order_in: n => `Hi ${n}! Open na yung store mo. 🎉 Tip: i-post yung price-list picture sa FB Page, tapos ilagay yung link sa Messenger auto-reply para lahat ng "HM po?" may link agad. Gusto mo tulungan kita i-setup?`,
+  open_store: n => `Hi ${n}! Naka-upload na yung products mo. 👍 Isang tap na lang para ma-open yung online store mo (Store → Setup). May ready-made FB post na rin sa Store → Posts. Game?`,
+  first_order_in: n => `Hi ${n}! Open na yung store mo. 🎉 Tip: i-post yung ready-made post (Store → Posts) sa FB Page, tapos ilagay yung link sa Messenger auto-reply para lahat ng "HM po?" may link agad. Gusto mo tulungan kita i-setup?`,
 };
 let growthLeadFilter = 'new';
 async function renderGrowthPage(){
@@ -8514,6 +8472,234 @@ async function updateGrowthLead(id, status){
 async function detectPlatformOwner(){
   if(!myBusiness) return;
   try{ const { data } = await sb.rpc('is_platform_admin'); if(data) document.body.setAttribute('data-owner', '1'); }catch(e){}
+}
+
+/* ============ READY-TO-POST CONTENT (suppliers and buyers) ============
+   Writes Facebook/Viber posts from the business's real products, prices, sales and delivery
+   details, in Taglish or English, with a different version every tap. Suppliers post to reach
+   the businesses they sell to; buyers (shops) post to reach their own customers, so they sell
+   more, reorder more, and their suppliers sell more too. Free: no AI service, no cost. */
+let postsState = {type: null, lang: 'taglish', seed: 0, preset: null};
+const pick = (arr, seed) => arr[Math.abs(seed) % arr.length];
+function postContext(){
+  const isSup = currentAppRole === 'supplier';
+  const st = myBusiness ? (myBusiness.store || {}) : (isSup ? (window._demoStore || {}) : (window._demoShop || {}));
+  const slug = myBusiness ? myBusiness.store_slug : (isSup ? (window._demoStoreSlug || 'metro-steel-co') : (window._demoShopSlug || 'dela-cruz-hardware'));
+  const items = (isSup ? (myCatalog || []) : shopCatalog()).filter(c => c.product);
+  const promos = st.promos || {};
+  const live = !!(st.enabled && slug);
+  const phone = (myBusiness && myBusiness.shared_contact && myBusiness.shared_contact.phone) || '';
+  return {isSup, name: myBusiness ? myBusiness.name : (isSup ? 'Metro Steel Co.' : 'Dela Cruz Hardware'), st, slug, live,
+    link: live ? storeUrl(slug, 'post') : '', items, promos, phone, showPrices: (st.price_mode || 'public') === 'public'};
+}
+function fmtItem(c, ctx, withPrice){
+  const promo = ctx.promos[c.product] && ctx.promos[c.product].until >= APP_TODAY ? ctx.promos[c.product] : null;
+  const p = withPrice && ctx.showPrices && Number(c.price) > 0 ? ` – ${fmtPHP(promo ? promo.price : c.price)}${c.unit ? '/' + c.unit : ''}${promo ? ` (dati ${fmtPHP(c.price)})` : ''}` : '';
+  return `✅ ${c.product}${p}`;
+}
+function postTypes(ctx){
+  const t = [
+    {key: 'spotlight', label: '⭐ Product spotlight'},
+    {key: 'pricelist', label: '📋 Our products'},
+    {key: 'order_easy', label: '🛒 Order online'},
+    {key: 'delivery', label: '🚚 Delivery'},
+  ];
+  if(Object.values(ctx.promos).some(p => p.until >= APP_TODAY)) t.unshift({key: 'sale', label: '🔥 Sale'});
+  if(postsState.preset && postsState.preset.items && postsState.preset.items.length) t.unshift({key: 'new_stock', label: '📦 New stock'});
+  t.push(ctx.isSup ? {key: 'bulk', label: '🏗 Bulk / wholesale'} : {key: 'weekend', label: '🎉 Weekend / payday'});
+  return t;
+}
+function buildPost(type, ctx, seed, lang){
+  const tl = lang === 'taglish';
+  const it = ctx.items;
+  const top = it.slice(0, 5);
+  const one = it.length ? pick(it, seed) : null;
+  const linkLine = ctx.link ? (tl ? pick([`👉 Order dito: ${ctx.link}`, `🛒 Mag-order online: ${ctx.link}`, `📲 Tingnan lahat ng presyo at mag-order: ${ctx.link}`], seed) : pick([`👉 Order here: ${ctx.link}`, `🛒 Order online: ${ctx.link}`, `📲 See all prices and order: ${ctx.link}`], seed))
+    : (ctx.phone ? (tl ? `📲 Message o tawag lang: ${ctx.phone}` : `📲 Message or call us: ${ctx.phone}`) : (tl ? '📩 PM lang po para mag-order!' : '📩 Message us to order!'));
+  const deliv = ctx.st.delivery_areas ? (tl ? `🚚 Deliver kami sa ${ctx.st.delivery_areas}` : `🚚 We deliver to ${ctx.st.delivery_areas}`) + (ctx.st.cod ? ' · COD ok' : '') : (ctx.st.cod ? '💵 COD available' : '');
+  const lead = ctx.st.lead_time ? `⏱ ${ctx.st.lead_time}` : '';
+  const tags = ctx.isSup ? '#wholesale #supplier' : '#localstore #supportlocal';
+  const lines = arr => arr.filter(Boolean).join('\n');
+  switch(type){
+    case 'new_stock': {
+      const ni = (postsState.preset.items || []).slice(0, 8).map(n => `✅ ${n}`).join('\n');
+      return lines([tl ? pick(['📦 BAGONG DATING! Fresh stocks na po:', '📦 Kararating lang ng bagong stock!', '🔔 Restocked na po ulit!'], seed) : pick(['📦 JUST ARRIVED! Fresh stock:', '📦 New stock is in!', '🔔 Back in stock!'], seed),
+        '', ni, '', tl ? 'Habang marami pa, reserve na!' : 'Get yours while stocks last!', linkLine, deliv, '', tags]);
+    }
+    case 'sale': {
+      const sale = it.filter(c => ctx.promos[c.product] && ctx.promos[c.product].until >= APP_TODAY);
+      const until = sale.length ? stmtDate(ctx.promos[sale[0].product].until) : '';
+      return lines([tl ? pick(['🔥 SALE ALERT! Limited time lang!', '🔥 PROMO NGAYONG LINGGO!', '💥 Bagsak-presyo!'], seed) : pick(['🔥 SALE! Limited time only!', '🔥 THIS WEEK\'S PROMO!', '💥 Price drop!'], seed),
+        '', sale.map(c => fmtItem(c, ctx, true)).join('\n'), '', until ? (tl ? `⏰ Hanggang ${until} lang!` : `⏰ Until ${until} only!`) : '', linkLine, deliv, '', tags]);
+    }
+    case 'spotlight': {
+      if(!one) return tl ? 'Idagdag muna ang mga produkto mo para makagawa ng post.' : 'Add your products first to make a post.';
+      return lines([tl ? pick([`⭐ Best seller namin: ${one.product}!`, `💯 Laging hinahanap: ${one.product}`, `👀 Available na: ${one.product}`], seed) : pick([`⭐ Our best seller: ${one.product}!`, `💯 Always in demand: ${one.product}`, `👀 Now available: ${one.product}`], seed),
+        ctx.showPrices && Number(one.price) > 0 ? (tl ? `💰 ${fmtPHP(one.price)}${one.unit ? ' per ' + one.unit : ''} lang` : `💰 Only ${fmtPHP(one.price)}${one.unit ? ' per ' + one.unit : ''}`) : '',
+        one.moq > 1 && ctx.isSup ? (tl ? `📦 Minimum ${one.moq} ${one.unit || ''}` : `📦 Minimum ${one.moq} ${one.unit || ''}`) : '',
+        '', ctx.isSup ? (tl ? 'Para sa hardware, contractors at resellers. Bulk orders welcome!' : 'For hardware stores, contractors and resellers. Bulk orders welcome!') : (tl ? 'Dito na kayo bumili, malapit lang at sulit pa!' : 'Get it here: close by and good value!'),
+        linkLine, deliv, '', tags]);
+    }
+    case 'pricelist':
+      return lines([tl ? pick([`📋 Mga available namin ngayon sa ${ctx.name}:`, `📋 Price list ng ${ctx.name}:`, `🛍 Ito po ang mga meron kami:`], seed) : pick([`📋 Available now at ${ctx.name}:`, `📋 ${ctx.name} price list:`, `🛍 Here's what we have:`], seed),
+        '', top.map(c => fmtItem(c, ctx, true)).join('\n'), it.length > 5 ? (tl ? `…at ${it.length - 5} pa!` : `…and ${it.length - 5} more!`) : '', '', linkLine, deliv, lead, '', tags]);
+    case 'order_easy':
+      return lines([tl ? pick(['📲 Pwede na mag-order online, kahit gabi!', '🙌 Hindi na kailangang mag-PM at maghintay ng reply!', '⏰ Order anytime, 24/7!'], seed) : pick(['📲 You can now order online, even at night!', '🙌 No need to PM and wait for a reply!', '⏰ Order anytime, 24/7!'], seed),
+        '', tl ? '1️⃣ Buksan ang link\n2️⃣ Piliin ang kailangan\n3️⃣ I-send ang order, kami na bahala!' : '1️⃣ Open the link\n2️⃣ Pick what you need\n3️⃣ Send your order, we\'ll handle the rest!',
+        '', linkLine, tl ? 'Makikita mo rin kung nasaan na ang order mo. 😊' : 'You can track your order too. 😊', '', tags]);
+    case 'delivery':
+      return lines([tl ? pick(['🚚 Delivery schedule namin:', '🚚 Hatid namin sa inyo!', '📍 Saan kami nagde-deliver?'], seed) : pick(['🚚 Our delivery schedule:', '🚚 We deliver to you!', '📍 Where do we deliver?'], seed),
+        '', ctx.st.delivery_areas ? `📍 ${ctx.st.delivery_areas}` : '', ctx.st.delivery_days ? `📅 ${ctx.st.delivery_days}` : '', lead,
+        ctx.st.min_order ? (tl ? `🧾 Minimum order: ${fmtPHP(ctx.st.min_order)}` : `🧾 Minimum order: ${fmtPHP(ctx.st.min_order)}`) : '', ctx.st.cod ? (tl ? '💵 Pwede ang COD' : '💵 COD available') : '',
+        '', linkLine, '', tags]);
+    case 'bulk':
+      return lines([tl ? pick(['🏗 May project? Bulk orders, sulit na presyo!', '📦 Para sa contractors at resellers!', '🤝 Hanap ng maaasahang supplier?'], seed) : pick(['🏗 Got a project? Bulk orders at good prices!', '📦 For contractors and resellers!', '🤝 Looking for a reliable supplier?'], seed),
+        '', top.slice(0, 3).map(c => fmtItem(c, ctx, true)).join('\n'), '',
+        tl ? '✔ Tamang dami, tamang presyo\n✔ May resibo at statement\n✔ Pwede ang terms sa regular buyers' : '✔ Right quantity, right price\n✔ Proper invoices and statements\n✔ Terms available for regular buyers',
+        '', linkLine, deliv, '', tags]);
+    case 'weekend':
+      return lines([tl ? pick(['🎉 Weekend na! Kumpleto kami, punta na!', '💸 Payday! Sulitin sa mga kailangan sa bahay!', '🛒 Stock up na this weekend!'], seed) : pick(['🎉 It\'s the weekend! We\'re fully stocked!', '💸 Payday! Get what you need for home!', '🛒 Stock up this weekend!'], seed),
+        '', top.slice(0, 4).map(c => fmtItem(c, ctx, true)).join('\n'), '', linkLine, deliv, '', tags]);
+  }
+  return '';
+}
+function shopCatalog(){ return (myBusiness ? myBusiness.catalog : window._demoShopCatalog) || []; }
+function renderPostComposer(el){
+  const ctx = postContext();
+  const types = postTypes(ctx);
+  if(!postsState.type || !types.some(t => t.key === postsState.type)) postsState.type = types[0].key;
+  const text = buildPost(postsState.type, ctx, postsState.seed, postsState.lang);
+  el.innerHTML = `<div class="panel-card" style="margin-bottom:12px;">
+    <div style="font-weight:800;font-size:16px;margin-bottom:2px;">📣 Ready-to-post</div>
+    <div style="font-size:14px;opacity:.8;margin-bottom:10px;">${ctx.isSup ? 'Posts for your Facebook Page, groups and Viber, made from your products and prices.' : 'Posts for your customers, made from what you sell. More customers buying from you means you restock more.'}${!ctx.live ? ` <strong>${ctx.isSup ? 'Open your store' : 'Open your shop'} in Setup so each post has an order link.</strong>` : ''}</div>
+    <div class="chip-filter" style="margin-bottom:8px;">${types.map(t => `<div class="chip ${postsState.type === t.key ? 'active' : ''}" onclick="postsState.type='${t.key}'; postsState.seed=0; renderPostComposer(document.getElementById('postComposer'))">${t.label}</div>`).join('')}</div>
+    <textarea id="postText" rows="11" style="font-family:inherit;width:100%;box-sizing:border-box;padding:10px;border:1px solid var(--border);border-radius:10px;font-size:15px;line-height:1.45;">${escapeHtml(text)}</textarea>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 10px;">
+      <button class="btn btn-outline" style="padding:6px 12px;font-size:14px;" onclick="postsState.seed++; renderPostComposer(document.getElementById('postComposer'))">🔀 Another version</button>
+      <button class="btn btn-outline" style="padding:6px 12px;font-size:14px;" onclick="postsState.lang = postsState.lang === 'taglish' ? 'english' : 'taglish'; renderPostComposer(document.getElementById('postComposer'))">${postsState.lang === 'taglish' ? 'Switch to English' : 'Switch to Taglish'}</button>
+    </div>
+    <div class="share-row">
+      <button class="btn btn-primary share-btn" style="background:#1877F2;border-color:#1877F2;" onclick="sharePost('facebook')">Facebook</button>
+      <button class="btn btn-outline share-btn" onclick="sharePost('messenger')">Messenger</button>
+      <button class="btn btn-outline share-btn" onclick="sharePost('viber')"><span style="color:#7360f2;">●</span> Viber</button>
+      <button class="btn btn-outline share-btn" onclick="sharePost('whatsapp')"><span style="color:#25d366;">●</span> WhatsApp</button>
+      <button class="btn btn-outline share-btn" onclick="sharePost('copy')">📋 Copy</button>
+      ${navigator.share ? `<button class="btn btn-outline share-btn" onclick="sharePost('share')">More…</button>` : ''}
+    </div>
+    <div class="share-hint">Facebook: the post text is copied first. Paste it as your caption (long-press → Paste). Tip: posts with a photo of your actual stock get the most reach.</div>
+  </div>`;
+}
+function sharePost(ch){
+  const text = (document.getElementById('postText') || {}).value || '';
+  if(!text.trim()) return;
+  const ctx = postContext();
+  markStoreShared();
+  trackEvent('content_post_shared', {channel: ch, type: postsState.type, role: currentAppRole});
+  const t = encodeURIComponent(text);
+  if(ch === 'facebook'){
+    copyPlainText(text, 'Post copied. Paste it as your caption on Facebook.');
+    const u = ctx.link || appBaseUrl();
+    setTimeout(() => window.open('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(u), '_blank', 'noopener'), 400);
+  } else if(ch === 'messenger'){
+    copyPlainText(text, 'Post copied. Paste it in Messenger.');
+    setTimeout(() => { window.location.href = 'fb-messenger://share?link=' + encodeURIComponent(ctx.link || appBaseUrl()); }, 400);
+  } else if(ch === 'viber') window.location.href = 'viber://forward?text=' + t;
+  else if(ch === 'whatsapp') window.open('https://wa.me/?text=' + t, '_blank', 'noopener');
+  else if(ch === 'share' && navigator.share) navigator.share({text}).catch(() => {});
+  else copyPlainText(text, 'Copied. Paste it anywhere you want to post.');
+}
+// From a delivered order: "tell your customers the new stock is in"
+function postNewStock(poId){
+  const po = getPO(poId);
+  if(!po) return;
+  postsState = {type: 'new_stock', lang: postsState.lang || 'taglish', seed: 0, preset: {items: (po.lineItems || []).map(l => l.product).filter(Boolean)}};
+  storeTab = 'posts';
+  navigate('store');
+}
+
+// ---- A buyer's own shop: the products they sell to their customers ----
+function renderShopProductsEditor(el){
+  const items = shopCatalog();
+  el.innerHTML = `<div class="panel-card" style="margin-bottom:12px;">
+    <div style="font-weight:800;font-size:16px;margin-bottom:2px;">🛍 What you sell</div>
+    <div style="font-size:14px;opacity:.8;margin-bottom:8px;">Your products and selling prices for your customers. Your suppliers can't see this.</div>
+    ${items.length ? `<div>${items.map((c, i) => `<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--border);">
+        <span>${escapeHtml(c.product)} <span style="opacity:.7;">· ${fmtPHP(c.price)}${c.unit ? '/' + escapeHtml(c.unit) : ''}</span></span>
+        <span class="row-action" style="color:var(--danger);" onclick="removeShopItem(${i})">Remove</span></div>`).join('')}</div>` : '<div style="font-size:14px;opacity:.7;">No products yet.</div>'}
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr auto;gap:6px;margin-top:10px;">
+      <input id="shopNewName" placeholder="Product" maxlength="120"><input id="shopNewPrice" type="number" min="0" step="0.01" placeholder="Price ₱"><input id="shopNewUnit" placeholder="Unit (pc, kg…)" maxlength="20">
+      <button class="btn btn-outline" style="padding:6px 12px;" onclick="addShopItem()">+ Add</button></div>
+    ${(inventoryData || []).length ? `<button class="btn btn-outline" style="margin-top:8px;padding:6px 12px;font-size:14px;" onclick="importShopFromInventory()">⬇ Add items from my inventory</button>` : ''}
+  </div>`;
+}
+async function saveShopCatalog(list){
+  const clean = list.slice(0, 500).map(c => ({product: String(c.product).slice(0, 120), price: Number(c.price) || 0, unit: String(c.unit || '').slice(0, 20), moq: 1}));
+  if(myBusiness){
+    const { error } = await sb.from('businesses').update({catalog: clean}).eq('id', myBusiness.id);
+    if(error){ showToast("Couldn't save: " + error.message, 'error'); return false; }
+    myBusiness.catalog = clean;
+  } else window._demoShopCatalog = clean;
+  return true;
+}
+async function addShopItem(){
+  const name = stripMarkup(document.getElementById('shopNewName').value).trim();
+  const price = Number(document.getElementById('shopNewPrice').value);
+  const unit = stripMarkup(document.getElementById('shopNewUnit').value).trim();
+  if(name.length < 2){ markFieldInvalid('shopNewName', 'Enter the product name.'); return; }
+  if(!(price > 0)){ markFieldInvalid('shopNewPrice', 'Enter your selling price.'); return; }
+  const list = shopCatalog().filter(c => c.product.toLowerCase() !== name.toLowerCase()).concat([{product: name, price, unit}]);
+  if(await saveShopCatalog(list)) renderStorePage();
+}
+async function removeShopItem(i){
+  const list = shopCatalog().slice(); list.splice(i, 1);
+  if(await saveShopCatalog(list)) renderStorePage();
+}
+async function importShopFromInventory(){
+  const have = new Set(shopCatalog().map(c => c.product.toLowerCase()));
+  const names = [...new Set((inventoryData || []).map(i => i.name).filter(Boolean))].filter(n => !have.has(n.toLowerCase()));
+  if(!names.length){ showToast('Everything in your inventory is already listed.'); return; }
+  const add = names.slice(0, 50).map(n => ({product: n, price: 0, unit: ''}));
+  showToast(`Added ${add.length}. Set a selling price for each, then they show in your shop.`, 'success');
+  if(await saveShopCatalog(shopCatalog().concat(add))) renderStorePage();
+}
+// Orders from the buyer's own customers (the buyer is the seller on these).
+let shopOrdersCache = null;
+async function renderShopOrders(el){
+  if(!myBusiness){ el.innerHTML = '<div class="panel-card">Orders from your customers show here once you sign in and open your shop.</div>'; return; }
+  el.innerHTML = '<div class="panel-card">Loading…</div>';
+  const { data, error } = await sb.from('purchase_orders').select('id, po_number, status, line_items, created_date, delivery_address, notes, buyer_business_id, history').eq('supplier_business_id', myBusiness.id).neq('status', 'draft').order('created_at', {ascending: false}).limit(100);
+  if(error){ el.innerHTML = `<div class="panel-card">${escapeHtml(error.message)}</div>`; return; }
+  const ids = [...new Set((data || []).map(o => o.buyer_business_id))];
+  let who = {};
+  if(ids.length){ const { data: bz } = await sb.from('businesses').select('id, name, outside_contact').in('id', ids); (bz || []).forEach(b => { who[b.id] = b; }); }
+  shopOrdersCache = data || [];
+  const label = {sent: 'New', confirmed: 'Confirmed', preparing: 'Preparing', shipped: 'On the way', delivered: 'Delivered', paid: 'Paid', cancelled: 'Cancelled'};
+  el.innerHTML = shopOrdersCache.length ? shopOrdersCache.map(o => { const c = who[o.buyer_business_id] || {}; const oc = c.outside_contact || {};
+    const total = (o.line_items || []).reduce((s, l) => s + Number(l.qty || 0) * Number(l.unitPrice || 0), 0);
+    return `<div class="panel-card" style="margin-bottom:10px;">
+      <div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;"><div><strong>${escapeHtml(c.name || 'Customer')}</strong> <span style="font-size:13px;opacity:.7;">· ${escapeHtml(o.po_number)} · ${stmtDate(o.created_date)}</span></div>
+        <span class="status-pill ${o.status === 'sent' ? 'pill-sent' : 'pill-joined'}" style="font-size:13px;">${label[o.status] || o.status}</span></div>
+      <div style="font-size:14.5px;margin:6px 0;">${(o.line_items || []).map(l => `${escapeHtml(l.qty)} × ${escapeHtml(l.product)}`).join(' · ')} · <strong>${fmtPHP(total)}</strong></div>
+      ${o.delivery_address ? `<div style="font-size:13.5px;opacity:.8;">📍 ${escapeHtml(o.delivery_address)}</div>` : ''}${o.notes ? `<div style="font-size:13.5px;opacity:.8;">📝 ${escapeHtml(o.notes)}</div>` : ''}
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;">
+        ${oc.phone ? `<a class="btn btn-outline" style="padding:5px 10px;font-size:13.5px;text-decoration:none;" href="tel:${escapeHtml(oc.phone)}">📞 Call</a><a class="btn btn-outline" style="padding:5px 10px;font-size:13.5px;text-decoration:none;" href="viber://chat?number=%2B63${encodeURIComponent(String(oc.phone).replace(/^0/, ''))}">Viber</a>` : ''}
+        ${o.status === 'sent' ? `<button class="btn btn-primary" style="padding:5px 10px;font-size:13.5px;" onclick="setShopOrderStatus('${o.id}', 'confirmed')">Confirm</button><button class="btn btn-outline" style="padding:5px 10px;font-size:13.5px;color:var(--danger);border-color:var(--danger);" onclick="setShopOrderStatus('${o.id}', 'cancelled')">Can't do it</button>` : ''}
+        ${['confirmed', 'preparing'].includes(o.status) ? `<button class="btn btn-primary" style="padding:5px 10px;font-size:13.5px;" onclick="setShopOrderStatus('${o.id}', 'shipped')">On the way</button>` : ''}
+        ${o.status === 'shipped' ? `<button class="btn btn-primary" style="padding:5px 10px;font-size:13.5px;" onclick="setShopOrderStatus('${o.id}', 'delivered')">Delivered</button>` : ''}
+        ${o.status === 'delivered' ? `<button class="btn btn-primary" style="padding:5px 10px;font-size:13.5px;" onclick="setShopOrderStatus('${o.id}', 'paid')">Paid ✓</button>` : ''}
+      </div></div>`; }).join('')
+    : `<div class="panel-card" style="text-align:center;padding:24px;"><div style="font-size:32px;">🧾</div><div style="font-weight:800;margin-top:6px;">No customer orders yet</div><div style="font-size:14.5px;opacity:.8;margin-top:4px;">Share a post from the Posts tab. Orders from your customers show up here.</div></div>`;
+}
+async function setShopOrderStatus(id, status){
+  const o = (shopOrdersCache || []).find(x => x.id === id);
+  if(!o) return;
+  const words = {confirmed: 'Confirmed', cancelled: "Can't fill this order", shipped: 'On the way', delivered: 'Delivered', paid: 'Paid'}[status];
+  if(status === 'cancelled' && !confirm('Tell the customer you can\'t do this order?')) return;
+  const history = (o.history || []).concat([{date: APP_TODAY, time: 'Just now', actor: 'supplier', action: words + ' by ' + (myBusiness ? myBusiness.name : 'the shop')}]);
+  const { error } = await sb.from('purchase_orders').update({status, history}).eq('id', id);
+  if(error){ showToast("Couldn't update: " + error.message, 'error'); return; }
+  showToast('Updated. Your customer sees it on their tracking link.', 'success');
+  renderShopOrders(document.getElementById('storeTabBody'));
 }
 
 function renderSidebarForViewAsRole(){
@@ -8631,7 +8817,7 @@ function navigate(page){
       renderHomeInviteNudge();
       renderPhoneNotifNudge();
       renderGetStartedCard();
-      if(currentAppRole === 'supplier'){ renderWhoOwesMe(); renderStoreDashCard(); } else { renderBillsToPay(); renderWatchdogDashCard(); }
+      if(currentAppRole === 'supplier'){ renderWhoOwesMe(); renderStoreDashCard(); } else { renderBillsToPay(); renderWatchdogDashCard(); renderBuyerPostCard(); }
     }
     if(page==='messages' && !window._msgInit){
       renderConversationList();
@@ -13987,6 +14173,7 @@ function renderBuyerPoDetail(o){
     <div class="expand-actions" style="margin-top:16px;">${actionsHtml}</div>
     <div class="expand-actions" style="margin-top:12px;">
       <button class="btn btn-outline" onclick="event.stopPropagation(); openInlineMessage('${o.supplierId}','${o.id}')">💬 Message ${o.supplierName}</button>
+      ${['delivered','partially_delivered','invoiced','paid'].includes(o.status) ? `<button class="btn btn-outline" onclick="event.stopPropagation(); postNewStock('${o.id}')">📣 Tell your customers it's in stock</button>` : ''}
     </div>
     ${(amendBtn || cancelHtml) ? `<div class="expand-actions" style="margin-top:18px;padding-top:14px;border-top:1px solid var(--border);">
       ${amendBtn}

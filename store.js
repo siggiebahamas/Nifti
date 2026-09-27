@@ -84,7 +84,7 @@
     root.innerHTML = '<div class="ns-wrap">'
       + '<div class="ns-top"><b class="ns-brand">Nifti</b>' + (d.is_owner ? '<span class="ns-small">👀 This is what buyers see</span>' : '') + '</div>'
       + '<div class="ns-card"><div class="ns-row"><div class="ns-av">' + esc(initials) + '</div><div><h1>' + esc(d.name) + (d.verified ? ' <span title="Verified business" class="ns-ok">✔</span>' : '') + '</h1>'
-      + '<div class="ns-dim">' + ([d.category, d.location].filter(Boolean).map(esc).join(' · ') || 'Wholesale supplier') + (d.orders_band ? ' · ' + d.orders_band + ' orders lately' : '') + '</div></div></div>'
+      + '<div class="ns-dim">' + ([d.category, d.location].filter(Boolean).map(esc).join(' · ') || (d.type === 'buyer' ? 'Local store' : 'Wholesale supplier')) + (d.orders_band ? ' · ' + d.orders_band + ' orders lately' : '') + '</div></div></div>'
       + (d.headline ? '<div class="ns-head">' + esc(d.headline) + '</div>' : '') + (d.about ? '<div class="ns-about">' + esc(d.about) + '</div>' : '')
       + (chips.length ? '<div class="ns-chips">' + chips.map(function(c){ return '<span>' + c + '</span>'; }).join('') + '</div>' : '')
       + '<div class="ns-row ns-gap">' + (d.phone ? '<a class="ns-btn2" href="tel:' + esc(String(d.phone).replace(/[^0-9+]/g, '')) + '">📞 Call</a><a class="ns-btn2" href="viber://chat?number=%2B63' + esc(phoneDigits) + '">💬 Viber</a>' : '')
@@ -92,7 +92,7 @@
       + (d.price_mode === 'signup' && !d.show_prices ? '<div class="ns-card ns-green"><b>Wholesale prices are for registered buyers</b><div class="ns-about">Sign up free in 1 minute to see prices. You can also order now and they\'ll send you the price.</div><button class="ns-btn" onclick="NS.signup()">See prices, sign up free →</button></div>' : '')
       + (d.price_mode === 'hidden' ? '<div class="ns-card ns-about">Pick what you need and send your order. ' + esc(d.name) + ' replies with the price before confirming.</div>' : '')
       + '<div class="ns-card"><input class="ns-search" type="search" placeholder="🔍 Search ' + d.items.length + ' products" value="' + esc(S.q) + '" oninput="NS.search(this.value)"><div id="ns-items">' + itemsHtml() + '</div></div>'
-      + '<div class="ns-foot">Online store by <b>Nifti</b> · Free for suppliers · <a href="' + BASE + '?src=store">Make your own</a></div>'
+      + '<div class="ns-foot">Online store by <b>Nifti</b> · Free for businesses · <a href="' + BASE + '?src=store">Make your own</a></div>'
       + '<div id="ns-cart"></div></div>';
     cartBar();
   }
