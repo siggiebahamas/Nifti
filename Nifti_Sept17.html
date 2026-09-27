@@ -851,6 +851,53 @@
 
 
 
+  .nav-badge:empty{display:none !important;}
+  #page-settings .settings-card.acc{padding-top:0 !important;padding-bottom:0 !important;}
+  #page-settings .settings-card.acc.open{padding-bottom:18px !important;}
+  #page-settings .settings-card.acc > h2{padding:15px 26px 15px 0;}
+  .hm-msgs .row-item{flex-wrap:nowrap !important;}
+  .hm-msgs .row-item > div:first-child{flex:1;min-width:0;}
+  .hm-msgs .row-sub{max-width:none !important;}
+  .gs-step{flex-wrap:nowrap !important;} .gs-step > span:first-child{min-width:0;} .gs-step .row-action{white-space:nowrap;flex-shrink:0;}
+  .owes-row > div:nth-child(3){display:grid !important;grid-template-columns:repeat(auto-fit,minmax(0,1fr));}
+  .owes-row > div:nth-child(3) .btn{white-space:nowrap;padding:7px 8px !important;}
+  .shop-add{display:grid;grid-template-columns:2fr 1fr 1fr auto;gap:6px;margin-top:10px;}
+  .shop-add input{min-width:0;width:100%;box-sizing:border-box;padding:10px 12px;border:1.5px solid var(--border);border-radius:9px;font-size:16px;background:var(--surface);color:var(--ink);}
+  @media (max-width:640px){ .shop-add{grid-template-columns:1fr 1fr;} .shop-add input:first-child, .shop-add button{grid-column:1 / -1;} }
+  @media (max-width:640px){
+    #createPoLineItemsTable{table-layout:auto !important;}
+    #createPoLineItemsTable thead{display:none;}
+    #createPoLineItemsTable, #createPoLineItemsTable tbody{display:block;width:100%;}
+    #createPoLineItemsTable tr{display:grid !important;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr) auto;gap:6px 10px;padding:12px 0;align-items:end;}
+    #createPoLineItemsTable td{display:block;padding:0 !important;text-align:left !important;min-width:0;}
+    #createPoLineItemsTable td:first-child{grid-column:1 / -1;}
+    #createPoLineItemsTable td:nth-child(2)::before{content:'Qty';}
+    #createPoLineItemsTable td:nth-child(3)::before{content:'Price';}
+    #createPoLineItemsTable td:nth-child(4)::before{content:'Total';}
+    #createPoLineItemsTable td:nth-child(n+2):nth-child(-n+4)::before{display:block;font-size:11.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;opacity:.55;margin-bottom:4px;}
+    #createPoLineItemsTable td:nth-child(3), #createPoLineItemsTable td:nth-child(4){padding-bottom:10px !important;}
+    #createPoLineItemsTable td input{width:100%;box-sizing:border-box;}
+    #createPoLineItemsTable .po-product-select{width:100%;}
+  }
+  .od-head{margin:0 0 14px;padding-right:34px;}
+  .od-eyebrow{font-size:12px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;opacity:.6;}
+  .od-who{font-family:var(--font-h);font-weight:800;font-size:22px;color:var(--ink);line-height:1.2;margin-top:3px;}
+  .od-sub{font-size:15px;color:var(--body);margin-top:3px;}
+  .od-next{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:10px;}
+  .od-next .status-pill{font-size:13.5px;}
+  .od-items{border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:14px;background:var(--surface);}
+  .od-item{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 14px;border-bottom:1px solid var(--border);}
+  .od-item-name{font-weight:800;font-size:15.5px;color:var(--ink);}
+  .od-item-sub{font-size:13.5px;color:var(--body);opacity:.8;margin-top:1px;}
+  .od-item-amt{font-weight:800;font-size:15.5px;color:var(--ink);white-space:nowrap;}
+  .od-sums{padding:10px 14px;background:var(--bg);display:grid;gap:4px;}
+  .od-sum{display:flex;justify-content:space-between;gap:12px;font-size:14.5px;color:var(--body);}
+  .od-sum.tot{font-weight:800;font-size:17px;color:var(--ink);border-top:1px solid var(--border);padding-top:7px;margin-top:3px;}
+  .orders-table .po-cell{white-space:nowrap;}
+  @media (max-width:640px){
+    #createPoLineItemsTable{border:none !important;box-shadow:none !important;background:transparent !important;border-radius:0 !important;}
+    #createPoLineItemsTable tr{border:1px solid var(--border) !important;border-radius:12px;padding:12px !important;margin-bottom:8px;background:var(--surface);}
+  }
   .settings-card:empty{display:none;}
   .store-hero h1{line-height:1.2;}
   .store-avatar{width:54px;height:54px;border-radius:14px;background:var(--green);color:#fff;font-weight:800;font-size:21px;display:flex;align-items:center;justify-content:center;flex:0 0 54px;}
@@ -1457,6 +1504,161 @@
   .hiw-hero.blue .hiw-hero-eyebrow{color:var(--blue);}
   .hiw-hero-num{font-family:var(--font-h);font-size:42px;font-weight:800;color:var(--ink);margin-top:4px;line-height:1;}
   .hiw-hero-sub{font-size:15px;color:var(--ink);font-weight:600;margin-top:6px;}
+
+  /* ===== UX pass: form basics ===== */
+  textarea, select, button, input{font-family:inherit;}
+  input[type=checkbox], input[type=radio], .field input[type=checkbox], .field input[type=radio]{width:auto;min-width:18px;height:18px;padding:0;margin:3px 0 0;flex-shrink:0;accent-color:var(--green);box-shadow:none;}
+  .field label.store-radio{display:flex;}
+  .field textarea{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:9px;font-size:16px;background:var(--surface);color:var(--ink);box-sizing:border-box;line-height:1.45;}
+  :root{--border-strong:#CFC8B8;}
+
+  /* ===== Home ===== */
+  .hm-hello{margin:0 0 14px !important;display:block !important;}
+  .hm-date{font-size:12px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--green);}
+  .hm-hello h1{font-family:var(--font-h);font-weight:800;font-size:26px !important;letter-spacing:-.015em;color:var(--ink);margin:3px 0 4px;line-height:1.2;}
+  .hm-status{font-size:15.5px;color:var(--body);margin:0;} .hm-status b{color:var(--ink);}
+  .hm-tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:14px;}
+  @media (min-width:900px){ .hm-tiles{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;} }
+  .hm-tile{appearance:none;-webkit-appearance:none;text-align:left;border:1px solid var(--border);background:var(--surface);border-radius:16px;padding:13px 13px 12px;cursor:pointer;display:flex;flex-direction:column;align-items:flex-start;gap:1px;min-height:118px;position:relative;color:var(--ink);box-shadow:0 1px 2px rgba(20,20,20,.04);transition:transform .12s ease, box-shadow .15s ease;min-width:0;}
+  .hm-tile:hover{box-shadow:0 8px 20px -12px rgba(20,20,20,.3);}
+  .hm-tile:active{transform:scale(.97);}
+  .hm-tile::after{content:'›';position:absolute;right:12px;top:10px;font-size:20px;line-height:1;opacity:.3;font-weight:700;}
+  .hm-ic{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;font-size:17px;margin-bottom:7px;background:var(--hm-soft);}
+  .hm-num{font-family:var(--font-h);font-weight:800;font-size:23px;line-height:1.1;letter-spacing:-.015em;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .hm-lbl{font-size:14px;font-weight:800;margin-top:1px;}
+  .hm-sub{font-size:12.5px;color:var(--body);opacity:.8;line-height:1.3;margin-top:1px;}
+  .hm-sub.bad{color:var(--danger);opacity:1;font-weight:700;}
+  .hm-sub.good{color:var(--green);opacity:1;font-weight:700;}
+  .hm-tile.hot{border-color:var(--hm-c);box-shadow:inset 0 0 0 1px var(--hm-c);}
+  .hm-tile.hot .hm-num{color:var(--hm-c);}
+  .t-green{--hm-c:#1F7A4D;--hm-soft:#E1F1E7;} .t-amber{--hm-c:#B97A00;--hm-soft:#FBF0D2;} .t-blue{--hm-c:#2764AD;--hm-soft:#E1EBF8;}
+  .t-rose{--hm-c:#C0432B;--hm-soft:#FBE3DD;} .t-violet{--hm-c:#6446BE;--hm-soft:#ECE6FA;} .t-gray{--hm-c:#6B6860;--hm-soft:#EFECE4;}
+  .hm-now{background:var(--surface);border:1px solid var(--border);border-radius:16px;margin-bottom:16px;overflow:hidden;}
+  .hm-now-head{display:flex;justify-content:space-between;align-items:center;padding:13px 16px 9px;}
+  .hm-now-head h2{font-family:var(--font-h);font-size:17.5px;font-weight:800;color:var(--ink);margin:0;display:flex;align-items:center;gap:8px;}
+  .hm-count{background:var(--danger);color:#fff;border-radius:100px;font-size:12px;font-weight:800;padding:2px 8px;line-height:1.4;}
+  .hm-item{display:flex;align-items:center;gap:12px;padding:11px 16px;border-top:1px solid var(--border);}
+  .hm-dot{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:18px;flex-shrink:0;background:var(--hm-soft);}
+  .hm-txt{flex:1;min-width:0;}
+  .hm-t{font-weight:800;font-size:15px;color:var(--ink);line-height:1.3;}
+  .hm-s{font-size:13px;color:var(--body);opacity:.8;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .hm-go{flex-shrink:0;border:none;border-radius:10px;padding:0 15px;height:40px;font-weight:800;font-size:14px;background:var(--green);color:#fff;cursor:pointer;white-space:nowrap;}
+  .hm-go.soft{background:var(--green-soft);color:var(--green);}
+  .hm-go:active{transform:scale(.96);}
+  .hm-more{display:block;width:100%;text-align:center;padding:11px;font-weight:800;color:var(--green);cursor:pointer;border:none;border-top:1px solid var(--border);background:none;font-size:14.5px;}
+  .hm-done{display:flex;align-items:center;gap:12px;padding:6px 16px 16px;}
+  .hm-done .hm-dot{background:#E1F1E7;}
+  .hm-msgs .row-item{padding:10px 0;}
+  .hm-flash{animation:hmFlash 1.3s ease;}
+  @keyframes hmFlash{0%,100%{box-shadow:none;} 30%{box-shadow:0 0 0 3px rgba(31,122,77,.35);border-radius:16px;}}
+  #whoOwesMePanel, #billsToPayPanel, #priceNewsCard{scroll-margin-top:84px;}
+  .owes-row > div:first-child{min-width:150px;}
+  @media (max-width:640px){
+    .owes-row{display:grid;grid-template-columns:1fr auto;gap:6px 10px;}
+    .owes-row > div:nth-child(3){grid-column:1 / -1;}
+    .owes-row > div:nth-child(3) .btn{flex:1;}
+    .owes-row > div[id^="remindBox_"]{grid-column:1 / -1;}
+  }
+
+  /* ===== Orders ===== */
+  .ord-head{display:flex !important;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;}
+  .ord-head p{margin:0;}
+  .ord-quick{display:flex;gap:8px;overflow-x:auto;margin:-4px 0 14px;padding-bottom:2px;scrollbar-width:none;}
+  .ord-quick::-webkit-scrollbar{display:none;}
+  .ord-q{flex-shrink:0;border:1px solid var(--border);background:var(--surface);border-radius:100px;padding:8px 14px;font-weight:700;font-size:14px;color:var(--ink);cursor:pointer;white-space:nowrap;}
+  .ord-q.on{background:var(--ink);color:#fff;border-color:var(--ink);}
+  .ord-seg{display:flex;gap:6px;overflow-x:auto;margin:10px 0 8px;scrollbar-width:none;}
+  .ord-seg::-webkit-scrollbar{display:none;}
+  .ord-seg button{flex-shrink:0;border:1px solid var(--border);background:var(--surface);border-radius:100px;padding:8px 13px;font-weight:700;font-size:14px;color:var(--ink);cursor:pointer;display:inline-flex;align-items:center;gap:6px;}
+  .ord-seg button span{font-size:12px;font-weight:800;background:var(--bg);border-radius:100px;padding:1px 7px;}
+  .ord-seg button.on{background:var(--ink);color:#fff;border-color:var(--ink);}
+  .ord-seg button.on span{background:rgba(255,255,255,.2);}
+  .ord-seg button.turn span{background:var(--lowstock-fill,#F2B705);color:#2B2100;}
+  .ord-special{display:inline-flex;align-items:center;gap:8px;background:var(--green-soft);color:var(--green);border-radius:100px;padding:6px 12px;font-weight:800;font-size:13.5px;margin-bottom:8px;cursor:pointer;}
+  details.ord-more{margin:0 0 10px;}
+  details.ord-more > summary{list-style:none;cursor:pointer;font-weight:700;font-size:14px;color:var(--green);padding:4px 0;display:inline-flex;align-items:center;gap:6px;}
+  details.ord-more > summary::-webkit-details-marker{display:none;}
+  details.ord-more > summary::after{content:'▾';font-size:12px;}
+  details.ord-more[open] > summary::after{content:'▴';}
+  .ord-more-body{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px;margin-top:6px;display:grid;gap:10px;}
+  .ord-more-body .tabs-row{margin:0;}
+  .ord-more-body .chip-filter{margin:0;}
+  .ord-more-body select{padding:8px 10px;border:1px solid var(--border);border-radius:8px;font-size:15px;background:var(--surface);color:var(--ink);max-width:100%;}
+  .ord-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:12px 14px;margin-bottom:8px;cursor:pointer;position:relative;display:grid;gap:3px;}
+  .ord-card.you{border-left:4px solid var(--lowstock-fill,#F2B705);padding-left:12px;}
+  .ord-card.order-row-selected{background:var(--green-soft);border-color:var(--green);}
+  .ord-card:active{transform:scale(.99);}
+  .ord-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;}
+  .ord-who{font-weight:800;font-size:15.5px;color:var(--ink);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .ord-amt{font-weight:800;font-size:15.5px;color:var(--ink);white-space:nowrap;}
+  .ord-meta{font-size:13px;color:var(--body);opacity:.8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .ord-bot{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:5px;}
+  .ord-bot .status-pill{font-size:13px;padding:4px 10px;white-space:normal;}
+  .ord-tag{font-size:11.5px;font-weight:800;padding:2px 7px;border-radius:6px;background:#E2ECF8;color:#2764AD;margin-left:6px;vertical-align:1px;}
+  .ord-tag.late{background:#FBE3DD;color:var(--danger);}
+  .ord-chev{opacity:.35;font-size:20px;font-weight:700;line-height:1;}
+  details.ord-perf{margin-top:18px;}
+  details.ord-perf > summary{list-style:none;cursor:pointer;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 16px;font-weight:800;font-size:15.5px;color:var(--ink);display:flex;justify-content:space-between;align-items:center;}
+  details.ord-perf > summary::-webkit-details-marker{display:none;}
+  details.ord-perf > summary::after{content:'▾';opacity:.5;}
+  details.ord-perf[open] > summary::after{content:'▴';}
+  details.ord-perf > summary small{display:block;font-weight:600;font-size:13px;opacity:.7;margin-top:2px;}
+
+  /* ===== Partners list ===== */
+  .pt-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;margin-bottom:8px;overflow:hidden;}
+  .pt-row{display:flex;align-items:center;gap:12px;padding:12px 14px;cursor:pointer;}
+  .pt-av{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-weight:800;font-size:15px;background:var(--green-soft);color:var(--green);flex-shrink:0;}
+  .pt-mid{flex:1;min-width:0;}
+  .pt-name{font-weight:800;font-size:15.5px;color:var(--ink);line-height:1.25;}
+  .pt-sub{font-size:13px;color:var(--body);opacity:.8;margin-top:2px;}
+  .pt-card .score-badge{font-size:13px;padding:3px 9px;}
+  .pt-detail{border-top:1px solid var(--border);padding:12px 14px;background:var(--bg);}
+  .pt-detail .expand-detail-list{grid-template-columns:1fr 1fr;}
+  #partnerCards{display:none;}
+  @media (max-width:640px){ #suppliersTableWrap{display:none;} #partnerCards{display:block;} }
+
+  /* ===== Settings: tap to open ===== */
+  #page-settings .settings-card.acc{padding-top:0;padding-bottom:0;}
+  #page-settings .settings-card.acc > h2{cursor:pointer;display:flex;align-items:center;gap:8px;margin:0;padding:16px 26px 16px 0;position:relative;user-select:none;}
+  #page-settings .settings-card.acc > h2::after{content:'';position:absolute;right:2px;top:50%;width:8px;height:8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:translateY(-70%) rotate(45deg);opacity:.45;transition:transform .15s;}
+  #page-settings .settings-card.acc.open > h2::after{transform:translateY(-30%) rotate(-135deg);}
+  #page-settings .settings-card.acc:not(.open) > :not(h2){display:none !important;}
+  #page-settings .settings-card.acc.open{padding-bottom:18px;}
+  #page-settings .settings-card.acc > h2 .acc-hint{display:block;font-size:13px;font-weight:600;opacity:.6;margin-top:2px;font-family:var(--font-b);letter-spacing:0;}
+  #page-settings .settings-card.acc.open > h2 .acc-hint{display:none;}
+  #page-settings .settings-card.acc > h2 > .acc-txt{display:block;}
+  #page-settings .settings-card{margin-bottom:8px;}
+  #page-settings .settings-section-title{margin-top:22px;}
+
+  /* ===== Watchdog alerts ===== */
+  .wd-sum{display:flex;align-items:center;gap:14px;}
+  .wd-sum-ic{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;font-size:24px;background:#FBE3DD;flex-shrink:0;}
+  .wd-sum-ic.ok{background:#E1F1E7;}
+  .wd-sum b{font-family:var(--font-h);font-size:22px;display:block;line-height:1.15;}
+  .wd-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:10px;}
+  .wd-card.done{opacity:.65;}
+  .wd-who{font-size:13px;color:var(--body);opacity:.8;display:flex;align-items:center;gap:6px;}
+  .wd-av{width:24px;height:24px;border-radius:50%;background:var(--bg);display:grid;place-items:center;font-size:11px;font-weight:800;}
+  .wd-head{font-weight:800;font-size:17px;color:var(--ink);margin-top:8px;line-height:1.3;}
+  .wd-head .up{color:var(--danger);}
+  .wd-what{font-size:14.5px;color:var(--ink);margin-top:3px;}
+  .wd-meta{font-size:12.5px;opacity:.65;margin-top:3px;}
+  .wd-acts{display:flex;gap:8px;margin-top:12px;}
+  .wd-acts .btn{flex:1;padding:9px 12px;font-size:14.5px;min-height:42px;}
+
+  /* ===== Small fixes ===== */
+  .shop-prod-row{display:grid;grid-template-columns:minmax(0,1fr) 110px;gap:8px;}
+  .shop-prod-row input{min-width:0;width:100%;box-sizing:border-box;}
+  .pcx-row{display:grid;gap:2px;padding:10px 0;border-bottom:1px solid var(--border);}
+  .pcx-row:last-child{border-bottom:none;}
+  .pcx-name{font-weight:800;font-size:15px;color:var(--ink);}
+  .pcx-line{font-size:14px;color:var(--body);display:flex;flex-wrap:wrap;gap:4px 8px;align-items:baseline;}
+  .pcx-line b{color:var(--ink);font-size:15px;}
+  .pcx-up{color:var(--danger);font-weight:800;} .pcx-down{color:var(--green);font-weight:800;}
+  .empty-mini{text-align:center;padding:18px 12px;color:var(--body);font-size:14.5px;opacity:.85;}
+  .empty-mini b{display:block;color:var(--ink);font-size:15.5px;margin-bottom:2px;opacity:1;}
+  .settings-card:empty{display:none;}
+  #supplierChips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;} #supplierChips .chip{flex-shrink:0;}
 </style>
 </head>
 <body>
@@ -2148,8 +2350,7 @@
     <div style="background:var(--surface);border-radius:16px;padding:26px;width:920px;max-width:95vw;max-height:90vh;overflow-y:auto;">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
         <div>
-          <h2 id="createPoModalTitle" style="font-family:var(--font-h);font-size:20.5px;font-weight:800;">Create Purchase Order</h2>
-          <span style="font-size:12px;color:#fff;background:var(--green);padding:2px 8px;border-radius:5px;font-weight:700;">BUILD: order-type-lock-v4</span>
+          <h2 id="createPoModalTitle" style="font-family:var(--font-h);font-size:20.5px;font-weight:800;">New order</h2>
         </div>
         <span style="cursor:pointer;font-size:20.5px;color:var(--ink);" onclick="closeCreatePOModal()">✕</span>
       </div>
@@ -2163,10 +2364,10 @@
       </div>
       <div class="row-2">
         <div class="field"><label>Supplier</label><select id="createPoSupplier" onchange="handleSupplierChangeInCreatePO()"></select></div>
-        <div class="field"><label>Order type</label>
+        <div class="field hidden" id="createPoTypeField"><label>Order type</label>
           <div id="createPoTypeDisplay" style="padding:9px 12px;border:1.5px solid var(--border);border-radius:8px;background:var(--bg);font-family:var(--font-b);font-size:16px;color:var(--ink);font-weight:600;"></div>
           <input type="hidden" id="createPoType">
-          <div style="font-size:13px;color:var(--ink);opacity:.65;margin-top:4px;">Set automatically from the supplier's location — not something to choose by hand.</div>
+          <div style="font-size:13px;color:var(--ink);opacity:.65;margin-top:4px;">This supplier ships from abroad, so duties and freight are added.</div>
         </div>
       </div>
       <div class="field"><label>Requested delivery date</label><input type="date" id="createPoDate" onchange="checkHolidayAwareDate()" style="width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:8px;font-family:var(--font-b);font-size:16px;box-sizing:border-box;">
@@ -2178,7 +2379,7 @@
           <input type="text" id="createPoAddress" class="hidden" placeholder="Enter the new delivery address" style="width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:8px;font-family:var(--font-b);font-size:16px;margin-top:8px;box-sizing:border-box;">
         </div>
       </div>
-      <div style="font-weight:800;font-size:15px;color:var(--ink);text-transform:uppercase;letter-spacing:.03em;margin:16px 0 8px;">Line items</div>
+      <div style="font-weight:800;font-size:15px;color:var(--ink);text-transform:uppercase;letter-spacing:.03em;margin:16px 0 8px;">What you're ordering</div>
       <table id="createPoLineItemsTable" style="width:100%;border-collapse:collapse;margin-bottom:8px;table-layout:fixed;">
         <thead><tr style="border-bottom:2px solid var(--border);">
           <th style="text-align:left;padding:6px 8px 6px 0;font-size:13px;color:var(--ink);opacity:.6;text-transform:uppercase;letter-spacing:.03em;width:48%;">Product</th>
@@ -2189,7 +2390,7 @@
         </tr></thead>
         <tbody id="createPoLineItems"></tbody>
       </table>
-      <button class="btn btn-outline" style="margin-bottom:18px;" onclick="addCreatePOLine()">+ Add line item</button>
+      <button class="btn btn-outline" style="margin-bottom:18px;" onclick="addCreatePOLine()">+ Add another item</button>
 
       <div id="createPoTotalDisplay" style="background:var(--bg);border:1.5px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:14px;"></div>
 
@@ -2204,8 +2405,8 @@
         <button class="btn btn-outline" style="padding:6px 12px;font-size:15px;" onclick="copyDraftAsText()">📋 Copy draft as text</button>
       </div>
       <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:10px;">
-        <button class="btn btn-outline" onclick="saveCreatePO(false)">Save as Draft (Internal Requisition)</button>
-        <button class="btn btn-primary" onclick="saveCreatePO(true)">Send Purchase Order →</button>
+        <button class="btn btn-outline" onclick="saveCreatePO(false)">Save as draft</button>
+        <button class="btn btn-primary" onclick="saveCreatePO(true)">Send order →</button>
       </div>
     </div>
   </div>
@@ -2448,60 +2649,17 @@
       <!-- ===== PAGE: DASHBOARD (v2 pills — bigger icons, stronger color wash) ===== -->
       <div id="page-dashboard" class="app-page active">
         <div id="buyerDashboardView">
-        <div class="page-head" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px;">
-          <div><h1><span data-i18n="dash_greeting_buyer">Good morning, Dela Cruz Hardware</span></h1><p data-i18n="dash_sub">Here's what needs your attention today.</p></div>
-        </div>
-        <div class="panel-card" style="margin-bottom:20px;">
-          <div class="panel-head"><h2>💬 Messages</h2><span class="lnk" onclick="navigate('messages')">Open Messages →</span></div>
-          <div id="buyerRecentMessagesBox"></div>
-        </div>
-        <div id="billsToPayPanel"></div>
-        <div id="priceNewsCard"></div>
-        <div id="watchdogDashCard"></div>
-        <div id="buyerPostCard"></div>
-        <div id="homeInviteNudge"></div>
-        <div id="buyerTodayPanel"></div>
-        <div id="priceProtectionCard"></div>
-        <div class="stat-row">
-          <div class="stat-card neutral">
-            <div class="stat-body"><span class="stat-label">Active Orders</span><div class="stat-num" id="dcStatActiveOrders">—</div></div>
-            <div class="stat-icon-panel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+          <div id="homeTopBuyer"></div>
+          <div id="billsToPayPanel"></div>
+          <div id="priceNewsCard"></div>
+          <div id="watchdogDashCard"></div>
+          <div id="priceProtectionCard"></div>
+          <div class="panel-card hm-msgs" style="margin-bottom:16px;">
+            <div class="panel-head"><h2>💬 Messages</h2><span class="lnk" onclick="navigate('messages')">All messages →</span></div>
+            <div id="buyerRecentMessagesBox"></div>
           </div>
-          <div class="stat-card green">
-            <div class="stat-body"><span class="stat-label">Connected Suppliers</span><div class="stat-num" id="dcStatConnectedSuppliers">—</div></div>
-            <div class="stat-icon-panel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
-          </div>
-          <div class="stat-card amber">
-            <div class="stat-body"><span class="stat-label">Spend This Month</span><div class="stat-num" id="dcStatSpend">—</div></div>
-            <div class="stat-icon-panel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="3"/><line x1="6" y1="10" x2="6" y2="10.01"/><line x1="18" y1="14" x2="18" y2="14.01"/></svg></div>
-          </div>
-          <div class="stat-card red">
-            <div class="stat-body"><span class="stat-label">Needs Attention</span><div class="stat-num" id="dcStatNeedsAttention">—</div></div>
-            <div class="stat-icon-panel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
-          </div>
-        </div>
-
-        <!-- "Top priorities" (insight-driven) and "Needs attention" (inbox-driven) used to be two
-             separate panels doing the same job — telling you what needs action — sourced from two
-             different systems with two different visual languages. Merged under one heading so
-             there's exactly one place to look for "what do I need to do." Neither list's own
-             rendering logic changed, just where it lives. -->
-        <div class="panel-card" style="margin-bottom:20px;">
-          <div class="panel-head"><h2>Needs your attention</h2><span class="lnk" onclick="navigate('analytics')">See more in Analytics →</span></div>
-          <div id="buyerDecisionCenterList"></div>
-          <div id="buyerInboxList" style="margin-top:10px;"></div>
-        </div>
-
-        <div class="grid2">
-          <div class="panel-card">
-            <div class="panel-head"><h2>Order pipeline — all POs</h2></div>
-            <div id="buyerPipelineBox"></div>
-          </div>
-          <div class="panel-card">
-            <div class="panel-head"><h2>Recent activity</h2></div>
-            <div id="buyerActivityBox"></div>
-          </div>
-        </div>
+          <div id="buyerPostCard"></div>
+          <div id="homeInviteNudge"></div>
         </div>
 
         <div id="supplierDashboardView" class="hidden"></div>
@@ -2582,48 +2740,43 @@
             <div class="chip" onclick="setSupplierFilter('Produce',this)">Produce (2)</div>
           </div>
         </div>
-        <table class="suppliers-table">
+        <div id="suppliersTableWrap"><table class="suppliers-table">
           <thead><tr><th id="suppliersTableHeadCol">Supplier</th><th>Reliability</th><th>Orders</th><th>Last Order</th><th></th></tr></thead>
           <tbody id="suppliersTableBody"></tbody>
-        </table>
+        </table></div>
+        <div id="partnerCards"></div>
       </div>
 
       <!-- ===== PAGE: ORDERS & FREIGHT ===== -->
       <div id="page-orders" class="app-page">
         <div id="buyerOrdersView">
-        <div class="page-head" style="display:flex;justify-content:space-between;align-items:flex-end;">
-          <div><h1 data-i18n="head_orders">Orders</h1><p>Every order defaults to the local pipeline. Click one to see its full timeline.</p></div>
-          <div style="display:flex;gap:10px;">
-            <button class="btn btn-outline" onclick="openPasteOrderModal()">💬 Paste from Viber</button>
-            <button class="btn btn-outline" onclick="startCreatePOFromTemplate()" id="orderFromTemplateBtn">📋 Order from Template</button>
-            <button class="btn btn-primary" onclick="startCreatePO()">+ Create Purchase Order</button>
-          </div>
+        <div class="page-head ord-head">
+          <div><h1 data-i18n="head_orders">Orders</h1><p>Tap an order to see everything about it.</p></div>
+          <button class="btn btn-primary" onclick="startCreatePO()">+ New order</button>
         </div>
-        <div class="role-toggle" style="margin-bottom:16px;">
+        <div class="ord-quick">
+          <button class="ord-q" onclick="openPasteOrderModal()">💬 Paste from Viber</button>
+          <button class="ord-q" onclick="startCreatePOFromTemplate()" id="orderFromTemplateBtn">📋 Templates</button>
+        </div>
+        <div class="role-toggle" style="margin-bottom:12px;">
           <button class="active" id="buyerOrdersViewBtn" onclick="setOrdersMainView('list', this)">📋 Orders</button>
-          <button id="buyerAgingViewBtn" onclick="setOrdersMainView('aging', this)">💰 Aging Report <span id="buyerAgingBadge" class="nav-badge" style="position:relative;top:0;margin-left:4px;"></span></button>
+          <button id="buyerAgingViewBtn" onclick="setOrdersMainView('aging', this)">💰 What I owe <span id="buyerAgingBadge" class="nav-badge" style="position:relative;top:0;margin-left:4px;"></span></button>
         </div>
         <div id="buyerOrdersListWrap">
+        <div class="orders-search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px;color:var(--ink);opacity:.6;flex-shrink:0;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" placeholder="Search supplier, order # or item…" oninput="setOrdersSearch(this.value)">
+        </div>
+        <div id="buyerOrderSeg"></div>
+        <details class="ord-more"><summary>Filter &amp; export</summary><div class="ord-more-body">
         <div class="tabs-row">
           <div class="tab active" onclick="setOrdersFilter('all', this)">All (12)</div>
           <div class="tab" onclick="setOrdersFilter('local', this)">Local (9)</div>
           <div class="tab" onclick="setOrdersFilter('freight', this)">Import / Freight (3)</div>
         </div>
-        <div class="chip-filter" id="ordersStatusChips" style="margin-top:10px;">
-          <div class="chip active" onclick="toggleOrdersColorFilter('draft',this)">⚪ Draft</div>
-          <div class="chip active" onclick="toggleOrdersColorFilter('action',this)"><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#EAB308;margin-right:3px;"></span>Needs your action</div>
-          <div class="chip active" onclick="toggleOrdersColorFilter('waiting',this)"><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#9C9992;margin-right:3px;"></span>Waiting on supplier</div>
-          <div class="chip active" onclick="toggleOrdersColorFilter('done',this)">🟢 Nothing to do</div>
-          <div class="chip active" onclick="toggleOrdersColorFilter('cancelled',this)">⚫ Cancelled</div>
-        </div>
-        <div style="font-size:15px;color:var(--ink);opacity:.75;margin:4px 0 0;">Tap to hide a group.</div>
-        <div class="chip-filter" id="ordersNextActionChips" style="margin-top:10px;"></div>
-        <div style="margin:8px 0;"><label style="font-size:14.5px;color:var(--ink);opacity:.7;margin-right:8px;">Supplier:</label><select id="ordersSupplierFilter" onchange="setOrdersSupplierFilter(this.value)" style="padding:6px 10px;border:1px solid var(--border);border-radius:8px;font-size:14.5px;"></select></div>
-        <div style="margin:8px 0;"><span class="row-action" onclick="exportOrdersToCsv('buyer')">⬇ Export to CSV — take your data to your accountant or existing system</span> · <span class="row-action" onclick="exportInvoicesToCsv('buyer')">⬇ Export invoices to CSV</span></div>
-        <div class="orders-search">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px;color:var(--ink);opacity:.6;flex-shrink:0;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <input type="text" placeholder="Search by supplier, order #, or status…" oninput="setOrdersSearch(this.value)">
-        </div>
+          <div style="margin:8px 0;"><label style="font-size:14.5px;color:var(--ink);opacity:.7;margin-right:8px;">Supplier:</label><select id="ordersSupplierFilter" onchange="setOrdersSupplierFilter(this.value)" style="padding:6px 10px;border:1px solid var(--border);border-radius:8px;font-size:14.5px;"></select></div>
+          <div style="margin:8px 0;"><span class="row-action" onclick="exportOrdersToCsv('buyer')">⬇ Export to CSV — take your data to your accountant or existing system</span> · <span class="row-action" onclick="exportInvoicesToCsv('buyer')">⬇ Export invoices to CSV</span></div>
+        </div></details>
         <div class="sort-bar" id="ordersSortBar"></div>
         <div class="orders-table-scroll">
         <table class="orders-table">
@@ -2643,7 +2796,6 @@
         </table>
         </div>
         <div class="po-card-list" id="orderCards"></div>
-        <div style="font-size:15px;color:var(--ink);margin-top:10px;">⚠ <span style="color:var(--danger);font-weight:700;">red exclamation mark</span> = this order is flagged at risk (running behind schedule, a discrepancy, or something needing your attention).</div>
         </div>
         </div>
 
@@ -2733,7 +2885,7 @@
 
       <!-- ===== PAGE: INVITE A SUPPLIER ===== -->
       <div id="page-invite" class="app-page">
-        <div class="page-head"><h1 id="inviteTitle">Invite a Supplier</h1><p id="inviteSub">Add someone you already order from. They join in under 5 minutes — no marketplace, no cold vetting.</p></div>
+        <div class="page-head"><h1 id="inviteTitle">Invite a Supplier</h1><p id="inviteSub">Add a supplier you already order from. You can send them orders by Viber link right away, even before they join.</p></div>
         <!-- Section 6 #1 — the invite is always a shareable link/message, same as a Viber invite; it never requires installing an app to receive or open. -->
         <div style="font-size:15px;color:var(--ink);background:var(--surface);border:1px solid var(--border);border-radius:9px;padding:10px 14px;margin-bottom:14px;box-shadow:0 2px 8px rgba(24,26,30,.06);">📱 No app download needed — this opens as a normal link inside whatever they already use (Viber, WhatsApp, email, SMS).</div>
         <div class="role-toggle" style="margin-bottom:20px;">
@@ -3029,15 +3181,15 @@
 
       <!-- ===== PAGE: SETTINGS ===== -->
       <div id="page-settings" class="app-page">
-        <div class="page-head"><h1 data-i18n="head_settings">Settings</h1><p>Manage your business profile, privacy, and connected partners.</p></div>
+        <div class="page-head"><h1 data-i18n="head_settings">Settings</h1><p>Tap a section to open it.</p></div>
 
-        <div class="settings-card owner-only">
+        <div class="settings-card owner-only no-acc">
           <h2>🛠 Admin console <span style="font-size:13px;font-weight:700;opacity:.6;">(only you see this)</span></h2>
           <div class="sub">Every business and person on Nifti, plans and payments, bans and deletes, Help messages, notices, email and backups.</div>
           <button class="btn btn-primary" onclick="navigate('admin')">Open admin console →</button>
         </div>
 
-        <div class="settings-card only-supplier">
+        <div class="settings-card only-supplier no-acc">
           <h2>🧰 Optional tools</h2>
           <div class="toggle-row"><div><div class="toggle-txt">Routes for drivers and collectors</div><div class="toggle-sub">Plan delivery and collection runs with a checklist for your drivers. Off if you already have your own way; nothing else changes.</div></div>
             <div class="switch on" id="routesMenuToggle" onclick="setRoutesHidden(!document.body.classList.contains('routes-off'))"><div class="knob"></div></div></div>
@@ -3046,7 +3198,7 @@
         <h3 class="settings-section-title">Your business</h3>
 
         <div class="settings-card">
-          <h2>Business profile</h2>
+          <h2>🏪 Business profile</h2>
           <div class="sub" id="settingsProfileSub">Shown to suppliers you invite or connect with.</div>
           <div style="display:flex;align-items:center;gap:16px;margin-bottom:18px;">
             <div class="avatar" id="settingsAvatarPreview" style="width:64px;height:64px;font-size:22.5px;">DC</div>
@@ -3076,7 +3228,7 @@
         </div>
 
         <div class="settings-card">
-          <h2>Tax &amp; BIR registration</h2>
+          <h2>🧾 Tax &amp; BIR registration</h2>
           <div class="sub">Printed onto your Sales Invoices and Delivery Receipts. Nifti doesn't verify any of this with BIR — it's your responsibility to make sure your Authority to Print or CAS accreditation is valid and that you're permitted to issue computerized invoices.</div>
           <div id="taxProfileContent"></div>
         </div>
@@ -3102,7 +3254,7 @@
         <h3 class="settings-section-title">People</h3>
 
         <div class="settings-card">
-          <h2>Team &amp; Roles</h2>
+          <h2>👥 Team &amp; roles</h2>
           <div class="sub">Who uses Nifti at your business, and what they can do.</div>
           <div id="teamMembersList" style="margin-top:12px;"></div>
           <button class="btn btn-outline" style="margin-top:10px;" onclick="openAddTeamMemberForm()">+ Add team member</button>
@@ -3110,7 +3262,7 @@
         </div>
 
         <div class="settings-card" id="customRolesCard">
-          <h2>Custom Roles</h2>
+          <h2>🔑 Custom roles</h2>
           <div class="sub">Build a role around exactly what one person should do — like access to Messages only, for someone who just manages chats.</div>
           <div id="customRolesList" style="margin-top:12px;"></div>
           <button class="btn btn-outline" style="margin-top:10px;" id="createCustomRoleBtn" onclick="openCreateCustomRoleForm()">+ Create custom role</button>
@@ -3118,7 +3270,7 @@
         </div>
 
         <div class="settings-card">
-          <h2>Spending Approval</h2>
+          <h2>✅ Spending approval</h2>
           <div class="sub">Orders above this amount, sent by anyone other than an Owner or General Manager, wait for approval instead of going out immediately. Leave blank for no threshold.</div>
           <div id="approvalThresholdContent"></div>
         </div>
@@ -3126,7 +3278,7 @@
         <h3 class="settings-section-title">Notifications</h3>
 
         <div class="settings-card">
-          <h2>Notifications</h2>
+          <h2>🔔 Notifications</h2>
           <div id="notifSettingsContent"></div>
           <div style="font-weight:800;font-size:15px;margin:20px 0 4px;">Recent notifications</div>
           <div id="pushLogContent"></div>
@@ -3140,7 +3292,7 @@
         <h3 class="settings-section-title">Privacy &amp; data</h3>
 
         <div class="settings-card">
-          <h2>Privacy &amp; discoverability</h2>
+          <h2>🔒 Privacy &amp; discoverability</h2>
           <div class="sub">Controls who can find you and what they can see.</div>
           <div class="toggle-row"><div><div class="toggle-txt">Let other businesses find me in Discover</div><div class="toggle-sub">Off by default. Shows your name, the short profile you write and, for suppliers, your product list. Never your orders or who you work with.</div></div><div class="switch buyerPublicToggle" onclick="toggleMyBuyerProfilePublic()"><div class="knob"></div></div></div>
           <div class="toggle-row"><div><div class="toggle-txt">🔒 Your suppliers and buyers stay private</div><div class="toggle-sub">Nobody else on Nifti can see who you work with, what you pay, or your orders. This is always on.</div></div></div>
@@ -3152,37 +3304,31 @@
           <div id="shareLinksContent"></div>
         </div>
 
-        <div class="settings-card">
-          <h2>💾 Your data</h2>
-          <div class="sub">Download your records any time. The spreadsheets open in Excel or Google Sheets. It's your data.</div>
-          <div style="display:flex;gap:8px;flex-wrap:wrap;">
-            <button class="btn btn-outline" onclick="exportOrdersToCsv(currentAppRole)">Orders (.csv)</button>
-            <button class="btn btn-outline" onclick="exportInvoicesToCsv(currentAppRole)">Invoices (.csv)</button>
-            <button class="btn btn-outline" onclick="exportPaymentsToCsv()">Payments (.csv)</button>
-            <button class="btn btn-outline" onclick="exportAllData()">Full backup (.json)</button>
-          </div>
-        </div>
 
         <div class="settings-card">
-          <h2>🕵️ Audit Log</h2>
-          <div class="sub">Every price override, stock adjustment, cancelled order, permission denial, and approval decision — this was already being recorded quietly in the background; this just makes it visible.</div>
+          <h2>🕵️ Activity log</h2>
+          <div class="sub">Price overrides, stock changes, cancelled orders and approvals: who did what, and when.</div>
           <div id="auditLogContent"></div>
         </div>
 
         <div class="settings-card" id="myDataCard">
           <h2>🔐 Your data</h2>
-          <div class="sub">Everything Nifti holds about your business is yours. Download a full copy anytime, or delete your account.</div>
+          <div class="sub">Everything Nifti holds about your business is yours. The spreadsheets open in Excel or Google Sheets.</div>
           <div style="display:flex;gap:8px;flex-wrap:wrap;">
-            <button class="btn btn-outline" onclick="downloadMyData()">⬇ Download all my data</button>
-            <button class="btn btn-outline" style="color:var(--danger);border-color:var(--danger);" onclick="deleteMyBusiness()">Delete my business account</button>
+            <button class="btn btn-outline" onclick="exportOrdersToCsv(currentAppRole)">Orders (.csv)</button>
+            <button class="btn btn-outline" onclick="exportInvoicesToCsv(currentAppRole)">Invoices (.csv)</button>
+            <button class="btn btn-outline" onclick="exportPaymentsToCsv()">Payments (.csv)</button>
+            <button class="btn btn-outline" onclick="myBusiness ? downloadMyData() : exportAllData()">⬇ Everything (one file)</button>
           </div>
+          <div style="border-top:1px solid var(--border);margin:16px 0 12px;"></div>
+          <button class="btn btn-outline" style="color:var(--danger);border-color:var(--danger);" onclick="deleteMyBusiness()">Delete my business account</button>
           <div style="font-size:13.5px;opacity:.75;margin-top:8px;">Deleting removes your business, team logins, catalog and store. Partners you traded with keep their own copy of shared orders, shown as "Deleted business".</div>
         </div>
 
         <h3 class="settings-section-title">Plan &amp; help</h3>
 
         <div class="settings-card">
-          <h2>Your plan</h2>
+          <h2>⭐ Your plan</h2>
           <div id="billingPlanContent"></div>
         </div>
 
@@ -3194,7 +3340,7 @@
         </div>
 
         <div class="settings-card">
-          <h2>Display</h2>
+          <h2>🔠 Display</h2>
           <div class="sub">Make everything bigger or smaller.</div>
           <div class="chip-filter" id="fontScaleChips">
             <div class="chip active" onclick="setFontScale('normal',this)">Normal (default)</div>
@@ -3206,7 +3352,7 @@
         <h3 class="settings-section-title">Account</h3>
 
         <div class="settings-card">
-          <h2>Account &amp; security</h2>
+          <h2>🔐 Account &amp; security</h2>
           <div class="sub">Separate from the contact email above.</div>
           <div class="row-2">
             <div class="field"><label>Login email</label><input id="settingsLoginEmail" type="email" value="delacruz.owner@gmail.com"></div>
@@ -3224,14 +3370,14 @@
         <div class="settings-card" id="downstreamSalesSettingsCard"></div>
 
         <div class="settings-card">
-          <h2>Fix saving problems</h2>
-          <div class="sub">If saves keep failing (an error mentioning "state save failed" or "storage set failed"), the saved copy of your session may be stuck oversized from before this was fixed. Resetting clears that saved copy and starts fresh — it does not affect this session, which keeps working until you reload.</div>
+          <h2>🧯 Something not saving?</h2>
+          <div class="sub">If you keep seeing a "save failed" message, clear the copy saved on this device. This session keeps working until you reload.</div>
           <button class="btn btn-outline" style="margin-top:10px;color:var(--danger);border-color:var(--danger);" onclick="resetNiftiSavedState()">Reset saved data</button>
           <div id="resetSavedDataConfirm" style="margin-top:10px;"></div>
         </div>
 
         <div class="settings-card danger-zone">
-          <h2>Pause your business</h2>
+          <h2>⏸ Pause your business</h2>
           <div id="pauseAccountContent"></div>
         </div>
       </div>
@@ -3242,7 +3388,7 @@
       </div>
 
       <div id="page-watchdog" class="app-page">
-        <div class="page-head"><h1>Owner's control <span id="watchdogBadge"></span></h1><p>Overpaying, spending caps, and how your suppliers really perform.</p></div>
+        <div class="page-head"><h1>Owner's control <span id="watchdogBadge"></span></h1><p>Catch your team overpaying, set spending limits, and see which suppliers deliver.</p></div>
         <div id="watchdogContent"></div>
       </div>
 
@@ -5005,10 +5151,11 @@ function applyRoleAwareText(role){
   const invNameLabel = document.getElementById('inviteNameLabel');
   if(invTitle) invTitle.textContent = role==='buyer' ? 'Invite a Supplier' : 'Invite a Buyer';
   if(invSub) invSub.textContent = role==='buyer'
-    ? 'Add someone you already order from. They join in under 5 minutes — no marketplace, no cold vetting.'
-    : 'Invite someone you already deliver to. They join in under 5 minutes — no marketplace, no cold vetting.';
+    ? 'Add a supplier you already order from. You can send them orders by Viber link right away, even before they join.'
+    : 'Add a store you already deliver to. They can order from your link right away, even before they join.';
   if(invHeading) invHeading.textContent = role==='buyer' ? 'Supplier details' : 'Buyer details';
   if(invNameLabel) invNameLabel.textContent = role==='buyer' ? 'Supplier / business name' : 'Buyer / business name';
+  const invName = document.getElementById('supName'); if(invName) invName.placeholder = role==='buyer' ? 'e.g. Metro Steel Co.' : 'e.g. Dela Cruz Hardware';
   const rfqTab = document.getElementById('inviteTabRfq');
   if(rfqTab) rfqTab.textContent = role==='buyer' ? 'Request a Quote (RFQ)' : 'RFQs Received';
   inviteActiveTab = 'invite';
@@ -5049,86 +5196,21 @@ function toggleSupplierDashboardMore(){
 }
 function renderSupplierDashboard(){
   document.getElementById('supplierDashboardView').innerHTML = `
-    <div class="page-head"><h1 data-i18n="dash_greeting_sup">Good morning, ${myBusiness ? myBusiness.name : 'Metro Steel Co.'}</h1><p data-i18n="dash_sub">Here's what needs your attention today.</p></div>
-    <div class="panel-card" style="margin-bottom:20px;">
-      <div class="panel-head"><h2>💬 Messages</h2><span class="lnk" onclick="navigate('messages')">Open Messages →</span></div>
-      <div id="supplierRecentMessagesBox"></div>
-    </div>
+    <div id="homeTopSupplier"></div>
     <div id="routeDashCard"></div>
     <div id="whoOwesMePanel"></div>
-    <div id="storeDashCard"></div>
     <div id="reorderDashCard"></div>
-    <div id="homeInviteNudgeSupplier"></div>
-    <div id="supplierTodayPanel"></div>
-    <div class="stat-row">
-      <div class="stat-card red">
-        <div class="stat-body"><span class="stat-label">New Purchase Requests</span><div class="stat-num" id="supplierNewRequestsStat">3</div></div>
-        <div class="stat-icon-panel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
-      </div>
-      <div class="stat-card green">
-        <div class="stat-body"><span class="stat-label">Active Buyers</span><div class="stat-num" id="dcStatActiveBuyers">—</div></div>
-        <div class="stat-icon-panel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
-      </div>
-      <div class="stat-card amber">
-        <div class="stat-body"><span class="stat-label">Revenue This Month</span><div class="stat-num" id="dcStatRevenue">—</div></div>
-        <div class="stat-icon-panel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v3"/><path d="M9 5h6l3 4c1.5 2 2 4 2 6a8 8 0 0 1-16 0c0-2 .5-4 2-6z"/><path d="M9.5 12.5a2.5 2.5 0 0 0 5 0"/></svg></div>
-      </div>
-      <div class="stat-card neutral">
-        <div class="stat-body"><span class="stat-label">On-Time Delivery Rate</span><div class="stat-num" id="dcStatOnTimeRate">—</div></div>
-        <div class="stat-icon-panel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
-      </div>
+    <div class="panel-card hm-msgs" style="margin-bottom:16px;">
+      <div class="panel-head"><h2>💬 Messages</h2><span class="lnk" onclick="navigate('messages')">All messages →</span></div>
+      <div id="supplierRecentMessagesBox"></div>
     </div>
-
-    <!-- Same merge as the buyer dashboard: "Top priorities" and "Needs your action" were two
-         panels doing the same job from two different data sources. One heading now. -->
-    <div class="panel-card" style="margin-bottom:20px;">
-      <div class="panel-head"><h2>Needs your attention</h2><span class="lnk" onclick="navigate('analytics')">See more in Analytics →</span></div>
-      <div id="supplierDecisionCenterList"></div>
-      <div id="supplierInboxList" style="margin-top:10px;"></div>
-    </div>
-
-    <div class="grid2">
-      <div class="panel-card">
-        <div class="panel-head"><h2>Order fulfillment — all active POs</h2></div>
-        <div id="supplierPipelineBox"></div>
-      </div>
-      <div class="panel-card">
-        <div class="panel-head"><h2>Recent activity</h2></div>
-        <div id="supplierActivityBox"></div>
-      </div>
-    </div>
-
-    <div style="text-align:center;margin:18px 0 4px;">
-      <span class="row-action" id="supplierDashMoreLabel" onclick="toggleSupplierDashboardMore()">Show more — shipments due, top buyers ▼</span>
-    </div>
-    <div id="supplierDashboardMore" class="hidden">
-      <!-- Section 7 #8 — referral/growth loop: a supplier who joined via a buyer's invite gets
-           the exact same free, no-friction invite flow to bring in their own customers. Not
-           action-required, so it's here rather than above Messages/Today on first paint. -->
-      <div style="background:var(--green-soft);border:1.5px solid var(--green);border-radius:14px;padding:18px 20px;margin:16px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
-        <div>
-          <div style="font-weight:800;font-size:16px;color:var(--green-hover);">Bring your own customers onto Nifti too</div>
-          <div style="font-size:15px;color:var(--ink);margin-top:2px;">Send them your prices and take their orders here instead of Viber. They can order from a link without signing up.</div>
-        </div>
-        <button class="btn btn-primary" onclick="navigate('invite')">Invite your own customers →</button>
-      </div>
-      <div class="grid2">
-        <div class="panel-card">
-          <div class="panel-head"><h2>Shipments due this week</h2></div>
-          <div id="supplierShipmentsDueBox"></div>
-        </div>
-        <div class="panel-card">
-          <div class="panel-head"><h2>Top buyers by volume</h2></div>
-          <div id="supplierTopBuyersBox"></div>
-        </div>
-      </div>
-    </div>
-  `;
-  renderSupplierInbox();
-  renderSupplierDashboardWidgets();
+    <div id="storeDashCard"></div>
+    <div id="homeInviteNudgeSupplier"></div>`;
+  renderHomeV2();
 }
 
 function renderSupplierInbox(){
+  if(homeIsActive() && currentAppRole === 'supplier') renderHomeV2();
   const el = document.getElementById('supplierInboxList');
   if(!el) return;
   if(document.getElementById('supplierPipelineBox')) renderSupplierDashboardWidgets();
@@ -5171,7 +5253,7 @@ function renderSupplierInbox(){
       actionsHtml = `<button class="btn btn-outline" style="padding:6px 12px;font-size:15px;" onclick="resolveSupplierInboxItem('${item.id}', '✓ Acknowledged')">Acknowledge</button>`;
     }
     return `<div class="row-item" id="inboxItem_${item.id}">
-      <div class="row-left"><span class="status-pill ${item.pillClass}">${item.pillLabel}</span><div><div class="row-name">${item.title}</div><div class="row-sub" style="font-family:Inter;">${item.meta} · ${item.time}</div></div></div>
+      <div class="row-left"><span class="status-pill ${item.pillClass}">${item.pillLabel}</span><div><div class="row-name">${item.title}</div><div class="row-sub">${item.meta} · ${item.time}</div></div></div>
       <div style="display:flex;gap:8px;align-items:center;">${actionsHtml}</div>
     </div>`;
   }).join('');
@@ -5293,20 +5375,8 @@ const CONTEXTUAL_TOOLTIPS = {
 };
 let tooltipsShown = {};
 function maybeShowContextualTooltip(page){
-  const info = CONTEXTUAL_TOOLTIPS[page];
-  if(!info || tooltipsShown[page]) return;
-  tooltipsShown[page] = true;
-  // Only one of these should ever be visible -- navigating between a few new pages within the
-  // same 8s window (easy to do while exploring) used to stack them on top of each other at the
-  // same bottom-right spot.
-  const existing = document.getElementById('contextualTooltip');
-  if(existing) existing.remove();
-  const el = document.createElement('div');
-  el.id = 'contextualTooltip';
-  el.style.cssText = 'position:fixed;bottom:24px;right:24px;max-width:280px;background:var(--ink);color:#fff;padding:14px 16px;border-radius:12px;font-size:15px;z-index:300;box-shadow:0 8px 24px rgba(0,0,0,.25);';
-  el.innerHTML = `<div style="font-weight:800;margin-bottom:4px;">${info.title}</div><div style="opacity:.9;">${info.text}</div><div style="margin-top:8px;text-align:right;"><span style="cursor:pointer;font-weight:700;text-decoration:underline;" onclick="this.closest('div').parentElement.remove()">Got it</span></div>`;
-  document.body.appendChild(el);
-  setTimeout(()=>{ if(el.parentElement) el.remove(); }, 8000);
+  // Retired: it covered the page for 8 seconds and, while hopping between pages, often showed the
+  // wrong page's text. Every page's own heading now says what it's for.
 }
 // Mobile off-canvas nav — the old approach just hid the sidebar entirely below 980px with no
 // replacement, leaving no way to navigate at all on a phone. This gives it back as a drawer.
@@ -5951,7 +6021,7 @@ function renderWhoOwesMe(){
       <div style="display:flex;gap:6px;">
         ${g.pending > 0 ? `<button class="btn btn-primary" style="padding:7px 12px;font-size:14px;" onclick="openFirstPendingPaymentFor('${g.id}')">Confirm</button>` : ''}
         <button class="btn btn-outline" style="padding:7px 12px;font-size:14px;" onclick="openPaymentReminder('${g.id}')">Remind</button>
-        <button class="btn btn-outline" style="padding:7px 12px;font-size:14px;" onclick="openStatement('${g.id}')" title="Statement of account">📄 Statement</button>
+        <button class="btn btn-outline" style="padding:7px 12px;font-size:14px;" onclick="openStatement('${g.id}')" title="Statement of account">📄 SOA</button>
       </div>
       <div id="remindBox_${g.id}" style="width:100%;"></div>
     </div>`).join('')}
@@ -7010,7 +7080,7 @@ function iosInstallStepsHtml(){
     <div class="ios-step"><span class="ios-num">3</span><div>Open <strong>Nifti</strong> from your Home Screen, sign in once, and tap <strong>Turn on notifications</strong>.</div></div>
   </div>
   <div style="font-size:13px;opacity:.7;margin-top:6px;">Takes 20 seconds, only once. Apple only sends web notifications to apps on the Home Screen.</div>
-  ${emailNotifAvailable ? `<div style="font-size:14px;margin-top:8px;">Rather not? <span class="row-action" onclick="document.getElementById('iosGuideModal')?.remove(); navigate('settings'); setTimeout(()=>{ const e = document.getElementById('notifEmailOn'); if(e) e.scrollIntoView({block:'center'}); }, 400);">Get the same alerts by email instead →</span></div>` : ''}`;
+  ${emailNotifAvailable ? `<div style="font-size:14px;margin-top:8px;">Rather not? <span class="row-action" onclick="document.getElementById('iosGuideModal')?.remove(); openSettingsCard('notifEmailOn');">Get the same alerts by email instead →</span></div>` : ''}`;
 }
 async function openIosInstallGuide(){
   if(document.getElementById('iosGuideModal')) return;
@@ -7176,7 +7246,7 @@ function lockedPanelHtml(key, pitch){
   const plan = PRO_PLANS[proPlanFor()];
   return `<div class="pro-locked"><div style="font-weight:800;font-size:16px;">🔒 ${escapeHtml(PRO_FEATURE_LABELS[key] || '')} is part of ${plan.name}</div>
     <div style="font-size:14.5px;opacity:.85;margin:4px 0 10px;">${pitch}</div>
-    <button class="btn btn-primary" onclick="navigate('settings'); setTimeout(()=>{ const e = document.getElementById('billingPlanContent'); if(e) e.scrollIntoView({behavior:'smooth'}); }, 120);">See ${plan.name} →</button></div>`;
+    <button class="btn btn-primary" onclick="openSettingsCard('billingPlanContent');">See ${plan.name} →</button></div>`;
 }
 
 // ---- Settings → Your plan ----
@@ -7695,10 +7765,10 @@ async function renderWatchdogPage(){
   if(!hasFeature('watchdog')){ el.innerHTML = lockedPanelHtml('watchdog', 'Get told the moment a teammate orders above your agreed price, pays more than last time, or switches to a pricier supplier. Plus how your prices compare with other buyers.'); return; }
   if(myBusiness && !isPrivilegedUser()){ el.innerHTML = '<div class="panel-card">Only the Owner or General Manager sees the watchdog.</div>'; return; }
   el.innerHTML = `<div class="adm-tabs" style="margin-bottom:14px;">
-      <button class="${watchdogTab === 'alerts' ? 'active' : ''}" onclick="watchdogTab='alerts'; renderWatchdogPage()">🛡 Alerts</button>
-      <button class="${watchdogTab === 'caps' ? 'active' : ''}" onclick="watchdogTab='caps'; renderWatchdogPage()">💰 Caps</button>
-      <button class="${watchdogTab === 'score' ? 'active' : ''}" onclick="watchdogTab='score'; renderWatchdogPage()">⭐ Suppliers</button>
-      <button class="${watchdogTab === 'market' ? 'active' : ''}" onclick="watchdogTab='market'; renderWatchdogPage()">📊 Prices</button>
+      <button class="${watchdogTab === 'alerts' ? 'active' : ''}" onclick="watchdogTab='alerts'; renderWatchdogPage()">🛡 Overpaying</button>
+      <button class="${watchdogTab === 'caps' ? 'active' : ''}" onclick="watchdogTab='caps'; renderWatchdogPage()">💰 Spending limits</button>
+      <button class="${watchdogTab === 'score' ? 'active' : ''}" onclick="watchdogTab='score'; renderWatchdogPage()">⭐ Supplier report card</button>
+      <button class="${watchdogTab === 'market' ? 'active' : ''}" onclick="watchdogTab='market'; renderWatchdogPage()">📊 Price check</button>
       <button class="${watchdogTab === 'settings' ? 'active' : ''}" onclick="watchdogTab='settings'; renderWatchdogPage()">⚙️ Rules</button>
     </div><div id="watchdogTabBody"><div class="panel-card">Loading…</div></div>`;
   if(watchdogTab === 'alerts') return renderWatchdogAlerts();
@@ -7718,31 +7788,41 @@ async function renderWatchdogAlerts(){
   } else if(watchdogAlerts === null) watchdogAlerts = demoWatchdog.slice();
   const since = Date.now() - 30 * 86400e3;
   const recent = watchdogAlerts.filter(a => new Date(a.created_at).getTime() >= since);
-  const atRisk = recent.reduce((s, a) => s + Number(a.amount_at_risk || 0), 0);
+  const extra = recent.reduce((s, a) => s + Number(a.amount_at_risk || 0), 0);
   const open = watchdogAlerts.filter(a => !a.reviewed_at);
-  const byPerson = {};
-  recent.forEach(a => { byPerson[a.actor_name || '?'] = (byPerson[a.actor_name || '?'] || 0) + 1; });
-  const top = Object.entries(byPerson).sort((a, b) => b[1] - a[1])[0];
   const list = watchdogFilter === 'open' ? open : watchdogFilter === 'reviewed' ? watchdogAlerts.filter(a => a.reviewed_at) : watchdogAlerts;
-  body.innerHTML = `<div class="panel-card" style="margin-bottom:14px;"><div style="display:flex;gap:24px;flex-wrap:wrap;">
-      <div><div style="font-size:13px;opacity:.7;">Extra paid, last 30 days</div><div style="font-size:22px;font-weight:800;color:${atRisk >= 1 ? 'var(--danger)' : 'inherit'};">${fmtPHP(atRisk)}</div></div>
-      <div><div style="font-size:13px;opacity:.7;">To review</div><div style="font-size:22px;font-weight:800;">${open.length}</div></div>
-      ${top ? `<div><div style="font-size:13px;opacity:.7;">Most flagged</div><div style="font-size:16px;font-weight:800;margin-top:4px;">${escapeHtml(top[0])} (${top[1]})</div></div>` : ''}
-    </div>${!myBusiness ? '<div style="font-size:13px;opacity:.6;margin-top:8px;">Examples. Real alerts appear when teammates send orders.</div>' : ''}</div>
-    <div class="chip-filter" style="margin-bottom:10px;">${['open', 'reviewed', 'all'].map(f => `<div class="chip ${watchdogFilter === f ? 'active' : ''}" onclick="watchdogFilter='${f}'; renderWatchdogAlerts()">${f === 'open' ? 'To review' : f === 'reviewed' ? 'Reviewed' : 'All'}</div>`).join('')}</div>
-    ${list.length ? list.map(a => { const k = WATCHDOG_KINDS[a.kind] || {icon: '⚠', label: a.kind}; return `<div class="panel-card" style="margin-bottom:10px;${a.reviewed_at ? 'opacity:.7;' : ''}">
-      <div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;">
-        <div style="flex:1;min-width:200px;"><div style="font-size:12.5px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;opacity:.65;">${k.icon} ${k.label}</div>
-          <div style="font-weight:800;font-size:15.5px;margin-top:2px;">${escapeHtml(a.title)}</div>
-          <div style="font-size:14px;opacity:.85;margin-top:2px;">${escapeHtml(a.detail || '')}</div>
-          <div style="font-size:13px;opacity:.65;margin-top:4px;">${escapeHtml(a.po_number || '')} · by ${escapeHtml(a.actor_name || '?')} · ${new Date(a.created_at).toLocaleString('en-PH', {month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit'})}</div>
-          ${a.reviewed_at ? `<div style="font-size:13px;margin-top:4px;">✓ Reviewed by ${escapeHtml(a.reviewed_by_name || '')}${a.review_note ? ': ' + escapeHtml(a.review_note) : ''}</div>` : ''}</div>
-        <div style="text-align:right;">${Number(a.amount_at_risk) >= 1 ? `<div style="font-weight:800;color:var(--danger);font-size:17px;">+${fmtPHP(a.amount_at_risk)}</div>` : ''}
-          <div style="display:flex;gap:6px;margin-top:6px;justify-content:flex-end;flex-wrap:wrap;">
-            ${a.po_id ? `<button class="btn btn-outline" style="padding:5px 10px;font-size:13.5px;" onclick="openOrderDetailModal('${a.po_id}')">Order</button>` : ''}
-            <button class="btn ${a.reviewed_at ? 'btn-outline' : 'btn-primary'}" style="padding:5px 10px;font-size:13.5px;" onclick="reviewWatchdogAlert(${a.id}, ${a.reviewed_at ? 'true' : 'false'})">${a.reviewed_at ? 'Reopen' : 'Mark reviewed'}</button></div></div>
-      </div></div>`; }).join('')
-    : `<div class="panel-card" style="text-align:center;padding:26px;"><div style="font-size:32px;">🛡</div><div style="font-weight:800;margin-top:6px;">${watchdogFilter === 'open' ? 'Nothing to review' : 'No alerts yet'}</div><div style="font-size:14.5px;opacity:.8;margin-top:4px;">Nifti checks every order your team sends. You'll get a notification if something looks off.</div></div>`}`;
+  // One sentence per alert, written from the owner's side: who did it, what it cost, what it was.
+  const headline = a => {
+    const amt = Number(a.amount_at_risk) >= 1 ? `<span class="up">${fmtPHP(a.amount_at_risk)} more</span>` : '';
+    switch(a.kind){
+      case 'above_agreed': return amt ? `Paid ${amt} than your agreed price` : 'Paid above your agreed price';
+      case 'price_jump': return amt ? `Paid ${amt} than last time` : 'Paid more than last time';
+      case 'cheaper_elsewhere': return amt ? `Could have saved ${amt.replace(' more', '')} elsewhere` : 'Was cheaper from another supplier';
+      case 'new_supplier': return 'Ordered from a different supplier';
+      case 'big_qty': return 'Ordered a lot more than usual';
+      default: return escapeHtml(a.title || 'Unusual order');
+    }
+  };
+  const when = a => { const d = new Date(a.created_at); const days = Math.floor((Date.now() - d.getTime()) / 86400e3);
+    return days < 1 ? d.toLocaleTimeString('en-PH', {hour: 'numeric', minute: '2-digit'}) : days === 1 ? 'yesterday' : d.toLocaleDateString('en-PH', {month: 'short', day: 'numeric'}); };
+  const person = a => (a.actor_name || 'Someone').replace(/\s*\(.*\)\s*$/, '');
+  body.innerHTML = `<div class="panel-card" style="margin-bottom:12px;"><div class="wd-sum">
+      <span class="wd-sum-ic${open.length ? '' : ' ok'}" aria-hidden="true">${open.length ? '🛡' : '✓'}</span>
+      <div>${extra >= 1 ? `<b>${fmtPHP(extra)} extra</b><div style="font-size:14px;opacity:.8;">spent by your team in the last 30 days · ${open.length} to check</div>`
+        : `<b>${open.length ? open.length + ' to check' : 'All clear'}</b><div style="font-size:14px;opacity:.8;">Nifti checks every order your team sends.</div>`}</div>
+    </div>${!myBusiness ? '<div style="font-size:12.5px;opacity:.55;margin-top:8px;">Examples. Real alerts appear when your team sends orders.</div>' : ''}</div>
+    <div class="chip-filter" style="margin-bottom:10px;">${['open', 'reviewed', 'all'].map(f => `<div class="chip ${watchdogFilter === f ? 'active' : ''}" onclick="watchdogFilter='${f}'; renderWatchdogAlerts()">${f === 'open' ? `To check (${open.length})` : f === 'reviewed' ? 'Checked' : 'All'}</div>`).join('')}</div>
+    ${list.length ? list.map(a => `<div class="wd-card${a.reviewed_at ? ' done' : ''}">
+        <div class="wd-who"><span class="wd-av" aria-hidden="true">${escapeHtml(person(a).slice(0, 1).toUpperCase())}</span><b style="color:var(--ink);">${escapeHtml(person(a))}</b> · ${when(a)}</div>
+        <div class="wd-head">${headline(a)}</div>
+        <div class="wd-what">${escapeHtml(a.title || '')}</div>
+        <div class="wd-meta">${escapeHtml(a.detail || '')}${a.po_number ? ' · ' + escapeHtml(a.po_number) : ''}</div>
+        ${a.reviewed_at ? `<div class="wd-meta" style="opacity:.85;">✓ Checked by ${escapeHtml(a.reviewed_by_name || 'you')}${a.review_note ? ': ' + escapeHtml(a.review_note) : ''}</div>` : ''}
+        <div class="wd-acts">
+          ${a.po_id ? `<button class="btn btn-outline" onclick="openOrderDetailModal('${a.po_id}')">See order</button>` : ''}
+          <button class="btn ${a.reviewed_at ? 'btn-outline' : 'btn-primary'}" onclick="reviewWatchdogAlert(${a.id}, ${a.reviewed_at ? 'true' : 'false'})">${a.reviewed_at ? 'Check again' : '✓ It’s OK'}</button>
+        </div></div>`).join('')
+    : `<div class="panel-card" style="text-align:center;padding:26px;"><div style="font-size:32px;">🛡</div><div style="font-weight:800;margin-top:6px;">${watchdogFilter === 'open' ? 'Nothing to check' : 'No alerts yet'}</div><div style="font-size:14.5px;opacity:.8;margin-top:4px;">Nifti checks every order your team sends. You get a notification the moment one costs more than it should.</div></div>`}`;
 }
 async function renderWatchdogDashCard(){
   const el = document.getElementById('watchdogDashCard');
@@ -7757,9 +7837,9 @@ async function renderWatchdogDashCard(){
   if(!open.length) return;
   const risk = open.reduce((s, a) => s + Number(a.amount_at_risk || 0), 0);
   el.innerHTML = `<div class="panel-card" style="margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;cursor:pointer;" onclick="navigate('watchdog')">
-    <div><div style="font-weight:800;font-size:16px;">🛡 Watchdog: ${open.length} order${open.length > 1 ? 's' : ''} to look at</div>
-    <div style="font-size:14px;opacity:.8;">${risk >= 1 ? fmtPHP(risk) + ' more than it should have cost' : 'Unusual orders from your team'}</div></div>
-    <span class="lnk">Review →</span></div>`;
+    <div><div style="font-weight:800;font-size:16px;">🛡 ${risk >= 1 ? `Your team paid ${fmtPHP(risk)} more than needed` : `Your team placed ${open.length} unusual order${open.length > 1 ? 's' : ''}`}</div>
+    <div style="font-size:14px;opacity:.8;">${open.length} order${open.length > 1 ? 's' : ''} to check</div></div>
+    <span class="lnk">Check →</span></div>`;
 }
 async function reviewWatchdogAlert(id, reopen){
   const note = reopen ? null : prompt('Note (optional), e.g. "OK, rush order"', '');
@@ -8264,7 +8344,7 @@ function setupSteps(){
     let shared = false; try{ shared = localStorage.getItem('nifti-store-shared') === '1'; }catch(e){}
     return [
       {label: 'Add your products and prices', done: (myCatalog || []).length > 0, go: "navigate('inventory')"},
-      {label: 'Add how buyers pay you (GCash, bank…)', done: (getMyPaymentAccounts() || []).length > 0, go: "navigate('settings'); setTimeout(()=>{ const e=document.getElementById('paymentDetailsCard'); if(e) e.scrollIntoView({behavior:'smooth'}); }, 200)"},
+      {label: 'Add how buyers pay you (GCash, bank…)', done: (getMyPaymentAccounts() || []).length > 0, go: "openSettingsCard('paymentDetailsCard');"},
       {label: 'Open your online store', done: !!(st.enabled && (!myBusiness || myBusiness.store_slug)), go: "navigate('store')"},
       {label: 'Share a post on Facebook or Viber', done: shared, go: "storeTab='posts'; navigate('store')"},
       {label: 'Get your first order', done: getSupplierPOs().some(p => p.status !== 'draft'), go: "storeTab='posts'; navigate('store')"},
@@ -8274,7 +8354,7 @@ function setupSteps(){
   return [
     {label: 'Add a supplier you already order from', done: suppliersData.length > 0, go: "navigate('invite')"},
     {label: 'Send your first order', done: getBuyerPOs().some(p => p.status !== 'draft'), go: "navigate('orders')"},
-    {label: 'Turn on phone notifications', done: ('Notification' in window) && Notification.permission === 'granted', go: "navigate('settings')"},
+    {label: 'Turn on phone notifications', done: ('Notification' in window) && Notification.permission === 'granted', go: "openSettingsCard('notifSettingsContent')"},
     {label: 'Add a teammate who orders', done: members > 1, go: "navigate('team')"},
     {label: 'Bring 3 suppliers onto Nifti', done: suppliersData.length >= 3, go: "navigate('invite')"},
   ];
@@ -8296,11 +8376,14 @@ function renderGetStartedCard(){
       <div style="font-weight:800;font-size:16px;">🚀 Get set up <span style="font-weight:600;opacity:.65;font-size:14px;">${done} of ${steps.length}</span></div>
       <span class="row-action" style="font-size:13px;opacity:.7;" onclick="try{localStorage.setItem('nifti-setup-dismissed:${currentAppRole}','1')}catch(e){} document.getElementById('getStartedCard').remove()">Hide</span></div>
     <div style="height:6px;background:var(--bg);border-radius:3px;margin:8px 0 10px;"><div style="height:6px;width:${Math.round(done / steps.length * 100)}%;background:var(--green);border-radius:3px;"></div></div>
-    ${steps.map(s => `<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;padding:6px 0;font-size:15px;">
+    ${steps.map(s => `<div class="gs-step" style="display:flex;justify-content:space-between;align-items:center;gap:10px;padding:6px 0;font-size:15px;">
       <span style="${s.done ? 'opacity:.55;text-decoration:line-through;' : ''}">${s.done ? '✅' : (s === next ? '👉' : '○')} ${escapeHtml(s.label)}</span>
       ${!s.done ? `<span class="row-action" onclick="${s.go}">${s === next ? 'Do it →' : 'Go →'}</span>` : ''}</div>`).join('')}`;
   const nudge = document.getElementById('phoneNotifNudge');
-  (nudge || head).after(card);
+  // Once orders are flowing, today's work comes first and the checklist sits under "Needs you now".
+  const now = host.querySelector('.hm-now');
+  const busy = (currentAppRole === 'supplier' ? getSupplierPOs() : getBuyerPOs()).some(p => p.status !== 'draft');
+  (busy && now ? now : (nudge || head)).after(card);
 }
 
 // ---- Owner's Growth desk ----
@@ -8534,7 +8617,7 @@ function renderShopProductsEditor(el){
     ${items.length ? `<div>${items.map((c, i) => `<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--border);">
         <span>${escapeHtml(c.product)} <span style="opacity:.7;">· ${fmtPHP(c.price)}${c.unit ? '/' + escapeHtml(c.unit) : ''}</span></span>
         <span class="row-action" style="color:var(--danger);" onclick="removeShopItem(${i})">Remove</span></div>`).join('')}</div>` : '<div style="font-size:14px;opacity:.7;">No products yet.</div>'}
-    <div style="display:grid;grid-template-columns:2fr 1fr 1fr auto;gap:6px;margin-top:10px;">
+    <div class="shop-add">
       <input id="shopNewName" placeholder="Product" maxlength="120"><input id="shopNewPrice" type="number" min="0" step="0.01" placeholder="Price ₱"><input id="shopNewUnit" placeholder="Unit (pc, kg…)" maxlength="20">
       <button class="btn btn-outline" style="padding:6px 12px;" onclick="addShopItem()">+ Add</button></div>
     ${(inventoryData || []).length ? `<button class="btn btn-outline" style="margin-top:8px;padding:6px 12px;font-size:14px;" onclick="importShopFromInventory()">⬇ Add items from my inventory</button>` : ''}
@@ -9597,7 +9680,9 @@ async function renderIncomingPrices(el){
   const list = await loadIncomingPrices();
   const upcoming = list.filter(x => x.effective_date > APP_TODAY), recent = list.filter(x => x.effective_date <= APP_TODAY);
   const row = (x, when) => { const up = x.old_price != null && Number(x.new_price) > Number(x.old_price); const pct = x.old_price ? Math.round((x.new_price - x.old_price) / x.old_price * 1000) / 10 : null;
-    return `<div class="adm-log"><span><b>${escapeHtml(x.product)}</b> · ${escapeHtml(x.supplier_name)}</span><span>${x.old_price != null ? fmtPHP(x.old_price) + ' → ' : ''}<b>${fmtPHP(x.new_price)}</b>${pct != null ? ` <span style="color:${up ? 'var(--danger)' : 'var(--green)'};font-weight:700;">${up ? '▲' : '▼'} ${Math.abs(pct)}%</span>` : ''}${when ? ' · ' + stmtDate(x.effective_date) : ''}</span></div>`; };
+    return `<div class="pcx-row"><div class="pcx-name">${escapeHtml(x.product)}</div>
+      <div class="pcx-line">${x.old_price != null ? `<span style="text-decoration:line-through;opacity:.6;">${fmtPHP(x.old_price)}</span> → ` : ''}<b>${fmtPHP(x.new_price)}</b>${x.unit ? `<span style="opacity:.7;">/${escapeHtml(x.unit)}</span>` : ''}${pct != null ? `<span class="${up ? 'pcx-up' : 'pcx-down'}">${up ? '▲' : '▼'} ${Math.abs(pct)}%</span>` : ''}</div>
+      <div class="pcx-line" style="font-size:13px;opacity:.8;">${escapeHtml(x.supplier_name)}${when ? ' · starts ' + stmtDate(x.effective_date) : ''}</div></div>`; };
   const ups = upcoming.filter(x => x.old_price != null && Number(x.new_price) > Number(x.old_price));
   el.innerHTML = `${ups.length ? `<div class="notif-phone warn" style="margin-bottom:12px;">💡 ${ups.length} price increase${ups.length > 1 ? 's start' : ' starts'} ${stmtDate(ups.map(x => x.effective_date).sort()[0])}. Order before then to keep today's price.</div>` : ''}
     <div class="rt-section">Coming up</div>${upcoming.length ? `<div class="panel-card" style="padding:4px 12px;">${upcoming.map(x => row(x, true)).join('')}</div>` : '<div class="panel-card" style="opacity:.75;">No price changes announced.</div>'}
@@ -10178,6 +10263,388 @@ async function deleteMyBusiness(){
   alert('Your business account was deleted. Salamat for trying Nifti.');
   location.href = appBaseUrl();
 }
+
+/* ============ HOME: one glance, one list ============
+   Four tiles answer "where do I stand?" (tap one to jump there) and one list answers "what do I
+   do now?", each row with exactly one button. Everything comes from the same orders, invoices and
+   cheques the rest of the app reads, so Home always agrees with Orders, Cheques and the
+   Who-owes-you / Bills-to-pay cards under it. Supplier and buyer each see their own side. */
+let hmShowAll = false;
+function hmGreeting(){
+  const h = new Date().getHours();
+  if(typeof currentLanguage !== 'undefined' && currentLanguage === 'FIL') return h < 12 ? 'Magandang umaga' : h < 18 ? 'Magandang hapon' : 'Magandang gabi';
+  return h < 12 ? 'Good morning' : h < 18 ? 'Good afternoon' : 'Good evening';
+}
+function hmDay(iso){
+  if(!iso) return '';
+  const d = daysBetween(APP_TODAY, String(iso).slice(0, 10));
+  if(d === 0) return 'today';
+  if(d === 1) return 'tomorrow';
+  if(d === -1) return 'yesterday';
+  return new Date(String(iso).slice(0, 10) + 'T00:00:00').toLocaleDateString('en-PH', {month: 'short', day: 'numeric'});
+}
+function hmPeso(n){
+  n = Math.round(Number(n) || 0);
+  if(n >= 1000000) return '₱' + (Math.round(n / 100000) / 10) + 'M';
+  if(n >= 100000) return '₱' + Math.round(n / 1000) + 'K';
+  return fmtPHP(n);
+}
+function hmSum(list, f){ return list.reduce((s, x) => s + (Number(f ? f(x) : x) || 0), 0); }
+function hmCheques(side){
+  if(typeof collectCheques !== 'function' || !hasFeature('cheques')) return null;
+  if(!myBusiness && typeof seedDemoCheques === 'function') seedDemoCheques();
+  const all = collectCheques(side);
+  if(!all.length) return null;
+  const week = addDaysIso(APP_TODAY, 7), soonDay = addDaysIso(APP_TODAY, 2);
+  const due = all.filter(c => c.status === 'due');
+  const week7 = all.filter(c => (c.status === 'due' || c.status === 'hold') && c.date && c.date <= week);
+  const soon = all.filter(c => (c.status === 'due' || c.status === 'hold') && c.date && c.date <= soonDay);
+  const hold = all.filter(c => c.status === 'hold');
+  const bounced = all.filter(c => c.status === 'bounced');
+  return {all, due, week7, soon, hold, bounced};
+}
+function hmOpenOrders(side, seg){ orderSeg[side] = seg; navigate('orders'); }
+function hmScrollTo(id, fallback){
+  const el = document.getElementById(id);
+  if(el && el.innerHTML.trim()){
+    el.scrollIntoView({behavior: 'smooth', block: 'start'});
+    const card = el.firstElementChild || el;
+    card.classList.add('hm-flash'); setTimeout(() => card.classList.remove('hm-flash'), 1400);
+  } else if(fallback) fallback();
+}
+function hmRemind(buyerId){
+  hmScrollTo('whoOwesMePanel');
+  const box = document.getElementById('remindBox_' + buyerId);
+  if(box && !box.innerHTML.trim()) openPaymentReminder(buyerId);
+}
+function hmMessageItems(){
+  return getConversations().filter(c => c.unread > 0).map(c => {
+    const last = c.messages[c.messages.length - 1];
+    const preview = last ? (last.attachment ? '📎 ' + last.attachment.name : last.text) : '';
+    return {w: escapeHtml(c.name), k: 'msg', pri: 4, ic: '💬', tone: 'blue', t: `${escapeHtml(c.name)} sent ${c.unread === 1 ? 'a message' : c.unread + ' messages'}`,
+      s: escapeHtml(preview || ''), b: 'Reply', a: `navigate('messages'); selectConversation('${c.id}')`};
+  });
+}
+function hmDealItems(role){
+  return computeTodayAgenda(role).expiringAgreements.map(ag => {
+    const party = role === 'buyer' ? (suppliersData.find(s => s.id === ag.supplierId) || {}).name : (buyersData.find(b => b.id === ag.buyerId) || {}).name;
+    return {k: 'deal', pri: 5, ic: '📄', tone: 'amber', t: `Price deal with ${escapeHtml(party || 'a partner')} ends ${hmDay(ag.endDate)}`,
+      s: `${escapeHtml(ag.product)} · renew it or let it end`, b: 'Review', a: "navigate('suppliers')"};
+  });
+}
+function hmItemsSupplier(){
+  const items = [];
+  const pos = getSupplierPOs().filter(o => o.status !== 'draft' && o.status !== 'cancelled');
+  const what = o => o.lineItems && o.lineItems.length ? escapeHtml(o.lineItems[0].product) + (o.lineItems.length > 1 ? ` +${o.lineItems.length - 1} more` : '') : o.poNumber;
+  const open = o => `openOrderDetailModal('${o.id}', true)`;
+  pos.forEach(o => {
+    const who = escapeHtml(o.buyerName);
+    const due = o.requestedDeliveryDate;
+    if(poHasPaymentsAwaitingSupplier(o)) items.push({w: who, k: 'paid', pri: 1, ic: '💸', tone: 'green', t: `${who} says they paid`, s: `${o.poNumber} · check your bank, then confirm`, b: 'Check', a: open(o)});
+    else if(pendingAmendment(o)) items.push({w: who, k: 'amend', pri: 1, ic: '✏️', tone: 'amber', t: `${who} wants to change an order`, s: `${o.poNumber} · ${fmtPHP(poTotal(o))}`, b: 'Review', a: open(o)});
+    else if(o.rma && o.rma.status === 'open') items.push({w: who, k: 'rma', pri: 1, ic: '↩️', tone: 'rose', t: `${who} reported a problem`, s: `${o.poNumber} · return or bad order`, b: 'Review', a: open(o)});
+    else if(o.status === 'sent') items.push({w: who, k: 'new', pri: 1, ic: '📥', tone: 'amber', t: `New order from ${who}`, s: `${what(o)} · ${fmtPHP(poTotal(o))}`, b: 'Review', a: open(o)});
+    else if((o.status === 'confirmed' || o.status === 'preparing') && due && due < APP_TODAY) items.push({w: who, k: 'late', pri: 2, ic: '⏰', tone: 'rose', t: `Late: ${who}'s order`, s: `${o.poNumber} · was due ${hmDay(due)}`, b: 'Update', a: open(o)});
+    else if((o.status === 'confirmed' || o.status === 'preparing') && due === APP_TODAY) items.push({w: who, k: 'today', pri: 3, ic: '🚚', tone: 'blue', t: `Deliver to ${who} today`, s: `${o.poNumber} · ${what(o)}`, b: 'Open', a: open(o)});
+    else if(o.status === 'partially_delivered') items.push({w: who, k: 'short', pri: 2, ic: '📦', tone: 'rose', t: `Short delivery to ${who}`, s: `${o.poNumber} · sort it out, then bill`, b: 'Review', a: open(o)});
+    else if(o.status === 'delivered') items.push({w: who, k: 'bill', pri: 3, ic: '🧾', tone: 'green', t: `Bill ${who}`, s: `${o.poNumber} was delivered · ${fmtPHP(poTotal(o))}`, b: 'Bill', a: open(o)});
+  });
+  const cq = hmCheques('supplier');
+  if(cq && cq.due.length){
+    const c = cq.due[0];
+    items.push(cq.due.length === 1
+      ? {k: 'cq', pri: 2, ic: '🏦', tone: 'violet', t: `Deposit ${escapeHtml(c.party)}'s cheque`, s: `${fmtPHP(c.amount)} · ${escapeHtml([c.bank, c.no ? '#' + c.no : ''].filter(Boolean).join(' ')) || 'ready for the bank'}`, b: 'Open', a: "navigate('cheques')"}
+      : {k: 'cq', pri: 2, ic: '🏦', tone: 'violet', t: `Deposit ${cq.due.length} cheques`, s: `${fmtPHP(hmSum(cq.due, x => x.amount))} is ready for the bank`, b: 'Open', a: "navigate('cheques')"});
+  }
+  const late = {};
+  unpaidInvoicesFor('supplier').filter(r => r.daysOverdue > 0).forEach(r => {
+    const k = r.po.buyerId;
+    if(!late[k]) late[k] = {id: k, name: r.po.buyerName, amt: 0, days: 0};
+    late[k].amt += r.balance; late[k].days = Math.max(late[k].days, r.daysOverdue);
+  });
+  Object.values(late).sort((a, b) => b.amt - a.amt).forEach(g => items.push({w: escapeHtml(g.name), k: 'latepay', pri: 4, ic: '💰', tone: 'rose',
+    t: `${escapeHtml(g.name)} is ${g.days} day${g.days > 1 ? 's' : ''} late paying`, s: `${fmtPHP(g.amt)} overdue`, b: 'Remind', a: `hmRemind('${g.id}')`, amt: g.amt}));
+  return items.concat(hmMessageItems(), hmDealItems('supplier'));
+}
+function hmItemsBuyer(){
+  const items = [];
+  const pos = getBuyerPOs().filter(o => o.status !== 'cancelled');
+  const open = o => `openOrderDetailModal('${o.id}', false)`;
+  const boss = getEffectiveRoles().some(r => PRIVILEGED_ROLES.includes(r));
+  pos.forEach(o => {
+    const who = escapeHtml(o.supplierName);
+    if(o.pendingApproval){ if(boss) items.push({w: who, k: 'approve', pri: 1, ic: '✅', tone: 'amber', t: `Approve an order to ${who}?`, s: `${fmtPHP(o.pendingApproval.amount || poTotal(o))} · asked by ${escapeHtml(o.pendingApproval.requestedBy || 'a teammate')}`, b: 'Review', a: open(o)}); return; }
+    const next = getBuyerNextAction(o);
+    if(o.status === 'countered') items.push({w: who, k: 'counter', pri: 1, ic: '💬', tone: 'amber', t: `${who} suggested changes`, s: `${o.poNumber} · accept or reply`, b: 'Review', a: open(o)});
+    else if(next === 'Pay the deposit') items.push({w: who, k: 'deposit', pri: 1, ic: '💳', tone: 'rose', t: `Pay the deposit to ${who}`, s: `${o.poNumber} · they start once it's paid`, b: 'Pay', a: open(o)});
+    else if((o.status === 'shipped' || o.status === 'in_customs') && !o.deliveryConfirmation && (!o.requestedDeliveryDate || o.requestedDeliveryDate <= APP_TODAY)) items.push({w: who, k: 'arrive', pri: 2, ic: '📦', tone: 'blue', t: `Did ${who}'s delivery arrive?`, s: `${o.poNumber} · ${o.requestedDeliveryDate ? 'expected ' + hmDay(o.requestedDeliveryDate) : 'on the way'}`, b: 'Check', a: open(o)});
+    else if(o.status === 'draft') items.push({w: who, k: 'draft', pri: 3, ic: '✏️', tone: 'amber', t: `Finish your order to ${who}`, s: `${o.poNumber} · not sent yet · ${fmtPHP(poTotal(o))}`, b: 'Send', a: open(o)});
+  });
+  unpaidInvoicesFor('buyer').filter(r => r.due && r.daysOverdue >= -3 && !(r.pending > 0 && r.balance - r.pending <= 0)).sort((a, b) => b.daysOverdue - a.daysOverdue).forEach(r => {
+    items.push({w: escapeHtml(r.po.supplierName), k: 'pay', pri: 2, ic: '💳', tone: 'rose', t: `Pay ${escapeHtml(r.po.supplierName)}`, amt: r.balance,
+      s: `${fmtPHP(r.balance)} · ${r.daysOverdue > 0 ? r.daysOverdue + ' day' + (r.daysOverdue > 1 ? 's' : '') + ' overdue' : r.daysOverdue === 0 ? 'due today' : 'due ' + hmDay(r.due)}`, b: 'Pay', a: open(r.po)});
+  });
+  const cq = hmCheques('buyer');
+  if(cq && cq.soon.length){
+    const amt = hmSum(cq.soon, x => x.amount), c = cq.soon[0];
+    items.push(cq.soon.length === 1
+      ? {k: 'fund', pri: 2, ic: '🏦', tone: 'violet', t: `Keep ${fmtPHP(amt)} in the bank`, s: `Your cheque to ${escapeHtml(c.party)} is dated ${hmDay(c.date)}`, b: 'Open', a: "navigate('cheques')"}
+      : {k: 'fund', pri: 2, ic: '🏦', tone: 'violet', t: `Keep ${fmtPHP(amt)} in the bank`, s: `${cq.soon.length} of your cheques are dated by ${hmDay(cq.soon[cq.soon.length - 1].date)}`, b: 'Open', a: "navigate('cheques')"});
+  }
+  return items.concat(hmMessageItems(), hmDealItems('buyer'));
+}
+// Three or more of the same kind become one row ("5 new orders"), so one busy morning doesn't
+// push everything else off the screen.
+const HM_GROUPS = {
+  new: g => ({t: `${g.length} new orders to confirm`, s: 'From ' + hmNames(g), a: "hmOpenOrders('supplier','turn')", ic: '📥', tone: 'amber'}),
+  late: g => ({t: `${g.length} orders are late`, s: 'Tell your buyers when they arrive', a: "hmOpenOrders('supplier','deliver')", ic: '⏰', tone: 'rose'}),
+  today: g => ({t: `${g.length} deliveries today`, s: 'To ' + hmNames(g), a: "hmOpenOrders('supplier','deliver')", ic: '🚚', tone: 'blue'}),
+  bill: g => ({t: `${g.length} deliveries to bill`, s: 'Delivered but not billed yet', a: "hmOpenOrders('supplier','turn')", ic: '🧾', tone: 'green'}),
+  paid: g => ({t: `${g.length} payments to confirm`, s: 'Check your bank, then confirm', a: "hmOpenOrders('supplier','turn')", ic: '💸', tone: 'green'}),
+  latepay: g => ({t: `${g.length} buyers are late paying`, s: `${fmtPHP(hmSum(g, x => x.amt))} overdue`, a: "hmScrollTo('whoOwesMePanel')", ic: '💰', tone: 'rose'}),
+  draft: g => ({t: `${g.length} orders not sent yet`, s: 'Drafts you started', a: "hmOpenOrders('buyer','turn')", ic: '✏️', tone: 'amber'}),
+  counter: g => ({t: `${g.length} suppliers suggested changes`, s: 'Accept or reply', a: "hmOpenOrders('buyer','turn')", ic: '💬', tone: 'amber'}),
+  arrive: g => ({t: `${g.length} deliveries to check`, s: 'Tap each one when it arrives', a: "hmOpenOrders('buyer','arriving')", ic: '📦', tone: 'blue'}),
+  pay: g => ({t: `${g.length} bills due`, s: `${fmtPHP(hmSum(g, x => x.amt))} · oldest first`, a: "hmScrollTo('billsToPayPanel')", ic: '💳', tone: 'rose'}),
+  approve: g => ({t: `${g.length} orders need your OK`, s: 'Sent by your team', a: "hmOpenOrders('buyer','turn')", ic: '✅', tone: 'amber'}),
+  msg: g => ({t: `${g.length} unread chats`, s: 'From ' + hmNames(g), a: "navigate('messages')", ic: '💬', tone: 'blue'}),
+};
+function hmNames(g){
+  const names = [...new Set(g.map(x => x.w).filter(Boolean))];
+  return names.slice(0, 2).join(', ') + (names.length > 2 ? ` and ${names.length - 2} more` : '');
+}
+function hmGroup(items){
+  items = items.slice().sort((a, b) => a.pri - b.pri);
+  const count = {};
+  items.forEach(i => { count[i.k] = (count[i.k] || 0) + 1; });
+  const done = new Set(), out = [];
+  items.forEach(i => {
+    if(count[i.k] > 2 && HM_GROUPS[i.k]){
+      if(done.has(i.k)) return;
+      done.add(i.k);
+      const g = items.filter(x => x.k === i.k);
+      out.push(Object.assign({k: i.k, pri: i.pri, b: 'See all'}, HM_GROUPS[i.k](g)));
+    } else out.push(i);
+  });
+  return out;
+}
+function hmTileHtml(t){
+  return `<button class="hm-tile t-${t.tone}${t.hot ? ' hot' : ''}"${t.id ? ` id="${t.id}"` : ''} onclick="${t.a}">
+    <span class="hm-ic" aria-hidden="true">${t.ic}</span><span class="hm-num">${t.num}</span><span class="hm-lbl">${t.lbl}</span><span class="hm-sub${t.cls ? ' ' + t.cls : ''}">${t.sub}</span></button>`;
+}
+function hmSupplierTiles(){
+  const pos = getSupplierPOs().filter(o => o.status !== 'draft' && o.status !== 'cancelled');
+  const toConfirm = pos.filter(o => o.status === 'sent' || pendingAmendment(o)).length;
+  const toDeliver = pos.filter(o => ['confirmed', 'preparing', 'shipped', 'in_customs'].includes(o.status));
+  const late = toDeliver.filter(o => o.requestedDeliveryDate && o.requestedDeliveryDate < APP_TODAY && o.status !== 'shipped' && o.status !== 'in_customs').length;
+  const today = toDeliver.filter(o => o.requestedDeliveryDate === APP_TODAY).length;
+  const unpaid = unpaidInvoicesFor('supplier');
+  const owed = hmSum(unpaid, r => r.balance), overdue = hmSum(unpaid.filter(r => r.daysOverdue > 0), r => r.balance);
+  const tiles = [
+    {ic: '📥', tone: 'amber', num: toConfirm, lbl: 'New orders', sub: toConfirm ? 'Waiting for your OK' : 'None waiting', hot: toConfirm > 0, a: "hmOpenOrders('supplier','turn')"},
+    {ic: '🚚', tone: 'blue', num: toDeliver.length, lbl: 'To deliver', sub: late ? `${late} late` : today ? `${today} due today` : toDeliver.length ? 'All on schedule' : 'Nothing to deliver', cls: late ? 'bad' : '', a: "hmOpenOrders('supplier','deliver')"},
+    {ic: '💰', tone: 'green', num: hmPeso(owed), lbl: 'Owed to you', sub: overdue >= 1 ? `${hmPeso(overdue)} overdue` : owed >= 1 ? 'Nothing overdue' : 'All paid up', cls: overdue >= 1 ? 'bad' : owed >= 1 ? '' : 'good', a: "hmScrollTo('whoOwesMePanel', () => setSupplierOrdersMainViewFromHome())"},
+  ];
+  const cq = hmCheques('supplier');
+  if(cq){
+    const dueAmt = hmSum(cq.due, x => x.amount);
+    tiles.push({ic: '🧾', tone: 'violet', num: hmPeso(dueAmt || hmSum(cq.hold, x => x.amount)), lbl: dueAmt ? 'Cheques to deposit' : 'Post-dated cheques',
+      sub: cq.bounced.length ? `${cq.bounced.length} bounced` : dueAmt ? `${cq.due.length} ready for the bank` : `${cq.hold.length} not due yet`, cls: cq.bounced.length ? 'bad' : '', hot: dueAmt >= 1, a: "navigate('cheques')"});
+  } else {
+    const month = APP_TODAY.slice(0, 7);
+    const sold = pos.filter(o => (o.createdDate || '').startsWith(month));
+    tiles.push({ic: '📈', tone: 'violet', num: hmPeso(hmSum(sold, poTotal)), lbl: 'Sold this month', sub: `${sold.length} order${sold.length === 1 ? '' : 's'}`, a: "hmOpenOrders('supplier','all')"});
+  }
+  return tiles;
+}
+function hmBuyerTiles(){
+  const pos = getBuyerPOs().filter(o => o.status !== 'cancelled');
+  const arriving = pos.filter(o => ['confirmed', 'preparing', 'shipped', 'in_customs'].includes(o.status));
+  const today = arriving.filter(o => o.requestedDeliveryDate === APP_TODAY).length;
+  const late = arriving.filter(o => o.requestedDeliveryDate && o.requestedDeliveryDate < APP_TODAY).length;
+  const unpaid = unpaidInvoicesFor('buyer');
+  const bills = hmSum(unpaid, r => r.balance), overdue = hmSum(unpaid.filter(r => r.daysOverdue > 0), r => r.balance);
+  const nextDue = unpaid.filter(r => r.due && r.daysOverdue <= 0).map(r => r.due).sort()[0];
+  const turn = pos.filter(o => getBuyerActionColorClass(o) === 'pill-lowstock').length;
+  const tiles = [
+    {ic: '📦', tone: 'blue', num: arriving.length, lbl: 'On the way', sub: late ? `${late} running late` : today ? `${today} arriving today` : arriving.length ? 'All on schedule' : 'Nothing ordered', cls: late ? 'bad' : '', a: "hmOpenOrders('buyer','arriving')"},
+    {ic: '💳', tone: 'rose', num: hmPeso(bills), lbl: 'Bills to pay', sub: overdue >= 1 ? `${hmPeso(overdue)} overdue` : nextDue ? `Next due ${hmDay(nextDue)}` : 'All paid', cls: overdue >= 1 ? 'bad' : bills >= 1 ? '' : 'good', hot: overdue >= 1, a: "hmScrollTo('billsToPayPanel', () => hmOpenOrders('buyer','all'))"},
+    {ic: '✋', tone: 'amber', num: turn, lbl: 'To do', sub: turn ? 'Orders waiting on you' : 'Nothing waiting on you', hot: turn > 0, a: "hmOpenOrders('buyer','turn')"},
+  ];
+  const cq = hmCheques('buyer');
+  if(cq && cq.week7.length){
+    tiles.push({ic: '🏦', tone: 'violet', num: hmPeso(hmSum(cq.week7, x => x.amount)), lbl: 'Cheques this week', sub: 'Leaving your bank', a: "navigate('cheques')"});
+  } else {
+    tiles.push({id: 'hmPriceTile', ic: '📈', tone: 'gray', num: '…', lbl: 'Price changes', sub: 'Checking…', a: "navigate('prices')"});
+  }
+  return tiles;
+}
+async function hmFillPriceTile(){
+  const el = document.getElementById('hmPriceTile'); if(!el || typeof loadIncomingPrices !== 'function') return;
+  const list = (await loadIncomingPrices()).filter(x => x.effective_date > APP_TODAY);
+  const ups = list.filter(x => x.old_price != null && Number(x.new_price) > Number(x.old_price));
+  const tile = document.getElementById('hmPriceTile'); if(!tile) return;
+  tile.querySelector('.hm-num').textContent = list.length;
+  const sub = tile.querySelector('.hm-sub');
+  sub.textContent = ups.length ? `${ups.length} going up ${hmDay(ups.map(x => x.effective_date).sort()[0])}` : list.length ? 'None going up' : 'No changes coming';
+  sub.className = 'hm-sub' + (ups.length ? ' bad' : '');
+  if(ups.length){ tile.classList.remove('t-gray'); tile.classList.add('t-rose', 'hot'); }
+}
+function setSupplierOrdersMainViewFromHome(){ navigate('orders'); setTimeout(() => { const b = document.getElementById('supplierAgingViewBtn'); if(b) setSupplierOrdersMainView('aging', b); }, 60); }
+function hmNowHtml(items, raw){
+  const LIMIT = 5;
+  const shown = hmShowAll ? items : items.slice(0, LIMIT);
+  if(!items.length) return `<div class="hm-now"><div class="hm-now-head"><h2>Needs you now</h2></div>
+    <div class="hm-done"><span class="hm-dot" aria-hidden="true">✓</span><div class="hm-txt"><div class="hm-t">You're all caught up</div><div class="hm-s" style="white-space:normal;">New orders, payments and messages show up here the moment they come in.</div></div></div></div>`;
+  return `<div class="hm-now"><div class="hm-now-head"><h2>Needs you now <span class="hm-count">${raw}</span></h2></div>
+    ${shown.map(i => `<div class="hm-item t-${i.tone}"><span class="hm-dot" aria-hidden="true">${i.ic}</span>
+      <div class="hm-txt"><div class="hm-t">${i.t}</div>${i.s ? `<div class="hm-s">${i.s}</div>` : ''}</div>
+      <button class="hm-go${i.b === 'See all' || i.b === 'Open' ? ' soft' : ''}" onclick="${i.a}">${i.b}</button></div>`).join('')}
+    ${items.length > LIMIT ? `<button class="hm-more" onclick="hmShowAll=!hmShowAll; renderHomeV2()">${hmShowAll ? 'Show less' : `Show ${items.length - LIMIT} more`}</button>` : ''}</div>`;
+}
+function renderHomeV2(){
+  const role = currentAppRole;
+  const host = document.getElementById(role === 'supplier' ? 'homeTopSupplier' : 'homeTopBuyer');
+  if(!host) return;
+  const tiles = role === 'supplier' ? hmSupplierTiles() : hmBuyerTiles();
+  const raw = role === 'supplier' ? hmItemsSupplier() : hmItemsBuyer();
+  const items = hmGroup(raw);
+  const name = myBusiness ? myBusiness.name : (role === 'supplier' ? 'Metro Steel Co.' : 'Dela Cruz Hardware');
+  const n = raw.length;
+  const date = new Date(APP_TODAY + 'T00:00:00').toLocaleDateString('en-PH', {weekday: 'long', month: 'long', day: 'numeric'});
+  const hadHead = !!host.querySelector('.hm-hello');
+  host.innerHTML = `<div class="page-head hm-hello"><div class="hm-date">${date}</div><h1>${hmGreeting()}, ${escapeHtml(name)}</h1>
+      <p class="hm-status">${n ? `<b>${n} thing${n > 1 ? 's' : ''}</b> need${n > 1 ? '' : 's'} you today.` : "You're all caught up."}</p></div>
+    <div class="hm-tiles">${tiles.map(hmTileHtml).join('')}</div>
+    ${hmNowHtml(items, n)}`;
+  if(role === 'buyer') hmFillPriceTile();
+  renderRecentMessagesWidget(role === 'supplier' ? 'supplierRecentMessagesBox' : 'buyerRecentMessagesBox');
+  if(typeof checkOnboardingActivation === 'function') checkOnboardingActivation();
+  // The setup checklist and phone-notification nudge attach themselves under the greeting; a
+  // re-render replaces the greeting, so put them back when they were there.
+  if(hadHead){ renderGetStartedCard(); renderPhoneNotifNudge(); }
+}
+function homeIsActive(){ const p = document.getElementById('page-dashboard'); return !!(p && p.classList.contains('active')); }
+
+/* ============ ORDERS: one row of tabs, compact cards ============
+   "Your turn / Waiting / Done / All" uses the exact same whose-turn logic as the order's own pill
+   and the nav badge, so the tab counts always agree with them. Everything else (Local vs Import,
+   one partner, export) moved under "Filter & export". */
+let orderSeg = {buyer: 'all', supplier: 'all'};
+function orderSegOf(o, side){
+  if(o.status === 'cancelled') return 'done';
+  const c = side === 'buyer' ? getBuyerActionColorClass(o) : getSupplierActionColorClass(o);
+  return c === 'pill-lowstock' ? 'turn' : c === 'pill-ok' ? 'done' : 'waiting';
+}
+const ORDER_SPECIAL = {
+  deliver: {label: 'To deliver', test: o => ['confirmed', 'preparing', 'shipped', 'in_customs'].includes(o.status)},
+  arriving: {label: 'On the way', test: o => ['confirmed', 'preparing', 'shipped', 'in_customs'].includes(o.status)},
+};
+function orderSegMatch(o, side){
+  const seg = orderSeg[side];
+  if(seg === 'all') return true;
+  if(ORDER_SPECIAL[seg]) return ORDER_SPECIAL[seg].test(o);
+  return orderSegOf(o, side) === seg;
+}
+function orderSegSort(rows, side){
+  const rank = {turn: 0, waiting: 1, done: 2};
+  return rows.slice().sort((a, b) => (rank[orderSegOf(a, side)] - rank[orderSegOf(b, side)]) || String(b.createdDate || '').localeCompare(String(a.createdDate || '')) || String(b.poNumber).localeCompare(String(a.poNumber)));
+}
+function setOrderSeg(side, seg){
+  orderSeg[side] = seg;
+  if(side === 'buyer') renderOrdersTable(); else renderSupplierOrdersTable();
+}
+function renderOrderSegBar(side, all){
+  const el = document.getElementById(side === 'buyer' ? 'buyerOrderSeg' : 'supplierOrderSeg');
+  if(!el) return;
+  const n = {turn: 0, waiting: 0, done: 0};
+  all.forEach(o => { n[orderSegOf(o, side)]++; });
+  const seg = orderSeg[side];
+  const b = (k, label, cnt) => `<button class="${seg === k ? 'on' : ''} ${k === 'turn' && cnt ? 'turn' : ''}" onclick="setOrderSeg('${side}','${k}')">${label} <span>${cnt}</span></button>`;
+  el.innerHTML = (ORDER_SPECIAL[seg] ? `<div class="ord-special" onclick="setOrderSeg('${side}','all')">Showing: ${ORDER_SPECIAL[seg].label} ✕</div>` : '')
+    + `<div class="ord-seg">${b('turn', 'Your turn', n.turn)}${b('waiting', 'Waiting', n.waiting)}${b('done', 'Done', n.done)}${b('all', 'All', all.length)}</div>`;
+}
+function orderCardHtml(o, side){
+  const buyer = side === 'buyer';
+  const you = orderSegOf(o, side) === 'turn';
+  const who = buyer ? o.supplierName : o.buyerName;
+  const items = (o.lineItems || []).map(l => l.product);
+  const what = items.length ? escapeHtml(items[0]) + (items.length > 1 ? ` +${items.length - 1}` : '') : '';
+  const when = o.requestedDeliveryDate ? (poIsDelivered(o) ? '' : ` · ${buyer ? 'arrives' : 'deliver by'} ${hmDay(o.requestedDeliveryDate)}`) : '';
+  const selected = buyer ? expandedBuyerPoId === o.id : expandedSupplierOrderPo === o.id;
+  return `<div class="ord-card${you ? ' you' : ''}${selected ? ' order-row-selected' : ''}" onclick="${buyer ? `toggleOrderRow('${o.id}')` : `toggleSupplierOrder('${o.id}')`}">
+    <div class="ord-top"><div class="ord-who">${escapeHtml(who)}${o.type === 'freight' ? '<span class="ord-tag">Import</span>' : ''}${o.atRisk ? '<span class="ord-tag late">Late</span>' : ''}</div><div class="ord-amt">${fmtPHP(poTotal(o))}</div></div>
+    <div class="ord-meta">${o.poNumber}${pendingSyncTagHtml(o)} · ${what}${when}</div>
+    <div class="ord-bot">${buyer ? renderBuyerActionPill(o) : renderSupplierActionPill(o)}<span class="ord-chev" aria-hidden="true">›</span></div>
+  </div>`;
+}
+
+/* ============ SETTINGS: tap a section to open it ============ */
+const SETTINGS_HINTS = {
+  'Business profile': 'Name, photo, category, contact email',
+  'How buyers pay you': 'GCash, Maya and bank accounts on your invoices',
+  'Tax & BIR registration': 'TIN and invoice details',
+  'Upcoming BIR filing': 'Your next deadline',
+  'Your contact for partners': 'Phone and address on your links',
+  'Delivery partners': 'Drivers and couriers you use',
+  'Team': 'Who uses Nifti with you',
+  'Custom Roles': 'Make a role with only the access someone needs',
+  'Spending Approval': 'Big orders from staff wait for your OK',
+  'Notifications': 'What pings your phone',
+  'Viber & WhatsApp': 'One-tap send after you order',
+  'Privacy & discoverability': 'Who can find you',
+  'View-only access for your accountant': 'A read-only link for your bookkeeper',
+  'Your data': 'Download everything, or delete your account',
+  'Activity log': 'Who changed prices, stock and approvals',
+  'Your plan': 'Free, Pro and add-ons',
+  'Help & support': 'Message a real person',
+  'Display': 'Bigger or smaller text',
+  'Account & security': 'Login email, phone and password',
+  'Something not saving?': 'Reset this phone’s saved copy',
+  'Pause your business': 'Take a break without losing anything',
+  'Sales to your customers': 'Settings for your own sales',
+};
+function setupSettingsAccordion(){
+  document.querySelectorAll('#page-settings .settings-card').forEach(card => {
+    if(card.classList.contains('acc') || card.classList.contains('no-acc')) return;
+    const h = card.querySelector(':scope > h2');
+    if(!h) return;
+    card.classList.add('acc');
+    const key = h.textContent.replace(/[^\w&’' ]/g, '').replace(/\s+/g, ' ').trim();
+    const hint = Object.keys(SETTINGS_HINTS).find(k => key.toLowerCase().startsWith(k.toLowerCase()));
+    h.innerHTML = `<span class="acc-txt">${h.innerHTML}${hint ? `<span class="acc-hint">${SETTINGS_HINTS[hint]}</span>` : ''}</span>`;
+    h.setAttribute('role', 'button'); h.setAttribute('tabindex', '0');
+  });
+  // One listener for the whole page, so a section whose content redraws itself still opens.
+  const page = document.getElementById('page-settings');
+  if(page && !page._accBound){
+    page._accBound = true;
+    const hit = e => { const h = e.target.closest('.settings-card.acc > h2'); if(!h || e.target.closest('button, a, input, .switch')) return null; return h; };
+    page.addEventListener('click', e => { const h = hit(e); if(h) h.parentElement.classList.toggle('open'); });
+    page.addEventListener('keydown', e => { if(e.key !== 'Enter' && e.key !== ' ') return; const h = hit(e); if(h){ e.preventDefault(); h.parentElement.classList.toggle('open'); } });
+  }
+}
+function openSettingsCard(id){
+  navigate('settings');
+  setTimeout(() => {
+    const el = document.getElementById(id); if(!el) return;
+    const card = el.closest('.settings-card') || el;
+    card.classList.add('open');
+    card.scrollIntoView({behavior: 'smooth', block: 'start'});
+  }, 120);
+}
+function fillDemoSettingsProfile(){
+  if(myBusiness) return;
+  const sup = currentAppRole === 'supplier';
+  const v = sup ? {n: 'Metro Steel Co.', c: 'Steel, rebar & cement supplier', e: 'sales@metrosteel.ph', r: 'Valenzuela City, Metro Manila', i: 'MS', le: 'metrosteel.owner@gmail.com', lp: '0917 555 0142'}
+    : {n: 'Dela Cruz Hardware', c: 'General hardware retailer', e: 'orders@delacruzhardware.ph', r: 'Marikina City, Metro Manila', i: 'DC', le: 'delacruz.owner@gmail.com', lp: '0917 200 3344'};
+  const set = (id, val) => { const el = document.getElementById(id); if(el) el.value = val; };
+  set('settingsBizName', v.n); set('settingsBizCategory', v.c); set('settingsBizEmail', v.e); set('settingsBizRegion', v.r);
+  set('settingsLoginEmail', v.le); set('settingsLoginPhone', v.lp);
+  const av = document.getElementById('settingsAvatarPreview'); if(av && !av.querySelector('img')) av.textContent = v.i;
+  const sub = document.getElementById('settingsProfileSub'); if(sub) sub.textContent = sup ? 'Shown to buyers you invite or connect with.' : 'Shown to suppliers you invite or connect with.';
+}
+
 function renderSidebarForViewAsRole(){
   const allowed = computeAllowedPages(getEffectiveRoles());
   document.querySelectorAll('.nav-item[data-page], .bnav-item[data-page], .more-sheet-item[data-page]').forEach(el => {
@@ -10291,10 +10758,7 @@ function navigate(page){
       if(currentAppRole==='supplier' && !window._supplyInvInit){ renderSupplierInventoryDashboard(); window._supplyInvInit = true; }
     }
     if(page==='dashboard'){
-      renderBuyerInbox(); if(document.getElementById('supplierInboxList')) renderSupplierInbox(); updateDashboardStats();
-      renderDecisionCenterList('buyerDecisionCenterList','buyer'); renderDecisionCenterList('supplierDecisionCenterList','supplier');
-      if(document.getElementById('buyerTodayPanel')) document.getElementById('buyerTodayPanel').innerHTML = renderTodayPanel('buyer');
-      if(document.getElementById('supplierTodayPanel')) document.getElementById('supplierTodayPanel').innerHTML = renderTodayPanel('supplier');
+      hmShowAll = false; renderHomeV2();
       renderPriceProtectionCard();
       renderHomeInviteNudge();
       renderPhoneNotifNudge();
@@ -10312,7 +10776,7 @@ function navigate(page){
     if(page==='suppliers'){ renderSupplierChips(); renderSuppliersTable(); }
     if(page==='invite'){ renderInvitesList(); updatePreview(); }
     if(page==='status') renderStatusPage();
-    if(page==='settings'){ renderOwnerEmailCard().then(() => { renderOwnerBillingCard(); renderOwnerBackupCard(); }); renderPauseCard(); renderSharedContactCard(); renderLogisticsPartnersCard(); renderShareLinksCard(); { const qs = document.getElementById('quickShareToggle'); if(qs) qs.classList.toggle('on', quickSharePromptOn()); } document.querySelectorAll('.buyerPublicToggle').forEach(t => t.classList.toggle('on', myBusiness ? !!myBusiness.catalog_public : (currentAppRole==='supplier' ? myCatalogPublic : myBuyerProfilePublic))); renderTeamMembersList(); renderCustomRolesList(); renderBillingSettings(); renderNotificationSettingsPanel(); renderPushLogPanel(); renderTaxProfileSettings(); renderPaymentDetailsSettings(); renderBirDeadlineCard(); renderApprovalThresholdSettings(); renderAuditLogContent(); renderDownstreamSalesSettingsCard(); renderSupportContactForm(); }
+    if(page==='settings'){ setupSettingsAccordion(); fillDemoSettingsProfile(); renderOwnerEmailCard().then(() => { renderOwnerBillingCard(); renderOwnerBackupCard(); }); renderPauseCard(); renderSharedContactCard(); renderLogisticsPartnersCard(); renderShareLinksCard(); { const qs = document.getElementById('quickShareToggle'); if(qs) qs.classList.toggle('on', quickSharePromptOn()); } document.querySelectorAll('.buyerPublicToggle').forEach(t => t.classList.toggle('on', myBusiness ? !!myBusiness.catalog_public : (currentAppRole==='supplier' ? myCatalogPublic : myBuyerProfilePublic))); renderTeamMembersList(); renderCustomRolesList(); renderBillingSettings(); renderNotificationSettingsPanel(); renderPushLogPanel(); renderTaxProfileSettings(); renderPaymentDetailsSettings(); renderBirDeadlineCard(); renderApprovalThresholdSettings(); renderAuditLogContent(); renderDownstreamSalesSettingsCard(); renderSupportContactForm(); }
   }
   window.scrollTo(0,0);
 }
@@ -11770,50 +12234,64 @@ function renderSuppliersTable(){
   if(supplierFilter === 'attention') rows = rows.filter(s=>{ const r = computeCounterpartReliability(s.id, isSupplierRole); return r.status==='ok' && r.score < 75; });
   else if(supplierFilter !== 'all') rows = rows.filter(s=>s.category.includes(supplierFilter));
 
-  const relationLabel = isSupplierRole ? 'Buyer' : 'Supplier';
-  const html = rows.map(s=>{
+  // Same details either way — a table on a wide screen, a tappable card list on a phone (the
+  // five-column table used to run off the side of the screen with names wrapped a word per line).
+  const detailHtml = (s, rel) => {
+    const actionsHtml = s.isOutside
+      ? `<button class="btn btn-primary" onclick="event.stopPropagation(); resendInvite('${s.id}')">📨 Invite ${escapeHtml(s.name)} to Nifti</button><div id="resendInvite_${s.id}" style="width:100%;"></div>`
+      : `<button class="btn btn-primary" onclick="event.stopPropagation(); messageSupplier('${s.id}')">💬 Message ${escapeHtml(s.name)}</button>
+         <button class="btn btn-outline" onclick="event.stopPropagation(); navigate('orders')">View orders</button>`;
+    return `<div class="expand-detail-list">
+        <div class="expand-detail-item"><div class="k">Category</div><div class="v">${escapeHtml(s.category)}</div></div>
+        <div class="expand-detail-item"><div class="k">${isSupplierRole?'Pays on time':'Reliability'}<span class="kpi-info" tabindex="0">ⓘ<span class="kpi-tooltip">${rel.status==='ok' ? rel.method : rel.reason}</span></span></div><div class="v">${rel.status==='ok' ? rel.score + ' / 100' : 'Not enough orders yet'}</div></div>
+        <div class="expand-detail-item"><div class="k">Total orders</div><div class="v">${s.orders}</div></div>
+        <div class="expand-detail-item"><div class="k">Last order</div><div class="v">${escapeHtml(String(s.lastOrder))}</div></div>
+      </div>
+      ${renderRelationshipRecord(s, isSupplierRole)}
+      ${renderPerformanceTrendPanel(s.id, isSupplierRole)}
+      ${renderPriceAgreements(s.id, isSupplierRole)}
+      <div class="expand-actions" style="margin-top:20px;">${actionsHtml}</div>`;
+  };
+  const tableHtml = [], cardHtml = [];
+  rows.forEach(s=>{
     const rel = computeCounterpartReliability(s.id, isSupplierRole);
     const scoreCls = rel.status!=='ok' ? 'score-nodata' : rel.tier==='good' ? 'score-good' : rel.tier==='mid' ? 'score-mid' : 'score-bad';
     const scoreDisplay = rel.status==='ok' ? rel.score : 'New';
-    const mainRow = `<tr style="cursor:pointer;" onclick="toggleSupplierRow('${s.id}')">
-      <td><div class="sup-name">${s.name}${s.isOutside ? ' <span class="status-tag" style="background:var(--lowstock-soft);color:var(--ink);">Not on Nifti yet</span>' : ''}</div><div class="sup-cat">${s.category}</div></td>
+    const open = expandedSupplierId === s.id;
+    const outsideTag = s.isOutside ? ' <span class="status-tag" style="background:var(--lowstock-soft);color:var(--ink);">Not on Nifti yet</span>' : '';
+    tableHtml.push(`<tr style="cursor:pointer;" onclick="toggleSupplierRow('${s.id}')">
+      <td><div class="sup-name">${escapeHtml(s.name)}${outsideTag}</div><div class="sup-cat">${escapeHtml(s.category)}</div></td>
       <td><span class="score-badge ${scoreCls}">${scoreDisplay}</span></td>
       <td>${s.orders} orders</td>
-      <td>${s.lastOrder}</td>
-      <td><span class="row-action">${expandedSupplierId===s.id ? 'Close ▲' : 'View ▼'}</span></td>
-    </tr>`;
-    let expandRow = '';
-    if(expandedSupplierId === s.id){
-      const actionsHtml = s.isOutside
-        ? `<button class="btn btn-primary" onclick="event.stopPropagation(); resendInvite('${s.id}')">📨 Invite ${escapeHtml(s.name)} to Nifti</button><div id="resendInvite_${s.id}" style="width:100%;"></div>`
-        : `<button class="btn btn-primary" onclick="event.stopPropagation(); messageSupplier('${s.id}')">💬 Message ${s.name}</button>
-           <button class="btn btn-outline" onclick="event.stopPropagation(); navigate('orders')">View orders</button>`;
-      expandRow = `<tr class="inv-expand-row"><td colspan="5"><div class="inv-expand-inner">
-        <div style="font-size:15px;font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:.03em;margin-bottom:10px;opacity:.65;">${isSupplierRole ? 'My Buyers' : 'My Suppliers'} / ${s.name}</div>
-        <div class="expand-detail-list">
-          <div class="expand-detail-item"><div class="k">Category</div><div class="v">${s.category}</div></div>
-          <div class="expand-detail-item"><div class="k">${isSupplierRole?'Payment reliability':'Reliability score'}<span class="kpi-info" tabindex="0">ⓘ<span class="kpi-tooltip">${rel.status==='ok' ? rel.method : rel.reason}</span></span></div><div class="v">${rel.status==='ok' ? rel.score+' / 100' : (isSupplierRole?'Not enough recorded payment history yet':'Not enough delivery history yet')}</div></div>
-          <div class="expand-detail-item"><div class="k">Total orders</div><div class="v">${s.orders}</div></div>
-          <div class="expand-detail-item"><div class="k">Last order</div><div class="v">${s.lastOrder}</div></div>
-        </div>
-        ${renderRelationshipRecord(s, isSupplierRole)}
-        ${renderPerformanceTrendPanel(s.id, isSupplierRole)}
-        ${renderPriceAgreements(s.id, isSupplierRole)}
-        <div class="expand-actions" style="margin-top:20px;">
-          ${actionsHtml}
-        </div>
-      </div></td></tr>`;
-    }
-    return mainRow + expandRow;
-  }).join('');
+      <td>${escapeHtml(String(s.lastOrder))}</td>
+      <td><span class="row-action">${open ? 'Close ▲' : 'View ▼'}</span></td>
+    </tr>` + (open ? `<tr class="inv-expand-row"><td colspan="5"><div class="inv-expand-inner">
+        <div style="font-size:15px;font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:.03em;margin-bottom:10px;opacity:.65;">${isSupplierRole ? 'My Buyers' : 'My Suppliers'} / ${escapeHtml(s.name)}</div>
+        ${detailHtml(s, rel)}</div></td></tr>` : ''));
+    const initials = (s.initials || s.name.split(/\s+/).filter(w => /[A-Za-z]/.test(w)).slice(0, 2).map(w => w[0]).join('')).toUpperCase();
+    cardHtml.push(`<div class="pt-card">
+      <div class="pt-row" onclick="toggleSupplierRow('${s.id}')" role="button" aria-expanded="${open}">
+        <span class="pt-av" aria-hidden="true">${escapeHtml(initials)}</span>
+        <div class="pt-mid"><div class="pt-name">${escapeHtml(s.name)}${outsideTag}</div>
+          <div class="pt-sub">${escapeHtml(s.category)} · ${s.orders} order${s.orders === 1 ? '' : 's'} · last ${escapeHtml(String(s.lastOrder))}</div></div>
+        <span class="score-badge ${scoreCls}" title="${isSupplierRole ? 'Pays on time' : 'Reliability'}">${scoreDisplay}</span>
+      </div>
+      ${open ? `<div class="pt-detail">${detailHtml(s, rel)}</div>` : ''}
+    </div>`);
+  });
 
-  document.getElementById('suppliersTableBody').innerHTML = html || (dataset.length===0
-    ? `<tr><td colspan="5" style="padding:0;"><div style="text-align:center;padding:48px 24px;">
-        <div style="font-size:16px;font-weight:800;color:var(--ink);margin-bottom:6px;">${isSupplierRole ? "You haven't added any buyers yet" : "You haven't added any suppliers yet"}</div>
-        <div style="font-size:15.5px;color:var(--ink);margin-bottom:16px;">Add someone you already order from — they join in under 5 minutes, no marketplace, no cold vetting.</div>
-        <a onclick="navigate('invite')" class="btn btn-primary">+ ${isSupplierRole ? 'Invite a Buyer' : 'Invite a Supplier'}</a>
-      </div></td></tr>`
-    : `<tr><td colspan="5" style="text-align:center;color:var(--ink);padding:30px;">No suppliers match this filter.</td></tr>`);
+  const emptyAll = dataset.length === 0;
+  const emptyHtml = emptyAll
+    ? `<div style="text-align:center;padding:40px 20px;">
+        <div style="font-size:40px;">${isSupplierRole ? '🏪' : '🚚'}</div>
+        <div style="font-size:16.5px;font-weight:800;color:var(--ink);margin:6px 0;">${isSupplierRole ? 'No buyers yet' : 'No suppliers yet'}</div>
+        <div style="font-size:15px;color:var(--ink);margin-bottom:16px;">${isSupplierRole ? 'Add a store you already sell to. They can order from a link, even without an account.' : 'Add a supplier you already order from. You can send them orders by Viber link, even before they join.'}</div>
+        <a onclick="navigate('invite')" class="btn btn-primary">+ ${isSupplierRole ? 'Add a buyer' : 'Add a supplier'}</a>
+      </div>`
+    : `<div style="text-align:center;color:var(--ink);padding:30px;">Nobody matches this filter.</div>`;
+  document.getElementById('suppliersTableBody').innerHTML = tableHtml.join('') || `<tr><td colspan="5" style="padding:0;">${emptyHtml}</td></tr>`;
+  const cards = document.getElementById('partnerCards');
+  if(cards) cards.innerHTML = cardHtml.join('') || emptyHtml;
 }
 
 /* ============ MESSAGES ============ */
@@ -13426,10 +13904,7 @@ function setTeamTab(tab){
   if(tab==='chat'){ renderTeamChatThread(); markTeamChatSeen(); setTimeout(()=>{ const i = document.getElementById('teamChatInput'); if(i && window.innerWidth > 980) i.focus(); }, 0); }
   updateTeamNavBadge();
 }
-function openTeamPeopleSettings(){
-  navigate('settings');
-  setTimeout(() => { const el = document.getElementById('teamMembersList'); if(el) el.scrollIntoView({behavior:'smooth', block:'center'}); }, 50);
-}
+function openTeamPeopleSettings(){ openSettingsCard('teamMembersList'); }
 // Who's on the team, and how much each person has open. Tapping someone shows their tasks.
 function renderTeamPeopleStrip(){
   const el = document.getElementById('teamPeopleStrip');
@@ -13858,7 +14333,16 @@ function computeSalePayments(sale){ return sale.payments.reduce((s,p)=>s+p.amoun
 function computeSaleBalance(sale){ return computeSaleTotal(sale) - computeSalePayments(sale); }
 
 function renderSalesPage(){
-  if(!downstreamSalesEnabled || currentAppRole!=='buyer') return;
+  if(currentAppRole!=='buyer') return;
+  if(!downstreamSalesEnabled){
+    const el = document.getElementById('salesStatsRow');
+    if(el) el.innerHTML = `<div class="panel-card" style="grid-column:1/-1;text-align:center;padding:26px 18px;"><div style="font-size:36px;">🧾</div>
+      <div style="font-weight:800;font-size:16.5px;margin:6px 0 4px;">Track what you sell, not just what you buy</div>
+      <div style="font-size:14.5px;opacity:.85;margin-bottom:12px;">Record each sale to your own customers. Stock comes out of Inventory and you see your profit.</div>
+      <button class="btn btn-primary" onclick="toggleDownstreamSales(); renderSalesPage()">Turn on sales tracking</button></div>`;
+    ['salesRecentList', 'customersList', 'topProductsSoldList'].forEach(id => { const x = document.getElementById(id); if(x) x.innerHTML = '<div class="empty-mini">Turn on sales tracking to start.</div>'; });
+    return;
+  }
   renderSalesStatsRow();
   renderRecentSalesList();
   renderCustomersList();
@@ -14449,6 +14933,7 @@ function pushBuyerInboxItem(entry){
   return id;
 }
 function renderBuyerInbox(){
+  if(homeIsActive() && currentAppRole === 'buyer') renderHomeV2();
   const el = document.getElementById('buyerInboxList');
   if(!el) return;
   // Everything used to land in one global inbox regardless of who it was actually for — an item
@@ -14713,6 +15198,8 @@ function closeOrderDetailModal(){
   expandedBuyerPoId = null;
   expandedSupplierOrderPo = null;
   currentModalOrderId = null;
+  // Whatever was just done in the order (confirmed, paid, delivered) should drop off Home's list.
+  if(homeIsActive()){ renderHomeV2(); if(currentAppRole === 'supplier') renderWhoOwesMe(); else renderBillsToPay(); }
 }
 // The single fix behind "nothing visibly changes when I confirm/undo/dispute something": every
 // action below updates the order and refreshes the background table, but the popup someone is
@@ -14938,7 +15425,9 @@ function renderOrdersTable(){
       o.lineItems.some(li => fuzzyIncludes(li.product, ordersSearch))
     );
   }
-  rows = applyOrdersSort(rows);
+  renderOrderSegBar('buyer', rows);
+  rows = rows.filter(o => orderSegMatch(o, 'buyer'));
+  rows = ordersSortStack.length ? applyOrdersSort(rows) : orderSegSort(rows, 'buyer');
   updateOrdersSortArrows('sortArrow_');
   renderOrdersSortBar();
 
@@ -14963,34 +15452,21 @@ function renderOrdersTable(){
     </tr>`;
   }).join('') || (getBuyerPOs().length===0
     ? `<tr><td colspan="5" style="padding:0;"><div style="text-align:center;padding:48px 24px;">
-        <div style="font-size:16px;font-weight:800;color:var(--ink);margin-bottom:6px;">No purchase orders yet</div>
-        <div style="font-size:15.5px;color:var(--ink);margin-bottom:16px;">Once you invite a supplier, you can create your first PO here — no marketplace, no cold vetting.</div>
-        <button class="btn btn-primary" onclick="startCreatePO()">+ Create Purchase Order</button>
+        <div style="font-size:16px;font-weight:800;color:var(--ink);margin-bottom:6px;">No orders yet</div>
+        <div style="font-size:15.5px;color:var(--ink);margin-bottom:16px;">Send your first order. Your supplier can open it from a Viber link, even without an account.</div>
+        <button class="btn btn-primary" onclick="startCreatePO()">+ New order</button>
       </div></td></tr>`
-    : `<tr><td colspan="5" style="text-align:center;color:var(--ink);padding:24px;">No orders match your search or filter.</td></tr>`);
+    : `<tr><td colspan="5" style="text-align:center;color:var(--ink);padding:24px;">No orders here right now.</td></tr>`);
   const cardsEl = document.getElementById('orderCards');
   if(cardsEl){
-    cardsEl.innerHTML = rows.map(o=>{
-      const selected = expandedBuyerPoId===o.id;
-      const needsAction = getBuyerActionColorClass(o)==='pill-lowstock';
-      const riskTag = o.atRisk ? `<span style="color:var(--danger);margin-right:5px;" title="Running behind schedule" aria-hidden="true">⏱</span>` : '';
-      return `<div class="po-card ${selected ? 'order-row-selected' : ''}" onclick="toggleOrderRow('${o.id}')">
-        <div class="po-card-top">
-          <div><div class="po-card-number">${riskTag}${o.poNumber}${pendingSyncTagHtml(o)}</div><div class="po-card-status">${PO_STATUS_LABELS[o.status]}</div></div>
-          ${needsAction ? `<span style="width:8px;height:8px;border-radius:50%;background:var(--lowstock-fill);flex-shrink:0;margin-top:6px;"></span>` : ''}
-        </div>
-        <div class="po-card-row"><span class="k">Supplier</span><span class="v">${o.supplierName}</span></div>
-        <div class="po-card-row"><span class="k">Type</span><span class="v"><span class="pipe-tag ${o.type==='freight'?'tag-freight':'tag-local'}">${o.type==='freight'?'Import':'Local'}</span></span></div>
-        <div class="po-card-row"><span class="k">Amount</span><span class="v">${fmtPHP(poTotal(o))}</span></div>
-        <div class="po-card-action">${renderBuyerActionPill(o)}</div>
-      </div>`;
-    }).join('') || (getBuyerPOs().length===0
+    cardsEl.innerHTML = rows.map(o => orderCardHtml(o, 'buyer')).join('') || (getBuyerPOs().length===0
       ? `<div style="text-align:center;padding:36px 20px;">
-          <div style="font-size:16px;font-weight:800;color:var(--ink);margin-bottom:6px;">No purchase orders yet</div>
-          <div style="font-size:15.5px;color:var(--ink);margin-bottom:16px;">Once you invite a supplier, you can create your first PO here.</div>
-          <button class="btn btn-primary" onclick="startCreatePO()">+ Create Purchase Order</button>
+          <div style="font-size:40px;">📦</div>
+          <div style="font-size:16.5px;font-weight:800;color:var(--ink);margin:6px 0;">No orders yet</div>
+          <div style="font-size:15px;color:var(--ink);margin-bottom:16px;">Send your first order. Your supplier can open it from a Viber link, even without an account.</div>
+          <button class="btn btn-primary" onclick="startCreatePO()">+ New order</button>
         </div>`
-      : `<div style="text-align:center;color:var(--ink);padding:24px;">No orders match your search or filter.</div>`);
+      : `<div style="text-align:center;color:var(--ink);padding:24px;">No orders here right now.</div>`);
   }
   renderOrderDetailPane();
   updateOpenItemsBadge();
@@ -14999,25 +15475,26 @@ function renderOrdersTable(){
 // outright since renderOrdersTable() still calls it; the old sheet HTML is gone from the page.
 function renderOrderDetailPane(){}
 function renderLineItemsTable(po){
+  // A receipt, not a spreadsheet: one line per item (name, qty × price, amount) and the totals
+  // under it. The old five-column table ran off the side of a phone screen.
   const duty = poDuty(po);
-  const uniqueSkuCount = new Set(po.lineItems.map(li=>li.product)).size;
-  const skuBadge = `<div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;">
-    <div style="background:var(--green);color:#fff;font-weight:800;font-size:15.5px;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">${uniqueSkuCount}</div>
-    <div style="font-size:15.5px;color:var(--ink);font-weight:600;">unique SKU${uniqueSkuCount===1?'':'s'} on this order</div>
-  </div>`;
-  const summaryRow = (label, value, weight, size) => `<tr><td colspan="5" style="text-align:right;border-bottom:none;padding-top:4px;padding-bottom:4px;">
-    <span style="display:inline-flex;gap:10px;align-items:baseline;font-weight:${weight};font-size:${size}px;">
-      <span>${label}</span><span>${value}</span>
-    </span>
-  </td></tr>`;
-  const dutyRow = duty>0 ? summaryRow('Import duty'+(po.customs&&po.customs.hsCode?' (HS '+po.customs.hsCode+')':''), fmtPHP(duty), 400, 17) : '';
-  return `${skuBadge}<table style="width:100%;margin-bottom:12px;font-size:16px;"><thead><tr><th style="font-size:16.5px;text-align:center;width:36px;">#</th><th style="font-size:16.5px;text-align:center;">Product</th><th style="font-size:16.5px;text-align:center;">Qty</th><th style="font-size:16.5px;text-align:center;">Unit Price</th><th style="font-size:16.5px;text-align:center;">Line Total</th></tr></thead><tbody>
-    ${po.lineItems.map((li,i)=>`<tr><td style="font-size:16px;text-align:center;font-weight:700;color:var(--ink);">${i+1}</td><td style="font-size:16px;text-align:center;">${li.product}</td><td style="font-size:16px;text-align:center;">${li.qty}</td><td style="font-size:16px;text-align:center;">${fmtPHP(li.unitPrice)}</td><td style="font-size:16px;text-align:right;">${fmtPHP(li.qty*li.unitPrice)}</td></tr>`).join('')}
-    ${summaryRow('Subtotal', fmtPHP(poLineTotal(po)), 700, 17)}
-    ${dutyRow}
-    ${summaryRow('VAT ('+Math.round(po.taxRate*100)+'%)', fmtPHP(poTax(po)), 400, 17)}
-    ${summaryRow('Total (PHP)', fmtPHP(poTotal(po)), 800, 17)}
-  </tbody></table>`;
+  const line = (label, value, cls) => `<div class="od-sum${cls ? ' ' + cls : ''}"><span>${label}</span><span>${value}</span></div>`;
+  return `<div class="od-items">
+    ${po.lineItems.map(li => `<div class="od-item"><div style="min-width:0;"><div class="od-item-name">${escapeHtml(li.product)}</div><div class="od-item-sub">${li.qty} × ${fmtPHP(li.unitPrice)}</div></div><div class="od-item-amt">${fmtPHP(li.qty * li.unitPrice)}</div></div>`).join('')}
+    <div class="od-sums">
+      ${line('Subtotal', fmtPHP(poLineTotal(po)))}
+      ${duty > 0 ? line('Import duty' + (po.customs && po.customs.hsCode ? ' (HS ' + escapeHtml(po.customs.hsCode) + ')' : ''), fmtPHP(duty)) : ''}
+      ${line('VAT (' + Math.round(po.taxRate * 100) + '%)', fmtPHP(poTax(po)))}
+      ${line('Total', fmtPHP(poTotal(po)), 'tot')}
+    </div></div>`;
+}
+function orderHeadHtml(o, side){
+  const buyer = side === 'buyer';
+  const when = o.requestedDeliveryDate && !poIsDelivered(o) ? ` · ${buyer ? 'arrives' : 'deliver by'} ${stmtDate(o.requestedDeliveryDate)}` : '';
+  return `<div class="od-head"><div class="od-eyebrow">${o.poNumber} · ${PO_STATUS_LABELS[o.status] || o.status}</div>
+    <div class="od-who">${escapeHtml(buyer ? o.supplierName : o.buyerName)}</div>
+    <div class="od-sub">${fmtPHP(poTotal(o))}${when}</div>
+    <div class="od-next">${buyer ? renderBuyerActionPill(o) : renderSupplierActionPill(o)}${buyer ? '' : `<span class="row-action" onclick="messageBuyerFromOrder('${o.buyerId}')">💬 Message</span>`}</div></div>`;
 }
 function shouldHideHistoryStep(po, h, side){
   // Freight milestone updates already have their own dedicated, better-organized view
@@ -15613,14 +16090,14 @@ function renderRmaBanner(o){
   return `<div class="logi-note" style="margin-top:8px;color:${color};">⚑ Return/dispute — <strong>${o.rma.reason}</strong> (${o.rma.status}) filed ${o.rma.filedDate}${o.rma.desc ? ': '+o.rma.desc : ''}${evidenceLink}${resolutionLink}${supportLink}</div>`;
 }
 function renderBuyerPoDetail(o){
-  const breadcrumb = `<div style="font-size:15px;font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:.03em;margin-bottom:10px;opacity:.65;">Orders / ${o.poNumber}</div>`;
+  const breadcrumb = orderHeadHtml(o, 'buyer');
   let actionsHtml = '';
   if(o.status==='draft'){
     const lockBanner = (o._editingBy && o._editingBy !== 'You')
       ? `<div class="logi-note" style="width:100%;box-sizing:border-box;margin-bottom:8px;color:var(--lowstock);">🔒 <strong>${o._editingBy}</strong> is currently editing this draft. <span class="row-action" onclick="event.stopPropagation(); releaseDraftLock('${o.id}')">Release lock</span></div>`
       : '';
     const editDisabled = (o._editingBy && o._editingBy !== 'You');
-    actionsHtml = `${lockBanner}<button class="btn btn-primary" onclick="event.stopPropagation(); openSendConfirmModal('${o.id}')" ${editDisabled ? 'disabled' : ''}>Send Purchase Order →</button>
+    actionsHtml = `${lockBanner}<button class="btn btn-primary" onclick="event.stopPropagation(); openSendConfirmModal('${o.id}')" ${editDisabled ? 'disabled' : ''}>Send order →</button>
       <button class="btn btn-outline" onclick="event.stopPropagation(); editDraftPO('${o.id}')" ${editDisabled ? 'disabled title="Locked by another teammate"' : ''}>Edit Draft</button>
       ${myBusiness ? '' : `<button class="btn btn-outline" style="font-size:15px;padding:6px 10px;" onclick="event.stopPropagation(); simulateTeammateEditing('${o.id}')">Simulate: teammate opens this draft</button>`}`;
   } else if(o.status==='countered'){
@@ -15645,10 +16122,10 @@ function renderBuyerPoDetail(o){
         <div id="negotiateForm_${o.id}"></div>`;
     }
   } else if((o.status==='shipped' || o.status==='in_customs') && !o.deliveryConfirmation){
-    actionsHtml = `<button class="btn btn-primary" onclick="event.stopPropagation(); openDeliveryConfirm('${o.id}')">Confirm Delivery →</button>`;
+    actionsHtml = `<button class="btn btn-primary" onclick="event.stopPropagation(); openDeliveryConfirm('${o.id}')">✓ It arrived</button>`;
   } else if(o.status==='invoiced' && o.invoice && o.invoice.status!=='paid'){
     const rejected = (o.invoice.payments||[]).some(p => p.confirmStatus==='rejected' || (p.method==='check' && p.checkStatus==='bounced'));
-    actionsHtml = `<button class="btn btn-primary" onclick="event.stopPropagation(); openMarkPaidForm('${o.id}')">Pay Invoice →</button><div id="markPaidForm_${o.id}" style="width:100%;">${rejected ? renderPaymentPanel(o.id) : ''}</div>`;
+    actionsHtml = `<button class="btn btn-primary" onclick="event.stopPropagation(); openMarkPaidForm('${o.id}')">Pay this bill →</button><div id="markPaidForm_${o.id}" style="width:100%;">${rejected ? renderPaymentPanel(o.id) : ''}</div>`;
   } else if(o.invoice){
     actionsHtml = `<button class="btn btn-outline" onclick="event.stopPropagation(); openMarkPaidForm('${o.id}')">💳 Payments</button><div id="markPaidForm_${o.id}" style="width:100%;"></div>`;
   }
@@ -15656,7 +16133,7 @@ function renderBuyerPoDetail(o){
   const amendBtn = (!pendingAmend && AMENDABLE_STATUSES.includes(o.status)) ? `<button class="btn btn-outline" style="color:var(--danger);border-color:var(--danger);" onclick="event.stopPropagation(); openAmendForm('${o.id}')">Request Amendment</button>` : '';
   const amendHtml = pendingAmend ? `<div class="logi-note" style="margin-top:8px;">✎ Amendment pending supplier review — ${pendingAmend.product}: qty ${pendingAmend.originalQty} → ${pendingAmend.requestedQty}${pendingAmend.requestedDeliveryDate ? ', delivery date → '+pendingAmend.requestedDeliveryDate : ''}${pendingAmend.urgent ? ' <strong style="color:var(--danger);">(time-sensitive)</strong>' : ''}${pendingAmend.note ? ' — "'+pendingAmend.note+'"' : ''}</div>` : '';
   const cancelHtml = CANCELLABLE_STATUSES.includes(o.status) ? `<button class="btn btn-outline" style="color:var(--danger);border-color:var(--danger);" onclick="event.stopPropagation(); cancelOrder('${o.id}', 'buyer')">Cancel Order</button><div id="cancelConfirmForm_${o.id}"></div>` : '';
-  const rmaHtml = (poIsDelivered(o) && !o.rma) ? `<button class="btn btn-outline" style="color:var(--danger);border-color:var(--danger);margin-top:8px;" onclick="event.stopPropagation(); openRmaForm('${o.id}')">Report an Issue / Request Return</button><div id="rmaForm_${o.id}"></div>` : '';
+  const rmaHtml = (poIsDelivered(o) && !o.rma) ? `<button class="btn btn-outline" style="color:var(--danger);border-color:var(--danger);margin-top:8px;" onclick="event.stopPropagation(); openRmaForm('${o.id}')">Report a problem or return</button><div id="rmaForm_${o.id}"></div>` : '';
   return `${breadcrumb}${renderLineItemsTable(o)}
     <div style="font-size:16px;color:var(--ink);margin-bottom:6px;"><strong>Requested delivery:</strong> ${o.requestedDeliveryDate} · <strong>Ship to:</strong> ${o.deliveryAddress}</div>
     ${o.riskNote ? `<div class="logi-note" style="color:var(--danger);">⏱ ${o.riskNote}</div>` : ''}
@@ -17330,7 +17807,7 @@ function openCreatePOModal(existingId){
   document.getElementById('createPoNotes').value = existing ? existing.notes : '';
   document.getElementById('createPoType').value = existing ? existing.type : 'local';
   if(!existing) autoDetectOrderType(document.getElementById('createPoSupplier').value);
-  document.getElementById('createPoModalTitle').textContent = existing ? 'Edit Draft Purchase Order' : 'Create Purchase Order';
+  document.getElementById('createPoModalTitle').textContent = existing ? 'Edit your draft' : 'New order';
   onCreatePoTypeChange();
   renderCreatePOLineItems();
   document.getElementById('offlineDraftExportRow').classList.toggle('hidden', !isOffline);
@@ -17382,6 +17859,7 @@ function onCreatePoTypeChange(){
   const isFreight = document.getElementById('createPoType').value === 'freight';
   const display = document.getElementById('createPoTypeDisplay');
   if(display) display.textContent = isFreight ? '🌐 Import / Freight' : '📍 Local';
+  const typeField = document.getElementById('createPoTypeField'); if(typeField) typeField.classList.toggle('hidden', !isFreight);
   updateCreatePOTotal();
 }
 function closeCreatePOModal(){
@@ -18784,10 +19262,7 @@ function messageBuyerFromOrder(buyerId){
   selectConversation(buyerId);
 }
 function renderSupplierPoDetail(o){
-  const breadcrumb = `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:8px;">
-    <div style="font-size:15px;font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:.03em;opacity:.65;">Order Fulfillment / ${o.poNumber}</div>
-    <span class="row-action" onclick="messageBuyerFromOrder('${o.buyerId}')">💬 Message ${o.buyerName}</span>
-  </div>`;
+  const breadcrumb = orderHeadHtml(o, 'supplier');
   let actionsHtml = '';
   if(o.status==='sent'){
     // Section 5 #25 — a discontinued-line-item action, so the supplier notifies the buyer with
@@ -18804,9 +19279,9 @@ function renderSupplierPoDetail(o){
       <span>${newActions} ${newActions?' · ':''}<span class="row-action" onclick="event.stopPropagation(); openDiscontinuedForm('${o.id}', ${i})">Mark Discontinued + Suggest Replacement</span></span>
     </div><div id="editLineName_${o.id}_${i}"></div><div id="addToCatalogForm_${o.id}_${i}"></div><div id="discontinuedForm_${o.id}_${i}"></div>`;
     }).join('');
-    actionsHtml = `<button class="btn btn-primary" onclick="event.stopPropagation(); confirmSupplierPO('${o.id}')">Confirm Order →</button>
-      <button class="btn btn-outline" onclick="event.stopPropagation(); openPartialConfirmForm('${o.id}')">Can Only Fulfill Part of This</button>
-      <button class="btn btn-outline" onclick="event.stopPropagation(); openDepositRequestForm('${o.id}')">Confirm + Require Deposit</button>
+    actionsHtml = `<button class="btn btn-primary" onclick="event.stopPropagation(); confirmSupplierPO('${o.id}')">✓ Confirm order</button>
+      <button class="btn btn-outline" onclick="event.stopPropagation(); openPartialConfirmForm('${o.id}')">I can only send part of it</button>
+      <button class="btn btn-outline" onclick="event.stopPropagation(); openDepositRequestForm('${o.id}')">Confirm, but ask for a deposit</button>
       <button class="btn btn-outline" onclick="event.stopPropagation(); openCounterForm('${o.id}')">Counter-Offer</button>
       <div id="partialConfirmForm_${o.id}"></div>
       <div id="depositRequestForm_${o.id}"></div>
@@ -18834,9 +19309,9 @@ function renderSupplierPoDetail(o){
       </div>`;
     }
   } else if(o.status==='confirmed'){
-    actionsHtml = `<button class="btn btn-primary" onclick="event.stopPropagation(); markSupplierPreparing('${o.id}')">Mark as Preparing →</button>`;
+    actionsHtml = `<button class="btn btn-primary" onclick="event.stopPropagation(); markSupplierPreparing('${o.id}')">Start preparing →</button>`;
   } else if(o.status==='preparing'){
-    actionsHtml = `<button class="btn btn-primary" onclick="event.stopPropagation(); openShipForm('${o.id}')">Mark as Shipped →</button><div id="shipForm_${o.id}"></div>`;
+    actionsHtml = `<button class="btn btn-primary" onclick="event.stopPropagation(); openShipForm('${o.id}')">It's on the way →</button><div id="shipForm_${o.id}"></div>`;
   } else if(o.status==='shipped'){
     actionsHtml = `<button class="btn btn-primary" onclick="event.stopPropagation(); openSupplierDeliveryConfirm('${o.id}')">📦 Confirm Delivery →</button><div id="supplierDcForm_${o.id}"></div>`;
   } else if(o.status==='in_customs'){
@@ -18918,7 +19393,9 @@ function renderSupplierOrdersTable(){
       fuzzyIncludes(PO_STATUS_LABELS[o.status], supplierOrdersSearch)
     );
   }
-  rows = applySupplierOrdersSort(rows);
+  renderOrderSegBar('supplier', rows);
+  rows = rows.filter(o => orderSegMatch(o, 'supplier'));
+  rows = supplierOrdersSortStack.length ? applySupplierOrdersSort(rows) : orderSegSort(rows, 'supplier');
   updateSupplierOrdersSortArrows();
   renderSupplierOrdersSortBar();
 
@@ -18949,30 +19426,15 @@ function renderSupplierOrdersTable(){
         <div style="font-size:16px;font-weight:800;color:var(--ink);margin-bottom:6px;">No orders yet</div>
         <div style="font-size:15.5px;color:var(--ink);">Once a buyer sends you a purchase order, it'll show up here to confirm and fulfill.</div>
       </div></td></tr>`
-    : `<tr><td colspan="6" style="text-align:center;color:var(--ink);padding:24px;">No orders match your search or filter.</td></tr>`);
+    : `<tr><td colspan="6" style="text-align:center;color:var(--ink);padding:24px;">No orders here right now.</td></tr>`);
   const supplierCardsEl = document.getElementById('supplierOrderCards');
   if(supplierCardsEl){
-    supplierCardsEl.innerHTML = rows.map(o=>{
-      const selected = expandedSupplierOrderPo===o.id;
-      const needsAction = getSupplierActionColorClass(o)==='pill-lowstock';
-      const riskTag = o.atRisk ? `<span style="color:var(--danger);margin-right:5px;" title="Running behind schedule" aria-hidden="true">⏱</span>` : '';
-      const statusCaption = o.status==='delivered' ? PO_STATUS_LABELS[o.status]+' — '+(poDeliveredOnTime(o)?'on time':'late') : PO_STATUS_LABELS[o.status];
-      return `<div class="po-card ${selected ? 'order-row-selected' : ''}" onclick="toggleSupplierOrder('${o.id}')">
-        <div class="po-card-top">
-          <div><div class="po-card-number">${riskTag}${o.poNumber}${pendingSyncTagHtml(o)}</div><div class="po-card-status">${statusCaption}</div></div>
-          ${needsAction ? `<span style="width:8px;height:8px;border-radius:50%;background:var(--lowstock-fill);flex-shrink:0;margin-top:6px;"></span>` : ''}
-        </div>
-        <div class="po-card-row"><span class="k">Buyer</span><span class="v">${o.buyerName}</span></div>
-        <div class="po-card-row"><span class="k">Product</span><span class="v">${o.lineItems[0].product}${o.lineItems.length>1?' +'+(o.lineItems.length-1):''} ×${o.lineItems[0].qty}</span></div>
-        <div class="po-card-row"><span class="k">Promised</span><span class="v">${o.requestedDeliveryDate}</span></div>
-        <div class="po-card-action">${renderSupplierActionPill(o)}</div>
-      </div>`;
-    }).join('') || (getSupplierPOs().filter(o=>o.status!=='draft').length===0
+    supplierCardsEl.innerHTML = rows.map(o => orderCardHtml(o, 'supplier')).join('') || (getSupplierPOs().filter(o=>o.status!=='draft').length===0
       ? `<div style="text-align:center;padding:36px 20px;">
           <div style="font-size:16px;font-weight:800;color:var(--ink);margin-bottom:6px;">No orders yet</div>
           <div style="font-size:15.5px;color:var(--ink);">Once a buyer sends you a purchase order, it'll show up here.</div>
         </div>`
-      : `<div style="text-align:center;color:var(--ink);padding:24px;">No orders match your search or filter.</div>`);
+      : `<div style="text-align:center;color:var(--ink);padding:24px;">No orders here right now.</div>`);
   }
   renderSupplierOrderDetailPane();
   updateOpenItemsBadge();
@@ -19037,32 +19499,24 @@ function renderSupplierFulfillmentDashboard(refreshOnly){
   }
 
   document.getElementById('supplierOrdersView').innerHTML = `
-    <div class="page-head"><h1>Order Fulfillment</h1><p>Track every order from request to delivery — and the metrics that show how healthy your fulfillment operation really is.</p></div>
+    <div class="page-head"><h1>Orders</h1><p>Orders from your buyers. Tap one to confirm, deliver or bill it.</p></div>
 
-    <div class="role-toggle" style="margin-bottom:16px;">
+    <div class="role-toggle" style="margin-bottom:12px;">
       <button class="active" id="supplierOrdersViewBtn" onclick="setSupplierOrdersMainView('list', this)">📋 Orders</button>
-      <button id="supplierAgingViewBtn" onclick="setSupplierOrdersMainView('aging', this)">💰 Aging Report <span id="supplierAgingBadge" class="nav-badge" style="position:relative;top:0;margin-left:4px;"></span></button>
-      <button id="supplierRouteViewBtn" onclick="setSupplierOrdersMainView('route', this)">🚚 Today's Delivery Route</button>
-    </div>
-    <div id="supplierDeliveryRouteView" class="hidden">
-      <div id="supplierDeliveryRouteContainer"></div>
+      <button id="supplierAgingViewBtn" onclick="setSupplierOrdersMainView('aging', this)">💰 Who owes you <span id="supplierAgingBadge" class="nav-badge" style="position:relative;top:0;margin-left:4px;"></span></button>
     </div>
     <div id="supplierOrdersListWrap">
-    <div class="kpi-toolbar" style="display:flex;justify-content:flex-end;margin-bottom:14px;">
-      <button class="btn btn-outline" style="padding:8px 16px;font-size:15px;" onclick="toggleSupplierOrderCustomize()">⚙ Customize metrics</button>
-    </div>
-    <div id="supplierOrderCustomizePanel" class="hidden" style="margin-bottom:16px;padding:16px;background:var(--bg);border:1px solid var(--border);border-radius:10px;">
-      <div style="font-weight:800;font-size:15px;color:var(--ink);text-transform:uppercase;letter-spacing:.03em;margin-bottom:10px;">Choose which metrics to show</div>
-      <div id="supplierOrderCheckboxList" style="display:grid;grid-template-columns:repeat(3,1fr);gap:9px;"></div>
-    </div>
-    <div class="stat-row" id="supplierOrderStatRow"></div>
-
+      <div class="orders-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px;color:var(--ink);opacity:.6;flex-shrink:0;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" placeholder="Search buyer, order # or item…" oninput="setSupplierOrdersSearch(this.value)">
+      </div>
+      <div id="supplierOrderSeg"></div>
+      <details class="ord-more"><summary>Filter &amp; export</summary><div class="ord-more-body">
     <div class="tabs-row" id="supplierOrdersTabs">
       <div class="tab active" onclick="setSupplierOrdersType('all',this)">All (${active.length})</div>
       <div class="tab" onclick="setSupplierOrdersType('local',this)">Local (${localCount})</div>
       <div class="tab" onclick="setSupplierOrdersType('freight',this)">Import / Freight (${freightCount})</div>
     </div>
-    <div class="toolbar">
       <div class="chip-filter" id="supplierOrdersChips">
         <div class="chip active" onclick="setSupplierOrdersStatus('all',this)">All statuses</div>
         <div class="chip" onclick="setSupplierOrdersStatus('backlogged',this)">Backlogged</div>
@@ -19070,23 +19524,10 @@ function renderSupplierFulfillmentDashboard(refreshOnly){
         <div class="chip" onclick="setSupplierOrdersStatus('shipped',this)">Shipped</div>
         <div class="chip" onclick="setSupplierOrdersStatus('delivered',this)">Delivered</div>
       </div>
-    </div>
-    <div class="chip-filter" id="supplierOrdersColorChips">
-      <div class="chip active" onclick="toggleSupplierOrdersColorFilter('action',this)"><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#EAB308;margin-right:3px;"></span>Needs your action</div>
-      <div class="chip active" onclick="toggleSupplierOrdersColorFilter('waiting',this)"><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#9C9992;margin-right:3px;"></span>Waiting on the buyer</div>
-      <div class="chip active" onclick="toggleSupplierOrdersColorFilter('done',this)">🟢 Nothing to do</div>
-      <div class="chip active" onclick="toggleSupplierOrdersColorFilter('cancelled',this)">⚫ Cancelled</div>
-    </div>
-    <div style="font-size:15px;color:var(--ink);opacity:.75;margin:4px 0 10px;">Tap to hide a group.</div>
-    <div class="chip-filter" id="supplierNextActionChips"></div>
-    <div style="margin-bottom:10px;"><label style="font-size:14.5px;color:var(--ink);opacity:.7;margin-right:8px;">Buyer:</label><select id="supplierOrdersBuyerFilter" onchange="setSupplierOrdersBuyerFilter(this.value)" style="padding:6px 10px;border:1px solid var(--border);border-radius:8px;font-size:14.5px;"></select></div>
-    <button class="btn btn-outline" style="margin-bottom:10px;" onclick="confirmAllMatchingPrice()">✓ Confirm All (matching standing price)</button>
-    <div style="margin-bottom:10px;"><span class="row-action" onclick="exportOrdersToCsv('supplier')">⬇ Export to CSV — take your data to your accountant or existing system</span> · <span class="row-action" onclick="exportInvoicesToCsv('supplier')">⬇ Export invoices to CSV</span></div>
-    <div style="min-height:560px;">
-      <div class="orders-search">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px;color:var(--ink);opacity:.6;flex-shrink:0;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input type="text" placeholder="Search by buyer, order #, product, or status…" oninput="setSupplierOrdersSearch(this.value)">
-      </div>
+        <div style="margin-bottom:10px;"><label style="font-size:14.5px;color:var(--ink);opacity:.7;margin-right:8px;">Buyer:</label><select id="supplierOrdersBuyerFilter" onchange="setSupplierOrdersBuyerFilter(this.value)" style="padding:6px 10px;border:1px solid var(--border);border-radius:8px;font-size:14.5px;"></select></div>
+        <div><button class="btn btn-outline" onclick="confirmAllMatchingPrice()">✓ Confirm every order at your standing price</button></div>
+        <div style="margin-bottom:10px;"><span class="row-action" onclick="exportOrdersToCsv('supplier')">⬇ Export to CSV — take your data to your accountant or existing system</span> · <span class="row-action" onclick="exportInvoicesToCsv('supplier')">⬇ Export invoices to CSV</span></div>
+      </div></details>
       <div class="sort-bar" id="supplierOrdersSortBar"></div>
       <div class="orders-table-scroll">
       <table class="orders-table">
@@ -19104,9 +19545,17 @@ function renderSupplierFulfillmentDashboard(refreshOnly){
       </table>
       </div>
       <div class="po-card-list" id="supplierOrderCards"></div>
-      <div style="font-size:15px;color:var(--ink);margin-top:10px;padding:0 4px;">⚠ <span style="color:var(--danger);font-weight:700;">red exclamation mark</span> = this order is flagged at risk (running behind schedule, a discrepancy, or something needing your attention).</div>
-    </div>
 
+      <details class="ord-perf"><summary><span>📊 How you're doing<small>On-time deliveries, order flow, local vs import</small></span></summary>
+      <div style="padding-top:12px;">
+    <div class="kpi-toolbar" style="display:flex;justify-content:flex-end;margin-bottom:14px;">
+      <button class="btn btn-outline" style="padding:8px 16px;font-size:15px;" onclick="toggleSupplierOrderCustomize()">⚙ Customize metrics</button>
+    </div>
+    <div id="supplierOrderCustomizePanel" class="hidden" style="margin-bottom:16px;padding:16px;background:var(--bg);border:1px solid var(--border);border-radius:10px;">
+      <div style="font-weight:800;font-size:15px;color:var(--ink);text-transform:uppercase;letter-spacing:.03em;margin-bottom:10px;">Choose which metrics to show</div>
+      <div id="supplierOrderCheckboxList" style="display:grid;grid-template-columns:repeat(3,1fr);gap:9px;"></div>
+    </div>
+    <div class="stat-row" id="supplierOrderStatRow"></div>
     <div class="panel-card" style="margin:20px 0;">
       <div class="panel-head"><h2>Fulfillment funnel</h2></div>
       <div id="supplyFunnelBox" style="padding-top:10px;">${renderFulfillmentFunnel()}</div>
@@ -19138,6 +19587,8 @@ function renderSupplierFulfillmentDashboard(refreshOnly){
         </div>
       </div>
     </div>
+      </div>
+      </details>
     </div>
   `;
   renderSupplierOrderStats();
@@ -21349,7 +21800,7 @@ function renderCashConversionPanel(role){
     el.innerHTML = `<div class="spine-card" style="margin-top:20px;text-align:center;">
       <h2>💵 Cash Conversion Cycle</h2>
       <p style="font-size:15px;color:var(--ink);opacity:.75;margin:8px 0 12px;">Aging report, cash-flow math, and accountant statements are part of Growth and above.</p>
-      <span class="row-action" onclick="navigate('settings'); setTimeout(()=>document.getElementById('billingPlanContent').scrollIntoView({behavior:'smooth'}),80);">See plans →</span>
+      <span class="row-action" onclick="openSettingsCard('billingPlanContent');">See plans →</span>
     </div>`;
     return;
   }
@@ -24099,7 +24550,7 @@ function requireCreditLimitsEntitlement(){ return requireFeature('credit_limits'
 function openUpgradePrompt(message){
   document.getElementById('upgradePromptBody').innerHTML = `
     <p style="font-size:15px;color:var(--ink);margin-bottom:16px;">${message}</p>
-    <button class="btn btn-primary" onclick="closeUpgradePrompt(); navigate('settings'); setTimeout(()=>document.getElementById('billingPlanContent').scrollIntoView({behavior:'smooth'}),80);">See plans →</button>
+    <button class="btn btn-primary" onclick="closeUpgradePrompt(); openSettingsCard('billingPlanContent');">See plans →</button>
     <button class="btn btn-outline" onclick="closeUpgradePrompt()">Not now</button>
   `;
   document.getElementById('upgradePromptModal').classList.remove('hidden');
@@ -24990,6 +25441,7 @@ function contactSupportAboutOrder(poId){
   setTimeout(()=>{
     renderSupportContactForm(`Regarding order ${po?po.poNumber:poId}: `);
     const card = document.getElementById('supportContactForm');
+    if(card && card.closest('.settings-card')) card.closest('.settings-card').classList.add('open');
     if(card) card.scrollIntoView({behavior:'smooth', block:'center'});
   }, 80);
 }
@@ -25184,7 +25636,7 @@ function refreshDeliveryRouteView(){
 function renderDeliveryRoutePanel(){
   if(!getEffectivePlan().deliveryRoute){
     return `<div class="panel-card" style="margin:20px 0;text-align:center;"><div style="font-weight:800;font-size:16px;margin-bottom:8px;">🚚 Delivery route planning is part of Business and above.</div>
-      <span class="row-action" onclick="navigate('settings'); setTimeout(()=>document.getElementById('billingPlanContent').scrollIntoView({behavior:'smooth'}),80);">See plans →</span></div>`;
+      <span class="row-action" onclick="openSettingsCard('billingPlanContent');">See plans →</span></div>`;
   }
   const plan = ensureDeliveryRoutePlan();
   const stops = plan.stopOrder.map(id=>getPO(id)).filter(Boolean);
@@ -25285,7 +25737,7 @@ function renderCashFlowPanel(){
   if(!getEffectivePlan().financialReports){
     el.innerHTML = `<div class="panel-card" style="margin:20px 0;text-align:center;">
       <div style="font-weight:800;font-size:16px;margin-bottom:8px;">Aging Report is part of Growth and above.</div>
-      <span class="row-action" onclick="navigate('settings'); setTimeout(()=>document.getElementById('billingPlanContent').scrollIntoView({behavior:'smooth'}),80);">See plans →</span>
+      <span class="row-action" onclick="openSettingsCard('billingPlanContent');">See plans →</span>
     </div>`;
     return;
   }
@@ -25448,8 +25900,8 @@ const TRANSLATIONS = {
     head_messages:'Messages', head_inventory:'Inventory', head_discover:'Discover', head_datacenter:'Upload Data',
     head_settings:'Settings', head_status:'System Status', head_suppliers:'Suppliers', head_orders:'Orders',
     dash_greeting_buyer:'Good morning, Dela Cruz Hardware', dash_greeting_sup:'Good morning, Metro Steel Co.', dash_sub:"Here's what needs your attention today.",
-    head_aging_buyer:'Aging Report', sub_aging_buyer:"What you owe each supplier, broken down by how overdue it is — and the credit terms you've agreed with them.",
-    head_aging_sup:'Aging Report', sub_aging_sup:"What each buyer owes you, broken down by how overdue it is — and the credit terms you've agreed with them.",
+    head_aging_buyer:'What you owe', sub_aging_buyer:"Each supplier, how much, and how late. Oldest first.",
+    head_aging_sup:'Who owes you', sub_aging_sup:"Each buyer, how much, and how late. Oldest first.",
     head_team:'Team', sub_team:"Just your own people. Nothing here is visible to your suppliers or buyers.",
     head_sales:'Sales', sub_sales:"What you sell to your own customers — separate from what you buy from suppliers. Recording a sale pulls the stock straight out of Inventory.",
     head_supply:'Supply & Fulfillment', sub_supply:"What you have on hand, what's already committed to buyers, what's still available to sell — and, same as the buyer side, your own restock level.",
