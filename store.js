@@ -88,7 +88,8 @@
       + (d.headline ? '<div class="ns-head">' + esc(d.headline) + '</div>' : '') + (d.about ? '<div class="ns-about">' + esc(d.about) + '</div>' : '')
       + (chips.length ? '<div class="ns-chips">' + chips.map(function(c){ return '<span>' + c + '</span>'; }).join('') + '</div>' : '')
       + '<div class="ns-row ns-gap">' + (d.phone ? '<a class="ns-btn2" href="tel:' + esc(String(d.phone).replace(/[^0-9+]/g, '')) + '">📞 Call</a><a class="ns-btn2" href="viber://chat?number=%2B63' + esc(phoneDigits) + '">💬 Viber</a>' : '')
-      + '<button class="ns-btn2" onclick="NS.share()">↗ Share</button></div></div>'
+      + '<button class="ns-btn2" onclick="NS.ask()">💬 Ask a question</button><button class="ns-btn2" onclick="NS.share()">↗ Share</button></div></div>'
+      + (S.reorder ? '<div class="ns-card ns-green"><b>🔁 Your usual order is ready</b><div class="ns-about">We added what you ordered last time. Change anything, then tap Order now.</div></div>' : '')
       + (d.price_mode === 'signup' && !d.show_prices ? '<div class="ns-card ns-green"><b>Wholesale prices are for registered buyers</b><div class="ns-about">Sign up free in 1 minute to see prices. You can also order now and they\'ll send you the price.</div><button class="ns-btn" onclick="NS.signup()">See prices, sign up free →</button></div>' : '')
       + (d.price_mode === 'hidden' ? '<div class="ns-card ns-about">Pick what you need and send your order. ' + esc(d.name) + ' replies with the price before confirming.</div>' : '')
       + '<div class="ns-card"><input class="ns-search" type="search" placeholder="🔍 Search ' + d.items.length + ' products" value="' + esc(S.q) + '" oninput="NS.search(this.value)"><div id="ns-items">' + itemsHtml() + '</div></div>'
@@ -110,6 +111,29 @@
       var url = BASE + 's/' + SLUG + '/';
       if(navigator.share){ navigator.share({title: S.d.name, text: 'Order from ' + S.d.name + ' online:', url: url}).catch(function(){}); return; }
       try{ navigator.clipboard.writeText(url); alert('Link copied.'); }catch(e){ prompt('Copy this link:', url); }
+    },
+    ask: function(){
+      var saved = {}; try{ saved = JSON.parse(localStorage.getItem('nifti-store-buyer') || '{}') || {}; }catch(e){}
+      var m = document.createElement('div'); m.className = 'ns-modal'; m.id = 'ns-modal';
+      m.onclick = function(e){ if(e.target === m) m.remove(); };
+      m.innerHTML = '<div class="ns-sheet"><h2>Ask ' + esc(S.d.name) + '</h2><div class="ns-small">Price, stock, delivery, anything. They reply by call or Viber.</div>'
+        + '<label>Your name</label><input id="ns-qname" maxlength="80" autocomplete="name" value="' + esc(saved.name || '') + '">'
+        + '<label>Mobile number</label><input id="ns-qphone" type="tel" inputmode="tel" maxlength="20" placeholder="0917 123 4567" value="' + esc(saved.phone || '') + '">'
+        + '<label>Your question</label><input id="ns-qmsg" maxlength="600" placeholder="e.g. Magkano po 100 bags? Pwede i-deliver sa Malabon?">'
+        + '<div id="ns-err" class="ns-err"></div><button class="ns-btn ns-big" id="ns-qsend" onclick="NS.sendAsk()">Send question</button></div>';
+      document.body.appendChild(m);
+    },
+    sendAsk: function(){
+      function v(id){ var e = document.getElementById(id); return e ? e.value.trim() : ''; }
+      var err = document.getElementById('ns-err'), btn = document.getElementById('ns-qsend');
+      if(v('ns-qname').length < 2){ err.textContent = 'Please enter your name.'; return; }
+      if(v('ns-qphone').replace(/\D/g, '').length < 10){ err.textContent = 'Please enter your mobile number so they can reply.'; return; }
+      if(v('ns-qmsg').length < 3){ err.textContent = 'What would you like to ask?'; return; }
+      btn.disabled = true; btn.textContent = 'Sending…';
+      rpc('submit_store_inquiry', {p_slug: SLUG, p_name: v('ns-qname'), p_phone: v('ns-qphone'), p_message: v('ns-qmsg'), p_src: src() || null}).then(function(){
+        try{ var sv = JSON.parse(localStorage.getItem('nifti-store-buyer') || '{}') || {}; sv.name = v('ns-qname'); sv.phone = v('ns-qphone'); localStorage.setItem('nifti-store-buyer', JSON.stringify(sv)); }catch(e){}
+        document.querySelector('#ns-modal .ns-sheet').innerHTML = '<div class="ns-center"><div style="font-size:42px">✅</div><h2>Sent to ' + esc(S.d.name) + '</h2><div class="ns-about">They\'ll call or message you soon.</div><button class="ns-btn ns-big" onclick="document.getElementById(\'ns-modal\').remove()">Back to the store</button></div>';
+      }).catch(function(e){ btn.disabled = false; btn.textContent = 'Send question'; err.textContent = e.message; });
     },
     signup: function(){ try{ sessionStorage.setItem('nifti-return', '#s/' + SLUG); }catch(e){} location.href = BASE + '#signup'; },
     checkout: function(){
@@ -183,6 +207,16 @@
     if(!d){ root.innerHTML = '<div class="ns-wrap"><div class="ns-card ns-center"><div style="font-size:40px">🏪</div><h1>This store isn\'t open right now</h1><p class="ns-about">The link may be wrong, or the store is closed for now. Message the seller directly.</p></div></div>'; return; }
     S.d = d; document.title = d.name + ' · Order online';
     Object.keys(S.cart).forEach(function(p){ if(!d.items.some(function(i){ return i.product === p; })) delete S.cart[p]; });
-    render();
+    var re = new URLSearchParams(location.search).get('re');
+    if(!re) return render();
+    // a reorder link from the seller: their usual order goes in the cart, their details in the form
+    rpc('get_reorder_cart', {p_token: re}).then(function(c){
+      if(c && c.items && c.items.length){
+        S.cart = {}; c.items.forEach(function(it){ if(d.items.some(function(i){ return i.product === it.product; }) && Number(it.qty) > 0) S.cart[it.product] = Number(it.qty); });
+        S.reorder = Object.keys(S.cart).length > 0; save();
+        if(c.buyer){ try{ var sv = JSON.parse(localStorage.getItem('nifti-store-buyer') || '{}') || {}; ['name', 'biz', 'phone', 'addr'].forEach(function(k){ if(!sv[k] && c.buyer[k]) sv[k] = c.buyer[k]; }); localStorage.setItem('nifti-store-buyer', JSON.stringify(sv)); }catch(e){} }
+      }
+      render();
+    }).catch(function(){ render(); });
   }).catch(function(){ root.innerHTML = '<div class="ns-wrap"><div class="ns-card ns-center"><h1>Couldn\'t load the store</h1><p class="ns-about">Check your connection and try again.</p><button class="ns-btn" onclick="location.reload()">Try again</button></div></div>'; });
 })();

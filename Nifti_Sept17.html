@@ -1049,6 +1049,70 @@
     #createPoLineItemsTable{border:none !important;box-shadow:none !important;background:transparent !important;border-radius:0 !important;}
     #createPoLineItemsTable tr{border:1px solid var(--border) !important;border-radius:12px;padding:12px !important;margin-bottom:8px;background:var(--surface);}
   }
+
+  /* ===== Follow-ups, Collections, customer PO import ===== */
+  .sl-tabs{margin-bottom:12px;} .sl-n{display:inline-block;background:var(--danger);color:#fff;border-radius:100px;font-size:11.5px;font-weight:800;padding:1px 7px;margin-left:4px;} .sl-n.soft{background:rgba(0,0,0,.08);color:inherit;}
+  .sl-tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:12px;} .sl-tiles.four{grid-template-columns:repeat(4,minmax(0,1fr));}
+  @media (max-width:760px){ .sl-tiles.four{grid-template-columns:repeat(2,minmax(0,1fr));} }
+  .sl-tile{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:12px 13px;display:grid;gap:1px;min-width:0;}
+  .sl-tile small{font-size:11.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;opacity:.6;} .sl-tile b{font-family:var(--font-h);font-size:21px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;} .sl-tile span{font-size:12.5px;opacity:.75;}
+  .sl-tile.bad b{color:var(--danger);} .sl-tile.warn b{color:#B97A00;}
+  .sl-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:6px 14px 8px;margin-bottom:12px;}
+  .sl-card-h{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:9px 0 7px;} .sl-card-h b{font-family:var(--font-h);font-size:16px;color:var(--ink);}
+  .sl-card.sl-auto{padding:4px 14px;} .sl-card.sl-auto.on{background:#F2F8F4;border-color:#CFE5D6;}
+  .sl-row{display:flex;align-items:center;gap:11px;padding:10px 0;border-top:1px solid var(--border);cursor:default;} .sl-card-h + .sl-row, .sl-card > .sl-row:first-child{border-top:none;}
+  .sl-row[role=button]{cursor:pointer;} .sl-row.tight{padding:7px 0;}
+  .sl-av{width:36px;height:36px;border-radius:11px;background:#FBF0D2;color:#8A5B00;font-weight:800;display:grid;place-items:center;flex-shrink:0;} .sl-av.g{background:#E1F1E7;color:var(--green);} .sl-av.w{background:#FBE3DD;color:var(--danger);}
+  .sl-mid{flex:1;min-width:0;} .sl-t{font-weight:800;font-size:14.5px;color:var(--ink);line-height:1.3;} .sl-s{font-size:12.5px;color:var(--body);opacity:.85;margin-top:1px;overflow:hidden;text-overflow:ellipsis;}
+  .sl-right{display:flex;flex-direction:column;align-items:flex-end;gap:3px;flex-shrink:0;text-align:right;} .sl-right small{font-size:11.5px;} .sl-right b{font-size:14px;color:var(--ink);white-space:nowrap;}
+  .sl-acts{flex-direction:row;align-items:center;gap:8px;} .sl-acts .hm-go{height:36px;padding:0 13px;}
+  .sl-link{border:none;background:none;color:var(--green);font-weight:800;font-size:13.5px;cursor:pointer;padding:4px 2px;}
+  .sl-dim{opacity:.6;font-weight:600;} .sl-bad{color:var(--danger);font-weight:700;} .sl-warn{color:#B97A00;font-weight:700;} .sl-good{color:var(--green);font-weight:700;}
+  .sl-pill{font-size:11px;font-weight:800;border-radius:100px;padding:2px 8px;background:#EFECE4;white-space:nowrap;} .sl-pill.st-new{background:#FBF0D2;color:#7A5200;} .sl-pill.st-contacted{background:#E1EBF8;color:#1F4E8A;}
+  .sl-pill.st-quoted{background:#ECE6FA;color:#4B3496;} .sl-pill.st-won{background:#E1F1E7;color:#17603A;} .sl-pill.st-lost{background:#EFECE4;color:#6B6860;}
+  .sl-actions{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 10px;} .sl-actions .btn{min-height:42px;}
+  .sl-chips{flex-wrap:nowrap !important;overflow-x:auto;scrollbar-width:none;margin-bottom:10px;} .sl-chips .chip{flex-shrink:0;}
+  .sl-win{background:#E1F1E7;color:#17603A;font-weight:700;border-radius:12px;padding:9px 12px;margin-bottom:10px;font-size:14px;}
+  .sl-help{font-size:13px;opacity:.7;margin:4px 2px 18px;line-height:1.5;}
+  .sl-stat{background:var(--surface);border:1px dashed var(--border);border-radius:12px;padding:10px 12px;font-size:14px;margin-bottom:12px;}
+  .sl-sheet{max-width:560px;width:94vw;max-height:88vh;overflow-y:auto;text-align:left;}
+  .sl-sheet-h{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:6px;} .sl-sheet-h b{font-family:var(--font-h);font-size:19px;color:var(--ink);}
+  .sl-x{border:none;background:#EFECE4;border-radius:50%;width:32px;height:32px;cursor:pointer;font-size:14px;flex-shrink:0;}
+  .sl-sub{font-size:14px;opacity:.8;margin:2px 0 10px;line-height:1.45;} .sl-err{color:var(--danger);font-weight:700;font-size:14px;min-height:6px;margin:4px 0;}
+  .sl-ta{width:100%;box-sizing:border-box;padding:11px 12px;border:1.5px solid var(--border);border-radius:10px;font-size:15px;line-height:1.45;margin-bottom:8px;background:var(--surface);color:var(--ink);}
+  .sl-wide{width:100%;margin-top:8px;}
+  .sl-contact{display:flex;gap:8px;margin:10px 0;} .sl-contact .btn{flex:1;text-decoration:none;min-height:44px;}
+  .sl-lead-meta{display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:13px;opacity:.9;margin:2px 0 8px;}
+  .sl-quote{background:#F7F4EC;border-radius:12px;padding:10px 12px;font-size:14.5px;font-style:italic;}
+  .sl-q{font-weight:800;font-size:13px;letter-spacing:.04em;text-transform:uppercase;opacity:.6;margin:14px 0 6px;}
+  .sl-outcomes{display:grid;grid-template-columns:1fr 1fr;gap:6px;} .sl-outcomes button{border:1.5px solid var(--border);background:var(--surface);border-radius:11px;padding:10px 8px;font-weight:700;font-size:14px;cursor:pointer;color:var(--ink);text-align:left;}
+  .sl-outcomes button.good{border-color:var(--green);color:var(--green);} .sl-outcomes button.bad{color:#6B6860;} .sl-outcomes button:active{transform:scale(.98);}
+  .sl-log{display:grid;gap:5px;font-size:13.5px;max-height:180px;overflow-y:auto;} .sl-log span{font-size:11.5px;opacity:.55;margin-right:8px;font-weight:700;}
+  details.sl-tpl{margin:6px 0;} details.sl-tpl > summary{cursor:pointer;font-weight:800;color:var(--green);padding:6px 0;}
+  .sl-tpl-i{border:1px solid var(--border);border-radius:12px;padding:10px;margin-top:6px;} .sl-tpl-i p{font-size:13.5px;margin:4px 0 8px;white-space:pre-line;}
+  .sl-days{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 8px;} .sl-days button{border:1.5px solid var(--border);background:var(--surface);border-radius:100px;padding:7px 11px;font-weight:700;font-size:13px;cursor:pointer;color:var(--ink);}
+  .sl-days button.on{background:var(--green);border-color:var(--green);color:#fff;}
+  .sl-preview{white-space:pre-line;background:#F7F4EC;border-radius:12px;padding:10px 12px;font-size:13px;margin-top:8px;opacity:.9;}
+  .sl-checks{display:grid;gap:4px;max-height:240px;overflow-y:auto;margin-bottom:8px;} .sl-checks label{display:flex;gap:8px;align-items:center;font-size:14px;padding:6px 4px;border-bottom:1px solid var(--border);}
+  .sl-checks label span{flex:1;min-width:0;} .sl-select{padding:7px 8px;border:1.5px solid var(--border);border-radius:9px;font-size:14px;max-width:150px;background:var(--surface);color:var(--ink);}
+  .sl-result{margin-top:8px;} .sl-rsum{display:flex;gap:12px;flex-wrap:wrap;font-size:14px;margin-bottom:6px;} .sl-result details > summary{cursor:pointer;font-weight:700;padding:4px 0;}
+  .col-row .sl-s + .sl-s{margin-top:3px;}
+  @media (max-width:560px){ .col-row{flex-wrap:wrap;} .col-row .sl-right{width:100%;flex-direction:row;justify-content:flex-start;} .sl-row.tight .sl-acts{flex-wrap:wrap;justify-content:flex-end;max-width:52%;} }
+  .cpo-drop{display:grid;justify-items:center;gap:1px;border:2px dashed var(--border);border-radius:14px;padding:16px;cursor:pointer;background:#F7F4EC;margin-top:4px;}
+  .cpo-drop span{font-size:24px;} .cpo-drop b{color:var(--ink);} .cpo-drop small{opacity:.7;}
+  .cpo-or{text-align:center;font-size:12.5px;font-weight:800;opacity:.5;margin:10px 0 6px;text-transform:uppercase;letter-spacing:.06em;}
+  .cpo-rows{display:grid;gap:8px;margin-bottom:6px;}
+  .cpo-row{border:1.5px solid var(--border);border-radius:12px;padding:9px 10px;} .cpo-row.c-check{border-color:#E0A100;background:#FFFBEC;} .cpo-row.c-none{border-color:var(--danger);background:#FFF6F4;}
+  .cpo-their{font-size:12.5px;opacity:.85;margin-bottom:6px;overflow-wrap:anywhere;}
+  .cpo-grid{display:grid;grid-template-columns:minmax(0,1fr) 72px 88px 32px;gap:6px;align-items:center;}
+  .cpo-grid select, .cpo-grid input{width:100%;box-sizing:border-box;padding:8px;border:1.5px solid var(--border);border-radius:9px;font-size:14.5px;background:var(--surface);color:var(--ink);min-width:0;}
+  @media (max-width:560px){ .cpo-grid{grid-template-columns:1fr 1fr 32px;} .cpo-grid select{grid-column:1 / -1;} }
+  .cpo-tag{font-size:12px;font-weight:700;margin-top:5px;opacity:.8;} .c-ok .cpo-tag, .c-saved .cpo-tag{color:var(--green);} .c-check .cpo-tag{color:#8A5B00;} .c-none .cpo-tag{color:var(--danger);}
+  .cpo-total{font-size:15px;text-align:right;margin:8px 0;}
+  .so-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:14px 0;font-size:14px;} @media (max-width:560px){ .so-grid{grid-template-columns:1fr 1fr;} }
+  .so-sign{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px;font-size:12.5px;} .so-sign div{border-top:1px solid #999;padding-top:4px;}
+  .po-public-receipt textarea, .po-public-receipt input{width:100%;box-sizing:border-box;}
+  .stmt-paid{max-width:820px;margin:0 auto 12px;}
   .settings-card:empty{display:none;}
   .store-hero h1{line-height:1.2;}
   .store-avatar{width:54px;height:54px;border-radius:14px;background:var(--green);color:#fff;font-weight:800;font-size:21px;display:flex;align-items:center;justify-content:center;flex:0 0 54px;}
@@ -1904,8 +1968,8 @@
   <div class="wrap">
     <div class="m2-head"><h2 class="section-title">What's free, and what's Pro</h2><p class="sec-sub">Everyday trading is free forever. Pro adds tools for getting paid and staying in control.</p></div>
     <div class="m2-tiers">
-  <div class="m2-tier free"><div class="m2-tier-top"><div class="m2-tier-name">✅ Free forever</div><div class="m2-tier-price">₱0</div><div class="m2-tier-sub">For both sides. No card needed.</div></div><div class="m2-tg"><ul><li>Chat and orders with anyone</li><li>Order links: no account needed</li><li>Payments the receiver confirms</li><li>Who owes you, with reminders</li><li>Your own online store and posts</li><li>Up to 3 teammates</li></ul></div></div>
-  <div class="m2-tier pro"><div class="m2-tier-top"><div class="m2-tier-name">⭐ Pro</div><div class="m2-tier-price">₱990<span>/month</span></div><div class="m2-tier-sub"><b>Free during the pilot.</b> One version for each side.</div></div><div class="m2-tg"><div class=m2-tg-h>🏭 Supplier Pro · if you sell</div><ul><li>Routes for drivers and collectors</li><li>Cheque calendar and bounce alerts</li><li>Statements of account and credit limits</li><li>Price changes announced ahead</li></ul></div><div class="m2-tg"><div class=m2-tg-h>🏪 Buyer Pro · if you buy</div><ul><li>Alerts when staff overpay</li><li>Spending limits you set</li><li>Supplier report card and price check</li></ul></div></div>
+  <div class="m2-tier free"><div class="m2-tier-top"><div class="m2-tier-name">✅ Free forever</div><div class="m2-tier-price">₱0</div><div class="m2-tier-sub">For both sides. No card needed.</div></div><div class="m2-tg"><ul><li>Chat and orders with anyone</li><li>Order links: no account needed</li><li>Customer POs turned into your own orders</li><li>Leads and follow-ups, messages ready</li><li>Your own online store and posts</li><li>Up to 3 teammates</li></ul></div></div>
+  <div class="m2-tier pro"><div class="m2-tier-top"><div class="m2-tier-name">⭐ Pro</div><div class="m2-tier-price">₱990<span>/month</span></div><div class="m2-tier-sub"><b>Free during the pilot.</b> One version for each side.</div></div><div class="m2-tg"><div class=m2-tg-h>🏭 Supplier Pro · if you sell</div><ul><li>Payment reminders on your terms, sent for you</li><li>Cash and bank matched to every invoice</li><li>Customers due to reorder, with one-tap links</li><li>Routes, cheques and statements of account</li></ul></div><div class="m2-tg"><div class=m2-tg-h>🏪 Buyer Pro · if you buy</div><ul><li>Alerts when staff overpay</li><li>Spending limits you set</li><li>Supplier report card and price check</li></ul></div></div>
   <div class="m2-tier extra"><div class="m2-tier-top"><div class="m2-tier-name">➕ Extras</div><div class="m2-tier-price">Optional</div><div class="m2-tier-sub">Only if you want them.</div></div><div class="m2-tg"><ul><li><b>Business</b> · Pro for bigger teams, ₱2,990/month</li><li><b>Done-for-you setup</b> · ₱3,500 once</li><li><b>Verified ✔ badge</b> · ₱1,490/year</li></ul></div></div>
 </div>
     <div class="m2-links"><a onclick="navigate('features')">See every feature →</a><a onclick="navigate('pricing')">See pricing →</a></div>
@@ -1926,6 +1990,11 @@
 </div></div>
 </div>
     <div class="m2-show flip">
+  <div class="m2-show-text"><span class="m2-badge free">FREE</span><div class="m2-eyebrow">NO MORE RETYPING</div><h3>Their PO, turned into your order</h3><p>Customers send POs as PDFs, Excel files, photos or Viber messages, each in their own format. Upload or paste it once. Every line is matched to your item names and prices, and Nifti remembers how each customer words things.</p>
+    <ul class="m2-ticks"><li>Their price vs your price, flagged</li><li>A sales order printed in your own format</li><li>A tracking link they can tap "I received it" on</li></ul></div>
+  <div class="m2-show-art"><div class="v-overpay"><div class="v-chat"><div class="v-bub">PO#551: semento 40 x 20 sako, bareta 10mm 50pcs 🙏</div></div><div class="v-card"><div class="v-row"><b>Your order · PO-2026-0926</b><span class="v-green">Confirmed</span></div><div class="v-li"><span>Portland Cement 40kg × 20</span><b>₱4,900</b></div><div class="v-li"><span>Steel Rebar 10mm × 50</span><b>₱9,000</b></div></div></div></div>
+</div>
+    <div class="m2-show">
   <div class="m2-show-text"><span class="m2-badge pro">SUPPLIER PRO</span><div class="m2-eyebrow">DELIVER & COLLECT</div><h3>Your driver’s whole day on one screen</h3><p>Every stop on one line, with what to drop off and what to collect. The driver taps a stop, marks it done and snaps the signed receipt.</p>
     <ul class="m2-ticks"><li>Cash, GCash or cheque lands on the right invoice</li><li>Pressed the wrong button? Fix or undo anytime</li><li>Optional. Skip it if you have your own way</li></ul></div>
   <div class="m2-show-art"><div class="mk-phone "><div class="mk-notch"></div><div class="mk-screen">
@@ -1939,13 +2008,13 @@
     <div class="mk-st"><i>5</i><div><b>Ramos Hardware</b><small>Monumento · Collect</small></div><em class="due">₱3,120</em></div>
   </div></div></div></div>
 </div>
-    <div class="m2-show">
+    <div class="m2-show flip">
   <div class="m2-show-text"><span class="m2-badge pro">BUYER PRO</span><div class="m2-eyebrow">FOR OWNERS</div><h3>Know the moment your staff overpays</h3><p>Nifti checks every order your team sends. If someone pays more than your agreed price, you get one clear alert with the peso amount.</p>
     <ul class="m2-ticks"><li>Set monthly spending limits per person or supplier</li><li>See which suppliers deliver late or short</li><li>Your own orders are never flagged</li></ul></div>
   <div class="m2-show-art"><div class="v-overpay"><div class="v-notif "><span class="v-nic">🛡</span><div><div class="v-ntop"><b>Nifti</b><em>2m</em></div><strong>Joy paid ₱2,000 more than your agreed price</strong><small>100 bags cement at ₱265 · you agreed ₱245 with Metro Steel</small></div></div>
   <div class="v-btns wide"><span>See the order</span><span class="p">It's OK</span></div></div></div>
 </div>
-    <div class="m2-show flip">
+    <div class="m2-show">
   <div class="m2-show-text"><span class="m2-badge pro">SUPPLIER PRO</span><div class="m2-eyebrow">NO SURPRISES</div><h3>Price changes, announced ahead of time</h3><p>Suppliers set new prices with a start date. Every buyer gets the list now, plus a reminder the day before.</p>
     <ul class="m2-ticks"><li>A week’s notice by default</li><li>Your store switches prices on the day, by itself</li><li>Buyers see increases coming on their Home screen</li></ul></div>
   <div class="m2-show-art"><div class="mk-chat">
@@ -2013,14 +2082,14 @@
     <div class="m2-band-head"><span class="m2-badge free big">FREE FOREVER</span><h2>For both sides. No card needed.</h2><p>Everything you need to trade with your partners.</p></div>
     <div class="m2-sub">Orders & chat</div><div class="m2-swipe">Swipe to see more →</div><div class="m2-grid" style="--cols:3"><div class="m2-card"><div class="m2-vis"><div class="v-chat viber"><div class="v-chat-h"><span>MS</span><b>Metro Steel Co.</b></div>
   <div class="v-bub me">Order for Thursday po 👇</div>
-  <div class="v-linkcard me"><small>nifti.ph/o/7Hk2</small><b>📦 Order from Dela Cruz Hardware</b><em>Tap to see and confirm</em></div></div></div><h4>Order links, no account needed</h4><p>Your partner opens the order in any browser and taps Confirm.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-chat"><div class="v-bub">10 bags cement, 5 rolls wire 🙏</div><div class="v-bub me">✓ Order ready · ₱2,925</div></div></div><h4>Paste a Viber order</h4><p>Paste the message and Nifti turns it into a proper order with prices.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-chat"><div class="v-bub">Delivered 2 boxes short 📷</div><div class="v-bub me">Noted, replacement tomorrow ✓</div></div></div><h4>Chat beside every order</h4><p>One thread per partner, with photos for proof.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>PO-0841</b><span class="v-red">1 day late</span></div><div class="v-track"><i class="d"></i><i class="d"></i><i class="d"></i><i class="l"></i><i></i></div><small>Placed · Confirmed · Packed · <b>On the way</b> · Delivered</small></div></div><h4>Every step, tracked</h4><p>From placed to paid. If something runs late, both sides see it.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>📦 Delivered ✓</b></div><small>Signed by Nena · 📷 photo · 9:42 AM</small></div></div><h4>Proof of delivery</h4><p>Photo and signature at the door, saved on the order.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-chat"><div class="v-bub">₱64 per piece</div><div class="v-bub me">Deal at ₱62? 🙏</div><div class="v-bub">🔒 ₱62 locked for 6 months</div></div></div><h4>Quotes and locked prices</h4><p>Ask for a quote, counter it, and lock the agreed price in writing.</p></div></div><div class="m2-sub">Getting paid</div><div class="m2-swipe">Swipe to see more →</div><div class="m2-grid" style="--cols:2"><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>💳 Dela Cruz says they paid</b></div><small>GCash ₱18,900 · Ref 7012 3345</small><div class=v-btns><span class="p">Received ✓</span><span class="">Not yet</span></div></div></div><h4>Payments the receiver confirms</h4><p>GCash, Maya, bank, cash or cheque, confirmed by whoever receives it.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-stat green"><small>WHO OWES YOU</small><b>₱84,200</b><span>3 buyers · 1 overdue</span></div></div><h4>Who owes you, with reminders</h4><p>Every unpaid invoice on one list, oldest first. Polite reminders in one tap.</p></div></div><div class="m2-sub">Selling</div><div class="m2-swipe">Swipe to see more →</div><div class="m2-grid" style="--cols:4"><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>🛍 nifti.ph/s/metro-steel</b><span class="v-green">Open</span></div><small>412 visits · 23 orders this month</small></div></div><h4>Your own online store link</h4><p>Prices and ordering in one link for Facebook, Viber and Messenger.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-post"><b>📦 JUST ARRIVED!</b><span>Portland Cement ₱245/bag · same-day delivery sa Valenzuela!</span><em>👍❤️ 48 · 12 comments</em></div></div><h4>Posts written for you</h4><p>New stock and sale posts in Taglish or English. One tap to share.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-notif "><span class="v-nic">📨</span><div><div class="v-ntop"><b>Nifti</b><em>now</em></div><strong>Metro Steel: new stock is in</strong><small>Cement, rebar and GI wire restocked today</small></div></div></div><h4>Message all your buyers at once</h4><p>New stock lands in every buyer’s chat and pings their phone.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>🏪 Your shop</b><span class="v-green">New</span></div><small>"New stock in" post, made from your delivery</small></div></div><h4>A shop for buyers too</h4><p>Stores and restaurants get their own shop link and posts for their customers.</p></div></div><div class="m2-sub">Team & stock</div><div class="m2-swipe">Swipe to see more →</div><div class="m2-grid" style="--cols:4"><div class="m2-card"><div class="m2-vis"><div class="v-roles"><span>👑 Owner</span><span>📋 Purchasing</span><span>🧾 Finance</span><span>🚚 Driver</span></div></div><h4>Roles for everyone</h4><p>Owner, purchasing, warehouse, finance, driver. Each sees only their pages.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-notif "><span class="v-nic">☀️</span><div><div class="v-ntop"><b>Nifti</b><em>7:00</em></div><strong>Today: 3 to confirm</strong><small>₱84,200 owed to you · 2 cheques to deposit</small></div></div></div><h4>Phone notifications</h4><p>On Android and iPhone, plus a 7am summary of your day.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>Portland Cement</b><span class="v-amber">22 left</span></div><div class="v-bar amber"><i style="width:22%"></i></div><small>Reorder draft ready below 80 bags</small></div></div><h4>Stock and reorder drafts</h4><p>Stock per warehouse. A reorder is drafted when you run low.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>🔐 Your data</b></div><small>Download everything, anytime</small><div class=v-btns><span class="p">⬇ Download</span></div></div></div><h4>Your data stays yours</h4><p>Private to you and each partner. Download it or delete your account anytime.</p></div></div>
+  <div class="v-linkcard me"><small>nifti.ph/o/7Hk2</small><b>📦 Order from Dela Cruz Hardware</b><em>Tap to see and confirm</em></div></div></div><h4>Order links, no account needed</h4><p>Your partner opens the order in any browser and taps Confirm.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-chat"><div class="v-bub">10 bags cement, 5 rolls wire 🙏</div><div class="v-bub me">✓ Order ready · ₱2,925</div></div></div><h4>Paste a Viber order</h4><p>Paste the message and Nifti turns it into a proper order with prices.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-chat"><div class="v-bub">Delivered 2 boxes short 📷</div><div class="v-bub me">Noted, replacement tomorrow ✓</div></div></div><h4>Chat beside every order</h4><p>One thread per partner, with photos for proof.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>PO-0841</b><span class="v-red">1 day late</span></div><div class="v-track"><i class="d"></i><i class="d"></i><i class="d"></i><i class="l"></i><i></i></div><small>Placed · Confirmed · Packed · <b>On the way</b> · Delivered</small></div></div><h4>Every step, tracked</h4><p>From placed to paid. If something runs late, both sides see it.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>📦 Delivered ✓</b></div><small>Signed by Nena · 📷 photo · 9:42 AM</small></div></div><h4>Proof of delivery</h4><p>Photo and signature at the door, saved on the order.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-chat"><div class="v-bub">₱64 per piece</div><div class="v-bub me">Deal at ₱62? 🙏</div><div class="v-bub">🔒 ₱62 locked for 6 months</div></div></div><h4>Quotes and locked prices</h4><p>Ask for a quote, counter it, and lock the agreed price in writing.</p></div></div><div class="m2-sub">Getting paid</div><div class="m2-swipe">Swipe to see more →</div><div class="m2-grid" style="--cols:2"><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>💳 Dela Cruz says they paid</b></div><small>GCash ₱18,900 · Ref 7012 3345</small><div class=v-btns><span class="p">Received ✓</span><span class="">Not yet</span></div></div></div><h4>Payments the receiver confirms</h4><p>GCash, Maya, bank, cash or cheque, confirmed by whoever receives it.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-stat green"><small>WHO OWES YOU</small><b>₱84,200</b><span>3 buyers · 1 overdue</span></div></div><h4>Who owes you, with reminders</h4><p>Every unpaid invoice on one list, oldest first. Polite reminders in one tap.</p></div></div><div class="m2-sub">Selling admin</div><div class="m2-swipe">Swipe to see more →</div><div class="m2-grid" style="--cols:4"><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>“semento 40 x20 sako”</b></div><small>→ <b>Portland Cement 40kg</b> × 20 · ₱4,900</small><div class="v-btns"><span class="p">✓ Matched</span><span>Remembered</span></div></div></div><h4>Their PO, your order</h4><p>Upload their PDF, Excel or photo, or paste the Viber message. It becomes an order in your item names and prices.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>🎯 Rhea Santos</b></div><small>“Magkano 200 bags cement?” · follow up today</small><div class=v-btns><span class="p">Call</span><span class="">Viber</span></div></div></div><h4>Leads that don't slip</h4><p>Store inquiries land here by themselves. Each lead gets a follow-up date and a ready message.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-notif ok"><span class="v-nic">📦</span><div><div class="v-ntop"><b>Nifti</b><em>now</em></div><strong>Delivered: PO-0853</strong><small>Received by Juan · all complete</small></div></div></div><h4>"I received it" from the customer</h4><p>Your customer taps it on the tracking link. You know it arrived, and can bill right away.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-notif "><span class="v-nic">💸</span><div><div class="v-ntop"><b>Nifti</b><em>1m</em></div><strong>Juan says they paid ₱20,000</strong><small>GCash ref 7012 · check, then confirm</small></div></div></div><h4>"I've paid" from the statement</h4><p>Customers report GCash or bank payments from their statement link. You just confirm.</p></div></div><div class="m2-sub">Selling</div><div class="m2-swipe">Swipe to see more →</div><div class="m2-grid" style="--cols:4"><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>🛍 nifti.ph/s/metro-steel</b><span class="v-green">Open</span></div><small>412 visits · 23 orders this month</small></div></div><h4>Your own online store link</h4><p>Prices and ordering in one link for Facebook, Viber and Messenger.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-post"><b>📦 JUST ARRIVED!</b><span>Portland Cement ₱245/bag · same-day delivery sa Valenzuela!</span><em>👍❤️ 48 · 12 comments</em></div></div><h4>Posts written for you</h4><p>New stock and sale posts in Taglish or English. One tap to share.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-notif "><span class="v-nic">📨</span><div><div class="v-ntop"><b>Nifti</b><em>now</em></div><strong>Metro Steel: new stock is in</strong><small>Cement, rebar and GI wire restocked today</small></div></div></div><h4>Message all your buyers at once</h4><p>New stock lands in every buyer’s chat and pings their phone.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>🏪 Your shop</b><span class="v-green">New</span></div><small>"New stock in" post, made from your delivery</small></div></div><h4>A shop for buyers too</h4><p>Stores and restaurants get their own shop link and posts for their customers.</p></div></div><div class="m2-sub">Team & stock</div><div class="m2-swipe">Swipe to see more →</div><div class="m2-grid" style="--cols:4"><div class="m2-card"><div class="m2-vis"><div class="v-roles"><span>👑 Owner</span><span>📋 Purchasing</span><span>🧾 Finance</span><span>🚚 Driver</span></div></div><h4>Roles for everyone</h4><p>Owner, purchasing, warehouse, finance, driver. Each sees only their pages.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-notif "><span class="v-nic">☀️</span><div><div class="v-ntop"><b>Nifti</b><em>7:00</em></div><strong>Today: 3 to confirm</strong><small>₱84,200 owed to you · 2 cheques to deposit</small></div></div></div><h4>Phone notifications</h4><p>On Android and iPhone, plus a 7am summary of your day.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>Portland Cement</b><span class="v-amber">22 left</span></div><div class="v-bar amber"><i style="width:22%"></i></div><small>Reorder draft ready below 80 bags</small></div></div><h4>Stock and reorder drafts</h4><p>Stock per warehouse. A reorder is drafted when you run low.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>🔐 Your data</b></div><small>Download everything, anytime</small><div class=v-btns><span class="p">⬇ Download</span></div></div></div><h4>Your data stays yours</h4><p>Private to you and each partner. Download it or delete your account anytime.</p></div></div>
   </div>
 </section>
 
 <section class="m2-band pro" id="mkPro">
   <div class="wrap">
     <div class="m2-band-head"><span class="m2-badge pro big">PRO · ₱990/MONTH</span><h2>Free during the pilot. One version for each side.</h2><p>When you sign up, you pick whether you sell or buy. You get the Pro for your side.</p></div>
-    <div class="m2-side sup"><div class="m2-side-h"><span>🏭</span><div><b>Supplier Pro</b><small>If you sell to businesses: suppliers, distributors, wholesalers</small></div></div><div class="m2-swipe">Swipe to see more →</div><div class="m2-grid" style="--cols:3"><div class="m2-card"><div class="m2-vis"><div class="v-route"><div class="d"><i>✓</i><span>Aling Nena</span><b>₱7,650</b></div><div class="h"><i>🚚</i><span>Boy Hardware</span><b>₱4,750</b></div><div><i>3</i><span>Villanueva Supply</span><b></b></div></div></div><h4>Routes for drivers and collectors</h4><p>The day’s stops on one line. Tap a stop to deliver, collect and snap the receipt.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>🏦 Deposit today</b></div><small>Dela Cruz · BDO #004512 · ₱18,200</small><div class=v-btns><span class="p">Mark deposited</span></div></div></div><h4>Cheque calendar</h4><p>Which cheques to deposit today, and who bounces.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-list"><div class="v-li"><span>Current</span><b class="">₱32,400</b></div><div class="v-li"><span>1–30 days</span><b class="">₱18,900</b></div><div class="v-li"><span>31–60 days</span><b class="v-red">₱12,100</b></div></div></div><h4>Statements of account</h4><p>Every open invoice and how late, as a link or printout.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>Dela Cruz Hardware</b><span class="v-red">94% used</span></div><div class="v-bar red"><i style="width:94%"></i></div><small>₱47,000 of ₱50,000 · next order on hold</small></div></div><h4>Credit limits per buyer</h4><p>Hold new orders when a buyer owes too much or pays late.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-notif "><span class="v-nic">📢</span><div><div class="v-ntop"><b>Nifti</b><em>1d</em></div><strong>New prices start Oct 1</strong><small>Cement ₱245 → ₱255 · order before then to keep today’s price</small></div></div></div><h4>Price changes, announced ahead</h4><p>Set a start date. Buyers are told now and reminded the day before.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>🔁 Aling Nena Store</b></div><small>Usually every 7 days · last order 12 days ago</small><div class=v-btns><span class="p">Message</span></div></div></div><h4>Reorder reminders</h4><p>See which regulars are past their usual reorder day.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>💳 Credit on account · ₱500</b></div><small>5 bags wet cement · off the next invoice</small></div></div><h4>Returns and credits</h4><p>Bad orders tracked, credits taken off the next invoice.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>🏷 Sale · ₱235</b></div><small><s>₱245</s> until Oct 5 · ends by itself</small></div></div><h4>Store sales and promos</h4><p>Visits, orders and top items, plus sale prices that end by themselves.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-stat blue"><small>2307s STILL MISSING</small><b>₱1,008</b><span>3 certificates from buyers</span></div></div><h4>BIR 2307 and VAT books</h4><p>Tax certificates owed to you, and monthly books for Excel.</p></div></div></div>
+    <div class="m2-side sup"><div class="m2-side-h"><span>🏭</span><div><b>Supplier Pro</b><small>If you sell to businesses: suppliers, distributors, wholesalers</small></div></div><div class="m2-swipe">Swipe to see more →</div><div class="m2-grid" style="--cols:3"><div class="m2-card"><div class="m2-vis"><div class="v-notif "><span class="v-nic">⏰</span><div><div class="v-ntop"><b>Nifti</b><em>9:00</em></div><strong>Reminder sent to Juan Hardware</strong><small>₱21,504 · 7 days overdue · by email</small></div></div></div><h4>Payment reminders on your terms</h4><p>Before and after each due date, by chat or email. Paused while they have a promise to pay.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>🤝 Juan Hardware</b><span class="v-amber">Waiting</span></div><small>Promised ₱15,000 by Fri · checked every morning</small></div></div><h4>Promises to pay, tracked</h4><p>Log "will pay Friday". If the money isn't in by then, we remind them and tell you.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-list"><div class="v-li"><span>✓ Matched</span><b class="v-green">14</b></div><div class="v-li"><span>? Not recorded</span><b class="v-amber">1</b></div><div class="v-li"><span>⚠ Not in bank</span><b class="v-red">1</b></div></div></div><h4>Cash and bank, matched</h4><p>Who is holding cash, what went to the bank, and your bank or GCash statement matched to invoices.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-route"><div class="d"><i>✓</i><span>Aling Nena</span><b>₱7,650</b></div><div class="h"><i>🚚</i><span>Boy Hardware</span><b>₱4,750</b></div><div><i>3</i><span>Villanueva Supply</span><b></b></div></div></div><h4>Routes for drivers and collectors</h4><p>The day’s stops on one line. Tap a stop to deliver, collect and snap the receipt.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>🏦 Deposit today</b></div><small>Dela Cruz · BDO #004512 · ₱18,200</small><div class=v-btns><span class="p">Mark deposited</span></div></div></div><h4>Cheque calendar</h4><p>Which cheques to deposit today, and who bounces.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-list"><div class="v-li"><span>Current</span><b class="">₱32,400</b></div><div class="v-li"><span>1–30 days</span><b class="">₱18,900</b></div><div class="v-li"><span>31–60 days</span><b class="v-red">₱12,100</b></div></div></div><h4>Statements of account</h4><p>Every open invoice and how late, as a link or printout.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>Dela Cruz Hardware</b><span class="v-red">94% used</span></div><div class="v-bar red"><i style="width:94%"></i></div><small>₱47,000 of ₱50,000 · next order on hold</small></div></div><h4>Credit limits per buyer</h4><p>Hold new orders when a buyer owes too much or pays late.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>🔁 Aling Nena Store</b></div><small>Usually every 7 days · last order 12 days ago</small><div class=v-btns><span class="p">Send reorder link</span></div></div></div><h4>Sell again, automatically</h4><p>Regulars past their usual reorder day get their usual order as a one-tap link.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-notif "><span class="v-nic">📢</span><div><div class="v-ntop"><b>Nifti</b><em>1d</em></div><strong>New prices start Oct 1</strong><small>Cement ₱245 → ₱255 · order before then to keep today’s price</small></div></div></div><h4>Price changes, announced ahead</h4><p>Set a start date. Buyers are told now and reminded the day before.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>🏷 Sale · ₱235</b></div><small><s>₱245</s> until Oct 5 · ends by itself</small></div></div><h4>Store sales and promos</h4><p>Visits, orders and top items, plus sale prices that end by themselves.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>💳 Credit on account · ₱500</b></div><small>5 bags wet cement · off the next invoice</small></div></div><h4>Returns and credits</h4><p>Bad orders tracked, credits taken off the next invoice.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-stat blue"><small>2307s STILL MISSING</small><b>₱1,008</b><span>3 certificates from buyers</span></div></div><h4>BIR 2307 and VAT books</h4><p>Tax certificates owed to you, and monthly books for Excel.</p></div></div></div>
     <div class="m2-side buy"><div class="m2-side-h"><span>🏪</span><div><b>Buyer Pro</b><small>If you buy from suppliers: stores, restaurants, contractors, resellers</small></div></div><div class="m2-swipe">Swipe to see more →</div><div class="m2-grid" style="--cols:4"><div class="m2-card"><div class="m2-vis"><div class="v-notif "><span class="v-nic">🛡</span><div><div class="v-ntop"><b>Nifti</b><em>2m</em></div><strong>Joy paid ₱2,000 more than agreed</strong><small>100 bags cement at ₱265 · agreed ₱245</small></div></div></div><h4>Alerts when staff overpay</h4><p>One clear alert with the peso amount, the moment it happens.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>This month</b><span class="v-amber">82% used</span></div><div class="v-bar amber"><i style="width:82%"></i></div><small>₱49,200 of your ₱60,000 limit</small></div></div><h4>Spending limits you set</h4><p>Monthly limits for the business, a teammate or a supplier.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-grades"><div><span class="a">A</span><b>Metro Steel</b><small>98% on time</small></div><div><span class="d">D</span><b>QuickBuild</b><small>52% late</small></div></div></div><h4>Supplier report card</h4><p>Grades from your own orders: late, short, returns, price hikes.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>📊 Rebar 10mm</b><span class="v-green">Good price</span></div><small>You pay ₱178 · others ₱180–₱192</small></div></div><h4>Price check</h4><p>See if you pay more than other Nifti buyers for the same item.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-stat violet"><small>CHEQUES THIS WEEK</small><b>₱33,600</b><span>leaving your bank by Friday</span></div></div><h4>Cheque tracker</h4><p>Know how much must be in the bank, and when.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-notif "><span class="v-nic">📈</span><div><div class="v-ntop"><b>Nifti</b><em>3d</em></div><strong>Cement goes up Aug 30</strong><small>₱245 → ₱258 · order before then</small></div></div></div><h4>Price-increase alerts</h4><p>Know about increases early, and order before they start.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>💳 ₱500 credit</b></div><small>From Metro Steel · off your next invoice</small></div></div><h4>Returns and credits</h4><p>Credits from suppliers, applied to your next bill.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-list"><div class="v-li"><span>Purchases</span><b class="">₱100,800</b></div><div class="v-li"><span>Input VAT</span><b class="">₱12,096</b></div><div class="v-li"><span>Withheld (2307)</span><b class="v-blue">₱1,008</b></div></div></div><h4>BIR 2307 and purchase books</h4><p>Certificates you owe, and monthly purchase books for Excel.</p></div></div></div>
   </div>
 </section>
@@ -2078,13 +2147,13 @@
   <div class="p2-plans">
     <div class="p2-plan free"><div class="p2-plan-h"><b>Free</b><span>₱0 <em>forever</em></span></div>
       <p>Everything to trade with your partners.</p>
-      <ul><li>Chat and orders with anyone</li><li>Order links, no account needed</li><li>Payments the receiver confirms</li><li>Who owes you, with reminders</li><li>Online store and ready posts</li><li>Up to 3 teammates</li></ul>
+      <ul><li>Chat and orders with anyone</li><li>Order links, no account needed</li><li>Customer POs turned into your own orders</li><li>Leads and follow-ups, messages ready</li><li>Payments the receiver confirms</li><li>Who owes you, with a statement link</li><li>Online store and ready posts</li><li>Up to 3 teammates</li></ul>
       <button class="plan-btn outline" onclick="navigate('login')">Start free</button></div>
     <div class="p2-plan pro"><div class="p2-flag">🎉 FREE DURING THE PILOT</div>
       <div class="p2-plan-h"><b>Supplier Pro</b><span><s>₱990</s> ₱0 <em>/month for now</em></span></div>
       <p>Get paid faster and deliver smarter. Everything in Free, plus:</p>
-      <div class="p2-perks"><div class="p2-perk"><div class="p2-perk-vis"><div class="v-route mini"><div class="d"><i>✓</i><span>Aling Nena</span><b>₱7,650</b></div><div class="h"><i>🚚</i><span>Boy Hardware</span><b>₱4,750</b></div></div></div><div class="p2-perk-t"><b>🚚 Routes for your drivers</b><span>Every stop and peso to collect, with photo proof.</span></div></div><div class="p2-perk"><div class="p2-perk-vis"><div class="v-card"><div class="v-row"><b>Deposit today</b></div><small>BDO #004512 · ₱18,200</small><div class=v-btns><span class="p">Mark deposited</span></div></div></div><div class="p2-perk-t"><b>🏦 Never miss a cheque</b><span>Deposit reminders and bounce alerts.</span></div></div><div class="p2-perk"><div class="p2-perk-vis"><div class="v-list"><div class="v-li"><span>Current</span><b class="">₱32,400</b></div><div class="v-li"><span>31–60 days</span><b class="v-red">₱12,100</b></div></div></div><div class="p2-perk-t"><b>📄 Statements in one tap</b><span>Send the whole balance as a Viber link.</span></div></div><div class="p2-perk"><div class="p2-perk-vis"><div class="v-notif "><span class="v-nic">📢</span><div><div class="v-ntop"><b>Nifti</b><em>1d</em></div><strong>New prices start Oct 1</strong><small>Order before then to keep today’s price</small></div></div></div><div class="p2-perk-t"><b>📢 Price changes with notice</b><span>Buyers are told ahead. No angry calls.</span></div></div></div>
-      <ul class="p2-more"><li>Credit limits per buyer</li><li>Reorder reminders</li><li>Returns and credits</li><li>Store insights and sale prices</li><li>BIR 2307 tracker and VAT books</li><li>Up to 15 teammates</li></ul>
+      <div class="p2-perks"><div class="p2-perk"><div class="p2-perk-vis"><div class="v-notif "><span class="v-nic">⏰</span><div><div class="v-ntop"><b>Nifti</b><em>9:00</em></div><strong>Reminder sent to Juan Hardware</strong><small>₱21,504 · 7 days overdue</small></div></div></div><div class="p2-perk-t"><b>⏰ Collections on autopilot</b><span>Reminders on your terms, by chat or email.</span></div></div><div class="p2-perk"><div class="p2-perk-vis"><div class="v-list"><div class="v-li"><span>✓ Matched</span><b class="v-green">14</b></div><div class="v-li"><span>⚠ Not in bank</span><b class="v-red">1</b></div></div></div><div class="p2-perk-t"><b>🏦 Cash and bank matched</b><span>Every peso traced to an invoice.</span></div></div><div class="p2-perk"><div class="p2-perk-vis"><div class="v-route mini"><div class="d"><i>✓</i><span>Aling Nena</span><b>₱7,650</b></div><div class="h"><i>🚚</i><span>Boy Hardware</span><b>₱4,750</b></div></div></div><div class="p2-perk-t"><b>🚚 Routes for your drivers</b><span>Every stop and peso to collect, with photo proof.</span></div></div><div class="p2-perk"><div class="p2-perk-vis"><div class="v-card"><div class="v-row"><b>Deposit today</b></div><small>BDO #004512 · ₱18,200</small><div class=v-btns><span class="p">Mark deposited</span></div></div></div><div class="p2-perk-t"><b>🏦 Never miss a cheque</b><span>Deposit reminders and bounce alerts.</span></div></div></div>
+      <ul class="p2-more"><li>Customers due to reorder, reminded for you</li><li>Promises to pay, tracked</li><li>Statements of account</li><li>Credit limits per buyer</li><li>Price changes announced ahead</li><li>Returns and credits</li><li>BIR 2307 tracker and VAT books</li><li>Up to 15 teammates</li></ul>
       <button class="plan-btn primary" onclick="navigate('login')">Start free. Pro is on for you →</button>
       <small class="p2-after">After the pilot: ₱990/month or ₱9,900/year. Sign up now to keep this founding price.</small></div>
   </div>
@@ -2094,7 +2163,7 @@
   <div class="p2-plans">
     <div class="p2-plan free"><div class="p2-plan-h"><b>Free</b><span>₱0 <em>forever</em></span></div>
       <p>Everything to trade with your partners.</p>
-      <ul><li>Chat and orders with anyone</li><li>Order links, no account needed</li><li>Payments the receiver confirms</li><li>Who owes you, with reminders</li><li>Online store and ready posts</li><li>Up to 3 teammates</li></ul>
+      <ul><li>Chat and orders with anyone</li><li>Order links, no account needed</li><li>Customer POs turned into your own orders</li><li>Leads and follow-ups, messages ready</li><li>Payments the receiver confirms</li><li>Who owes you, with a statement link</li><li>Online store and ready posts</li><li>Up to 3 teammates</li></ul>
       <button class="plan-btn outline" onclick="navigate('login')">Start free</button></div>
     <div class="p2-plan pro"><div class="p2-flag">🎉 FREE DURING THE PILOT</div>
       <div class="p2-plan-h"><b>Buyer Pro</b><span><s>₱990</s> ₱0 <em>/month for now</em></span></div>
@@ -2122,7 +2191,7 @@
 
 <section class="m2-sec">
   <div class="wrap">
-    <details class="p2-compare"><summary>Compare every feature</summary><div class="mk-table-wrap"><table class="mk-table"><thead><tr><th></th><th>Free</th><th>Pro<br><small>for your side</small></th><th>Business</th></tr></thead><tbody><tr><td>Chat, orders and order links</td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Unlimited suppliers and buyers</td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Payments confirmed by the receiver</td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Who owes you, with reminders</td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Online store and ready posts</td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Message all buyers at once</td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Statements of account</td><td><span class="mk-n">—</span></td><td>Supplier Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Credit limits per buyer</td><td><span class="mk-n">—</span></td><td>Supplier Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Routes for drivers and collectors</td><td><span class="mk-n">—</span></td><td>Supplier Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Price-change announcements</td><td><span class="mk-n">—</span></td><td>Supplier Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Reorder reminders</td><td><span class="mk-n">—</span></td><td>Supplier Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Store insights and sale prices</td><td><span class="mk-n">—</span></td><td>Supplier Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Alerts when staff overpay</td><td><span class="mk-n">—</span></td><td>Buyer Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Spending limits</td><td><span class="mk-n">—</span></td><td>Buyer Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Supplier report card</td><td><span class="mk-n">—</span></td><td>Buyer Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Price check vs other buyers</td><td><span class="mk-n">—</span></td><td>Buyer Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Cheque tracker</td><td><span class="mk-n">—</span></td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Returns and credits</td><td><span class="mk-n">—</span></td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>BIR 2307 tracker and VAT books</td><td><span class="mk-n">—</span></td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Verified ✔ badge</td><td><span class="mk-n">—</span></td><td><span class="mk-n">—</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Top of Discover</td><td><span class="mk-n">—</span></td><td><span class="mk-n">—</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Priority support</td><td><span class="mk-n">—</span></td><td><span class="mk-n">—</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Teammates</td><td>3</td><td>15</td><td>50</td></tr></tbody></table></div></details>
+    <details class="p2-compare"><summary>Compare every feature</summary><div class="mk-table-wrap"><table class="mk-table"><thead><tr><th></th><th>Free</th><th>Pro<br><small>for your side</small></th><th>Business</th></tr></thead><tbody><tr><td>Chat, orders and order links</td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Unlimited suppliers and buyers</td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Payments confirmed by the receiver</td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Who owes you, with reminders</td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Online store and ready posts</td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Message all buyers at once</td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Statements of account</td><td><span class="mk-n">—</span></td><td>Supplier Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Credit limits per buyer</td><td><span class="mk-n">—</span></td><td>Supplier Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Routes for drivers and collectors</td><td><span class="mk-n">—</span></td><td>Supplier Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Price-change announcements</td><td><span class="mk-n">—</span></td><td>Supplier Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Reorder reminders</td><td><span class="mk-n">—</span></td><td>Supplier Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Store insights and sale prices</td><td><span class="mk-n">—</span></td><td>Supplier Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Alerts when staff overpay</td><td><span class="mk-n">—</span></td><td>Buyer Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Spending limits</td><td><span class="mk-n">—</span></td><td>Buyer Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Supplier report card</td><td><span class="mk-n">—</span></td><td>Buyer Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Price check vs other buyers</td><td><span class="mk-n">—</span></td><td>Buyer Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Leads and follow-ups</td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Customer POs into your own orders</td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Payment reminders sent for you</td><td><span class="mk-n">—</span></td><td>Supplier Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Cash and bank reconciliation</td><td><span class="mk-n">—</span></td><td>Supplier Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Cheque tracker</td><td><span class="mk-n">—</span></td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Returns and credits</td><td><span class="mk-n">—</span></td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>BIR 2307 tracker and VAT books</td><td><span class="mk-n">—</span></td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Verified ✔ badge</td><td><span class="mk-n">—</span></td><td><span class="mk-n">—</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Top of Discover</td><td><span class="mk-n">—</span></td><td><span class="mk-n">—</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Priority support</td><td><span class="mk-n">—</span></td><td><span class="mk-n">—</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Teammates</td><td>3</td><td>15</td><td>50</td></tr></tbody></table></div></details>
   </div>
 </section>
 
@@ -2546,6 +2615,8 @@
       <div class="nav-item hidden" id="salesNavItem" data-page="sales" onclick="navigate('sales')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Sales</span></div>
       <div class="nav-item owner-only" data-page="admin" onclick="navigate('admin')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 3 6v6c0 5 4 9 9 10 5-1 9-5 9-10V6z"/><path d="m9 12 2 2 4-4"/></svg><span>Admin console</span></div>
       <div class="nav-item owner-only" data-page="growth" onclick="navigate('growth')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg><span>Growth desk</span></div>
+      <div class="nav-item only-supplier" data-page="followups" onclick="navigate('followups')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg><span>Follow-ups</span></div>
+      <div class="nav-item only-supplier" data-page="collections" onclick="navigate('collections')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18v12H3z"/><path d="M3 11h18"/><path d="M7 15h4"/><path d="M7 3h10v4"/></svg><span>Collections</span></div>
       <div class="nav-item" data-page="store" onclick="navigate('store')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l1.5-5h15L21 9"/><path d="M4 9v11h16V9"/><path d="M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0"/><path d="M10 20v-6h4v6"/></svg><span>Online store</span></div>
       <div class="nav-item only-buyer" data-page="watchdog" onclick="navigate('watchdog')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Watchdog</span></div>
       <div class="nav-item" data-page="cheques" onclick="navigate('cheques')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 14h6"/><path d="M15 14h3"/><path d="M6 10h12"/></svg><span>Cheques</span></div>
@@ -2586,6 +2657,8 @@
       <button class="more-sheet-item" data-page="inventory" onclick="closeMoreSheet(); navigate('inventory')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg><span>Inventory</span></button>
       <button class="more-sheet-item" data-page="sales" id="moreSheetSales" onclick="closeMoreSheet(); navigate('sales')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Sales</span></button>
       <button class="more-sheet-item owner-only" data-page="growth" onclick="closeMoreSheet(); navigate('growth')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg><span>Growth</span></button>
+      <button class="more-sheet-item only-supplier" data-page="followups" onclick="closeMoreSheet(); navigate('followups')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg><span>Follow-ups</span></button>
+      <button class="more-sheet-item only-supplier" data-page="collections" onclick="closeMoreSheet(); navigate('collections')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18v12H3z"/><path d="M3 11h18"/><path d="M7 15h4"/><path d="M7 3h10v4"/></svg><span>Collections</span></button>
       <button class="more-sheet-item" data-page="store" onclick="closeMoreSheet(); navigate('store')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l1.5-5h15L21 9"/><path d="M4 9v11h16V9"/><path d="M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0"/><path d="M10 20v-6h4v6"/></svg><span>Store</span></button>
       <button class="more-sheet-item only-buyer" data-page="watchdog" onclick="closeMoreSheet(); navigate('watchdog')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Watchdog</span></button>
       <button class="more-sheet-item owner-only" data-page="admin" onclick="closeMoreSheet(); navigate('admin')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 3 6v6c0 5 4 9 9 10 5-1 9-5 9-10V6z"/><path d="m9 12 2 2 4-4"/></svg><span>Admin</span></button>
@@ -2630,6 +2703,8 @@
           <div id="createMenuDropdown" class="notif-dropdown hidden" style="width:220px;">
             <div class="notif-head">Create new</div>
             <div class="notif-item" id="createMenuPoItem" style="cursor:pointer;" onclick="closeCreateMenu(); openCreatePOModal();"><div><div class="notif-text" id="createMenuPoLabel">Purchase Order</div></div></div>
+            <div class="notif-item only-supplier" style="cursor:pointer;" onclick="closeCreateMenu(); openCustomerPoImport();"><div><div class="notif-text">📄 Enter a customer's PO</div></div></div>
+            <div class="notif-item only-supplier" style="cursor:pointer;" onclick="closeCreateMenu(); navigate('followups'); setTimeout(fuAddLead, 150);"><div><div class="notif-text">🎯 Add a lead</div></div></div>
             <div class="notif-item" id="createMenuPasteItem" style="cursor:pointer;" onclick="closeCreateMenu(); openPasteOrderModal();"><div><div class="notif-text">📋 Paste an order from Viber</div></div></div>
             <div class="notif-item" style="cursor:pointer;" onclick="closeCreateMenu(); navigate('invite'); setInviteTab('rfq');"><div><div class="notif-text" id="createMenuRfqLabel">Request a Quote (RFQ)</div></div></div>
             <div class="notif-item" style="cursor:pointer;" onclick="closeCreateMenu(); navigate('invite'); setInviteTab('invite');"><div><div class="notif-text" id="createMenuInviteLabel">Invite a Supplier</div></div></div>
@@ -3414,6 +3489,16 @@
         <div id="growthContent"></div>
       </div>
 
+      <div id="page-followups" class="app-page">
+        <div class="page-head"><h1>Follow-ups</h1><p>Warm leads and customers to win back, with the message ready.</p></div>
+        <div id="followupsContent"></div>
+      </div>
+
+      <div id="page-collections" class="app-page">
+        <div class="page-head"><h1>Collections</h1><p>Who to chase today, promises to pay, and where every peso is.</p></div>
+        <div id="collectionsContent"></div>
+      </div>
+
       <div id="page-cheques" class="app-page">
         <div class="page-head"><h1>Cheques <span id="chequesBadge"></span></h1><p id="chequesSub">Post-dated cheques, what to deposit today, and who bounces.</p></div>
         <div id="chequesContent"></div>
@@ -3708,7 +3793,7 @@ async function mapPoRowToJs(row){
     buyerId: row.buyer_business_id, buyerName,
     supplierId: row.supplier_business_id, supplierName,
     type: row.type, status: row.status, currency: row.currency, taxRate: Number(row.tax_rate),
-    lineItems: row.line_items || [],
+    lineItems: row.line_items || [], customerRef: row.customer_ref || null,
     createdDate: row.created_date, requestedDeliveryDate: row.requested_delivery_date,
     deliveryAddress: row.delivery_address, notes: row.notes || '',
     shipping: row.shipping, customs: row.customs, invoice: row.invoice, counter: row.counter,
@@ -4605,7 +4690,7 @@ window.addEventListener('online', () => {
   if(document.getElementById('supplierOrderRows')) renderSupplierOrdersTable();
   if(activeConvId){ const conv = getConversations().find(c=>c.id===activeConvId); if(conv) renderThread(conv); }
 });
-const appPages = ['dashboard','messages','suppliers','orders','inventory','invite','discover','analytics','datacenter','settings','status','team','sales','taxforms','watchdog','store','growth','cheques','routes','prices','returns','books','admin'];
+const appPages = ['dashboard','messages','suppliers','orders','inventory','invite','discover','analytics','datacenter','settings','status','team','sales','taxforms','watchdog','store','growth','cheques','routes','prices','returns','books','admin','followups','collections'];
 
 /* ============ SETTINGS PAGE ACTIONS ============ */
 let currentAvatarPhoto = null;
@@ -7218,18 +7303,18 @@ const PRO_FEATURE_LABELS = {
   statements: 'Statements of account', bir2307: 'BIR 2307 tracker', store_insights: 'Store visitors & sales', store_promos: 'Store promos',
   auto_reminders: 'Automatic payment reminders', late_payers: 'Who pays late', credit_limits: 'Credit limits per buyer', full_history: 'Full history & exports',
   watchdog: "Owner's watchdog", market_price: 'Market price check', price_alerts: 'Price-increase alerts',
-  cheques: 'Cheque tracker', routes: 'Delivery & collection routes', price_blast: 'Price-change announcements', credit_memos: 'Credits on account',
+  cheques: 'Cheque tracker', routes: 'Delivery & collection routes', reconcile: 'Cash & bank reconciliation', price_blast: 'Price-change announcements', credit_memos: 'Credits on account',
   reorder_reminders: 'Reorder reminders', vat_books: 'Sales & purchase books', spending_caps: 'Spending caps', scorecard: 'Supplier scorecard',
 };
 const PRO_PLANS = {
   supplier_pro: {name: 'Supplier Pro', forType: 'supplier', tagline: 'Get paid faster and sell more.',
-    features: ['Online store insights: visitors, orders, top products', 'Promo prices with an end date on your store', 'One-tap statements of account', 'Credit limits per buyer: hold orders when they owe too much or pay late', 'Delivery & collection routes with photo proof and cash remittance', 'Cheque tracker: post-dated calendar, deposit reminders, bounced alerts', 'Price-change announcements to every buyer at once', 'Reorder reminders when a buyer goes quiet', 'Credits carried to the next invoice', 'BIR 2307 tracker and monthly sales book (VAT)', 'Who pays late, and automatic payment reminders', 'Up to 15 teammates']},
+    features: ['Payment reminders on your terms, sent for you by chat or email, with promises to pay tracked', 'Cash and bank reconciliation: who holds the cash, deposits, and your bank statement matched', 'Customers due to reorder, reminded with a one-tap reorder link', 'Online store insights: visitors, orders, top products', 'Promo prices with an end date on your store', 'One-tap statements of account', 'Credit limits per buyer: hold orders when they owe too much or pay late', 'Delivery & collection routes with photo proof and cash remittance', 'Cheque tracker: post-dated calendar, deposit reminders, bounced alerts', 'Price-change announcements to every buyer at once', 'Reorder reminders when a buyer goes quiet', 'Credits carried to the next invoice', 'BIR 2307 tracker and monthly sales book (VAT)', 'Who pays late, and automatic payment reminders', 'Up to 15 teammates']},
   buyer_pro: {name: 'Buyer Pro', forType: 'buyer', tagline: 'Pay less and stop leaks.',
     features: ["Owner's watchdog: alerts when staff overpay or skip approval", 'Spending caps you set per business, teammate or supplier', 'Supplier scorecard: late, short, returns, price hikes', 'Cheque tracker: know when each cheque hits your bank', 'Market price check vs other Nifti buyers', 'BIR 2307 tracker and monthly purchase book (VAT)', 'Up to 15 teammates']},
   business: {name: 'Business', forType: 'any', tagline: 'For bigger teams and multi-branch businesses. Everything in Pro for your side, plus:',
     features: ['Up to 50 teammates', 'Verified badge (green ✔) included', 'Featured at the top of Discover', 'Priority support: we reply first', 'Free done-for-you setup on yearly']},
 };
-const FREE_PLAN_FEATURES = ['Unlimited suppliers and buyers', 'Chat, orders and order links, no limits', 'Payment tracking confirmed by your supplier', 'Your own online store link + ready-to-post content', 'Delivery links and proof of delivery', 'Up to 3 teammates'];
+const FREE_PLAN_FEATURES = ['Leads and follow-ups with ready messages', 'Turn any customer PO (PDF, Excel, photo, Viber) into your own order', 'Unlimited suppliers and buyers', 'Chat, orders and order links, no limits', 'Payment tracking confirmed by your supplier', 'Your own online store link + ready-to-post content', 'Delivery links and proof of delivery', 'Up to 3 teammates'];
 async function loadMyPlan(){
   if(!myBusiness) return null;
   const { data } = await sb.rpc('my_plan');
@@ -7454,7 +7539,7 @@ function showStatementOverlay(d, opts){
       ${o.isPublic ? '<span style="font-weight:800;">Statement of account</span>' : `<button class="btn btn-outline" onclick="closeStatementOverlay()">✕ Close</button>`}
       <div style="display:flex;gap:8px;flex-wrap:wrap;">
         <button class="btn btn-outline" onclick="window.print()">🖨 Print / Save PDF</button>
-        ${o.isPublic ? '' : `<button class="btn btn-outline" onclick="sendStatementInChat()">💬 Send in chat</button><button class="btn btn-primary" onclick="shareStatementLink()">🔗 Send link</button>`}
+        ${o.isPublic ? (d.totals && d.totals.balance >= 1 ? '<button class="btn btn-primary" onclick="stmtShowPaid()">✅ I\'ve paid</button>' : '') : `<button class="btn btn-outline" onclick="sendStatementInChat()">💬 Send in chat</button><button class="btn btn-primary" onclick="shareStatementLink()">🔗 Send link</button>`}
       </div>
     </div>
     <div id="stmtShare"></div>
@@ -7511,6 +7596,7 @@ async function sendStatementInChat(){
   showToast(`Statement sent in your chat with ${conv.name}.`, 'success');
 }
 async function loadPublicStatement(token){
+  window._stmtToken = token;
   let d = null;
   try{ const { data, error } = await sb.rpc('get_statement', {p_token: token}); if(!error) d = data; }catch(e){}
   if(!d){
@@ -8130,12 +8216,20 @@ function renderBuyerTrackView(d){
     <div class="po-public-card">
       <div style="font-size:14px;opacity:.7;">With ${escapeHtml(d.supplier_name)}</div>
       <h1 style="font-size:24px;margin:2px 0 8px;">${escapeHtml(d.po_number)}</h1>
+      ${d.customer_ref ? `<div style="font-size:13.5px;opacity:.7;margin:-4px 0 8px;">Your PO #${escapeHtml(d.customer_ref)}</div>` : ''}
       <span class="po-public-status ${tone}">${escapeHtml(niceStatus)}</span>
       <div class="po-public-table-wrap"><table class="po-public-table"><thead><tr><th>Item</th><th style="text-align:right;">Qty</th><th style="text-align:right;">Amount</th></tr></thead><tbody>${items}</tbody></table></div>
       ${totals.total > 0 ? `<div class="po-public-total"><div style="font-size:20px;font-weight:800;">Total ${fmtPHP(totals.total)}</div></div>` : ''}
       ${d.delivery_address ? `<div class="po-public-row">📍 <strong>Deliver to:</strong> ${escapeHtml(d.delivery_address)}</div>` : ''}
       ${c.phone ? `<div class="po-public-row">📞 ${escapeHtml(c.name || d.supplier_name)}: <a href="tel:${escapeHtml(String(c.phone).replace(/[^0-9+]/g, ''))}">${escapeHtml(c.phone)}</a></div>` : ''}
     </div>
+    ${d.can_confirm_receipt ? `<div class="po-public-card po-public-receipt" id="rcptCard"><div style="font-weight:800;font-size:18px;">📦 Got your delivery?</div>
+      <div style="opacity:.8;margin:2px 0 10px;">Let ${escapeHtml(d.supplier_name)} know it arrived. It takes 5 seconds.</div>
+      <label class="po-public-label">Received by</label><input id="rcptName" type="text" maxlength="60" value="${escapeHtml(savedName)}">
+      <textarea id="rcptNote" rows="2" maxlength="400" placeholder="Anything missing or damaged? (optional)"></textarea>
+      <button class="btn btn-primary po-public-big" onclick="publicConfirmReceipt(true)">✓ Yes, I received it complete</button>
+      <button class="btn btn-outline po-public-big" onclick="publicConfirmReceipt(false)">Something's missing or wrong</button>
+      <div id="rcptErr" class="po-public-error"></div></div>` : d.received ? `<div class="po-public-card" style="background:#E6F2EA;"><b>✓ Received by ${escapeHtml(d.received.by || '')}</b> · ${escapeHtml(d.received.date || '')}</div>` : ''}
     ${d.status !== 'cancelled' ? `<div class="po-public-card">
       <label class="po-public-label">Your name</label><input id="poPubName" type="text" maxlength="80" value="${escapeHtml(savedName)}">
       <textarea id="poPubMsg" rows="2" maxlength="500" placeholder="Message ${escapeHtml(d.supplier_name)} about this order"></textarea>
@@ -10375,8 +10469,8 @@ function hmItemsSupplier(){
     late[k].amt += r.balance; late[k].days = Math.max(late[k].days, r.daysOverdue);
   });
   Object.values(late).sort((a, b) => b.amt - a.amt).forEach(g => items.push({w: escapeHtml(g.name), k: 'latepay', pri: 4, ic: '💰', tone: 'rose',
-    t: `${escapeHtml(g.name)} is ${g.days} day${g.days > 1 ? 's' : ''} late paying`, s: `${fmtPHP(g.amt)} overdue`, b: 'Remind', a: `hmRemind('${g.id}')`, amt: g.amt}));
-  return items.concat(hmMessageItems(), hmDealItems('supplier'));
+    t: `${escapeHtml(g.name)} is ${g.days} day${g.days > 1 ? 's' : ''} late paying`, s: `${fmtPHP(g.amt)} overdue`, b: 'Remind', a: `colRemind('${g.id}')`, amt: g.amt}));
+  return items.concat(hmMessageItems(), hmDealItems('supplier'), hmSalesItems());
 }
 function hmItemsBuyer(){
   const items = [];
@@ -10667,6 +10761,1151 @@ function mkSide(side){
   try{ localStorage.setItem('nifti-pricing-side', side); }catch(e){}
 }
 
+
+/* ============ SHARED: a share sheet for any ready-made message ============ */
+function openShareSheet(title, text, opts){
+  const o = opts || {};
+  const old = document.getElementById('shareSheet'); if(old) old.remove();
+  const m = document.createElement('div'); m.id = 'shareSheet'; m.className = 'share-modal-backdrop';
+  m.onclick = e => { if(e.target === m) m.remove(); };
+  const key = 'sheet:' + Date.now();
+  m.innerHTML = `<div class="share-modal sl-sheet">
+    <div class="sl-sheet-h"><b>${escapeHtml(title)}</b><button class="sl-x" onclick="document.getElementById('shareSheet').remove()" aria-label="Close">✕</button></div>
+    ${o.sub ? `<div class="sl-sub">${o.sub}</div>` : ''}
+    <textarea id="shareSheetText" rows="7" class="sl-ta">${escapeHtml(text)}</textarea>
+    <div id="shareSheetBtns"></div>
+    ${o.after ? `<button class="btn btn-outline sl-wide" onclick="${o.after}">${o.afterLabel || 'Done, I sent it'}</button>` : ''}
+  </div>`;
+  document.body.appendChild(m);
+  const refresh = () => { const ta = document.getElementById('shareSheetText'); document.getElementById('shareSheetBtns').innerHTML = shareButtonsHtml(key, ta.value, {hint: false})
+    + `<button class="btn btn-outline sl-wide" style="margin-top:6px;" onclick="copyPlainText(document.getElementById('shareSheetText').value, 'Copied.')">📋 Copy message</button>`; };
+  refresh();
+  document.getElementById('shareSheetText').addEventListener('input', refresh);
+}
+function slModal(id, html){
+  const old = document.getElementById(id); if(old) old.remove();
+  const m = document.createElement('div'); m.id = id; m.className = 'share-modal-backdrop';
+  m.onclick = e => { if(e.target === m) m.remove(); };
+  m.innerHTML = `<div class="share-modal sl-sheet">${html}</div>`;
+  document.body.appendChild(m);
+  return m;
+}
+function slClose(id){ const m = document.getElementById(id); if(m) m.remove(); }
+function slMemberName(){ const m = (typeof getActiveTeamMembers === 'function' ? getActiveTeamMembers() : []).find(x => x.id === currentUserId); return m ? m.name : (myBusiness ? 'You' : 'Carlo (Owner)'); }
+function slPhoneDigits(p){ return String(p || '').replace(/[^0-9]/g, '').replace(/^63/, '').replace(/^0/, ''); }
+function slContactButtons(phone, email){
+  const d = slPhoneDigits(phone);
+  return `<div class="sl-contact">${d ? `<a class="btn btn-outline" href="tel:0${d}">📞 Call</a><a class="btn btn-outline" href="viber://chat?number=%2B63${d}">💬 Viber</a>` : ''}${email ? `<a class="btn btn-outline" href="mailto:${escapeHtml(email)}">✉ Email</a>` : ''}</div>`;
+}
+function slDaysAgo(iso){ if(!iso) return null; return daysBetween(String(iso).slice(0, 10), APP_TODAY); }
+function slSwitch(on, onclick, id){ return `<div class="switch ${on ? 'on' : ''}"${id ? ` id="${id}"` : ''} onclick="${onclick}"><div class="knob"></div></div>`; }
+
+/* ============ FOLLOW-UPS: warm leads + customers to win back ============
+   Everything a seller does to bring in the next order, on one page with the message ready.
+   Leads come in by themselves (store inquiries, people you invited, Discover requests) or are
+   added by hand; each has a next follow-up date, and ordering turns it into a customer on its own
+   (server trigger). "Sell again" lists customers past their usual reorder day and customers gone
+   quiet, each with a personal link that opens your store with their usual order already in the
+   cart. We count how many reminders turned into orders, so you can see it works. */
+let fuTab = 'today', leadsCache = null, nudgesCache = null, reorderDueCache = null, fuLeadFilter = 'open', fuLoading = null;
+const LEAD_STAGES = {new: 'New', contacted: 'Talking', quoted: 'Quoted', won: 'Customer 🎉', lost: 'Not now'};
+const LEAD_SOURCES = {store: '🛍 Asked on your store', manual: '✍️ Added by you', invite: '📨 You invited them', discover: '🔎 Found you on Discover', referral: '🤝 Referred', walkin: '🚶 Walk-in or call', fb: '📘 Facebook or Messenger', event: '🎪 Trade show or event'};
+function fuSeedDemo(){
+  if(window._demoLeads) return;
+  const d = n => addDaysIso(APP_TODAY, n);
+  window._demoLeads = [
+    {id: 'L1', name: 'Rhea Santos', company: 'RS Construction', phone: '09171234567', source: 'store', interest: 'Magkano po 200 bags cement, deliver sa Malabon?', est_value: 49000, stage: 'new', next_follow_up: d(0), touches: 0, log: [{at: d(0), what: 'Asked on your store: Magkano po 200 bags cement, deliver sa Malabon?'}], created_at: d(0)},
+    {id: 'L2', name: 'Jojo Villareal', company: 'JV Hardware', phone: '09281112233', source: 'fb', interest: 'GI wire and rebar for a new branch', est_value: 85000, stage: 'contacted', next_follow_up: d(-1), touches: 1, log: [{at: d(-5), what: 'Messaged you on Facebook'}, {at: d(-4), what: 'Talked: interested, will check prices'}], created_at: d(-5)},
+    {id: 'L3', name: 'Engr. Paolo Cruz', company: 'PC Builders', phone: '09175550011', source: 'referral', interest: 'Steel for a 3-storey building, quote sent', est_value: 320000, stage: 'quoted', next_follow_up: d(2), touches: 2, log: [{at: d(-10), what: 'Referred by Dela Cruz Hardware'}, {at: d(-3), what: 'Sent a quote'}], created_at: d(-10)},
+    {id: 'L4', name: 'Ana Lim', company: 'Lim Trading', email: 'ana@limtrading.ph', source: 'invite', interest: '', stage: 'new', next_follow_up: d(0), touches: 0, log: [{at: d(-2), what: 'You invited them to Nifti'}], created_at: d(-2)},
+  ];
+  window._demoNudges = [];
+}
+async function fuLoad(force){
+  if(fuLoading && !force) return fuLoading;
+  fuLoading = (async () => {
+    if(!myBusiness){ fuSeedDemo(); leadsCache = window._demoLeads; nudgesCache = window._demoNudges; reorderDueCache = localReorderDue(); return; }
+    try{ await sb.rpc('sync_my_leads'); }catch(e){}
+    const since = new Date(Date.now() - 120 * 86400e3).toISOString();
+    const [l, n, r] = await Promise.all([
+      sb.from('sales_leads').select('*').order('created_at', {ascending: false}).limit(500),
+      sb.from('customer_nudges').select('*').gte('created_at', since).order('created_at', {ascending: false}).limit(1000),
+      hasFeature('reorder_reminders') ? sb.rpc('my_reorder_due') : Promise.resolve({data: []})]);
+    leadsCache = l.data || []; nudgesCache = n.data || []; reorderDueCache = r.data || [];
+  })();
+  try{ await fuLoading; } finally { fuLoading = null; }
+}
+function fuLeadDue(l){ return l.stage !== 'won' && l.stage !== 'lost' && l.next_follow_up && l.next_follow_up <= APP_TODAY; }
+function fuDueLabel(date){
+  if(!date) return 'No date';
+  const d = daysBetween(APP_TODAY, date);
+  return d < -1 ? `${-d} days late` : d === -1 ? 'Yesterday' : d === 0 ? 'Today' : d === 1 ? 'Tomorrow' : stmtDate(date).replace(/, \d{4}$/, '');
+}
+function fuLastNudge(buyerId){ return (nudgesCache || []).find(n => n.buyer_business_id === buyerId); }
+function fuSnoozed(buyerId){ return (nudgesCache || []).some(n => n.buyer_business_id === buyerId && n.kind === 'snooze' && n.snooze_until >= APP_TODAY); }
+function fuRecentlyNudged(buyerId){ const n = (nudgesCache || []).find(x => x.buyer_business_id === buyerId && x.kind !== 'snooze'); return n && slDaysAgo(n.created_at) < 14; }
+function fuQuiet(){
+  const by = {};
+  getSupplierPOs().filter(po => !['draft', 'cancelled'].includes(po.status)).forEach(po => {
+    const b = by[po.buyerId] || (by[po.buyerId] = {id: po.buyerId, name: po.buyerName, last: '', orders: 0, value: 0});
+    b.orders++; b.value += poTotal(po); if((po.createdDate || '') > b.last) b.last = po.createdDate;
+  });
+  const due = new Set((reorderDueCache || []).map(r => r.buyer_id));
+  return Object.values(by).map(b => Object.assign(b, {days: slDaysAgo(b.last)}))
+    .filter(b => b.days >= 45 && b.days <= 400 && !due.has(b.id)).sort((a, b) => b.value - a.value);
+}
+function fuAgainLists(){
+  const due = (reorderDueCache || []).filter(r => !fuSnoozed(r.buyer_id));
+  const quiet = fuQuiet().filter(b => !fuSnoozed(b.id));
+  return {due, quiet, dueNow: due.filter(r => !fuRecentlyNudged(r.buyer_id)), quietNow: quiet.filter(b => !fuRecentlyNudged(b.id))};
+}
+function fuStats(){
+  const pos = getSupplierPOs().filter(po => !['draft', 'cancelled'].includes(po.status));
+  const sent = (nudgesCache || []).filter(n => n.kind !== 'snooze' && slDaysAgo(n.created_at) <= 30);
+  let orders = 0, value = 0;
+  sent.forEach(n => {
+    const d0 = String(n.created_at).slice(0, 10);
+    const hit = pos.find(po => po.buyerId === n.buyer_business_id && po.createdDate >= d0 && daysBetween(d0, po.createdDate) <= 7);
+    if(hit){ orders++; value += poTotal(hit); }
+  });
+  return {sent: sent.length, orders, value};
+}
+async function renderFollowupsPage(){
+  const el = document.getElementById('followupsContent'); if(!el) return;
+  if(!leadsCache) el.innerHTML = '<div class="panel-card">Loading…</div>';
+  await fuLoad();
+  const leads = leadsCache || [], open = leads.filter(l => l.stage !== 'won' && l.stage !== 'lost');
+  const dueLeads = open.filter(fuLeadDue).sort((a, b) => (a.next_follow_up || '').localeCompare(b.next_follow_up || ''));
+  const again = fuAgainLists();
+  const todayCount = dueLeads.length + again.dueNow.length;
+  el.innerHTML = `<div class="adm-tabs sl-tabs">
+      <button class="${fuTab === 'today' ? 'active' : ''}" onclick="fuTab='today'; renderFollowupsPage()">Today${todayCount ? ` <span class="sl-n">${todayCount}</span>` : ''}</button>
+      <button class="${fuTab === 'leads' ? 'active' : ''}" onclick="fuTab='leads'; renderFollowupsPage()">Leads <span class="sl-n soft">${open.length}</span></button>
+      <button class="${fuTab === 'again' ? 'active' : ''}" onclick="fuTab='again'; renderFollowupsPage()">Sell again <span class="sl-n soft">${again.due.length + again.quiet.length}</span></button>
+    </div><div id="fuBody"></div>`;
+  const body = document.getElementById('fuBody');
+  if(fuTab === 'leads') return fuRenderLeads(body);
+  if(fuTab === 'again') return fuRenderAgain(body);
+  const potential = open.reduce((s, l) => s + Number(l.est_value || 0), 0);
+  const st = fuStats();
+  body.innerHTML = `<div class="sl-tiles">
+      <div class="sl-tile"><small>Open leads</small><b>${open.length}</b><span>${potential ? hmPeso(potential) + ' possible' : 'add the ones in your head'}</span></div>
+      <div class="sl-tile"><small>Reminders → orders</small><b>${st.orders} of ${st.sent}</b><span>${st.value ? hmPeso(st.value) + ' in 30 days' : 'last 30 days'}</span></div>
+    </div>
+    <div class="sl-card"><div class="sl-card-h"><b>🎯 Leads to follow up</b><button class="sl-link" onclick="fuAddLead()">+ Add lead</button></div>
+      ${dueLeads.length ? dueLeads.map(fuLeadRow).join('') : `<div class="empty-mini"><b>No leads due today</b>New store inquiries land here by themselves. Add anyone who asked you for a price.</div>`}</div>
+    <div class="sl-card"><div class="sl-card-h"><b>🔁 Customers to win back</b>${again.due.length + again.quiet.length > again.dueNow.length ? `<button class="sl-link" onclick="fuTab='again'; renderFollowupsPage()">See all →</button>` : ''}</div>
+      ${!hasFeature('reorder_reminders') ? lockedPanelHtml('reorder_reminders', 'See which customers are past their usual reorder day, and send them their usual order as a one-tap link.')
+        : again.dueNow.length ? again.dueNow.slice(0, 6).map(r => fuAgainRow(r.buyer_id, r.buyer_name, `Usually every ${r.usual_gap} days · last order ${r.days_since} days ago`, 'reorder')).join('')
+        : `<div class="empty-mini"><b>Everyone's ordering on time</b>Customers show up here when they're past their usual reorder day.</div>`}</div>`;
+}
+function fuLeadRow(l){
+  const due = fuLeadDue(l), late = l.next_follow_up && l.next_follow_up < APP_TODAY;
+  return `<div class="sl-row" onclick="fuOpenLead('${l.id}')" role="button">
+    <span class="sl-av">${escapeHtml((l.name || '?').slice(0, 1).toUpperCase())}</span>
+    <div class="sl-mid"><div class="sl-t">${escapeHtml(l.name)}${l.company && l.company !== l.name ? ` <span class="sl-dim">· ${escapeHtml(l.company)}</span>` : ''}</div>
+      <div class="sl-s">${escapeHtml(l.interest || LEAD_SOURCES[l.source] || '')}</div></div>
+    <div class="sl-right"><span class="sl-pill st-${l.stage}">${LEAD_STAGES[l.stage] || l.stage}</span>
+      ${l.stage !== 'won' && l.stage !== 'lost' ? `<small class="${late ? 'sl-bad' : due ? 'sl-warn' : ''}">${fuDueLabel(l.next_follow_up)}</small>` : ''}</div></div>`;
+}
+function fuAgainRow(buyerId, name, sub, kind){
+  const last = fuLastNudge(buyerId);
+  return `<div class="sl-row"><span class="sl-av g">${escapeHtml((name || '?').slice(0, 1).toUpperCase())}</span>
+    <div class="sl-mid"><div class="sl-t">${escapeHtml(name)}</div><div class="sl-s">${escapeHtml(sub)}${last && last.kind !== 'snooze' ? ` · reminded ${slDaysAgo(last.created_at)}d ago` : ''}</div></div>
+    <div class="sl-right sl-acts"><button class="hm-go" onclick="fuSendReorder('${buyerId}','${kind}')">Send</button><button class="sl-link" onclick="fuSnooze('${buyerId}')">Later</button></div></div>`;
+}
+function fuRenderLeads(body){
+  const leads = (leadsCache || []).slice();
+  const counts = {open: 0, new: 0, contacted: 0, quoted: 0, won: 0, lost: 0};
+  leads.forEach(l => { counts[l.stage]++; if(l.stage !== 'won' && l.stage !== 'lost') counts.open++; });
+  const list = leads.filter(l => fuLeadFilter === 'open' ? (l.stage !== 'won' && l.stage !== 'lost') : l.stage === fuLeadFilter)
+    .sort((a, b) => (a.next_follow_up || '9999').localeCompare(b.next_follow_up || '9999') || String(b.created_at).localeCompare(String(a.created_at)));
+  const f = (k, label) => `<div class="chip ${fuLeadFilter === k ? 'active' : ''}" onclick="fuLeadFilter='${k}'; renderFollowupsPage()">${label} (${counts[k]})</div>`;
+  const won30 = leads.filter(l => l.stage === 'won' && slDaysAgo(l.updated_at || l.created_at) <= 30).length;
+  body.innerHTML = `<div class="sl-actions"><button class="btn btn-primary" onclick="fuAddLead()">+ Add a lead</button><button class="btn btn-outline" onclick="fuPasteLeads()">📋 Paste a list</button></div>
+    <div class="chip-filter sl-chips">${f('open', 'To follow up')}${f('new', 'New')}${f('contacted', 'Talking')}${f('quoted', 'Quoted')}${f('won', 'Customers')}${f('lost', 'Not now')}</div>
+    ${won30 ? `<div class="sl-win">🎉 ${won30} lead${won30 > 1 ? 's' : ''} became customers in the last 30 days.</div>` : ''}
+    <div class="sl-card">${list.length ? list.map(fuLeadRow).join('') : `<div class="empty-mini"><b>Nothing here</b>People who ask on your store are added automatically. Add walk-ins, callers and Facebook inquiries too.</div>`}</div>
+    <div class="sl-help">How leads work: every lead gets a follow-up date. Tap one to call, Viber or copy a ready message, then tap what happened. The next follow-up is set for you. When they order, they turn into a customer by themselves.</div>`;
+}
+function fuRenderAgain(body){
+  if(!hasFeature('reorder_reminders')){ body.innerHTML = lockedPanelHtml('reorder_reminders', 'See which customers are past their usual reorder day, and send them their usual order as a one-tap link.'); return; }
+  const a = fuAgainLists(), st = fuStats();
+  const auto = !!collSettings().auto_reorder;
+  body.innerHTML = `<div class="sl-card sl-auto"><div class="toggle-row"><div><div class="toggle-txt">Remind them for me every morning</div>
+      <div class="toggle-sub">Customers on Nifti get a chat message, others get an email if you have it. Each with their usual order as a one-tap link. Never more than once in 14 days.</div></div>
+      ${slSwitch(auto, "collSave({auto_reorder: !collSettings().auto_reorder}).then(renderFollowupsPage)")}</div></div>
+    <div class="sl-stat">Last 30 days: <b>${st.sent} reminder${st.sent === 1 ? '' : 's'}</b> → <b>${st.orders} order${st.orders === 1 ? '' : 's'}</b>${st.value ? ` worth <b>${fmtPHP(st.value)}</b>` : ''} within a week.</div>
+    <div class="sl-card"><div class="sl-card-h"><b>🔁 Due to reorder</b><small class="sl-dim">past their usual rhythm</small></div>
+      ${a.due.length ? a.due.map(r => fuAgainRow(r.buyer_id, r.buyer_name, `Usually every ${r.usual_gap} days · last order ${r.days_since} days ago`, 'reorder')).join('') : '<div class="empty-mini">Nobody is late right now. Needs 3+ past orders to learn their rhythm.</div>'}</div>
+    <div class="sl-card"><div class="sl-card-h"><b>😴 Gone quiet</b><small class="sl-dim">no order in 45+ days</small></div>
+      ${a.quiet.length ? a.quiet.slice(0, 20).map(b => fuAgainRow(b.id, b.name, `Last order ${b.days} days ago · ${b.orders} order${b.orders > 1 ? 's' : ''}, ${hmPeso(b.value)} total`, 'quiet')).join('') : '<div class="empty-mini">Nobody has gone quiet. 👏</div>'}</div>`;
+}
+async function fuReorderLink(buyerId){
+  if(!myBusiness){ const slug = window._demoStoreSlug || 'metro-steel-co'; return storeUrl(slug) + '?re=demo'; }
+  const { data, error } = await sb.rpc('create_reorder_link', {p_buyer: buyerId});
+  if(error) return null;
+  return data || null;
+}
+async function fuSendReorder(buyerId, kind){
+  const b = (buyersData || []).find(x => x.id === buyerId) || {};
+  const r = (reorderDueCache || []).find(x => x.buyer_id === buyerId);
+  const q = fuQuiet().find(x => x.id === buyerId);
+  const name = b.name || (r && r.buyer_name) || (q && q.name) || 'po';
+  const link = await fuReorderLink(buyerId);
+  const days = r ? r.days_since : q ? q.days : null;
+  const text = kind === 'quiet'
+    ? `Hi ${name}! Kumusta po? Matagal-tagal na rin 😊 We have fresh stock and updated prices.${link ? ` Your usual order is ready here, just check it and tap Order: ${link}` : ' Reply here and we\'ll prepare your usual order.'} Salamat!`
+    : `Hi ${name}! Kumusta po? It's been ${days || 'a few'} days since your last order, baka paubos na. ${link ? `Your usual order is ready here, just check it and tap Order: ${link}` : 'Reply here and we\'ll prepare your usual order today.'} Salamat!`;
+  const conv = getConversations().find(c => c.id === buyerId);
+  window._fuPending = {buyerId, kind};
+  if(conv && !b.isOutside){
+    if(sendTextInChat(buyerId, text)){ await fuLogNudge(buyerId, kind, 'chat'); showToast(`Sent to ${name} in your Nifti chat.`, 'success'); renderFollowupsPage(); }
+    return;
+  }
+  openShareSheet(`Send to ${name}`, text, {sub: link ? 'The link opens your store with their usual order already in the cart.' : 'Open your online store to include a one-tap reorder link.', after: `fuLogNudge('${buyerId}','${kind}','share').then(() => { slClose('shareSheet'); renderFollowupsPage(); })`});
+}
+async function fuLogNudge(buyerId, kind, channel){
+  const row = {buyer_business_id: buyerId, kind, channel, created_by: slMemberName(), created_at: new Date().toISOString()};
+  if(myBusiness){ const { data } = await sb.from('customer_nudges').insert(Object.assign({business_id: myBusiness.id}, row)).select().single(); if(data) (nudgesCache || []).unshift(data); }
+  else window._demoNudges.unshift(Object.assign({id: Date.now()}, row));
+  trackEvent('reorder_nudge_sent', {kind, channel});
+}
+async function fuSnooze(buyerId){
+  const row = {buyer_business_id: buyerId, kind: 'snooze', snooze_until: addDaysIso(APP_TODAY, 30), created_by: slMemberName(), created_at: new Date().toISOString()};
+  if(myBusiness){ const { data } = await sb.from('customer_nudges').insert(Object.assign({business_id: myBusiness.id}, row)).select().single(); if(data) nudgesCache.unshift(data); }
+  else window._demoNudges.unshift(row);
+  showToast('Hidden for 30 days.', 'success'); renderFollowupsPage(); if(homeIsActive()) renderHomeV2();
+}
+function fuLeadForm(l){
+  const x = l || {};
+  return `<div class="field"><label>Name</label><input id="ldName" maxlength="120" value="${escapeHtml(x.name || '')}" placeholder="e.g. Rhea Santos"></div>
+    <div class="field"><label>Business (optional)</label><input id="ldCompany" maxlength="120" value="${escapeHtml(x.company || '')}" placeholder="e.g. RS Construction"></div>
+    <div class="row-2"><div class="field"><label>Mobile</label><input id="ldPhone" type="tel" maxlength="20" value="${escapeHtml(x.phone || '')}" placeholder="0917 123 4567"></div>
+      <div class="field"><label>Email (optional)</label><input id="ldEmail" type="email" maxlength="120" value="${escapeHtml(x.email || '')}"></div></div>
+    <div class="field"><label>What they want</label><input id="ldInterest" maxlength="300" value="${escapeHtml(x.interest || '')}" placeholder="e.g. 200 bags cement monthly, asked for a price"></div>
+    <div class="row-2"><div class="field"><label>Possible order (₱, optional)</label><input id="ldValue" type="number" min="0" value="${x.est_value || ''}"></div>
+      <div class="field"><label>Where from</label><select id="ldSource">${Object.entries(LEAD_SOURCES).filter(([k]) => k !== 'invite' && k !== 'discover' || k === x.source).map(([k, v]) => `<option value="${k}" ${(x.source || 'walkin') === k ? 'selected' : ''}>${v}</option>`).join('')}</select></div></div>
+    <div class="field"><label>Follow up on</label><input id="ldNext" type="date" value="${x.next_follow_up || APP_TODAY}"></div>`;
+}
+function fuAddLead(){
+  slModal('leadModal', `<div class="sl-sheet-h"><b>Add a lead</b><button class="sl-x" onclick="slClose('leadModal')">✕</button></div>
+    <div class="sl-sub">Anyone who asked for a price, called, walked in or messaged your page.</div>${fuLeadForm()}
+    <div id="ldErr" class="sl-err"></div><button class="btn btn-primary sl-wide" onclick="fuSaveNewLead()">Save lead</button>`);
+  setTimeout(() => { const n = document.getElementById('ldName'); if(n) n.focus(); }, 50);
+}
+function fuReadLeadForm(){
+  const v = id => (document.getElementById(id) || {}).value || '';
+  return {name: stripMarkup(v('ldName')).trim().slice(0, 120), company: stripMarkup(v('ldCompany')).trim().slice(0, 120) || null, phone: slPhoneDigits(v('ldPhone')) ? '0' + slPhoneDigits(v('ldPhone')) : null,
+    email: v('ldEmail').trim().toLowerCase() || null, interest: stripMarkup(v('ldInterest')).trim().slice(0, 300) || null, est_value: Number(v('ldValue')) || null, source: v('ldSource') || 'walkin', next_follow_up: v('ldNext') || APP_TODAY};
+}
+async function fuSaveNewLead(){
+  const f = fuReadLeadForm(), err = document.getElementById('ldErr');
+  if(f.name.length < 2){ err.textContent = 'Add their name.'; return; }
+  if(!f.phone && !f.email){ err.textContent = 'Add a mobile number or email, so you can reach them.'; return; }
+  const row = Object.assign(f, {stage: 'new', touches: 0, log: [{at: new Date().toISOString(), what: 'Added by ' + slMemberName()}]});
+  if(!await fuInsertLeads([row])) return;
+  slClose('leadModal'); showToast('Lead saved. It shows on your Follow-ups on the date you picked.', 'success'); renderFollowupsPage();
+}
+async function fuInsertLeads(rows){
+  if(myBusiness){
+    const { data, error } = await sb.from('sales_leads').insert(rows.map(r => Object.assign({business_id: myBusiness.id}, r))).select();
+    if(error){ showToast("Couldn't save: " + error.message, 'error'); return false; }
+    leadsCache = (data || []).concat(leadsCache || []);
+  } else rows.forEach(r => window._demoLeads.unshift(Object.assign({id: 'L' + Date.now() + Math.random().toString(36).slice(2, 6), created_at: APP_TODAY}, r)));
+  if(!myBusiness) leadsCache = window._demoLeads;
+  return true;
+}
+function fuPasteLeads(){
+  slModal('leadModal', `<div class="sl-sheet-h"><b>Paste a list of leads</b><button class="sl-x" onclick="slClose('leadModal')">✕</button></div>
+    <div class="sl-sub">One per line: name, mobile, and anything else. Copy it from Viber, Excel or your notebook photos.</div>
+    <textarea id="ldPaste" rows="8" class="sl-ta" placeholder="Rhea Santos 0917 123 4567 RS Construction&#10;Jojo Villareal, 0928 111 2233, wants GI wire&#10;Ana Lim - ana@limtrading.ph"></textarea>
+    <div id="ldErr" class="sl-err"></div><button class="btn btn-primary sl-wide" onclick="fuSavePasted()">Add them</button>`);
+}
+async function fuSavePasted(){
+  const lines = ((document.getElementById('ldPaste') || {}).value || '').split('\n').map(s => s.trim()).filter(Boolean).slice(0, 300);
+  const rows = [];
+  lines.forEach(line => {
+    const phoneM = line.match(/(\+?63|0)?\s*9\d{2}[\s-]?\d{3}[\s-]?\d{4}/);
+    const emailM = line.match(/[^\s,;]+@[^\s,;]+\.[a-z]{2,}/i);
+    let rest = line.replace(phoneM ? phoneM[0] : '', ' ').replace(emailM ? emailM[0] : '', ' ').replace(/[,;|\t]+/g, ',').split(',').map(s => s.replace(/^[\s\-–]+|[\s\-–]+$/g, '')).filter(Boolean);
+    if(!rest.length || (!phoneM && !emailM)) return;
+    rows.push({name: rest[0].slice(0, 120), company: null, interest: rest.slice(1).join(', ').slice(0, 300) || null, phone: phoneM ? '0' + slPhoneDigits(phoneM[0]) : null,
+      email: emailM ? emailM[0].toLowerCase() : null, source: 'walkin', stage: 'new', next_follow_up: APP_TODAY, touches: 0, log: [{at: new Date().toISOString(), what: 'Added from a pasted list'}]});
+  });
+  const err = document.getElementById('ldErr');
+  if(!rows.length){ err.textContent = 'Couldn\'t find anyone with a mobile number or email. Put one person per line.'; return; }
+  if(!await fuInsertLeads(rows)) return;
+  slClose('leadModal'); showToast(`${rows.length} lead${rows.length > 1 ? 's' : ''} added for today.`, 'success'); fuTab = 'today'; renderFollowupsPage();
+}
+function fuLeadTemplates(l){
+  const who = l.name.split(' ')[0], biz = myBusiness ? myBusiness.name : 'Metro Steel Co.';
+  const slug = myBusiness ? myBusiness.store_slug : (window._demoStoreSlug || 'metro-steel-co');
+  const store = slug ? ' You can also see our prices and order here: ' + storeUrl(slug, 'lead') : '';
+  return [
+    ['First reply', `Hi ${who}! This is ${slMemberName().split(' ')[0]} from ${biz}. Salamat for reaching out${l.interest ? ` about ${l.interest.replace(/[.?!]+$/, '')}` : ''}. Can I send you our best price? Ilan po ang kailangan and saan ang delivery?${store}`],
+    ['Follow up', `Hi ${who}! Following up lang po on our quote. Tuloy pa po ba? We can deliver as early as tomorrow, and I can hold the price for you this week.${store}`],
+    ['Last try', `Hi ${who}! Last message na po, ayaw ko pong makulit 😊 If you still need supplies anytime, just reply here and we'll prepare it. Salamat!`],
+  ];
+}
+function fuOpenLead(id){
+  const l = (leadsCache || []).find(x => String(x.id) === String(id)); if(!l) return;
+  const tpl = fuLeadTemplates(l);
+  const closed = l.stage === 'won' || l.stage === 'lost';
+  slModal('leadModal', `<div class="sl-sheet-h"><div><b>${escapeHtml(l.name)}</b>${l.company ? `<div class="sl-dim">${escapeHtml(l.company)}</div>` : ''}</div><button class="sl-x" onclick="slClose('leadModal')">✕</button></div>
+    <div class="sl-lead-meta"><span class="sl-pill st-${l.stage}">${LEAD_STAGES[l.stage]}</span><span>${LEAD_SOURCES[l.source] || escapeHtml(l.source)}</span>${l.est_value ? `<span>≈ ${fmtPHP(l.est_value)}</span>` : ''}</div>
+    ${l.interest ? `<div class="sl-quote">“${escapeHtml(l.interest)}”</div>` : ''}
+    ${slContactButtons(l.phone, l.email)}
+    <details class="sl-tpl"><summary>💬 Message ideas (tap to copy or send)</summary>${tpl.map(([t, m], i) => `<div class="sl-tpl-i"><b>${t}</b><p>${escapeHtml(m)}</p>
+      <button class="btn btn-outline" onclick="openShareSheet('Send to ${escapeHtml(l.name).replace(/'/g, '')}', fuLeadTemplates((leadsCache||[]).find(x => String(x.id) === '${l.id}'))[${i}][1])">Use this</button></div>`).join('')}</details>
+    ${closed ? '' : `<div class="sl-q">What happened?</div>
+    <div class="sl-outcomes">
+      <button onclick="fuOutcome('${l.id}','noanswer')">📵 No answer</button>
+      <button onclick="fuOutcome('${l.id}','talked')">🗣 Talked, interested</button>
+      <button onclick="fuOutcome('${l.id}','quoted')">🧾 Sent a price</button>
+      <button class="good" onclick="fuOutcome('${l.id}','order')">✅ They'll order</button>
+      <button class="bad" onclick="fuOutcome('${l.id}','lost')">✋ Not now</button>
+    </div>
+    <div class="row-2"><div class="field"><label>Next follow-up</label><input id="ldNextQuick" type="date" value="${l.next_follow_up || APP_TODAY}" onchange="fuPatchLead('${l.id}', {next_follow_up: this.value || null}).then(() => showToast('Follow-up moved.', 'success'))"></div>
+      <div class="field"><label>Note</label><input id="ldNote" maxlength="300" placeholder="e.g. Call after 3pm" onkeydown="if(event.key==='Enter') fuAddNote('${l.id}')"></div></div>`}
+    <div class="sl-q">History</div><div class="sl-log">${(l.log || []).slice().reverse().map(e => `<div><span>${escapeHtml(String(e.at || '').slice(0, 10))}</span>${escapeHtml(e.what || '')}</div>`).join('') || '<div>Nothing yet.</div>'}</div>
+    ${closed ? `<button class="btn btn-outline sl-wide" onclick="fuPatchLead('${l.id}', {stage:'contacted', next_follow_up: APP_TODAY}).then(() => { fuOpenLead('${l.id}'); renderFollowupsPage(); })">Open this lead again</button>` : ''}
+    <button class="sl-link" style="margin-top:10px;" onclick="fuEditLead('${l.id}')">✏️ Edit details</button>`);
+}
+async function fuPatchLead(id, patch, logWhat){
+  const l = (leadsCache || []).find(x => String(x.id) === String(id)); if(!l) return;
+  const p = Object.assign({}, patch, {updated_at: new Date().toISOString()});
+  if(logWhat) p.log = (l.log || []).concat([{at: new Date().toISOString(), what: logWhat + ' · ' + slMemberName()}]);
+  if(myBusiness){ const { error } = await sb.from('sales_leads').update(p).eq('id', id); if(error){ showToast(error.message, 'error'); return; } }
+  Object.assign(l, p);
+}
+async function fuOutcome(id, what){
+  const l = (leadsCache || []).find(x => String(x.id) === String(id)); if(!l) return;
+  const now = new Date().toISOString(), t = n => addDaysIso(APP_TODAY, n);
+  if(what === 'noanswer') await fuPatchLead(id, {next_follow_up: t(1), touches: (l.touches || 0) + 1, last_contact_at: now}, 'Tried to reach them: no answer');
+  if(what === 'talked') await fuPatchLead(id, {stage: 'contacted', next_follow_up: t(3), touches: (l.touches || 0) + 1, last_contact_at: now}, 'Talked: interested');
+  if(what === 'quoted') await fuPatchLead(id, {stage: 'quoted', next_follow_up: t(2), touches: (l.touches || 0) + 1, last_contact_at: now}, 'Sent a price');
+  if(what === 'lost'){ const why = prompt('Why not now? (optional, e.g. price, already has a supplier)', '') ; if(why === null) return;
+    await fuPatchLead(id, {stage: 'lost', next_follow_up: null, lost_reason: why || null}, 'Not now' + (why ? ': ' + why : '')); }
+  if(what === 'order'){ slClose('leadModal'); openCustomerPoImport({name: l.company || l.name, phone: l.phone, email: l.email, leadId: l.id}); return; }
+  const tries = (l.touches || 0);
+  showToast(what === 'lost' ? 'Moved to Not now. It stays in your list.' : `Saved. Next follow-up ${fuDueLabel(l.next_follow_up).toLowerCase()}.${tries >= 4 && l.stage !== 'quoted' ? ' That\'s 4+ tries: consider Not now.' : ''}`, 'success');
+  fuOpenLead(id); renderFollowupsPage(); if(homeIsActive()) renderHomeV2();
+}
+async function fuAddNote(id){
+  const inp = document.getElementById('ldNote'); const v = stripMarkup((inp || {}).value || '').trim(); if(!v) return;
+  await fuPatchLead(id, {}, '📝 ' + v.slice(0, 300)); fuOpenLead(id);
+}
+function fuEditLead(id){
+  const l = (leadsCache || []).find(x => String(x.id) === String(id)); if(!l) return;
+  slModal('leadModal', `<div class="sl-sheet-h"><b>Edit lead</b><button class="sl-x" onclick="slClose('leadModal')">✕</button></div>${fuLeadForm(l)}
+    <div id="ldErr" class="sl-err"></div><button class="btn btn-primary sl-wide" onclick="fuSaveEdit('${l.id}')">Save</button>`);
+}
+async function fuSaveEdit(id){
+  const f = fuReadLeadForm();
+  if(f.name.length < 2){ document.getElementById('ldErr').textContent = 'Add their name.'; return; }
+  await fuPatchLead(id, f); slClose('leadModal'); fuOpenLead(id); renderFollowupsPage();
+}
+
+/* ============ COLLECTIONS: who to chase today, promises, and where every peso is ============ */
+let colTab = 'follow', promisesCache = null, remLogCache = null, depositsCache = null, bankMatchesCache = null, colBankResult = null;
+const COLL_DEFAULT = {schedule: [-2, 0, 3, 7, 14, 30], tone: 'friendly', email: true, auto_reorder: false};
+function collSettings(){
+  const s = myBusiness ? (myBusiness.collection_settings || {}) : (window._demoColl || {});
+  return Object.assign({}, COLL_DEFAULT, s, {schedule: Array.isArray(s.schedule) && s.schedule.length ? s.schedule.map(Number).sort((a, b) => a - b) : COLL_DEFAULT.schedule});
+}
+async function collSave(patch){
+  const next = Object.assign(collSettings(), patch);
+  if(myBusiness){
+    const { error } = await sb.from('businesses').update({collection_settings: next}).eq('id', myBusiness.id);
+    if(error){ showToast("Couldn't save: " + error.message, 'error'); return; }
+    myBusiness.collection_settings = next;
+  } else window._demoColl = next;
+  showToast('Saved.', 'success');
+}
+async function colLoad(force){
+  if(promisesCache && !force) return;
+  if(!myBusiness){
+    if(!window._demoPromises) window._demoPromises = [{id: 'P1', buyer_business_id: 'buy_riverside', amount: 15000, promised_date: addDaysIso(APP_TODAY, 1), status: 'open', note: 'Said they\'d pay Friday via BDO', created_at: addDaysIso(APP_TODAY, -2)}];
+    promisesCache = window._demoPromises; remLogCache = window._demoRemLog || (window._demoRemLog = []);
+    if(!window._demoOverdueSeeded){ window._demoOverdueSeeded = true;  // one late payer so the demo shows the follow-up flow
+      const po = getSupplierPOs().find(p => p.status === 'delivered' && !p.invoice);
+      if(po){ po.status = 'invoiced'; po.invoice = {number: 'INV-2026-0421', dueDate: addDaysIso(APP_TODAY, -6), issuedDate: addDaysIso(APP_TODAY, -21), status: 'unpaid', statedTotal: poTotal(po), payments: []}; } }
+    depositsCache = window._demoDeposits || (window._demoDeposits = []); bankMatchesCache = window._demoBank || (window._demoBank = []);
+    return;
+  }
+  const [p, r, d, b] = await Promise.all([
+    sb.from('payment_promises').select('*').order('promised_date').limit(500),
+    sb.rpc('my_reminder_log'),
+    sb.from('cash_deposits').select('*').order('deposited_on', {ascending: false}).limit(300),
+    sb.from('bank_matches').select('*').order('created_at', {ascending: false}).limit(2000)]);
+  promisesCache = p.data || []; remLogCache = r.data || []; depositsCache = d.data || []; bankMatchesCache = b.data || [];
+}
+function colBuyerChannel(buyerId){
+  const b = (buyersData || []).find(x => x.id === buyerId) || {};
+  if(!b.isOutside && getConversations().some(c => c.id === buyerId)) return 'chat';
+  if(b.isOutside && (b.email || (b.outsideContact || {}).email) && collSettings().email) return 'email';
+  return 'manual';
+}
+function colStage(daysLate, sched){ const s = sched.filter(o => o <= daysLate); return s.length ? s[s.length - 1] : null; }
+function colRows(){
+  const sched = collSettings().schedule;
+  const by = {};
+  unpaidInvoicesFor('supplier').forEach(r => {
+    const g = by[r.po.buyerId] || (by[r.po.buyerId] = {id: r.po.buyerId, name: r.po.buyerName, total: 0, overdue: 0, maxLate: -9999, pending: 0, invs: [], nextDue: null, needs: []});
+    g.total += r.balance; g.pending += r.pending; g.invs.push(r);
+    const days = r.due ? r.daysOverdue : null;
+    if(days != null){ g.maxLate = Math.max(g.maxLate, days); if(days > 0) g.overdue += r.balance; else if(!g.nextDue || r.due < g.nextDue) g.nextDue = r.due;
+      const st = colStage(days, sched);
+      if(st != null && !(remLogCache || []).some(x => x.po_id === r.po.id && x.stage === 'd' + st)) g.needs.push({po: r.po, stage: 'd' + st, days}); }
+  });
+  const promises = (promisesCache || []).filter(p => p.status === 'open');
+  return Object.values(by).map(g => {
+    g.promise = promises.find(p => p.buyer_business_id === g.id);
+    g.channel = colBuyerChannel(g.id);
+    g.needsYou = g.needs.length > 0 && g.channel === 'manual' && !(g.promise && g.promise.promised_date >= APP_TODAY);
+    g.autoQueued = g.needs.length > 0 && g.channel !== 'manual' && autoRemindersOn();
+    return g;
+  }).sort((a, b) => (b.needsYou - a.needsYou) || (b.overdue - a.overdue) || (b.total - a.total));
+}
+async function renderCollectionsPage(){
+  const el = document.getElementById('collectionsContent'); if(!el) return;
+  if(!promisesCache) el.innerHTML = '<div class="panel-card">Loading…</div>';
+  await colLoad();
+  if(typeof seedDemoCheques === 'function' && !myBusiness) seedDemoCheques();
+  const rows = colRows(), needs = rows.filter(r => r.needsYou).length;
+  el.innerHTML = `<div class="adm-tabs sl-tabs">
+      <button class="${colTab === 'follow' ? 'active' : ''}" onclick="colTab='follow'; renderCollectionsPage()">Follow up${needs ? ` <span class="sl-n">${needs}</span>` : ''}</button>
+      <button class="${colTab === 'cash' ? 'active' : ''}" onclick="colTab='cash'; renderCollectionsPage()">Cash &amp; bank</button>
+      <button class="${colTab === 'rules' ? 'active' : ''}" onclick="colTab='rules'; renderCollectionsPage()">⚙️ Reminder rules</button>
+    </div><div id="colBody"></div>`;
+  const body = document.getElementById('colBody');
+  if(colTab === 'cash') return colRenderCash(body);
+  if(colTab === 'rules') return colRenderRules(body);
+  const overdue = rows.reduce((s, r) => s + r.overdue, 0);
+  const week = unpaidInvoicesFor('supplier').filter(r => r.due && r.daysOverdue <= 0 && r.daysOverdue >= -7).reduce((s, r) => s + r.balance, 0);
+  const promised = (promisesCache || []).filter(p => p.status === 'open').reduce((s, p) => s + Number(p.amount), 0);
+  const pend = rows.reduce((s, r) => s + r.pending, 0);
+  const on = autoRemindersOn();
+  body.innerHTML = `<div class="sl-tiles four">
+      <div class="sl-tile bad"><small>Overdue</small><b>${hmPeso(overdue)}</b><span>${(n => n + ' customer' + (n === 1 ? '' : 's'))(rows.filter(r => r.overdue > 0).length)}</span></div>
+      <div class="sl-tile"><small>Due in 7 days</small><b>${hmPeso(week)}</b><span>coming in</span></div>
+      <div class="sl-tile"><small>Promised</small><b>${hmPeso(promised)}</b><span>${(n => n + ' promise' + (n === 1 ? '' : 's'))((promisesCache || []).filter(p => p.status === 'open').length)}</span></div>
+      <div class="sl-tile"><small>To confirm</small><b>${hmPeso(pend)}</b><span>they say they paid</span></div>
+    </div>
+    <div class="sl-card sl-auto ${on ? 'on' : ''}"><div class="toggle-row"><div><div class="toggle-txt">${on ? '🤖 Reminders go out by themselves' : 'Automatic reminders are off'} ${proBadge('auto_reminders')}</div>
+      <div class="toggle-sub">${on ? `Following your terms: ${collSettings().schedule.map(colOffsetLabel).join(', ')}. By Nifti chat, or email for customers not on Nifti. Everyone else is listed below with the message ready.` : 'Turn on to remind customers on your schedule. Paused while they have a promise to pay.'}</div></div>
+      ${slSwitch(on, 'toggleAutoPaymentReminders(this); setTimeout(renderCollectionsPage, 300)')}</div></div>
+    <div class="sl-card"><div class="sl-card-h"><b>Customers with a balance</b></div>
+      ${rows.length ? rows.map(colRow).join('') : '<div class="empty-mini"><b>Nobody owes you</b>Unpaid invoices show up here with what to do next.</div>'}</div>
+    ${colPromisesHtml()}`;
+}
+function colOffsetLabel(o){ return o < 0 ? `${-o}d before` : o === 0 ? 'due day' : `${o}d after`; }
+function colRow(g){
+  const late = g.overdue > 0;
+  let status;
+  if(g.promise) status = `<span class="sl-good">🤝 Promised ${fmtPHP(g.promise.amount)} by ${fuDueLabel(g.promise.promised_date).toLowerCase()}</span>`;
+  else if(g.needsYou) status = `<span class="sl-warn">📣 Reminder due. Not on Nifti and no email, so send it yourself</span>`;
+  else if(g.autoQueued) status = `<span class="sl-dim">🤖 Reminder goes out by ${g.channel === 'chat' ? 'chat' : 'email'} tomorrow 9am</span>`;
+  else { const last = (remLogCache || []).filter(x => g.invs.some(i => i.po.id === x.po_id)).sort((a, b) => String(b.sent_at).localeCompare(String(a.sent_at)))[0];
+    status = last ? `<span class="sl-dim">Reminded ${slDaysAgo(last.sent_at) === 0 ? 'today' : slDaysAgo(last.sent_at) + 'd ago'} by ${last.channel === 'manual' ? 'you' : last.channel}</span>`
+      : g.nextDue && !late ? `<span class="sl-dim">Next due ${fuDueLabel(g.nextDue).toLowerCase()}</span>` : ''; }
+  return `<div class="sl-row col-row">
+    <div class="sl-mid"><div class="sl-t">${escapeHtml(g.name)}</div>
+      <div class="sl-s">${fmtPHP(g.total)}${late ? ` · <b class="sl-bad">${fmtPHP(g.overdue)} overdue, ${g.maxLate}d</b>` : ''}${g.pending > 0 ? ` · ${fmtPHP(g.pending)} to confirm` : ''}</div>
+      <div class="sl-s">${status}</div></div>
+    <div class="sl-right sl-acts">
+      <button class="hm-go${g.needsYou ? '' : ' soft'}" onclick="colRemind('${g.id}')">${g.needsYou ? 'Send reminder' : 'Remind'}</button>
+      <button class="sl-link" onclick="colPromise('${g.id}')">Promise</button></div></div>`;
+}
+function colPromisesHtml(){
+  const ps = (promisesCache || []).filter(p => p.status === 'open' || slDaysAgo(p.resolved_at || p.created_at) <= 30);
+  if(!ps.length) return '';
+  const name = id => ((buyersData || []).find(b => b.id === id) || {}).name || 'Customer';
+  return `<div class="sl-card"><div class="sl-card-h"><b>🤝 Promises to pay</b><small class="sl-dim">we check them every morning</small></div>
+    ${ps.map(p => `<div class="sl-row"><div class="sl-mid"><div class="sl-t">${escapeHtml(name(p.buyer_business_id))} · ${fmtPHP(p.amount)}</div>
+      <div class="sl-s">By ${stmtDate(p.promised_date)}${p.note ? ' · ' + escapeHtml(p.note) : ''}</div></div>
+      <div class="sl-right"><span class="sl-pill ${p.status === 'kept' ? 'st-won' : p.status === 'broken' ? 'st-lost' : 'st-contacted'}">${p.status === 'open' ? (p.promised_date < APP_TODAY ? 'Due' : 'Waiting') : p.status === 'kept' ? 'Kept ✓' : p.status === 'broken' ? 'Broken' : 'Cancelled'}</span>
+      ${p.status === 'open' ? `<button class="sl-link" onclick="colCancelPromise('${p.id}')">Cancel</button>` : ''}</div></div>`).join('')}</div>`;
+}
+function colMessage(g){
+  const sched = collSettings();
+  const lines = g.invs.map(r => `• ${r.po.invoice.number || r.po.poNumber}: ${fmtPHP(r.balance)}${r.daysOverdue > 0 ? `, ${r.daysOverdue} days overdue` : r.due ? `, due ${stmtDate(r.due).replace(/, \d{4}$/, '')}` : ''}`).join('\n');
+  const worst = g.maxLate;
+  const head = worst < 0 ? 'Friendly reminder po, this is coming due soon:' : worst === 0 ? 'Friendly reminder po, this is due today:'
+    : worst < 14 && sched.tone !== 'firm' ? 'Just following up on this, it\'s now past due:' : worst < 30 ? 'This is now past due. Please settle it this week:' : 'This is now long overdue. Please settle it right away, or tell us when we can expect payment:';
+  return `Hi ${g.name}! ${head}\n${lines}\n\nBalance: ${fmtPHP(g.total)}${worst > 0 ? '\nAlready paid? Just send the reference number and we\'ll confirm it.' : ''}\nSalamat! – ${myBusiness ? myBusiness.name : 'Metro Steel Co.'}`;
+}
+async function colRemind(buyerId){
+  const g = colRows().find(x => x.id === buyerId); if(!g) return;
+  let text = colMessage(g);
+  let link = null;
+  if(myBusiness){ const { data } = await sb.rpc('create_statement_link', {p_buyer: buyerId}); if(data) link = appBaseUrl() + '#st/' + data; }
+  else link = appBaseUrl() + '#st/demo';
+  if(link) text = text.replace('\nSalamat!', `\nSee your balance and how to pay (tap "I've paid" once you have): ${link}\nSalamat!`);
+  window._colPendingLog = g.needs.map(n => ({po_id: n.po.id, stage: n.stage}));
+  if(g.channel === 'chat'){
+    if(sendTextInChat(buyerId, text)){ await colLogManual(); showToast(`Reminder sent to ${g.name} in chat.`, 'success'); renderCollectionsPage(); }
+    return;
+  }
+  openShareSheet(`Remind ${g.name}`, text, {sub: 'Their statement link shows every invoice and your GCash/bank details, with an "I\'ve paid" button.', after: "colLogManual().then(() => { slClose('shareSheet'); showToast('Logged. We won\\'t ask you again for this stage.', 'success'); renderCollectionsPage(); })"});
+}
+async function colLogManual(){
+  const list = window._colPendingLog || []; window._colPendingLog = [];
+  for(const x of list){
+    if(myBusiness) await sb.rpc('log_manual_reminder', {p_po: x.po_id, p_stage: x.stage});
+    remLogCache.push({po_id: x.po_id, stage: x.stage, channel: 'manual', sent_at: new Date().toISOString()});
+  }
+}
+function colPromise(buyerId){
+  const g = colRows().find(x => x.id === buyerId); if(!g) return;
+  slModal('promiseModal', `<div class="sl-sheet-h"><b>${escapeHtml(g.name)} promised to pay</b><button class="sl-x" onclick="slClose('promiseModal')">✕</button></div>
+    <div class="sl-sub">We pause reminders until that day. If the money isn't in by then, we remind them and tell you.</div>
+    <div class="row-2"><div class="field"><label>How much</label><input id="prAmt" type="number" min="1" value="${Math.round(g.overdue || g.total)}"></div>
+      <div class="field"><label>By when</label><input id="prDate" type="date" value="${addDaysIso(APP_TODAY, 3)}"></div></div>
+    <div class="field"><label>Note (optional)</label><input id="prNote" maxlength="200" placeholder="e.g. Will deposit to BDO on Friday"></div>
+    <div id="prErr" class="sl-err"></div><button class="btn btn-primary sl-wide" onclick="colSavePromise('${buyerId}')">Save promise</button>`);
+}
+async function colSavePromise(buyerId){
+  const amt = Number(document.getElementById('prAmt').value), date = document.getElementById('prDate').value, note = stripMarkup(document.getElementById('prNote').value).trim().slice(0, 200) || null;
+  const err = document.getElementById('prErr');
+  if(!(amt > 0)){ err.textContent = 'Enter the amount.'; return; }
+  if(!date || date < APP_TODAY){ err.textContent = 'Pick today or a later date.'; return; }
+  (promisesCache || []).filter(p => p.buyer_business_id === buyerId && p.status === 'open').forEach(p => colCancelPromise(p.id, true));
+  const row = {buyer_business_id: buyerId, amount: amt, promised_date: date, note, status: 'open', created_by: slMemberName()};
+  if(myBusiness){ const { data, error } = await sb.from('payment_promises').insert(Object.assign({business_id: myBusiness.id}, row)).select().single(); if(error){ err.textContent = error.message; return; } promisesCache.push(data); }
+  else promisesCache.push(Object.assign({id: 'P' + Date.now(), created_at: APP_TODAY}, row));
+  slClose('promiseModal'); showToast('Promise saved. Reminders pause until then.', 'success'); renderCollectionsPage();
+}
+async function colCancelPromise(id, quiet){
+  const p = (promisesCache || []).find(x => String(x.id) === String(id)); if(!p) return;
+  if(myBusiness) await sb.from('payment_promises').update({status: 'cancelled', resolved_at: new Date().toISOString()}).eq('id', id);
+  p.status = 'cancelled';
+  if(!quiet){ showToast('Promise cancelled. Reminders resume.', 'success'); renderCollectionsPage(); }
+}
+function colRenderRules(body){
+  const s = collSettings();
+  const opts = [-3, -2, -1, 0, 1, 3, 5, 7, 10, 14, 21, 30, 45, 60, 90];
+  body.innerHTML = `<div class="sl-card"><div class="sl-card-h"><b>When to remind</b></div>
+      <div class="sl-sub">Counted from each invoice's due date, which comes from the terms you set per customer (COD, 15 or 30 days…). One message per customer per day, covering all their invoices.</div>
+      <div class="sl-days">${opts.map(o => `<button class="${s.schedule.includes(o) ? 'on' : ''}" onclick="colToggleDay(${o})">${colOffsetLabel(o)}</button>`).join('')}</div></div>
+    <div class="sl-card"><div class="sl-card-h"><b>How it sounds</b></div>
+      <label class="store-radio"><input type="radio" name="colTone" ${s.tone !== 'firm' ? 'checked' : ''} onchange="collSave({tone:'friendly'})"> <span><b>Friendly</b> · polite for the first two weeks, firmer after 14 days</span></label>
+      <label class="store-radio"><input type="radio" name="colTone" ${s.tone === 'firm' ? 'checked' : ''} onchange="collSave({tone:'firm'})"> <span><b>Firm</b> · asks to settle this week as soon as it's past due</span></label>
+      <div class="sl-preview">${escapeHtml("Hi Dela Cruz Hardware! Just following up on this, it's now past due:\n• INV-2026-0398: ₱112,896, 5 days overdue\n\nSee your balance and how to pay (tap \"I've paid\" once you have): nifti link\nSalamat!")}</div></div>
+    <div class="sl-card"><div class="toggle-row"><div><div class="toggle-txt">Email customers who aren't on Nifti</div><div class="toggle-sub">When you have their email. Everyone else stays on your Follow up list with the message ready for Viber.</div></div>
+      ${slSwitch(s.email, "collSave({email: !collSettings().email}).then(renderCollectionsPage)")}</div></div>`;
+}
+async function colToggleDay(o){
+  const s = collSettings(); const set = new Set(s.schedule);
+  if(set.has(o)){ if(set.size === 1){ showToast('Keep at least one reminder day.'); return; } set.delete(o); } else set.add(o);
+  await collSave({schedule: [...set].sort((a, b) => a - b)}); renderCollectionsPage();
+}
+
+/* ---- Cash & bank: every payment, who holds the cash, and your bank statement matched ---- */
+function colPaymentKey(po, kind, key){ return po.id + '|' + kind + '|' + key; }
+function colLedger(){
+  const out = [];
+  const routeOf = {};
+  (routesCache || []).forEach(r => (r.stops || []).forEach(s => { routeOf[s.id] = r; }));
+  getSupplierPOs().forEach(po => {
+    if(po.status === 'cancelled') return;
+    const add = (p, kind, key) => {
+      if(!p || !(Number(p.amount) > 0) || p.method === 'credit_note' || p.method === 'ewt') return;
+      const r = p.routeStopId ? routeOf[p.routeStopId] : null;
+      const collector = r ? (r.remit ? 'Office' : (r.driver_name || 'Driver')) : p.submittedBy === 'buyer' ? 'Paid online' : (p.recordedBy || 'Office');
+      out.push({po, kind, key, id: colPaymentKey(po, kind, key), p, date: String(p.date || po.createdDate || '').slice(0, 10), method: p.method, amount: Number(p.amount),
+        counted: paymentIsCounted(p), pending: paymentNeedsSupplierAction(p), collector, withDriver: !!(r && !r.remit), ref: p.reference || ''});
+    };
+    ((po.invoice && po.invoice.payments) || []).forEach((p, i) => add(p, 'invoice', paymentKey(p, i)));
+    (po.depositPayments || []).forEach((p, i) => { if(!((po.invoice && po.invoice.payments) || []).some(x => x.id && x.id === p.id)) add(p, 'deposit', paymentKey(p, i)); });
+    if(po.codPayment) add(po.codPayment, 'cod', 'cod');
+  });
+  return out.sort((a, b) => b.date.localeCompare(a.date));
+}
+function colDepositedKeys(){ const s = new Set(); (depositsCache || []).forEach(d => (d.items || []).forEach(k => s.add(k))); return s; }
+function colMatchedKeys(){ const s = new Set(); (bankMatchesCache || []).forEach(m => { if(m.payment_key) s.add(m.payment_key); if(m.deposit_id) s.add('dep:' + m.deposit_id); }); return s; }
+async function colRenderCash(body){
+  if(!hasFeature('reconcile')){ body.innerHTML = lockedPanelHtml('reconcile', 'See every peso collected, who is holding the cash, what went to the bank, and match your bank or GCash statement to your invoices.'); return; }
+  if(typeof loadRoutes === 'function' && hasFeature('routes')) await loadRoutes();
+  const led = colLedger(), dep = colDepositedKeys(), matched = colMatchedKeys();
+  const month = APP_TODAY.slice(0, 7);
+  const collected = led.filter(x => x.counted && x.date.startsWith(month)).reduce((s, x) => s + x.amount, 0);
+  const cashOn = led.filter(x => x.method === 'cash' && x.counted && !dep.has(x.id) && slDaysAgo(x.date) <= 120);
+  const byHolder = {};
+  cashOn.forEach(x => { (byHolder[x.collector] = byHolder[x.collector] || []).push(x); });
+  const cashTotal = cashOn.reduce((s, x) => s + x.amount, 0);
+  const deposited = (depositsCache || []).filter(d => String(d.deposited_on).startsWith(month)).reduce((s, d) => s + Number(d.amount), 0);
+  const bankable = led.filter(x => x.counted && x.method !== 'cash' && slDaysAgo(x.date) <= 60);
+  const unmatched = bankable.filter(x => !matched.has(x.id)).length + (depositsCache || []).filter(d => !matched.has('dep:' + d.id) && slDaysAgo(d.deposited_on) <= 60).length;
+  body.innerHTML = `<div class="sl-tiles four">
+      <div class="sl-tile"><small>Collected this month</small><b>${hmPeso(collected)}</b><span>confirmed payments</span></div>
+      <div class="sl-tile ${cashTotal >= 1 ? 'warn' : ''}"><small>Cash not yet in bank</small><b>${hmPeso(cashTotal)}</b><span>${Object.keys(byHolder).length} holder${Object.keys(byHolder).length === 1 ? '' : 's'}</span></div>
+      <div class="sl-tile"><small>Deposited this month</small><b>${hmPeso(deposited)}</b><span>${(n => n + ' deposit' + (n === 1 ? '' : 's'))((depositsCache || []).filter(d => String(d.deposited_on).startsWith(month)).length)}</span></div>
+      <div class="sl-tile ${unmatched ? 'warn' : ''}"><small>Not matched to bank</small><b>${unmatched}</b><span>last 60 days</span></div>
+    </div>
+    <div class="sl-card"><div class="sl-card-h"><b>💵 Who has the cash</b>${cashOn.length ? `<button class="hm-go" onclick="colDeposit()">Record a deposit</button>` : ''}</div>
+      ${Object.keys(byHolder).length ? Object.entries(byHolder).map(([h, xs]) => `<div class="sl-row"><span class="sl-av ${xs[0].withDriver ? 'w' : 'g'}">${escapeHtml(h.slice(0, 1))}</span>
+        <div class="sl-mid"><div class="sl-t">${escapeHtml(h)}${xs[0].withDriver ? ' <span class="sl-pill st-new">still on the road</span>' : ''}</div><div class="sl-s">${xs.length} payment${xs.length > 1 ? 's' : ''} · oldest ${fuDueLabel(xs[xs.length - 1].date).toLowerCase()}</div></div>
+        <div class="sl-right"><b>${fmtPHP(xs.reduce((s, x) => s + x.amount, 0))}</b></div></div>`).join('')
+        : '<div class="empty-mini"><b>All cash is in the bank</b>Cash payments you or your drivers record show up here until you deposit them.</div>'}</div>
+    <div class="sl-card"><div class="sl-card-h"><b>🏦 Match your bank or GCash statement</b></div>
+      <div class="sl-sub">Download your statement as CSV from your bank or GCash app (or copy the rows), then paste or upload it. We match every deposit to an invoice or cash deposit, and show what doesn't add up.</div>
+      <textarea id="bankPaste" rows="4" class="sl-ta" placeholder="Date, Description, Amount&#10;09/25/2026, INSTAPAY FROM DELA CRUZ HARDWARE REF 7012, 18900.00"></textarea>
+      <div class="sl-actions"><button class="btn btn-primary" onclick="colMatchBank()">Match it</button>
+        <label class="btn btn-outline">⬆ Upload CSV<input type="file" accept=".csv,.txt,text/csv" style="display:none" onchange="colReadBankFile(this)"></label>
+        ${!myBusiness ? '<button class="btn btn-outline" onclick="colSampleBank()">Try a sample</button>' : ''}</div>
+      <div id="bankResult">${colBankResult ? colBankResultHtml() : ''}</div></div>
+    <div class="sl-card"><div class="sl-card-h"><b>🧾 Every payment, last 30 days</b></div>
+      ${led.filter(x => slDaysAgo(x.date) <= 30).slice(0, 60).map(x => `<div class="sl-row tight"><div class="sl-mid"><div class="sl-t">${escapeHtml(x.po.buyerName)} <span class="sl-dim">· ${escapeHtml(x.po.poNumber)}</span></div>
+        <div class="sl-s">${stmtDate(x.date)} · ${PAYMENT_METHOD_LABELS[x.method] || escapeHtml(x.method)}${x.ref ? ' · ' + escapeHtml(x.ref) : ''} · ${escapeHtml(x.collector)}</div></div>
+        <div class="sl-right"><b>${fmtPHP(x.amount)}</b><small>${x.pending ? '<span class="sl-warn">to confirm</span>' : !x.counted ? '<span class="sl-bad">rejected</span>' : x.method === 'cash' ? (dep.has(x.id) ? '<span class="sl-good">deposited</span>' : '<span class="sl-warn">cash on hand</span>') : matched.has(x.id) ? '<span class="sl-good">in bank ✓</span>' : '<span class="sl-dim">not matched</span>'}</small></div></div>`).join('') || '<div class="empty-mini">No payments in the last 30 days.</div>'}</div>`;
+}
+function colDeposit(){
+  const dep = colDepositedKeys();
+  const cash = colLedger().filter(x => x.method === 'cash' && x.counted && !dep.has(x.id) && slDaysAgo(x.date) <= 120);
+  window._colCash = cash;
+  slModal('depModal', `<div class="sl-sheet-h"><b>Record a bank deposit</b><button class="sl-x" onclick="slClose('depModal')">✕</button></div>
+    <div class="sl-sub">Tick the cash payments in this deposit. If the amount on the slip is different, we'll flag the difference.</div>
+    <div class="sl-checks">${cash.map((x, i) => `<label><input type="checkbox" data-dep="${i}" ${x.withDriver ? '' : 'checked'} onchange="colDepSum()"> <span>${escapeHtml(x.po.buyerName)} · ${stmtDate(x.date).replace(/, \d{4}$/, '')} · ${escapeHtml(x.collector)}</span><b>${fmtPHP(x.amount)}</b></label>`).join('')}</div>
+    <div class="row-2"><div class="field"><label>Amount on the deposit slip</label><input id="depAmt" type="number" min="0" step="0.01"></div>
+      <div class="field"><label>Date</label><input id="depDate" type="date" value="${APP_TODAY}"></div></div>
+    <div class="row-2"><div class="field"><label>Bank</label><input id="depBank" maxlength="60" placeholder="e.g. BDO Valenzuela"></div>
+      <div class="field"><label>Slip or reference no.</label><input id="depRef" maxlength="60"></div></div>
+    <div id="depDiff" class="sl-sub"></div><div id="depErr" class="sl-err"></div>
+    <button class="btn btn-primary sl-wide" onclick="colSaveDeposit()">Save deposit</button>`);
+  colDepSum(true);
+}
+function colDepSum(setAmt){
+  const picked = [...document.querySelectorAll('#depModal [data-dep]')].filter(c => c.checked).map(c => window._colCash[Number(c.dataset.dep)]);
+  const sum = picked.reduce((s, x) => s + x.amount, 0);
+  const amt = document.getElementById('depAmt'); if(setAmt || !amt.value) amt.value = sum.toFixed(2);
+  const diff = Number(amt.value) - sum;
+  document.getElementById('depDiff').innerHTML = `Selected: <b>${fmtPHP(sum)}</b>${Math.abs(diff) >= 1 ? ` · <b class="sl-bad">${diff < 0 ? 'Short' : 'Over'} ${fmtPHP(Math.abs(diff))}</b>` : ''}`;
+  amt.oninput = () => colDepSum();
+}
+async function colSaveDeposit(){
+  const picked = [...document.querySelectorAll('#depModal [data-dep]')].filter(c => c.checked).map(c => window._colCash[Number(c.dataset.dep)]);
+  const amt = Number(document.getElementById('depAmt').value), err = document.getElementById('depErr');
+  if(!picked.length){ err.textContent = 'Tick the payments in this deposit.'; return; }
+  if(!(amt > 0)){ err.textContent = 'Enter the amount on the slip.'; return; }
+  const sum = picked.reduce((s, x) => s + x.amount, 0);
+  const row = {amount: amt, bank: stripMarkup(document.getElementById('depBank').value).slice(0, 60) || null, deposited_on: document.getElementById('depDate').value || APP_TODAY,
+    reference: stripMarkup(document.getElementById('depRef').value).slice(0, 60) || null, items: picked.map(x => x.id),
+    note: Math.abs(amt - sum) >= 1 ? `${amt < sum ? 'Short' : 'Over'} ${fmtPHP(Math.abs(amt - sum))} vs recorded cash` : null, created_by: slMemberName()};
+  if(myBusiness){ const { data, error } = await sb.from('cash_deposits').insert(Object.assign({business_id: myBusiness.id}, row)).select().single(); if(error){ err.textContent = error.message; return; } depositsCache.unshift(data); }
+  else depositsCache.unshift(Object.assign({id: 'D' + Date.now()}, row));
+  slClose('depModal'); showToast(row.note ? `Deposit saved. ${row.note}.` : 'Deposit saved.', row.note ? 'error' : 'success'); renderCollectionsPage();
+}
+function colReadBankFile(input){
+  const f = input.files && input.files[0]; if(!f) return;
+  const r = new FileReader(); r.onload = () => { document.getElementById('bankPaste').value = String(r.result || '').slice(0, 400000); colMatchBank(); }; r.readAsText(f);
+}
+function colParseCsv(text){
+  const rows = []; let row = [], cell = '', q = false;
+  for(let i = 0; i < text.length; i++){
+    const c = text[i];
+    if(q){ if(c === '"' && text[i + 1] === '"'){ cell += '"'; i++; } else if(c === '"') q = false; else cell += c; continue; }
+    if(c === '"') q = true; else if(c === ',' || c === '\t' || c === ';') { row.push(cell.trim()); cell = ''; }
+    else if(c === '\n' || c === '\r'){ if(c === '\r' && text[i + 1] === '\n') i++; row.push(cell.trim()); if(row.some(x => x)) rows.push(row); row = []; cell = ''; }
+    else cell += c;
+  }
+  row.push(cell.trim()); if(row.some(x => x)) rows.push(row);
+  return rows;
+}
+function colParseDate(s){
+  s = String(s || '').trim(); let m;
+  if((m = s.match(/(\d{4})[-/.](\d{1,2})[-/.](\d{1,2})/))) return `${m[1]}-${m[2].padStart(2, '0')}-${m[3].padStart(2, '0')}`;
+  if((m = s.match(/(\d{1,2})[-/.](\d{1,2})[-/.](\d{2,4})/))){ const y = m[3].length === 2 ? '20' + m[3] : m[3]; return `${y}-${m[1].padStart(2, '0')}-${m[2].padStart(2, '0')}`; }
+  const d = new Date(s); return isNaN(d) ? null : d.toISOString().slice(0, 10);
+}
+function colNum(s){ const v = String(s || '').replace(/[₱,\sPHPphp]/g, ''); if(!/^-?\(?\d+(\.\d+)?\)?$/.test(v)) return null; const n = Number(v.replace(/[()]/g, '')); return /^\(/.test(v) ? -n : n; }
+function colBankLines(text){
+  const rows = colParseCsv(text);
+  if(!rows.length) return [];
+  const h = rows[0].map(x => x.toLowerCase());
+  const idx = re => h.findIndex(x => re.test(x));
+  let iDate = idx(/date/), iDesc = idx(/desc|particular|details|remarks|narrative|transaction/), iCredit = idx(/credit|deposit|cash in|received|in$/), iAmt = idx(/^amount|amount$/), iDebit = idx(/debit|withdraw|cash out/), iRef = idx(/ref/);
+  const hasHeader = iDate > -1 && (iCredit > -1 || iAmt > -1);
+  const out = [];
+  (hasHeader ? rows.slice(1) : rows).forEach(r => {
+    let date, desc, amt;
+    if(hasHeader){
+      date = colParseDate(r[iDate]); desc = [r[iDesc], iRef > -1 ? r[iRef] : ''].filter(Boolean).join(' ');
+      if(iCredit > -1) amt = colNum(r[iCredit]); else { amt = colNum(r[iAmt]); if(iDebit > -1 && colNum(r[iDebit]) > 0 && !(amt > 0)) amt = null; }
+    } else {
+      date = null; const nums = []; const words = [];
+      r.forEach(c => { const d = colParseDate(c); const n = colNum(c); if(!date && d && /\d[-/.]\d/.test(c)) date = d; else if(n != null) nums.push(n); else words.push(c); });
+      desc = words.join(' '); amt = nums.length ? nums[0] : null;
+    }
+    if(!(amt > 0) || !date) return;
+    out.push({date, desc: String(desc || '').slice(0, 200), amount: Math.round(amt * 100) / 100, hash: [date, amt.toFixed(2), String(desc || '').replace(/\s+/g, ' ').trim().toLowerCase().slice(0, 80)].join('|')});
+  });
+  return out;
+}
+function colMatchBank(){
+  const lines = colBankLines((document.getElementById('bankPaste') || {}).value || '');
+  if(!lines.length){ showToast('Couldn\'t read any deposits. Paste rows with a date and an amount, or upload the CSV.'); return; }
+  const done = new Map((bankMatchesCache || []).map(m => [m.line_hash, m]));
+  const led = colLedger().filter(x => x.counted && x.method !== 'cash');
+  const taken = colMatchedKeys();
+  const deps = (depositsCache || []).map(d => ({id: 'dep:' + d.id, dep: d, amount: Number(d.amount), date: String(d.deposited_on), ref: d.reference || ''}));
+  const res = {matched: [], unknown: [], known: [], missing: []};
+  const lo = lines.reduce((m, l) => l.date < m ? l.date : m, '9999'), hi = lines.reduce((m, l) => l.date > m ? l.date : m, '0000');
+  lines.forEach(l => {
+    if(done.has(l.hash)){ res.known.push(l); return; }
+    const digits = (l.desc.match(/\d{4,}/g) || []);
+    const cands = led.concat(deps).filter(x => !taken.has(x.id) && Math.abs(x.amount - l.amount) < 1 && Math.abs(daysBetween(x.date, l.date)) <= 5);
+    cands.sort((a, b) => {
+      const ra = a.ref && digits.some(d => String(a.ref).includes(d) || d.includes(String(a.ref).replace(/\D/g, ''))) ? 1 : 0, rb = b.ref && digits.some(d => String(b.ref).includes(d) || d.includes(String(b.ref).replace(/\D/g, ''))) ? 1 : 0;
+      return (rb - ra) || (Math.abs(daysBetween(a.date, l.date)) - Math.abs(daysBetween(b.date, l.date)));
+    });
+    const hit = cands[0];
+    if(hit){ taken.add(hit.id); res.matched.push({line: l, hit}); } else res.unknown.push(l);
+  });
+  res.missing = led.filter(x => !taken.has(x.id) && x.date >= lo && x.date <= addDaysIso(hi, -2)).concat(deps.filter(d => !taken.has(d.id) && d.date >= lo && d.date <= addDaysIso(hi, -2)).map(d => ({id: d.id, date: d.date, amount: d.amount, dep: d.dep})));
+  colBankResult = res;
+  document.getElementById('bankResult').innerHTML = colBankResultHtml();
+}
+function colBankResultHtml(){
+  const r = colBankResult; if(!r) return '';
+  const who = h => h.dep ? `Cash deposit${h.dep.bank ? ' · ' + escapeHtml(h.dep.bank) : ''}` : `${escapeHtml(h.po.buyerName)} · ${escapeHtml(h.po.poNumber)} · ${PAYMENT_METHOD_LABELS[h.method] || escapeHtml(h.method)}`;
+  return `<div class="sl-result">
+    <div class="sl-rsum"><span class="sl-good">✓ ${r.matched.length} matched</span><span class="${r.unknown.length ? 'sl-warn' : 'sl-dim'}">? ${r.unknown.length} not recorded</span><span class="${r.missing.length ? 'sl-bad' : 'sl-dim'}">⚠ ${r.missing.length} missing from bank</span>${r.known.length ? `<span class="sl-dim">${r.known.length} done before</span>` : ''}</div>
+    ${r.matched.length ? `<details><summary>✓ Matched (${r.matched.length})</summary>${r.matched.map(m => `<div class="sl-row tight"><div class="sl-mid"><div class="sl-t">${who(m.hit)}</div><div class="sl-s">${stmtDate(m.line.date)} · ${escapeHtml(m.line.desc)}</div></div><div class="sl-right"><b>${fmtPHP(m.line.amount)}</b></div></div>`).join('')}</details>` : ''}
+    ${r.unknown.length ? `<div class="sl-q">In your bank, but not recorded in Nifti</div>${r.unknown.map((l, i) => `<div class="sl-row tight"><div class="sl-mid"><div class="sl-t">${fmtPHP(l.amount)} · ${stmtDate(l.date)}</div><div class="sl-s">${escapeHtml(l.desc)}</div></div>
+      <div class="sl-right sl-acts"><select id="bankWho_${i}" class="sl-select"><option value="">Who paid this?</option>${[...new Map(unpaidInvoicesFor('supplier').map(x => [x.po.buyerId, x.po.buyerName])).entries()].map(([id, n]) => `<option value="${id}">${escapeHtml(n)}</option>`).join('')}</select>
+        <button class="hm-go" onclick="colApplyLine(${i})">Apply</button><button class="sl-link" onclick="colIgnoreLine(${i})">Not a sale</button></div></div>`).join('')}` : ''}
+    ${r.missing.length ? `<div class="sl-q">Recorded in Nifti, but not in this statement</div>${r.missing.map(x => `<div class="sl-row tight"><div class="sl-mid"><div class="sl-t">${x.dep ? 'Cash deposit' : escapeHtml(x.po.buyerName) + ' · ' + escapeHtml(x.po.poNumber)}</div>
+      <div class="sl-s">${stmtDate(x.date)}${x.ref ? ' · ref ' + escapeHtml(x.ref) : ''} · check if it really arrived</div></div><div class="sl-right"><b class="sl-bad">${fmtPHP(x.amount)}</b></div></div>`).join('')}` : ''}
+    ${r.matched.length || r.unknown.length ? `<button class="btn btn-primary sl-wide" onclick="colSaveMatches()">Save ${r.matched.length} match${r.matched.length === 1 ? '' : 'es'}</button>` : ''}</div>`;
+}
+async function colStoreMatch(row){
+  if(myBusiness){ const { data, error } = await sb.from('bank_matches').upsert(Object.assign({business_id: myBusiness.id, created_by: slMemberName()}, row), {onConflict: 'business_id,line_hash'}).select().single(); if(error){ showToast(error.message, 'error'); return false; } bankMatchesCache.unshift(data); }
+  else bankMatchesCache.unshift(Object.assign({id: 'M' + Date.now() + Math.random()}, row));
+  return true;
+}
+async function colSaveMatches(){
+  const r = colBankResult; if(!r) return;
+  for(const m of r.matched){
+    await colStoreMatch({line_hash: m.line.hash, line: m.line, status: 'matched', po_id: m.hit.po ? m.hit.po.id : null, payment_key: m.hit.po ? m.hit.id : null, deposit_id: m.hit.dep ? m.hit.dep.id : null});
+  }
+  showToast(`${r.matched.length} matched and saved. Next time they're skipped.`, 'success');
+  r.known = r.known.concat(r.matched.map(m => m.line)); r.matched = [];
+  renderCollectionsPage();
+}
+async function colIgnoreLine(i){
+  const l = colBankResult.unknown[i]; if(!l) return;
+  if(await colStoreMatch({line_hash: l.hash, line: l, status: 'ignored'})){ colBankResult.unknown.splice(i, 1); colBankResult.known.push(l); document.getElementById('bankResult').innerHTML = colBankResultHtml(); }
+}
+async function colApplyLine(i){
+  const l = colBankResult.unknown[i]; const buyerId = (document.getElementById('bankWho_' + i) || {}).value;
+  if(!buyerId){ showToast('Pick who paid it.'); return; }
+  let left = l.amount; const touched = [];
+  const invs = unpaidInvoicesFor('supplier').filter(x => x.po.buyerId === buyerId).sort((a, b) => (a.due || '9').localeCompare(b.due || '9'));
+  for(const x of invs){
+    if(left < 0.01) break;
+    const room = roundPeso(x.balance - x.pending); if(room < 0.01) continue;
+    const part = Math.min(room, left);
+    const entry = {id: newRecordId(), method: /gcash/i.test(l.desc) ? 'gcash' : /maya/i.test(l.desc) ? 'maya' : 'bank_transfer', amount: roundPeso(part), reference: (l.desc.match(/\d{5,}/) || [null])[0],
+      date: l.date, confirmStatus: 'confirmed', confirmedAt: APP_TODAY, submittedBy: 'supplier', recordedBy: 'Bank statement'};
+    snapshotPO(x.po);
+    paymentListFor(x.po, 'invoice').push(entry); settleInvoiceStatus(x.po);
+    poLogHistory(x.po, 'supplier', `Payment received — ${paymentSummaryText(entry)} (matched from the bank statement)`);
+    afterPaymentChange(x.po); touched.push({po: x.po, key: entry.id});
+    left = roundPeso(left - part);
+  }
+  if(!touched.length){ showToast('Nothing left to pay for that customer.'); return; }
+  await colStoreMatch({line_hash: l.hash, line: l, status: 'applied', po_id: touched[0].po.id, payment_key: colPaymentKey(touched[0].po, 'invoice', touched[0].key)});
+  colBankResult.unknown.splice(i, 1); colBankResult.known.push(l);
+  showToast(`Applied ${fmtPHP(l.amount - left)} to ${touched.length} invoice${touched.length > 1 ? 's' : ''}.${left >= 1 ? ` ${fmtPHP(left)} was more than they owe.` : ''}`, 'success');
+  renderCollectionsPage();
+}
+function colSampleBank(){
+  const led = colLedger().filter(x => x.counted && x.method !== 'cash').slice(0, 3);
+  const fmt = d => { const [y, m, dd] = d.split('-'); return `${m}/${dd}/${y}`; };
+  const rows = ['Date,Description,Credit'].concat(led.map(x => `${fmt(x.date)},INSTAPAY FROM ${x.po.buyerName.toUpperCase()} REF ${x.ref || '000000'},${x.amount.toFixed(2)}`));
+  rows.push(`${fmt(APP_TODAY)},GCASH TRANSFER 09175550123 REF 88213477,12500.00`);
+  document.getElementById('bankPaste').value = rows.join('\n');
+  colMatchBank();
+}
+
+/* ============ CUSTOMER PO → YOUR OWN ORDER ============
+   Customers send POs in their own format: a PDF, an Excel file, a photo, a Viber message. Read
+   it once, match every line to YOUR item names and prices (and remember how this customer words
+   things, so next time it's automatic), and it becomes a confirmed order in your system, with a
+   sales order printout in your own format and a tracking link for the customer. */
+let CPO = null, cpoAliases = null;
+// Tagalog and shop-talk words customers use for the same items
+const CPO_SYN = {semento: 'cement', buhangin: 'sand', pako: 'nail', pakong: 'nail', alambre: 'wire', bakal: 'steel', graba: 'gravel', kahoy: 'lumber', tubo: 'pipe', pintura: 'paint', yero: 'roofing', bareta: 'rebar', varilla: 'rebar', rebars: 'rebar', nails: 'nail', wires: 'wire', gi: 'galvanized'};
+const CPO_UNITS = 'bags?|sacks?|sako|pcs?|pieces?|pc\\.|rolls?|boxes|box|bxs?|cans?|gals?|gallons?|sets?|lengths?|lgths?|packs?|pks?|bundles?|drums?|pails?|kilos?|kgs?|tons?|units?|cartons?|ctns?|dozens?|doz|reams?|sheets?|liters?|ltrs?|meters?|mtrs?|feet|ft|cu\\.?m|cubic|trucks?|pairs?|bottles?|trays?|cases?';
+function cpoNorm(s){
+  let t = ' ' + String(s || '').toLowerCase().replace(/[“”"'`]/g, '').replace(/(\d)\s*(kg|mm|cm|m|g|ml|l|in|inch|ft|ga|gauge)\b/g, '$1$2').replace(/[^a-z0-9#./x ]+/g, ' ') + ' ';
+  Object.entries(CPO_SYN).forEach(([k, v]) => { t = t.replace(new RegExp(' ' + k + ' ', 'g'), ' ' + v + ' '); });
+  return t.replace(/\b(the|of|and|pcs?|pieces?|bags?|rolls?|box(es)?|per|each|for|w\/|with)\b/g, ' ').replace(/\s+/g, ' ').trim();
+}
+function cpoTokens(s){ return cpoNorm(s).split(' ').filter(w => w.length > 1 || /\d/.test(w)); }
+function cpoScore(text, product){
+  const a = cpoTokens(text), b = cpoTokens(product);
+  if(!a.length || !b.length) return 0;
+  const sa = new Set(a), inter = b.filter(w => sa.has(w) || [...sa].some(x => x.length > 3 && (x.startsWith(w) || w.startsWith(x)))).length;
+  let s = inter / Math.max(b.length, 1) * 0.7 + inter / Math.max(a.length, 1) * 0.3;
+  const numsB = b.filter(w => /\d/.test(w)), numsA = a.filter(w => /\d/.test(w));
+  if(numsB.length){ // sizes decide it: 40kg vs 40, #12 vs 12ga are the same; 10mm vs 12mm are not
+    const core = n => n.replace(/[^0-9.]/g, ''), coresA = new Set(numsA.map(core));
+    const ok = numsB.every(n => coresA.has(core(n)));
+    s += ok ? 0.3 : (numsA.some(n => /(mm|kg|ga|in)$/.test(n)) ? -0.4 : -0.1); }
+  return s;
+}
+function cpoCustomerKey(){ return CPO && CPO.buyerId ? CPO.buyerId : ''; }
+function cpoMatch(text){
+  const n = cpoNorm(text), cat = myCatalog || [];
+  const alias = (cpoAliases || []).find(x => x.alias_norm === n && x.customer_key === cpoCustomerKey()) || (cpoAliases || []).find(x => x.alias_norm === n && !x.customer_key);
+  if(alias && cat.some(c => c.product === alias.product)) return {product: alias.product, conf: 'saved'};
+  let best = null, bs = 0;
+  cat.forEach(c => { const s = cpoScore(text, c.product); if(s > bs){ bs = s; best = c; } });
+  return best && bs >= 0.62 ? {product: best.product, conf: 'ok'} : best && bs >= 0.35 ? {product: best.product, conf: 'check'} : {product: '', conf: 'none'};
+}
+function cpoNumbers(line){
+  const out = []; const re = /(?:₱|php|p)?\s?(\d{1,3}(?:,\d{3})+(?:\.\d+)?|\d+(?:\.\d+)?)/gi; let m;
+  while((m = re.exec(line))){
+    const after = line.slice(m.index + m[0].length, m.index + m[0].length + 12), before = line.slice(Math.max(0, m.index - 3), m.index);
+    if(/^(kg|mm|cm|g|ml|l|in|inch|ft|ga|gauge|"|x\d)/i.test(after) || /(#|\dx)$/i.test(before)) continue; // part of the item name: 40kg, 10mm, #16, 2x4
+    if(/^[a-z]/i.test(after) && !new RegExp('^\\s?(' + CPO_UNITS + ')\\b', 'i').test(after) && /[a-z]$/i.test(before)) continue;
+    out.push({v: Number(m[1].replace(/,/g, '')), raw: m[0], at: m.index, end: m.index + m[0].length, unit: (after.match(new RegExp('^\\s?(' + CPO_UNITS + ')\\b', 'i')) || [])[1] || null, money: /₱|php|p\s?$/i.test(m[0].slice(0, 4)) || /\.\d{2}$/.test(m[1]) || /,\d{3}/.test(m[1])});
+  }
+  return out;
+}
+function cpoParseLine(line){
+  const raw = line.replace(/\s+/g, ' ').trim();
+  if(raw.length < 3 || !/[a-z]/i.test(raw)) return null;
+  if(/^(total|sub-?total|grand total|vat|less|net|amount due|prepared|approved|received|noted|terms|deliver|ship to|needed|required|p\.?\s?o\.?\b|purchase order|date|page|tin|address|tel|mobile|email|note|attention|attn|supplier|vendor|to:|from:)/i.test(raw)) return null;
+  if(/\b(qty|quantity)\b.*\b(desc|description|item|particulars)\b|\b(desc|description|item|particulars)\b.*\b(qty|quantity)\b/i.test(raw)) return null;
+  let nums = cpoNumbers(raw);
+  let idx = raw.match(/^\s*(\d{1,3})[.)]\s+/);
+  if(idx && nums.length && nums[0].at === raw.indexOf(idx[1])) nums = nums.slice(1);
+  else if(nums.length >= 3 && nums[0].at === 0 && !nums[0].unit && nums[0].v <= 60 && Number.isInteger(nums[0].v) && nums.some(n => n.unit)) nums = nums.slice(1);
+  let qty = null, price = null, amount = null, unit = null;
+  const withUnit = nums.find(n => n.unit);
+  if(withUnit){ qty = withUnit.v; unit = withUnit.unit; }
+  const rest = nums.filter(n => n !== withUnit);
+  if(qty == null && rest.length){ const x = rest.find(n => !n.money) || rest[0]; qty = x.v; rest.splice(rest.indexOf(x), 1); }
+  if(rest.length >= 2){ price = rest[rest.length - 2].v; amount = rest[rest.length - 1].v; if(qty && Math.abs(qty * price - amount) > Math.max(2, amount * 0.02) && Math.abs(qty * amount - price) <= 2){ const t = price; price = amount; amount = t; } }
+  else if(rest.length === 1){ const v = rest[0].v; if(qty && qty > 0 && v / qty >= 1 && rest[0].money && v > 500 && !/@|each|\/\s*(pc|bag|unit)/i.test(raw)) { amount = v; price = Math.round(v / qty * 100) / 100; } else price = v; }
+  let text = raw;
+  [...nums].sort((a, b) => b.at - a.at).forEach(n => { text = text.slice(0, n.at) + ' ' + text.slice(n.end); });
+  text = text.replace(new RegExp('\\b(' + CPO_UNITS + ')\\b', 'ig'), ' ').replace(/^\s*\d{1,3}[.)]\s+/, '').replace(/[@×x*=]\s*$/i, '').replace(/\s[@×x*=-]\s/g, ' ').replace(/\s+/g, ' ').replace(/^[\s,.\-–:]+|[\s,.\-–:]+$/g, '').trim();
+  if(text.length < 2 || !/[a-z]/i.test(text)) return null;
+  return {text, qty: qty || 1, price, amount, unit, raw};
+}
+function cpoParseText(txt){
+  const out = {rows: [], ref: null, neededBy: null, address: null};
+  const all = String(txt || '');
+  const ref = all.match(/(?:p\.?\s?o\.?|purchase\s+order)\s*(?:no\.?|number|#)?\s*[:#.]?\s*([A-Z0-9][A-Z0-9-/]{2,})/i); if(ref) out.ref = ref[1];
+  const nb = all.match(/(?:deliver(?:y)?\s*(?:date|by|on)|needed\s*(?:by|on)|date\s*needed|required\s*date)\s*[:\-]?\s*([A-Za-z0-9 ,/.-]{6,24})/i); if(nb){ const d = colParseDate(nb[1]); if(d) out.neededBy = d; }
+  const ad = all.match(/(?:deliver\s*to|ship\s*to|delivery\s*address)\s*[:\-]\s*([^\n]{6,160})/i); if(ad) out.address = ad[1].trim();
+  all.split(/\n/).forEach(l => { const r = cpoParseLine(l); if(r) out.rows.push(r); });
+  return out;
+}
+function cpoRowsFromTable(rows){
+  const clean = rows.map(r => r.map(c => String(c == null ? '' : c).trim()));
+  let hi = clean.findIndex(r => r.some(c => /^(qty|quantity|q'?ty)$/i.test(c)) && r.some(c => /desc|item|product|particular|article/i.test(c)));
+  if(hi < 0) return cpoParseText(clean.map(r => r.filter(Boolean).join('   ')).join('\n'));
+  const h = clean[hi].map(c => c.toLowerCase());
+  const col = re => h.findIndex(c => re.test(c));
+  const iQ = col(/^(qty|quantity|q'?ty)$/), iD = col(/desc|item|product|particular|article/), iP = col(/unit\s*price|unit\s*cost|price|rate|cost/), iA = col(/amount|total|ext/), iU = col(/^(unit|uom|u\/m)$/);
+  const head = cpoParseText(clean.slice(0, hi).map(r => r.join(' ')).join('\n'));
+  const out = {rows: [], ref: head.ref, neededBy: head.neededBy, address: head.address};
+  for(const r of clean.slice(hi + 1)){
+    if(r.join(' ').match(/^\s*(total|sub-?total|grand|vat|prepared|approved)/i)) break;
+    const text = r[iD]; const qty = colNum(r[iQ]);
+    if(!text || !(qty > 0)) continue;
+    out.rows.push({text, qty, price: iP > -1 ? colNum(r[iP]) : null, amount: iA > -1 ? colNum(r[iA]) : null, unit: iU > -1 ? r[iU] : null, raw: r.filter(Boolean).join(' | ')});
+  }
+  return out;
+}
+function cpoLoadScript(src){
+  return new Promise((ok, bad) => { if(document.querySelector(`script[src="${src}"]`)){ setTimeout(ok, 50); return; } const s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = () => bad(new Error('Couldn\'t load the file reader. Check your connection.')); document.head.appendChild(s); });
+}
+async function cpoReadFile(file){
+  const name = (file.name || '').toLowerCase();
+  if(/\.(csv|txt)$/.test(name) || file.type === 'text/csv' || file.type === 'text/plain'){ const t = await file.text(); return /,|\t|;/.test(t.split('\n')[0] || '') ? cpoRowsFromTable(colParseCsv(t)) : cpoParseText(t); }
+  if(/\.(xlsx|xls)$/.test(name)){
+    await cpoLoadScript('https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js');
+    const wb = XLSX.read(await file.arrayBuffer(), {type: 'array'});
+    return cpoRowsFromTable(XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]], {header: 1, raw: false, defval: ''}));
+  }
+  if(/\.pdf$/.test(name) || file.type === 'application/pdf'){
+    await cpoLoadScript('https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js');
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
+    const pdf = await pdfjsLib.getDocument({data: await file.arrayBuffer()}).promise;
+    const lines = [];
+    for(let p = 1; p <= Math.min(pdf.numPages, 10); p++){
+      const tc = await (await pdf.getPage(p)).getTextContent();
+      const byY = {};
+      tc.items.forEach(it => { const y = Math.round(it.transform[5] / 3); (byY[y] = byY[y] || []).push(it); });
+      Object.keys(byY).sort((a, b) => b - a).forEach(y => lines.push(byY[y].sort((a, b) => a.transform[4] - b.transform[4]).map(i => i.str).join('   ')));
+    }
+    return cpoParseText(lines.join('\n'));
+  }
+  if(/^image\//.test(file.type)){
+    await cpoLoadScript('https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js');
+    const st = document.getElementById('cpoStatus'); if(st) st.textContent = 'Reading the photo… (about 10–20 seconds)';
+    const r = await Tesseract.recognize(file, 'eng');
+    return cpoParseText(r.data.text);
+  }
+  throw new Error('Use a PDF, Excel, CSV, photo, or paste the text.');
+}
+async function cpoLoadAliases(){
+  if(cpoAliases) return;
+  if(myBusiness){ const { data } = await sb.from('item_aliases').select('customer_key, alias_norm, product').limit(5000); cpoAliases = data || []; }
+  else { try{ cpoAliases = JSON.parse(localStorage.getItem('nifti-demo-aliases') || '[]'); }catch(e){ cpoAliases = []; } }
+}
+function openCustomerPoImport(prefill){
+  const p = prefill || {};
+  CPO = {step: 1, buyerId: p.buyerId || '', name: p.name || '', phone: p.phone || '', email: p.email || '', leadId: p.leadId || null, text: '', rows: [], ref: '', neededBy: '', address: '', notes: '', vat: false, remember: true};
+  if(!CPO.buyerId && CPO.name){ const b = (buyersData || []).find(x => x.name.toLowerCase() === CPO.name.toLowerCase()); if(b) CPO.buyerId = b.id; }
+  cpoLoadAliases(); cpoRender();
+}
+function cpoRender(){
+  const buyers = (buyersData || []).slice().sort((a, b) => a.name.localeCompare(b.name));
+  if(CPO.step === 1){
+    slModal('cpoModal', `<div class="sl-sheet-h"><b>📄 Enter a customer's PO</b><button class="sl-x" onclick="slClose('cpoModal')">✕</button></div>
+      <div class="sl-sub">Their PDF, Excel, photo or Viber message becomes an order in <b>your</b> item names and prices.</div>
+      <div class="field"><label>Whose PO is this?</label><select id="cpoBuyer" onchange="CPO.buyerId=this.value; cpoRender()">
+        <option value="">+ New customer</option>${buyers.map(b => `<option value="${b.id}" ${CPO.buyerId === b.id ? 'selected' : ''}>${escapeHtml(b.name)}</option>`).join('')}</select></div>
+      ${CPO.buyerId ? '' : `<div class="row-2"><div class="field"><label>Customer name</label><input id="cpoName" maxlength="120" value="${escapeHtml(CPO.name)}" placeholder="e.g. Juan Hardware"></div>
+        <div class="field"><label>Mobile (for updates)</label><input id="cpoPhone" type="tel" maxlength="20" value="${escapeHtml(CPO.phone)}" placeholder="0917 123 4567"></div></div>
+        <div class="field"><label>Email (optional, for automatic reminders)</label><input id="cpoEmail" type="email" maxlength="120" value="${escapeHtml(CPO.email)}"></div>`}
+      <label class="cpo-drop"><input type="file" accept=".pdf,.xlsx,.xls,.csv,.txt,image/*" style="display:none" onchange="cpoFile(this)">
+        <span>⬆</span><b>Upload their PO</b><small>PDF, Excel, CSV or a photo</small></label>
+      <div class="cpo-or">or paste it</div>
+      <textarea id="cpoText" rows="6" class="sl-ta" placeholder="PO No. JH-551&#10;Deliver by Oct 3&#10;1. Portland cement 40kg  100 bags  245.00  24,500.00&#10;2. rebar 10mm - 50 pcs&#10;semento 20 sako">${escapeHtml(CPO.text)}</textarea>
+      <div id="cpoStatus" class="sl-sub"></div><div id="cpoErr" class="sl-err"></div>
+      <button class="btn btn-primary sl-wide" onclick="cpoReadPasted()">Read the order →</button>`);
+    return;
+  }
+  if(CPO.step === 2){
+    const cat = myCatalog || [];
+    const opts = sel => `<option value="">— Not in my list (keep their wording) —</option>` + cat.map(c => `<option value="${escapeHtml(c.product)}" ${sel === c.product ? 'selected' : ''}>${escapeHtml(c.product)}${c.price ? ' · ' + fmtPHP(c.price) + (c.unit ? '/' + escapeHtml(c.unit) : '') : ''}</option>`).join('');
+    const total = CPO.rows.reduce((s, r) => s + Number(r.qty || 0) * Number(r.myPrice || 0), 0);
+    const needCheck = CPO.rows.filter(r => r.conf !== 'ok' && r.conf !== 'saved').length;
+    slModal('cpoModal', `<div class="sl-sheet-h"><b>Check the order</b><button class="sl-x" onclick="slClose('cpoModal')">✕</button></div>
+      <div class="sl-sub">${CPO.rows.length} item${CPO.rows.length === 1 ? '' : 's'} read.${needCheck ? ` <b class="sl-warn">${needCheck} to check.</b>` : ' All matched to your items. ✓'} Prices use your price list; theirs is shown when it's different.</div>
+      <div class="cpo-rows">${CPO.rows.map((r, i) => `<div class="cpo-row c-${r.conf}">
+        <div class="cpo-their">Their line: <i>${escapeHtml(r.text)}</i>${r.theirPrice != null && r.myPrice != null && Math.abs(r.theirPrice - r.myPrice) >= 0.01 ? ` · <b class="sl-warn">they wrote ${fmtPHP(r.theirPrice)}</b>` : ''}</div>
+        <div class="cpo-grid"><select onchange="cpoPick(${i}, this.value)">${opts(r.product)}</select>
+          <input type="number" min="0" step="any" value="${r.qty}" oninput="CPO.rows[${i}].qty=Number(this.value); cpoTotals()" aria-label="Quantity">
+          <input type="number" min="0" step="0.01" value="${r.myPrice ?? ''}" placeholder="Price" oninput="CPO.rows[${i}].myPrice=Number(this.value); cpoTotals()" aria-label="Unit price">
+          <button class="sl-x" onclick="CPO.rows.splice(${i},1); cpoRender()" aria-label="Remove">✕</button></div>
+        <div class="cpo-tag">${r.conf === 'saved' ? '✓ Remembered from last time' : r.conf === 'ok' ? '✓ Matched' : r.conf === 'check' ? '⚠ Best guess, please check' : '❌ Pick your item, or keep their wording'}</div></div>`).join('')}</div>
+      <button class="sl-link" onclick="CPO.rows.push({text:'', qty:1, product:'', myPrice:null, conf:'none'}); cpoRender()">+ Add a line</button>
+      <div class="row-2"><div class="field"><label>Their PO number</label><input id="cpoRef" maxlength="60" value="${escapeHtml(CPO.ref || '')}"></div>
+        <div class="field"><label>Needed by</label><input id="cpoNeed" type="date" value="${CPO.neededBy || ''}"></div></div>
+      <div class="field"><label>Deliver to</label><input id="cpoAddr" maxlength="300" value="${escapeHtml(CPO.address || '')}"></div>
+      <label class="store-radio"><input type="checkbox" id="cpoVat" ${CPO.vat ? 'checked' : ''} onchange="CPO.vat=this.checked; cpoTotals()"> <span>Add 12% VAT on top of these prices</span></label>
+      <label class="store-radio"><input type="checkbox" id="cpoRem" ${CPO.remember ? 'checked' : ''} onchange="CPO.remember=this.checked"> <span>Remember how ${escapeHtml(cpoBuyerName())} words these items</span></label>
+      <div class="cpo-total" id="cpoTotal"></div><div id="cpoErr" class="sl-err"></div>
+      <div class="sl-actions"><button class="btn btn-outline" onclick="CPO.step=1; cpoRender()">← Back</button><button class="btn btn-primary" style="flex:1;" onclick="cpoCreate()">✓ Create confirmed order</button></div>`);
+    cpoTotals();
+    return;
+  }
+  const r = CPO.result;
+  slModal('cpoModal', `<div style="text-align:center;padding:6px 0 4px;"><div style="font-size:44px;">✅</div><h2 style="font-family:var(--font-h);margin:4px 0;">${escapeHtml(r.poNumber)} is confirmed</h2>
+    <div class="sl-sub">${escapeHtml(r.buyerName)}'s PO${CPO.ref ? ' #' + escapeHtml(CPO.ref) : ''} is now an order in your list, in your item names and prices.</div></div>
+    <button class="btn btn-primary sl-wide" onclick="printSalesOrder('${r.poId}')">🖨 Print your sales order</button>
+    <button class="btn btn-outline sl-wide" onclick="shareTrackingLink('${r.poId}')">📍 Send ${escapeHtml(r.buyerName.split(' ')[0])} a tracking link</button>
+    <button class="btn btn-outline sl-wide" onclick="slClose('cpoModal'); navigate('orders'); setTimeout(() => openOrderDetailModal('${r.poId}', true), 120)">Open the order</button>`);
+}
+function cpoBuyerName(){ const b = (buyersData || []).find(x => x.id === CPO.buyerId); return b ? b.name : (CPO.name || 'this customer'); }
+function cpoTotals(){
+  const sub = CPO.rows.reduce((s, r) => s + Number(r.qty || 0) * Number(r.myPrice || 0), 0);
+  const el = document.getElementById('cpoTotal'); if(el) el.innerHTML = `Subtotal ${fmtPHP(sub)}${CPO.vat ? ` · VAT ${fmtPHP(sub * 0.12)}` : ''} · <b>Total ${fmtPHP(sub * (CPO.vat ? 1.12 : 1))}</b>`;
+}
+function cpoPick(i, product){
+  const r = CPO.rows[i]; r.product = product; r.conf = product ? 'ok' : 'none';
+  const c = (myCatalog || []).find(x => x.product === product);
+  if(c && c.price != null) r.myPrice = Number(c.price); else if(!product) r.myPrice = r.theirPrice;
+  cpoRender();
+}
+function cpoCaptureStep1(){
+  CPO.text = (document.getElementById('cpoText') || {}).value || '';
+  if(!CPO.buyerId){ CPO.name = ((document.getElementById('cpoName') || {}).value || '').trim(); CPO.phone = ((document.getElementById('cpoPhone') || {}).value || '').trim(); CPO.email = ((document.getElementById('cpoEmail') || {}).value || '').trim(); }
+}
+function cpoValidateWho(){
+  const err = document.getElementById('cpoErr');
+  if(!CPO.buyerId && CPO.name.length < 2){ err.textContent = 'Who is this order from?'; return false; }
+  return true;
+}
+async function cpoFile(input){
+  cpoCaptureStep1(); if(!cpoValidateWho()) return;
+  const f = input.files && input.files[0]; if(!f) return;
+  const st = document.getElementById('cpoStatus'); st.textContent = 'Reading ' + f.name + '…';
+  try{ const parsed = await cpoReadFile(f); cpoFromParsed(parsed); }
+  catch(e){ st.textContent = ''; document.getElementById('cpoErr').textContent = e.message || 'Couldn\'t read that file. Try pasting the text.'; }
+}
+function cpoReadPasted(){
+  cpoCaptureStep1(); if(!cpoValidateWho()) return;
+  if(CPO.text.trim().length < 3){ document.getElementById('cpoErr').textContent = 'Paste their order, or upload the file.'; return; }
+  const firstLine = CPO.text.split('\n')[0] || '';
+  cpoFromParsed(/\t/.test(firstLine) || (firstLine.split(',').length >= 3 && /qty|quantity/i.test(firstLine)) ? cpoRowsFromTable(colParseCsv(CPO.text)) : cpoParseText(CPO.text));
+}
+async function cpoFromParsed(parsed){
+  await cpoLoadAliases();
+  if(!parsed.rows.length){ document.getElementById('cpoErr').textContent = 'Couldn\'t find any items. Put one item per line with its quantity, e.g. "Cement 40kg 100 bags".'; const st = document.getElementById('cpoStatus'); if(st) st.textContent = ''; return; }
+  CPO.rows = parsed.rows.slice(0, 200).map(r => {
+    const m = cpoMatch(r.text); const c = (myCatalog || []).find(x => x.product === m.product);
+    const theirPrice = r.price != null ? r.price : (r.amount != null && r.qty ? Math.round(r.amount / r.qty * 100) / 100 : null);
+    return {text: r.text, qty: r.qty, product: m.product, conf: m.conf, theirPrice, myPrice: c && c.price != null ? Number(c.price) : theirPrice, unit: c ? c.unit : r.unit};
+  });
+  CPO.ref = parsed.ref || CPO.ref; CPO.neededBy = parsed.neededBy || CPO.neededBy; CPO.address = parsed.address || CPO.address;
+  if(!CPO.address && CPO.buyerId){ const last = getSupplierPOs().filter(p => p.buyerId === CPO.buyerId && p.deliveryAddress).sort((a, b) => String(b.createdDate).localeCompare(String(a.createdDate)))[0]; if(last) CPO.address = last.deliveryAddress; }
+  CPO.step = 2; cpoRender();
+}
+async function cpoCreate(){
+  CPO.ref = (document.getElementById('cpoRef') || {}).value.trim(); CPO.neededBy = (document.getElementById('cpoNeed') || {}).value || ''; CPO.address = (document.getElementById('cpoAddr') || {}).value.trim();
+  const err = document.getElementById('cpoErr');
+  const rows = CPO.rows.filter(r => (r.product || r.text) && Number(r.qty) > 0);
+  if(!rows.length){ err.textContent = 'Add at least one item.'; return; }
+  const noPrice = rows.find(r => !(Number(r.myPrice) >= 0) || r.myPrice === null || r.myPrice === '');
+  if(noPrice){ err.textContent = `Add a price for "${noPrice.product || noPrice.text}".`; return; }
+  const items = rows.map(r => ({product: r.product || r.text, qty: Number(r.qty), unitPrice: Number(r.myPrice), unit: r.unit || null, customerText: r.product && r.product !== r.text ? r.text : null}));
+  const btn = document.querySelector('#cpoModal .btn-primary'); if(btn){ btn.disabled = true; btn.textContent = 'Creating…'; }
+  let poId, poNumber, buyerId, buyerName;
+  if(myBusiness){
+    const { data, error } = await sb.rpc('record_customer_order', {p_buyer: CPO.buyerId || null, p_name: CPO.buyerId ? null : CPO.name, p_phone: CPO.buyerId ? null : CPO.phone || null,
+      p_email: CPO.buyerId ? null : CPO.email || null, p_address: CPO.address || null, p_items: items, p_ref: CPO.ref || null, p_needed_by: CPO.neededBy || null, p_notes: null, p_tax_rate: CPO.vat ? 0.12 : 0});
+    if(error){ err.textContent = error.message; if(btn){ btn.disabled = false; btn.textContent = '✓ Create confirmed order'; } return; }
+    poId = data.po_id; poNumber = data.po_number; buyerId = data.buyer_id; buyerName = data.buyer_name; window._cpoTokens = Object.assign(window._cpoTokens || {}, {[poId]: data.token});
+    if(!(buyersData || []).some(b => b.id === buyerId) && typeof loadMyConnections === 'function') await loadMyConnections();
+    await refreshPOsById([poId]);
+  } else {
+    if(!CPO.buyerId){ buyerId = 'buy_new_' + Date.now(); buyersData.push({id: buyerId, name: CPO.name, category: 'New customer', score: null, tier: 'mid', orders: 1, lastOrder: 'Today', since: APP_TODAY, isOutside: true, phone: CPO.phone, email: CPO.email}); }
+    else buyerId = CPO.buyerId;
+    buyerName = (buyersData.find(b => b.id === buyerId) || {}).name;
+    poId = 'po_cpo_' + Date.now(); poNumber = 'PO-2026-0' + (900 + Math.floor(Math.random() * 90));
+    purchaseOrders.push({id: poId, poNumber, buyerId, buyerName, supplierId: ME_SUPPLIER, supplierName: 'Metro Steel Co.', type: 'local', status: 'confirmed', currency: 'PHP', taxRate: CPO.vat ? 0.12 : 0,
+      lineItems: items, createdDate: APP_TODAY, requestedDeliveryDate: CPO.neededBy || null, deliveryAddress: CPO.address || null, notes: '', customerRef: CPO.ref || null, atRisk: false, documents: [],
+      history: [{date: APP_TODAY, time: 'Just now', actor: 'supplier', action: `📄 Entered from ${buyerName}'s PO${CPO.ref ? ' #' + CPO.ref : ''} by ${slMemberName()} · confirmed`}]});
+    if(CPO.leadId){ const l = (leadsCache || []).find(x => x.id === CPO.leadId); if(l) Object.assign(l, {stage: 'won', next_follow_up: null, log: (l.log || []).concat([{at: APP_TODAY, what: '🎉 First order: ' + poNumber}])}); }
+  }
+  if(CPO.remember) await cpoSaveAliases(rows, buyerId);
+  CPO.result = {poId, poNumber, buyerName}; CPO.step = 3; cpoRender();
+  if(typeof renderSupplierOrdersTable === 'function') renderSupplierOrdersTable();
+  if(myBusiness && CPO.leadId) leadsCache = null;
+  trackEvent('customer_po_imported', {lines: rows.length});
+}
+async function cpoSaveAliases(rows, buyerId){
+  const list = rows.filter(r => r.product && r.text && cpoNorm(r.text) && cpoNorm(r.text) !== cpoNorm(r.product)).map(r => ({customer_key: buyerId || '', alias_norm: cpoNorm(r.text).slice(0, 200), product: r.product}));
+  if(!list.length) return;
+  if(myBusiness){ await sb.from('item_aliases').upsert(list.map(x => Object.assign({business_id: myBusiness.id, updated_at: new Date().toISOString()}, x)), {onConflict: 'business_id,customer_key,alias_norm'}); }
+  cpoAliases = (cpoAliases || []).filter(a => !list.some(x => x.alias_norm === a.alias_norm && x.customer_key === a.customer_key)).concat(list);
+  if(!myBusiness){ try{ localStorage.setItem('nifti-demo-aliases', JSON.stringify(cpoAliases)); }catch(e){} }
+}
+
+/* ---- Your sales order, in your own format ---- */
+function printSalesOrder(poId){
+  const po = getPO(poId); if(!po) return;
+  const tp = typeof getMyTaxProfile === 'function' ? getMyTaxProfile() : {}; const tax = {registered_address: tp.registeredAddress, tin: tp.tin};
+  const me = myBusiness || {name: 'Metro Steel Co.', shared_contact: {phone: '0917 555 1234', address: 'Valenzuela City'}};
+  const c = me.shared_contact || {};
+  const b = (buyersData || []).find(x => x.id === po.buyerId) || {};
+  const sub = poLineTotal(po);
+  const html = `<div class="stmt-paper so-paper">
+    <div class="stmt-head"><div><div class="stmt-title">${escapeHtml(me.name)}</div><div class="stmt-small">${escapeHtml([tax.registered_address || c.address, c.phone, tax.tin ? 'TIN ' + tax.tin : ''].filter(Boolean).join(' · '))}</div></div>
+      <div style="text-align:right;"><div style="font-weight:800;font-size:18px;">SALES ORDER</div><div class="stmt-small">No. ${escapeHtml(po.poNumber)} · ${stmtDate(po.createdDate)}</div></div></div>
+    <div class="so-grid"><div><div class="stmt-small">Sold to</div><b>${escapeHtml(po.buyerName)}</b><div>${escapeHtml(po.deliveryAddress || '')}</div></div>
+      <div><div class="stmt-small">Customer PO no.</div><b>${escapeHtml(po.customerRef || '—')}</b><div class="stmt-small" style="margin-top:6px;">Needed by</div><b>${po.requestedDeliveryDate ? stmtDate(po.requestedDeliveryDate) : '—'}</b></div>
+      <div><div class="stmt-small">Terms</div><b>${escapeHtml(b.paymentTerms || '—')}</b></div></div>
+    <div class="stmt-table-wrap"><table class="stmt-table"><thead><tr><th>#</th><th>Item</th><th class="r">Qty</th><th>Unit</th><th class="r">Unit price</th><th class="r">Amount</th></tr></thead><tbody>
+      ${po.lineItems.map((li, i) => `<tr><td>${i + 1}</td><td><b>${escapeHtml(li.product)}</b>${li.customerText ? `<div class="stmt-small">Their item: ${escapeHtml(li.customerText)}</div>` : ''}</td><td class="r">${Number(li.qty).toLocaleString('en-PH')}</td><td>${escapeHtml(li.unit || ((myCatalog || []).find(x => x.product === li.product) || {}).unit || '')}</td><td class="r">${fmtPHP(li.unitPrice)}</td><td class="r">${fmtPHP(li.qty * li.unitPrice)}</td></tr>`).join('')}
+      <tr><td colspan="5" class="r">Subtotal</td><td class="r">${fmtPHP(sub)}</td></tr>
+      ${poTax(po) > 0 ? `<tr><td colspan="5" class="r">VAT (${Math.round(po.taxRate * 100)}%)</td><td class="r">${fmtPHP(poTax(po))}</td></tr>` : ''}
+      <tr><td colspan="5" class="r"><b>Total</b></td><td class="r"><b>${fmtPHP(poTotal(po))}</b></td></tr></tbody></table></div>
+    ${po.notes ? `<div class="stmt-small" style="margin-top:8px;">Notes: ${escapeHtml(po.notes)}</div>` : ''}
+    <div class="so-sign"><div>Prepared by</div><div>Approved by</div><div>Received by / date</div></div>
+    <div class="stmt-foot">Made with Nifti</div></div>`;
+  let host = document.getElementById('statementView');
+  if(!host){ host = document.createElement('div'); host.id = 'statementView'; document.body.appendChild(host); }
+  document.body.classList.add('statement-open');
+  host.innerHTML = `<div class="stmt-toolbar"><button class="btn btn-outline" onclick="closeStatementOverlay()">✕ Close</button><button class="btn btn-outline" onclick="window.print()">🖨 Print / Save PDF</button></div>${html}`;
+  slClose('cpoModal'); window.scrollTo(0, 0);
+}
+async function shareTrackingLink(poId){
+  const po = getPO(poId); if(!po) return;
+  let tok = (window._cpoTokens || {})[poId];
+  if(!tok && myBusiness){ const { data, error } = await sb.rpc('create_order_link', {p_po_id: poId}); if(error){ showToast(error.message, 'error'); return; } tok = data; }
+  const link = appBaseUrl() + '#o/' + (tok || 'demo-tracking-link-000000');
+  openShareSheet(`Tracking link for ${po.buyerName}`, `Hi ${po.buyerName}! Your order ${po.poNumber}${po.customerRef ? ` (your PO #${po.customerRef})` : ''} is confirmed. Track it here, no app needed: ${link}\nWhen it arrives, just tap "I received it" on that page. Salamat!`,
+    {sub: 'They see every update, and tap "I received it" when the delivery arrives. You get notified right away.'});
+}
+
+/* ---- Home: leads, reorders and promises join the "Needs you now" list ---- */
+function hmSalesItems(){
+  const out = [];
+  if(!leadsCache && !fuLoading) fuLoad().then(() => { if(homeIsActive()) renderHomeV2(); });
+  if(!promisesCache && !window._colLoadingHome){ window._colLoadingHome = true; colLoad().then(() => { if(homeIsActive()) renderHomeV2(); }); }
+  if(leadsCache){
+    const due = leadsCache.filter(fuLeadDue);
+    if(due.length) out.push({k: 'lead', pri: 3, ic: '🎯', tone: 'amber', w: escapeHtml(due[0].name),
+      t: due.length === 1 ? `Follow up with ${escapeHtml(due[0].name)}` : `${due.length} leads to follow up`,
+      s: due.length === 1 ? escapeHtml(due[0].interest || LEAD_SOURCES[due[0].source] || '') : 'People who asked for a price or said they might order',
+      b: due.length === 1 ? 'Open' : 'See all', a: due.length === 1 ? `navigate('followups'); setTimeout(() => fuOpenLead('${due[0].id}'), 200)` : "fuTab='today'; navigate('followups')"});
+  }
+  if(reorderDueCache && hasFeature('reorder_reminders')){
+    const a = fuAgainLists();
+    if(a.dueNow.length) out.push({k: 'again', pri: 4, ic: '🔁', tone: 'green',
+      t: a.dueNow.length === 1 ? `${escapeHtml(a.dueNow[0].buyer_name)} is due to reorder` : `${a.dueNow.length} customers due to reorder`,
+      s: 'Send their usual order as a one-tap link', b: 'Send', a: a.dueNow.length === 1 ? `fuSendReorder('${a.dueNow[0].buyer_id}','reorder')` : "fuTab='again'; navigate('followups')"});
+  }
+  if(promisesCache){
+    const name = id => escapeHtml(((buyersData || []).find(b => b.id === id) || {}).name || 'A customer');
+    (promisesCache || []).filter(p => p.status === 'open' && p.promised_date <= APP_TODAY).forEach(p => out.push({k: 'promise', pri: 2, ic: '🤝', tone: 'violet',
+      t: `${name(p.buyer_business_id)} promised ${fmtPHP(p.amount)} ${p.promised_date === APP_TODAY ? 'today' : 'by ' + fuDueLabel(p.promised_date).toLowerCase()}`, s: 'Check your bank or GCash', b: 'Check', a: "colTab='follow'; navigate('collections')"}));
+    (promisesCache || []).filter(p => p.status === 'broken' && slDaysAgo(p.resolved_at) <= 2).forEach(p => out.push({k: 'promise', pri: 2, ic: '⚠️', tone: 'rose',
+      t: `${name(p.buyer_business_id)} didn't pay as promised`, s: `${fmtPHP(p.amount)} was due ${stmtDate(p.promised_date).replace(/, \d{4}$/, '')}. We reminded them.`, b: 'Call', a: `colPromise('${p.buyer_business_id}')`}));
+  }
+  return out;
+}
+
+/* ---- Public pages: the receiver confirms delivery; the buyer reports a payment from the statement ---- */
+async function publicConfirmReceipt(ok){
+  const name = (document.getElementById('rcptName') || {}).value || '', note = (document.getElementById('rcptNote') || {}).value || '';
+  const err = document.getElementById('rcptErr');
+  if(name.trim().length < 2){ err.textContent = 'Who received it?'; return; }
+  if(!ok && note.trim().length < 3){ err.textContent = 'Tell them what\'s missing or damaged, in the box above.'; return; }
+  try{ localStorage.setItem('nifti-public-name', name.trim()); }catch(e){}
+  document.querySelectorAll('#rcptCard button').forEach(b => b.disabled = true);
+  const { error } = await sb.rpc('confirm_receipt_by_link', {p_token: publicOrderToken, p_ok: ok, p_name: name.trim(), p_note: note.trim() || null});
+  if(error){ document.querySelectorAll('#rcptCard button').forEach(b => b.disabled = false); err.textContent = error.message; return; }
+  showToast(ok ? 'Thank you! They\'ve been told it arrived.' : 'Sent. They\'ll get back to you about it.', 'success');
+  await loadPublicOrder(publicOrderToken);
+}
+function stmtShowPaid(){
+  const d = currentStatement && currentStatement.data; if(!d) return;
+  const due = Math.max(0, Math.round((d.totals.balance - (d.totals.pending || 0)) * 100) / 100);
+  document.getElementById('stmtShare').innerHTML = `<div class="share-box stmt-paid">
+    <div style="font-weight:800;font-size:17px;">✅ Tell ${escapeHtml(d.supplier.name)} you paid</div>
+    <div style="font-size:14px;opacity:.8;margin:2px 0 8px;">It goes against your oldest invoices first. They confirm it once they see it in their account.</div>
+    <div class="row-2"><div class="field"><label>Amount paid</label><input id="spAmt" type="number" min="1" step="0.01" value="${due || ''}"></div>
+      <div class="field"><label>How you paid</label><select id="spMethod"><option value="gcash">GCash</option><option value="maya">Maya</option><option value="bank_transfer">Bank transfer / InstaPay</option><option value="bank_deposit">Bank deposit</option><option value="check">Cheque</option><option value="cash">Cash</option></select></div></div>
+    <div class="row-2"><div class="field"><label>Reference no. (or cheque no.)</label><input id="spRef" maxlength="64"></div>
+      <div class="field"><label>Your name</label><input id="spName" maxlength="60"></div></div>
+    <div id="spErr" style="color:var(--danger);font-weight:700;font-size:14px;margin:4px 0;"></div>
+    <button class="btn btn-primary" style="width:100%;" onclick="stmtSubmitPaid()">Send to ${escapeHtml(d.supplier.name)}</button></div>`;
+  document.getElementById('spAmt').focus();
+}
+async function stmtSubmitPaid(){
+  const amt = Number(document.getElementById('spAmt').value), method = document.getElementById('spMethod').value, ref = document.getElementById('spRef').value.trim(), name = document.getElementById('spName').value.trim();
+  const err = document.getElementById('spErr');
+  if(!(amt > 0)){ err.textContent = 'Enter the amount you paid.'; return; }
+  if(method !== 'cash' && !ref){ err.textContent = 'Add the reference number so they can find it.'; return; }
+  if(!window._stmtToken || window._stmtToken === 'demo'){ document.getElementById('stmtShare').innerHTML = '<div class="share-box stmt-paid"><b>✅ Sent (demo).</b> In a real account the supplier gets a notification and confirms it.</div>'; return; }
+  const { data, error } = await sb.rpc('report_payment_by_link', {p_token: window._stmtToken, p_amount: amt, p_method: method, p_reference: ref || null, p_name: name || null});
+  if(error){ err.textContent = error.message; return; }
+  document.getElementById('stmtShare').innerHTML = `<div class="share-box stmt-paid"><b>✅ Sent.</b> ${fmtPHP(data.applied)} is waiting for them to confirm.${data.extra >= 1 ? ` ${fmtPHP(data.extra)} was more than what's due, so message them about it.` : ''} You'll see it on this page once they do.</div>`;
+}
+
 function renderSidebarForViewAsRole(){
   const allowed = computeAllowedPages(getEffectiveRoles());
   document.querySelectorAll('.nav-item[data-page], .bnav-item[data-page], .more-sheet-item[data-page]').forEach(el => {
@@ -10745,6 +11984,8 @@ function navigate(page){
     if(page==='team'){ renderTeamPage(); }
     if(page==='taxforms') renderTaxFormsPage();
     if(page==='growth') renderGrowthPage();
+    if(page==='followups') renderFollowupsPage();
+    if(page==='collections') renderCollectionsPage();
     if(page==='cheques'){ const sub = document.getElementById('chequesSub'); if(sub) sub.textContent = currentAppRole === 'supplier' ? 'Post-dated cheques, what to deposit today, and who bounces.' : 'Every cheque you issued, and when it hits your bank.'; renderChequesPage(); }
     if(page==='routes'){ routesCache = null; renderRoutesPage(); }
     if(page==='prices'){ priceChangesCache = null; incomingPricesCache = null; const sub = document.getElementById('pricesSub'); if(sub) sub.textContent = currentAppRole === 'supplier' ? 'Tell every buyer about new prices at once, with a start date.' : "What your suppliers are changing, and when."; renderPricesPage(); }
@@ -15513,10 +16754,11 @@ function renderLineItemsTable(po){
 function orderHeadHtml(o, side){
   const buyer = side === 'buyer';
   const when = o.requestedDeliveryDate && !poIsDelivered(o) ? ` · ${buyer ? 'arrives' : 'deliver by'} ${stmtDate(o.requestedDeliveryDate)}` : '';
-  return `<div class="od-head"><div class="od-eyebrow">${o.poNumber} · ${PO_STATUS_LABELS[o.status] || o.status}</div>
+  const outsideBuyer = !buyer && ((buyersData || []).find(b => b.id === o.buyerId) || {}).isOutside;
+  return `<div class="od-head"><div class="od-eyebrow">${o.poNumber} · ${PO_STATUS_LABELS[o.status] || o.status}${o.customerRef ? ' · their PO #' + escapeHtml(o.customerRef) : ''}</div>
     <div class="od-who">${escapeHtml(buyer ? o.supplierName : o.buyerName)}</div>
     <div class="od-sub">${fmtPHP(poTotal(o))}${when}</div>
-    <div class="od-next">${buyer ? renderBuyerActionPill(o) : renderSupplierActionPill(o)}${buyer ? '' : `<span class="row-action" onclick="messageBuyerFromOrder('${o.buyerId}')">💬 Message</span>`}</div></div>`;
+    <div class="od-next">${buyer ? renderBuyerActionPill(o) : renderSupplierActionPill(o)}${buyer ? '' : `<span class="row-action" onclick="messageBuyerFromOrder('${o.buyerId}')">💬 Message</span><span class="row-action" onclick="closeOrderDetailModal(); printSalesOrder('${o.id}')">🖨 Sales order</span>${outsideBuyer && o.status !== 'draft' ? `<span class="row-action" onclick="shareTrackingLink('${o.id}')">📍 Tracking link</span>` : ''}`}</div></div>`;
 }
 function shouldHideHistoryStep(po, h, side){
   // Freight milestone updates already have their own dedicated, better-organized view
@@ -17486,7 +18728,7 @@ function submitRecordPayment(id){
     snapshotPO(po);
     po._undoLabel = side==='buyer' ? 'Payment submitted.' : 'Payment recorded.';
     const entry = {id: newRecordId(), method, amount, reference: reference || null, checkDate, date: APP_TODAY,
-      proofUrl: isSafeProofUrl(proofUrl) ? proofUrl : null, proofName: proofName || null, submittedBy: side};
+      proofUrl: isSafeProofUrl(proofUrl) ? proofUrl : null, proofName: proofName || null, submittedBy: side, recordedBy: side === 'supplier' ? slMemberName() : null};
     if(side==='supplier' && method!=='check'){ entry.confirmStatus = 'confirmed'; entry.confirmedAt = APP_TODAY; }
     else { entry.confirmStatus = 'pending'; if(method==='check') entry.checkStatus = 'pending'; }
     paymentListFor(po, 'invoice').push(entry);
@@ -19522,6 +20764,7 @@ function renderSupplierFulfillmentDashboard(refreshOnly){
 
   document.getElementById('supplierOrdersView').innerHTML = `
     <div class="page-head"><h1>Orders</h1><p>Orders from your buyers. Tap one to confirm, deliver or bill it.</p></div>
+    <div class="ord-quick"><button class="ord-q" onclick="openCustomerPoImport()">📄 Enter a customer's PO</button><button class="ord-q" onclick="navigate('collections')">💰 Collections</button><button class="ord-q" onclick="navigate('followups')">🎯 Follow-ups</button></div>
 
     <div class="role-toggle" style="margin-bottom:12px;">
       <button class="active" id="supplierOrdersViewBtn" onclick="setSupplierOrdersMainView('list', this)">📋 Orders</button>
