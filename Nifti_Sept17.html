@@ -2195,6 +2195,8 @@
 #view-app .lg-pill-s{display:none;}
 @media (max-width:760px){#view-app .lg-pill-s{display:block;margin-top:4px;} #view-app .lg-pill-s .lg-pill{white-space:nowrap !important;}
 #view-app .lg-tbl th:nth-child(5){width:130px !important;} #view-app .lg-tbl td.lg-n{white-space:normal !important;}}
+.need-text{border-color:var(--danger) !important;box-shadow:0 0 0 3px rgba(180,65,43,.18) !important;animation:needShake .3s ease;}
+@keyframes needShake{0%,100%{transform:translateX(0);}25%{transform:translateX(-4px);}75%{transform:translateX(4px);}}
   .settings-card:empty{display:none;}
   #supplierChips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;} #supplierChips .chip{flex-shrink:0;}
 </style>
@@ -3193,7 +3195,7 @@
             <div class="msg-po-tabs" id="msgPoTabs"></div>
             <div id="msgPoSummaryCard"></div>
             <div class="msg-thread-body" id="threadBody"></div>
-            <div id="simulateThreadReplyRow" style="padding:2px 20px;font-size:13px;text-align:center;"><span class="row-action" onclick="simulateThreadReply()">Simulate: they reply →</span></div>
+            <div id="simulateThreadReplyRow" class="hidden"></div>
             <div class="msg-composer">
               <div id="attachPreview"></div>
               <div class="composer-row">
@@ -5160,7 +5162,7 @@ async function saveBusinessProfile(){
   // settings page (built-in non-Owner/GM roles don't get that page at all) could rename it freely.
   if(!requirePermission('manageAccount')) return;
   const name = document.getElementById('settingsBizName').value.trim();
-  if(!name) return;
+  if(!name) return needText('settingsBizName', 'Type your business name first.');
   if(myBusiness){
     const { error } = await sb.from('businesses').update({ name }).eq('id', myBusiness.id);
     if(error){ showToast("Couldn't save that name — try again.", 'error'); return; }
@@ -5380,6 +5382,16 @@ function markFieldInvalid(fieldId, message){
   el.addEventListener('input', clear, {once:true});
   el.addEventListener('change', clear, {once:true});
   showToast(message);
+}
+// An empty box was submitted: point at it and say what's needed, instead of doing nothing.
+function needText(elOrId, msg){
+  const el = typeof elOrId === 'string' ? document.getElementById(elOrId) : elOrId;
+  if(el){
+    try{ el.focus(); }catch(e){}
+    el.classList.remove('need-text'); void el.offsetWidth; el.classList.add('need-text');
+    setTimeout(() => el.classList.remove('need-text'), 1600);
+  }
+  showToast(msg || 'Fill this in first.');
 }
 function showToast(text, type){
   type = type || 'error';
@@ -6557,7 +6569,7 @@ function refreshReminderShare(buyerId){
 async function sendReminderInChat(buyerId){
   const ta = document.getElementById('remindText_' + buyerId);
   const text = ta ? ta.value.trim() : '';
-  if(!text) return;
+  if(!text) return needText(ta, 'Type a message first.');
   const conv = getConversations().find(c => c.id === buyerId);
   if(!conv){ showToast("There's no chat with this buyer yet. Send it on Viber instead."); return; }
   const newMsg = {id: newMessageId(), from:'me', text, time:'Just now', date: APP_TODAY};
@@ -14202,7 +14214,7 @@ function closeBarcodeScanner(){
 }
 function submitManualBarcode(){
   const val = document.getElementById('barcodeManualInput').value.trim();
-  if(!val) return;
+  if(!val) return needText('barcodeManualInput', 'Type the barcode number first.');
   submitScannedBarcode(val);
 }
 function submitScannedBarcode(code){
@@ -15130,7 +15142,7 @@ function sendMessage(){
   if(!activeConvId) return;
   const input = document.getElementById('msgInput');
   const text = input.value.trim();
-  if(!text && !pendingAttachment) return;
+  if(!text && !pendingAttachment) return needText(input, 'Type a message first.');
   const conv = getConversations().find(c=>c.id===activeConvId);
   // The demo world's "today" is a fixed date (APP_TODAY) so its seed data stays internally
   // consistent — but a real account's messages need their real send date, not that fixed demo
@@ -16654,7 +16666,7 @@ async function submitTeamChatMessage(){
   const input = document.getElementById('teamChatInput');
   if(!input) return;
   const text = input.value.trim().slice(0, 2000);
-  if(!text) return;
+  if(!text) return needText(input, 'Type a message first.');
   const me = teamMe();
   const now = new Date();
   const msg = {id: newRecordId(), authorId: currentUserId, author: me?me.name:'Someone', text, date: APP_TODAY, time: now.toLocaleTimeString('en-PH',{hour:'numeric',minute:'2-digit'}), createdAt: now.toISOString(), bizRole: currentAppRole, _pending: !!myBusiness};
@@ -18695,7 +18707,7 @@ function renderBuyerPoDetail(o){
     const editDisabled = (o._editingBy && o._editingBy !== 'You');
     actionsHtml = `${lockBanner}<button class="btn btn-primary" onclick="event.stopPropagation(); openSendConfirmModal('${o.id}')" ${editDisabled ? 'disabled' : ''}>Send order →</button>
       <button class="btn btn-outline" onclick="event.stopPropagation(); editDraftPO('${o.id}')" ${editDisabled ? 'disabled title="Locked by another teammate"' : ''}>Edit Draft</button>
-      ${myBusiness ? '' : `<button class="btn btn-outline" style="font-size:15px;padding:6px 10px;" onclick="event.stopPropagation(); simulateTeammateEditing('${o.id}')">Simulate: teammate opens this draft</button>`}`;
+`;
   } else if(o.status==='quote'){
     actionsHtml = qtBuyerPanel(o);
   } else if(o.status==='countered'){
@@ -20620,7 +20632,8 @@ function addCreatePOLine(){
   renderCreatePOLineItems();
 }
 function removeCreatePOLine(i){
-  if(createPOLineItems.length===1) return;
+  // The last line is cleared rather than removed, so there is always a row to type into.
+  if(createPOLineItems.length===1){ createPOLineItems = [{product:'', qty:1, unitPrice:0}]; renderCreatePOLineItems(); showToast('Line cleared.', 'success'); return; }
   createPOLineItems.splice(i,1);
   renderCreatePOLineItems();
 }
@@ -26521,7 +26534,7 @@ function sendInsightMessage(surfaceId, idx, partyId){
   const textarea = document.getElementById('insightMsgInput_'+surfaceId+'_'+idx);
   if(!textarea) return; // insight was dismissed/refreshed out from under this box — nothing to send
   const text = textarea.value.trim();
-  if(!text) return;
+  if(!text) return needText(textarea, 'Type a message first.');
   const conv = getConversations().find(c=>c.id===partyId);
   if(!conv) return;
   conv.messages.push({from:'me', text, time:'Just now', date:APP_TODAY});
@@ -27546,7 +27559,6 @@ function renderDiscoveryLeadsPanel(){
   el.innerHTML = `
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;flex-wrap:wrap;gap:8px;">
       <div style="font-weight:800;font-size:16px;">Your Leads ${newCount?`<span style="color:var(--green);">(${newCount} new)</span>`:''}</div>
-      ${(isPublic && !myBusiness) ? `<span class="row-action" onclick="simulateInboundDiscoveryLead()">Simulate: someone new discovers you →</span>` : ''}
     </div>
     <div style="font-size:14px;color:var(--ink);opacity:.7;margin-bottom:12px;">${isPublic ? 'People who found your public profile and want to connect.' : 'Turn on the toggle above to start receiving real leads — right now nobody can find you.'}</div>
     ${mine.length ? mine.map(l=>`
@@ -27569,8 +27581,9 @@ function sendDiscoveryRequest(idx, mode){
   if(!actionEl) return;
   actionEl.innerHTML = `
     <div style="font-size:14px;color:var(--green);font-weight:700;margin-top:10px;">Request sent ✓</div>
-    ${myBusiness ? '' : `<span class="row-action" style="display:block;margin-top:4px;" onclick="acceptOutboundDiscovery(${idx}, '${mode}')">Simulate: ${p.n} accepts →</span>`}
   `;
+  // Demo: the other business accepts a moment later, so the flow can be seen end to end.
+  setTimeout(() => { if(!myBusiness && document.getElementById('discAction_' + idx)) acceptOutboundDiscovery(idx, mode); }, 1800);
 }
 function acceptOutboundDiscovery(idx, mode){
   if(myBusiness) return;
