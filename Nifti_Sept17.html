@@ -1909,6 +1909,23 @@
   .cpo-photo{position:relative;border-radius:12px;overflow:hidden;max-height:170px;cursor:zoom-in;border:1px solid var(--border);} .cpo-photo img{width:100%;display:block;object-fit:cover;object-position:top;max-height:170px;}
   .cpo-photo span{position:absolute;left:8px;bottom:8px;background:rgba(0,0,0,.65);color:#fff;font-size:12px;font-weight:700;border-radius:100px;padding:3px 9px;}
   .cpo-photo-big{max-height:78vh;overflow:auto;border-radius:10px;} .cpo-photo-big img{width:100%;display:block;}
+  .vc-top{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:2px 0 6px;} .vc-top small{opacity:.65;font-weight:600;}
+  .vc-langs{display:flex;border:1.5px solid var(--border);border-radius:100px;overflow:hidden;flex-wrap:nowrap !important;} .vc-langs button{border:none;background:var(--surface);padding:7px 13px;font-weight:700;font-size:13.5px;cursor:pointer;color:var(--ink);} .vc-langs button.on{background:var(--ink);color:#fff;}
+  .vc-stage{display:grid;justify-items:center;gap:8px;padding:10px 0 12px;text-align:center;}
+  .vc-mic{width:86px;height:86px;border-radius:50%;border:none;background:var(--green);color:#fff;font-size:34px;cursor:pointer;box-shadow:0 8px 24px rgba(23,96,58,.3);display:grid;place-items:center;transition:transform .15s;}
+  .vc-mic:active{transform:scale(.95);} .vc-mic.on{background:var(--danger);box-shadow:0 0 0 0 rgba(192,57,43,.45);animation:vcPulse 1.4s infinite;} .vc-mic.on span{font-size:26px;}
+  @keyframes vcPulse{0%{box-shadow:0 0 0 0 rgba(192,57,43,.45);}70%{box-shadow:0 0 0 18px rgba(192,57,43,0);}100%{box-shadow:0 0 0 0 rgba(192,57,43,0);}}
+  .vc-status{font-size:14.5px;font-weight:600;max-width:340px;line-height:1.4;} .vc-status.on{color:var(--green);} .vc-status.warn{color:#8A5B00;} .vc-status.bad{color:var(--danger);}
+  .vc-live{min-height:20px;font-size:16px;font-style:italic;color:var(--ink);opacity:.8;}
+  .vc-lines{display:grid;gap:8px;margin-bottom:8px;}
+  .vc-line{border:1.5px solid var(--border);border-radius:12px;padding:9px 10px;} .vc-line.c-check,.vc-line.noqty{border-color:#E0A100;background:#FFFBEC;} .vc-line.c-none{border-color:var(--danger);background:#FFF6F4;}
+  .vc-heard{font-size:12.5px;opacity:.7;font-style:italic;margin-bottom:5px;overflow-wrap:anywhere;}
+  .vc-res{display:flex;align-items:center;gap:8px;} .vc-name{flex:1;min-width:0;font-weight:800;font-size:15px;color:var(--ink);overflow-wrap:anywhere;} .vc-name small{font-weight:600;opacity:.6;}
+  .vc-res .qt-step button{width:34px;height:36px;} .vc-res .qt-step input{width:56px !important;height:36px;}
+  .vc-tag{font-size:12.5px;font-weight:700;margin-top:5px;opacity:.85;} .c-ok .vc-tag,.c-saved .vc-tag{color:var(--green);} .c-check .vc-tag{color:#8A5B00;} .c-none .vc-tag{color:var(--danger);}
+  .vc-dym{display:flex;flex-wrap:wrap !important;gap:5px;align-items:center;font-size:12.5px;font-weight:700;margin-top:6px;} .vc-dym button{border:1.5px solid var(--green);color:var(--green);background:var(--surface);border-radius:100px;padding:4px 10px;font-weight:700;font-size:12.5px;cursor:pointer;}
+  .vc-tips{margin:4px 0 8px;font-size:13.5px;} .vc-tips summary{cursor:pointer;font-weight:800;color:var(--green);padding:4px 0;} .vc-tips ul{margin:4px 0 0 18px;padding:0;display:grid;gap:4px;}
+  @media (max-width:420px){ .vc-res{flex-wrap:wrap;} .vc-name{flex-basis:100%;} }
   .settings-card:empty{display:none;}
   #supplierChips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;} #supplierChips .chip{flex-shrink:0;}
 </style>
@@ -2124,7 +2141,7 @@
     <div class="m2-band-head"><span class="m2-badge free big">FREE FOREVER</span><h2>For both sides. No card needed.</h2><p>Everything you need to trade with your partners.</p></div>
     <div class="m2-sub">Orders & chat</div><div class="m2-swipe">Swipe to see more →</div><div class="m2-grid" style="--cols:3"><div class="m2-card"><div class="m2-vis"><div class="v-chat viber"><div class="v-chat-h"><span>MS</span><b>Metro Steel Co.</b></div>
   <div class="v-bub me">Order for Thursday po 👇</div>
-  <div class="v-linkcard me"><small>nifti.ph/o/7Hk2</small><b>📦 Order from Dela Cruz Hardware</b><em>Tap to see and confirm</em></div></div></div><h4>Order links, no account needed</h4><p>Your partner opens the order in any browser and taps Confirm.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-chat"><div class="v-bub">10 bags cement, 5 rolls wire 🙏</div><div class="v-bub me">✓ Order ready · ₱2,925</div></div></div><h4>Paste a Viber order</h4><p>Paste the message and Nifti turns it into a proper order with prices.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-chat"><div class="v-bub">Delivered 2 boxes short 📷</div><div class="v-bub me">Noted, replacement tomorrow ✓</div></div></div><h4>Chat beside every order</h4><p>One thread per partner, with photos for proof.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>PO-0841</b><span class="v-red">1 day late</span></div><div class="v-track"><i class="d"></i><i class="d"></i><i class="d"></i><i class="l"></i><i></i></div><small>Placed · Confirmed · Packed · <b>On the way</b> · Delivered</small></div></div><h4>Every step, tracked</h4><p>From placed to paid. If something runs late, both sides see it.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>📦 Delivered ✓</b></div><small>Signed by Nena · 📷 photo · 9:42 AM</small></div></div><h4>Proof of delivery</h4><p>Photo and signature at the door, saved on the order.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-chat"><div class="v-bub">₱64 per piece</div><div class="v-bub me">Deal at ₱62? 🙏</div><div class="v-bub">🔒 ₱62 locked for 6 months</div></div></div><h4>Quotes and locked prices</h4><p>Ask for a quote, counter it, and lock the agreed price in writing.</p></div></div><div class="m2-sub">Getting paid</div><div class="m2-swipe">Swipe to see more →</div><div class="m2-grid" style="--cols:2"><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>💳 Dela Cruz says they paid</b></div><small>GCash ₱18,900 · Ref 7012 3345</small><div class=v-btns><span class="p">Received ✓</span><span class="">Not yet</span></div></div></div><h4>Payments the receiver confirms</h4><p>GCash, Maya, bank, cash or cheque, confirmed by whoever receives it.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-stat green"><small>WHO OWES YOU</small><b>₱84,200</b><span>3 buyers · 1 overdue</span></div></div><h4>Who owes you, with reminders</h4><p>Every unpaid invoice on one list, oldest first. Polite reminders in one tap.</p></div></div><div class="m2-sub">Selling admin</div><div class="m2-swipe">Swipe to see more →</div><div class="m2-grid" style="--cols:3"><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>“semento 40 x20 sako”</b></div><small>→ <b>Portland Cement 40kg</b> × 20 · ₱4,900</small><div class="v-btns"><span class="p">✓ Matched</span><span>Remembered</span></div></div></div><h4>Their PO, your order</h4><p>Upload their PDF, Excel or photo, or paste the Viber message. It becomes an order in your item names and prices.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>📝 3 waiting · ₱196K</b></div><small>Riverside opened it 3× · price held until Fri</small><div class=v-btns><span class="p">Nudge</span></div></div></div><h4>Waiting for their OK</h4><p>Tentative orders in one list. The customer confirms with one tap, and gets nudged until they do.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-notif ok"><span class="v-nic">🛒</span><div><div class="v-ntop"><b>Nifti</b><em>now</em></div><strong>New order · their PO #AB-12</strong><small>Already in your item names and prices</small></div></div></div><h4>Your order form, not their format</h4><p>Send customers your order form link. They pick your items and add their PO number. Nothing to retype.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>🎯 Rhea Santos</b></div><small>“Magkano 200 bags cement?” · follow up today</small><div class=v-btns><span class="p">Call</span><span class="">Viber</span></div></div></div><h4>Leads that don't slip</h4><p>Store inquiries land here by themselves. Each lead gets a follow-up date and a ready message.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-notif ok"><span class="v-nic">📦</span><div><div class="v-ntop"><b>Nifti</b><em>now</em></div><strong>Delivered: PO-0853</strong><small>Received by Juan · all complete</small></div></div></div><h4>"I received it" from the customer</h4><p>Your customer taps it on the tracking link. You know it arrived, and can bill right away.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-notif "><span class="v-nic">💸</span><div><div class="v-ntop"><b>Nifti</b><em>1m</em></div><strong>Juan says they paid ₱20,000</strong><small>GCash ref 7012 · check, then confirm</small></div></div></div><h4>"I've paid" from the statement</h4><p>Customers report GCash or bank payments from their statement link. You just confirm.</p></div></div><div class="m2-sub">Selling</div><div class="m2-swipe">Swipe to see more →</div><div class="m2-grid" style="--cols:4"><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>🛍 nifti.ph/s/metro-steel</b><span class="v-green">Open</span></div><small>412 visits · 23 orders this month</small></div></div><h4>Your own online store link</h4><p>Prices and ordering in one link for Facebook, Viber and Messenger.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-post"><b>📦 JUST ARRIVED!</b><span>Portland Cement ₱245/bag · same-day delivery sa Valenzuela!</span><em>👍❤️ 48 · 12 comments</em></div></div><h4>Posts written for you</h4><p>New stock and sale posts in Taglish or English. One tap to share.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-notif "><span class="v-nic">📨</span><div><div class="v-ntop"><b>Nifti</b><em>now</em></div><strong>Metro Steel: new stock is in</strong><small>Cement, rebar and GI wire restocked today</small></div></div></div><h4>Message all your buyers at once</h4><p>New stock lands in every buyer’s chat and pings their phone.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>🏪 Your shop</b><span class="v-green">New</span></div><small>"New stock in" post, made from your delivery</small></div></div><h4>A shop for buyers too</h4><p>Stores and restaurants get their own shop link and posts for their customers.</p></div></div><div class="m2-sub">Team & stock</div><div class="m2-swipe">Swipe to see more →</div><div class="m2-grid" style="--cols:4"><div class="m2-card"><div class="m2-vis"><div class="v-roles"><span>👑 Owner</span><span>📋 Purchasing</span><span>🧾 Finance</span><span>🚚 Driver</span></div></div><h4>Roles for everyone</h4><p>Owner, purchasing, warehouse, finance, driver. Each sees only their pages.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-notif "><span class="v-nic">☀️</span><div><div class="v-ntop"><b>Nifti</b><em>7:00</em></div><strong>Today: 3 to confirm</strong><small>₱84,200 owed to you · 2 cheques to deposit</small></div></div></div><h4>Phone notifications</h4><p>On Android and iPhone, plus a 7am summary of your day.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>Portland Cement</b><span class="v-amber">22 left</span></div><div class="v-bar amber"><i style="width:22%"></i></div><small>Reorder draft ready below 80 bags</small></div></div><h4>Stock and reorder drafts</h4><p>Stock per warehouse. A reorder is drafted when you run low.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>🔐 Your data</b></div><small>Download everything, anytime</small><div class=v-btns><span class="p">⬇ Download</span></div></div></div><h4>Your data stays yours</h4><p>Private to you and each partner. Download it or delete your account anytime.</p></div></div>
+  <div class="v-linkcard me"><small>nifti.ph/o/7Hk2</small><b>📦 Order from Dela Cruz Hardware</b><em>Tap to see and confirm</em></div></div></div><h4>Order links, no account needed</h4><p>Your partner opens the order in any browser and taps Confirm.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-chat"><div class="v-bub">10 bags cement, 5 rolls wire 🙏</div><div class="v-bub me">✓ Order ready · ₱2,925</div></div></div><h4>Paste a Viber order</h4><p>Paste the message and Nifti turns it into a proper order with prices.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-chat"><div class="v-bub">Delivered 2 boxes short 📷</div><div class="v-bub me">Noted, replacement tomorrow ✓</div></div></div><h4>Chat beside every order</h4><p>One thread per partner, with photos for proof.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>PO-0841</b><span class="v-red">1 day late</span></div><div class="v-track"><i class="d"></i><i class="d"></i><i class="d"></i><i class="l"></i><i></i></div><small>Placed · Confirmed · Packed · <b>On the way</b> · Delivered</small></div></div><h4>Every step, tracked</h4><p>From placed to paid. If something runs late, both sides see it.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>📦 Delivered ✓</b></div><small>Signed by Nena · 📷 photo · 9:42 AM</small></div></div><h4>Proof of delivery</h4><p>Photo and signature at the door, saved on the order.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-chat"><div class="v-bub">₱64 per piece</div><div class="v-bub me">Deal at ₱62? 🙏</div><div class="v-bub">🔒 ₱62 locked for 6 months</div></div></div><h4>Quotes and locked prices</h4><p>Ask for a quote, counter it, and lock the agreed price in writing.</p></div></div><div class="m2-sub">Getting paid</div><div class="m2-swipe">Swipe to see more →</div><div class="m2-grid" style="--cols:2"><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>💳 Dela Cruz says they paid</b></div><small>GCash ₱18,900 · Ref 7012 3345</small><div class=v-btns><span class="p">Received ✓</span><span class="">Not yet</span></div></div></div><h4>Payments the receiver confirms</h4><p>GCash, Maya, bank, cash or cheque, confirmed by whoever receives it.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-stat green"><small>WHO OWES YOU</small><b>₱84,200</b><span>3 buyers · 1 overdue</span></div></div><h4>Who owes you, with reminders</h4><p>Every unpaid invoice on one list, oldest first. Polite reminders in one tap.</p></div></div><div class="m2-sub">Selling admin</div><div class="m2-swipe">Swipe to see more →</div><div class="m2-grid" style="--cols:3"><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>“semento 40 x20 sako”</b></div><small>→ <b>Portland Cement 40kg</b> × 20 · ₱4,900</small><div class="v-btns"><span class="p">✓ Matched</span><span>Remembered</span></div></div></div><h4>Their PO, your order</h4><p>Upload their PDF or Excel, paste the Viber message, or read it out loud. It becomes an order in your item names and prices.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>📝 3 waiting · ₱196K</b></div><small>Riverside opened it 3× · price held until Fri</small><div class=v-btns><span class="p">Nudge</span></div></div></div><h4>Waiting for their OK</h4><p>Tentative orders in one list. The customer confirms with one tap, and gets nudged until they do.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-notif ok"><span class="v-nic">🛒</span><div><div class="v-ntop"><b>Nifti</b><em>now</em></div><strong>New order · their PO #AB-12</strong><small>Already in your item names and prices</small></div></div></div><h4>Your order form, not their format</h4><p>Send customers your order form link. They pick your items and add their PO number. Nothing to retype.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>🎯 Rhea Santos</b></div><small>“Magkano 200 bags cement?” · follow up today</small><div class=v-btns><span class="p">Call</span><span class="">Viber</span></div></div></div><h4>Leads that don't slip</h4><p>Store inquiries land here by themselves. Each lead gets a follow-up date and a ready message.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-notif ok"><span class="v-nic">📦</span><div><div class="v-ntop"><b>Nifti</b><em>now</em></div><strong>Delivered: PO-0853</strong><small>Received by Juan · all complete</small></div></div></div><h4>"I received it" from the customer</h4><p>Your customer taps it on the tracking link. You know it arrived, and can bill right away.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-notif "><span class="v-nic">💸</span><div><div class="v-ntop"><b>Nifti</b><em>1m</em></div><strong>Juan says they paid ₱20,000</strong><small>GCash ref 7012 · check, then confirm</small></div></div></div><h4>"I've paid" from the statement</h4><p>Customers report GCash or bank payments from their statement link. You just confirm.</p></div></div><div class="m2-sub">Selling</div><div class="m2-swipe">Swipe to see more →</div><div class="m2-grid" style="--cols:4"><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>🛍 nifti.ph/s/metro-steel</b><span class="v-green">Open</span></div><small>412 visits · 23 orders this month</small></div></div><h4>Your own online store link</h4><p>Prices and ordering in one link for Facebook, Viber and Messenger.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-post"><b>📦 JUST ARRIVED!</b><span>Portland Cement ₱245/bag · same-day delivery sa Valenzuela!</span><em>👍❤️ 48 · 12 comments</em></div></div><h4>Posts written for you</h4><p>New stock and sale posts in Taglish or English. One tap to share.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-notif "><span class="v-nic">📨</span><div><div class="v-ntop"><b>Nifti</b><em>now</em></div><strong>Metro Steel: new stock is in</strong><small>Cement, rebar and GI wire restocked today</small></div></div></div><h4>Message all your buyers at once</h4><p>New stock lands in every buyer’s chat and pings their phone.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>🏪 Your shop</b><span class="v-green">New</span></div><small>"New stock in" post, made from your delivery</small></div></div><h4>A shop for buyers too</h4><p>Stores and restaurants get their own shop link and posts for their customers.</p></div></div><div class="m2-sub">Team & stock</div><div class="m2-swipe">Swipe to see more →</div><div class="m2-grid" style="--cols:4"><div class="m2-card"><div class="m2-vis"><div class="v-roles"><span>👑 Owner</span><span>📋 Purchasing</span><span>🧾 Finance</span><span>🚚 Driver</span></div></div><h4>Roles for everyone</h4><p>Owner, purchasing, warehouse, finance, driver. Each sees only their pages.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-notif "><span class="v-nic">☀️</span><div><div class="v-ntop"><b>Nifti</b><em>7:00</em></div><strong>Today: 3 to confirm</strong><small>₱84,200 owed to you · 2 cheques to deposit</small></div></div></div><h4>Phone notifications</h4><p>On Android and iPhone, plus a 7am summary of your day.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>Portland Cement</b><span class="v-amber">22 left</span></div><div class="v-bar amber"><i style="width:22%"></i></div><small>Reorder draft ready below 80 bags</small></div></div><h4>Stock and reorder drafts</h4><p>Stock per warehouse. A reorder is drafted when you run low.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>🔐 Your data</b></div><small>Download everything, anytime</small><div class=v-btns><span class="p">⬇ Download</span></div></div></div><h4>Your data stays yours</h4><p>Private to you and each partner. Download it or delete your account anytime.</p></div></div>
   </div>
 </section>
 
@@ -2194,7 +2211,7 @@
     <div class="p2-plan pro"><div class="p2-flag">🎉 FREE DURING THE PILOT</div>
       <div class="p2-plan-h"><b>Supplier Pro</b><span><s>₱990</s> ₱0 <em>/month for now</em></span></div>
       <p>Get paid faster and deliver smarter. Everything in Free, plus:</p>
-      <div class="p2-perks"><div class="p2-perk"><div class="p2-perk-vis"><div class="v-notif "><span class="v-nic">⏰</span><div><div class="v-ntop"><b>Nifti</b><em>9:00</em></div><strong>Reminder sent to Juan Hardware</strong><small>₱21,504 · 7 days overdue</small></div></div></div><div class="p2-perk-t"><b>⏰ Collections on autopilot</b><span>Reminders on your terms, by chat or email.</span></div></div><div class="p2-perk"><div class="p2-perk-vis"><div class="v-list"><div class="v-li"><span>✓ Matched</span><b class="v-green">14</b></div><div class="v-li"><span>⚠ Not in bank</span><b class="v-red">1</b></div></div></div><div class="p2-perk-t"><b>🏦 Cash and bank matched</b><span>Every peso traced to an invoice.</span></div></div><div class="p2-perk"><div class="p2-perk-vis"><div class="v-route mini"><div class="d"><i>✓</i><span>Aling Nena</span><b>₱7,650</b></div><div class="h"><i>🚚</i><span>Boy Hardware</span><b>₱4,750</b></div></div></div><div class="p2-perk-t"><b>🚚 Routes for your drivers</b><span>Every stop and peso to collect, with photo proof.</span></div></div><div class="p2-perk"><div class="p2-perk-vis"><div class="v-notif "><span class="v-nic">✨</span><div><div class="v-ntop"><b>Nifti</b><em>now</em></div><strong>Read 6 lines from the photo</strong><small>1 line to double-check</small></div></div></div><div class="p2-perk-t"><b>✨ AI reads handwritten POs</b><span>Snap a photo, get the order.</span></div></div><div class="p2-perk"><div class="p2-perk-vis"><div class="v-card"><div class="v-row"><b>Deposit today</b></div><small>BDO #004512 · ₱18,200</small><div class=v-btns><span class="p">Mark deposited</span></div></div></div><div class="p2-perk-t"><b>🏦 Never miss a cheque</b><span>Deposit reminders and bounce alerts.</span></div></div></div>
+      <div class="p2-perks"><div class="p2-perk"><div class="p2-perk-vis"><div class="v-notif "><span class="v-nic">⏰</span><div><div class="v-ntop"><b>Nifti</b><em>9:00</em></div><strong>Reminder sent to Juan Hardware</strong><small>₱21,504 · 7 days overdue</small></div></div></div><div class="p2-perk-t"><b>⏰ Collections on autopilot</b><span>Reminders on your terms, by chat or email.</span></div></div><div class="p2-perk"><div class="p2-perk-vis"><div class="v-list"><div class="v-li"><span>✓ Matched</span><b class="v-green">14</b></div><div class="v-li"><span>⚠ Not in bank</span><b class="v-red">1</b></div></div></div><div class="p2-perk-t"><b>🏦 Cash and bank matched</b><span>Every peso traced to an invoice.</span></div></div><div class="p2-perk"><div class="p2-perk-vis"><div class="v-route mini"><div class="d"><i>✓</i><span>Aling Nena</span><b>₱7,650</b></div><div class="h"><i>🚚</i><span>Boy Hardware</span><b>₱4,750</b></div></div></div><div class="p2-perk-t"><b>🚚 Routes for your drivers</b><span>Every stop and peso to collect, with photo proof.</span></div></div><div class="p2-perk"><div class="p2-perk-vis"><div class="v-card"><div class="v-row"><b>Deposit today</b></div><small>BDO #004512 · ₱18,200</small><div class=v-btns><span class="p">Mark deposited</span></div></div></div><div class="p2-perk-t"><b>🏦 Never miss a cheque</b><span>Deposit reminders and bounce alerts.</span></div></div></div>
       <ul class="p2-more"><li>Customers due to reorder, reminded for you</li><li>Promises to pay, tracked</li><li>Statements of account</li><li>Credit limits per buyer</li><li>Price changes announced ahead</li><li>Returns and credits</li><li>BIR 2307 tracker and VAT books</li><li>Up to 15 teammates</li></ul>
       <button class="plan-btn primary" onclick="navigate('login')">Start free. Pro is on for you →</button>
       <small class="p2-after">After the pilot: ₱990/month or ₱9,900/year. Sign up now to keep this founding price.</small></div>
@@ -3582,12 +3599,6 @@
           <h2>📧 Email sending <span style="font-size:13px;font-weight:700;opacity:.6;">(only you see this)</span></h2>
           <div class="sub">Nifti sends password resets, email alerts, morning summaries and Help messages from a Gmail account. Free, about 500 emails a day. One-time setup, about 2 minutes.</div>
           <div id="ownerEmailContent"></div>
-        </div>
-
-        <div class="settings-card hidden" id="ownerAiCard">
-          <h2>✨ AI reading of POs <span style="font-size:13px;font-weight:700;opacity:.6;">(only you see this)</span></h2>
-          <div class="sub">Reads photos of customers' POs, even messy handwriting, straight into their order. Off until you add an Anthropic API key. Costs about ₱2 per page, billed by Anthropic to you. Each business can do up to 40 reads a day.</div>
-          <div id="ownerAiContent"></div>
         </div>
 
         <div class="settings-card hidden" id="ownerBackupCard">
@@ -7277,26 +7288,6 @@ function renderPhoneNotifNudge(){
    Gmail account using a Google "app password". Only the Nifti owner sees this card; the password
    is write-only (never sent back to the browser). */
 let emailSenderStatus = null;
-async function renderOwnerAiCard(){
-  const card = document.getElementById('ownerAiCard'), el = document.getElementById('ownerAiContent');
-  if(!card || !el || !myBusiness) return;
-  const { data, error } = await sb.rpc('admin_ai_status');
-  if(error || !data){ card.classList.add('hidden'); return; }
-  card.classList.remove('hidden');
-  el.innerHTML = data.on
-    ? `<div class="notif-phone on" style="margin-bottom:8px;">✓ On · ${data.today} read${data.today === 1 ? '' : 's'} today · ${data.month} in 30 days (≈ ₱${(data.month * 2).toLocaleString()})</div>
-       <button class="btn btn-outline" onclick="saveOwnerAiKey(true)">Turn off</button>`
-    : `<div class="field"><label>Anthropic API key</label><input id="ownerAiKey" type="password" autocomplete="off" placeholder="sk-ant-…"></div>
-       <div class="sub" style="margin:-4px 0 8px;">Get one at console.anthropic.com → API keys. Set a monthly spend limit there too.</div>
-       <button class="btn btn-primary" onclick="saveOwnerAiKey(false)">Turn on</button>`;
-}
-async function saveOwnerAiKey(off){
-  const k = off ? '' : ((document.getElementById('ownerAiKey') || {}).value || '').trim();
-  if(!off && !k){ showToast('Paste the key first.', 'error'); return; }
-  const { error } = await sb.rpc('admin_set_ai_key', {p_key: k});
-  if(error){ showToast(error.message, 'error'); return; }
-  window._poAiChecked = false; showToast(off ? 'AI reading is off.' : 'AI reading is on.', 'success'); renderOwnerAiCard();
-}
 async function renderOwnerEmailCard(){
   const card = document.getElementById('ownerEmailCard');
   if(!card) return;
@@ -7373,12 +7364,12 @@ const PRO_FEATURE_LABELS = {
   statements: 'Statements of account', bir2307: 'BIR 2307 tracker', store_insights: 'Store visitors & sales', store_promos: 'Store promos',
   auto_reminders: 'Automatic payment reminders', late_payers: 'Who pays late', credit_limits: 'Credit limits per buyer', full_history: 'Full history & exports',
   watchdog: "Owner's watchdog", market_price: 'Market price check', price_alerts: 'Price-increase alerts',
-  cheques: 'Cheque tracker', routes: 'Delivery & collection routes', reconcile: 'Cash & bank reconciliation', po_ai: 'AI reading of handwritten POs', price_blast: 'Price-change announcements', credit_memos: 'Credits on account',
+  cheques: 'Cheque tracker', routes: 'Delivery & collection routes', reconcile: 'Cash & bank reconciliation', price_blast: 'Price-change announcements', credit_memos: 'Credits on account',
   reorder_reminders: 'Reorder reminders', vat_books: 'Sales & purchase books', spending_caps: 'Spending caps', scorecard: 'Supplier scorecard',
 };
 const PRO_PLANS = {
   supplier_pro: {name: 'Supplier Pro', forType: 'supplier', tagline: 'Get paid faster and sell more.',
-    features: ['Payment reminders on your terms, sent for you by chat or email, with promises to pay tracked', 'AI reads photos of handwritten POs into your order', 'Cash and bank reconciliation: who holds the cash, deposits, and your bank statement matched', 'Customers due to reorder, reminded with a one-tap reorder link', 'Online store insights: visitors, orders, top products', 'Promo prices with an end date on your store', 'One-tap statements of account', 'Credit limits per buyer: hold orders when they owe too much or pay late', 'Delivery & collection routes with photo proof and cash remittance', 'Cheque tracker: post-dated calendar, deposit reminders, bounced alerts', 'Price-change announcements to every buyer at once', 'Reorder reminders when a buyer goes quiet', 'Credits carried to the next invoice', 'BIR 2307 tracker and monthly sales book (VAT)', 'Who pays late, and automatic payment reminders', 'Up to 15 teammates']},
+    features: ['Payment reminders on your terms, sent for you by chat or email, with promises to pay tracked', 'Cash and bank reconciliation: who holds the cash, deposits, and your bank statement matched', 'Customers due to reorder, reminded with a one-tap reorder link', 'Online store insights: visitors, orders, top products', 'Promo prices with an end date on your store', 'One-tap statements of account', 'Credit limits per buyer: hold orders when they owe too much or pay late', 'Delivery & collection routes with photo proof and cash remittance', 'Cheque tracker: post-dated calendar, deposit reminders, bounced alerts', 'Price-change announcements to every buyer at once', 'Reorder reminders when a buyer goes quiet', 'Credits carried to the next invoice', 'BIR 2307 tracker and monthly sales book (VAT)', 'Who pays late, and automatic payment reminders', 'Up to 15 teammates']},
   buyer_pro: {name: 'Buyer Pro', forType: 'buyer', tagline: 'Pay less and stop leaks.',
     features: ["Owner's watchdog: alerts when staff overpay or skip approval", 'Spending caps you set per business, teammate or supplier', 'Supplier scorecard: late, short, returns, price hikes', 'Cheque tracker: know when each cheque hits your bank', 'Market price check vs other Nifti buyers', 'BIR 2307 tracker and monthly purchase book (VAT)', 'Up to 15 teammates']},
   business: {name: 'Business', forType: 'any', tagline: 'For bigger teams and multi-branch businesses. Everything in Pro for your side, plus:',
@@ -10314,7 +10305,7 @@ async function renderAdminSite(body){
       ${(notices || []).map(n => `<div class="adm-log"><span>${escapeHtml(n.title)} <span style="opacity:.6;">(${escapeHtml(n.level)})</span></span><span>${n.ends_at && new Date(n.ends_at) < new Date() ? 'ended' : `<span class="row-action" onclick="adminAct('admin_end_notice', {p_id:'${n.id}'}, 'Ended.')">End now</span>`}</span></div>`).join('')}
     </div>
     <div class="panel-card"><div class="adm-h">Raw data</div><div class="adm-sub">Every table, the logs and backups live in your <a href="${SUPABASE_DASHBOARD}" target="_blank" rel="noopener">Supabase dashboard</a> (Table Editor for data, Logs for errors). Use it for anything this console doesn't cover.</div></div>`;
-  await renderOwnerEmailCard(); renderOwnerBackupCard(); renderOwnerAiCard();
+  await renderOwnerEmailCard(); renderOwnerBackupCard();
 }
 
 function showSuspendedScreen(acct){
@@ -11615,7 +11606,7 @@ function colSampleBank(){
    sales order printout in your own format and a tracking link for the customer. */
 let CPO = null, cpoAliases = null;
 // Tagalog and shop-talk words customers use for the same items
-const CPO_SYN = {semento: 'cement', buhangin: 'sand', pako: 'nail', pakong: 'nail', alambre: 'wire', bakal: 'steel', graba: 'gravel', kahoy: 'lumber', tubo: 'pipe', pintura: 'paint', yero: 'roofing', bareta: 'rebar', varilla: 'rebar', rebars: 'rebar', nails: 'nail', wires: 'wire', gi: 'galvanized'};
+const CPO_SYN = {semento: 'cement', buhangin: 'sand', pako: 'nail', pakong: 'nail', alambre: 'wire', bakal: 'steel', graba: 'gravel', kahoy: 'lumber', tubo: 'pipe', pintura: 'paint', yero: 'roofing', bareta: 'rebar', varilla: 'rebar', rebars: 'rebar', nails: 'nail', wires: 'wire', gi: 'galvanized', chb: 'hollow blocks', kawad: 'wire', lansang: 'nail', kabilya: 'rebar', liha: 'sandpaper', puti: 'white', itim: 'black', pula: 'red', asul: 'blue', berde: 'green', dilaw: 'yellow', plywud: 'plywood'};
 const CPO_UNITS = 'bags?|sacks?|sako|piraso|rolyo|kahon|galon|tali|pcs?|pieces?|pc\\.|rolls?|boxes|box|bxs?|cans?|gals?|gallons?|sets?|lengths?|lgths?|packs?|pks?|bundles?|drums?|pails?|kilos?|kgs?|tons?|units?|cartons?|ctns?|dozens?|doz|reams?|sheets?|liters?|ltrs?|meters?|mtrs?|feet|ft|cu\\.?m|cubic|trucks?|pairs?|bottles?|trays?|cases?';
 function cpoNorm(s){
   let t = ' ' + String(s || '').toLowerCase().replace(/[“”"'`]/g, '').replace(/(\d)\s*(kg|mm|cm|m|g|ml|l|in|inch|ft|ga|gauge)\b/g, '$1$2').replace(/[^a-z0-9#./x ]+/g, ' ') + ' ';
@@ -11648,7 +11639,7 @@ function cpoNumbers(line){
   const out = []; const re = /(?:₱|php|p)?\s?(\d{1,3}(?:,\d{3})+(?:\.\d+)?|\d+(?:\.\d+)?)/gi; let m;
   while((m = re.exec(line))){
     const after = line.slice(m.index + m[0].length, m.index + m[0].length + 12), before = line.slice(Math.max(0, m.index - 3), m.index);
-    if(/^(kg|mm|cm|g|ml|l|in|inch|ft|ga|gauge|"|x\d)/i.test(after) || /(#|\dx)$/i.test(before)) continue; // part of the item name: 40kg, 10mm, #16, 2x4
+    if(/^(kg|mm|cm|g|ml|l|in|inch|ft|ga|gauge|"|x\d|\/\d)/i.test(after) || /(#|\dx|\d\/)$/i.test(before)) continue; // part of the item name: 40kg, 10mm, #16, 2x4
     if(/^[a-z]/i.test(after) && !new RegExp('^\\s?(' + CPO_UNITS + ')\\b', 'i').test(after) && /[a-z]$/i.test(before)) continue;
     out.push({v: Number(m[1].replace(/,/g, '')), raw: m[0], at: m.index, end: m.index + m[0].length, unit: (after.match(new RegExp('^\\s?(' + CPO_UNITS + ')\\b', 'i')) || [])[1] || null, money: /₱|php|p\s?$/i.test(m[0].slice(0, 4)) || /\.\d{2}$/.test(m[1]) || /,\d{3}/.test(m[1])});
   }
@@ -11657,7 +11648,7 @@ function cpoNumbers(line){
 function cpoParseLine(line){
   const raw = line.replace(/\s+/g, ' ').trim();
   if(raw.length < 3 || !/[a-z]/i.test(raw)) return null;
-  if(/^(total|sub-?total|grand total|vat|less|net|amount due|prepared|approved|received|noted|terms|deliver|ship to|needed|required|p\.?\s?o\.?\b|purchase order|date|page|tin|address|tel|mobile|email|note|attention|attn|supplier|vendor|to:|from:)/i.test(raw)) return null;
+  if(/^(total|totals|sub-?total|grand total|vat|less|net|amount due|prepared|approved|received|noted|terms|remarks|deliver|delivery|ship to|needed|required|p\.?\s?o\.?\b|purchase order|date|page|tin|address|tel|mobile|email|note|attention|attn|supplier|vendor|to:|from:)(?![a-z])/i.test(raw)) return null;
   if(/\b(qty|quantity)\b.*\b(desc|description|item|particulars)\b|\b(desc|description|item|particulars)\b.*\b(qty|quantity)\b/i.test(raw)) return null;
   let nums = cpoNumbers(raw);
   let idx = raw.match(/^\s*(\d{1,3})[.)]\s+/);
@@ -11727,12 +11718,7 @@ async function cpoReadFile(file){
       Object.keys(byY).sort((a, b) => b - a).forEach(y => lines.push(byY[y].sort((a, b) => a.transform[4] - b.transform[4]).map(i => i.str).join('   ')));
     }
     const parsedPdf = cpoParseText(lines.join('\n'));
-    if(!parsedPdf.rows.length && cpoAiOn()){ try{ const a = await cpoAiRead(file); CPO.viaAi = true; return a; }catch(e){ console.warn(e); } }
     return parsedPdf;
-  }
-  if(/^image\//.test(file.type) && cpoAiOn()){
-    try{ const a = await cpoAiRead(file); CPO.viaAi = true; return a; }
-    catch(e){ const st = document.getElementById('cpoStatus'); if(st) st.textContent = (e.message || 'AI reading failed') + ' Reading it on your phone instead…'; }
   }
   if(/^image\//.test(file.type)){
     CPO.viaOcr = true;
@@ -11752,9 +11738,10 @@ function openCustomerPoImport(prefill){
   const p = prefill || {};
   CPO = {step: 1, buyerId: p.buyerId || '', name: p.name || '', phone: p.phone || '', email: p.email || '', leadId: p.leadId || null, text: '', rows: [], ref: '', neededBy: '', address: '', notes: '', vat: false, remember: true, tentative: !!p.tentative, holdDays: 3, allowEdit: true};
   if(!CPO.buyerId && CPO.name){ const b = (buyersData || []).find(x => x.name.toLowerCase() === CPO.name.toLowerCase()); if(b) CPO.buyerId = b.id; }
-  cpoLoadAliases(); cpoRender(); cpoCheckAi();
+  cpoLoadAliases(); cpoRender();
 }
 function cpoRender(){
+  if(CPO.step === 'voice') return vcRender();
   const buyers = (buyersData || []).slice().sort((a, b) => a.name.localeCompare(b.name));
   if(CPO.step === 1){
     slModal('cpoModal', `<div class="sl-sheet-h"><b>${CPO.tentative ? '📝 Send an order for their OK' : '📄 Enter a customer\'s PO'}</b><button class="sl-x" onclick="slClose('cpoModal')">✕</button></div>
@@ -11765,7 +11752,7 @@ function cpoRender(){
         <div class="field"><label>Mobile (for updates)</label><input id="cpoPhone" type="tel" maxlength="20" value="${escapeHtml(CPO.phone)}" placeholder="0917 123 4567"></div></div>
         <div class="field"><label>Email (optional, for automatic reminders)</label><input id="cpoEmail" type="email" maxlength="120" value="${escapeHtml(CPO.email)}"></div>`}
       <label class="cpo-drop"><input type="file" accept=".pdf,.xlsx,.xls,.csv,.txt,image/*" style="display:none" onchange="cpoFile(this)">
-        <span>⬆</span><b>Upload their PO</b><small>${cpoAiOn() ? 'PDF, Excel, CSV or a photo, even handwritten ✨' : 'PDF, Excel, CSV or a clear photo'}</small></label>
+        <span>⬆</span><b>Upload their PO</b><small>PDF, Excel, CSV or a clear photo</small></label>
       <div class="cpo-or">or paste it</div>
       <textarea id="cpoText" rows="6" class="sl-ta" placeholder="PO No. JH-551&#10;Deliver by Oct 3&#10;1. Portland cement 40kg  100 bags  245.00  24,500.00&#10;2. rebar 10mm - 50 pcs&#10;semento 20 sako">${escapeHtml(CPO.text)}</textarea>
       <div id="cpoStatus" class="sl-sub"></div><div id="cpoErr" class="sl-err"></div>
@@ -11780,7 +11767,7 @@ function cpoRender(){
     const needCheck = CPO.rows.filter(r => r.conf !== 'ok' && r.conf !== 'saved').length;
     slModal('cpoModal', `<div class="sl-sheet-h"><b>Check the order</b><button class="sl-x" onclick="slClose('cpoModal')">✕</button></div>
       <div class="sl-sub">${!CPO.rows.length ? 'Add their items: tap one below, or type it and its quantity.' : CPO.manual ? `${CPO.rows.length} item${CPO.rows.length === 1 ? '' : 's'} added. Prices use your price list.` : `${CPO.rows.length} item${CPO.rows.length === 1 ? '' : 's'} read.${needCheck ? ` <b class="sl-warn">${needCheck} to check.</b>` : ' All matched to your items. ✓'} Prices use your price list; theirs is shown when it's different.`}
-        ${CPO.viaOcr ? '<br><b class="sl-warn">The phone reads handwriting poorly. Check each line against their photo, and add missed items below.</b>' : ''}${CPO.viaAi ? '<br>✨ Read by AI. Lines marked ⚠ were hard to read.' : ''}</div>
+        ${CPO.viaVoice ? '<br>🎙 From your voice. Their words are shown on each line.' : ''}${CPO.viaOcr ? '<br><b class="sl-warn">The phone reads handwriting poorly. Check each line against their photo, and add missed items below.</b>' : ''}</div>
       ${cpoQuickHtml()}
       <div class="cpo-rows">${CPO.rows.map((r, i) => `<div class="cpo-row c-${r.conf}">
         <div class="cpo-their">Their line: <i>${escapeHtml(r.text)}</i>${r.theirPrice != null && r.myPrice != null && Math.abs(r.theirPrice - r.myPrice) >= 0.01 ? ` · <b class="sl-warn">they wrote ${fmtPHP(r.theirPrice)}</b>` : ''}</div>
@@ -11842,13 +11829,13 @@ async function cpoFile(input){
   const f = input.files && input.files[0]; if(!f) return;
   const st = document.getElementById('cpoStatus'); st.textContent = 'Reading ' + f.name + '…';
   if(CPO.photo){ try{ URL.revokeObjectURL(CPO.photo); }catch(e){} }
-  CPO.photo = /^image\//.test(f.type) ? URL.createObjectURL(f) : null; CPO.viaOcr = false; CPO.viaAi = false; CPO.manual = false;
+  CPO.photo = /^image\//.test(f.type) ? URL.createObjectURL(f) : null; CPO.viaOcr = false; CPO.manual = false;
   try{ const parsed = await cpoReadFile(f); cpoFromParsed(parsed); }
   catch(e){ st.textContent = ''; document.getElementById('cpoErr').textContent = e.message || 'Couldn\'t read that file. Try pasting the text.'; }
 }
 function cpoReadPasted(){
   cpoCaptureStep1(); if(!cpoValidateWho()) return;
-  CPO.manual = false; CPO.viaOcr = false; CPO.viaAi = false; CPO.photo = null;
+  CPO.manual = false; CPO.viaOcr = false; CPO.viaVoice = false; CPO.photo = null;
   if(CPO.text.trim().length < 3){ document.getElementById('cpoErr').textContent = 'Paste their order, or upload the file.'; return; }
   const firstLine = CPO.text.split('\n')[0] || '';
   cpoFromParsed(/\t/.test(firstLine) || (firstLine.split(',').length >= 3 && /qty|quantity/i.test(firstLine)) ? cpoRowsFromTable(colParseCsv(CPO.text)) : cpoParseText(CPO.text));
@@ -11874,7 +11861,7 @@ async function cpoCreate(){
   if(!rows.length){ err.textContent = 'Add at least one item.'; return; }
   const noPrice = rows.find(r => !(Number(r.myPrice) >= 0) || r.myPrice === null || r.myPrice === '');
   if(noPrice){ err.textContent = `Add a price for "${noPrice.product || noPrice.text}".`; return; }
-  const items = rows.map(r => ({product: r.product || r.text, qty: Number(r.qty), unitPrice: Number(r.myPrice), unit: r.unit || null, customerText: r.product && r.product !== r.text ? r.text : null}));
+  const items = rows.map(r => ({product: r.product || r.aliasText || r.text, qty: Number(r.qty), unitPrice: Number(r.myPrice), unit: r.unit || null, customerText: r.product && r.product !== r.text ? r.text : null}));
   const btn = document.querySelector('#cpoModal .btn-primary'); if(btn){ btn.disabled = true; btn.textContent = 'Creating…'; }
   let poId, poNumber, buyerId, buyerName;
   if(myBusiness){
@@ -11903,7 +11890,8 @@ async function cpoCreate(){
   trackEvent('customer_po_imported', {lines: rows.length});
 }
 async function cpoSaveAliases(rows, buyerId){
-  const list = rows.filter(r => r.product && r.text && cpoNorm(r.text) && cpoNorm(r.text) !== cpoNorm(r.product)).map(r => ({customer_key: buyerId || '', alias_norm: cpoNorm(r.text).slice(0, 200), product: r.product}));
+  const said = r => r.aliasText || r.text; // voice lines learn the item words, not the whole sentence
+  const list = rows.filter(r => r.product && said(r) && cpoNorm(said(r)) && cpoNorm(said(r)) !== cpoNorm(r.product)).map(r => ({customer_key: buyerId || '', alias_norm: cpoNorm(said(r)).slice(0, 200), product: r.product}));
   if(!list.length) return;
   if(myBusiness){ await sb.from('item_aliases').upsert(list.map(x => Object.assign({business_id: myBusiness.id, updated_at: new Date().toISOString()}, x)), {onConflict: 'business_id,customer_key,alias_norm'}); }
   cpoAliases = (cpoAliases || []).filter(a => !list.some(x => x.alias_norm === a.alias_norm && x.customer_key === a.customer_key)).concat(list);
@@ -12380,15 +12368,8 @@ async function qtSendFirst(poId){
 
 /* ============ PO ENTRY WITHOUT RETYPING ============
    Four ways in, best first: (1) the customer fills your order form themselves, (2) type it in with
-   their usual items one tap away (fastest for messy handwriting), (3) say it out loud, (4) upload it:
-   files are read exactly, photos by AI when the site has it switched on, else by the phone. */
-function cpoAiOn(){ return !!(myBusiness && window._poAiOn); }
-async function cpoCheckAi(){
-  if(!myBusiness || window._poAiChecked) return;
-  window._poAiChecked = true;
-  try{ const { data } = await sb.rpc('po_ai_available'); window._poAiOn = !!data; }catch(e){ window._poAiOn = false; }
-  if(CPO && CPO.step === 1 && document.getElementById('cpoModal')) cpoRender();
-}
+   their usual items one tap away (fastest for messy handwriting), (3) say it out loud (VOICE below),
+   (4) upload it: files are read exactly, photos by the phone's own reader. */
 function cpoStoreLink(){
   if(!myBusiness) return storeUrl(window._demoStoreSlug || 'metro-steel-co', 'poform');
   const st = myBusiness.store || {};
@@ -12400,7 +12381,7 @@ function cpoWaysHtml(){
     <button class="cpo-way" onclick="cpoSendForm()"><b>🛒 Send them your order form</b><small>They pick from your items and prices, add their PO number, and it arrives as your order. Nothing to type.</small></button>
     ${past ? `<button class="cpo-way" onclick="cpoSendUsual()"><b>🔁 Send their usual order</b><small>Their last order, ready to check and send in one tap.</small></button>` : ''}
     <button class="cpo-way" onclick="cpoManual()"><b>✍️ Type it in</b><small>Best for handwritten POs. Pick from your items as you type${past ? ', their usual items are one tap away' : ''}.</small></button>
-    ${cpoVoiceOk() ? `<button class="cpo-way" id="cpoVoiceBtn" onclick="cpoVoice()"><b>🎙 Say it</b><small>Read their PO out loud, one item per line: "semento apatnapung kilo, limampung sako".</small></button>` : ''}</div>`;
+    <button class="cpo-way" onclick="vcOpen()"><b>🎙 Say it</b><small>Read their PO out loud, item by item: "semento, limampung sako". Each one is matched to your items as you speak.</small></button></div>`;
 }
 async function cpoSendForm(){
   cpoCaptureStep1();
@@ -12466,62 +12447,301 @@ function cpoAddTyped(){
 function cpoPhotoBig(){
   slModal('cpoPhotoModal', `<div class="sl-sheet-h"><b>Their PO</b><button class="sl-x" onclick="slClose('cpoPhotoModal')">✕</button></div><div class="cpo-photo-big"><img src="${CPO.photo}" alt="Their PO"></div>`);
 }
-// Voice: Chrome on Android understands Filipino and English.
-function cpoVoiceOk(){ return !!(window.SpeechRecognition || window.webkitSpeechRecognition); }
-const CPO_TL_UNITS = {isa: 1, isang: 1, dalawa: 2, dalawang: 2, tatlo: 3, tatlong: 3, apat: 4, lima: 5, limang: 5, anim: 6, pito: 7, pitong: 7, walo: 8, walong: 8, siyam: 9};
-const CPO_ES_NUM = {uno: 1, dos: 2, tres: 3, kwatro: 4, kuwatro: 4, singko: 5, sais: 6, siyete: 7, otso: 8, nuwebe: 9, diyes: 10, onse: 11, dose: 12, trese: 13, katorse: 14, kinse: 15, beinte: 20, bente: 20, trenta: 30, treinta: 30, kwarenta: 40, singkwenta: 50, sisenta: 60, setenta: 70, otsenta: 80, nobenta: 90, siyento: 100, syento: 100};
-const CPO_TL_TENS = {sampu: 10, sampung: 10, dalawampu: 20, dalawampung: 20, tatlumpu: 30, tatlumpung: 30, apatnapu: 40, apatnapung: 40, limampu: 50, limampung: 50, animnapu: 60, animnapung: 60, pitumpu: 70, pitumpung: 70, walumpu: 80, walumpung: 80, siyamnapu: 90, siyamnapung: 90};
-function cpoWordsToNum(text){
-  // "limampung sako" -> "50 sako", "isang daan at dalawampu't lima" -> "125", "labing-lima" -> "15"
-  const words = String(text).toLowerCase().replace(/[’']t\b/g, ' ').replace(/labing-?/g, 'labing ').split(/\s+/);
-  const out = []; let cur = null, total = 0;
-  const flush = () => { if(cur !== null || total){ out.push(String(total + (cur || 0))); } cur = null; total = 0; };
-  for(let i = 0; i < words.length; i++){
-    const w = words[i].replace(/[.,]/g, '');
-    if(w === 'labing' && CPO_TL_UNITS[(words[i + 1] || '').replace(/[.,]/g, '')] !== undefined){ cur = (cur || 0) + 10 + CPO_TL_UNITS[words[++i].replace(/[.,]/g, '')]; continue; }
-    if(CPO_ES_NUM[w] !== undefined && cur === null && !total){ flush(); out.push(String(CPO_ES_NUM[w])); continue; }
-    if(CPO_TL_UNITS[w] !== undefined){ cur = (cur || 0) + CPO_TL_UNITS[w]; continue; }
-    if(CPO_TL_TENS[w] !== undefined){ cur = (cur || 0) + CPO_TL_TENS[w]; continue; }
-    if(/^(daan|raan|sandaan|sanlibo|libo)$/.test(w)){ const mult = /libo/.test(w) ? 1000 : 100; total += (w.startsWith('san') ? 1 : (cur || 1)) * mult; cur = null; continue; }
-    if((w === 'at' || w === 'na') && (cur !== null || total) && /^(isa|dalawa|tatlo|apat|lima|anim|pito|walo|siyam|sampu|labing|\w+pu)/.test(words[i + 1] || '')) continue;
-    if(w === 'na' && (cur !== null || total)) continue;
-    flush(); out.push(words[i]);
+
+/* ============ VOICE: say the PO, item by item ============
+   Accuracy comes from four things: (1) one item per utterance, so a pause ends a line and nothing
+   runs together; (2) the phone returns up to 5 guesses per utterance and we keep the one that best
+   matches YOUR item list (and this customer's usual items and learned wording); (3) spoken numbers,
+   sizes and units are normalized before matching (English, Tagalog and Spanish-Filipino numbers,
+   "dose milimetro" = 12mm, "limampung sako" = 50 bags); (4) anything uncertain is flagged, never
+   guessed silently: no quantity heard, a weak match, or a close second choice ("Did you mean"). */
+const VC = {on: false, rec: null, lines: [], silent: 0, lastFinal: '', lastAt: 0, usePhrases: true, starts: 0, wake: null, status: '', tone: ''};
+VC.lang = (() => { try{ return localStorage.getItem('nifti-voice-lang') || 'fil-PH'; }catch(e){ return 'fil-PH'; } })();
+function vcSupported(){ return !!(window.SpeechRecognition || window.webkitSpeechRecognition); }
+
+// ---- numbers ----
+const VC_ONES = {zero: 0, one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10, eleven: 11, twelve: 12, thirteen: 13, fourteen: 14, fifteen: 15, sixteen: 16, seventeen: 17, eighteen: 18, nineteen: 19,
+  isa: 1, isang: 1, dalawa: 2, dalawang: 2, tatlo: 3, tatlong: 3, apat: 4, lima: 5, limang: 5, anim: 6, pito: 7, pitong: 7, walo: 8, walong: 8, siyam: 9, sampu: 10, sampung: 10,
+  uno: 1, dos: 2, tres: 3, kwatro: 4, kuwatro: 4, singko: 5, sais: 6, siyete: 7, syete: 7, otso: 8, nuwebe: 9, nueve: 9, diyes: 10, dyis: 10, onse: 11, dose: 12, trese: 13, katorse: 14, kinse: 15, disisais: 16, disisiyete: 17, disiotso: 18, disinuwebe: 19};
+const VC_TENS = {twenty: 20, thirty: 30, forty: 40, fourty: 40, fifty: 50, sixty: 60, seventy: 70, eighty: 80, ninety: 90,
+  dalawampu: 20, dalawampung: 20, tatlumpu: 30, tatlumpung: 30, apatnapu: 40, apatnapung: 40, limampu: 50, limampung: 50, animnapu: 60, animnapung: 60, pitumpu: 70, pitumpung: 70, walumpu: 80, walumpung: 80, siyamnapu: 90, siyamnapung: 90,
+  beinte: 20, bente: 20, trenta: 30, treinta: 30, kwarenta: 40, kuwarenta: 40, singkwenta: 50, sisenta: 60, setenta: 70, sitenta: 70, otsenta: 80, nobenta: 90};
+const VC_TL_ONE = {isa: 1, dalawa: 2, tatlo: 3, apat: 4, lima: 5, anim: 6, pito: 7, walo: 8, siyam: 9};
+function vcNumWord(w){
+  if(VC_ONES[w] !== undefined) return {v: VC_ONES[w], k: VC_ONES[w] >= 10 ? 'teen' : 'one'};
+  if(VC_TENS[w] !== undefined) return {v: VC_TENS[w], k: 'ten'};
+  const teen = w.match(/^labi(?:ng|n)-?(.+)$/); // labing-isa .. labinsiyam
+  if(teen){ const base = teen[1].replace(/^g/, '').replace(/ng$/, ''); const v = VC_TL_ONE[base] ?? VC_TL_ONE[teen[1]] ?? ({lima: 5, tatlo: 3, pito: 7, siyam: 9, walo: 8, dalawa: 2, apat: 4, anim: 6, isa: 1})[base]; if(v !== undefined) return {v: 10 + v, k: 'teen'}; }
+  if(/^(hundred|daan|raan|daang|raang|siyentos|syentos)$/.test(w)) return {v: 100, k: 'scale'};
+  if(/^(sandaan|isandaan|sandaang)$/.test(w)) return {v: 100, k: 'one', big: true};
+  if(/^(thousand|libo|libong)$/.test(w)) return {v: 1000, k: 'scale'};
+  if(/^(sanlibo|isanlibo|mil)$/.test(w)) return {v: 1000, k: 'one', big: true};
+  if(/^\d+(\.\d+)?$/.test(w)) return {v: Number(w), k: 'digit'};
+  return null;
+}
+function vcWordsToNumbers(text){
+  const t = String(text).toLowerCase().replace(/[’']t\b/g, ' at').replace(/(\d),(\d{3})\b/g, '$1$2').replace(/-/g, ' ').replace(/\b(labi(?:ng|n))\s+/g, '$1');
+  const w = t.split(/\s+/).filter(Boolean), out = [];
+  let i = 0;
+  while(i < w.length){
+    const first = vcNumWord(w[i]), aScale = (w[i] === 'a' || w[i] === 'isang') && w[i + 1] && /^(hundred|thousand|daan|libo|dozen)$/.test(w[i + 1]);
+    if(!first && !aScale){ out.push(w[i]); i++; continue; }
+    let total = 0, cur = 0, any = false, j = i;
+    if(aScale){ cur = 1; any = true; j++; }
+    while(j < w.length){
+      const n = vcNumWord(w[j]);
+      if(n){
+        if(n.k === 'scale'){ if(n.v === 1000){ total += (cur || 1) * 1000; cur = 0; } else cur = (cur || 1) * 100; any = true; j++; continue; }
+        if(n.big){ total += n.v; any = true; j++; continue; }
+        if(!any || cur === 0 || (cur % 100 === 0 && n.v < 100) || (cur % 10 === 0 && cur % 100 !== 0 && n.v < 10 && n.k !== 'digit')){ cur += n.v; any = true; j++; continue; }
+        break; // "50 12": two separate numbers
+      }
+      // connectors inside a number: "isang daan at lima", "apat na daan", "one hundred and five"
+      if(any && /^(at|and|na|y)$/.test(w[j]) && w[j + 1] && vcNumWord(w[j + 1]) && !(w[j] === 'na' && vcNumWord(w[j + 1]).k !== 'scale')){ j++; continue; }
+      if(any && /^(and|at)$/.test(w[j]) && /^(a|kalahati)$/.test(w[j + 1] || '') && /^(half|kalahati)$/.test(w[j + 1] === 'a' ? (w[j + 2] || '') : 'kalahati')){ cur += 0.5; j += w[j + 1] === 'a' ? 3 : 2; continue; }
+      if(any && /^(point|punto)$/.test(w[j]) && vcNumWord(w[j + 1] || '') && vcNumWord(w[j + 1]).v < 10){ cur += vcNumWord(w[j + 1]).v / 10; j += 2; continue; }
+      break;
+    }
+    let val = total + cur;
+    if(/^(dozen|dozens|dosena|dosenang)$/.test(w[j] || '')){ val *= 12; j++; }
+    out.push(String(Math.round(val * 100) / 100)); i = j;
   }
-  flush();
   return out.join(' ');
 }
-function cpoVoice(){
-  const btn = document.getElementById('cpoVoiceBtn');
-  if(window._cpoRec){ window._cpoRec.stop(); return; }
-  const SR = window.SpeechRecognition || window.webkitSpeechRecognition; if(!SR) return;
-  const rec = new SR(); rec.lang = 'fil-PH'; rec.continuous = true; rec.interimResults = false;
+// ---- normalize what was said ----
+function vcNormalize(said){
+  let t = ' ' + String(said || '').toLowerCase().replace(/(\d),(\d{3})\b/g, '$1$2').replace(/[“”"!?¿,;:()]/g, ' ').replace(/\s+/g, ' ') + ' ';
+  const R = (re, to) => { for(let k = 0; k < 4; k++){ const n = t.replace(re, to); if(n === t) return; t = n; } }; // repeat: neighbours share a space
+  R(/ (bawat isa|kada isa|per piece|per pc|isa isa) /g, ' each ');
+  t = t.replace(/ (a|isang) dozen /g, ' 1 dozen ').replace(/ dosena /g, ' dozen ');
+  R(/ kalahati(ng)? /g, ' 0.5 '); R(/ (one )?half /g, ' 0.5 ');
+  t = ' ' + vcWordsToNumbers(t) + ' ';
+  R(/ (\d+) 0\.5 /g, (m, a) => ' ' + (Number(a) + 0.5) + ' ');
+  // fractions for sizes: "three fourths", "3 quarter", "tres kwarto", "5 eighths"
+  t = t.replace(/ (\d) (fourths?|quarters?|kwarto) /g, ' $1/4 ').replace(/ (\d) (eighths?) /g, ' $1/8 ').replace(/ (\d) (sixteenths?) /g, ' $1/16 ').replace(/ (\d) (halves) /g, ' $1/2 ')
+       .replace(/ (a )?quarter (inch|pulgada)/g, ' 1/4 $2').replace(/ 0\.5 (inch|pulgada)/g, ' 1/2 $1');
+  t = t.replace(/ (\d+) over (\d+) /g, ' $1/$2 ');
+  // sizes stick to their number: 12mm, 3/4in, #12, 2x4, 26ga (run twice: neighbours share a space)
+  for(let pass = 0; pass < 2; pass++) t = t.replace(/ (\d+(?:\.\d+)?|\d+\/\d+) ?(millimeters?|millimetres?|milimetro|mili|mm|m\.m\.?) /g, ' $1mm ')
+       .replace(/ (\d+(?:\.\d+)?|\d+\/\d+) ?(centimeters?|sentimetro|cm) /g, ' $1cm ')
+       .replace(/ (\d+(?:\.\d+)?|\d+\/\d+) ?(inches|inch|pulgadas?|in) /g, ' $1in ')
+       .replace(/ (\d+(?:\.\d+)?) ?(gauge|gage|ga|gauge wire) /g, ' $1ga ')
+       .replace(/ (?:gauge|gage) (\d+) /g, ' $1ga ')
+       .replace(/ (?:number|numero|num|no\.?|#) ?(\d+) /g, ' #$1 ')
+       .replace(/ (\d+) ?(?:by|x) ?(\d+)(?: ?(?:by|x) ?(\d+))? /g, (m, a, b, c) => ` ${a}x${b}${c ? 'x' + c : ''} `)
+       .replace(/ (\d+(?:\.\d+)?) ?(feet|foot|ft|piye|talampakan) /g, ' $1ft ');
+  // money: "250 pesos each" -> ₱250
+  R(/ (?:php|piso|pesos?) (\d+(?:\.\d+)?) /g, ' ₱$1 '); R(/ (\d+(?:\.\d+)?) ?(?:pesos?|piso|php) /g, ' ₱$1 ');;
+  // count units -> one spelling the parser knows
+  const U = [[/(pieces?|piraso|pirasong|pcs?|pc)/, 'pcs'], [/(bags?|sako|sakong|sacks?|supot)/, 'bags'], [/(rolls?|rolyo|rolyong)/, 'rolls'], [/(boxes|box|kahon|kahong)/, 'boxes'],
+    [/(gallons?|galon|galong|gal)/, 'gal'], [/(cans?|lata|latang)/, 'cans'], [/(bundles?|bungkos|tali)/, 'bundles'], [/(lengths?)/, 'lengths'], [/(sheets?)/, 'sheets'], [/(liters?|litres?|litro|litrong)/, 'liters'],
+    [/(drums?)/, 'drums'], [/(pairs?|pares)/, 'pairs'], [/(sets?)/, 'sets'], [/(trucks?|trak)/, 'trucks'], [/(cubic meters?|cubic|kubiko|cu m|cu\.m)/, 'cu.m'], [/(units?)/, 'units'], [/(packs?|pakete)/, 'packs'], [/(reams?)/, 'reams'], [/(tons?|tonelada)/, 'tons']];
+  U.forEach(([re, to]) => R(new RegExp(' ' + re.source + ' ', 'g'), ' ' + to + ' '));
+  R(/ (\d+) dozens? /g, (m, a) => ' ' + (Number(a) * 12) + ' '); R(/ dozens? /g, ' 12 ');
+  // kilos and meters: a size when another quantity is said ("cement 40 kilos 50 bags"), else the unit ("nails 5 kilos")
+  const countNums = (t.match(/ \d+(?:\.\d+)? (pcs|bags|rolls|boxes|gal|cans|bundles|lengths|sheets|liters|drums|pairs|sets|trucks|cu\.m|units|packs|reams|tons) /g) || []).length;
+  const bare = (t.replace(/ \d+(?:\.\d+)?(mm|cm|in|ga|ft|kg)\b/g, ' ').replace(/#\d+|\d+x\d+|\d+\/\d+/g, ' ').match(/ \d+(?:\.\d+)? /g) || []).length;
+  R(/ (\d+(?:\.\d+)?) ?(kilograms?|kilos?|kgs?|kilong) /g, (m, a) => countNums || bare > 1 ? ` ${a}kg ` : ` ${a} kilos `);
+  R(/ (\d+(?:\.\d+)?) ?(meters?|metres?|metros?|metrong) /g, (m, a) => countNums || bare > 1 ? ` ${a}m ` : ` ${a} meters `);
+  // filler words people say while reading a PO
+  R(/ (po|ho|yung|iyong|ung|yong|ang|ng|mga|pa|lang|lamang|din|rin|ko|kami|namin|natin|nyo|ninyo|paki|pakisama|pakidagdag|dagdag|isama|add|plus|order|pa order|kailangan|need|we|i|please|pls|tapos|then|also|saka|tsaka|meron|mayroon|may|kuya|ate|boss|sir|mam|maam|okay|ok|sige|ano|uh|um|uhm|eh|ah|so|yes|oo|of|na|and|at|pati|times|x|next|susunod|item|items) /g, ' ');
+  return t.replace(/\s+/g, ' ').trim();
+}
+function vcCommand(said){
+  const t = String(said || '').toLowerCase().replace(/[^a-z' ]/g, ' ').replace(/\s+/g, ' ').trim();
+  if(/^(bura(hin)?( (yan|iyan|yun|iyon|last|huli))?|delete( (that|last|it))?|undo|bawi(in)?|mali( yun| yan)?|cancel( that)?|remove( (that|last))?|alisin( (yan|yun))?|scratch that|wrong)$/.test(t)) return 'undo';
+  if(/^(bura(hin)? lahat|clear( all)?|delete all|umpisa ulit|start over)$/.test(t)) return 'clear';
+  if(/^(tapos( na)?|done|finish(ed)?|stop|that's all|thats all|yan lang|yun lang|iyan lang|wala na)$/.test(t)) return 'stop';
+  return null;
+}
+// ---- match against your items ----
+function vcUsualSet(){ const s = new Set(); try{ cpoUsualItems().filter(x => x.theirs).forEach(x => s.add(x.product)); }catch(e){} return s; }
+function vcCandidates(text){
+  const cat = myCatalog || [], usual = vcUsualSet();
+  const m = cpoMatch(text);
+  const scored = cat.map(c => ({product: c.product, score: cpoScore(text, c.product) + (usual.has(c.product) ? 0.08 : 0)})).filter(x => x.score > 0.2).sort((a, b) => b.score - a.score);
+  if(m.conf === 'saved'){ const i = scored.findIndex(x => x.product === m.product); const top = {product: m.product, score: 2}; if(i >= 0) scored.splice(i, 1); scored.unshift(top); }
+  const top = scored[0], second = scored[1];
+  let conf = 'none';
+  if(top){
+    if(m.conf === 'saved' && top.product === m.product) conf = 'saved';
+    else if(top.score >= 0.62 && (!second || top.score - second.score >= 0.12)) conf = 'ok';
+    else if(top.score >= 0.35 && (!second || top.score - second.score >= 0.25)) conf = 'ok'; // the only item it could be
+    else if(top.score >= 0.35) conf = 'check';
+  }
+  return {conf, list: scored.slice(0, 3)};
+}
+// Two plain numbers ("bareta dose, dalawang daan"): one is a size, one is the quantity. Try each way
+// and keep the reading that fits your items best.
+function vcAnalyze(said, confidence){
+  const norm = vcNormalize(said);
+  const bare = [...(' ' + norm + ' ').matchAll(/ (\d+(?:\.\d+)?)(?= )/g)].map(x => x[1]);
+  if(bare.length < 2) return vcAnalyzeOne(said, norm, confidence);
+  const variants = [norm];
+  bare.forEach((n, i) => { if(Number.isInteger(Number(n)) && Number(n) <= 100){ let k = -1; variants.push((' ' + norm + ' ').replace(/ (\d+(?:\.\d+)?)(?= )/g, (m, a) => (++k === i ? ' #' + a : m)).trim()); } });
+  const all = variants.map(v => vcAnalyzeOne(said, v, confidence)).filter(x => x.ok);
+  if(!all.length) return {heard: said, norm, ok: false};
+  all.forEach(x => { x.fit = (x.cands[0] ? x.cands[0].score : 0) + (x.qtyExplicit ? 0.05 : 0); });
+  all.sort((a, b) => b.fit - a.fit);
+  return all[0];
+}
+function vcAnalyzeOne(said, norm, confidence){
+  const p = norm ? cpoParseLine(norm) : null;
+  if(!p) return {heard: said, norm, ok: false};
+  const qtyNums = (typeof cpoNumbers === 'function' ? cpoNumbers(norm) : []).filter(n => !n.money);
+  const qtyExplicit = qtyNums.length > 0;
+  const c = vcCandidates(p.text), top = c.list[0];
+  const topScore = top ? Math.min(top.score, 1.4) / 1.4 : 0;
+  return {heard: said, norm, ok: true, text: p.text, qty: qtyExplicit ? p.qty : 1, qtyExplicit, unit: p.unit, price: p.price,
+    product: c.conf === 'none' ? '' : top.product, conf: c.conf, cands: c.list,
+    rank: topScore * 0.62 + (Number(confidence) > 0 ? Number(confidence) : 0.5) * 0.18 + (qtyExplicit ? 0.14 : 0) + (c.conf === 'saved' ? 0.4 : c.conf === 'ok' ? 0.06 : 0)};
+}
+function vcPick(alts){
+  const list = alts.map(a => vcAnalyze(a.t, a.c)).filter(x => x.ok);
+  if(!list.length) return null;
+  list.sort((a, b) => b.rank - a.rank);
+  const best = list[0];
+  // other items it might have been: close catalog candidates + what the other guesses matched
+  const others = [];
+  best.cands.slice(1).forEach(x => { if(best.cands[0] && best.cands[0].score - x.score < 0.2) others.push(x.product); });
+  list.slice(1).forEach(x => { if(x.product && x.product !== best.product && x.rank > best.rank - 0.15) others.push(x.product); });
+  best.alts = [...new Set(others)].filter(p => p && p !== best.product).slice(0, 3);
+  if(best.alts.length && best.conf === 'ok') best.conf = 'check';
+  return best;
+}
+// ---- the listening loop: one utterance per item, restarts itself until you stop ----
+function vcOpen(){
+  cpoCaptureStep1(); if(!cpoValidateWho()) return;
+  VC.lines = []; VC.status = ''; VC.tone = ''; CPO.step = 'voice';
+  cpoLoadAliases().then(() => cpoRender());
+}
+function vcSetLang(l){ VC.lang = l; try{ localStorage.setItem('nifti-voice-lang', l); }catch(e){} if(VC.on && VC.rec){ try{ VC.rec.abort(); }catch(e){} } vcUi(); }
+function vcToggle(){ VC.on ? vcStop() : vcStart(); }
+function vcStart(){
+  if(!vcSupported()){ vcSay('Voice needs Chrome (Android or computer) or Safari on iPhone. Use "Type it in" for now.', 'bad'); return; }
+  VC.on = true; VC.silent = 0; VC.starts = 0;
+  try{ if(navigator.wakeLock) navigator.wakeLock.request('screen').then(l => { VC.wake = l; }).catch(() => {}); }catch(e){}
+  vcSay('Listening… say an item and how many, then pause.', 'on'); vcListen();
+}
+function vcStop(msg, tone){
+  VC.on = false;
+  if(VC.rec){ try{ VC.rec.abort(); }catch(e){} VC.rec = null; }
+  if(VC.wake){ try{ VC.wake.release(); }catch(e){} VC.wake = null; }
+  vcSay(msg || (VC.lines.length ? 'Paused. Check the items, then tap "Use these".' : 'Tap the mic to start.'), tone || '');
+  const live = document.getElementById('vcLive'); if(live) live.textContent = '';
+}
+function vcPhrases(){
+  const names = [...vcUsualSet()].concat((myCatalog || []).map(c => c.product));
+  return [...new Set(names)].slice(0, 120).map(p => new SpeechRecognitionPhrase(p, 4.0));
+}
+function vcListen(){
+  if(!VC.on) return;
+  if(!document.getElementById('cpoModal') || CPO.step !== 'voice'){ vcStop(); return; }
+  if(++VC.starts > 400){ vcStop('Paused. Tap the mic to keep going.'); return; }
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const rec = new SR(); VC.rec = rec;
+  rec.lang = VC.lang; rec.continuous = false; rec.interimResults = true; rec.maxAlternatives = 5;
+  if(VC.usePhrases && typeof SpeechRecognitionPhrase === 'function' && 'phrases' in rec){ try{ rec.phrases = vcPhrases(); }catch(e){ VC.usePhrases = false; } }
+  let got = false, fatal = false;
   rec.onresult = e => {
-    const ta = document.getElementById('cpoText'); if(!ta) return;
-    for(let i = e.resultIndex; i < e.results.length; i++) if(e.results[i].isFinal){ const line = cpoWordsToNum(e.results[i][0].transcript.trim()); if(line) ta.value = (ta.value.trim() ? ta.value.trim() + '\n' : '') + line; }
+    for(let i = e.resultIndex; i < e.results.length; i++){
+      const r = e.results[i];
+      if(r.isFinal){ got = true; const alts = []; for(let k = 0; k < r.length; k++) alts.push({t: r[k].transcript.trim(), c: r[k].confidence}); vcHeard(alts); }
+      else { const live = document.getElementById('vcLive'); if(live) live.textContent = '“' + r[0].transcript + '”'; }
+    }
   };
-  rec.onend = () => { window._cpoRec = null; const b = document.getElementById('cpoVoiceBtn'); if(b) b.classList.remove('rec'); const st = document.getElementById('cpoStatus'); if(st) st.textContent = 'Check the lines above, then tap "Read the order".'; };
-  rec.onerror = ev => { const st = document.getElementById('cpoStatus'); if(st) st.textContent = ev.error === 'not-allowed' ? 'Allow the microphone to use this.' : 'Didn\'t catch that. Try again, a bit slower.'; };
-  window._cpoRec = rec; rec.start();
-  if(btn) btn.classList.add('rec');
-  const st = document.getElementById('cpoStatus'); if(st) st.textContent = '🎙 Listening… say one item and its quantity, then pause. Tap "Say it" again to stop.';
+  rec.onerror = e => {
+    const er = e.error;
+    if(er === 'not-allowed' || er === 'service-not-allowed'){ fatal = true; vcStop('Allow the microphone: tap the 🔒 beside the web address → Microphone → Allow, then tap the mic.', 'bad'); }
+    else if(er === 'audio-capture'){ fatal = true; vcStop('No microphone found on this device.', 'bad'); }
+    else if(er === 'network'){ fatal = true; vcStop('Voice needs internet. Check your signal, then tap the mic again.', 'bad'); }
+    else if(er === 'language-not-supported'){ VC.lang = VC.lang === 'fil-PH' ? 'en-PH' : 'en-US'; vcUi(); }
+    else if(er === 'phrases-not-supported'){ VC.usePhrases = false; }
+  };
+  rec.onend = () => {
+    if(VC.rec === rec) VC.rec = null;
+    if(!VC.on || fatal) return;
+    if(!got){ VC.silent++; if(VC.silent >= 4){ vcStop(VC.lines.length ? 'Paused after a quiet moment. Tap the mic to add more.' : 'Didn\'t hear anything. Tap the mic and speak close to the phone.'); return; } }
+    else VC.silent = 0;
+    setTimeout(vcListen, 90);
+  };
+  try{ rec.start(); }catch(e){ setTimeout(vcListen, 400); }
 }
-// Photos (and scanned PDFs): AI when switched on, else the phone's own reader.
-function cpoShrink(file){
-  return new Promise((ok, bad) => {
-    const img = new Image(), url = URL.createObjectURL(file);
-    img.onload = () => { const k = Math.min(1, 1600 / Math.max(img.width, img.height)); const c = document.createElement('canvas'); c.width = Math.round(img.width * k); c.height = Math.round(img.height * k);
-      c.getContext('2d').drawImage(img, 0, 0, c.width, c.height); ok(c.toDataURL('image/jpeg', 0.85).split(',')[1]); };
-    img.onerror = () => bad(new Error('Couldn\'t open that photo.')); img.src = url;
-  });
+function vcSay(msg, tone){
+  VC.status = msg; VC.tone = tone || '';
+  const st = document.getElementById('vcStatus'); if(st){ st.textContent = msg; st.className = 'vc-status ' + VC.tone; }
+  const mic = document.getElementById('vcMic'); if(mic){ mic.classList.toggle('on', VC.on); mic.setAttribute('aria-label', VC.on ? 'Stop listening' : 'Start listening'); mic.innerHTML = VC.on ? '<span>■</span>' : '<span>🎙</span>'; }
 }
-async function cpoAiRead(file){
-  const isPdf = file.type === 'application/pdf' || /\.pdf$/i.test(file.name || '');
-  const data = isPdf ? await new Promise((ok, bad) => { const r = new FileReader(); r.onload = () => ok(String(r.result).split(',')[1]); r.onerror = bad; r.readAsDataURL(file); }) : await cpoShrink(file);
-  const st = document.getElementById('cpoStatus'); if(st) st.textContent = '✨ Reading it with AI… (about 10 seconds)';
-  const { data: out, error } = await sb.functions.invoke('po-read', {body: {data, media_type: isPdf ? 'application/pdf' : 'image/jpeg', catalog: (myCatalog || []).map(c => c.product), today: APP_TODAY}});
-  if(error || !out || out.error){ let msg = (out && out.error) || ''; try{ if(!msg && error && error.context && error.context.json) msg = (await error.context.json()).error; }catch(e){} throw new Error(msg || 'AI reading failed'); }
-  return {rows: (out.lines || []).filter(l => l.text && Number(l.qty) > 0).map(l => ({text: l.text, qty: Number(l.qty), unit: l.unit || null, price: l.unit_price != null ? Number(l.unit_price) : null, amount: l.amount != null ? Number(l.amount) : null, unsure: !!l.unsure})),
-    ref: out.po_number || '', neededBy: /^\d{4}-\d{2}-\d{2}$/.test(out.needed_by || '') ? out.needed_by : '', address: out.deliver_to || '', ai: true};
+function vcHeard(alts){
+  const live = document.getElementById('vcLive'); if(live) live.textContent = '';
+  const top = (alts[0] || {}).t || '';
+  if(!top) return;
+  const now = Date.now();
+  if(top.toLowerCase() === VC.lastFinal && now - VC.lastAt < 2500) return; // some phones repeat the last result
+  VC.lastFinal = top.toLowerCase(); VC.lastAt = now;
+  const cmd = alts.map(a => vcCommand(a.t)).find(Boolean);
+  if(cmd === 'undo'){ const x = VC.lines.pop(); vcRenderLines(); vcSay(x ? `Removed "${x.product || x.text}". Keep going.` : 'Nothing to remove.', 'on'); return; }
+  if(cmd === 'clear'){ VC.lines = []; vcRenderLines(); vcSay('Cleared. Start again.', 'on'); return; }
+  if(cmd === 'stop'){ vcStop(); return; }
+  const pick = vcPick(alts);
+  if(!pick){ vcSay(`Heard "${top}" but no item in it. Say the item name, then how many.`, 'warn'); return; }
+  const c = (myCatalog || []).find(x => x.product === pick.product);
+  VC.lines.push({heard: top === pick.heard ? top : pick.heard, text: pick.text, product: pick.product, conf: pick.conf, qty: pick.qty, qtyExplicit: pick.qtyExplicit, unit: (c && c.unit) || pick.unit,
+    alts: pick.alts, price: c && c.price != null ? Number(c.price) : pick.price, theirPrice: pick.price});
+  try{ if(navigator.vibrate) navigator.vibrate(25); }catch(e){}
+  vcRenderLines();
+  vcSay(pick.qtyExplicit ? `Added ${pick.qty} × ${pick.product || pick.text}. Next item…` : `Added ${pick.product || pick.text}. How many? Tap the number to set it, or say the next item.`, pick.qtyExplicit && pick.conf !== 'none' ? 'on' : 'warn');
+}
+// ---- the screen ----
+function vcRender(){
+  const n = VC.lines.length;
+  slModal('cpoModal', `<div class="sl-sheet-h"><b>🎙 Say their order</b><button class="sl-x" onclick="vcStop(); slClose('cpoModal')">✕</button></div>
+    <div class="vc-top"><div class="vc-langs"><button class="${VC.lang === 'fil-PH' ? 'on' : ''}" onclick="vcSetLang('fil-PH')">Taglish</button><button class="${VC.lang !== 'fil-PH' ? 'on' : ''}" onclick="vcSetLang('en-PH')">English</button></div>
+      <small>for ${escapeHtml(cpoBuyerName())}</small></div>
+    <div class="vc-stage"><button id="vcMic" class="vc-mic ${VC.on ? 'on' : ''}" onclick="vcToggle()" aria-label="${VC.on ? 'Stop listening' : 'Start listening'}"><span>${VC.on ? '■' : '🎙'}</span></button>
+      <div id="vcStatus" class="vc-status ${VC.tone}">${escapeHtml(VC.status || (vcSupported() ? 'Tap the mic, then read each item: name first, then how many.' : 'Voice needs Chrome (Android or computer) or Safari on iPhone.'))}</div>
+      <div id="vcLive" class="vc-live"></div></div>
+    <div id="vcLines" class="vc-lines"></div>
+    <details class="vc-tips"><summary>Tips for a perfect read</summary><ul>
+      <li>One item per breath, then pause: <i>"semento forty kilos, limampung sako"</i>, <i>"rebar dose milimetro, isang daang piraso"</i>.</li>
+      <li>Say sizes with their unit (<i>twelve mm</i>, <i>number 16</i>, <i>three fourths</i>) and the quantity with its unit (<i>50 bags</i>, <i>20 piraso</i>).</li>
+      <li>Wrong? Say <b>"bura"</b> or <b>"delete"</b> to remove the last item. Say <b>"tapos na"</b> or <b>"done"</b> to stop.</li>
+      <li>Hold the phone close and away from the truck or grinder noise.</li></ul></details>
+    <div class="sl-actions"><button class="btn btn-outline" onclick="vcStop(); CPO.step=1; cpoRender()">← Back</button>
+      <button class="btn btn-primary" style="flex:1;" id="vcUse" onclick="vcUse()" ${n ? '' : 'disabled'}>Use these ${n || ''} item${n === 1 ? '' : 's'} →</button></div>`);
+  vcRenderLines();
+}
+function vcUi(){ if(CPO && CPO.step === 'voice' && document.getElementById('cpoModal')){ vcRender(); vcSay(VC.status, VC.tone); } }
+function vcRenderLines(){
+  const el = document.getElementById('vcLines'); if(!el) return;
+  el.innerHTML = VC.lines.map((l, i) => {
+    const needQty = !l.qtyExplicit, tag = l.conf === 'saved' ? '✓ Remembered from last time' : l.conf === 'ok' ? '✓ Matched' : l.conf === 'check' ? '⚠ Check the item' : '❌ Not in your items, kept as said';
+    return `<div class="vc-line c-${l.conf}${needQty ? ' noqty' : ''}">
+      <div class="vc-heard">“${escapeHtml(l.heard)}”</div>
+      <div class="vc-res"><div class="vc-name">${escapeHtml(l.product || l.text)}${l.unit ? ` <small>${escapeHtml(l.unit)}</small>` : ''}</div>
+        <div class="qt-step"><button type="button" onclick="vcQty(${i},-1)" aria-label="Less">−</button><input type="number" inputmode="decimal" min="0" step="any" value="${escapeHtml(l.qty)}" onchange="vcSetQty(${i}, this.value)" aria-label="Quantity"><button type="button" onclick="vcQty(${i},1)" aria-label="More">+</button></div>
+        <button class="sl-x" onclick="VC.lines.splice(${i},1); vcRenderLines()" aria-label="Remove">✕</button></div>
+      <div class="vc-tag">${needQty ? '<b class="sl-warn">⚠ No quantity heard. Set it above.</b> · ' : ''}${tag}</div>
+      ${l.alts && l.alts.length ? `<div class="vc-dym">Did you mean: ${l.alts.map((p, k) => `<button onclick="vcSwap(${i},${k})">${escapeHtml(p)}</button>`).join('')}</div>` : ''}</div>`;
+  }).reverse().join('');
+  const b = document.getElementById('vcUse'); if(b){ const n = VC.lines.length; b.disabled = !n; b.textContent = `Use these ${n || ''} item${n === 1 ? '' : 's'} →`; }
+}
+function vcQty(i, d){ const l = VC.lines[i]; if(!l) return; l.qty = Math.max(0, Number(l.qty || 0) + d); l.qtyExplicit = true; vcRenderLines(); }
+function vcSetQty(i, v){ const l = VC.lines[i]; if(!l) return; l.qty = Math.max(0, Number(v || 0)); l.qtyExplicit = true; vcRenderLines(); }
+function vcSwap(i, k){
+  const l = VC.lines[i]; if(!l) return;
+  const p = l.alts[k], c = (myCatalog || []).find(x => x.product === p);
+  l.alts = [l.product].filter(Boolean).concat(l.alts.filter(x => x !== p)).slice(0, 3);
+  l.product = p; l.conf = 'ok'; l.unit = c ? c.unit : l.unit; l.price = c && c.price != null ? Number(c.price) : l.price;
+  vcRenderLines();
+}
+function vcUse(){
+  vcStop();
+  const rows = VC.lines.filter(l => Number(l.qty) > 0);
+  if(!rows.length){ vcSay('Add at least one item.', 'warn'); return; }
+  CPO.rows = rows.map(l => ({text: l.heard, qty: Number(l.qty), product: l.product, conf: l.product ? (l.conf === 'check' ? 'check' : l.conf) : 'none', myPrice: l.price != null ? l.price : null, theirPrice: null, unit: l.unit || null,
+    aliasText: l.text}));
+  CPO.manual = false; CPO.viaOcr = false; CPO.viaVoice = true; CPO.step = 2; cpoRender();
 }
 
 function renderSidebarForViewAsRole(){
