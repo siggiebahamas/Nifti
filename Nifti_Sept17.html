@@ -1872,6 +1872,43 @@
   .pcx-up{color:var(--danger);font-weight:800;} .pcx-down{color:var(--green);font-weight:800;}
   .empty-mini{text-align:center;padding:18px 12px;color:var(--body);font-size:14.5px;opacity:.85;}
   .empty-mini b{display:block;color:var(--ink);font-size:15.5px;margin-bottom:2px;opacity:1;}
+  /* ===== To confirm: orders waiting for the customer's OK ===== */
+  .qt-hint{white-space:normal;} .sl-s.sl-bad, .sl-s.sl-warn{font-weight:700;}
+  .qt-row .sl-right{gap:6px;}
+  .qt-hintbox{background:#F7F4EC;border-radius:12px;padding:10px 12px;font-size:14px;font-weight:600;margin:6px 0 8px;line-height:1.45;} .qt-hintbox.qt-warn{background:#FFF4D6;color:#6B4A00;} .qt-hintbox.qt-bad{background:#FBE3DD;color:#8A2B18;}
+  .qt-lines{border:1px solid var(--border);border-radius:12px;padding:4px 12px;margin:8px 0;} .qt-li{display:flex;justify-content:space-between;gap:10px;padding:7px 0;font-size:14px;border-top:1px solid var(--border);} .qt-li:first-child{border-top:none;}
+  .qt-tpls{display:grid;gap:6px;} .qt-tpls button{border:1.5px solid var(--border);background:var(--surface);border-radius:11px;padding:10px 12px;font-weight:700;font-size:14px;cursor:pointer;color:var(--green);text-align:left;}
+  .qt-panel{width:100%;box-sizing:border-box;background:#FFF8E6;border:1.5px solid #F0D48A;border-radius:12px;padding:12px 14px;margin-bottom:10px;} .qt-panel-h{font-weight:800;color:var(--ink);font-size:15.5px;} .qt-panel-s{font-size:14px;margin-top:3px;opacity:.85;}
+  .qt-mode{border:1.5px solid var(--border);border-radius:12px;padding:10px 12px;margin:8px 0;} .qt-mode.on{border-color:#E0A100;background:#FFFBEC;} .qt-mode small{opacity:.7;font-weight:500;}
+  .qt-inapp{width:100%;}
+  .qt-ans{display:grid;gap:8px;} .qt-ans-h{font-weight:800;font-size:18px;color:var(--ink);} .qt-ans-s{font-size:14px;opacity:.8;}
+  .qt-hold{background:#FFF4D6;color:#6B4A00;border-radius:10px;padding:8px 11px;font-size:14.5px;font-weight:600;}
+  .qt-arows{border:1px solid var(--border);border-radius:12px;padding:2px 12px;background:var(--surface);}
+  .qt-arow{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 0;border-top:1px solid var(--border);} .qt-arow:first-child{border-top:none;}
+  .qt-aname{font-weight:700;font-size:15px;min-width:0;overflow-wrap:anywhere;} .qt-aname small{display:block;font-weight:500;font-size:12.5px;opacity:.7;}
+  .qt-step{display:flex;align-items:center;flex-shrink:0;border:1.5px solid var(--border);border-radius:11px;overflow:hidden;}
+  .qt-step button{width:38px;height:40px;border:none;background:#F3F0E8;font-size:20px;font-weight:800;cursor:pointer;color:var(--ink);}
+  .qt-step input{width:64px !important;height:40px;border:none !important;text-align:center;font-size:16px;font-weight:700;padding:0 !important;margin:0 !important;background:var(--surface);color:var(--ink);-moz-appearance:textfield;}
+  .qt-step input::-webkit-outer-spin-button, .qt-step input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0;}
+  .qt-atotal{text-align:right;font-size:17px;} .qt-changed{background:#FFF4D6;color:#6B4A00;font-size:12px;font-weight:800;border-radius:100px;padding:2px 8px;margin-left:4px;}
+  .qt-afields{display:grid;grid-template-columns:1fr 1fr;gap:8px;} .qt-afields input{width:100%;box-sizing:border-box;}
+  @media (max-width:480px){ .qt-afields{grid-template-columns:1fr;} }
+  .qt-later{border-top:1px dashed var(--border);padding-top:10px;display:grid;gap:6px;} .qt-later input{width:100%;box-sizing:border-box;}
+  .qt-later .sl-days{margin:0;} .qt-later .sl-link{justify-self:center;}
+  .qt-done{text-align:center;display:grid;gap:4px;padding:10px 0;font-size:15px;} .qt-done b{font-size:19px;color:var(--ink);}
+  .qt-public{border:2px solid var(--green);}
+  .cpo-ways{border:1.5px solid var(--border);border-radius:14px;padding:10px;margin-top:14px;display:grid;gap:6px;background:#FBFAF6;}
+  .cpo-ways-h{font-weight:800;font-size:13px;letter-spacing:.04em;text-transform:uppercase;opacity:.65;padding:2px 2px 4px;}
+  .cpo-way{display:grid;gap:2px;text-align:left;border:1.5px solid var(--border);background:var(--surface);border-radius:12px;padding:10px 12px;cursor:pointer;color:var(--ink);}
+  .cpo-way b{font-size:15px;} .cpo-way small{font-size:12.5px;opacity:.75;line-height:1.4;} .cpo-way.rec{border-color:var(--danger);background:#FFF6F4;} .cpo-way.rec b::after{content:' · listening';color:var(--danger);}
+  .cpo-quick{display:grid;gap:8px;margin:4px 0 10px;}
+  .cpo-quick-h{font-size:12.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;opacity:.6;}
+  .cpo-chips{display:flex;flex-wrap:wrap !important;gap:6px;} .cpo-chips button{border:1.5px solid var(--border);background:var(--surface);border-radius:100px;padding:7px 11px;font-weight:700;font-size:13.5px;cursor:pointer;color:var(--ink);}
+  .cpo-chips button small{opacity:.6;font-weight:600;}
+  .cpo-type{display:grid;grid-template-columns:minmax(0,1fr) 76px auto;gap:6px;} .cpo-type input{width:100%;box-sizing:border-box;padding:10px;border:1.5px solid var(--border);border-radius:10px;font-size:15px;background:var(--surface);color:var(--ink);min-width:0;} .cpo-type .btn{min-height:42px;padding:0 14px;}
+  .cpo-photo{position:relative;border-radius:12px;overflow:hidden;max-height:170px;cursor:zoom-in;border:1px solid var(--border);} .cpo-photo img{width:100%;display:block;object-fit:cover;object-position:top;max-height:170px;}
+  .cpo-photo span{position:absolute;left:8px;bottom:8px;background:rgba(0,0,0,.65);color:#fff;font-size:12px;font-weight:700;border-radius:100px;padding:3px 9px;}
+  .cpo-photo-big{max-height:78vh;overflow:auto;border-radius:10px;} .cpo-photo-big img{width:100%;display:block;}
   .settings-card:empty{display:none;}
   #supplierChips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;} #supplierChips .chip{flex-shrink:0;}
 </style>
@@ -1990,11 +2027,16 @@
 </div></div>
 </div>
     <div class="m2-show flip">
-  <div class="m2-show-text"><span class="m2-badge free">FREE</span><div class="m2-eyebrow">NO MORE RETYPING</div><h3>Their PO, turned into your order</h3><p>Customers send POs as PDFs, Excel files, photos or Viber messages, each in their own format. Upload or paste it once. Every line is matched to your item names and prices, and Nifti remembers how each customer words things.</p>
+  <div class="m2-show-text"><span class="m2-badge free">FREE</span><div class="m2-eyebrow">CLOSE THE SALE</div><h3>Turn "i-confirm ko bukas" into a real order</h3><p>When a customer says they’ll confirm later, send the order for their OK. They get a link with the items, the total and one big Confirm button. No account, no app.</p>
+    <ul class="m2-ticks"><li>They can lower a quantity instead of walking away</li><li>See when they open it, and hold your price with a deadline</li><li>Not ready? They pick a day, and you get reminded then</li><li>Nudged for you every morning until they answer</li></ul></div>
+  <div class="m2-show-art"><div class="v-overpay"><div class="v-card"><div class="v-row"><b>📝 Riverside Builders</b></div><small>Opened 3× · price held until Fri</small><div class=v-btns><span class="p">Nudge</span><span class="">They said yes</span></div></div><div class="v-notif ok"><span class="v-nic">🎉</span><div><div class="v-ntop"><b>Nifti</b><em>now</em></div><strong>Riverside confirmed PO-0871</strong><small>Changed: Rebar 12mm 800→600 · ₱69,440</small></div></div></div></div>
+</div>
+    <div class="m2-show">
+  <div class="m2-show-text"><span class="m2-badge free">FREE</span><div class="m2-eyebrow">NO MORE RETYPING</div><h3>Their PO, turned into your order</h3><p>Customers send POs as PDFs, Excel files, photos or Viber messages, each in their own format. Upload or paste it once. Every line is matched to your item names and prices, and Nifti remembers how each customer words things. Handwritten? Type it in with their usual items one tap away, say it out loud, or send them your order form so there’s nothing to retype.</p>
     <ul class="m2-ticks"><li>Their price vs your price, flagged</li><li>A sales order printed in your own format</li><li>A tracking link they can tap "I received it" on</li></ul></div>
   <div class="m2-show-art"><div class="v-overpay"><div class="v-chat"><div class="v-bub">PO#551: semento 40 x 20 sako, bareta 10mm 50pcs 🙏</div></div><div class="v-card"><div class="v-row"><b>Your order · PO-2026-0926</b><span class="v-green">Confirmed</span></div><div class="v-li"><span>Portland Cement 40kg × 20</span><b>₱4,900</b></div><div class="v-li"><span>Steel Rebar 10mm × 50</span><b>₱9,000</b></div></div></div></div>
 </div>
-    <div class="m2-show">
+    <div class="m2-show flip">
   <div class="m2-show-text"><span class="m2-badge pro">SUPPLIER PRO</span><div class="m2-eyebrow">DELIVER & COLLECT</div><h3>Your driver’s whole day on one screen</h3><p>Every stop on one line, with what to drop off and what to collect. The driver taps a stop, marks it done and snaps the signed receipt.</p>
     <ul class="m2-ticks"><li>Cash, GCash or cheque lands on the right invoice</li><li>Pressed the wrong button? Fix or undo anytime</li><li>Optional. Skip it if you have your own way</li></ul></div>
   <div class="m2-show-art"><div class="mk-phone "><div class="mk-notch"></div><div class="mk-screen">
@@ -2008,13 +2050,13 @@
     <div class="mk-st"><i>5</i><div><b>Ramos Hardware</b><small>Monumento · Collect</small></div><em class="due">₱3,120</em></div>
   </div></div></div></div>
 </div>
-    <div class="m2-show flip">
+    <div class="m2-show">
   <div class="m2-show-text"><span class="m2-badge pro">BUYER PRO</span><div class="m2-eyebrow">FOR OWNERS</div><h3>Know the moment your staff overpays</h3><p>Nifti checks every order your team sends. If someone pays more than your agreed price, you get one clear alert with the peso amount.</p>
     <ul class="m2-ticks"><li>Set monthly spending limits per person or supplier</li><li>See which suppliers deliver late or short</li><li>Your own orders are never flagged</li></ul></div>
   <div class="m2-show-art"><div class="v-overpay"><div class="v-notif "><span class="v-nic">🛡</span><div><div class="v-ntop"><b>Nifti</b><em>2m</em></div><strong>Joy paid ₱2,000 more than your agreed price</strong><small>100 bags cement at ₱265 · you agreed ₱245 with Metro Steel</small></div></div>
   <div class="v-btns wide"><span>See the order</span><span class="p">It's OK</span></div></div></div>
 </div>
-    <div class="m2-show">
+    <div class="m2-show flip">
   <div class="m2-show-text"><span class="m2-badge pro">SUPPLIER PRO</span><div class="m2-eyebrow">NO SURPRISES</div><h3>Price changes, announced ahead of time</h3><p>Suppliers set new prices with a start date. Every buyer gets the list now, plus a reminder the day before.</p>
     <ul class="m2-ticks"><li>A week’s notice by default</li><li>Your store switches prices on the day, by itself</li><li>Buyers see increases coming on their Home screen</li></ul></div>
   <div class="m2-show-art"><div class="mk-chat">
@@ -2082,7 +2124,7 @@
     <div class="m2-band-head"><span class="m2-badge free big">FREE FOREVER</span><h2>For both sides. No card needed.</h2><p>Everything you need to trade with your partners.</p></div>
     <div class="m2-sub">Orders & chat</div><div class="m2-swipe">Swipe to see more →</div><div class="m2-grid" style="--cols:3"><div class="m2-card"><div class="m2-vis"><div class="v-chat viber"><div class="v-chat-h"><span>MS</span><b>Metro Steel Co.</b></div>
   <div class="v-bub me">Order for Thursday po 👇</div>
-  <div class="v-linkcard me"><small>nifti.ph/o/7Hk2</small><b>📦 Order from Dela Cruz Hardware</b><em>Tap to see and confirm</em></div></div></div><h4>Order links, no account needed</h4><p>Your partner opens the order in any browser and taps Confirm.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-chat"><div class="v-bub">10 bags cement, 5 rolls wire 🙏</div><div class="v-bub me">✓ Order ready · ₱2,925</div></div></div><h4>Paste a Viber order</h4><p>Paste the message and Nifti turns it into a proper order with prices.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-chat"><div class="v-bub">Delivered 2 boxes short 📷</div><div class="v-bub me">Noted, replacement tomorrow ✓</div></div></div><h4>Chat beside every order</h4><p>One thread per partner, with photos for proof.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>PO-0841</b><span class="v-red">1 day late</span></div><div class="v-track"><i class="d"></i><i class="d"></i><i class="d"></i><i class="l"></i><i></i></div><small>Placed · Confirmed · Packed · <b>On the way</b> · Delivered</small></div></div><h4>Every step, tracked</h4><p>From placed to paid. If something runs late, both sides see it.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>📦 Delivered ✓</b></div><small>Signed by Nena · 📷 photo · 9:42 AM</small></div></div><h4>Proof of delivery</h4><p>Photo and signature at the door, saved on the order.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-chat"><div class="v-bub">₱64 per piece</div><div class="v-bub me">Deal at ₱62? 🙏</div><div class="v-bub">🔒 ₱62 locked for 6 months</div></div></div><h4>Quotes and locked prices</h4><p>Ask for a quote, counter it, and lock the agreed price in writing.</p></div></div><div class="m2-sub">Getting paid</div><div class="m2-swipe">Swipe to see more →</div><div class="m2-grid" style="--cols:2"><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>💳 Dela Cruz says they paid</b></div><small>GCash ₱18,900 · Ref 7012 3345</small><div class=v-btns><span class="p">Received ✓</span><span class="">Not yet</span></div></div></div><h4>Payments the receiver confirms</h4><p>GCash, Maya, bank, cash or cheque, confirmed by whoever receives it.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-stat green"><small>WHO OWES YOU</small><b>₱84,200</b><span>3 buyers · 1 overdue</span></div></div><h4>Who owes you, with reminders</h4><p>Every unpaid invoice on one list, oldest first. Polite reminders in one tap.</p></div></div><div class="m2-sub">Selling admin</div><div class="m2-swipe">Swipe to see more →</div><div class="m2-grid" style="--cols:4"><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>“semento 40 x20 sako”</b></div><small>→ <b>Portland Cement 40kg</b> × 20 · ₱4,900</small><div class="v-btns"><span class="p">✓ Matched</span><span>Remembered</span></div></div></div><h4>Their PO, your order</h4><p>Upload their PDF, Excel or photo, or paste the Viber message. It becomes an order in your item names and prices.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>🎯 Rhea Santos</b></div><small>“Magkano 200 bags cement?” · follow up today</small><div class=v-btns><span class="p">Call</span><span class="">Viber</span></div></div></div><h4>Leads that don't slip</h4><p>Store inquiries land here by themselves. Each lead gets a follow-up date and a ready message.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-notif ok"><span class="v-nic">📦</span><div><div class="v-ntop"><b>Nifti</b><em>now</em></div><strong>Delivered: PO-0853</strong><small>Received by Juan · all complete</small></div></div></div><h4>"I received it" from the customer</h4><p>Your customer taps it on the tracking link. You know it arrived, and can bill right away.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-notif "><span class="v-nic">💸</span><div><div class="v-ntop"><b>Nifti</b><em>1m</em></div><strong>Juan says they paid ₱20,000</strong><small>GCash ref 7012 · check, then confirm</small></div></div></div><h4>"I've paid" from the statement</h4><p>Customers report GCash or bank payments from their statement link. You just confirm.</p></div></div><div class="m2-sub">Selling</div><div class="m2-swipe">Swipe to see more →</div><div class="m2-grid" style="--cols:4"><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>🛍 nifti.ph/s/metro-steel</b><span class="v-green">Open</span></div><small>412 visits · 23 orders this month</small></div></div><h4>Your own online store link</h4><p>Prices and ordering in one link for Facebook, Viber and Messenger.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-post"><b>📦 JUST ARRIVED!</b><span>Portland Cement ₱245/bag · same-day delivery sa Valenzuela!</span><em>👍❤️ 48 · 12 comments</em></div></div><h4>Posts written for you</h4><p>New stock and sale posts in Taglish or English. One tap to share.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-notif "><span class="v-nic">📨</span><div><div class="v-ntop"><b>Nifti</b><em>now</em></div><strong>Metro Steel: new stock is in</strong><small>Cement, rebar and GI wire restocked today</small></div></div></div><h4>Message all your buyers at once</h4><p>New stock lands in every buyer’s chat and pings their phone.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>🏪 Your shop</b><span class="v-green">New</span></div><small>"New stock in" post, made from your delivery</small></div></div><h4>A shop for buyers too</h4><p>Stores and restaurants get their own shop link and posts for their customers.</p></div></div><div class="m2-sub">Team & stock</div><div class="m2-swipe">Swipe to see more →</div><div class="m2-grid" style="--cols:4"><div class="m2-card"><div class="m2-vis"><div class="v-roles"><span>👑 Owner</span><span>📋 Purchasing</span><span>🧾 Finance</span><span>🚚 Driver</span></div></div><h4>Roles for everyone</h4><p>Owner, purchasing, warehouse, finance, driver. Each sees only their pages.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-notif "><span class="v-nic">☀️</span><div><div class="v-ntop"><b>Nifti</b><em>7:00</em></div><strong>Today: 3 to confirm</strong><small>₱84,200 owed to you · 2 cheques to deposit</small></div></div></div><h4>Phone notifications</h4><p>On Android and iPhone, plus a 7am summary of your day.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>Portland Cement</b><span class="v-amber">22 left</span></div><div class="v-bar amber"><i style="width:22%"></i></div><small>Reorder draft ready below 80 bags</small></div></div><h4>Stock and reorder drafts</h4><p>Stock per warehouse. A reorder is drafted when you run low.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>🔐 Your data</b></div><small>Download everything, anytime</small><div class=v-btns><span class="p">⬇ Download</span></div></div></div><h4>Your data stays yours</h4><p>Private to you and each partner. Download it or delete your account anytime.</p></div></div>
+  <div class="v-linkcard me"><small>nifti.ph/o/7Hk2</small><b>📦 Order from Dela Cruz Hardware</b><em>Tap to see and confirm</em></div></div></div><h4>Order links, no account needed</h4><p>Your partner opens the order in any browser and taps Confirm.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-chat"><div class="v-bub">10 bags cement, 5 rolls wire 🙏</div><div class="v-bub me">✓ Order ready · ₱2,925</div></div></div><h4>Paste a Viber order</h4><p>Paste the message and Nifti turns it into a proper order with prices.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-chat"><div class="v-bub">Delivered 2 boxes short 📷</div><div class="v-bub me">Noted, replacement tomorrow ✓</div></div></div><h4>Chat beside every order</h4><p>One thread per partner, with photos for proof.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>PO-0841</b><span class="v-red">1 day late</span></div><div class="v-track"><i class="d"></i><i class="d"></i><i class="d"></i><i class="l"></i><i></i></div><small>Placed · Confirmed · Packed · <b>On the way</b> · Delivered</small></div></div><h4>Every step, tracked</h4><p>From placed to paid. If something runs late, both sides see it.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>📦 Delivered ✓</b></div><small>Signed by Nena · 📷 photo · 9:42 AM</small></div></div><h4>Proof of delivery</h4><p>Photo and signature at the door, saved on the order.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-chat"><div class="v-bub">₱64 per piece</div><div class="v-bub me">Deal at ₱62? 🙏</div><div class="v-bub">🔒 ₱62 locked for 6 months</div></div></div><h4>Quotes and locked prices</h4><p>Ask for a quote, counter it, and lock the agreed price in writing.</p></div></div><div class="m2-sub">Getting paid</div><div class="m2-swipe">Swipe to see more →</div><div class="m2-grid" style="--cols:2"><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>💳 Dela Cruz says they paid</b></div><small>GCash ₱18,900 · Ref 7012 3345</small><div class=v-btns><span class="p">Received ✓</span><span class="">Not yet</span></div></div></div><h4>Payments the receiver confirms</h4><p>GCash, Maya, bank, cash or cheque, confirmed by whoever receives it.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-stat green"><small>WHO OWES YOU</small><b>₱84,200</b><span>3 buyers · 1 overdue</span></div></div><h4>Who owes you, with reminders</h4><p>Every unpaid invoice on one list, oldest first. Polite reminders in one tap.</p></div></div><div class="m2-sub">Selling admin</div><div class="m2-swipe">Swipe to see more →</div><div class="m2-grid" style="--cols:3"><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>“semento 40 x20 sako”</b></div><small>→ <b>Portland Cement 40kg</b> × 20 · ₱4,900</small><div class="v-btns"><span class="p">✓ Matched</span><span>Remembered</span></div></div></div><h4>Their PO, your order</h4><p>Upload their PDF, Excel or photo, or paste the Viber message. It becomes an order in your item names and prices.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>📝 3 waiting · ₱196K</b></div><small>Riverside opened it 3× · price held until Fri</small><div class=v-btns><span class="p">Nudge</span></div></div></div><h4>Waiting for their OK</h4><p>Tentative orders in one list. The customer confirms with one tap, and gets nudged until they do.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-notif ok"><span class="v-nic">🛒</span><div><div class="v-ntop"><b>Nifti</b><em>now</em></div><strong>New order · their PO #AB-12</strong><small>Already in your item names and prices</small></div></div></div><h4>Your order form, not their format</h4><p>Send customers your order form link. They pick your items and add their PO number. Nothing to retype.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>🎯 Rhea Santos</b></div><small>“Magkano 200 bags cement?” · follow up today</small><div class=v-btns><span class="p">Call</span><span class="">Viber</span></div></div></div><h4>Leads that don't slip</h4><p>Store inquiries land here by themselves. Each lead gets a follow-up date and a ready message.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-notif ok"><span class="v-nic">📦</span><div><div class="v-ntop"><b>Nifti</b><em>now</em></div><strong>Delivered: PO-0853</strong><small>Received by Juan · all complete</small></div></div></div><h4>"I received it" from the customer</h4><p>Your customer taps it on the tracking link. You know it arrived, and can bill right away.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-notif "><span class="v-nic">💸</span><div><div class="v-ntop"><b>Nifti</b><em>1m</em></div><strong>Juan says they paid ₱20,000</strong><small>GCash ref 7012 · check, then confirm</small></div></div></div><h4>"I've paid" from the statement</h4><p>Customers report GCash or bank payments from their statement link. You just confirm.</p></div></div><div class="m2-sub">Selling</div><div class="m2-swipe">Swipe to see more →</div><div class="m2-grid" style="--cols:4"><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>🛍 nifti.ph/s/metro-steel</b><span class="v-green">Open</span></div><small>412 visits · 23 orders this month</small></div></div><h4>Your own online store link</h4><p>Prices and ordering in one link for Facebook, Viber and Messenger.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-post"><b>📦 JUST ARRIVED!</b><span>Portland Cement ₱245/bag · same-day delivery sa Valenzuela!</span><em>👍❤️ 48 · 12 comments</em></div></div><h4>Posts written for you</h4><p>New stock and sale posts in Taglish or English. One tap to share.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-notif "><span class="v-nic">📨</span><div><div class="v-ntop"><b>Nifti</b><em>now</em></div><strong>Metro Steel: new stock is in</strong><small>Cement, rebar and GI wire restocked today</small></div></div></div><h4>Message all your buyers at once</h4><p>New stock lands in every buyer’s chat and pings their phone.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>🏪 Your shop</b><span class="v-green">New</span></div><small>"New stock in" post, made from your delivery</small></div></div><h4>A shop for buyers too</h4><p>Stores and restaurants get their own shop link and posts for their customers.</p></div></div><div class="m2-sub">Team & stock</div><div class="m2-swipe">Swipe to see more →</div><div class="m2-grid" style="--cols:4"><div class="m2-card"><div class="m2-vis"><div class="v-roles"><span>👑 Owner</span><span>📋 Purchasing</span><span>🧾 Finance</span><span>🚚 Driver</span></div></div><h4>Roles for everyone</h4><p>Owner, purchasing, warehouse, finance, driver. Each sees only their pages.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-notif "><span class="v-nic">☀️</span><div><div class="v-ntop"><b>Nifti</b><em>7:00</em></div><strong>Today: 3 to confirm</strong><small>₱84,200 owed to you · 2 cheques to deposit</small></div></div></div><h4>Phone notifications</h4><p>On Android and iPhone, plus a 7am summary of your day.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>Portland Cement</b><span class="v-amber">22 left</span></div><div class="v-bar amber"><i style="width:22%"></i></div><small>Reorder draft ready below 80 bags</small></div></div><h4>Stock and reorder drafts</h4><p>Stock per warehouse. A reorder is drafted when you run low.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>🔐 Your data</b></div><small>Download everything, anytime</small><div class=v-btns><span class="p">⬇ Download</span></div></div></div><h4>Your data stays yours</h4><p>Private to you and each partner. Download it or delete your account anytime.</p></div></div>
   </div>
 </section>
 
@@ -2152,7 +2194,7 @@
     <div class="p2-plan pro"><div class="p2-flag">🎉 FREE DURING THE PILOT</div>
       <div class="p2-plan-h"><b>Supplier Pro</b><span><s>₱990</s> ₱0 <em>/month for now</em></span></div>
       <p>Get paid faster and deliver smarter. Everything in Free, plus:</p>
-      <div class="p2-perks"><div class="p2-perk"><div class="p2-perk-vis"><div class="v-notif "><span class="v-nic">⏰</span><div><div class="v-ntop"><b>Nifti</b><em>9:00</em></div><strong>Reminder sent to Juan Hardware</strong><small>₱21,504 · 7 days overdue</small></div></div></div><div class="p2-perk-t"><b>⏰ Collections on autopilot</b><span>Reminders on your terms, by chat or email.</span></div></div><div class="p2-perk"><div class="p2-perk-vis"><div class="v-list"><div class="v-li"><span>✓ Matched</span><b class="v-green">14</b></div><div class="v-li"><span>⚠ Not in bank</span><b class="v-red">1</b></div></div></div><div class="p2-perk-t"><b>🏦 Cash and bank matched</b><span>Every peso traced to an invoice.</span></div></div><div class="p2-perk"><div class="p2-perk-vis"><div class="v-route mini"><div class="d"><i>✓</i><span>Aling Nena</span><b>₱7,650</b></div><div class="h"><i>🚚</i><span>Boy Hardware</span><b>₱4,750</b></div></div></div><div class="p2-perk-t"><b>🚚 Routes for your drivers</b><span>Every stop and peso to collect, with photo proof.</span></div></div><div class="p2-perk"><div class="p2-perk-vis"><div class="v-card"><div class="v-row"><b>Deposit today</b></div><small>BDO #004512 · ₱18,200</small><div class=v-btns><span class="p">Mark deposited</span></div></div></div><div class="p2-perk-t"><b>🏦 Never miss a cheque</b><span>Deposit reminders and bounce alerts.</span></div></div></div>
+      <div class="p2-perks"><div class="p2-perk"><div class="p2-perk-vis"><div class="v-notif "><span class="v-nic">⏰</span><div><div class="v-ntop"><b>Nifti</b><em>9:00</em></div><strong>Reminder sent to Juan Hardware</strong><small>₱21,504 · 7 days overdue</small></div></div></div><div class="p2-perk-t"><b>⏰ Collections on autopilot</b><span>Reminders on your terms, by chat or email.</span></div></div><div class="p2-perk"><div class="p2-perk-vis"><div class="v-list"><div class="v-li"><span>✓ Matched</span><b class="v-green">14</b></div><div class="v-li"><span>⚠ Not in bank</span><b class="v-red">1</b></div></div></div><div class="p2-perk-t"><b>🏦 Cash and bank matched</b><span>Every peso traced to an invoice.</span></div></div><div class="p2-perk"><div class="p2-perk-vis"><div class="v-route mini"><div class="d"><i>✓</i><span>Aling Nena</span><b>₱7,650</b></div><div class="h"><i>🚚</i><span>Boy Hardware</span><b>₱4,750</b></div></div></div><div class="p2-perk-t"><b>🚚 Routes for your drivers</b><span>Every stop and peso to collect, with photo proof.</span></div></div><div class="p2-perk"><div class="p2-perk-vis"><div class="v-notif "><span class="v-nic">✨</span><div><div class="v-ntop"><b>Nifti</b><em>now</em></div><strong>Read 6 lines from the photo</strong><small>1 line to double-check</small></div></div></div><div class="p2-perk-t"><b>✨ AI reads handwritten POs</b><span>Snap a photo, get the order.</span></div></div><div class="p2-perk"><div class="p2-perk-vis"><div class="v-card"><div class="v-row"><b>Deposit today</b></div><small>BDO #004512 · ₱18,200</small><div class=v-btns><span class="p">Mark deposited</span></div></div></div><div class="p2-perk-t"><b>🏦 Never miss a cheque</b><span>Deposit reminders and bounce alerts.</span></div></div></div>
       <ul class="p2-more"><li>Customers due to reorder, reminded for you</li><li>Promises to pay, tracked</li><li>Statements of account</li><li>Credit limits per buyer</li><li>Price changes announced ahead</li><li>Returns and credits</li><li>BIR 2307 tracker and VAT books</li><li>Up to 15 teammates</li></ul>
       <button class="plan-btn primary" onclick="navigate('login')">Start free. Pro is on for you →</button>
       <small class="p2-after">After the pilot: ₱990/month or ₱9,900/year. Sign up now to keep this founding price.</small></div>
@@ -2704,6 +2746,7 @@
             <div class="notif-head">Create new</div>
             <div class="notif-item" id="createMenuPoItem" style="cursor:pointer;" onclick="closeCreateMenu(); openCreatePOModal();"><div><div class="notif-text" id="createMenuPoLabel">Purchase Order</div></div></div>
             <div class="notif-item only-supplier" style="cursor:pointer;" onclick="closeCreateMenu(); openCustomerPoImport();"><div><div class="notif-text">📄 Enter a customer's PO</div></div></div>
+            <div class="notif-item only-supplier" style="cursor:pointer;" onclick="closeCreateMenu(); openCustomerPoImport({tentative: true});"><div><div class="notif-text">📝 Send an order for their OK</div></div></div>
             <div class="notif-item only-supplier" style="cursor:pointer;" onclick="closeCreateMenu(); navigate('followups'); setTimeout(fuAddLead, 150);"><div><div class="notif-text">🎯 Add a lead</div></div></div>
             <div class="notif-item" id="createMenuPasteItem" style="cursor:pointer;" onclick="closeCreateMenu(); openPasteOrderModal();"><div><div class="notif-text">📋 Paste an order from Viber</div></div></div>
             <div class="notif-item" style="cursor:pointer;" onclick="closeCreateMenu(); navigate('invite'); setInviteTab('rfq');"><div><div class="notif-text" id="createMenuRfqLabel">Request a Quote (RFQ)</div></div></div>
@@ -3541,6 +3584,12 @@
           <div id="ownerEmailContent"></div>
         </div>
 
+        <div class="settings-card hidden" id="ownerAiCard">
+          <h2>✨ AI reading of POs <span style="font-size:13px;font-weight:700;opacity:.6;">(only you see this)</span></h2>
+          <div class="sub">Reads photos of customers' POs, even messy handwriting, straight into their order. Off until you add an Anthropic API key. Costs about ₱2 per page, billed by Anthropic to you. Each business can do up to 40 reads a day.</div>
+          <div id="ownerAiContent"></div>
+        </div>
+
         <div class="settings-card hidden" id="ownerBackupCard">
           <h2>🗄 Backups <span style="font-size:13px;font-weight:700;opacity:.6;">(only you see this)</span></h2>
           <div class="sub">A full copy of everything in Nifti is saved every Sunday at 2am, and the last 10 are kept. Download one now and then to keep a copy outside Nifti too (laptop or Google Drive).</div>
@@ -3793,7 +3842,7 @@ async function mapPoRowToJs(row){
     buyerId: row.buyer_business_id, buyerName,
     supplierId: row.supplier_business_id, supplierName,
     type: row.type, status: row.status, currency: row.currency, taxRate: Number(row.tax_rate),
-    lineItems: row.line_items || [], customerRef: row.customer_ref || null,
+    lineItems: row.line_items || [], customerRef: row.customer_ref || null, quote: row.quote || null,
     createdDate: row.created_date, requestedDeliveryDate: row.requested_delivery_date,
     deliveryAddress: row.delivery_address, notes: row.notes || '',
     shipping: row.shipping, customs: row.customs, invoice: row.invoice, counter: row.counter,
@@ -3828,6 +3877,7 @@ function mapPoJsToRow(po){
     backorder_po_id: po.backorderPoId || null, replaces_po_id: po.replacesPoId || null, backorder_from_po_id: po.backorderFromPoId || null,
     freight_milestones: po.freightMilestones || null,
     pending_approval: po.pendingApproval || null,
+    quote: po.quote || null,
   };
 }
 
@@ -5878,7 +5928,7 @@ function publicOrderFromLocalPo(po){
 const PUBLIC_STATUS = {
   sent: ['Waiting for your confirmation', 'warn'], confirmed: ['Confirmed', 'ok'], preparing: ['Being prepared', 'ok'],
   shipped: ['On the way', 'ok'], in_customs: ['On the way', 'ok'], delivered: ['Delivered', 'ok'], partially_delivered: ['Partly delivered', 'warn'],
-  invoiced: ['Invoiced', 'ok'], paid: ['Paid', 'ok'], cancelled: ['Cancelled', 'danger'], countered: ['Price change proposed', 'warn'],
+  invoiced: ['Invoiced', 'ok'], paid: ['Paid', 'ok'], cancelled: ['Cancelled', 'danger'], countered: ['Price change proposed', 'warn'], quote: ['Waiting for your OK', 'warn'],
 };
 let publicOrderToken = null;
 function publicOrderTotal(d){
@@ -7227,6 +7277,26 @@ function renderPhoneNotifNudge(){
    Gmail account using a Google "app password". Only the Nifti owner sees this card; the password
    is write-only (never sent back to the browser). */
 let emailSenderStatus = null;
+async function renderOwnerAiCard(){
+  const card = document.getElementById('ownerAiCard'), el = document.getElementById('ownerAiContent');
+  if(!card || !el || !myBusiness) return;
+  const { data, error } = await sb.rpc('admin_ai_status');
+  if(error || !data){ card.classList.add('hidden'); return; }
+  card.classList.remove('hidden');
+  el.innerHTML = data.on
+    ? `<div class="notif-phone on" style="margin-bottom:8px;">✓ On · ${data.today} read${data.today === 1 ? '' : 's'} today · ${data.month} in 30 days (≈ ₱${(data.month * 2).toLocaleString()})</div>
+       <button class="btn btn-outline" onclick="saveOwnerAiKey(true)">Turn off</button>`
+    : `<div class="field"><label>Anthropic API key</label><input id="ownerAiKey" type="password" autocomplete="off" placeholder="sk-ant-…"></div>
+       <div class="sub" style="margin:-4px 0 8px;">Get one at console.anthropic.com → API keys. Set a monthly spend limit there too.</div>
+       <button class="btn btn-primary" onclick="saveOwnerAiKey(false)">Turn on</button>`;
+}
+async function saveOwnerAiKey(off){
+  const k = off ? '' : ((document.getElementById('ownerAiKey') || {}).value || '').trim();
+  if(!off && !k){ showToast('Paste the key first.', 'error'); return; }
+  const { error } = await sb.rpc('admin_set_ai_key', {p_key: k});
+  if(error){ showToast(error.message, 'error'); return; }
+  window._poAiChecked = false; showToast(off ? 'AI reading is off.' : 'AI reading is on.', 'success'); renderOwnerAiCard();
+}
 async function renderOwnerEmailCard(){
   const card = document.getElementById('ownerEmailCard');
   if(!card) return;
@@ -7303,18 +7373,18 @@ const PRO_FEATURE_LABELS = {
   statements: 'Statements of account', bir2307: 'BIR 2307 tracker', store_insights: 'Store visitors & sales', store_promos: 'Store promos',
   auto_reminders: 'Automatic payment reminders', late_payers: 'Who pays late', credit_limits: 'Credit limits per buyer', full_history: 'Full history & exports',
   watchdog: "Owner's watchdog", market_price: 'Market price check', price_alerts: 'Price-increase alerts',
-  cheques: 'Cheque tracker', routes: 'Delivery & collection routes', reconcile: 'Cash & bank reconciliation', price_blast: 'Price-change announcements', credit_memos: 'Credits on account',
+  cheques: 'Cheque tracker', routes: 'Delivery & collection routes', reconcile: 'Cash & bank reconciliation', po_ai: 'AI reading of handwritten POs', price_blast: 'Price-change announcements', credit_memos: 'Credits on account',
   reorder_reminders: 'Reorder reminders', vat_books: 'Sales & purchase books', spending_caps: 'Spending caps', scorecard: 'Supplier scorecard',
 };
 const PRO_PLANS = {
   supplier_pro: {name: 'Supplier Pro', forType: 'supplier', tagline: 'Get paid faster and sell more.',
-    features: ['Payment reminders on your terms, sent for you by chat or email, with promises to pay tracked', 'Cash and bank reconciliation: who holds the cash, deposits, and your bank statement matched', 'Customers due to reorder, reminded with a one-tap reorder link', 'Online store insights: visitors, orders, top products', 'Promo prices with an end date on your store', 'One-tap statements of account', 'Credit limits per buyer: hold orders when they owe too much or pay late', 'Delivery & collection routes with photo proof and cash remittance', 'Cheque tracker: post-dated calendar, deposit reminders, bounced alerts', 'Price-change announcements to every buyer at once', 'Reorder reminders when a buyer goes quiet', 'Credits carried to the next invoice', 'BIR 2307 tracker and monthly sales book (VAT)', 'Who pays late, and automatic payment reminders', 'Up to 15 teammates']},
+    features: ['Payment reminders on your terms, sent for you by chat or email, with promises to pay tracked', 'AI reads photos of handwritten POs into your order', 'Cash and bank reconciliation: who holds the cash, deposits, and your bank statement matched', 'Customers due to reorder, reminded with a one-tap reorder link', 'Online store insights: visitors, orders, top products', 'Promo prices with an end date on your store', 'One-tap statements of account', 'Credit limits per buyer: hold orders when they owe too much or pay late', 'Delivery & collection routes with photo proof and cash remittance', 'Cheque tracker: post-dated calendar, deposit reminders, bounced alerts', 'Price-change announcements to every buyer at once', 'Reorder reminders when a buyer goes quiet', 'Credits carried to the next invoice', 'BIR 2307 tracker and monthly sales book (VAT)', 'Who pays late, and automatic payment reminders', 'Up to 15 teammates']},
   buyer_pro: {name: 'Buyer Pro', forType: 'buyer', tagline: 'Pay less and stop leaks.',
     features: ["Owner's watchdog: alerts when staff overpay or skip approval", 'Spending caps you set per business, teammate or supplier', 'Supplier scorecard: late, short, returns, price hikes', 'Cheque tracker: know when each cheque hits your bank', 'Market price check vs other Nifti buyers', 'BIR 2307 tracker and monthly purchase book (VAT)', 'Up to 15 teammates']},
   business: {name: 'Business', forType: 'any', tagline: 'For bigger teams and multi-branch businesses. Everything in Pro for your side, plus:',
     features: ['Up to 50 teammates', 'Verified badge (green ✔) included', 'Featured at the top of Discover', 'Priority support: we reply first', 'Free done-for-you setup on yearly']},
 };
-const FREE_PLAN_FEATURES = ['Leads and follow-ups with ready messages', 'Turn any customer PO (PDF, Excel, photo, Viber) into your own order', 'Unlimited suppliers and buyers', 'Chat, orders and order links, no limits', 'Payment tracking confirmed by your supplier', 'Your own online store link + ready-to-post content', 'Delivery links and proof of delivery', 'Up to 3 teammates'];
+const FREE_PLAN_FEATURES = ['Orders waiting for the customer\'s OK: one-tap confirm link, daily nudges', 'Leads and follow-ups with ready messages', 'Turn any customer PO (PDF, Excel, photo, Viber) into your own order', 'Unlimited suppliers and buyers', 'Chat, orders and order links, no limits', 'Payment tracking confirmed by your supplier', 'Your own online store link + ready-to-post content', 'Delivery links and proof of delivery', 'Up to 3 teammates'];
 async function loadMyPlan(){
   if(!myBusiness) return null;
   const { data } = await sb.rpc('my_plan');
@@ -8161,7 +8231,8 @@ async function openStoreCheckout(){
       <div class="field"><label>Business name (optional)</label><input id="soBiz" maxlength="120" value="${escapeHtml(saved.biz || '')}" autocomplete="organization"></div>
       <div class="field"><label>Mobile number</label><input id="soPhone" type="tel" inputmode="tel" maxlength="20" placeholder="0917 123 4567" value="${escapeHtml(saved.phone || '')}" autocomplete="tel"></div>`}
     <div class="field"><label>Deliver to</label><input id="soAddr" maxlength="300" placeholder="Street, barangay, city" value="${escapeHtml(saved.addr || '')}" autocomplete="street-address"></div>
-    <div class="field"><label>Needed by (optional)</label><input id="soDate" type="date"></div>
+    <div class="row-2"><div class="field"><label>Needed by (optional)</label><input id="soDate" type="date"></div>
+      <div class="field"><label>Your PO number (optional)</label><input id="soRef" maxlength="60" placeholder="e.g. PO-1234"></div></div>
     <div class="field"><label>Note (optional)</label><input id="soNote" maxlength="500" placeholder="e.g. Please deliver before 10am"></div>
     <input id="soHp" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;" aria-hidden="true">
     <div id="soErr" style="color:var(--danger);font-weight:600;font-size:14px;margin:6px 0;"></div>
@@ -8182,7 +8253,7 @@ async function submitStoreOrder(){
   btn.disabled = true; btn.textContent = 'Sending…';
   const items = Object.entries(storeState.cart).map(([product, qty]) => ({product, qty}));
   const { data, error } = await sb.rpc('submit_store_order', {p_slug: d.slug, p_name: payload.name || null, p_business: payload.biz || null, p_phone: payload.phone || null,
-    p_address: payload.addr, p_items: items, p_note: val('soNote').trim() || null, p_src: storeSrcFromUrl() || null, p_needed_by: val('soDate') || null});
+    p_address: payload.addr, p_items: items, p_note: val('soNote').trim() || null, p_src: storeSrcFromUrl() || null, p_needed_by: val('soDate') || null, p_ref: val('soRef').trim() || null});
   if(error){ btn.disabled = false; btn.textContent = 'Send order →'; err.textContent = error.message; return; }
   storeState.cart = {}; saveStoreCart();
   document.getElementById('storeCheckout').remove();
@@ -8205,7 +8276,7 @@ async function submitStoreOrder(){
 function renderBuyerTrackView(d){
   const host = document.getElementById('publicOrderView');
   const [statusLabel, tone] = PUBLIC_STATUS[d.status] || [d.status, 'ok'];
-  const niceStatus = d.status === 'sent' ? 'Waiting for the seller to confirm' : statusLabel;
+  const niceStatus = d.status === 'sent' ? 'Waiting for the seller to confirm' : d.status === 'quote' ? (d.can_answer_quote ? 'Waiting for your OK' : 'Waiting for the customer\'s OK') : statusLabel;
   const totals = publicOrderTotal(d);
   const savedName = (() => { try{ return (JSON.parse(localStorage.getItem('nifti-store-buyer') || '{}') || {}).name || localStorage.getItem('nifti-public-name') || ''; }catch(e){ return ''; } })();
   const items = (d.line_items || []).map(li => `<tr><td>${escapeHtml(li.product)}</td><td style="text-align:right;">${escapeHtml(li.qty)}</td><td style="text-align:right;">${Number(li.unitPrice) > 0 ? fmtPHP(Number(li.qty) * Number(li.unitPrice)) : '—'}</td></tr>`).join('');
@@ -8223,6 +8294,7 @@ function renderBuyerTrackView(d){
       ${d.delivery_address ? `<div class="po-public-row">📍 <strong>Deliver to:</strong> ${escapeHtml(d.delivery_address)}</div>` : ''}
       ${c.phone ? `<div class="po-public-row">📞 ${escapeHtml(c.name || d.supplier_name)}: <a href="tel:${escapeHtml(String(c.phone).replace(/[^0-9+]/g, ''))}">${escapeHtml(c.phone)}</a></div>` : ''}
     </div>
+    ${qtPublicCard(d)}
     ${d.can_confirm_receipt ? `<div class="po-public-card po-public-receipt" id="rcptCard"><div style="font-weight:800;font-size:18px;">📦 Got your delivery?</div>
       <div style="opacity:.8;margin:2px 0 10px;">Let ${escapeHtml(d.supplier_name)} know it arrived. It takes 5 seconds.</div>
       <label class="po-public-label">Received by</label><input id="rcptName" type="text" maxlength="60" value="${escapeHtml(savedName)}">
@@ -10242,7 +10314,7 @@ async function renderAdminSite(body){
       ${(notices || []).map(n => `<div class="adm-log"><span>${escapeHtml(n.title)} <span style="opacity:.6;">(${escapeHtml(n.level)})</span></span><span>${n.ends_at && new Date(n.ends_at) < new Date() ? 'ended' : `<span class="row-action" onclick="adminAct('admin_end_notice', {p_id:'${n.id}'}, 'Ended.')">End now</span>`}</span></div>`).join('')}
     </div>
     <div class="panel-card"><div class="adm-h">Raw data</div><div class="adm-sub">Every table, the logs and backups live in your <a href="${SUPABASE_DASHBOARD}" target="_blank" rel="noopener">Supabase dashboard</a> (Table Editor for data, Logs for errors). Use it for anything this console doesn't cover.</div></div>`;
-  await renderOwnerEmailCard(); renderOwnerBackupCard();
+  await renderOwnerEmailCard(); renderOwnerBackupCard(); renderOwnerAiCard();
 }
 
 function showSuspendedScreen(acct){
@@ -10470,7 +10542,7 @@ function hmItemsSupplier(){
   });
   Object.values(late).sort((a, b) => b.amt - a.amt).forEach(g => items.push({w: escapeHtml(g.name), k: 'latepay', pri: 4, ic: '💰', tone: 'rose',
     t: `${escapeHtml(g.name)} is ${g.days} day${g.days > 1 ? 's' : ''} late paying`, s: `${fmtPHP(g.amt)} overdue`, b: 'Remind', a: `colRemind('${g.id}')`, amt: g.amt}));
-  return items.concat(hmMessageItems(), hmDealItems('supplier'), hmSalesItems());
+  return items.concat(hmMessageItems(), hmDealItems('supplier'), hmQuoteItems('supplier'), hmSalesItems());
 }
 function hmItemsBuyer(){
   const items = [];
@@ -10497,7 +10569,7 @@ function hmItemsBuyer(){
       ? {k: 'fund', pri: 2, ic: '🏦', tone: 'violet', t: `Keep ${fmtPHP(amt)} in the bank`, s: `Your cheque to ${escapeHtml(c.party)} is dated ${hmDay(c.date)}`, b: 'Open', a: "navigate('cheques')"}
       : {k: 'fund', pri: 2, ic: '🏦', tone: 'violet', t: `Keep ${fmtPHP(amt)} in the bank`, s: `${cq.soon.length} of your cheques are dated by ${hmDay(cq.soon[cq.soon.length - 1].date)}`, b: 'Open', a: "navigate('cheques')"});
   }
-  return items.concat(hmMessageItems(), hmDealItems('buyer'));
+  return items.concat(hmMessageItems(), hmDealItems('buyer'), hmQuoteItems('buyer'));
 }
 // Three or more of the same kind become one row ("5 new orders"), so one busy morning doesn't
 // push everything else off the screen.
@@ -10807,7 +10879,7 @@ function slSwitch(on, onclick, id){ return `<div class="switch ${on ? 'on' : ''}
    (server trigger). "Sell again" lists customers past their usual reorder day and customers gone
    quiet, each with a personal link that opens your store with their usual order already in the
    cart. We count how many reminders turned into orders, so you can see it works. */
-let fuTab = 'today', leadsCache = null, nudgesCache = null, reorderDueCache = null, fuLeadFilter = 'open', fuLoading = null;
+let fuTab = 'confirm', leadsCache = null, nudgesCache = null, reorderDueCache = null, fuLeadFilter = 'open', fuLoading = null;
 const LEAD_STAGES = {new: 'New', contacted: 'Talking', quoted: 'Quoted', won: 'Customer 🎉', lost: 'Not now'};
 const LEAD_SOURCES = {store: '🛍 Asked on your store', manual: '✍️ Added by you', invite: '📨 You invited them', discover: '🔎 Found you on Discover', referral: '🤝 Referred', walkin: '🚶 Walk-in or call', fb: '📘 Facebook or Messenger', event: '🎪 Trade show or event'};
 function fuSeedDemo(){
@@ -10878,12 +10950,15 @@ async function renderFollowupsPage(){
   const dueLeads = open.filter(fuLeadDue).sort((a, b) => (a.next_follow_up || '').localeCompare(b.next_follow_up || ''));
   const again = fuAgainLists();
   const todayCount = dueLeads.length + again.dueNow.length;
+  const qtList = qtWaiting(), qtNeeds = qtList.filter(w => w.needsYou).length;
   el.innerHTML = `<div class="adm-tabs sl-tabs">
+      <button class="${fuTab === 'confirm' ? 'active' : ''}" onclick="fuTab='confirm'; renderFollowupsPage()">To confirm ${qtList.length ? `<span class="sl-n ${qtNeeds ? '' : 'soft'}">${qtList.length}</span>` : ''}</button>
       <button class="${fuTab === 'today' ? 'active' : ''}" onclick="fuTab='today'; renderFollowupsPage()">Today${todayCount ? ` <span class="sl-n">${todayCount}</span>` : ''}</button>
       <button class="${fuTab === 'leads' ? 'active' : ''}" onclick="fuTab='leads'; renderFollowupsPage()">Leads <span class="sl-n soft">${open.length}</span></button>
       <button class="${fuTab === 'again' ? 'active' : ''}" onclick="fuTab='again'; renderFollowupsPage()">Sell again <span class="sl-n soft">${again.due.length + again.quiet.length}</span></button>
     </div><div id="fuBody"></div>`;
   const body = document.getElementById('fuBody');
+  if(fuTab === 'confirm') return qtRenderTab(body);
   if(fuTab === 'leads') return fuRenderLeads(body);
   if(fuTab === 'again') return fuRenderAgain(body);
   const potential = open.reduce((s, l) => s + Number(l.est_value || 0), 0);
@@ -11063,6 +11138,7 @@ function fuOpenLead(id){
       <button onclick="fuOutcome('${l.id}','noanswer')">📵 No answer</button>
       <button onclick="fuOutcome('${l.id}','talked')">🗣 Talked, interested</button>
       <button onclick="fuOutcome('${l.id}','quoted')">🧾 Sent a price</button>
+      <button class="good" onclick="fuOutcome('${l.id}','tentative')">📝 Send an order to confirm</button>
       <button class="good" onclick="fuOutcome('${l.id}','order')">✅ They'll order</button>
       <button class="bad" onclick="fuOutcome('${l.id}','lost')">✋ Not now</button>
     </div>
@@ -11088,6 +11164,8 @@ async function fuOutcome(id, what){
   if(what === 'lost'){ const why = prompt('Why not now? (optional, e.g. price, already has a supplier)', '') ; if(why === null) return;
     await fuPatchLead(id, {stage: 'lost', next_follow_up: null, lost_reason: why || null}, 'Not now' + (why ? ': ' + why : '')); }
   if(what === 'order'){ slClose('leadModal'); openCustomerPoImport({name: l.company || l.name, phone: l.phone, email: l.email, leadId: l.id}); return; }
+  if(what === 'tentative'){ await fuPatchLead(id, {stage: 'quoted', next_follow_up: t(2), touches: (l.touches || 0) + 1, last_contact_at: now}, 'Sent an order to confirm'); slClose('leadModal');
+    openCustomerPoImport({name: l.company || l.name, phone: l.phone, email: l.email, leadId: l.id, tentative: true}); return; }
   const tries = (l.touches || 0);
   showToast(what === 'lost' ? 'Moved to Not now. It stays in your list.' : `Saved. Next follow-up ${fuDueLabel(l.next_follow_up).toLowerCase()}.${tries >= 4 && l.stage !== 'quoted' ? ' That\'s 4+ tries: consider Not now.' : ''}`, 'success');
   fuOpenLead(id); renderFollowupsPage(); if(homeIsActive()) renderHomeV2();
@@ -11538,7 +11616,7 @@ function colSampleBank(){
 let CPO = null, cpoAliases = null;
 // Tagalog and shop-talk words customers use for the same items
 const CPO_SYN = {semento: 'cement', buhangin: 'sand', pako: 'nail', pakong: 'nail', alambre: 'wire', bakal: 'steel', graba: 'gravel', kahoy: 'lumber', tubo: 'pipe', pintura: 'paint', yero: 'roofing', bareta: 'rebar', varilla: 'rebar', rebars: 'rebar', nails: 'nail', wires: 'wire', gi: 'galvanized'};
-const CPO_UNITS = 'bags?|sacks?|sako|pcs?|pieces?|pc\\.|rolls?|boxes|box|bxs?|cans?|gals?|gallons?|sets?|lengths?|lgths?|packs?|pks?|bundles?|drums?|pails?|kilos?|kgs?|tons?|units?|cartons?|ctns?|dozens?|doz|reams?|sheets?|liters?|ltrs?|meters?|mtrs?|feet|ft|cu\\.?m|cubic|trucks?|pairs?|bottles?|trays?|cases?';
+const CPO_UNITS = 'bags?|sacks?|sako|piraso|rolyo|kahon|galon|tali|pcs?|pieces?|pc\\.|rolls?|boxes|box|bxs?|cans?|gals?|gallons?|sets?|lengths?|lgths?|packs?|pks?|bundles?|drums?|pails?|kilos?|kgs?|tons?|units?|cartons?|ctns?|dozens?|doz|reams?|sheets?|liters?|ltrs?|meters?|mtrs?|feet|ft|cu\\.?m|cubic|trucks?|pairs?|bottles?|trays?|cases?';
 function cpoNorm(s){
   let t = ' ' + String(s || '').toLowerCase().replace(/[“”"'`]/g, '').replace(/(\d)\s*(kg|mm|cm|m|g|ml|l|in|inch|ft|ga|gauge)\b/g, '$1$2').replace(/[^a-z0-9#./x ]+/g, ' ') + ' ';
   Object.entries(CPO_SYN).forEach(([k, v]) => { t = t.replace(new RegExp(' ' + k + ' ', 'g'), ' ' + v + ' '); });
@@ -11586,6 +11664,8 @@ function cpoParseLine(line){
   if(idx && nums.length && nums[0].at === raw.indexOf(idx[1])) nums = nums.slice(1);
   else if(nums.length >= 3 && nums[0].at === 0 && !nums[0].unit && nums[0].v <= 60 && Number.isInteger(nums[0].v) && nums.some(n => n.unit)) nums = nums.slice(1);
   let qty = null, price = null, amount = null, unit = null;
+  const measure = /^(kilos?|kgs?|tons?|liters?|ltrs?|meters?|mtrs?|feet|ft|cu\.?m|cubic)$/i;
+  if(nums.some(n => n.unit && !measure.test(n.unit))) nums = nums.filter(n => !(n.unit && measure.test(n.unit))); // "cement 40 kilo, 50 sako": 50 is the quantity
   const withUnit = nums.find(n => n.unit);
   if(withUnit){ qty = withUnit.v; unit = withUnit.unit; }
   const rest = nums.filter(n => n !== withUnit);
@@ -11646,9 +11726,16 @@ async function cpoReadFile(file){
       tc.items.forEach(it => { const y = Math.round(it.transform[5] / 3); (byY[y] = byY[y] || []).push(it); });
       Object.keys(byY).sort((a, b) => b - a).forEach(y => lines.push(byY[y].sort((a, b) => a.transform[4] - b.transform[4]).map(i => i.str).join('   ')));
     }
-    return cpoParseText(lines.join('\n'));
+    const parsedPdf = cpoParseText(lines.join('\n'));
+    if(!parsedPdf.rows.length && cpoAiOn()){ try{ const a = await cpoAiRead(file); CPO.viaAi = true; return a; }catch(e){ console.warn(e); } }
+    return parsedPdf;
+  }
+  if(/^image\//.test(file.type) && cpoAiOn()){
+    try{ const a = await cpoAiRead(file); CPO.viaAi = true; return a; }
+    catch(e){ const st = document.getElementById('cpoStatus'); if(st) st.textContent = (e.message || 'AI reading failed') + ' Reading it on your phone instead…'; }
   }
   if(/^image\//.test(file.type)){
+    CPO.viaOcr = true;
     await cpoLoadScript('https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js');
     const st = document.getElementById('cpoStatus'); if(st) st.textContent = 'Reading the photo… (about 10–20 seconds)';
     const r = await Tesseract.recognize(file, 'eng');
@@ -11663,26 +11750,27 @@ async function cpoLoadAliases(){
 }
 function openCustomerPoImport(prefill){
   const p = prefill || {};
-  CPO = {step: 1, buyerId: p.buyerId || '', name: p.name || '', phone: p.phone || '', email: p.email || '', leadId: p.leadId || null, text: '', rows: [], ref: '', neededBy: '', address: '', notes: '', vat: false, remember: true};
+  CPO = {step: 1, buyerId: p.buyerId || '', name: p.name || '', phone: p.phone || '', email: p.email || '', leadId: p.leadId || null, text: '', rows: [], ref: '', neededBy: '', address: '', notes: '', vat: false, remember: true, tentative: !!p.tentative, holdDays: 3, allowEdit: true};
   if(!CPO.buyerId && CPO.name){ const b = (buyersData || []).find(x => x.name.toLowerCase() === CPO.name.toLowerCase()); if(b) CPO.buyerId = b.id; }
-  cpoLoadAliases(); cpoRender();
+  cpoLoadAliases(); cpoRender(); cpoCheckAi();
 }
 function cpoRender(){
   const buyers = (buyersData || []).slice().sort((a, b) => a.name.localeCompare(b.name));
   if(CPO.step === 1){
-    slModal('cpoModal', `<div class="sl-sheet-h"><b>📄 Enter a customer's PO</b><button class="sl-x" onclick="slClose('cpoModal')">✕</button></div>
-      <div class="sl-sub">Their PDF, Excel, photo or Viber message becomes an order in <b>your</b> item names and prices.</div>
+    slModal('cpoModal', `<div class="sl-sheet-h"><b>${CPO.tentative ? '📝 Send an order for their OK' : '📄 Enter a customer\'s PO'}</b><button class="sl-x" onclick="slClose('cpoModal')">✕</button></div>
+      <div class="sl-sub">${CPO.tentative ? 'Put in what they asked for. They get a link to check it and confirm in one tap, and we follow up for you.' : 'Their PDF, Excel, photo or Viber message becomes an order in <b>your</b> item names and prices.'}</div>
       <div class="field"><label>Whose PO is this?</label><select id="cpoBuyer" onchange="CPO.buyerId=this.value; cpoRender()">
         <option value="">+ New customer</option>${buyers.map(b => `<option value="${b.id}" ${CPO.buyerId === b.id ? 'selected' : ''}>${escapeHtml(b.name)}</option>`).join('')}</select></div>
       ${CPO.buyerId ? '' : `<div class="row-2"><div class="field"><label>Customer name</label><input id="cpoName" maxlength="120" value="${escapeHtml(CPO.name)}" placeholder="e.g. Juan Hardware"></div>
         <div class="field"><label>Mobile (for updates)</label><input id="cpoPhone" type="tel" maxlength="20" value="${escapeHtml(CPO.phone)}" placeholder="0917 123 4567"></div></div>
         <div class="field"><label>Email (optional, for automatic reminders)</label><input id="cpoEmail" type="email" maxlength="120" value="${escapeHtml(CPO.email)}"></div>`}
       <label class="cpo-drop"><input type="file" accept=".pdf,.xlsx,.xls,.csv,.txt,image/*" style="display:none" onchange="cpoFile(this)">
-        <span>⬆</span><b>Upload their PO</b><small>PDF, Excel, CSV or a photo</small></label>
+        <span>⬆</span><b>Upload their PO</b><small>${cpoAiOn() ? 'PDF, Excel, CSV or a photo, even handwritten ✨' : 'PDF, Excel, CSV or a clear photo'}</small></label>
       <div class="cpo-or">or paste it</div>
       <textarea id="cpoText" rows="6" class="sl-ta" placeholder="PO No. JH-551&#10;Deliver by Oct 3&#10;1. Portland cement 40kg  100 bags  245.00  24,500.00&#10;2. rebar 10mm - 50 pcs&#10;semento 20 sako">${escapeHtml(CPO.text)}</textarea>
       <div id="cpoStatus" class="sl-sub"></div><div id="cpoErr" class="sl-err"></div>
-      <button class="btn btn-primary sl-wide" onclick="cpoReadPasted()">Read the order →</button>`);
+      <button class="btn btn-primary sl-wide" onclick="cpoReadPasted()">Read the order →</button>
+      ${cpoWaysHtml()}`);
     return;
   }
   if(CPO.step === 2){
@@ -11691,7 +11779,9 @@ function cpoRender(){
     const total = CPO.rows.reduce((s, r) => s + Number(r.qty || 0) * Number(r.myPrice || 0), 0);
     const needCheck = CPO.rows.filter(r => r.conf !== 'ok' && r.conf !== 'saved').length;
     slModal('cpoModal', `<div class="sl-sheet-h"><b>Check the order</b><button class="sl-x" onclick="slClose('cpoModal')">✕</button></div>
-      <div class="sl-sub">${CPO.rows.length} item${CPO.rows.length === 1 ? '' : 's'} read.${needCheck ? ` <b class="sl-warn">${needCheck} to check.</b>` : ' All matched to your items. ✓'} Prices use your price list; theirs is shown when it's different.</div>
+      <div class="sl-sub">${!CPO.rows.length ? 'Add their items: tap one below, or type it and its quantity.' : CPO.manual ? `${CPO.rows.length} item${CPO.rows.length === 1 ? '' : 's'} added. Prices use your price list.` : `${CPO.rows.length} item${CPO.rows.length === 1 ? '' : 's'} read.${needCheck ? ` <b class="sl-warn">${needCheck} to check.</b>` : ' All matched to your items. ✓'} Prices use your price list; theirs is shown when it's different.`}
+        ${CPO.viaOcr ? '<br><b class="sl-warn">The phone reads handwriting poorly. Check each line against their photo, and add missed items below.</b>' : ''}${CPO.viaAi ? '<br>✨ Read by AI. Lines marked ⚠ were hard to read.' : ''}</div>
+      ${cpoQuickHtml()}
       <div class="cpo-rows">${CPO.rows.map((r, i) => `<div class="cpo-row c-${r.conf}">
         <div class="cpo-their">Their line: <i>${escapeHtml(r.text)}</i>${r.theirPrice != null && r.myPrice != null && Math.abs(r.theirPrice - r.myPrice) >= 0.01 ? ` · <b class="sl-warn">they wrote ${fmtPHP(r.theirPrice)}</b>` : ''}</div>
         <div class="cpo-grid"><select onchange="cpoPick(${i}, this.value)">${opts(r.product)}</select>
@@ -11700,17 +11790,27 @@ function cpoRender(){
           <button class="sl-x" onclick="CPO.rows.splice(${i},1); cpoRender()" aria-label="Remove">✕</button></div>
         <div class="cpo-tag">${r.conf === 'saved' ? '✓ Remembered from last time' : r.conf === 'ok' ? '✓ Matched' : r.conf === 'check' ? '⚠ Best guess, please check' : '❌ Pick your item, or keep their wording'}</div></div>`).join('')}</div>
       <button class="sl-link" onclick="CPO.rows.push({text:'', qty:1, product:'', myPrice:null, conf:'none'}); cpoRender()">+ Add a line</button>
-      <div class="row-2"><div class="field"><label>Their PO number</label><input id="cpoRef" maxlength="60" value="${escapeHtml(CPO.ref || '')}"></div>
-        <div class="field"><label>Needed by</label><input id="cpoNeed" type="date" value="${CPO.neededBy || ''}"></div></div>
-      <div class="field"><label>Deliver to</label><input id="cpoAddr" maxlength="300" value="${escapeHtml(CPO.address || '')}"></div>
+      <div class="row-2"><div class="field"><label>Their PO number</label><input id="cpoRef" maxlength="60" value="${escapeHtml(CPO.ref || '')}" oninput="CPO.ref=this.value"></div>
+        <div class="field"><label>Needed by</label><input id="cpoNeed" type="date" value="${CPO.neededBy || ''}" onchange="CPO.neededBy=this.value"></div></div>
+      <div class="field"><label>Deliver to</label><input id="cpoAddr" maxlength="300" value="${escapeHtml(CPO.address || '')}" oninput="CPO.address=this.value"></div>
+      <div class="qt-mode ${CPO.tentative ? 'on' : ''}"><label class="store-radio"><input type="checkbox" id="cpoTent" ${CPO.tentative ? 'checked' : ''} onchange="CPO.tentative=this.checked; cpoRender()"> <span><b>They still need to say yes</b><br><small>Send it for their OK instead of confirming it now</small></span></label>
+        ${CPO.tentative ? `<div class="sl-sub" style="margin:8px 0 4px;">Hold this price for</div><div class="sl-days">${[0, 3, 7, 14].map(n => `<button class="${CPO.holdDays === n ? 'on' : ''}" onclick="CPO.holdDays=${n}; cpoRender()">${n ? n + ' days' : 'No hold'}</button>`).join('')}</div>
+        <label class="store-radio"><input type="checkbox" ${CPO.allowEdit ? 'checked' : ''} onchange="CPO.allowEdit=this.checked"> <span>Let them lower or change quantities when they confirm</span></label>` : ''}</div>
       <label class="store-radio"><input type="checkbox" id="cpoVat" ${CPO.vat ? 'checked' : ''} onchange="CPO.vat=this.checked; cpoTotals()"> <span>Add 12% VAT on top of these prices</span></label>
       <label class="store-radio"><input type="checkbox" id="cpoRem" ${CPO.remember ? 'checked' : ''} onchange="CPO.remember=this.checked"> <span>Remember how ${escapeHtml(cpoBuyerName())} words these items</span></label>
       <div class="cpo-total" id="cpoTotal"></div><div id="cpoErr" class="sl-err"></div>
-      <div class="sl-actions"><button class="btn btn-outline" onclick="CPO.step=1; cpoRender()">← Back</button><button class="btn btn-primary" style="flex:1;" onclick="cpoCreate()">✓ Create confirmed order</button></div>`);
+      <div class="sl-actions"><button class="btn btn-outline" onclick="CPO.step=1; cpoRender()">← Back</button><button class="btn btn-primary" style="flex:1;" onclick="cpoCreate()">${CPO.tentative ? '📝 Send for their OK' : '✓ Create confirmed order'}</button></div>`);
     cpoTotals();
     return;
   }
   const r = CPO.result;
+  if(r.tentative){
+    slModal('cpoModal', `<div style="text-align:center;padding:6px 0 4px;"><div style="font-size:44px;">📝</div><h2 style="font-family:var(--font-h);margin:4px 0;">${escapeHtml(r.poNumber)} is waiting for their OK</h2>
+      <div class="sl-sub">Now send ${escapeHtml(r.buyerName.split(' ')[0])} the link. They check it and tap Confirm, no app needed. If they don't answer, we nudge them for you.</div></div>
+      <button class="btn btn-primary sl-wide" onclick="qtSendFirst('${r.poId}')">📲 Send them the confirm link</button>
+      <button class="btn btn-outline sl-wide" onclick="slClose('cpoModal'); fuTab='confirm'; navigate('followups')">See everything waiting</button>`);
+    return;
+  }
   slModal('cpoModal', `<div style="text-align:center;padding:6px 0 4px;"><div style="font-size:44px;">✅</div><h2 style="font-family:var(--font-h);margin:4px 0;">${escapeHtml(r.poNumber)} is confirmed</h2>
     <div class="sl-sub">${escapeHtml(r.buyerName)}'s PO${CPO.ref ? ' #' + escapeHtml(CPO.ref) : ''} is now an order in your list, in your item names and prices.</div></div>
     <button class="btn btn-primary sl-wide" onclick="printSalesOrder('${r.poId}')">🖨 Print your sales order</button>
@@ -11741,28 +11841,33 @@ async function cpoFile(input){
   cpoCaptureStep1(); if(!cpoValidateWho()) return;
   const f = input.files && input.files[0]; if(!f) return;
   const st = document.getElementById('cpoStatus'); st.textContent = 'Reading ' + f.name + '…';
+  if(CPO.photo){ try{ URL.revokeObjectURL(CPO.photo); }catch(e){} }
+  CPO.photo = /^image\//.test(f.type) ? URL.createObjectURL(f) : null; CPO.viaOcr = false; CPO.viaAi = false; CPO.manual = false;
   try{ const parsed = await cpoReadFile(f); cpoFromParsed(parsed); }
   catch(e){ st.textContent = ''; document.getElementById('cpoErr').textContent = e.message || 'Couldn\'t read that file. Try pasting the text.'; }
 }
 function cpoReadPasted(){
   cpoCaptureStep1(); if(!cpoValidateWho()) return;
+  CPO.manual = false; CPO.viaOcr = false; CPO.viaAi = false; CPO.photo = null;
   if(CPO.text.trim().length < 3){ document.getElementById('cpoErr').textContent = 'Paste their order, or upload the file.'; return; }
   const firstLine = CPO.text.split('\n')[0] || '';
   cpoFromParsed(/\t/.test(firstLine) || (firstLine.split(',').length >= 3 && /qty|quantity/i.test(firstLine)) ? cpoRowsFromTable(colParseCsv(CPO.text)) : cpoParseText(CPO.text));
 }
 async function cpoFromParsed(parsed){
   await cpoLoadAliases();
+  if(!parsed.rows.length && CPO.photo){ CPO.rows = []; CPO.manual = true; CPO.step = 2; cpoRender(); return; }
   if(!parsed.rows.length){ document.getElementById('cpoErr').textContent = 'Couldn\'t find any items. Put one item per line with its quantity, e.g. "Cement 40kg 100 bags".'; const st = document.getElementById('cpoStatus'); if(st) st.textContent = ''; return; }
   CPO.rows = parsed.rows.slice(0, 200).map(r => {
     const m = cpoMatch(r.text); const c = (myCatalog || []).find(x => x.product === m.product);
     const theirPrice = r.price != null ? r.price : (r.amount != null && r.qty ? Math.round(r.amount / r.qty * 100) / 100 : null);
-    return {text: r.text, qty: r.qty, product: m.product, conf: m.conf, theirPrice, myPrice: c && c.price != null ? Number(c.price) : theirPrice, unit: c ? c.unit : r.unit};
+    return {text: r.text, qty: r.qty, product: m.product, conf: r.unsure && m.conf !== 'saved' ? (m.product ? 'check' : 'none') : m.conf, theirPrice, myPrice: c && c.price != null ? Number(c.price) : theirPrice, unit: c ? c.unit : r.unit};
   });
   CPO.ref = parsed.ref || CPO.ref; CPO.neededBy = parsed.neededBy || CPO.neededBy; CPO.address = parsed.address || CPO.address;
   if(!CPO.address && CPO.buyerId){ const last = getSupplierPOs().filter(p => p.buyerId === CPO.buyerId && p.deliveryAddress).sort((a, b) => String(b.createdDate).localeCompare(String(a.createdDate)))[0]; if(last) CPO.address = last.deliveryAddress; }
   CPO.step = 2; cpoRender();
 }
 async function cpoCreate(){
+  const holdUntil = CPO.tentative && CPO.holdDays ? addDaysIso(APP_TODAY, CPO.holdDays) : null;
   CPO.ref = (document.getElementById('cpoRef') || {}).value.trim(); CPO.neededBy = (document.getElementById('cpoNeed') || {}).value || ''; CPO.address = (document.getElementById('cpoAddr') || {}).value.trim();
   const err = document.getElementById('cpoErr');
   const rows = CPO.rows.filter(r => (r.product || r.text) && Number(r.qty) > 0);
@@ -11774,8 +11879,9 @@ async function cpoCreate(){
   let poId, poNumber, buyerId, buyerName;
   if(myBusiness){
     const { data, error } = await sb.rpc('record_customer_order', {p_buyer: CPO.buyerId || null, p_name: CPO.buyerId ? null : CPO.name, p_phone: CPO.buyerId ? null : CPO.phone || null,
-      p_email: CPO.buyerId ? null : CPO.email || null, p_address: CPO.address || null, p_items: items, p_ref: CPO.ref || null, p_needed_by: CPO.neededBy || null, p_notes: null, p_tax_rate: CPO.vat ? 0.12 : 0});
-    if(error){ err.textContent = error.message; if(btn){ btn.disabled = false; btn.textContent = '✓ Create confirmed order'; } return; }
+      p_email: CPO.buyerId ? null : CPO.email || null, p_address: CPO.address || null, p_items: items, p_ref: CPO.ref || null, p_needed_by: CPO.neededBy || null, p_notes: null, p_tax_rate: CPO.vat ? 0.12 : 0,
+      p_tentative: !!CPO.tentative, p_hold_until: holdUntil, p_allow_edit: !!CPO.allowEdit});
+    if(error){ err.textContent = error.message; if(btn){ btn.disabled = false; btn.textContent = CPO.tentative ? '📝 Send for their OK' : '✓ Create confirmed order'; } return; }
     poId = data.po_id; poNumber = data.po_number; buyerId = data.buyer_id; buyerName = data.buyer_name; window._cpoTokens = Object.assign(window._cpoTokens || {}, {[poId]: data.token});
     if(!(buyersData || []).some(b => b.id === buyerId) && typeof loadMyConnections === 'function') await loadMyConnections();
     await refreshPOsById([poId]);
@@ -11784,13 +11890,14 @@ async function cpoCreate(){
     else buyerId = CPO.buyerId;
     buyerName = (buyersData.find(b => b.id === buyerId) || {}).name;
     poId = 'po_cpo_' + Date.now(); poNumber = 'PO-2026-0' + (900 + Math.floor(Math.random() * 90));
-    purchaseOrders.push({id: poId, poNumber, buyerId, buyerName, supplierId: ME_SUPPLIER, supplierName: 'Metro Steel Co.', type: 'local', status: 'confirmed', currency: 'PHP', taxRate: CPO.vat ? 0.12 : 0,
+    purchaseOrders.push({id: poId, poNumber, buyerId, buyerName, supplierId: ME_SUPPLIER, supplierName: 'Metro Steel Co.', type: 'local', status: CPO.tentative ? 'quote' : 'confirmed', currency: 'PHP', taxRate: CPO.vat ? 0.12 : 0,
+      quote: CPO.tentative ? {sent_at: APP_TODAY, hold_until: holdUntil, allow_edit: !!CPO.allowEdit, nudges: []} : null,
       lineItems: items, createdDate: APP_TODAY, requestedDeliveryDate: CPO.neededBy || null, deliveryAddress: CPO.address || null, notes: '', customerRef: CPO.ref || null, atRisk: false, documents: [],
-      history: [{date: APP_TODAY, time: 'Just now', actor: 'supplier', action: `📄 Entered from ${buyerName}'s PO${CPO.ref ? ' #' + CPO.ref : ''} by ${slMemberName()} · confirmed`}]});
-    if(CPO.leadId){ const l = (leadsCache || []).find(x => x.id === CPO.leadId); if(l) Object.assign(l, {stage: 'won', next_follow_up: null, log: (l.log || []).concat([{at: APP_TODAY, what: '🎉 First order: ' + poNumber}])}); }
+      history: [{date: APP_TODAY, time: 'Just now', actor: 'supplier', action: `📄 Entered from ${buyerName}'s PO${CPO.ref ? ' #' + CPO.ref : ''} by ${slMemberName()} · ${CPO.tentative ? 'waiting for their OK' + (holdUntil ? ' (price held until ' + qtShort(holdUntil) + ')' : '') : 'confirmed'}`}]});
+    if(CPO.leadId && !CPO.tentative){ const l = (leadsCache || []).find(x => x.id === CPO.leadId); if(l) Object.assign(l, {stage: 'won', next_follow_up: null, log: (l.log || []).concat([{at: APP_TODAY, what: '🎉 First order: ' + poNumber}])}); }
   }
   if(CPO.remember) await cpoSaveAliases(rows, buyerId);
-  CPO.result = {poId, poNumber, buyerName}; CPO.step = 3; cpoRender();
+  CPO.result = {poId, poNumber, buyerName, tentative: !!CPO.tentative}; CPO.step = 3; cpoRender();
   if(typeof renderSupplierOrdersTable === 'function') renderSupplierOrdersTable();
   if(myBusiness && CPO.leadId) leadsCache = null;
   trackEvent('customer_po_imported', {lines: rows.length});
@@ -11904,6 +12011,517 @@ async function stmtSubmitPaid(){
   const { data, error } = await sb.rpc('report_payment_by_link', {p_token: window._stmtToken, p_amount: amt, p_method: method, p_reference: ref || null, p_name: name || null});
   if(error){ err.textContent = error.message; return; }
   document.getElementById('stmtShare').innerHTML = `<div class="share-box stmt-paid"><b>✅ Sent.</b> ${fmtPHP(data.applied)} is waiting for them to confirm.${data.extra >= 1 ? ` ${fmtPHP(data.extra)} was more than what's due, so message them about it.` : ''} You'll see it on this page once they do.</div>`;
+}
+
+/* ============ TO CONFIRM: orders waiting for the customer's OK ============
+   A tentative order (status 'quote') is an order the customer asked for but hasn't said "go" to.
+   The seller sees every one in one list with what the customer did (opened it? said "not yet"?),
+   a nudge that goes out by itself every morning, and a one-tap confirm link for the customer. */
+function qtBuyerOf(po){ return (buyersData || []).find(b => b.id === po.buyerId) || {}; }
+function qtContact(po){ const b = qtBuyerOf(po), oc = b.outsideContact || {}; return {phone: b.phone || oc.phone || '', email: b.email || oc.email || ''}; }
+function qtChannel(po){
+  const b = qtBuyerOf(po), c = qtContact(po);
+  if(!b.isOutside && typeof getConversations === 'function' && getConversations().some(x => x.id === po.buyerId)) return 'chat';
+  if(c.email) return 'email';
+  return null;
+}
+function qtFirst(name){ return String(name || 'po').split(' ')[0]; }
+function qtShort(d){ return d ? stmtDate(d).replace(/, \d{4}$/, '') : ''; }
+function qtSeedDemo(){
+  if(myBusiness || window._qtSeeded || typeof purchaseOrders === 'undefined') return;
+  window._qtSeeded = true;
+  const d = n => { const x = new Date(APP_TODAY + 'T00:00:00'); x.setDate(x.getDate() + n); return x.toISOString().slice(0, 10); };
+  const mk = (id, num, buyerId, buyerName, lines, created, quote, hist, status) => ({id, poNumber: num, buyerId, buyerName, supplierId: ME_SUPPLIER, supplierName: 'Metro Steel Co.',
+    type: 'local', status: status || 'quote', currency: 'PHP', taxRate: 0.12, lineItems: lines, createdDate: created, requestedDeliveryDate: null, deliveryAddress: buyerName + ' site', notes: '',
+    shipping: null, customs: null, invoice: null, counter: null, deliveryConfirmation: null, atRisk: false, riskNote: '', documents: [], quote, history: hist});
+  purchaseOrders.push(
+    mk('po_q1', 'PO-2026-0871', 'buy_riverside', 'Riverside Builders Corp', [{product: 'Steel Rebar 12mm', qty: 800, unitPrice: 65}, {product: 'Galvanized Wire 12ga', qty: 20, unitPrice: 850}], d(-3),
+      {sent_at: d(-3), hold_until: d(1), allow_edit: true, seen_at: d(0) + 'T02:10:00Z', first_seen_at: d(-2) + 'T01:00:00Z', views: 3, nudges: [{key: 'd3', at: d(-1) + 'T01:05:00Z', channel: 'chat'}, {key: 'hold-1:' + d(1), at: d(0) + 'T01:05:00Z', channel: 'chat'}]},
+      [{date: d(-3), time: '10:12 AM', actor: 'supplier', action: '📝 Sent for their OK (price held until ' + qtShort(d(1)) + ')'}]),
+    mk('po_q2', 'PO-2026-0874', 'buy_cavite', 'Cavite Steel Works', [{product: 'Structural I-Beams', qty: 12, unitPrice: 2850}], d(-1),
+      {sent_at: d(-1), allow_edit: true, nudges: []}, [{date: d(-1), time: '3:40 PM', actor: 'supplier', action: '📝 Sent for their OK'}]),
+    mk('po_q3', 'PO-2026-0866', 'buy_manilabay', 'Manila Bay Scaffolding Co.', [{product: 'Welding Plates 6mm', qty: 150, unitPrice: 480}], d(-6),
+      {sent_at: d(-6), allow_edit: true, seen_at: d(-4) + 'T05:00:00Z', views: 1, not_now: {reason: 'Waiting for the owner to approve the budget', remind_on: d(0), at: d(-4) + 'T05:02:00Z', by: 'Liza'}, nudges: [{key: 'd1', at: d(-5) + 'T01:05:00Z', channel: 'chat'}]},
+      [{date: d(-6), time: '9:00 AM', actor: 'supplier', action: '📝 Sent for their OK'}, {date: d(-4), time: '1:02 PM', actor: 'buyer', action: '🕒 Not yet — Liza: "Waiting for the owner to approve the budget" · ask again ' + qtShort(d(0))}]),
+    mk('po_q4', 'PO-2026-0858', 'buy_corazon', 'Corazon Welding Shop', [{product: 'Welding Plates 6mm', qty: 40, unitPrice: 480}], d(-9),
+      {sent_at: d(-9), allow_edit: true, outcome: 'confirmed', answered_at: d(-8) + 'T03:00:00Z', via: 'link', changed: true, views: 2, nudges: [{key: 'd1', at: d(-8) + 'T01:05:00Z', channel: 'email'}]},
+      [{date: d(-9), time: '11:00 AM', actor: 'supplier', action: '📝 Sent for their OK'}, {date: d(-8), time: '11:20 AM', actor: 'buyer', action: '✅ Confirmed by Ramon (via order link) — changed: Welding Plates 6mm 50→40'}], 'confirmed'),
+    mk('po_q5', 'PO-2026-0855', 'buy_bayview', 'Bayview Construction Co.', [{product: 'Steel Rebar 12mm', qty: 1200, unitPrice: 65}], d(-14),
+      {sent_at: d(-14), allow_edit: true, outcome: 'confirmed', answered_at: d(-11) + 'T03:00:00Z', via: 'seller', nudges: [{key: 'd3', at: d(-11) + 'T01:05:00Z', channel: 'chat'}]},
+      [{date: d(-14), time: '2:00 PM', actor: 'supplier', action: '📝 Sent for their OK'}, {date: d(-11), time: '10:00 AM', actor: 'supplier', action: '✅ Bayview Construction Co. said yes (confirmed by Carlo)'}], 'delivered'));
+  // one for the buyer persona: a supplier waiting for Dela Cruz Hardware's OK
+  purchaseOrders.push({id: 'po_q6', poNumber: 'PO-2026-0877', buyerId: ME_BUYER, buyerName: 'Dela Cruz Hardware', supplierId: 'cebu', supplierName: 'Cebu Aggregates', type: 'local', status: 'quote', currency: 'PHP', taxRate: 0.12,
+    lineItems: [{product: 'Portland Cement 40kg', qty: 200, unitPrice: 238}, {product: 'Washed Sand (cu.m)', qty: 6, unitPrice: 1450}], createdDate: d(-1), requestedDeliveryDate: null, deliveryAddress: 'Dela Cruz Hardware, Marikina City', notes: '',
+    shipping: null, customs: null, invoice: null, counter: null, deliveryConfirmation: null, atRisk: false, riskNote: '', documents: [],
+    quote: {sent_at: d(-1), hold_until: d(2), allow_edit: true, nudges: []}, history: [{date: d(-1), time: '4:10 PM', actor: 'supplier', action: '📝 Sent for your OK (price held until ' + qtShort(d(2)) + ')'}]});
+}
+// What each waiting order is: a quote, a price change the buyer must accept, or a deposit that locks the order.
+function qtWaiting(){
+  qtSeedDemo();
+  const out = [];
+  getSupplierPOs().forEach(po => {
+    if(po.status === 'quote') out.push({po, kind: 'quote'});
+    else if(po.status === 'countered' && po.counter && po.counter.from === 'supplier') out.push({po, kind: 'counter'});
+    else if(po.status === 'confirmed' && po.depositRequired && typeof computeDepositPaid === 'function' && computeDepositPaid(po) < Number(po.depositRequired.amount || 0)) out.push({po, kind: 'deposit'});
+  });
+  return out.map(w => Object.assign(w, qtSignals(w))).sort((a, b) => b.pri - a.pri || poTotal(b.po) - poTotal(a.po));
+}
+function qtSentDate(po){ return (po.quote && po.quote.sent_at) || po.createdDate; }
+function qtDueKey(q){
+  if(!q) return null;
+  const nn = q.not_now;
+  if(nn && nn.remind_on && nn.remind_on <= APP_TODAY) return 'remind:' + nn.remind_on;
+  if(nn) return null;
+  if(q.hold_until && daysBetween(APP_TODAY, q.hold_until) === 1) return 'hold-1:' + q.hold_until;
+  if(q.hold_until && q.hold_until < APP_TODAY) return null;
+  const age = q.sent_at ? daysBetween(q.sent_at, APP_TODAY) : 0;
+  if(age >= 1 && age <= 2 && !q.seen_at) return 'd1';
+  if(age >= 3 && age <= 5) return 'd3';
+  if(age >= 7 && age <= 9) return 'd7';
+  return null;
+}
+// Reads what the customer did and says, in one line, what to do next.
+function qtSignals(w){
+  const po = w.po, q = po.quote || {}, age = daysBetween(qtSentDate(po), APP_TODAY);
+  const holdLeft = q.hold_until ? daysBetween(APP_TODAY, q.hold_until) : null;
+  const nudges = q.nudges || [], lastNudge = nudges.filter(n => n.channel !== 'seller').slice(-1)[0];
+  const dueKey = w.kind === 'quote' ? qtDueKey(q) : null;
+  const autoToday = dueKey && nudges.some(n => n.key === dueKey && (n.channel === 'chat' || n.channel === 'email'));
+  const seen = q.views ? `👀 Opened ${q.views}× · last ${qtAgo(q.seen_at)}` : (w.kind === 'quote' ? '🙈 Not opened yet' : '');
+  const seenShort = q.views ? `👀 opened ${q.views}×` : (w.kind === 'quote' ? 'not opened' : '');
+  const autoOn = collSettings().quote_nudges !== false, ch = qtChannel(po);
+  const autoLater = dueKey && !autoToday && autoOn && !!ch;
+  let hint = '', pri = 1, tone = '';
+  if(w.kind === 'deposit'){ hint = `Waiting for the ${fmtPHP(Number(po.depositRequired.amount) - computeDepositPaid(po))} deposit. Send your payment details again.`; pri = 2; }
+  else if(w.kind === 'counter'){ hint = `You proposed ${fmtPHP(po.counter.unitPrice)}. Call and ask if the new price works.`; pri = 2; }
+  else if(q.not_now && q.not_now.remind_on && q.not_now.remind_on <= APP_TODAY){ hint = `They asked you to check back today${q.not_now.reason ? ` ("${q.not_now.reason}")` : ''}.`; pri = 5; tone = 'warn'; }
+  else if(q.not_now){ hint = `Said not yet${q.not_now.reason ? `: "${q.not_now.reason}"` : ''}${q.not_now.remind_on ? ` · check back ${qtShort(q.not_now.remind_on)}` : ''}.`; pri = 0; }
+  else if(holdLeft !== null && holdLeft < 0){ hint = 'The price hold ended. Extend it, call them, or let it go.'; pri = 3; tone = 'bad'; }
+  else if(holdLeft === 0 || holdLeft === 1){ hint = `Price hold ends ${holdLeft === 0 ? 'today' : 'tomorrow'}. A good reason to call now.`; pri = 4; tone = 'warn'; }
+  else if(!q.views && age >= 1){ hint = 'They haven\'t opened it. The message may have been missed. Call or Viber them.'; pri = 3; tone = 'warn'; }
+  else if((q.views || 0) >= 2){ hint = `They've looked at it ${q.views}× but haven't said yes. Usually it's price or budget. Ask what's holding them back.`; pri = 3; }
+  else if(age >= 3){ hint = 'A few days with no answer. A quick call usually settles it.'; pri = 2; }
+  else hint = 'Sent. We\'ll nudge them for you if they don\'t answer.';
+  return {age, holdLeft, seen, seenShort, hint, pri, tone, dueKey, autoToday, autoLater, ch, lastNudge, needsYou: pri >= 3 || (dueKey && !autoToday && !autoLater)};
+}
+function qtAgo(iso){ if(!iso) return ''; const d = slDaysAgo(iso); return d <= 0 ? 'today' : d === 1 ? 'yesterday' : d + ' days ago'; }
+function qtStats(){
+  qtSeedDemo();
+  const all = getSupplierPOs().filter(po => po.quote && po.quote.sent_at && slDaysAgo(po.quote.sent_at) <= 30);
+  const yes = all.filter(po => po.quote.outcome === 'confirmed');
+  const times = yes.filter(po => po.quote.answered_at).map(po => Math.max(0, daysBetween(po.quote.sent_at, String(po.quote.answered_at).slice(0, 10))));
+  return {sent: all.length, yes: yes.length, value: yes.reduce((s, po) => s + poTotal(po), 0), avg: times.length ? times.reduce((a, b) => a + b, 0) / times.length : null,
+    rate: all.length ? Math.round(yes.length / all.length * 100) : 0};
+}
+function qtRenderTab(body){
+  const list = qtWaiting(), st = qtStats(), auto = collSettings().quote_nudges !== false;
+  const value = list.reduce((s, w) => s + poTotal(w.po), 0), needs = list.filter(w => w.needsYou).length;
+  body.innerHTML = `<div class="sl-tiles">
+      <div class="sl-tile ${needs ? 'warn' : ''}"><small>Waiting for their OK</small><b>${list.length ? hmPeso(value) : '0'}</b><span>${list.length} order${list.length === 1 ? '' : 's'}${needs ? ` · ${needs} need you` : ''}</span></div>
+      <div class="sl-tile"><small>Said yes (30 days)</small><b>${st.yes} of ${st.sent}</b><span>${st.value ? hmPeso(st.value) + (st.avg !== null ? ` · ~${st.avg < 1 ? 'same day' : st.avg.toFixed(1) + ' days'}` : '') : 'send one to start'}</span></div>
+    </div>
+    <div class="sl-actions"><button class="btn btn-primary" onclick="openCustomerPoImport({tentative: true})">📝 Send an order for their OK</button></div>
+    <div class="sl-card">${list.length ? list.map(qtRow).join('') : `<div class="empty-mini"><b>Nothing waiting</b>When a customer says "sige, i-confirm ko bukas", put the order here. They get a link to confirm in one tap, and we follow up for you.</div>`}</div>
+    <div class="sl-card sl-auto ${auto ? 'on' : ''}"><div class="toggle-row"><div><div class="toggle-txt">Nudge them for me every morning</div>
+      <div class="toggle-sub">Day 1 if they haven't opened it, day 3, day 7, the day before your price hold ends, and on the day they asked you to check back. By Nifti chat, or email if you have it. Customers with only a mobile number show up above so you can Viber them.</div></div>
+      ${slSwitch(auto, "collSave({quote_nudges: collSettings().quote_nudges === false}).then(renderFollowupsPage)")}</div></div>
+    <div class="sl-help">Why this works: the customer sees exactly what they're agreeing to, can lower a quantity instead of walking away, and says yes with one tap. No account needed. If they're not ready, they pick a day and you get reminded then.</div>`;
+}
+function qtRow(w){
+  const po = w.po, name = po.buyerName || 'Customer';
+  const kindTxt = w.kind === 'deposit' ? 'waiting for deposit' : w.kind === 'counter' ? 'your new price' : `sent ${w.age <= 0 ? 'today' : w.age === 1 ? 'yesterday' : w.age + 'd ago'}`;
+  const hold = w.kind === 'quote' && po.quote && po.quote.hold_until ? ` · ${w.holdLeft < 0 ? 'hold ended' : 'held to ' + qtShort(po.quote.hold_until)}` : '';
+  const auto = w.autoToday ? `<div class="sl-s sl-good">✓ Reminded today by ${escapeHtml(w.lastNudge.channel)}</div>` : w.autoLater ? `<div class="sl-s sl-good">We'll remind them this morning by ${w.ch}</div>` : w.dueKey ? '<div class="sl-s sl-warn">Reminder due: tap Nudge</div>' : '';
+  return `<div class="sl-row qt-row" onclick="qtOpen('${po.id}')" role="button">
+    <span class="sl-av ${w.tone === 'bad' ? 'w' : ''}">${escapeHtml(name.slice(0, 1).toUpperCase())}</span>
+    <div class="sl-mid"><div class="sl-t">${escapeHtml(name)}</div>
+      <div class="sl-s">${escapeHtml(po.poNumber)} · ${kindTxt}${hold}${w.seenShort ? ' · ' + w.seenShort : ''}</div>
+      <div class="sl-s qt-hint ${w.tone ? 'sl-' + w.tone : ''}">${escapeHtml(w.hint)}</div>${auto}</div>
+    <div class="sl-right"><b>${hmPeso(poTotal(po))}</b><button class="hm-go" onclick="event.stopPropagation(); qtNudge('${po.id}')">Nudge</button></div></div>`;
+}
+function qtTemplates(po){
+  const name = qtFirst(po.buyerName), q = po.quote || {}, total = fmtPHP(poTotal(po));
+  const out = [
+    {k: 'gentle', label: 'Friendly check-in', text: `Hi ${name}! Follow up lang po sa order ${po.poNumber} (${total}). Pag okay na po, isang tap lang para ma-confirm at ma-schedule namin ang delivery: {link}`},
+    {k: 'smaller', label: 'Offer a smaller order', text: `Hi ${name}! Kung medyo malaki po ang order ${po.poNumber}, pwede po ninyong bawasan ang dami bago i-confirm, diretso na sa link: {link} Kahit partial muna, ok lang po. 🙂`},
+    {k: 'delivery', label: 'Delivery slot', text: `Hi ${name}! May delivery slot pa po kami this week para sa order ${po.poNumber}. Pag na-confirm ninyo ngayon, masasama po sa next trip: {link}`},
+  ];
+  if(q.hold_until && q.hold_until >= APP_TODAY) out.splice(1, 0, {k: 'hold', label: 'Price hold ending', text: `Hi ${name}, naka-hold pa po ang presyo ng order ${po.poNumber} (${total}) hanggang ${qtShort(q.hold_until)}. Confirm lang po dito para makuha ang presyo: {link}`});
+  if(po.depositRequired) out.unshift({k: 'deposit', label: 'Deposit reminder', text: `Hi ${name}! Para ma-lock po ang order ${po.poNumber}, ${fmtPHP(po.depositRequired.amount)} deposit lang po. Details and status dito: {link} Salamat!`});
+  return out;
+}
+async function qtLink(po){
+  if(!myBusiness) return appBaseUrl() + '#o/demo-confirm-link-00000000';
+  const { data, error } = await sb.rpc('create_order_link', {p_po_id: po.id});
+  if(error){ showToast(error.message, 'error'); return null; }
+  return appBaseUrl() + '#o/' + data;
+}
+async function qtNudge(poId, tplKey){
+  const po = getPO(poId); if(!po) return;
+  const tpls = qtTemplates(po), tpl = tpls.find(t => t.k === tplKey) || tpls[0];
+  const link = await qtLink(po); if(!link) return;
+  const text = tpl.text.replace('{link}', link) + ' Salamat!';
+  const b = qtBuyerOf(po);
+  if(!b.isOutside && typeof getConversations === 'function' && getConversations().some(c => c.id === po.buyerId) && typeof sendTextInChat === 'function'){
+    if(sendTextInChat(po.buyerId, text)){ await qtLogNudge(poId); showToast(`Sent to ${po.buyerName} in your Nifti chat.`, 'success'); qtRefresh(); }
+    return;
+  }
+  openShareSheet(`Nudge ${po.buyerName}`, text, {sub: 'The link shows their order with a big Confirm button. They can lower quantities, or tell you when to check back. No app needed.',
+    after: `qtLogNudge('${poId}').then(() => { slClose('shareSheet'); qtRefresh(); })`});
+}
+async function qtLogNudge(poId){
+  const po = getPO(poId); if(!po) return;
+  if(myBusiness && po.status === 'quote'){ await sb.rpc('seller_quote_action', {p_po: poId, p_action: 'nudged'}); await refreshPOsById([poId]); return; }
+  po.quote = Object.assign({}, po.quote || {}); po.quote.nudges = (po.quote.nudges || []).concat([{key: 'manual', at: new Date().toISOString(), channel: 'manual'}]);
+}
+function qtRefresh(){
+  if(document.getElementById('qtModal')){ const id = document.getElementById('qtModal').dataset.po; if(id) qtOpen(id); }
+  { const fp = document.getElementById('page-followups'); if(fp && fp.offsetParent !== null) renderFollowupsPage(); }
+  if(typeof renderSupplierOrdersTable === 'function') renderSupplierOrdersTable();
+  if(typeof homeIsActive === 'function' && homeIsActive()) renderHomeV2();
+}
+function qtOpen(poId){
+  const po = getPO(poId); if(!po) return;
+  const w = qtWaiting().find(x => x.po.id === poId) || Object.assign({po, kind: po.status === 'quote' ? 'quote' : 'other'}, qtSignals({po, kind: 'quote'}));
+  const c = qtContact(po), q = po.quote || {};
+  const lines = (po.lineItems || []).map(li => `<div class="qt-li"><span>${escapeHtml(li.qty)} × ${escapeHtml(li.product)}</span><b>${fmtPHP(Number(li.qty) * Number(li.unitPrice || 0))}</b></div>`).join('');
+  const hist = (po.history || []).slice(-5).reverse().map(h => `<div><span>${escapeHtml(h.date || '')}</span>${escapeHtml(h.action || '')}</div>`).join('');
+  const m = slModal('qtModal', `<div class="sl-sheet-h"><div><b>${escapeHtml(po.buyerName)}</b><div class="sl-sub" style="margin:2px 0 0;">${escapeHtml(po.poNumber)} · ${fmtPHP(poTotal(po))}</div></div><button class="sl-x" onclick="slClose('qtModal')">✕</button></div>
+    <div class="qt-hintbox ${w.tone ? 'qt-' + w.tone : ''}">💡 ${escapeHtml(w.hint)}</div>
+    <div class="sl-lead-meta">${w.seen ? `<span>${w.seen}</span>` : ''}${q.hold_until ? `<span>⏳ ${w.holdLeft < 0 ? 'Hold ended ' + qtShort(q.hold_until) : 'Price held until ' + qtShort(q.hold_until)}</span>` : ''}${(q.nudges || []).length ? `<span>🔔 Nudged ${(q.nudges || []).filter(n => n.channel !== 'seller').length}×</span>` : ''}</div>
+    ${slContactButtons(c.phone, c.email)}
+    <div class="qt-lines">${lines}</div>
+    <div class="sl-q">Send a nudge</div>
+    <div class="qt-tpls">${qtTemplates(po).map(t => `<button onclick="qtNudge('${po.id}','${t.k}')">${escapeHtml(t.label)} →</button>`).join('')}</div>
+    ${po.status === 'quote' ? `<div class="sl-q">What happened?</div>
+    <div class="sl-outcomes"><button class="good" onclick="qtAct('${po.id}','said_yes')">✅ They said yes</button>
+      <button onclick="qtExtendAsk('${po.id}')">⏳ Hold the price longer</button>
+      <button onclick="slClose('qtModal'); openOrderDetailModal('${po.id}', true)">✏️ Change the order</button>
+      <button class="bad" onclick="qtLostAsk('${po.id}')">✕ Didn't go through</button></div>
+    <div id="qtAsk"></div>` : `<button class="btn btn-outline sl-wide" onclick="slClose('qtModal'); openOrderDetailModal('${po.id}', true)">Open the order</button>`}
+    ${hist ? `<div class="sl-q">Timeline</div><div class="sl-log">${hist}</div>` : ''}`);
+  m.dataset.po = poId;
+}
+function qtExtendAsk(poId){
+  document.getElementById('qtAsk').innerHTML = `<div class="sl-days" style="margin-top:10px;">${[2, 3, 7, 14].map(n => `<button onclick="qtAct('${poId}','extend',${n})">+${n} days</button>`).join('')}</div>`;
+}
+function qtLostAsk(poId){
+  const reasons = ['Price too high', 'Bought from another supplier', 'Project postponed', 'No budget', 'No answer at all'];
+  document.getElementById('qtAsk').innerHTML = `<div class="sl-sub" style="margin-top:10px;">Why? It helps you see what to fix.</div><div class="sl-days">${reasons.map(r => `<button onclick="qtAct('${poId}','lost',null,'${r}')">${r}</button>`).join('')}</div>`;
+}
+async function qtAct(poId, action, days, reason){
+  const po = getPO(poId); if(!po) return;
+  if(myBusiness){
+    const { error } = await sb.rpc('seller_quote_action', {p_po: poId, p_action: action, p_days: days || null, p_reason: reason || null});
+    if(error){ showToast(error.message, 'error'); return; }
+    await refreshPOsById([poId]);
+  } else {
+    const q = po.quote = Object.assign({}, po.quote || {}), who = slMemberName();
+    if(action === 'extend'){ const base = q.hold_until && q.hold_until > APP_TODAY ? q.hold_until : APP_TODAY; const x = new Date(base + 'T00:00:00'); x.setDate(x.getDate() + days); q.hold_until = x.toISOString().slice(0, 10);
+      po.history.push({date: APP_TODAY, time: 'Just now', actor: 'supplier', action: `⏳ Price held until ${qtShort(q.hold_until)} by ${who}`}); }
+    if(action === 'said_yes'){ po.status = 'confirmed'; Object.assign(q, {outcome: 'confirmed', answered_at: new Date().toISOString(), via: 'seller'}); delete q.not_now;
+      po.history.push({date: APP_TODAY, time: 'Just now', actor: 'supplier', action: `✅ ${po.buyerName} said yes (confirmed by ${who})`}); }
+    if(action === 'lost'){ po.status = 'cancelled'; Object.assign(q, {outcome: 'lost', answered_at: new Date().toISOString(), via: 'seller', reason});
+      po.history.push({date: APP_TODAY, time: 'Just now', actor: 'supplier', action: `✕ Didn't go through: ${reason} (${who})`}); }
+  }
+  showToast(action === 'said_yes' ? `🎉 ${po.poNumber} is confirmed.` : action === 'extend' ? 'Price hold extended.' : 'Marked as not going through.', 'success');
+  if(action === 'extend') qtOpen(poId); else slClose('qtModal');
+  qtRefresh();
+}
+// Supplier's order popup: what's waiting and the same quick actions.
+function qtSupplierPanel(o){
+  const w = Object.assign({po: o, kind: 'quote'}, qtSignals({po: o, kind: 'quote'}));
+  return `<div class="qt-panel"><div class="qt-panel-h">📝 Waiting for ${escapeHtml(o.buyerName)}'s OK</div>
+    <div class="qt-panel-s">${escapeHtml(w.hint)}${w.seen ? ' · ' + w.seen : ''}</div></div>
+    <button class="btn btn-primary" onclick="event.stopPropagation(); qtNudge('${o.id}')">🔔 Nudge them</button>
+    <button class="btn btn-outline" onclick="event.stopPropagation(); qtOpen('${o.id}')">They said yes / more</button>`;
+}
+
+/* ---- The customer's side: one form, used on the order link and inside the app ---- */
+function qtAnswerHtml(o, pre){
+  // o: {lines:[{product,qty,unitPrice}], taxRate, supplier, hold_until, allow_edit, name}
+  const edit = o.allow_edit !== false;
+  const rows = o.lines.map((li, i) => `<div class="qt-arow"><div class="qt-aname">${escapeHtml(li.product)}<small>${Number(li.unitPrice) > 0 ? fmtPHP(li.unitPrice) + ' each' : ''}</small></div>
+    ${edit ? `<div class="qt-step"><button type="button" onclick="qtStep('${pre}',${i},-1)" aria-label="Less">−</button><input id="${pre}Q${i}" type="number" inputmode="decimal" min="0" step="any" value="${escapeHtml(li.qty)}" data-orig="${escapeHtml(li.qty)}" oninput="qtAnsTotal('${pre}')"><button type="button" onclick="qtStep('${pre}',${i},1)" aria-label="More">+</button></div>` : `<b>${escapeHtml(li.qty)}</b>`}</div>`).join('');
+  window['_qt_' + pre] = o;
+  const holdLeft = o.hold_until ? daysBetween(APP_TODAY, o.hold_until) : null;
+  return `<div class="qt-ans" id="${pre}Box">
+    <div class="qt-ans-h">👋 ${escapeHtml(o.supplier)} is holding this order for you</div>
+    ${o.hold_until && holdLeft >= 0 ? `<div class="qt-hold">⏳ Price held until <b>${escapeHtml(qtShort(o.hold_until))}</b>${holdLeft <= 1 ? (holdLeft === 0 ? ' (today)' : ' (tomorrow)') : ''}</div>` : ''}
+    ${edit ? '<div class="qt-ans-s">Change a quantity if you need less or more. Set it to 0 to remove an item.</div>' : ''}
+    <div class="qt-arows">${rows}</div>
+    <div class="qt-atotal" id="${pre}Total"></div>
+    <div class="qt-afields"><div><label class="po-public-label">Your name</label><input id="${pre}Name" maxlength="60" value="${escapeHtml(o.name || '')}"></div>
+      <div><label class="po-public-label">Needed by (optional)</label><input id="${pre}Need" type="date"></div></div>
+    <button class="btn btn-primary po-public-big" id="${pre}Yes" onclick="qtAnswer('${pre}','confirm')">✅ Confirm order</button>
+    <button class="btn btn-outline po-public-big" onclick="qtNotYet('${pre}')">Not yet</button>
+    <div id="${pre}Later"></div><div id="${pre}Err" class="po-public-error"></div></div>`;
+}
+function qtStep(pre, i, dir){ const el = document.getElementById(pre + 'Q' + i); el.value = Math.max(0, Number(el.value || 0) + dir); qtAnsTotal(pre); }
+function qtAnsTotal(pre){
+  const o = window['_qt_' + pre]; if(!o) return;
+  let sub = 0, changed = false;
+  o.lines.forEach((li, i) => { const el = document.getElementById(pre + 'Q' + i); const q = el ? Number(el.value || 0) : Number(li.qty); if(el && q !== Number(el.dataset.orig)) changed = true; sub += q * Number(li.unitPrice || 0); });
+  const total = Math.round(sub * (1 + Number(o.taxRate || 0)));
+  const t = document.getElementById(pre + 'Total'); if(t) t.innerHTML = total > 0 ? `Total <b>${fmtPHP(total)}</b>${changed ? ' <span class="qt-changed">changed</span>' : ''}` : '';
+  const b = document.getElementById(pre + 'Yes'); if(b) b.textContent = total > 0 ? `✅ Confirm order · ${fmtPHP(total)}` : '✅ Confirm order';
+}
+function qtNotYet(pre){
+  const d = n => { const x = new Date(APP_TODAY + 'T00:00:00'); x.setDate(x.getDate() + n); return x.toISOString().slice(0, 10); };
+  const reasons = ['Still checking the budget', 'Waiting for approval', 'Price is a bit high', 'Need it later', 'Comparing with other suppliers'];
+  document.getElementById(pre + 'Later').innerHTML = `<div class="qt-later"><div class="qt-ans-s">No problem. What's holding it up?</div>
+    <div class="sl-days">${reasons.map(r => `<button type="button" onclick="document.getElementById('${pre}Why').value='${r}'; this.parentNode.querySelectorAll('button').forEach(b=>b.classList.remove('on')); this.classList.add('on')">${r}</button>`).join('')}</div>
+    <input id="${pre}Why" maxlength="200" placeholder="Or type it here">
+    <div class="qt-ans-s" style="margin-top:8px;">When should they check back?</div>
+    <div class="sl-days">${[[1, 'Tomorrow'], [3, 'In 3 days'], [7, 'Next week'], [14, 'In 2 weeks']].map(([n, l]) => `<button type="button" onclick="document.getElementById('${pre}When').value='${d(n)}'; this.parentNode.querySelectorAll('button').forEach(b=>b.classList.remove('on')); this.classList.add('on')">${l}</button>`).join('')}</div>
+    <input id="${pre}When" type="date" min="${d(1)}">
+    <button class="btn btn-outline po-public-big" onclick="qtAnswer('${pre}','not_now')">Send</button>
+    <button class="sl-link" style="color:var(--danger);" onclick="if(confirm('Cancel this order?')) qtAnswer('${pre}','decline')">No, cancel this order</button></div>`;
+}
+async function qtAnswer(pre, action){
+  const o = window['_qt_' + pre], err = document.getElementById(pre + 'Err'); err.textContent = '';
+  const name = (document.getElementById(pre + 'Name').value || '').trim();
+  if(name.length < 2){ err.textContent = 'Please enter your name.'; document.getElementById(pre + 'Name').focus(); return; }
+  try{ localStorage.setItem('nifti-public-name', name); }catch(e){}
+  let items = null;
+  if(action === 'confirm' && o.allow_edit !== false){
+    items = o.lines.map((li, i) => ({i, qty: Number((document.getElementById(pre + 'Q' + i) || {}).value || 0)})).filter((x, i) => x.qty !== Number(o.lines[i].qty));
+    if(o.lines.every((li, i) => Number((document.getElementById(pre + 'Q' + i) || {}).value || 0) <= 0)){ err.textContent = 'Keep at least one item, or tap "Not yet".'; return; }
+    if(!items.length) items = null;
+  }
+  const why = ((document.getElementById(pre + 'Why') || {}).value || '').trim(), when = (document.getElementById(pre + 'When') || {}).value || null;
+  if(action === 'not_now' && !why && !when){ err.textContent = 'Pick a reason or a day, so they know.'; return; }
+  const need = (document.getElementById(pre + 'Need') || {}).value || null;
+  const box = document.getElementById(pre + 'Box'); box.querySelectorAll('button').forEach(b => b.disabled = true);
+  const res = await o.send(action, {name, items, note: action === 'confirm' ? null : why || null, remind_on: action === 'not_now' ? when : null, needed_by: action === 'confirm' ? need : null});
+  box.querySelectorAll('button').forEach(b => b.disabled = false);
+  if(res && res.error){ err.textContent = res.error; return; }
+  box.innerHTML = action === 'confirm'
+    ? `<div class="qt-done"><div style="font-size:42px;">🎉</div><b>Order confirmed</b><div>${escapeHtml(o.supplier)} has been told. They'll prepare it and keep you posted here.</div></div>`
+    : action === 'not_now' ? `<div class="qt-done"><div style="font-size:36px;">👍</div><b>Got it</b><div>${escapeHtml(o.supplier)} will check back${when ? ' on ' + escapeHtml(qtShort(when)) : ''}. This link stays open. Come back anytime to confirm.</div></div>`
+    : `<div class="qt-done"><b>Order cancelled</b><div>${escapeHtml(o.supplier)} has been told.</div></div>`;
+  if(o.after) o.after(action);
+}
+// The order link page (customer without an account).
+function qtPublicCard(d){
+  if(!d.can_answer_quote) return '';
+  const saved = (() => { try{ return (JSON.parse(localStorage.getItem('nifti-store-buyer') || '{}') || {}).name || localStorage.getItem('nifti-public-name') || ''; }catch(e){ return ''; } })();
+  const q = d.quote || {};
+  const html = qtAnswerHtml({lines: (d.line_items || []).map(li => ({product: li.product, qty: li.qty, unitPrice: li.unitPrice})), taxRate: d.tax_rate, supplier: d.supplier_name,
+    hold_until: q.hold_until, allow_edit: q.allow_edit, name: saved,
+    send: async (action, a) => {
+      if(!window.sb || typeof publicOrderToken === 'undefined' || !publicOrderToken || /^demo/.test(publicOrderToken)) return {};
+      const { error } = await sb.rpc('answer_order_by_link', {p_token: publicOrderToken, p_action: action, p_name: a.name, p_items: a.items, p_note: a.note, p_remind_on: a.remind_on, p_needed_by: a.needed_by});
+      return error ? {error: error.message} : {};
+    },
+    after: () => { if(typeof loadPublicOrder === 'function' && typeof publicOrderToken !== 'undefined' && publicOrderToken && !/^demo/.test(publicOrderToken)) setTimeout(() => loadPublicOrder(publicOrderToken), 2200); }}, 'qtp');
+  setTimeout(() => qtAnsTotal('qtp'), 0);
+  return `<div class="po-public-card qt-public">${html}</div>`;
+}
+// Inside the app (buyer with a Nifti account).
+function qtBuyerPanel(o){
+  const q = o.quote || {};
+  const html = qtAnswerHtml({lines: o.lineItems.map(li => ({product: li.product, qty: li.qty, unitPrice: li.unitPrice})), taxRate: o.taxRate, supplier: o.supplierName,
+    hold_until: q.hold_until, allow_edit: q.allow_edit, name: slMemberName() === 'You' ? '' : slMemberName(),
+    send: async (action, a) => {
+      if(myBusiness){
+        const { error } = await sb.rpc('answer_quote', {p_po: o.id, p_action: action, p_items: a.items, p_note: a.note, p_remind_on: a.remind_on, p_needed_by: a.needed_by});
+        if(error) return {error: error.message};
+        await refreshPOsById([o.id]); return {};
+      }
+      const po = getPO(o.id), qq = po.quote = Object.assign({}, po.quote || {});
+      if(action === 'confirm'){
+        const ch = [];
+        (a.items || []).forEach(x => { const li = po.lineItems[x.i]; if(li){ ch.push(`${li.product} ${li.qty}→${x.qty}`); li.qty = x.qty; } });
+        po.lineItems = po.lineItems.filter(li => Number(li.qty) > 0);
+        po.status = 'confirmed'; Object.assign(qq, {outcome: 'confirmed', answered_at: new Date().toISOString(), via: 'app', changed: ch.length > 0}); delete qq.not_now;
+        if(a.needed_by) po.requestedDeliveryDate = a.needed_by;
+        po.history.push({date: APP_TODAY, time: 'Just now', actor: 'buyer', action: `✅ Confirmed by ${a.name}${ch.length ? ' — changed: ' + ch.join(', ') : ''}`});
+      } else if(action === 'not_now'){
+        qq.not_now = {reason: a.note, remind_on: a.remind_on, at: new Date().toISOString(), by: a.name};
+        po.history.push({date: APP_TODAY, time: 'Just now', actor: 'buyer', action: `🕒 Not yet — ${a.name}${a.note ? ': "' + a.note + '"' : ''}${a.remind_on ? ' · ask again ' + qtShort(a.remind_on) : ''}`});
+      } else { po.status = 'cancelled'; Object.assign(qq, {outcome: 'declined', reason: a.note}); po.history.push({date: APP_TODAY, time: 'Just now', actor: 'buyer', action: `✕ Declined by ${a.name}`}); }
+      return {};
+    },
+    after: () => setTimeout(() => { if(typeof renderOrdersTable === 'function' && document.getElementById('orderRows')) renderOrdersTable(); if(typeof homeIsActive === 'function' && homeIsActive()) renderHomeV2(); }, 1600)}, 'qtb' + String(o.id).replace(/[^a-zA-Z0-9]/g, ''));
+  setTimeout(() => qtAnsTotal('qtb' + String(o.id).replace(/[^a-zA-Z0-9]/g, '')), 0);
+  return `<div class="qt-inapp" onclick="event.stopPropagation()">${html}</div>`;
+}
+// Home: the seller's waiting orders, and the buyer's orders to confirm.
+function hmQuoteItems(role){
+  qtSeedDemo();
+  if(role === 'buyer'){
+    return getBuyerPOs().filter(po => po.status === 'quote').map(po => ({k: 'quote', pri: 1, ic: '📝', tone: 'amber', w: escapeHtml(po.supplierName),
+      t: `${escapeHtml(po.supplierName)} is waiting for your OK`, s: `${escapeHtml(po.poNumber)} · ${fmtPHP(poTotal(po))}${po.quote && po.quote.hold_until ? ' · price held until ' + qtShort(po.quote.hold_until) : ''}`,
+      b: 'Review', a: `navigate('orders'); setTimeout(() => openOrderDetailModal('${po.id}', false), 150)`}));
+  }
+  const list = qtWaiting(); if(!list.length) return [];
+  const needs = list.filter(w => w.needsYou), value = list.reduce((s, w) => s + poTotal(w.po), 0);
+  const top = needs[0] || list[0];
+  return [{k: 'quote', pri: needs.length ? 1 : 5, ic: '📝', tone: needs.length ? 'amber' : 'green',
+    t: list.length === 1 ? `${escapeHtml(top.po.buyerName)} hasn't confirmed yet` : `${list.length} orders waiting for the customer's OK`,
+    s: needs.length ? `${hmPeso(value)} waiting · ${escapeHtml(top.hint)}` : `${hmPeso(value)} waiting · we'll nudge them for you`,
+    b: needs.length ? 'Follow up' : 'See', a: list.length === 1 ? `qtOpen('${top.po.id}')` : "fuTab='confirm'; navigate('followups')"}];
+}
+// The first message after sending an order for their OK.
+async function qtSendFirst(poId){
+  const po = getPO(poId); if(!po) return;
+  const link = await qtLink(po); if(!link) return;
+  const q = po.quote || {};
+  const text = `Hi ${qtFirst(po.buyerName)}! Here's your order ${po.poNumber} (${fmtPHP(poTotal(po))}). Pa-check po, then tap Confirm. Pwede rin baguhin ang dami bago i-confirm: ${link}${q.hold_until ? `\nNaka-hold ang presyo hanggang ${qtShort(q.hold_until)}.` : ''} Salamat!`;
+  const b = qtBuyerOf(po);
+  if(!b.isOutside && typeof getConversations === 'function' && getConversations().some(c => c.id === po.buyerId) && typeof sendTextInChat === 'function'){
+    if(sendTextInChat(po.buyerId, text)){ showToast(`Sent to ${po.buyerName} in your Nifti chat. It's also in their Orders.`, 'success'); slClose('cpoModal'); qtRefresh(); }
+    return;
+  }
+  slClose('cpoModal');
+  openShareSheet(`Send to ${po.buyerName}`, text, {sub: 'They see the order with a big Confirm button, no app needed. You\'ll see when they open it.', after: `slClose('shareSheet'); qtRefresh();`});
+}
+
+/* ============ PO ENTRY WITHOUT RETYPING ============
+   Four ways in, best first: (1) the customer fills your order form themselves, (2) type it in with
+   their usual items one tap away (fastest for messy handwriting), (3) say it out loud, (4) upload it:
+   files are read exactly, photos by AI when the site has it switched on, else by the phone. */
+function cpoAiOn(){ return !!(myBusiness && window._poAiOn); }
+async function cpoCheckAi(){
+  if(!myBusiness || window._poAiChecked) return;
+  window._poAiChecked = true;
+  try{ const { data } = await sb.rpc('po_ai_available'); window._poAiOn = !!data; }catch(e){ window._poAiOn = false; }
+  if(CPO && CPO.step === 1 && document.getElementById('cpoModal')) cpoRender();
+}
+function cpoStoreLink(){
+  if(!myBusiness) return storeUrl(window._demoStoreSlug || 'metro-steel-co', 'poform');
+  const st = myBusiness.store || {};
+  return st.enabled && myBusiness.store_slug ? storeUrl(myBusiness.store_slug, 'poform') : null;
+}
+function cpoWaysHtml(){
+  const past = CPO.buyerId ? getSupplierPOs().filter(p => p.buyerId === CPO.buyerId && !['draft', 'cancelled', 'quote'].includes(p.status)).length : 0;
+  return `<div class="cpo-ways"><div class="cpo-ways-h">🙌 Skip the retyping</div>
+    <button class="cpo-way" onclick="cpoSendForm()"><b>🛒 Send them your order form</b><small>They pick from your items and prices, add their PO number, and it arrives as your order. Nothing to type.</small></button>
+    ${past ? `<button class="cpo-way" onclick="cpoSendUsual()"><b>🔁 Send their usual order</b><small>Their last order, ready to check and send in one tap.</small></button>` : ''}
+    <button class="cpo-way" onclick="cpoManual()"><b>✍️ Type it in</b><small>Best for handwritten POs. Pick from your items as you type${past ? ', their usual items are one tap away' : ''}.</small></button>
+    ${cpoVoiceOk() ? `<button class="cpo-way" id="cpoVoiceBtn" onclick="cpoVoice()"><b>🎙 Say it</b><small>Read their PO out loud, one item per line: "semento apatnapung kilo, limampung sako".</small></button>` : ''}</div>`;
+}
+async function cpoSendForm(){
+  cpoCaptureStep1();
+  const link = cpoStoreLink();
+  if(!link){ showToast('Turn on your online store first. It takes a minute.', 'error'); slClose('cpoModal'); navigate('store'); return; }
+  const name = CPO.buyerId ? cpoBuyerName() : (CPO.name || '');
+  slClose('cpoModal');
+  openShareSheet(`Send your order form${name ? ' to ' + name : ''}`, `Hi${name ? ' ' + name.split(' ')[0] : ''}! Para mabilis at walang mali, pa-order na lang po dito. Andito na lahat ng items at presyo namin, at pwede ninyong ilagay ang PO number ninyo: ${link}\nPag na-send ninyo, confirm na namin agad. Salamat!`,
+    {sub: 'Their order lands in your Orders already in your item names and prices, with their PO number. You just confirm it.'});
+}
+async function cpoSendUsual(){
+  cpoCaptureStep1();
+  const link = await fuReorderLink(CPO.buyerId);
+  if(!link){ showToast('Turn on your online store first, then try again.', 'error'); return; }
+  const name = cpoBuyerName();
+  slClose('cpoModal');
+  openShareSheet(`Send ${name} their usual order`, `Hi ${name.split(' ')[0]}! Your usual order is ready here. Check the quantities, add your PO number, and tap Order: ${link} Salamat!`,
+    {sub: 'It opens your store with their last order already in the cart.'});
+}
+function cpoManual(){
+  cpoCaptureStep1(); if(!cpoValidateWho()) return;
+  CPO.rows = []; CPO.manual = true; CPO.step = 2;
+  if(!CPO.address && CPO.buyerId){ const last = getSupplierPOs().filter(p => p.buyerId === CPO.buyerId && p.deliveryAddress).sort((a, b) => String(b.createdDate).localeCompare(String(a.createdDate)))[0]; if(last) CPO.address = last.deliveryAddress; }
+  cpoLoadAliases().then(() => { cpoRender(); setTimeout(() => { const s = document.querySelector('#cpoModal .cpo-quick input'); if(s) s.focus(); }, 60); });
+}
+// Their usual items (or your best sellers), tap to add.
+function cpoUsualItems(){
+  const counts = {}, lastQty = {};
+  getSupplierPOs().filter(p => CPO.buyerId && p.buyerId === CPO.buyerId && !['draft', 'cancelled'].includes(p.status))
+    .sort((a, b) => String(a.createdDate).localeCompare(String(b.createdDate)))
+    .forEach(p => (p.lineItems || []).forEach(li => { counts[li.product] = (counts[li.product] || 0) + 1; lastQty[li.product] = li.qty; }));
+  let list = Object.keys(counts).sort((a, b) => counts[b] - counts[a]).map(p => ({product: p, qty: lastQty[p], theirs: true}));
+  if(list.length < 8) (myCatalog || []).forEach(c => { if(list.length < 10 && !list.some(x => x.product === c.product)) list.push({product: c.product, qty: 1, theirs: false}); });
+  return list.slice(0, 10);
+}
+function cpoQuickHtml(){
+  const items = cpoUsualItems(), hasTheirs = items.some(x => x.theirs);
+  const cat = (myCatalog || []).map(c => `<option value="${escapeHtml(c.product)}">`).join('');
+  return `<div class="cpo-quick">
+    ${CPO.photo ? `<div class="cpo-photo" onclick="cpoPhotoBig()"><img src="${CPO.photo}" alt="Their PO"><span>📷 Their PO · tap to zoom</span></div>` : ''}
+    ${items.length ? `<div class="cpo-quick-h">${hasTheirs ? 'Their usual items' : 'Your items'} · tap to add</div><div class="cpo-chips">${items.map((x, i) => `<button onclick="cpoAddItem(${i})">${escapeHtml(x.product)}${x.theirs && x.qty ? ` <small>×${escapeHtml(x.qty)}</small>` : ''}</button>`).join('')}</div>` : ''}
+    <div class="cpo-type"><input id="cpoTypeItem" list="cpoCatList" placeholder="Type an item, e.g. rebar 12" autocomplete="off" onkeydown="if(event.key==='Enter'){ event.preventDefault(); document.getElementById('cpoTypeQty').focus(); }">
+      <input id="cpoTypeQty" type="number" inputmode="decimal" min="0" step="any" placeholder="Qty" onkeydown="if(event.key==='Enter'){ event.preventDefault(); cpoAddTyped(); }">
+      <button class="btn btn-primary" onclick="cpoAddTyped()">Add</button></div>
+    <datalist id="cpoCatList">${cat}</datalist></div>`;
+}
+function cpoAddItem(i){
+  const x = cpoUsualItems()[i]; if(!x) return;
+  const c = (myCatalog || []).find(k => k.product === x.product);
+  const have = CPO.rows.find(r => r.product === x.product);
+  if(have){ have.qty = Number(have.qty || 0) + Number(x.qty || 1); }
+  else CPO.rows.push({text: x.product, qty: Number(x.qty || 1), product: x.product, conf: 'ok', myPrice: c && c.price != null ? Number(c.price) : null, theirPrice: null, unit: c ? c.unit : null});
+  cpoRender();
+}
+function cpoAddTyped(){
+  const t = (document.getElementById('cpoTypeItem').value || '').trim(), q = Number(document.getElementById('cpoTypeQty').value || 0);
+  if(!t){ document.getElementById('cpoTypeItem').focus(); return; }
+  const m = cpoMatch(t), c = (myCatalog || []).find(x => x.product === m.product);
+  CPO.rows.push({text: t, qty: q > 0 ? q : 1, product: m.product, conf: m.conf, myPrice: c && c.price != null ? Number(c.price) : null, theirPrice: null, unit: c ? c.unit : null});
+  cpoRender();
+  setTimeout(() => { const s = document.getElementById('cpoTypeItem'); if(s){ s.value = ''; s.focus(); } }, 30);
+}
+function cpoPhotoBig(){
+  slModal('cpoPhotoModal', `<div class="sl-sheet-h"><b>Their PO</b><button class="sl-x" onclick="slClose('cpoPhotoModal')">✕</button></div><div class="cpo-photo-big"><img src="${CPO.photo}" alt="Their PO"></div>`);
+}
+// Voice: Chrome on Android understands Filipino and English.
+function cpoVoiceOk(){ return !!(window.SpeechRecognition || window.webkitSpeechRecognition); }
+const CPO_TL_UNITS = {isa: 1, isang: 1, dalawa: 2, dalawang: 2, tatlo: 3, tatlong: 3, apat: 4, lima: 5, limang: 5, anim: 6, pito: 7, pitong: 7, walo: 8, walong: 8, siyam: 9};
+const CPO_ES_NUM = {uno: 1, dos: 2, tres: 3, kwatro: 4, kuwatro: 4, singko: 5, sais: 6, siyete: 7, otso: 8, nuwebe: 9, diyes: 10, onse: 11, dose: 12, trese: 13, katorse: 14, kinse: 15, beinte: 20, bente: 20, trenta: 30, treinta: 30, kwarenta: 40, singkwenta: 50, sisenta: 60, setenta: 70, otsenta: 80, nobenta: 90, siyento: 100, syento: 100};
+const CPO_TL_TENS = {sampu: 10, sampung: 10, dalawampu: 20, dalawampung: 20, tatlumpu: 30, tatlumpung: 30, apatnapu: 40, apatnapung: 40, limampu: 50, limampung: 50, animnapu: 60, animnapung: 60, pitumpu: 70, pitumpung: 70, walumpu: 80, walumpung: 80, siyamnapu: 90, siyamnapung: 90};
+function cpoWordsToNum(text){
+  // "limampung sako" -> "50 sako", "isang daan at dalawampu't lima" -> "125", "labing-lima" -> "15"
+  const words = String(text).toLowerCase().replace(/[’']t\b/g, ' ').replace(/labing-?/g, 'labing ').split(/\s+/);
+  const out = []; let cur = null, total = 0;
+  const flush = () => { if(cur !== null || total){ out.push(String(total + (cur || 0))); } cur = null; total = 0; };
+  for(let i = 0; i < words.length; i++){
+    const w = words[i].replace(/[.,]/g, '');
+    if(w === 'labing' && CPO_TL_UNITS[(words[i + 1] || '').replace(/[.,]/g, '')] !== undefined){ cur = (cur || 0) + 10 + CPO_TL_UNITS[words[++i].replace(/[.,]/g, '')]; continue; }
+    if(CPO_ES_NUM[w] !== undefined && cur === null && !total){ flush(); out.push(String(CPO_ES_NUM[w])); continue; }
+    if(CPO_TL_UNITS[w] !== undefined){ cur = (cur || 0) + CPO_TL_UNITS[w]; continue; }
+    if(CPO_TL_TENS[w] !== undefined){ cur = (cur || 0) + CPO_TL_TENS[w]; continue; }
+    if(/^(daan|raan|sandaan|sanlibo|libo)$/.test(w)){ const mult = /libo/.test(w) ? 1000 : 100; total += (w.startsWith('san') ? 1 : (cur || 1)) * mult; cur = null; continue; }
+    if((w === 'at' || w === 'na') && (cur !== null || total) && /^(isa|dalawa|tatlo|apat|lima|anim|pito|walo|siyam|sampu|labing|\w+pu)/.test(words[i + 1] || '')) continue;
+    if(w === 'na' && (cur !== null || total)) continue;
+    flush(); out.push(words[i]);
+  }
+  flush();
+  return out.join(' ');
+}
+function cpoVoice(){
+  const btn = document.getElementById('cpoVoiceBtn');
+  if(window._cpoRec){ window._cpoRec.stop(); return; }
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition; if(!SR) return;
+  const rec = new SR(); rec.lang = 'fil-PH'; rec.continuous = true; rec.interimResults = false;
+  rec.onresult = e => {
+    const ta = document.getElementById('cpoText'); if(!ta) return;
+    for(let i = e.resultIndex; i < e.results.length; i++) if(e.results[i].isFinal){ const line = cpoWordsToNum(e.results[i][0].transcript.trim()); if(line) ta.value = (ta.value.trim() ? ta.value.trim() + '\n' : '') + line; }
+  };
+  rec.onend = () => { window._cpoRec = null; const b = document.getElementById('cpoVoiceBtn'); if(b) b.classList.remove('rec'); const st = document.getElementById('cpoStatus'); if(st) st.textContent = 'Check the lines above, then tap "Read the order".'; };
+  rec.onerror = ev => { const st = document.getElementById('cpoStatus'); if(st) st.textContent = ev.error === 'not-allowed' ? 'Allow the microphone to use this.' : 'Didn\'t catch that. Try again, a bit slower.'; };
+  window._cpoRec = rec; rec.start();
+  if(btn) btn.classList.add('rec');
+  const st = document.getElementById('cpoStatus'); if(st) st.textContent = '🎙 Listening… say one item and its quantity, then pause. Tap "Say it" again to stop.';
+}
+// Photos (and scanned PDFs): AI when switched on, else the phone's own reader.
+function cpoShrink(file){
+  return new Promise((ok, bad) => {
+    const img = new Image(), url = URL.createObjectURL(file);
+    img.onload = () => { const k = Math.min(1, 1600 / Math.max(img.width, img.height)); const c = document.createElement('canvas'); c.width = Math.round(img.width * k); c.height = Math.round(img.height * k);
+      c.getContext('2d').drawImage(img, 0, 0, c.width, c.height); ok(c.toDataURL('image/jpeg', 0.85).split(',')[1]); };
+    img.onerror = () => bad(new Error('Couldn\'t open that photo.')); img.src = url;
+  });
+}
+async function cpoAiRead(file){
+  const isPdf = file.type === 'application/pdf' || /\.pdf$/i.test(file.name || '');
+  const data = isPdf ? await new Promise((ok, bad) => { const r = new FileReader(); r.onload = () => ok(String(r.result).split(',')[1]); r.onerror = bad; r.readAsDataURL(file); }) : await cpoShrink(file);
+  const st = document.getElementById('cpoStatus'); if(st) st.textContent = '✨ Reading it with AI… (about 10 seconds)';
+  const { data: out, error } = await sb.functions.invoke('po-read', {body: {data, media_type: isPdf ? 'application/pdf' : 'image/jpeg', catalog: (myCatalog || []).map(c => c.product), today: APP_TODAY}});
+  if(error || !out || out.error){ let msg = (out && out.error) || ''; try{ if(!msg && error && error.context && error.context.json) msg = (await error.context.json()).error; }catch(e){} throw new Error(msg || 'AI reading failed'); }
+  return {rows: (out.lines || []).filter(l => l.text && Number(l.qty) > 0).map(l => ({text: l.text, qty: Number(l.qty), unit: l.unit || null, price: l.unit_price != null ? Number(l.unit_price) : null, amount: l.amount != null ? Number(l.amount) : null, unsure: !!l.unsure})),
+    ref: out.po_number || '', neededBy: /^\d{4}-\d{2}-\d{2}$/.test(out.needed_by || '') ? out.needed_by : '', address: out.deliver_to || '', ai: true};
 }
 
 function renderSidebarForViewAsRole(){
@@ -13951,7 +14569,7 @@ function getMyTaxProfile(){ return taxProfiles[currentAppRole] || taxProfiles.bu
 let sharedContact = {name:'', phone:''};
 
 const PO_STATUS_LABELS = {
-  draft:'Draft', sent:'Sent', confirmed:'Confirmed', countered:'Counter-Offer Sent',
+  draft:'Draft', sent:'Sent', confirmed:'Confirmed', countered:'Counter-Offer Sent', quote:'To confirm',
   preparing:'Preparing', shipped:'In Transit', in_customs:'At Customs', delivered:'Delivered',
   partially_delivered:'Partial Delivery',
   invoiced:'Invoiced', paid:'Paid', cancelled:'Cancelled'
@@ -16222,7 +16840,7 @@ function renderBuyerInbox(){
 const BUYER_PIPELINE_STAGES = ['draft','sent','confirmed','preparing','shipped','delivered'];
 const BUYER_PIPELINE_LABELS = {draft:'Draft', sent:'Sent', confirmed:'Confirmed', preparing:'Preparing', shipped:'Shipped', delivered:'Delivered'};
 function buyerPipelineBucket(status){
-  if(status==='countered') return 'sent';
+  if(status==='countered' || status==='quote') return 'sent';
   if(status==='in_customs') return 'shipped';
   if(status==='invoiced' || status==='paid' || status==='partially_delivered') return 'delivered';
   return status;
@@ -16492,6 +17110,7 @@ function getBuyerNextAction(o){
     case 'draft': return 'Send this PO';
     case 'sent': return 'Waiting on supplier to confirm';
     case 'countered': return 'Review counter-offer';
+    case 'quote': return 'Confirm this order';
     case 'confirmed':
     case 'preparing': return 'Waiting on supplier to ship';
     case 'shipped':
@@ -16511,6 +17130,7 @@ function getSupplierNextAction(o){
   switch(o.status){
     case 'sent': return 'Confirm or counter this PO';
     case 'countered': return 'Waiting on buyer';
+    case 'quote': return 'Waiting for their OK';
     case 'confirmed': return 'Start preparing order';
     case 'preparing': return 'Mark as shipped when ready';
     case 'shipped':
@@ -16539,6 +17159,7 @@ function getBuyerStatusColorClass(o){
   if(o.rma && o.rma.status==='open') return 'pill-danger';
   switch(o.status){
     case 'sent': return 'pill-lowstock';
+    case 'quote': return 'pill-lowstock';
     case 'countered': return 'pill-danger';
     case 'confirmed':
     case 'preparing': return 'pill-lowstock';
@@ -16557,6 +17178,7 @@ function getSupplierStatusColorClass(o){
   if(o.rma && o.rma.status==='open') return 'pill-danger';
   switch(o.status){
     case 'sent': return 'pill-danger';
+    case 'quote': return 'pill-lowstock';
     case 'countered': return 'pill-lowstock';
     case 'confirmed': return 'pill-danger';
     case 'preparing': return 'pill-danger';
@@ -16579,6 +17201,7 @@ function getStatusFactClass(o){
   if(o.status === 'cancelled') return 'pill-cancelled';
   switch(o.status){
     case 'countered':
+    case 'quote':
     case 'partially_delivered': return 'pill-lowstock';
     case 'delivered':
     case 'paid': return 'pill-ok';
@@ -16615,6 +17238,7 @@ function getBuyerActionColorClass(o){
   switch(o.status){
     case 'draft': return 'pill-lowstock';
     case 'sent': return 'pill-neutral';
+    case 'quote': return 'pill-lowstock';
     case 'countered': return 'pill-lowstock';
     case 'confirmed':
     case 'preparing': return 'pill-neutral';
@@ -16634,6 +17258,7 @@ function getSupplierActionColorClass(o){
   if(poHasPaymentsAwaitingSupplier(o)) return 'pill-lowstock';
   switch(o.status){
     case 'sent': return 'pill-lowstock';
+    case 'quote': return 'pill-neutral';
     case 'countered': return 'pill-neutral';
     case 'confirmed': return 'pill-lowstock';
     case 'preparing': return 'pill-lowstock';
@@ -17086,7 +17711,7 @@ function respondAmendment(id, accept){
 }
 
 /* ============ CANCELLATION (explicit, with reason, separate from counter-offer rejection) ============ */
-const CANCELLABLE_STATUSES = ['draft','sent','confirmed','countered','preparing'];
+const CANCELLABLE_STATUSES = ['draft','sent','confirmed','countered','preparing','quote'];
 /* ============ UNIVERSAL UNDO SAFEGUARD — one snapshot-and-restore mechanism reused by every
    status-changing action on this page, so a fat-fingered click is never a dead end. ============ */
 function snapshotPO(po){
@@ -17364,6 +17989,8 @@ function renderBuyerPoDetail(o){
     actionsHtml = `${lockBanner}<button class="btn btn-primary" onclick="event.stopPropagation(); openSendConfirmModal('${o.id}')" ${editDisabled ? 'disabled' : ''}>Send order →</button>
       <button class="btn btn-outline" onclick="event.stopPropagation(); editDraftPO('${o.id}')" ${editDisabled ? 'disabled title="Locked by another teammate"' : ''}>Edit Draft</button>
       ${myBusiness ? '' : `<button class="btn btn-outline" style="font-size:15px;padding:6px 10px;" onclick="event.stopPropagation(); simulateTeammateEditing('${o.id}')">Simulate: teammate opens this draft</button>`}`;
+  } else if(o.status==='quote'){
+    actionsHtml = qtBuyerPanel(o);
   } else if(o.status==='countered'){
     if(o.counter.from==='buyer'){
       actionsHtml = `<div style="background:var(--bg);border:1.5px solid var(--border);border-radius:12px;padding:16px 18px;margin-bottom:12px;width:100%;box-sizing:border-box;">
@@ -17399,7 +18026,7 @@ function renderBuyerPoDetail(o){
   const cancelHtml = CANCELLABLE_STATUSES.includes(o.status) ? `<button class="btn btn-outline" style="color:var(--danger);border-color:var(--danger);" onclick="event.stopPropagation(); cancelOrder('${o.id}', 'buyer')">Cancel Order</button><div id="cancelConfirmForm_${o.id}"></div>` : '';
   const rmaHtml = (poIsDelivered(o) && !o.rma) ? `<button class="btn btn-outline" style="color:var(--danger);border-color:var(--danger);margin-top:8px;" onclick="event.stopPropagation(); openRmaForm('${o.id}')">Report a problem or return</button><div id="rmaForm_${o.id}"></div>` : '';
   return `${breadcrumb}${renderLineItemsTable(o)}
-    <div style="font-size:16px;color:var(--ink);margin-bottom:6px;"><strong>Requested delivery:</strong> ${o.requestedDeliveryDate} · <strong>Ship to:</strong> ${o.deliveryAddress}</div>
+    <div style="font-size:16px;color:var(--ink);margin-bottom:6px;"><strong>Requested delivery:</strong> ${o.requestedDeliveryDate || "not set"} · <strong>Ship to:</strong> ${o.deliveryAddress}</div>
     ${o.riskNote ? `<div class="logi-note" style="color:var(--danger);">⏱ ${o.riskNote}</div>` : ''}
     ${renderOrderShareBox(o)}
     ${renderDeliveryPartnerBox(o)}
@@ -19853,7 +20480,7 @@ const FREIGHT_MILESTONE_LABELS = {
   customs_clearance:'Customs clearance in progress', released_customs:'Released from customs',
   out_for_delivery:'Out for delivery', delivered:'Delivered'
 };
-const FREIGHT_STAGE_INDEX = {draft:0, sent:0, countered:0, confirmed:1, preparing:2, shipped:4, in_customs:6, delivered:10, invoiced:10, paid:10, cancelled:0};
+const FREIGHT_STAGE_INDEX = {draft:0, sent:0, countered:0, quote:0, confirmed:1, preparing:2, shipped:4, in_customs:6, delivered:10, invoiced:10, paid:10, cancelled:0};
 function formatFreightDateShort(iso){
   if(!iso) return '';
   return otifShortDateLabel(new Date(iso+'T00:00:00'));
@@ -20154,7 +20781,7 @@ function fulfillBucket(status){
   if(status==='draft') return 'sent';
   if(status==='shipped' || status==='in_customs') return 'shipped';
   if(status==='delivered' || status==='partially_delivered' || status==='invoiced' || status==='paid') return 'delivered';
-  if(status==='countered') return 'sent';
+  if(status==='countered' || status==='quote') return 'sent';
   return status; // confirmed | preparing
 }
 let supplierOrdersTypeFilter = 'all';
@@ -20551,6 +21178,8 @@ function renderSupplierPoDetail(o){
       <div id="depositRequestForm_${o.id}"></div>
       <div id="counterForm_${o.id}"></div>
       <div style="width:100%;margin-top:10px;">${discontinuedHtml}</div>`;
+  } else if(o.status==='quote'){
+    actionsHtml = qtSupplierPanel(o);
   } else if(o.status==='countered'){
     if(o.counter.from==='buyer'){
       actionsHtml = `<div style="background:var(--lowstock-soft);border:1.5px solid var(--lowstock-fill);border-radius:12px;padding:16px 18px;margin-bottom:12px;width:100%;box-sizing:border-box;">
@@ -20602,7 +21231,7 @@ function renderSupplierPoDetail(o){
   const cancelHtml = CANCELLABLE_STATUSES.includes(o.status) ? `<button class="btn btn-outline" style="color:var(--danger);border-color:var(--danger);" onclick="event.stopPropagation(); cancelOrder('${o.id}', 'supplier')">Cancel Order</button><div id="cancelConfirmForm_${o.id}"></div>` : '';
   const rmaResolveHtml = (o.rma && o.rma.status==='open') ? `<button class="btn btn-outline" style="margin-top:8px;padding:6px 10px;font-size:15px;" onclick="event.stopPropagation(); openResolveRmaForm('${o.id}')">Mark Return/Dispute Resolved</button><div id="rmaResolveForm_${o.id}"></div>` : '';
   return `${breadcrumb}${renderLineItemsTable(o)}
-    <div style="font-size:16px;color:var(--ink);margin-bottom:6px;"><strong>Requested delivery:</strong> ${o.requestedDeliveryDate} · <strong>Ship to:</strong> ${o.deliveryAddress}</div>
+    <div style="font-size:16px;color:var(--ink);margin-bottom:6px;"><strong>Requested delivery:</strong> ${o.requestedDeliveryDate || "not set"} · <strong>Ship to:</strong> ${o.deliveryAddress}</div>
     ${o.riskNote ? `<div class="logi-note" style="color:var(--danger);">⏱ ${o.riskNote}</div>` : ''}
     ${renderUndoBanner(o, 'supplier')}
     ${o.creditFlag ? `<div class="logi-note" style="border-color:var(--danger);background:var(--danger-soft);margin-bottom:8px;"><strong style="color:var(--danger);">⚠ Over this buyer's credit terms.</strong> ${escapeHtml(o.creditFlag.reason || '')} Owes ${fmtPHP(o.creditFlag.owed || 0)}${o.creditFlag.open_orders ? ' plus ' + fmtPHP(o.creditFlag.open_orders) + ' in open orders' : ''}. You decide whether to confirm.</div>` : ''}
@@ -20764,7 +21393,7 @@ function renderSupplierFulfillmentDashboard(refreshOnly){
 
   document.getElementById('supplierOrdersView').innerHTML = `
     <div class="page-head"><h1>Orders</h1><p>Orders from your buyers. Tap one to confirm, deliver or bill it.</p></div>
-    <div class="ord-quick"><button class="ord-q" onclick="openCustomerPoImport()">📄 Enter a customer's PO</button><button class="ord-q" onclick="navigate('collections')">💰 Collections</button><button class="ord-q" onclick="navigate('followups')">🎯 Follow-ups</button></div>
+    <div class="ord-quick"><button class="ord-q" onclick="openCustomerPoImport()">📄 Enter a customer's PO</button><button class="ord-q" onclick="navigate('collections')">💰 Collections</button><button class="ord-q" onclick="fuTab='confirm'; navigate('followups')">📝 To confirm</button><button class="ord-q" onclick="navigate('followups')">🎯 Follow-ups</button></div>
 
     <div class="role-toggle" style="margin-bottom:12px;">
       <button class="active" id="supplierOrdersViewBtn" onclick="setSupplierOrdersMainView('list', this)">📋 Orders</button>

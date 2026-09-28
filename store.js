@@ -153,6 +153,7 @@
           + '<label>Mobile number</label><input id="ns-phone" type="tel" inputmode="tel" maxlength="20" placeholder="0917 123 4567" autocomplete="tel" value="' + esc(saved.phone || '') + '">')
         + '<label>Deliver to</label><input id="ns-addr" maxlength="300" placeholder="Street, barangay, city" autocomplete="street-address" value="' + esc(saved.addr || '') + '">'
         + '<label>Needed by (optional)</label><input id="ns-date" type="date">'
+        + '<label>Your PO number (optional)</label><input id="ns-ref" maxlength="60" placeholder="e.g. PO-1234">'
         + '<label>Note (optional)</label><input id="ns-note" maxlength="500" placeholder="e.g. Please deliver before 10am">'
         + '<input id="ns-hp" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">'
         + '<div id="ns-err" class="ns-err"></div><button class="ns-btn ns-big" id="ns-send" onclick="NS.submit()">Send order →</button>'
@@ -170,7 +171,7 @@
       try{ localStorage.setItem('nifti-store-buyer', JSON.stringify(who)); }catch(e){}
       btn.disabled = true; btn.textContent = 'Sending…';
       rpc('submit_store_order', {p_slug: SLUG, p_name: who.name || null, p_business: who.biz || null, p_phone: who.phone || null, p_address: who.addr,
-        p_items: Object.keys(S.cart).map(function(p){ return {product: p, qty: S.cart[p]}; }), p_note: v('ns-note') || null, p_src: src() || null, p_needed_by: v('ns-date') || null})
+        p_items: Object.keys(S.cart).map(function(p){ return {product: p, qty: S.cart[p]}; }), p_note: v('ns-note') || null, p_src: src() || null, p_needed_by: v('ns-date') || null, p_ref: v('ns-ref') || null})
       .then(function(r){
         S.cart = {}; save(); document.getElementById('ns-modal').remove();
         root.innerHTML = '<div class="ns-wrap"><div class="ns-card ns-center"><div style="font-size:46px">✅</div><h1>Order sent to ' + esc(d.name) + '</h1>'
