@@ -536,6 +536,21 @@
   }
 
   /* ===== marketing v3: the 5-second read ===== */
+  .m2-head .sec-sub{margin-left:auto;margin-right:auto;text-align:center;}
+  svg.mi{width:1.15em;height:1.15em;vertical-align:-.2em;flex-shrink:0;}
+  .m3-who-ic{width:56px;height:56px;border-radius:16px;background:linear-gradient(145deg,#EAF4EE,#DCEDE3);color:var(--green);display:grid;place-items:center;font-size:27px !important;margin-bottom:10px;box-shadow:inset 0 0 0 1px rgba(23,96,58,.08);}
+  .m3-ba-r i{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-size:17px !important;} .m3-ba-r .old i{background:rgba(122,111,102,.1);} .m3-ba-r .new i{background:rgba(23,96,58,.1);}
+  .v-nic{display:grid;place-items:center;} .v-nic svg.mi{width:18px;height:18px;vertical-align:0;}
+  .mk-float{display:inline-flex !important;align-items:center;gap:7px;white-space:nowrap;} .mk-float svg.mi{color:var(--green);width:16px;height:16px;vertical-align:0;}
+  .v-tile i{display:grid;place-items:center;justify-content:start;} .v-tile i svg.mi{width:15px;height:15px;vertical-align:0;} .v-now-i i svg.mi{width:15px;height:15px;vertical-align:0;}
+  .v3-order{min-width:230px;text-align:left;} .v3-muted{font-size:12px;opacity:.5;font-weight:600;}
+  .v3-li{display:flex;justify-content:space-between;font-size:13px;padding:6px 0;border-top:1px solid var(--border);} .v3-li b{font-weight:700;}
+  .v3-tot{display:flex;justify-content:space-between;font-size:13.5px;padding-top:8px;margin-top:2px;border-top:1px solid var(--ink);} .v3-tot b{font-size:15px;}
+  .v3-share{display:grid;gap:10px;justify-items:center;}
+  .v3-link{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);border-radius:100px;padding:9px 16px;font-size:14px;font-weight:700;color:var(--ink);box-shadow:0 6px 18px rgba(20,30,20,.07);} .v3-link svg.mi{color:var(--green);}
+  .v3-apps{display:flex;gap:6px;} .v3-apps span{font-size:11.5px;font-weight:700;color:var(--ink);opacity:.6;border:1px solid var(--border);border-radius:100px;padding:4px 10px;background:var(--surface);}
+  .v3-confirm{display:grid;gap:4px;min-width:210px;text-align:left;} .v3-confirm small{font-size:12px;opacity:.6;} .v3-confirm > b{font-family:var(--font-h);font-size:24px;color:var(--ink);}
+  .v3-btn{margin-top:8px;background:var(--green);color:#fff;border-radius:10px;padding:10px;text-align:center;font-weight:700;font-size:14px;}
   .m3-hero .headline{font-size:clamp(38px,6vw,64px);line-height:1.04;letter-spacing:-.02em;}
   .m3-hero .sub{font-size:clamp(17px,2vw,20px);max-width:520px;}
   .m3-sec{padding-top:64px;padding-bottom:64px;}
@@ -1973,40 +1988,21 @@
   .vc-dym{display:flex;flex-wrap:wrap !important;gap:5px;align-items:center;font-size:12.5px;font-weight:700;margin-top:6px;} .vc-dym button{border:1.5px solid var(--green);color:var(--green);background:var(--surface);border-radius:100px;padding:4px 10px;font-weight:700;font-size:12.5px;cursor:pointer;}
   .vc-tips{margin:4px 0 8px;font-size:13.5px;} .vc-tips summary{cursor:pointer;font-weight:800;color:var(--green);padding:4px 0;} .vc-tips ul{margin:4px 0 0 18px;padding:0;display:grid;gap:4px;}
   @media (max-width:420px){ .vc-res{flex-wrap:wrap;} .vc-name{flex-basis:100%;} }
-  /* ===== phones: stock tables become one card per product; analytics without the demo toggle ===== */
+  /* ===== phones: "+ Create" opens as a full-width sheet instead of a squeezed dropdown ===== */
   @media (max-width:760px){
-    #inventoryTable, #supplyTable{display:block !important;border:none !important;background:none !important;box-shadow:none !important;}
-    #inventoryTable thead, #supplyTable thead{display:none !important;}
-    #inventoryTable tbody, #supplyTable tbody{display:grid !important;gap:10px;}
-    #inventoryTable tr, #supplyTable tr{display:grid !important;grid-template-columns:1fr 1fr;gap:8px 12px;background:var(--surface);border:1.5px solid var(--border);border-radius:16px;padding:12px 14px;}
-    #inventoryTable td, #supplyTable td{display:block !important;border:none !important;padding:0 !important;text-align:left !important;font-size:15.5px;background:none !important;width:auto !important;}
-    #inventoryTable td::before, #supplyTable td::before{content:attr(data-label);display:block;font-size:11.5px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;opacity:.55;margin-bottom:2px;}
-    #inventoryTable td:first-child, #supplyTable td:first-child{grid-column:1 / -1;font-size:17px;}
-    #inventoryTable td:first-child::before, #supplyTable td:first-child::before, #inventoryTable td[colspan]::before, #supplyTable td[colspan]::before{display:none;}
-    #inventoryTable td[colspan], #supplyTable td[colspan]{grid-column:1 / -1;}
-    #inventoryTable .row-action, #supplyTable .row-action{display:inline-flex;align-items:center;min-height:42px;padding:0 14px;border:1.5px solid var(--green);border-radius:11px;text-decoration:none !important;font-weight:800;}
-    #inventoryTable .sku-code, #supplyTable .sku-code{font-size:12px;opacity:.5;}
-    #inventoryStatsRow, #supplyMainView .stat-row{display:grid !important;grid-template-columns:1fr 1fr !important;gap:8px !important;}
-    #inventoryStatsRow .stat-card, #supplyMainView .stat-row .stat-card{padding:12px 14px !important;min-height:0 !important;}
-    #inventoryStatsRow .stat-icon-panel, #supplyMainView .stat-row .stat-icon-panel{display:none !important;}
-    #inventoryStatsRow .stat-num, #supplyMainView .stat-row .stat-num{font-size:24px !important;}
-    #inventoryStatsRow .stat-label, #supplyMainView .stat-row .stat-label{font-size:13.5px !important;}
-    #page-analytics .role-toggle-wrap{display:none !important;}
+    #createMenuDropdown:not(.hidden){position:fixed !important;left:0 !important;right:0 !important;bottom:0 !important;top:auto !important;width:auto !important;max-height:82vh;overflow-y:auto;border-radius:18px 18px 0 0 !important;padding:8px 12px calc(14px + env(safe-area-inset-bottom)) !important;z-index:4000 !important;box-shadow:0 0 0 100vmax rgba(20,24,20,.4) !important;}
+    #createMenuDropdown .notif-item{padding:14px 12px !important;border-bottom:1px solid var(--border);}
+    #createMenuDropdown .notif-text{font-size:16px !important;white-space:normal;}
   }
-  /* ===== phones: "+ Create" opens as a full-width sheet with big rows; More tiles get a hint and a colour ===== */
-  @media (max-width:760px){
-    #createMenuDropdown:not(.hidden){position:fixed !important;left:0 !important;right:0 !important;bottom:0 !important;top:auto !important;width:auto !important;max-height:82vh;overflow-y:auto;border-radius:22px 22px 0 0 !important;padding:10px 12px calc(16px + env(safe-area-inset-bottom)) !important;z-index:4000 !important;box-shadow:0 0 0 100vmax rgba(20,24,20,.45) !important;display:grid;gap:8px;}
-    #createMenuDropdown .notif-head{font-size:18px;font-weight:800;padding:8px 6px 4px;border:none;}
-    #createMenuDropdown .notif-item{border:1.5px solid var(--border) !important;border-radius:14px;padding:14px 16px !important;min-height:54px;display:flex;align-items:center;background:var(--surface);}
-    #createMenuDropdown .notif-item.hidden{display:none !important;}
-    #createMenuDropdown .notif-text{font-size:16.5px !important;font-weight:700;color:var(--ink);white-space:normal;}
-    .more-sheet-item small{font-size:11px;font-weight:600;opacity:.6;line-height:1.2;text-align:center;}
-    .more-sheet-item svg{width:26px !important;height:26px !important;}
-    .more-sheet-item[data-page="collections"] svg, .more-sheet-item[data-page="cheques"] svg, .more-sheet-item[data-page="prices"] svg{color:#17603A;}
-    .more-sheet-item[data-page="inventory"] svg, .more-sheet-item[data-page="routes"] svg, .more-sheet-item[data-page="returns"] svg{color:#1F5FA8;}
-    .more-sheet-item[data-page="followups"] svg, .more-sheet-item[data-page="store"] svg, .more-sheet-item[data-page="discover"] svg, .more-sheet-item[data-page="sales"] svg{color:#B4561F;}
-    .more-sheet-item[data-page="team"] svg, .more-sheet-item[data-page="watchdog"] svg, .more-sheet-item[data-page="analytics"] svg{color:#5B3FA8;}
-  }
+  .stk-sheet-bg{position:fixed;inset:0;background:rgba(20,24,20,.45);z-index:3500;display:flex;align-items:flex-end;}
+  .stk-sheet{background:var(--surface);width:100%;max-height:88vh;overflow-y:auto;border-radius:18px 18px 0 0;padding:14px 16px calc(18px + env(safe-area-inset-bottom));box-shadow:0 -10px 30px rgba(0,0,0,.15);}
+  .stk-sheet-h{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;padding-bottom:10px;margin-bottom:10px;border-bottom:1px solid var(--border);}
+  .stk-sheet-h small{display:block;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;opacity:.55;} .stk-sheet-h b{font-family:var(--font-h);font-size:18px;color:var(--ink);}
+  .stk-x{border:none;background:#EFECE4;border-radius:50%;width:34px;height:34px;cursor:pointer;font-size:14px;flex-shrink:0;}
+  .stk-sheet .inv-expand-inner{background:none !important;border:none !important;padding:0 !important;margin:0 !important;box-shadow:none !important;}
+  .stk-sheet .expand-grid{grid-template-columns:1fr !important;}
+  .stk-sheet input, .stk-sheet select, .stk-sheet textarea{width:100% !important;box-sizing:border-box;max-width:none !important;}
+  .stk-sheet .btn{min-height:44px;}
   .settings-card:empty{display:none;}
   #supplierChips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;} #supplierChips .chip{flex-shrink:0;}
 </style>
@@ -2047,19 +2043,19 @@
   <div class="v-app-hi">Good morning, Metro Steel</div>
   <div class="v-app-sub"><b>4 things</b> need you today.</div>
   <div class="v-tiles">
-    <div class="v-tile hot a"><i>📥</i><b>3</b><span>New orders</span></div>
-    <div class="v-tile b"><i>🚚</i><b>5</b><span>To deliver</span></div>
-    <div class="v-tile g"><i>💰</i><b>₱84K</b><span>Owed to you</span></div>
-    <div class="v-tile v"><i>🧾</i><b>₱18.2K</b><span>Cheques</span></div>
+    <div class="v-tile hot a"><i><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg></i><b>3</b><span>New orders</span></div>
+    <div class="v-tile b"><i><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg></i><b>5</b><span>To deliver</span></div>
+    <div class="v-tile g"><i><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg></i><b>₱84K</b><span>Owed to you</span></div>
+    <div class="v-tile v"><i><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 17.5v-11"/></svg></i><b>₱18.2K</b><span>Cheques</span></div>
   </div>
   <div class="v-now"><div class="v-now-h">Needs you now <em>4</em></div>
-    <div class="v-now-i"><i class="a">📥</i><div><b>New order from Aling Nena</b><small>20 bags cement · ₱4,900</small></div><span>Review</span></div>
-    <div class="v-now-i"><i class="g">💸</i><div><b>Dela Cruz says they paid</b><small>GCash ₱18,900 · check your bank</small></div><span>Check</span></div>
-    <div class="v-now-i"><i class="v">🏦</i><div><b>Deposit JR's cheque</b><small>BDO #004512 · ₱18,200</small></div><span class="s">Open</span></div>
+    <div class="v-now-i"><i class="a"><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg></i><div><b>New order from Aling Nena</b><small>20 bags cement · ₱4,900</small></div><span>Review</span></div>
+    <div class="v-now-i"><i class="g"><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="12" x="2" y="6" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg></i><div><b>Dela Cruz says they paid</b><small>GCash ₱18,900 · check your bank</small></div><span>Check</span></div>
+    <div class="v-now-i"><i class="v"><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg></i><div><b>Deposit JR's cheque</b><small>BDO #004512 · ₱18,200</small></div><span class="s">Open</span></div>
   </div></div></div>
-      <div class="mk-float f1">🔔 <b>New order</b> · ₱4,900</div>
-      <div class="mk-float f2">✅ <b>Paid</b> · ₱18,900 GCash</div>
-      <div class="mk-float f3">🚚 <b>Delivered</b> · signed</div>
+      <div class="mk-float f1"><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg> <b>New order</b> · ₱4,900</div>
+      <div class="mk-float f2"><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg> <b>Paid</b> · ₱18,900 GCash</div>
+      <div class="mk-float f3"><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg> <b>Delivered</b> · signed</div>
     </div>
   </div>
 </section>
@@ -2068,10 +2064,10 @@
   <div class="wrap">
     <div class="m2-head"><h2 class="section-title">Which one are you?</h2></div>
     <div class="m3-who">
-      <div class="m3-who-card"><div class="m3-who-ic">🏭</div><h3>I sell to businesses</h3><small>Supplier · distributor · wholesaler</small>
+      <div class="m3-who-card"><div class="m3-who-ic"><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 8.35V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8.35A2 2 0 0 1 3.26 6.5l8-3.2a2 2 0 0 1 1.48 0l8 3.2A2 2 0 0 1 22 8.35Z"/><path d="M6 18h12"/><path d="M6 14h12"/><rect width="12" height="12" x="6" y="10"/></svg></div><h3>I sell to businesses</h3><small>Supplier · distributor · wholesaler</small>
   <ul><li>All your orders in one list, not in chats</li><li>See who owes you, and remind them in one tap</li><li>Track every delivery to the door</li></ul>
   <a class="m3-who-go" onclick="mkGo('features','mkSell')">See what you get →</a></div>
-      <div class="m3-who-card"><div class="m3-who-ic">🏪</div><h3>I buy for my business</h3><small>Store · restaurant · contractor · reseller</small>
+      <div class="m3-who-card"><div class="m3-who-ic"><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/><path d="M22 7v3a2 2 0 0 1-2 2 2.7 2.7 0 0 1-2-1 2.7 2.7 0 0 1-2 1 2.7 2.7 0 0 1-2-1 2.7 2.7 0 0 1-2 1 2.7 2.7 0 0 1-2-1 2.7 2.7 0 0 1-2 1 2.7 2.7 0 0 1-2-1 2.7 2.7 0 0 1-2 1 2 2 0 0 1-2-2V7"/></svg></div><h3>I buy for my business</h3><small>Store · restaurant · contractor · reseller</small>
   <ul><li>Order from all your suppliers in one place</li><li>Every delivery and bill, tracked</li><li>Know right away if staff overpay</li></ul>
   <a class="m3-who-go" onclick="mkGo('features','mkBuy')">See what you get →</a></div>
     </div>
@@ -2082,18 +2078,9 @@
   <div class="wrap">
     <div class="m2-head"><h2 class="section-title">How it works</h2><p class="sec-sub">Three steps. That's it.</p></div>
     <div class="m3-steps">
-      <div class="m3-step"><div class="m3-step-vis"><div class="v-card v-order"><div class="v-row"><b>New order</b><span class="v-pill">Draft</span></div>
-  <small>To: <b>Metro Steel Co.</b> · not on Nifti yet</small>
-  <div class="v-li"><span>Portland Cement 40kg × 20</span><b>₱4,900</b></div>
-  <div class="v-btns"><span class="p viber">Send on Viber</span></div></div></div><div class="m3-step-n">1</div><h4>Make the order</h4><p>Pick the items. It takes a minute.</p></div>
-      <div class="m3-step"><div class="m3-step-vis"><div class="v-chat viber"><div class="v-chat-h"><span>MS</span><b>Metro Steel Co.</b></div>
-  <div class="v-bub me">Order for Thursday po 👇</div>
-  <div class="v-linkcard me"><small>nifti.ph/o/7Hk2</small><b>📦 Order from Dela Cruz Hardware</b><em>Tap to see and confirm</em></div></div></div><div class="m3-step-n">2</div><h4>Send the link</h4><p>On Viber, Messenger or text.</p></div>
-      <div class="m3-step"><div class="m3-step-vis"><div class="v-browser"><div class="v-url">🔒 nifti.ph/o/7Hk2</div>
-  <div class="v-bpage"><small>ORDER FROM</small><b>Dela Cruz Hardware</b>
-  <div class="v-li"><span>Cement 40kg × 20</span><b>₱4,900</b></div>
-  <div class="v-btns"><span class="p">✓ Confirm</span><span>Suggest a change</span></div>
-  <em class="v-noapp">No app. No login.</em></div></div></div><div class="m3-step-n">3</div><h4>They tap Confirm</h4><p>No app needed. You both see every step until it’s paid.</p></div>
+      <div class="m3-step"><div class="m3-step-vis"><div class="v-card v3-order"><div class="v-row"><b>New order</b><span class="v3-muted">#1042</span></div><div class="v3-li"><span>Portland Cement 40kg</span><b>× 20</b></div><div class="v3-li"><span>Steel Rebar 10mm</span><b>× 50</b></div><div class="v3-tot"><span>Total</span><b>₱13,900</b></div></div></div><div class="m3-step-n">1</div><h4>Make the order</h4><p>Pick the items. It takes a minute.</p></div>
+      <div class="m3-step"><div class="m3-step-vis"><div class="v3-share"><div class="v3-link"><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span>nifti.ph/o/7Hk2</span></div><div class="v3-apps"><span>Viber</span><span>Messenger</span><span>SMS</span></div></div></div><div class="m3-step-n">2</div><h4>Send the link</h4><p>On Viber, Messenger or text.</p></div>
+      <div class="m3-step"><div class="m3-step-vis"><div class="v-card v3-confirm"><small>Order from Dela Cruz Hardware</small><b>₱13,900</b><div class="v3-btn">Confirm order</div></div></div><div class="m3-step-n">3</div><h4>They tap Confirm</h4><p>No app needed. You both see every step until it’s paid.</p></div>
     </div>
   </div>
 </section>
@@ -2101,14 +2088,14 @@
 <section class="m2-sec m3-sec">
   <div class="wrap">
     <div class="m2-head"><h2 class="section-title">What changes</h2></div>
-    <div class="m3-ba"><div class="m3-ba-h"><span>Before</span><span>With Nifti</span></div><div class="m3-ba-r"><div class="old"><i>💬</i>Orders buried in 10 chats</div><div class="arr">→</div><div class="new"><i>📋</i>Every order in one list</div></div><div class="m3-ba-r"><div class="old"><i>📒</i>Utang written in a notebook</div><div class="arr">→</div><div class="new"><i>💰</i>Who owes you, always up to date</div></div><div class="m3-ba-r"><div class="old"><i>📞</i>"Nasaan na yung delivery?"</div><div class="arr">→</div><div class="new"><i>📍</i>A tracking link they can open</div></div><div class="m3-ba-r"><div class="old"><i>⌨️</i>Retyping every PO by hand</div><div class="arr">→</div><div class="new"><i>🎙</i>Say it, or send your order form</div></div><div class="m3-ba-r"><div class="old"><i>😬</i>Chasing payments yourself</div><div class="arr">→</div><div class="new"><i>⏰</i>Friendly reminders, sent for you</div></div></div>
+    <div class="m3-ba"><div class="m3-ba-h"><span>Before</span><span>With Nifti</span></div><div class="m3-ba-r"><div class="old"><i><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg></i>Orders buried in 10 chats</div><div class="arr">→</div><div class="new"><i><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></svg></i>Every order in one list</div></div><div class="m3-ba-r"><div class="old"><i><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 6h4"/><path d="M2 10h4"/><path d="M2 14h4"/><path d="M2 18h4"/><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M16 2v20"/></svg></i>Utang written in a notebook</div><div class="arr">→</div><div class="new"><i><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg></i>Who owes you, always up to date</div></div><div class="m3-ba-r"><div class="old"><i><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></i>"Nasaan na yung delivery?"</div><div class="arr">→</div><div class="new"><i><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 5-5.54 10.19-7.4 11.8a1 1 0 0 1-1.2 0C9.54 20.19 4 15 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg></i>A tracking link they can open</div></div><div class="m3-ba-r"><div class="old"><i><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 8h.01"/><path d="M12 12h.01"/><path d="M14 8h.01"/><path d="M16 12h.01"/><path d="M18 8h.01"/><path d="M6 8h.01"/><path d="M7 16h10"/><path d="M8 12h.01"/><rect width="20" height="16" x="2" y="4" rx="2"/></svg></i>Retyping every PO by hand</div><div class="arr">→</div><div class="new"><i><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg></i>Say it, or send your order form</div></div><div class="m3-ba-r"><div class="old"><i><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></i>Chasing payments yourself</div><div class="arr">→</div><div class="new"><i><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></i>Friendly reminders, sent for you</div></div></div>
   </div>
 </section>
 
 <section class="m2-sec alt m3-sec">
   <div class="wrap">
     <div class="m2-head"><h2 class="section-title">What people use it for</h2></div>
-    <div class="m2-grid m3-top4" style="--cols:4"><div class="m2-card"><div class="m2-vis"><div class="v-stat green"><small>OWED TO YOU</small><b>₱84,200</b><span>3 customers · 1 late</span></div></div><h4>Get paid faster</h4><p>See who owes you. Remind them in one tap.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>📝 Riverside Builders</b></div><small>Opened 3× · waiting for OK</small><div class=v-btns><span class="p">Nudge</span><span class="">They said yes</span></div></div></div><h4>Close the sale</h4><p>Customer said "bukas na"? Send one link to confirm.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>🎙 “semento, limampung sako”</b></div><small>→ <b>Portland Cement 40kg × 50</b></small></div></div><h4>No more retyping</h4><p>Their PO becomes your order. Or just say it.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-notif ok"><span class="v-nic">📦</span><div><div class="v-ntop"><b>Nifti</b><em>now</em></div><strong>Delivered: PO-0853</strong><small>Received by Juan · complete</small></div></div></div><h4>Every delivery tracked</h4><p>They tap "I received it". You know right away.</p></div></div>
+    <div class="m2-grid m3-top4" style="--cols:4"><div class="m2-card"><div class="m2-vis"><div class="v-stat green"><small>OWED TO YOU</small><b>₱84,200</b><span>3 customers · 1 late</span></div></div><h4>Get paid faster</h4><p>See who owes you. Remind them in one tap.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.5 22H18a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v9.5"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M13.38 15.63a1 1 0 1 0-3-3l-5.02 5.01a2 2 0 0 0-.5.86l-.84 2.87a.5.5 0 0 0 .62.62l2.87-.84a2 2 0 0 0 .86-.5z"/></svg> Riverside Builders</b></div><small>Opened 3× · waiting for OK</small><div class=v-btns><span class="p">Nudge</span><span class="">They said yes</span></div></div></div><h4>Close the sale</h4><p>Customer said "bukas na"? Send one link to confirm.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg> “semento, limampung sako”</b></div><small>→ <b>Portland Cement 40kg × 50</b></small></div></div><h4>No more retyping</h4><p>Their PO becomes your order. Or just say it.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-notif ok"><span class="v-nic"><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></span><div><div class="v-ntop"><b>Nifti</b><em>now</em></div><strong>Delivered: PO-0853</strong><small>Received by Juan · complete</small></div></div></div><h4>Every delivery tracked</h4><p>They tap "I received it". You know right away.</p></div></div>
     <div class="m2-links"><a onclick="navigate('features')">See everything it does →</a></div>
   </div>
 </section>
@@ -2166,32 +2153,30 @@
   <div class="wrap">
     <h1>What Nifti does, <span>in plain words</span>.</h1>
     <p>Most of it is free. Pro adds more for sellers and for buyers.</p>
-    <div class="m2-jump"><button class="free" onclick="mkJump('mkFree')">✅ Free for everyone</button><button class="pro" onclick="mkJump('mkSell')">🏭 I sell</button><button class="pro" onclick="mkJump('mkBuy')">🏪 I buy</button></div>
+    <div class="m2-jump"><button class="free" onclick="mkJump('mkFree')"><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg> Free for everyone</button><button class="pro" onclick="mkJump('mkSell')"><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 8.35V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8.35A2 2 0 0 1 3.26 6.5l8-3.2a2 2 0 0 1 1.48 0l8 3.2A2 2 0 0 1 22 8.35Z"/><path d="M6 18h12"/><path d="M6 14h12"/><rect width="12" height="12" x="6" y="10"/></svg> I sell</button><button class="pro" onclick="mkJump('mkBuy')"><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/><path d="M22 7v3a2 2 0 0 1-2 2 2.7 2.7 0 0 1-2-1 2.7 2.7 0 0 1-2 1 2.7 2.7 0 0 1-2-1 2.7 2.7 0 0 1-2 1 2.7 2.7 0 0 1-2-1 2.7 2.7 0 0 1-2 1 2.7 2.7 0 0 1-2-1 2.7 2.7 0 0 1-2 1 2 2 0 0 1-2-2V7"/></svg> I buy</button></div>
   </div>
 </section>
 
 <section class="m2-band free" id="mkFree">
   <div class="wrap">
     <div class="m2-band-head"><span class="m2-badge free big">FREE FOREVER</span><h2>For everyone</h2></div>
-    <div class="m2-grid" style="--cols:3"><div class="m2-card"><div class="m2-vis"><div class="v-chat viber"><div class="v-chat-h"><span>MS</span><b>Metro Steel Co.</b></div>
-  <div class="v-bub me">Order for Thursday po 👇</div>
-  <div class="v-linkcard me"><small>nifti.ph/o/7Hk2</small><b>📦 Order from Dela Cruz Hardware</b><em>Tap to see and confirm</em></div></div></div><h4>Order links, no app needed</h4><p>They open it on their phone and tap Confirm.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-stat green"><small>OWED TO YOU</small><b>₱84,200</b><span>3 customers · 1 late</span></div></div><h4>Who owes you</h4><p>Every unpaid bill in one list. Remind in one tap.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>“semento 40 x20 sako”</b></div><small>→ <b>Portland Cement 40kg</b> × 20 · ₱4,900</small></div></div><h4>Their PO, your order</h4><p>Upload it, paste it, or just say it.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>📝 3 waiting · ₱196K</b></div><small>Riverside opened it 3×</small><div class=v-btns><span class="p">Nudge</span></div></div></div><h4>Waiting for their OK</h4><p>Tentative orders confirmed with one tap.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>📦 Delivered ✓</b></div><small>Signed by Nena · 📷 photo</small></div></div><h4>Proof of delivery</h4><p>Photo and "I received it", saved on the order.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>🛍 nifti.ph/s/metro-steel</b><span class="v-green">Open</span></div><small>23 orders this month</small></div></div><h4>Your own online store</h4><p>One link with your items and prices.</p></div></div>
+    <div class="m2-grid" style="--cols:3"><div class="m2-card"><div class="m2-vis"><div class="v3-share"><div class="v3-link"><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span>nifti.ph/o/7Hk2</span></div><div class="v3-apps"><span>Viber</span><span>Messenger</span><span>SMS</span></div></div></div><h4>Order links, no app needed</h4><p>They open it on their phone and tap Confirm.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-stat green"><small>OWED TO YOU</small><b>₱84,200</b><span>3 customers · 1 late</span></div></div><h4>Who owes you</h4><p>Every unpaid bill in one list. Remind in one tap.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>“semento 40 x20 sako”</b></div><small>→ <b>Portland Cement 40kg</b> × 20 · ₱4,900</small></div></div><h4>Their PO, your order</h4><p>Upload it, paste it, or just say it.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.5 22H18a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v9.5"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M13.38 15.63a1 1 0 1 0-3-3l-5.02 5.01a2 2 0 0 0-.5.86l-.84 2.87a.5.5 0 0 0 .62.62l2.87-.84a2 2 0 0 0 .86-.5z"/></svg> 3 waiting · ₱196K</b></div><small>Riverside opened it 3×</small><div class=v-btns><span class="p">Nudge</span></div></div></div><h4>Waiting for their OK</h4><p>Tentative orders confirmed with one tap.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg> Delivered ✓</b></div><small>Signed by Nena · <svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg> photo</small></div></div><h4>Proof of delivery</h4><p>Photo and "I received it", saved on the order.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg> nifti.ph/s/metro-steel</b><span class="v-green">Open</span></div><small>23 orders this month</small></div></div><h4>Your own online store</h4><p>One link with your items and prices.</p></div></div>
     <div class="m3-more"><div class="m3-more-h">Also included</div><div class="m3-chips"><span>✓ Paste a Viber order</span><span>✓ Chat beside every order</span><span>✓ Quotes and locked prices</span><span>✓ Payments the receiver confirms</span><span>✓ Leads and follow-ups</span><span>✓ "I've paid" from the statement</span><span>✓ Posts written for you</span><span>✓ Message all your buyers</span><span>✓ A shop for buyers too</span><span>✓ Roles for your team</span><span>✓ Phone notifications</span><span>✓ Stock and reorder drafts</span><span>✓ Download your data anytime</span></div></div>
   </div>
 </section>
 
 <section class="m2-band pro" id="mkSell">
   <div class="wrap">
-    <div class="m2-band-head"><span class="m2-badge pro big">SUPPLIER PRO · FREE IN THE PILOT</span><h2>🏭 If you sell</h2></div>
-    <div class="m2-grid" style="--cols:4"><div class="m2-card"><div class="m2-vis"><div class="v-notif "><span class="v-nic">⏰</span><div><div class="v-ntop"><b>Nifti</b><em>9:00</em></div><strong>Reminder sent to Juan Hardware</strong><small>₱21,504 · 7 days late</small></div></div></div><h4>Reminders sent for you</h4><p>Before and after each due date.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-list"><div class="v-li"><span>✓ Matched</span><b class="v-green">14</b></div><div class="v-li"><span>⚠ Not in bank</span><b class="v-red">1</b></div></div></div><h4>Cash and bank, matched</h4><p>Every peso traced to a bill.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-route mini"><div class="d"><i>✓</i><span>Aling Nena</span><b>₱7,650</b></div><div class="h"><i>🚚</i><span>Boy Hardware</span><b>₱4,750</b></div></div></div><h4>Routes for drivers</h4><p>Every stop, and what to collect.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>🔁 Aling Nena Store</b></div><small>Usually every 7 days · now 12</small><div class=v-btns><span class="p">Send</span></div></div></div><h4>Sell again</h4><p>Regulars get their usual order as a link.</p></div></div>
+    <div class="m2-band-head"><span class="m2-badge pro big">SUPPLIER PRO · FREE IN THE PILOT</span><h2><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 8.35V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8.35A2 2 0 0 1 3.26 6.5l8-3.2a2 2 0 0 1 1.48 0l8 3.2A2 2 0 0 1 22 8.35Z"/><path d="M6 18h12"/><path d="M6 14h12"/><rect width="12" height="12" x="6" y="10"/></svg> If you sell</h2></div>
+    <div class="m2-grid" style="--cols:4"><div class="m2-card"><div class="m2-vis"><div class="v-notif "><span class="v-nic"><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span><div><div class="v-ntop"><b>Nifti</b><em>9:00</em></div><strong>Reminder sent to Juan Hardware</strong><small>₱21,504 · 7 days late</small></div></div></div><h4>Reminders sent for you</h4><p>Before and after each due date.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-list"><div class="v-li"><span>✓ Matched</span><b class="v-green">14</b></div><div class="v-li"><span><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg> Not in bank</span><b class="v-red">1</b></div></div></div><h4>Cash and bank, matched</h4><p>Every peso traced to a bill.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-route mini"><div class="d"><i>✓</i><span>Aling Nena</span><b>₱7,650</b></div><div class="h"><i><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg></i><span>Boy Hardware</span><b>₱4,750</b></div></div></div><h4>Routes for drivers</h4><p>Every stop, and what to collect.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg> Aling Nena Store</b></div><small>Usually every 7 days · now 12</small><div class=v-btns><span class="p">Send</span></div></div></div><h4>Sell again</h4><p>Regulars get their usual order as a link.</p></div></div>
     <div class="m3-more"><div class="m3-more-h">Also included</div><div class="m3-chips"><span>✓ Promises to pay, tracked</span><span>✓ Cheque calendar</span><span>✓ Statements of account</span><span>✓ Credit limits per buyer</span><span>✓ Price changes announced ahead</span><span>✓ Store sales and promos</span><span>✓ Returns and credits</span><span>✓ BIR 2307 and VAT books</span><span>✓ Up to 15 teammates</span></div></div>
   </div>
 </section>
 
 <section class="m2-band pro" id="mkBuy">
   <div class="wrap">
-    <div class="m2-band-head"><span class="m2-badge pro big">BUYER PRO · FREE IN THE PILOT</span><h2>🏪 If you buy</h2></div>
-    <div class="m2-grid" style="--cols:4"><div class="m2-card"><div class="m2-vis"><div class="v-notif "><span class="v-nic">🛡</span><div><div class="v-ntop"><b>Nifti</b><em>2m</em></div><strong>Joy paid ₱2,000 more than agreed</strong><small>100 bags cement</small></div></div></div><h4>Staff overpaying? You'll know</h4><p>One alert with the peso amount.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>This month</b><span class="v-amber">82%</span></div><div class="v-bar amber"><i style="width:82%"></i></div><small>₱49,200 of ₱60,000</small></div></div><h4>Spending limits</h4><p>Per business, person or supplier.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-grades"><div><span class="a">A</span><b>Metro Steel</b><small>98% on time</small></div><div><span class="d">D</span><b>QuickBuild</b><small>52% late</small></div></div></div><h4>Supplier report card</h4><p>Who delivers late or short.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>📊 Rebar 10mm</b><span class="v-green">Good</span></div><small>You ₱178 · others ₱180–₱192</small></div></div><h4>Price check</h4><p>Are you paying more than others?</p></div></div>
+    <div class="m2-band-head"><span class="m2-badge pro big">BUYER PRO · FREE IN THE PILOT</span><h2><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/><path d="M22 7v3a2 2 0 0 1-2 2 2.7 2.7 0 0 1-2-1 2.7 2.7 0 0 1-2 1 2.7 2.7 0 0 1-2-1 2.7 2.7 0 0 1-2 1 2.7 2.7 0 0 1-2-1 2.7 2.7 0 0 1-2 1 2.7 2.7 0 0 1-2-1 2.7 2.7 0 0 1-2 1 2 2 0 0 1-2-2V7"/></svg> If you buy</h2></div>
+    <div class="m2-grid" style="--cols:4"><div class="m2-card"><div class="m2-vis"><div class="v-notif "><span class="v-nic"><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span><div><div class="v-ntop"><b>Nifti</b><em>2m</em></div><strong>Joy paid ₱2,000 more than agreed</strong><small>100 bags cement</small></div></div></div><h4>Staff overpaying? You'll know</h4><p>One alert with the peso amount.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b>This month</b><span class="v-amber">82%</span></div><div class="v-bar amber"><i style="width:82%"></i></div><small>₱49,200 of ₱60,000</small></div></div><h4>Spending limits</h4><p>Per business, person or supplier.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-grades"><div><span class="a">A</span><b>Metro Steel</b><small>98% on time</small></div><div><span class="d">D</span><b>QuickBuild</b><small>52% late</small></div></div></div><h4>Supplier report card</h4><p>Who delivers late or short.</p></div><div class="m2-card"><div class="m2-vis"><div class="v-card"><div class="v-row"><b><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg> Rebar 10mm</b><span class="v-green">Good</span></div><small>You ₱178 · others ₱180–₱192</small></div></div><h4>Price check</h4><p>Are you paying more than others?</p></div></div>
     <div class="m3-more"><div class="m3-more-h">Also included</div><div class="m3-chips"><span>✓ Cheque tracker</span><span>✓ Price-increase alerts</span><span>✓ Returns and credits</span><span>✓ BIR 2307 and purchase books</span><span>✓ Up to 15 teammates</span></div></div>
   </div>
 </section>
@@ -2199,7 +2184,7 @@
 <section class="m2-band extra" id="mkExtras">
   <div class="wrap">
     <div class="m2-band-head"><span class="m2-badge extra big">OPTIONAL</span><h2>Extras</h2></div>
-    <div class="m3-extras"><div><b>🏢 Business</b><span>₱2,990/month · for big teams</span></div><div><b>🛠 We set it up for you</b><span>₱3,500 once</span></div><div><b>✔ Verified badge</b><span>₱1,490/year</span></div></div>
+    <div class="m3-extras"><div><b><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg> Business</b><span>₱2,990/month · for big teams</span></div><div><b><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> We set it up for you</b><span>₱3,500 once</span></div><div><b><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></svg> Verified badge</b><span>₱1,490/year</span></div></div>
   </div>
 </section>
 
@@ -2231,7 +2216,7 @@
 
 <section class="p2-hero">
   <div class="wrap">
-    <div class="p2-burst">🎉 PILOT</div>
+    <div class="p2-burst"> PILOT</div>
     <h1>Right now, <span>everything is free.</span></h1>
     <p>Orders and chat: free forever. Pro: free while we're in the pilot.</p>
     <div class="p2-tag"><s>₱990/month</s><b>₱0</b></div>
@@ -2242,8 +2227,8 @@
   <div class="wrap">
     <h2>First, which one are you?</h2>
     <div class="p2-who">
-      <button data-side="sell" class="on" onclick="mkSide('sell')"><span>🏭</span><b>I sell to businesses</b><small>Supplier, distributor, wholesaler</small></button>
-      <button data-side="buy" onclick="mkSide('buy')"><span>🏪</span><b>I buy from suppliers</b><small>Store, restaurant, contractor, reseller</small></button>
+      <button data-side="sell" class="on" onclick="mkSide('sell')"><span><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 8.35V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8.35A2 2 0 0 1 3.26 6.5l8-3.2a2 2 0 0 1 1.48 0l8 3.2A2 2 0 0 1 22 8.35Z"/><path d="M6 18h12"/><path d="M6 14h12"/><rect width="12" height="12" x="6" y="10"/></svg></span><b>I sell to businesses</b><small>Supplier, distributor, wholesaler</small></button>
+      <button data-side="buy" onclick="mkSide('buy')"><span><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/><path d="M22 7v3a2 2 0 0 1-2 2 2.7 2.7 0 0 1-2-1 2.7 2.7 0 0 1-2 1 2.7 2.7 0 0 1-2-1 2.7 2.7 0 0 1-2 1 2.7 2.7 0 0 1-2-1 2.7 2.7 0 0 1-2 1 2.7 2.7 0 0 1-2-1 2.7 2.7 0 0 1-2 1 2 2 0 0 1-2-2V7"/></svg></span><b>I buy from suppliers</b><small>Store, restaurant, contractor, reseller</small></button>
     </div>
     <div class="p2-set" data-for="sell">
   <div class="p2-plans">
@@ -2251,10 +2236,10 @@
       <p>Everything to trade with your partners.</p>
       <ul><li>Orders and chat with anyone</li><li>Order links, no app needed</li><li>Who owes you</li><li>Your own online store</li><li>Up to 3 teammates</li></ul>
       <button class="plan-btn outline" onclick="navigate('login')">Start free</button></div>
-    <div class="p2-plan pro"><div class="p2-flag">🎉 FREE DURING THE PILOT</div>
+    <div class="p2-plan pro"><div class="p2-flag"> FREE DURING THE PILOT</div>
       <div class="p2-plan-h"><b>Supplier Pro</b><span><s>₱990</s> ₱0 <em>/month for now</em></span></div>
       <p>Get paid faster and deliver smarter. Everything in Free, plus:</p>
-      <div class="p2-perks"><div class="p2-perk"><div class="p2-perk-vis"><div class="v-notif "><span class="v-nic">⏰</span><div><div class="v-ntop"><b>Nifti</b><em>9:00</em></div><strong>Reminder sent to Juan Hardware</strong><small>₱21,504 · 7 days overdue</small></div></div></div><div class="p2-perk-t"><b>⏰ Collections on autopilot</b><span>Reminders on your terms, by chat or email.</span></div></div><div class="p2-perk"><div class="p2-perk-vis"><div class="v-list"><div class="v-li"><span>✓ Matched</span><b class="v-green">14</b></div><div class="v-li"><span>⚠ Not in bank</span><b class="v-red">1</b></div></div></div><div class="p2-perk-t"><b>🏦 Cash and bank matched</b><span>Every peso traced to an invoice.</span></div></div><div class="p2-perk"><div class="p2-perk-vis"><div class="v-route mini"><div class="d"><i>✓</i><span>Aling Nena</span><b>₱7,650</b></div><div class="h"><i>🚚</i><span>Boy Hardware</span><b>₱4,750</b></div></div></div><div class="p2-perk-t"><b>🚚 Routes for your drivers</b><span>Every stop and peso to collect, with photo proof.</span></div></div><div class="p2-perk"><div class="p2-perk-vis"><div class="v-card"><div class="v-row"><b>Deposit today</b></div><small>BDO #004512 · ₱18,200</small><div class=v-btns><span class="p">Mark deposited</span></div></div></div><div class="p2-perk-t"><b>🏦 Never miss a cheque</b><span>Deposit reminders and bounce alerts.</span></div></div></div>
+      <div class="p2-perks"><div class="p2-perk"><div class="p2-perk-vis"><div class="v-notif "><span class="v-nic"><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span><div><div class="v-ntop"><b>Nifti</b><em>9:00</em></div><strong>Reminder sent to Juan Hardware</strong><small>₱21,504 · 7 days overdue</small></div></div></div><div class="p2-perk-t"><b><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Collections on autopilot</b><span>Reminders on your terms, by chat or email.</span></div></div><div class="p2-perk"><div class="p2-perk-vis"><div class="v-list"><div class="v-li"><span>✓ Matched</span><b class="v-green">14</b></div><div class="v-li"><span><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg> Not in bank</span><b class="v-red">1</b></div></div></div><div class="p2-perk-t"><b><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg> Cash and bank matched</b><span>Every peso traced to an invoice.</span></div></div><div class="p2-perk"><div class="p2-perk-vis"><div class="v-route mini"><div class="d"><i>✓</i><span>Aling Nena</span><b>₱7,650</b></div><div class="h"><i><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg></i><span>Boy Hardware</span><b>₱4,750</b></div></div></div><div class="p2-perk-t"><b><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg> Routes for your drivers</b><span>Every stop and peso to collect, with photo proof.</span></div></div><div class="p2-perk"><div class="p2-perk-vis"><div class="v-card"><div class="v-row"><b>Deposit today</b></div><small>BDO #004512 · ₱18,200</small><div class=v-btns><span class="p">Mark deposited</span></div></div></div><div class="p2-perk-t"><b><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg> Never miss a cheque</b><span>Deposit reminders and bounce alerts.</span></div></div></div>
       <ul class="p2-more"><li>Customers due to reorder, reminded for you</li><li>Statements of account</li><li>Credit limits per buyer</li><li>Returns, credits and BIR 2307</li><li>Up to 15 teammates</li></ul>
       <button class="plan-btn primary" onclick="navigate('login')">Start free. Pro is on for you →</button>
       <small class="p2-after">After the pilot: ₱990/month or ₱9,900/year. Sign up now to keep this founding price.</small></div>
@@ -2267,30 +2252,30 @@
       <p>Everything to trade with your partners.</p>
       <ul><li>Orders and chat with anyone</li><li>Order links, no app needed</li><li>Who owes you</li><li>Your own online store</li><li>Up to 3 teammates</li></ul>
       <button class="plan-btn outline" onclick="navigate('login')">Start free</button></div>
-    <div class="p2-plan pro"><div class="p2-flag">🎉 FREE DURING THE PILOT</div>
+    <div class="p2-plan pro"><div class="p2-flag"> FREE DURING THE PILOT</div>
       <div class="p2-plan-h"><b>Buyer Pro</b><span><s>₱990</s> ₱0 <em>/month for now</em></span></div>
       <p>Pay less and stop leaks. Everything in Free, plus:</p>
-      <div class="p2-perks"><div class="p2-perk"><div class="p2-perk-vis"><div class="v-notif "><span class="v-nic">🛡</span><div><div class="v-ntop"><b>Nifti</b><em>2m</em></div><strong>Joy paid ₱2,000 more than agreed</strong><small>100 bags cement · Metro Steel</small></div></div></div><div class="p2-perk-t"><b>🛡 Catch staff overpaying</b><span>One alert with the peso amount.</span></div></div><div class="p2-perk"><div class="p2-perk-vis"><div class="v-card"><div class="v-row"><b>This month</b><span class="v-amber">82%</span></div><div class="v-bar amber"><i style="width:82%"></i></div><small>₱49,200 of ₱60,000</small></div></div><div class="p2-perk-t"><b>💰 Spending limits</b><span>Per business, teammate or supplier.</span></div></div><div class="p2-perk"><div class="p2-perk-vis"><div class="v-grades"><div><span class="a">A</span><b>Metro Steel</b><small>98% on time</small></div><div><span class="d">D</span><b>QuickBuild</b><small>52% late</small></div></div></div><div class="p2-perk-t"><b>⭐ Supplier report card</b><span>Grades from your own orders.</span></div></div><div class="p2-perk"><div class="p2-perk-vis"><div class="v-card"><div class="v-row"><b>📊 Rebar 10mm</b><span class="v-green">Good price</span></div><small>You ₱178 · others ₱180–₱192</small></div></div><div class="p2-perk-t"><b>📊 Price check</b><span>Are you paying more than others?</span></div></div></div>
+      <div class="p2-perks"><div class="p2-perk"><div class="p2-perk-vis"><div class="v-notif "><span class="v-nic"><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></span><div><div class="v-ntop"><b>Nifti</b><em>2m</em></div><strong>Joy paid ₱2,000 more than agreed</strong><small>100 bags cement · Metro Steel</small></div></div></div><div class="p2-perk-t"><b><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg> Catch staff overpaying</b><span>One alert with the peso amount.</span></div></div><div class="p2-perk"><div class="p2-perk-vis"><div class="v-card"><div class="v-row"><b>This month</b><span class="v-amber">82%</span></div><div class="v-bar amber"><i style="width:82%"></i></div><small>₱49,200 of ₱60,000</small></div></div><div class="p2-perk-t"><b><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg> Spending limits</b><span>Per business, teammate or supplier.</span></div></div><div class="p2-perk"><div class="p2-perk-vis"><div class="v-grades"><div><span class="a">A</span><b>Metro Steel</b><small>98% on time</small></div><div><span class="d">D</span><b>QuickBuild</b><small>52% late</small></div></div></div><div class="p2-perk-t"><b><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Supplier report card</b><span>Grades from your own orders.</span></div></div><div class="p2-perk"><div class="p2-perk-vis"><div class="v-card"><div class="v-row"><b><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg> Rebar 10mm</b><span class="v-green">Good price</span></div><small>You ₱178 · others ₱180–₱192</small></div></div><div class="p2-perk-t"><b><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg> Price check</b><span>Are you paying more than others?</span></div></div></div>
       <ul class="p2-more"><li>Cheque tracker</li><li>Price-increase alerts</li><li>Returns and credits</li><li>BIR 2307 tracker and purchase books</li><li>Up to 15 teammates</li></ul>
       <button class="plan-btn primary" onclick="navigate('login')">Start free. Pro is on for you →</button>
       <small class="p2-after">After the pilot: ₱990/month or ₱9,900/year. Sign up now to keep this founding price.</small></div>
   </div>
   <div class="p2-roi"><div><b>₱2,000</b><span>staff paying ₱20 over your price on 100 bags</span></div><div><b>₱6,300</b><span>a cheaper supplier for the same item, found for you</span></div><div><b>₱9,000</b><span>an over-budget order caught before it went out</span></div></div>
 </div>
-    <div class="p2-biz"><div><span>🏢</span><div><b>Big team or several branches?</b><p><b>Business · ₱2,990/month.</b> Everything in Pro for your side, plus up to 50 teammates, the verified ✔ badge, top spot in Discover and priority support.</p></div></div><button class="plan-btn outline" onclick="navigate('login')">Start free</button></div>
+    <div class="p2-biz"><div><span><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></svg></span><div><b>Big team or several branches?</b><p><b>Business · ₱2,990/month.</b> Everything in Pro for your side, plus up to 50 teammates, the verified <svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></svg> badge, top spot in Discover and priority support.</p></div></div><button class="plan-btn outline" onclick="navigate('login')">Start free</button></div>
   </div>
 </section>
 
 <section class="m2-sec">
   <div class="wrap">
     <div class="m2-head"><h2 class="section-title">Optional extras</h2></div>
-    <div class="m3-extras"><div><b>🛠 We set it up for you</b><span>₱3,500 once · send your price list in any form</span></div><div><b>✔ Verified badge</b><span>₱1,490/year · a green ✔ on your store</span></div></div>
+    <div class="m3-extras"><div><b><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> We set it up for you</b><span>₱3,500 once · send your price list in any form</span></div><div><b><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></svg> Verified badge</b><span>₱1,490/year · a green <svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></svg> on your store</span></div></div>
   </div>
 </section>
 
 <section class="m2-sec">
   <div class="wrap">
-    <details class="p2-compare"><summary>Compare every feature</summary><div class="mk-table-wrap"><table class="mk-table"><thead><tr><th></th><th>Free</th><th>Pro<br><small>for your side</small></th><th>Business</th></tr></thead><tbody><tr><td>Chat, orders and order links</td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Unlimited suppliers and buyers</td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Payments confirmed by the receiver</td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Who owes you, with reminders</td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Online store and ready posts</td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Message all buyers at once</td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Statements of account</td><td><span class="mk-n">—</span></td><td>Supplier Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Credit limits per buyer</td><td><span class="mk-n">—</span></td><td>Supplier Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Routes for drivers and collectors</td><td><span class="mk-n">—</span></td><td>Supplier Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Price-change announcements</td><td><span class="mk-n">—</span></td><td>Supplier Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Reorder reminders</td><td><span class="mk-n">—</span></td><td>Supplier Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Store insights and sale prices</td><td><span class="mk-n">—</span></td><td>Supplier Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Alerts when staff overpay</td><td><span class="mk-n">—</span></td><td>Buyer Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Spending limits</td><td><span class="mk-n">—</span></td><td>Buyer Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Supplier report card</td><td><span class="mk-n">—</span></td><td>Buyer Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Price check vs other buyers</td><td><span class="mk-n">—</span></td><td>Buyer Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Leads and follow-ups</td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Customer POs into your own orders</td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Payment reminders sent for you</td><td><span class="mk-n">—</span></td><td>Supplier Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Cash and bank reconciliation</td><td><span class="mk-n">—</span></td><td>Supplier Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Cheque tracker</td><td><span class="mk-n">—</span></td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Returns and credits</td><td><span class="mk-n">—</span></td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>BIR 2307 tracker and VAT books</td><td><span class="mk-n">—</span></td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Verified ✔ badge</td><td><span class="mk-n">—</span></td><td><span class="mk-n">—</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Top of Discover</td><td><span class="mk-n">—</span></td><td><span class="mk-n">—</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Priority support</td><td><span class="mk-n">—</span></td><td><span class="mk-n">—</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Teammates</td><td>3</td><td>15</td><td>50</td></tr></tbody></table></div></details>
+    <details class="p2-compare"><summary>Compare every feature</summary><div class="mk-table-wrap"><table class="mk-table"><thead><tr><th></th><th>Free</th><th>Pro<br><small>for your side</small></th><th>Business</th></tr></thead><tbody><tr><td>Chat, orders and order links</td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Unlimited suppliers and buyers</td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Payments confirmed by the receiver</td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Who owes you, with reminders</td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Online store and ready posts</td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Message all buyers at once</td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Statements of account</td><td><span class="mk-n">—</span></td><td>Supplier Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Credit limits per buyer</td><td><span class="mk-n">—</span></td><td>Supplier Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Routes for drivers and collectors</td><td><span class="mk-n">—</span></td><td>Supplier Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Price-change announcements</td><td><span class="mk-n">—</span></td><td>Supplier Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Reorder reminders</td><td><span class="mk-n">—</span></td><td>Supplier Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Store insights and sale prices</td><td><span class="mk-n">—</span></td><td>Supplier Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Alerts when staff overpay</td><td><span class="mk-n">—</span></td><td>Buyer Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Spending limits</td><td><span class="mk-n">—</span></td><td>Buyer Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Supplier report card</td><td><span class="mk-n">—</span></td><td>Buyer Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Price check vs other buyers</td><td><span class="mk-n">—</span></td><td>Buyer Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Leads and follow-ups</td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Customer POs into your own orders</td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Payment reminders sent for you</td><td><span class="mk-n">—</span></td><td>Supplier Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Cash and bank reconciliation</td><td><span class="mk-n">—</span></td><td>Supplier Pro</td><td><span class="mk-y">✓</span></td></tr><tr><td>Cheque tracker</td><td><span class="mk-n">—</span></td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Returns and credits</td><td><span class="mk-n">—</span></td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>BIR 2307 tracker and VAT books</td><td><span class="mk-n">—</span></td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Verified <svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></svg> badge</td><td><span class="mk-n">—</span></td><td><span class="mk-n">—</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Top of Discover</td><td><span class="mk-n">—</span></td><td><span class="mk-n">—</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Priority support</td><td><span class="mk-n">—</span></td><td><span class="mk-n">—</span></td><td><span class="mk-y">✓</span></td></tr><tr><td>Teammates</td><td>3</td><td>15</td><td>50</td></tr></tbody></table></div></details>
   </div>
 </section>
 
@@ -2704,7 +2689,7 @@
       <div class="nav-item" data-page="orders" onclick="navigate('orders')" style="position:relative;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg><span data-i18n="nav_orders">Orders</span><span id="ordersNavBadge" class="nav-badge" style="display:none;"></span></div>
       <div class="nav-item" data-page="messages" onclick="navigate('messages')" style="position:relative;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span data-i18n="nav_messages">Messages</span><span id="messagesNavBadge" class="nav-badge" style="display:none;"></span></div>
       <div class="nav-item" data-page="suppliers" onclick="navigate('suppliers')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span id="navLabelSuppliers">My Suppliers</span></div>
-      <div class="nav-item" data-page="inventory" onclick="navigate('inventory')" style="position:relative;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg><span data-i18n="nav_inventory">Stock</span><span id="inventoryNavBadge" class="nav-badge" style="display:none;"></span></div>
+      <div class="nav-item" data-page="inventory" onclick="navigate('inventory')" style="position:relative;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg><span data-i18n="nav_inventory">Inventory</span><span id="inventoryNavBadge" class="nav-badge" style="display:none;"></span></div>
     </div>
     <div class="nav-group">
       <div class="heading">More</div>
@@ -2722,7 +2707,7 @@
       <div class="nav-item" data-page="books" onclick="navigate('books')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M8 7h8M8 11h6"/></svg><span>Sales & purchase books</span></div>
       <div class="nav-item" data-page="taxforms" onclick="navigate('taxforms')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/></svg><span>BIR 2307s</span></div>
       <div class="nav-item" data-page="team" onclick="navigate('team')" style="position:relative;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Team</span><span id="teamNavBadge" class="nav-badge" style="display:none;"></span></div>
-      <div class="nav-item" data-page="analytics" onclick="navigate('analytics')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg><span data-i18n="nav_analytics">Reports</span></div>
+      <div class="nav-item" data-page="analytics" onclick="navigate('analytics')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg><span data-i18n="nav_analytics">Analytics</span></div>
       <div class="nav-item" data-page="discover" onclick="navigate('discover')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span data-i18n="nav_discover">Discover</span></div>
       <div class="nav-item" data-page="settings" onclick="navigate('settings')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span data-i18n="nav_settings">Settings</span></div>
     </div>
@@ -2750,22 +2735,22 @@
   <div class="more-sheet hidden" id="moreSheet" role="dialog" aria-label="More">
     <div class="more-sheet-grip"></div>
     <div class="more-sheet-grid">
-      <button class="more-sheet-item" data-page="inventory" onclick="closeMoreSheet(); navigate('inventory')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg><span>Stock</span></button>
+      <button class="more-sheet-item" data-page="inventory" onclick="closeMoreSheet(); navigate('inventory')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7h-9"/><path d="M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg><span>Inventory</span></button>
       <button class="more-sheet-item" data-page="sales" id="moreSheetSales" onclick="closeMoreSheet(); navigate('sales')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Sales</span></button>
       <button class="more-sheet-item owner-only" data-page="growth" onclick="closeMoreSheet(); navigate('growth')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg><span>Growth</span></button>
       <button class="more-sheet-item only-supplier" data-page="followups" onclick="closeMoreSheet(); navigate('followups')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg><span>Follow-ups</span></button>
-      <button class="more-sheet-item only-supplier" data-page="collections" onclick="closeMoreSheet(); navigate('collections')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18v12H3z"/><path d="M3 11h18"/><path d="M7 15h4"/><path d="M7 3h10v4"/></svg><span>Get paid</span></button>
+      <button class="more-sheet-item only-supplier" data-page="collections" onclick="closeMoreSheet(); navigate('collections')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h18v12H3z"/><path d="M3 11h18"/><path d="M7 15h4"/><path d="M7 3h10v4"/></svg><span>Collections</span></button>
       <button class="more-sheet-item" data-page="store" onclick="closeMoreSheet(); navigate('store')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l1.5-5h15L21 9"/><path d="M4 9v11h16V9"/><path d="M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0"/><path d="M10 20v-6h4v6"/></svg><span>Store</span></button>
-      <button class="more-sheet-item only-buyer" data-page="watchdog" onclick="closeMoreSheet(); navigate('watchdog')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Owner check</span></button>
+      <button class="more-sheet-item only-buyer" data-page="watchdog" onclick="closeMoreSheet(); navigate('watchdog')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Watchdog</span></button>
       <button class="more-sheet-item owner-only" data-page="admin" onclick="closeMoreSheet(); navigate('admin')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 3 6v6c0 5 4 9 9 10 5-1 9-5 9-10V6z"/><path d="m9 12 2 2 4-4"/></svg><span>Admin</span></button>
       <button class="more-sheet-item only-supplier" data-page="routes" onclick="closeMoreSheet(); navigate('routes')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="7" width="13" height="10" rx="1"/><path d="M14 10h4l3 3v4h-7"/><circle cx="5.5" cy="18" r="1.8"/><circle cx="17.5" cy="18" r="1.8"/></svg><span>Routes</span></button>
       <button class="more-sheet-item" data-page="cheques" onclick="closeMoreSheet(); navigate('cheques')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 14h6"/><path d="M15 14h3"/><path d="M6 10h12"/></svg><span>Cheques</span></button>
       <button class="more-sheet-item" data-page="prices" onclick="closeMoreSheet(); navigate('prices')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg><span>Prices</span></button>
       <button class="more-sheet-item" data-page="returns" onclick="closeMoreSheet(); navigate('returns')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/></svg><span>Returns</span></button>
-      <button class="more-sheet-item" data-page="books" onclick="closeMoreSheet(); navigate('books')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M8 7h8M8 11h6"/></svg><span>Tax books</span></button>
-      <button class="more-sheet-item" data-page="taxforms" onclick="closeMoreSheet(); navigate('taxforms')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/></svg><span>BIR 2307</span></button>
+      <button class="more-sheet-item" data-page="books" onclick="closeMoreSheet(); navigate('books')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M8 7h8M8 11h6"/></svg><span>Books</span></button>
+      <button class="more-sheet-item" data-page="taxforms" onclick="closeMoreSheet(); navigate('taxforms')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/></svg><span>2307s</span></button>
       <button class="more-sheet-item" data-page="team" onclick="closeMoreSheet(); navigate('team')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Team</span></button>
-      <button class="more-sheet-item" data-page="analytics" onclick="closeMoreSheet(); navigate('analytics')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg><span>Reports</span></button>
+      <button class="more-sheet-item" data-page="analytics" onclick="closeMoreSheet(); navigate('analytics')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg><span>Analytics</span></button>
       <button class="more-sheet-item" data-page="discover" onclick="closeMoreSheet(); navigate('discover')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span>Discover</span></button>
       <button class="more-sheet-item" data-page="settings" onclick="closeMoreSheet(); navigate('settings')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span>Settings</span></button>
     </div>
@@ -2797,15 +2782,15 @@
         <div style="position:relative;">
           <button class="btn btn-primary" onclick="toggleCreateMenu(event)">+ Create</button>
           <div id="createMenuDropdown" class="notif-dropdown hidden" style="width:220px;">
-            <div class="notif-head">What do you want to do?</div>
-            <div class="notif-item" id="createMenuPoItem" style="cursor:pointer;" onclick="closeCreateMenu(); openCreatePOModal();"><div><div class="notif-text" id="createMenuPoLabel">🛒 New order</div></div></div>
-            <div class="notif-item only-supplier" style="cursor:pointer;" onclick="closeCreateMenu(); openCustomerPoImport();"><div><div class="notif-text">📄 Add a customer's order (their PO)</div></div></div>
+            <div class="notif-head">Create new</div>
+            <div class="notif-item" id="createMenuPoItem" style="cursor:pointer;" onclick="closeCreateMenu(); openCreatePOModal();"><div><div class="notif-text" id="createMenuPoLabel">Purchase Order</div></div></div>
+            <div class="notif-item only-supplier" style="cursor:pointer;" onclick="closeCreateMenu(); openCustomerPoImport();"><div><div class="notif-text">📄 Enter a customer's PO</div></div></div>
             <div class="notif-item only-supplier" style="cursor:pointer;" onclick="closeCreateMenu(); openCustomerPoImport({tentative: true});"><div><div class="notif-text">📝 Send an order for their OK</div></div></div>
             <div class="notif-item only-supplier" style="cursor:pointer;" onclick="closeCreateMenu(); navigate('followups'); setTimeout(fuAddLead, 150);"><div><div class="notif-text">🎯 Add a lead</div></div></div>
             <div class="notif-item" id="createMenuPasteItem" style="cursor:pointer;" onclick="closeCreateMenu(); openPasteOrderModal();"><div><div class="notif-text">📋 Paste an order from Viber</div></div></div>
             <div class="notif-item" style="cursor:pointer;" onclick="closeCreateMenu(); navigate('invite'); setInviteTab('rfq');"><div><div class="notif-text" id="createMenuRfqLabel">Request a Quote (RFQ)</div></div></div>
             <div class="notif-item" style="cursor:pointer;" onclick="closeCreateMenu(); navigate('invite'); setInviteTab('invite');"><div><div class="notif-text" id="createMenuInviteLabel">Invite a Supplier</div></div></div>
-            <div class="notif-item" style="cursor:pointer;" onclick="closeCreateMenu(); navigate('messages');"><div><div class="notif-text">✉️ Send a message</div></div></div>
+            <div class="notif-item" style="cursor:pointer;" onclick="closeCreateMenu(); navigate('messages');"><div><div class="notif-text">Message</div></div></div>
           </div>
         </div>
         <div class="icon-btn" style="position:relative;" onclick="toggleNotifications(event)">
@@ -3012,9 +2997,9 @@
         <div id="inventoryRealContent">
         <div id="buyerInventoryView">
         <div class="page-head" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px;">
-          <div><h1 data-i18n="head_inventory">Your stock</h1><p>How much you have left, and when to order more.</p></div>
+          <div><h1 data-i18n="head_inventory">Inventory</h1><p>You set your own restock levels and max levels — nothing here is auto-calculated, so it's always exactly what you tell it to be.</p></div>
           <button class="btn btn-outline" onclick="navigate('datacenter')">⬆ Import / export data</button>
-          <button class="btn btn-outline" onclick="startStocktake()">📋 Count my stock</button>
+          <button class="btn btn-outline" onclick="startStocktake()">📋 Start Stocktake</button>
           <button class="btn btn-outline" onclick="scanToFindInventoryItem()">📷 Scan</button>
         </div>
         <div id="stocktakeView" class="hidden"></div>
@@ -3022,19 +3007,19 @@
         <div id="restockSuggestionsPanel"></div>
         <div class="stat-row" id="inventoryStatsRow">
           <div class="stat-card neutral">
-            <div class="stat-body"><span class="stat-label">Products</span><div class="stat-num" id="invStatTotal">—</div></div>
+            <div class="stat-body"><span class="stat-label">Total SKUs</span><div class="stat-num" id="invStatTotal">—</div></div>
             <div class="stat-icon-panel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.5 7.3 12 2 3.5 7.3v9.4L12 22l8.5-5.3z"/><path d="M3.5 7.3 12 12l8.5-4.7"/><path d="M12 12v10"/></svg></div>
           </div>
           <div class="stat-card green">
-            <div class="stat-body"><span class="stat-label">✅ Enough</span><div class="stat-num" id="invStatHealthy">—</div></div>
+            <div class="stat-body"><span class="stat-label">Healthy</span><div class="stat-num" id="invStatHealthy">—</div></div>
             <div class="stat-icon-panel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
           </div>
           <div class="stat-card red">
-            <div class="stat-body"><span class="stat-label">❗ Order now</span><div class="stat-num" id="invStatCritical">—</div></div>
+            <div class="stat-body"><span class="stat-label">Reorder Now</span><div class="stat-num" id="invStatCritical">—</div></div>
             <div class="stat-icon-panel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></div>
           </div>
           <div class="stat-card neutral">
-            <div class="stat-body"><span class="stat-label">Stock value</span><div class="stat-num" id="invStatValue" style="font-size:22px;">—</div></div>
+            <div class="stat-body"><span class="stat-label">Total Inventory Value</span><div class="stat-num" id="invStatValue" style="font-size:22px;">—</div></div>
             <div class="stat-icon-panel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
           </div>
         </div>
@@ -3042,10 +3027,10 @@
         <div class="wh-tabs" id="whTabs"></div>
         <div class="toolbar" style="justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
           <div class="chip-filter" id="statusChips">
-            <div class="chip active" onclick="setStatusFilter('all',this)">All</div>
-            <div class="chip" onclick="setStatusFilter('critical',this)">❗ Order now</div>
-            <div class="chip" onclick="setStatusFilter('warning',this)">⚠ Getting low</div>
-            <div class="chip" onclick="setStatusFilter('healthy',this)">✅ Enough</div>
+            <div class="chip active" onclick="setStatusFilter('all',this)">All statuses</div>
+            <div class="chip" onclick="setStatusFilter('critical',this)">Reorder now</div>
+            <div class="chip" onclick="setStatusFilter('warning',this)">Getting low</div>
+            <div class="chip" onclick="setStatusFilter('healthy',this)">Healthy</div>
           </div>
           <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
             <span class="row-action" onclick="openManageWarehouses()">Manage warehouses</span>
@@ -3168,7 +3153,7 @@
         </div>
         <div id="analyticsRealContent">
         <div class="page-head" style="display:flex;justify-content:space-between;align-items:flex-end;">
-          <div><h1 id="pageTitle">Reports</h1><p id="pageSub">What needs your attention, most urgent first.</p></div>
+          <div><h1 id="pageTitle">Buyer analytics</h1><p id="pageSub">Sorted by what needs your attention first — not by category.</p></div>
           <div class="role-toggle-wrap" style="text-align:right;">
             <div style="font-size:15px;color:var(--ink);margin-bottom:4px;">Preview either side's metrics — independent of your account role above</div>
             <div class="role-toggle">
@@ -3181,8 +3166,8 @@
         <div class="layout">
           <div>
             <div class="spine-card">
-              <h2>Things to look at</h2>
-              <div class="sub">We check your orders every day and list what needs you, most urgent first.</div>
+              <h2>Health check</h2>
+              <div class="sub">Every metric below is calculated automatically from your orders and milestones.</div>
               <div class="spine" id="spineArea"></div>
             </div>
             <div id="cashConversionPanel"></div>
@@ -5216,8 +5201,8 @@ function toggleCreateMenu(e){
   // create them. Hide it entirely rather than showing a confusing "(as buyer)" workaround.
   document.getElementById('createMenuPoItem').classList.toggle('hidden', currentAppRole!=='buyer');
   document.getElementById('createMenuPasteItem').classList.toggle('hidden', currentAppRole!=='buyer');
-  document.getElementById('createMenuRfqLabel').textContent = currentAppRole==='buyer' ? '💬 Ask suppliers for prices' : '💬 Price requests from buyers';
-  document.getElementById('createMenuInviteLabel').textContent = currentAppRole==='buyer' ? '➕ Invite a supplier' : '➕ Invite a buyer';
+  document.getElementById('createMenuRfqLabel').textContent = currentAppRole==='buyer' ? 'Request a Quote (RFQ)' : 'View RFQs Received';
+  document.getElementById('createMenuInviteLabel').textContent = currentAppRole==='buyer' ? 'Invite a Supplier' : 'Invite a Buyer';
   document.getElementById('createMenuDropdown').classList.toggle('hidden');
 }
 function closeCreateMenu(){
@@ -5549,7 +5534,7 @@ let spineSentRequests = {}; // maps a spine action-id -> the supplierInbox id it
 let firstTimeSession = true; // a real backend would derive this from account age/activity
 let gateDismissed = {inventory:false, analytics:false};
 function maybeShowSetupGate(page){
-  return; // removed: an extra "set up?" screen before every optional page only slowed people down
+  return; // removed: an extra "set up?" screen in front of optional pages only slowed people down
   if(!firstTimeSession || gateDismissed[page]) return;
   const gate = document.getElementById('setupGate_'+page);
   const real = document.getElementById(page+'RealContent');
@@ -5603,7 +5588,7 @@ const PRIVILEGED_ROLES = ['Owner','General Manager'];
 // (e.g. "datacenter") aren't something to show someone making an access decision.
 const PAGE_DISPLAY_NAMES = {
   dashboard:'Dashboard', messages:'Messages', suppliers:'My Suppliers', orders:'Orders',
-  inventory:'Stock', invite:'Invite a Supplier', discover:'Discover', analytics:'Reports',
+  inventory:'Inventory', invite:'Invite a Supplier', discover:'Discover', analytics:'Analytics',
   datacenter:'Upload Data', settings:'Settings', taxforms:'BIR 2307 tracker', watchdog:"Owner's control", store:'Online store', cheques:'Cheques', routes:'Routes', prices:'Price changes', returns:'Returns & credits', books:'Sales & purchase books',
 };
 // Owner-defined roles, built around exactly what one person should do — e.g. Messages only, for
@@ -6217,7 +6202,7 @@ function renderWhoOwesMe(){
       <div style="display:flex;gap:6px;">
         ${g.pending > 0 ? `<button class="btn btn-primary" style="padding:7px 12px;font-size:14px;" onclick="openFirstPendingPaymentFor('${g.id}')">Confirm</button>` : ''}
         <button class="btn btn-outline" style="padding:7px 12px;font-size:14px;" onclick="openPaymentReminder('${g.id}')">Remind</button>
-        <button class="btn btn-outline" style="padding:7px 12px;font-size:14px;" onclick="openStatement('${g.id}')" title="Statement of account">📄 Statement</button>
+        <button class="btn btn-outline" style="padding:7px 12px;font-size:14px;" onclick="openStatement('${g.id}')" title="Statement of account">📄 SOA</button>
       </div>
       <div id="remindBox_${g.id}" style="width:100%;"></div>
     </div>`).join('')}
@@ -8429,7 +8414,7 @@ function renderStoreDashCard(){
   if(!el) return;
   const st = myBusiness ? (myBusiness.store || {}) : (window._demoStore || null);
   const live = st && st.enabled && (!myBusiness || myBusiness.store_slug);
-  el.innerHTML = `<div class="panel-card" style="margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;cursor:pointer;" onclick="storeTab = live ? 'posts' : 'setup'; navigate('store')">
+  el.innerHTML = `<div class="panel-card" style="margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;cursor:pointer;" onclick="storeTab = '${live ? 'posts' : 'setup'}'; navigate('store')">
     <div><div style="font-weight:800;font-size:16px;">🛍 ${live ? 'Your online store is open' : 'Get orders from Facebook'}</div>
     <div style="font-size:14px;opacity:.8;">${live ? 'Share your link on your Page, in Messenger and Viber.' : 'Your own order page in 2 minutes. Buyers order without messaging you.'}</div></div>
     <span class="lnk">${live ? 'Get a post →' : 'Open my store →'}</span></div>`;
@@ -12783,22 +12768,28 @@ function vcUse(){
   CPO.manual = false; CPO.viaOcr = false; CPO.viaVoice = true; CPO.step = 2; cpoRender();
 }
 
-/* ---- phones: label every cell of the stock tables so each row reads as a card ---- */
-function stLabelTables(){
-  ['inventoryTable', 'supplyTable'].forEach(id => {
-    const t = document.getElementById(id); if(!t) return;
-    const heads = [...t.querySelectorAll('thead th')].map(th => (th.childNodes[0] && th.childNodes[0].textContent || th.textContent).trim());
-    t.querySelectorAll('tbody tr').forEach(tr => { let i = 0; [...tr.children].forEach(td => { if(td.hasAttribute('colspan')){ i += Number(td.getAttribute('colspan')) || 1; return; } if(heads[i]) td.setAttribute('data-label', heads[i]); i++; }); });
-  });
+/* ---- Stock on phones: the edit / reorder / view forms open in a bottom sheet instead of inside the wide table ---- */
+function stkSheetSync(){
+  const old = document.getElementById('stkSheet'); if(old) old.remove();
+  if(!window.matchMedia('(max-width:760px)').matches) return;
+  const row = document.querySelector('#inventoryTable .inv-expand-row, #supplyTable .inv-expand-row');
+  if(!row) return;
+  const inner = row.querySelector('.inv-expand-inner'); if(!inner) return;
+  const isSupply = !!row.closest('#supplyTable');
+  const prev = row.previousElementSibling, nameEl = prev ? (prev.querySelector('.sku-name') || prev.querySelector('td')) : null;
+  const name = nameEl ? (nameEl.childNodes.length > 1 && !prev.querySelector('.sku-name') ? nameEl.childNodes[0].textContent : nameEl.textContent).replace(/⚠/g, '').trim() : '';
+  const mode = isSupply ? (typeof expandedSupplyMode !== 'undefined' ? expandedSupplyMode : '') : (typeof invExpandedMode !== 'undefined' ? invExpandedMode : '');
+  const title = {edit: 'Edit product', reorder: 'Reorder', view: 'Details'}[mode] || 'Product';
+  row.style.display = 'none';
+  const sh = document.createElement('div'); sh.id = 'stkSheet'; sh.className = 'stk-sheet-bg';
+  sh.innerHTML = `<div class="stk-sheet" role="dialog" aria-label="${title}"><div class="stk-sheet-h"><div><small>${title}</small><b>${escapeHtml(name)}</b></div><button class="stk-x" aria-label="Close">✕</button></div><div class="stk-sheet-body"></div></div>`;
+  sh.querySelector('.stk-sheet-body').appendChild(inner);
+  const close = () => { if(isSupply){ if(typeof toggleSupply === 'function' && expandedSupplyCode) toggleSupply(expandedSupplyCode, expandedSupplyMode); } else if(typeof invCancel === 'function') invCancel(); };
+  sh.querySelector('.stk-x').onclick = close;
+  sh.addEventListener('click', e => { if(e.target === sh) close(); });
+  document.body.appendChild(sh);
 }
-['renderInventoryTable', 'renderSupplyTable'].forEach(n => { const f = window[n]; if(typeof f === 'function') window[n] = function(){ const r = f.apply(this, arguments); try{ stLabelTables(); }catch(e){} return r; }; });
-
-/* ---- More menu: a two-word hint under each tile, so people know what's inside before tapping ---- */
-const MORE_HINTS = {inventory: 'how much you have', sales: 'your shop sales', growth: 'sign-ups', followups: 'leads, orders to confirm', collections: 'who owes you', store: 'your order link',
-  watchdog: 'staff overpaying', admin: 'owner only', routes: 'driver stops', cheques: 'to deposit', prices: 'new prices', returns: 'bad orders, credits', books: 'for your accountant',
-  taxforms: 'tax certificates', team: 'your people', analytics: 'what needs you', discover: 'find partners', settings: 'your details'};
-function addMoreHints(){ document.querySelectorAll('.more-sheet-item[data-page]').forEach(b => { if(b.querySelector('small')) return; const h = MORE_HINTS[b.dataset.page]; if(h){ const sm = document.createElement('small'); sm.textContent = h; b.appendChild(sm); } }); }
-document.addEventListener('DOMContentLoaded', addMoreHints); setTimeout(addMoreHints, 0);
+['renderInventoryTable', 'renderSupplyTable'].forEach(n => { const f = window[n]; if(typeof f === 'function') window[n] = function(){ const r = f.apply(this, arguments); try{ stkSheetSync(); }catch(e){ console.warn(e); } return r; }; });
 
 function renderSidebarForViewAsRole(){
   const allowed = computeAllowedPages(getEffectiveRoles());
@@ -13076,9 +13067,9 @@ inventoryData.forEach(item=>assignBarcodeIfMissing(item, '48'));
 const whLabel = {main:'Main — Marikina', cold:'Cold Storage — Cainta', branch2:'Branch 2 — Taytay'};
 let whIdCounter = 4;
 const statusMeta = {
-  critical:{cls:'pill-danger', label:'Order now', icon:'<path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>'},
+  critical:{cls:'pill-danger', label:'Reorder Now', icon:'<path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>'},
   warning:{cls:'pill-lowstock', label:'Getting Low', icon:'<path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>'},
-  healthy:{cls:'pill-ok', label:'Enough', icon:'<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>'},
+  healthy:{cls:'pill-ok', label:'Healthy', icon:'<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>'},
 };
 let invWarehouseFilter = 'all';
 let invShowWarehouseCol = true;
@@ -13803,7 +13794,7 @@ function openAddSupplyItem(){
       </select></div>
       <div class="expand-field"><label>On-hand quantity</label><input type="number" id="newSupplyOnHand" value="0"></div>
       <div class="expand-field"><label>Restock level</label><input type="number" id="newSupplyRestockLevel" value="10">
-        <div style="font-size:15px;color:var(--ink);opacity:.75;margin-top:2px;">Flags this as Tight once available stock falls to this or below.</div></div>
+        <div style="font-size:15px;color:var(--ink);opacity:.75;margin-top:2px;">Flagged when what's left to sell reaches this.</div></div>
       <div class="expand-field"><label>Barcode (optional)</label>
         <div style="display:flex;gap:6px;">
           <input type="text" id="newSupplyBarcode" placeholder="Scan or type" style="flex:1;">
@@ -13879,9 +13870,9 @@ function renderSupplyTable(){
   // Reuses the exact same background variables the Status pills use — not a hand-picked
   // approximation of them — so "Available" and "Status" always agree visually for the same item.
   const statusMeta2 = {
-    healthy:{cls:'pill-ok', label:'✅ Enough', tint:'var(--green-soft)'},
-    tight:{cls:'pill-lowstock', label:'⚠ Almost out', tint:'var(--lowstock-soft)'},
-    oversold:{cls:'pill-danger', label:'❗ Not enough', tint:'var(--danger-soft)'},
+    healthy:{cls:'pill-ok', label:'Healthy', tint:'var(--green-soft)'},
+    tight:{cls:'pill-lowstock', label:'Tight', tint:'var(--lowstock-soft)'},
+    oversold:{cls:'pill-danger', label:'Oversold', tint:'var(--danger-soft)'},
   };
   const totalCols = 7;
 
@@ -13900,7 +13891,7 @@ function renderSupplyTable(){
       <td class="inv-row-num">${item.committed}</td>
       <td><span style="display:inline-block;background:${sm.tint};color:#000000;font-weight:800;padding:4px 12px;border-radius:8px;font-size:16.5px;">${available}</span></td>
       <td><span class="status-pill-icon ${sm.cls}">${sm.label}</span></td>
-      <td><span class="row-action" onclick="toggleSupply('${item.code}','edit')">✏️ Update</span></td>
+      <td><span class="row-action" onclick="toggleSupply('${item.code}','edit')">Edit</span></td>
     </tr>`;
 
     let expandRow = '';
@@ -13917,9 +13908,9 @@ function renderSupplyTable(){
               <option value="cavite" ${item.location==='cavite'?'selected':''}>Stockyard — Cavite</option>
             </select></div>
             <div class="expand-field"><label>Current on-hand quantity</label><input type="number" id="supplyEditOnHand_${item.code}" value="${item.onHand}">
-              <div style="font-size:15px;line-height:1.5;color:var(--ink);margin-top:4px;">Set this to your true, current physical count — new deliveries arrived, or a count came out different. It sets the total directly; it doesn't add to anything.</div></div>
+              <div style="font-size:15px;line-height:1.5;color:var(--ink);margin-top:4px;">Your actual count right now. This replaces the total.</div></div>
             <div class="expand-field"><label>Restock level</label><input type="number" id="supplyEditRestockLevel_${item.code}" value="${item.restockLevel||0}">
-              <div style="font-size:15px;line-height:1.5;color:var(--ink);margin-top:4px;">Flags this as Tight once available stock (on hand minus committed) falls to this or below.</div></div>
+              <div style="font-size:15px;line-height:1.5;color:var(--ink);margin-top:4px;">Flagged when what's left to sell reaches this.</div></div>
             <div class="expand-field"><label>Reason for the quantity change (if any)</label><select id="supplyEditReason_${item.code}">${STOCK_ADJUSTMENT_REASONS.map(r=>`<option value="${r.code}">${r.label}</option>`).join('')}</select></div>
           </div>
           <div class="expand-actions">
@@ -13958,27 +13949,27 @@ function renderSupplyTable(){
 function renderSupplierInventoryDashboard(){
   document.getElementById('supplierInventoryView').innerHTML = `
     <div class="page-head" style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px;">
-      <div><h1 data-i18n="head_supply">Your stock</h1><p data-i18n="sub_supply">What you have, what's already promised to buyers, and what's left to sell.</p></div>
-      <button class="btn btn-outline" onclick="startSupplyStocktake()">📋 Count my stock</button>
+      <div><h1 data-i18n="head_supply">Supply &amp; Fulfillment</h1><p data-i18n="sub_supply">What you have on hand, what's already committed to buyers, what's still available to sell — and, same as the buyer side, your own restock level.</p></div>
+      <button class="btn btn-outline" onclick="startSupplyStocktake()">📋 Start Stocktake</button>
       <button class="btn btn-outline" onclick="scanToFindInventoryItem()">📷 Scan</button>
     </div>
     <div id="supplyStocktakeView" class="hidden"></div>
     <div id="supplyMainView">
     <div class="stat-row">
       <div class="stat-card neutral">
-        <div class="stat-body"><span class="stat-label">Products</span><div class="stat-num" id="supplyStatTotal">6</div></div>
+        <div class="stat-body"><span class="stat-label">Products Supplied</span><div class="stat-num" id="supplyStatTotal">6</div></div>
         <div class="stat-icon-panel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.5 7.3 12 2 3.5 7.3v9.4L12 22l8.5-5.3z"/><path d="M3.5 7.3 12 12l8.5-4.7"/><path d="M12 12v10"/></svg></div>
       </div>
       <div class="stat-card green">
-        <div class="stat-body"><span class="stat-label">✅ Enough</span><div class="stat-num" id="supplyStatHealthy">3</div></div>
+        <div class="stat-body"><span class="stat-label">Fully Stocked</span><div class="stat-num" id="supplyStatHealthy">3</div></div>
         <div class="stat-icon-panel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
       </div>
       <div class="stat-card amber">
-        <div class="stat-body"><span class="stat-label">⚠ Almost out</span><div class="stat-num" id="supplyStatTight">1</div></div>
+        <div class="stat-body"><span class="stat-label">Tight Capacity</span><div class="stat-num" id="supplyStatTight">1</div></div>
         <div class="stat-icon-panel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><line x1="12" y1="12" x2="12" y2="17"/><polyline points="9 14 12 17 15 14"/></svg></div>
       </div>
       <div class="stat-card red">
-        <div class="stat-body"><span class="stat-label">❗ Not enough for orders</span><div class="stat-num" id="supplyStatOversold">2</div></div>
+        <div class="stat-body"><span class="stat-label">Oversold — Can't Fulfill</span><div class="stat-num" id="supplyStatOversold">2</div></div>
         <div class="stat-icon-panel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg></div>
       </div>
     </div>
@@ -13990,16 +13981,16 @@ function renderSupplierInventoryDashboard(){
     </div>
     <div class="toolbar" style="justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
       <div class="chip-filter" id="supplyStatusChips">
-        <div class="chip active" onclick="setSupplyStatusFilter('all',this)">All</div>
-        <div class="chip" onclick="setSupplyStatusFilter('oversold',this)">❗ Not enough</div>
-        <div class="chip" onclick="setSupplyStatusFilter('tight',this)">⚠ Almost out</div>
-        <div class="chip" onclick="setSupplyStatusFilter('healthy',this)">✅ Enough</div>
+        <div class="chip active" onclick="setSupplyStatusFilter('all',this)">All statuses</div>
+        <div class="chip" onclick="setSupplyStatusFilter('oversold',this)">Oversold</div>
+        <div class="chip" onclick="setSupplyStatusFilter('tight',this)">Tight</div>
+        <div class="chip" onclick="setSupplyStatusFilter('healthy',this)">Healthy</div>
       </div>
       <button class="btn btn-primary" style="padding:8px 16px;font-size:15px;" onclick="openAddSupplyItem()">+ Add Product</button>
     </div>
     <div id="addSupplyItemForm"></div>
     <table id="supplyTable">
-      <thead><tr><th>Product</th><th>Location</th><th>You have</th><th>Promised to buyers</th><th>Left to sell</th><th>Status</th><th>Edit</th></tr></thead>
+      <thead><tr><th>Product</th><th>Location</th><th>On Hand</th><th>Committed</th><th>Available</th><th>Status</th><th>Edit</th></tr></thead>
       <tbody id="supplyTableBody"></tbody>
     </table>
     <div id="myCatalogPanel" style="margin-bottom:24px;padding:18px;background:var(--surface);border:1px solid var(--border);border-radius:14px;">
@@ -14122,7 +14113,7 @@ function renderInventoryTable(){
       `<th style="width:22%;">Stock</th><th style="width:14%;">Status</th>` +
       (invShowWarehouseCol ? `<th>Warehouse${hideBtn('Warehouse','warehouse')}</th>` : '') +
       (invShowSupplierCol ? `<th>Supplier${hideBtn('Supplier','supplier')}</th>` : '') +
-      `<th>Next step</th><th>Update count</th>`;
+      `<th>Action</th><th>Adjust Stock</th>`;
   }
   renderInvHiddenColumnsBar();
   const totalCols = 5 + (invShowWarehouseCol?1:0) + (invShowSupplierCol?1:0);
@@ -14145,9 +14136,9 @@ function renderInventoryTable(){
     } else if(item.status==='healthy'){
       actionCell = `<span class="row-action" onclick="invToggle('${item.code}','view')">View</span>`;
     } else {
-      actionCell = `<span class="row-action" onclick="invToggle('${item.code}','reorder')">🛒 Order more</span>`;
+      actionCell = `<span class="row-action" onclick="invToggle('${item.code}','reorder')">Draft Reorder</span>`;
     }
-    const editCell = `<span class="row-action" onclick="invToggle('${item.code}','edit')">✏️ Update</span>`;
+    const editCell = `<span class="row-action" onclick="invToggle('${item.code}','edit')">Edit</span>`;
 
     // Warehouse and Supplier are real columns now (toggleable table-wide via the checkboxes
     // above), not subtext squeezed under the product name. Batch tracking stays per-item, since
@@ -14229,15 +14220,15 @@ function renderInventoryTable(){
         expandRow = `<tr class="inv-expand-row"><td colspan="${totalCols}"><div class="inv-expand-inner">
           <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;padding:12px;background:var(--bg);border:1px solid var(--border);border-radius:10px;">
             <div class="switch ${ropOnEdit?'on':''}" onclick="toggleRopTracking('${item.code}')"><div class="knob"></div></div>
-            <div><div style="font-weight:700;font-size:15.5px;color:var(--ink);">Track restock alerts</div><div style="font-size:15px;color:var(--ink);">Turn this off for something you don't want flagged as Critical/Warning — a slow-moving item, or one you restock on your own schedule rather than by level. It shows as "Not Tracked" instead.</div></div>
+            <div><div style="font-weight:700;font-size:15.5px;color:var(--ink);">Track restock alerts</div><div style="font-size:15px;color:var(--ink);">Alert me when stock falls to the restock level.</div></div>
           </div>
           <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;padding:12px;background:var(--bg);border:1px solid var(--border);border-radius:10px;">
             <div class="switch ${maxOnEdit?'on':''}" onclick="toggleMaxLevelTracking('${item.code}')"><div class="knob"></div></div>
-            <div><div style="font-weight:700;font-size:15.5px;color:var(--ink);">Set a max capacity (optional)</div><div style="font-size:15px;color:var(--ink);">Turn this on if you know how much you're comfortable holding — it draws the bar above. If you're not sure, leave it off; the restock level alone is still enough to alert you.</div></div>
+            <div><div style="font-weight:700;font-size:15.5px;color:var(--ink);">Set a max capacity (optional)</div><div style="font-size:15px;color:var(--ink);">Show a fill bar against the most you want to hold.</div></div>
           </div>
           <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;padding:12px;background:var(--bg);border:1px solid var(--border);border-radius:10px;">
             <div class="switch ${batchOnEdit?'on':''}" onclick="toggleInvFieldVisibility('${item.code}','batchTrackingEnabled')"><div class="knob"></div></div>
-            <div><div style="font-weight:700;font-size:15.5px;color:var(--ink);">Track batches / lots (optional)</div><div style="font-size:15px;color:var(--ink);">For anything with expiry dates or lot numbers you need to keep separate. Leave off for products where one running total is enough.</div></div>
+            <div><div style="font-weight:700;font-size:15.5px;color:var(--ink);">Track batches / lots (optional)</div><div style="font-size:15px;color:var(--ink);">For items with expiry dates or lot numbers.</div></div>
           </div>
           ${batchOnEdit ? renderEditBatchSection(item) : ''}
           <div class="expand-grid">
@@ -17390,29 +17381,29 @@ function getBuyerNextAction(o){
     case 'confirmed':
     case 'preparing': return 'Waiting on supplier to ship';
     case 'shipped':
-    case 'in_customs': return o.deliveryConfirmation ? 'Nothing to do' : 'Tap "It arrived" when you get it';
+    case 'in_customs': return o.deliveryConfirmation ? 'Nothing to do' : 'Confirm delivery when it arrives';
     case 'delivered': return 'Nothing to do';
     case 'partially_delivered': return 'Nothing to do';
-    case 'invoiced': return (o.invoice && o.invoice.status!=='paid') ? 'Pay the bill' : 'Nothing to do';
+    case 'invoiced': return (o.invoice && o.invoice.status!=='paid') ? 'Pay invoice' : 'Nothing to do';
     case 'paid': return 'Nothing to do';
     case 'cancelled': return 'Nothing to do';
     default: return '—';
   }
 }
 function getSupplierNextAction(o){
-  if(pendingAmendment(o)) return "The buyer wants a change: reply";
-  if(o.rma && o.rma.status==='open') return "The buyer has a problem with it: reply";
+  if(pendingAmendment(o)) return "Respond to buyer's amendment request";
+  if(o.rma && o.rma.status==='open') return "Resolve buyer's return/dispute";
   if(poHasPaymentsAwaitingSupplier(o)) return "Confirm the buyer's payment";
   switch(o.status){
-    case 'sent': return 'Confirm this order';
+    case 'sent': return 'Confirm or counter this PO';
     case 'countered': return 'Waiting on buyer';
     case 'quote': return 'Waiting for their OK';
-    case 'confirmed': return 'Start preparing it';
-    case 'preparing': return 'Tap "On the way" when it leaves';
+    case 'confirmed': return 'Start preparing order';
+    case 'preparing': return 'Mark as shipped when ready';
     case 'shipped':
     case 'in_customs': return 'Nothing to do';
-    case 'delivered': return 'Send the bill';
-    case 'partially_delivered': return 'Sort out what was short, then send the bill';
+    case 'delivered': return 'Send invoice';
+    case 'partially_delivered': return 'Resolve the shortfall, then send invoice';
     case 'invoiced': return (o.invoice && o.invoice.status!=='paid') ? 'Waiting on payment' : 'Nothing to do';
     case 'paid': return 'Nothing to do';
     case 'cancelled': return 'Nothing to do';
@@ -18283,8 +18274,8 @@ function renderBuyerPoDetail(o){
         </div>
         <div style="font-size:16px;color:var(--ink);background:var(--surface);border-radius:8px;padding:10px 14px;">"${o.counter.note}"</div>
       </div>
-        <button class="btn btn-primary" onclick="event.stopPropagation(); acceptCounter('${o.id}', 'buyer')">✓ Accept the new price</button>
-        <button class="btn btn-outline" onclick="event.stopPropagation(); openNegotiateForm('${o.id}', 'buyer')">💬 Suggest a different price</button>
+        <button class="btn btn-primary" onclick="event.stopPropagation(); acceptCounter('${o.id}', 'buyer')">Accept Counter-Offer →</button>
+        <button class="btn btn-outline" onclick="event.stopPropagation(); openNegotiateForm('${o.id}', 'buyer')">Propose Different Price</button>
         <button class="btn btn-outline" style="color:var(--danger);border-color:var(--danger);" onclick="event.stopPropagation(); rejectCounter('${o.id}', 'buyer')">Reject</button>
         <div id="negotiateForm_${o.id}"></div>`;
     }
@@ -21449,7 +21440,7 @@ function renderSupplierPoDetail(o){
     actionsHtml = `<button class="btn btn-primary" onclick="event.stopPropagation(); confirmSupplierPO('${o.id}')">✓ Confirm order</button>
       <button class="btn btn-outline" onclick="event.stopPropagation(); openPartialConfirmForm('${o.id}')">I can only send part of it</button>
       <button class="btn btn-outline" onclick="event.stopPropagation(); openDepositRequestForm('${o.id}')">Confirm, but ask for a deposit</button>
-      <button class="btn btn-outline" onclick="event.stopPropagation(); openCounterForm('${o.id}')">💬 Suggest a different price</button>
+      <button class="btn btn-outline" onclick="event.stopPropagation(); openCounterForm('${o.id}')">Counter-Offer</button>
       <div id="partialConfirmForm_${o.id}"></div>
       <div id="depositRequestForm_${o.id}"></div>
       <div id="counterForm_${o.id}"></div>
@@ -21468,7 +21459,7 @@ function renderSupplierPoDetail(o){
         <div style="font-size:16px;color:var(--ink);background:var(--surface);border-radius:8px;padding:10px 14px;">"${o.counter.note}"</div>
       </div>
         <button class="btn btn-primary" onclick="event.stopPropagation(); acceptCounter('${o.id}', 'supplier')">Accept →</button>
-        <button class="btn btn-outline" onclick="event.stopPropagation(); openNegotiateForm('${o.id}', 'supplier')">💬 Suggest another price</button>
+        <button class="btn btn-outline" onclick="event.stopPropagation(); openNegotiateForm('${o.id}', 'supplier')">Counter Again</button>
         <button class="btn btn-outline" style="color:var(--danger);border-color:var(--danger);" onclick="event.stopPropagation(); rejectCounter('${o.id}', 'supplier')">Reject</button>
         <div id="negotiateForm_${o.id}"></div>`;
     } else {
@@ -22607,7 +22598,7 @@ const supplierBuyers = [
 function renderSpine(data){
   const groups = {critical:[], warning:[], healthy:[]};
   data.forEach(d=>groups[d.c].push(d));
-  const labelMap = {critical:'Fix now', warning:'Keep an eye on', healthy:'Good to know'};
+  const labelMap = {critical:'Critical', warning:'Warning', healthy:'Healthy'};
   let html = '';
   ['critical','warning','healthy'].forEach(k=>{
     if(!groups[k].length) return;
@@ -22637,7 +22628,7 @@ function renderRealSpineInsights(role){
   const sevToCluster = {High:'critical', Medium:'warning', Low:'healthy'};
   const groups = {critical:[], warning:[], healthy:[]};
   items.forEach(i => groups[sevToCluster[i.severity]].push(i));
-  const labelMap = {critical:'Fix now', warning:'Keep an eye on', healthy:'Good to know'};
+  const labelMap = {critical:'Critical', warning:'Warning', healthy:'Healthy'};
   let html = '';
   ['critical','warning','healthy'].forEach(k => {
     if(!groups[k].length) return;
@@ -22648,7 +22639,7 @@ function renderRealSpineInsights(role){
       const finText = ins.financialImpact ? (ins.financialImpact.status==='ok' ? ` · ${fmtPHP(ins.financialImpact.value)} exposure` : '') : '';
       html += `<div class="spine-item ${k}" style="padding:16px;">
         <div class="title" style="font-size:17px;font-weight:700;line-height:1.4;">${ins.headline}</div>
-        <div class="meta" style="font-size:15.5px;margin:4px 0 12px;">${ins.quantifiedImpact.status==='ok' ? impactText : ''}${finText}${/review/i.test(String(ins.confidence)) ? ' · ⚠ double-check this' : ''}</div>
+        <div class="meta" style="font-size:15.5px;margin:4px 0 12px;">${impactText}${finText} · How sure: ${ins.confidence}</div>
         <div class="action">${renderInsightInlineActionHtml(ins, 'spineArea', idx)}</div>
       </div>`;
     });
@@ -24022,13 +24013,13 @@ function setAnalyticsRole(role, btn){
   document.querySelectorAll('#page-analytics .role-toggle button').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
   if(role==='buyer'){
-    document.getElementById('pageTitle').textContent = 'Reports';
-    document.getElementById("pageSub").textContent = "What needs your attention, most urgent first.";
+    document.getElementById('pageTitle').textContent = 'Buyer analytics';
+    document.getElementById('pageSub').textContent = "Sorted by what needs your attention first — not by category.";
     renderRealSpineInsights('buyer'); renderKPIs(); renderScores(buildLiveScorecardList(false), 'Supplier scorecards');
     document.getElementById('skuFilterSelect').classList.remove('hidden');
   } else {
-    document.getElementById('pageTitle').textContent = 'Reports';
-    document.getElementById('pageSub').textContent = "How your selling is going, and what needs you.";
+    document.getElementById('pageTitle').textContent = 'Supplier analytics';
+    document.getElementById('pageSub').textContent = "How you're performing with the buyers who trust you.";
     renderRealSpineInsights('supplier'); renderKPIs(); renderScores(buildLiveScorecardList(true), 'Buyer relationships');
     document.getElementById('skuFilterSelect').classList.add('hidden');
   }
@@ -25435,7 +25426,7 @@ function computeStockoutRiskInsights(){
     if(dos.status !== 'oversold') return;
     insights.push(createInsight({
       type: INSIGHT_TYPES.STOCKOUT_RISK, severity:'High',
-      headline: `${item.name}: you promised buyers more than you have`,
+      headline: `${item.name} is already committed beyond what you have on hand`,
       explanation: dos.reason,
       quantifiedImpact: {status:'ok', value: dos.shortfall, unit:'units short'},
       recommendation: `Expedite restocking ${item.name}, or contact affected buyers about the shortfall.`,
@@ -25459,7 +25450,7 @@ function computeExcessInsights(){
     const pctOver = Math.round((over/maxLevel)*100);
     insights.push(createInsight({
       type: INSIGHT_TYPES.EXCESS_STOCK, severity: pctOver>=50?'Medium':'Low',
-      headline: `${item.name}: more stock than the limit you set`,
+      headline: `${item.name} is over the max level you set`,
       explanation: `You set a max of ${maxLevel}; you're currently holding ${item.onHand} — ${over} more than that (${pctOver}% over).`,
       quantifiedImpact: {status:'ok', value: over, unit:'units over your own set maximum'},
       recommendation: `Hold off reordering ${item.name} until stock comes back under ${maxLevel}.`,
@@ -25491,7 +25482,7 @@ function computePriceCreepInsights(){
     const supplier = getSupplierRecordById(first.supplierId);
     insights.push(createInsight({
       type: INSIGHT_TYPES.PRICE_CREEP, severity: pctChange>=10?'High':pctChange>=5?'Medium':'Low',
-      headline: `${first.product} costs ${pctChange}% more now at ${supplier?supplier.name:first.supplierId}`,
+      headline: `${first.product} price has risen ${pctChange}% from ${supplier?supplier.name:first.supplierId}`,
       explanation: `${first.po} (${first.date}) was ${fmtPHP(first.price)}; ${last.po} (${last.date}) was ${fmtPHP(last.price)} — a rise of ${fmtPHP(last.price-first.price)} per unit.`,
       quantifiedImpact: {status:'ok', value: last.price-first.price, unit:'PHP per unit increase'},
       recommendation: `Ask ${supplier?supplier.name:'the supplier'} about the increase, or compare against other suppliers before your next order.`,
@@ -25551,7 +25542,7 @@ function computeSingleSourceRiskInsights(){
     if(!risk.isSingleSource) return;
     insights.push(createInsight({
       type: INSIGHT_TYPES.SINGLE_SOURCE_RISK, severity: sku.criticalityTier===1?'High':'Medium',
-      headline: `${sku.canonicalName}: you only buy it from one supplier`,
+      headline: `${sku.canonicalName} has only one supplier and no backup`,
       explanation: `Marked ${sku.criticalityTier===1?'business-critical':'important'} (${sku.criticalityReason||'no reason on file'}), but only one supplier is currently linked to it.`,
       quantifiedImpact: {status:'not_applicable', reason:"Single-source risk is a structural exposure, not a number — it only becomes a real impact if that one supplier fails."},
       recommendation: `Find and qualify a backup supplier for ${sku.canonicalName}.`,
@@ -25695,7 +25686,7 @@ function computeSupplierDeteriorationInsights(){
     insights.push(createInsight({
       type: INSIGHT_TYPES.SUPPLIER_DETERIORATION,
       severity: (priorRate-recentRate)>=0.4 ? 'High' : 'Medium',
-      headline: `${supplier?supplier.name:supplierId} is delivering late more often`,
+      headline: `${supplier?supplier.name:supplierId}'s on-time rate has dropped recently`,
       explanation: `Their earlier ${prior.length} deliveries were on time ${Math.round(priorRate*100)}% of the time; their most recent ${recent.length} are only ${Math.round(recentRate*100)}%.`,
       quantifiedImpact: {status:'ok', value: Math.round((priorRate-recentRate)*100), unit:'percentage-point drop in on-time rate'},
       recommendation: `Ask ${supplier?supplier.name:'them'} what changed, or start qualifying a backup option.`,
@@ -25728,7 +25719,7 @@ function computeWorkingCapitalConcentrationInsights(){
   insights.push(createInsight({
     type: INSIGHT_TYPES.WORKING_CAPITAL_CONCENTRATION,
     severity: pct>=0.35 ? 'High' : 'Medium',
-    headline: `${Math.round(pct*100)}% of your stock hasn't sold in 30 days`,
+    headline: `${Math.round(pct*100)}% of your priced inventory value hasn't moved in over 30 days`,
     explanation: `${fmtPHP(roundPeso(slowMovingValue))} of ${fmtPHP(roundPeso(totalValue))} in valued stock sits in items (${slowItems.map(v=>v.item.name).join(', ')}) that haven't been counted or moved recently.`,
     quantifiedImpact: {status:'ok', value: roundPeso(slowMovingValue), unit:'PHP tied up in slow-moving stock'},
     recommendation: `Review these items — money sitting in slow stock is money you can't use anywhere else in the business.`,
@@ -25750,7 +25741,7 @@ function computePurchaseConsolidationInsights(){
     const totalValue = pos.reduce((s,po)=>s+poTotal(po), 0);
     insights.push(createInsight({
       type: INSIGHT_TYPES.PURCHASE_CONSOLIDATION, severity:'Low',
-      headline: `Combine ${pos.length} orders to ${supplier?supplier.name:supplierId} into one delivery`,
+      headline: `${pos.length} upcoming orders to ${supplier?supplier.name:supplierId} could be combined into one`,
       explanation: `${pos.map(po=>po.poNumber).join(' and ')} are both still ${pos[0].status==='draft'?'drafts':'pending'} and headed to the same supplier — combining them could save on delivery costs and paperwork.`,
       quantifiedImpact: {status:'ok', value: roundPeso(totalValue), unit:'PHP across the orders that could combine'},
       recommendation: `Review ${pos.map(po=>po.poNumber).join(' and ')} together before sending them.`,
@@ -25954,7 +25945,7 @@ function renderInsightInlineActionHtml(ins, surfaceId, idx){
   } else if(d && d.kind === 'findBackup'){
     primaryBtn = `<span class="row-action" style="font-size:15.5px;" onclick="showBackupPickerInline('${surfaceId}', ${idx})">See backup supplier options →</span><div id="backupPicker_${surfaceId}_${idx}" style="width:100%;"></div>`;
   }
-  const dismissBtn = (d && d.kind==='priceConflict') ? '' : `<button class="btn btn-outline" style="padding:10px 20px;font-size:15.5px;" onclick="dismissInsightBySurface('${surfaceId}', ${idx})">✓ Done</button>`;
+  const dismissBtn = (d && d.kind==='priceConflict') ? '' : `<button class="btn btn-outline" style="padding:10px 20px;font-size:15.5px;" onclick="dismissInsightBySurface('${surfaceId}', ${idx})">Mark resolved</button>`;
   const messageBtn = renderInsightMessageButtonHtml(ins, surfaceId, idx);
   return `<div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center;">${primaryBtn}${dismissBtn}${messageBtn}</div>`;
 }
@@ -28064,32 +28055,32 @@ function toggleReconcileMode(){
 ============================================================================ */
 const TRANSLATIONS = {
   EN: {
-    nav_home:'Home', nav_messages:'Messages', nav_orders:'Orders', nav_inventory:'Stock',
-    nav_discover:'Discover', nav_analytics:'Reports', nav_datacenter:'Upload Data', nav_settings:'Settings',
+    nav_home:'Home', nav_messages:'Messages', nav_orders:'Orders', nav_inventory:'Inventory',
+    nav_discover:'Discover', nav_analytics:'Analytics', nav_datacenter:'Upload Data', nav_settings:'Settings',
     nav_suppliers:'Suppliers', nav_buyers:'Buyers', nav_invite:'Invite a Supplier', nav_invite_buyer:'Invite a Buyer',
-    head_messages:'Messages', head_inventory:'Your stock', head_discover:'Discover', head_datacenter:'Upload Data',
+    head_messages:'Messages', head_inventory:'Inventory', head_discover:'Discover', head_datacenter:'Upload Data',
     head_settings:'Settings', head_status:'System Status', head_suppliers:'Suppliers', head_orders:'Orders',
     dash_greeting_buyer:'Good morning, Dela Cruz Hardware', dash_greeting_sup:'Good morning, Metro Steel Co.', dash_sub:"Here's what needs your attention today.",
     head_aging_buyer:'What you owe', sub_aging_buyer:"Each supplier, how much, and how late. Oldest first.",
     head_aging_sup:'Who owes you', sub_aging_sup:"Each buyer, how much, and how late. Oldest first.",
     head_team:'Team', sub_team:"Just your own people. Nothing here is visible to your suppliers or buyers.",
     head_sales:'Sales', sub_sales:"What you sell to your own customers — separate from what you buy from suppliers. Recording a sale pulls the stock straight out of Inventory.",
-    head_supply:'Your stock', sub_supply:"What you have, what's already promised to buyers, and what's left to sell.",
+    head_supply:'Supply & Fulfillment', sub_supply:"What you have on hand, what's already committed to buyers, what's still available to sell — and, same as the buyer side, your own restock level.",
     btn_save:'Save', btn_cancel:'Cancel', btn_edit:'Edit', btn_delete:'Remove', btn_confirm:'Confirm', btn_send:'Send', btn_close:'Close',
     btn_add:'Add', btn_view:'View', btn_download:'Download', btn_undo:'Undo',
   },
   FIL: {
-    nav_home:'Home', nav_messages:'Mga Mensahe', nav_orders:'Mga Order', nav_inventory:'Stock',
-    nav_discover:'Tuklasin', nav_analytics:'Reports', nav_datacenter:'Mag-upload ng Data', nav_settings:'Settings',
+    nav_home:'Home', nav_messages:'Mga Mensahe', nav_orders:'Mga Order', nav_inventory:'Imbentaryo',
+    nav_discover:'Tuklasin', nav_analytics:'Analytics', nav_datacenter:'Mag-upload ng Data', nav_settings:'Settings',
     nav_suppliers:'Mga Supplier', nav_buyers:'Mga Buyer', nav_invite:'Mag-imbita ng Supplier', nav_invite_buyer:'Mag-imbita ng Buyer',
-    head_messages:'Mga Mensahe', head_inventory:'Ang stock mo', head_discover:'Tuklasin', head_datacenter:'Mag-upload ng Data',
+    head_messages:'Mga Mensahe', head_inventory:'Imbentaryo', head_discover:'Tuklasin', head_datacenter:'Mag-upload ng Data',
     head_settings:'Settings', head_status:'Status ng Sistema', head_suppliers:'Mga Supplier Ko', head_orders:'Mga Order',
     dash_greeting_buyer:'Magandang umaga, Dela Cruz Hardware', dash_greeting_sup:'Magandang umaga, Metro Steel Co.', dash_sub:"Ito ang kailangan mong asikasuhin ngayon.",
     head_aging_buyer:'Aging Report', sub_aging_buyer:"Ang utang mo sa bawat supplier, ayon sa kung gaano na kaovertime — kasama ang credit terms na napagkasunduan niyo.",
     head_aging_sup:'Aging Report', sub_aging_sup:"Ang utang sa iyo ng bawat buyer, ayon sa kung gaano na kaovertime — kasama ang credit terms na napagkasunduan niyo.",
     head_team:'Team', sub_team:"Para lang sa sarili mong team. Hindi ito nakikita ng mga supplier o buyer mo.",
     head_sales:'Benta', sub_sales:"Ang ibinebenta mo sa sarili mong mga customer — hiwalay sa binibili mo mula sa mga supplier. Ang pag-record ng benta ay direktang magbabawas sa Imbentaryo.",
-    head_supply:'Ang stock mo', sub_supply:"Ang meron ka, ang naipangako na sa mga buyer, at ang natitirang pwedeng ibenta.",
+    head_supply:'Supply at Katuparan', sub_supply:"Ang meron ka ngayon, ang nakatakda na sa mga buyer, at ang available pa ibenta — pati ang sarili mong restock level.",
     btn_save:'I-save', btn_cancel:'Kanselahin', btn_edit:'I-edit', btn_delete:'Alisin', btn_confirm:'Kumpirmahin', btn_send:'Ipadala', btn_close:'Isara',
     btn_add:'Magdagdag', btn_view:'Tingnan', btn_download:'I-download', btn_undo:'I-undo',
   },
