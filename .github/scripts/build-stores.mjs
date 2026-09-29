@@ -35,7 +35,7 @@ for (const s of stores) {
 <meta property="og:image" content="${SITE}icon-512.png">
 <meta name="twitter:card" content="summary">
 <meta name="theme-color" content="#1B6B40">
-<link rel="icon" href="../../icon-512.png">
+<link rel="icon" type="image/png" href="../../favicon-32.png?v=2">
 <link rel="preconnect" href="https://ctryvcloavfpecbrbzxy.supabase.co">
 </head><body>
 <div id="store-root"><div style="max-width:640px;margin:0 auto;padding:24px 16px;font-family:system-ui,sans-serif;"><h1 style="font-size:21px;">${esc(s.name)}</h1><p>${esc(s.headline || '')}</p><p>Loading the store…</p></div></div>

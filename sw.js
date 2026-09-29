@@ -19,8 +19,8 @@ self.addEventListener('push', (event) => {
   const title = payload.title || 'Nifti';
   const options = {
     body: payload.body || '',
-    icon: 'icon-512.png',
-    badge: 'icon-512.png',
+    icon: 'icon-192.png',
+    badge: 'favicon-48.png',
     data: { url: payload.url || './' },
   };
   event.waitUntil(self.registration.showNotification(title, options));
