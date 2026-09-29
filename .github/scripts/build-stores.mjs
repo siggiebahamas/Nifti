@@ -8,7 +8,7 @@ import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
 
 const API = 'https://ctryvcloavfpecbrbzxy.supabase.co/rest/v1/rpc/list_public_stores';
 const KEY = 'sb_publishable_oWW-IMSOeNNFiQDjUnpWdQ_hlezb7wS';
-const SITE = 'https://siggiebahamas.github.io/SadieCutie/';
+const SITE = 'https://siggiebahamas.github.io/Nifti/';
 const esc = s => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
 let stores = [];

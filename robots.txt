@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://siggiebahamas.github.io/SadieCutie/sitemap.xml
+Sitemap: https://siggiebahamas.github.io/Nifti/sitemap.xml
