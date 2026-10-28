@@ -1307,7 +1307,7 @@
   .cpo-grid{display:grid;grid-template-columns:minmax(0,1fr) 72px 88px 32px;gap:6px;align-items:center;}
   .cpo-grid select, .cpo-grid input{width:100%;box-sizing:border-box;padding:8px;border:1.5px solid var(--border);border-radius:9px;font-size:14.5px;background:var(--surface);color:var(--ink);min-width:0;}
   @media (max-width:560px){ .cpo-grid{grid-template-columns:1fr 1fr 32px;} .cpo-grid select{grid-column:1 / -1;} }
-  .cpo-tag{font-size:12px;font-weight:700;margin-top:5px;opacity:.8;} .c-ok .cpo-tag, .c-saved .cpo-tag{color:var(--green);} .c-check .cpo-tag{color:#8A5B00;} .c-none .cpo-tag{color:var(--danger);}
+  .cpo-tag{font-size:12px;font-weight:700;margin-top:5px;opacity:.8;} .c-ok .cpo-tag, .c-saved .cpo-tag, .c-typed .cpo-tag{color:var(--green);} .c-check .cpo-tag{color:#8A5B00;} .c-none .cpo-tag{color:var(--danger);}
   .cpo-total{font-size:15px;text-align:right;margin:8px 0;}
   .so-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:14px 0;font-size:14px;} @media (max-width:560px){ .so-grid{grid-template-columns:1fr 1fr;} }
   .so-sign{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px;font-size:12.5px;} .so-sign div{border-top:1px solid #999;padding-top:4px;}
@@ -2271,6 +2271,91 @@
 #view-app .lg-tbl th:nth-child(5){width:130px !important;} #view-app .lg-tbl td.lg-n{white-space:normal !important;}}
 .need-text{border-color:var(--danger) !important;box-shadow:0 0 0 3px rgba(180,65,43,.18) !important;animation:needShake .3s ease;}
 @keyframes needShake{0%,100%{transform:translateX(0);}25%{transform:translateX(-4px);}75%{transform:translateX(4px);}}
+
+  /* ===== Day one: opening balances, first-order guide, scan to pay, weekly recap, Google ===== */
+  .ob-rows{display:grid;gap:12px;margin:12px 0 6px;}
+  .ob-row{border:1px solid var(--border);border-radius:14px;padding:12px 14px;background:var(--surface);}
+  .ob-row .field{margin-bottom:10px;} .ob-row label small{font-weight:500;opacity:.65;}
+  .ob-row-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;} .ob-row-h b{font-size:14px;}
+  .ob-peso{display:flex;align-items:center;border:1px solid var(--border);border-radius:9px;background:var(--surface);overflow:hidden;}
+  .ob-peso span{padding:0 4px 0 12px;font-weight:700;color:var(--muted);} .ob-peso input{border:none !important;box-shadow:none !important;padding-left:2px !important;font-variant-numeric:tabular-nums;font-weight:700;}
+  .ob-due{flex-wrap:wrap;} .ob-due button{font-size:13px !important;}
+  .ob-date{display:flex;align-items:center;gap:10px;margin-top:8px;} .ob-date span{font-size:13.5px;color:var(--muted);white-space:nowrap;} .ob-date input{max-width:200px;}
+  .ob-due-note{font-size:13px;color:var(--muted);margin-top:6px;}
+  .ob-more{margin-top:2px;} .ob-more summary{cursor:pointer;font-size:13.5px;color:var(--green);font-weight:600;} .ob-more input{margin-top:8px;width:100%;box-sizing:border-box;}
+  .ob-add{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:4px 0 8px;}
+  .ob-total{font-size:15px;margin:6px 0 10px;text-align:right;} .ob-total b{font-variant-numeric:tabular-nums;}
+  .ob-check{width:48px;height:48px;border-radius:50%;background:#DDEFE3;color:var(--green);display:grid;place-items:center;font-size:24px;font-weight:800;margin:0 auto;}
+  .ob-done-list{border:1px solid var(--border);border-radius:12px;margin:12px 0;overflow:hidden;}
+  .ob-done-r{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:12px;padding:10px 14px;border-bottom:1px solid var(--border);}
+  .ob-done-r:last-child{border-bottom:none;} .ob-done-r b{display:block;font-size:14.5px;} .ob-done-r small{font-size:12.5px;color:var(--muted);}
+  .ob-cta{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:12px 16px 4px;padding:12px 14px;border-radius:12px;background:#F4F8F2;border:1px dashed #BFD8C7;}
+  .ob-cta b{display:block;font-size:14px;color:var(--ink);} .ob-cta span{display:block;font-size:12.5px;color:var(--muted);margin-top:1px;} .ob-cta .btn{padding:8px 14px !important;font-size:13.5px !important;white-space:nowrap;}
+  .ob-addlink{margin-top:10px;font-size:13.5px;}
+
+  .fg-card{padding:18px 20px !important;margin-bottom:16px !important;border-color:#CFE3D6 !important;box-shadow:0 10px 30px -22px rgba(31,107,69,.45);}
+  .fg-h{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
+  .fg-k{font-size:11px;font-weight:800;letter-spacing:.1em;color:var(--green);margin-bottom:3px;}
+  .fg-h b{display:block;font-size:17px;color:var(--ink);} .fg-h span:not(.row-action){display:block;font-size:13.5px;color:var(--muted);margin-top:2px;}
+  .fg-bar{height:5px;background:#EEEAE0;border-radius:3px;margin:12px 0 6px;overflow:hidden;} .fg-bar i{display:block;height:100%;background:var(--green);border-radius:3px;transition:width .3s;}
+  .fg-steps{display:grid;}
+  .fg-step{display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);}
+  .fg-step:last-child{border-bottom:none;}
+  .fg-n{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--border);display:grid;place-items:center;font-size:13px;font-weight:700;color:var(--muted);background:var(--surface);}
+  .fg-step.done .fg-n{background:var(--green);border-color:var(--green);color:#fff;}
+  .fg-step.active .fg-n{border-color:var(--green);color:var(--green);box-shadow:0 0 0 3px rgba(31,107,69,.14);}
+  .fg-t b{display:block;font-size:14.5px;color:var(--ink);} .fg-t small{display:block;font-size:12.5px;color:var(--muted);margin-top:1px;}
+  .fg-step.done .fg-t b{color:var(--muted);font-weight:600;}
+  .fg-step .btn{padding:8px 14px !important;font-size:13.5px !important;white-space:nowrap;}
+  .fg-foot{margin-top:10px;padding-top:10px;border-top:1px dashed var(--border);font-size:13.5px;color:var(--muted);}
+  .fg-win{display:flex;gap:14px;align-items:center;} .fg-win .ob-check{margin:0;flex-shrink:0;}
+  .fg-win b{display:block;font-size:16px;color:var(--ink);} .fg-win span{display:block;font-size:13.5px;color:var(--muted);}
+  .fg-next{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px;} .fg-next .btn{padding:8px 14px !important;font-size:13.5px !important;}
+  .fg-pick{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;margin:12px 0;max-height:260px;overflow:auto;}
+  .fg-pick button{appearance:none;text-align:left;border:1px solid var(--border);background:var(--surface);border-radius:10px;padding:10px 12px;cursor:pointer;}
+  .fg-pick button:hover{border-color:var(--green);} .fg-pick b{display:block;font-size:14px;color:var(--ink);} .fg-pick small{display:block;font-size:12px;color:var(--muted);}
+  .fg-banner{background:#F4F8F2;border:1px solid #CFE3D6;color:var(--ink);border-radius:10px;padding:9px 12px;font-size:13.5px;margin-bottom:10px;}
+
+  .stp{border:1px solid var(--border, #E4DFD3);border-radius:16px;padding:16px;background:#fff;text-align:left;}
+  .stp-h{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:10px;}
+  .stp-k{font-size:11px;font-weight:800;letter-spacing:.1em;color:#1F6B45;} .stp-h b{font-size:17px;}
+  .stp-amt{text-align:right;} .stp-amt small{display:block;font-size:12px;opacity:.7;} .stp-amt b{display:block;font-size:22px;font-variant-numeric:tabular-nums;color:#15201A;}
+  .stp-amt .sl-link{font-size:12.5px;padding:0;}
+  .stp-pend{background:#FFF6E0;border-radius:10px;padding:8px 10px;font-size:13.5px;margin-bottom:10px;}
+  .stp-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;}
+  .stp-tabs button{appearance:none;border:1px solid #E4DFD3;background:#fff;border-radius:999px;padding:6px 12px;font-size:13px;font-weight:600;cursor:pointer;}
+  .stp-tabs button.on{border-color:#1F6B45;background:#EEF6F1;color:#1F6B45;}
+  .stp-body{display:grid;grid-template-columns:200px minmax(0,1fr);gap:16px;align-items:center;} .stp-body.noqr{grid-template-columns:1fr;}
+  .stp-qr{text-align:center;} .stp-qr img{width:200px;height:200px;object-fit:contain;background:#fff;border:1px solid #EEE9DD;border-radius:12px;padding:6px;box-sizing:border-box;display:block;}
+  .stp-qr small{display:block;font-size:11.5px;opacity:.7;margin-top:6px;line-height:1.35;}
+  .stp-info{display:grid;gap:10px;}
+  .stp-row small{display:block;font-size:12px;opacity:.7;} .stp-row b{font-size:16px;} .stp-row .sl-link{font-size:13px;margin-left:8px;padding:0;}
+  .stp-note{font-size:13px;opacity:.8;}
+  .stp-warn{background:#FFF6E0;border:1px solid #F2D58A;border-radius:10px;padding:8px 10px;font-size:13px;margin-top:10px;}
+  .stp-big{width:100%;margin-top:12px;padding:12px !important;font-size:15.5px !important;}
+  .stp-form{margin-top:12px;border-top:1px solid #EEE9DD;padding-top:12px;}
+  .stp-ok{margin-top:12px;background:#E6F2EA;border-radius:10px;padding:10px 12px;font-size:14px;}
+  .stp-foot{font-size:12px;opacity:.65;margin-top:10px;}
+  .stp-wrap{padding:0 !important;overflow:hidden;} .stp-wrap .stp{border:none;}
+  .stmt-stp{max-width:820px;margin:0 auto 16px;} .stmt-stp-note{font-size:12.5px;font-weight:700;color:var(--muted);margin:0 0 6px 4px;}
+  .stp-set{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;background:#F4F8F2;border:1px solid #CFE3D6;border-radius:12px;padding:12px 14px;margin:12px 0;}
+  .stp-set b{display:block;} .stp-set span{display:block;font-size:13.5px;color:var(--muted);}
+  @media (max-width:560px){ .stp-body{grid-template-columns:1fr;} .stp-qr img{margin:0 auto;width:220px;height:220px;} .stp-h{flex-direction:column;} .stp-amt{text-align:left;} }
+  @media print{ .stmt-stp{display:none;} }
+
+  .wk-card{margin-bottom:16px;}
+  .wk-range{font-size:12.5px;color:var(--muted);margin-left:8px;font-weight:500;}
+  .wk-tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--border);}
+  .wk-t{padding:12px 16px;border-right:1px solid var(--border);display:grid;gap:1px;align-content:start;} .wk-t:last-child{border-right:none;}
+  .wk-t b{font-size:22px;font-weight:600;color:var(--ink);} .wk-t.g b{color:var(--green);} .wk-t.w b{color:#9A6A00;}
+  .wk-t span{font-size:13px;color:var(--body);} .wk-t small{font-size:12px;color:var(--muted);}
+  .wk-line{padding:10px 16px;border-top:1px solid var(--border);font-size:13.5px;color:var(--body);background:#FAF8F3;}
+  @media (max-width:760px){ .wk-tiles{grid-template-columns:repeat(2,minmax(0,1fr));} .wk-t:nth-child(2){border-right:none;} .wk-t:nth-child(-n+2){border-bottom:1px solid var(--border);} .wk-t b{font-size:19px;} }
+
+  .google-box{margin:4px 0 14px;}
+  .google-btn{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;padding:11px 14px;border:1px solid #DADCE0;border-radius:10px;background:#fff;color:#1F1F1F;font-weight:600;font-size:15px;cursor:pointer;font-family:inherit;}
+  .google-btn:hover{background:#F8F9FA;box-shadow:0 1px 2px rgba(0,0,0,.08);}
+  .google-or{display:flex;align-items:center;gap:10px;margin:14px 0 4px;font-size:13px;color:#888;} .google-or::before,.google-or::after{content:'';flex:1;height:1px;background:#E5E5E5;}
   .settings-card:empty{display:none;}
   #supplierChips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;} #supplierChips .chip{flex-shrink:0;}
 </style>
@@ -3109,6 +3194,7 @@
             <div class="notif-item" id="createMenuPoItem" style="cursor:pointer;" onclick="closeCreateMenu(); openCreatePOModal();"><div><div class="notif-text" id="createMenuPoLabel">Purchase Order</div></div></div>
             <div class="notif-item only-supplier" style="cursor:pointer;" onclick="closeCreateMenu(); openCustomerPoImport();"><div><div class="notif-text">📄 Enter a customer's PO</div></div></div>
             <div class="notif-item only-supplier" style="cursor:pointer;" onclick="closeCreateMenu(); openCustomerPoImport({tentative: true});"><div><div class="notif-text">📝 Send an order for their OK</div></div></div>
+            <div class="notif-item only-supplier" style="cursor:pointer;" onclick="closeCreateMenu(); openOpeningBalances();"><div><div class="notif-text">Add what a customer owes you</div></div></div>
             <div class="notif-item only-supplier" style="cursor:pointer;" onclick="closeCreateMenu(); navigate('followups'); setTimeout(fuAddLead, 150);"><div><div class="notif-text">🎯 Add a lead</div></div></div>
             <div class="notif-item" id="createMenuPasteItem" style="cursor:pointer;" onclick="closeCreateMenu(); openPasteOrderModal();"><div><div class="notif-text">📋 Paste an order from Viber</div></div></div>
             <div class="notif-item" style="cursor:pointer;" onclick="closeCreateMenu(); navigate('invite'); setInviteTab('rfq');"><div><div class="notif-text" id="createMenuRfqLabel">Request a Quote (RFQ)</div></div></div>
@@ -3900,7 +3986,7 @@
       </div>
 
       <div id="page-collections" class="app-page">
-        <div class="page-head"><h1>Collections</h1><p>Who to chase today, promises to pay, and where every peso is.</p></div>
+        <div class="page-head" style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;"><div><h1>Collections</h1><p>Who to chase today, promises to pay, and where every peso is.</p></div><button class="btn btn-outline only-supplier" onclick="openOpeningBalances()">+ Add what a customer owes</button></div>
         <div id="collectionsContent"></div>
       </div>
 
@@ -12099,7 +12185,7 @@ function cpoRender(){
     const cat = myCatalog || [];
     const opts = sel => `<option value="">— Not in my list (keep their wording) —</option>` + cat.map(c => `<option value="${escapeHtml(c.product)}" ${sel === c.product ? 'selected' : ''}>${escapeHtml(c.product)}${c.price ? ' · ' + fmtPHP(c.price) + (c.unit ? '/' + escapeHtml(c.unit) : '') : ''}</option>`).join('');
     const total = CPO.rows.reduce((s, r) => s + Number(r.qty || 0) * Number(r.myPrice || 0), 0);
-    const needCheck = CPO.rows.filter(r => r.conf !== 'ok' && r.conf !== 'saved').length;
+    const needCheck = CPO.rows.filter(r => r.conf !== 'ok' && r.conf !== 'saved' && r.conf !== 'typed').length;
     slModal('cpoModal', `<div class="sl-sheet-h"><b>Check the order</b><button class="sl-x" onclick="slClose('cpoModal')">✕</button></div>
       <div class="sl-sub">${!CPO.rows.length ? 'Add their items: tap one below, or type it and its quantity.' : CPO.manual ? `${CPO.rows.length} item${CPO.rows.length === 1 ? '' : 's'} added. Prices use your price list.` : `${CPO.rows.length} item${CPO.rows.length === 1 ? '' : 's'} read.${needCheck ? ` <b class="sl-warn">${needCheck} to check.</b>` : ' All matched to your items. ✓'} Prices use your price list; theirs is shown when it's different.`}
         ${CPO.viaVoice ? '<br>🎙 From your voice. Their words are shown on each line.' : ''}${CPO.viaOcr ? '<br><b class="sl-warn">The phone reads handwriting poorly. Check each line against their photo, and add missed items below.</b>' : ''}</div>
@@ -12110,7 +12196,7 @@ function cpoRender(){
           <input type="number" min="0" step="any" value="${r.qty}" oninput="CPO.rows[${i}].qty=Number(this.value); cpoTotals()" aria-label="Quantity">
           <input type="number" min="0" step="0.01" value="${r.myPrice ?? ''}" placeholder="Price" oninput="CPO.rows[${i}].myPrice=Number(this.value); cpoTotals()" aria-label="Unit price">
           <button class="sl-x" onclick="CPO.rows.splice(${i},1); cpoRender()" aria-label="Remove">✕</button></div>
-        <div class="cpo-tag">${r.conf === 'saved' ? '✓ Remembered from last time' : r.conf === 'ok' ? '✓ Matched' : r.conf === 'check' ? '⚠ Best guess, please check' : '❌ Pick your item, or keep their wording'}</div></div>`).join('')}</div>
+        <div class="cpo-tag">${r.conf === 'saved' ? '✓ Remembered from last time' : r.conf === 'ok' ? '✓ Matched' : r.conf === 'check' ? '⚠ Best guess, please check' : r.conf === 'typed' ? '✓ New item, kept as you typed it' : '❌ Pick your item, or keep their wording'}</div></div>`).join('')}</div>
       <button class="sl-link" onclick="CPO.rows.push({text:'', qty:1, product:'', myPrice:null, conf:'none'}); cpoRender()">+ Add a line</button>
       <div class="row-2"><div class="field"><label>Their PO number</label><input id="cpoRef" maxlength="60" value="${escapeHtml(CPO.ref || '')}" oninput="CPO.ref=this.value"></div>
         <div class="field"><label>Needed by</label><input id="cpoNeed" type="date" value="${CPO.neededBy || ''}" onchange="CPO.neededBy=this.value"></div></div>
@@ -12775,7 +12861,7 @@ function cpoAddTyped(){
   const t = (document.getElementById('cpoTypeItem').value || '').trim(), q = Number(document.getElementById('cpoTypeQty').value || 0);
   if(!t){ document.getElementById('cpoTypeItem').focus(); return; }
   const m = cpoMatch(t), c = (myCatalog || []).find(x => x.product === m.product);
-  CPO.rows.push({text: t, qty: q > 0 ? q : 1, product: m.product, conf: m.conf, myPrice: c && c.price != null ? Number(c.price) : null, theirPrice: null, unit: c ? c.unit : null});
+  CPO.rows.push({text: t, qty: q > 0 ? q : 1, product: m.product, conf: m.product ? m.conf : 'typed', myPrice: c && c.price != null ? Number(c.price) : null, theirPrice: null, unit: c ? c.unit : null});
   cpoRender();
   setTimeout(() => { const s = document.getElementById('cpoTypeItem'); if(s){ s.value = ''; s.focus(); } }, 30);
 }
@@ -13251,6 +13337,653 @@ function mkPick(view, side){
 }
 function mkPickInit(){ let s = 'sell'; try{ s = localStorage.getItem('nifti-mk-side') || 'sell'; }catch(e){} mkPick('index', s); mkPick('features', s); }
 if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mkPickInit); else setTimeout(mkPickInit, 0);
+
+/* ============ DAY ONE: useful from the first ten minutes ============
+   1) Opening balances: what each customer already owes, entered once. Each becomes an unpaid
+      invoice (invoice.opening), so Who owes you, reminders and statements work on day one.
+   2) A guided first order with one real customer (or supplier), all the way to their Confirm.
+   3) Scan to pay: the seller's GCash/Maya QR on every order link and statement, plus "I've paid".
+   4) Your week with Nifti: the same numbers as the Monday notification (send_weekly_recaps).
+   5) Google sign-in, shown only once the Google provider is switched on in Supabase. */
+
+// ---------------------------------------------------------------- 1) Opening balances
+let OB = null;
+const OB_DUE = [['late', 'Already late'], ['0', 'Today'], ['7', 'In 7 days'], ['15', 'In 15 days'], ['30', 'In 30 days'], ['pick', 'Other date']];
+function obNewRow(p){ return Object.assign({buyerId: '', name: '', phone: '', email: '', amount: '', due: addDaysIso(APP_TODAY, 30), dueKind: '30', ref: ''}, p || {}); }
+function obAmount(v){ const n = Number(String(v == null ? '' : v).replace(/[₱,\s]|php/gi, '')); return isFinite(n) ? Math.round(n * 100) / 100 : NaN; }
+function openOpeningBalances(prefill){
+  if(currentAppRole !== 'supplier'){ showToast('This is for sellers: what your customers already owe you.'); return; }
+  if(typeof requirePermission === 'function' && !requirePermission('markInvoicePaid')) return;
+  OB = {step: 'edit', rows: [obNewRow(prefill)], paste: false, pasteText: '', err: '', saving: false};
+  obRender();
+}
+function obExisting(){ return (buyersData || []).slice().sort((a, b) => a.name.localeCompare(b.name)); }
+function obRowHtml(r, i){
+  const custs = obExisting();
+  const dueNote = r.dueKind === 'late' ? 'It was due on' : r.dueKind === 'pick' ? 'Due on' : '';
+  return `<div class="ob-row">
+    <div class="ob-row-h"><b>${OB.rows.length > 1 ? 'Customer ' + (i + 1) : 'Customer'}</b>${OB.rows.length > 1 ? `<button class="sl-x" aria-label="Remove" onclick="OB.rows.splice(${i},1); obRender()">✕</button>` : ''}</div>
+    ${custs.length ? `<div class="field"><select aria-label="Customer" onchange="OB.rows[${i}].buyerId=this.value; obRender()"><option value="">+ New customer</option>${custs.map(b => `<option value="${b.id}" ${r.buyerId === b.id ? 'selected' : ''}>${escapeHtml(b.name)}</option>`).join('')}</select></div>` : ''}
+    ${r.buyerId ? '' : `<div class="row-2"><div class="field"><label>Customer name</label><input id="obName_${i}" maxlength="120" value="${escapeHtml(r.name)}" placeholder="e.g. Juan Hardware" oninput="OB.rows[${i}].name=this.value"></div>
+      <div class="field"><label>Mobile <small>(optional)</small></label><input type="tel" maxlength="20" value="${escapeHtml(r.phone)}" placeholder="0917 123 4567" oninput="OB.rows[${i}].phone=this.value"></div></div>`}
+    <div class="row-2"><div class="field"><label>They owe you</label><div class="ob-peso"><span>₱</span><input id="obAmt_${i}" inputmode="decimal" value="${escapeHtml(r.amount)}" placeholder="0" oninput="OB.rows[${i}].amount=this.value; obTotal()"></div></div>
+      <div class="field"><label>Invoice or DR no. <small>(optional)</small></label><input maxlength="40" value="${escapeHtml(r.ref)}" placeholder="e.g. DR-0881" oninput="OB.rows[${i}].ref=this.value"></div></div>
+    <div class="field"><label>When should they pay?</label>
+      <div class="sl-days ob-due">${OB_DUE.map(([k, l]) => `<button type="button" class="${r.dueKind === k ? 'on' : ''}" onclick="obDue(${i}, '${k}')">${l}</button>`).join('')}</div>
+      ${dueNote ? `<div class="ob-date"><span>${dueNote}</span><input type="date" value="${r.due}" max="${r.dueKind === 'late' ? addDaysIso(APP_TODAY, -1) : ''}" onchange="OB.rows[${i}].due=this.value"></div>`
+        : `<div class="ob-due-note">Due ${stmtDate(r.due)}</div>`}
+    </div>
+    ${r.buyerId ? '' : `<details class="ob-more"${r.email ? ' open' : ''}><summary>Add their email so reminders go out by themselves</summary>
+      <input type="email" maxlength="120" value="${escapeHtml(r.email)}" placeholder="owner@juanhardware.com" oninput="OB.rows[${i}].email=this.value"></details>`}
+  </div>`;
+}
+function obDue(i, k){
+  const r = OB.rows[i]; r.dueKind = k;
+  if(k === 'late') r.due = addDaysIso(APP_TODAY, -7);
+  else if(k === 'pick') r.due = r.due && r.due >= APP_TODAY ? r.due : addDaysIso(APP_TODAY, 30);
+  else r.due = addDaysIso(APP_TODAY, Number(k));
+  obRender();
+}
+function obTotal(){
+  const t = OB.rows.reduce((s, r) => s + (obAmount(r.amount) > 0 ? obAmount(r.amount) : 0), 0);
+  const el = document.getElementById('obTotal');
+  if(el) el.innerHTML = t > 0 ? `Total owed to you: <b>${fmtPHP(t)}</b>` : '';
+}
+function obRender(){
+  if(!OB) return;
+  if(OB.step === 'done') return obRenderDone();
+  const body = OB.paste
+    ? `<div class="sl-sub">Copy it from your notebook, Excel or a Viber note. One customer per line: their name, how much, and when it's due (optional).</div>
+      <textarea id="obPaste" class="sl-ta" rows="8" placeholder="Juan Hardware 12,500 Oct 15&#10;Aling Nena Store - 4,800 - overdue&#10;Bayan Builders 32000 Nov 30" oninput="OB.pasteText=this.value">${escapeHtml(OB.pasteText)}</textarea>
+      <div id="obErr" class="sl-err">${escapeHtml(OB.err)}</div>
+      <div class="sl-actions"><button class="btn btn-outline" onclick="OB.paste=false; OB.err=''; obRender()">← Type them in</button><button class="btn btn-primary" style="flex:1;" onclick="obReadPaste()">Read my list →</button></div>`
+    : `<div class="ob-rows">${OB.rows.map(obRowHtml).join('')}</div>
+      <div class="ob-add"><button class="sl-link" onclick="OB.rows.push(obNewRow()); obRender(); setTimeout(() => { const x = document.getElementById('obName_${OB.rows.length}') || document.getElementById('obAmt_${OB.rows.length}'); if(x) x.focus(); }, 40)">+ Add another customer</button>
+        <button class="sl-link" onclick="OB.paste=true; OB.err=''; obRender()">Paste a list instead</button></div>
+      <div class="ob-total" id="obTotal"></div>
+      <div id="obErr" class="sl-err">${escapeHtml(OB.err)}</div>
+      <button class="btn btn-primary sl-wide" id="obSaveBtn" onclick="obSave()" ${OB.saving ? 'disabled' : ''}>${OB.saving ? 'Saving…' : 'Save'}</button>`;
+  slModal('obModal', `<div class="sl-sheet-h"><b>Who owes you today</b><button class="sl-x" onclick="slClose('obModal')">✕</button></div>
+    <div class="sl-sub">Add what customers already owe you from before Nifti. You'll see it in Who owes you right away, and send statements and reminders from day one.</div>
+    ${body}`);
+  obTotal();
+}
+// "Juan Hardware 12,500 Oct 15" → {name, amount, due}. Handles tabs from Excel, ₱/P/PHP, 12k, ISO and m/d dates, month names, "overdue".
+function obParseLine(line){
+  const MONTHS = {jan:1, feb:2, mar:3, apr:4, may:5, jun:6, jul:7, aug:8, sep:9, sept:9, oct:10, nov:11, dec:12};
+  let s = String(line).replace(/^\s*(?:\d+[.)]|[-•*])\s+/, '').trim();
+  if(!s) return null;
+  let due = null, late = /\b(overdue|late|lampas|delayed)\b/i.test(s);
+  const y0 = Number(APP_TODAY.slice(0, 4));
+  const iso = (y, m, d) => { if(!(m >= 1 && m <= 12 && d >= 1 && d <= 31)) return null; return `${y}-${String(m).padStart(2, '0')}-${String(d).padStart(2, '0')}`; };
+  const take = (re, fn) => {
+    if(due) return;
+    for(const m of s.matchAll(new RegExp(re.source, re.flags.includes('g') ? re.flags : re.flags + 'g'))){
+      const v = fn(m); if(v){ due = v; s = s.slice(0, m.index) + ' ' + s.slice(m.index + m[0].length); return; }
+    }
+  };
+  take(/\b(\d{4})-(\d{1,2})-(\d{1,2})\b/, m => iso(+m[1], +m[2], +m[3]));
+  // no year written: a date far in the past most likely means next year (e.g. "Jan 10" written in November)
+  const yr = (y, m, d) => { const v = iso(y, m, d); return v && !yearGiven && v < addDaysIso(APP_TODAY, -180) ? iso(y + 1, m, d) : v; };
+  let yearGiven = false;
+  const mon = w => MONTHS[w.toLowerCase().startsWith('sept') ? 'sept' : w.toLowerCase().slice(0, 3)];
+  take(/\b([a-z]{3,9})\.?\s+(\d{1,2})(?:st|nd|rd|th)?(?:,?\s*(\d{4}))?\b/i, m => { yearGiven = !!m[3]; return mon(m[1]) ? yr(m[3] ? +m[3] : y0, mon(m[1]), +m[2]) : null; });
+  take(/\b(\d{1,2})\s+([a-z]{3,9})\.?(?:\s+(\d{4}))?\b/i, m => { yearGiven = !!m[3]; return mon(m[2]) ? yr(m[3] ? +m[3] : y0, mon(m[2]), +m[1]) : null; });
+  take(/\b(\d{1,2})\/(\d{1,2})(?:\/(\d{2,4}))?\b/, m => { yearGiven = !!m[3]; return yr(m[3] ? (m[3].length === 2 ? 2000 + +m[3] : +m[3]) : y0, +m[1], +m[2]); });
+  take(/\b(?:in\s+)?(\d{1,3})\s*(?:days?|araw)\b/i, m => addDaysIso(APP_TODAY, +m[1]));
+  // amount: the biggest money-looking number left
+  let best = null;
+  s.replace(/(?:₱|php|p)?\s*(\d{1,3}(?:,\d{3})+(?:\.\d{1,2})?|\d+(?:\.\d{1,2})?)\s*(k\b)?/gi, (all, num, k) => {
+    const v = Number(num.replace(/,/g, '')) * (k ? 1000 : 1);
+    if(v > 0 && (!best || v > best.v)) best = {v, all};
+    return all;
+  });
+  if(!best) return null;
+  s = s.replace(best.all, ' ');
+  const name = s.replace(/\b(overdue|late|lampas|delayed|due|owes?|utang|balance|bal|total|php|pesos?)\b/gi, ' ').replace(/[\t|:;,=\-–—]+/g, ' ').replace(/\s+/g, ' ').trim();
+  if(name.length < 2) return null;
+  if(!due) due = late ? addDaysIso(APP_TODAY, -7) : addDaysIso(APP_TODAY, 30);
+  const dueKind = due < APP_TODAY ? 'late' : due === APP_TODAY ? '0' : 'pick';
+  return {name: name.slice(0, 120), amount: String(best.v), due, dueKind};
+}
+function obReadPaste(){
+  const lines = String(OB.pasteText || '').split(/\r?\n/).filter(l => l.trim());
+  const rows = [], skipped = [];
+  lines.forEach(l => { const r = obParseLine(l); if(r) rows.push(r); else skipped.push(l.trim()); });
+  if(!rows.length){ OB.err = 'Couldn\'t find a name and an amount. Put one customer per line, like "Juan Hardware 12,500 Oct 15".'; obRender(); return; }
+  const custs = obExisting();
+  OB.rows = rows.slice(0, 100).map(r => { const b = custs.find(x => x.name.toLowerCase() === r.name.toLowerCase()); return obNewRow(Object.assign(r, b ? {buyerId: b.id, name: b.name} : {})); });
+  OB.paste = false; OB.err = skipped.length ? `Skipped ${skipped.length} line${skipped.length > 1 ? 's' : ''} without a name and amount: "${skipped.slice(0, 2).join('", "')}"${skipped.length > 2 ? '…' : ''}` : '';
+  obRender();
+}
+async function obSave(){
+  if(OB.saving) return;
+  const rows = [];
+  for(let i = 0; i < OB.rows.length; i++){
+    const r = OB.rows[i], b = r.buyerId ? (buyersData || []).find(x => x.id === r.buyerId) : null;
+    const name = b ? b.name : String(r.name || '').trim(), amt = obAmount(r.amount);
+    if(!b && name.length < 2){ OB.err = `Type the name of customer ${i + 1}.`; obRender(); const el = document.getElementById('obName_' + i); if(el) el.focus(); return; }
+    if(!(amt >= 1)){ OB.err = `How much does ${name || 'customer ' + (i + 1)} owe you?`; obRender(); const el = document.getElementById('obAmt_' + i); if(el) el.focus(); return; }
+    if(!/^\d{4}-\d{2}-\d{2}$/.test(r.due || '')){ OB.err = `Pick when ${name} should pay.`; obRender(); return; }
+    if(r.email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(r.email.trim())){ OB.err = `The email for ${name} doesn't look right.`; obRender(); return; }
+    rows.push({buyer_id: b ? b.id : null, name: b ? null : name, phone: b ? null : (r.phone || '').trim() || null, email: b ? null : (r.email || '').trim() || null, amount: amt, due: r.due, ref: (r.ref || '').trim() || null, _name: name});
+  }
+  OB.saving = true; OB.err = ''; obRender();
+  let saved = [];
+  if(myBusiness){
+    const { data, error } = await sb.rpc('record_opening_balances', {p_rows: rows.map(({_name, ...x}) => x)});
+    if(error){ OB.saving = false; OB.err = error.message || 'Couldn\'t save. Check your connection and try again.'; obRender(); return; }
+    saved = (data.rows || []).map(x => ({poId: x.po_id, poNumber: x.po_number, buyerId: x.buyer_id, name: x.buyer_name, amount: Number(x.amount), due: x.due}));
+    await loadMyConnections();
+    await refreshPOsById(saved.map(x => x.poId));
+  } else {
+    rows.forEach((r, i) => {
+      let buyerId = r.buyer_id;
+      if(!buyerId){
+        const have = (buyersData || []).find(x => x.name.toLowerCase() === r._name.toLowerCase());
+        if(have) buyerId = have.id;
+        else { buyerId = 'buy_ob_' + Date.now() + '_' + i; buyersData.push({id: buyerId, name: r._name, category: 'Customer', score: null, tier: 'mid', orders: 0, lastOrder: '—', since: APP_TODAY, isOutside: true, phone: r.phone, email: r.email}); }
+      }
+      const buyerName = (buyersData.find(x => x.id === buyerId) || {}).name || r._name;
+      const poId = 'po_ob_' + Date.now() + '_' + i, poNumber = 'PO-2026-0' + (700 + Math.floor(Math.random() * 99));
+      purchaseOrders.push({id: poId, poNumber, buyerId, buyerName, supplierId: ME_SUPPLIER, supplierName: 'Metro Steel Co.', type: 'local', status: 'invoiced', currency: 'PHP', taxRate: 0,
+        lineItems: [{product: 'Balance from before Nifti' + (r.ref ? ' (' + r.ref + ')' : ''), qty: 1, unitPrice: r.amount}], createdDate: APP_TODAY, requestedDeliveryDate: null, deliveryAddress: null,
+        notes: 'Balance carried over from before Nifti.', customerRef: r.ref, shipping: null, customs: null, counter: null, deliveryConfirmation: null, atRisk: false, riskNote: '', documents: [],
+        invoice: {number: r.ref || 'BAL-' + poNumber.replace(/^PO-/, ''), dueDate: r.due, issuedDate: APP_TODAY, status: 'unpaid', statedTotal: r.amount, payments: [], opening: true, attachmentName: null},
+        history: [{date: APP_TODAY, time: 'Just now', actor: 'supplier', action: `📒 Balance from before Nifti: ${fmtPHP(r.amount)}, due ${stmtDate(r.due)}`}]});
+      saved.push({poId, poNumber, buyerId, name: buyerName, amount: r.amount, due: r.due});
+    });
+    if(typeof scheduleNiftiSave === 'function') scheduleNiftiSave();
+  }
+  OB.saving = false; OB.step = 'done'; OB.result = saved;
+  trackEvent('opening_balances_added', {count: saved.length});
+  obRender(); obRefreshViews();
+}
+function obChannelNote(){
+  const res = OB.result || [];
+  const autoCh = res.filter(x => { const b = (buyersData || []).find(y => y.id === x.buyerId) || {}; const oc = b.outsideContact || {}; return !b.isOutside || b.email || oc.email; }).length;
+  if(!autoRemindersOn()) return `Automatic reminders are off. Turn them on in Who owes you, and Nifti reminds customers politely before and after each due date.`;
+  if(autoCh === res.length) return `Nifti will remind ${res.length === 1 ? 'them' : 'each of them'} politely before and after the due date.`;
+  return `${autoCh ? `Nifti will remind ${autoCh} of them by itself. ` : ''}Customers without an email or a Nifti account show up in Collections → Follow up, with a ready reminder you send on Viber in one tap.`;
+}
+function obRenderDone(){
+  const res = OB.result || [], total = res.reduce((s, x) => s + x.amount, 0);
+  slModal('obModal', `<div style="text-align:center;padding:4px 0 2px;"><div class="ob-check">✓</div>
+      <h2 style="font-family:var(--font-h);margin:6px 0 2px;">${fmtPHP(total)} is now in Who owes you</h2>
+      <div class="sl-sub">${res.length} customer${res.length === 1 ? '' : 's'}. ${obChannelNote()}</div></div>
+    <div class="ob-done-list">${res.map(x => `<div class="ob-done-r" id="obDone_${x.poId}"><div><b>${escapeHtml(x.name)}</b><small>Due ${stmtDate(x.due)}${x.due < APP_TODAY ? ' · <span class="sl-warn">overdue</span>' : ''}</small></div>
+      <span class="lg-n">${fmtPHP(x.amount)}</span><button class="sl-link" onclick="obUndo('${x.poId}')">Undo</button></div>`).join('')}</div>
+    <button class="btn btn-primary sl-wide" onclick="slClose('obModal'); navigate('dashboard'); setTimeout(() => hmScrollTo('whoOwesMePanel'), 200)">See who owes you</button>
+    <button class="btn btn-outline sl-wide" onclick="OB = {step: 'edit', rows: [obNewRow()], paste: false, pasteText: '', err: '', saving: false}; obRender()">Add more customers</button>`);
+}
+async function obUndo(poId){
+  if(myBusiness){
+    const { error } = await sb.rpc('remove_opening_balance', {p_po: poId});
+    if(error){ showToast(error.message, 'error'); return; }
+  }
+  const i = purchaseOrders.findIndex(p => p.id === poId); if(i > -1) purchaseOrders.splice(i, 1);
+  OB.result = (OB.result || []).filter(x => x.poId !== poId);
+  if(!OB.result.length){ slClose('obModal'); showToast('Removed.', 'success'); } else obRenderDone();
+  obRefreshViews();
+}
+function obRefreshViews(){
+  try{ if(typeof renderWhoOwesMe === 'function') renderWhoOwesMe(); }catch(e){}
+  try{ if(document.getElementById('page-dashboard') && document.getElementById('page-dashboard').classList.contains('active')) renderHomeV2(); }catch(e){}
+  try{ if(typeof renderSupplierOrdersTable === 'function') renderSupplierOrdersTable(); }catch(e){}
+  try{ if(document.getElementById('page-collections') && document.getElementById('page-collections').classList.contains('active')) renderCollectionsPage(); }catch(e){}
+  try{ renderGetStartedCard(); }catch(e){}
+}
+function obHasAny(){ return getSupplierPOs().some(p => p.invoice && p.invoice.opening); }
+function obCtaHtml(compact){
+  return `<div class="ob-cta${compact ? ' compact' : ''}"><div><b>Customers already owe you money?</b><span>Add it once, about 2 minutes. Then send statements and reminders from today.</span></div>
+    <button class="btn btn-primary" onclick="openOpeningBalances()">Add who owes you</button></div>`;
+}
+// Home "Receivables" panel and the Who owes you card: invite the first entry when there's nothing yet.
+const _lgMoneyBase = lgMoney;
+lgMoney = function(role){
+  let html = _lgMoneyBase(role);
+  if(role === 'supplier' && !unpaidInvoicesFor('supplier').length) { const pipe = '<' + 'div class="lg-pipe">'; html = html.replace(pipe, obCtaHtml(true) + pipe); }
+  return html;
+};
+const _renderWhoOwesMeBase = renderWhoOwesMe;
+renderWhoOwesMe = function(){
+  _renderWhoOwesMeBase();
+  const el = document.getElementById('whoOwesMePanel'); if(!el) return;
+  const card = el.querySelector('.owes-card');
+  if(card && !card.querySelector('.ob-addlink')) card.insertAdjacentHTML('beforeend', `<div class="ob-addlink"><span class="row-action" onclick="openOpeningBalances()">+ Add a balance from before Nifti</span></div>`);
+};
+
+// ---------------------------------------------------------------- 2) Guided first order
+function fgKey(){ return 'nifti-first-order:' + (myBusiness ? myBusiness.id : 'demo') + ':' + currentAppRole; }
+function fgState(){ try{ return JSON.parse(localStorage.getItem(fgKey()) || '{}') || {}; }catch(e){ return {}; } }
+function fgSet(patch){ const s = Object.assign(fgState(), patch); try{ localStorage.setItem(fgKey(), JSON.stringify(s)); }catch(e){} return s; }
+function fgRealPOs(){
+  return (currentAppRole === 'supplier' ? getSupplierPOs() : getBuyerPOs()).filter(o => o.status !== 'draft' && !(o.invoice && o.invoice.opening));
+}
+function fgConfirmed(o){ return !['draft', 'quote', 'sent', 'countered', 'cancelled'].includes(o.status); }
+function fgApplies(){
+  const st = fgState();
+  if(st.hidden || st.finished) return false;
+  if(st.poId) return true;
+  return !fgRealPOs().some(fgConfirmed);
+}
+function fgModel(){
+  const st = fgState(), sup = currentAppRole === 'supplier';
+  let po = st.poId ? getPO(st.poId) : null;
+  if(st.poId && !po) { fgSet({poId: null}); po = null; }
+  const partyList = sup ? (buyersData || []) : (suppliersData || []);
+  const party = st.partyId ? partyList.find(x => x.id === st.partyId) : null;
+  const who = po ? (sup ? po.buyerName : po.supplierName) : party ? party.name : st.name || '';
+  const waitingStatus = sup ? 'quote' : 'sent';
+  const seen = po && (sup ? !!(po.quote && (po.quote.seen_at || po.quote.views)) : !!(orderLinkState[po.id] && orderLinkState[po.id].firstViewedAt));
+  const isOutside = po ? (sup ? !!(((buyersData || []).find(b => b.id === po.buyerId) || {}).isOutside) : isOutsideSupplier(po.supplierId)) : true;
+  const sent = !!(po && (st.sentPo === po.id || seen || po.status !== waitingStatus || !isOutside));
+  return {st, sup, po, who, picked: !!(party || st.name || po), ordered: !!po, sent, seen, confirmed: !!(po && fgConfirmed(po)), declined: !!(po && po.status === 'cancelled'), isOutside};
+}
+function fgStepHtml(n, title, sub, done, active, btn){
+  return `<div class="fg-step${done ? ' done' : ''}${active ? ' active' : ''}"><span class="fg-n">${done ? '✓' : n}</span>
+    <div class="fg-t"><b>${title}</b>${sub ? `<small>${sub}</small>` : ''}</div>${active && btn ? btn : ''}</div>`;
+}
+function renderFirstOrderGuide(host, anchor){
+  const m = fgModel(), sup = m.sup, them = sup ? 'customer' : 'supplier', first = (m.who || '').split(' ')[0] || 'them';
+  const doneN = [m.picked, m.ordered, m.sent, m.confirmed].filter(Boolean).length;
+  const active = !m.picked ? 1 : !m.ordered ? 2 : !m.sent ? 3 : !m.confirmed ? 4 : 0;
+  const card = document.createElement('div');
+  card.id = 'getStartedCard'; card.className = 'panel-card fg-card';
+  if(m.confirmed){
+    card.innerHTML = `<div class="fg-win"><div class="ob-check">✓</div><div><div class="fg-k">FIRST ORDER CONFIRMED</div>
+      <b>${escapeHtml(m.who)} confirmed ${escapeHtml(m.po.poNumber)}.</b><span>${sup ? 'It\'s in your Orders with every step from here: preparing, delivery, payment.' : 'You\'ll see every step from here: preparing, delivery, the invoice.'}</span></div></div>
+      <div class="fg-next">${sup && !obHasAny() ? `<button class="btn btn-primary" onclick="fgSet({finished:true}); openOpeningBalances()">Add who already owes you</button>` : ''}
+        <button class="btn btn-outline" onclick="navigate('orders'); setTimeout(() => openOrderDetailModal('${m.po.id}', ${sup}), 150)">Open the order</button>
+        <button class="btn btn-outline" onclick="fgSet({finished:true}); renderGetStartedCard()">Done</button></div>`;
+  } else {
+    const btn1 = `<button class="btn btn-primary" onclick="fgPick()">Pick a ${them}</button>`;
+    const btn2 = `<button class="btn btn-primary" onclick="fgOrder()">${sup ? `Put in ${escapeHtml(first)}'s order` : `Make the order`}</button>`;
+    const btn3 = `<button class="btn btn-primary" onclick="fgSend()">Send on Viber</button>`;
+    card.innerHTML = `<div class="fg-h"><div><div class="fg-k">YOUR FIRST ORDER · ${doneN} OF 4</div>
+        <b>${sup ? 'Send one real order to one real customer' : 'Send one real order to one of your suppliers'}</b>
+        <span>About 5 minutes. ${sup ? 'Your customer' : 'Your supplier'} doesn't need the app: they open a link and tap Confirm.</span></div>
+        <span class="row-action" onclick="fgSet({hidden:true}); renderGetStartedCard()">Hide</span></div>
+      <div class="fg-bar"><i style="width:${doneN * 25}%"></i></div>
+      <div class="fg-steps">
+        ${fgStepHtml(1, `Pick one real ${them}`, m.picked ? escapeHtml(m.who) : `Someone you ${sup ? 'sell to' : 'order from'} this week`, m.picked, active === 1, btn1)}
+        ${fgStepHtml(2, sup ? 'Put in their usual order' : 'Make the order', m.ordered ? `${escapeHtml(m.po.poNumber)} · ${poTotal(m.po) >= 1 ? fmtPHP(poTotal(m.po)) : 'price to follow'}` : sup ? 'Tap or type the items. Prices come from your list.' : 'The items and quantities you usually get', m.ordered, active === 2, btn2)}
+        ${fgStepHtml(3, 'Send them the link on Viber', m.sent ? (m.seen ? 'Sent · they opened it' : m.isOutside ? 'Sent' : 'They got it in their Nifti account') : 'Or WhatsApp, or a text message', m.sent, active === 3, btn3)}
+        ${fgStepHtml(4, 'They tap Confirm', m.declined ? `${escapeHtml(first)} said no to this one. <span class="row-action" onclick="fgSet({poId:null, partyId:null, name:null, sentPo:null}); renderGetStartedCard()">Try another ${them}</span>`
+          : m.ordered && m.sent ? `Waiting for ${escapeHtml(first)}${m.seen ? ' · opened ✓' : ''}. ${sup ? 'We nudge them for you if they forget.' : 'You\'ll get a notification.'}` : 'You get a notification the moment they do', m.confirmed, active === 4, '')}
+      </div>
+      ${sup && !obHasAny() ? `<div class="fg-foot">Customers already owe you money? <span class="row-action" onclick="openOpeningBalances()">Add who owes you →</span></div>` : ''}`;
+  }
+  anchor.after(card);
+}
+function fgPick(){
+  const sup = currentAppRole === 'supplier', list = (sup ? buyersData : suppliersData) || [], them = sup ? 'customer' : 'supplier';
+  const sorted = list.slice().sort((a, b) => a.name.localeCompare(b.name)).slice(0, 30);
+  slModal('fgModal', `<div class="sl-sheet-h"><b>Step 1 of 4 · Pick one real ${them}</b><button class="sl-x" onclick="slClose('fgModal')">✕</button></div>
+    <div class="sl-sub">Choose someone you ${sup ? 'sell to' : 'order from'} this week. ${sup ? 'They' : 'They'} don't need Nifti to answer.</div>
+    ${sorted.length ? `<div class="fg-pick">${sorted.map(p => `<button onclick="fgChose('${p.id}')"><b>${escapeHtml(p.name)}</b>${p.isOutside ? '<small>Not on Nifti yet · gets a link</small>' : '<small>On Nifti</small>'}</button>`).join('')}</div><div class="cpo-or">or a new ${them}</div>` : ''}
+    <div class="row-2"><div class="field"><label>${sup ? 'Customer' : 'Supplier'} name</label><input id="fgName" maxlength="120" placeholder="${sup ? 'e.g. Juan Hardware' : 'e.g. Metro Steel'}"></div>
+      <div class="field"><label>Their mobile <small>(optional)</small></label><input id="fgPhone" type="tel" maxlength="20" placeholder="0917 123 4567"></div></div>
+    <div id="fgErr" class="sl-err"></div>
+    <button class="btn btn-primary sl-wide" onclick="fgNew()">Next →</button>`);
+  setTimeout(() => { const x = document.getElementById('fgName'); if(x && !sorted.length) x.focus(); }, 60);
+}
+function fgChose(id){ fgSet({partyId: id, name: null, phone: null}); slClose('fgModal'); renderGetStartedCard(); fgOrder(); }
+async function fgNew(){
+  const name = (document.getElementById('fgName').value || '').trim(), phone = (document.getElementById('fgPhone').value || '').trim();
+  const err = document.getElementById('fgErr');
+  if(name.length < 2){ err.textContent = 'Type their business name.'; document.getElementById('fgName').focus(); return; }
+  if(currentAppRole === 'supplier'){
+    const have = (buyersData || []).find(b => b.name.toLowerCase() === name.toLowerCase());
+    fgSet(have ? {partyId: have.id, name: null} : {partyId: null, name, phone});
+  } else {
+    const have = (suppliersData || []).find(s => s.name.toLowerCase() === name.toLowerCase());
+    let id = have && have.id;
+    if(!id){
+      if(myBusiness){
+        const { data, error } = await sb.rpc('create_outside_supplier', {p_name: name, p_phone: phone || null, p_email: null});
+        if(error){ err.textContent = error.message; return; }
+        id = data; await loadMyConnections();
+      } else {
+        id = 'sup_fg_' + Date.now();
+        suppliersData.push({id, name, category: 'Supplier', orders: 0, lastOrder: 'Never', since: APP_TODAY, preferredContact: 'Viber', paymentTerms: 'Not yet set', isOutside: true, phone});
+      }
+    }
+    fgSet({partyId: id, name: null});
+  }
+  slClose('fgModal'); renderGetStartedCard(); fgOrder();
+}
+function fgOrder(){
+  const st = fgState(), sup = currentAppRole === 'supplier';
+  if(!st.partyId && !st.name) return fgPick();
+  if(sup){
+    openCustomerPoImport(st.partyId ? {buyerId: st.partyId, tentative: true} : {name: st.name, phone: st.phone || '', tentative: true});
+    CPO.guided = true; CPO.step = 2; CPO.manual = true; CPO.rows = []; cpoRender();
+    setTimeout(() => { const x = document.getElementById('cpoTypeItem'); if(x) x.focus(); }, 80);
+  } else {
+    if(!(suppliersData || []).some(s => s.id === st.partyId)) return fgPick();
+    window._fgOrdering = true;
+    openCreatePOModal();
+    const sel = document.getElementById('createPoSupplier');
+    if(sel){ sel.value = st.partyId; sel.dispatchEvent(new Event('change', {bubbles: true})); }
+  }
+}
+function fgSend(){
+  const m = fgModel(); if(!m.po) return fgOrder();
+  fgSet({sentPo: m.po.id});
+  if(m.sup){ if(m.po.status === 'quote') qtSendFirst(m.po.id); else shareTrackingLink(m.po.id); }
+  else promptSendToOutsideSupplier(m.po);
+  setTimeout(renderGetStartedCard, 300);
+}
+// Hook the existing order flows so the guide knows which order is "the first one".
+const _cpoRenderBase = cpoRender;
+cpoRender = function(){
+  _cpoRenderBase();
+  if(CPO && CPO.guided && CPO.step === 2){
+    const sh = document.querySelector('#cpoModal .sl-sheet');
+    if(sh && !sh.querySelector('.fg-banner')) sh.insertAdjacentHTML('afterbegin', `<div class="fg-banner">Step 2 of 4 · Add what ${escapeHtml(cpoBuyerName())} usually orders, then tap <b>Send for their OK</b>.</div>`);
+  }
+  if(CPO && CPO.guided && CPO.result && CPO.result.poId && fgState().poId !== CPO.result.poId){ fgSet({poId: CPO.result.poId}); setTimeout(renderGetStartedCard, 50); }
+};
+function fgWatchNewBuyerPO(){
+  if(!window._fgOrdering || currentAppRole !== 'buyer') return;
+  const st = fgState(); if(st.poId) return;
+  const po = getBuyerPOs().filter(o => o.supplierId === st.partyId && o.status !== 'draft').sort((a, b) => String(b.createdDate).localeCompare(String(a.createdDate)) || String(b.poNumber).localeCompare(String(a.poNumber)))[0];
+  if(po){ window._fgOrdering = false; fgSet({poId: po.id}); renderGetStartedCard(); }
+}
+const _renderGetStartedCardBase = renderGetStartedCard;
+renderGetStartedCard = function(){
+  fgWatchNewBuyerPO();
+  if(!fgApplies()) return _renderGetStartedCardBase();
+  const old = document.getElementById('getStartedCard'); if(old) old.remove();
+  const host = document.getElementById(currentAppRole === 'supplier' ? 'supplierDashboardView' : 'buyerDashboardView');
+  // a new account's Home is mostly zeros, so the guide goes first, right under the greeting
+  const anchor = host && (host.querySelector('.lg-head') || host.querySelector('.page-head'));
+  if(!anchor) return;
+  renderFirstOrderGuide(host, anchor);
+};
+// The supplier's "Add how buyers pay you" step now asks for the QR that powers Scan to pay.
+const _setupStepsBase = setupSteps;
+setupSteps = function(){
+  const steps = _setupStepsBase();
+  if(currentAppRole === 'supplier'){
+    const s = steps.find(x => /how buyers pay you/i.test(x.label));
+    if(s){ s.label = 'Add your GCash or Maya QR so customers can scan to pay'; s.done = (getMyPaymentAccounts() || []).some(a => isSafeImageDataUrl(a.qr)); }
+    if(!obHasAny() && !unpaidInvoicesFor('supplier').length) steps.splice(1, 0, {label: 'Add who already owes you', done: false, go: 'openOpeningBalances()'});
+  }
+  return steps;
+};
+// Keep the guide in step with things that happen elsewhere (a confirm arriving, a link opened).
+let _fgSig = '';
+setInterval(() => {
+  fgWatchNewBuyerPO();
+  const pg = document.getElementById('page-dashboard');
+  if(!pg || !pg.classList.contains('active') || !document.getElementById('getStartedCard')) return;
+  const m = fgApplies() ? fgModel() : null;
+  const sig = m ? [m.picked, m.ordered, m.sent, m.seen, m.confirmed, m.declined, m.po && m.po.status].join('|') : 'x';
+  if(sig !== _fgSig){ _fgSig = sig; renderGetStartedCard(); }
+}, 4000);
+
+// An order link shared from anywhere (not just the guide) counts as "sent".
+const _shareViaBase = shareVia;
+shareVia = function(channel, key){
+  const st = fgState();
+  if(st.poId && String(key) === 'order:' + st.poId && st.sentPo !== st.poId) fgSet({sentPo: st.poId});
+  return _shareViaBase(channel, key);
+};
+
+// ---------------------------------------------------------------- 3) Scan to pay
+const STP_METHOD = {gcash: 'gcash', maya: 'maya', grabpay: 'grabpay', shopeepay: 'shopeepay', bank: 'bank_transfer', remittance: 'remittance'};
+let STP = null; // {accounts, due, pending, sel, kind:'order'|'statement', preview, seller}
+function stpAccounts(list){ return (list || []).filter(a => a && a.type !== 'check'); }
+function stpCardHtml(o){
+  STP = Object.assign({sel: 0}, STP && STP.kind === o.kind ? {sel: STP.sel} : {}, o);
+  const accts = stpAccounts(o.accounts);
+  if(!accts.length) return '';
+  const a = accts[Math.min(STP.sel, accts.length - 1)];
+  const label = a.type === 'bank' ? (a.bankName || 'Bank') : (PAYMENT_ACCOUNT_TYPES[a.type] || 'Account');
+  const qr = isSafeImageDataUrl(a.qr);
+  const recent = o.updatedAt && (Date.now() - new Date(o.updatedAt).getTime()) < PAYMENT_DETAILS_RECENT_CHANGE_DAYS * 86400000;
+  const due = Math.max(0, Number(o.due || 0));
+  return `<div class="stp" id="stpCard">
+    <div class="stp-h"><div><div class="stp-k">${qr ? 'SCAN TO PAY' : 'HOW TO PAY'}</div><b>${escapeHtml(o.seller)}</b></div>
+      ${due >= 1 ? `<div class="stp-amt"><small>Amount due</small><b>${fmtPHP(due)}</b><button class="sl-link" onclick="copyPlainText('${due.toFixed(2)}', 'Amount copied.')">Copy amount</button></div>` : ''}</div>
+    ${o.pending >= 1 ? `<div class="stp-pend">${fmtPHP(o.pending)} reported paid · waiting for ${escapeHtml(o.seller)} to confirm it arrived</div>` : ''}
+    ${accts.length > 1 ? `<div class="stp-tabs">${accts.map((x, i) => `<button class="${i === STP.sel ? 'on' : ''}" onclick="stpPick(${i})">${escapeHtml(x.type === 'bank' ? (x.bankName || 'Bank') : (PAYMENT_ACCOUNT_TYPES[x.type] || 'Account'))}</button>`).join('')}</div>` : ''}
+    <div class="stp-body${qr ? '' : ' noqr'}">
+      ${qr ? `<div class="stp-qr"><img src="${a.qr}" alt="${escapeHtml(label)} QR code of ${escapeHtml(o.seller)}"><small>Open ${escapeHtml(label)} → Scan QR, or screenshot this and upload it</small></div>` : ''}
+      <div class="stp-info">
+        <div class="stp-row"><small>${escapeHtml(label)}${a.type === 'remittance' ? ' · receiver' : ''}</small><b>${escapeHtml(a.accountName || o.seller)}</b></div>
+        ${a.accountNumber ? `<div class="stp-row"><small>${a.type === 'bank' ? 'Account number' : 'Number'}</small><b class="lg-n">${escapeHtml(a.accountNumber)}</b><button class="sl-link" onclick="copyPlainText('${escapeHtml(a.accountNumber)}', 'Number copied.')">Copy</button></div>` : ''}
+        ${a.notes ? `<div class="stp-note">${escapeHtml(a.notes)}</div>` : ''}
+      </div>
+    </div>
+    ${recent ? `<div class="stp-warn">These payment details were changed recently. If unsure, call ${escapeHtml(o.seller)} on a number you already know before sending.</div>` : ''}
+    <div id="stpPaid">${due >= 1 ? `<button class="btn btn-primary stp-big" onclick="stpShowPaid()" ${o.preview ? 'disabled title="Your customer taps this after paying"' : ''}>I've paid</button>` : ''}</div>
+    <div class="stp-foot">Nifti never holds the money. You pay ${escapeHtml(o.seller)} directly, then tap I've paid so they can confirm it.</div>
+  </div>`;
+}
+function stpPick(i){ if(!STP) return; STP.sel = i; const el = document.getElementById('stpCard'); if(el) el.outerHTML = stpCardHtml(STP); }
+function stpShowPaid(){
+  if(!STP || STP.preview) return;
+  const a = stpAccounts(STP.accounts)[STP.sel] || {};
+  const method = STP_METHOD[a.type] || 'gcash';
+  const saved = (() => { try{ return localStorage.getItem('nifti-public-name') || ''; }catch(e){ return ''; } })();
+  document.getElementById('stpPaid').innerHTML = `<div class="stp-form">
+    <div class="row-2"><div class="field"><label>Amount paid</label><input id="stpAmt" type="number" inputmode="decimal" min="1" step="0.01" value="${Math.max(0, Number(STP.due || 0)) || ''}"></div>
+      <div class="field"><label>How you paid</label><select id="stpMethod">${[['gcash', 'GCash'], ['maya', 'Maya'], ['bank_transfer', 'Bank transfer / InstaPay'], ['bank_deposit', 'Bank deposit'], ['grabpay', 'GrabPay'], ['shopeepay', 'ShopeePay'], ['remittance', 'Remittance'], ['cash', 'Cash'], ['check', 'Cheque']].map(([v, l]) => `<option value="${v}" ${v === method ? 'selected' : ''}>${l}</option>`).join('')}</select></div></div>
+    <div class="row-2"><div class="field"><label>Reference no.</label><input id="stpRef" maxlength="64" placeholder="From your GCash/bank receipt"></div>
+      <div class="field"><label>Your name</label><input id="stpName" maxlength="60" value="${escapeHtml(saved)}"></div></div>
+    <div id="stpErr" class="sl-err"></div>
+    <button class="btn btn-primary stp-big" id="stpSend" onclick="stpSubmit()">Send to ${escapeHtml(STP.seller)}</button></div>`;
+  setTimeout(() => { const r = document.getElementById('stpRef'); if(r) r.focus(); }, 50);
+}
+async function stpSubmit(){
+  const amt = Number(document.getElementById('stpAmt').value), method = document.getElementById('stpMethod').value;
+  const ref = document.getElementById('stpRef').value.trim(), name = document.getElementById('stpName').value.trim();
+  const err = document.getElementById('stpErr');
+  if(!(amt > 0)){ err.textContent = 'Enter the amount you paid.'; return; }
+  if(method !== 'cash' && !ref){ err.textContent = 'Add the reference number so they can find it.'; document.getElementById('stpRef').focus(); return; }
+  if(name.length < 2){ err.textContent = 'Add your name so they know who paid.'; document.getElementById('stpName').focus(); return; }
+  try{ localStorage.setItem('nifti-public-name', name); }catch(e){}
+  const btn = document.getElementById('stpSend'); btn.disabled = true; btn.textContent = 'Sending…';
+  let res;
+  if(STP.kind === 'statement'){
+    if(!window._stmtToken || window._stmtToken === 'demo'){ document.getElementById('stpPaid').innerHTML = '<div class="stp-ok"><b>✓ Sent (demo).</b> In a real account the seller gets a notification and confirms it.</div>'; return; }
+    res = await sb.rpc('report_payment_by_link', {p_token: window._stmtToken, p_amount: amt, p_method: method, p_reference: ref || null, p_name: name});
+  } else {
+    res = await sb.rpc('report_payment_by_order_link', {p_token: publicOrderToken, p_amount: amt, p_method: method, p_reference: ref || null, p_name: name});
+  }
+  if(res.error){ btn.disabled = false; btn.textContent = `Send to ${STP.seller}`; err.textContent = res.error.message || 'Couldn\'t send. Try again.'; return; }
+  const d = res.data || {};
+  document.getElementById('stpPaid').innerHTML = `<div class="stp-ok"><b>✓ Sent to ${escapeHtml(STP.seller)}.</b> ${fmtPHP(d.applied || amt)} is waiting for them to confirm it arrived. You'll see it on this page once they do.${d.extra >= 1 ? ` ${fmtPHP(d.extra)} was more than what's due, so message them about it.` : ''}</div>`;
+}
+// The customer's order page (tracking link): scan to pay right under the order.
+const _renderBuyerTrackViewBase = renderBuyerTrackView;
+renderBuyerTrackView = function(d){
+  _renderBuyerTrackViewBase(d);
+  if(!d || !d.pay || !stpAccounts(d.pay.accounts).length) return;
+  const due = Number(d.pay.due || 0), pend = Number(d.pay.pending || 0);
+  if(due < 1 && pend < 1) return;
+  const first = document.querySelector('#publicOrderView .po-public-card');
+  if(first) first.insertAdjacentHTML('afterend', `<div class="po-public-card stp-wrap">${stpCardHtml({kind: 'order', accounts: d.pay.accounts, due, pending: pend, updatedAt: d.pay.updated_at, seller: d.supplier_name})}</div>`);
+};
+// Statements: the same card above the printable page (public link), or as a preview for the seller.
+const _showStatementOverlayBase = showStatementOverlay;
+showStatementOverlay = function(d, opts){
+  _showStatementOverlayBase(d, opts);
+  const o = opts || {}, s = (d && d.supplier) || {};
+  const accts = stpAccounts(s.pay_to);
+  const share = document.getElementById('stmtShare');
+  if(!share || !accts.length || !d.totals) return;
+  const due = Math.max(0, (d.totals.balance || 0) - (d.totals.pending || 0));
+  if(due < 1 && !(d.totals.pending >= 1)) return;
+  share.insertAdjacentHTML('afterend', `<div class="stmt-stp${o.isPublic ? '' : ' preview'}">${o.isPublic ? '' : '<div class="stmt-stp-note">Your customer sees this on their statement link</div>'}${stpCardHtml({kind: 'statement', accounts: accts, due, pending: d.totals.pending || 0, updatedAt: null, seller: s.name || 'the seller', preview: !o.isPublic})}</div>`);
+  if(o.isPublic){ const b = document.querySelector('.stmt-toolbar button[onclick="stmtShowPaid()"]'); if(b) b.onclick = () => { document.getElementById('stpCard').scrollIntoView({behavior: 'smooth'}); stpShowPaid(); }; }
+};
+// Settings: show sellers exactly what customers will see, and ask for the QR where it's missing.
+const _renderPaymentDetailsSettingsBase = renderPaymentDetailsSettings;
+renderPaymentDetailsSettings = function(){
+  _renderPaymentDetailsSettingsBase();
+  const el = document.getElementById('paymentDetailsContent'); if(!el) return;
+  const accts = stpAccounts(getMyPaymentAccounts());
+  const noQr = accts.some(a => !isSafeImageDataUrl(a.qr) && a.type !== 'remittance');
+  el.insertAdjacentHTML('afterbegin', `<div class="stp-set">
+    <div><b>Scan to pay</b><span>${accts.some(a => isSafeImageDataUrl(a.qr)) ? 'Your QR shows on every order link and statement, so customers pay in seconds.' : 'Add your GCash or Maya QR. It shows on every order link and statement, so customers pay in seconds.'}</span></div>
+    ${accts.length ? `<button class="btn btn-outline" onclick="stpPreview()">See what customers see</button>` : ''}</div>
+    ${noQr ? `<div class="logi-note" style="margin:8px 0;">${accts.filter(a => !isSafeImageDataUrl(a.qr) && a.type !== 'remittance').map(a => `${escapeHtml(PAYMENT_ACCOUNT_TYPES[a.type] || 'Account')} has no QR yet. <label class="row-action" style="cursor:pointer;">Add QR<input type="file" accept="image/png,image/jpeg,image/webp" style="display:none" onchange="stpAddQr(this, '${escapeHtml(a.id || '')}')"></label>`).join('<br>')}</div>` : ''}`);
+};
+function stpPreview(){
+  const name = myBusiness ? myBusiness.name : 'Metro Steel Co.';
+  slModal('stpPrevModal', `<div class="sl-sheet-h"><b>What your customer sees</b><button class="sl-x" onclick="slClose('stpPrevModal')">✕</button></div>
+    <div class="sl-sub">This shows on their order link and statement, with the amount they owe.</div>
+    ${stpCardHtml({kind: 'preview', accounts: getMyPaymentAccounts(), due: 12500, pending: 0, updatedAt: null, seller: name, preview: true})}`);
+}
+function stpAddQr(input, id){
+  if(!requirePermission('managePaymentDetails')) return;
+  const f = input.files && input.files[0]; if(!f) return;
+  if(!/^image\/(png|jpeg|webp)$/.test(f.type)){ showToast('Upload a PNG, JPG or WebP image of the QR code.', 'error'); return; }
+  readImageFileCompressed(f, dataUrl => {
+    if(!isSafeImageDataUrl(dataUrl) || dataUrl.length > 400000){ showToast('That image couldn\'t be used. Try a tighter screenshot of just the QR code.', 'error'); return; }
+    const list = getMyPaymentAccounts().map(a => (a.id || '') === id ? Object.assign({}, a, {qr: dataUrl}) : a);
+    savePaymentAccounts(list, 'QR added. Customers can now scan to pay.');
+  }, 700, 0.9);
+}
+
+// ---------------------------------------------------------------- 4) Your week with Nifti
+let wkCache = {};
+function wkRange(offset){
+  const t = new Date(APP_TODAY + 'T00:00:00'), dow = (t.getDay() + 6) % 7; // Monday = 0
+  const mon = addDaysIso(APP_TODAY, -dow - 7 * offset);
+  const sun = addDaysIso(mon, 6);
+  return {from: mon, to: sun < APP_TODAY ? sun : APP_TODAY};
+}
+function wkLocal(offset){
+  const {from, to} = wkRange(offset), sup = currentAppRole === 'supplier', inR = d => d && d >= from && d <= to;
+  const pos = (sup ? getSupplierPOs() : getBuyerPOs()).filter(o => o.status !== 'draft');
+  const pays = [];
+  pos.forEach(o => {
+    const inv = (o.invoice && o.invoice.payments) || [], ids = new Set(inv.map(p => p.id));
+    inv.concat((o.depositPayments || []).filter(p => !ids.has(p.id))).forEach(p => {
+      const ok = (p.confirmStatus || 'confirmed') === 'confirmed' && !(p.method === 'check' && p.checkStatus && p.checkStatus !== 'cleared');
+      if(ok) pays.push({amt: Number(p.amount || 0), d: String(p.date || '').slice(0, 10)});
+    });
+  });
+  const wk = pays.filter(p => inR(p.d));
+  const conf = o => o.deliveryConfirmation && String(o.deliveryConfirmation.confirmedDate || '').slice(0, 10);
+  if(sup){
+    const ord = pos.filter(o => inR(o.createdDate) && !['cancelled', 'quote'].includes(o.status) && !(o.invoice && o.invoice.opening));
+    return {role: 'supplier', from, to, orders: ord.length, orders_value: ord.reduce((s, o) => s + poTotal(o), 0), collected: wk.reduce((s, p) => s + p.amt, 0), payments: wk.length,
+      collected_after_reminder: 0, reminders: 0, statements_opened: 0, deliveries_confirmed: pos.filter(o => inR(conf(o))).length,
+      owed_now: unpaidInvoicesFor('supplier').reduce((s, r) => s + r.balance, 0)};
+  }
+  const ord = pos.filter(o => inR(o.createdDate) && o.status !== 'cancelled');
+  return {role: 'buyer', from, to, orders: ord.length, orders_value: ord.reduce((s, o) => s + poTotal(o), 0), paid: wk.reduce((s, p) => s + p.amt, 0),
+    deliveries: pos.filter(o => inR(conf(o))).length,
+    late: pos.filter(o => inR(o.requestedDeliveryDate) && o.status !== 'cancelled' && (!conf(o) || conf(o) > o.requestedDeliveryDate)).length,
+    overpay_alerts: 0, overpay_amount: 0};
+}
+function wkHasAny(r){ return r && ((r.orders || 0) + (r.collected || 0) + (r.paid || 0) + (r.reminders || 0) + (r.deliveries_confirmed || 0) + (r.deliveries || 0) + (r.overpay_alerts || 0) + (r.statements_opened || 0)) > 0; }
+function wkLoad(){
+  if(!myBusiness) return wkFetch();
+  const key = myBusiness.id + ':' + currentAppRole + ':' + APP_TODAY;
+  const c = wkCache[key];
+  if(!c || Date.now() - c.at > 600000) wkCache[key] = {at: Date.now(), p: wkFetch()};
+  return wkCache[key].p;
+}
+async function wkFetch(){
+  let r1 = null, r0 = null;
+  if(myBusiness){
+    try{ const a = await sb.rpc('my_weekly_recap', {p_offset: 1}); r1 = a.error ? null : a.data; }catch(e){}
+    if(!wkHasAny(r1)){ try{ const b = await sb.rpc('my_weekly_recap', {p_offset: 0}); r0 = b.error ? null : b.data; }catch(e){} }
+  } else { r1 = wkLocal(1); if(!wkHasAny(r1)) r0 = wkLocal(0); }
+  return wkHasAny(r1) ? Object.assign({label: 'Last week'}, r1) : wkHasAny(r0) ? Object.assign({label: 'This week so far'}, r0) : null;
+}
+function wkShort(d){ return new Date(d + 'T00:00:00').toLocaleDateString('en-PH', {month: 'short', day: 'numeric'}); }
+function wkTile(big, label, sub, tone){ return `<div class="wk-t${tone ? ' ' + tone : ''}"><b class="lg-n">${big}</b><span>${label}</span>${sub ? `<small>${sub}</small>` : ''}</div>`; }
+async function renderWeeklyRecapCard(){
+  const old = document.getElementById('wkCard');
+  const r = await wkLoad();
+  const host = document.getElementById(currentAppRole === 'supplier' ? 'supplierDashboardView' : 'buyerDashboardView');
+  const grid = host && host.querySelector('.lg-grid');
+  const cur = document.getElementById('wkCard'); if(cur) cur.remove(); else if(old) old.remove();
+  if(!r || !grid || r.role !== currentAppRole) return;
+  let hidden = false; try{ hidden = localStorage.getItem('nifti-wk-hide:' + currentAppRole) === r.from; }catch(e){}
+  if(hidden) return;
+  let tiles = '', line = '';
+  if(r.role === 'supplier'){
+    tiles = wkTile(hmPeso(r.collected || 0), 'collected', `${r.payments || 0} payment${r.payments === 1 ? '' : 's'}`, r.collected >= 1 ? 'g' : '')
+      + wkTile(r.orders || 0, `order${r.orders === 1 ? '' : 's'}`, r.orders_value >= 1 ? hmPeso(r.orders_value) : '')
+      + wkTile(r.reminders || 0, `reminder${r.reminders === 1 ? '' : 's'} sent for you`, r.statements_opened ? `${r.statements_opened} opened their statement` : '')
+      + wkTile(r.deliveries_confirmed || 0, `deliver${r.deliveries_confirmed === 1 ? 'y' : 'ies'} confirmed`, 'by the receiver');
+    line = r.collected_after_reminder >= 1 ? `${fmtPHP(r.collected_after_reminder)} came in after reminders Nifti sent for you.` : r.owed_now >= 1 ? `Still owed to you: ${fmtPHP(r.owed_now)}.` : '';
+  } else {
+    tiles = wkTile(r.orders || 0, `order${r.orders === 1 ? '' : 's'} placed`, r.orders_value >= 1 ? hmPeso(r.orders_value) : '', r.orders ? 'g' : '')
+      + wkTile(hmPeso(r.paid || 0), 'paid, all on record', '')
+      + wkTile(r.deliveries || 0, `deliver${r.deliveries === 1 ? 'y' : 'ies'} received`, '')
+      + wkTile(r.late || 0, `late deliver${r.late === 1 ? 'y' : 'ies'} flagged`, '', r.late ? 'w' : '');
+    line = r.overpay_alerts ? `${r.overpay_alerts} overpayment alert${r.overpay_alerts > 1 ? 's' : ''}${r.overpay_amount >= 1 ? ` (${fmtPHP(r.overpay_amount)})` : ''} caught before it slipped by.` : '';
+  }
+  grid.insertAdjacentHTML('afterend', `<section class="lg-panel wk-card" id="wkCard"><div class="lg-ph"><div><b>Your week with Nifti</b><span class="wk-range">${escapeHtml(r.label)} · ${wkShort(r.from)}–${wkShort(r.to)}</span></div>
+      <span class="row-action" onclick="try{localStorage.setItem('nifti-wk-hide:${currentAppRole}', '${r.from}')}catch(e){} document.getElementById('wkCard').remove()">Hide</span></div>
+    <div class="wk-tiles">${tiles}</div>${line ? `<div class="wk-line">${line}</div>` : ''}</section>`);
+}
+const _renderHomeV2Base = renderHomeV2;
+renderHomeV2 = function(){
+  _renderHomeV2Base.apply(this, arguments);
+  renderWeeklyRecapCard();
+};
+
+// ---------------------------------------------------------------- 5) Google sign-in
+async function niftiGoogleEnabled(){
+  try{ const c = sessionStorage.getItem('nifti-google'); if(c !== null) return c === '1'; }catch(e){}
+  let on = false;
+  try{
+    const ctl = typeof AbortController === 'function' ? new AbortController() : null;
+    const t = ctl ? setTimeout(() => ctl.abort(), 5000) : null;
+    const r = await fetch(NIFTI_SUPABASE_URL + '/auth/v1/settings', {headers: {apikey: NIFTI_SUPABASE_KEY}, signal: ctl ? ctl.signal : undefined});
+    if(t) clearTimeout(t);
+    if(r.ok){ const j = await r.json(); on = !!(j && j.external && j.external.google); }
+  }catch(e){ on = false; }
+  try{ sessionStorage.setItem('nifti-google', on ? '1' : '0'); }catch(e){}
+  return on;
+}
+const GOOGLE_G = '<svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>';
+renderGoogleSignInButtons = async function(){
+  if(!(await niftiGoogleEnabled())) return;
+  [['signinView', '.field'], ['signupView', '.role-pick']].forEach(([id, sel]) => {
+    const v = document.getElementById(id);
+    if(!v || v.querySelector('.google-btn')) return;
+    const box = document.createElement('div');
+    box.className = 'google-box';
+    box.innerHTML = `<button type="button" class="google-btn" onclick="signInWithGoogle('${id === 'signupView' ? 'signup' : 'signin'}')">${GOOGLE_G}<span>Continue with Google</span></button><div class="google-or"><span>or use your email</span></div>`;
+    const at = v.querySelector(sel);
+    if(!at) v.prepend(box); else if(sel === '.role-pick') at.after(box); else at.before(box);
+  });
+};
+signInWithGoogle = async function(from){
+  let type = null;
+  if(from === 'signup'){ const c = document.querySelector('#signupView .role-chip.active'); type = c && /supplier/i.test(c.textContent) ? 'supplier' : 'buyer'; }
+  try{ localStorage.setItem('nifti-google-intent', JSON.stringify({type, at: Date.now()})); }catch(e){}
+  const { error } = await sb.auth.signInWithOAuth({provider: 'google', options: {redirectTo: appBaseUrl()}});
+  if(error) showToast("Couldn't open Google sign-in: " + error.message, 'error');
+};
+// First Google sign-in: a "Join Nifti" link waiting? take over that business. Otherwise ask name + side once.
+const _maybeFinishBusinessSetupBase = maybeFinishBusinessSetup;
+maybeFinishBusinessSetup = async function(){
+  if(!myBusiness || myBusiness.name !== 'New Business' || document.getElementById('finishSetupModal')) return;
+  let code = null; try{ code = sessionStorage.getItem('nifti-claim-code'); }catch(e){}
+  if(code && !window._claimTried){
+    window._claimTried = true;
+    const { data, error } = await sb.rpc('claim_business_with_code', {p_code: code});
+    try{ sessionStorage.removeItem('nifti-claim-code'); sessionStorage.removeItem('nifti-claim-role'); }catch(e){}
+    if(!error && data){ showToast(`Welcome! ${data.name}'s orders are all here.`, 'success'); setTimeout(() => location.reload(), 900); return; }
+  }
+  _maybeFinishBusinessSetupBase();
+  let intent = null; try{ intent = JSON.parse(localStorage.getItem('nifti-google-intent') || 'null'); }catch(e){}
+  const sel = document.getElementById('fsType');
+  if(sel && intent && intent.type && Date.now() - intent.at < 3600000) sel.value = intent.type;
+};
 
 function renderSidebarForViewAsRole(){
   const allowed = computeAllowedPages(getEffectiveRoles());

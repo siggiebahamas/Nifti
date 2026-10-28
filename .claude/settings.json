@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Supabase",
+      "mcp__Supabase__*",
+      "mcp__supabase",
+      "mcp__supabase__*"
+    ]
+  }
+}
