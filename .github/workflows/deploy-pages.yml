@@ -13,10 +13,11 @@ permissions:
   pages: write
   id-token: write
 
-# Only one deployment at a time; let an in-flight one finish rather than cancel it.
+# Only one deployment at a time. A newer run replaces an older one: a run that got stuck
+# "waiting" on Oct 6 held this group for three weeks and every deploy after it was cancelled.
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   deploy:
