@@ -169,7 +169,7 @@ Migration files are in **`supabase_migrations/`**:
 - `2026-10-29-one-business-and-books.sql`
 - `2026-10-29-owner-alerts-books-summary-menu.sql`
 - `2026-10-29-ledger-close-payroll.sql`
-- `2026-11-03-price-lock-discounts-receipts.sql` (price lock, approvals, discounts on the morning message)
+- `2026-11-03-price-lock-discounts-receipts.sql` (price lock, approvals, discounts on the morning message; applied live 3 Nov 2026, test: `dev/sql/test_pricelock.sql`)
 
 The original schema is in `supabase_schema.sql` and `supabase_schema_part2.sql`.
 
