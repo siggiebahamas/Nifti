@@ -1,0 +1,10 @@
+import re, sys, collections
+s = open(__import__('os').path.join(__import__('os').path.dirname(__file__), '..', '..', 'Nifti_Sept17.html'), encoding='utf-8').read()
+print('script', len(re.findall(r'<script\b', s)), len(re.findall(r'</script>', s)), end=' | ')
+print('div', len(re.findall(r'<div\b', s)), len(re.findall(r'</div>', s)))
+big = max(re.findall(r'<script(?:\s[^>]*)?>(.*?)</script>', s, re.S), key=len)
+open(sys.argv[1], 'w', encoding='utf-8').write(big)
+fns = re.findall(r'^(?:async\s+)?function\s+([A-Za-z_$][\w$]*)\s*\(', big, re.M)
+c = collections.Counter(fns); print('fns', len(fns), 'dupes:', [k for k, v in c.items() if v > 1])
+tops = re.findall(r'^(?:const|let)\s+([A-Za-z_$][\w$]*)\s*=', big, re.M)
+c2 = collections.Counter(tops); print('dup const/let:', [k for k, v in c2.items() if v > 1])

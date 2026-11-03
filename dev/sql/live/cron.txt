@@ -1,0 +1,13 @@
+nifti-payment-reminders | 0 1 * * * | select public.send_payment_reminders()
+nifti-push-retry | */2 * * * * | select public.nifti_kick_dispatch() where exists (select 1 from public.notification_outbox where sent_at is null and attempts < 5)
+nifti-daily-summary | 0 23 * * * | select public.send_daily_summaries()
+nifti-weekly-backup | 0 18 * * 6 | select public.nifti_kick_backup()
+nifti-growth-nudges | 0 2 * * * | select public.send_growth_nudges()
+nifti-cheque-reminders | 40 22 * * * | select public.send_cheque_reminders()
+nifti-price-changes | 5 16 * * * | select public.apply_due_price_changes()
+nifti-price-reminders | 10 23 * * * | select public.send_price_change_reminders()
+nifti-reorder-nudges | 30 1 * * * | select public.send_reorder_nudges()
+nifti-quote-nudges | 5 1 * * * | select public.send_quote_nudges()
+nifti-weekly-recap | 12 0 * * 1 | select public.send_weekly_recaps();
+nifti-books-summary | 5 23 * * * | select public.send_books_summaries()
+nifti-ledger-sync | 40 22 * * * | select public.ledger_sync_all()

@@ -1,0 +1,10 @@
+alter function public.ledger_template() set search_path = public;
+alter function public.ledger_acct_method(text) set search_path = public;
+alter function public.ledger_acct_paid_from(text) set search_path = public;
+alter function public.ledger_acct_category(text) set search_path = public;
+alter function public.jl(text, numeric, text, text) set search_path = public;
+alter function public.jls(jsonb[]) set search_path = public;
+alter function public.journal_immutable() set search_path = public;
+revoke all on function public.nifti_month_locked(uuid, date), public.ledger_open_date(uuid, date) from public, anon;
+grant execute on function public.nifti_month_locked(uuid, date) to authenticated;
+select count(*) from pg_proc p join pg_namespace n on n.oid = p.pronamespace where n.nspname = 'public' and p.proname in ('ledger_template','jl','jls','journal_immutable') and p.proconfig is not null;

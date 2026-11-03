@@ -1,0 +1,1018 @@
+-- accounting_periods.
+  business_id uuid not null
+  period date not null
+  status text default 'locked'::text not null
+  locked_at timestamp with time zone
+  locked_by_name text
+  note text
+  reopened_at timestamp with time zone
+  reopened_by_name text
+  reopen_reason text
+  checklist jsonb
+
+-- admin_actions.
+  id bigint default nextval('admin_actions_id_seq'::regclass) not null
+  admin_email text
+  action text not null
+  business_id uuid
+  target text
+  detail jsonb
+  created_at timestamp with time zone default now() not null
+
+-- analytics_events.
+  id uuid default gen_random_uuid() not null
+  business_id uuid not null
+  name text not null
+  properties jsonb default '{}'::jsonb not null
+  occurred_at timestamp with time zone default now() not null
+
+-- app_secrets.
+  name text not null
+  value text not null
+  created_at timestamp with time zone default now() not null
+
+-- audit_log.
+  id uuid default gen_random_uuid() not null
+  business_id uuid not null
+  action text not null
+  entity_type text
+  entity_id text
+  field text
+  old_value jsonb
+  new_value jsonb
+  actor text
+  occurred_at timestamp with time zone default now() not null
+
+-- bank_matches.
+  id uuid default gen_random_uuid() not null
+  business_id uuid not null
+  line_hash text not null
+  line jsonb not null
+  status text not null
+  po_id uuid
+  payment_key text
+  deposit_id uuid
+  created_by text
+  created_at timestamp with time zone default now() not null
+
+-- books_summary_log.
+  business_id uuid not null
+  day date not null
+
+-- broadcast_log.
+  id bigint default nextval('broadcast_log_id_seq'::regclass) not null
+  business_id uuid not null
+  sent integer not null
+  created_at timestamp with time zone default now() not null
+
+-- business_invites.
+  id uuid default gen_random_uuid() not null
+  inviting_business_id uuid not null
+  invited_email text not null
+  status text default 'pending'::text not null
+  created_at timestamp with time zone default now() not null
+  accepted_at timestamp with time zone
+  invited_as text
+
+-- business_relationships.
+  id uuid default gen_random_uuid() not null
+  buyer_business_id uuid not null
+  supplier_business_id uuid not null
+  category text
+  score integer
+  tier text
+  payment_terms text
+  preferred_contact text
+  country text
+  location text
+  credit_limit numeric
+  relationship_since date
+  created_at timestamp with time zone default now() not null
+  terms_of_trade jsonb
+  credit_hold_days integer
+  credit_mode text default 'block'::text not null
+
+-- business_settings.
+  business_id uuid not null
+  currency_mode text default 'php'::text not null
+  usd_rate numeric default 56.50 not null
+  approval_threshold numeric
+  downstream_sales_enabled boolean default false not null
+  buyer_profile_public boolean default false not null
+  price_protection_count integer default 0 not null
+  price_protection_total_caught numeric default 0 not null
+  watchdog jsonb default '{}'::jsonb not null
+  spending_caps jsonb
+
+-- business_share_links.
+  token text not null
+  business_id uuid not null
+  scope text not null
+  label text
+  created_by_name text
+  created_at timestamp with time zone default now() not null
+  expires_at timestamp with time zone not null
+  revoked_at timestamp with time zone
+  last_viewed_at timestamp with time zone
+  view_count integer default 0 not null
+
+-- businesses.
+  id uuid default gen_random_uuid() not null
+  name text not null
+  type text not null
+  created_at timestamp with time zone default now() not null
+  catalog_public boolean default false not null
+  approval_threshold numeric
+  payment_methods jsonb default '[]'::jsonb not null
+  payment_methods_updated_at timestamp with time zone
+  is_outside boolean default false not null
+  outside_contact jsonb
+  created_by_business uuid
+  claim_code text
+  auto_payment_reminders boolean default true not null
+  catalog jsonb default '[]'::jsonb not null
+  public_profile jsonb default '{}'::jsonb not null
+  paused_at timestamp with time zone
+  shared_contact jsonb default '{}'::jsonb not null
+  logistics_partners jsonb default '[]'::jsonb not null
+  store jsonb default '{}'::jsonb not null
+  store_slug text
+  verified_at timestamp with time zone
+  verified_until date
+  banned_at timestamp with time zone
+  ban_reason text
+  reviewed_at timestamp with time zone
+  admin_note text
+  collection_settings jsonb default '{}'::jsonb not null
+  books_settings jsonb default '{}'::jsonb not null
+
+-- cap_alert_log.
+  business_id uuid not null
+  month date not null
+  cap_key text not null
+  level integer not null
+
+-- cash_counts.
+  id uuid default gen_random_uuid() not null
+  business_id uuid not null
+  count_day date not null
+  drawer text default 'Main'::text not null
+  expected jsonb default '{}'::jsonb not null
+  counted jsonb default '{}'::jsonb not null
+  difference numeric default 0 not null
+  note text
+  closed_by uuid
+  closed_by_name text
+  closed_at timestamp with time zone default now() not null
+  reopened_at timestamp with time zone
+  reopened_by_name text
+  reviewed_at timestamp with time zone
+  reviewed_by_name text
+  review_note text
+
+-- cash_deposits.
+  id uuid default gen_random_uuid() not null
+  business_id uuid not null
+  amount numeric not null
+  bank text
+  deposited_on date not null
+  reference text
+  items jsonb default '[]'::jsonb not null
+  note text
+  created_by text
+  created_at timestamp with time zone default now() not null
+  branch text
+
+-- catalog_items.
+  id uuid default gen_random_uuid() not null
+  business_id uuid not null
+  product text not null
+  price numeric
+  unit text
+  moq numeric
+  photo_url text
+  updated_at timestamp with time zone default now() not null
+  created_at timestamp with time zone default now() not null
+
+-- cheque_reminder_log.
+  business_id uuid not null
+  day date not null
+  kind text not null
+
+-- client_error_log.
+  id uuid default gen_random_uuid() not null
+  business_id uuid
+  user_email text
+  message text not null
+  stack text
+  url text
+  user_agent text
+  created_at timestamp with time zone default now() not null
+
+-- connection_requests.
+  id uuid default gen_random_uuid() not null
+  from_business uuid not null
+  to_business uuid not null
+  note text
+  status text default 'pending'::text not null
+  created_at timestamp with time zone default now() not null
+  responded_at timestamp with time zone
+  from_role text
+
+-- conversation_messages.
+  id uuid default gen_random_uuid() not null
+  conversation_id uuid not null
+  sender_business_id uuid not null
+  text text not null
+  sent_at timestamp with time zone default now() not null
+  po_id uuid
+  attachment jsonb
+
+-- conversations.
+  id uuid default gen_random_uuid() not null
+  buyer_business_id uuid not null
+  supplier_business_id uuid not null
+  buyer_unread_count integer default 0 not null
+  supplier_unread_count integer default 0 not null
+  created_at timestamp with time zone default now() not null
+
+-- credit_memos.
+  id uuid default gen_random_uuid() not null
+  supplier_business_id uuid not null
+  buyer_business_id uuid not null
+  number text not null
+  amount numeric not null
+  remaining numeric not null
+  source_po_id uuid
+  reason text
+  status text default 'open'::text not null
+  uses jsonb default '[]'::jsonb not null
+  created_by_name text
+  created_at timestamp with time zone default now() not null
+
+-- custom_roles.
+  id uuid default gen_random_uuid() not null
+  business_id uuid not null
+  name text not null
+  allowed_pages ARRAY default '{}'::text[] not null
+  created_at timestamp with time zone default now() not null
+
+-- customer_nudges.
+  id bigint default nextval('customer_nudges_id_seq'::regclass) not null
+  business_id uuid not null
+  buyer_business_id uuid not null
+  kind text not null
+  channel text
+  snooze_until date
+  created_by text
+  created_at timestamp with time zone default now() not null
+
+-- daily_summary_log.
+  business_id uuid not null
+  day date not null
+
+-- discovery_leads.
+  id uuid default gen_random_uuid() not null
+  business_id uuid not null
+  direction text not null
+  for_role text not null
+  counterpart_name text
+  category text
+  status text default 'new'::text not null
+  lead_date date
+  created_at timestamp with time zone default now() not null
+
+-- dismissed_items.
+  id uuid default gen_random_uuid() not null
+  business_id uuid not null
+  kind text not null
+  item_key text not null
+  dismissed_at timestamp with time zone default now() not null
+
+-- document_counters.
+  business_id uuid not null
+  counter_type text not null
+  next_value integer not null
+  updated_at timestamp with time zone default now() not null
+
+-- downstream_customers.
+  id uuid default gen_random_uuid() not null
+  business_id uuid not null
+  name text not null
+  contact_name text
+  phone text
+  address text
+  terms text
+  created_date date
+  created_at timestamp with time zone default now() not null
+
+-- downstream_sales.
+  id uuid default gen_random_uuid() not null
+  business_id uuid not null
+  customer_id uuid
+  sale_date date not null
+  line_items jsonb default '[]'::jsonb not null
+  payments jsonb default '[]'::jsonb not null
+  created_at timestamp with time zone default now() not null
+  customer_name text
+  total numeric
+  paid_with text
+  note text
+  created_by uuid
+  created_by_name text
+  voided_at timestamp with time zone
+  voided_by_name text
+  void_reason text
+  branch text
+
+-- expenses.
+  id uuid default gen_random_uuid() not null
+  business_id uuid not null
+  spent_on date default nifti_today() not null
+  category text not null
+  amount numeric not null
+  paid_from text default 'cash'::text not null
+  vendor text
+  note text
+  staff_name text
+  receipt_path text
+  repeat_monthly boolean default false not null
+  created_by uuid
+  created_by_name text
+  created_at timestamp with time zone default now() not null
+  edited_at timestamp with time zone
+  edited_by_name text
+  deleted_at timestamp with time zone
+  deleted_by_name text
+  delete_reason text
+  branch text
+  status text default 'approved'::text not null
+  approved_by_name text
+  approved_at timestamp with time zone
+  review_note text
+
+-- form2307_status.
+  buyer_business_id uuid not null
+  supplier_business_id uuid not null
+  quarter text not null
+  status text default 'owed'::text not null
+  sent_at timestamp with time zone
+  sent_by_name text
+  received_at timestamp with time zone
+  received_by_name text
+  note text
+  updated_at timestamp with time zone default now() not null
+
+-- growth_briefs.
+  id bigint default nextval('growth_briefs_id_seq'::regclass) not null
+  brief_date date default ((now() AT TIME ZONE 'Asia/Manila'::text))::date not null
+  body text not null
+  created_at timestamp with time zone default now() not null
+
+-- growth_leads.
+  id bigint default nextval('growth_leads_id_seq'::regclass) not null
+  name text not null
+  kind text default 'supplier'::text not null
+  category text
+  area text
+  source_url text
+  contact text
+  why text
+  opener text
+  status text default 'new'::text not null
+  notes text
+  created_at timestamp with time zone default now() not null
+  updated_at timestamp with time zone default now() not null
+
+-- growth_nudge_log.
+  business_id uuid not null
+  kind text not null
+  sent_at timestamp with time zone default now() not null
+
+-- import_batches.
+  id uuid default gen_random_uuid() not null
+  business_id uuid not null
+  type text not null
+  filename text
+  imported_at date
+  actor text
+  row_count integer
+  added_codes jsonb default '[]'::jsonb not null
+  updated_snapshots jsonb default '[]'::jsonb not null
+  rolled_back boolean default false not null
+  created_at timestamp with time zone default now() not null
+
+-- inventory_items.
+  id uuid default gen_random_uuid() not null
+  business_id uuid not null
+  sku_code text not null
+  name text not null
+  warehouse text
+  on_hand numeric default 0 not null
+  rop numeric
+  max_level numeric
+  lot text
+  exp date
+  status text
+  supplier_name text
+  days_left integer
+  lead_time integer
+  batches jsonb default '[]'::jsonb not null
+  barcode text
+  created_at timestamp with time zone default now() not null
+  updated_at timestamp with time zone default now() not null
+  unit text
+  meta jsonb
+  rop_enabled boolean default true not null
+  max_level_enabled boolean default true not null
+  batch_tracking_enabled boolean default false not null
+  unit_cost numeric
+  sell_price numeric
+
+-- issue_decisions.
+  business_id uuid not null
+  fingerprint text not null
+  status text not null
+  assigned_to text
+  note text
+  due date
+  decided_by_name text
+  updated_at timestamp with time zone default now() not null
+  history jsonb default '[]'::jsonb not null
+
+-- item_aliases.
+  id bigint default nextval('item_aliases_id_seq'::regclass) not null
+  business_id uuid not null
+  customer_key text default ''::text not null
+  alias_norm text not null
+  product text not null
+  uses integer default 1 not null
+  updated_at timestamp with time zone default now() not null
+
+-- journal_entries.
+  id uuid default gen_random_uuid() not null
+  business_id uuid not null
+  entry_date date not null
+  memo text
+  kind text not null
+  source_type text
+  source_id text
+  source_hash text
+  status text default 'posted'::text not null
+  reversal_of uuid
+  reversed_by uuid
+  branch text
+  created_by_name text
+  created_at timestamp with time zone default now() not null
+
+-- journal_lines.
+  id uuid default gen_random_uuid() not null
+  entry_id uuid not null
+  business_id uuid not null
+  account_code text not null
+  debit numeric default 0 not null
+  credit numeric default 0 not null
+  party text
+  memo text
+
+-- ledger_accounts.
+  id uuid default gen_random_uuid() not null
+  business_id uuid not null
+  code text not null
+  name text not null
+  type text not null
+  is_system boolean default false not null
+  active boolean default true not null
+  created_at timestamp with time zone default now() not null
+
+-- locations.
+  id uuid default gen_random_uuid() not null
+  business_id uuid not null
+  code text not null
+  label text not null
+  created_at timestamp with time zone default now() not null
+
+-- menu_items.
+  id uuid default gen_random_uuid() not null
+  business_id uuid not null
+  name text not null
+  price numeric default 0 not null
+  recipe jsonb default '[]'::jsonb not null
+  active boolean default true not null
+  created_at timestamp with time zone default now() not null
+  updated_at timestamp with time zone default now() not null
+
+-- notification_outbox.
+  id bigint default nextval('notification_outbox_id_seq'::regclass) not null
+  business_id uuid not null
+  only_member uuid
+  exclude_member uuid
+  category text default 'orders'::text not null
+  title text not null
+  body text default ''::text not null
+  url text default './'::text not null
+  created_at timestamp with time zone default now() not null
+  claimed_at timestamp with time zone
+  sent_at timestamp with time zone
+  attempts integer default 0 not null
+  error text
+  to_email text
+
+-- notification_settings.
+  business_id uuid not null
+  order_updates boolean default true not null
+  price_changes boolean default true not null
+  new_messages boolean default true not null
+  weekly_summary boolean default false not null
+  lead_alerts boolean default true not null
+  channel_viber boolean default true not null
+  channel_sms boolean default false not null
+  channel_whatsapp boolean default false not null
+  channel_email boolean default false not null
+  sms_number text
+  email_address text
+  daily_summary boolean default true not null
+
+-- notifications.
+  id uuid default gen_random_uuid() not null
+  business_id uuid not null
+  text text not null
+  color text
+  read boolean default false not null
+  action jsonb
+  created_at timestamp with time zone default now() not null
+
+-- order_links.
+  token text not null
+  po_id uuid not null
+  created_by_business uuid not null
+  created_at timestamp with time zone default now() not null
+  expires_at timestamp with time zone default (now() + '120 days'::interval) not null
+  revoked_at timestamp with time zone
+  first_viewed_at timestamp with time zone
+  last_viewed_at timestamp with time zone
+  view_count integer default 0 not null
+  kind text default 'order'::text not null
+  partner_name text
+
+-- password_reset_log.
+  id bigint default nextval('password_reset_log_id_seq'::regclass) not null
+  email text not null
+  created_at timestamp with time zone default now() not null
+
+-- payment_promises.
+  id uuid default gen_random_uuid() not null
+  business_id uuid not null
+  buyer_business_id uuid not null
+  amount numeric not null
+  promised_date date not null
+  note text
+  status text default 'open'::text not null
+  created_by text
+  created_at timestamp with time zone default now() not null
+  resolved_at timestamp with time zone
+
+-- payment_reminder_log.
+  po_id uuid not null
+  stage text not null
+  sent_at timestamp with time zone default now() not null
+  automatic boolean default true not null
+  channel text
+
+-- payroll_lines.
+  id uuid default gen_random_uuid() not null
+  run_id uuid not null
+  business_id uuid not null
+  member_id uuid
+  staff_name text not null
+  basis text default 'day'::text not null
+  rate numeric default 0 not null
+  days numeric default 0 not null
+  extra numeric default 0 not null
+  gross numeric default 0 not null
+  vale_deduct numeric default 0 not null
+  contrib_employee numeric default 0 not null
+  contrib_employer numeric default 0 not null
+  other_deduct numeric default 0 not null
+  net numeric default 0 not null
+  note text
+
+-- payroll_runs.
+  id uuid default gen_random_uuid() not null
+  business_id uuid not null
+  period_from date not null
+  period_to date not null
+  status text default 'draft'::text not null
+  paid_on date
+  paid_from text
+  branch text
+  note text
+  created_by_name text
+  paid_by_name text
+  created_at timestamp with time zone default now() not null
+
+-- price_agreements.
+  id uuid default gen_random_uuid() not null
+  buyer_business_id uuid not null
+  supplier_business_id uuid not null
+  product text not null
+  price numeric not null
+  unit text
+  effective_date date
+  end_date date
+  note text
+  status text default 'pending'::text not null
+  attachment_name text
+  deleted_at timestamp with time zone
+  created_at timestamp with time zone default now() not null
+  proposed_by text not null
+  volume_tier_qty numeric
+  volume_tier_price numeric
+  deleted_reason text
+
+-- price_changes.
+  id uuid default gen_random_uuid() not null
+  business_id uuid not null
+  product text not null
+  unit text
+  old_price numeric
+  new_price numeric not null
+  effective_date date not null
+  note text
+  created_by_name text
+  created_at timestamp with time zone default now() not null
+  applied_at timestamp with time zone
+  cancelled_at timestamp with time zone
+  sent_to integer
+
+-- price_reminder_log.
+  supplier_id uuid not null
+  buyer_id uuid not null
+  day date not null
+
+-- purchase_orders.
+  id uuid default gen_random_uuid() not null
+  po_number text default next_po_number() not null
+  buyer_business_id uuid not null
+  supplier_business_id uuid not null
+  type text default 'local'::text not null
+  status text not null
+  currency text default 'PHP'::text not null
+  tax_rate numeric default 0 not null
+  line_items jsonb default '[]'::jsonb not null
+  created_date date not null
+  requested_delivery_date date
+  delivery_address text
+  notes text
+  shipping jsonb
+  customs jsonb
+  invoice jsonb
+  counter jsonb
+  delivery_confirmation jsonb
+  at_risk boolean default false not null
+  risk_note text
+  history jsonb default '[]'::jsonb not null
+  created_at timestamp with time zone default now() not null
+  updated_at timestamp with time zone default now() not null
+  rma jsonb
+  assignment jsonb
+  deposit_payments jsonb
+  cod_payment jsonb
+  sales_invoice_record jsonb
+  amendments jsonb
+  backorder_po_id text
+  replaces_po_id text
+  backorder_from_po_id text
+  freight_milestones jsonb
+  pending_approval jsonb
+  deposit_required jsonb
+  credit_flag jsonb
+  placed_by_member uuid
+  customer_ref text
+  quote jsonb
+
+-- push_log.
+  id uuid default gen_random_uuid() not null
+  business_id uuid not null
+  channel text not null
+  event_type text
+  text text
+  read boolean default false not null
+  undeliverable boolean default false not null
+  occurred_at timestamp with time zone default now() not null
+
+-- push_subscriptions.
+  id uuid default gen_random_uuid() not null
+  business_id uuid not null
+  endpoint text not null
+  subscription jsonb not null
+  created_at timestamp with time zone default now() not null
+  team_member_id uuid
+
+-- referral_invites.
+  id uuid default gen_random_uuid() not null
+  business_id uuid not null
+  invited_name text not null
+  joined_date date
+  created_at timestamp with time zone default now() not null
+
+-- referrals.
+  business_id uuid not null
+  code text
+
+-- reminder_log.
+  id uuid default gen_random_uuid() not null
+  business_id uuid not null
+  po_id uuid
+  reminder_date date
+  occurred_at timestamp with time zone default now() not null
+
+-- reorder_links.
+  token text not null
+  business_id uuid not null
+  buyer_business_id uuid not null
+  items jsonb default '[]'::jsonb not null
+  created_at timestamp with time zone default now() not null
+  expires_at timestamp with time zone not null
+
+-- rfqs.
+  id uuid default gen_random_uuid() not null
+  rfq_number text default next_rfq_number() not null
+  buyer_business_id uuid not null
+  supplier_business_id uuid not null
+  items jsonb default '[]'::jsonb not null
+  needed_by_date date
+  notes text
+  status text default 'sent'::text not null
+  quote jsonb
+  history jsonb default '[]'::jsonb not null
+  created_at timestamp with time zone default now() not null
+
+-- route_stops.
+  id uuid default gen_random_uuid() not null
+  route_id uuid not null
+  business_id uuid not null
+  seq integer not null
+  buyer_business_id uuid
+  buyer_name text not null
+  address text
+  phone text
+  deliver_po_ids ARRAY default '{}'::uuid[] not null
+  collect_po_ids ARRAY default '{}'::uuid[] not null
+  amount_due numeric default 0 not null
+  items jsonb default '[]'::jsonb not null
+  note text
+  status text default 'pending'::text not null
+  result jsonb
+  proof text
+  done_at timestamp with time zone
+  done_by text
+
+-- routes.
+  id uuid default gen_random_uuid() not null
+  business_id uuid not null
+  route_date date not null
+  driver_member_id uuid
+  driver_name text
+  vehicle text
+  status text default 'planned'::text not null
+  remit jsonb
+  created_by_name text
+  created_at timestamp with time zone default now() not null
+  updated_at timestamp with time zone default now() not null
+
+-- sales_leads.
+  id uuid default gen_random_uuid() not null
+  business_id uuid not null
+  name text not null
+  company text
+  phone text
+  email text
+  source text default 'manual'::text not null
+  source_ref text
+  interest text
+  est_value numeric
+  stage text default 'new'::text not null
+  next_follow_up date
+  last_contact_at timestamp with time zone
+  touches integer default 0 not null
+  log jsonb default '[]'::jsonb not null
+  won_buyer_id uuid
+  won_po_id uuid
+  lost_reason text
+  created_at timestamp with time zone default now() not null
+  updated_at timestamp with time zone default now() not null
+
+-- saved_explore_views.
+  id uuid default gen_random_uuid() not null
+  business_id uuid not null
+  name text not null
+  filter jsonb default '{}'::jsonb not null
+  created_at timestamp with time zone default now() not null
+
+-- service_requests.
+  id uuid default gen_random_uuid() not null
+  business_id uuid not null
+  kind text not null
+  status text default 'pending'::text not null
+  amount numeric default 0 not null
+  method text
+  reference text
+  details jsonb default '{}'::jsonb not null
+  admin_note text
+  created_by_name text
+  created_at timestamp with time zone default now() not null
+  updated_at timestamp with time zone default now() not null
+
+-- sku_overrides.
+  id uuid default gen_random_uuid() not null
+  business_id uuid not null
+  norm_name text not null
+  criticality_tier text
+  criticality_reason text
+  criticality_overridden_at timestamp with time zone
+  criticality_overridden_by text
+  backup_supplier_id uuid
+
+-- statement_links.
+  token text not null
+  supplier_business_id uuid not null
+  buyer_business_id uuid not null
+  created_by_name text
+  created_at timestamp with time zone default now() not null
+  expires_at timestamp with time zone default (now() + '30 days'::interval) not null
+  first_viewed_at timestamp with time zone
+  view_count integer default 0 not null
+
+-- stock_moves.
+  id uuid default gen_random_uuid() not null
+  business_id uuid not null
+  item_id uuid
+  item_name text not null
+  qty numeric not null
+  kind text not null
+  unit_cost numeric
+  reason text
+  ref text
+  photo_path text
+  moved_on date default nifti_today() not null
+  created_by uuid
+  created_by_name text
+  created_at timestamp with time zone default now() not null
+
+-- store_events.
+  id bigint default nextval('store_events_id_seq'::regclass) not null
+  business_id uuid not null
+  kind text not null
+  src text
+  po_id uuid
+  created_at timestamp with time zone default now() not null
+
+-- subscriptions.
+  business_id uuid not null
+  plan_id text default 'free'::text not null
+  billing_cycle text default 'monthly'::text not null
+  status text default 'active'::text not null
+  trial_ends_at date
+  started_at date default CURRENT_DATE not null
+  cancelled_at date
+  has_used_trial boolean default false not null
+  billing_history jsonb default '[]'::jsonb not null
+  paid_until date
+  plan_note text
+
+-- supplier_inbox.
+  id uuid default gen_random_uuid() not null
+  business_id uuid not null
+  type text not null
+  pill_label text
+  pill_class text
+  title text not null
+  meta text
+  resolved boolean default false not null
+  created_at timestamp with time zone default now() not null
+
+-- supply_items.
+  id uuid default gen_random_uuid() not null
+  business_id uuid not null
+  sku_code text not null
+  name text not null
+  location text
+  on_hand numeric default 0 not null
+  committed numeric default 0 not null
+  restock_level numeric
+  barcode text
+  created_at timestamp with time zone default now() not null
+  updated_at timestamp with time zone default now() not null
+  meta jsonb
+
+-- support_messages.
+  id uuid default gen_random_uuid() not null
+  business_id uuid not null
+  category text not null
+  message text not null
+  from_name text
+  created_at timestamp with time zone default now() not null
+
+-- system_notices.
+  id uuid default gen_random_uuid() not null
+  title text not null
+  body text
+  level text default 'info'::text not null
+  starts_at timestamp with time zone default now() not null
+  ends_at timestamp with time zone
+  created_at timestamp with time zone default now() not null
+
+-- tax_profiles.
+  business_id uuid not null
+  business_name text
+  tin text
+  rdo_code text
+  registered_address text
+  vat_status text
+  reg_type text
+  reg_number text
+  reg_valid_until date
+  next_si_number integer default 1 not null
+  next_dr_number integer default 1 not null
+  next_cn_number integer default 1 not null
+
+-- team_activity_log.
+  id uuid default gen_random_uuid() not null
+  business_id uuid not null
+  actor text
+  action text not null
+  kind text
+  occurred_at timestamp with time zone default now() not null
+
+-- team_chat_messages.
+  id uuid default gen_random_uuid() not null
+  business_id uuid not null
+  author text
+  text text not null
+  sent_at timestamp with time zone default now() not null
+
+-- team_members.
+  id uuid default gen_random_uuid() not null
+  business_id uuid not null
+  name text not null
+  email text
+  roles ARRAY default '{}'::text[] not null
+  created_at timestamp with time zone default now() not null
+  auth_user_id uuid
+  status text default 'active'::text not null
+
+-- team_messages.
+  id uuid default gen_random_uuid() not null
+  business_id uuid not null
+  author_id uuid
+  author_name text not null
+  body text not null
+  kind text default 'chat'::text not null
+  created_at timestamp with time zone default now() not null
+
+-- team_tasks.
+  id uuid default gen_random_uuid() not null
+  business_id uuid not null
+  title text not null
+  assigned_to uuid
+  created_by uuid
+  due_date date
+  status text default 'open'::text not null
+  acknowledged_at timestamp with time zone
+  created_at timestamp with time zone default now() not null
+  created_by_name text
+  completed_at timestamp with time zone
+  completed_by_name text
+  po_id uuid
+  updated_at timestamp with time zone default now() not null
+
+-- upgrade_requests.
+  id uuid default gen_random_uuid() not null
+  business_id uuid not null
+  plan text not null
+  cycle text not null
+  amount numeric not null
+  method text
+  reference text
+  status text default 'pending'::text not null
+  admin_note text
+  created_by_name text
+  created_at timestamp with time zone default now() not null
+  decided_at timestamp with time zone
+
+-- watchdog_alerts.
+  id bigint default nextval('watchdog_alerts_id_seq'::regclass) not null
+  business_id uuid not null
+  po_id uuid
+  po_number text
+  kind text not null
+  title text not null
+  detail text
+  product text
+  amount_at_risk numeric default 0 not null
+  actor_name text
+  created_at timestamp with time zone default now() not null
+  reviewed_at timestamp with time zone
+  reviewed_by_name text
+  review_note text

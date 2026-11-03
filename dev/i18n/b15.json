@@ -1,0 +1,16 @@
+{
+"not an expense · Cash drawer · by {0}": "hindi gastos · Kaha · ni {0}",
+"Cash drawer · by {0}": "Kaha · ni {0}",
+"not an expense · GCash · by {0}": "hindi gastos · GCash · ni {0}",
+"GCash · by {0}": "GCash · ni {0}",
+"not an expense · Maya · by {0}": "hindi gastos · Maya · ni {0}",
+"Maya · by {0}": "Maya · ni {0}",
+"not an expense · Bank · by {0}": "hindi gastos · Bangko · ni {0}",
+"Bank · by {0}": "Bangko · ni {0}",
+"not an expense · Card · by {0}": "hindi gastos · Card · ni {0}",
+"Card · by {0}": "Card · ni {0}",
+"not an expense · Owner's own money · by {0}": "hindi gastos · Sariling pera ng may-ari · ni {0}",
+"Owner's own money · by {0}": "Sariling pera ng may-ari · ni {0}",
+"not an expense · Not paid yet · by {0}": "hindi gastos · Hindi pa bayad · ni {0}",
+"Not paid yet · by {0}": "Hindi pa bayad · ni {0}"
+}
