@@ -331,7 +331,7 @@ function bkStockLoss(m){
 function bkBelowCost(m){
   const rows = [];
   bkLiveSales().filter(s => bkMonth(s.date) === m).forEach(s => (s.lines || []).forEach(l => {
-    const cost = Number(l.unitCost) || bkItemCost(l.product), list = bkItemPrice(l.product), price = Number(l.unitPrice) || 0;
+    const cost = Number(l.unitCost) || bkItemCost(l.product), list = Number(l.listPrice) || bkItemPrice(l.product), price = Number(l.unitPrice) || 0;
     if(cost && price < cost) rows.push({kind: 'below', s, l, lost: (cost - price) * l.qty, by: s.by});
     else if(list && price < list) rows.push({kind: 'discount', s, l, lost: (list - price) * l.qty, by: s.by});
   }));

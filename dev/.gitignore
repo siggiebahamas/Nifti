@@ -1,0 +1,8 @@
+src/base.html
+src/__pycache__/
+tests/node_modules/
+tests/shots/
+tests/one/
+shots/
+tests/qt/
+tests/package-lock.json

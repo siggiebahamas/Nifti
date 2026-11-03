@@ -1,0 +1,11 @@
+  /* price lock + receipts */
+  .pl-box{margin:4px 0 10px;gap:6px;}
+  .pl-box.ok{background:#ECFDF3;border:1px solid #A6E3C0;} .pl-box.ok b{color:#067647;}
+  .pl-box.bad{background:#FFF1EF;border:1px solid #F5C2BB;} .pl-box.bad b{color:#B42318;}
+  .pl-items{display:grid;gap:2px;font-size:13.5px;} .pl-items small{color:#6B7280;}
+  .pl-act{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:4px;}
+  .pl-req{display:grid;gap:6px;padding:12px !important;margin-bottom:10px;}
+  .pl-who{display:flex;flex-direction:column;} .pl-who small{color:#6B7280;}
+  .pl-ln{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2px 8px;font-size:14px;} .pl-ln > small{flex-basis:100%;text-align:right;color:#6B7280;}
+  .pl-ln small.bk-bad{color:#B42318;font-weight:600;} .pl-tot{border-top:1px dashed #D0D5DD;padding-top:6px;font-weight:600;}
+  .pl-set{display:grid;gap:10px;} .pl-pct{max-width:120px;} .pl-pct input{text-align:right;}

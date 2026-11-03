@@ -70,7 +70,7 @@ function bkCustomerNames(){
 }
 function openQuickSale(){
   if(!BK.loaded){ bkLoad().then(openQuickSale); return; }
-  QS = {mode: 'items', lines: [{product: '', qty: 1, price: ''}], total: '', customer: 'Walk-in', paidWith: 'cash', received: '', note: '', saving: false, err: ''};
+  QS = {mode: 'items', lines: [{product: '', qty: 1, price: ''}], total: '', customer: 'Walk-in', paidWith: 'cash', received: '', note: '', saving: false, err: '', ask: null};
   qsRender();
 }
 function qsTotal(){ return QS.mode === 'total' ? (Number(String(QS.total).replace(/,/g, '')) || 0) : QS.lines.reduce((s, l) => s + (Number(l.qty) || 0) * (Number(String(l.price).replace(/,/g, '')) || 0), 0); }
@@ -93,9 +93,10 @@ function qsRender(){
       ${low ? `<div class="qs-warn">Only ${item.onHand} in stock. You can still save; count the shelf later.</div>` : ''}
     </div>`;
   };
+  if(plApplies() && QS.mode === 'total') QS.mode = 'items';
   const t = qsTotal(), cash = QS.paidWith === 'cash', rec = Number(String(QS.received).replace(/,/g, '')) || 0;
   slModal('qsModal', `<div class="sl-sheet-h"><b>New sale</b><button class="sl-x" onclick="slClose('qsModal')">✕</button></div>
-    <div class="bk-seg"><button class="${QS.mode === 'items' ? 'on' : ''}" onclick="QS.mode='items'; qsRender()">Items</button><button class="${QS.mode === 'total' ? 'on' : ''}" onclick="QS.mode='total'; qsRender()">Just the total</button></div>
+    ${plApplies() ? '' : `<div class="bk-seg"><button class="${QS.mode === 'items' ? 'on' : ''}" onclick="QS.mode='items'; qsRender()">Items</button><button class="${QS.mode === 'total' ? 'on' : ''}" onclick="QS.mode='total'; qsRender()">Just the total</button></div>`}
     <datalist id="qsStock">${stock.map(n => `<option value="${escapeHtml(n)}">`).join('')}</datalist>
     ${QS.mode === 'items' ? `<div class="qs-lines">${QS.lines.map(lineHtml).join('')}</div><button class="sl-link" onclick="QS.lines.push({product:'',qty:1,price:''}); qsRender()">+ Add item</button>`
       : `<div class="field"><label>Total sale</label><div class="ob-peso bk-big"><span>₱</span><input id="qsTotalIn" inputmode="decimal" value="${escapeHtml(QS.total)}" placeholder="0" oninput="QS.total=this.value; qsTotalNow()"></div><div class="bk-note">For a register total. Stock won't move; record items when you can.</div></div>`}
@@ -106,8 +107,9 @@ function qsRender(){
     <div class="field"><label>Customer ${QS.paidWith === 'credit' ? '' : '<small>(optional)</small>'}</label><input list="qsCust" value="${escapeHtml(QS.customer)}" onfocus="if(this.value==='Walk-in') this.select()" oninput="QS.customer=this.value" placeholder="Walk-in" aria-label="Customer">
       <datalist id="qsCust"><option value="Walk-in">${bkCustomerNames().map(n => `<option value="${escapeHtml(n)}">`).join('')}</datalist></div>
     <div class="field"><label>Note <small>(optional)</small></label><input maxlength="300" value="${escapeHtml(QS.note)}" oninput="QS.note=this.value" placeholder="e.g. suki discount"></div>
+    ${plBoxHtml()}
     <div class="sl-err" id="qsErr">${escapeHtml(QS.err)}</div>
-    <button class="btn btn-primary sl-wide" onclick="qsSave()" ${QS.saving ? 'disabled' : ''}>${QS.saving ? 'Saving…' : 'Save sale'}</button>`);
+    <button class="btn btn-primary sl-wide" onclick="qsSave()" ${QS.saving || (QS.ask && QS.ask.state === 'waiting') ? 'disabled' : ''}>${QS.saving ? 'Saving…' : 'Save sale'}</button>`);
 }
 function qsTotalNow(){
   const t = qsTotal(), el = document.getElementById('qsTotal'); if(el) el.textContent = bkPeso(t);
@@ -122,21 +124,25 @@ async function qsSave(){
     lines = QS.lines.filter(l => String(l.product).trim()).map(l => ({product: String(l.product).trim().slice(0, 120), qty: Number(l.qty) || 0, unitPrice: Number(String(l.price).replace(/,/g, '')) || 0}));
     if(!lines.length) return err('Add at least one item, or switch to "Just the total".');
     if(lines.some(l => l.qty <= 0)) return err('Each item needs a quantity.');
-    lines.forEach(l => { l.unitCost = bkItemCost(l.product); if(bkMenuFind(l.product)) l.menu = true; });
+    lines.forEach(l => { l.unitCost = bkItemCost(l.product); l.listPrice = bkItemPrice(l.product) || 0; if(bkMenuFind(l.product)) l.menu = true; });
   } else lines = [{product: 'Sale (total only)', qty: 1, unitPrice: total, unitCost: 0, totalOnly: true}];
   if(!(total > 0)) return err('The total is ₱0. Enter a price.');
   const customer = String(QS.customer || '').trim().slice(0, 120) || 'Walk-in';
   if(QS.paidWith === 'credit' && customer === 'Walk-in') return err('Who owes this? Type the customer\'s name for utang.');
   const payments = QS.paidWith === 'credit' ? [] : [{method: QS.paidWith, amount: total, date: APP_TODAY}];
   const closed = bkClosedMsg(APP_TODAY); if(closed) return err(closed);
+  if(!plCheck(lines)) return err('');
+  const okId = QS.ask && QS.ask.state === 'approved' && QS.ask.id !== 'demo' ? QS.ask.id : null;
   QS.saving = true; qsRender();
   const sale = {id: bkUid(), date: APP_TODAY, at: new Date().toISOString(), customer, lines, total, paidWith: QS.paidWith, payments, by: bkMe(), note: String(QS.note || '').trim().slice(0, 300), branch: bkHereBranch()};
   let queued = false;
   if(myBusiness){
     const row = {id: sale.id, business_id: myBusiness.id, sale_date: sale.date, customer_name: customer, line_items: lines, payments, total, paid_with: QS.paidWith, note: sale.note || null, branch: sale.branch};
+    if(okId) row.price_approval_id = okId;
     const { data, error } = isOffline ? {error: {message: 'offline'}} : await sb.from('downstream_sales').insert(row).select().single();
     if(error){
       // no signal: keep it on this phone and send it when the internet is back
+      if(!bkIsNetErr(error) && plFromServerError(error.message, lines)){ QS.saving = false; qsRender(); return err(''); }
       if(!bkIsNetErr(error) || !bkQueueAdd({table: 'downstream_sales', row, at: sale.at, by: sale.by})){ QS.saving = false; qsRender(); return err("Couldn't save: " + error.message); }
       sale.pending = true; queued = true;
     } else Object.assign(sale, bkRowSale(data));
@@ -147,7 +153,8 @@ async function qsSave(){
   slClose('qsModal');
   const rec = QS.paidWith === 'cash' ? Number(String(QS.received).replace(/,/g, '')) || 0 : 0;
   BK_LAST_CHANGE[sale.id] = rec > total ? {received: rec, change: Math.round((rec - total) * 100) / 100} : null;
-  bkSaleSnack(sale.id, queued ? `Saved on this phone · ${bkPeso(total)}. It uploads when the internet is back.` : QS.paidWith === 'credit' ? `Saved. ${customer} owes ${bkPeso(total)}.` : `Sale saved · ${bkPeso(total)}`);
+  if(plCfg().receipt) bkReceipt(sale.id, queued ? 'Saved on this phone. It uploads when the internet is back.' : '');
+  else bkSaleSnack(sale.id, queued ? `Saved on this phone · ${bkPeso(total)}. It uploads when the internet is back.` : QS.paidWith === 'credit' ? `Saved. ${customer} owes ${bkPeso(total)}.` : `Sale saved · ${bkPeso(total)}`);
   QS = null;
   bkRefreshViews();
 }
@@ -213,7 +220,8 @@ function renderSalesBooksPage(){
       ${Object.entries(byCust).sort((a, b) => b[1].reduce((x, s) => x + bkSaleBalance(s), 0) - a[1].reduce((x, s) => x + bkSaleBalance(s), 0)).map(([c, ss]) => {
         const old = ss.reduce((m, s) => s.date < m ? s.date : m, APP_TODAY), days = daysBetween(old, APP_TODAY);
         return `<div class="bk-row"><div class="bk-row-m"><b>${escapeHtml(c)}</b><small>${ss.length} sale${ss.length > 1 ? 's' : ''} · oldest ${days} day${days === 1 ? '' : 's'} ago</small></div><span class="bk-amt ${days > 30 ? 'bk-bad' : ''}">${bkPeso(ss.reduce((x, s) => x + bkSaleBalance(s), 0))}</span><span class="bk-row-a"><button class="sl-link" onclick="bkPaySale('${ss[0].id}')">Paid</button></span></div>`;
-      }).join('')}</section>` : ''}`;
+      }).join('')}</section>` : ''}
+    ${plDiscountsHtml(day)}${plSettingsHtml()}`;
 }
 
 /* ================= EXPENSES ================= */

@@ -146,33 +146,39 @@ function bkReceiptData(s){
   const paid = bkSalePaid(s), bal = bkSaleBalance(s), ch = BK_LAST_CHANGE[s.id];
   return {biz: (tax.registeredName || selfName()), addr: tax.registeredAddress || '', phone: c.phone || '', tin: tax.tin || '',
     when: at.toLocaleDateString('en-PH', {month: 'short', day: 'numeric', year: 'numeric'}) + ' ' + at.toLocaleTimeString('en-PH', {hour: 'numeric', minute: '2-digit'}),
-    ref: bkSaleRef(s), lines: (s.lines || []).map(l => l.totalOnly ? {name: 'Items', qty: 1, each: s.total, sum: s.total} : {name: l.product, qty: l.qty, each: Number(l.unitPrice) || 0, sum: (Number(l.qty) || 0) * (Number(l.unitPrice) || 0)}),
+    ref: bkSaleRef(s), lines: (s.lines || []).map(l => l.totalOnly ? {name: 'Items', qty: 1, each: s.total, sum: s.total} : {name: l.product, qty: l.qty, each: Number(l.unitPrice) || 0, sum: (Number(l.qty) || 0) * (Number(l.unitPrice) || 0),
+      list: Math.max(Number(l.listPrice) || bkItemPrice(l.product) || 0, Number(l.unitPrice) || 0)}),
     total: s.total, method: (BK_SALE_PAY.find(x => x[0] === s.paidWith) || [, s.paidWith || ''])[1], paid, bal, customer: s.customer, by: s.by, ch};
 }
+function bkReceiptSaved(d){ return Math.round(d.lines.reduce((a, l) => a + (l.list > l.each ? (l.list - l.each) * (Number(l.qty) || 0) : 0), 0) * 100) / 100; }
 function bkReceiptHtml(d){
+  const saved = bkReceiptSaved(d);
   return `<div class="rc"><div class="rc-h"><b>${escapeHtml(d.biz)}</b>${d.addr ? `<span>${escapeHtml(d.addr)}</span>` : ''}${d.phone ? `<span>${escapeHtml(d.phone)}</span>` : ''}${d.tin ? `<span>TIN ${escapeHtml(d.tin)}</span>` : ''}</div>
     <div class="rc-t">Acknowledgment receipt</div>
     <div class="rc-m"><span>No. ${escapeHtml(d.ref)}</span><span>${escapeHtml(d.when)}</span></div>
     ${d.customer && d.customer !== 'Walk-in' ? `<div class="rc-m"><span>Customer</span><span>${escapeHtml(d.customer)}</span></div>` : ''}
-    <div class="rc-lines">${d.lines.map(l => `<div class="rc-l"><span>${escapeHtml(l.name)}<small>${l.qty} × ${bkPeso(l.each)}</small></span><b>${bkPeso(l.sum)}</b></div>`).join('')}</div>
+    <div class="rc-lines">${d.lines.map(l => `<div class="rc-l"><span>${escapeHtml(l.name)}<small>${l.qty} × ${bkPeso(l.each)}${l.list > l.each ? ` (regular ${bkPeso(l.list)})` : ''}</small></span><b>${bkPeso(l.sum)}</b></div>`).join('')}</div>
+    ${saved >= 0.01 ? `<div class="rc-l"><span>Discount given</span><b>−${bkPeso(saved)}</b></div>` : ''}
     <div class="rc-l rc-tot"><span>Total</span><b>${bkPeso(d.total)}</b></div>
     ${d.paid ? `<div class="rc-l"><span>Paid · ${escapeHtml(d.method)}</span><b>${bkPeso(d.paid)}</b></div>` : ''}
     ${d.ch ? `<div class="rc-l"><span>Cash received</span><b>${bkPeso(d.ch.received)}</b></div><div class="rc-l"><span>Change</span><b>${bkPeso(d.ch.change)}</b></div>` : ''}
     ${d.bal >= 0.01 ? `<div class="rc-l rc-bal"><span>Balance (utang)</span><b>${bkPeso(d.bal)}</b></div>` : ''}
-    <div class="rc-f">Served by ${escapeHtml(d.by || '—')} · Salamat po!</div></div>`;
+    <div class="rc-f">Served by ${escapeHtml(d.by || '—')}<br>Please check this matches what you paid. Salamat po!</div></div>`;
 }
 function bkReceiptText(d){
   const L = [d.biz]; if(d.addr) L.push(d.addr); if(d.phone) L.push(d.phone);
   L.push('', 'Receipt ' + d.ref + ' · ' + d.when);
   if(d.customer && d.customer !== 'Walk-in') L.push('Customer: ' + d.customer);
-  L.push(''); d.lines.forEach(l => L.push(`${l.qty} × ${l.name} @ ${bkPeso(l.each)} = ${bkPeso(l.sum)}`));
+  L.push(''); d.lines.forEach(l => L.push(`${l.qty} × ${l.name} @ ${bkPeso(l.each)}${l.list > l.each ? ' (regular ' + bkPeso(l.list) + ')' : ''} = ${bkPeso(l.sum)}`));
+  const saved = bkReceiptSaved(d); if(saved >= 0.01) L.push('', 'Discount given −' + bkPeso(saved));
   L.push('', 'TOTAL ' + bkPeso(d.total)); if(d.paid) L.push('Paid (' + d.method + ') ' + bkPeso(d.paid)); if(d.ch) L.push('Change ' + bkPeso(d.ch.change)); if(d.bal >= 0.01) L.push('Balance (utang) ' + bkPeso(d.bal));
-  L.push('', 'Salamat po!'); return L.join('\n');
+  L.push('', 'Served by ' + (d.by || '—'), 'Please check this matches what you paid. Salamat po!'); return L.join('\n');
 }
-function bkReceipt(id){
+function bkReceipt(id, msg){
   const s = BK.sales.find(x => x.id === id); if(!s) return;
   const d = bkReceiptData(s);
-  slModal('bkRcpt', `<div class="sl-sheet-h"><b>Receipt</b><button class="sl-x" onclick="slClose('bkRcpt')">✕</button></div>
+  slModal('bkRcpt', `<div class="sl-sheet-h"><b>${msg === undefined ? 'Receipt' : '✅ Sale saved · ' + bkPeso(s.total)}</b><button class="sl-x" onclick="slClose('bkRcpt')">✕</button></div>
+    ${msg ? `<div class="sl-sub">${escapeHtml(msg)}</div>` : msg === '' ? `<div class="sl-sub">Show or send this to the customer.</div>` : ''}
     <div class="no-i18n">${bkReceiptHtml(d)}</div>
     <div class="bk-actions rc-act"><button class="btn btn-outline" onclick="bkPrintReceipt('${id}')">🖨 Print</button><button class="btn btn-primary" onclick="bkShareReceipt('${id}')">📤 Send</button></div>`);
 }

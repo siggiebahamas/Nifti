@@ -104,7 +104,7 @@ A Philippine B2B "run your business" app for stores, hardware shops, restaurants
    ```
 2. **Apply the patches in order:**
    ```
-   python3 apply.py u1_data u2_shell u3_demo_stock u4_books u5_polish u6_i18n u7_more u8_plans u9_books2 u10_site u99_dates
+   python3 apply.py u1_data u2_shell u3_demo_stock u4_books u5_polish u6_i18n u7_more u8_plans u9_books2 u10_site u11_pricelock u99_dates
    ```
    `apply.py` writes its output to `/home/user/SadieCutie/Nifti_Sept17.html`. Change that path if the repo lives somewhere else.
 3. **How patches work.** `patchlib.P(old, new, count=1)` does exact string replacement and asserts the expected count. JS modules are inserted before `function renderSidebarForViewAsRole(){`. CSS is inserted before the last `  .settings-card:empty{display:none;}`.
@@ -127,6 +127,7 @@ A Philippine B2B "run your business" app for stores, hardware shops, restaurants
 | u8_plans.py | One Pro plan (pricing page and in-app), sign-up asks business kind |
 | u9_books2.py | Bookkeeping nav group and pages (To check, Books & reports, Bank & deposits, Payroll, Month-end close); includes books_ledger.js, books_ops.js, ledger.css |
 | u10_site.py | Website home tells one story (no "which one are you?" picker) |
+| u11_pricelock.py | Price lock, discounts per cashier, receipt after every sale; includes pricelock.js, pricelock.css |
 | u99_dates.py | Replaces every `.toISOString().slice(0,10)` with `.niftiDay()` (local-time day). Fixes off-by-one dates in UTC+8. |
 
 **JS modules:**
@@ -168,6 +169,7 @@ Migration files are in **`supabase_migrations/`**:
 - `2026-10-29-one-business-and-books.sql`
 - `2026-10-29-owner-alerts-books-summary-menu.sql`
 - `2026-10-29-ledger-close-payroll.sql`
+- `2026-11-03-price-lock-discounts-receipts.sql` (price lock, approvals, discounts on the morning message)
 
 The original schema is in `supabase_schema.sql` and `supabase_schema_part2.sql`.
 
@@ -322,10 +324,10 @@ The original schema is in `supabase_schema.sql` and `supabase_schema_part2.sql`.
    - expense approvals
    - stock changes record who and why
 
-   **Gap:** staff can still type any price at the counter. Claude offered three fixes; **the founder hasn't said yes yet**:
-   1. Price lock: staff can't sell below the price list without owner approval, or beyond a set max discount such as 5%.
-   2. Discount totals per cashier on the owner's morning message.
-   3. Receipt on every sale by default.
+   **Built 3 Nov 2026** (`u11_pricelock.py`, `pricelock.js`, migration `2026-11-03-price-lock-discounts-receipts.sql`):
+   1. Price lock (default on, staff may give up to 5% off; owner changes it on Sales → Price lock & receipts). Below that, staff tap "Ask the owner"; the owner gets a push and a popup (polls `price_approvals` every 20s while the app is open) to OK or say no. Enforced on the server in `downstream_sales_stamp`; one OK covers one sale, 12 hours. No list price → can't go under cost. "Just the total" is hidden for staff while the lock is on. Staff can't change the lock settings or lower prices (`guard_price_lock_settings`, `guard_price_lock_items`).
+   2. Discounts per cashier on the 7:05am message (`books_discounts_for`, top 3) and on the Sales page for owners. Each sale line now stores `listPrice`.
+   3. Receipt opens after every sale (setting `receipt_auto`), showing the regular price and the discount given.
 4. **Untested:** the real-account (logged-in) browser path for the new books pages. It is tested at the database level only, because the test environment couldn't reach Supabase. Do one real sale, expense, cash count and payroll on a real account.
 
 ---
