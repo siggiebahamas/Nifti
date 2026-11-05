@@ -1,0 +1,22 @@
+/* 07 · Nifti Signature — built from the Nifti bird: deep navy, a bright azure wing, geometric titles. */
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap');
+html[data-th="signature"], html[data-th="signature"] #view-app, html[data-th="signature"] .app-view-wrap{
+  --th-canvas:#F3F5FA; --surface:#FFFFFF; --border:#DFE4EE; --border-soft:#EBEEF5; --border-strong:#C5CDDC;
+  --ink:#121C3D; --body:#2C3653; --faint:#2C3653; --muted:#5F6883;
+  --green:#1C2B5A; --green-hover:#121D42; --green-soft:#E6EBF7; --clay:#1C2B5A; --clay-soft:#E6EBF7; --blue:#1C7ED6; --blue-soft:#E3F1FC;
+  --danger:#CF2D45; --danger-soft:#FDECEF; --warn:#E28A00; --warn-soft:#FFF5D9; --lowstock:#E28A00; --lowstock-soft:#FFF5D9; --lowstock-fill:#F3A51E;
+  --th-good:#0E7C55; --th-good-soft:#E2F4EB; --th-tint:#F8F9FC; --th-sunk:#EEF1F7; --th-hl:#FFF5D9; --th-hl-line:#F2D38E;
+  --font-h:'Sora',system-ui,sans-serif; --font-b:'Inter',system-ui,sans-serif;
+  --th-side-on-bg:#1C2B5A; --th-side-on-ink:#FFFFFF; --th-side-hover:#F0F2F8;
+  --th-r:14px; --th-r-s:10px; --th-shadow:0 1px 2px rgba(18,28,61,.05), 0 6px 18px -14px rgba(18,28,61,.25); --th-shadow-h:0 12px 26px -16px rgba(28,126,214,.5);
+  --th-h1:27px; --th-h1-w:600; --th-h1-ls:-.025em; --th-kpi:26px; --th-kpi-w:600; --th-num-font:'Sora',system-ui,sans-serif;
+  --th-thead-bg:#F5F7FB; --th-thead-ink:#1C2B5A; --th-row-h:#F5F8FD; --th-chip-on-bg:#1C2B5A;
+  --th-avatar-bg:#E3F1FC; --th-avatar-ink:#1C2B5A; --th-ic-bg:#E3F1FC; --th-ic-ink:#1C7ED6; --th-ic-r:12px;
+}
+html[data-th="signature"] #view-app .nav-item.active{box-shadow:inset 3px 0 0 #1C7ED6;}
+html[data-th="signature"] #view-app .nav-item.active .nav-badge{background:#1C7ED6 !important;color:#fff !important;}
+html[data-th="signature"] #view-app .page-head h1::before, html[data-th="signature"] #mhHome .hero h3::before{content:"";display:inline-block;width:12px;height:12px;border-radius:3px 12px;background:#1C7ED6;margin-right:10px;vertical-align:4px;}
+html[data-th="signature"] #view-app :is(.lg-kpi,.bk-tile), html[data-th="signature"] #mhHome .mosaic .tile{border-top:3px solid #1C7ED6;}
+html[data-th="signature"] :is(#view-app,body,#mhHome,#mhSheet) :is(.btn-primary,.btn-primary-sm,.lg-go.pri,.btn:not(.ghost):not(.soft)){box-shadow:0 1px 0 rgba(255,255,255,.12) inset, 0 4px 12px -6px rgba(28,43,90,.6);}
+html[data-th="signature"] #view-app table th{font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;}
+html[data-th="signature"] :is(#view-app,body) :is(.status-pill,.status-pill-icon,.lg-pill){border-radius:6px;font-weight:600;}

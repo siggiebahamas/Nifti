@@ -1,0 +1,25 @@
+/* 10 · Clarity — made for reading at a glance. A typeface designed for legibility, strong contrast, generous size, unmistakable states. */
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap');
+html[data-th="clarity"], html[data-th="clarity"] #view-app, html[data-th="clarity"] .app-view-wrap{
+  --th-canvas:#F5F6F7; --surface:#FFFFFF; --border:#CFD4DA; --border-soft:#E1E5E9; --border-strong:#8E98A4;
+  --ink:#0B0F14; --body:#1C232B; --faint:#1C232B; --muted:#4A5562;
+  --green:#0050C8; --green-hover:#003F9E; --green-soft:#E3EDFC; --clay:#0050C8; --clay-soft:#E3EDFC; --blue:#0050C8; --blue-soft:#E3EDFC;
+  --danger:#C01C28; --danger-soft:#FCE9EA; --warn:#C96A00; --warn-soft:#FFF1D0; --lowstock:#C96A00; --lowstock-soft:#FFF1D0; --lowstock-fill:#F09A00;
+  --th-good:#0A6B3A; --th-good-soft:#E1F2E8; --th-tint:#F8F9FA; --th-sunk:#ECEFF2; --th-hl:#FFF1D0; --th-hl-line:#E7B652; --th-warn-ink:#0B0F14;
+  --font-h:'Atkinson Hyperlegible',system-ui,sans-serif; --font-b:'Atkinson Hyperlegible',system-ui,sans-serif;
+  --th-side-on-bg:#0B0F14; --th-side-on-ink:#FFFFFF; --th-side-hover:#ECEFF2;
+  --th-r:8px; --th-r-s:6px; --th-r-chip:6px; --th-shadow:none; --th-shadow-h:0 0 0 2px #0050C8; --th-card-border:1.5px solid #CFD4DA;
+  --th-h1:28px; --th-h1-w:700; --th-h1-ls:0; --th-kpi:28px; --th-kpi-w:700;
+  --th-lbl-size:13.5px; --th-lbl-w:700; --th-lbl-ink:#1C232B; --th-thead-bg:#ECEFF2; --th-thead-ink:#0B0F14; --th-row-h:#F0F5FE; --th-chip-on-bg:#0B0F14;
+  --th-avatar-bg:#E3EDFC; --th-avatar-ink:#003F9E; --th-ic-r:8px;
+}
+html[data-th="clarity"] #view-app{font-size:105%;}
+html[data-th="clarity"] #view-app .nav-item{font-weight:700;}
+html[data-th="clarity"] #view-app :is(.lg-link,.row-action,.sl-link){text-decoration:underline;text-underline-offset:3px;}
+html[data-th="clarity"] #view-app table th{font-size:12.5px;font-weight:700;}
+html[data-th="clarity"] :is(#view-app,body) :is(.field input,.field select,.field textarea,input[type=text],input[type=number],select){border-width:2px !important;}
+html[data-th="clarity"] :is(#view-app,body,#mhSheet) :is(button,a,input,select,textarea,[role=button]):focus-visible{outline:3px solid #0050C8;outline-offset:3px;}
+html[data-th="clarity"] :is(#view-app,body) :is(.status-pill,.status-pill-icon,.lg-pill){border-radius:4px;font-weight:700;border:1.5px solid currentColor;}
+html[data-th="clarity"] #mhHome :is(.task,.ln,.cal .day){border-width:1.5px !important;}
+html[data-th="clarity"] #mhHome{font-size:17px;}
+html[data-th="clarity"] #mhHome .tile .s, html[data-th="clarity"] #mhHome .task p{font-size:16px;color:#1C232B;}

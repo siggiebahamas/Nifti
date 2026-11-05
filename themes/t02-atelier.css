@@ -1,0 +1,27 @@
+/* 02 · Atelier — modern editorial software. Serif titles and figures, hairline rules instead of boxes, deep teal. */
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600;6..72,700&family=Inter:wght@400;500;600;700&display=swap');
+html[data-th="atelier"], html[data-th="atelier"] #view-app, html[data-th="atelier"] .app-view-wrap{
+  --th-canvas:#F6F7F8; --surface:#FFFFFF; --border:#DFE3E7; --border-soft:#ECEFF1; --border-strong:#C3CAD1;
+  --ink:#111A22; --body:#2C3640; --faint:#2C3640; --muted:#5F6B76;
+  --green:#0B5D5A; --green-hover:#084744; --green-soft:#E3F0EF; --clay:#0B5D5A; --clay-soft:#E3F0EF; --blue:#1D4E89; --blue-soft:#E6EDF6;
+  --danger:#B3203A; --danger-soft:#FBECEE; --warn:#D98300; --warn-soft:#FFF4DB; --lowstock:#D98300; --lowstock-soft:#FFF4DB; --lowstock-fill:#F0A51E;
+  --th-good:#1B6B47; --th-good-soft:#E5F2EA; --th-tint:#FAFBFB; --th-sunk:#EFF2F3; --th-hl:#FFF4DB; --th-hl-line:#EDD08C;
+  --font-h:'Newsreader',Georgia,serif; --font-b:'Inter',system-ui,sans-serif; --th-num-font:'Newsreader',Georgia,serif;
+  --th-side-bg:#F6F7F8; --th-side-border:#DFE3E7; --th-side-on-bg:#FFFFFF; --th-side-on-ink:#111A22; --th-side-on-bar:#0B5D5A; --th-side-hover:#ECEFF1;
+  --th-r:6px; --th-r-s:6px; --th-r-chip:4px; --th-shadow:none; --th-shadow-h:0 0 0 1px #C3CAD1;
+  --th-h1:34px; --th-h1-w:600; --th-h1-ls:-.015em; --th-kpi:30px; --th-kpi-w:600;
+  --th-lbl-size:11px; --th-lbl-w:600; --th-lbl-tt:uppercase; --th-lbl-ls:.12em; --th-sect-size:22px; --th-sect-w:600;
+  --th-thead-bg:#FFFFFF; --th-thead-ink:#111A22; --th-row-h:#F7F9F9; --th-chip-on-bg:#111A22; --th-avatar-bg:#E3F0EF; --th-avatar-ink:#0B5D5A;
+  --th-ic-bg:transparent; --th-ic-r:0; --th-pad:36px;
+}
+html[data-th="atelier"] #view-app .nav-group .heading{font-family:'Newsreader',serif;font-style:italic;text-transform:none;letter-spacing:0;font-size:14px;font-weight:500;}
+html[data-th="atelier"] #view-app .page-head{border-bottom:1px solid #111A22;padding-bottom:16px;margin-bottom:24px;}
+html[data-th="atelier"] #view-app :is(.panel-head h2,.lg-ph b,.settings-card h2){font-family:'Newsreader',serif;font-weight:600;font-size:19px;}
+html[data-th="atelier"] #view-app table th, html[data-th="atelier"] #view-app .lg-tbl th{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;border-bottom:1.5px solid #111A22 !important;}
+html[data-th="atelier"] :is(#view-app,body) :is(.status-pill,.status-pill-icon,.lg-pill){background:transparent !important;border:1px solid currentColor;border-radius:3px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;}
+html[data-th="atelier"] .lg-pill::before{display:none;}
+html[data-th="atelier"] #mhHome .glass{border-left:0;border-right:0;border-bottom:0;border-top:1.5px solid #111A22;border-radius:0;background:transparent;}
+html[data-th="atelier"] #mhHome .tile{border-top:1.5px solid #111A22;padding-top:14px;}
+html[data-th="atelier"] #mhHome .tile .ic{width:34px;height:34px;}
+html[data-th="atelier"] #mhHome .task, html[data-th="atelier"] #mhHome .ob3.cmp .ln{box-shadow:none;}
+html[data-th="atelier"] #mhHome .lane-h{border-radius:0;background:transparent !important;border-bottom:2px solid currentColor;padding-left:0;}

@@ -20850,7 +20850,7 @@ function mhDrawer(){
     <div class="cal num">${['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map(d => `<div class="dow">${d}</div>`).join('')}${cells}</div>`;
 }
 function mhCalMove(d){ MH.cal.m += d; if(MH.cal.m > 12){ MH.cal.m = 1; MH.cal.y++; } if(MH.cal.m < 1){ MH.cal.m = 12; MH.cal.y--; } const el = document.getElementById('mhDrawer'); if(el) el.innerHTML = mhDrawer(); }
-function mhEditHistory(){ go('settings'); setTimeout(() => { const el = document.getElementById('auditLogContent'); if(el){ const card = el.closest('.settings-card'); if(card && card.classList.contains('collapsed')) card.click(); el.scrollIntoView({behavior: 'smooth', block: 'start'}); } }, 400); }
+function mhEditHistory(){ go('settings'); setTimeout(() => { const el = document.getElementById('auditLogContent'); if(!el) return; const card = el.closest('.settings-card'); if(card) card.classList.add('open'); if(typeof renderAuditLogContent === 'function') renderAuditLogContent(); el.scrollIntoView({behavior: 'smooth', block: 'start'}); }, 450); }
 function mhCountNow(){ ccStart(APP_TODAY); go('cashcount'); }
 
 /* ---------- sheets ---------- */
