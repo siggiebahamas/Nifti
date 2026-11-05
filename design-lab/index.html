@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nifti Design Lab</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="lab.css">
+<link rel="stylesheet" href="concepts/01-bridge.css">
+<link rel="stylesheet" href="concepts/02-ledger.css">
+<link rel="stylesheet" href="concepts/03-atlas.css">
+<link rel="stylesheet" href="concepts/04-raster.css">
+<link rel="stylesheet" href="concepts/05-kumusta.css">
+<link rel="stylesheet" href="concepts/06-yard.css">
+<link rel="stylesheet" href="concepts/07-brief.css">
+<link rel="stylesheet" href="concepts/08-lens.css">
+<link rel="stylesheet" href="concepts/09-meridian.css">
+<link rel="stylesheet" href="concepts/10-tide.css">
+</head>
+<body>
+<header class="lab-bar">
+  <div class="lab-brand"><b>Nifti design lab</b><span>Prototype · sample data · not the live app</span></div>
+  <nav class="lab-tabs" id="labTabs" aria-label="Concepts"></nav>
+  <label class="b-sr" for="labSelect" style="position:absolute;left:-9999px">Concept</label>
+  <select class="lab-select" id="labSelect" aria-label="Concept"></select>
+  <div class="lab-tools" id="labTools"><button type="button" id="btnAbout" aria-expanded="false" aria-controls="aboutPanel" title="About this concept">About</button><button type="button" id="btnWalk" aria-expanded="false" aria-controls="walkPanel" title="Walk through the 8 tasks">8 tasks</button></div>
+  <span class="lab-meta"><b id="labName"></b><span id="labTerr"></span></span>
+</header>
+<div class="lab-panel" id="aboutPanel" hidden role="dialog" aria-label="About this concept"></div>
+<div class="lab-panel" id="walkPanel" hidden role="dialog" aria-label="Walk through the owner tasks"></div>
+<div id="stage" class="stage"></div>
+
+<script src="data.js"></script>
+<script src="flows.js"></script>
+<script src="lab.js"></script>
+<script src="concepts/01-bridge.js"></script>
+<script src="concepts/02-ledger.js"></script>
+<script src="concepts/03-atlas.js"></script>
+<script src="concepts/04-raster.js"></script>
+<script src="concepts/05-kumusta.js"></script>
+<script src="concepts/06-yard.js"></script>
+<script src="concepts/07-brief.js"></script>
+<script src="concepts/08-lens.js"></script>
+<script src="concepts/09-meridian.js"></script>
+<script src="concepts/10-tide.js"></script>
+<script>LAB.boot();</script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+/* 09 · Meridian */
+.cx-meridian{--ink:#0B1B33;--ink2:#566179;--line:#E3E7EE;--wash:#F3F5F9;--blue:#1D4ED8;--red:#D42F3A;--amb:#E8A100;--grn:#138A5E;background:#fff;color:var(--ink);font-family:'Red Hat Display',system-ui,sans-serif;font-size:16px;min-height:calc(100vh - 54px)}
+.cx-meridian .num,.cx-meridian .fx-tbl .n,.cx-meridian .fx-kv dd{font-family:'Red Hat Mono',ui-monospace,monospace;font-variant-numeric:tabular-nums}
+.md-top{display:flex;align-items:center;gap:18px;flex-wrap:wrap;padding:16px max(24px,env(safe-area-inset-left,0px)) 10px}
+.md-id b{display:block;font-size:22px;font-weight:800;letter-spacing:-.01em}
+.md-id b::before{content:"";display:inline-block;width:3px;height:20px;background:var(--ink);margin-right:10px;vertical-align:-3px;box-shadow:6px 0 0 -1px var(--red)}
+.md-id span{font-size:13.5px;color:var(--ink2)}
+.md-zoom{margin-left:auto;display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px;background:var(--wash)}
+.md-zoom button{border:0;background:none;border-radius:999px;padding:7px 14px;font-weight:600;font-size:14px;min-height:36px;color:var(--ink2)}
+.md-zoom button[aria-pressed="true"]{background:#fff;color:var(--ink);box-shadow:0 1px 4px rgba(11,27,51,.15)}
+.md-ba{display:grid;grid-template-columns:1fr 1fr;margin:6px max(24px,env(safe-area-inset-left,0px)) 14px;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.md-ba > div{padding:12px 16px 14px;min-width:0} .md-b{background:var(--wash);border-right:2px solid var(--ink)}
+.md-ba p{margin:0 0 8px;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--ink2)}
+.md-a p{text-align:right}
+.md-ba > div > div{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.md-ba button{border:0;background:none;text-align:left;padding:4px 6px;border-radius:8px;display:grid;min-width:0}
+.md-ba button:hover{background:rgba(29,78,216,.07)}
+.md-ba span{font-size:13px;color:var(--ink2);font-weight:600} .md-ba b{font-size:18px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis} .md-ba b.is-r{color:var(--red)}
+.md-scroll{overflow-x:auto;margin:0 max(24px,env(safe-area-inset-left,0px));border:1px solid var(--line);border-radius:14px;scroll-behavior:smooth}
+.md-tl{position:relative;min-width:calc(150px + var(--n) * 26px);cursor:crosshair}
+.md-hdr,.md-lane,.md-over{display:grid;grid-template-columns:150px minmax(0,1fr)}
+.md-lh{padding:8px 12px;border-right:1px solid var(--line);background:#fff;position:sticky;left:0;z-index:4}
+.md-lh b{display:block;font-size:14px;font-weight:700} .md-lh small{font-size:11.5px;color:var(--ink2);line-height:1.2;display:block}
+.md-hdr{border-bottom:1px solid var(--line);position:relative}
+.md-days{position:relative;height:56px}
+.md-days span{position:absolute;bottom:0;top:0;display:grid;align-content:end;justify-items:center;padding-bottom:6px;font:600 12.5px 'Red Hat Mono',monospace;color:var(--ink2)}
+.md-days span small{font-size:10px;opacity:.7}
+.md-days span b{position:absolute;top:2px;left:3px;font:800 11px 'Red Hat Display',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--ink)}
+.md-days span.is-sun{color:#9AA3B5}
+.md-days span.is-today{color:#fff;background:var(--ink);border-radius:6px 6px 0 0}
+.md-days span.is-sel:not(.is-today){color:var(--blue);background:#E8EEFD;border-radius:6px 6px 0 0}
+.md-lane{border-bottom:1px solid var(--line)}
+.md-lane:last-of-type{border-bottom:0}
+.md-track{position:relative;min-height:40px}
+.md-lane.is-sales .md-track{height:58px} .md-lane.is-cash .md-track{height:96px} .md-lane.is-cust .md-track{height:114px}
+.md-lane.is-sup .md-track,.md-lane.is-stock .md-track,.md-lane.is-cost .md-track{height:60px} .md-lane.is-staff .md-track{height:52px}
+.md-sb{position:absolute;bottom:0;margin-left:1px;background:#9FB3D9;border-radius:3px 3px 0 0;z-index:2} .md-sb.is-big{background:var(--blue)}
+.md-safe{position:absolute;left:0;right:0;border-top:1.5px dashed var(--red);z-index:1}
+.md-safe em{position:absolute;left:4px;top:2px;font:600 11px 'Red Hat Mono',monospace;color:var(--red);font-style:normal}
+.md-cp,.md-now{position:absolute;width:12px;height:12px;border-radius:50%;transform:translate(-50%,-50%);background:#fff;border:2.5px solid var(--blue);padding:0;z-index:3}
+.md-now{background:var(--ink);border-color:var(--ink)}
+.md-cp.is-r{border-color:var(--red);width:16px;height:16px;border-width:3px}
+.md-cp:hover{transform:translate(-50%,-50%) scale(1.3)}
+.md-lowl{position:absolute;transform:translate(-50%,10px);font:700 12px 'Red Hat Mono',monospace;color:var(--red);white-space:nowrap;z-index:3;background:#fff;padding:0 3px}
+.md-ev{position:absolute;height:23px;border:0;border-radius:999px;padding:0 10px;font:600 12.5px 'Red Hat Display',sans-serif;white-space:nowrap;z-index:3;background:#E9EDF4;color:var(--ink);box-shadow:0 0 0 2px #fff;display:flex;align-items:center}
+.md-ev:hover{box-shadow:0 0 0 2px var(--ink)}
+.md-ev.is-r{background:#FCE4E6;color:#A31723} .md-ev.is-y{background:#FFF2CC;color:#5C4500} .md-ev.is-g{background:#DDF3EA;color:#0C6343} .md-ev.is-b{background:#E2EAFD;color:#1A3FA8}
+.md-ev.is-span{border-radius:4px;overflow:hidden;text-overflow:ellipsis;justify-content:flex-start}
+.md-ev.is-span.is-r{background:linear-gradient(90deg,#FCE4E6 0,#F7C7CB 100%)} .md-ev.is-span.is-y{background:linear-gradient(90deg,#FFF6DC,#FFE6A3)}
+.md-ev.is-dot{background:none;box-shadow:none;padding:0;justify-content:center;overflow:visible}
+.md-ev.is-dot i{width:12px;height:12px;border-radius:50%;background:var(--grn);flex:none}
+.md-ev.is-dot.is-r i{background:var(--red);width:16px;height:16px} .md-ev.is-dot.is-n i{background:#fff;border:2px dashed var(--ink2)}
+.md-ev.is-dot span{position:absolute;top:22px;left:50%;transform:translateX(-50%);color:var(--red);font-weight:700;font-family:'Red Hat Mono',monospace;background:#fff;padding:0 3px;border-radius:4px}
+.md-over{position:absolute;inset:0;pointer-events:none;z-index:2}
+.md-over .md-lh{background:none;border-right:0;position:static}
+.md-ot{position:relative}
+.md-past{position:absolute;left:0;top:0;bottom:0;background:rgba(11,27,51,.035)}
+.md-mer{position:absolute;top:0;bottom:0;width:2px;background:var(--ink);transform:translateX(-1px)}
+.md-mer em{display:none}
+.md-selb{position:absolute;top:0;bottom:0;background:rgba(29,78,216,.07);border-left:1px solid rgba(29,78,216,.35);border-right:1px solid rgba(29,78,216,.35)}
+.md-below{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:24px;padding:20px max(24px,env(safe-area-inset-left,0px)) 60px;align-items:start}
+.md-ledger{border:1px solid var(--line);border-radius:14px;padding:16px 18px;position:sticky;top:70px}
+.md-lg-h{display:grid;grid-template-columns:1fr auto;align-items:end;gap:4px 10px;border-bottom:2px solid var(--ink);padding-bottom:10px;margin-bottom:6px}
+.md-lg-h p{margin:0;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--ink2);grid-column:1}
+.md-lg-h h2{margin:0;font-size:24px;font-weight:800;grid-column:1}
+.md-jump{grid-column:2;grid-row:1/3;display:flex;gap:4px}
+.md-jump button{border:1px solid var(--line);background:#fff;border-radius:8px;min-width:40px;height:40px;font-weight:700;padding:0 10px}
+.md-lg{list-style:none;margin:0;padding:0}
+.md-lg li{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:15px}
+.md-lg li:last-child{border-bottom:0}
+.md-lg li.is-sub{padding:5px 0 5px 14px;font-size:14px;color:var(--ink2);border-bottom:1px dashed var(--line)}
+.md-lg li.is-r b{color:var(--red)} .md-lg .is-neg{color:var(--red)} .md-lg .is-pos{color:var(--blue)}
+.md-lb{border:0;background:none;padding:0 0 0 14px;text-align:left;display:flex;justify-content:space-between;gap:12px;width:100%;font:inherit;position:relative;color:var(--ink)}
+.md-lb::before{content:"";position:absolute;left:0;top:6px;width:8px;height:8px;border-radius:50%;background:#AEB7C7}
+.md-lb.is-r::before{background:var(--red)} .md-lb.is-y::before{background:var(--amb)} .md-lb.is-g::before{background:var(--grn)} .md-lb.is-b::before{background:var(--blue)}
+.md-lb em{font-style:normal;color:var(--blue);font-weight:700;font-size:14px;flex:none}
+.md-right{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;min-width:0} .md-right > *{min-width:0}
+.md-detail{border:1px solid var(--line);border-top:3px solid var(--ink);border-radius:14px;padding:16px 20px 20px;animation:mdIn .25s ease-out;scroll-margin-top:70px}
+@keyframes mdIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.md-dh{display:flex;justify-content:space-between;gap:12px;margin-bottom:8px}
+.md-dh p{margin:0;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--ink2)}
+.md-dh h3{margin:4px 0 0;font-size:21px;font-weight:800}
+.md-dh button{border:1px solid var(--line);background:#fff;border-radius:8px;width:38px;height:38px;flex:none}
+.md-detail .fx-btn{border-radius:999px} .md-detail .fx-btn.is-primary{background:var(--ink);border-color:var(--ink)}
+.md-ask{display:grid;gap:8px}
+.md-ask label{font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--ink2)}
+.md-ask select{border:1px solid #CBD2DE;border-radius:10px;padding:10px 12px;font:500 15px 'Red Hat Display',sans-serif;min-height:46px;background:#fff;width:100%}
+#mdAns:not(:empty){background:var(--wash);border-left:3px solid var(--ink);border-radius:0 10px 10px 0;padding:12px 16px}
+#mdAns p{margin:0 0 6px;line-height:1.5} #mdAns .md-aq{font-weight:700} #mdAns small{color:var(--ink2);font-size:12.5px}
+@media (prefers-reduced-motion:reduce){.md-scroll{scroll-behavior:auto}.md-detail{animation:none}}
+@media (max-width:900px){ .md-below{grid-template-columns:minmax(0,1fr)} .md-ledger{position:static} .md-ba{grid-template-columns:1fr} .md-b{border-right:0;border-bottom:2px solid var(--ink)} .md-a p{text-align:left} }
+@media (max-width:600px){
+  .md-top{padding:12px 14px 8px} .md-zoom{margin-left:0}
+  .md-ba,.md-scroll{margin-left:14px;margin-right:14px} .md-ba > div > div{grid-template-columns:minmax(0,1fr)} .md-ba button{grid-template-columns:auto 1fr;gap:10px;align-items:baseline} .md-ba b{text-align:right;font-size:16px}
+  .md-hdr,.md-lane,.md-over{grid-template-columns:96px minmax(0,1fr)} .md-tl{min-width:calc(96px + var(--n) * 26px)} .md-lh small{display:none} .md-lh{padding:8px}
+  .md-below{padding:16px 14px 50px}
+}
