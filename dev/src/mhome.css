@@ -1,0 +1,30 @@
+  /* ===== Home (Mist): fit inside the app shell ===== */
+  #view-app .main:has(#page-dashboard.active #mhHome){background:radial-gradient(1200px 520px at 85% -10%,#D6E8FB 0,transparent 60%),radial-gradient(900px 520px at -10% 10%,#DFF0F4 0,transparent 55%),#F6F9FC;}
+  #mhHome, #mhSheet{font-family:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',sans-serif;font-size:16px;line-height:1.45;color:#13243A;}
+  #mhHome{background:none !important;padding-bottom:28px;display:block;}
+  #mhHome .hero, #mhHome .mosaic, #mhHome .rows{padding-left:0 !important;padding-right:0 !important;}
+  #mhHome .hero{padding-top:0;margin:0 0 4px !important;display:block !important;}
+  #mhHome .hero h3{margin:0;}
+  #mhHome .mh-sp{flex:1;}
+  #mhHome .sect-h{gap:10px;}
+  #mhHome .alertline{background:#FEF3C7;border:1px solid #F5D27A;border-radius:16px;padding:12px 16px;font-size:15.5px;color:#13243A;}
+  #mhHome .lane .more, #mhHome .cell .more{border:0;background:none;color:#1D4F86;font-weight:800;font-size:14.5px;padding:6px 4px;justify-self:start;cursor:pointer;}
+  #mhHome .task h5{font-weight:700;} #mhHome .task h5 b{font-weight:800;}
+  #mhHome .tile .s.muted{color:#2C3E55;} #mhHome .tile .s .cashline{font-weight:700;color:#13243A;}
+  #mhHome .cal .day .nm{font-weight:800;font-size:16px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  #mhHome .cal .day .ed{font-size:12px;font-weight:700;color:#1D4F86;background:#E1EDFA;border-radius:6px;padding:1px 6px;margin-left:4px;}
+  #mhHome .mh-more{display:grid;gap:16px;margin-top:18px;}
+  #mhHome .mh-more .lg-panel{border-radius:20px;border:1px solid #E1E9F2;}
+  #mhHome table{display:table;}
+  #mhSheet .tbl table, #mhSheet table{display:table;box-shadow:none;border:0;border-radius:0;}
+  #mhSheet .mh-sp{flex:1;}
+  #mhSheet .attach{display:inline-flex;gap:6px;align-items:center;font-size:14px;font-weight:700;color:#1D4F86;}
+  #mhSheet .attach.missing{color:#B4232C;}
+  #mhSheet{z-index:400;}
+  #mhHome .mh-anchor{display:none !important;}
+  @media (max-width:760px){ #mhHome .hero h3{font-size:26px;} }
+  #mhHome .ob3.cmp .ln{display:flex;flex-direction:column;align-items:flex-start;gap:4px;}
+  #mhHome .ob3.cmp .ln .nm{overflow-wrap:normal;word-break:normal;hyphens:none;}
+  #mhHome .tile .tx{min-width:0;} #mhHome .tile .v .cpill{max-width:100%;white-space:normal;flex-wrap:wrap;}
+  #mhHome .tile .v .cpill b{font-size:clamp(20px,1.8vw,26px);}
+  #mhSheet .attach.missing, #mhHome .attach.missing{color:#B4232C !important;border-color:#F3C5BC !important;}

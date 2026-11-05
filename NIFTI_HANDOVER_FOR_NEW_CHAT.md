@@ -104,7 +104,7 @@ A Philippine B2B "run your business" app for stores, hardware shops, restaurants
    ```
 2. **Apply the patches in order:**
    ```
-   python3 apply.py u1_data u2_shell u3_demo_stock u4_books u5_polish u6_i18n u7_more u8_plans u9_books2 u10_site u11_pricelock u12_stockrun u99_dates
+   python3 apply.py u1_data u2_shell u3_demo_stock u4_books u5_polish u6_i18n u7_more u8_plans u9_books2 u10_site u11_pricelock u12_stockrun u13_mhome u99_dates
    ```
    `apply.py` writes its output to `/home/user/SadieCutie/Nifti_Sept17.html`. Change that path if the repo lives somewhere else.
 3. **How patches work.** `patchlib.P(old, new, count=1)` does exact string replacement and asserts the expected count. JS modules are inserted before `function renderSidebarForViewAsRole(){`. CSS is inserted before the last `  .settings-card:empty{display:none;}`.
@@ -128,7 +128,8 @@ A Philippine B2B "run your business" app for stores, hardware shops, restaurants
 | u9_books2.py | Bookkeeping nav group and pages (To check, Books & reports, Bank & deposits, Payroll, Month-end close); includes books_ledger.js, books_ops.js, ledger.css |
 | u10_site.py | Website home tells one story (no "which one are you?" picker) |
 | u11_pricelock.py | Price lock, discounts per cashier, receipt after every sale; includes pricelock.js, pricelock.css |
-| u12_stockrun.py | Home card "What runs out": days left vs supplier lead time, or pesos on the shelf; includes stockrun.js, stockrun.css |
+| u12_stockrun.py | "What runs out" engine: real sales rate, smart or owner-set red/yellow/green days, order-by dates, peso view; stockrun.js, stockrun.css |
+| u13_mhome.py | The approved Mist Home on real data: tiles, What to do, order board, What runs out, cash drawer by person (calendar, tally, who counts, optional protections); mhome.js, mhome.css, mhome_port.css |
 | u99_dates.py | Replaces every `.toISOString().slice(0,10)` with `.niftiDay()` (local-time day). Fixes off-by-one dates in UTC+8. |
 
 **JS modules:**
