@@ -1,0 +1,40 @@
+/* 03 · Porcelain — floating white surfaces, cobalt, pastel number tiles, soft depth. */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap');
+html[data-th="porcelain"], html[data-th="porcelain"] #view-app, html[data-th="porcelain"] .app-view-wrap{
+  --th-canvas:#F2F4F9; --surface:#FFFFFF; --border:#E7EAF2; --border-soft:#EFF1F6; --border-strong:#D3D9E6;
+  --ink:#121826; --body:#353D4D; --faint:#353D4D; --muted:#6B7385;
+  --green:#2B4BD8; --green-hover:#1E3ABB; --green-soft:#E9EDFF; --clay:#2B4BD8; --clay-soft:#E9EDFF;
+  --danger:#E23744; --danger-soft:#FEECEE; --warn:#F59E0B; --warn-soft:#FFF5DB; --lowstock:#E68A00; --lowstock-soft:#FFF5DB; --lowstock-fill:#F8B42A;
+  --blue:#2B4BD8; --blue-soft:#E9EDFF; --th-tint:#F8F9FC; --th-sunk:#EEF1F7; --th-hl:#FFF6DC; --th-hl-line:#FBE3A0;
+  --font-h:'DM Sans',system-ui,sans-serif; --font-b:'DM Sans',system-ui,sans-serif;
+  --th-side-on-bg:#2B4BD8; --th-side-on-ink:#FFFFFF; --th-side-hover:#F2F4F9;
+  --th-r:20px; --th-r-s:12px; --th-r-btn:999px; --th-card-border:1px solid rgba(231,234,242,.7);
+  --th-shadow:0 1px 2px rgba(18,24,38,.04), 0 10px 30px -18px rgba(18,24,38,.18); --th-shadow-h:0 18px 40px -20px rgba(43,75,216,.35);
+  --th-h1:30px; --th-h1-w:700; --th-h1-ls:-.025em; --th-kpi:28px; --th-kpi-w:700;
+  --th-thead-bg:#F8F9FC; --th-row-h:#F6F8FF; --th-seg-bg:#E9ECF4; --th-chip-on-bg:#2B4BD8;
+  --th-avatar-bg:#E9EDFF; --th-avatar-ink:#2B4BD8; --th-pad:32px;
+}
+@media (min-width:981px){
+  html[data-th="porcelain"] #view-app .sidebar{margin:14px 0 14px 14px;height:calc(100vh - 28px);top:14px;border-radius:24px;border:1px solid #E7EAF2;box-shadow:0 20px 50px -30px rgba(18,24,38,.35);}
+  html[data-th="porcelain"] #view-app .topbar{background:transparent;border-bottom:0;padding-top:16px;}
+}
+html[data-th="porcelain"] #view-app .topbar .search{border-radius:999px;background:#FFFFFF;box-shadow:0 6px 20px -14px rgba(18,24,38,.4);border-color:#EEF0F5;}
+html[data-th="porcelain"] #view-app .nav-item{font-weight:500;border-radius:12px;}
+html[data-th="porcelain"] #view-app .nav-item.active{box-shadow:0 8px 18px -10px rgba(43,75,216,.8);}
+html[data-th="porcelain"] #view-app .nav-item.active .nav-badge{background:rgba(255,255,255,.22) !important;color:#fff !important;}
+html[data-th="porcelain"] #view-app .lg-kpi:nth-child(4n+1){background:linear-gradient(160deg,#EEF2FF,#FFFFFF 70%);}
+html[data-th="porcelain"] #view-app .lg-kpi:nth-child(4n+2){background:linear-gradient(160deg,#E8F7F1,#FFFFFF 70%);}
+html[data-th="porcelain"] #view-app .lg-kpi:nth-child(4n+3){background:linear-gradient(160deg,#FFF6E0,#FFFFFF 70%);}
+html[data-th="porcelain"] #view-app .lg-kpi:nth-child(4n+4){background:linear-gradient(160deg,#FDECF1,#FFFFFF 70%);}
+html[data-th="porcelain"] #view-app :is(.bk-tile,.sl-tile){background:linear-gradient(160deg,#F5F7FF,#FFFFFF 70%);}
+html[data-th="porcelain"] #view-app table{border:0;}
+html[data-th="porcelain"] #view-app table th{font-size:12px;font-weight:600;text-transform:none;letter-spacing:0;}
+html[data-th="porcelain"] :is(#view-app,body) :is(.status-pill,.status-pill-icon,.lg-pill){border-radius:999px;}
+html[data-th="porcelain"] #view-app .lens-tabs{border-radius:999px;padding:5px;} html[data-th="porcelain"] #view-app .lens-tabs button{border-radius:999px;}
+html[data-th="porcelain"] #view-app .lens-tabs button.on{box-shadow:0 4px 12px -6px rgba(18,24,38,.35);}
+html[data-th="porcelain"] #view-app .main{background:radial-gradient(900px 500px at 15% -10%,#E4EAFF 0,rgba(228,234,255,0) 70%),radial-gradient(800px 600px at 110% 30%,#E3F6EF 0,rgba(227,246,239,0) 65%),#F2F4F9;background-attachment:fixed;}
+html[data-th="porcelain"] #view-app .lg-kpi:nth-child(4n+1){background:linear-gradient(160deg,#E2E8FF,#FFFFFF 85%);}
+html[data-th="porcelain"] #view-app .lg-kpi:nth-child(4n+2){background:linear-gradient(160deg,#DDF4EA,#FFFFFF 85%);}
+html[data-th="porcelain"] #view-app .lg-kpi:nth-child(4n+3){background:linear-gradient(160deg,#FFF0CC,#FFFFFF 85%);}
+html[data-th="porcelain"] #view-app .lg-kpi:nth-child(4n+4){background:linear-gradient(160deg,#FFE3EA,#FFFFFF 85%);}
+html[data-th="porcelain"] #view-app .lg-kpi-n{font-size:32px;letter-spacing:-.03em;}

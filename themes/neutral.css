@@ -1,0 +1,187 @@
+/* Generated: replaces the app's hard-coded beige/brown colours with theme tokens (only when a theme is on). */
+html[data-th] .m-dot.pending{background:var(--border)}
+html[data-th] .offline-banner{color:var(--th-warn-ink)}
+html[data-th] .pending-sync-tag{color:var(--th-warn-ink)}
+html[data-th] .cta-band{background:linear-gradient(120deg,var(--th-sunk),#E9F1E7)}
+html[data-th] .mk-tile{border:1px solid var(--border)}
+html[data-th] .mk-card{border:1px solid var(--border)}
+html[data-th] .mk-amber{color:var(--th-warn-ink)}
+html[data-th] .mk-bar{background:var(--th-sunk)}
+html[data-th] .mk-chat{border:1px solid var(--border)}
+html[data-th] .mk-chat-head{border-bottom:1px solid var(--border)}
+html[data-th] .mk-bub{border:1px solid var(--border)}
+html[data-th] .mk-route-head{color:var(--th-warn-ink)}
+html[data-th] .mk-route{border:1px solid var(--border)}
+html[data-th] .mk-route::before{background:var(--border)}
+html[data-th] .mk-st i{border:3px solid var(--border)}
+html[data-th] .mk-btns span{border:1px solid var(--border-strong)}
+html[data-th] .mk-btnsm{border:1px solid var(--border-strong)}
+html[data-th] .mk-cal{border:1px solid var(--border)}
+html[data-th] .mk-cq{border:1px solid var(--border)}
+html[data-th] .mk-paper{background:var(--th-hl);border:1px solid var(--border)}
+html[data-th] .mk-paper-h{border-bottom:1px dashed var(--border-strong)}
+html[data-th] .mk-score{border:1px solid var(--border)}
+html[data-th] .mk-store-tags span{border:1px solid var(--border)}
+html[data-th] .mk-prod{border:1px solid var(--border)}
+html[data-th] .mk-prod-ic{background:var(--th-sunk)}
+html[data-th] .mk-bigstat{border:1px solid var(--border)}
+html[data-th] .mk-owe{border:1px solid var(--border)}
+html[data-th] .mk-seal{background:var(--th-hl)}
+html[data-th] .mk-chip{color:var(--th-warn-ink)}
+html[data-th] .mk-lvl{border:1px solid var(--border)}
+html[data-th] .mk-lvl.warn{color:var(--th-warn-ink)}
+html[data-th] .mk-role{border:1px solid var(--border)}
+html[data-th] .mk-pain-art{background:var(--th-sunk)}
+html[data-th] .mk-step-vis{background:var(--th-tint)}
+html[data-th] .mk-show-art{background:linear-gradient(140deg,var(--th-sunk),#E6F0E5)}
+html[data-th] .mk-aud.buy{background:var(--th-sunk)}
+html[data-th] .mk-fvis{background:linear-gradient(140deg,var(--th-sunk),#E6F0E5)}
+html[data-th] .mk-plan-art{background:var(--th-tint)}
+html[data-th] .mk-plan.buy .mk-plan-art{background:linear-gradient(120deg,#DCE6F0,var(--th-sunk))}
+html[data-th] .mk-gal-vis{background:linear-gradient(140deg,var(--th-sunk),#E6F0E5)}
+html[data-th] .mk-table th{background:var(--th-tint)}
+html[data-th] .v-amber{color:var(--th-warn-ink)}
+html[data-th] .v-pill{background:var(--th-sunk)}
+html[data-th] .v-bar{background:var(--th-sunk)}
+html[data-th] .v-btns span{background:var(--th-sunk)}
+html[data-th] .v-url{background:var(--th-sunk)}
+html[data-th] .v-list{background:var(--th-hl);border:1px solid var(--border)}
+html[data-th] .v-track i{background:var(--th-sunk)}
+html[data-th] .v-route i{background:var(--th-sunk)}
+html[data-th] .v-tile{border:1px solid var(--border)}
+html[data-th] .v-tile.hot{border-color:var(--warn);box-shadow:inset 0 0 0 1px var(--warn)}
+html[data-th] .v-tile.hot b{color:var(--th-warn-ink)}
+html[data-th] .v-now{border:1px solid var(--border)}
+html[data-th] .m2-sec.alt{background:var(--th-tint)}
+html[data-th] .m2-badge.pro{color:var(--th-warn-ink)}
+html[data-th] .m2-badge.extra{background:var(--th-sunk);color:var(--th-warn-ink)}
+html[data-th] .m2-noacct{background:linear-gradient(180deg,#EEF6F0,var(--th-tint))}
+html[data-th] .m2-step-vis{background:linear-gradient(140deg,var(--th-sunk),#E6F0E5)}
+html[data-th] .m2-tier.extra .m2-tier-top{background:var(--th-sunk)}
+html[data-th] .m2-show-art{background:linear-gradient(140deg,var(--th-sunk),#E6F0E5)}
+html[data-th] .m2-jump .pro{color:var(--th-warn-ink)}
+html[data-th] .m2-jump .extra{background:var(--th-sunk);color:var(--th-warn-ink)}
+html[data-th] .m2-band.pro{background:var(--th-hl)}
+html[data-th] .m2-band.extra{background:var(--th-sunk)}
+html[data-th] .m2-vis{background:linear-gradient(140deg,var(--th-sunk),#E6F0E5)}
+html[data-th] .m2-band.pro .m2-vis{background:linear-gradient(140deg,#FFF1C7,var(--th-sunk))}
+html[data-th] .m2-band.extra .m2-vis{background:linear-gradient(140deg,var(--th-sunk),var(--th-sunk))}
+html[data-th] .p2-perk{background:var(--th-tint)}
+html[data-th] .p2-perk-vis{background:linear-gradient(140deg,var(--th-sunk),#E6F0E5)}
+html[data-th] .p2-biz{color:var(--th-tint)}
+html[data-th] .m3-ba-r .old{background:var(--th-sunk);color:var(--muted)}
+html[data-th] .h4-how{background:linear-gradient(180deg,var(--th-tint) 0%,#F3F8F4 100%)}
+html[data-th] .h4-vis{background:linear-gradient(140deg,var(--th-sunk),#E6F0E5)}
+html[data-th] .h4-meta em{color:var(--th-warn-ink)}
+html[data-th] .f4-art.warm{background:linear-gradient(145deg,#FFF1C7 0%,var(--th-sunk) 55%,#E8F1E6 100%)}
+html[data-th] .f4-art.green{background:linear-gradient(145deg,#DDEFE3 0%,#EEF5EC 60%,var(--th-hl) 100%)}
+html[data-th] .f4-art.blue{background:linear-gradient(145deg,#E2ECF6 0%,#EEF3F4 60%,var(--th-sunk) 100%)}
+html[data-th] .f5-ba{background:linear-gradient(180deg,var(--th-tint) 0%,#F3F8F4 100%)}
+html[data-th] .f6-ba-c .old{background:var(--th-sunk);color:var(--muted)}
+html[data-th] .f6-ba-c .old em{color:var(--danger)}
+html[data-th] .f6-ba-c .old i{color:var(--danger)}
+html[data-th] .f6-ba-c .new small{color:var(--th-warn-ink)}
+html[data-th] .f6-roi{background:linear-gradient(145deg,#FFF1C7 0%,var(--th-sunk) 55%,#E8F1E6 100%)}
+html[data-th] .f6-roi-c.warm i{color:var(--th-warn-ink)}
+html[data-th] .f6-ex.warm{background:linear-gradient(145deg,#FFF1C7 0%,var(--th-sunk) 60%,var(--th-tint) 100%)}
+html[data-th] .f6-ex.green{background:linear-gradient(145deg,#DDEFE3 0%,#EEF5EC 60%,var(--th-tint) 100%)}
+html[data-th] .f6-ex.warm .f6-ex-ic{color:var(--th-warn-ink)}
+html[data-th] .msg-po-chip{color:var(--th-warn-ink)}
+html[data-th] .thread-presence.offline .dot{background:var(--muted)}
+html[data-th] .app-toast-warn{color:var(--th-warn-ink)}
+html[data-th] .stat-card.amber{border-color:var(--border-strong)}
+html[data-th] .pill-neutral{background:var(--th-sunk);color:var(--body)}
+html[data-th] tbody tr:hover{background:var(--th-tint)}
+html[data-th] .score-nodata{background:var(--th-sunk);color:var(--body)}
+html[data-th] .note-card strong{color:var(--th-warn-ink)}
+html[data-th] .gate-msg{color:var(--th-warn-ink)}
+html[data-th] .gate-msg strong{color:var(--th-warn-ink)}
+html[data-th] .sl-tile.warn b{color:var(--th-warn-ink)}
+html[data-th] .sl-av{color:var(--th-warn-ink)}
+html[data-th] .sl-warn{color:var(--th-warn-ink)}
+html[data-th] .sl-pill{background:var(--th-sunk)}
+html[data-th] .sl-pill.st-new{color:var(--th-warn-ink)}
+html[data-th] .sl-pill.st-lost{background:var(--th-sunk);color:var(--muted)}
+html[data-th] .sl-x{background:var(--th-sunk)}
+html[data-th] .sl-quote{background:var(--th-tint)}
+html[data-th] .sl-outcomes button.bad{color:var(--muted)}
+html[data-th] .sl-preview{background:var(--th-tint)}
+html[data-th] .cpo-drop{background:var(--th-tint)}
+html[data-th] .cpo-row.c-check{background:var(--th-hl)}
+html[data-th] .c-check .cpo-tag{color:var(--th-warn-ink)}
+html[data-th] .cq-day-l.today{color:var(--th-warn-ink)}
+html[data-th] .cq-due .cq-pill{color:var(--th-warn-ink)}
+html[data-th] .rt-stop.next{background:var(--th-hl)}
+html[data-th] .rt-stop.next .rt-no{color:var(--th-warn-ink)}
+html[data-th] .rt-pill-road{color:var(--th-warn-ink)}
+html[data-th] .sc-grade.g-C{color:var(--th-warn-ink)}
+html[data-th] .adm-badge{color:var(--th-warn-ink)}
+html[data-th] .rl-head{color:var(--th-warn-ink)}
+html[data-th] .rt-amt-hint{color:var(--th-warn-ink)}
+html[data-th] .ord-seg button.turn span{color:var(--th-warn-ink)}
+html[data-th] .qt-hintbox{background:var(--th-tint)}
+html[data-th] .qt-hintbox.qt-warn{color:var(--th-warn-ink)}
+html[data-th] .qt-hintbox.qt-bad{color:var(--danger)}
+html[data-th] .qt-panel{background:var(--th-hl)}
+html[data-th] .qt-mode.on{background:var(--th-hl)}
+html[data-th] .qt-hold{color:var(--th-warn-ink)}
+html[data-th] .qt-step button{background:var(--th-tint)}
+html[data-th] .qt-changed{color:var(--th-warn-ink)}
+html[data-th] .cpo-ways{background:var(--th-tint)}
+html[data-th] .vc-status.warn{color:var(--th-warn-ink)}
+html[data-th] .vc-line.c-check, html[data-th] .vc-line.noqty{background:var(--th-hl)}
+html[data-th] .c-check .vc-tag{color:var(--th-warn-ink)}
+html[data-th] .stk-x{background:var(--th-sunk)}
+html[data-th] #view-app .sidebar{background:var(--th-tint)}
+html[data-th] #view-app .nav-item{color:var(--muted)}
+html[data-th] #view-app .nav-item:hover{background:var(--th-sunk)}
+html[data-th] #view-app .nav-group .heading{color:var(--muted)}
+html[data-th] #view-app .nav-badge{background:var(--th-sunk) !important;color:var(--muted) !important}
+html[data-th] #view-app #openItemsBadge{color:var(--th-warn-ink) !important}
+html[data-th] #view-app .topbar .search{background:var(--th-tint)}
+html[data-th] .lg-kpi.hot{border-color:var(--border-strong);background:var(--th-hl)}
+html[data-th] .lg-ct{background:var(--th-sunk)}
+html[data-th] .lg-sev.md{background:var(--warn)}
+html[data-th] .lg-more{background:var(--th-tint)}
+html[data-th] .lg-ag-bar{background:var(--th-sunk)}
+html[data-th] .lg-ag i.d30{background:var(--warn)}
+html[data-th] .lg-ag i.d60{background:var(--danger)}
+html[data-th] .lg-ag i.d90{background:var(--danger)}
+html[data-th] .lg-pipe button:hover{background:var(--th-tint)}
+html[data-th] .lg-tbl th{background:var(--th-tint)}
+html[data-th] .lg-tbl tbody tr:hover td{background:var(--th-tint)}
+html[data-th] .lg-pill{background:var(--th-sunk)}
+html[data-th] .lg-pill.warn{background:var(--th-hl);color:var(--th-warn-ink)}
+html[data-th] .lg-pill.bad{color:var(--danger)}
+html[data-th] .fg-bar{background:var(--th-sunk)}
+html[data-th] .stp{border:1px solid var(--border, var(--border))}
+html[data-th] .stp-pend{background:var(--th-hl)}
+html[data-th] .stp-tabs button{border:1px solid var(--border)}
+html[data-th] .stp-qr img{border:1px solid var(--th-sunk)}
+html[data-th] .stp-warn{background:var(--th-hl)}
+html[data-th] .stp-form{border-top:1px solid var(--th-sunk)}
+html[data-th] .wk-t.w b{color:var(--th-warn-ink)}
+html[data-th] .wk-line{background:var(--th-tint)}
+html[data-th] .lens-tabs{background:var(--th-sunk)}
+html[data-th] .one-msg:hover{background:var(--th-tint)}
+html[data-th] .bk-tile.warn{background:var(--th-hl)}
+html[data-th] .bk-tile.warn .bk-tile-v{color:var(--th-warn-ink)}
+html[data-th] .bk-ic{background:var(--th-tint)}
+html[data-th] .bk-day{background:var(--th-tint)}
+html[data-th] .bk-note{background:var(--th-tint)}
+html[data-th] .bk-alert.amber{background:var(--th-hl)}
+html[data-th] .bk-alert.amber b{color:var(--th-warn-ink)}
+html[data-th] .bk-bar-t{background:var(--th-sunk)}
+html[data-th] .bk-seg{background:var(--th-sunk)}
+html[data-th] .qs-warn{color:var(--th-warn-ink)}
+html[data-th] .cc-diff.warn{color:var(--th-warn-ink)}
+html[data-th] .bk-tr-warn td{background:var(--th-hl)}
+html[data-th] .bk-tag{color:var(--th-warn-ink)}
+html[data-th] .bk-flag:hover{background:var(--th-tint)}
+html[data-th] .bk-flag.amber .bk-flag-v{color:var(--th-warn-ink)}
+html[data-th] .bk-strip.loading{background:linear-gradient(90deg,var(--th-tint),var(--th-tint),var(--th-tint))}
+html[data-th] .bk-strip button:hover{background:var(--th-tint)}
+html[data-th] .bk-count-nudge{background:var(--th-hl) !important}
+html[data-th] .lg-pill.demo{color:var(--th-warn-ink)}
+html[data-th] .lg-conf.warn > span{color:var(--th-warn-ink)}
+html[data-th] .pr-grid label small{color:var(--th-warn-ink)}

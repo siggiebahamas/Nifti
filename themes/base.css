@@ -1,0 +1,129 @@
+/* Nifti theme engine. Active only when <html data-th="..."> is set. It changes how things look
+   (fonts, colour, spacing, surfaces), never what is shown: every page, tab, number and button stays. */
+
+/* ---------- defaults every theme can override ---------- */
+html[data-th], html[data-th] #view-app, html[data-th] .app-view-wrap{
+  --th-canvas:#F5F6F8; --bg:var(--th-canvas); --bg-alt:var(--surface);
+  --th-tint:#F8F9FB; --th-sunk:#EEF0F4; --th-hl:#FFF7D6; --th-warn-ink:#1B1F27;
+  --th-side-w:248px; --th-side-bg:var(--surface); --th-side-border:var(--border); --th-side-ink:var(--body); --th-side-muted:var(--muted);
+  --th-side-hover:var(--th-sunk); --th-side-on-bg:var(--green-soft); --th-side-on-ink:var(--green); --th-side-on-bar:transparent;
+  --th-top-bg:var(--surface); --th-top-border:var(--border); --th-search-bg:var(--th-tint);
+  --th-r:12px; --th-r-s:8px; --th-r-chip:999px; --th-shadow:none; --th-shadow-h:0 6px 18px -12px rgba(15,23,42,.35); --th-card-border:1px solid var(--border);
+  --th-h1:26px; --th-h1-w:700; --th-h1-ls:-.015em; --th-h1-font:var(--font-h); --th-h1-tt:none;
+  --th-lbl-size:12.5px; --th-lbl-w:600; --th-lbl-tt:none; --th-lbl-ls:0; --th-lbl-ink:var(--muted);
+  --th-num-font:var(--font-n); --th-kpi:26px; --th-kpi-w:650;
+  --th-thead-bg:var(--th-tint); --th-thead-ink:var(--muted); --th-row-h:var(--th-tint);
+  --th-seg-bg:var(--th-sunk); --th-seg-on-bg:var(--surface); --th-seg-on-ink:var(--ink);
+  --th-chip-bg:var(--surface); --th-chip-on-bg:var(--ink); --th-chip-on-ink:#fff;
+  --th-avatar-bg:var(--th-sunk); --th-avatar-ink:var(--ink);
+  --th-pad:28px; --font-n:var(--font-b); --on-primary:#fff; --th-good:#11784A; --th-good-soft:#E3F4EA;
+}
+html[data-th] body{background:var(--th-canvas);}
+html[data-th] #view-app{font-family:var(--font-b);color:var(--body);background:var(--th-canvas);}
+html[data-th] #view-app .main, html[data-th] .app-view-wrap{background:var(--th-canvas);}
+html[data-th] #view-app .content{padding:var(--th-pad);}
+html[data-th] #view-app input, html[data-th] #view-app select, html[data-th] #view-app textarea, html[data-th] #view-app button{font-family:var(--font-b);}
+
+/* ---------- sidebar ---------- */
+html[data-th] #view-app .sidebar{background:var(--th-side-bg);border-right:1px solid var(--th-side-border);width:var(--th-side-w);}
+html[data-th] #view-app .sidebar .brand{color:var(--th-side-ink);font-family:var(--font-h);}
+html[data-th] #view-app .nav-item{color:var(--th-side-ink);border-radius:var(--th-r-s);position:relative;}
+html[data-th] #view-app .nav-item svg{color:currentColor;}
+html[data-th] #view-app .nav-item:hover{background:var(--th-side-hover);color:var(--th-side-ink);}
+html[data-th] #view-app .nav-item.active{background:var(--th-side-on-bg);color:var(--th-side-on-ink);box-shadow:inset 3px 0 0 var(--th-side-on-bar);}
+html[data-th] #view-app .nav-group .heading, html[data-th] #view-app .role-switcher-label{color:var(--th-side-muted);}
+html[data-th] #view-app .nav-badge{background:var(--th-sunk) !important;color:var(--ink) !important;}
+html[data-th] #view-app .nav-item.active .nav-badge{background:var(--surface) !important;}
+html[data-th] #view-app #openItemsBadge{background:var(--th-hl) !important;color:var(--ink) !important;border:1px solid var(--th-hl-line, transparent) !important;}
+html[data-th] #view-app .sidebar-foot{color:var(--th-side-muted);}
+
+/* ---------- top bar ---------- */
+html[data-th] #view-app .topbar{background:var(--th-top-bg);border-bottom:1px solid var(--th-top-border);}
+html[data-th] #view-app .topbar .search{background:var(--th-search-bg);border:1px solid var(--border);border-radius:var(--th-r-s);color:var(--muted);}
+html[data-th] #view-app .icon-btn{border-radius:var(--th-r-s);border-color:var(--border);background:var(--surface);}
+html[data-th] #view-app .avatar, html[data-th] .avatar{background:var(--th-avatar-bg);color:var(--th-avatar-ink);}
+html[data-th] #view-app .lang-switch{border-radius:var(--th-r-s);border-color:var(--border);}
+html[data-th] #view-app .lang-switch button.on{background:var(--ink);color:#fff;}
+
+/* ---------- page titles ---------- */
+html[data-th] #view-app .page-head h1, html[data-th] #view-app .lg-head h1{font-family:var(--th-h1-font);font-size:var(--th-h1) !important;font-weight:var(--th-h1-w);letter-spacing:var(--th-h1-ls);text-transform:var(--th-h1-tt);color:var(--ink);}
+html[data-th] #view-app .page-head p{color:var(--muted);}
+html[data-th] #view-app .lg-date{color:var(--muted);}
+html[data-th] #view-app .lg-status{border-color:var(--border);background:var(--surface);color:var(--muted) !important;}
+html[data-th] #view-app .panel-head h2, html[data-th] #view-app .panel-card h2, html[data-th] #view-app .lg-ph b, html[data-th] #view-app .settings-card h2, html[data-th] #view-app .sl-card-h b{font-family:var(--font-h);color:var(--ink);}
+
+/* ---------- surfaces ---------- */
+html[data-th] #view-app :is(.panel-card,.lg-panel,.bk-tile,.sl-tile,.sl-card,.lg-card,.settings-card,.wd-card,.lg-kpi,.team-person,.store-linkcard,.messages-shell,.stat-card.neutral,.bk-strip){
+  border-radius:var(--th-r);border:var(--th-card-border);box-shadow:var(--th-shadow);background:var(--surface);}
+html[data-th] #view-app .lg-card{border-left-width:4px;}
+html[data-th] #view-app .lg-card.red{border-left-color:var(--danger);} html[data-th] #view-app .lg-card.amber{border-left-color:var(--warn);}
+html[data-th] #view-app :is(.lg-kpi,button.bk-tile):hover{box-shadow:var(--th-shadow-h);border-color:var(--border-strong);}
+html[data-th] #view-app .stat-card{border-radius:var(--th-r);box-shadow:var(--th-shadow);}
+html[data-th] #view-app .lg-kpi.hot{background:var(--th-hl);border-color:var(--th-hl-line, var(--border));}
+html[data-th] #view-app .bk-tile.bad{background:var(--danger-soft);border-color:color-mix(in srgb, var(--danger) 30%, transparent);}
+
+/* labels + big numbers */
+html[data-th] #view-app :is(.lg-kpi-l,.bk-tile-l,.sl-tile small,.stat-label,.bk-strip small){font-size:var(--th-lbl-size);font-weight:var(--th-lbl-w);text-transform:var(--th-lbl-tt);letter-spacing:var(--th-lbl-ls);color:var(--th-lbl-ink);opacity:1;}
+html[data-th] #view-app :is(.lg-kpi-n,.bk-tile-v,.sl-tile b,.stat-num,.lg-ag-tot b,.bk-strip b){font-family:var(--th-num-font);font-size:var(--th-kpi);font-weight:var(--th-kpi-w);color:var(--ink);font-variant-numeric:tabular-nums;}
+html[data-th] #view-app .stat-num{font-size:calc(var(--th-kpi) - 2px);}
+html[data-th] #view-app .bk-strip b{font-size:calc(var(--th-kpi) - 6px);}
+html[data-th] #view-app .bk-strip button{border-right-color:var(--border-soft, var(--border));}
+html[data-th] #view-app .bk-strip .bad b, html[data-th] #view-app .bk-strip .neg b{color:var(--danger);}
+html[data-th] #view-app :is(.lg-n,.bk-amt,.bk-num,.r,.sr-v,.pl-r b,.lg-amt){font-family:var(--th-num-font);font-variant-numeric:tabular-nums;}
+
+/* ---------- tables + list rows ---------- */
+html[data-th] #view-app table{border-radius:var(--th-r);border:var(--th-card-border);box-shadow:var(--th-shadow);background:var(--surface);}
+html[data-th] #view-app table th, html[data-th] #view-app .lg-tbl th{background:var(--th-thead-bg);color:var(--th-thead-ink);font-family:var(--font-b);}
+html[data-th] #view-app tbody tr:hover td{background:var(--th-row-h);}
+html[data-th] #view-app :is(.bk-row,.lg-act,.bk-flag){border-color:var(--border-soft, var(--border));}
+html[data-th] #view-app .bk-flag:hover, html[data-th] #view-app .lg-pipe button:hover{background:var(--th-row-h);}
+
+/* ---------- segmented controls, chips, tabs ---------- */
+html[data-th] #view-app :is(.lens-tabs,.bk-seg){background:var(--th-seg-bg);border-radius:calc(var(--th-r-s) + 4px);}
+html[data-th] #view-app :is(.lens-tabs,.bk-seg) button{border-radius:var(--th-r-s);color:var(--muted);}
+html[data-th] #view-app :is(.lens-tabs,.bk-seg) button.on{background:var(--th-seg-on-bg);color:var(--th-seg-on-ink);}
+html[data-th] #view-app .lens-tabs .lens-n{background:var(--green-soft);color:var(--green);}
+html[data-th] #view-app :is(.chip,.range-tab,.wh-tab,.adm-tabs button,.bk-daybar button){border-radius:var(--th-r-chip);border-color:var(--border);background:var(--th-chip-bg);color:var(--ink);}
+html[data-th] #view-app :is(.chip.active,.range-tab.active,.wh-tab.active,.adm-tabs button.active,.bk-daybar button.on){background:var(--th-chip-on-bg);border-color:var(--th-chip-on-bg);color:var(--th-chip-on-ink);}
+html[data-th] #view-app .chip-filter{background:var(--th-sunk);border-color:transparent;border-radius:calc(var(--th-r-s) + 4px);}
+html[data-th] #view-app .team-tab.active{color:var(--green);border-bottom-color:var(--green);}
+
+/* ---------- buttons ---------- */
+html[data-th] #view-app :is(.btn,.btn-primary-sm,.btn-outline-sm,.btn-danger,.lg-go,.btn-submit,.btn-connect){border-radius:var(--th-r-btn, var(--th-r-s));}
+html[data-th] :is(#view-app,body) :is(.btn-primary,.btn-primary-sm,.lg-go.pri,.btn-submit,.btn-connect){background:var(--green);border-color:var(--green);color:var(--on-primary);}
+html[data-th] :is(#view-app,body) :is(.btn-primary,.btn-primary-sm,.lg-go.pri):hover{background:var(--green-hover);border-color:var(--green-hover);color:var(--on-primary);}
+html[data-th] :is(#view-app,body) :is(.btn-outline,.btn-outline-sm,.lg-go){border-color:var(--border-strong);background:var(--surface);color:var(--ink);}
+html[data-th] :is(#view-app,body) :is(.btn-outline,.btn-outline-sm,.lg-go):hover{border-color:var(--ink);color:var(--ink);}
+
+/* ---------- fields + toggles ---------- */
+html[data-th] :is(.field input,.field select,.field textarea), html[data-th] #view-app :is(input[type=text],input[type=number],input[type=date],input[type=search],select,textarea){border-color:var(--border);border-radius:var(--th-r-s);background-color:var(--surface);}
+html[data-th] :is(.field input,.field select,.field textarea):focus{border-color:var(--green);box-shadow:0 0 0 3px var(--green-soft);}
+html[data-th] :is(#view-app,body) .switch.on{background:var(--green);}
+
+/* ---------- pills + avatars ---------- */
+html[data-th] :is(#view-app,body) :is(.status-pill,.status-pill-icon,.lg-pill){border-radius:var(--th-r-pill, var(--th-r-s));}
+html[data-th] :is(#view-app,body) .pill-ok, html[data-th] .lg-pill.good{background:var(--th-good-soft);color:var(--th-good);}
+html[data-th] :is(#view-app,body) .pill-neutral{background:var(--th-sunk);color:var(--body);}
+html[data-th] :is(#view-app,body) .lg-pill{background:var(--th-sunk);}
+html[data-th] :is(#view-app,body) .lg-pill.warn, html[data-th] .pill-lowstock{background:var(--th-hl);color:var(--th-warn-ink);}
+html[data-th] .conv-avatar, html[data-th] .team-avatar, html[data-th] .wd-av, html[data-th] .sl-av{background:var(--th-avatar-bg);color:var(--th-avatar-ink);}
+html[data-th] .lg-ct{background:var(--th-sunk);}
+
+/* ---------- messages ---------- */
+html[data-th] #view-app .conv-item.active{background:var(--green-soft);}
+html[data-th] :is(#view-app,body) .msg-bubble-row.me .msg-bubble{background:var(--green);color:var(--on-primary);box-shadow:none;}
+
+/* ---------- modals and sheets follow the theme too ---------- */
+html[data-th] :is(.modal,.modal-content,.sl-sheet,.stk-sheet,.notif-dropdown,.create-menu){border-radius:var(--th-r);font-family:var(--font-b);}
+
+/* ---------- mobile ---------- */
+html[data-th] .bottom-nav{background:var(--surface);border-top-color:var(--border);}
+@media (max-width:980px){ html[data-th] #view-app .sidebar{width:min(300px,86vw);} }
+@media (max-width:760px){ html[data-th] #view-app .content{padding:16px;} }
+
+/* ---------- charts and accents that were hard-coded tan/brown ---------- */
+html[data-th] #view-app .bk-bar-t{background:var(--th-sunk);}
+html[data-th] #view-app .bk-bar-t i{background:var(--th-bar, var(--green));}
+html[data-th] #view-app .sl-tile.warn b, html[data-th] #view-app .v-tile.hot b{color:var(--warn);}
+html[data-th] #view-app .v-stat.amber, html[data-th] #view-app .v-amber{color:var(--warn);}
+html[data-th] #view-app .lg-ag i.cur{background:var(--th-good);}

@@ -1,0 +1,32 @@
+/* 10 · Workshop — made for hardware and construction trade. Steel greys, safety yellow, condensed signage. */
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap');
+html[data-th="workshop"], html[data-th="workshop"] #view-app, html[data-th="workshop"] .app-view-wrap{
+  --th-canvas:#ECEEF1; --surface:#FFFFFF; --border:#D3D7DD; --border-soft:#E4E7EB; --border-strong:#B3B9C2;
+  --ink:#15181D; --body:#2A2F37; --faint:#2A2F37; --muted:#5F6672;
+  --green:#15181D; --green-hover:#2C313A; --green-soft:#FFF1B8; --clay:#15181D; --clay-soft:#FFF1B8;
+  --danger:#D7261E; --danger-soft:#FDE8E7; --warn:#F08A00; --warn-soft:#FFF1D2; --lowstock:#E07800; --lowstock-soft:#FFF1D2; --lowstock-fill:#F8A100;
+  --blue:#1F5FAE; --blue-soft:#E3EDF9; --th-tint:#F6F7F9; --th-sunk:#E7EAEE; --th-hl:#FFF1B8; --th-hl-line:#FFC20E;
+  --font-h:'Barlow Condensed',system-ui,sans-serif; --font-b:'Barlow',system-ui,sans-serif;
+  --th-side-bg:#F7F8FA; --th-side-on-bg:#15181D; --th-side-on-ink:#FFC20E; --th-side-hover:#E9ECF0;
+  --th-r:6px; --th-r-s:4px; --th-r-chip:4px; --th-shadow:0 1px 0 #D3D7DD; --th-shadow-h:0 0 0 2px #FFC20E;
+  --th-h1:38px; --th-h1-w:800; --th-h1-ls:.01em; --th-h1-tt:uppercase;
+  --th-lbl-size:12px; --th-lbl-w:700; --th-lbl-tt:uppercase; --th-lbl-ls:.08em; --th-num-font:'Barlow',sans-serif; --th-kpi:28px; --th-kpi-w:700;
+  --th-thead-bg:#15181D; --th-thead-ink:#FFFFFF; --th-row-h:#FFFAE3; --th-chip-on-bg:#15181D; --th-chip-on-ink:#FFC20E;
+  --th-avatar-bg:#15181D; --th-avatar-ink:#FFC20E; --on-primary:#15181D; --th-bar:#FFC20E; --th-good:#147A3C; --th-good-soft:#DDF3E5;
+}
+html[data-th="workshop"] #view-app .topbar{border-bottom:4px solid #FFC20E;}
+html[data-th="workshop"] #view-app .sidebar .brand{font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;font-weight:800;letter-spacing:.06em;}
+html[data-th="workshop"] #view-app .nav-item{font-weight:600;}
+html[data-th="workshop"] #view-app .nav-item.active .nav-badge{background:#FFC20E !important;color:#15181D !important;}
+html[data-th="workshop"] #view-app .nav-group .heading{font-family:'Barlow Condensed',sans-serif;font-size:13px;letter-spacing:.14em;font-weight:700;}
+html[data-th="workshop"] :is(#view-app,body) :is(.btn-primary,.btn-primary-sm,.lg-go.pri,.btn-submit){background:#FFC20E;border-color:#FFC20E;color:#15181D;font-weight:700;}
+html[data-th="workshop"] :is(#view-app,body) :is(.btn-primary,.btn-primary-sm,.lg-go.pri):hover{background:#F2B300;border-color:#F2B300;color:#15181D;}
+html[data-th="workshop"] :is(#view-app,body) .btn{text-transform:uppercase;letter-spacing:.05em;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15px;}
+html[data-th="workshop"] #view-app :is(.panel-head h2,.lg-ph b,.settings-card h2){font-family:'Barlow Condensed',sans-serif;text-transform:uppercase;letter-spacing:.06em;font-weight:800;font-size:18px;}
+html[data-th="workshop"] #view-app :is(.panel-head h2,.lg-ph b)::before{content:"";display:inline-block;width:10px;height:10px;background:#FFC20E;margin-right:8px;vertical-align:1px;}
+html[data-th="workshop"] #view-app .lg-kpi{border-bottom:4px solid #15181D;}
+html[data-th="workshop"] #view-app .lg-kpi.hot{border-bottom-color:#FFC20E;}
+html[data-th="workshop"] #view-app table th, html[data-th="workshop"] #view-app .lg-tbl th{text-transform:uppercase;letter-spacing:.08em;font-size:11.5px;font-weight:700;}
+html[data-th="workshop"] #view-app .lg-tbl th{background:#15181D !important;color:#fff !important;}
+html[data-th="workshop"] :is(#view-app,body) :is(.status-pill,.status-pill-icon,.lg-pill){border-radius:3px;text-transform:uppercase;letter-spacing:.04em;font-size:11.5px;font-weight:700;}
+html[data-th="workshop"] #view-app .page-head h1::after, html[data-th="workshop"] #view-app .lg-head h1::after{content:"";display:block;width:120px;height:6px;margin-top:8px;background:repeating-linear-gradient(135deg,#FFC20E 0 10px,#15181D 10px 20px);}

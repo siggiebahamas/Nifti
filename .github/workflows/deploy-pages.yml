@@ -42,6 +42,8 @@ jobs:
           cp manifest.json sw.js icon-512.png icon-192.png icon-maskable-512.png apple-touch-icon.png favicon-32.png favicon-48.png robots.txt sitemap.xml 404.html store.js _site/
           # Design lab: standalone prototype of 10 dashboard concepts (sample data only), served at /design-lab/.
           cp -r design-lab _site/design-lab
+          # Theme gallery: the real app in an iframe with 10 optional visual themes, served at /themes/.
+          cp -r themes _site/themes
 
       - name: Build online store pages
         run: node .github/scripts/build-stores.mjs

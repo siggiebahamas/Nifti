@@ -2573,6 +2573,34 @@
   .pl-ln{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2px 8px;font-size:14px;} .pl-ln > small{flex-basis:100%;text-align:right;color:#6B7280;}
   .pl-ln small.bk-bad{color:#B42318;font-weight:600;} .pl-tot{border-top:1px dashed #D0D5DD;padding-top:6px;font-weight:600;}
   .pl-set{display:grid;gap:10px;} .pl-pct{max-width:120px;} .pl-pct input{text-align:right;}
+  /* ===== Home: What runs out ===== */
+  .sr-card{margin:16px 0;}
+  .sr-card .lg-ph{gap:12px;flex-wrap:wrap;}
+  .sr-seg{display:inline-flex;gap:2px;padding:3px;background:#EEF1F5;border-radius:10px;margin-left:auto;}
+  .sr-seg button{appearance:none;border:0;background:transparent;padding:6px 12px;border-radius:8px;font:inherit;font-size:13.5px;font-weight:700;color:var(--muted);cursor:pointer;}
+  .sr-seg button.on{background:#fff;color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.1);}
+  .sr-note{font-size:13.5px;color:var(--ink);margin:0;padding:10px 16px 2px;line-height:1.45;}
+  .sr-list{display:grid;gap:2px;padding:6px 8px 4px;}
+  .sr-row{display:grid;grid-template-columns:minmax(0,290px) minmax(0,1fr) 110px;gap:16px;align-items:center;border:0;background:none;padding:9px 8px;border-radius:9px;text-align:left;font:inherit;color:var(--ink);cursor:pointer;width:100%;}
+  .sr-row:hover{background:#F3F5F8;}
+  .sr-l b{display:block;font-size:14.5px;font-weight:700;} .sr-l b em{font-style:normal;font-weight:600;font-size:12px;color:var(--muted);margin-left:4px;}
+  .sr-l small{display:block;font-size:12.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .sr-t{position:relative;height:18px;background:#EEF0F4;border-radius:5px;}
+  .sr-t i{position:absolute;left:0;top:0;bottom:0;background:#9AA6B8;border-radius:5px;}
+  .sr-row.is-r .sr-t i{background:#D92D3A;} .sr-row.is-y .sr-t i{background:#E9A100;} .sr-row.is-slow .sr-t i{background:#6E7FA0;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.35) 0 5px,transparent 5px 10px);}
+  .sr-t u{position:absolute;top:-4px;bottom:-4px;width:3px;margin-left:-1px;background:#181A1E;border-radius:2px;}
+  .sr-v{text-align:right;font-weight:700;font-size:14.5px;font-variant-numeric:tabular-nums;white-space:nowrap;}
+  .sr-row.is-r .sr-v{color:#C42B36;}
+  .sr-more{display:block;width:calc(100% - 32px);margin:2px 16px 8px;border:1px dashed var(--border);background:none;border-radius:9px;padding:8px;font:inherit;font-size:13.5px;font-weight:700;color:var(--ink);cursor:pointer;}
+  .sr-nos{font-size:12.5px;color:var(--muted);margin:0;padding:4px 16px 14px;line-height:1.5;} .sr-nos b{color:var(--ink);font-weight:700;}
+  .sr-dim{color:var(--muted);font-weight:600;font-size:13px;}
+  .sr-axis{display:grid;grid-template-columns:minmax(0,290px) minmax(0,1fr) 110px;gap:16px;padding:0 16px 12px;height:18px;}
+  .sr-ax{position:relative;font-size:11.5px;color:var(--muted);} .sr-ax i{position:absolute;font-style:normal;transform:translateX(-50%);white-space:nowrap;} .sr-ax i:first-child{transform:none;} .sr-ax i:last-child{transform:translateX(-100%);}
+  @media (max-width:640px){
+    .sr-row{grid-template-columns:minmax(0,1fr) auto;gap:6px 10px;} .sr-t{grid-column:1/-1;grid-row:2;}
+    .sr-axis{grid-template-columns:minmax(0,1fr);padding:0 16px 12px;} .sr-axis > span:not(.sr-ax){display:none;}
+    .sr-seg{order:3;margin-left:0;width:100%;} .sr-seg button{flex:1;}
+  }
   .settings-card:empty{display:none;}
   #supplierChips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;} #supplierChips .chip{flex-shrink:0;}
 </style>
@@ -14479,6 +14507,7 @@ function renderOneHome(){
     <div id="oneBooksStrip">${boss && typeof booksHomeStrip === 'function' ? booksHomeStrip() : ''}</div>
     <div class="lg-kpis">${oneHomeTiles().map(lgKpi).join('')}</div>
     <div class="lg-grid">${lgAttention(items, n)}<div class="one-side">${boss && typeof booksFlagsPanel === 'function' ? booksFlagsPanel() : ''}${lgMoney('supplier')}</div></div>
+    ${typeof srCard === 'function' ? srCard() : ''}
     ${oneHomeRecent()}
     <section class="lg-panel"><div class="lg-ph"><b>Messages</b><a class="lg-link" onclick="go('messages')">All messages</a></div><div id="oneHomeMsgs" class="one-msgs"></div></section>`;
   renderOneHomeMessages();
@@ -19930,6 +19959,55 @@ window.addEventListener('DOMContentLoaded', () => { if(typeof I18N_FIL === 'unde
   "gave under the price list": "nagbigay nang mas mababa sa price list",
   "Show or send this to the customer.": "Ipakita o ipadala ito sa customer."
 }); });
+
+/* ===== Home: "What runs out" (days left against supplier lead time, or pesos sitting on the shelf) ===== */
+let srAll = false;
+let srMode = (() => { try{ return localStorage.getItem('nifti_sr_mode') || 'days'; }catch(e){ return 'days'; } })();
+function srRows(){
+  const multi = new Set(inventoryData.map(i => i.warehouse || '')).size > 1;
+  return inventoryData.filter(i => i && i.name).map(i => {
+    const on = Number(i.onHand) || 0, lead = Number(i.leadTime) || 0, days = i.daysLeft != null && i.daysLeft !== '' ? Number(i.daysLeft) : null;
+    const cost = typeof bkStockCost === 'function' ? (Number(bkStockCost(i.name)) || 0) : 0;
+    const risk = days == null ? 'n' : lead && days <= lead ? 'r' : lead && days < lead * 2 ? 'y' : 'g';
+    const wh = multi && typeof whLabel !== 'undefined' && whLabel[i.warehouse] ? whLabel[i.warehouse].split(' — ')[0] : '';
+    return {code: i.code, name: i.name, wh, on, lead, days, cost, value: on * cost, risk, sup: i.supplier || ''};
+  });
+}
+function srSetMode(m){ srMode = m; try{ localStorage.setItem('nifti_sr_mode', m); }catch(e){} const el = document.getElementById('srCard'); if(el) el.outerHTML = srCard(); }
+function srCard(){
+  if(typeof isPageAllowedForViewAsRole === 'function' && !isPageAllowedForViewAsRole('inventory')) return '';
+  const rows = srRows(); if(!rows.length) return '';
+  const days = srMode !== 'value', MAXD = 45;
+  const short = rows.filter(r => r.risk === 'r').length, total = rows.reduce((a, r) => a + r.value, 0);
+  const nos = rows.filter(r => r.days == null);
+  let list, note;
+  if(days){
+    list = rows.filter(r => r.days != null).sort((a, b) => a.days - b.days);
+    note = short ? `<b>${short} item${short > 1 ? 's' : ''} run${short > 1 ? '' : 's'} out before a new delivery could arrive.</b> Bar = days left at today's selling rate · black notch = days the supplier needs.`
+      : `Nothing runs out before the supplier can deliver. Bar = days left · black notch = days the supplier needs.`;
+  } else {
+    list = rows.slice().sort((a, b) => b.value - a.value);
+    const slow = rows.filter(r => r.days != null && r.days > 30).reduce((a, r) => a + r.value, 0);
+    note = `<b>${fmtPHP(total)} on the shelf at cost.</b>${slow > 0 && total > 0 ? ` Slow sellers (over 30 days of stock) hold ${Math.round(slow / total * 100)}% of it.` : ''}`;
+  }
+  const mx = days ? MAXD : Math.max(1, ...list.map(r => r.value));
+  const row = r => {
+    const w = days ? (r.days == null ? 0 : Math.min(r.days, MAXD) / MAXD * 100) : r.value / mx * 100;
+    const tone = days ? r.risk : (r.days != null && r.days > 30 ? 'slow' : r.risk === 'r' ? 'r' : 'n');
+    const val = days ? (r.days == null ? '<span class="sr-dim">no sales yet</span>' : `${r.days} day${r.days === 1 ? '' : 's'}`) : (r.cost ? fmtPHP(r.value) : '<span class="sr-dim">cost not set</span>');
+    const sub = (r.wh ? escapeHtml(r.wh) + ' · ' : '') + (days ? `${r.on} on hand${r.lead ? ` · ${escapeHtml(r.sup)} needs ${r.lead} day${r.lead === 1 ? '' : 's'}` : ''}` : `${r.on} on hand${r.days != null ? ` · ${r.days} days of stock` : ''}`);
+    return `<button type="button" class="sr-row is-${tone}" onclick="go('inventory')"><span class="sr-l"><b>${escapeHtml(r.name)}</b><small title="${sub}">${sub}</small></span>
+      <span class="sr-t"><i style="width:${w.toFixed(1)}%"></i>${days && r.lead ? `<u style="left:${(Math.min(r.lead, MAXD) / MAXD * 100).toFixed(1)}%"></u>` : ''}</span><span class="sr-v">${val}</span></button>`;
+  };
+  return `<section class="lg-panel sr-card" id="srCard"><div class="lg-ph"><b>What runs out</b>
+      <span class="sr-seg" role="group" aria-label="Show stock by"><button type="button" class="${days ? 'on' : ''}" aria-pressed="${days}" onclick="srSetMode('days')">Days left</button><button type="button" class="${days ? '' : 'on'}" aria-pressed="${!days}" onclick="srSetMode('value')">Pesos on the shelf</button></span>
+      <a class="lg-link" onclick="go('inventory')">Stock</a></div>
+    <p class="sr-note">${note}</p><div class="sr-list">${(srAll ? list : list.slice(0, 8)).map(row).join('')}</div>
+    ${days ? `<div class="sr-axis" aria-hidden="true"><span></span><span class="sr-ax">${[0, 10, 20, 30, 45].map(v => `<i style="left:${v / MAXD * 100}%">${v}${v === 45 ? '+ days' : ''}</i>`).join('')}</span><span></span></div>` : ''}
+    ${list.length > 8 ? `<button type="button" class="sr-more" onclick="srAll=!srAll; srSetMode(srMode)">${srAll ? 'Show fewer' : `Show all ${list.length}`}</button>` : ''}
+    ${days && nos.length ? `<p class="sr-nos"><b>No sales recorded yet (${nos.length}):</b> ${nos.map(r => escapeHtml(r.name) + (r.wh ? ' (' + escapeHtml(r.wh) + ')' : '')).join(', ')}</p>` : ''}
+</section>`;
+}
 
 function renderSidebarForViewAsRole(){
   const allowed = computeAllowedPages(getEffectiveRoles());
