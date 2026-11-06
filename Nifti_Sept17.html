@@ -2574,55 +2574,80 @@
   .pl-ln small.bk-bad{color:#B42318;font-weight:600;} .pl-tot{border-top:1px dashed #D0D5DD;padding-top:6px;font-weight:600;}
   .pl-set{display:grid;gap:10px;} .pl-pct{max-width:120px;} .pl-pct input{text-align:right;}
   /* ===== Home: What runs out ===== */
-  #mhHome .sr-seg{display:inline-flex;gap:2px;padding:4px;background:rgba(214,226,240,.75);border-radius:999px}
-  #mhHome .sr-seg button{border:0;background:none;border-radius:999px;padding:8px 16px;font-weight:700;color:#2C3E55;font-size:15px;min-height:40px}
-  #mhHome .sr-seg button[aria-pressed="true"]{background:#fff;color:#13243A;box-shadow:0 2px 8px -4px rgba(30,70,120,.5)}
-  #mhHome .sr-note{font-size:16px;color:#13243A;margin:0;line-height:1.45}
-  #mhHome .sr-legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:14.5px;font-weight:600;color:#13243A;align-items:center}
-  #mhHome .sr-k{display:inline-flex;align-items:center;gap:7px} #mhHome .sr-k b{font-weight:800}
-  #mhHome .sr-k i{width:14px;height:14px;border-radius:4px;display:inline-block}
-  #mhHome .sr-k.r i{background:#D92D3A} #mhHome .sr-k.y i{background:#F5A30B} #mhHome .sr-k.g i{background:#17975A} #mhHome .sr-k.slow i{background:#2E6FD8;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.4) 0 3px,transparent 3px 6px)}
-  #mhHome .sr-k.t{font-weight:500;color:#2C3E55} #mhHome .sr-k.t u{display:inline-block;width:3px;height:14px;background:#13243A;border-radius:2px;margin-right:2px}
+  #mhHome .sr-seg{display:inline-flex;gap:2px;padding:4px;background:#E3EBF4;border-radius:999px}
+  #mhHome .sr-seg button{border:0;background:none;border-radius:999px;padding:8px 16px;font-weight:700;color:#13243A;font-size:15px;min-height:40px}
+  #mhHome .sr-seg button[aria-pressed="true"]{background:#fff;box-shadow:0 2px 8px -4px rgba(30,70,120,.5)}
+  #mhHome .sr-key{background:#F4F7FB;border:1px solid #DCE6F0;border-radius:16px;padding:14px 18px;color:#13243A}
+  #mhHome .sr-key p{margin:0 0 8px;font-size:16px;line-height:1.45}
+  #mhHome .sr-key ul{margin:0;padding:0;list-style:none;display:grid;gap:6px}
+  #mhHome .sr-key li{display:flex;gap:10px;align-items:baseline;font-size:15.5px;line-height:1.4}
+  #mhHome .sr-key li i{width:14px;height:14px;border-radius:4px;flex:none;transform:translateY(2px)}
+  #mhHome .sr-key li u{width:4px;height:16px;background:#13243A;border-radius:2px;flex:none;margin:0 5px;transform:translateY(3px)}
+  #mhHome .sr-key ul.sr-inline{display:flex;flex-wrap:wrap;gap:8px 20px}
+  #mhHome .sr-key i.r{background:#D92D3A} #mhHome .sr-key i.y{background:#F5A30B} #mhHome .sr-key i.g{background:#17975A} #mhHome .sr-key i.slow{background:#9AA5B4}
   #mhHome .sr-list{display:grid;gap:4px}
-  #mhHome .sr-row{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr) 128px;gap:18px;align-items:center;border:0;background:none;padding:10px 10px;border-radius:14px;text-align:left;color:#13243A;width:100%;font:inherit}
-  #mhHome .sr-row:hover{background:rgba(255,255,255,.75)}
-  #mhHome .sr-l{display:grid;gap:3px;min-width:0}
-  #mhHome .sr-l b{font-size:16.5px;font-weight:800}
-  #mhHome .sr-l small{font-size:14.5px;color:#2C3E55;font-weight:500;line-height:1.35}
-  #mhHome .sr-act{justify-self:start;font-size:13.5px;font-weight:800;border-radius:999px;padding:3px 10px;margin-top:2px}
-  #mhHome .sr-act.r{background:#FCE4E2;color:#B4232C} #mhHome .sr-act.y{background:#FEF0C7;color:#13243A} #mhHome .sr-act.g{background:#DAF0E3;color:#0E653C} #mhHome .sr-act.slow{background:#E1EBFB;color:#1D4F96}
-  #mhHome .sr-t{position:relative;height:22px;background:#E9EFF6;border-radius:999px;overflow:visible}
-  #mhHome .sr-t .z{position:absolute;top:0;bottom:0;left:0}
-  #mhHome .sr-t .zr{background:#FDE3E3;border-radius:999px 0 0 999px} #mhHome .sr-t .zy{background:#FFF3C2}
-  #mhHome .sr-t i{position:absolute;left:0;top:3px;bottom:3px;border-radius:999px;background:#17975A;box-shadow:0 1px 2px rgba(0,0,0,.12)}
+  #mhHome .sr-item{border-radius:16px}
+  #mhHome .sr-item.open{background:#fff;box-shadow:0 0 0 1.5px #C9DCF1, 0 10px 26px -18px rgba(20,50,90,.45)}
+  #mhHome .sr-row{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr) 124px 18px;gap:18px;align-items:center;border:0;background:none;padding:12px 12px;border-radius:16px;text-align:left;color:#13243A;width:100%;font:inherit;cursor:pointer}
+  #mhHome .sr-row:hover{background:rgba(255,255,255,.85)}
+  #mhHome .sr-l{display:grid;gap:4px;min-width:0}
+  #mhHome .sr-l > b{font-size:17px;font-weight:800;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+  #mhHome .sr-m1, #mhHome .sr-m2{display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px;font-size:15px;font-weight:600;color:#1F3148;line-height:1.35}
+  #mhHome .sr-m2{color:#25456E}
+  #mhHome .sr-m1 i, #mhHome .sr-m2 i{font-style:normal;color:#7A8BA0;margin:0 2px}
+  #mhHome .sr-i{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;opacity:.85}
+  #mhHome .sr-act{font-size:13.5px;font-weight:800;border-radius:999px;padding:3px 11px;white-space:nowrap}
+  #mhHome .sr-act.r{background:#FCE4E2;color:#B4232C} #mhHome .sr-act.y{background:#FEF0C7;color:#13243A} #mhHome .sr-act.g{background:#DAF0E3;color:#0E653C} #mhHome .sr-act.slow{background:#E9EDF2;color:#2C3E55}
+  #mhHome .sr-t{position:relative;height:20px;background:#E6EDF5;border-radius:999px;overflow:visible}
+  #mhHome .sr-t i{position:absolute;left:0;top:3px;bottom:3px;border-radius:999px;background:#17975A}
   #mhHome .sr-row.is-r .sr-t i{background:linear-gradient(90deg,#E5484D,#C42B36)} #mhHome .sr-row.is-y .sr-t i{background:linear-gradient(90deg,#FFB224,#F08C00)} #mhHome .sr-row.is-g .sr-t i{background:linear-gradient(90deg,#2BB673,#128A51)}
-  #mhHome .sr-row.is-slow .sr-t i{background:linear-gradient(90deg,#5B93F0,#2E6FD8);background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.28) 0 6px,transparent 6px 12px),linear-gradient(90deg,#5B93F0,#2E6FD8)}
-  #mhHome .sr-val .sr-t{background:#EEF2F7} #mhHome .sr-val .sr-t i{top:2px;bottom:2px}
-  #mhHome .sr-t u{position:absolute;top:-5px;bottom:-5px;width:3px;margin-left:-1px;background:#13243A;border-radius:2px}
-  #mhHome .sr-v{text-align:right;display:grid;justify-items:end;gap:1px} #mhHome .sr-v b{font-size:17px;font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap} #mhHome .sr-v small{font-size:13.5px;color:#2C3E55;font-weight:500;white-space:nowrap}
+  #mhHome .sr-row.is-slow .sr-t i{background:#9AA5B4}
+  #mhHome .sr-val .sr-t i{top:2px;bottom:2px}
+  #mhHome .sr-t u{position:absolute;top:-6px;bottom:-6px;width:4px;margin-left:-2px;background:#13243A;border-radius:2px}
+  #mhHome .sr-v{text-align:right;display:grid;justify-items:end;gap:2px} #mhHome .sr-v b{font-size:18px;font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap} #mhHome .sr-v small{font-size:14px;color:#1F3148;font-weight:600;white-space:nowrap}
   #mhHome .sr-row.is-r .sr-v b{color:#B4232C}
-  #mhHome .sr-axis{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr) 128px;gap:18px;padding:0 10px;height:20px;font-size:13px;color:#2C3E55;font-weight:600}
-  #mhHome .sr-axis > span:last-child{text-align:right}
+  #mhHome .sr-chev{font-size:22px;font-weight:700;color:#2B6CB0;transition:transform .15s}
+  #mhHome .sr-item.open .sr-chev{transform:rotate(90deg)}
+  #mhHome .sr-axis{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr) 124px 18px;gap:18px;padding:0 12px;height:20px;font-size:13.5px;color:#1F3148;font-weight:700}
+  #mhHome .sr-axis > span:nth-child(3){text-align:right}
   #mhHome .sr-ax{position:relative} #mhHome .sr-ax i{position:absolute;font-style:normal;transform:translateX(-50%);white-space:nowrap} #mhHome .sr-ax i:first-child{transform:none} #mhHome .sr-ax i:last-child{transform:translateX(-100%)}
   #mhHome .sr-more{justify-self:start;border:1.5px solid #C9DCF1;background:#fff;color:#1D4F86;border-radius:999px;padding:8px 18px;font-weight:700;font-size:15px;min-height:42px}
-  #mhHome .sr-nos{font-size:14.5px;color:#2C3E55;margin:0;line-height:1.5} #mhHome .sr-nos b{color:#13243A}
-  #mhHome .sr-lv{background:#fff;border:1px solid #DCE6F0;border-radius:18px;padding:16px 18px;display:grid;gap:12px}
+  #mhHome .sr-nos{font-size:15px;color:#1F3148;margin:0;line-height:1.5} #mhHome .sr-nos b{color:#13243A}
+  /* reorder panel inside an item */
+  #mhHome .sr-p{padding:4px 16px 18px;display:grid;gap:14px}
+  #mhHome .sr-pg{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+  #mhHome .sr-pg > div{background:#F4F7FB;border-radius:12px;padding:10px 12px;display:grid;gap:2px}
+  #mhHome .sr-pg small{font-size:13.5px;font-weight:700;color:#2C3E55} #mhHome .sr-pg b{font-size:16px;font-weight:800;color:#13243A}
+  #mhHome .sr-pg b.tr{color:#B4232C}
+  #mhHome .sr-pn{background:#E6F0FB;border-radius:12px;padding:10px 14px;font-size:15px;font-weight:600}
+  #mhHome .sr-lnk{border:0;background:none;color:#1D4F86;font-weight:800;padding:0;cursor:pointer;font-size:15px}
+  #mhHome .sr-po{border:1.5px solid #DCE6F0;border-radius:14px;padding:14px 16px;display:grid;gap:12px}
+  #mhHome .sr-po-h{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap} #mhHome .sr-po-h b{font-size:17px} #mhHome .sr-po-h span{font-size:15.5px;font-weight:600;color:#1F3148}
+  #mhHome .sr-po-row{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
+  #mhHome .sr-q{display:flex;align-items:center;gap:8px;font-size:15.5px;font-weight:700}
+  #mhHome .sr-q input{border:1.5px solid #C9D6E5;border-radius:10px;padding:8px 10px;font:inherit;font-weight:700;width:110px;background:#fff;color:#13243A}
+  #mhHome .sr-q input[type=date]{width:auto}
+  #mhHome .sr-chips{display:flex;flex-wrap:wrap;gap:6px}
+  #mhHome .sr-chips button{border:1.5px solid #C9DCF1;background:#fff;border-radius:999px;padding:6px 12px;font-weight:700;font-size:14px;color:#1D4F86;cursor:pointer}
+  #mhHome .sr-chips button:hover{border-color:#2B6CB0}
+  #mhHome .sr-est{font-size:15.5px;font-weight:600} #mhHome .sr-est b{font-size:17px} #mhHome .sr-est small{font-size:14px;color:#2C3E55}
+  #mhHome .sr-po-a{display:flex;flex-wrap:wrap;gap:8px}
+  /* levels panel */
+  #mhHome .sr-lv{background:#fff;border:1.5px solid #DCE6F0;border-radius:18px;padding:16px 18px;display:grid;gap:12px}
   #mhHome .sr-lv-h{display:flex;justify-content:space-between;align-items:center} #mhHome .sr-lv-h b{font-size:17px}
   #mhHome .sr-x{border:1.5px solid #D5DFEA;background:#fff;border-radius:10px;width:38px;height:38px}
-  #mhHome .sr-opt{display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px;align-items:start;cursor:pointer;font-size:15.5px}
-  #mhHome .sr-opt input{width:18px;height:18px;margin-top:3px;accent-color:#2B6CB0} #mhHome .sr-opt small{display:block;color:#2C3E55;font-size:14.5px;margin-top:2px}
-  #mhHome .sr-custom{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;padding-left:32px;font-size:15.5px;font-weight:600}
-  #mhHome .sr-custom.off{opacity:.45;pointer-events:none}
-  #mhHome .sr-custom label{display:flex;align-items:center;gap:8px}
-  #mhHome .sr-custom input{width:72px;border:1.5px solid #C9D6E5;border-radius:10px;padding:7px 10px;font:inherit;text-align:center}
-  #mhHome .sw{width:14px;height:14px;border-radius:4px;display:inline-block} #mhHome .sw.r{background:#D92D3A} #mhHome .sw.y{background:#F5A30B} #mhHome .sw.g{background:#17975A}
-  #mhHome .sr-note2{display:flex;align-items:center;gap:8px}
+  #mhHome .sr-f{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;font-size:16px;font-weight:700}
+  #mhHome .sr-in{display:flex;align-items:center;gap:8px;font-weight:600}
+  #mhHome .sr-in input{width:76px;border:1.5px solid #C9D6E5;border-radius:10px;padding:7px 10px;font:inherit;font-weight:800;text-align:center}
+  #mhHome .sr-lv-n{margin:0;font-size:15px;color:#1F3148}
   #mhHome .sr-lv-f{display:flex;justify-content:flex-end;gap:8px}
+  @media (max-width:900px){ #mhHome .sr-pg{grid-template-columns:repeat(3,minmax(0,1fr))} }
   @media (max-width:760px){
-    #mhHome .sr-row{grid-template-columns:minmax(0,1fr) auto;gap:8px 10px} #mhHome .sr-t{grid-column:1/-1;grid-row:2}
-    #mhHome .sr-axis{grid-template-columns:minmax(0,1fr);padding:0 10px} #mhHome .sr-axis > span:not(.sr-ax){display:none}
+    #mhHome .sr-row{grid-template-columns:minmax(0,1fr) auto;gap:8px 10px} #mhHome .sr-t{grid-column:1/-1;grid-row:2} #mhHome .sr-chev{display:none}
+    #mhHome .sr-axis{grid-template-columns:minmax(0,1fr);padding:0 12px} #mhHome .sr-axis > span:not(.sr-ax){display:none}
     #mhHome .sr-seg{width:100%;order:5} #mhHome .sr-seg button{flex:1}
-    #mhHome .sr-custom{padding-left:0}
+    #mhHome .sr-pg{grid-template-columns:repeat(2,minmax(0,1fr))}
+    #mhHome .sr-p{padding:4px 10px 14px}
   }
   /* ===== Home (approved Mist design), ported from the mockup and scoped to #mhHome / #mhSheet ===== */
 #mhHome, #mhSheet{--ink:#13243A; --ink2:#2C3E55; --muted:#4A5B70; --line:#DCE6F0; --glass:rgba(255,255,255,.76);
@@ -3161,7 +3186,9 @@
   #mhHome .lane .more, #mhHome .cell .more{border:0;background:none;color:#1D4F86;font-weight:800;font-size:14.5px;padding:6px 4px;justify-self:start;cursor:pointer;}
   #mhHome .task h5{font-weight:700;} #mhHome .task h5 b{font-weight:800;}
   #mhHome .tile .s.muted{color:#2C3E55;} #mhHome .tile .s .cashline{font-weight:700;color:#13243A;}
-  #mhHome .cal .day .nm{font-weight:800;font-size:16px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  #mhHome .cal .day .nm{font-weight:800;font-size:16px;line-height:1.2;white-space:normal;overflow-wrap:break-word;}
+  #mhHome .cal .day.none .st{color:#2C3E55 !important;font-weight:600;}
+  #mhHome .cal .day .ini-row{align-items:center;}
   #mhHome .cal .day .ed{font-size:12px;font-weight:700;color:#1D4F86;background:#E1EDFA;border-radius:6px;padding:1px 6px;margin-left:4px;}
   #mhHome .mh-more{display:grid;gap:16px;margin-top:18px;}
   #mhHome .mh-more .lg-panel{border-radius:20px;border:1px solid #E1E9F2;}
@@ -3178,6 +3205,121 @@
   #mhHome .tile .tx{min-width:0;} #mhHome .tile .v .cpill{max-width:100%;white-space:normal;flex-wrap:wrap;}
   #mhHome .tile .v .cpill b{font-size:clamp(20px,1.8vw,26px);}
   #mhSheet .attach.missing, #mhHome .attach.missing{color:#B4232C !important;border-color:#F3C5BC !important;}
+  #mhSheet .po-ed{margin-left:10px;font-weight:800;}
+  #mhSheet .he .reason{display:block;margin-top:4px;font-size:15px;color:#13243A;}
+  #mhSheet button.attach{border:1.5px dashed #F3C5BC;background:#fff;border-radius:10px;padding:5px 10px;cursor:pointer;}
+  /* ===== Readability pass: bigger, darker, roomier (applies to every page) ===== */
+  #view-app{--muted:#3F4A57;--faint:#2B3440;--body:#1F2933;--warn:#E8890B;--lowstock:#D9480F;--lowstock-fill:#F59E0B;}
+  #view-app{font-size:16px;}
+  /* page titles and section headers */
+  #view-app .page-head h1{font-size:30px !important;letter-spacing:-.02em;line-height:1.15;}
+  #view-app .page-head p{font-size:16px !important;color:#2B3440 !important;margin-top:6px;}
+  #view-app .page-head{margin-bottom:22px;}
+  #view-app :is(.panel-head h2,.panel-card > h2,.lg-ph b,.sl-card-h b,.settings-card h2){font-size:18.5px !important;font-weight:700;color:var(--ink);letter-spacing:-.01em;}
+  #view-app .panel-head{margin-bottom:14px;gap:12px;}
+  /* menu */
+  #view-app .nav-item{font-size:15.5px;padding:9px 12px;}
+  #view-app .nav-group .heading{font-size:12px;color:#3F4A57;}
+  /* tables */
+  #view-app table th, #view-app .lg-tbl th{font-size:12.5px !important;color:#2B3440 !important;font-weight:700;}
+  #view-app table td{font-size:15px;color:#1F2933;}
+  #view-app .lg-tbl{font-size:15px;}
+  /* numbers and their labels */
+  #view-app :is(.lg-kpi-l,.bk-tile-l,.stat-label){font-size:14px !important;color:#2B3440 !important;font-weight:700;opacity:1;}
+  #view-app :is(.lg-kpi-s,.bk-tile-s){font-size:14px !important;color:#2B3440;opacity:1;}
+  #view-app .bk-tile{padding:16px 18px;gap:4px;}
+  #view-app .bk-tile-v{font-size:24px;}
+  #view-app .bk-tiles{gap:12px;}
+  /* list rows */
+  #view-app .bk-row{padding:14px 20px;gap:14px;}
+  #view-app .bk-row-m b{font-size:15.5px;}
+  #view-app .bk-row-m small{font-size:14px;color:#2B3440;}
+  #view-app .bk-list .panel-head{padding:18px 20px 10px;}
+  #view-app .bk-ic{width:38px;height:38px;border-radius:11px;background:#E8F0FA;color:#1D4F86;font-size:18px;}
+  #view-app .bk-amt{font-size:15.5px;}
+  #view-app .bk-row-a .sl-link{font-size:14.5px;}
+  #view-app .bk-dim{color:#3F4A57 !important;}
+  #view-app .bk-note{font-size:14.5px;color:#2B3440;background:#EEF3F8;border-radius:12px;padding:12px 16px;line-height:1.5;}
+  #view-app .bk-empty{color:#2B3440;font-size:15px;}
+  #view-app .lg-act-t .t{font-size:15px;} #view-app .lg-act-t .s{font-size:14px;color:#2B3440;}
+  #view-app .lg-tbl td{font-size:15px;}
+  #view-app :is(.status-pill,.status-pill-icon){font-size:13.5px;}
+  #view-app .lg-pill{font-size:13px;}
+  #view-app :is(.toggle-txt){font-size:17px;}
+  #view-app :is(.toggle-sub){font-size:15px;color:#2B3440;line-height:1.5;}
+  #view-app .sl-help{font-size:14.5px;color:#2B3440;line-height:1.55;}
+  #view-app :is(.chip,.range-tab,.wh-tab,.adm-tabs button,.bk-daybar button){font-size:15px;}
+  #view-app .lens-tabs button{font-size:15.5px;padding:9px 16px;}
+  /* sl- cards (Who owes you, Bank & deposits, Follow-ups, Payroll) */
+  #view-app .sl-tiles{gap:14px;margin-bottom:16px;}
+  #view-app .sl-tile{padding:16px 18px;gap:4px;border-radius:16px;}
+  #view-app .sl-tile small{font-size:14.5px;font-weight:700;letter-spacing:0;text-transform:none;opacity:1;color:#2B3440;}
+  #view-app .sl-tile b{font-size:26px;}
+  #view-app .sl-tile span{font-size:14.5px;opacity:1;color:#2B3440;}
+  #view-app .sl-card{padding:10px 20px 14px;border-radius:16px;margin-bottom:16px;}
+  #view-app .sl-card-h{padding:14px 0 10px;gap:12px;}
+  #view-app .sl-row{padding:14px 0;gap:14px;}
+  #view-app .sl-t{font-size:16.5px;}
+  #view-app .sl-s{font-size:14.5px;color:#2B3440;opacity:1;white-space:normal;overflow:visible;line-height:1.45;margin-top:3px;}
+  #view-app .sl-right b{font-size:16.5px;} #view-app .sl-right small{font-size:13.5px;}
+  #view-app .sl-av{width:40px;height:40px;border-radius:12px;background:#E6EEF8;color:#1D4F86;font-size:16px;}
+  #view-app .sl-av.g{background:#E1F1E7;color:#0E6B3E;} #view-app .sl-av.w{background:#FCE4E2;color:#B4232C;}
+  #view-app .sl-link{font-size:14.5px;}
+  #view-app .hm-go{min-height:40px;padding:0 16px;font-size:15px;}
+  #view-app .empty-mini{font-size:15px;color:#2B3440;padding:18px 4px;line-height:1.5;}
+  #view-app .sl-actions{margin:4px 0 16px;}
+  /* warning colours: orange text, or dark text on yellow; no brown */
+  #view-app :is(.sl-tile.warn b,.sl-warn,.bk-tile.warn .bk-tile-v,.wk-t.w b,.t-amber,.v-amber){color:#C2410C !important;}
+  #view-app :is(.lg-pill.warn,.qt-hintbox.qt-warn,.qt-hold,.qt-changed,.sl-pill.st-new,.cq-due .cq-pill,.bk-alert.amber b,.cc-diff.warn,.bk-tag,.bk-flag.amber .bk-flag-v,.lg-pill.demo,.adm-badge){color:#13243A !important;}
+  #view-app #openItemsBadge{color:#13243A !important;background:#FFF1C2 !important;}
+  #view-app .lg-sev.md, #view-app .lg-ag i.d30{background:#F08C00;}
+  /* Month-end close: room between the edge, the status mark and the text; actions never cut off */
+  #view-app .lg-conf{gap:16px;padding:16px 20px;align-items:center;}
+  #view-app .bk-list .lg-conf{border-bottom:1px solid var(--border);}
+  #view-app .lg-conf > span:first-child{width:32px;height:32px;font-size:15px;}
+  #view-app .lg-conf.warn > span:first-child{background:#FFE9B0;color:#13243A;}
+  #view-app .lg-conf > div{gap:3px;min-width:0;}
+  #view-app .lg-conf b{font-size:16px;}
+  #view-app .lg-conf small{font-size:14.5px;opacity:1;color:#2B3440;}
+  #view-app .lg-conf > .bk-row-a{flex:none;gap:8px;width:auto;height:auto;border-radius:0;background:none !important;display:flex;align-items:center;font-size:inherit;}
+  #view-app .lg-conf .bk-row-a .sl-link{border:1.5px solid var(--border);border-radius:9px;padding:6px 12px;background:var(--surface);}
+  #view-app .bk-list .bk-actions{padding:16px 20px 18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+  /* Follow-ups: each customer is its own roomy card, the key detail in a clear callout */
+  #view-app .sl-card:has(> .qt-row){background:transparent;border:0;padding:0;box-shadow:none;display:grid;gap:12px;}
+  #view-app .qt-row{background:var(--surface);border:1px solid var(--border) !important;border-radius:16px;padding:18px 20px !important;align-items:flex-start;}
+  #view-app .qt-row .sl-mid{display:grid;gap:6px;}
+  #view-app .qt-row .sl-t{font-size:18px;}
+  #view-app .qt-row .sl-s.qt-hint, #view-app .qt-row .sl-s.qt-hint.sl-warn{display:inline-block;justify-self:start;background:#FFF4D6;color:#13243A !important;border-left:4px solid #F5A30B;border-radius:8px;padding:8px 12px;font-weight:600;font-size:15px;}
+  #view-app .qt-row .sl-s.qt-hint.sl-bad{background:#FDECEC;border-left-color:#D92D3A;}
+  #view-app .qt-row .sl-good{color:#0E6B3E;font-size:14.5px;}
+  #view-app .qt-row .sl-right{gap:10px;}
+  #view-app .qt-row .sl-right b{font-size:19px;}
+  /* icon set */
+  #view-app .nf-ic, body .nf-ic{display:inline-block;}
+  .nf-ic{width:1.1em;height:1.1em;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.17em;margin-right:.35em;}
+  .nf-t{display:inline;}
+  #view-app :is(.sl-card-h b,.settings-card h2,.panel-head h2,.panel-card > h2,.lg-ph b) .nf-ic{box-sizing:content-box;width:18px;height:18px;padding:7px;border-radius:10px;background:#E8F0FA;color:#1D4F86;margin-right:12px;vertical-align:-11px;}
+  #view-app .bk-ic .nf-ic{width:19px;height:19px;margin:0;}
+  #view-app :is(.btn,button,.chip,.hm-go,.row-action,.sl-link) .nf-ic{width:17px;height:17px;vertical-align:-3px;}
+  .nf-ic + .nf-t, .nf-t:empty{display:none;}
+  @media (max-width:760px){
+    #view-app .page-head h1{font-size:25px !important;}
+    #view-app .sl-card{padding:8px 14px 12px;}
+    #view-app .qt-row{padding:14px !important;}
+    #view-app .lg-conf{padding:14px;flex-wrap:wrap;} #view-app .lg-conf .bk-row-a{width:100%;padding-left:48px;}
+  }
+  #view-app .acc-hint{font-size:14.5px !important;color:#2B3440 !important;font-weight:500 !important;opacity:1 !important;}
+  #view-app .settings-section-title{font-size:13px !important;color:#1F2933 !important;letter-spacing:.08em;}
+  #view-app .settings-card .sub{font-size:15px;color:#2B3440;}
+  #view-app .field label{color:#1F2933;}
+  #view-app .conv-preview, #view-app .conv-time{color:#2B3440;}
+  #view-app .inv-row-sub{color:#2B3440;font-size:13.5px;}
+  #view-app .notif-text{color:#1F2933;}
+  #view-app .bk-bar-t{background:#E6ECF3;}
+  #view-app .bk-bar-t i{background:#2F6DB5;}
+  #view-app .bk-bar-l{font-size:15px;} #view-app .bk-bar-v{font-size:15px;}
+  #view-app .sl-card-h .bk-dim, #view-app .sl-card-h > span, #view-app .sl-card-h small{font-size:14px;color:#2B3440 !important;}
+  #view-app .bk-alert{font-size:15px;} #view-app .bk-alert b{font-size:16px;}
   .settings-card:empty{display:none;}
   #supplierChips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;} #supplierChips .chip{flex-shrink:0;}
 </style>
@@ -20539,15 +20681,25 @@ window.addEventListener('DOMContentLoaded', () => { if(typeof I18N_FIL === 'unde
 /* ===== Home: "What runs out" =====
    Days left = stock on hand ÷ how fast it really sells (last 4 weeks of sales, the latest week weighted more;
    falls back to the item's own days-left figure when there's no sales history yet).
-   Colours: Smart mode uses each supplier's delivery time:
-     red    = runs out before a new delivery could arrive if you ordered today (days ≤ lead time + 1)
-     yellow = order within the next ~2.5 weeks (days ≤ the larger of 17.5 or 2 × lead time + 3)
+   Reorder line = supplier delivery time + critical level (default 5 days, editable).
+     red    = at or below the reorder line: order now, or stock drops under the critical level before a delivery arrives
+     yellow = within the warning window above the line (default 10 days)
      green  = covered
-   or the owner sets their own red / yellow limits in days. Saved with the business (books_settings.stock_levels). */
+   Settings are saved with the business (books_settings.stock_levels: {critical, warn}). */
 let srMode = (() => { try{ return localStorage.getItem('nifti_sr_mode') || 'days'; }catch(e){ return 'days'; } })();
-let srAll = false, srEdit = false;
+let srAll = false, srEdit = false, srOpen = null;
 const SR_MAXD = 45;
-function srLevels(){ const s = (typeof bkSettings === 'function' ? bkSettings().stock_levels : null) || {}; return {mode: s.mode === 'custom' ? 'custom' : 'smart', red: Number(s.red) > 0 ? Number(s.red) : 7, yellow: Number(s.yellow) > 0 ? Number(s.yellow) : 17}; }
+const SR_IC = {
+  pin: '<path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>',
+  box: '<path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/>',
+  rate: '<path d="m3 17 6-6 4 4 8-8"/><path d="M15 7h6v6"/>',
+  truck: '<path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/>',
+  cal: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
+  peso: '<path d="M7 20V4h6a4.5 4.5 0 0 1 0 9H7M4 8h14M4 11h14"/>'
+};
+const srI = k => `<svg class="sr-i" viewBox="0 0 24 24" aria-hidden="true">${SR_IC[k]}</svg>`;
+function srLevels(){ const s = (typeof bkSettings === 'function' ? bkSettings().stock_levels : null) || {};
+  return {critical: Number(s.critical) > 0 ? Number(s.critical) : 5, warn: Number(s.warn) > 0 ? Number(s.warn) : 10}; }
 function srRate(name){
   const moves = (typeof BK !== 'undefined' && BK.moves) ? BK.moves.filter(m => m.item === name && m.kind === 'sold' && m.qty < 0) : [];
   if(moves.length < 2) return null;
@@ -20561,80 +20713,130 @@ function srRows(){
   return inventoryData.filter(i => i && i.name).map(i => {
     const on = Number(i.onHand) || 0, leadKnown = Number(i.leadTime) > 0, lead = leadKnown ? Number(i.leadTime) : 7;
     const measured = srRate(i.name), share = byName[i.name] ? on / byName[i.name] : 1;
-    let rate = measured != null ? measured * share : null, src = 'sales';
-    if(rate == null && i.daysLeft != null && i.daysLeft !== '' && Number(i.daysLeft) > 0){ rate = on / Number(i.daysLeft); src = 'item'; }
-    if(rate == null && Number(i.daysLeft) === 0 && i.daysLeft !== null && i.daysLeft !== ''){ rate = on || 1; src = 'item'; }
-    const days = rate > 0 ? on / rate : null;
-    const redMax = L.mode === 'custom' ? L.red : lead + 1, yelMax = L.mode === 'custom' ? Math.max(L.yellow, L.red) : Math.max(17.5, lead * 2 + 3);
-    const risk = days == null ? 'n' : days <= redMax ? 'r' : days <= yelMax ? 'y' : 'g';
+    let rate = measured != null ? measured * share : null;
+    if(rate == null && i.daysLeft != null && i.daysLeft !== '' && Number(i.daysLeft) > 0) rate = on / Number(i.daysLeft);
+    const days = rate > 0 ? on / rate : null, line = lead + L.critical;
+    const risk = days == null ? 'n' : days <= line ? 'r' : days <= line + L.warn ? 'y' : 'g';
     const cost = typeof bkStockCost === 'function' ? (Number(bkStockCost(i.name)) || 0) : 0;
-    const wh = multi && typeof whLabel !== 'undefined' && whLabel[i.warehouse] ? whLabel[i.warehouse].split(' — ')[0] : '';
-    const orderIn = days == null ? null : Math.floor(days - lead - 1);
+    const wh = multi && typeof whLabel !== 'undefined' && whLabel[i.warehouse] ? whLabel[i.warehouse].split(' — ')[0] : (typeof whLabel !== 'undefined' && whLabel[i.warehouse] ? whLabel[i.warehouse].split(' — ')[0] : '');
+    const orderIn = days == null ? null : Math.floor(days - line);
     const suggest = rate > 0 ? Math.max(0, Math.ceil(rate * (lead + 30) - on)) : 0;
-    return {code: i.code, name: i.name, wh, on, unit: i.unit || '', lead, leadKnown, rate, src, days, redMax, yelMax, risk, cost, value: on * cost, sup: i.supplier || '', orderIn, suggest,
-      slow: days == null || days > 60};
+    return {code: i.code, name: i.name, wh, on, unit: i.unit || '', lead, leadKnown, rate, days, line, risk, cost, value: on * cost, sup: i.supplier || '', orderIn, suggest,
+      slow: days == null || days > 60, drafted: i.reorderDraftPoId || null};
   });
 }
-function srSetMode(m){ srMode = m; try{ localStorage.setItem('nifti_sr_mode', m); }catch(e){} srRefresh(); }
+function srSetMode(m){ srMode = m; srOpen = null; try{ localStorage.setItem('nifti_sr_mode', m); }catch(e){} srRefresh(); }
 function srRefresh(){ const el = document.getElementById('srCard'); if(el) el.innerHTML = srSection(); }
 function srFmtDays(d){ return d == null ? '—' : d < 10 ? (Math.round(d * 10) / 10).toString().replace(/\.0$/, '') : String(Math.round(d)); }
-function srDate(n){ return new Date(new Date(APP_TODAY + 'T00:00:00').getTime() + n * 864e5).toLocaleDateString('en-PH', {month: 'short', day: 'numeric'}); }
-function srRateTxt(r){ return r.rate == null ? 'no sales yet' : 'sells ' + (r.rate >= 10 ? Math.round(r.rate) : Math.round(r.rate * 10) / 10) + (r.unit ? ' ' + r.unit : '') + '/day'; }
+function srDateIso(n){ return addDaysIso(APP_TODAY, Math.max(0, Math.round(n))); }
+function srDate(n){ return new Date(srDateIso(n) + 'T00:00:00').toLocaleDateString('en-PH', {month: 'short', day: 'numeric'}); }
+function srNum(n){ return n >= 10 ? Math.round(n) : Math.round(n * 10) / 10; }
+function srPeso(n){ return '₱' + Math.round(Math.abs(Number(n) || 0)).toLocaleString('en-PH'); }
 async function srSaveLevels(){
-  const mode = (document.querySelector('input[name="srLvMode"]:checked') || {}).value || 'smart';
-  const red = Number((document.getElementById('srRed') || {}).value) || 7, yellow = Number((document.getElementById('srYel') || {}).value) || 17;
-  if(mode === 'custom' && yellow <= red){ showToast('Yellow must be more days than red.', 'error'); return; }
-  if(await bkSaveSettings({stock_levels: {mode, red, yellow}})){ srEdit = false; srRefresh(); showToast(mode === 'smart' ? 'Using smart levels from each supplier\'s delivery time.' : `Saved: red at ${red} days or less, yellow up to ${yellow} days.`, 'success'); }
+  const critical = Number((document.getElementById('srCrit') || {}).value) || 5, warn = Number((document.getElementById('srWarn') || {}).value) || 10;
+  if(critical < 1 || warn < 1){ showToast('Use at least 1 day for each.', 'error'); return; }
+  if(await bkSaveSettings({stock_levels: {critical, warn}})){ srEdit = false; srRefresh(); showToast(`Saved: critical level ${critical} days, warning ${warn} days before the line.`, 'success'); }
 }
 function srLevelsPanel(L){
-  return `<div class="sr-lv"><div class="sr-lv-h"><b>Stock level colours</b><button type="button" class="sr-x" onclick="srEdit=false; srRefresh()" aria-label="Close">✕</button></div>
-    <label class="sr-opt"><input type="radio" name="srLvMode" value="smart" ${L.mode === 'smart' ? 'checked' : ''} onchange="document.getElementById('srCustom').classList.add('off')"><span><b>Smart (recommended)</b><small>Uses each supplier's delivery time. Red when it would run out before a new delivery could arrive. Yellow when you should order within about 2½ weeks (longer for slow suppliers). Green when covered.</small></span></label>
-    <label class="sr-opt"><input type="radio" name="srLvMode" value="custom" ${L.mode === 'custom' ? 'checked' : ''} onchange="document.getElementById('srCustom').classList.remove('off')"><span><b>My own days</b><small>The same limits for every item.</small></span></label>
-    <div class="sr-custom${L.mode === 'custom' ? '' : ' off'}" id="srCustom"><label><span class="sw r"></span>Red at <input id="srRed" type="number" min="1" max="120" value="${L.red}" inputmode="numeric"> days or less</label><label><span class="sw y"></span>Yellow up to <input id="srYel" type="number" min="2" max="180" value="${L.yellow}" inputmode="numeric"> days</label><span class="sr-note2"><span class="sw g"></span>Green: more than that</span></div>
+  return `<div class="sr-lv"><div class="sr-lv-h"><b>Set your stock levels</b><button type="button" class="sr-x" onclick="srEdit=false; srRefresh()" aria-label="Close">✕</button></div>
+    <label class="sr-f"><span>Critical level: never go below</span><span class="sr-in"><input id="srCrit" type="number" min="1" max="60" value="${L.critical}" inputmode="numeric"> days of stock</span></label>
+    <label class="sr-f"><span>Warn me (yellow)</span><span class="sr-in"><input id="srWarn" type="number" min="1" max="60" value="${L.warn}" inputmode="numeric"> days before the reorder line</span></label>
+    <p class="sr-lv-n">Reorder line = each supplier's delivery time + your critical level.</p>
     <div class="sr-lv-f"><button type="button" class="btn ghost" onclick="srEdit=false; srRefresh()">Cancel</button><button type="button" class="btn" onclick="srSaveLevels()">Save</button></div></div>`;
 }
+function srToggle(code){ srOpen = srOpen === code ? null : code; srRefresh(); if(srOpen){ const el = document.getElementById('srp-' + code); if(el) el.scrollIntoView({behavior: 'smooth', block: 'nearest'}); } }
+function srSetQty(code, q){ const el = document.getElementById('srQty-' + code); if(el){ el.value = q; srCost(code); } }
+function srCost(code){ const r = srRows().find(x => x.code === code); const q = Number((document.getElementById('srQty-' + code) || {}).value) || 0, price = srPrice(r), el = document.getElementById('srCost-' + code);
+  if(el) el.textContent = price ? srPeso(q * price) : 'price not set yet'; }
+function srPrice(r){ if(!r) return 0; const sid = typeof findSupplierIdByName === 'function' ? findSupplierIdByName(r.sup) : null; const p = sid && typeof lookupKnownUnitPrice === 'function' ? Number(lookupKnownUnitPrice(sid, r.name)) || 0 : 0; return p || r.cost || 0; }
+function srPanel(r){
+  const L = srLevels(), price = srPrice(r), weeks = r.rate ? [[14, '2 weeks'], [30, '1 month'], [60, '2 months']].map(([d, l]) => [Math.max(0, Math.ceil(r.rate * (r.lead + d) - r.on)), l]) : [];
+  const q = r.suggest || (weeks[1] ? weeks[1][0] : 0);
+  return `<div class="sr-p" id="srp-${r.code}">
+    <div class="sr-pg">
+      <div><small>On hand</small><b>${r.on}${r.unit ? ' ' + escapeHtml(r.unit) : ''}</b></div>
+      <div><small>Sells</small><b>${r.rate ? srNum(r.rate) + ' a day' : 'no sales yet'}</b></div>
+      <div><small>Runs out</small><b class="${r.risk === 'r' ? 'tr' : ''}">${r.days == null ? '—' : srDate(Math.floor(r.days)) + ' · ' + srFmtDays(r.days) + ' days'}</b></div>
+      <div><small>Reorder line</small><b>${r.line} days of stock</b></div>
+      <div><small>Supplier</small><b>${escapeHtml(r.sup || 'Not set')}</b></div>
+      <div><small>Delivers in</small><b>${r.lead} day${r.lead === 1 ? '' : 's'}${r.leadKnown ? '' : ' (assumed)'}</b></div>
+    </div>
+    ${r.drafted ? `<div class="sr-pn">A draft order for this item is ready. <button type="button" class="sr-lnk" onclick="openCreatePOModal('${r.drafted}')">Review it ›</button></div>` : ''}
+    <div class="sr-po"><div class="sr-po-h"><b>Reorder</b><span>${r.risk === 'r' ? 'Order today to stay above ' + L.critical + ' days of stock.' : r.risk === 'y' ? 'Order by ' + (r.orderIn <= 0 ? 'today' : srDate(r.orderIn)) + '.' : 'No need yet. Covered until about ' + srDate(Math.floor((r.days || 0) - r.line)) + '.'}</span></div>
+      <div class="sr-po-row"><label class="sr-q"><span>Quantity</span><input id="srQty-${r.code}" type="number" min="1" inputmode="numeric" value="${q || ''}" oninput="srCost('${r.code}')"> ${escapeHtml(r.unit || 'units')}</label>
+        ${weeks.length ? `<span class="sr-chips">${weeks.map(([n, l]) => `<button type="button" onclick="srSetQty('${r.code}', ${n})">${l} · ${n}</button>`).join('')}</span>` : ''}</div>
+      <div class="sr-po-row"><label class="sr-q"><span>Deliver by</span><input id="srDate-${r.code}" type="date" value="${srDateIso(r.lead)}"></label><span class="sr-est">Estimated cost <b id="srCost-${r.code}">${price && q ? srPeso(q * price) : price ? srPeso(0) : 'price not set yet'}</b>${price ? ` <small>at ${srPeso(price)} each</small>` : ''}</span></div>
+      <div class="sr-po-a"><button type="button" class="btn" onclick="srReorder('${r.code}')">Create draft order</button><button type="button" class="btn ghost" onclick="srCount('${r.code}')">Record a stock count</button><button type="button" class="btn ghost" onclick="srToggle('${r.code}')">Close</button></div></div>
+  </div>`;
+}
+async function srReorder(code){
+  if(typeof requirePermission === 'function' && !requirePermission('reorderStock')) return;
+  if(typeof requireReorderToolsEntitlement === 'function' && !requireReorderToolsEntitlement()) return;
+  const item = inventoryData.find(i => i.code === code); if(!item) return;
+  const qty = Number((document.getElementById('srQty-' + code) || {}).value), date = (document.getElementById('srDate-' + code) || {}).value;
+  if(!(qty > 0) || !date){ showToast('Add a quantity and a delivery date first.', 'error'); return; }
+  const supplierId = findSupplierIdByName(item.supplier);
+  if(!supplierId){ showToast(`"${item.supplier}" isn't in your supplier list yet. Add them under Customers & suppliers.`, 'error'); return; }
+  let po = item.reorderDraftPoId ? getPO(item.reorderDraftPoId) : null; if(po && po.status !== 'draft') po = null;
+  if(po){ po.lineItems = [{product: item.name, qty, unitPrice: po.lineItems[0].unitPrice}]; po.requestedDeliveryDate = date; poLogHistory(po, 'buyer', 'Draft updated from Home · What runs out'); }
+  else {
+    po = await createDraftPOObject({supplierId, lineItems: [{product: item.name, qty, unitPrice: srPrice(srRows().find(x => x.code === code)) || lookupKnownUnitPrice(supplierId, item.name)}], requestedDeliveryDate: date, notes: ''});
+    if(!po){ showToast('Could not create the draft. Please try again.', 'error'); return; }
+    item.reorderDraftPoId = po.id; poLogHistory(po, 'buyer', 'Draft created from Home · What runs out');
+    if(typeof pushBuyerInboxItem === 'function') pushBuyerInboxItem({title: 'Draft ready to send — ' + item.name, meta: po.poNumber + ' · ' + qty + ' units from ' + po.supplierName, pillLabel: 'Draft', pillClass: 'pill-lowstock', poId: po.id});
+  }
+  item.reordered = true; item.reorderQty = qty; item.reorderDate = date;
+  if(typeof markOnboardingActionTaken === 'function') markOnboardingActionTaken();
+  srRefresh(); openCreatePOModal(po.id);
+}
+function srCount(code){ openStockSheet('count'); setTimeout(() => { if(typeof STK !== 'undefined' && STK){ STK.code = code; stkRender(); } }, 50); }
 function srSection(){
   const rows = srRows(); if(!rows.length) return `<div class="sect-h"><h4>What runs out</h4></div><p class="sr-note">Add products in Stock to see what runs out.</p>`;
   const L = srLevels(), days = srMode !== 'value';
   const known = rows.filter(r => r.days != null), nos = rows.filter(r => r.days == null);
   const nr = known.filter(r => r.risk === 'r').length, ny = known.filter(r => r.risk === 'y').length, ng = known.filter(r => r.risk === 'g').length;
-  const total = rows.reduce((a, r) => a + r.value, 0), slowV = rows.filter(r => r.slow).reduce((a, r) => a + r.value, 0), riskV = rows.filter(r => r.risk === 'r' || r.risk === 'y').reduce((a, r) => a + r.value, 0);
-  let list, note;
-  if(days){
-    list = known.sort((a, b) => a.days - b.days);
-    note = nr ? `<b>${nr} item${nr > 1 ? 's' : ''} need${nr > 1 ? '' : 's'} ordering today</b>: ${nr > 1 ? 'they run' : 'it runs'} out before a new delivery could arrive.${ny ? ` ${ny} more to order within about 2 weeks.` : ''}` : ny ? `<b>Nothing urgent.</b> ${ny} item${ny > 1 ? 's' : ''} to order within about 2 weeks.` : '<b>Everything is covered</b> for the next few weeks.';
-  } else {
-    list = rows.slice().sort((a, b) => b.value - a.value);
-    note = `<b>${mhPesoSr(total)} on the shelf at cost.</b> ${total ? Math.round(slowV / total * 100) + '% is in slow sellers (over 60 days of stock, or no sales yet)' : ''}${riskV ? `; ${mhPesoSr(riskV)} is in items running low.` : '.'}`;
-  }
+  const total = rows.reduce((a, r) => a + r.value, 0), slowV = rows.filter(r => r.slow).reduce((a, r) => a + r.value, 0);
+  const list = days ? known.sort((a, b) => a.days - b.days) : rows.slice().sort((a, b) => b.value - a.value);
   const mxV = Math.max(1, ...list.map(r => r.value)), shown = srAll ? list : list.slice(0, 8);
   const row = r => {
+    const meta = `<span class="sr-m1">${r.wh ? srI('pin') + escapeHtml(r.wh) + '<i>·</i>' : ''}${srI('box')}${r.on}${r.unit ? ' ' + escapeHtml(r.unit) : ''} on hand<i>·</i>${srI('rate')}${r.rate ? 'sells ' + srNum(r.rate) + '/day' : 'no sales yet'}</span>
+      <span class="sr-m2">${srI('truck')}${escapeHtml(r.sup || 'No supplier set')}<i>·</i>delivers in ${r.lead} day${r.lead === 1 ? '' : 's'}${r.leadKnown ? '' : ' (assumed)'}</span>`;
+    let bar, val, tag;
     if(days){
-      const w = Math.min(r.days, SR_MAXD) / SR_MAXD * 100, rz = Math.min(r.redMax, SR_MAXD) / SR_MAXD * 100, yz = Math.min(r.yelMax, SR_MAXD) / SR_MAXD * 100;
-      const act = r.risk === 'r' ? `<span class="sr-act r">Order today${r.suggest ? ' · about ' + r.suggest + (r.unit ? ' ' + r.unit : '') + ' covers a month' : ''}</span>` : r.risk === 'y' ? `<span class="sr-act y">Order by ${r.orderIn <= 0 ? 'today' : srDate(r.orderIn)}${r.suggest ? ' · about ' + r.suggest + (r.unit ? ' ' + r.unit : '') + ' covers a month' : ''}</span>` : `<span class="sr-act g">Covered until about ${srDate(Math.floor(r.days))}</span>`;
-      return `<button type="button" class="sr-row is-${r.risk}" onclick="go('inventory')"><span class="sr-l"><b>${escapeHtml(r.name)}</b><small>${r.wh ? escapeHtml(r.wh) + ' · ' : ''}${r.on} on hand · ${srRateTxt(r)}${r.sup ? ' · ' + escapeHtml(r.sup) + ' delivers in ' + r.lead + ' day' + (r.lead === 1 ? '' : 's') + (r.leadKnown ? '' : ' (assumed)') : ''}</small>${act}</span>
-        <span class="sr-t" aria-hidden="true"><span class="z zr" style="width:${rz}%"></span><span class="z zy" style="left:${rz}%;width:${Math.max(0, yz - rz)}%"></span><i style="width:${Math.max(1.5, w).toFixed(1)}%"></i>${L.mode === 'smart' ? `<u style="left:${(Math.min(r.lead, SR_MAXD) / SR_MAXD * 100).toFixed(1)}%"></u>` : ''}</span>
-        <span class="sr-v"><b>${srFmtDays(r.days)} day${srFmtDays(r.days) === '1' ? '' : 's'}</b><small>runs out ${srDate(Math.floor(r.days))}</small></span></button>`;
+      const w = Math.min(r.days, SR_MAXD) / SR_MAXD * 100;
+      tag = r.risk === 'r' ? `<span class="sr-act r">Order today</span>` : r.risk === 'y' ? `<span class="sr-act y">Order by ${r.orderIn <= 0 ? 'today' : srDate(r.orderIn)}</span>` : `<span class="sr-act g">Covered</span>`;
+      bar = `<span class="sr-t" aria-hidden="true"><i style="width:${Math.max(1.5, w).toFixed(1)}%"></i><u style="left:${(Math.min(r.line, SR_MAXD) / SR_MAXD * 100).toFixed(1)}%" title="Reorder line: ${r.line} days"></u></span>`;
+      val = `<b>${srFmtDays(r.days)} day${srFmtDays(r.days) === '1' ? '' : 's'}</b><small>runs out ${srDate(Math.floor(r.days))}</small>`;
+    } else {
+      const tone = r.risk === 'r' ? 'r' : r.risk === 'y' ? 'y' : r.slow ? 'slow' : 'g';
+      tag = `<span class="sr-act ${tone}">${tone === 'r' ? 'Running out' : tone === 'y' ? 'Order soon' : tone === 'slow' ? (r.days == null ? 'Not selling' : 'Slow seller') : 'Healthy'}</span>`;
+      bar = `<span class="sr-t"><i style="width:${Math.max(1.5, r.value / mxV * 100).toFixed(1)}%"></i></span>`;
+      val = `<b>${r.cost ? srPeso(r.value) : '—'}</b><small>${r.cost && total ? Math.round(r.value / total * 100) + '% of stock' : 'cost not set'}</small>`;
+      r = Object.assign({}, r, {tone});
     }
-    const tone = r.risk === 'r' ? 'r' : r.risk === 'y' ? 'y' : r.slow ? 'slow' : 'g', w = r.value / mxV * 100;
-    const tag = tone === 'r' ? 'Running out' : tone === 'y' ? 'Order soon' : tone === 'slow' ? (r.days == null ? 'Not selling' : 'Slow seller') : 'Healthy';
-    return `<button type="button" class="sr-row sr-val is-${tone}" onclick="go('inventory')"><span class="sr-l"><b>${escapeHtml(r.name)}</b><small>${r.wh ? escapeHtml(r.wh) + ' · ' : ''}${r.on} on hand${r.cost ? ' × ' + mhPesoSr(r.cost) : ''} · ${r.days == null ? 'no sales yet' : srFmtDays(r.days) + ' days of stock'}</small><span class="sr-act ${tone}">${tag}</span></span>
-      <span class="sr-t"><i style="width:${Math.max(1.5, w).toFixed(1)}%"></i></span><span class="sr-v"><b>${r.cost ? mhPesoSr(r.value) : '—'}</b><small>${r.cost && total ? Math.round(r.value / total * 100) + '% of stock' : 'cost not set'}</small></span></button>`;
+    const cls = days ? r.risk : r.tone, open = srOpen === r.code;
+    return `<div class="sr-item${open ? ' open' : ''}"><button type="button" class="sr-row${days ? '' : ' sr-val'} is-${cls}" aria-expanded="${open}" onclick="srToggle('${r.code}')">
+        <span class="sr-l"><b>${escapeHtml(r.name)} ${tag}</b>${meta}</span>${bar}<span class="sr-v">${val}</span><span class="sr-chev" aria-hidden="true">›</span></button>
+      ${open ? srPanel(r) : ''}</div>`;
   };
-  const legend = days
-    ? `<span class="sr-k r"><i></i>Order today <b>${nr}</b></span><span class="sr-k y"><i></i>Order soon <b>${ny}</b></span><span class="sr-k g"><i></i>Covered <b>${ng}</b></span><span class="sr-k t">${L.mode === 'smart' ? '<u></u>Black notch = supplier delivery time · shaded = red and yellow zones' : `Your levels: red ≤ ${L.red} days, yellow ≤ ${L.yellow} days`}</span>`
-    : `<span class="sr-k r"><i></i>Running out</span><span class="sr-k y"><i></i>Order soon</span><span class="sr-k g"><i></i>Healthy</span><span class="sr-k slow"><i></i>Slow or not selling: cash tied up</span>`;
+  const key = days
+    ? `<div class="sr-key"><p><b>Smart colours</b> use each supplier's delivery time and your ${L.critical}-day critical level.</p><ul>
+        <li><i class="r"></i><b>Red · order today</b> (${nr}): at or under the black line. Without an order now, stock drops below ${L.critical} days before the delivery arrives.</li>
+        <li><i class="y"></i><b>Yellow · order soon</b> (${ny}): within ${L.warn} days of the line.</li>
+        <li><i class="g"></i><b>Green · covered</b> (${ng}): more than that.</li>
+        <li><u></u><b>Black line · reorder point:</b> delivery time + ${L.critical} days.</li></ul></div>`
+    : `<div class="sr-key"><p><b>${srPeso(total)} on the shelf at cost.</b>${total ? ` ${Math.round(slowV / total * 100)}% of it is slow or not selling.` : ''}</p><ul class="sr-inline">
+        <li><i class="r"></i>Running out</li><li><i class="y"></i>Order soon</li><li><i class="g"></i>Healthy</li><li><i class="slow"></i>Slow or not selling: cash tied up</li></ul></div>`;
   return `<div class="sect-h"><h4>What runs out</h4><span class="mh-sp"></span>
       <span class="sr-seg" role="group" aria-label="Show stock by"><button type="button" aria-pressed="${days}" onclick="srSetMode('days')">Days left</button><button type="button" aria-pressed="${!days}" onclick="srSetMode('value')">Pesos on the shelf</button></span>
-      <button type="button" class="sch-btn" onclick="srEdit=!srEdit; srRefresh()" aria-expanded="${srEdit}">Colour levels: ${L.mode === 'smart' ? 'Smart' : 'My days'}</button><button type="button" class="sch-btn" onclick="go('inventory')">Stock ›</button></div>
+      <button type="button" class="sch-btn" onclick="srEdit=!srEdit; srRefresh()" aria-expanded="${srEdit}">Stock levels: ${L.critical}-day critical</button></div>
     ${srEdit ? srLevelsPanel(L) : ''}
-    <p class="sr-note">${note}</p><div class="sr-legend">${legend}</div>
+    ${key}
     <div class="sr-list">${shown.map(row).join('')}</div>
     ${days ? `<div class="sr-axis" aria-hidden="true"><span></span><span class="sr-ax">${[0, 7, 14, 21, 30, 45].map(v => `<i style="left:${v / SR_MAXD * 100}%">${v}${v === 45 ? '+' : ''}</i>`).join('')}</span><span>days left</span></div>` : ''}
     ${list.length > 8 ? `<button type="button" class="sr-more" onclick="srAll=!srAll; srRefresh()">${srAll ? 'Show fewer' : `Show all ${list.length}`}</button>` : ''}
-    ${days && nos.length ? `<p class="sr-nos"><b>No sales recorded yet (${nos.length}):</b> ${nos.map(r => escapeHtml(r.name) + (r.wh ? ' (' + escapeHtml(r.wh) + ')' : '')).join(', ')}. They show once they start selling.</p>` : ''}`;
+    ${days && nos.length ? `<p class="sr-nos"><b>No sales recorded yet (${nos.length}):</b> ${nos.map(r => escapeHtml(r.name) + (r.wh ? ' (' + escapeHtml(r.wh) + ')' : '')).join(', ')}.</p>` : ''}`;
 }
-function mhPesoSr(n){ return '₱' + Math.round(Math.abs(Number(n) || 0)).toLocaleString('en-PH'); }
 
 /* ===== Home: the approved "Mist" design, on real data =====
    8 headline tiles, What to do (3 lanes), Where every order is (compact board), What runs out,
@@ -20670,6 +20872,12 @@ const mhKey = (y, m, d) => `${y}-${String(m).padStart(2, '0')}-${String(d).padSt
 const mhMonL = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const mhLabel = k => new Date(k + 'T00:00:00').toLocaleDateString('en-PH', {month: 'short', day: 'numeric'});
 const mhFirst = n => String(n || '').replace(/ \(You\)$/, '').split(' ')[0];
+const MH_DEMO_FULL = {Liza: 'Liza Santos', Rico: 'Rico Reyes'};
+function mhFull(n){ n = String(n || '').replace(/ \(You\)$/, '').trim(); if(!n) return '';
+  if(n.includes(' ')) return n;
+  const m = (typeof teamMembers !== 'undefined' ? teamMembers : []).map(x => String(x.name || '').replace(/ \(You\)$/, '')).find(x => x.split(' ')[0] === n && x.includes(' '));
+  return m || (!myBusiness && MH_DEMO_FULL[n]) || n; }
+const mhIni = n => mhFull(n).split(/\s+/).map(w => w[0] || '').join('').slice(0, 2).toUpperCase();
 const MH_AV = [['#E3ECFF', '#1E40AF'], ['#E0F2EF', '#0F6B5C'], ['#FCE7EF', '#9D174D'], ['#E6EBF1', '#1F2937'], ['#E0F2FE', '#075985'], ['#ECFCCB', '#3F6212']];
 function mhAv(name, size){ const n = String(name || '?'), h = [...n].reduce((a, c) => a + c.charCodeAt(0), 0), c = MH_AV[h % MH_AV.length];
   const ini = n.replace(/ \(You\)$/, '').split(/\s+/).map(w => w[0] || '').join('').slice(0, 2).toUpperCase();
@@ -20717,14 +20925,11 @@ function renderMistHome(){
       ${isPageAllowedForViewAsRole('inventory') && typeof srSection === 'function' ? `<section class="sect glass" id="srCard">${srSection()}</section>` : ''}
       ${boss && BK.loaded ? `<section class="sect glass" id="mhDrawer">${mhDrawer()}</section>` : ''}
     </div>
-    <div class="mh-more"><div class="lg-grid mh-anchor"></div>${oneHomeRecent()}
-      <section class="lg-panel"><div class="lg-ph"><b>Messages</b><a class="lg-link" onclick="go('messages')">All messages</a></div><div id="oneHomeMsgs" class="one-msgs"></div></section></div>
   </div>`;
-  renderOneHomeMessages();
   if(typeof checkOnboardingActivation === 'function') checkOnboardingActivation();
   try{ renderGetStartedCard(); }catch(e){}
   try{ renderPhoneNotifNudge(); }catch(e){}
-  try{ if(typeof renderWeeklyRecapCard === 'function') renderWeeklyRecapCard(); }catch(e){}
+  try{ const wk = document.getElementById('wkCard'); if(wk) wk.remove(); }catch(e){}
   if(typeof booksAfterHome === 'function') booksAfterHome();
 }
 
@@ -20831,17 +21036,17 @@ function mhDrawer(){
   let cells = ''; for(let i = 0; i < pad; i++) cells += '<div class="day blank" aria-hidden="true"></div>';
   let shorts = 0, overs = 0, ok = 0;
   for(let d = 1; d <= dim; d++){ const k = mhKey(y, m, d), c = by[k];
-    if(k === APP_TODAY && !c){ const w = mhWho(k, s); cells += `<button class="day today" type="button" onclick="mhOpenSched()"><span class="dn">${d} · Today</span><span class="nm">${mhEsc(w)}</span><span class="st tcount">To Count</span></button>`; continue; }
-    if(k > APP_TODAY){ const w = mhWho(k, s); cells += `<button class="day future${s.over && s.over[k] ? ' swapped' : ''}" type="button" onclick="mhOpenSched()"><span class="dn">${d}</span><span class="nm">${mhEsc(w)}</span><span class="st">Scheduled</span></button>`; continue; }
+    if(k === APP_TODAY && !c){ const w = mhWho(k, s); cells += `<button class="day today" type="button" onclick="mhOpenSched()"><span class="dn">${d} · Today</span><span class="nm ini-row"><span class="ini">${mhEsc(mhIni(w))}</span>${mhEsc(mhFull(w))}</span><span class="st tcount">To Count</span></button>`; continue; }
+    if(k > APP_TODAY){ const w = mhWho(k, s); cells += `<button class="day future${s.over && s.over[k] ? ' swapped' : ''}" type="button" onclick="mhOpenSched()"><span class="dn">${d}</span><span class="nm ini-row"><span class="ini">${mhEsc(mhIni(w))}</span>${mhEsc(mhFull(w))}</span><span class="st">Scheduled</span></button>`; continue; }
     if(!c){ cells += `<div class="day none"><span class="dn">${d}</span><span class="st">No count</span></div>`; continue; }
     const tn = mhTone(c.diff); if(c.diff < -0.5) shorts++; else if(c.diff > 0.5) overs++; else ok++;
     const edited = c.recs.some(r => r.reviewedAt) || BK.counts.some(r => r.day === k && r.reopenedAt);
-    cells += `<button class="day ${tn}" type="button" onclick="mhOpenDay('${k}')" aria-label="${mhLabel(k)}, ${mhEsc(c.by)}, ${tn === 'g' ? 'matched' : mhSigned(c.diff)}"><span class="dn">${d}${edited ? ' <span class="ed">edited</span>' : ''}</span><span class="nm">${mhEsc(c.by)}</span><span class="st t${tn}">${tn === 'g' ? 'Matched' : mhSigned(c.diff)}</span></button>`; }
+    cells += `<button class="day ${tn}" type="button" onclick="mhOpenDay('${k}')" aria-label="${mhLabel(k)}, ${mhEsc(mhFull(c.by))}, ${tn === 'g' ? 'matched' : mhSigned(c.diff)}"><span class="dn">${d}${edited ? ' <span class="ed">edited</span>' : ''}</span><span class="nm">${mhEsc(mhFull(c.by))}</span><span class="st t${tn}">${tn === 'g' ? 'Matched' : mhSigned(c.diff)}</span></button>`; }
   const tail = (7 - (pad + dim) % 7) % 7; for(let i = 0; i < tail; i++) cells += '<div class="day blank" aria-hidden="true"></div>';
   const mo = mhKey(y, m, 1).slice(0, 7), people = [...new Set(Object.values(by).filter(c => bkMonth(c.day) === mo).map(c => mhFirst(c.by)))];
   const pp = people.map(n => { const net = mhPersonNet(n, mo), offs = Object.values(by).filter(c => bkMonth(c.day) === mo && mhFirst(c.by) === n && Math.abs(c.diff) >= 1).sort((a, b) => a.day.localeCompare(b.day));
     const lastDay = Object.values(by).filter(c => mhFirst(c.by) === n).map(c => c.day).sort().pop();
-    return `<button class="cdpp" type="button" onclick="mhOpenDay('${lastDay}')">${mhEsc(n)} · net <b class="t${mhTone(net)}">${mhSigned(net)}</b>${offs.length ? `<span class="muted">· ${offs.map(c => mhLabel(c.day) + ' ' + mhSigned(c.diff)).join(', ')}</span>` : ''}</button>`; }).join('');
+    return `<button class="cdpp" type="button" onclick="mhOpenDay('${lastDay}')">${mhEsc(mhFull(n))} · net <b class="t${mhTone(net)}">${mhSigned(net)}</b>${offs.length ? `<span class="muted">· ${offs.map(c => mhLabel(c.day) + ' ' + mhSigned(c.diff)).join(', ')}</span>` : ''}</button>`; }).join('');
   const on = MH_PROTS.filter(([k]) => P[k]).length;
   return `<div class="sect-h"><h4>Cash drawer by person</h4><span class="hint">Tap a day for its item-by-item tally</span><span class="mh-sp"></span>${P.surprise ? `<button class="sch-btn" type="button" onclick="mhCountNow()">Count now</button>` : ''}<button class="sch-btn" type="button" onclick="mhOpenProtect()">Extra protections · ${on} on</button><button class="sch-btn" type="button" onclick="mhEditHistory()">Edit history</button></div>
     <div class="cdsum num"><button class="cdpp" type="button" onclick="mhOpenSched()"><span class="muted">Who counts:</span> ${mhEsc(mhRule(s))} <span style="color:var(--blue)">Edit ›</span></button>${pp}</div>
@@ -20871,12 +21076,12 @@ function mhRenderDay(){
   const S = MH.sheet, by = mhCounts(), c = by[S.k]; if(!c){ mhClose(); return; }
   const who = mhFirst(c.by), list = Object.values(by).filter(x => mhFirst(x.by) === who).sort((a, b) => b.day.localeCompare(a.day)).slice(0, 40), net = list.reduce((a, x) => a + x.diff, 0);
   const left = `<div class="days" role="group" aria-label="${mhEsc(c.by)}'s count days">${list.map(x => { const exp = x.recs.reduce((a, r) => a + (Number(r.expected && r.expected.cash) || 0), 0); return `<button class="dday" type="button" aria-pressed="${x.day === S.k}" onclick="MH.sheet.k='${x.day}'; MH.sheet.tab='tally'; mhRenderDay()"><b>${mhLabel(x.day)}</b><span class="pill ${mhTone(x.diff)}">${Math.round(x.diff) === 0 ? 'OK' : mhSigned(x.diff)}</span><small>Should be ${mhPeso(exp)}</small></button>`; }).join('')}</div>`;
-  const reopened = BK.counts.filter(r => r.day === S.k && r.reopenedAt), changes = reopened.length + c.recs.filter(r => r.reviewedAt).length;
-  mhSheet(`${mhHead(mhAv(c.by, 48), mhEsc(c.by) + '\'s cash drawer', `${list.length} count${list.length > 1 ? 's' : ''} · net <b class="t${mhTone(net)}">${mhSigned(net)}</b>`)}
+  const reopened = BK.counts.filter(r => r.day === S.k && r.reopenedAt), changes = reopened.length + c.recs.filter(r => r.reviewedAt).length + c.recs.reduce((a, r) => a + (r.edits || []).length, 0);
+  mhSheet(`${mhHead(mhAv(mhFull(c.by), 48), mhEsc(mhFull(c.by)) + '\'s cash drawer', `${list.length} count${list.length > 1 ? 's' : ''} · net <b class="t${mhTone(net)}">${mhSigned(net)}</b>`)}
     <div class="tally">${left}<div class="tmain">
       <div class="privacy">${mhIco('lock', '#1D4F86')}<span>Only you, managers and Finance see this. ${mhEsc(who)} only entered the bills and coins.</span></div>
-      <div class="tabs" role="tablist"><button class="tab" role="tab" type="button" aria-selected="${S.tab === 'tally'}" onclick="MH.sheet.tab='tally'; mhRenderDay()">${mhLabel(S.k)} tally</button><button class="tab" role="tab" type="button" aria-selected="${S.tab === 'hist'}" onclick="MH.sheet.tab='hist'; mhRenderDay()">Changes (${changes})</button><span class="mh-sp"></span><button class="btn soft" type="button" onclick="mhClose(); ccReopen('${S.k}')">Reopen and recount</button></div>
-      ${S.tab === 'hist' ? mhHist(c, reopened) : mhTally(c)}</div></div>`, mhEsc(c.by) + '\'s cash drawer', 'tsm');
+      <div class="tabs" role="tablist"><button class="tab" role="tab" type="button" aria-selected="${S.tab === 'tally'}" onclick="MH.sheet.tab='tally'; MH.sheet.edit=null; mhRenderDay()">${mhLabel(S.k)} tally</button><button class="tab" role="tab" type="button" aria-selected="${S.tab === 'hist'}" onclick="MH.sheet.tab='hist'; MH.sheet.edit=null; mhRenderDay()">Changes (${changes})</button><span class="mh-sp"></span>${S.edit ? '' : `<button class="btn soft" type="button" onclick="mhStartEdit()">Edit this count</button>`}</div>
+      ${S.edit ? mhEditForm(c) : S.tab === 'hist' ? mhHist(c, reopened) : mhTally(c)}</div></div>`, mhEsc(c.by) + '\'s cash drawer', 'tsm');
 }
 function mhSalesOn(day, cash){
   const rows = [];
@@ -20902,7 +21107,7 @@ function mhTally(c){
     ${verdict}
     <div><div class="sec">CASH SALES THAT DAY · ${cash.length} ITEM${cash.length === 1 ? '' : 'S'}</div>${cash.length ? tbl(cash) : '<span style="font-size:16px">No cash sales recorded.</span>'}</div>
     ${gc.length ? `<div><div class="sec">PAID BY GCASH OR MAYA (NOT IN THE DRAWER)</div>${tbl(gc)}</div>` : ''}
-    <div><div class="sec">CASH PAID OUT FROM THE DRAWER</div>${outs.length ? `<div class="paid-out num">${outs.map(o => `<div class="po"><span><b style="color:#13243A">${mhEsc(o.category)}</b>${o.note || o.vendor ? ` · ${mhEsc(o.note || o.vendor)}` : ''}</span><b>−${mhPeso(o.amount)}</b><span class="att">${o.receipt ? `<span class="attach">${mhIco('clip')}Receipt attached</span>` : `<span class="attach missing">${mhIco('clip')}No receipt</span>`}</span></div>`).join('')}</div>` : '<span style="font-size:16px">None that day.</span>'}</div>
+    <div><div class="sec">CASH PAID OUT FROM THE DRAWER</div>${outs.length ? `<div class="paid-out num">${outs.map(o => `<div class="po"><span><b style="color:#13243A">${mhEsc(o.category)}</b>${o.note || o.vendor ? ` · ${mhEsc(o.note || o.vendor)}` : ''}</span><b>−${mhPeso(o.amount)}</b><span class="att">${o.receipt ? `<span class="attach">${mhIco('clip')}Receipt attached</span>` : `<button type="button" class="attach missing" onclick="mhClose(); openExpenseForm('${o.id}')">${mhIco('clip')}No receipt · attach one</button>`}<button type="button" class="linkish po-ed" onclick="mhClose(); openExpenseForm('${o.id}')">Edit</button></span></div>`).join('')}</div>` : '<span style="font-size:16px">None that day.</span>'}</div>
     <div class="calc num"><div class="fund"><span>Change fund at opening</span><span>${mhPeso(exp.fund)}</span></div><div class="in"><span>+ Cash sales</span><span>${mhPeso(exp.sales)}</span></div>${exp.collections ? `<div class="in"><span>+ Cash collected from customers</span><span>${mhPeso(exp.collections)}</span></div>` : ''}${exp.ownerIn ? `<div class="in"><span>+ Cash put in</span><span>${mhPeso(exp.ownerIn)}</span></div>` : ''}<div class="out"><span>− Cash paid out</span><span>${mhPeso((exp.expenses || 0) + (exp.suppliers || 0) + (exp.owner || 0) + (exp.bank || 0))}</span></div><div class="tot"><span>Should be in drawer</span><span>${mhPeso(expected)}</span></div><div><span>Counted</span><b>${mhPeso(counted)}</b></div><div class="tot"><span>Difference</span><span class="t${tn}">${tn === 'g' ? 'Matched' : mhSigned(df)}</span></div></div>
     ${dens ? `<div><div class="sec">BILLS AND COINS COUNTED</div><div class="denoms num">${dens}</div></div>` : ''}
     <div><div class="sec">HOW THIS COUNT IS PROTECTED</div><div class="prot">
@@ -20913,10 +21118,47 @@ function mhTally(c){
     <button class="linkish" type="button" onclick="mhOpenProtect()">Want more? See the optional extra protections ›</button>
     ${dens ? `<details class="saw"><summary>What ${mhEsc(who)} saw when counting</summary><p style="margin-top:8px">Only these boxes. No expected amount, no sales list, no difference.</p><div class="mini num">${dens}</div></details>` : ''}`;
 }
+function mhStartEdit(){ const c = mhCounts()[MH.sheet.k], rec = c.recs[0], ct = rec.counted || {};
+  MH.sheet.edit = {den: Object.assign({}, ct.denominations || {}), coins: Number(ct.coins) || 0, typed: !Object.keys(ct.denominations || {}).length && !ct.coins ? Number(ct.cash) || 0 : null, why: '', err: ''}; MH.sheet.tab = 'tally'; mhRenderDay(); }
+function mhEdTotal(E){ return E.typed != null ? Number(E.typed) || 0 : BK_DENOMS.reduce((a, d) => a + d * (Number(E.den[d]) || 0), 0) + (Number(E.coins) || 0); }
+function mhEdLive(){ const E = MH.sheet.edit, rec = mhCounts()[MH.sheet.k].recs[0], tot = mhEdTotal(E), df = tot - (Number(rec.expected && rec.expected.cash) || 0);
+  const a = document.getElementById('mhEdCount'), b = document.getElementById('mhEdDiff'); if(a) a.textContent = mhPeso(tot); if(b){ b.textContent = Math.round(df) === 0 ? 'Matched' : mhSigned(df); b.className = 'live t' + mhTone(df); } }
+function mhEditForm(c){
+  const E = MH.sheet.edit, rec = c.recs[0], tot = mhEdTotal(E), df = tot - (Number(rec.expected && rec.expected.cash) || 0);
+  return `<div class="ed num"><div class="box blue"><b class="t">Editing ${mhLabel(MH.sheet.k)}</b><span>The original count stays on record. Your change and your reason are saved in Changes and in Edit history.</span></div>
+    <div><div class="sec">BILLS AND COINS COUNTED</div>${E.typed != null ? `<label>Total counted (₱)<input type="number" min="0" value="${E.typed}" oninput="MH.sheet.edit.typed=Number(this.value)||0; mhEdLive()"></label>`
+      : `<div class="grid">${BK_DENOMS.map(d => `<label>₱${d.toLocaleString('en-PH')} bills<input type="number" min="0" inputmode="numeric" value="${E.den[d] || 0}" oninput="MH.sheet.edit.den['${d}']=Number(this.value)||0; mhEdLive()"></label>`).join('')}<label>Coins (₱ total)<input type="number" min="0" value="${E.coins || 0}" oninput="MH.sheet.edit.coins=Number(this.value)||0; mhEdLive()"></label></div>`}
+      <p style="margin-top:8px">Counted: <span class="live" id="mhEdCount">${mhPeso(tot)}</span> · should be ${mhPeso(rec.expected && rec.expected.cash)} · difference <span class="live t${mhTone(df)}" id="mhEdDiff">${Math.round(df) === 0 ? 'Matched' : mhSigned(df)}</span></p></div>
+    <p style="margin:0">Cash paid out is changed on the expense itself: use <b>Edit</b> next to each line in the tally.</p>
+    <label>Why are you changing this? (required)<textarea oninput="MH.sheet.edit.why=this.value" placeholder="e.g. Recounted with Liza in the morning: the ₱100 and ₱200 bills were in the side tray.">${mhEsc(E.why)}</textarea></label>
+    ${E.err ? `<span class="err">${mhEsc(E.err)}</span>` : ''}
+    <div class="actions"><button class="btn ghost" type="button" onclick="MH.sheet.edit=null; mhRenderDay()">Cancel</button><button class="btn" type="button" onclick="mhSaveEdit()">Save changes</button></div>
+    <button class="linkish" type="button" onclick="mhClose(); ccReopen('${MH.sheet.k}')">Start the count again from scratch instead ›</button></div>`;
+}
+async function mhSaveEdit(){
+  const S = MH.sheet, E = S.edit, c = mhCounts()[S.k], rec = c.recs[0], old = Number(rec.counted && rec.counted.cash) || 0, tot = Math.round(mhEdTotal(E) * 100) / 100;
+  if(String(E.why || '').trim().length < 5){ E.err = 'Add a short reason first. It is kept with the change.'; mhRenderDay(); return; }
+  if(Math.abs(tot - old) < .005){ E.err = 'Nothing changed yet.'; mhRenderDay(); return; }
+  const den = {}; if(E.typed == null) BK_DENOMS.forEach(d => { if(Number(E.den[d])) den[d] = Number(E.den[d]); });
+  const counted = Object.assign({}, rec.counted || {}, {cash: tot, denominations: den, coins: E.typed == null ? Number(E.coins) || 0 : 0});
+  const edit = {when: new Date().toISOString(), by: bkMe(), from: old, to: tot, why: String(E.why).trim()};
+  if(myBusiness){
+    const drawer = rec.drawer || 'Main', r1 = await sb.rpc('reopen_cash_count', {p_day: S.k, p_drawer: drawer});
+    if(r1.error){ E.err = r1.error.message; mhRenderDay(); return; }
+    const r2 = await sb.rpc('save_cash_count', {p_day: S.k, p_drawer: drawer, p_expected: rec.expected || {}, p_counted: counted, p_note: `Edited by ${edit.by}: ${edit.why} (was ${mhPeso(old)}, now ${mhPeso(tot)})`});
+    if(r2.error){ E.err = r2.error.message; mhRenderDay(); return; }
+    await bkLoad(true);
+  } else {
+    rec.edits = (rec.edits || []).concat([edit]); rec.counted = counted; rec.difference = Math.round((tot - (Number(rec.expected && rec.expected.cash) || 0)) * 100) / 100; bkSaveDemo();
+  }
+  S.edit = null; S.tab = 'hist'; renderMistHome(); mhRenderDay(); showToast('Saved. The change and your reason are in Changes and Edit history.', 'success');
+}
 function mhHist(c, reopened){
   const ev = [];
   reopened.forEach(r => ev.push({when: r.reopenedAt, what: `Reopened for a recount. First count: ${mhPeso(r.counted && r.counted.cash)} by ${mhEsc(r.by)} (difference ${mhSigned(r.difference)}).`}));
   c.recs.filter(r => r.reviewedAt).forEach(r => ev.push({when: r.reviewedAt, what: `Checked by ${mhEsc(r.reviewedBy || 'the owner')}${r.reviewNote ? ': "' + mhEsc(r.reviewNote) + '"' : ''}`}));
+  c.recs.forEach(r => (r.edits || []).forEach(e => ev.push({when: e.when, what: `<b>${mhEsc(mhFull(e.by))}</b> changed the bills and coins: <s>${mhPeso(e.from)} counted</s> → <b>${mhPeso(e.to)} counted</b><span class="reason">Reason: ${mhEsc(e.why)}</span>`})));
+  c.recs.filter(r => /^Edited by /.test(r.note || '')).forEach(r => ev.push({when: r.at, what: mhEsc(r.note)}));
   ev.sort((a, b) => String(b.when).localeCompare(String(a.when)));
   return `<div class="hist">${ev.map(e => `<div class="he"><div class="meta"><span class="when">${new Date(e.when).toLocaleString('en-PH', {month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit'})}</span></div><div class="chg">${e.what}</div></div>`).join('')}
     <div class="he"><div class="meta">${mhAv(c.by, 30)}${mhEsc(c.by)}</div><span>${ev.length ? 'Current count, kept on record.' : 'No changes. This is exactly what was entered.'}</span></div>
@@ -20964,6 +21206,133 @@ async function mhSetProt(k, v){ const P = mhProt(); P[k] = v; if(await bkSaveSet
 renderHomeV2 = renderMistHome;
 
 renderOneHome = renderMistHome;
+/* ===== One icon set for the whole app =====
+   Emoji used as icons (in headings, buttons, tabs, list icons) are swapped for clean line icons.
+   Customer-facing message text (chat bubbles, templates, inputs) is never touched. */
+const NF_P = {
+  cash: '<rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01M18 12h.01"/>',
+  bank: '<path d="M3 21h18M5 18v-7M9.5 18v-7M14.5 18v-7M19 18v-7M12 3l9 5H3z"/>',
+  receipt: '<path d="M5 3h14v18l-3-2-2 2-2-2-2 2-2-2-3 2z"/><path d="M9 8h6M9 12h6M9 16h4"/>',
+  note: '<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/>',
+  clipboard: '<rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>',
+  truck: '<path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/>',
+  chat: '<path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.6L3 21l1.9-5.4A8.4 8.4 0 1 1 21 11.5z"/>',
+  box: '<path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/>',
+  clip: '<path d="m21 11-8.5 8.5a5 5 0 0 1-7-7L14 4a3.5 3.5 0 0 1 5 5l-8.5 8.5a2 2 0 0 1-3-3L15 7"/>',
+  lock: '<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',
+  key: '<circle cx="8" cy="15" r="4"/><path d="m11 12 9-9M17 6l3 3M14 9l2 2"/>',
+  eye: '<path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
+  camera: '<path d="M14.5 4h-5L7.5 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3.5z"/><circle cx="12" cy="13" r="3.5"/>',
+  wallet: '<path d="M19 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0 0 4h16v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5"/><path d="M16 14h.01"/>',
+  moneyout: '<rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 9v6M9.5 12.5 12 15l2.5-2.5"/>',
+  bulb: '<path d="M9 18h6M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2z"/>',
+  pin: '<path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/>',
+  users: '<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M21.5 20a6.5 6.5 0 0 0-4-6"/>',
+  user: '<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',
+  printer: '<path d="M6 9V2h12v7"/><rect x="6" y="14" width="12" height="8" rx="1"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>',
+  card: '<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/>',
+  star: '<path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/>',
+  repeat: '<path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14M7 22l-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/>',
+  pencil: '<path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5z"/>',
+  phone: '<rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/>',
+  call: '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/>',
+  bell: '<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/>',
+  file: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h6"/>',
+  folder: '<path d="M3 6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>',
+  cart: '<circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.7 12.4a2 2 0 0 0 2 1.6h8.6a2 2 0 0 0 2-1.6L22 7H6"/>',
+  bag: '<path d="M6 7h12l1 14H5z"/><path d="M9 7a3 3 0 0 1 6 0"/>',
+  megaphone: '<path d="m3 11 18-5v12L3 14z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/>',
+  upload: '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>',
+  download: '<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>',
+  wrench: '<path d="M14.7 6.3a4 4 0 0 0 5 5L12 19a2.8 2.8 0 0 1-4-4z"/><path d="M14.7 6.3 17 4l3 3-2.3 2.3"/>',
+  cal: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
+  send: '<path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/>',
+  mail: '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/>',
+  gear: '<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>',
+  target: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
+  mic: '<rect x="9" y="2" width="6" height="12" rx="3"/><path d="M19 10a7 7 0 0 1-14 0M12 17v5"/>',
+  bars: '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
+  trend: '<path d="m3 17 6-6 4 4 8-8"/><path d="M15 7h6v6"/>',
+  link: '<path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/>',
+  shield: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
+  checkc: '<circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/>',
+  alert: '<path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/>',
+  stop: '<circle cx="12" cy="12" r="9"/><path d="m5.6 5.6 12.8 12.8"/>',
+  sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
+  save: '<path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-8H7v8M7 3v5h8"/>',
+  flame: '<path d="M12 22c4 0 7-2.7 7-7 0-4-3-6-4-9-1 2-2 3-4 3 0-2-1-4-2-5-1 4-4 6-4 11 0 4.3 3 7 7 7z"/>',
+  drop: '<path d="M12 2.7s7 7.3 7 12.3a7 7 0 0 1-14 0c0-5 7-12.3 7-12.3z"/>',
+  wifi: '<path d="M5 12.6a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0M2 9a15 15 0 0 1 20 0M12 20h.01"/>',
+  home: '<path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/>',
+  fuel: '<path d="M4 21V5a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v16M3 21h13M4 10h11"/><path d="M15 8h2a2 2 0 0 1 2 2v6a1.5 1.5 0 0 0 3 0V9l-3-3"/>',
+  food: '<path d="M3 11h18a9 9 0 0 1-18 0zM12 2v4M8 3v3M16 3v3"/>',
+  building: '<rect x="4" y="2" width="16" height="20" rx="1"/><path d="M9 22v-4h6v4M8 6h.01M12 6h.01M16 6h.01M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01"/>',
+  store: '<path d="M3 9 4.5 4h15L21 9M3 9v11h18V9M3 9h18M9 20v-6h6v6"/>',
+  factory: '<path d="M2 20V9l6 4V9l6 4V4h4l2 16z"/><path d="M2 20h20"/>',
+  tag: '<path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/>',
+  clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  hourglass: '<path d="M6 2h12M6 22h12M7 2v4a5 5 0 0 0 10 0V2M7 22v-4a5 5 0 0 1 10 0v4"/>',
+  pause: '<rect x="6" y="4" width="4" height="16" rx="1"/><rect x="14" y="4" width="4" height="16" rx="1"/>',
+  flag: '<path d="M4 22V4M4 4h13l-2 4 2 4H4"/>',
+  search: '<circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/>',
+  globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/>',
+  map: '<path d="m9 4-6 2v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/>',
+  trash: '<path d="M3 6h18M8 6V4h8v2M6 6l1 15h10l1-15"/>',
+  archive: '<rect x="2" y="3" width="20" height="5" rx="1"/><path d="M4 8v12h16V8M10 12h4"/>',
+  book: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/>',
+  shuffle: '<path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/>',
+  hand: '<path d="M18 11V6a2 2 0 0 0-4 0M14 10V4a2 2 0 0 0-4 0v2M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.9-6-2.4l-3.6-3.6a2 2 0 0 1 2.8-2.8L7 15"/>',
+  siren: '<path d="M7 18v-6a5 5 0 0 1 10 0v6M5 21h14v-3H5zM12 2v2M4.2 5.2l1.4 1.4M19.8 5.2l-1.4 1.4"/>',
+  toolbox: '<rect x="2" y="7" width="20" height="13" rx="2"/><path d="M9 7V4h6v3M2 13h20"/>',
+  extinguisher: '<path d="M15 6.5V3a1 1 0 0 0-1-1h-2a1 1 0 0 0-1 1v3.5"/><path d="M9 18h8M18 9l3-3M10 22h6a1 1 0 0 0 1-1v-9a4 4 0 0 0-8 0v9a1 1 0 0 0 1 1z"/>',
+  speak: '<path d="M21 11.5a8.4 8.4 0 0 1-12.3 7.6L3 21l1.9-5.4A8.4 8.4 0 1 1 21 11.5z"/><path d="M8 12h.01M12 12h.01M16 12h.01"/>',
+  robot: '<rect x="4" y="8" width="16" height="12" rx="2"/><path d="M12 8V4M9 13h.01M15 13h.01M9 17h6"/>'
+};
+const NF_E = {'💵':'cash','💴':'cash','🏦':'bank','🏛':'bank','🧾':'receipt','📝':'note','✍':'note','📋':'clipboard','🗂':'folder','🗄':'archive','📒':'book','📘':'book','📇':'clipboard','🚚':'truck','💬':'chat','🗣':'speak',
+  '📦':'box','📎':'clip','🔒':'lock','🔐':'lock','🔑':'key','👀':'eye','👁':'eye','📷':'camera','💰':'wallet','💸':'moneyout','💡':'bulb','📍':'pin','🗺':'map','🤝':'users','👥':'users','👤':'user','🖨':'printer','💳':'card','⭐':'star',
+  '🔁':'repeat','🔀':'shuffle','✏':'pencil','✎':'pencil','📲':'phone','📱':'phone','📵':'phone','📞':'call','🔔':'bell','📄':'file','📜':'file','🛒':'cart','🛍':'bag','🧺':'bag','📢':'megaphone','📣':'megaphone','⬆':'upload','📤':'upload','📥':'download',
+  '🛠':'wrench','🔧':'wrench','🧰':'toolbox','📅':'cal','📨':'send','📩':'mail','📧':'mail','✉':'mail','📬':'mail','⚙':'gear','🎯':'target','🎙':'mic','🎤':'mic','📊':'bars','📈':'trend','🔗':'link','🛡':'shield','🕵':'shield','✅':'checkc',
+  '⚠':'alert','🚨':'siren','⛔':'stop','❌':'stop','☀':'sun','💾':'save','🔥':'flame','🚰':'drop','📶':'wifi','🏠':'home','⛽':'fuel','🍚':'food','🏢':'building','🏪':'store','🏗':'building','🏭':'factory','🏷':'tag','⏰':'clock','🕒':'clock','⏱':'clock',
+  '⏳':'hourglass','⏸':'pause','⚑':'flag','🏁':'flag','🔍':'search','🔎':'search','🌐':'globe','🗑':'trash','🧯':'extinguisher','🧻':'box','✋':'hand','👉':'flag','🤖':'robot'};
+const NF_RX = /(\p{Extended_Pictographic}️?|[☀-➿]️?)/u;
+const NF_SKIP = new Set(['✓', '✔', '✕', '✗', '•', '★', '☆', '→', '←', '↑', '↓', '↗', '↘', '⚡']);
+const NF_NO = 'textarea, input, select, option, script, style, svg, [contenteditable], .msg-bubble, .conv-preview, .one-msg-t small, .qt-tpl, .tpl-text, .nf-keep, .chat-bubble, .mk-paper, .marketing-view';
+const nfSvg = (k, cls) => `<svg class="nf-ic${cls ? ' ' + cls : ''}" viewBox="0 0 24 24" aria-hidden="true">${NF_P[k]}</svg>`;
+function nfIconText(node){
+  const txt = node.nodeValue; if(!txt || !NF_RX.test(txt)) return;
+  const el = node.parentElement; if(!el || el.closest(NF_NO)) return;
+  const parts = txt.split(NF_RX); let changed = false, html = '';
+  const first = parts.findIndex(p => p.trim() !== '');
+  parts.forEach((p, i) => {
+    const base = p.replace(/️/g, '');
+    if(i % 2 === 1 && !NF_SKIP.has(base)){
+      if(NF_E[base]){ html += nfSvg(NF_E[base]); changed = true; return; }
+      if(i === first){ changed = true; return; } // a decorative emoji that leads a label: drop it
+    }
+    html += p.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  });
+  if(!changed) return;
+  const span = document.createElement('span'); span.className = 'nf-t'; span.innerHTML = html.replace(/^(<svg[^>]*>.*?<\/svg>)\s+/, '$1');
+  node.parentNode.replaceChild(span, node);
+}
+function nfIconize(root){
+  if(!root || root.nodeType !== 1 && root.nodeType !== 3) return;
+  if(root.nodeType === 3){ nfIconText(root); return; }
+  if(root.closest && root.closest(NF_NO)) return;
+  const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null), list = [];
+  while(w.nextNode()) list.push(w.currentNode);
+  list.forEach(nfIconText);
+}
+(function nfStart(){
+  if(typeof document === 'undefined') return;
+  let queue = new Set(), raf = 0;
+  const flush = () => { raf = 0; const q = queue; queue = new Set(); q.forEach(n => { if(n.isConnected) nfIconize(n); }); };
+  const mo = new MutationObserver(ms => { ms.forEach(m => m.addedNodes.forEach(n => queue.add(n))); if(!raf) raf = requestAnimationFrame(flush); });
+  const go = () => { const app = document.getElementById('view-app'); if(app){ nfIconize(app); mo.observe(app, {childList: true, subtree: true}); }
+    mo.observe(document.body, {childList: true}); };
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', go); else go();
+})();
+
 function renderSidebarForViewAsRole(){
   const allowed = computeAllowedPages(getEffectiveRoles());
   document.querySelectorAll('.nav-item[data-page], .bnav-item[data-page], .more-sheet-item[data-page]').forEach(el => {

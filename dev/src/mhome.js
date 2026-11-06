@@ -32,6 +32,12 @@ const mhKey = (y, m, d) => `${y}-${String(m).padStart(2, '0')}-${String(d).padSt
 const mhMonL = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 const mhLabel = k => new Date(k + 'T00:00:00').toLocaleDateString('en-PH', {month: 'short', day: 'numeric'});
 const mhFirst = n => String(n || '').replace(/ \(You\)$/, '').split(' ')[0];
+const MH_DEMO_FULL = {Liza: 'Liza Santos', Rico: 'Rico Reyes'};
+function mhFull(n){ n = String(n || '').replace(/ \(You\)$/, '').trim(); if(!n) return '';
+  if(n.includes(' ')) return n;
+  const m = (typeof teamMembers !== 'undefined' ? teamMembers : []).map(x => String(x.name || '').replace(/ \(You\)$/, '')).find(x => x.split(' ')[0] === n && x.includes(' '));
+  return m || (!myBusiness && MH_DEMO_FULL[n]) || n; }
+const mhIni = n => mhFull(n).split(/\s+/).map(w => w[0] || '').join('').slice(0, 2).toUpperCase();
 const MH_AV = [['#E3ECFF', '#1E40AF'], ['#E0F2EF', '#0F6B5C'], ['#FCE7EF', '#9D174D'], ['#E6EBF1', '#1F2937'], ['#E0F2FE', '#075985'], ['#ECFCCB', '#3F6212']];
 function mhAv(name, size){ const n = String(name || '?'), h = [...n].reduce((a, c) => a + c.charCodeAt(0), 0), c = MH_AV[h % MH_AV.length];
   const ini = n.replace(/ \(You\)$/, '').split(/\s+/).map(w => w[0] || '').join('').slice(0, 2).toUpperCase();
@@ -79,14 +85,11 @@ function renderMistHome(){
       ${isPageAllowedForViewAsRole('inventory') && typeof srSection === 'function' ? `<section class="sect glass" id="srCard">${srSection()}</section>` : ''}
       ${boss && BK.loaded ? `<section class="sect glass" id="mhDrawer">${mhDrawer()}</section>` : ''}
     </div>
-    <div class="mh-more"><div class="lg-grid mh-anchor"></div>${oneHomeRecent()}
-      <section class="lg-panel"><div class="lg-ph"><b>Messages</b><a class="lg-link" onclick="go('messages')">All messages</a></div><div id="oneHomeMsgs" class="one-msgs"></div></section></div>
   </div>`;
-  renderOneHomeMessages();
   if(typeof checkOnboardingActivation === 'function') checkOnboardingActivation();
   try{ renderGetStartedCard(); }catch(e){}
   try{ renderPhoneNotifNudge(); }catch(e){}
-  try{ if(typeof renderWeeklyRecapCard === 'function') renderWeeklyRecapCard(); }catch(e){}
+  try{ const wk = document.getElementById('wkCard'); if(wk) wk.remove(); }catch(e){}
   if(typeof booksAfterHome === 'function') booksAfterHome();
 }
 
@@ -193,17 +196,17 @@ function mhDrawer(){
   let cells = ''; for(let i = 0; i < pad; i++) cells += '<div class="day blank" aria-hidden="true"></div>';
   let shorts = 0, overs = 0, ok = 0;
   for(let d = 1; d <= dim; d++){ const k = mhKey(y, m, d), c = by[k];
-    if(k === APP_TODAY && !c){ const w = mhWho(k, s); cells += `<button class="day today" type="button" onclick="mhOpenSched()"><span class="dn">${d} · Today</span><span class="nm">${mhEsc(w)}</span><span class="st tcount">To Count</span></button>`; continue; }
-    if(k > APP_TODAY){ const w = mhWho(k, s); cells += `<button class="day future${s.over && s.over[k] ? ' swapped' : ''}" type="button" onclick="mhOpenSched()"><span class="dn">${d}</span><span class="nm">${mhEsc(w)}</span><span class="st">Scheduled</span></button>`; continue; }
+    if(k === APP_TODAY && !c){ const w = mhWho(k, s); cells += `<button class="day today" type="button" onclick="mhOpenSched()"><span class="dn">${d} · Today</span><span class="nm ini-row"><span class="ini">${mhEsc(mhIni(w))}</span>${mhEsc(mhFull(w))}</span><span class="st tcount">To Count</span></button>`; continue; }
+    if(k > APP_TODAY){ const w = mhWho(k, s); cells += `<button class="day future${s.over && s.over[k] ? ' swapped' : ''}" type="button" onclick="mhOpenSched()"><span class="dn">${d}</span><span class="nm ini-row"><span class="ini">${mhEsc(mhIni(w))}</span>${mhEsc(mhFull(w))}</span><span class="st">Scheduled</span></button>`; continue; }
     if(!c){ cells += `<div class="day none"><span class="dn">${d}</span><span class="st">No count</span></div>`; continue; }
     const tn = mhTone(c.diff); if(c.diff < -0.5) shorts++; else if(c.diff > 0.5) overs++; else ok++;
     const edited = c.recs.some(r => r.reviewedAt) || BK.counts.some(r => r.day === k && r.reopenedAt);
-    cells += `<button class="day ${tn}" type="button" onclick="mhOpenDay('${k}')" aria-label="${mhLabel(k)}, ${mhEsc(c.by)}, ${tn === 'g' ? 'matched' : mhSigned(c.diff)}"><span class="dn">${d}${edited ? ' <span class="ed">edited</span>' : ''}</span><span class="nm">${mhEsc(c.by)}</span><span class="st t${tn}">${tn === 'g' ? 'Matched' : mhSigned(c.diff)}</span></button>`; }
+    cells += `<button class="day ${tn}" type="button" onclick="mhOpenDay('${k}')" aria-label="${mhLabel(k)}, ${mhEsc(mhFull(c.by))}, ${tn === 'g' ? 'matched' : mhSigned(c.diff)}"><span class="dn">${d}${edited ? ' <span class="ed">edited</span>' : ''}</span><span class="nm">${mhEsc(mhFull(c.by))}</span><span class="st t${tn}">${tn === 'g' ? 'Matched' : mhSigned(c.diff)}</span></button>`; }
   const tail = (7 - (pad + dim) % 7) % 7; for(let i = 0; i < tail; i++) cells += '<div class="day blank" aria-hidden="true"></div>';
   const mo = mhKey(y, m, 1).slice(0, 7), people = [...new Set(Object.values(by).filter(c => bkMonth(c.day) === mo).map(c => mhFirst(c.by)))];
   const pp = people.map(n => { const net = mhPersonNet(n, mo), offs = Object.values(by).filter(c => bkMonth(c.day) === mo && mhFirst(c.by) === n && Math.abs(c.diff) >= 1).sort((a, b) => a.day.localeCompare(b.day));
     const lastDay = Object.values(by).filter(c => mhFirst(c.by) === n).map(c => c.day).sort().pop();
-    return `<button class="cdpp" type="button" onclick="mhOpenDay('${lastDay}')">${mhEsc(n)} · net <b class="t${mhTone(net)}">${mhSigned(net)}</b>${offs.length ? `<span class="muted">· ${offs.map(c => mhLabel(c.day) + ' ' + mhSigned(c.diff)).join(', ')}</span>` : ''}</button>`; }).join('');
+    return `<button class="cdpp" type="button" onclick="mhOpenDay('${lastDay}')">${mhEsc(mhFull(n))} · net <b class="t${mhTone(net)}">${mhSigned(net)}</b>${offs.length ? `<span class="muted">· ${offs.map(c => mhLabel(c.day) + ' ' + mhSigned(c.diff)).join(', ')}</span>` : ''}</button>`; }).join('');
   const on = MH_PROTS.filter(([k]) => P[k]).length;
   return `<div class="sect-h"><h4>Cash drawer by person</h4><span class="hint">Tap a day for its item-by-item tally</span><span class="mh-sp"></span>${P.surprise ? `<button class="sch-btn" type="button" onclick="mhCountNow()">Count now</button>` : ''}<button class="sch-btn" type="button" onclick="mhOpenProtect()">Extra protections · ${on} on</button><button class="sch-btn" type="button" onclick="mhEditHistory()">Edit history</button></div>
     <div class="cdsum num"><button class="cdpp" type="button" onclick="mhOpenSched()"><span class="muted">Who counts:</span> ${mhEsc(mhRule(s))} <span style="color:var(--blue)">Edit ›</span></button>${pp}</div>
@@ -233,12 +236,12 @@ function mhRenderDay(){
   const S = MH.sheet, by = mhCounts(), c = by[S.k]; if(!c){ mhClose(); return; }
   const who = mhFirst(c.by), list = Object.values(by).filter(x => mhFirst(x.by) === who).sort((a, b) => b.day.localeCompare(a.day)).slice(0, 40), net = list.reduce((a, x) => a + x.diff, 0);
   const left = `<div class="days" role="group" aria-label="${mhEsc(c.by)}'s count days">${list.map(x => { const exp = x.recs.reduce((a, r) => a + (Number(r.expected && r.expected.cash) || 0), 0); return `<button class="dday" type="button" aria-pressed="${x.day === S.k}" onclick="MH.sheet.k='${x.day}'; MH.sheet.tab='tally'; mhRenderDay()"><b>${mhLabel(x.day)}</b><span class="pill ${mhTone(x.diff)}">${Math.round(x.diff) === 0 ? 'OK' : mhSigned(x.diff)}</span><small>Should be ${mhPeso(exp)}</small></button>`; }).join('')}</div>`;
-  const reopened = BK.counts.filter(r => r.day === S.k && r.reopenedAt), changes = reopened.length + c.recs.filter(r => r.reviewedAt).length;
-  mhSheet(`${mhHead(mhAv(c.by, 48), mhEsc(c.by) + '\'s cash drawer', `${list.length} count${list.length > 1 ? 's' : ''} · net <b class="t${mhTone(net)}">${mhSigned(net)}</b>`)}
+  const reopened = BK.counts.filter(r => r.day === S.k && r.reopenedAt), changes = reopened.length + c.recs.filter(r => r.reviewedAt).length + c.recs.reduce((a, r) => a + (r.edits || []).length, 0);
+  mhSheet(`${mhHead(mhAv(mhFull(c.by), 48), mhEsc(mhFull(c.by)) + '\'s cash drawer', `${list.length} count${list.length > 1 ? 's' : ''} · net <b class="t${mhTone(net)}">${mhSigned(net)}</b>`)}
     <div class="tally">${left}<div class="tmain">
       <div class="privacy">${mhIco('lock', '#1D4F86')}<span>Only you, managers and Finance see this. ${mhEsc(who)} only entered the bills and coins.</span></div>
-      <div class="tabs" role="tablist"><button class="tab" role="tab" type="button" aria-selected="${S.tab === 'tally'}" onclick="MH.sheet.tab='tally'; mhRenderDay()">${mhLabel(S.k)} tally</button><button class="tab" role="tab" type="button" aria-selected="${S.tab === 'hist'}" onclick="MH.sheet.tab='hist'; mhRenderDay()">Changes (${changes})</button><span class="mh-sp"></span><button class="btn soft" type="button" onclick="mhClose(); ccReopen('${S.k}')">Reopen and recount</button></div>
-      ${S.tab === 'hist' ? mhHist(c, reopened) : mhTally(c)}</div></div>`, mhEsc(c.by) + '\'s cash drawer', 'tsm');
+      <div class="tabs" role="tablist"><button class="tab" role="tab" type="button" aria-selected="${S.tab === 'tally'}" onclick="MH.sheet.tab='tally'; MH.sheet.edit=null; mhRenderDay()">${mhLabel(S.k)} tally</button><button class="tab" role="tab" type="button" aria-selected="${S.tab === 'hist'}" onclick="MH.sheet.tab='hist'; MH.sheet.edit=null; mhRenderDay()">Changes (${changes})</button><span class="mh-sp"></span>${S.edit ? '' : `<button class="btn soft" type="button" onclick="mhStartEdit()">Edit this count</button>`}</div>
+      ${S.edit ? mhEditForm(c) : S.tab === 'hist' ? mhHist(c, reopened) : mhTally(c)}</div></div>`, mhEsc(c.by) + '\'s cash drawer', 'tsm');
 }
 function mhSalesOn(day, cash){
   const rows = [];
@@ -264,7 +267,7 @@ function mhTally(c){
     ${verdict}
     <div><div class="sec">CASH SALES THAT DAY · ${cash.length} ITEM${cash.length === 1 ? '' : 'S'}</div>${cash.length ? tbl(cash) : '<span style="font-size:16px">No cash sales recorded.</span>'}</div>
     ${gc.length ? `<div><div class="sec">PAID BY GCASH OR MAYA (NOT IN THE DRAWER)</div>${tbl(gc)}</div>` : ''}
-    <div><div class="sec">CASH PAID OUT FROM THE DRAWER</div>${outs.length ? `<div class="paid-out num">${outs.map(o => `<div class="po"><span><b style="color:#13243A">${mhEsc(o.category)}</b>${o.note || o.vendor ? ` · ${mhEsc(o.note || o.vendor)}` : ''}</span><b>−${mhPeso(o.amount)}</b><span class="att">${o.receipt ? `<span class="attach">${mhIco('clip')}Receipt attached</span>` : `<span class="attach missing">${mhIco('clip')}No receipt</span>`}</span></div>`).join('')}</div>` : '<span style="font-size:16px">None that day.</span>'}</div>
+    <div><div class="sec">CASH PAID OUT FROM THE DRAWER</div>${outs.length ? `<div class="paid-out num">${outs.map(o => `<div class="po"><span><b style="color:#13243A">${mhEsc(o.category)}</b>${o.note || o.vendor ? ` · ${mhEsc(o.note || o.vendor)}` : ''}</span><b>−${mhPeso(o.amount)}</b><span class="att">${o.receipt ? `<span class="attach">${mhIco('clip')}Receipt attached</span>` : `<button type="button" class="attach missing" onclick="mhClose(); openExpenseForm('${o.id}')">${mhIco('clip')}No receipt · attach one</button>`}<button type="button" class="linkish po-ed" onclick="mhClose(); openExpenseForm('${o.id}')">Edit</button></span></div>`).join('')}</div>` : '<span style="font-size:16px">None that day.</span>'}</div>
     <div class="calc num"><div class="fund"><span>Change fund at opening</span><span>${mhPeso(exp.fund)}</span></div><div class="in"><span>+ Cash sales</span><span>${mhPeso(exp.sales)}</span></div>${exp.collections ? `<div class="in"><span>+ Cash collected from customers</span><span>${mhPeso(exp.collections)}</span></div>` : ''}${exp.ownerIn ? `<div class="in"><span>+ Cash put in</span><span>${mhPeso(exp.ownerIn)}</span></div>` : ''}<div class="out"><span>− Cash paid out</span><span>${mhPeso((exp.expenses || 0) + (exp.suppliers || 0) + (exp.owner || 0) + (exp.bank || 0))}</span></div><div class="tot"><span>Should be in drawer</span><span>${mhPeso(expected)}</span></div><div><span>Counted</span><b>${mhPeso(counted)}</b></div><div class="tot"><span>Difference</span><span class="t${tn}">${tn === 'g' ? 'Matched' : mhSigned(df)}</span></div></div>
     ${dens ? `<div><div class="sec">BILLS AND COINS COUNTED</div><div class="denoms num">${dens}</div></div>` : ''}
     <div><div class="sec">HOW THIS COUNT IS PROTECTED</div><div class="prot">
@@ -275,10 +278,47 @@ function mhTally(c){
     <button class="linkish" type="button" onclick="mhOpenProtect()">Want more? See the optional extra protections ›</button>
     ${dens ? `<details class="saw"><summary>What ${mhEsc(who)} saw when counting</summary><p style="margin-top:8px">Only these boxes. No expected amount, no sales list, no difference.</p><div class="mini num">${dens}</div></details>` : ''}`;
 }
+function mhStartEdit(){ const c = mhCounts()[MH.sheet.k], rec = c.recs[0], ct = rec.counted || {};
+  MH.sheet.edit = {den: Object.assign({}, ct.denominations || {}), coins: Number(ct.coins) || 0, typed: !Object.keys(ct.denominations || {}).length && !ct.coins ? Number(ct.cash) || 0 : null, why: '', err: ''}; MH.sheet.tab = 'tally'; mhRenderDay(); }
+function mhEdTotal(E){ return E.typed != null ? Number(E.typed) || 0 : BK_DENOMS.reduce((a, d) => a + d * (Number(E.den[d]) || 0), 0) + (Number(E.coins) || 0); }
+function mhEdLive(){ const E = MH.sheet.edit, rec = mhCounts()[MH.sheet.k].recs[0], tot = mhEdTotal(E), df = tot - (Number(rec.expected && rec.expected.cash) || 0);
+  const a = document.getElementById('mhEdCount'), b = document.getElementById('mhEdDiff'); if(a) a.textContent = mhPeso(tot); if(b){ b.textContent = Math.round(df) === 0 ? 'Matched' : mhSigned(df); b.className = 'live t' + mhTone(df); } }
+function mhEditForm(c){
+  const E = MH.sheet.edit, rec = c.recs[0], tot = mhEdTotal(E), df = tot - (Number(rec.expected && rec.expected.cash) || 0);
+  return `<div class="ed num"><div class="box blue"><b class="t">Editing ${mhLabel(MH.sheet.k)}</b><span>The original count stays on record. Your change and your reason are saved in Changes and in Edit history.</span></div>
+    <div><div class="sec">BILLS AND COINS COUNTED</div>${E.typed != null ? `<label>Total counted (₱)<input type="number" min="0" value="${E.typed}" oninput="MH.sheet.edit.typed=Number(this.value)||0; mhEdLive()"></label>`
+      : `<div class="grid">${BK_DENOMS.map(d => `<label>₱${d.toLocaleString('en-PH')} bills<input type="number" min="0" inputmode="numeric" value="${E.den[d] || 0}" oninput="MH.sheet.edit.den['${d}']=Number(this.value)||0; mhEdLive()"></label>`).join('')}<label>Coins (₱ total)<input type="number" min="0" value="${E.coins || 0}" oninput="MH.sheet.edit.coins=Number(this.value)||0; mhEdLive()"></label></div>`}
+      <p style="margin-top:8px">Counted: <span class="live" id="mhEdCount">${mhPeso(tot)}</span> · should be ${mhPeso(rec.expected && rec.expected.cash)} · difference <span class="live t${mhTone(df)}" id="mhEdDiff">${Math.round(df) === 0 ? 'Matched' : mhSigned(df)}</span></p></div>
+    <p style="margin:0">Cash paid out is changed on the expense itself: use <b>Edit</b> next to each line in the tally.</p>
+    <label>Why are you changing this? (required)<textarea oninput="MH.sheet.edit.why=this.value" placeholder="e.g. Recounted with Liza in the morning: the ₱100 and ₱200 bills were in the side tray.">${mhEsc(E.why)}</textarea></label>
+    ${E.err ? `<span class="err">${mhEsc(E.err)}</span>` : ''}
+    <div class="actions"><button class="btn ghost" type="button" onclick="MH.sheet.edit=null; mhRenderDay()">Cancel</button><button class="btn" type="button" onclick="mhSaveEdit()">Save changes</button></div>
+    <button class="linkish" type="button" onclick="mhClose(); ccReopen('${MH.sheet.k}')">Start the count again from scratch instead ›</button></div>`;
+}
+async function mhSaveEdit(){
+  const S = MH.sheet, E = S.edit, c = mhCounts()[S.k], rec = c.recs[0], old = Number(rec.counted && rec.counted.cash) || 0, tot = Math.round(mhEdTotal(E) * 100) / 100;
+  if(String(E.why || '').trim().length < 5){ E.err = 'Add a short reason first. It is kept with the change.'; mhRenderDay(); return; }
+  if(Math.abs(tot - old) < .005){ E.err = 'Nothing changed yet.'; mhRenderDay(); return; }
+  const den = {}; if(E.typed == null) BK_DENOMS.forEach(d => { if(Number(E.den[d])) den[d] = Number(E.den[d]); });
+  const counted = Object.assign({}, rec.counted || {}, {cash: tot, denominations: den, coins: E.typed == null ? Number(E.coins) || 0 : 0});
+  const edit = {when: new Date().toISOString(), by: bkMe(), from: old, to: tot, why: String(E.why).trim()};
+  if(myBusiness){
+    const drawer = rec.drawer || 'Main', r1 = await sb.rpc('reopen_cash_count', {p_day: S.k, p_drawer: drawer});
+    if(r1.error){ E.err = r1.error.message; mhRenderDay(); return; }
+    const r2 = await sb.rpc('save_cash_count', {p_day: S.k, p_drawer: drawer, p_expected: rec.expected || {}, p_counted: counted, p_note: `Edited by ${edit.by}: ${edit.why} (was ${mhPeso(old)}, now ${mhPeso(tot)})`});
+    if(r2.error){ E.err = r2.error.message; mhRenderDay(); return; }
+    await bkLoad(true);
+  } else {
+    rec.edits = (rec.edits || []).concat([edit]); rec.counted = counted; rec.difference = Math.round((tot - (Number(rec.expected && rec.expected.cash) || 0)) * 100) / 100; bkSaveDemo();
+  }
+  S.edit = null; S.tab = 'hist'; renderMistHome(); mhRenderDay(); showToast('Saved. The change and your reason are in Changes and Edit history.', 'success');
+}
 function mhHist(c, reopened){
   const ev = [];
   reopened.forEach(r => ev.push({when: r.reopenedAt, what: `Reopened for a recount. First count: ${mhPeso(r.counted && r.counted.cash)} by ${mhEsc(r.by)} (difference ${mhSigned(r.difference)}).`}));
   c.recs.filter(r => r.reviewedAt).forEach(r => ev.push({when: r.reviewedAt, what: `Checked by ${mhEsc(r.reviewedBy || 'the owner')}${r.reviewNote ? ': "' + mhEsc(r.reviewNote) + '"' : ''}`}));
+  c.recs.forEach(r => (r.edits || []).forEach(e => ev.push({when: e.when, what: `<b>${mhEsc(mhFull(e.by))}</b> changed the bills and coins: <s>${mhPeso(e.from)} counted</s> → <b>${mhPeso(e.to)} counted</b><span class="reason">Reason: ${mhEsc(e.why)}</span>`})));
+  c.recs.filter(r => /^Edited by /.test(r.note || '')).forEach(r => ev.push({when: r.at, what: mhEsc(r.note)}));
   ev.sort((a, b) => String(b.when).localeCompare(String(a.when)));
   return `<div class="hist">${ev.map(e => `<div class="he"><div class="meta"><span class="when">${new Date(e.when).toLocaleString('en-PH', {month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit'})}</span></div><div class="chg">${e.what}</div></div>`).join('')}
     <div class="he"><div class="meta">${mhAv(c.by, 30)}${mhEsc(c.by)}</div><span>${ev.length ? 'Current count, kept on record.' : 'No changes. This is exactly what was entered.'}</span></div>

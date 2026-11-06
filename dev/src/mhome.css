@@ -11,7 +11,9 @@
   #mhHome .lane .more, #mhHome .cell .more{border:0;background:none;color:#1D4F86;font-weight:800;font-size:14.5px;padding:6px 4px;justify-self:start;cursor:pointer;}
   #mhHome .task h5{font-weight:700;} #mhHome .task h5 b{font-weight:800;}
   #mhHome .tile .s.muted{color:#2C3E55;} #mhHome .tile .s .cashline{font-weight:700;color:#13243A;}
-  #mhHome .cal .day .nm{font-weight:800;font-size:16px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  #mhHome .cal .day .nm{font-weight:800;font-size:16px;line-height:1.2;white-space:normal;overflow-wrap:break-word;}
+  #mhHome .cal .day.none .st{color:#2C3E55 !important;font-weight:600;}
+  #mhHome .cal .day .ini-row{align-items:center;}
   #mhHome .cal .day .ed{font-size:12px;font-weight:700;color:#1D4F86;background:#E1EDFA;border-radius:6px;padding:1px 6px;margin-left:4px;}
   #mhHome .mh-more{display:grid;gap:16px;margin-top:18px;}
   #mhHome .mh-more .lg-panel{border-radius:20px;border:1px solid #E1E9F2;}
@@ -28,3 +30,6 @@
   #mhHome .tile .tx{min-width:0;} #mhHome .tile .v .cpill{max-width:100%;white-space:normal;flex-wrap:wrap;}
   #mhHome .tile .v .cpill b{font-size:clamp(20px,1.8vw,26px);}
   #mhSheet .attach.missing, #mhHome .attach.missing{color:#B4232C !important;border-color:#F3C5BC !important;}
+  #mhSheet .po-ed{margin-left:10px;font-weight:800;}
+  #mhSheet .he .reason{display:block;margin-top:4px;font-size:15px;color:#13243A;}
+  #mhSheet button.attach{border:1.5px dashed #F3C5BC;background:#fff;border-radius:10px;padding:5px 10px;cursor:pointer;}

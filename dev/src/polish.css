@@ -1,0 +1,112 @@
+  /* ===== Readability pass: bigger, darker, roomier (applies to every page) ===== */
+  #view-app{--muted:#3F4A57;--faint:#2B3440;--body:#1F2933;--warn:#E8890B;--lowstock:#D9480F;--lowstock-fill:#F59E0B;}
+  #view-app{font-size:16px;}
+  /* page titles and section headers */
+  #view-app .page-head h1{font-size:30px !important;letter-spacing:-.02em;line-height:1.15;}
+  #view-app .page-head p{font-size:16px !important;color:#2B3440 !important;margin-top:6px;}
+  #view-app .page-head{margin-bottom:22px;}
+  #view-app :is(.panel-head h2,.panel-card > h2,.lg-ph b,.sl-card-h b,.settings-card h2){font-size:18.5px !important;font-weight:700;color:var(--ink);letter-spacing:-.01em;}
+  #view-app .panel-head{margin-bottom:14px;gap:12px;}
+  /* menu */
+  #view-app .nav-item{font-size:15.5px;padding:9px 12px;}
+  #view-app .nav-group .heading{font-size:12px;color:#3F4A57;}
+  /* tables */
+  #view-app table th, #view-app .lg-tbl th{font-size:12.5px !important;color:#2B3440 !important;font-weight:700;}
+  #view-app table td{font-size:15px;color:#1F2933;}
+  #view-app .lg-tbl{font-size:15px;}
+  /* numbers and their labels */
+  #view-app :is(.lg-kpi-l,.bk-tile-l,.stat-label){font-size:14px !important;color:#2B3440 !important;font-weight:700;opacity:1;}
+  #view-app :is(.lg-kpi-s,.bk-tile-s){font-size:14px !important;color:#2B3440;opacity:1;}
+  #view-app .bk-tile{padding:16px 18px;gap:4px;}
+  #view-app .bk-tile-v{font-size:24px;}
+  #view-app .bk-tiles{gap:12px;}
+  /* list rows */
+  #view-app .bk-row{padding:14px 20px;gap:14px;}
+  #view-app .bk-row-m b{font-size:15.5px;}
+  #view-app .bk-row-m small{font-size:14px;color:#2B3440;}
+  #view-app .bk-list .panel-head{padding:18px 20px 10px;}
+  #view-app .bk-ic{width:38px;height:38px;border-radius:11px;background:#E8F0FA;color:#1D4F86;font-size:18px;}
+  #view-app .bk-amt{font-size:15.5px;}
+  #view-app .bk-row-a .sl-link{font-size:14.5px;}
+  #view-app .bk-dim{color:#3F4A57 !important;}
+  #view-app .bk-note{font-size:14.5px;color:#2B3440;background:#EEF3F8;border-radius:12px;padding:12px 16px;line-height:1.5;}
+  #view-app .bk-empty{color:#2B3440;font-size:15px;}
+  #view-app .lg-act-t .t{font-size:15px;} #view-app .lg-act-t .s{font-size:14px;color:#2B3440;}
+  #view-app .lg-tbl td{font-size:15px;}
+  #view-app :is(.status-pill,.status-pill-icon){font-size:13.5px;}
+  #view-app .lg-pill{font-size:13px;}
+  #view-app :is(.toggle-txt){font-size:17px;}
+  #view-app :is(.toggle-sub){font-size:15px;color:#2B3440;line-height:1.5;}
+  #view-app .sl-help{font-size:14.5px;color:#2B3440;line-height:1.55;}
+  #view-app :is(.chip,.range-tab,.wh-tab,.adm-tabs button,.bk-daybar button){font-size:15px;}
+  #view-app .lens-tabs button{font-size:15.5px;padding:9px 16px;}
+  /* sl- cards (Who owes you, Bank & deposits, Follow-ups, Payroll) */
+  #view-app .sl-tiles{gap:14px;margin-bottom:16px;}
+  #view-app .sl-tile{padding:16px 18px;gap:4px;border-radius:16px;}
+  #view-app .sl-tile small{font-size:14.5px;font-weight:700;letter-spacing:0;text-transform:none;opacity:1;color:#2B3440;}
+  #view-app .sl-tile b{font-size:26px;}
+  #view-app .sl-tile span{font-size:14.5px;opacity:1;color:#2B3440;}
+  #view-app .sl-card{padding:10px 20px 14px;border-radius:16px;margin-bottom:16px;}
+  #view-app .sl-card-h{padding:14px 0 10px;gap:12px;}
+  #view-app .sl-row{padding:14px 0;gap:14px;}
+  #view-app .sl-t{font-size:16.5px;}
+  #view-app .sl-s{font-size:14.5px;color:#2B3440;opacity:1;white-space:normal;overflow:visible;line-height:1.45;margin-top:3px;}
+  #view-app .sl-right b{font-size:16.5px;} #view-app .sl-right small{font-size:13.5px;}
+  #view-app .sl-av{width:40px;height:40px;border-radius:12px;background:#E6EEF8;color:#1D4F86;font-size:16px;}
+  #view-app .sl-av.g{background:#E1F1E7;color:#0E6B3E;} #view-app .sl-av.w{background:#FCE4E2;color:#B4232C;}
+  #view-app .sl-link{font-size:14.5px;}
+  #view-app .hm-go{min-height:40px;padding:0 16px;font-size:15px;}
+  #view-app .empty-mini{font-size:15px;color:#2B3440;padding:18px 4px;line-height:1.5;}
+  #view-app .sl-actions{margin:4px 0 16px;}
+  /* warning colours: orange text, or dark text on yellow; no brown */
+  #view-app :is(.sl-tile.warn b,.sl-warn,.bk-tile.warn .bk-tile-v,.wk-t.w b,.t-amber,.v-amber){color:#C2410C !important;}
+  #view-app :is(.lg-pill.warn,.qt-hintbox.qt-warn,.qt-hold,.qt-changed,.sl-pill.st-new,.cq-due .cq-pill,.bk-alert.amber b,.cc-diff.warn,.bk-tag,.bk-flag.amber .bk-flag-v,.lg-pill.demo,.adm-badge){color:#13243A !important;}
+  #view-app #openItemsBadge{color:#13243A !important;background:#FFF1C2 !important;}
+  #view-app .lg-sev.md, #view-app .lg-ag i.d30{background:#F08C00;}
+  /* Month-end close: room between the edge, the status mark and the text; actions never cut off */
+  #view-app .lg-conf{gap:16px;padding:16px 20px;align-items:center;}
+  #view-app .bk-list .lg-conf{border-bottom:1px solid var(--border);}
+  #view-app .lg-conf > span:first-child{width:32px;height:32px;font-size:15px;}
+  #view-app .lg-conf.warn > span:first-child{background:#FFE9B0;color:#13243A;}
+  #view-app .lg-conf > div{gap:3px;min-width:0;}
+  #view-app .lg-conf b{font-size:16px;}
+  #view-app .lg-conf small{font-size:14.5px;opacity:1;color:#2B3440;}
+  #view-app .lg-conf > .bk-row-a{flex:none;gap:8px;width:auto;height:auto;border-radius:0;background:none !important;display:flex;align-items:center;font-size:inherit;}
+  #view-app .lg-conf .bk-row-a .sl-link{border:1.5px solid var(--border);border-radius:9px;padding:6px 12px;background:var(--surface);}
+  #view-app .bk-list .bk-actions{padding:16px 20px 18px;display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+  /* Follow-ups: each customer is its own roomy card, the key detail in a clear callout */
+  #view-app .sl-card:has(> .qt-row){background:transparent;border:0;padding:0;box-shadow:none;display:grid;gap:12px;}
+  #view-app .qt-row{background:var(--surface);border:1px solid var(--border) !important;border-radius:16px;padding:18px 20px !important;align-items:flex-start;}
+  #view-app .qt-row .sl-mid{display:grid;gap:6px;}
+  #view-app .qt-row .sl-t{font-size:18px;}
+  #view-app .qt-row .sl-s.qt-hint, #view-app .qt-row .sl-s.qt-hint.sl-warn{display:inline-block;justify-self:start;background:#FFF4D6;color:#13243A !important;border-left:4px solid #F5A30B;border-radius:8px;padding:8px 12px;font-weight:600;font-size:15px;}
+  #view-app .qt-row .sl-s.qt-hint.sl-bad{background:#FDECEC;border-left-color:#D92D3A;}
+  #view-app .qt-row .sl-good{color:#0E6B3E;font-size:14.5px;}
+  #view-app .qt-row .sl-right{gap:10px;}
+  #view-app .qt-row .sl-right b{font-size:19px;}
+  /* icon set */
+  #view-app .nf-ic, body .nf-ic{display:inline-block;}
+  .nf-ic{width:1.1em;height:1.1em;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;vertical-align:-.17em;margin-right:.35em;}
+  .nf-t{display:inline;}
+  #view-app :is(.sl-card-h b,.settings-card h2,.panel-head h2,.panel-card > h2,.lg-ph b) .nf-ic{box-sizing:content-box;width:18px;height:18px;padding:7px;border-radius:10px;background:#E8F0FA;color:#1D4F86;margin-right:12px;vertical-align:-11px;}
+  #view-app .bk-ic .nf-ic{width:19px;height:19px;margin:0;}
+  #view-app :is(.btn,button,.chip,.hm-go,.row-action,.sl-link) .nf-ic{width:17px;height:17px;vertical-align:-3px;}
+  .nf-ic + .nf-t, .nf-t:empty{display:none;}
+  @media (max-width:760px){
+    #view-app .page-head h1{font-size:25px !important;}
+    #view-app .sl-card{padding:8px 14px 12px;}
+    #view-app .qt-row{padding:14px !important;}
+    #view-app .lg-conf{padding:14px;flex-wrap:wrap;} #view-app .lg-conf .bk-row-a{width:100%;padding-left:48px;}
+  }
+  #view-app .acc-hint{font-size:14.5px !important;color:#2B3440 !important;font-weight:500 !important;opacity:1 !important;}
+  #view-app .settings-section-title{font-size:13px !important;color:#1F2933 !important;letter-spacing:.08em;}
+  #view-app .settings-card .sub{font-size:15px;color:#2B3440;}
+  #view-app .field label{color:#1F2933;}
+  #view-app .conv-preview, #view-app .conv-time{color:#2B3440;}
+  #view-app .inv-row-sub{color:#2B3440;font-size:13.5px;}
+  #view-app .notif-text{color:#1F2933;}
+  #view-app .bk-bar-t{background:#E6ECF3;}
+  #view-app .bk-bar-t i{background:#2F6DB5;}
+  #view-app .bk-bar-l{font-size:15px;} #view-app .bk-bar-v{font-size:15px;}
+  #view-app .sl-card-h .bk-dim, #view-app .sl-card-h > span, #view-app .sl-card-h small{font-size:14px;color:#2B3440 !important;}
+  #view-app .bk-alert{font-size:15px;} #view-app .bk-alert b{font-size:16px;}
