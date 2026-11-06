@@ -62,6 +62,7 @@ function nfOrderSheetHtml(o, sell, legacy){
     <div class="nfo-head"><span class="nf-av"></span><div class="nfo-h-m"><small>${escapeHtml(o.poNumber)} · ${sell ? 'Customer order' : 'Order to a supplier'}</small><h3>${escapeHtml(who)}</h3>
       <span>${bkPeso(total)} · ${sell ? 'deliver by' : 'arrives by'} ${escapeHtml(rd)}</span></div>${sell ? renderSupplierActionPill(o) : renderBuyerActionPill(o)}</div>
     <ol class="nfo-steps">${NF_STAGE_NAMES.map((n, i) => `<li class="${i < st ? 'done' : i === st ? 'now' : ''}"><i>${i < st ? '✓' : i + 1}</i><span>${n}</span></li>`).join('')}</ol>
+    <div class="nfo-prog"><b>Step ${st + 1} of ${NF_STAGE_NAMES.length} · ${NF_STAGE_NAMES[st]}</b><span>${st < NF_STAGE_NAMES.length - 1 ? 'Next: ' + NF_STAGE_NAMES[st + 1] : 'All done'}</span><i><u style="width:${Math.round((st + 1) / NF_STAGE_NAMES.length * 100)}%"></u></i></div>
     <section class="nfo-next t-${nx.tone || 'g'}"><h4>${escapeHtml(nx.title || '')}</h4>${nx.text ? `<p>${escapeHtml(nx.text)}</p>` : ''}
       <div class="nfo-slot" id="nfoSlot"></div>
       ${nx.btns ? `<div class="nfo-btns">${nx.btns.map(btn).join('')}</div>` : ''}
@@ -83,7 +84,8 @@ function nfRunInline(js){
   const oid = currentModalOrderId || '';
   const opened = [...legacy.querySelectorAll('[id]')].filter(e => (before.get(e) || 0) === 0 && e.innerHTML.trim().length > 20);
   const moved = opened.find(e => oid && e.id.endsWith('_' + oid)) || opened.find(e => oid && e.id.includes(oid)) || opened[0];
-  if(moved){ slot.innerHTML = ''; slot.appendChild(moved); nfEnhanceForm(slot); setTimeout(() => { const f = slot.querySelector('input:not([type=hidden]):not([type=file]), select, textarea'); if(f && window.innerWidth > 760) f.focus({preventScroll: true}); }, 50); }
+  if(moved){ slot.innerHTML = ''; slot.appendChild(moved); nfEnhanceForm(slot);
+    const po = getPO(oid); slot.querySelectorAll('input[type=date]').forEach(i => { if(i.value) return; i.value = /eta|arriv/i.test(i.id) ? (po && po.requestedDeliveryDate && po.requestedDeliveryDate >= APP_TODAY ? po.requestedDeliveryDate.slice(0, 10) : addDaysIso(APP_TODAY, 1)) : APP_TODAY; }); setTimeout(() => { const f = slot.querySelector('input:not([type=hidden]):not([type=file]), select, textarea'); if(f && window.innerWidth > 760) f.focus({preventScroll: true}); }, 50); }
 }
 function nfRenderOrderSheet(o, sell){
   const body = document.getElementById('orderDetailModalBody'); if(!body) return;

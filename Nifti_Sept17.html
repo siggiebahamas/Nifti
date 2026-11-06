@@ -5254,6 +5254,258 @@ tbody tr:hover{background:#F6F6F3}
   @media (max-width:760px){ html[data-ty] #view-app .topbar .user-chip.user-chip{font-size:0 !important;gap:0 !important;} }
 
 /* ===== Round 8 css end ===== */
+
+/* ===== Round 9 css begin ===== */
+
+  /* ===== Round 9: phone-first ===== */
+  /* order photos (all sizes) */
+  html[data-ty] .nfo-photos{border:1px solid #E3E7EC;border-radius:16px;padding:12px 16px;background:#FFFFFF;display:grid;gap:10px;}
+  html[data-ty] .nfo-photos .nfo-sec small{display:block;text-transform:none;letter-spacing:0;font-size:14px;font-weight:600;color:#344054;margin-top:2px;}
+  html[data-ty] .nf-op-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:8px;}
+  html[data-ty] .nf-op-th{position:relative;border:0;padding:0;border-radius:12px;overflow:hidden;aspect-ratio:1;background:#EEF1F4;cursor:pointer;}
+  html[data-ty] .nf-op-th img{width:100%;height:100%;object-fit:cover;display:block;}
+  html[data-ty] .nf-op-th span{position:absolute;left:6px;bottom:6px;background:rgba(14,17,20,.72);color:#FFFFFF;font-size:13px;font-weight:700;border-radius:6px;padding:2px 7px;}
+  html[data-ty] .nf-op-empty{grid-column:1 / -1;font-size:15px;color:#1F2329;background:#F8FAFC;border-radius:12px;padding:12px;}
+  html[data-ty] .nf-op-kind{display:flex;flex-wrap:wrap;gap:6px;}
+  html[data-ty] .nf-op-kind button{border:1.5px solid #D5DBE2;background:#FFFFFF;border-radius:999px;padding:7px 13px;font-weight:700;font-size:14.5px;color:#1F2329;min-height:38px;cursor:pointer;}
+  html[data-ty] .nf-op-kind button.on{border-color:#1F6B45;background:#E8F5EE;color:#0F4D2E;}
+  html[data-ty] .nf-op-acts{display:flex;flex-wrap:wrap;gap:10px;} html[data-ty] .nf-op-acts .btn{min-height:48px;display:inline-flex;align-items:center;gap:8px;border-radius:14px;cursor:pointer;}
+  html[data-ty] .nf-op-acts svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;}
+
+  @media (max-width:760px){
+    /* nothing zooms when you tap a field; every tap target is a thumb's width */
+    html.nf-phone :is(input:not([type=checkbox]):not([type=radio]):not([type=range]),select,textarea){font-size:16px !important;}
+    html.nf-phone #view-app :is(.row-action,.sl-link,.lg-link,.hm-go,.lnk):not(.nfo *){display:inline-flex;align-items:center;min-height:40px;padding-top:4px;padding-bottom:4px;}
+    html.nf-phone #view-app .btn{min-height:44px;}
+    html.nf-phone #view-app .switch{transform:scale(1.15);transform-origin:right center;margin:6px 4px;}
+    html.nf-phone #view-app input[type=checkbox], html.nf-phone #view-app input[type=radio]{width:22px;height:22px;}
+    html.nf-phone body{-webkit-text-size-adjust:100%;}
+    html.nf-phone #view-app .main{padding-left:16px !important;padding-right:16px !important;padding-bottom:calc(96px + env(safe-area-inset-bottom)) !important;}
+    /* page titles */
+    html.nf-phone #view-app .page-head h1{font-size:30px !important;line-height:1.12 !important;}
+    html.nf-phone #view-app .page-head p{font-size:16px !important;}
+    html.nf-phone #view-app .page-head{gap:12px !important;margin-bottom:16px !important;}
+    html.nf-phone #view-app .page-head > .btn, html.nf-phone #view-app .page-head > div > .btn{width:100%;justify-content:center;}
+    html.nf-phone #view-app .nf-steps{display:none !important;}
+    /* top bar */
+    html.nf-phone #view-app .topbar{gap:8px !important;padding:10px 12px !important;}
+    /* pop-ups: full screen, above the bottom bar */
+    html.nf-phone #orderDetailModal{z-index:1100 !important;padding:0 !important;align-items:stretch !important;}
+    html.nf-phone #orderDetailModal > div{width:100% !important;max-width:100% !important;max-height:none !important;height:var(--nf-vvh,100dvh) !important;border-radius:0 !important;padding:14px 16px calc(24px + env(safe-area-inset-bottom)) !important;overflow-y:auto;-webkit-overflow-scrolling:touch;}
+    html.nf-phone #orderDetailModal > div > div:first-child{position:sticky;top:-14px;z-index:5;background:#FFFFFF;margin:-14px -16px 6px !important;padding:10px 12px;justify-content:flex-end;}
+    html.nf-phone #orderDetailModal > div > div:first-child > span{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:#F1F4F7;opacity:1 !important;font-size:20px !important;}
+    html.nf-phone .share-modal-backdrop{align-items:flex-end !important;}
+    html.nf-phone .share-modal-backdrop > .share-modal{width:100% !important;max-width:100% !important;max-height:calc(var(--nf-vvh,100dvh) - 24px) !important;border-radius:22px 22px 0 0 !important;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:18px 16px calc(22px + env(safe-area-inset-bottom)) !important;}
+    html.nf-phone .share-modal .sl-sheet-h{position:sticky;top:-18px;background:#FFFFFF;z-index:3;margin:-18px -16px 8px;padding:16px 16px 10px;}
+    html.nf-phone .share-modal .sl-x{width:44px;height:44px;}
+    html.nf-phone .nfo-head{padding-right:0;}
+    html.nf-phone .nfo-next{padding:16px 14px;}
+    html.nf-phone .nfo-btns .btn{flex:1 1 100%;}
+
+    /* More: every feature, grouped, scrollable */
+    html.nf-phone #moreSheet.nfm:not(.hidden){max-height:calc(var(--nf-vvh,100dvh) - 40px);display:flex !important;flex-direction:column;padding:0 !important;border-radius:22px 22px 0 0;}
+    html.nf-phone #moreSheet .nfm-h{display:flex;justify-content:space-between;align-items:center;padding:14px 16px 10px;border-bottom:1px solid #EEF1F4;flex:none;}
+    html.nf-phone #moreSheet .nfm-h b{font-size:19px;font-weight:800;}
+    html.nf-phone #moreSheet .nfm-x{width:40px;height:40px;border-radius:50%;border:0;background:#F1F4F7;font-size:18px;font-weight:700;color:#1F2329;}
+    html.nf-phone #moreSheet .nfm-scroll{overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding:6px 14px calc(18px + env(safe-area-inset-bottom));}
+    html.nf-phone #moreSheet .nfm-grp h6{margin:14px 4px 8px;font-size:13.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:#344054;}
+    html.nf-phone #moreSheet .nfm-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;}
+    html.nf-phone #moreSheet .nfm-it{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:6px;padding:12px 4px 10px;min-height:84px;border:1px solid #E3E7EC;border-radius:16px;background:#FFFFFF;color:#0E1114;font-size:13.5px;font-weight:700;line-height:1.2;text-align:center;}
+    html.nf-phone #moreSheet .nfm-it svg{width:24px;height:24px;color:#1F6B45;flex:none;}
+    html.nf-phone #moreSheet .nfm-it.on{border-color:#1F6B45;background:#E8F5EE;}
+    html.nf-phone #moreSheet .nfm-it i{position:absolute;top:6px;right:6px;min-width:20px;height:20px;border-radius:999px;background:#DC2626;color:#FFFFFF;font-style:normal;font-size:12px;font-weight:800;display:grid;place-items:center;padding:0 5px;}
+    html.nf-phone #moreSheet .nfm-foot{margin-top:16px;} html.nf-phone #moreSheet .nfm-foot .more-sheet-row{display:flex;gap:8px;}
+    html.nf-sheet-open body{overflow:hidden;}
+
+    /* Chat list */
+    html.nf-phone #page-messages > .page-head p{display:none;}
+    html.nf-phone #page-messages > .page-head{flex-direction:row !important;align-items:center !important;justify-content:space-between !important;margin-bottom:10px !important;}
+    html.nf-phone #page-messages > .page-head > div:last-child{flex:none;}
+    html.nf-phone #page-messages #announceNavBtn{padding:8px 12px !important;font-size:14.5px !important;}
+    html.nf-phone #page-messages #msgInstallBtn{display:none !important;}
+    html.nf-phone #view-app .messages-shell{height:auto !important;min-height:0 !important;border-radius:18px;overflow:visible;}
+    html.nf-phone #view-app .msg-sidebar{overflow:visible !important;}
+    html.nf-phone #view-app .msg-search{position:sticky;top:0;z-index:4;}
+    html.nf-phone #view-app .msg-filter-chips{flex-wrap:nowrap !important;overflow-x:auto !important;}
+    html.nf-phone #view-app .conv-item{padding:12px 10px;min-height:72px;}
+    /* Chat thread: full screen like Viber */
+    html.nf-chat-open .bottom-nav{display:none !important;}
+    html.nf-chat-open body{overflow:hidden;}
+    html.nf-chat-open #view-app .msg-thread{position:fixed !important;left:0;right:0;top:var(--nf-vvt,0px);height:var(--nf-vvh,100dvh);z-index:1000;display:flex !important;flex-direction:column;background:#FFFFFF;}
+    html.nf-chat-open #view-app .msg-thread-head{flex:none;padding:8px 10px !important;min-height:60px !important;gap:8px !important;border-bottom:1px solid #E3E7EC;padding-top:calc(8px + env(safe-area-inset-top)) !important;}
+    html.nf-chat-open #view-app .msg-back-btn{display:grid !important;place-items:center;width:44px;height:44px;border-radius:50%;font-size:22px;flex:none;background:#F1F4F7;}
+    html.nf-chat-open #view-app #threadHeadInfo{flex-direction:row !important;align-items:center !important;gap:10px !important;min-width:0;}
+    html.nf-chat-open #view-app #threadHeadInfo .conv-avatar{width:40px !important;height:40px !important;flex:none;}
+    html.nf-chat-open #view-app #threadHeadInfo > div:last-child{min-width:0;}
+    html.nf-chat-open #view-app #threadHeadInfo > div:last-child > div:first-child{font-size:17px !important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    html.nf-chat-open #view-app .thread-presence{font-size:13.5px !important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    html.nf-chat-open #view-app .msg-thread-head .icon-btn{width:40px;height:40px;flex:none;}
+    html.nf-chat-open #view-app .msg-po-tabs{flex:none;padding:8px 10px !important;}
+    html.nf-chat-open #view-app #msgPoSummaryCard{flex:none;max-height:30vh;overflow:auto;}
+    html.nf-chat-open #view-app .msg-thread-body{flex:1 1 auto;min-height:0;overflow-y:auto !important;-webkit-overflow-scrolling:touch;padding:12px !important;}
+    html.nf-chat-open #view-app .msg-bubble-row{max-width:84% !important;}
+    html.nf-chat-open #view-app .msg-bubble{font-size:16px !important;}
+    html.nf-chat-open #view-app .msg-filter-bar{flex:none;flex-wrap:wrap;gap:8px;padding:8px 10px;}
+    html.nf-chat-open #view-app .msg-composer{flex:none;padding:8px 8px calc(8px + env(safe-area-inset-bottom)) !important;}
+    html.nf-chat-open #view-app .composer-row{gap:6px !important;align-items:flex-end;}
+    html.nf-chat-open #view-app .composer-attach-btn{width:42px !important;height:42px !important;}
+    html.nf-chat-open #view-app .composer-row .nf-take{display:none !important;}
+    html.nf-chat-open #view-app #msgInput{flex:1 1 auto !important;min-width:0 !important;width:auto !important;min-height:44px;max-height:120px;padding:10px 14px !important;}
+    html.nf-chat-open #view-app .msg-composer .btn-primary{height:44px;padding:0 16px !important;}
+
+    /* Home */
+    html.nf-phone #mhHome .hero h3{font-size:28px !important;line-height:1.15 !important;}
+    html.nf-phone #mhHome .hero p{font-size:15.5px !important;}
+    html.nf-phone #mhHome :is(.ob1,.ob2){grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:10px !important;}
+    html.nf-phone #mhHome .tile{display:grid !important;grid-template-columns:1fr !important;padding:12px 12px 14px !important;gap:4px !important;align-content:start;min-height:0 !important;}
+    html.nf-phone #mhHome .tile .ic{display:none !important;}
+    html.nf-phone #mhHome .tile .k{font-size:14.5px !important;white-space:normal !important;line-height:1.25 !important;}
+    html.nf-phone #mhHome .tile .v{font-size:23px !important;margin-top:2px !important;}
+    html.nf-phone #mhHome .tile .s{font-size:14px !important;line-height:1.3 !important;}
+    html.nf-phone #mhHome .tile .v .cpill{display:flex !important;width:100%;justify-content:space-between;align-items:baseline;gap:6px;padding:4px 10px !important;border-radius:10px !important;font-size:14px !important;box-sizing:border-box;}
+    html.nf-phone #mhHome .tile .v .cpill b{font-size:22px !important;}
+    html.nf-phone #mhHome .tile .tx{display:grid;gap:3px;min-width:0;}
+    /* What to do as three tabs */
+    html.nf-phone #mhHome .nfl-host{display:block !important;}
+    html.nf-phone #mhHome .nfl-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-bottom:10px;}
+    html.nf-phone #mhHome .nfl-tabs button{display:flex;justify-content:space-between;align-items:center;gap:6px;padding:10px 12px;min-height:46px;border-radius:14px;border:1.5px solid transparent;font-size:15px;font-weight:800;}
+    html.nf-phone #mhHome .nfl-tabs button.r{background:#FEE2E2;color:#B91C1C;} html.nf-phone #mhHome .nfl-tabs button.y{background:#FEF9C3;color:#1F2329;} html.nf-phone #mhHome .nfl-tabs button.g{background:#DCFCE7;color:#15803D;}
+    html.nf-phone #mhHome .nfl-tabs button.on{border-color:currentColor;box-shadow:0 2px 8px -4px rgba(0,0,0,.3);}
+    html.nf-phone #mhHome .nfl-host > .lane{display:none !important;}
+    html.nf-phone #mhHome .nfl-host > .lane.nfl-on{display:block !important;}
+    html.nf-phone #mhHome .nfl-host > .lane .lane-h{display:none !important;}
+    html.nf-phone #mhHome .lane .task{display:grid !important;grid-template-columns:minmax(0,1fr) auto;gap:6px 10px;align-items:center;padding:12px 14px !important;}
+    html.nf-phone #mhHome .lane .task h5{font-size:16px !important;line-height:1.3;}
+    html.nf-phone #mhHome .lane .task p{font-size:14.5px !important;}
+    html.nf-phone #mhHome .lane .task .btn{width:auto !important;min-height:40px;padding:8px 14px !important;font-size:15px !important;border-radius:999px !important;align-self:center;}
+    /* Where every order is */
+    html.nf-phone #mhHome .nfb{display:grid;gap:12px;}
+    html.nf-phone #mhHome .nfb-stages{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 6px;margin:0 -2px;scrollbar-width:none;scroll-snap-type:x proximity;}
+    html.nf-phone #mhHome .nfb-stages::-webkit-scrollbar{display:none;}
+    html.nf-phone #mhHome .nfb-stages button{flex:none;scroll-snap-align:start;display:grid;grid-template-columns:auto auto;grid-template-rows:auto auto;column-gap:8px;align-items:center;padding:8px 12px;min-height:56px;border-radius:14px;border:1.5px solid #DDE1E6;background:#FFFFFF;text-align:left;}
+    html.nf-phone #mhHome .nfb-stages em{grid-row:1 / span 2;width:26px;height:26px;border-radius:50%;background:#EEF1F4;font-style:normal;font-weight:800;font-size:14px;display:grid;place-items:center;}
+    html.nf-phone #mhHome .nfb-stages b{font-size:15px;font-weight:800;color:#0E1114;white-space:nowrap;} html.nf-phone #mhHome .nfb-stages span{font-size:14px;font-weight:700;color:#344054;}
+    html.nf-phone #mhHome .nfb-stages button.late em{background:#FEE2E2;color:#B91C1C;}
+    html.nf-phone #mhHome .nfb-stages button.on{border-color:#1F6B45;background:#E8F5EE;box-shadow:inset 0 0 0 1.5px #1F6B45;} html.nf-phone #mhHome .nfb-stages button.on em{background:#1F6B45;color:#FFFFFF;}
+    html.nf-phone #mhHome .nfb-desc{margin:0;font-size:15px;color:#1F2329;}
+    html.nf-phone #mhHome .nfb-side{display:grid;gap:8px;}
+    html.nf-phone #mhHome .nfb-sh{display:flex;align-items:center;gap:8px;font-size:16px;margin-top:4px;} html.nf-phone #mhHome .nfb-sh i{width:10px;height:10px;border-radius:50%;}
+    html.nf-phone #mhHome .nfb-sell .nfb-sh i{background:#2563EB;} html.nf-phone #mhHome .nfb-buy .nfb-sh i{background:#7C3AED;}
+    html.nf-phone #mhHome .nfb-sh b{font-weight:800;} html.nf-phone #mhHome .nfb-sh span{margin-left:auto;font-weight:800;background:#EEF1F4;border-radius:999px;padding:1px 9px;font-size:14px;}
+    html.nf-phone #mhHome .nfb-card{display:grid;grid-template-columns:minmax(0,1fr) auto 18px;grid-template-rows:auto auto;gap:3px 10px;align-items:center;text-align:left;width:100%;padding:12px 12px 12px 14px;border:1px solid #E3E7EC;border-left:5px solid #CBD5E1;border-radius:14px;background:#FFFFFF;}
+    html.nf-phone #mhHome .nfb-card.t-r{border-left-color:#DC2626;} html.nf-phone #mhHome .nfb-card.t-y{border-left-color:#FACC15;} html.nf-phone #mhHome .nfb-card.t-g{border-left-color:#16A34A;}
+    html.nf-phone #mhHome .nfb-n{font-size:16px;font-weight:800;color:#0E1114;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    html.nf-phone #mhHome .nfb-a{font-size:16px;font-weight:800;font-variant-numeric:tabular-nums;color:#0E1114;}
+    html.nf-phone #mhHome .nfb-s{grid-column:1 / 3;font-size:14.5px;font-weight:600;color:#1F2329;}
+    html.nf-phone #mhHome .nfb-card.t-r .nfb-s{color:#B91C1C;}
+    html.nf-phone #mhHome .nfb-go{grid-row:1 / span 2;grid-column:3;font-size:22px;color:#98A2B3;}
+    html.nf-phone #mhHome .nfb-none{font-size:15px;color:#344054;padding:10px 12px;background:#F8FAFC;border-radius:12px;}
+    html.nf-phone #mhHome .legend{display:none !important;}
+
+    /* tables become cards */
+    html.nf-phone table.nf-cardtable{display:block;width:100% !important;min-width:0 !important;border:0 !important;background:transparent !important;}
+    html.nf-phone table.nf-cardtable thead{display:none !important;}
+    html.nf-phone table.nf-cardtable tbody{display:grid;gap:10px;}
+    html.nf-phone table.nf-cardtable tr{display:grid !important;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 12px;padding:12px 14px;border:1px solid #E3E7EC !important;border-radius:14px;background:#FFFFFF;box-shadow:none !important;}
+    html.nf-phone table.nf-cardtable td{display:flex !important;flex-direction:column;align-items:flex-start;gap:2px;padding:0 !important;border:0 !important;text-align:left !important;font-size:15.5px !important;min-width:0;background:transparent !important;box-shadow:none !important;}
+    html.nf-phone table.nf-cardtable td::before{content:attr(data-label);font-size:13px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#475467;}
+    html.nf-phone table.nf-cardtable td:first-child{grid-column:1 / -1;font-size:17px !important;font-weight:800;}
+    html.nf-phone table.nf-cardtable td:first-child::before{display:none;}
+    html.nf-phone table.nf-cardtable td[data-label=""]::before{display:none;}
+    html.nf-phone table.nf-cardtable td.nf-span{grid-column:1 / -1;}
+    html.nf-phone table.nf-cardtable td:last-child:has(> :is(.btn,.row-action,.ord-view)){grid-column:1 / -1;flex-direction:row;flex-wrap:wrap;gap:8px;}
+    html.nf-phone table.nf-cardtable td > :is(.status-pill,.ord-view,.ord-qty){margin:0 !important;}
+    html.nf-phone table.nf-cardtable tr.inv-expand-row{display:block !important;padding:0;border:0 !important;} html.nf-phone table.nf-cardtable tr.inv-expand-row td{display:block !important;}
+    html.nf-phone table.nf-cardtable tfoot{display:block;} html.nf-phone table.nf-cardtable tfoot tr{display:flex !important;justify-content:space-between;}
+    html.nf-phone :is(.lg-tbl-wrap,.orders-table-scroll,.table-scroll){overflow:visible !important;border:0 !important;background:transparent !important;box-shadow:none !important;}
+    html.nf-phone #view-app #page-profit .bk-num{width:100%;}
+    /* two-sided pages: tighter */
+    html.nf-phone #view-app .nf-half-h b{font-size:19px;} html.nf-phone #view-app .nf-half-h small{flex-basis:100%;font-size:14.5px;}
+    html.nf-phone #view-app .nf-half-h .btn{margin-left:0;}
+    html.nf-phone #view-app .nf-tabcards{grid-template-columns:repeat(2,minmax(0,1fr)) !important;}
+    html.nf-phone #view-app .nf-tabcards > :is(button,.team-tab){min-height:64px;padding:10px 12px !important;font-size:15.5px !important;}
+    html.nf-phone #view-app .nf-tabcards .nf-tab-d{font-size:13.5px;}
+    /* lists and rows */
+    html.nf-phone #view-app .bk-row{flex-wrap:wrap;gap:6px 10px;}
+    html.nf-phone #view-app .bk-row :is(.bk-row-a,.bk-actions){width:100%;justify-content:flex-start;}
+    html.nf-phone #view-app .lg-card-g{grid-template-columns:1fr !important;gap:2px !important;}
+    html.nf-phone #view-app .lg-card-g > span{margin-top:6px;}
+    html.nf-phone #view-app .lg-card-h{flex-wrap:wrap;gap:6px;}
+    html.nf-phone #view-app .lg-card-h b{font-size:18px !important;flex-basis:100%;}
+    html.nf-phone #view-app :is(.toolbar,.adm-actions,.bk-toolbar){flex-wrap:wrap;gap:8px;}
+    html.nf-phone #view-app :is(.row-2,.expand-grid){grid-template-columns:1fr !important;}
+  }
+  @media (max-width:760px){
+    html.nf-chat-open #view-app #threadHeadInfo{flex-wrap:nowrap !important;flex:1 1 auto !important;}
+    html.nf-chat-open #view-app #threadHeadInfo > div:last-child{flex:1 1 auto;}
+    html.nf-chat-open #view-app .msg-thread-head{flex-wrap:nowrap !important;}
+    html.nf-phone #view-app .nf-cardtable td :is(.row-action,.sl-link){padding-left:10px;padding-right:10px;border:1.5px solid #D5DBE2;border-radius:999px;background:#FFFFFF;}
+    html.nf-phone #view-app :is(.bk-row,.sl-row) :is(.sl-link,.row-action,.lg-link){min-width:44px;justify-content:center;}
+    html.nf-phone #view-app #page-cashcount input{min-height:44px;}
+    html.nf-phone #view-app .team-task-check{width:36px !important;height:36px !important;}
+    html.nf-phone #view-app .team-task-row button[onclick*="delete"], html.nf-phone #view-app .team-task-row .task-del{min-width:40px;min-height:40px;}
+  }
+  @media (max-width:760px){
+    html.nf-phone #mhHome .mosaic{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:10px !important;}
+    html.nf-phone #mhHome .mosaic .tile{grid-column:auto !important;grid-row:auto !important;}
+    html.nf-phone #mhHome .mosaic .tile:has(.cpill){grid-column:1 / -1 !important;}
+    html.nf-phone #mhHome .nfl-tabs button{font-size:14.5px;padding:8px 10px;} html.nf-phone #mhHome .nfl-tabs button span{background:rgba(255,255,255,.75);border-radius:999px;padding:1px 8px;font-size:14px;}
+  }
+  @media (max-width:760px){
+    html.nf-phone #mhHome .mosaic .tile:has(.cpill){order:-1;}
+    html.nf-phone #mhHome .hero h3{font-size:26px !important;}
+  }
+  @media (max-width:760px){
+    /* summary tiles: always two per row on a phone */
+    html.nf-phone #view-app :is(.bk-tiles,.bk-tiles.lg-tiles,.sl-tiles,.sl-tiles.four,.cq-tiles,.stat-row){grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:10px !important;}
+    html.nf-phone #view-app :is(.bk-tile,.sl-tile,.cq-tile){padding:12px 12px !important;}
+    html.nf-phone #view-app :is(.bk-tile-l,.sl-tile > small,.cq-tile-l){font-size:14.5px !important;line-height:1.25 !important;}
+    html.nf-phone #view-app :is(.bk-tile-s,.sl-tile > span,.cq-tile-n){font-size:14px !important;line-height:1.3 !important;}
+    html.nf-phone #view-app .stat-card{padding:12px !important;} html.nf-phone #view-app .stat-card .stat-icon-panel{display:none !important;}
+    /* day pickers scroll sideways instead of stacking five rows */
+    html.nf-phone #view-app .bk-daybar{display:flex !important;flex-wrap:nowrap !important;overflow-x:auto !important;scrollbar-width:none;gap:8px !important;padding-bottom:4px;}
+    html.nf-phone #view-app .bk-daybar::-webkit-scrollbar{display:none;}
+    html.nf-phone #view-app .bk-daybar > *{flex:none !important;}
+    /* inventory action buttons: one tidy row */
+    html.nf-phone #view-app #page-inventory .page-head{display:grid !important;grid-template-columns:1fr 1fr;}
+    html.nf-phone #view-app #page-inventory .page-head > div:first-child{grid-column:1 / -1;}
+    html.nf-phone #view-app #page-inventory .page-head > .btn{width:100%;}
+  }
+  @media (max-width:760px){
+    /* list rows with buttons: text on top, buttons underneath */
+    html.nf-phone #view-app .adm-row{flex-wrap:wrap !important;gap:8px 10px !important;padding:12px 4px !important;}
+    html.nf-phone #view-app .adm-row > div:first-child{flex:1 1 100% !important;}
+    html.nf-phone #view-app .adm-row > :is(.btn,button,.adm-sub){flex:0 0 auto;}
+    html.nf-phone #view-app .nf-col em, html.nf-phone #view-app .nf-col b{white-space:nowrap;}
+    html.nf-phone #view-app .nf-chart{gap:4px;}
+  }
+  html[data-ty] .nfo{grid-template-columns:minmax(0,1fr);}
+  html[data-ty] .nfo-prog{display:none;}
+  @media (max-width:760px){
+    html.nf-phone #view-app :is(input:not([type=checkbox]):not([type=radio]):not([type=range]),select,textarea), html.nf-phone body :is(.share-modal,#orderDetailModal) :is(input:not([type=checkbox]):not([type=radio]):not([type=range]),select,textarea){font-size:16px !important;}
+    html.nf-phone .nfo-steps{display:none !important;}
+    html.nf-phone .nfo-prog{display:grid;grid-template-columns:1fr auto;gap:6px 10px;align-items:baseline;}
+    html.nf-phone .nfo-prog b{font-size:17px;font-weight:800;color:#0E1114;} html.nf-phone .nfo-prog span{font-size:14.5px;font-weight:600;color:#344054;}
+    html.nf-phone .nfo-prog i{grid-column:1 / -1;height:10px;border-radius:999px;background:#EEF1F4;overflow:hidden;} html.nf-phone .nfo-prog u{display:block;height:100%;background:#16A34A;border-radius:999px;}
+    html.nf-phone .nfo-h-m h3{font-size:20px;overflow-wrap:anywhere;}
+    html.nf-phone .nfo-h-m small, html.nf-phone .nfo-h-m span{font-size:14.5px;}
+    html.nf-phone .nfo-head .nf-av{width:48px;height:48px;}
+    html.nf-phone .nfo-slot .expand-grid{grid-template-columns:1fr !important;}
+    html.nf-phone .nfo *{max-width:100%;box-sizing:border-box;}
+  }
+  html[data-ty] :is(.nfo-next,.nfo-items,.nfo-photos){grid-template-columns:minmax(0,1fr);min-width:0;}
+  html[data-ty] .nfo-slot{min-width:0;overflow-wrap:anywhere;}
+  @media (max-width:760px){
+    html.nf-phone .nfo-slot input[type=file]{width:100%;font-size:15px !important;}
+    html.nf-phone .nfo-slot :is(div,label){min-width:0 !important;}
+    html.nf-phone .nfo-slot .nf-take{width:100%;justify-content:center;margin:0 0 8px !important;min-height:46px;}
+  }
+  @media (max-width:760px){
+    html.nf-phone #mhHome .mosaic:has(> .tile:nth-child(8):last-child) > .tile:last-child{grid-column:1 / -1 !important;}
+    html.nf-phone #mhHome .nfb-stages{mask-image:linear-gradient(90deg,#000 88%,transparent);-webkit-mask-image:linear-gradient(90deg,#000 88%,transparent);}
+  }
+
+/* ===== Round 9 css end ===== */
   .settings-card:empty{display:none;}
   #supplierChips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;} #supplierChips .chip{flex-shrink:0;}
 </style>
@@ -23800,6 +24052,7 @@ function nfOrderSheetHtml(o, sell, legacy){
     <div class="nfo-head"><span class="nf-av"></span><div class="nfo-h-m"><small>${escapeHtml(o.poNumber)} · ${sell ? 'Customer order' : 'Order to a supplier'}</small><h3>${escapeHtml(who)}</h3>
       <span>${bkPeso(total)} · ${sell ? 'deliver by' : 'arrives by'} ${escapeHtml(rd)}</span></div>${sell ? renderSupplierActionPill(o) : renderBuyerActionPill(o)}</div>
     <ol class="nfo-steps">${NF_STAGE_NAMES.map((n, i) => `<li class="${i < st ? 'done' : i === st ? 'now' : ''}"><i>${i < st ? '✓' : i + 1}</i><span>${n}</span></li>`).join('')}</ol>
+    <div class="nfo-prog"><b>Step ${st + 1} of ${NF_STAGE_NAMES.length} · ${NF_STAGE_NAMES[st]}</b><span>${st < NF_STAGE_NAMES.length - 1 ? 'Next: ' + NF_STAGE_NAMES[st + 1] : 'All done'}</span><i><u style="width:${Math.round((st + 1) / NF_STAGE_NAMES.length * 100)}%"></u></i></div>
     <section class="nfo-next t-${nx.tone || 'g'}"><h4>${escapeHtml(nx.title || '')}</h4>${nx.text ? `<p>${escapeHtml(nx.text)}</p>` : ''}
       <div class="nfo-slot" id="nfoSlot"></div>
       ${nx.btns ? `<div class="nfo-btns">${nx.btns.map(btn).join('')}</div>` : ''}
@@ -23821,7 +24074,8 @@ function nfRunInline(js){
   const oid = currentModalOrderId || '';
   const opened = [...legacy.querySelectorAll('[id]')].filter(e => (before.get(e) || 0) === 0 && e.innerHTML.trim().length > 20);
   const moved = opened.find(e => oid && e.id.endsWith('_' + oid)) || opened.find(e => oid && e.id.includes(oid)) || opened[0];
-  if(moved){ slot.innerHTML = ''; slot.appendChild(moved); nfEnhanceForm(slot); setTimeout(() => { const f = slot.querySelector('input:not([type=hidden]):not([type=file]), select, textarea'); if(f && window.innerWidth > 760) f.focus({preventScroll: true}); }, 50); }
+  if(moved){ slot.innerHTML = ''; slot.appendChild(moved); nfEnhanceForm(slot);
+    const po = getPO(oid); slot.querySelectorAll('input[type=date]').forEach(i => { if(i.value) return; i.value = /eta|arriv/i.test(i.id) ? (po && po.requestedDeliveryDate && po.requestedDeliveryDate >= APP_TODAY ? po.requestedDeliveryDate.slice(0, 10) : addDaysIso(APP_TODAY, 1)) : APP_TODAY; }); setTimeout(() => { const f = slot.querySelector('input:not([type=hidden]):not([type=file]), select, textarea'); if(f && window.innerWidth > 760) f.focus({preventScroll: true}); }, 50); }
 }
 function nfRenderOrderSheet(o, sell){
   const body = document.getElementById('orderDetailModalBody'); if(!body) return;
@@ -24042,6 +24296,250 @@ function nfCut(){
 (function(){ let raf = 0; const run = () => { raf = 0; try{ nfTabCards(); nfCut(); }catch(e){} };
   const start = () => { new MutationObserver(() => { if(!raf) raf = requestAnimationFrame(run); }).observe(document.getElementById('view-app') || document.body, {childList: true, subtree: true}); run(); };
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start(); })();
+
+/* ===== Round 9: photos are proof, saved in the database =====
+   Order photos (shipped, delivered, received, payment, damage) go to the private "order-photos"
+   store and the order_photos table. Both sides of the order, and their teams, can see them on any
+   device; nobody can edit or delete them. Profile pictures go to "avatars" + profile_photos.
+   The demo keeps its photos on the device. */
+const NF_OP_DEMO = 'nifti-order-photos-demo-v1';
+const NF_OP_KINDS = [['shipped', 'Shipped'], ['delivered', 'Delivered'], ['received', 'Received'], ['payment', 'Payment'], ['damage', 'Damage'], ['other', 'Other']];
+const NFOP = {cache: {}, loading: {}};
+function nfLive(){ return typeof myBusiness !== 'undefined' && !!myBusiness; }
+function nfOpKindFor(o, sell){
+  if(!o) return 'other';
+  if(o.invoice && o.invoice.status !== 'paid') return 'payment';
+  if(o.status === 'preparing' || o.status === 'confirmed') return 'shipped';
+  if(o.status === 'shipped' || o.status === 'in_customs') return sell ? 'delivered' : 'received';
+  if(['delivered', 'partially_delivered'].includes(o.status)) return sell ? 'delivered' : 'received';
+  return 'other';
+}
+function nfOpDemoStore(){ try{ return JSON.parse(localStorage.getItem(NF_OP_DEMO) || '{}'); }catch(e){ return {}; } }
+function nfShrink(dataUrl, max, q){ return new Promise(res => { const img = new Image(); img.onload = () => { const k = Math.min(1, max / Math.max(img.width, img.height)); const c = document.createElement('canvas'); c.width = Math.round(img.width * k); c.height = Math.round(img.height * k); c.getContext('2d').drawImage(img, 0, 0, c.width, c.height); res(c.toDataURL('image/jpeg', q || 0.82)); }; img.onerror = () => res(dataUrl); img.src = dataUrl; }); }
+function nfBlob(dataUrl){ const [h, b] = dataUrl.split(','), bin = atob(b), u = new Uint8Array(bin.length); for(let i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i); return new Blob([u], {type: (h.match(/:(.*?);/) || [])[1] || 'image/jpeg'}); }
+function nfUuid(){ return (crypto && crypto.randomUUID) ? crypto.randomUUID() : 'p' + Date.now() + Math.random().toString(36).slice(2); }
+async function nfOpList(poId, force){
+  if(NFOP.cache[poId] && !force) return NFOP.cache[poId];
+  if(!nfLive()){ try{ nfDemoOrderPhotos(); }catch(e){} NFOP.cache[poId] = (nfOpDemoStore()[poId] || []).slice(); return NFOP.cache[poId]; }
+  const { data, error } = await sb.from('order_photos').select('*').eq('po_id', poId).order('created_at', {ascending: true});
+  if(error){ console.warn(error); return NFOP.cache[poId] = []; }
+  const rows = data || []; let urls = [];
+  if(rows.length){ const r = await sb.storage.from('order-photos').createSignedUrls(rows.map(x => x.path), 3600); urls = (r.data || []); }
+  NFOP.cache[poId] = rows.map((x, i) => ({id: x.id, kind: x.kind, url: (urls[i] && urls[i].signedUrl) || '', by: x.taken_by_name || '', at: x.created_at, caption: x.caption || '', mine: x.business_id === myBusiness.id}));
+  return NFOP.cache[poId];
+}
+async function nfOpAdd(poId, kind, dataUrl, caption){
+  const by = (typeof bkMe === 'function' ? bkMe() : '') || 'Someone';
+  if(!nfLive()){
+    const small = await nfShrink(dataUrl, 900, 0.72), s = nfOpDemoStore(); (s[poId] = s[poId] || []).push({id: nfUuid(), kind, url: small, by, at: new Date().toISOString(), caption: caption || '', mine: true});
+    try{ localStorage.setItem(NF_OP_DEMO, JSON.stringify(s)); }catch(e){ showToast('This device is out of space for demo photos. Remove a few and try again.', 'error'); return false; }
+    NFOP.cache[poId] = s[poId].slice(); return true;
+  }
+  const big = await nfShrink(dataUrl, 1600, 0.82), path = `${poId}/${nfUuid()}.jpg`;
+  const up = await sb.storage.from('order-photos').upload(path, nfBlob(big), {contentType: 'image/jpeg', upsert: false});
+  if(up.error){ showToast("Couldn't save the photo: " + up.error.message, 'error'); return false; }
+  const ins = await sb.from('order_photos').insert({po_id: poId, business_id: myBusiness.id, kind, path, caption: caption || null, taken_by_name: by, created_by: (await sb.auth.getUser()).data.user.id});
+  if(ins.error){ showToast("Couldn't save the photo: " + ins.error.message, 'error'); return false; }
+  await nfOpList(poId, true); return true;
+}
+// the "Proof photos" card inside the order sheet
+function nfOpCardHtml(o, sell){
+  const k = nfOpKindFor(o, sell);
+  return `<section class="nfo-photos" id="nfoPhotos" data-po="${o.id}"><div class="nfo-sec">Proof photos <small>Both sides can see these. They can't be changed or deleted.</small></div>
+    <div class="nf-op-grid" id="nfOpGrid"><div class="nf-op-empty">Loading photos…</div></div>
+    <div class="nf-op-kind" id="nfOpKind">${NF_OP_KINDS.filter(x => sell ? x[0] !== 'received' : x[0] !== 'shipped').map(([v, l]) => `<button type="button" class="${v === k ? 'on' : ''}" data-v="${v}">${l}</button>`).join('')}</div>
+    <div class="nf-op-acts"><button type="button" class="btn btn-primary" onclick="nfOpShoot()"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 4h-5L7.5 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3.5z"/><circle cx="12" cy="13" r="3.5"/></svg>Take a photo</button>
+      <label class="btn btn-outline">Upload a photo<input type="file" accept="image/*" hidden data-nf-cam="1" data-nf-own="1" onchange="nfOpPick(this)"></label></div></section>`;
+}
+function nfOpKindNow(){ const b = document.querySelector('#nfOpKind button.on'); return b ? b.dataset.v : 'other'; }
+document.addEventListener('click', e => { const b = e.target.closest && e.target.closest('#nfOpKind button'); if(!b) return; b.parentElement.querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b)); });
+async function nfOpRenderGrid(poId){
+  const grid = document.getElementById('nfOpGrid'); if(!grid) return;
+  const list = await nfOpList(poId); const g = document.getElementById('nfOpGrid'); if(!g) return;
+  const lbl = Object.fromEntries(NF_OP_KINDS);
+  g.innerHTML = list.length ? list.map((p, i) => `<button type="button" class="nf-op-th" onclick="nfOpView('${poId}', ${i})"><img alt="${escapeHtml(lbl[p.kind] || 'Photo')} photo" src="${p.url}"><span>${escapeHtml(lbl[p.kind] || 'Photo')}</span></button>`).join('')
+    : '<div class="nf-op-empty">No photos yet. A photo of the signed receipt or the payment slip settles any question later.</div>';
+}
+function nfOpView(poId, i){
+  const p = (NFOP.cache[poId] || [])[i]; if(!p) return; const lbl = Object.fromEntries(NF_OP_KINDS);
+  slModal('nfOpView', `<div class="sl-sheet-h"><b>${escapeHtml(lbl[p.kind] || 'Photo')} photo</b><button class="sl-x" onclick="slClose('nfOpView')">✕</button></div>
+    <div class="nf-ok-img"><img alt="" src="${p.url}"></div><div class="sl-sub">${p.by ? 'By ' + escapeHtml(p.by) + ' · ' : ''}${new Date(p.at).toLocaleString('en-PH', {month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit'})}${p.caption ? ' · ' + escapeHtml(p.caption) : ''}</div>`);
+}
+async function nfOpSave(data){
+  const id = currentModalOrderId; if(!id) return; const grid = document.getElementById('nfOpGrid'); if(grid) grid.insertAdjacentHTML('afterbegin', '<div class="nf-op-empty">Saving…</div>');
+  if(await nfOpAdd(id, nfOpKindNow(), data)){ showToast('Photo saved to this order. Both sides can see it.', 'success'); nfOpRenderGrid(id); }
+  else nfOpRenderGrid(id);
+}
+function nfOpShoot(){ nfTakePhoto(nfOpSave, {title: 'Photo for this order'}); }
+function nfOpPick(inp){ nfPickFile(inp, nfOpSave); }
+// a photo attached inside any order form (waybill, delivery, payment slip) is also kept as proof
+document.addEventListener('change', e => {
+  const inp = e.target; if(!inp || inp.type !== 'file' || inp.dataset.nfOwn === '1' || !inp.closest || !inp.closest('#orderDetailModal')) return;
+  const f = inp.files && inp.files[0]; if(!f || !/^image\//.test(f.type)) return; const id = currentModalOrderId; if(!id) return;
+  const o = getPO(id); const kind = nfOpKindFor(o, sideOfPo(o) === 'supplier');
+  const r = new FileReader(); r.onload = () => nfOpAdd(id, kind, r.result).then(ok => { if(ok) nfOpRenderGrid(id); }); r.readAsDataURL(f);
+}, true);
+// demo: a signed delivery receipt and a GCash slip, drawn on the spot so the demo has real proof to open
+function nfDemoReceipt(kind, who, amount){
+  const c = document.createElement('canvas'); c.width = 600; c.height = 760; const x = c.getContext('2d');
+  x.fillStyle = '#E9E4DA'; x.fillRect(0, 0, 600, 760); x.save(); x.translate(300, 380); x.rotate(-0.03); x.fillStyle = '#FFFFFF'; x.shadowColor = 'rgba(0,0,0,.25)'; x.shadowBlur = 18; x.fillRect(-240, -330, 480, 660); x.restore();
+  x.fillStyle = '#1F2329'; x.font = 'bold 30px sans-serif'; x.fillText(kind === 'payment' ? 'GCash' : 'DELIVERY RECEIPT', 90, 120);
+  x.font = '22px sans-serif'; x.fillText(kind === 'payment' ? 'Sent to ' + who : 'Delivered to ' + who, 90, 170); x.fillText('Amount: ₱' + Number(amount).toLocaleString('en-US'), 90, 210); x.fillText('Date: ' + stmtDate(APP_TODAY), 90, 250);
+  for(let i = 0; i < 6; i++){ x.fillStyle = '#D5DBE2'; x.fillRect(90, 300 + i * 34, 420 - (i % 3) * 60, 12); }
+  x.strokeStyle = '#1E3A8A'; x.lineWidth = 3; x.beginPath(); x.moveTo(110, 600); x.bezierCurveTo(160, 540, 200, 650, 250, 590); x.bezierCurveTo(290, 550, 320, 640, 380, 585); x.stroke();
+  x.fillStyle = '#1F2329'; x.font = '18px sans-serif'; x.fillText(kind === 'payment' ? 'Ref no. 5521 0087 113' : 'Received in good condition', 90, 650);
+  return c.toDataURL('image/jpeg', 0.6);
+}
+function nfDemoOrderPhotos(){
+  if(nfLive() || window._nfOpSeeded) return; window._nfOpSeeded = true; const s = nfOpDemoStore(); let changed = false;
+  const add = (po, kind, who, by) => { const o = getPO(po); if(!o || (s[po] && s[po].length)) return; s[po] = [{id: nfUuid(), kind, url: nfDemoReceipt(kind, who, poTotal(o)), by, at: addDaysIso(APP_TODAY, -2) + 'T03:20:00Z', caption: '', mine: kind !== 'payment'}]; changed = true; };
+  add('po12', 'delivered', 'Cavite Steel Works', 'Mark Santos'); add('po3', 'payment', 'Quezon Produce Traders', 'Liza Santos');
+  if(changed) try{ localStorage.setItem(NF_OP_DEMO, JSON.stringify(s)); }catch(e){}
+}
+// the order sheet gets the photos card
+(function(){ const f = window.nfOrderSheetHtml; if(typeof f !== 'function' || f._nf9) return;
+  const w = function(o, sell, legacy){ const h = f.apply(this, arguments); return h.replace('<section class="nfo-items">', nfOpCardHtml(o, sell) + '<section class="nfo-items">'); };
+  w._nf9 = true; window.nfOrderSheetHtml = w;
+  const r = window.nfRenderOrderSheet; if(typeof r !== 'function' || r._nf9) return;
+  const w2 = function(o, sell){ const out = r.apply(this, arguments); try{ nfDemoOrderPhotos(); }catch(e){} setTimeout(() => nfOpRenderGrid(o.id), 0); return out; };
+  w2._nf9 = true; window.nfRenderOrderSheet = w2;
+})();
+
+/* ---------- profile pictures, synced through the database ---------- */
+const NF_REMOTE_AV = {};
+function nfSubjectFor(name){
+  if(!nfLive()) return null; const k = nfAvKey(name);
+  if(nfAvKey(myBusiness.name) === k) return ['business', myBusiness.id];
+  const tm = (typeof teamMembers !== 'undefined' ? teamMembers : []).concat(typeof supplierTeamMembers !== 'undefined' ? supplierTeamMembers : []).find(t => nfAvKey(t.name) === k);
+  if(tm) return ['member', String(tm.id)];
+  const p = buyersData.concat(suppliersData).find(s => nfAvKey(s.name) === k);
+  if(p) return [p.isOutside ? 'contact' : 'business', String(p.id)];
+  return ['contact', k];
+}
+async function nfAvUpload(name, dataUrl){
+  const subj = nfSubjectFor(name); if(!subj) return;
+  const path = `${myBusiness.id}/${nfUuid()}.jpg`;
+  const up = await sb.storage.from('avatars').upload(path, nfBlob(dataUrl), {contentType: 'image/jpeg', upsert: false});
+  if(up.error){ showToast("Photo kept on this phone only: " + up.error.message, 'error'); return; }
+  // a partner's own business photo belongs to them: you can only set a private one for your list
+  const type = subj[0] === 'business' && subj[1] !== myBusiness.id ? 'contact' : subj[0];
+  const { error } = await sb.from('profile_photos').upsert({owner_business_id: myBusiness.id, subject_type: type, subject_key: subj[1], path, updated_at: new Date().toISOString()}, {onConflict: 'owner_business_id,subject_type,subject_key'});
+  if(error) showToast("Photo kept on this phone only: " + error.message, 'error');
+  else NF_REMOTE_AV[nfAvKey(name)] = sb.storage.from('avatars').getPublicUrl(path).data.publicUrl;
+}
+async function nfAvLoadRemote(){
+  if(!nfLive()) return;
+  const { data, error } = await sb.from('profile_photos').select('owner_business_id, subject_type, subject_key, path, updated_at').order('updated_at', {ascending: true}); if(error || !data) return;
+  const nameOf = (type, key) => { if(type === 'business' && key === myBusiness.id) return myBusiness.name;
+    if(type === 'member'){ const tm = (teamMembers || []).concat(supplierTeamMembers || []).find(t => String(t.id) === key); return tm && tm.name; }
+    const p = buyersData.concat(suppliersData).find(s => String(s.id) === key); return p ? p.name : (type === 'contact' ? key : null); };
+  data.forEach(r => { const n = nameOf(r.subject_type, r.subject_key); if(!n) return; const k = nfAvKey(n);
+    // your own choice for a contact wins over their business photo
+    if(r.subject_type === 'business' && NF_REMOTE_AV[k] && NF_REMOTE_AV[k]._own) return;
+    const u = new String(sb.storage.from('avatars').getPublicUrl(r.path).data.publicUrl); if(r.owner_business_id === myBusiness.id && r.subject_type === 'contact') u._own = true; NF_REMOTE_AV[k] = u; });
+  try{ document.querySelectorAll('[data-nfav]').forEach(e => delete e.dataset.nfav); nfAvatars(); }catch(e){}
+}
+(function(){
+  const f = window.nfPhotoFor; if(typeof f === 'function' && !f._nf9){ const w = function(name){ const k = nfAvKey(name); const loc = nfAvStore()[k]; if(loc) return loc; const r = NF_REMOTE_AV[k]; return r ? String(r) : f.apply(this, arguments); }; w._nf9 = true; window.nfPhotoFor = w; }
+  const s = window.nfAvSet; if(typeof s === 'function' && !s._nf9){ const w = function(name, dataUrl){ const out = s.apply(this, arguments); if(nfLive()) nfSquare(dataUrl, 320, sq => nfAvUpload(name, sq)); return out; }; w._nf9 = true; window.nfAvSet = w; }
+  let tries = 0; const t = setInterval(() => { tries++; if(nfLive() && (buyersData.length || suppliersData.length || tries > 20)){ clearInterval(t); nfAvLoadRemote(); } else if(tries > 40) clearInterval(t); }, 1500);
+})();
+
+/* ===== Round 9: built for phones =====
+   On a phone (760px wide or less) the app changes shape, not just size:
+   - More: every feature in one scrollable sheet, grouped like the desktop menu.
+   - Chat: a full-screen conversation like Viber, with the message box always above the keyboard.
+   - Home: the order board becomes stage tabs and simple cards; "What to do" becomes three tabs.
+   - Tables become cards; pop-ups open full screen above the bottom bar; nothing zooms. */
+const NF_PHONE = window.matchMedia('(max-width: 760px)');
+function nfIsPhone(){ return NF_PHONE.matches; }
+function nfPhoneClass(){ document.documentElement.classList.toggle('nf-phone', nfIsPhone()); }
+nfPhoneClass(); try{ NF_PHONE.addEventListener('change', () => { nfPhoneClass(); try{ if(typeof homeIsActive === 'function' && homeIsActive()) renderMistHome(); }catch(e){} }); }catch(e){}
+// keep fixed screens (chat, sheets) sized to the visible area when the keyboard opens
+function nfViewport(){ const v = window.visualViewport; const h = v ? v.height : innerHeight, top = v ? v.offsetTop : 0;
+  document.documentElement.style.setProperty('--nf-vvh', h + 'px'); document.documentElement.style.setProperty('--nf-vvt', top + 'px'); }
+nfViewport(); if(window.visualViewport){ visualViewport.addEventListener('resize', nfViewport); visualViewport.addEventListener('scroll', nfViewport); } window.addEventListener('resize', nfViewport);
+
+/* ---------- More: all features, grouped, scrollable ---------- */
+function nfMoreSheetHtml(){
+  const groups = [...document.querySelectorAll('.sidebar .nav-group')];
+  const out = []; let first = true;
+  groups.forEach(g => {
+    const head = g.querySelector('.heading'); const name = head ? (head.childNodes[0] && head.childNodes[0].textContent || head.textContent).replace(/[▾▸]/g, '').trim() : (first ? 'Every day' : 'Account'); first = false;
+    const items = [...g.querySelectorAll('.nav-item[data-page]')].filter(i => !['admin', 'growth'].includes(i.dataset.page) && !i.classList.contains('owner-only'));
+    if(!items.length) return;
+    out.push(`<section class="nfm-grp"><h6>${escapeHtml(name)}</h6><div class="nfm-grid">${items.map(i => { const svg = i.querySelector('svg'), label = (i.querySelector('span') || i).textContent.replace(/\d+$/, '').trim(), badge = i.querySelector('.nav-badge');
+      const page = i.dataset.page, on = document.getElementById('page-' + page) && document.getElementById('page-' + page).classList.contains('active');
+      return `<button type="button" class="nfm-it${on ? ' on' : ''}" data-nav="${escapeHtml(page)}" data-label="${escapeHtml(label)}">${svg ? svg.outerHTML : ''}<span>${escapeHtml(label)}</span>${badge && badge.textContent.trim() && getComputedStyle(badge).display !== 'none' ? `<i>${escapeHtml(badge.textContent.trim())}</i>` : ''}</button>`; }).join('')}</div></section>`);
+  });
+  return `<div class="nfm-h"><b>Everything in Nifti</b><button type="button" class="nfm-x" aria-label="Close" onclick="closeMoreSheet()">✕</button></div><div class="nfm-scroll">${out.join('')}
+    <div class="nfm-foot">${window._nfMoreRow || ''}</div></div>`;
+}
+(function(){ const f = window.openMoreSheet; if(typeof f !== 'function' || f._nf9) return;
+  const w = function(){ const s0 = document.getElementById('moreSheet'); if(s0 && !window._nfMoreRow){ const row = s0.querySelector('.more-sheet-row'); window._nfMoreRow = row ? row.outerHTML : ''; }
+    const r = f.apply(this, arguments); const s = document.getElementById('moreSheet'); if(s){ s.classList.add('nfm'); s.innerHTML = nfMoreSheetHtml(); document.documentElement.classList.add('nf-sheet-open'); } return r; };
+  w._nf9 = true; window.openMoreSheet = w;
+  const c = window.closeMoreSheet; if(typeof c === 'function' && !c._nf9){ const w2 = function(){ document.documentElement.classList.remove('nf-sheet-open'); return c.apply(this, arguments); }; w2._nf9 = true; window.closeMoreSheet = w2; }
+})();
+document.addEventListener('click', e => { const b = e.target.closest && e.target.closest('#moreSheet [data-nav]'); if(!b) return;
+  const page = b.dataset.nav, label = b.dataset.label; closeMoreSheet();
+  const item = [...document.querySelectorAll('.sidebar .nav-item[data-page="' + page + '"]')].find(i => (i.querySelector('span') || i).textContent.replace(/\d+$/, '').trim() === label) || document.querySelector('.sidebar .nav-item[data-page="' + page + '"]');
+  if(item) item.click(); else go(page); window.scrollTo(0, 0); });
+
+/* ---------- Chat: full screen on a phone ---------- */
+function nfChatState(){ const sh = document.querySelector('.messages-shell'); const open = nfIsPhone() && !!sh && sh.classList.contains('thread-active') && document.getElementById('page-messages').classList.contains('active');
+  document.documentElement.classList.toggle('nf-chat-open', open); }
+(function(){ const f = window.backToConvList; if(typeof f === 'function' && !f._nf9){ const w = function(){ const r = f.apply(this, arguments); nfChatState(); return r; }; w._nf9 = true; window.backToConvList = w; } })();
+
+/* ---------- Home: the order board as stage tabs + cards on a phone ---------- */
+function nfBoardPhone(){
+  const rows = mhOrderRows(); const cnt = i => rows.filter(r => r.stage === i).length;
+  let st = window._nfStage; if(st == null || !cnt(st)){ st = [0, 1, 2, 3, 4, 5].find(i => rows.some(r => r.stage === i && r.tone === 'r')); if(st == null) st = [0, 1, 2, 3, 4, 5].find(i => cnt(i)); if(st == null) st = 0; }
+  window._nfStage = st;
+  const card = r => `<button type="button" class="nfb-card t-${r.tone}" onclick="setLens('${r.sell ? 'supplier' : 'buyer'}'); openOrderDetailModal('${r.id}', ${r.sell})"><span class="nfb-n">${mhEsc(r.name)}</span><span class="nfb-a">${mhPeso(r.total)}</span><span class="nfb-s">${mhEsc(r.note)}</span><span class="nfb-go" aria-hidden="true">›</span></button>`;
+  const side = (s, t) => { const list = rows.filter(r => r.stage === st && r.side === s).sort((a, b) => ({r: 0, y: 1, g: 2}[a.tone] - {r: 0, y: 1, g: 2}[b.tone]));
+    return `<div class="nfb-side nfb-${s}"><div class="nfb-sh"><i></i><b>${t}</b><span>${list.length}</span></div>${list.length ? list.map(card).join('') : `<div class="nfb-none">Nothing here right now.</div>`}</div>`; };
+  return `<div class="nfb" id="nfBoard"><div class="nfb-stages" role="tablist">${MH_STAGES.map(([s], i) => `<button type="button" role="tab" aria-selected="${i === st}" class="${i === st ? 'on' : ''}${rows.some(r => r.stage === i && r.tone === 'r') ? ' late' : ''}" onclick="window._nfStage=${i}; document.getElementById('nfBoard').outerHTML = nfBoardPhone()"><em>${i + 1}</em><b>${s}</b><span>${cnt(i)}</span></button>`).join('')}</div>
+    <p class="nfb-desc">${mhEsc(MH_STAGES[st][1])}</p>${side('sell', 'Selling to customers')}${side('buy', 'Buying from suppliers')}</div>`;
+}
+(function(){ const f = window.mhBoard; if(typeof f !== 'function' || f._nf9) return;
+  const w = function(){ if(!nfIsPhone()) return f.apply(this, arguments); try{ return nfBoardPhone(); }catch(e){ console.warn(e); return f.apply(this, arguments); } };
+  w._nf9 = true; window.mhBoard = w; })();
+// "What to do": one lane at a time on a phone
+function nfLaneTabs(){
+  if(!nfIsPhone()) return; const lanes = [...document.querySelectorAll('#mhHome .lane')]; if(lanes.length < 2) return;
+  const host = lanes[0].parentElement; if(!host || host.querySelector(':scope > .nfl-tabs')) return;
+  let on = window._nfLane != null ? window._nfLane : 0;
+  const tabs = document.createElement('div'); tabs.className = 'nfl-tabs'; tabs.setAttribute('role', 'tablist');
+  tabs.innerHTML = lanes.map((l, i) => { const h = l.querySelector('.lane-h'); const sp = h ? h.querySelectorAll('span') : []; return `<button type="button" role="tab" class="${h ? h.className.replace('lane-h', '').trim() : ''}${i === on ? ' on' : ''}" data-i="${i}"><b>${sp[0] ? sp[0].textContent : ''}</b><span>${sp[1] ? sp[1].textContent : ''}</span></button>`; }).join('');
+  host.insertBefore(tabs, lanes[0]); host.classList.add('nfl-host');
+  const show = i => { lanes.forEach((l, k) => l.classList.toggle('nfl-on', k === i)); tabs.querySelectorAll('button').forEach((b, k) => b.classList.toggle('on', k === i)); window._nfLane = i; };
+  tabs.addEventListener('click', e => { const b = e.target.closest('button'); if(b) show(Number(b.dataset.i)); }); show(on);
+}
+
+/* ---------- tables become cards on a phone ---------- */
+function nfCardTables(){
+  document.querySelectorAll('#view-app table, #orderDetailModal table').forEach(t => {
+    if(t.dataset.nfCard === '1' || t.closest('.cal, .mh-cal, .nfb, #mhSheet')) return;
+    const heads = [...t.querySelectorAll('thead th')].map(th => th.textContent.replace(/[▲▼ⓘ]/g, '').trim());
+    if(heads.length < 3) return;
+    t.dataset.nfCard = '1'; t.classList.add('nf-cardtable');
+  });
+  document.querySelectorAll('table.nf-cardtable').forEach(t => { const heads = [...t.querySelectorAll('thead th')].map(th => th.textContent.replace(/[▲▼ⓘ]/g, '').trim());
+    t.querySelectorAll('tbody tr').forEach(tr => { if(tr.dataset.nfL === String(heads.length)) return; tr.dataset.nfL = String(heads.length);
+      [...tr.children].forEach((td, i) => { if(td.tagName === 'TD' && !td.hasAttribute('data-label')) td.setAttribute('data-label', heads[i] || ''); if(td.colSpan > 1) td.classList.add('nf-span'); }); }); });
+}
+
+/* ---------- run after every render ---------- */
+(function(){ let raf = 0; const run = () => { raf = 0; try{ nfChatState(); nfLaneTabs(); nfCardTables(); }catch(e){} };
+  const start = () => { new MutationObserver(() => { if(!raf) raf = requestAnimationFrame(run); }).observe(document.body, {childList: true, subtree: true, attributes: true, attributeFilter: ['class']}); run(); };
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start(); })();
+// short placeholder on a phone (the long one wrapped inside the box)
+(function(){ const set = () => { const i = document.getElementById('msgInput'); if(!i) return; if(!i.dataset.nfPh) i.dataset.nfPh = i.placeholder; i.placeholder = nfIsPhone() ? 'Message' : i.dataset.nfPh; };
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', set); else set(); try{ NF_PHONE.addEventListener('change', set); }catch(e){} })();
+// keep the chosen stage in view in the stage strip
+function nfStageScroll(){ const s = document.querySelector('#nfBoard .nfb-stages'); if(!s || s.dataset.nfSc === String(window._nfStage)) return; const b = s.querySelector('button.on'); if(!b) return; s.dataset.nfSc = String(window._nfStage); s.scrollLeft = Math.max(0, b.offsetLeft - s.offsetLeft - 16); }
+(function(){ let raf = 0; new MutationObserver(() => { if(!raf) raf = requestAnimationFrame(() => { raf = 0; try{ nfStageScroll(); }catch(e){} }); }).observe(document.body, {childList: true, subtree: true}); })();
 
 function renderSidebarForViewAsRole(){
   const allowed = computeAllowedPages(getEffectiveRoles());
