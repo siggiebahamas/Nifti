@@ -1,0 +1,14 @@
+/* 02 · Inter Swiss */
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+html[data-ty="inter"], html[data-ty="inter"] #view-app, html[data-ty="inter"] #mhSheet, html[data-ty="inter"] body{
+  --ty-fb:'Inter',system-ui,sans-serif; --ty-fh:'Inter Tight',system-ui,sans-serif; --ty-fn:'Inter',system-ui,sans-serif;
+  --ty-body:16px; --ty-lead:17px; --ty-lh:1.5;
+  --ty-h1:33px; --ty-h1-w:800; --ty-h1-ls:-.03em; --ty-h2:20px; --ty-h2-w:700; --ty-cap:12.5px;
+  --ty-lbl:15px; --ty-lbl-w:600; --ty-lbl-tt:none; --ty-lbl-ls:0;
+  --ty-val:30px; --ty-val-w:700; --ty-val-ls:-.025em; --ty-sub:14.5px; --ty-sub-w:500;
+  --ty-th:14px; --ty-th-w:700; --ty-th-tt:none; --ty-th-ls:0; --ty-td:15.5px;
+  --ty-row:16.5px; --ty-row-w:600; --ty-small:15px;
+  --ty-pill:13.5px; --ty-pill-w:600; --ty-tab:15px; --ty-tab-w:600; --ty-btn:15px; --ty-btn-w:600;
+  --ty-nav:15.5px; --ty-nav-w:500;
+  --ty-s12:13.5px; --ty-s13:14px; --ty-s135:14.5px;
+}

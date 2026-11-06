@@ -1,0 +1,14 @@
+/* 04 · Jakarta Friendly */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+html[data-ty="jakarta"], html[data-ty="jakarta"] #view-app, html[data-ty="jakarta"] #mhSheet, html[data-ty="jakarta"] body{
+  --ty-fb:'Plus Jakarta Sans',system-ui,sans-serif; --ty-fh:'Plus Jakarta Sans',system-ui,sans-serif; --ty-fn:'Plus Jakarta Sans',system-ui,sans-serif;
+  --ty-body:16px; --ty-lead:17px; --ty-lh:1.5;
+  --ty-h1:32px; --ty-h1-w:800; --ty-h1-ls:-.03em; --ty-h2:20px; --ty-h2-w:800; --ty-cap:12.5px;
+  --ty-lbl:15px; --ty-lbl-w:700; --ty-lbl-tt:none; --ty-lbl-ls:0;
+  --ty-val:30px; --ty-val-w:800; --ty-val-ls:-.025em; --ty-sub:14.5px; --ty-sub-w:600;
+  --ty-th:13.5px; --ty-th-w:800; --ty-th-tt:uppercase; --ty-th-ls:.05em; --ty-td:15.5px;
+  --ty-row:16.5px; --ty-row-w:700; --ty-small:15px;
+  --ty-pill:13.5px; --ty-pill-w:700; --ty-tab:15px; --ty-tab-w:700; --ty-btn:15px; --ty-btn-w:700;
+  --ty-nav:15.5px; --ty-nav-w:600;
+  --ty-s12:13.5px; --ty-s13:14px; --ty-s135:14.5px;
+}

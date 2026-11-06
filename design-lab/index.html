@@ -61,7 +61,7 @@ iframe{width:100%;height:100%;border:0;display:block}
 </head>
 <body>
 <header>
-  <div class="top"><h1>Nifti · Design lab</h1><p>Your real dashboard with demo data, in 10 visual themes. Same features, pages, numbers and buttons; only the visual design changes. Page colour now clearly differs from tables. Click inside to use it.</p>
+  <div class="top"><h1>Nifti · Design lab</h1><p>Your real dashboard with demo data, in 10 typography themes. Same colours, pages, numbers and buttons; only the fonts, sizes and text colour change (no gray text). Click inside to use it.</p>
     <div class="seg" role="group" aria-label="Screen size"><button type="button" data-dev="desk">Desktop</button><button type="button" data-dev="phone">Phone</button></div>
     <div class="seg" role="group" aria-label="Compare"><button type="button" data-cmp="0">One theme</button><button type="button" data-cmp="1">Compare two</button></div>
     <button type="button" class="lnk" id="btnAbout" aria-expanded="false">About this theme</button></div>
@@ -77,31 +77,31 @@ iframe{width:100%;height:100%;border:0;display:block}
 <div class="note" id="note"></div>
 <script>
 const THEMES = [
-  ['cur','Current','How it looks today','', 'IBM Plex Sans', ['#F6F4EF','#1F6B45','#15201A','#FFFFFF'], null],
-  ['evergreen','Evergreen','Closest to today: sage page, white tables, deep green','t01-evergreen','Instrument Serif + Instrument Sans', ['#DFE8E2','#17663F','#FFFFFF','#E6F0EA'],
-    'Your current look, refined. A clear sage page colour so every white table and card stands out, deep green actions, elegant serif page titles and a clean modern sans for everything else.'],
-  ['harbor','Harbor Slate','Navy menu, slate-blue page, yellow for what needs you','t02-harbor','Onest', ['#13294A','#DCE4EE','#1C4E8F','#F2B705'],
-    'Confident and easy to scan. A navy menu, slate-blue page colour behind white tables, navy actions and a sun-yellow marker on anything that needs you.'],
-  ['celadon','Celadon','Soft teal page, teal actions, rounded and friendly','t03-celadon','Manrope', ['#D7E8E5','#0B6E69','#FFFFFF','#E2F1EF'],
-    'Calm and fresh. A soft teal-green page colour, teal pill buttons and a filled teal menu highlight. Rounder corners, friendly but grown-up.'],
-  ['pewter','Pewter Emerald','Cool gray page, black menu highlight, emerald actions','t04-pewter','Geist + Geist Mono', ['#E1E4E8','#0F1317','#0B7A52','#FFFFFF'],
-    'Crisp and precise. Cool pewter page colour, a black highlight in the menu, emerald actions, uppercase table headers and a coloured left edge on each summary tile.'],
-  ['coastline','Coastline Deep','The Coastline you liked, with a deeper page colour','t05-coastline','Figtree', ['#D5E5EC','#0E7490','#2F55C4','#E78B00'],
-    'The most colour-coded. Every summary number takes the colour of its meaning (teal sales, cobalt costs, green profit, amber cash, red money owed to you), on a deeper aqua page colour.'],
-  ['ivory','Ivory Forest','Warm stone page, forest green, serif numbers','t06-ivory','Fraunces + Hanken Grotesk', ['#E7E6E1','#1F5E3B','#FFFFFF','#EEF3EF'],
-    'Classic and premium. A warm stone page colour (no brown), forest-green actions, serif section titles and serif figures, like a well-made ledger.'],
-  ['indigo','Indigo Mist','Lavender-gray page, indigo actions, tiles marked on top','t07-indigo','Sora + Albert Sans', ['#E0E4F2','#3346A6','#FFFFFF','#ECEEFA'],
-    'Modern and composed. A cool lavender-gray page colour, indigo actions and a filled indigo menu highlight. Each summary tile carries its colour along the top.'],
-  ['skyroyal','Sky Royal','Bright sky page, royal blue, characterful titles','t08-skyroyal','Bricolage Grotesque + Instrument Sans', ['#D9E6F5','#1D5BD6','#FFFFFF','#E8F0FD'],
-    'Bright and energetic. A clear sky-blue page colour, royal-blue pill buttons and distinctive Bricolage titles with a clean sans for the details.'],
-  ['jade','Jade Fresh','Mint page, jade actions, solid coloured tile icons','t09-jade','Plus Jakarta Sans', ['#DBEDE4','#12805C','#FFFFFF','#E4F4EC'],
-    'Fresh and friendly. A mint page colour, jade pill buttons and a filled jade menu highlight. Summary tile icons are solid colour blocks, the boldest coding of the ten.'],
-  ['lagoon','Lagoon','Deep teal menu, cool page, mint highlights','t10-lagoon','Be Vietnam Pro', ['#0F3B42','#DDE8E9','#0F7C6B','#5FD3B8'],
-    'Rich but light. A deep teal menu beside a cool, light page colour, teal actions and mint highlights. The menu frames the work without darkening it.']
+  ['cur','Current','How it reads today','', 'IBM Plex Sans', ['#F3F3F0','#0F1317','#1F6B45','#FFFFFF'], null],
+  ['geist','Geist Precise','Clean and exact; figures in a mono face so columns line up','t01-geist','Geist + Geist Mono', ['#0E1114','#F3F3F0','#1F6B45','#FFFFFF'],
+    'Modern and exact, like good banking software. Geist for text, Geist Mono for every peso amount so columns line up. Table headers in small capitals; labels in bold sentence case.'],
+  ['inter','Inter Swiss','The most familiar modern business type; tight bold titles','t02-inter','Inter Tight + Inter', ['#0E1114','#F3F3F0','#1F6B45','#FFFFFF'],
+    'The most widely used business typeface, set carefully: tight, heavy titles in Inter Tight and very readable Inter for everything else.'],
+  ['manrope','Manrope Rounded','Soft geometric shapes, heavier weights, a touch friendlier','t03-manrope', 'Manrope', ['#0E1114','#F3F3F0','#1F6B45','#FFFFFF'],
+    'Rounded geometric letters with strong weights. Labels and row titles are bold, so the eye lands on them first.'],
+  ['jakarta','Jakarta Friendly','Warm and modern; bold labels, uppercase table headers','t04-jakarta','Plus Jakarta Sans', ['#0E1114','#F3F3F0','#1F6B45','#FFFFFF'],
+    'Friendly and contemporary (the font of your approved Home), used across every page with heavy labels and uppercase table headers.'],
+  ['publicsans','Public Sans Civic','Built for government forms; plain, sturdy, very legible','t05-publicsans','Public Sans', ['#0E1114','#F3F3F0','#1F6B45','#FFFFFF'],
+    'Designed for public-service websites where everyone must be able to read: neutral, sturdy, slightly larger text throughout.'],
+  ['franklin','Franklin Newsroom','Newspaper strength; heavy titles, uppercase bold labels','t06-franklin','Libre Franklin', ['#0E1114','#F3F3F0','#1F6B45','#FFFFFF'],
+    'The strength of a newspaper headline. Black-weight titles, uppercase bold labels on every summary box, big confident numbers.'],
+  ['fraunces','Fraunces Classic','Serif titles and serif numbers; a classic ledger feel','t07-fraunces','Fraunces + Hanken Grotesk', ['#0E1114','#F3F3F0','#1F6B45','#FFFFFF'],
+    'Classic and premium. Serif page titles, section titles and totals, with a clean sans-serif for everything you read in detail.'],
+  ['newsreader','Newsreader Editorial','Largest text of the ten; serif titles, roomy reading','t08-newsreader','Newsreader + Source Sans 3', ['#0E1114','#F3F3F0','#1F6B45','#FFFFFF'],
+    'Reads like a well-edited report. Serif titles, the largest body text of the ten (17px), generous line spacing.'],
+  ['lexend','Lexend Easy Read','Made to reduce reading effort; calm weights, wide letters','t09-lexend','Lexend', ['#0E1114','#F3F3F0','#1F6B45','#FFFFFF'],
+    'A typeface researched for easier reading: wider letters and spacing, calm weights, taller line height. Gentle on long days.'],
+  ['redhat','Red Hat Corporate','Corporate trio: display titles, text body, mono figures','t10-redhat','Red Hat Display + Text + Mono', ['#0E1114','#F3F3F0','#1F6B45','#FFFFFF'],
+    'A complete corporate family: Display for titles, Text for reading, Mono for every amount. Uppercase table headers, bold labels.']
 ];
 const TABS = [['dashboard','Home'],['orders','Orders'],['messages','Messages'],['suppliers','Customers & suppliers'],['inventory','Stock'],['money','Money overview'],['sales','Sales'],['expenses','Expenses'],['cashcount','Cash count'],['collections','Who owes you'],['profit','Profit & prices'],['issues','To check'],['ledger','Books & reports'],['bank','Bank & deposits'],['payroll','Payroll'],['close','Month-end close'],['store','Online store'],['prices','Price list'],['followups','Follow-ups'],['watchdog',"Owner's watchdog"],['team','Team'],['settings','Settings'],['history','Edit history']];
 const $ = s => document.querySelector(s);
-const st = Object.assign({a:'evergreen', b:'coastline', tab:'dashboard', dev:'desk', cmp:'0'}, Object.fromEntries(new URLSearchParams(location.hash.slice(1))));
+const st = Object.assign({a:'geist', b:'cur', tab:'dashboard', dev:'desk', cmp:'0'}, Object.fromEntries(new URLSearchParams(location.hash.slice(1))));
 const F = {A:{el:$('#appA'), ready:false}, B:{el:$('#appB'), ready:false}};
 $('#themes').innerHTML = THEMES.map((t,i) => `<button type="button" class="th" data-th="${t[0]}"><span class="tag"></span><b><span>${i ? String(i).padStart(2,'0') : '—'}</span>${t[1]}</b><small>${t[2]}</small><em>${t[4]}</em><span class="sw">${t[5].map(c => `<i style="background:${c}"></i>`).join('')}</span></button>`).join('');
 $('#tabs').innerHTML = TABS.map((t,i) => `<button type="button" data-tab="${t[0]}"><span>${i + 1}</span>${t[1]}</button>`).join('');
@@ -121,9 +121,9 @@ function sync(){
 }
 function applyTheme(k){ const f = F[k]; if(!f.ready) return; const d = f.el.contentDocument, t = T(k === 'A' ? st.a : st.b);
   d.querySelectorAll('link[data-nth]').forEach(l => l.remove());
-  if(t[0] === 'cur'){ d.documentElement.removeAttribute('data-th'); return; }
-  ['neutral.css','mist.css','base.css',t[3] + '.css'].forEach(f2 => { const l = d.createElement('link'); l.rel = 'stylesheet'; l.href = new URL('../themes/' + f2, location.href).href; l.dataset.nth = '1'; d.head.appendChild(l); });
-  d.documentElement.setAttribute('data-th', t[0]); }
+  if(t[0] === 'cur'){ d.documentElement.removeAttribute('data-ty'); return; }
+  ['type/ink.css','type/base.css','type/' + t[3] + '.css'].forEach(f2 => { const l = d.createElement('link'); l.rel = 'stylesheet'; l.href = new URL('../themes/' + f2, location.href).href; l.dataset.nth = '1'; d.head.appendChild(l); });
+  d.documentElement.setAttribute('data-ty', t[0]); }
 function openTab(k){ const f = F[k]; if(!f.ready) return; const w = f.el.contentWindow;
   try{ if(w.mhClose) w.mhClose(); w.scrollTo(0, 0);
     if(st.tab === 'bank'){ w.colTab = 'cash'; w.pickLens('collections','supplier'); }
@@ -142,8 +142,8 @@ document.querySelectorAll('[data-dev]').forEach(b => b.addEventListener('click',
 document.querySelectorAll('[data-cmp]').forEach(b => b.addEventListener('click', () => { st.cmp = b.dataset.cmp; sync(); if(st.cmp === '1' && F.B.ready){ applyTheme('B'); openTab('B'); } }));
 function about(){ const t = T(st.a);
   $('#about').innerHTML = `<div><h2>${t[1]}${t[4] ? ' · ' + t[4] : ''}</h2><p>${t[6] || 'The app as it looks today.'}</p>
-    <h2 style="margin-top:12px">What stays exactly the same</h2><ul><li>All 22 pages, every tab inside them, every menu item and the order of the menu.</li><li>Every table, card, number, chart, form, button and what it does.</li><li>Owner and staff permissions, the demo data, phone layout and bottom menu.</li><li>Only fonts, colours, spacing, borders, shadows, button and badge styling change.</li></ul></div>
-    <div><h2>Quality check</h2><div class="qc">${['Looks premium','Typography professionally selected','Colours harmonious, each with one meaning','Tables and cards well styled','Buttons polished (hover, press, disabled, focus)','Cohesive across every page','Easy to navigate','Financial figures easy to read','Alerts and statuses instantly clear','Has its own recognizable identity'].map(q => `<b>✓</b><span>${q}</span>`).join('')}</div>
+    <h2 style="margin-top:12px">What stays exactly the same</h2><ul><li>All 22 pages, every tab inside them, every menu item and the order of the menu.</li><li>Every table, card, number, chart, form, button and what it does.</li><li>Owner and staff permissions, the demo data, phone layout and bottom menu.</li><li>Only fonts, text sizes, weights and text colour change. Gray text is now near-black everywhere.</li></ul></div>
+    <div><h2>Quality check</h2><div class="qc">${['Looks premium','Typography professionally selected','All text near-black, nothing gray','Summary-box labels 15px or larger','Buttons polished (hover, press, disabled, focus)','Cohesive across every page','Easy to navigate','Financial figures easy to read','Alerts and statuses instantly clear','Has its own recognizable identity'].map(q => `<b>✓</b><span>${q}</span>`).join('')}</div>
     <p style="margin-top:8px">Checked on every page at desktop and phone width. Red always means late, short or a loss; amber means order soon or pending; green means done or healthy.</p></div>`; }
 $('#btnAbout').addEventListener('click', () => { const on = !$('#about').classList.contains('on'); $('#about').classList.toggle('on', on); $('#btnAbout').setAttribute('aria-expanded', on); if(on) about(); });
 document.addEventListener('keydown', e => { if(/INPUT|SELECT|TEXTAREA/.test(e.target.tagName)) return; const i = THEMES.findIndex(t => t[0] === st.a);

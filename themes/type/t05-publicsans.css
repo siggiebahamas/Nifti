@@ -1,0 +1,14 @@
+/* 05 · Public Sans Civic */
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&display=swap');
+html[data-ty="publicsans"], html[data-ty="publicsans"] #view-app, html[data-ty="publicsans"] #mhSheet, html[data-ty="publicsans"] body{
+  --ty-fb:'Public Sans',system-ui,sans-serif; --ty-fh:'Public Sans',system-ui,sans-serif; --ty-fn:'Public Sans',system-ui,sans-serif;
+  --ty-body:16.5px; --ty-lead:17.5px; --ty-lh:1.5;
+  --ty-h1:33px; --ty-h1-w:800; --ty-h1-ls:-.02em; --ty-h2:21px; --ty-h2-w:700; --ty-cap:13px;
+  --ty-lbl:15.5px; --ty-lbl-w:600; --ty-lbl-tt:none; --ty-lbl-ls:0;
+  --ty-val:30px; --ty-val-w:700; --ty-val-ls:-.02em; --ty-sub:15px; --ty-sub-w:500;
+  --ty-th:14.5px; --ty-th-w:700; --ty-th-tt:none; --ty-th-ls:0; --ty-td:16px;
+  --ty-row:17px; --ty-row-w:600; --ty-small:15.5px;
+  --ty-pill:14px; --ty-pill-w:600; --ty-tab:15.5px; --ty-tab-w:600; --ty-btn:15.5px; --ty-btn-w:600;
+  --ty-nav:16px; --ty-nav-w:500;
+  --ty-s12:14.0px; --ty-s13:14.5px; --ty-s135:15.0px;
+}

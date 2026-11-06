@@ -1,0 +1,296 @@
+/* Generated: no gray, faded or tiny text anywhere in the app (only when a typography theme is on). */
+html[data-ty] .po-card-status{font-size:var(--ty-s13);opacity:1}
+html[data-ty] .po-card-row .k{opacity:1}
+html[data-ty] .orders-detail-empty{opacity:1}
+html[data-ty] .sort-chip .x{opacity:1}
+html[data-ty] .sort-clear-link{opacity:1}
+html[data-ty] .p2-burst{font-size:var(--ty-s13)}
+html[data-ty] .p2-tag s{opacity:1}
+html[data-ty] .p2-who button small{opacity:1}
+html[data-ty] .p2-flag{font-size:var(--ty-s13)}
+html[data-ty] .p2-plan-h s{opacity:1}
+html[data-ty] .p2-plan-h em{opacity:1}
+html[data-ty] .p2-perk-t span{font-size:var(--ty-s13);opacity:1}
+html[data-ty] .p2-after{font-size:var(--ty-s13);opacity:1}
+@media (max-width:560px){html[data-ty] .p2-who button small{font-size:var(--ty-s12)}}
+html[data-ty] .oauth-divider{opacity:1}
+html[data-ty] .msg-ticks.delivered{opacity:1}
+html[data-ty] .msg-po-chip{font-size:var(--ty-s13)}
+html[data-ty] .msg-typing-bubble span{opacity:1}
+html[data-ty] .od-eyebrow{font-size:var(--ty-s12);opacity:1}
+html[data-ty] .od-next .status-pill{font-size:var(--ty-s135)}
+html[data-ty] .od-item-sub{opacity:1}
+html[data-ty] .sl-tile small{font-size:var(--ty-s12);opacity:1}
+html[data-ty] .sl-tile span{font-size:var(--ty-s13);opacity:1}
+html[data-ty] .sl-s{font-size:var(--ty-s13);opacity:1}
+html[data-ty] .sl-right small{font-size:var(--ty-s12)}
+html[data-ty] .sl-link{font-size:var(--ty-s135)}
+html[data-ty] .sl-dim{opacity:1}
+html[data-ty] .sl-pill{font-size:var(--ty-s12)}
+html[data-ty] .sl-pill.st-lost{color:var(--ty-ink2)}
+html[data-ty] .sl-help{font-size:var(--ty-s13);opacity:1}
+html[data-ty] .sl-sub{opacity:1}
+html[data-ty] .sl-lead-meta{font-size:var(--ty-s13);opacity:1}
+html[data-ty] .sl-q{font-size:var(--ty-s13);opacity:1}
+html[data-ty] .sl-outcomes button.bad{color:var(--ty-ink2)}
+html[data-ty] .sl-log{font-size:var(--ty-s135)}
+html[data-ty] .sl-log span{font-size:var(--ty-s12);opacity:1}
+html[data-ty] .sl-tpl-i p{font-size:var(--ty-s135)}
+html[data-ty] .sl-days button{font-size:var(--ty-s13)}
+html[data-ty] .sl-preview{font-size:var(--ty-s13);opacity:1}
+html[data-ty] .cpo-drop small{opacity:1}
+html[data-ty] .cpo-or{font-size:var(--ty-s13);opacity:1}
+html[data-ty] .cpo-their{font-size:var(--ty-s13);opacity:1}
+html[data-ty] .cpo-tag{opacity:1}
+html[data-ty] .so-sign{font-size:var(--ty-s13)}
+html[data-ty] .store-chips span{font-size:var(--ty-s13)}
+html[data-ty] .store-sale{font-size:var(--ty-s12)}
+html[data-ty] .stmt-small{font-size:var(--ty-s13);opacity:1}
+html[data-ty] .stmt-aging{font-size:var(--ty-s135)}
+html[data-ty] .stmt-aging th{opacity:1}
+html[data-ty] .stmt-table th{font-size:var(--ty-s13);opacity:1}
+html[data-ty] .stmt-late{font-size:var(--ty-s13)}
+html[data-ty] .stmt-foot{font-size:var(--ty-s12);opacity:1}
+html[data-ty] .settings-section-title{font-size:var(--ty-s13);opacity:1}
+html[data-ty] .share-hint{font-size:var(--ty-s13);opacity:1}
+html[data-ty] .po-public-table th{opacity:1}
+html[data-ty] .paste-hint{font-size:var(--ty-s13)}
+html[data-ty] .ios-share{font-size:var(--ty-s13)}
+html[data-ty] .team-person-sub{opacity:1}
+html[data-ty] .team-avatar.sm{font-size:var(--ty-s12)}
+html[data-ty] .team-avatar.xs{font-size:var(--ty-s12)}
+html[data-ty] .team-filter span{opacity:1}
+html[data-ty] .team-filter.active span{opacity:1}
+html[data-ty] .team-chip{font-size:var(--ty-s13)}
+html[data-ty] .team-task-from{font-size:var(--ty-s13);opacity:1}
+html[data-ty] .team-task-delete{opacity:1}
+html[data-ty] .team-empty{opacity:1}
+html[data-ty] .team-chat-day{font-size:var(--ty-s13);opacity:1}
+html[data-ty] .team-bubble-author{font-size:var(--ty-s13)}
+html[data-ty] .team-bubble-time{font-size:var(--ty-s12);opacity:1}
+@media (max-width:980px){html[data-ty] .bnav-item{font-size:var(--ty-s13)}
+html[data-ty] .topbar .user-chip .avatar{font-size:var(--ty-s13)}}
+html[data-ty] .cq-tile-l{font-size:var(--ty-s13);opacity:1}
+html[data-ty] .cq-tile-n{opacity:1}
+html[data-ty] .cq-bars-axis{font-size:var(--ty-s12)}
+html[data-ty] .cq-week-h{opacity:1}
+html[data-ty] .cq-row-sub{opacity:1}
+html[data-ty] .cq-pill{font-size:var(--ty-s12)}
+html[data-ty] .cq-reason{font-size:var(--ty-s13);opacity:1}
+html[data-ty] .rt-sub{opacity:1}
+html[data-ty] .rt-date{font-size:var(--ty-s13)}
+html[data-ty] .rt-bar small{font-size:var(--ty-s12)}
+html[data-ty] .rt-addr{font-size:var(--ty-s135)}
+html[data-ty] .rt-note{font-size:var(--ty-s135);opacity:1}
+html[data-ty] .rt-result{font-size:var(--ty-s135)}
+html[data-ty] .rt-lbl{font-size:var(--ty-s13);opacity:1}
+html[data-ty] .rt-chips.small button{font-size:var(--ty-s13)}
+html[data-ty] .rt-section{opacity:1}
+html[data-ty] .rt-plan-order button, html[data-ty] .rt-x{font-size:var(--ty-s12)}
+html[data-ty] .sc-stats span{font-size:var(--ty-s12);opacity:1}
+html[data-ty] .bk-table{font-size:var(--ty-s135)}
+html[data-ty] .adm-sub{opacity:1}
+html[data-ty] .adm-side{font-size:var(--ty-s13);opacity:1}
+html[data-ty] .adm-log span:last-child{opacity:1}
+html[data-ty] .rl-eyebrow{font-size:var(--ty-s12)}
+html[data-ty] .rl-meta{font-size:var(--ty-s13);opacity:1}
+html[data-ty] .rl-hint{font-size:var(--ty-s13);opacity:1}
+html[data-ty] .rl-last{font-size:var(--ty-s135)}
+html[data-ty] .rl-last-btns button{font-size:var(--ty-s13)}
+html[data-ty] .rt-amt-hint{font-size:var(--ty-s135)}
+html[data-ty] .disc-featured{font-size:var(--ty-s12)}
+html[data-ty] .hm-date{font-size:var(--ty-s12)}
+html[data-ty] .hm-sub{opacity:1}
+html[data-ty] .hm-s{font-size:var(--ty-s13);opacity:1}
+html[data-ty] .ord-seg button span{font-size:var(--ty-s12)}
+html[data-ty] .ord-special{font-size:var(--ty-s135)}
+html[data-ty] details.ord-more > summary::after{font-size:var(--ty-s12)}
+html[data-ty] .ord-meta{font-size:var(--ty-s13);opacity:1}
+html[data-ty] .ord-bot .status-pill{font-size:var(--ty-s13)}
+html[data-ty] details.ord-perf > summary small{font-size:var(--ty-s13);opacity:1}
+html[data-ty] .pt-sub{opacity:1}
+html[data-ty] #page-settings .settings-card.acc > h2 .acc-hint{font-size:var(--ty-s13);opacity:1}
+html[data-ty] .wd-who{font-size:var(--ty-s13);opacity:1}
+html[data-ty] .wd-av{font-size:var(--ty-s12)}
+html[data-ty] .wd-meta{font-size:var(--ty-s13);opacity:1}
+html[data-ty] .qt-panel-s{opacity:1}
+html[data-ty] .qt-mode small{opacity:1}
+html[data-ty] .qt-ans-s{opacity:1}
+html[data-ty] .qt-aname small{font-size:var(--ty-s13);opacity:1}
+html[data-ty] .qt-changed{font-size:var(--ty-s12)}
+html[data-ty] .cpo-ways-h{font-size:var(--ty-s13);opacity:1}
+html[data-ty] .cpo-way small{font-size:var(--ty-s13);opacity:1}
+html[data-ty] .cpo-quick-h{font-size:var(--ty-s13);opacity:1}
+html[data-ty] .cpo-chips button{font-size:var(--ty-s135)}
+html[data-ty] .cpo-chips button small{opacity:1}
+html[data-ty] .cpo-photo span{font-size:var(--ty-s12)}
+html[data-ty] .vc-top small{opacity:1}
+html[data-ty] .vc-langs button{font-size:var(--ty-s135)}
+html[data-ty] .vc-live{opacity:1}
+html[data-ty] .vc-heard{font-size:var(--ty-s13);opacity:1}
+html[data-ty] .vc-name small{opacity:1}
+html[data-ty] .vc-tag{opacity:1}
+html[data-ty] .vc-dym{font-size:var(--ty-s13)}
+html[data-ty] .vc-dym button{font-size:var(--ty-s13)}
+html[data-ty] .vc-tips{font-size:var(--ty-s135)}
+html[data-ty] .stk-sheet-h small{font-size:var(--ty-s12);opacity:1}
+html[data-ty] #view-app .nav-group .heading{font-size:var(--ty-s12);color:var(--ty-ink2)}
+html[data-ty] #view-app .nav-badge{color:var(--ty-ink2) !important}
+html[data-ty] #view-app #openItemsBadge{font-size:var(--ty-s13) !important}
+html[data-ty] #view-app .role-switcher-label{font-size:var(--ty-s12)}
+html[data-ty] #view-app table th{font-size:var(--ty-s12)}
+html[data-ty] .lg-date{font-size:var(--ty-s12)}
+html[data-ty] .lg-status{font-size:var(--ty-s135) !important}
+html[data-ty] .lg-kpi-l{font-size:var(--ty-s13)}
+html[data-ty] .lg-kpi-s{font-size:var(--ty-s13)}
+html[data-ty] .lg-ct{font-size:var(--ty-s12)}
+html[data-ty] .lg-link{font-size:var(--ty-s13)}
+html[data-ty] .lg-act-t .s{font-size:var(--ty-s13)}
+html[data-ty] .lg-amt{font-size:var(--ty-s135)}
+html[data-ty] .lg-go{font-size:var(--ty-s13)}
+html[data-ty] .lg-more{font-size:var(--ty-s13)}
+html[data-ty] .lg-empty span{font-size:var(--ty-s135)}
+html[data-ty] .lg-ag-tot span{font-size:var(--ty-s13)}
+html[data-ty] .lg-ag-r{font-size:var(--ty-s13)}
+html[data-ty] .lg-pipe small{font-size:var(--ty-s12)}
+html[data-ty] .lg-tbl{font-size:var(--ty-s135)}
+html[data-ty] .lg-po{font-size:var(--ty-s13)}
+html[data-ty] .lg-dim{font-size:var(--ty-s12)}
+html[data-ty] .lg-pill{font-size:var(--ty-s12)}
+@media (max-width:760px){html[data-ty] .lg-pipe small{font-size:var(--ty-s12)}}
+@media (max-width:760px){html[data-ty] #view-app .lg-act .lg-go{font-size:var(--ty-s13) !important}
+html[data-ty] #view-app .lg-act-t .t{font-size:var(--ty-s135) !important}
+html[data-ty] #view-app .lg-tbl td, html[data-ty] #view-app .lg-tbl th{font-size:var(--ty-s13) !important}
+html[data-ty] #view-app .lg-po-s{font-size:var(--ty-s12)}}
+@media (max-width:760px){html[data-ty] #view-app .lg-tbl .lg-pill{font-size:var(--ty-s12) !important}}
+html[data-ty] .ob-row label small{opacity:1}
+html[data-ty] .ob-due button{font-size:var(--ty-s13) !important}
+html[data-ty] .ob-date span{font-size:var(--ty-s135)}
+html[data-ty] .ob-due-note{font-size:var(--ty-s13)}
+html[data-ty] .ob-more summary{font-size:var(--ty-s135)}
+html[data-ty] .ob-done-r small{font-size:var(--ty-s13)}
+html[data-ty] .ob-cta span{font-size:var(--ty-s13)}
+html[data-ty] .ob-cta .btn{font-size:var(--ty-s135) !important}
+html[data-ty] .ob-addlink{font-size:var(--ty-s135)}
+html[data-ty] .fg-k{font-size:var(--ty-s12)}
+html[data-ty] .fg-h span:not(.row-action){font-size:var(--ty-s135)}
+html[data-ty] .fg-t small{font-size:var(--ty-s13)}
+html[data-ty] .fg-step .btn{font-size:var(--ty-s135) !important}
+html[data-ty] .fg-foot{font-size:var(--ty-s135)}
+html[data-ty] .fg-win span{font-size:var(--ty-s135)}
+html[data-ty] .fg-next .btn{font-size:var(--ty-s135) !important}
+html[data-ty] .fg-pick small{font-size:var(--ty-s12)}
+html[data-ty] .fg-banner{font-size:var(--ty-s135)}
+html[data-ty] .stp-k{font-size:var(--ty-s12)}
+html[data-ty] .stp-amt small{font-size:var(--ty-s12);opacity:1}
+html[data-ty] .stp-amt .sl-link{font-size:var(--ty-s13)}
+html[data-ty] .stp-pend{font-size:var(--ty-s135)}
+html[data-ty] .stp-tabs button{font-size:var(--ty-s13)}
+html[data-ty] .stp-qr small{font-size:var(--ty-s12);opacity:1}
+html[data-ty] .stp-row small{font-size:var(--ty-s12);opacity:1}
+html[data-ty] .stp-row .sl-link{font-size:var(--ty-s13)}
+html[data-ty] .stp-note{font-size:var(--ty-s13);opacity:1}
+html[data-ty] .stp-warn{font-size:var(--ty-s13)}
+html[data-ty] .stp-foot{font-size:var(--ty-s12);opacity:1}
+html[data-ty] .stmt-stp-note{font-size:var(--ty-s13)}
+html[data-ty] .stp-set span{font-size:var(--ty-s135)}
+html[data-ty] .wk-range{font-size:var(--ty-s13)}
+html[data-ty] .wk-t span{font-size:var(--ty-s13)}
+html[data-ty] .wk-t small{font-size:var(--ty-s12)}
+html[data-ty] .wk-line{font-size:var(--ty-s135)}
+html[data-ty] .google-or{font-size:var(--ty-s13);color:var(--ty-ink2)}
+html[data-ty] .conv-kind{font-size:var(--ty-s12)}
+html[data-ty] .one-dir{font-size:var(--ty-s12)}
+html[data-ty] .one-msg .conv-avatar{font-size:var(--ty-s13)}
+html[data-ty] .one-msg-t small{font-size:var(--ty-s13)}
+html[data-ty] .bk-tile-l{font-size:var(--ty-s13)}
+html[data-ty] .bk-tile-s{font-size:var(--ty-s13)}
+html[data-ty] .bk-row-m small{font-size:var(--ty-s13)}
+html[data-ty] .bk-row-a .sl-link{font-size:var(--ty-s135)}
+html[data-ty] .bk-day{font-size:var(--ty-s13)}
+html[data-ty] .bk-note{font-size:var(--ty-s135)}
+html[data-ty] .bk-alert{font-size:var(--ty-s135)}
+html[data-ty] .bk-chips button{font-size:var(--ty-s135) !important}
+html[data-ty] .qs-warn{font-size:var(--ty-s13)}
+html[data-ty] .ex-cats button{font-size:var(--ty-s135)}
+html[data-ty] .cc-den label small{font-size:var(--ty-s12)}
+html[data-ty] small.up, html[data-ty] small.down{font-size:var(--ty-s13)}
+html[data-ty] .bk-flag-t small{font-size:var(--ty-s13)}
+html[data-ty] .bk-strip small{font-size:var(--ty-s13)}
+html[data-ty] .bk-tr-off td{opacity:1}
+html[data-ty] .bk-sub{opacity:1}
+html[data-ty] .bk-menu-empty span{opacity:1}
+html[data-ty] .mf-unit{font-size:var(--ty-s13);opacity:1}
+html[data-ty] .bk-snack .bk-snack-x{opacity:1}
+html[data-ty] .rc{font-size:var(--ty-s135)}
+html[data-ty] .rc-h span{font-size:var(--ty-s13)}
+html[data-ty] .rc-t{font-size:var(--ty-s12)}
+html[data-ty] .rc-l small{opacity:1}
+html[data-ty] .rc-f{font-size:var(--ty-s13)}
+html[data-ty] .lg-period{font-size:var(--ty-s135)}
+html[data-ty] .lg-status{font-size:var(--ty-s13);opacity:1}
+html[data-ty] .lg-pill{font-size:var(--ty-s12)}
+html[data-ty] .lg-tiles .bk-tile-s{font-size:var(--ty-s12)}
+html[data-ty] .bk-tr-off td{opacity:1}
+html[data-ty] .lg-card-g span{opacity:1;font-size:var(--ty-s13)}
+html[data-ty] .lg-conf > span{font-size:var(--ty-s13)}
+html[data-ty] .lg-conf.ex > span{color:var(--ty-ink2)}
+html[data-ty] .lg-conf small{opacity:1;font-size:var(--ty-s13)}
+html[data-ty] .pl-items{font-size:var(--ty-s135)}
+html[data-ty] .pl-items small{color:var(--ty-ink2)}
+html[data-ty] .pl-who small{color:var(--ty-ink2)}
+html[data-ty] .pl-ln > small{color:var(--ty-ink2)}
+html[data-ty] #mhHome .sr-m1 i, html[data-ty] #mhHome .sr-m2 i{color:var(--ty-ink2)}
+html[data-ty] #mhHome .sr-i{opacity:1}
+html[data-ty] #mhHome .sr-act{font-size:var(--ty-s135)}
+html[data-ty] #mhHome .sr-axis{font-size:var(--ty-s135)}
+html[data-ty] #mhHome .sr-pg small{font-size:var(--ty-s135)}
+html[data-ty] :is(#mhHome,#mhSheet) .av{font-size:var(--ty-s135)}
+html[data-ty] #mhHome .o .side{font-size:var(--ty-s13)}
+html[data-ty] #mhHome .o .open{font-size:var(--ty-s135)}
+html[data-ty] :is(#mhHome,#mhSheet) .cal .who .av{font-size:var(--ty-s13)}
+html[data-ty] :is(#mhHome,#mhSheet) .ppl button i{font-size:var(--ty-s13)}
+html[data-ty] :is(#mhHome,#mhSheet) .month .md .w .av{font-size:var(--ty-s13)}
+html[data-ty] :is(#mhHome,#mhSheet) .chip{font-size:var(--ty-s13)}
+html[data-ty] :is(#mhHome,#mhSheet) .grp .gh{font-size:var(--ty-s13)}
+html[data-ty] :is(#mhHome,#mhSheet) .tk-top{font-size:var(--ty-s12)}
+html[data-ty] :is(#mhHome,#mhSheet) .sq.mini{font-size:var(--ty-s12)}
+html[data-ty] :is(#mhHome,#mhSheet) .cal .day .dn{color:var(--ty-ink2)}
+html[data-ty] :is(#mhHome,#mhSheet) .cal .day .dn .ed{font-size:var(--ty-s12)}
+html[data-ty] :is(#mhHome,#mhSheet) .cal .day.future .st{color:var(--ty-ink2)}
+html[data-ty] :is(#mhHome,#mhSheet) .cal .day.none .st{color:var(--ty-ink2)}
+@media (max-width:600px){html[data-ty] :is(#mhHome,#mhSheet) .cal .day .nm{font-size:var(--ty-s12)}
+html[data-ty] :is(#mhHome,#mhSheet) .cal .day .st{font-size:var(--ty-s13)}
+html[data-ty] :is(#mhHome,#mhSheet) .cal .day.future .st{font-size:var(--ty-s12)}}
+html[data-ty] :is(#mhHome,#mhSheet) .sh .sn{font-size:var(--ty-s13)}
+html[data-ty] :is(#mhHome,#mhSheet) .sh small{font-size:var(--ty-s13)}
+html[data-ty] :is(#mhHome,#mhSheet) .lt{font-size:var(--ty-s12)}
+html[data-ty] :is(#mhHome,#mhSheet) .ob3 .lane-lbl small{font-size:var(--ty-s13)}
+html[data-ty] :is(#mhHome,#mhSheet) .ob3 .dash{color:var(--ty-ink2)}
+html[data-ty] :is(#mhHome,#mhSheet) .ob4 .thead{font-size:var(--ty-s13)}
+html[data-ty] :is(#mhHome,#mhSheet) .ob4 .steps-l{font-size:var(--ty-s13)}
+html[data-ty] :is(#mhHome,#mhSheet) .ob5 .cnt{font-size:var(--ty-s135)}
+html[data-ty] :is(#mhHome,#mhSheet) .ob5 .open{font-size:var(--ty-s135)}
+html[data-ty] :is(#mhHome,#mhSheet) .tsm .dday small{font-size:var(--ty-s135)}
+html[data-ty] :is(#mhHome,#mhSheet) .tsm .sec{font-size:var(--ty-s135)}
+html[data-ty] :is(#mhHome,#mhSheet) .tsm th{font-size:var(--ty-s135)}
+html[data-ty] :is(#mhHome,#mhSheet) .spl{font-size:var(--ty-s13)}
+html[data-ty] :is(#mhHome,#mhSheet) .ob3 .cellsum{font-size:var(--ty-s13)}
+html[data-ty] :is(#mhHome,#mhSheet) .ob3.mir .band6 .sn, html[data-ty] :is(#mhHome,#mhSheet) .ob6 .sn{font-size:var(--ty-s13)}
+html[data-ty] :is(#mhHome,#mhSheet) .ob3.cmp .more{font-size:var(--ty-s135)}
+html[data-ty] :is(#mhHome,#mhSheet) .cal .ini{font-size:var(--ty-s12)}
+@media (max-width:600px){html[data-ty] :is(#mhHome,#mhSheet) .cal .dow{font-size:var(--ty-s12)}
+html[data-ty] :is(#mhHome,#mhSheet) .month .md .w .av{font-size:var(--ty-s12)}}
+html[data-ty] #mhHome .cal .day .ed{font-size:var(--ty-s12)}
+html[data-ty] #view-app .nav-group .heading{font-size:var(--ty-s12)}
+html[data-ty] #view-app table th, html[data-ty] #view-app .lg-tbl th{font-size:var(--ty-s13) !important}
+html[data-ty] #view-app .lg-pill{font-size:var(--ty-s13)}
+html[data-ty] #view-app .sl-right small{font-size:var(--ty-s135)}
+html[data-ty] #view-app .settings-section-title{font-size:var(--ty-s13) !important}
+
+/* inline styles inside page templates */
+html[data-ty] #view-app :is(span,small,div,p,b,em,td,li,label,strong,i):not(svg *):is([style*="opacity:.4"],[style*="opacity:.5"],[style*="opacity:.55"],[style*="opacity:.6"],[style*="opacity:.65"],[style*="opacity:.7"],[style*="opacity:.75"],[style*="opacity:.8"],[style*="opacity:.85"]){opacity:1 !important;color:var(--ty-ink2) !important;}
+html[data-ty] #view-app :is([style*="font-size:11px"],[style*="font-size:11.5px"],[style*="font-size:12px"]){font-size:var(--ty-s12) !important;}
+html[data-ty] #view-app :is([style*="font-size:12.5px"],[style*="font-size:13px"]){font-size:var(--ty-s13) !important;}
+html[data-ty] #view-app [style*="font-size:13.5px"]{font-size:var(--ty-s135) !important;}
+html[data-ty] #view-app :is([style*="color:#555"],[style*="color:#888"],[style*="color:var(--faint)"],[style*="color:var(--muted)"]){color:var(--ty-ink2) !important;}

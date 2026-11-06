@@ -1,0 +1,14 @@
+/* 07 · Fraunces Classic */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap');
+html[data-ty="fraunces"], html[data-ty="fraunces"] #view-app, html[data-ty="fraunces"] #mhSheet, html[data-ty="fraunces"] body{
+  --ty-fb:'Hanken Grotesk',system-ui,sans-serif; --ty-fh:'Fraunces',Georgia,serif; --ty-fn:'Fraunces',system-ui,sans-serif;
+  --ty-body:16.5px; --ty-lead:17.5px; --ty-lh:1.5;
+  --ty-h1:36px; --ty-h1-w:600; --ty-h1-ls:-.02em; --ty-h2:22px; --ty-h2-w:600; --ty-cap:13px;
+  --ty-lbl:15.5px; --ty-lbl-w:600; --ty-lbl-tt:none; --ty-lbl-ls:0;
+  --ty-val:32px; --ty-val-w:600; --ty-val-ls:-.01em; --ty-sub:15px; --ty-sub-w:500;
+  --ty-th:14.5px; --ty-th-w:700; --ty-th-tt:none; --ty-th-ls:0; --ty-td:16px;
+  --ty-row:17px; --ty-row-w:600; --ty-small:15.5px;
+  --ty-pill:14px; --ty-pill-w:600; --ty-tab:15.5px; --ty-tab-w:600; --ty-btn:15.5px; --ty-btn-w:700;
+  --ty-nav:16px; --ty-nav-w:500;
+  --ty-s12:14.0px; --ty-s13:14.5px; --ty-s135:15.0px;
+}

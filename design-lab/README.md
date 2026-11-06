@@ -46,35 +46,29 @@ Themes are visual only. They change fonts, colours, spacing, borders, shadows, b
 - `themes/base.css`: the engine. Maps each component to tokens and adds shared polish: hover, press, disabled, focus rings, menus and badges.
 - `themes/t01…t10-*.css`: each theme sets its tokens, fonts and signature details.
 
-## The 10 themes (round 3)
+## Round 4 · 10 typography themes (current)
 
-What changed in round 3, following your feedback:
-- **Page colour vs tables:** the page background is now a clearly different tone from tables and cards, like the current look but with more contrast. Tables and cards are white with a visible edge, and tables have a tinted header band.
-- **Coloured summary boxes:** the 8 Home summary boxes are colour-coded by meaning, Coastline-style.
-- **Fonts:** premium modern fonts only.
-- **Text:** no light-gray text.
+Same colours as the live app (the new subtler background and the Pewter sidebar). Each theme changes only fonts, sizes, weights, letter-spacing and text colour.
 
-| # | Theme | Page colour | Accent | Type | Signature |
-|---|---|---|---|---|---|
-| 01 | Evergreen | Sage | Deep green | Instrument Serif + Instrument Sans | Closest to today, serif titles |
-| 02 | Harbor Slate | Slate blue | Navy | Onest | Navy menu, yellow marks what needs you |
-| 03 | Celadon | Soft teal | Teal | Manrope | Pill buttons, filled teal menu highlight |
-| 04 | Pewter Emerald | Cool gray | Emerald | Geist + Geist Mono | Black menu highlight, left-edge tile colours |
-| 05 | Coastline Deep | Aqua | Teal | Figtree | Numbers coloured by meaning |
-| 06 | Ivory Forest | Warm stone | Forest green | Fraunces + Hanken Grotesk | Serif section titles and figures |
-| 07 | Indigo Mist | Lavender gray | Indigo | Sora + Albert Sans | Top-edge tile colours |
-| 08 | Sky Royal | Sky blue | Royal blue | Bricolage Grotesque + Instrument Sans | Characterful titles, pill buttons |
-| 09 | Jade Fresh | Mint | Jade | Plus Jakarta Sans | Solid coloured tile icons |
-| 10 | Lagoon | Cool teal-gray | Teal | Be Vietnam Pro | Deep teal menu, mint highlights |
+The rules every theme follows:
+- No gray text: secondary text is near-black (#252A30), main text is #0E1114. Faded (transparent) text is removed, including faded text inside page templates.
+- Summary-box labels are 13.5px or larger (15px or larger unless the theme uses uppercase labels), and the numbers are 29 to 32px. Table headers are black. Pills and tabs are 13.5 to 16px.
+- Nothing important is under 13.5px. Files: `themes/type/ink.css` (generated from the app), `themes/type/base.css` (component rules), `themes/type/t01…t10`.
 
-Summary-box colour key, the same in every theme:
-- **Blue:** sales.
-- **Slate:** costs and what you owe.
-- **Green or red:** profit or loss.
-- **Amber:** cash today.
-- **Teal:** customer orders.
-- **Red:** owed to you (late money).
-- **Violet:** coming from suppliers.
+| # | Theme | Fonts | Character |
+|---|---|---|---|
+| 01 | Geist Precise | Geist + Geist Mono | Exact; mono figures, small-caps table headers |
+| 02 | Inter Swiss | Inter Tight + Inter | Familiar, tight bold titles |
+| 03 | Manrope Rounded | Manrope | Rounded, bold labels |
+| 04 | Jakarta Friendly | Plus Jakarta Sans | Warm, uppercase table headers |
+| 05 | Public Sans Civic | Public Sans | Built for legibility, slightly larger |
+| 06 | Franklin Newsroom | Libre Franklin | Heavy titles, uppercase bold labels |
+| 07 | Fraunces Classic | Fraunces + Hanken Grotesk | Serif titles and totals |
+| 08 | Newsreader Editorial | Newsreader + Source Sans 3 | Largest text, roomy |
+| 09 | Lexend Easy Read | Lexend | Wide letters, calm weights |
+| 10 | Red Hat Corporate | Red Hat Display + Text + Mono | Corporate trio, mono figures |
+
+The round-3 colour themes are still in `themes/` (not shown in the lab).
 
 ## Stage 6 · Quality check
 

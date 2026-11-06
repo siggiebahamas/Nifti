@@ -1,0 +1,84 @@
+/* Typography themes: same colours, layout, data and features as the live app. Only fonts, sizes, weights,
+   letter-spacing and text colour change. Gray text becomes near-black; nothing important is small.
+   Active only when <html data-ty="..."> is set. */
+html[data-ty], html[data-ty] #view-app, html[data-ty] #mhSheet, html[data-ty] body{
+  --ty-ink:#0E1114; --ty-ink2:#252A30;
+  --ink:var(--ty-ink); --body:var(--ty-ink2); --faint:var(--ty-ink2); --muted:var(--ty-ink2);
+  --font-b:var(--ty-fb); --font-h:var(--ty-fh); --font-m:var(--ty-fn);
+}
+html[data-ty] body, html[data-ty] #view-app, html[data-ty] #mhHome, html[data-ty] #mhSheet{font-family:var(--ty-fb);color:var(--ty-ink);}
+html[data-ty] #view-app{font-size:var(--ty-body);line-height:var(--ty-lh, 1.5);letter-spacing:var(--ty-body-ls, 0);}
+html[data-ty] :is(#view-app,#mhSheet,body) :is(input,select,textarea,button){font-family:var(--ty-fb);}
+html[data-ty] :is(#view-app,#mhSheet) :is(input,select,textarea){font-size:var(--ty-body);color:var(--ty-ink);}
+html[data-ty] :is(#view-app,#mhSheet) ::placeholder{color:#4A525C;opacity:1;}
+
+/* ---------- page titles ---------- */
+html[data-ty] #view-app :is(.page-head h1,.lg-head h1), html[data-ty] #mhHome .hero h3{font-family:var(--ty-fh);font-size:var(--ty-h1) !important;font-weight:var(--ty-h1-w);letter-spacing:var(--ty-h1-ls);line-height:1.15;color:var(--ty-ink);text-transform:none;}
+html[data-ty] #view-app .page-head p, html[data-ty] #mhHome .hero p{font-size:var(--ty-lead) !important;color:var(--ty-ink2) !important;font-weight:var(--ty-lead-w, 400);}
+
+/* ---------- section titles ---------- */
+html[data-ty] #view-app :is(.panel-head h2,.panel-card > h2,.lg-ph b,.sl-card-h b,.settings-card h2,.sec-head,.wd-head b,.lg-card-h b,.rt-card-h b),
+html[data-ty] #mhHome .sect-h h4, html[data-ty] #mhSheet .sheet-h h4{font-family:var(--ty-fh);font-size:var(--ty-h2) !important;font-weight:var(--ty-h2-w) !important;letter-spacing:var(--ty-h2-ls, -.01em);color:var(--ty-ink) !important;text-transform:none;}
+html[data-ty] #view-app :is(.settings-section-title,.nav-group .heading){font-size:var(--ty-cap) !important;font-weight:800 !important;letter-spacing:.08em;color:var(--ty-ink) !important;opacity:1 !important;}
+html[data-ty] #view-app .acc-hint{font-size:var(--ty-small) !important;color:var(--ty-ink2) !important;opacity:1 !important;font-weight:500 !important;}
+
+/* ---------- summary boxes: label / number / note ---------- */
+html[data-ty] #view-app :is(.lg-kpi-l,.bk-tile-l,.stat-label,.sl-tile small,.bk-strip small,.cq-tile-l,.hm-lbl,.sum4 small,.od-sum small),
+html[data-ty] #mhHome :is(.tile .k,.sr-pg small), html[data-ty] #mhSheet .sum4 small{
+  font-family:var(--ty-lbl-f, var(--ty-fb));font-size:var(--ty-lbl) !important;font-weight:var(--ty-lbl-w) !important;text-transform:var(--ty-lbl-tt) !important;letter-spacing:var(--ty-lbl-ls) !important;color:var(--ty-ink) !important;opacity:1 !important;line-height:1.25;}
+html[data-ty] #view-app :is(.lg-kpi-n,.bk-tile-v,.stat-num,.sl-tile b,.bk-strip b,.cq-tile-v,.cq-tile-n,.sum4 b,.lg-ag-tot b),
+html[data-ty] #mhHome .tile .v, html[data-ty] #mhSheet .sum4 b{
+  font-family:var(--ty-fn) !important;font-size:var(--ty-val) !important;font-weight:var(--ty-val-w) !important;letter-spacing:var(--ty-val-ls) !important;font-variant-numeric:tabular-nums;line-height:1.15;}
+html[data-ty] #view-app :is(.lg-kpi-n,.bk-tile-v,.stat-num,.sl-tile b,.bk-strip b,.cq-tile-v,.cq-tile-n,.sum4 b):not([class*="bad"]):not([class*="red"]){color:var(--ty-ink);}
+html[data-ty] #view-app :is(.lg-kpi-s,.bk-tile-s,.sl-tile span,.cq-tile-s), html[data-ty] #mhHome .tile .s{font-size:var(--ty-sub) !important;font-weight:var(--ty-sub-w) !important;opacity:1 !important;}
+html[data-ty] #view-app :is(.lg-kpi-s,.bk-tile-s,.sl-tile span):not(.bad):not(.good){color:var(--ty-ink2) !important;}
+html[data-ty] #mhHome .tile .s.muted{color:var(--ty-ink2) !important;}
+html[data-ty] #view-app .bk-strip b{font-size:calc(var(--ty-val) - 4px) !important;}
+html[data-ty] #view-app .stat-num{font-size:calc(var(--ty-val) - 2px) !important;}
+
+/* ---------- tables ---------- */
+html[data-ty] :is(#view-app,#mhSheet) table th, html[data-ty] #view-app .lg-tbl th{font-family:var(--ty-fb);font-size:var(--ty-th) !important;font-weight:var(--ty-th-w) !important;text-transform:var(--ty-th-tt) !important;letter-spacing:var(--ty-th-ls) !important;color:var(--ty-ink) !important;opacity:1 !important;}
+html[data-ty] :is(#view-app,#mhSheet) table td, html[data-ty] #view-app .lg-tbl td{font-size:var(--ty-td) !important;color:var(--ty-ink);}
+html[data-ty] #view-app :is(td,.lg-tbl td) :is(small,.lg-dim,.lg-po,.inv-row-sub,.row-sub){font-size:var(--ty-small) !important;color:var(--ty-ink2) !important;opacity:1 !important;}
+html[data-ty] #view-app :is(.lg-n,.bk-amt,.bk-num,td.r,.r,.sr-v b,.pl-r b,.lg-amt,.amt,.sl-right b,.bk-bar-v){font-family:var(--ty-fn);font-variant-numeric:tabular-nums;}
+
+/* ---------- list rows ---------- */
+html[data-ty] #view-app :is(.bk-row-m b,.sl-t,.lg-act-t .t,.conv-name,.team-person-name,.sku-name,.lg-who-n,.wd-what b){font-size:var(--ty-row) !important;font-weight:var(--ty-row-w) !important;color:var(--ty-ink) !important;}
+html[data-ty] #view-app :is(.bk-row-m small,.sl-s,.lg-act-t .s,.conv-preview,.team-person-sub,.inv-row-sub,.toggle-sub,.wd-meta,.sl-help,.bk-note,.bk-dim,.lg-dim,.cq-row-sub,.od-item-sub,.rt-sub,.stp-note){font-size:var(--ty-small) !important;color:var(--ty-ink2) !important;opacity:1 !important;}
+html[data-ty] #view-app .toggle-txt{font-size:var(--ty-row) !important;font-weight:var(--ty-row-w);}
+html[data-ty] #view-app .field label{font-size:var(--ty-small) !important;font-weight:700;color:var(--ty-ink) !important;}
+
+/* ---------- pills and tags ---------- */
+html[data-ty] :is(#view-app,#mhSheet) :is(.status-pill,.status-pill-icon,.lg-pill,.sl-pill,.cq-pill,.bk-tag,.pill,.spl,.sr-act,.tcount,.ord-tag,.vc-tag,.cpo-tag,.rt-tag,.score-badge,.pro-badge,.conv-kind,.one-dir){font-size:var(--ty-pill) !important;font-weight:var(--ty-pill-w) !important;letter-spacing:var(--ty-pill-ls, 0) !important;opacity:1 !important;}
+html[data-ty] :is(#view-app,#mhSheet) .pill-neutral{color:var(--ty-ink) !important;}
+
+/* ---------- tabs, chips, segmented ---------- */
+html[data-ty] #view-app :is(.chip,.range-tab,.wh-tab,.adm-tabs button,.bk-daybar button,.lens-tabs button,.team-tab,.bk-seg button,.store-tabs button,.sl-tabs button,.msg-filter-chips button),
+html[data-ty] #mhHome :is(.sr-seg button,.sch-btn,.pvs button){font-family:var(--ty-fb);font-size:var(--ty-tab) !important;font-weight:var(--ty-tab-w) !important;opacity:1 !important;}
+html[data-ty] #view-app :is(.lens-tabs button,.bk-seg button):not(.on){color:var(--ty-ink2) !important;}
+
+/* ---------- buttons and links ---------- */
+html[data-ty] :is(#view-app,#mhSheet,body) :is(.btn,.lg-go,.btn-primary-sm,.btn-outline-sm,.hm-go,.btn-submit,.btn-connect,.btn-danger){font-family:var(--ty-fb);font-size:var(--ty-btn) !important;font-weight:var(--ty-btn-w) !important;letter-spacing:var(--ty-btn-ls, 0);}
+html[data-ty] #view-app :is(.row-action,.sl-link,.lg-link,.lg-more){font-size:var(--ty-btn) !important;font-weight:var(--ty-btn-w) !important;}
+
+/* ---------- menu and top bar ---------- */
+html[data-ty] #view-app .nav-item{font-family:var(--ty-fb);font-size:var(--ty-nav) !important;font-weight:var(--ty-nav-w) !important;}
+html[data-ty] #view-app .nav-badge{font-size:12.5px !important;font-weight:800 !important;}
+html[data-ty] #view-app #openItemsBadge{font-size:13.5px !important;font-weight:700 !important;letter-spacing:-.005em;}
+html[data-ty] #view-app .topbar :is(input,.user-chip,.lang-switch button){font-size:var(--ty-small) !important;}
+html[data-ty] #view-app .bottom-nav{font-family:var(--ty-fb);}
+html[data-ty] #view-app .bnav-label{font-size:12.5px !important;font-weight:700;color:var(--ty-ink);}
+
+/* ---------- Home ---------- */
+html[data-ty] #mhHome :is(.task h5,.ln .nm,.sr-l > b,.cal .day .nm,.dday b){font-family:var(--ty-fb);font-weight:var(--ty-row-w);color:var(--ty-ink);}
+html[data-ty] #mhHome .task h5{font-size:var(--ty-row) !important;}
+html[data-ty] #mhHome :is(.task p,.sr-m1,.sr-m2,.sr-v small,.sr-nos,.sr-key li,.cdpp,.calstat .pill){font-size:var(--ty-small) !important;color:var(--ty-ink2);}
+html[data-ty] #mhHome .sr-m2{color:#16365E;}
+html[data-ty] #mhHome .lane-h{font-size:var(--ty-tab) !important;font-weight:800;}
+html[data-ty] #mhHome :is(.sh b,.sh small,.lane-lbl b,.lane-lbl small,.legend .lg){color:var(--ty-ink);}
+html[data-ty] #mhHome .sh small, html[data-ty] #mhHome .lane-lbl small{font-size:calc(var(--ty-small) - 1px) !important;}
+html[data-ty] #mhHome .cal .dow{font-size:var(--ty-small) !important;color:var(--ty-ink);}
+html[data-ty] #mhHome .cal .day .dn{color:var(--ty-ink2);}
+html[data-ty] #mhHome .cal .day.none .st{color:var(--ty-ink2) !important;}
+html[data-ty] #mhHome :is(.amt,.sr-v b,.cal .st,.cpill b){font-family:var(--ty-fn);font-variant-numeric:tabular-nums;}
+html[data-ty] #mhSheet :is(.sec,.sheet th){color:var(--ty-ink) !important;}

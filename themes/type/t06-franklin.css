@@ -1,0 +1,14 @@
+/* 06 · Franklin Newsroom */
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800;900&display=swap');
+html[data-ty="franklin"], html[data-ty="franklin"] #view-app, html[data-ty="franklin"] #mhSheet, html[data-ty="franklin"] body{
+  --ty-fb:'Libre Franklin',system-ui,sans-serif; --ty-fh:'Libre Franklin',system-ui,sans-serif; --ty-fn:'Libre Franklin',system-ui,sans-serif;
+  --ty-body:16px; --ty-lead:17px; --ty-lh:1.5;
+  --ty-h1:34px; --ty-h1-w:900; --ty-h1-ls:-.03em; --ty-h2:20px; --ty-h2-w:800; --ty-cap:13px;
+  --ty-lbl:13.5px; --ty-lbl-w:800; --ty-lbl-tt:uppercase; --ty-lbl-ls:.06em;
+  --ty-val:31px; --ty-val-w:800; --ty-val-ls:-.02em; --ty-sub:14.5px; --ty-sub-w:500;
+  --ty-th:13.5px; --ty-th-w:800; --ty-th-tt:uppercase; --ty-th-ls:.06em; --ty-td:15.5px;
+  --ty-row:16.5px; --ty-row-w:700; --ty-small:15px;
+  --ty-pill:13.5px; --ty-pill-w:700; --ty-tab:15px; --ty-tab-w:700; --ty-btn:15px; --ty-btn-w:700;
+  --ty-nav:15.5px; --ty-nav-w:600;
+  --ty-s12:13.5px; --ty-s13:14px; --ty-s135:14.5px;
+}
