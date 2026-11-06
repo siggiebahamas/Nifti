@@ -4982,6 +4982,115 @@ tbody tr:hover{background:#F6F6F3}
   html[data-ty] #view-app .conv-item .conv-unread-badge{grid-column:3;grid-row:2;justify-self:end;}
 
 /* ===== Round 6 css end ===== */
+
+/* ===== Round 7 css begin ===== */
+
+  /* ===== Round 7: simple tools, pictures, clear customer vs supplier ===== */
+  /* tabs sit under the page title, like everywhere else */
+  html[data-ty] #view-app .app-page.active:has(> .lens-tabs):has(> .page-head){display:flex !important;flex-direction:column;}
+  html[data-ty] #view-app .app-page.active:has(> .lens-tabs):has(> .page-head) > .page-head{order:-2;}
+  html[data-ty] #view-app .app-page.active:has(> .lens-tabs):has(> .page-head) > .lens-tabs{order:-1;align-self:flex-start;}
+  html[data-ty] #view-app .app-page.active:has(> .lens-tabs):has(> .page-head) > *{margin-top:0;}
+  html[data-ty] #view-app .lens-tabs{background:#E9EDF1;border-radius:14px;padding:5px;gap:4px;margin:0 0 18px;}
+  html[data-ty] #view-app .lens-tabs button{padding:10px 18px;border-radius:10px;font-size:16px !important;font-weight:700 !important;color:#1F2329 !important;display:inline-flex;align-items:center;gap:8px;border:0 !important;background:transparent;box-shadow:none !important;}
+  html[data-ty] #view-app .lens-tabs button.on{background:#FFFFFF !important;color:#0E1114 !important;box-shadow:0 1px 2px rgba(15,25,40,.08), 0 4px 12px -6px rgba(15,25,40,.25) !important;}
+  /* three numbered steps under a tool's title */
+  html[data-ty] #view-app .nf-steps{list-style:none;margin:0 0 18px;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;}
+  html[data-ty] #view-app .nf-steps li{display:flex;align-items:center;gap:12px;background:#FFFFFF;border:1px solid #DDE1E6;border-radius:14px;padding:12px 14px;font-size:16px;font-weight:600;color:#0E1114;line-height:1.35;}
+  html[data-ty] #view-app .nf-steps li i{flex:none;width:30px;height:30px;border-radius:50%;background:#1F6B45;color:#FFFFFF;font-style:normal;font-weight:800;display:grid;place-items:center;font-size:15px;}
+  /* list rows used by the simple tools */
+  html[data-ty] #view-app .nf-card{padding:6px 20px 12px !important;}
+  html[data-ty] #view-app .nf-card .panel-head{padding:14px 0 10px;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;}
+  html[data-ty] #view-app .nf-row{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:6px 14px;align-items:center;padding:14px 0;border-top:1px solid #EEF1F4;}
+  html[data-ty] #view-app .nf-row:first-of-type{border-top:0;}
+  html[data-ty] #view-app .nf-row-m{display:grid;gap:3px;min-width:0;} html[data-ty] #view-app .nf-row-m b{font-size:17px;font-weight:700;color:#0E1114;}
+  html[data-ty] #view-app .nf-row-m small{font-size:15px !important;color:#344054 !important;}
+  html[data-ty] #view-app .nf-row-r{display:flex;align-items:center;gap:10px;justify-self:end;} html[data-ty] #view-app .nf-row-r strong{font-size:17px;font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap;}
+  html[data-ty] #view-app .nf-row-r strong.bad{color:#DC2626;}
+  html[data-ty] #view-app .nf-row-a{grid-column:2 / -1;display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end;}
+  html[data-ty] #view-app .nf-row-a:empty{display:none;}
+  html[data-ty] #view-app .nf-row-a .btn-sm{padding:8px 16px !important;font-size:15px !important;border-radius:999px;}
+  html[data-ty] #view-app .nf-row-a .nf-bad{color:#B91C1C !important;border-color:#FCA5A5 !important;}
+  html[data-ty] #view-app .nf-ic-chq{width:42px;height:42px;border-radius:12px;background:#EEF2F7;display:grid;place-items:center;}
+  html[data-ty] #view-app .nf-ic-chq svg{width:22px;height:22px;fill:none;stroke:#1F3148;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+  html[data-ty] #view-app .nf-due .nf-ic-chq{background:#FEF9C3;} html[data-ty] #view-app .nf-bounced .nf-ic-chq{background:#FEE2E2;} html[data-ty] #view-app .nf-cleared .nf-ic-chq{background:#DCFCE7;}
+  html[data-ty] #view-app .nf-pill{display:inline-block;padding:4px 11px;border-radius:999px;font-size:14px;font-weight:700;white-space:nowrap;}
+  html[data-ty] #view-app .nf-pill.warn{background:#FEF9C3;color:#1F2329;box-shadow:inset 0 0 0 1px #FACC15;} html[data-ty] #view-app .nf-pill.bad{background:#FEE2E2;color:#B91C1C;}
+  html[data-ty] #view-app .nf-pill.good{background:#DCFCE7;color:#15803D;} html[data-ty] #view-app .nf-pill.info{background:#E6EEF8;color:#1E3A5F;} html[data-ty] #view-app .nf-pill.plain{background:#EEF1F4;color:#1F2329;}
+  html[data-ty] #view-app .nf-dot{width:12px;height:12px;border-radius:50%;} html[data-ty] #view-app .nf-dot.bad{background:#DC2626;}
+  html[data-ty] #view-app .nf-empty{padding:18px 0;font-size:16px;color:#1F2329;} html[data-ty] #view-app .nf-empty.good{color:#15803D;font-weight:700;}
+  html[data-ty] #view-app .nf-foot{font-size:16px;margin:4px 2px 0;}
+  /* Reports */
+  html[data-ty] #view-app #page-analytics.nf-replaced > :not(#nfReports){display:none !important;}
+  html[data-ty] #view-app .nf-chart{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;align-items:end;height:250px;padding:10px 0 4px;}
+  html[data-ty] #view-app .nf-col{display:grid;grid-template-rows:auto 1fr auto auto;gap:6px;height:100%;text-align:center;}
+  html[data-ty] #view-app .nf-col b{font-size:15px;font-weight:800;color:#0E1114;} html[data-ty] #view-app .nf-col small{font-size:15px;font-weight:700;color:#1F2329;}
+  html[data-ty] #view-app .nf-col-t{position:relative;background:#F1F4F7;border-radius:10px;} html[data-ty] #view-app .nf-col-t u{position:absolute;left:18%;right:18%;bottom:0;border-radius:8px 8px 4px 4px;background:#93B4D8;}
+  html[data-ty] #view-app .nf-col.now .nf-col-t u{background:#2563EB;}
+  html[data-ty] #view-app .nf-col em{font-style:normal;font-size:14px;font-weight:800;} html[data-ty] #view-app .nf-col em.good{color:#15803D;} html[data-ty] #view-app .nf-col em.bad{color:#DC2626;}
+  html[data-ty] #view-app .nf-two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;} html[data-ty] #view-app .nf-two > section{margin-bottom:16px;}
+  html[data-ty] #view-app .nf-bar{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) auto;gap:12px;align-items:center;padding:9px 0;}
+  html[data-ty] #view-app .nf-bar-k{display:flex;align-items:center;gap:10px;font-size:16px;font-weight:600;color:#0E1114;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  html[data-ty] #view-app .nf-bar-k i{flex:none;width:24px;height:24px;border-radius:50%;background:#EEF1F4;font-style:normal;font-size:14px;font-weight:800;display:grid;place-items:center;}
+  html[data-ty] #view-app .nf-bar-t{height:12px;background:#F1F4F7;border-radius:999px;overflow:hidden;} html[data-ty] #view-app .nf-bar-t u{display:block;height:100%;background:#1F6B45;border-radius:999px;}
+  html[data-ty] #view-app .nf-bar b{font-size:16px;font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap;}
+  /* the other tools: same tiles, cards and tabs as the rest of the app */
+  html[data-ty] #view-app .cq-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:16px;}
+  html[data-ty] #view-app .cq-tile{background:#FFFFFF;border:1px solid #DDE1E6 !important;border-top-width:1px !important;border-radius:16px;padding:16px 18px;display:grid;gap:4px;align-content:start;container-type:inline-size;min-width:0;}
+  html[data-ty] #view-app .cq-tile-l{font-size:17px !important;font-weight:700 !important;color:#0E1114 !important;}
+  html[data-ty] #view-app .cq-tile-v{font-size:max(20px, min(29px, 15cqi)) !important;font-weight:800 !important;color:#0E1114;white-space:nowrap;line-height:1.2;}
+  html[data-ty] #view-app .cq-tile-n{font-size:15.5px !important;font-weight:700;color:#1F2329 !important;line-height:1.3;}
+  html[data-ty] #view-app :is(#page-returns,#page-routes,#page-books,#page-taxforms,#page-discover) .panel-card{border-radius:16px;}
+  html[data-ty] #view-app :is(#page-returns,#page-books,#page-taxforms,#page-discover,#page-cheques) details.panel-card > summary{font-size:16.5px;font-weight:800;color:#1F6B45;cursor:pointer;padding:4px 0;}
+  html[data-ty] #view-app .rt-section{font-size:14px !important;font-weight:800 !important;letter-spacing:.06em;text-transform:uppercase;color:#0E1114 !important;margin:18px 2px 8px !important;}
+  html[data-ty] #view-app #page-routes .role-toggle.store-tabs{display:inline-flex;width:auto;gap:4px;padding:5px;background:#E9EDF1;border:0;border-radius:14px;margin-bottom:16px;}
+  html[data-ty] #view-app #page-routes .role-toggle.store-tabs button{flex:none;border:0 !important;background:transparent;border-radius:10px;padding:10px 18px;box-shadow:none !important;color:#1F2329;}
+  html[data-ty] #view-app #page-routes .role-toggle.store-tabs button.active{background:#FFFFFF !important;color:#0E1114 !important;box-shadow:0 1px 2px rgba(15,25,40,.08), 0 4px 12px -6px rgba(15,25,40,.25) !important;}
+  html[data-ty] #view-app #page-books .adm-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:16px;}
+  html[data-ty] #view-app #page-books table{font-variant-numeric:tabular-nums;}
+  html[data-ty] #view-app #page-discover .toggle-banner{border-radius:16px;}
+  html[data-ty] #view-app #page-discover .grid3 > *{border-radius:16px;}
+  @media (max-width:760px){
+    html[data-ty] #view-app .nf-steps{grid-template-columns:1fr;gap:6px;} html[data-ty] #view-app .nf-steps li{padding:10px 12px;}
+    html[data-ty] #view-app .nf-two{grid-template-columns:1fr;gap:0;}
+    html[data-ty] #view-app .nf-chart{gap:6px;height:220px;} html[data-ty] #view-app .nf-col b{font-size:13.5px;} html[data-ty] #view-app .nf-col em{font-size:13.5px;}
+    html[data-ty] #view-app .nf-row{grid-template-columns:auto minmax(0,1fr);} html[data-ty] #view-app .nf-row-r{grid-column:2;justify-self:start;}
+    html[data-ty] #view-app .lens-tabs{width:100%;} html[data-ty] #view-app .lens-tabs button{flex:1;justify-content:center;white-space:normal;text-align:center;line-height:1.2;padding:10px 8px;}
+  }
+  /* pictures */
+  html[data-ty] #view-app .nf-has-av{padding:0 !important;overflow:hidden;background:#EEF1F4 !important;}
+  html[data-ty] #view-app .nf-has-av .nf-av-img{width:100%;height:100%;object-fit:cover;display:block;border-radius:inherit;}
+  html[data-ty] #view-app .conv-avatar.nf-has-av, html[data-ty] #view-app .pt-av.nf-has-av, html[data-ty] #view-app .team-avatar.nf-has-av, html[data-ty] #view-app .user-chip .avatar.nf-has-av{border-radius:50%;}
+  html[data-ty] #view-app .nf-has-av.nf-cust{box-shadow:0 0 0 3px #FFFFFF, 0 0 0 5.5px #2563EB;}
+  html[data-ty] #view-app .nf-has-av.nf-sup{box-shadow:0 0 0 3px #FFFFFF, 0 0 0 5.5px #7C3AED;}
+  html[data-ty] #view-app .nf-av-edit{cursor:pointer;}
+  html[data-ty] #view-app .user-chip .avatar.nf-has-av{width:38px;height:38px;}
+  html[data-ty] #view-app .team-avatar.nf-has-av{width:38px;height:38px;}
+  /* Messages: customers blue, suppliers purple, strong and obvious */
+  html[data-ty] #view-app .conv-kind.supplier{background:#2563EB !important;color:#FFFFFF !important;}
+  html[data-ty] #view-app .conv-kind.buyer{background:#7C3AED !important;color:#FFFFFF !important;}
+  html[data-ty] #view-app .conv-item.nf-cust{box-shadow:inset 4px 0 0 #2563EB;} html[data-ty] #view-app .conv-item.nf-sup{box-shadow:inset 4px 0 0 #7C3AED;}
+  html[data-ty] #view-app .conv-item.active{background:#F1F5FF !important;}
+  html[data-ty] #view-app .conv-item.nf-sup.active{background:#F6F2FF !important;}
+  html[data-ty] #view-app .msg-filter-chips .chip:nth-child(3).active{background:#EFF4FF !important;color:#1D4ED8 !important;border-color:#2563EB !important;box-shadow:inset 0 0 0 1.5px #2563EB !important;}
+  html[data-ty] #view-app .msg-filter-chips .chip:nth-child(4).active{background:#F5F0FF !important;color:#6D28D9 !important;border-color:#7C3AED !important;box-shadow:inset 0 0 0 1.5px #7C3AED !important;}
+  /* picture picker */
+  .nf-av-now{display:flex;justify-content:center;margin:10px 0 14px;} .nf-av-now img{width:96px;height:96px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 4px #FFFFFF, 0 0 0 6px #D5DBE2;}
+  .nf-av-up{display:flex !important;justify-content:center;margin-bottom:14px;cursor:pointer;}
+  .nf-av-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:14px;}
+  .nf-av-grid button{border:2px solid transparent;border-radius:50%;padding:0;background:none;cursor:pointer;aspect-ratio:1;overflow:hidden;}
+  .nf-av-grid button:hover{border-color:#1F6B45;} .nf-av-grid img{width:100%;height:100%;display:block;}
+  html[data-ty] #view-app .disc-badge{background:#EEF1F4 !important;color:#1F2329 !important;border:0 !important;font-weight:700;}
+  html[data-ty] #view-app #page-inventory .btn-outline[onclick="openImportInventoryModal()"]{display:none;}
+  html[data-ty] #view-app .team-tab-count{font-size:14px !important;}
+  html[data-ty] #view-app #page-discover .grid3{margin-bottom:18px;}
+  @media (max-width:760px){
+    html[data-ty] #view-app .user-chip{font-size:0 !important;gap:0 !important;}
+    html[data-ty] #view-app .user-chip > :not(.avatar){display:none !important;}
+    html[data-ty] #view-app .nf-col b, html[data-ty] #view-app .nf-col em{font-size:14px !important;letter-spacing:-.03em;}
+  }
+
+/* ===== Round 7 css end ===== */
   .settings-card:empty{display:none;}
   #supplierChips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;} #supplierChips .chip{flex-shrink:0;}
 </style>
@@ -5727,7 +5836,7 @@ tbody tr:hover{background:#F6F6F3}
     </div>
     <div class="nav-group nav-more" data-grp="more">
       <div class="heading nav-fold" onclick="toggleNavGroup('more')">More tools<span class="nav-fold-ic" aria-hidden="true">▾</span></div>
-      <div class="nav-item" data-page="cheques" onclick="go('cheques')" style="position:relative;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 14h6"/><path d="M15 14h3"/><path d="M6 10h12"/></svg><span>Cheques</span></div>
+      <div class="nav-item" data-page="cheques" onclick="go('cheques')" style="position:relative;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 14h6"/><path d="M15 14h3"/><path d="M6 10h12"/></svg><span>Check payments</span></div>
       <div class="nav-item" data-page="returns" onclick="go('returns')" style="position:relative;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/></svg><span>Returns &amp; credits</span></div>
       <div class="nav-item" data-page="routes" onclick="go('routes')" style="position:relative;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="7" width="13" height="10" rx="1"/><path d="M14 10h4l3 3v4h-7"/><circle cx="5.5" cy="18" r="1.8"/><circle cx="17.5" cy="18" r="1.8"/></svg><span>Delivery routes</span></div>
       <div class="nav-item" data-page="books" onclick="go('books')" style="position:relative;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M8 7h8M8 11h6"/></svg><span>Tax books</span></div>
@@ -5772,7 +5881,7 @@ tbody tr:hover{background:#F6F6F3}
       <button class="more-sheet-item" data-page="followups" onclick="closeMoreSheet(); go('followups')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg><span>Follow-ups</span></button>
       <button class="more-sheet-item" data-page="watchdog" onclick="closeMoreSheet(); go('watchdog')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span>Owner's watchdog</span></button>
       <button class="more-sheet-item" data-page="team" onclick="closeMoreSheet(); go('team')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Team</span></button>
-      <button class="more-sheet-item" data-page="cheques" onclick="closeMoreSheet(); go('cheques')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 14h6"/><path d="M15 14h3"/><path d="M6 10h12"/></svg><span>Cheques</span></button>
+      <button class="more-sheet-item" data-page="cheques" onclick="closeMoreSheet(); go('cheques')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 14h6"/><path d="M15 14h3"/><path d="M6 10h12"/></svg><span>Check payments</span></button>
       <button class="more-sheet-item" data-page="returns" onclick="closeMoreSheet(); go('returns')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/></svg><span>Returns &amp; credits</span></button>
       <button class="more-sheet-item" data-page="routes" onclick="closeMoreSheet(); go('routes')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="7" width="13" height="10" rx="1"/><path d="M14 10h4l3 3v4h-7"/><circle cx="5.5" cy="18" r="1.8"/><circle cx="17.5" cy="18" r="1.8"/></svg><span>Delivery routes</span></button>
       <button class="more-sheet-item" data-page="books" onclick="closeMoreSheet(); go('books')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M8 7h8M8 11h6"/></svg><span>Tax books</span></button>
@@ -16962,7 +17071,7 @@ async function bkSaveSettings(patch){
 }
 
 /* ---- demo month: believable numbers for Dela Cruz Hardware ---- */
-const BK_DEMO_KEY = 'nifti-books-demo-v2';
+const BK_DEMO_KEY = 'nifti-books-demo-v3';
 const BK_DEMO_COST = {'Galvanized Wire 12ga': [430, 520], 'Portland Cement 40kg': [184, 228], 'Steel Rebar 12mm': [50, 64], 'Welding Rods 3.2mm': [88, 120],
   'Fresh Tomatoes (Grade A)': [45, 60], 'Whole Chicken (Fresh)': [165, 210], 'Rebar 10mm': [51, 62], 'Rebar 12mm': [50, 64], 'Rebar 16mm': [55, 70], 'Structural I-Beams': [2950, 3650],
   'Wire Mesh Panels': [165, 210], 'Angle Bars': [66, 85], 'Welding Plates 6mm': [380, 480]};
@@ -21110,7 +21219,7 @@ const LG_ACCOUNTS = [
 ];
 const LG_TYPE_LABEL = {asset: 'What you have', liability: 'What you owe', equity: "Owner's share", income: 'Money earned', expense: 'Costs'};
 const LG = {loaded: false, loading: null, accounts: [], entries: [], lines: [], periods: [], syncedAt: null, syncError: '', demo: false};
-const LG_DEMO_KEY = 'nifti-ledger-demo-v1';
+const LG_DEMO_KEY = 'nifti-ledger-demo-v2';
 function lgDemoStore(){ try{ return JSON.parse(localStorage.getItem(LG_DEMO_KEY) || '{}'); }catch(e){ return {}; } }
 function lgDemoSave(d){ try{ localStorage.setItem(LG_DEMO_KEY, JSON.stringify(d)); }catch(e){} }
 function lgAcct(code){ return LG.accounts.find(a => a.code === code) || {code, name: 'Account ' + code, type: lgTypeOf(code)}; }
@@ -21903,7 +22012,7 @@ async function clsReopen(m){
 
 /* ---- payroll: pay per day or per month, vale and contributions taken off, a payslip each ---- */
 const PR = {loaded: false, runs: [], lines: []};
-const PR_DEMO_KEY = 'nifti-payroll-demo-v1';
+const PR_DEMO_KEY = 'nifti-payroll-demo-v2';
 async function prLoad(force){
   if(PR.loaded && !force) return;
   if(myBusiness){
@@ -23089,6 +23198,388 @@ function nfDue(o){
   const tag = n < 0 ? `<i class="late">${-n} day${n === -1 ? '' : 's'} late</i>` : n === 0 ? '<i class="soon">Due today</i>' : n <= 3 ? `<i class="soon">in ${n} day${n === 1 ? '' : 's'}</i>` : `<i class="later">in ${n} days</i>`;
   return `<b>${lbl}</b>${tag}`;
 }
+
+/* ===== Round 7: a calm, curated demo =====
+   Demo only (no signed-in business). Each section shows 5 to 7 samples, one per situation
+   (needs you, waiting, done, late…), and no section is left empty. Seeds never pile up across visits. */
+const NF_DEMO_KEEP = {
+  po: ['po7', 'po_q1', 'po_q3', 'po11', 'po_q5', 'po8', 'po12', // customer orders: to confirm, waiting for OK x2, preparing, delivered (bill it), invoice overdue, paid
+       'po4', 'po_q6', 'po5', 'po2', 'po13', 'po14', 'po3'],     // orders to suppliers: draft, their quote, counter-offer, confirmed, on the way (late), bill to pay, done
+  poSeeded: /^(po\d+|po_q\d+|po_consol\d+)$/,
+  conv: ['metro', 'cebu', 'balintawak', 'quezon', 'buy_bayview', 'buy_corazon', 'buy_riverside'],
+  convSeeded: ['metro', 'cebu', 'balintawak', 'delacruz', 'northline', 'irongate', 'quezon', 'marikina', 'buy_bayview', 'buy_corazon', 'buy_riverside', 'buy_cavite', 'buy_manilabay'],
+  suppliers: ['metro', 'cebu', 'balintawak', 'quezon', 'marikina', 'northline'],
+  supSeeded: ['metro', 'cebu', 'balintawak', 'delacruz', 'northline', 'quezon', 'irongate', 'marikina', 'guangzhou'],
+  inv: ['Galvanized Wire 12ga@main', 'Portland Cement 40kg', 'Fresh Tomatoes (Grade A)', 'Angle Bars', 'Steel Rebar 12mm', 'Welding Rods 3.2mm', 'Structural I-Beams'],
+  invSeeded: ['Galvanized Wire 12ga', 'Portland Cement 40kg', 'Fresh Tomatoes (Grade A)', 'Steel Rebar 12mm', 'Whole Chicken (Fresh)', 'Welding Rods 3.2mm', 'Rebar 10mm', 'Rebar 12mm', 'Structural I-Beams', 'Wire Mesh Panels', 'Angle Bars', 'Welding Plates 6mm', 'Rebar 16mm'],
+};
+function nfIsDemo(){ return typeof myBusiness === 'undefined' || !myBusiness; }
+function nfDay(n){ return addDaysIso(APP_TODAY, n); }
+function nfDedupe(arr, key){ if(!Array.isArray(arr)) return; const seen = new Set(); for(let i = 0; i < arr.length; i++){ const k = key(arr[i]); if(k == null) continue; if(seen.has(k)){ arr.splice(i, 1); i--; } else seen.add(k); } }
+function nfTrim(arr, isSeeded, keep){ if(!Array.isArray(arr)) return; for(let i = arr.length - 1; i >= 0; i--){ const x = arr[i]; if(isSeeded(x) && !keep(x)) arr.splice(i, 1); } }
+
+function nfDemoCurate(){
+  if(!nfIsDemo()) return;
+  // 1. nothing is ever added twice
+  nfDedupe(purchaseOrders, p => p && p.id);
+  nfDedupe(buyerConversations, c => c && c.id); nfDedupe(supplierConversations, c => c && c.id);
+  nfDedupe(suppliersData, s => s && s.id); nfDedupe(buyersData, s => s && s.id);
+  nfDedupe(inventoryData, i => i && (i.code || i.name) + '@' + i.warehouse);
+  // 2. one sample per situation
+  const K = NF_DEMO_KEEP;
+  nfTrim(purchaseOrders, p => K.poSeeded.test(String(p.id)), p => K.po.includes(p.id));
+  nfTrim(buyerConversations, c => K.convSeeded.includes(c.id), c => K.conv.includes(c.id));
+  nfTrim(supplierConversations, c => K.convSeeded.includes(c.id), c => K.conv.includes(c.id));
+  nfTrim(suppliersData, s => K.supSeeded.includes(s.id), s => K.suppliers.includes(s.id));
+  nfTrim(inventoryData, i => K.invSeeded.includes(i.name), i => K.inv.includes(i.name) || K.inv.includes(i.name + '@' + i.warehouse));
+}
+
+// counter books: this month shows 7 clear expenses instead of 15 (older months stay for comparisons)
+function nfDemoBooks(){
+  if(!nfIsDemo() || !BK || !Array.isArray(BK.expenses) || BK._nfCurated) return;
+  const m = bkMonth(APP_TODAY);
+  const drop = e => bkMonth(e.date) === m && (['Water', 'Internet & phone', 'Delivery & shipping', 'Supplies', 'Food & meals', 'Bank & GCash fees', 'Salaries'].includes(e.category) || (e.category === 'Repairs' && e.vendor === 'Mang Tonyo'));
+  BK.expenses = BK.expenses.filter(e => !drop(e));
+  // five earlier months of sales and regular bills, so Reports can show a real trend
+  const uid = () => (typeof bkUid === 'function' ? bkUid() : 'nf' + Math.random().toString(36).slice(2));
+  const cost = p => (BK_DEMO_COST[p] || [0])[0];
+  const sale = (n, customer, lines) => { const date = addDaysIso(APP_TODAY, -n), total = lines.reduce((x, l) => x + l[1] * l[2], 0);
+    return {id: uid(), date, at: date + 'T10:15:00', customer, lines: lines.map(l => ({product: l[0], qty: l[1], unitPrice: l[2], unitCost: cost(l[0])})), total, paidWith: 'bank', payments: [{method: 'bank', amount: total, date}], by: 'Dela Cruz', note: ''}; };
+  const exp = (n, category, amount, paidFrom, vendor) => ({id: uid(), date: addDaysIso(APP_TODAY, -n), category, amount, paidFrom, vendor, note: '', staff: '', repeat: true, by: 'Dela Cruz', at: addDaysIso(APP_TODAY, -n) + 'T17:00:00'});
+  if(!BK.sales.some(x => daysBetween(x.date, APP_TODAY) > 40)){
+    [[1, 1.0], [2, 0.86], [3, 0.92], [4, 0.74], [5, 0.8]].forEach(([k, f]) => {
+      BK.sales.push(sale(30 * k + 3, 'Bayview Construction Co.', [['Portland Cement 40kg', Math.round(560 * f), 225]]), sale(30 * k + 11, 'JRC Builders', [['Steel Rebar 12mm', Math.round(1600 * f), 63]]),
+        sale(30 * k + 19, 'Riverside Builders Corp', [['Structural I-Beams', Math.round(22 * f), 3650]]));
+      if(k >= 4) BK.expenses.push(exp(30 * k + 1, 'Electricity', 5600, 'bank', 'Meralco'), exp(30 * k + 20, 'Rent', 18000, 'bank', 'Bldg. owner'), exp(30 * k + 10, 'Salaries', 14000, 'cash', ''));
+    });
+  }
+  BK._nfCurated = true;
+  try{ bkSaveDemo(); }catch(e){}
+}
+
+// payroll: one paid run (with payslips) and one draft for this period
+function nfDemoPayroll(){
+  if(!nfIsDemo() || typeof PR === 'undefined' || PR.runs.length) return;
+  const mk = (id, from, to, paid) => Object.assign({id, business_id: 'demo', status: paid ? 'paid' : 'draft', period_from: from, period_to: to, created_by_name: 'Dela Cruz'}, paid ? {paid_on: paid, paid_from: 'cash', paid_by_name: 'Dela Cruz'} : {});
+  const ln = (run, i, name, rate, days, extra, vale, contrib) => { const x = {id: run + ':' + i, run_id: run, staff_name: name, basis: 'day', rate, days, extra, vale_deduct: vale, contrib_employee: contrib, contrib_employer: 0, other_deduct: 0, note: null}; const c = prCalc(x); x.gross = c.gross; x.net = c.net; return x; };
+  PR.runs.push(mk('PRdemo1', nfDay(-25), nfDay(-11), nfDay(-10)), mk('PRdemo2', nfDay(-10), nfDay(3), null));
+  PR.lines.push(ln('PRdemo1', 0, 'Liza Santos', 650, 13, 300, 0, 450), ln('PRdemo1', 1, 'Rico Reyes', 600, 12, 0, 0, 420),
+    ln('PRdemo2', 0, 'Liza Santos', 650, 11, 0, 0, 450), ln('PRdemo2', 1, 'Rico Reyes', 600, 11, 0, 500, 420));
+  try{ prSaveDemo(); }catch(e){}
+}
+
+// money that is still with a person, a bank deposit, and checks in every state
+function nfDemoMoney(){
+  if(!nfIsDemo() || window._nfMoneySeeded) return;
+  window._demoChequesSeeded = true; // the old seeder piled up checks on every visit
+  const inv = id => { const po = getPO(id); return po && po.invoice ? po : null; };
+  if(!inv('po8')) return; window._nfMoneySeeded = true;
+  const pay = (po, p) => { if(!po) return; const list = paymentListFor(po, 'invoice'); if(!list.some(x => x.id === p.id)) list.push(p); };
+  const po8 = inv('po8'), po14 = inv('po14');
+  pay(po8, {id: 'nf-cash-1', method: 'cash', amount: 4000, date: nfDay(-1), confirmStatus: 'confirmed', recordedBy: 'Rico', reference: ''});
+  pay(po8, {id: 'nf-chq-1', method: 'check', amount: 6000, reference: '004512', bank: 'BDO', checkDate: nfDay(0), date: nfDay(-3), confirmStatus: 'pending', checkStatus: 'pending', submittedBy: 'supplier'});
+  pay(po8, {id: 'nf-chq-2', method: 'check', amount: 5000, reference: '118834', bank: 'Metrobank', checkDate: nfDay(6), date: nfDay(-3), confirmStatus: 'pending', checkStatus: 'pending', submittedBy: 'supplier'});
+  pay(po8, {id: 'nf-chq-3', method: 'check', amount: 3500, reference: '220190', bank: 'BPI', checkDate: nfDay(-2), date: nfDay(-6), depositedAt: nfDay(-1), confirmStatus: 'pending', checkStatus: 'pending', submittedBy: 'supplier'});
+  pay(po8, {id: 'nf-chq-4', method: 'check', amount: 3004, reference: '771002', bank: 'Security Bank', checkDate: nfDay(-9), date: nfDay(-12), confirmStatus: 'rejected', checkStatus: 'bounced', rejectReason: 'Not enough money in their account', submittedBy: 'supplier'});
+  pay(po14, {id: 'nf-chq-5', method: 'check', amount: 15400, reference: '000781', bank: 'BPI', checkDate: nfDay(2), date: nfDay(-1), confirmStatus: 'pending', checkStatus: 'pending', submittedBy: 'buyer'});
+  const dep = window._demoDeposits || (window._demoDeposits = []);
+  if(!dep.some(d => d.id === 'nf-dep-1')) dep.push({id: 'nf-dep-1', amount: 12500, bank: 'BDO', deposited_on: nfDay(-3), reference: 'DS-20418', items: [], note: null, created_by: 'Liza'});
+}
+
+// team: a few tasks in every state, a short chat, and recent activity
+function nfDemoTeam(){
+  if(!nfIsDemo() || teamTasks.length || window._nfTeamSeeded) return; window._nfTeamSeeded = true;
+  const tm = (teamMembers || []).concat(supplierTeamMembers || []);
+  const id = i => (tm[i] || tm[0] || {}).id, nm = i => (tm[i] || tm[0] || {}).name || 'Dela Cruz';
+  const t = (k, title, who, due, status, done) => ({id: 'nf-task-' + k, title, assignedTo: id(who), createdById: id(0), createdBy: nm(0), createdAt: nfDay(-2), dueDate: due, status, acknowledgedAt: nfDay(-1), doneAt: done || null, bizRole: currentAppRole});
+  teamTasks.push(t(1, 'Call Riverside about the overdue invoice', 0, nfDay(0), 'open'), t(2, 'Count Portland Cement on the shelf', 1, nfDay(-1), 'open'),
+    t(3, 'Load Bayview order on the van', 2, nfDay(1), 'open'), t(4, 'Deposit BDO check 004512', 1, nfDay(0), 'done', nfDay(0)));
+  const msg = (k, who, text, time) => ({id: 'nf-chat-' + k, authorId: id(who), author: nm(who), text, date: nfDay(0), time, createdAt: nfDay(0) + 'T0' + k + ':00:00Z', bizRole: currentAppRole});
+  teamChatMessages.push(msg(1, 1, 'Metro Steel says the rebar ships tomorrow.', '8:10 AM'), msg(2, 2, 'Van is ready for the Bayview delivery.', '8:25 AM'), msg(3, 0, 'Thanks! Collect the Riverside check on the way back.', '8:31 AM'));
+  const act = (k, who, action, time, kind) => ({id: 'nf-act-' + k, actor: nm(who), action, date: nfDay(0), time, kind, bizRole: 'both'});
+  teamActivityLog.push(act(1, 1, 'counted the cash drawer', '7:55 AM', 'cash'), act(2, 2, 'marked PO-2026-0820 as ready to ship', '9:10 AM', 'order'),
+    act(3, 0, 'approved a ₱1,200 fuel expense', '9:40 AM', 'expense'), act(4, 1, 'recorded 2 bad bags of cement', 'Yesterday', 'stock'));
+}
+
+// tools: a route for today, a credit, a price change already sent
+function nfDemoTools(){
+  if(!nfIsDemo() || window._nfToolsSeeded) return; window._nfToolsSeeded = true;
+  const tm = (teamMembers || []); const drv = tm[2] || tm[1] || tm[0] || {};
+  if(typeof demoRoutes !== 'undefined' && !demoRoutes.length){
+    const stop = (k, seq, status, buyer, name, addr, deliver, collect, amt, extra) => Object.assign({id: 'nf-st-' + k, seq, status, buyer_business_id: buyer, buyer_name: name, address: addr, phone: '', deliver_po_ids: deliver, collect_po_ids: collect,
+      items: deliver.flatMap(id => ((getPO(id) || {}).lineItems || []).map(li => ({product: li.product, qty: li.qty, unit: li.unit || ''}))), amount_due: amt, note: ''}, extra || {});
+    demoRoutes.push({id: 'nf-rt-1', route_date: APP_TODAY, driver_member_id: drv.id, driver_name: drv.name || 'Mark Santos', vehicle: 'L300 van', status: 'on_road', mine: true, stops: [
+      stop(1, 1, 'done', 'buy_manilabay', 'Manila Bay Scaffolding Co.', 'Navotas warehouse', ['po11'], [], 0, {done_at: APP_TODAY + 'T01:40:00Z'}),
+      stop(2, 2, 'pending', 'buy_riverside', 'Riverside Builders Corp', 'Pasig site, gate 2', [], ['po8'], 6000),
+      stop(3, 3, 'failed', 'buy_corazon', 'Corazon Welding Shop', 'Cainta, near the market', ['po7'], [], 0, {fail_reason: 'Closed'})]});
+  }
+  if(typeof demoCreditMemos !== 'undefined' && !demoCreditMemos.length){
+    demoCreditMemos.push({id: 'nf-cm-1', buyer_business_id: 'buy_corazon', supplier_business_id: ME_SUPPLIER, number: 'CM-00002', amount: 1200, remaining: 1200, reason: '3 bent angle bars returned', status: 'open', created_at: nfDay(-2) + 'T03:00:00Z'},
+      {id: 'nf-cm-2', buyer_business_id: 'buy_bayview', supplier_business_id: ME_SUPPLIER, number: 'CM-00001', amount: 850, remaining: 0, reason: 'Short by 1 bundle of rebar', status: 'applied', created_at: nfDay(-20) + 'T03:00:00Z'});
+  }
+  const p12 = getPO('po12'); if(p12 && !p12.rma) p12.rma = {reason: 'Damaged goods', desc: '2 I-beams dented on delivery', filedDate: nfDay(-12), status: 'credited'};
+  if(typeof demoPriceChanges !== 'undefined' && !demoPriceChanges.length){
+    demoPriceChanges.push({id: 'nf-pc-1', product: 'Portland Cement 40kg', old_price: 228, new_price: 236, effective_date: nfDay(5), applied_at: null},
+      {id: 'nf-pc-2', product: 'Steel Rebar 12mm', old_price: 66, new_price: 64, effective_date: nfDay(-6), applied_at: nfDay(-6) + 'T00:00:00Z'});
+  }
+}
+
+function nfDemoAll(){ try{ nfDemoCurate(); nfDemoMoney(); nfDemoTeam(); nfDemoTools(); nfDemoPayroll(); }catch(e){ console.warn('demo', e); } }
+// To check: one example of each kind, at most 7
+(function(){ const f = window.issuesAll; if(typeof f !== 'function' || f._nf) return;
+  const w = function(){ const r = f.apply(this, arguments); if(!nfIsDemo() || !Array.isArray(r)) return r; const seen = new Set();
+    return r.filter(i => { const k = i.kind || i.title; if(seen.has(k)) return false; seen.add(k); return true; }).slice(0, 7); };
+  w._nf = true; window.issuesAll = w; })();
+(function(){
+  if(typeof window === 'undefined') return;
+  const wrap = (name, after) => { const f = window[name]; if(typeof f !== 'function' || f._nf) return; const w = function(){ const r = f.apply(this, arguments); const done = () => { try{ after(); }catch(e){} }; if(r && typeof r.then === 'function') return r.then(v => { done(); return v; }); done(); return r; }; w._nf = true; window[name] = w; };
+  const hook = () => {
+    wrap('qtSeedDemo', nfDemoCurate); wrap('bkSeedDemo', () => { nfDemoBooks(); nfDemoMoney(); }); wrap('prLoad', nfDemoPayroll);
+    wrap('seedDemoCheques', nfDemoMoney);
+    nfDemoAll();
+    try{ const a = document.querySelector('#view-app .app-page.active'); if(a) navigate(a.id.slice(5)); }catch(e){}
+  };
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => setTimeout(hook, 0)); else setTimeout(hook, 0);
+})();
+
+/* ===== Round 7: the More tools, made simple =====
+   Every tool page opens with what it is for in one sentence and three numbered steps.
+   Check payments and Reports are rebuilt as short, plain pages; the other tools keep their
+   buttons and data, with simpler words and the same look as the rest of the app. */
+const NF_TOOL_TEXT = {
+  cheques: ['Check payments', 'Checks customers gave you, and checks you gave. Nifti tells you the day each one can go to the bank.',
+    ['Write down each check you get', 'Deposit it on the day Nifti shows', 'Tap when it clears or bounces']],
+  returns: ['Returns & credits', 'When a customer sends items back or gets money off for a bad item, write it here. Nifti takes it off their next bill.',
+    ['A customer returns items or complains', 'Tap "Give a credit" and type the amount', 'It comes off their next bill by itself']],
+  routes: ['Delivery routes', "Make today's delivery list for your driver. They tick each stop on their phone and bring back the cash.",
+    ['Pick what to deliver and what to collect', 'Send the list to your driver', 'Watch each stop turn green']],
+  books: ['Tax books', 'Your sales book and purchase book for the BIR, filled in from your invoices. Download it for your bookkeeper.',
+    ['Pick the month', 'Check the totals', 'Tap "Download for Excel"']],
+  taxforms: ['BIR 2307s', 'When a big customer keeps 1% of your payment for tax, they owe you a 2307 paper. Collect them here so you pay less tax.',
+    ['See who still owes you a 2307', 'Tap "Remind" to ask for it', 'Tap "Mark received" when you get it']],
+  analytics: ['Reports', 'How your business is doing this month, in plain numbers.', null],
+  discover: ['Find suppliers & customers', 'Look for new suppliers or customers on Nifti. Nobody sees your prices or your partners.',
+    ['Pick a category', 'Open a business', 'Tap "Message" to say hello']],
+};
+const NF_LENS_TEXT = {cheques: {supplier: 'Checks you got', buyer: 'Checks you gave'}, returns: {supplier: 'From customers', buyer: 'To suppliers'}};
+function nfStepsHtml(steps){ return steps ? `<ol class="nf-steps">${steps.map((s, i) => `<li><i>${i + 1}</i><span>${s}</span></li>`).join('')}</ol>` : ''; }
+function nfToolHead(page){
+  const t = NF_TOOL_TEXT[page], el = document.getElementById('page-' + page); if(!t || !el) return;
+  const head = el.querySelector(':scope > .page-head'); if(!head) return;
+  const h1 = head.querySelector('h1'), p = head.querySelector('p');
+  if(h1){ const badge = h1.querySelector('span'); h1.textContent = t[0] + ' '; if(badge) h1.appendChild(badge); }
+  if(p) p.textContent = t[1];
+  let st = el.querySelector(':scope > .nf-steps'); if(!st && t[2]){ head.insertAdjacentHTML('afterend', nfStepsHtml(t[2])); }
+  const lens = el.querySelector(':scope > .lens-tabs'), names = NF_LENS_TEXT[page];
+  if(lens && names) lens.querySelectorAll('button').forEach(b => { const side = (b.getAttribute('onclick') || '').match(/'(supplier|buyer)'\)/); if(side && names[side[1]]){ const n = b.querySelector('.lens-n'); b.textContent = names[side[1]]; if(n) b.appendChild(n); } });
+}
+
+/* ---------- Check payments ---------- */
+function nfChqWhen(c){
+  const d = c.date; if(!d) return 'No date';
+  const n = daysBetween(APP_TODAY, d), lbl = stmtDate(d).replace(/, \d{4}$/, '');
+  if(c.status === 'bounced') return 'Bounced · dated ' + lbl;
+  if(c.status === 'cleared') return 'Cleared · dated ' + lbl;
+  if(c.status === 'deposited') return 'In the bank, waiting to clear';
+  if(n <= 0) return n === 0 ? 'Can go to the bank today' : 'Can go to the bank now';
+  return `Can go to the bank in ${n} day${n === 1 ? '' : 's'} · ${lbl}`;
+}
+renderChequesPage = function(){
+  const el = document.getElementById('chequesContent'); if(!el) return;
+  const badge = document.getElementById('chequesBadge'); if(badge) badge.innerHTML = proBadge('cheques');
+  nfToolHead('cheques');
+  if(!hasFeature('cheques')){ el.innerHTML = lockedPanelHtml('cheques', 'Every check in one list, a reminder the day each one can go to the bank, and an alert if one bounces.'); return; }
+  try{ seedDemoCheques(); }catch(e){}
+  const side = currentAppRole === 'supplier' ? 'supplier' : 'buyer', got = side === 'supplier';
+  const all = collectCheques(side), sum = l => l.reduce((s, c) => s + c.amount, 0);
+  const back60 = addDaysIso(APP_TODAY, -60);
+  const due = all.filter(c => c.status === 'due'), later = all.filter(c => c.status === 'hold'), dep = all.filter(c => c.status === 'deposited');
+  const bounced = all.filter(c => c.status === 'bounced' && (c.date || APP_TODAY) >= addDaysIso(APP_TODAY, -90)), cleared = all.filter(c => c.status === 'cleared' && (c.date || APP_TODAY) >= back60);
+  const n = l => `${l.length} check${l.length === 1 ? '' : 's'}`;
+  const tiles = `<div class="bk-tiles">${bkTile(got ? 'Deposit today' : 'Cashed soon (7 days)', bkPeso(sum(got ? due : all.filter(c => ['due', 'hold', 'deposited'].includes(c.status) && c.date <= addDaysIso(APP_TODAY, 7)))), got ? n(due) : 'keep this in your bank', got && due.length ? 'warn' : '')}
+    ${bkTile('Coming later', bkPeso(sum(later)), n(later))}${bkTile('Waiting to clear', bkPeso(sum(dep)), n(dep))}${bkTile('Bounced', bkPeso(sum(bounced)), bounced.length ? n(bounced) + ', last 90 days' : 'none, nice', bounced.length ? 'bad' : 'good')}</div>`;
+  const order = {due: 0, deposited: 1, hold: 2, bounced: 3, cleared: 4};
+  const list = due.concat(dep, later, bounced, cleared).sort((a, b) => (order[a.status] - order[b.status]) || String(a.date).localeCompare(String(b.date)));
+  const pill = {due: ['warn', 'Deposit today'], hold: ['plain', 'Later'], deposited: ['info', 'Waiting to clear'], cleared: ['good', 'Cleared'], bounced: ['bad', 'Bounced']};
+  const row = c => {
+    const key = `'${c.po.id}','${c.kind}','${c.key}'`, p = pill[c.status] || ['plain', c.status];
+    let act = '';
+    if(got && c.status === 'due') act = `<button class="btn btn-primary btn-sm" onclick="chequeDeposited(${key})">I deposited it</button>`;
+    else if(got && c.status === 'deposited') act = `<button class="btn btn-primary btn-sm" onclick="chequeCleared(${key})">It cleared</button><button class="btn btn-outline btn-sm nf-bad" onclick="chequeBounced(${key})">It bounced</button>`;
+    else if(got && c.status === 'bounced') act = `<button class="btn btn-outline btn-sm" onclick="askReplacementCheque(${key})">Ask for a new check</button>`;
+    else if(got && c.status === 'hold') act = `<button class="btn btn-outline btn-sm" onclick="chequeDeposited(${key}, true)">Deposit early</button>`;
+    return `<div class="nf-row nf-${c.status}"><span class="nf-ic-chq" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 14h5M15 11h3"/></svg></span>
+      <div class="nf-row-m"><b>${escapeHtml(c.party || '—')}</b><small>${escapeHtml(c.bank || 'Bank')} · check #${escapeHtml(c.no || '—')} · ${escapeHtml(nfChqWhen(c))}</small></div>
+      <div class="nf-row-r"><strong>${bkPeso(c.amount)}</strong><span class="nf-pill ${p[0]}">${p[1]}</span></div><div class="nf-row-a">${act}</div></div>`;
+  };
+  el.innerHTML = tiles + `<section class="panel-card nf-card"><div class="panel-head"><h2>${got ? 'Checks you got' : 'Checks you gave'}</h2><span class="bk-dim">${list.length} check${list.length === 1 ? '' : 's'}</span></div>
+    ${list.length ? list.map(row).join('') : `<div class="nf-empty">No checks yet. ${got ? 'When a customer pays by check, add it below.' : 'Checks you pay suppliers with show here.'}</div>`}</section>
+    ${got ? chequeQuickAddHtml().replace('＋ Record a cheque you received', '＋ Add a check you got').replace(/cheque/g, 'check').replace('Save check', 'Save') : ''}`;
+  if(got) try{ renderChequeInvoices(); }catch(e){}
+};
+
+/* ---------- Reports: one calm page ---------- */
+function nfMonthRange(k){ const [y, m] = APP_TODAY.slice(0, 7).split('-').map(Number); const d = new Date(y, m - 1 - k, 1); const from = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-01';
+  const end = new Date(d.getFullYear(), d.getMonth() + 1, 0); let to = end.getFullYear() + '-' + String(end.getMonth() + 1).padStart(2, '0') + '-' + String(end.getDate()).padStart(2, '0'); if(to > APP_TODAY) to = APP_TODAY;
+  return {from, to, label: d.toLocaleDateString('en-PH', {month: 'short'})}; }
+function nfMerge(map){ const out = {}, name = {}; Object.entries(map).forEach(([k, v]) => { const key = String(k).toLowerCase().replace(/[.,]/g, '').replace(/\s+(co|corp|inc|corporation|company)$/, '').replace(/[^a-z0-9]/g, '');
+  out[key] = (out[key] || 0) + v; if(!name[key] || k.length > name[key].length) name[key] = k; }); const r = {}; Object.keys(out).forEach(k => { r[name[k]] = out[k]; }); return r; }
+function nfTop(map, n){ map = nfMerge(map); return Object.entries(map).filter(([k, v]) => v > 0).sort((a, b) => b[1] - a[1]).slice(0, n || 5); }
+function nfBars(rows, money){ const max = Math.max(1, ...rows.map(r => r[1])); return rows.length ? rows.map(([k, v], i) => `<div class="nf-bar"><span class="nf-bar-k"><i>${i + 1}</i>${escapeHtml(k)}</span><span class="nf-bar-t"><u style="width:${Math.max(4, Math.round(v / max * 100))}%"></u></span><b>${money ? bkPeso(v) : v}</b></div>`).join('') : '<div class="nf-empty">Nothing here yet. It fills in as you record sales and orders.</div>'; }
+async function nfRenderReports(){
+  const page = document.getElementById('page-analytics'); if(!page) return;
+  page.classList.add('nf-replaced');
+  let host = document.getElementById('nfReports');
+  if(!host){ host = document.createElement('div'); host.id = 'nfReports'; host.innerHTML = `<div class="page-head"><h1>Reports</h1><p>${NF_TOOL_TEXT.analytics[1]}</p></div><div id="nfRepBody"><div class="panel-card bk-empty"><span>Adding up your numbers…</span></div></div>`; page.appendChild(host); }
+  try{ if(typeof bkLoad === 'function') await bkLoad(); if(typeof lgLoad === 'function') await lgLoad(); }catch(e){}
+  const body = document.getElementById('nfRepBody'); if(!body) return;
+  const months = [5, 4, 3, 2, 1, 0].map(k => { const r = nfMonthRange(k); let p = {revenue: 0, net: 0}; try{ p = lgPnlFor(r.from, r.to) || p; }catch(e){} return Object.assign(r, {sales: Number(p.revenue) || 0, profit: Number(p.net) || 0}); });
+  const now = months[5], prev = months[4];
+  const sup = getSupplierPOs().filter(o => o.status !== 'cancelled' && o.status !== 'draft'), buy = getBuyerPOs().filter(o => o.status !== 'cancelled' && o.status !== 'draft');
+  const open = po => { try{ const c = computeInvoicePayments(po); return Math.max(0, c.balance); }catch(e){ return 0; } };
+  const owedToYou = sup.filter(o => o.invoice && o.status !== 'paid').reduce((s, o) => s + open(o), 0);
+  const youOwe = buy.filter(o => o.invoice && o.status !== 'paid').reduce((s, o) => s + open(o), 0);
+  const late = sup.filter(o => o.invoice && o.status !== 'paid' && o.invoice.dueDate && o.invoice.dueDate < APP_TODAY && open(o) >= 1)
+    .map(o => ({o, days: daysBetween(o.invoice.dueDate, APP_TODAY), amt: open(o)})).sort((a, b) => b.days - a.days);
+  const cust = {}, items = {}, sups = {};
+  const y = APP_TODAY.slice(0, 4);
+  sup.filter(o => ['delivered', 'invoiced', 'paid'].includes(o.status) || o.invoice).forEach(o => { cust[o.buyerName] = (cust[o.buyerName] || 0) + poTotal(o); (o.lineItems || []).forEach(l => { items[l.product] = (items[l.product] || 0) + (Number(l.qty) || 0) * (Number(l.unitPrice) || 0); }); });
+  (BK.sales || []).filter(s => String(s.date).startsWith(y) && !s.voided).forEach(s => { if(s.customer && s.customer !== 'Walk-in') cust[s.customer] = (cust[s.customer] || 0) + Number(s.total || 0); (s.lines || []).forEach(l => { items[l.product] = (items[l.product] || 0) + (Number(l.qty) || 0) * (Number(l.unitPrice) || 0); }); });
+  buy.forEach(o => { sups[o.supplierName] = (sups[o.supplierName] || 0) + poTotal(o); });
+  const ch = prev.sales ? Math.round((now.sales - prev.sales) / Math.abs(prev.sales) * 100) : null;
+  const maxS = Math.max(1, ...months.map(m => m.sales));
+  body.innerHTML = `<div class="bk-tiles">
+      ${bkTile('Sales this month', bkPeso(now.sales), ch == null ? now.label + ' so far' : `${ch >= 0 ? '▲' : '▼'} ${Math.abs(ch)}% vs ${prev.label}`, '', "go('sales')")}
+      ${bkTile(now.profit < 0 ? 'Loss this month' : 'Profit this month', bkPeso(now.profit), now.profit < 0 ? 'costs were more than sales' : 'after all costs', now.profit < 0 ? 'bad' : now.profit > 0 ? 'good' : '', "go('ledger')")}
+      ${bkTile('Customers owe you', bkPeso(owedToYou), late.length ? `${late.length} late to pay` : 'nobody is late', late.length ? 'bad' : owedToYou ? 'warn' : 'good', "go('collections')")}
+      ${bkTile('You owe suppliers', bkPeso(youOwe), 'unpaid bills', '', "pickLens('collections','buyer')")}</div>
+    <section class="panel-card nf-card"><div class="panel-head"><h2>Sales, last 6 months</h2><span class="bk-dim">green = profit, red = loss</span></div>
+      <div class="nf-chart">${months.map(m => `<div class="nf-col${m === now ? ' now' : ''}"><b>${m.sales >= 1e6 ? '₱' + (m.sales / 1e6).toFixed(1) + 'M' : m.sales >= 1000 ? '₱' + Math.round(m.sales / 1000) + 'K' : bkPeso(m.sales)}</b><span class="nf-col-t"><u style="height:${Math.max(3, Math.round(m.sales / maxS * 100))}%"></u></span><em class="${m.profit < 0 ? 'bad' : 'good'}">${m.profit < 0 ? '−' : '+'}${m.profit >= 1000 || m.profit <= -1000 ? '₱' + Math.round(Math.abs(m.profit) / 1000) + 'K' : bkPeso(Math.abs(m.profit))}</em><small>${m.label}</small></div>`).join('')}</div></section>
+    <section class="panel-card nf-card"><div class="panel-head"><h2>Who is late to pay you</h2><a class="lg-link" onclick="go('collections')">Open Who owes you →</a></div>
+      ${late.length ? late.slice(0, 5).map(x => `<div class="nf-row"><span class="nf-dot bad"></span><div class="nf-row-m"><b>${escapeHtml(x.o.buyerName)}</b><small>${escapeHtml((x.o.invoice && x.o.invoice.number) || x.o.poNumber)} · ${x.days} day${x.days === 1 ? '' : 's'} late</small></div><div class="nf-row-r"><strong class="bad">${bkPeso(x.amt)}</strong></div></div>`).join('') : '<div class="nf-empty good">Nobody is late. Every customer is paying on time.</div>'}</section>
+    <div class="nf-two">
+      <section class="panel-card nf-card"><div class="panel-head"><h2>Your best customers</h2><span class="bk-dim">this year</span></div>${nfBars(nfTop(cust), true)}</section>
+      <section class="panel-card nf-card"><div class="panel-head"><h2>Your best-selling items</h2><span class="bk-dim">this year</span></div>${nfBars(nfTop(items), true)}</section>
+    </div>
+    <section class="panel-card nf-card"><div class="panel-head"><h2>Where you buy the most</h2><span class="bk-dim">orders to suppliers</span></div>${nfBars(nfTop(sups), true)}</section>
+    <p class="nf-foot">Want every peso in and out? <a class="lg-link" onclick="go('ledger')">Open Books & reports →</a></p>`;
+}
+
+/* ---------- after each page opens ---------- */
+(function(){
+  const nav = window.navigate; if(typeof nav !== 'function' || nav._nf7) return;
+  const w = function(page){ const r = nav.apply(this, arguments); setTimeout(() => { try{
+    if(NF_TOOL_TEXT[page] && page !== 'analytics') nfToolHead(page);
+    if(page === 'analytics') nfRenderReports();
+  }catch(e){ console.warn(e); } }, 0); return r; };
+  w._nf7 = true; window.navigate = w;
+  try{ LENS_TABS.cheques = [['supplier', 'Checks you got'], ['buyer', 'Checks you gave']]; delete LENS_TABS.analytics; }catch(e){}
+})();
+
+/* ===== Round 7: photos and pictures instead of plain initials =====
+   Every person and business gets a picture: a photo you upload, or one of the ready-made icons.
+   Customers always have a blue ring and a blue tag, suppliers a purple ring and a purple tag, so
+   you can tell them apart at a glance (red, yellow and green stay for good and bad news only).
+   Pictures are kept on this device. */
+const NF_AV_KEY = 'nifti-avatars-v1';
+const NF_ICONS = {
+  store: '<path d="M10 26h44l-3-10H13z"/><path d="M14 26v22h36V26"/><path d="M27 48V36h10v12"/>',
+  steel: '<path d="M12 20h40M12 44h40M26 20v24M38 20v24"/>',
+  cement: '<path d="M18 18h28l4 30H14z"/><path d="M22 28h20M22 36h20"/>',
+  produce: '<path d="M32 50c10 0 16-8 16-18S40 16 32 16s-16 6-16 16 6 18 16 18z"/><path d="M32 16c0-5 3-8 8-9M32 16c-3-4-7-5-11-4"/>',
+  truck: '<path d="M10 22h26v20H10zM36 28h10l6 7v7H36"/><circle cx="18" cy="45" r="4"/><circle cx="44" cy="45" r="4"/>',
+  helmet: '<path d="M12 40h40M16 40a16 16 0 0 1 32 0"/><path d="M28 24v-6h8v6"/><path d="M14 40v5h36v-5"/>',
+  weld: '<path d="M18 46l16-16M34 30l6-14 6 6-14 6"/><path d="M14 22l3 3M22 14l1 4M12 32l4-1"/>',
+  box: '<path d="M32 12l18 9v22l-18 9-18-9V21z"/><path d="M14 21l18 9 18-9M32 30v22"/>',
+  wrench: '<path d="M38 14a10 10 0 0 0-9 14L14 43l7 7 15-15a10 10 0 0 0 14-9l-6 2-5-5 2-6z"/>',
+  fish: '<path d="M10 32c8-10 22-12 32 0-10 12-24 10-32 0z"/><path d="M42 32l10-8v16z"/><circle cx="22" cy="30" r="1.5"/>',
+  rice: '<path d="M16 30h32c0 10-7 18-16 18s-16-8-16-18z"/><path d="M24 30c0-6 4-12 8-14M32 30c0-7 3-12 8-13"/>',
+  person: '<circle cx="32" cy="24" r="10"/><path d="M14 52c2-10 9-15 18-15s16 5 18 15"/>',
+};
+// ready-made "photos" for the people in the demo team
+const NF_FACES = {
+  liza: ['#F6D5C0', '#3B2A20', '#E9F2FF', 'long'], rico: ['#C99A78', '#1E1A16', '#FFF4E5', 'short'], ana: ['#E8C4A8', '#5A3A28', '#FCEFF5', 'bun'],
+  mark: ['#B9866A', '#24201C', '#EAF7F1', 'cap'], dela: ['#D9A988', '#2B2420', '#EEF2F7', 'short'],
+};
+function nfFaceSvg(skin, hair, bg, style){
+  const h = style === 'long' ? `<path d="M14 34c0-14 8-22 18-22s18 8 18 22v14H14z" fill="${hair}"/>` : style === 'bun' ? `<circle cx="32" cy="12" r="6" fill="${hair}"/><path d="M18 28c0-10 6-15 14-15s14 5 14 15z" fill="${hair}"/>`
+    : style === 'cap' ? `<path d="M17 26c0-9 7-14 15-14s15 5 15 14z" fill="#1F6B45"/><path d="M40 24h12v3H40z" fill="#1F6B45"/>` : `<path d="M19 27c0-10 6-14 13-14s13 4 13 14c-4-4-9-5-13-5s-9 1-13 5z" fill="${hair}"/>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" fill="${bg}"/>${style === 'long' ? h : ''}<path d="M10 64c2-12 11-18 22-18s20 6 22 18z" fill="#3E5A80"/><rect x="27" y="38" width="10" height="10" rx="3" fill="${skin}"/><circle cx="32" cy="29" r="12" fill="${skin}"/>${style !== 'long' ? h : ''}<circle cx="27.5" cy="30" r="1.4" fill="#222"/><circle cx="36.5" cy="30" r="1.4" fill="#222"/><path d="M28 35c2.5 2 5.5 2 8 0" stroke="#7A3E2E" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>`;
+}
+function nfIconSvg(key, side){
+  const g = side === 'cust' ? ['#3B82F6', '#1D4ED8'] : side === 'sup' ? ['#8B5CF6', '#6D28D9'] : ['#2F855A', '#1F6B45'];
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${g[0]}"/><stop offset="1" stop-color="${g[1]}"/></linearGradient></defs><rect width="64" height="64" fill="url(#g)"/><g fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">${NF_ICONS[key] || NF_ICONS.store}</g></svg>`;
+}
+const nfUri = svg => 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+function nfAvStore(){ try{ return JSON.parse(localStorage.getItem(NF_AV_KEY) || '{}'); }catch(e){ return {}; } }
+function nfAvSave(k, v){ const s = nfAvStore(); if(v) s[k] = v; else delete s[k]; try{ localStorage.setItem(NF_AV_KEY, JSON.stringify(s)); }catch(e){ showToast('That photo is too big to keep on this device. Try a smaller one.', 'error'); } }
+function nfAvKey(name){ return String(name || '').toLowerCase().replace(/\(you\)/, '').replace(/[^a-z0-9]+/g, ' ').trim(); }
+function nfGuessIcon(name){
+  const n = String(name || '').toLowerCase();
+  return /steel|metal|beam|rebar|iron/.test(n) ? 'steel' : /cement|aggregate|sand/.test(n) ? 'cement' : /produce|fresh|vegetable|fruit|farm/.test(n) ? 'produce' : /poultry|chicken|meat/.test(n) ? 'produce'
+    : /seafood|fish/.test(n) ? 'fish' : /rice|grain/.test(n) ? 'rice' : /weld|fabricat/.test(n) ? 'weld' : /construct|builder|scaffold|contractor/.test(n) ? 'helmet'
+    : /packag|box|carton/.test(n) ? 'box' : /truck|logistic|freight|express/.test(n) ? 'truck' : /hardware|supply|store|trading/.test(n) ? 'store' : 'store';
+}
+function nfFaceFor(name){ const n = nfAvKey(name); const k = Object.keys(NF_FACES).find(f => n.startsWith(f) || n.split(' ').includes(f)); return k ? nfUri(nfFaceSvg(...NF_FACES[k])) : null; }
+function nfAvatarSrc(name, side){
+  const v = nfAvStore()[nfAvKey(name)];
+  if(v && v.startsWith('icon:')) return nfUri(nfIconSvg(v.slice(5), side));
+  if(v) return v;
+  return nfFaceFor(name) || nfUri(nfIconSvg(nfGuessIcon(name), side));
+}
+function nfAvatarImg(name, side){ return `<img class="nf-av-img" alt="" src="${nfAvatarSrc(name, side)}">`; }
+
+// put pictures into every avatar on screen
+function nfAvName(el){
+  const conv = el.closest('.conv-item'); if(conv){ const n = conv.querySelector('.conv-name'); return n && n.textContent; }
+  if(el.closest('#threadHeadInfo')){ const d = el.parentElement.querySelector(':scope > div:not(.conv-avatar) > div'); return d && d.textContent; }
+  const pt = el.closest('.pt-row'); if(pt){ const n = pt.querySelector('.pt-name'); return n && n.firstChild && n.firstChild.textContent; }
+  const tp = el.closest('.team-person, .team-person-chip, [class*="team-person"]'); if(tp){ const n = tp.querySelector('.team-person-name'); return n && n.textContent; }
+  if(el.closest('.user-chip')) return '__me';
+  const one = el.closest('.one-msg'); if(one){ const b = one.querySelector('b'); return b && b.textContent; }
+  return null;
+}
+function nfAvSide(el){
+  const conv = el.closest('.conv-item');
+  if(conv){ const k = conv.querySelector('.conv-kind'); return k && /customer/i.test(k.textContent) ? 'cust' : k ? 'sup' : null; }
+  if(el.closest('#threadHeadInfo') && typeof getActiveConv === 'function'){ const c = getActiveConv(); if(c) return (c.side || (supplierConversations.includes(c) ? 'supplier' : 'buyer')) === 'supplier' ? 'cust' : 'sup'; }
+  if(el.closest('#page-suppliers')) return currentAppRole === 'supplier' ? 'cust' : 'sup';
+  return null;
+}
+function nfMyName(){ try{ const me = typeof teamMe === 'function' && teamMe(); return (me && me.name) || 'Dela Cruz'; }catch(e){ return 'Dela Cruz'; } }
+function nfAvatars(){
+  document.querySelectorAll('#view-app :is(.conv-avatar,.pt-av,.team-avatar,.user-chip .avatar), #mhSheet .conv-avatar').forEach(el => {
+    let name = nfAvName(el); if(!name) return; if(name === '__me') name = nfMyName();
+    const side = nfAvSide(el), sig = name + '|' + side + '|' + (nfAvStore()[nfAvKey(name)] || '').slice(0, 40);
+    if(el.dataset.nfav === sig && el.querySelector('img')) return;
+    el.dataset.nfav = sig; el.classList.add('nf-has-av'); el.classList.toggle('nf-cust', side === 'cust'); el.classList.toggle('nf-sup', side === 'sup');
+    el.innerHTML = nfAvatarImg(name, side);
+    const conv = el.closest('.conv-item'); if(conv){ conv.classList.toggle('nf-cust', side === 'cust'); conv.classList.toggle('nf-sup', side === 'sup'); }
+    if(el.closest('#threadHeadInfo') || el.closest('.user-chip') || el.closest('.team-person, [class*="team-person"]')){ el.classList.add('nf-av-edit'); el.title = 'Change picture'; el.onclick = ev => { ev.stopPropagation(); nfAvPicker(name, side); }; }
+  });
+}
+// choose a picture: upload a photo or pick an icon
+function nfAvPicker(name, side){
+  const icons = Object.keys(NF_ICONS);
+  slModal('nfAv', `<div class="sl-sheet-h"><b>Picture for ${escapeHtml(name)}</b><button class="sl-x" onclick="slClose('nfAv')">✕</button></div>
+    <div class="sl-sub">Upload a photo or logo, or pick a picture below.</div>
+    <div class="nf-av-now">${nfAvatarImg(name, side)}</div>
+    <label class="btn btn-primary nf-av-up">Upload a photo<input type="file" accept="image/*" hidden onchange="nfAvUpload(this, ${escapeHtml(JSON.stringify(name))})"></label>
+    <div class="nf-av-grid">${icons.map(k => `<button type="button" onclick='nfAvSave(${JSON.stringify(nfAvKey(name))}, "icon:${k}"); slClose("nfAv"); nfAvatars();' aria-label="${k}"><img alt="" src="${nfUri(k === 'person' ? nfIconSvg('person', side) : nfIconSvg(k, side))}"></button>`).join('')}</div>
+    <button class="btn btn-outline" onclick='nfAvSave(${JSON.stringify(nfAvKey(name))}, null); slClose("nfAv"); nfAvatars();'>Use the default picture</button>`);
+}
+function nfAvUpload(input, name){
+  const f = input.files && input.files[0]; if(!f) return;
+  const img = new Image(), url = URL.createObjectURL(f);
+  img.onload = () => { const c = document.createElement('canvas'), S = 160, s = Math.min(img.width, img.height); c.width = c.height = S;
+    c.getContext('2d').drawImage(img, (img.width - s) / 2, (img.height - s) / 2, s, s, 0, 0, S, S); URL.revokeObjectURL(url);
+    nfAvSave(nfAvKey(name), c.toDataURL('image/jpeg', 0.82)); slClose('nfAv'); nfAvatars(); showToast('Picture saved.', 'success'); };
+  img.onerror = () => showToast("That file isn't a photo we can read.", 'error');
+  img.src = url;
+}
+(function(){ let raf = 0; const run = () => { raf = 0; try{ nfAvatars(); }catch(e){} };
+  const start = () => { new MutationObserver(() => { if(!raf) raf = requestAnimationFrame(run); }).observe(document.getElementById('view-app') || document.body, {childList: true, subtree: true}); run(); };
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start(); })();
 
 function renderSidebarForViewAsRole(){
   const allowed = computeAllowedPages(getEffectiveRoles());
@@ -38620,7 +39111,7 @@ function backToConvList(){
 // would read and overwrite the exact same local blob as every other account and the anonymous
 // demo, which is a real cross-tenant data leak now that this layer actually persists (see
 // niftiStorage above) rather than silently no-opping.
-let NIFTI_STORAGE_KEY = 'nifti-app-state-v1';
+let NIFTI_STORAGE_KEY = 'nifti-app-state-v2';
 
 // Only the base/source records get saved. Everything in NiftiDB that's derived
 // (skus, skuAliases, skuSupplierLinks, dataQualityIssues, locations) is rebuilt

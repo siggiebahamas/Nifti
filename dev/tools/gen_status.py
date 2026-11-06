@@ -8,7 +8,7 @@ import re, colorsys, os
 HERE = os.path.dirname(os.path.abspath(__file__))
 html = open(os.path.join(HERE, '..', '..', 'Nifti_Sept17.html'), encoding='utf-8').read()
 html = re.sub(r'/\* ===== Standard status colours.*?/\* ===== end status colours ===== \*/', '', html, flags=re.S)
-html = re.sub(r'/\* ===== Round 6 css begin.*?/\* ===== Round 6 css end ===== \*/', '', html, flags=re.S)
+html = re.sub(r'/\* ===== Round \d+ css begin.*?/\* ===== Round \d+ css end ===== \*/', '', html, flags=re.S)
 html = re.sub(r'/\* ===== No orange anywhere.*?(?=/\* =====)', '', html, flags=re.S)
 css = re.sub(r'/\*.*?\*/', '', '\n'.join(re.findall(r'<style[^>]*>(.*?)</style>', html, re.S)), flags=re.S)
 MK = re.compile(r'(^|[\s>+~(,])(\.(mk|f\d|h\d|hiw|pr-|faq|hero|login|footer|nav-links|cta|lp-|price|plan-|m2|m3|v3|v-|gate|tour|wiz|onb)|nav\.top|\.marketing|#view-(index|pricing|login|features))')
