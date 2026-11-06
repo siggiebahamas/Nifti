@@ -1,0 +1,141 @@
+
+  /* ===== Round 6: colour-coded tiles, values that fit, no black fills, spacing ===== */
+  /* ---------- 1. Selected states: brand-green tint, never black ---------- */
+  html[data-ty] #view-app .nav-item.active{background:#E8F5EE !important;color:#0F4D2E !important;box-shadow:inset 4px 0 0 #1F6B45;font-weight:700 !important;}
+  html[data-ty] #view-app .nav-item.active svg{color:#1F6B45 !important;stroke:#1F6B45;}
+  html[data-ty] #view-app .nav-item.active .nav-badge{box-shadow:0 0 0 2px #E8F5EE;}
+  html[data-ty] #view-app :is(.chip.active,.range-tab.active,.wh-tab.active,.msg-po-tab.active,.tab.active,.ord-seg button.on,.bk-daybar button.on,.bk-seg button.on,.role-toggle button.active,.sl-tabs button.active,.adm-tabs button.active,.store-tabs button.active,.lens-tabs button.on,.lens-tabs button.active,.team-tab.active,.pvs button.on),
+  html[data-ty] #mhSheet :is(.chip.active,button.on,button.active){
+    background:#E8F5EE !important;color:#0F4D2E !important;border-color:#1F6B45 !important;box-shadow:inset 0 0 0 1.5px #1F6B45 !important;font-weight:700 !important;}
+  html[data-ty] #view-app :is(.chip.active,.range-tab.active,.wh-tab.active,.msg-po-tab.active,.ord-seg button.on,.bk-daybar button.on,.role-toggle button.active,.sl-tabs button.active,.adm-tabs button.active,.store-tabs button.active) :is(svg,.nf-ic){color:#1F6B45 !important;}
+  /* counts inside selected chips stay readable */
+  html[data-ty] #view-app :is(.ord-seg button.on,.sl-tabs button.active,.adm-tabs button.active,.chip.active,.role-toggle button.active) :is(.ord-n,.sl-n,.nav-badge,.cnt,span[class*="badge"]):not(.bad):not(.red):not([class*="warn"]){background:#FFFFFF !important;color:#0F4D2E !important;box-shadow:0 0 0 1px #9CCFB2;}
+  /* tooltips: white card, not a black box */
+  html[data-ty] #view-app .kpi-tooltip{background:#FFFFFF !important;color:#1F2329 !important;border:1px solid #D9DEE4;box-shadow:0 12px 32px -12px rgba(15,25,40,.35);}
+  html[data-ty] #view-app .kpi-tooltip *{color:#1F2329 !important;}
+
+  /* ---------- 2. Summary tiles: good / bad / iffy / not important ---------- */
+  html[data-ty] #view-app :is(.bk-tile,.sl-tile){position:relative;min-width:0;}
+  html[data-ty] #view-app :is(.bk-tile,.sl-tile).nt-plain{background:#FFFFFF !important;border:1px solid #DDE1E6 !important;}
+  html[data-ty] #view-app :is(.bk-tile,.sl-tile).nt-bad{background:#FEF2F2 !important;border:1.5px solid #FCA5A5 !important;}
+  html[data-ty] #view-app :is(.bk-tile,.sl-tile).nt-warn{background:#FEF9C3 !important;border:1.5px solid #FACC15 !important;}
+  html[data-ty] #view-app :is(.bk-tile,.sl-tile).nt-good{background:#F0FDF4 !important;border:1.5px solid #86EFAC !important;}
+  html[data-ty] #view-app :is(.bk-tile,.sl-tile).nt-bad :is(.bk-tile-v,b){color:#DC2626 !important;}
+  html[data-ty] #view-app :is(.bk-tile,.sl-tile).nt-warn :is(.bk-tile-v,b){color:#1F2329 !important;}
+  html[data-ty] #view-app :is(.bk-tile,.sl-tile).nt-good :is(.bk-tile-v,b){color:#15803D !important;}
+  html[data-ty] #view-app :is(.bk-tile,.sl-tile).nt-plain :is(.bk-tile-v,b){color:#0E1114 !important;}
+  /* a status dot in front of the label says good / bad / iffy at a glance */
+  html[data-ty] #view-app :is(.bk-tile,.sl-tile):is(.nt-bad,.nt-warn,.nt-good) :is(.bk-tile-l,small):first-child::before{content:'';display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:8px;vertical-align:.08em;}
+  html[data-ty] #view-app :is(.bk-tile,.sl-tile).nt-bad :is(.bk-tile-l,small):first-child::before{background:#DC2626;}
+  html[data-ty] #view-app :is(.bk-tile,.sl-tile).nt-warn :is(.bk-tile-l,small):first-child::before{background:#EAB308;box-shadow:0 0 0 1.5px #CA8A04 inset;}
+  html[data-ty] #view-app :is(.bk-tile,.sl-tile).nt-good :is(.bk-tile-l,small):first-child::before{background:#16A34A;}
+  html[data-ty] #view-app :is(.bk-tile,.sl-tile) :is(.bk-tile-s,span){color:#1F2329 !important;}
+  html[data-ty] #view-app button.bk-tile:hover{box-shadow:0 0 0 2px #B9C7D6;}
+  /* stock cards */
+  html[data-ty] #view-app .stat-card{min-width:0;}
+  html[data-ty] #view-app .stat-card.nt-plain{background:#FFFFFF !important;border:1px solid #DDE1E6 !important;}
+  html[data-ty] #view-app .stat-card.nt-bad{background:#FEF2F2 !important;border:1.5px solid #FCA5A5 !important;}
+  html[data-ty] #view-app .stat-card.nt-warn{background:#FEF9C3 !important;border:1.5px solid #FACC15 !important;}
+  html[data-ty] #view-app .stat-card.nt-good{background:#F0FDF4 !important;border:1.5px solid #86EFAC !important;}
+  html[data-ty] #view-app .stat-card.nt-bad .stat-num{color:#DC2626 !important;} html[data-ty] #view-app .stat-card.nt-good .stat-num{color:#15803D !important;}
+  html[data-ty] #view-app .stat-card .stat-icon-panel{background:transparent !important;}
+  html[data-ty] #view-app .stat-card.nt-bad .stat-icon-panel svg{color:#DC2626 !important;} html[data-ty] #view-app .stat-card.nt-good .stat-icon-panel svg{color:#16A34A !important;}
+  html[data-ty] #view-app .stat-card.nt-warn .stat-icon-panel svg{color:#CA8A04 !important;} html[data-ty] #view-app .stat-card.nt-plain .stat-icon-panel svg{color:#475467 !important;}
+
+  /* ---------- 3. Numbers always fit inside their box ---------- */
+  html[data-ty] #view-app .bk-tiles{grid-template-columns:repeat(auto-fit,minmax(200px,1fr)) !important;gap:14px !important;}
+  html[data-ty] #view-app .bk-tiles.lg-tiles{grid-template-columns:repeat(auto-fit,minmax(210px,1fr)) !important;}
+  html[data-ty] #view-app :is(.bk-tile,.sl-tile){container-type:inline-size;align-content:start;}
+  html[data-ty] #view-app .bk-tile .bk-tile-v, html[data-ty] #view-app .sl-tile > b{font-size:max(20px, min(var(--ty-val), 15cqi)) !important;white-space:nowrap;line-height:1.2 !important;overflow:visible;text-overflow:clip;}
+  html[data-ty] #view-app .bk-tile .bk-tile-l, html[data-ty] #view-app .sl-tile > small{line-height:1.3 !important;overflow-wrap:break-word;}
+  html[data-ty] #view-app .bk-tile .bk-tile-s, html[data-ty] #view-app .sl-tile > span{line-height:1.35 !important;}
+  html[data-ty] #view-app .stat-card .stat-body{min-width:0;container-type:inline-size;}
+  html[data-ty] #view-app .stat-card .stat-num{white-space:nowrap;font-size:max(20px, min(var(--ty-val), 16cqi)) !important;}
+  @media (max-width:760px){ html[data-ty] #view-app .bk-tiles, html[data-ty] #view-app .bk-tiles.lg-tiles{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:10px !important;} }
+
+  /* ---------- 4. Breathing room between stacked boxes ---------- */
+  html[data-ty] #view-app .app-page :is(.panel-card,section.panel-card,details.panel-card){margin-bottom:16px;}
+  /* small counters grow to 14px */
+  html[data-ty] #view-app :is(.lens-n,.sl-n){font-size:14px !important;min-width:24px;line-height:22px !important;padding:0 7px !important;}
+  /* stock cards: numbers stay big */
+  html[data-ty] #view-app .stat-card .stat-num{font-size:max(24px, min(var(--ty-val), 16cqi)) !important;}
+  /* Books summary: 8 tiles sit as 2 even rows of 4 */
+  @media (min-width:900px){ html[data-ty] #view-app .bk-tiles.lg-tiles{grid-template-columns:repeat(4,minmax(0,1fr)) !important;} }
+  /* closed fold-out boxes (Approval rules, Price lock & receipts) are one tidy line */
+  html[data-ty] #view-app details.lg-det:not([open]){padding-top:4px !important;padding-bottom:4px !important;}
+  html[data-ty] #view-app details.lg-det:not([open]) > summary{margin:0 !important;}
+  /* date fields look like every other field */
+  html[data-ty] #view-app input[type="date"]{min-height:44px;min-width:150px;border:1.5px solid #D5DBE2;border-radius:12px;padding:0 12px;background:#FFFFFF;color:#0E1114;font:inherit;}
+  html[data-ty] #view-app input[type="date"]:focus{border-color:#1F6B45;box-shadow:0 0 0 3px #DCEFE3;outline:0;}
+  /* To check / What changed cards: the tag carries the card's colour */
+  html[data-ty] #view-app .lg-card.red .lg-card-h > .lg-pill:not(.st){background:#FEE2E2 !important;color:#B91C1C !important;border-color:#FCA5A5 !important;}
+  html[data-ty] #view-app .lg-card:is(.amber,.yellow,.warn) .lg-card-h > .lg-pill:not(.st){background:#FEF9C3 !important;color:#1F2329 !important;border-color:#FACC15 !important;}
+  html[data-ty] #view-app .lg-card.green .lg-card-h > .lg-pill:not(.st){background:#DCFCE7 !important;color:#15803D !important;border-color:#86EFAC !important;}
+  /* Owner's control: overpaying and missed savings are bad news, so they are red */
+  html[data-ty] #view-app .wd-head .up{color:#DC2626 !important;}
+  html[data-ty] #view-app .wd-head .down{color:#15803D !important;}
+  html[data-ty] #view-app .wd-acts .btn{width:auto !important;flex:none;padding:10px 20px !important;}
+  html[data-ty] #view-app .wd-acts{display:flex;justify-content:flex-end;gap:8px;}
+  /* Team filters: selected = green tint like everywhere else */
+  html[data-ty] #view-app .team-filter.active{background:#E8F5EE !important;color:#0F4D2E !important;border-color:#1F6B45 !important;box-shadow:inset 0 0 0 1.5px #1F6B45 !important;}
+  /* tables everywhere read left to right like the Orders table */
+  html[data-ty] #view-app :is(.suppliers-table,#page-inventory table){border-collapse:separate;border-spacing:0;}
+  html[data-ty] #view-app :is(.suppliers-table,#page-inventory table) thead th{background:#F5F7FA !important;color:#1F2329 !important;border-bottom:1px solid #DDE1E6 !important;text-align:left !important;padding:14px 16px !important;letter-spacing:.05em !important;}
+  html[data-ty] #view-app :is(.suppliers-table,#page-inventory table) td{text-align:left !important;padding:14px 16px !important;vertical-align:middle;}
+  html[data-ty] #view-app :is(.suppliers-table,#page-inventory table) tbody tr:hover td{background:#F8FAFC;}
+  html[data-ty] #view-app .suppliers-table .sup-name{font-weight:700;}
+  html[data-ty] #view-app .suppliers-table .sup-cat{color:#344054;font-size:15px;}
+  html[data-ty] #view-app .suppliers-table td:last-child{text-align:right !important;}
+  html[data-ty] #view-app .ord-view{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:999px;border:1.5px solid #D5DBE2;background:#FFFFFF;color:#1F2329 !important;font-weight:700;font-size:15px !important;text-decoration:none !important;white-space:nowrap;}
+  html[data-ty] #view-app tr:hover .ord-view{border-color:#1F6B45;color:#1F6B45 !important;}
+  html[data-ty] #view-app .ord-view svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;transition:transform .15s;}
+  html[data-ty] #view-app .ord-view.open svg{transform:rotate(180deg);}
+  html[data-ty] #view-app #page-inventory .sku-name{font-weight:700;}
+  /* yellow notes: black text on a yellow highlight (yellow text is never readable) */
+  html[data-ty] #view-app :is(small,b,span,strong).sl-warn:not(.qt-hint){color:#1F2329 !important;background:#FEF9C3;box-shadow:inset 0 0 0 1px #FACC15;border-radius:6px;padding:0 6px;}
+  /* ---------- phone fixes (sweep 2) ---------- */
+  @media (max-width:760px){
+    /* top bar: account shows as initials so the search box has room */
+    html[data-ty] #view-app .topbar .user-chip{font-size:0 !important;gap:0 !important;}
+    html[data-ty] #view-app .topbar .user-chip .avatar{font-size:14px !important;}
+    /* chip rows wrap instead of hiding chips off the edge */
+    html[data-ty] #view-app :is(.ord-seg,.msg-filter-chips,.chip-filter,.sl-tabs,.adm-tabs,.bk-daybar){flex-wrap:wrap !important;overflow:visible !important;}
+    html[data-ty] #view-app #page-orders .lens-tabs button{white-space:normal;line-height:1.2;text-align:center;}
+    /* order cards: name shortens, amount always shows */
+    html[data-ty] #view-app .ord-top{align-items:flex-start;}
+    html[data-ty] #view-app .ord-top .ord-who{flex:1;min-width:0;white-space:normal;}
+    html[data-ty] #view-app .ord-top .ord-amt{flex:none;}
+    /* section headers wrap neatly */
+    html[data-ty] #view-app :is(.panel-head,.lg-ph,.sl-card-h){flex-wrap:wrap;row-gap:4px;}
+    /* What runs out: one fact per line, no stray dots */
+    html[data-ty] #mhHome :is(.sr-m1,.sr-m2) > i{display:none;}
+    html[data-ty] #mhHome :is(.sr-m1,.sr-m2){gap:2px 12px;}
+    html[data-ty] #mhHome .sr-key li{display:block;}
+    html[data-ty] #mhHome .sr-key li i, html[data-ty] #mhHome .sr-key li u{display:inline-block;margin-right:8px;vertical-align:-1px;}
+    html[data-ty] #mhHome .sr-key li b{margin-right:4px;}
+    /* cash calendar: day number + colour on phone; names show when you tap the day */
+    html[data-ty] #mhHome .cal .day{padding:6px 4px !important;min-height:58px;gap:2px !important;}
+    html[data-ty] #mhHome .cal .day .nm{display:none !important;}
+    html[data-ty] #mhHome .cal .day .st{font-size:14px !important;white-space:nowrap;overflow:hidden;text-overflow:clip;line-height:1.2;}
+    html[data-ty] #mhHome .cal .day.none .st{font-size:0 !important;}
+    html[data-ty] #mhHome .cal .day.none .st::after{content:'—';font-size:15px;color:#475467;}
+    html[data-ty] #mhHome .cal .day .st.tg{font-size:0 !important;}
+    html[data-ty] #mhHome .cal .day .st.tg::after{content:'✓';font-size:16px;font-weight:800;color:#15803D;}
+    html[data-ty] #mhHome .cal .day .st.tcount{font-size:0 !important;}
+    html[data-ty] #mhHome .cal .day .st.tcount::after{content:'Count';font-size:13.5px;font-weight:800;}
+    html[data-ty] #mhHome .cal .dow{font-size:14px !important;}
+    html[data-ty] #mhHome .cal .day:not(.r):not(.g):not(.y):not(.today) .st:not(.tg):not(.tr):not(.tb):not(.tcount){font-size:0 !important;}
+    html[data-ty] #mhHome .cal .day:not(.r):not(.g):not(.y):not(.today):not(.none) .st::after{content:'·';font-size:18px;color:#475467;}
+    html[data-ty] #view-app .pt-sub{font-size:14px !important;}
+    html[data-ty] #mhHome .cal{gap:3px !important;}
+    html[data-ty] #mhHome .cal .day{padding:5px 2px !important;}
+    html[data-ty] #mhHome .cal .day .st:is(.tr,.tb)[data-s]{font-size:0 !important;}
+    html[data-ty] #mhHome .cal .day .st:is(.tr,.tb)[data-s]::after{content:attr(data-s);font-size:14px;font-weight:800;letter-spacing:-.02em;}
+    html[data-ty] #mhHome .cal .day.today .dn[data-s]{font-size:0 !important;}
+    html[data-ty] #mhHome .cal .day.today .dn[data-s]::after{content:attr(data-s);font-size:15px;font-weight:800;}
+    html[data-ty] #mhHome .cal .day .st.tcount{display:none !important;}
+    html[data-ty] #view-app #page-orders .role-toggle button{white-space:normal;flex-wrap:wrap;justify-content:center;row-gap:2px;}
+    html[data-ty] #mhHome .cal .day .dn{white-space:normal !important;overflow-wrap:anywhere;line-height:1.15;}
+    html[data-ty] #view-app .msg-sidebar{min-height:0;overflow:hidden;}
+    html[data-ty] #view-app .msg-conv-list{flex:1;min-height:0;overflow-y:auto;}
+  }

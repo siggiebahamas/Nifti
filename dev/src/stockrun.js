@@ -119,8 +119,8 @@ function srSection(){
   const list = days ? known.sort((a, b) => a.days - b.days) : rows.slice().sort((a, b) => b.value - a.value);
   const mxV = Math.max(1, ...list.map(r => r.value)), shown = srAll ? list : list.slice(0, 8);
   const row = r => {
-    const meta = `<span class="sr-m1">${r.wh ? srI('pin') + escapeHtml(r.wh) + '<i>·</i>' : ''}${srI('box')}${r.on}${r.unit ? ' ' + escapeHtml(r.unit) : ''} on hand<i>·</i>${srI('rate')}${r.rate ? 'sells ' + srNum(r.rate) + '/day' : 'no sales yet'}</span>
-      <span class="sr-m2">${srI('truck')}${escapeHtml(r.sup || 'No supplier set')}<i>·</i>delivers in ${r.lead} day${r.lead === 1 ? '' : 's'}${r.leadKnown ? '' : ' (assumed)'}</span>`;
+    const meta = `<span class="sr-m1">${r.wh ? '<em>' + srI('pin') + escapeHtml(r.wh) + '</em><i>·</i>' : ''}<em>${srI('box')}${r.on}${r.unit ? ' ' + escapeHtml(r.unit) : ''} on hand</em><i>·</i><em>${srI('rate')}${r.rate ? 'sells ' + srNum(r.rate) + '/day' : 'no sales yet'}</em></span>
+      <span class="sr-m2"><em>${srI('truck')}${escapeHtml(r.sup || 'No supplier set')}</em><i>·</i><em>delivers in ${r.lead} day${r.lead === 1 ? '' : 's'}${r.leadKnown ? '' : ' (assumed)'}</em></span>`;
     let bar, val, tag;
     if(days){
       const w = Math.min(r.days, SR_MAXD) / SR_MAXD * 100;
