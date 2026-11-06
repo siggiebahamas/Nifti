@@ -2605,7 +2605,7 @@
   #mhHome .sr-val .sr-t i{top:2px;bottom:2px}
   #mhHome .sr-t u{position:absolute;top:-6px;bottom:-6px;width:4px;margin-left:-2px;background:#13243A;border-radius:2px}
   #mhHome .sr-v{text-align:right;display:grid;justify-items:end;gap:2px} #mhHome .sr-v b{font-size:18px;font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap} #mhHome .sr-v small{font-size:14px;color:#1F3148;font-weight:600;white-space:nowrap}
-  #mhHome .sr-row.is-r .sr-v b{color:#B4232C}
+  #mhHome .sr-row.is-r .sr-v b{color:#B4232C} #mhHome .sr-row.is-y .sr-v b{color:#B45309} #mhHome .sr-row.is-g .sr-v b{color:#0E7A45}
   #mhHome .sr-chev{font-size:22px;font-weight:700;color:#2B6CB0;transition:transform .15s}
   #mhHome .sr-item.open .sr-chev{transform:rotate(90deg)}
   #mhHome .sr-axis{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr) 124px 18px;gap:18px;padding:0 12px;height:20px;font-size:13.5px;color:#1F3148;font-weight:700}
@@ -3174,9 +3174,9 @@
 @media (prefers-reduced-motion:no-preference){:is(#mhHome,#mhSheet) .sheet.anim{animation:mhUp .22s ease-out}
 @keyframes mhUp{from{transform:translateY(24px);opacity:.6}to{transform:none;opacity:1}}}
   /* ===== Home (Mist): fit inside the app shell ===== */
-  #view-app .main:has(#page-dashboard.active #mhHome){background:radial-gradient(1200px 520px at 85% -10%,#D6E8FB 0,transparent 60%),radial-gradient(900px 520px at -10% 10%,#DFF0F4 0,transparent 55%),#F6F9FC;}
   #mhHome, #mhSheet{font-family:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',sans-serif;font-size:16px;line-height:1.45;color:#13243A;}
   #mhHome{background:none !important;padding-bottom:28px;display:block;}
+  #mhHome .glass{background:#FFFFFF;backdrop-filter:none;-webkit-backdrop-filter:none;border:1px solid var(--border);box-shadow:0 1px 2px rgba(24,26,30,.05);}
   #mhHome .hero, #mhHome .mosaic, #mhHome .rows{padding-left:0 !important;padding-right:0 !important;}
   #mhHome .hero{padding-top:0;margin:0 0 4px !important;display:block !important;}
   #mhHome .hero h3{margin:0;}
@@ -3208,6 +3208,8 @@
   #mhSheet .po-ed{margin-left:10px;font-weight:800;}
   #mhSheet .he .reason{display:block;margin-top:4px;font-size:15px;color:#13243A;}
   #mhSheet button.attach{border:1.5px dashed #F3C5BC;background:#fff;border-radius:10px;padding:5px 10px;cursor:pointer;}
+  #mhHome .tile .v .cpill{display:inline-flex;align-items:baseline;white-space:nowrap;flex-wrap:nowrap;gap:6px;font-size:14px;padding:3px 12px;}
+  #mhHome .tile .v .cpill b{font-size:clamp(18px,1.6vw,24px);}
   /* ===== Readability pass: bigger, darker, roomier (applies to every page) ===== */
   #view-app{--muted:#3F4A57;--faint:#2B3440;--body:#1F2933;--warn:#E8890B;--lowstock:#D9480F;--lowstock-fill:#F59E0B;}
   #view-app{font-size:16px;}
@@ -3320,6 +3322,18 @@
   #view-app .bk-bar-l{font-size:15px;} #view-app .bk-bar-v{font-size:15px;}
   #view-app .sl-card-h .bk-dim, #view-app .sl-card-h > span, #view-app .sl-card-h small{font-size:14px;color:#2B3440 !important;}
   #view-app .bk-alert{font-size:15px;} #view-app .bk-alert b{font-size:16px;}
+  /* ===== One calm background on every page (Home included), and the Pewter Emerald sidebar ===== */
+  #view-app{--bg:#F3F3F0;}
+  .app-view-wrap, #view-app, #view-app .main{background:#F3F3F0 !important;}
+  #view-app .sidebar{background:#FFFFFF;border-right:1px solid #BFC5CD;}
+  #view-app .nav-item{color:#20262D;font-weight:600;}
+  #view-app .nav-item svg{opacity:1;}
+  #view-app .nav-item:hover{background:#EEF0F3;color:#0F1317;}
+  #view-app .nav-item.active{background:#0F1317;color:#FFFFFF;font-weight:700;}
+  #view-app .nav-item.active svg{color:#FFFFFF;}
+  #view-app .nav-badge{background:#E7EAEE !important;color:#0F1317 !important;}
+  #view-app .nav-item.active .nav-badge{background:#FFFFFF !important;color:#0F1317 !important;}
+  #view-app .nav-group .heading, #view-app .role-switcher-label{color:#3B4653;}
   .settings-card:empty{display:none;}
   #supplierChips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;} #supplierChips .chip{flex-shrink:0;}
 </style>
@@ -20821,9 +20835,9 @@ function srSection(){
   };
   const key = days
     ? `<div class="sr-key"><p><b>Smart colours</b> use each supplier's delivery time and your ${L.critical}-day critical level.</p><ul>
-        <li><i class="r"></i><b>Red · order today</b> (${nr}): at or under the black line. Without an order now, stock drops below ${L.critical} days before the delivery arrives.</li>
-        <li><i class="y"></i><b>Yellow · order soon</b> (${ny}): within ${L.warn} days of the line.</li>
-        <li><i class="g"></i><b>Green · covered</b> (${ng}): more than that.</li>
+        <li><i class="r"></i><b>Red · order today:</b> at or under the black line. Without an order now, stock drops below ${L.critical} days before the delivery arrives.</li>
+        <li><i class="y"></i><b>Yellow · order soon:</b> within ${L.warn} days of the line.</li>
+        <li><i class="g"></i><b>Green · covered:</b> more than that.</li>
         <li><u></u><b>Black line · reorder point:</b> delivery time + ${L.critical} days.</li></ul></div>`
     : `<div class="sr-key"><p><b>${srPeso(total)} on the shelf at cost.</b>${total ? ` ${Math.round(slowV / total * 100)}% of it is slow or not selling.` : ''}</p><ul class="sr-inline">
         <li><i class="r"></i>Running out</li><li><i class="y"></i>Order soon</li><li><i class="g"></i>Healthy</li><li><i class="slow"></i>Slow or not selling: cash tied up</li></ul></div>`;

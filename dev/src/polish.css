@@ -110,3 +110,15 @@
   #view-app .bk-bar-l{font-size:15px;} #view-app .bk-bar-v{font-size:15px;}
   #view-app .sl-card-h .bk-dim, #view-app .sl-card-h > span, #view-app .sl-card-h small{font-size:14px;color:#2B3440 !important;}
   #view-app .bk-alert{font-size:15px;} #view-app .bk-alert b{font-size:16px;}
+  /* ===== One calm background on every page (Home included), and the Pewter Emerald sidebar ===== */
+  #view-app{--bg:#F3F3F0;}
+  .app-view-wrap, #view-app, #view-app .main{background:#F3F3F0 !important;}
+  #view-app .sidebar{background:#FFFFFF;border-right:1px solid #BFC5CD;}
+  #view-app .nav-item{color:#20262D;font-weight:600;}
+  #view-app .nav-item svg{opacity:1;}
+  #view-app .nav-item:hover{background:#EEF0F3;color:#0F1317;}
+  #view-app .nav-item.active{background:#0F1317;color:#FFFFFF;font-weight:700;}
+  #view-app .nav-item.active svg{color:#FFFFFF;}
+  #view-app .nav-badge{background:#E7EAEE !important;color:#0F1317 !important;}
+  #view-app .nav-item.active .nav-badge{background:#FFFFFF !important;color:#0F1317 !important;}
+  #view-app .nav-group .heading, #view-app .role-switcher-label{color:#3B4653;}

@@ -30,7 +30,7 @@
   #mhHome .sr-val .sr-t i{top:2px;bottom:2px}
   #mhHome .sr-t u{position:absolute;top:-6px;bottom:-6px;width:4px;margin-left:-2px;background:#13243A;border-radius:2px}
   #mhHome .sr-v{text-align:right;display:grid;justify-items:end;gap:2px} #mhHome .sr-v b{font-size:18px;font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap} #mhHome .sr-v small{font-size:14px;color:#1F3148;font-weight:600;white-space:nowrap}
-  #mhHome .sr-row.is-r .sr-v b{color:#B4232C}
+  #mhHome .sr-row.is-r .sr-v b{color:#B4232C} #mhHome .sr-row.is-y .sr-v b{color:#B45309} #mhHome .sr-row.is-g .sr-v b{color:#0E7A45}
   #mhHome .sr-chev{font-size:22px;font-weight:700;color:#2B6CB0;transition:transform .15s}
   #mhHome .sr-item.open .sr-chev{transform:rotate(90deg)}
   #mhHome .sr-axis{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr) 124px 18px;gap:18px;padding:0 12px;height:20px;font-size:13.5px;color:#1F3148;font-weight:700}
