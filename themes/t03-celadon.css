@@ -1,0 +1,22 @@
+/* 03 · Celadon */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+html[data-th="celadon"], html[data-th="celadon"] #view-app, html[data-th="celadon"] .app-view-wrap{
+  --th-canvas:#D7E8E5; --surface:#FFFFFF; --border:#C3D9D5; --border-soft:#D9E7E4; --border-strong:#B5CFCB; --th-edge:#B5CFCB; --th-line:#D9E7E4;
+  --ink:#0D2422; --body:#1B3533; --faint:#1B3533;
+  --green:#0B6E69; --green-hover:#08524E; --green-soft:#DBF0EE; --clay:#0B6E69; --clay-soft:#DBF0EE; --blue:#1E66B0; --blue-soft:#DBF0EE;
+  --danger:#C8283A; --danger-soft:#FCE8EA; --warn:#E08A00; --warn-soft:#FFF3D2; --lowstock:#E08A00; --lowstock-soft:#FFF3D2; --lowstock-fill:#F2A20C;
+  --th-good:#11784A; --th-good-soft:#DFF3E8; --th-tint:#F8FAFB; --th-sunk:#E2F1EF; --th-hl:#FFF1C7; --th-hl-line:#F2C24C;
+  --font-h:'Manrope',system-ui,sans-serif; --font-b:'Manrope',system-ui,sans-serif; --font-n:'Manrope',system-ui,sans-serif; --th-num-font:'Manrope',system-ui,sans-serif;
+  --th-side-bg:#F2F8F7; --th-side-border:#B5CFCB; --th-side-ink:#0D2422; --th-side-muted:#3B4653;
+  --th-side-on-bg:#0B6E69; --th-side-on-ink:#FFFFFF; --th-side-on-bar:transparent; --th-side-hover:#E2F1EF;
+  --th-top-bg:#FFFFFF; --th-top-border:#B5CFCB; --th-search-bg:#E2F1EF;
+  --th-r:16px; --th-r-s:11px; --th-r-btn:999px; --th-shadow:0 1px 2px rgba(15,23,42,.06); --th-shadow-h:0 10px 24px -14px rgba(15,23,42,.35);
+  --th-h1:31px; --th-h1-w:800; --th-h1-ls:-.03em; --th-kpi:27px; --th-kpi-w:800;
+  --th-head:#E2F1EF; --th-row-h:#DBF0EE; --th-zebra:#F6FBFA; --th-chip-on-bg:#08524E; --th-avatar-bg:#DBF0EE; --th-avatar-ink:#08524E;
+  --th-k-sales:#1E66B0; --th-k-costs:#58707A; --th-k-cash:#E08A00; --th-k-orders:#0B6E69; --th-k-sup:#7357C8;
+}
+html[data-th="celadon"] #view-app .nav-item{font-weight:600;}
+html[data-th="celadon"] #view-app .nav-item{border-radius:12px;font-weight:600;}
+html[data-th="celadon"] #view-app .nav-item.active .nav-badge{background:rgba(255,255,255,.25) !important;color:#fff !important;}
+html[data-th="celadon"] :is(#view-app,body) :is(.status-pill,.status-pill-icon,.lg-pill){border-radius:999px;}
+html[data-th="celadon"] #mhHome .mosaic .tile .ic{border-radius:999px !important;}

@@ -1,0 +1,21 @@
+/* 04 · Pewter Emerald */
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@500;600&display=swap');
+html[data-th="pewter"], html[data-th="pewter"] #view-app, html[data-th="pewter"] .app-view-wrap{
+  --th-canvas:#E1E4E8; --surface:#FFFFFF; --border:#CDD2D8; --border-soft:#E1E4E8; --border-strong:#BFC5CD; --th-edge:#BFC5CD; --th-line:#E1E4E8;
+  --ink:#0F1317; --body:#20262D; --faint:#20262D;
+  --green:#0B7A52; --green-hover:#075C3D; --green-soft:#DCF2E8; --clay:#0B7A52; --clay-soft:#DCF2E8; --blue:#2563B8; --blue-soft:#DCF2E8;
+  --danger:#C8283A; --danger-soft:#FCE8EA; --warn:#E08A00; --warn-soft:#FFF3D2; --lowstock:#E08A00; --lowstock-soft:#FFF3D2; --lowstock-fill:#F2A20C;
+  --th-good:#11784A; --th-good-soft:#DFF3E8; --th-tint:#F8FAFB; --th-sunk:#EEF0F3; --th-hl:#FFF1C7; --th-hl-line:#F2C24C;
+  --font-h:'Geist',system-ui,sans-serif; --font-b:'Geist',system-ui,sans-serif; --font-n:'Geist Mono',ui-monospace,monospace; --th-num-font:'Geist Mono',ui-monospace,monospace;
+  --th-side-bg:#FFFFFF; --th-side-border:#BFC5CD; --th-side-ink:#20262D; --th-side-muted:#3B4653;
+  --th-side-on-bg:#0F1317; --th-side-on-ink:#FFFFFF; --th-side-on-bar:transparent; --th-side-hover:#EEF0F3;
+  --th-top-bg:#FFFFFF; --th-top-border:#BFC5CD; --th-search-bg:#EEF0F3;
+  --th-r:10px; --th-r-s:8px; --th-r-btn:8px; --th-shadow:0 1px 2px rgba(15,23,42,.06); --th-shadow-h:0 10px 24px -14px rgba(15,23,42,.35);
+  --th-h1:31px; --th-h1-w:700; --th-h1-ls:-.035em; --th-kpi:27px; --th-kpi-w:600;
+  --th-head:#EEF0F3; --th-row-h:#DCF2E8; --th-zebra:#F8F9FA; --th-chip-on-bg:#075C3D; --th-avatar-bg:#DCF2E8; --th-avatar-ink:#075C3D;
+  --th-k-sales:#2563B8; --th-k-costs:#5C6672; --th-k-cash:#DB8A00; --th-k-orders:#0B7A52; --th-k-sup:#6E56CF;
+}
+html[data-th="pewter"] #view-app .nav-item{font-weight:600;}
+html[data-th="pewter"] #view-app .nav-item.active .nav-badge{background:#FFFFFF !important;color:#0F1317 !important;}
+html[data-th="pewter"] #view-app table th, html[data-th="pewter"] #view-app .lg-tbl th{text-transform:uppercase;letter-spacing:.06em;font-size:12px !important;}
+html[data-th="pewter"] #mhHome .mosaic .tile{box-shadow:inset 4px 0 0 var(--tk), 0 1px 2px rgba(15,19,23,.06);}

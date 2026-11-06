@@ -61,7 +61,7 @@ iframe{width:100%;height:100%;border:0;display:block}
 </head>
 <body>
 <header>
-  <div class="top"><h1>Nifti · Design lab</h1><p>Your real dashboard with demo data, in 10 visual themes. Same features, pages, numbers and buttons; only the visual design changes. Click inside to use it.</p>
+  <div class="top"><h1>Nifti · Design lab</h1><p>Your real dashboard with demo data, in 10 visual themes. Same features, pages, numbers and buttons; only the visual design changes. Page colour now clearly differs from tables. Click inside to use it.</p>
     <div class="seg" role="group" aria-label="Screen size"><button type="button" data-dev="desk">Desktop</button><button type="button" data-dev="phone">Phone</button></div>
     <div class="seg" role="group" aria-label="Compare"><button type="button" data-cmp="0">One theme</button><button type="button" data-cmp="1">Compare two</button></div>
     <button type="button" class="lnk" id="btnAbout" aria-expanded="false">About this theme</button></div>
@@ -77,31 +77,31 @@ iframe{width:100%;height:100%;border:0;display:block}
 <div class="note" id="note"></div>
 <script>
 const THEMES = [
-  ['cur','Current','How it looks today','', 'IBM Plex Sans', ['#F6F4EF','#1F6B45','#15201A','#E4DFD3'], null],
-  ['meridian','Meridian','Refined contemporary enterprise: crisp white surfaces, royal blue, precise figures','t01-meridian','Inter Tight + Inter', ['#F4F6FA','#1F4FD1','#0E1726','#E3F4EB'],
-    'The safe, polished default. Every surface is white on a cool canvas, blue means "do this", figures are tabular and tightly tracked. Buttons have a soft inner highlight; tables use small uppercase headers.'],
-  ['atelier','Atelier','Modern editorial: serif titles and figures, hairline rules instead of boxes, deep teal','t02-atelier','Newsreader + Inter', ['#F6F7F8','#0B5D5A','#111A22','#FFFFFF'],
-    'Reads like a well-set financial report. Sections are separated by ink rules, not cards; KPI figures are set in a serif; statuses become small outlined labels.'],
-  ['verdant','Verdant','Fresh, contemporary business: emerald actions, friendly rounded geometry','t03-verdant','Plus Jakarta Sans', ['#EAF4EF','#047857','#0F1F1A','#FFF5D8'],
-    'Bright and welcoming. Pill buttons, round icon badges, an emerald-tinted menu and generous rounding without going childish.'],
-  ['architect','Architect','Architectural minimalism: square edges, drawn grid lines, ink-black actions, one orange accent','t04-architect','Archivo + IBM Plex', ['#F1F2F3','#121417','#E8590C','#FFFFFF'],
-    'Structured like a technical drawing. 2px corners, black primary buttons, ink rules on every panel, mono figures, grid lines in tables, one signal-orange accent.'],
-  ['tonal','Tonal','Elegant neutral layering: quiet slate tones, no hard boxes','t05-tonal','DM Sans', ['#E9EDF1','#3E5C76','#F7F9FB','#DFE7EF'],
-    'Calm and sophisticated. Surfaces are separated by tone instead of borders or shadows; menu and header melt into the canvas; light-weight headings.'],
-  ['coastline','Coastline','Colour-rich enterprise: teal money in, cobalt money out, red late, amber stock','t06-coastline','Figtree', ['#0E7490','#2F55C4','#0F8A5F','#F5A623'],
-    'The most colour-coded. Each headline number has its own colour by meaning, repeated in its icon and underline, so the Home reads at a glance.'],
-  ['signature','Nifti Signature','Built from the Nifti bird: deep navy, a bright azure wing, geometric titles','t07-signature','Sora + Inter', ['#1C2B5A','#1C7ED6','#F3F5FA','#FFFFFF'],
-    'An identity of its own. Navy actions and menu, an azure "wing" mark on every page title, azure top edges on number cards.'],
-  ['softsurface','Soft Surface','Premium layered depth: no borders, gentle elevation, floating menu','t08-softsurface','Manrope', ['#EEF1F6','#3949AB','#FFFFFF','#ECEEFA'],
-    'Quietly luxurious. Nothing has a border; everything floats a little above the canvas, including the menu. Accent used sparingly.'],
-  ['harbor','Harbor Light','Maritime clarity: navy bar and actions, sun-yellow for what needs you','t09-harbor','Lexend', ['#0F2C4C','#F2B705','#F2F5F9','#FFFFFF'],
-    'Confident and easy to scan. A navy top bar with a sun-yellow edge, yellow marking anything that needs you, very readable rounded type.'],
-  ['clarity','Clarity','Made for reading at a glance: legibility-first type, strong contrast','t10-clarity','Atkinson Hyperlegible', ['#0B0F14','#0050C8','#F5F6F7','#FFF1D0'],
-    'For long days and small screens. A typeface designed for legibility, larger text, darker greys, thicker field borders, underlined links, strong focus rings.']
+  ['cur','Current','How it looks today','', 'IBM Plex Sans', ['#F6F4EF','#1F6B45','#15201A','#FFFFFF'], null],
+  ['evergreen','Evergreen','Closest to today: sage page, white tables, deep green','t01-evergreen','Instrument Serif + Instrument Sans', ['#DFE8E2','#17663F','#FFFFFF','#E6F0EA'],
+    'Your current look, refined. A clear sage page colour so every white table and card stands out, deep green actions, elegant serif page titles and a clean modern sans for everything else.'],
+  ['harbor','Harbor Slate','Navy menu, slate-blue page, yellow for what needs you','t02-harbor','Onest', ['#13294A','#DCE4EE','#1C4E8F','#F2B705'],
+    'Confident and easy to scan. A navy menu, slate-blue page colour behind white tables, navy actions and a sun-yellow marker on anything that needs you.'],
+  ['celadon','Celadon','Soft teal page, teal actions, rounded and friendly','t03-celadon','Manrope', ['#D7E8E5','#0B6E69','#FFFFFF','#E2F1EF'],
+    'Calm and fresh. A soft teal-green page colour, teal pill buttons and a filled teal menu highlight. Rounder corners, friendly but grown-up.'],
+  ['pewter','Pewter Emerald','Cool gray page, black menu highlight, emerald actions','t04-pewter','Geist + Geist Mono', ['#E1E4E8','#0F1317','#0B7A52','#FFFFFF'],
+    'Crisp and precise. Cool pewter page colour, a black highlight in the menu, emerald actions, uppercase table headers and a coloured left edge on each summary tile.'],
+  ['coastline','Coastline Deep','The Coastline you liked, with a deeper page colour','t05-coastline','Figtree', ['#D5E5EC','#0E7490','#2F55C4','#E78B00'],
+    'The most colour-coded. Every summary number takes the colour of its meaning (teal sales, cobalt costs, green profit, amber cash, red money owed to you), on a deeper aqua page colour.'],
+  ['ivory','Ivory Forest','Warm stone page, forest green, serif numbers','t06-ivory','Fraunces + Hanken Grotesk', ['#E7E6E1','#1F5E3B','#FFFFFF','#EEF3EF'],
+    'Classic and premium. A warm stone page colour (no brown), forest-green actions, serif section titles and serif figures, like a well-made ledger.'],
+  ['indigo','Indigo Mist','Lavender-gray page, indigo actions, tiles marked on top','t07-indigo','Sora + Albert Sans', ['#E0E4F2','#3346A6','#FFFFFF','#ECEEFA'],
+    'Modern and composed. A cool lavender-gray page colour, indigo actions and a filled indigo menu highlight. Each summary tile carries its colour along the top.'],
+  ['skyroyal','Sky Royal','Bright sky page, royal blue, characterful titles','t08-skyroyal','Bricolage Grotesque + Instrument Sans', ['#D9E6F5','#1D5BD6','#FFFFFF','#E8F0FD'],
+    'Bright and energetic. A clear sky-blue page colour, royal-blue pill buttons and distinctive Bricolage titles with a clean sans for the details.'],
+  ['jade','Jade Fresh','Mint page, jade actions, solid coloured tile icons','t09-jade','Plus Jakarta Sans', ['#DBEDE4','#12805C','#FFFFFF','#E4F4EC'],
+    'Fresh and friendly. A mint page colour, jade pill buttons and a filled jade menu highlight. Summary tile icons are solid colour blocks, the boldest coding of the ten.'],
+  ['lagoon','Lagoon','Deep teal menu, cool page, mint highlights','t10-lagoon','Be Vietnam Pro', ['#0F3B42','#DDE8E9','#0F7C6B','#5FD3B8'],
+    'Rich but light. A deep teal menu beside a cool, light page colour, teal actions and mint highlights. The menu frames the work without darkening it.']
 ];
 const TABS = [['dashboard','Home'],['orders','Orders'],['messages','Messages'],['suppliers','Customers & suppliers'],['inventory','Stock'],['money','Money overview'],['sales','Sales'],['expenses','Expenses'],['cashcount','Cash count'],['collections','Who owes you'],['profit','Profit & prices'],['issues','To check'],['ledger','Books & reports'],['bank','Bank & deposits'],['payroll','Payroll'],['close','Month-end close'],['store','Online store'],['prices','Price list'],['followups','Follow-ups'],['watchdog',"Owner's watchdog"],['team','Team'],['settings','Settings'],['history','Edit history']];
 const $ = s => document.querySelector(s);
-const st = Object.assign({a:'meridian', b:'atelier', tab:'dashboard', dev:'desk', cmp:'0'}, Object.fromEntries(new URLSearchParams(location.hash.slice(1))));
+const st = Object.assign({a:'evergreen', b:'coastline', tab:'dashboard', dev:'desk', cmp:'0'}, Object.fromEntries(new URLSearchParams(location.hash.slice(1))));
 const F = {A:{el:$('#appA'), ready:false}, B:{el:$('#appB'), ready:false}};
 $('#themes').innerHTML = THEMES.map((t,i) => `<button type="button" class="th" data-th="${t[0]}"><span class="tag"></span><b><span>${i ? String(i).padStart(2,'0') : '—'}</span>${t[1]}</b><small>${t[2]}</small><em>${t[4]}</em><span class="sw">${t[5].map(c => `<i style="background:${c}"></i>`).join('')}</span></button>`).join('');
 $('#tabs').innerHTML = TABS.map((t,i) => `<button type="button" data-tab="${t[0]}"><span>${i + 1}</span>${t[1]}</button>`).join('');

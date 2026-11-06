@@ -1,0 +1,20 @@
+/* 08 · Sky Royal */
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap');
+html[data-th="skyroyal"], html[data-th="skyroyal"] #view-app, html[data-th="skyroyal"] .app-view-wrap{
+  --th-canvas:#D9E6F5; --surface:#FFFFFF; --border:#C5D4E8; --border-soft:#DCE6F2; --border-strong:#B7CAE3; --th-edge:#B7CAE3; --th-line:#DCE6F2;
+  --ink:#0C1A33; --body:#1B2A45; --faint:#1B2A45;
+  --green:#1D5BD6; --green-hover:#1547AD; --green-soft:#E2ECFD; --clay:#1D5BD6; --clay-soft:#E2ECFD; --blue:#1D5BD6; --blue-soft:#E2ECFD;
+  --danger:#C8283A; --danger-soft:#FCE8EA; --warn:#E08A00; --warn-soft:#FFF3D2; --lowstock:#E08A00; --lowstock-soft:#FFF3D2; --lowstock-fill:#F2A20C;
+  --th-good:#11784A; --th-good-soft:#DFF3E8; --th-tint:#F8FAFB; --th-sunk:#E8F0FD; --th-hl:#FFF1C7; --th-hl-line:#F2C24C;
+  --font-h:'Bricolage Grotesque',system-ui,sans-serif; --font-b:'Instrument Sans',system-ui,sans-serif; --font-n:'Instrument Sans',system-ui,sans-serif; --th-num-font:'Instrument Sans',system-ui,sans-serif;
+  --th-side-bg:#FFFFFF; --th-side-border:#B7CAE3; --th-side-ink:#0C1A33; --th-side-muted:#3B4653;
+  --th-side-on-bg:#E2ECFD; --th-side-on-ink:#1547AD; --th-side-on-bar:#1D5BD6; --th-side-hover:#E8F0FD;
+  --th-top-bg:#FFFFFF; --th-top-border:#B7CAE3; --th-search-bg:#E8F0FD;
+  --th-r:14px; --th-r-s:10px; --th-r-btn:999px; --th-shadow:0 1px 2px rgba(15,23,42,.06); --th-shadow-h:0 10px 24px -14px rgba(15,23,42,.35);
+  --th-h1:33px; --th-h1-w:800; --th-h1-ls:-.03em; --th-kpi:27px; --th-kpi-w:700;
+  --th-head:#E8F0FD; --th-row-h:#E2ECFD; --th-zebra:#F6F9FE; --th-chip-on-bg:#1547AD; --th-avatar-bg:#E2ECFD; --th-avatar-ink:#1547AD;
+  --th-k-sales:#1D5BD6; --th-k-costs:#5B6B82; --th-k-cash:#E58A00; --th-k-orders:#0E7490; --th-k-sup:#7A4FD0;
+}
+html[data-th="skyroyal"] #view-app .nav-item{font-weight:600;}
+html[data-th="skyroyal"] #mhHome .sect-h h4, html[data-th="skyroyal"] #view-app :is(.panel-head h2,.lg-ph b,.sl-card-h b){font-family:'Bricolage Grotesque',sans-serif;font-weight:700;}
+html[data-th="skyroyal"] :is(#view-app,body) :is(.status-pill,.status-pill-icon,.lg-pill){border-radius:999px;}

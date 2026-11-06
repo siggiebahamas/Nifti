@@ -1,0 +1,21 @@
+/* 06 · Ivory Forest */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap');
+html[data-th="ivory"], html[data-th="ivory"] #view-app, html[data-th="ivory"] .app-view-wrap{
+  --th-canvas:#E7E6E1; --surface:#FFFFFF; --border:#D3D1CA; --border-soft:#E6E5E0; --border-strong:#C9C7BF; --th-edge:#C9C7BF; --th-line:#E6E5E0;
+  --ink:#14211B; --body:#24312B; --faint:#24312B;
+  --green:#1F5E3B; --green-hover:#16472C; --green-soft:#E1EEE5; --clay:#1F5E3B; --clay-soft:#E1EEE5; --blue:#2D67A8; --blue-soft:#E1EEE5;
+  --danger:#C8283A; --danger-soft:#FCE8EA; --warn:#E08A00; --warn-soft:#FFF3D2; --lowstock:#E08A00; --lowstock-soft:#FFF3D2; --lowstock-fill:#F2A20C;
+  --th-good:#11784A; --th-good-soft:#DFF3E8; --th-tint:#F8FAFB; --th-sunk:#EEF3EF; --th-hl:#FFF1C7; --th-hl-line:#F2C24C;
+  --font-h:'Fraunces',Georgia,serif; --font-b:'Hanken Grotesk',system-ui,sans-serif; --font-n:'Hanken Grotesk',system-ui,sans-serif; --th-num-font:'Hanken Grotesk',system-ui,sans-serif;
+  --th-side-bg:#FBFBF9; --th-side-border:#C9C7BF; --th-side-ink:#14211B; --th-side-muted:#3B4653;
+  --th-side-on-bg:#E1EEE5; --th-side-on-ink:#16472C; --th-side-on-bar:#1F5E3B; --th-side-hover:#EEF3EF;
+  --th-top-bg:#FFFFFF; --th-top-border:#C9C7BF; --th-search-bg:#EEF3EF;
+  --th-r:12px; --th-r-s:9px; --th-r-btn:9px; --th-shadow:0 1px 2px rgba(15,23,42,.06); --th-shadow-h:0 10px 24px -14px rgba(15,23,42,.35);
+  --th-h1:34px; --th-h1-w:700; --th-h1-ls:-.02em; --th-kpi:27px; --th-kpi-w:700;
+  --th-head:#EEF3EF; --th-row-h:#E1EEE5; --th-zebra:#FAFAF8; --th-chip-on-bg:#16472C; --th-avatar-bg:#E1EEE5; --th-avatar-ink:#16472C;
+  --th-k-sales:#2D67A8; --th-k-costs:#5F6670; --th-k-cash:#D98300; --th-k-orders:#1F7A6E; --th-k-sup:#7559C4;
+}
+html[data-th="ivory"] #view-app .nav-item{font-weight:600;}
+html[data-th="ivory"] #view-app :is(.panel-head h2,.lg-ph b,.settings-card h2,.sl-card-h b){font-family:'Fraunces',serif;font-weight:600;}
+html[data-th="ivory"] #mhHome .sect-h h4{font-family:'Fraunces',serif;font-weight:600;font-size:24px;}
+html[data-th="ivory"] #mhHome .tile .v, html[data-th="ivory"] #view-app :is(.lg-kpi-n,.bk-tile-v,.sl-tile b){font-family:'Fraunces',serif;}

@@ -161,3 +161,54 @@ html[data-th] .conv-unread-badge, html[data-th] .notif-count, html[data-th] #vie
 html[data-th] #view-app .lg-sev.hi{background:var(--danger);} html[data-th] #view-app .lg-sev.md{background:var(--warn);} html[data-th] #view-app .lg-sev.lo{background:var(--green);}
 html[data-th] #mhHome .tile .v .cpill{display:inline-flex;align-items:baseline;flex-wrap:nowrap;white-space:nowrap;gap:6px;font-size:13.5px;padding:3px 10px;}
 html[data-th] #mhHome .tile .v .cpill b{font-size:clamp(17px,1.5vw,23px);}
+
+/* =====================================================================
+   v3 direction (applies to every theme):
+   - the page background is a clear tone; tables, cards and panels are white with a visible edge,
+   - the 8 Home summary tiles are colour-coded by meaning,
+   - readable sizes and dark text everywhere.
+   ===================================================================== */
+html[data-th], html[data-th] #view-app, html[data-th] .app-view-wrap{
+  --muted:#3B4653; --th-lbl-ink:#26313D; --th-lbl-size:14px; --th-lbl-w:700; --th-lbl-tt:none; --th-lbl-ls:0;
+  --th-h1:31px; --th-card-border:1px solid var(--th-edge, #C9D2DC);
+  --th-k-sales:#1F6FB2; --th-k-costs:#5B6B80; --th-k-cash:#E08A00; --th-k-orders:#0E7490; --th-k-sup:#6D5BD0;
+  --th-zebra:transparent; --th-thead-bg:var(--th-head, var(--green-soft)); --th-thead-ink:var(--ink);
+}
+/* surfaces read as surfaces */
+html[data-th] #view-app :is(.panel-card,.lg-panel,.bk-tile,.sl-tile,.sl-card,.lg-card,.settings-card,.wd-card,.lg-kpi,.team-person,.store-linkcard,.messages-shell,.stat-card.neutral,.bk-strip),
+html[data-th] #view-app table, html[data-th] #mhHome .glass{border:var(--th-card-border);box-shadow:var(--th-shadow, 0 1px 2px rgba(15,23,42,.06));}
+html[data-th] #view-app .sl-card:has(> .qt-row){border:0;box-shadow:none;background:transparent;}
+html[data-th] #view-app .qt-row{border:var(--th-card-border) !important;}
+/* tables: tinted header band, firm lines, optional zebra */
+html[data-th] #view-app table th, html[data-th] #view-app .lg-tbl th{background:var(--th-thead-bg) !important;color:var(--th-thead-ink) !important;font-weight:700;border-bottom:1.5px solid var(--th-edge, #C9D2DC) !important;}
+html[data-th] #view-app table td, html[data-th] #view-app .lg-tbl td{border-bottom-color:var(--th-line, #E3E8EE);}
+html[data-th] #view-app tbody tr:nth-child(even) td{background:var(--th-zebra);}
+html[data-th] #view-app tbody tr:hover td{background:var(--th-row-h);}
+/* icon chips follow the theme */
+html[data-th] #view-app .bk-ic, html[data-th] #view-app :is(.sl-card-h b,.settings-card h2,.panel-head h2,.panel-card > h2,.lg-ph b) .nf-ic{background:var(--green-soft) !important;color:var(--green-hover) !important;}
+html[data-th] #view-app .sl-av{background:var(--green-soft);color:var(--green-hover);}
+html[data-th] #view-app .bk-bar-t i{background:var(--green);}
+html[data-th] #view-app .bk-note{background:var(--th-sunk);color:var(--ink);}
+/* Home: 8 summary tiles coded by meaning (sales, costs, profit/loss, cash, customer orders, owed to you, you owe, from suppliers) */
+html[data-th] #mhHome .mosaic .tile{--tk:var(--th-k-sales);position:relative;overflow:hidden;}
+html[data-th] #mhHome .mosaic .tile:nth-child(2){--tk:var(--th-k-costs);}
+html[data-th] #mhHome .mosaic .tile:nth-child(3){--tk:var(--th-good);}
+html[data-th] #mhHome .mosaic .tile:nth-child(3):has(.tr){--tk:var(--danger);}
+html[data-th] #mhHome .mosaic .tile:nth-child(4){--tk:var(--th-k-cash);}
+html[data-th] #mhHome .mosaic .tile:nth-child(5){--tk:var(--th-k-orders);}
+html[data-th] #mhHome .mosaic .tile:nth-child(6){--tk:var(--danger);}
+html[data-th] #mhHome .mosaic .tile:nth-child(7){--tk:var(--th-k-costs);}
+html[data-th] #mhHome .mosaic .tile:nth-child(8){--tk:var(--th-k-sup);}
+html[data-th] #mhHome .mosaic .tile .ic{background:color-mix(in srgb, var(--tk) 14%, white) !important;}
+html[data-th] #mhHome .mosaic .tile .ic .ico{color:var(--tk) !important;}
+html[data-th] #mhHome .mosaic .tile{box-shadow:inset 0 -4px 0 var(--tk), var(--th-shadow, 0 1px 2px rgba(15,23,42,.06));}
+html[data-th] #mhHome .tile .k{font-size:15.5px;color:var(--ink);}
+html[data-th] #mhHome .tile .s{font-size:15px;}
+html[data-th] #mhHome .tile .s.muted{color:#26313D;}
+html[data-th] #mhHome .tile .v{font-size:28px;}
+/* Home section cards stand off the canvas */
+html[data-th] #mhHome .glass{background:var(--surface);}
+html[data-th] #mhHome :is(.task,.ln,.cdpp,.sr-key){border-color:var(--th-line, #E3E8EE);}
+html[data-th] #mhHome .sect-h h4{font-size:22px;}
+html[data-th] #mhHome .hero h3{font-size:36px;}
+html[data-th] #mhHome .hero p{color:var(--ink);font-size:17px;}

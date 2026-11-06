@@ -1,16 +1,16 @@
 /* Generated from the Home styles: maps every Home colour to theme tokens (only when a theme is on). */
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) button:focus-visible, html[data-th] :is(#mhHome, html[data-th] #mhSheet) a:focus-visible, html[data-th] :is(#mhHome, html[data-th] #mhSheet) select:focus-visible, html[data-th] :is(#mhHome, html[data-th] #mhSheet) input:focus-visible, html[data-th] :is(#mhHome, html[data-th] #mhSheet) textarea:focus-visible{outline:3px solid var(--green)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .pill.y::before{background:var(--warn)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .pill.n{background:var(--green-soft)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .btn.ghost{background:var(--surface);border:1.5px solid var(--border)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .btn.danger{background:var(--surface);border:1.5px solid color-mix(in srgb, var(--danger) 35%, white)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .av.liza{background:var(--green-soft);color:var(--green)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .av.ben{background:var(--green-soft);color:var(--ink)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .pn.liza{background:var(--green-soft);color:var(--green)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .pn.ben{background:var(--green-soft);color:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) button:focus-visible, html[data-th] :is(#mhHome,#mhSheet) a:focus-visible, html[data-th] :is(#mhHome,#mhSheet) select:focus-visible, html[data-th] :is(#mhHome,#mhSheet) input:focus-visible, html[data-th] :is(#mhHome,#mhSheet) textarea:focus-visible{outline:3px solid var(--green)}
+html[data-th] :is(#mhHome,#mhSheet) .pill.y::before{background:var(--warn)}
+html[data-th] :is(#mhHome,#mhSheet) .pill.n{background:var(--green-soft)}
+html[data-th] :is(#mhHome,#mhSheet) .btn.ghost{background:var(--surface);border:1.5px solid var(--border)}
+html[data-th] :is(#mhHome,#mhSheet) .btn.danger{background:var(--surface);border:1.5px solid color-mix(in srgb, var(--danger) 35%, white)}
+html[data-th] :is(#mhHome,#mhSheet) .av.liza{background:var(--green-soft);color:var(--green)}
+html[data-th] :is(#mhHome,#mhSheet) .av.ben{background:var(--green-soft);color:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) .pn.liza{background:var(--green-soft);color:var(--green)}
+html[data-th] :is(#mhHome,#mhSheet) .pn.ben{background:var(--green-soft);color:var(--ink)}
 html[data-th] #mhHome{background:radial-gradient(1200px 520px at 85% -10%,var(--green-soft) 0,transparent 60%),radial-gradient(900px 520px at -10% 10%,var(--green-soft) 0,transparent 55%),var(--th-tint)}
 html[data-th] #mhHome .tile.click:hover{box-shadow:0 0 0 2px var(--green-soft)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .sch-btn{border:1.5px solid var(--border);background:var(--surface)}
+html[data-th] :is(#mhHome,#mhSheet) .sch-btn{border:1.5px solid var(--border);background:var(--surface)}
 html[data-th] #mhHome .lane-h.r{background:var(--danger-soft);color:var(--danger)}
 html[data-th] #mhHome .lane-h.y{background:var(--th-hl);color:var(--ink)}
 html[data-th] #mhHome .lane-h.g{background:var(--th-good-soft);color:var(--ink)}
@@ -22,241 +22,293 @@ html[data-th] #mhHome .o{background:var(--th-tint)}
 html[data-th] #mhHome .o:hover{border-color:var(--border-strong)}
 html[data-th] #mhHome .o.flag{background:var(--danger-soft)}
 html[data-th] #mhHome .o.flag:hover{border-color:color-mix(in srgb, var(--danger) 35%, white)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .cdpp{border:1px solid var(--border);background:var(--surface)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .cal .day{background:var(--th-tint)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .cal button.day:hover{border-color:var(--border-strong)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .cal .day.r{background:var(--danger-soft)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .cal .day.b{background:var(--green-soft)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .cal .day.g{background:var(--th-good-soft)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .cal .day.future{background:var(--th-tint)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .sheet{background:var(--surface);color:var(--ink)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .sheet-h{border-bottom:1px solid var(--border)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .sheet-h .sub{color:var(--ink)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .sheet-h .x{border:1.5px solid var(--border);background:var(--surface)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .sec{color:var(--ink)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .sheet th{color:var(--ink);border-bottom:2px solid var(--border)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .sheet td{border-bottom:1px solid var(--border)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .days{border-right:1px solid var(--border)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .dday{border:1.5px solid var(--border);background:var(--surface)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .dday small{color:var(--ink)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .privacy{background:var(--th-tint)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .tabs .tab{background:var(--th-tint)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .tabs .tab[aria-selected="true"]{background:var(--ink)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .sum4 div{background:var(--th-tint)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .sum4 small{color:var(--ink)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) tr.disc td{background:var(--th-hl)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .dtag{background:var(--th-hl);color:var(--ink)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .why{color:var(--ink)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .orig{background:var(--surface);border:1.5px solid var(--th-hl-line, var(--border));color:var(--ink)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .calc{background:var(--th-tint)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .calc .in{color:var(--ink)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .calc .out{color:var(--danger)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .calc .tot{border-top:1.5px dashed var(--border-strong)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .denoms span{border:1.5px solid var(--border);background:var(--surface)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .box.red{background:var(--danger-soft);color:var(--ink)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .box.blue{background:var(--green-soft);color:var(--ink)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .box.green{background:var(--th-good-soft);color:var(--ink)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .prot div{background:var(--th-tint);border:1px solid var(--border)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .prot i.ok{background:var(--th-good-soft);color:var(--ink)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .prot i.no{background:var(--danger-soft);color:var(--danger)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .po{background:var(--danger-soft);border:1px solid color-mix(in srgb, var(--danger) 35%, white)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .po b{color:var(--danger)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .attach{border:1.5px solid var(--border);background:var(--surface);color:var(--green-hover)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .attach.missing{color:var(--ink)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .he{border:1px solid var(--border)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .he .chg{background:var(--th-tint)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .he .chg s{color:var(--danger)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ed input, html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ed select, html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ed textarea{border:1.5px solid var(--border-strong);background:var(--surface)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ed .orow{background:var(--danger-soft);border:1px solid color-mix(in srgb, var(--danger) 35%, white)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ed .rm{border:1.5px solid color-mix(in srgb, var(--danger) 35%, white);background:var(--surface);color:var(--danger)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ed .err{color:var(--danger)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) details.saw{border:1px solid var(--border)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) details.saw .mini span{border:1.5px solid var(--border)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .facts div{background:var(--th-tint)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .steps div{background:var(--th-tint)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .steps div.done{background:var(--th-good-soft);color:var(--ink)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .steps div.now{background:var(--ink)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .oacts select{border:1.5px solid var(--border-strong);background:var(--surface)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .modes button{border:1.5px solid var(--border);background:var(--surface)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .modes button small{color:var(--ink)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .modes button[aria-pressed="true"]{background:var(--th-tint)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ppl button{border:1.5px solid var(--border);background:var(--surface)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ppl button[aria-pressed="true"]{background:var(--th-tint)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .mhead button{border:1.5px solid var(--border);background:var(--surface)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .month .md{border:1.5px solid var(--border);background:var(--th-tint)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .month .md.today{border:2px solid var(--warn);background:var(--th-hl)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .month .md.ovr{border:2px dashed var(--green);background:var(--th-tint)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .cover{background:var(--th-hl);border:1px solid var(--th-hl-line, var(--border))}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .cover p{color:var(--ink)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .sw{background:var(--surface);border:1.5px solid var(--border-strong)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .sw.late{border:2px solid var(--danger);background:var(--danger-soft)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .sw.solid{border:2px solid var(--body)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .sw.dashed{border:2px dashed var(--body)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .chip.sell{background:var(--th-tint);color:var(--green)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .chip.buy{background:var(--th-good-soft);color:var(--ink)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .oc{background:var(--surface);border:1.5px solid var(--border)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .oc:hover{border-color:var(--border-strong)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .oc.flag{border:2px solid var(--danger);background:var(--danger-soft)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .oc.flag:hover{border-color:var(--danger)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .oc .stl.late{color:var(--danger)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .oc .stl i{background:var(--danger)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .dir.sell{background:var(--th-tint);color:var(--green)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .dir.buy{background:var(--th-good-soft);color:var(--ink)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .pv1 .badge{background:var(--danger)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .grp.sell .gh{color:var(--green)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .grp.sell .gh::before{background:var(--green)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .grp.buy .gh{color:var(--ink)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .grp.buy .gh::before{background:var(--ink)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .grp.buy{border-top:1px dashed var(--border-strong)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .pv3 .oc.buy{border-color:var(--muted)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .pv3 .oc.sell{border-color:var(--body)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .pv3 .oc.flag{border-color:var(--danger)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .tk-top{border-bottom:1.5px dotted var(--border-strong)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .pv3 .oc.sell .tk-top span:first-child{color:var(--green)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .pv3 .oc.buy .tk-top span:first-child{color:var(--ink)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ribbon{background:var(--danger)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .sq.sell{background:var(--green)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .sq.buy{background:var(--ink)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .calhead > button{border:1.5px solid var(--border);background:var(--surface)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .cal .day{background:var(--surface)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .cal .day .dn{color:var(--green-hover)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .cal .day .dn .ed{background:var(--th-tint)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .cal .day.g{background:var(--th-good-soft);border-color:color-mix(in srgb, var(--th-good) 30%, white)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .cal .day.r{background:var(--danger-soft);border-color:color-mix(in srgb, var(--danger) 35%, white)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .cal .day.b{background:var(--green-soft);border-color:var(--border-strong)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .cal .day.b .st{color:var(--ink)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .cal .day.today{background:var(--th-hl);border:2px dashed var(--warn)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .tcount{background:var(--th-hl);color:var(--ink)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .cal .day.future{background:var(--th-tint);border:1.5px solid var(--border-strong);box-shadow:inset 0 0 0 3px var(--th-tint)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .cal .day.future .nm{color:var(--ink)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .cal .day.future .st{color:var(--body)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .cal .day.future.swapped{border-color:var(--green)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .cal .day.none{background:var(--surface);border:1.5px solid var(--border)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .cal .day.none .st{color:var(--muted)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .btn.go{background:var(--ink)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .btn.back{background:var(--surface);color:var(--ink);border:1.5px dashed var(--muted)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ask{background:var(--surface)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .btn.danger-f{background:var(--danger)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .btn.back-f{background:var(--ink)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .askr input{border:1.5px solid var(--border-strong)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .stag.sell{background:var(--th-tint);color:var(--green)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .stag.buy{background:var(--th-good-soft);color:var(--ink)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ost.late{color:var(--danger)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .sh .sn{background:var(--green-soft);color:var(--green-hover)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .dot{background:var(--danger)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .swl{background:var(--danger-soft);border:1px solid color-mix(in srgb, var(--danger) 35%, white)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .lt{background:var(--danger-soft);color:var(--danger)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob1 .col{background:var(--surface);border:1px solid var(--border)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob1 .row{border-top:1px solid var(--border)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob1 .row:hover{background:var(--th-tint)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob1 .row.late{background:var(--danger-soft)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob2 .card{border:1px solid var(--border);background:var(--surface)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob2 .card.sell .band{background:var(--th-tint)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob2 .card.buy .band{background:var(--green-soft)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob3{background:var(--surface);border:1px solid var(--border)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob3 .lane-row{border-top:1px solid var(--border)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob3 .lane-row.sell .lane-lbl{background:var(--th-tint);color:var(--green-hover)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob3 .lane-row.buy .lane-lbl{background:var(--green-soft);color:var(--ink)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob3 .cell{border-left:1px solid var(--border)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob3 .it{background:var(--th-tint)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob3 .it:hover{background:var(--th-tint)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob3 .it.late{background:var(--danger-soft)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob3 .dash{color:var(--border-strong)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob4 .tg-h.sell{color:var(--green)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob4 .tg-h.buy{color:var(--ink)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob4 .trow{background:var(--surface);border:1px solid var(--border)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob4 .trow:hover{border-color:var(--border-strong)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob4 .trow.late{background:var(--danger-soft)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob4 .track::before{background:var(--green-soft)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob4 .track i{background:var(--surface);border:2.5px solid var(--border-strong)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob4 .track i.done{background:var(--green);border-color:var(--green)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob4 .track i.now{background:var(--surface);border:4px solid var(--green)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob4 .track i.now.late{border-color:var(--danger)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob5 .needs{background:var(--danger-soft)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob5 .cnt{background:var(--danger)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob5 .ncard{background:var(--surface);border:1px solid color-mix(in srgb, var(--danger) 35%, white)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob5 .ncard:hover{border-color:color-mix(in srgb, var(--danger) 35%, white)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob5 .t6{background:var(--surface);border:1px solid var(--border)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob5 .mini:hover{background:var(--th-tint)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob5 .ar.sell{background:var(--th-tint);color:var(--green)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob5 .ar.buy{background:var(--th-good-soft);color:var(--ink)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .alertline{background:var(--danger-soft)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .prow{border:1px solid var(--border)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .switch{background:var(--green-soft)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .switch i{background:var(--surface)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .switch[aria-checked="true"]{background:var(--ink)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .dropamt input{border:1.5px solid var(--border-strong)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .cashline{color:var(--ink)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .cashline i{background:var(--warn)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .spl.r{background:var(--danger-soft);color:var(--danger)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .spl.y{background:var(--th-hl);color:var(--ink)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .spl.g{background:var(--th-good-soft);color:var(--ink)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob3.tot .rsum{color:var(--ink)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob3.mir .band6{background:var(--th-tint);border-top:1px solid var(--border)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob3.mir .band6 .sn, html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob6 .sn{background:var(--green-soft);color:var(--green-hover)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob6{background:var(--surface);border:1px solid var(--border)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob6 .h6 .sell{background:var(--th-tint);color:var(--green)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob6 .h6 .buy{background:var(--green-soft);color:var(--ink)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob6 .r6{border-top:1px solid var(--border)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob6 .c6{border-left:1px solid var(--border)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob6 .it{background:var(--th-tint)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob6 .it:hover{background:var(--th-tint)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob3.cmp .ln{border:1px solid var(--border);background:var(--surface)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob3.cmp .ln.r{background:var(--danger-soft);border-color:color-mix(in srgb, var(--danger) 35%, white)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob3.cmp .ln.y{background:var(--th-hl);border-color:var(--th-hl-line, var(--border))}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .ob3.cmp .ln.g{background:var(--th-good-soft);border-color:color-mix(in srgb, var(--th-good) 30%, white)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .cpill.wait{background:var(--th-hl);color:var(--ink)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .cpill.ok{background:var(--th-good-soft);color:var(--ink)}
-html[data-th] :is(#mhHome, html[data-th] #mhSheet) .cal .ini{border:1.5px solid var(--border-strong);color:var(--ink)}
-@media (max-width:900px){html[data-th] :is(#mhHome, html[data-th] #mhSheet) .days{border-bottom:1px solid var(--border)}}
+html[data-th] :is(#mhHome,#mhSheet) .cdpp{border:1px solid var(--border);background:var(--surface)}
+html[data-th] :is(#mhHome,#mhSheet) .cal .day{background:var(--th-tint)}
+html[data-th] :is(#mhHome,#mhSheet) .cal button.day:hover{border-color:var(--border-strong)}
+html[data-th] :is(#mhHome,#mhSheet) .cal .day.r{background:var(--danger-soft)}
+html[data-th] :is(#mhHome,#mhSheet) .cal .day.b{background:var(--green-soft)}
+html[data-th] :is(#mhHome,#mhSheet) .cal .day.g{background:var(--th-good-soft)}
+html[data-th] :is(#mhHome,#mhSheet) .cal .day.future{background:var(--th-tint)}
+html[data-th] :is(#mhHome,#mhSheet) .sheet{background:var(--surface);color:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) .sheet-h{border-bottom:1px solid var(--border)}
+html[data-th] :is(#mhHome,#mhSheet) .sheet-h .sub{color:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) .sheet-h .x{border:1.5px solid var(--border);background:var(--surface)}
+html[data-th] :is(#mhHome,#mhSheet) .sec{color:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) .sheet th{color:var(--ink);border-bottom:2px solid var(--border)}
+html[data-th] :is(#mhHome,#mhSheet) .sheet td{border-bottom:1px solid var(--border)}
+html[data-th] :is(#mhHome,#mhSheet) .days{border-right:1px solid var(--border)}
+html[data-th] :is(#mhHome,#mhSheet) .dday{border:1.5px solid var(--border);background:var(--surface)}
+html[data-th] :is(#mhHome,#mhSheet) .dday small{color:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) .privacy{background:var(--th-tint)}
+html[data-th] :is(#mhHome,#mhSheet) .tabs .tab{background:var(--th-tint)}
+html[data-th] :is(#mhHome,#mhSheet) .tabs .tab[aria-selected="true"]{background:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) .sum4 div{background:var(--th-tint)}
+html[data-th] :is(#mhHome,#mhSheet) .sum4 small{color:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) tr.disc td{background:var(--th-hl)}
+html[data-th] :is(#mhHome,#mhSheet) .dtag{background:var(--th-hl);color:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) .why{color:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) .orig{background:var(--surface);border:1.5px solid var(--th-hl-line, var(--border));color:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) .calc{background:var(--th-tint)}
+html[data-th] :is(#mhHome,#mhSheet) .calc .in{color:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) .calc .out{color:var(--danger)}
+html[data-th] :is(#mhHome,#mhSheet) .calc .tot{border-top:1.5px dashed var(--border-strong)}
+html[data-th] :is(#mhHome,#mhSheet) .denoms span{border:1.5px solid var(--border);background:var(--surface)}
+html[data-th] :is(#mhHome,#mhSheet) .box.red{background:var(--danger-soft);color:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) .box.blue{background:var(--green-soft);color:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) .box.green{background:var(--th-good-soft);color:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) .prot div{background:var(--th-tint);border:1px solid var(--border)}
+html[data-th] :is(#mhHome,#mhSheet) .prot i.ok{background:var(--th-good-soft);color:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) .prot i.no{background:var(--danger-soft);color:var(--danger)}
+html[data-th] :is(#mhHome,#mhSheet) .po{background:var(--danger-soft);border:1px solid color-mix(in srgb, var(--danger) 35%, white)}
+html[data-th] :is(#mhHome,#mhSheet) .po b{color:var(--danger)}
+html[data-th] :is(#mhHome,#mhSheet) .attach{border:1.5px solid var(--border);background:var(--surface);color:var(--green-hover)}
+html[data-th] :is(#mhHome,#mhSheet) .attach.missing{color:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) .he{border:1px solid var(--border)}
+html[data-th] :is(#mhHome,#mhSheet) .he .chg{background:var(--th-tint)}
+html[data-th] :is(#mhHome,#mhSheet) .he .chg s{color:var(--danger)}
+html[data-th] :is(#mhHome,#mhSheet) .ed input, html[data-th] :is(#mhHome,#mhSheet) .ed select, html[data-th] :is(#mhHome,#mhSheet) .ed textarea{border:1.5px solid var(--border-strong);background:var(--surface)}
+html[data-th] :is(#mhHome,#mhSheet) .ed .orow{background:var(--danger-soft);border:1px solid color-mix(in srgb, var(--danger) 35%, white)}
+html[data-th] :is(#mhHome,#mhSheet) .ed .rm{border:1.5px solid color-mix(in srgb, var(--danger) 35%, white);background:var(--surface);color:var(--danger)}
+html[data-th] :is(#mhHome,#mhSheet) .ed .err{color:var(--danger)}
+html[data-th] :is(#mhHome,#mhSheet) details.saw{border:1px solid var(--border)}
+html[data-th] :is(#mhHome,#mhSheet) details.saw .mini span{border:1.5px solid var(--border)}
+html[data-th] :is(#mhHome,#mhSheet) .facts div{background:var(--th-tint)}
+html[data-th] :is(#mhHome,#mhSheet) .steps div{background:var(--th-tint)}
+html[data-th] :is(#mhHome,#mhSheet) .steps div.done{background:var(--th-good-soft);color:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) .steps div.now{background:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) .oacts select{border:1.5px solid var(--border-strong);background:var(--surface)}
+html[data-th] :is(#mhHome,#mhSheet) .modes button{border:1.5px solid var(--border);background:var(--surface)}
+html[data-th] :is(#mhHome,#mhSheet) .modes button small{color:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) .modes button[aria-pressed="true"]{background:var(--th-tint)}
+html[data-th] :is(#mhHome,#mhSheet) .ppl button{border:1.5px solid var(--border);background:var(--surface)}
+html[data-th] :is(#mhHome,#mhSheet) .ppl button[aria-pressed="true"]{background:var(--th-tint)}
+html[data-th] :is(#mhHome,#mhSheet) .mhead button{border:1.5px solid var(--border);background:var(--surface)}
+html[data-th] :is(#mhHome,#mhSheet) .month .md{border:1.5px solid var(--border);background:var(--th-tint)}
+html[data-th] :is(#mhHome,#mhSheet) .month .md.today{border:2px solid var(--warn);background:var(--th-hl)}
+html[data-th] :is(#mhHome,#mhSheet) .month .md.ovr{border:2px dashed var(--green);background:var(--th-tint)}
+html[data-th] :is(#mhHome,#mhSheet) .cover{background:var(--th-hl);border:1px solid var(--th-hl-line, var(--border))}
+html[data-th] :is(#mhHome,#mhSheet) .cover p{color:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) .sw{background:var(--surface);border:1.5px solid var(--border-strong)}
+html[data-th] :is(#mhHome,#mhSheet) .sw.late{border:2px solid var(--danger);background:var(--danger-soft)}
+html[data-th] :is(#mhHome,#mhSheet) .sw.solid{border:2px solid var(--body)}
+html[data-th] :is(#mhHome,#mhSheet) .sw.dashed{border:2px dashed var(--body)}
+html[data-th] :is(#mhHome,#mhSheet) .chip.sell{background:var(--th-tint);color:var(--green)}
+html[data-th] :is(#mhHome,#mhSheet) .chip.buy{background:var(--th-good-soft);color:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) .oc{background:var(--surface);border:1.5px solid var(--border)}
+html[data-th] :is(#mhHome,#mhSheet) .oc:hover{border-color:var(--border-strong)}
+html[data-th] :is(#mhHome,#mhSheet) .oc.flag{border:2px solid var(--danger);background:var(--danger-soft)}
+html[data-th] :is(#mhHome,#mhSheet) .oc.flag:hover{border-color:var(--danger)}
+html[data-th] :is(#mhHome,#mhSheet) .oc .stl.late{color:var(--danger)}
+html[data-th] :is(#mhHome,#mhSheet) .oc .stl i{background:var(--danger)}
+html[data-th] :is(#mhHome,#mhSheet) .dir.sell{background:var(--th-tint);color:var(--green)}
+html[data-th] :is(#mhHome,#mhSheet) .dir.buy{background:var(--th-good-soft);color:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) .pv1 .badge{background:var(--danger)}
+html[data-th] :is(#mhHome,#mhSheet) .grp.sell .gh{color:var(--green)}
+html[data-th] :is(#mhHome,#mhSheet) .grp.sell .gh::before{background:var(--green)}
+html[data-th] :is(#mhHome,#mhSheet) .grp.buy .gh{color:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) .grp.buy .gh::before{background:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) .grp.buy{border-top:1px dashed var(--border-strong)}
+html[data-th] :is(#mhHome,#mhSheet) .pv3 .oc.buy{border-color:var(--muted)}
+html[data-th] :is(#mhHome,#mhSheet) .pv3 .oc.sell{border-color:var(--body)}
+html[data-th] :is(#mhHome,#mhSheet) .pv3 .oc.flag{border-color:var(--danger)}
+html[data-th] :is(#mhHome,#mhSheet) .tk-top{border-bottom:1.5px dotted var(--border-strong)}
+html[data-th] :is(#mhHome,#mhSheet) .pv3 .oc.sell .tk-top span:first-child{color:var(--green)}
+html[data-th] :is(#mhHome,#mhSheet) .pv3 .oc.buy .tk-top span:first-child{color:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) .ribbon{background:var(--danger)}
+html[data-th] :is(#mhHome,#mhSheet) .sq.sell{background:var(--green)}
+html[data-th] :is(#mhHome,#mhSheet) .sq.buy{background:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) .calhead > button{border:1.5px solid var(--border);background:var(--surface)}
+html[data-th] :is(#mhHome,#mhSheet) .cal .day{background:var(--surface)}
+html[data-th] :is(#mhHome,#mhSheet) .cal .day .dn{color:var(--green-hover)}
+html[data-th] :is(#mhHome,#mhSheet) .cal .day .dn .ed{background:var(--th-tint)}
+html[data-th] :is(#mhHome,#mhSheet) .cal .day.g{background:var(--th-good-soft);border-color:color-mix(in srgb, var(--th-good) 30%, white)}
+html[data-th] :is(#mhHome,#mhSheet) .cal .day.r{background:var(--danger-soft);border-color:color-mix(in srgb, var(--danger) 35%, white)}
+html[data-th] :is(#mhHome,#mhSheet) .cal .day.b{background:var(--green-soft);border-color:var(--border-strong)}
+html[data-th] :is(#mhHome,#mhSheet) .cal .day.b .st{color:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) .cal .day.today{background:var(--th-hl);border:2px dashed var(--warn)}
+html[data-th] :is(#mhHome,#mhSheet) .tcount{background:var(--th-hl);color:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) .cal .day.future{background:var(--th-tint);border:1.5px solid var(--border-strong);box-shadow:inset 0 0 0 3px var(--th-tint)}
+html[data-th] :is(#mhHome,#mhSheet) .cal .day.future .nm{color:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) .cal .day.future .st{color:var(--body)}
+html[data-th] :is(#mhHome,#mhSheet) .cal .day.future.swapped{border-color:var(--green)}
+html[data-th] :is(#mhHome,#mhSheet) .cal .day.none{background:var(--surface);border:1.5px solid var(--border)}
+html[data-th] :is(#mhHome,#mhSheet) .cal .day.none .st{color:var(--muted)}
+html[data-th] :is(#mhHome,#mhSheet) .btn.go{background:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) .btn.back{background:var(--surface);color:var(--ink);border:1.5px dashed var(--muted)}
+html[data-th] :is(#mhHome,#mhSheet) .ask{background:var(--surface)}
+html[data-th] :is(#mhHome,#mhSheet) .btn.danger-f{background:var(--danger)}
+html[data-th] :is(#mhHome,#mhSheet) .btn.back-f{background:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) .askr input{border:1.5px solid var(--border-strong)}
+html[data-th] :is(#mhHome,#mhSheet) .stag.sell{background:var(--th-tint);color:var(--green)}
+html[data-th] :is(#mhHome,#mhSheet) .stag.buy{background:var(--th-good-soft);color:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) .ost.late{color:var(--danger)}
+html[data-th] :is(#mhHome,#mhSheet) .sh .sn{background:var(--green-soft);color:var(--green-hover)}
+html[data-th] :is(#mhHome,#mhSheet) .dot{background:var(--danger)}
+html[data-th] :is(#mhHome,#mhSheet) .swl{background:var(--danger-soft);border:1px solid color-mix(in srgb, var(--danger) 35%, white)}
+html[data-th] :is(#mhHome,#mhSheet) .lt{background:var(--danger-soft);color:var(--danger)}
+html[data-th] :is(#mhHome,#mhSheet) .ob1 .col{background:var(--surface);border:1px solid var(--border)}
+html[data-th] :is(#mhHome,#mhSheet) .ob1 .row{border-top:1px solid var(--border)}
+html[data-th] :is(#mhHome,#mhSheet) .ob1 .row:hover{background:var(--th-tint)}
+html[data-th] :is(#mhHome,#mhSheet) .ob1 .row.late{background:var(--danger-soft)}
+html[data-th] :is(#mhHome,#mhSheet) .ob2 .card{border:1px solid var(--border);background:var(--surface)}
+html[data-th] :is(#mhHome,#mhSheet) .ob2 .card.sell .band{background:var(--th-tint)}
+html[data-th] :is(#mhHome,#mhSheet) .ob2 .card.buy .band{background:var(--green-soft)}
+html[data-th] :is(#mhHome,#mhSheet) .ob3{background:var(--surface);border:1px solid var(--border)}
+html[data-th] :is(#mhHome,#mhSheet) .ob3 .lane-row{border-top:1px solid var(--border)}
+html[data-th] :is(#mhHome,#mhSheet) .ob3 .lane-row.sell .lane-lbl{background:var(--th-tint);color:var(--green-hover)}
+html[data-th] :is(#mhHome,#mhSheet) .ob3 .lane-row.buy .lane-lbl{background:var(--green-soft);color:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) .ob3 .cell{border-left:1px solid var(--border)}
+html[data-th] :is(#mhHome,#mhSheet) .ob3 .it{background:var(--th-tint)}
+html[data-th] :is(#mhHome,#mhSheet) .ob3 .it:hover{background:var(--th-tint)}
+html[data-th] :is(#mhHome,#mhSheet) .ob3 .it.late{background:var(--danger-soft)}
+html[data-th] :is(#mhHome,#mhSheet) .ob3 .dash{color:var(--border-strong)}
+html[data-th] :is(#mhHome,#mhSheet) .ob4 .tg-h.sell{color:var(--green)}
+html[data-th] :is(#mhHome,#mhSheet) .ob4 .tg-h.buy{color:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) .ob4 .trow{background:var(--surface);border:1px solid var(--border)}
+html[data-th] :is(#mhHome,#mhSheet) .ob4 .trow:hover{border-color:var(--border-strong)}
+html[data-th] :is(#mhHome,#mhSheet) .ob4 .trow.late{background:var(--danger-soft)}
+html[data-th] :is(#mhHome,#mhSheet) .ob4 .track::before{background:var(--green-soft)}
+html[data-th] :is(#mhHome,#mhSheet) .ob4 .track i{background:var(--surface);border:2.5px solid var(--border-strong)}
+html[data-th] :is(#mhHome,#mhSheet) .ob4 .track i.done{background:var(--green);border-color:var(--green)}
+html[data-th] :is(#mhHome,#mhSheet) .ob4 .track i.now{background:var(--surface);border:4px solid var(--green)}
+html[data-th] :is(#mhHome,#mhSheet) .ob4 .track i.now.late{border-color:var(--danger)}
+html[data-th] :is(#mhHome,#mhSheet) .ob5 .needs{background:var(--danger-soft)}
+html[data-th] :is(#mhHome,#mhSheet) .ob5 .cnt{background:var(--danger)}
+html[data-th] :is(#mhHome,#mhSheet) .ob5 .ncard{background:var(--surface);border:1px solid color-mix(in srgb, var(--danger) 35%, white)}
+html[data-th] :is(#mhHome,#mhSheet) .ob5 .ncard:hover{border-color:color-mix(in srgb, var(--danger) 35%, white)}
+html[data-th] :is(#mhHome,#mhSheet) .ob5 .t6{background:var(--surface);border:1px solid var(--border)}
+html[data-th] :is(#mhHome,#mhSheet) .ob5 .mini:hover{background:var(--th-tint)}
+html[data-th] :is(#mhHome,#mhSheet) .ob5 .ar.sell{background:var(--th-tint);color:var(--green)}
+html[data-th] :is(#mhHome,#mhSheet) .ob5 .ar.buy{background:var(--th-good-soft);color:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) .alertline{background:var(--danger-soft)}
+html[data-th] :is(#mhHome,#mhSheet) .prow{border:1px solid var(--border)}
+html[data-th] :is(#mhHome,#mhSheet) .switch{background:var(--green-soft)}
+html[data-th] :is(#mhHome,#mhSheet) .switch i{background:var(--surface)}
+html[data-th] :is(#mhHome,#mhSheet) .switch[aria-checked="true"]{background:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) .dropamt input{border:1.5px solid var(--border-strong)}
+html[data-th] :is(#mhHome,#mhSheet) .cashline{color:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) .cashline i{background:var(--warn)}
+html[data-th] :is(#mhHome,#mhSheet) .spl.r{background:var(--danger-soft);color:var(--danger)}
+html[data-th] :is(#mhHome,#mhSheet) .spl.y{background:var(--th-hl);color:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) .spl.g{background:var(--th-good-soft);color:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) .ob3.tot .rsum{color:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) .ob3.mir .band6{background:var(--th-tint);border-top:1px solid var(--border)}
+html[data-th] :is(#mhHome,#mhSheet) .ob3.mir .band6 .sn, html[data-th] :is(#mhHome,#mhSheet) .ob6 .sn{background:var(--green-soft);color:var(--green-hover)}
+html[data-th] :is(#mhHome,#mhSheet) .ob6{background:var(--surface);border:1px solid var(--border)}
+html[data-th] :is(#mhHome,#mhSheet) .ob6 .h6 .sell{background:var(--th-tint);color:var(--green)}
+html[data-th] :is(#mhHome,#mhSheet) .ob6 .h6 .buy{background:var(--green-soft);color:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) .ob6 .r6{border-top:1px solid var(--border)}
+html[data-th] :is(#mhHome,#mhSheet) .ob6 .c6{border-left:1px solid var(--border)}
+html[data-th] :is(#mhHome,#mhSheet) .ob6 .it{background:var(--th-tint)}
+html[data-th] :is(#mhHome,#mhSheet) .ob6 .it:hover{background:var(--th-tint)}
+html[data-th] :is(#mhHome,#mhSheet) .ob3.cmp .ln{border:1px solid var(--border);background:var(--surface)}
+html[data-th] :is(#mhHome,#mhSheet) .ob3.cmp .ln.r{background:var(--danger-soft);border-color:color-mix(in srgb, var(--danger) 35%, white)}
+html[data-th] :is(#mhHome,#mhSheet) .ob3.cmp .ln.y{background:var(--th-hl);border-color:var(--th-hl-line, var(--border))}
+html[data-th] :is(#mhHome,#mhSheet) .ob3.cmp .ln.g{background:var(--th-good-soft);border-color:color-mix(in srgb, var(--th-good) 30%, white)}
+html[data-th] :is(#mhHome,#mhSheet) .cpill.wait{background:var(--th-hl);color:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) .cpill.ok{background:var(--th-good-soft);color:var(--ink)}
+html[data-th] :is(#mhHome,#mhSheet) .cal .ini{border:1.5px solid var(--border-strong);color:var(--ink)}
+@media (max-width:900px){html[data-th] :is(#mhHome,#mhSheet) .days{border-bottom:1px solid var(--border)}}
 html[data-th] #view-app .main:has(#page-dashboard.active #mhHome){background:radial-gradient(1200px 520px at 85% -10%,var(--green-soft) 0,transparent 60%),radial-gradient(900px 520px at -10% 10%,var(--green-soft) 0,transparent 55%),var(--th-tint)}
 html[data-th] #mhHome, html[data-th] #mhSheet{color:var(--ink)}
 html[data-th] #mhHome .alertline{background:var(--th-hl);border:1px solid var(--th-hl-line, var(--border));color:var(--ink)}
 html[data-th] #mhHome .lane .more, html[data-th] #mhHome .cell .more{color:var(--green-hover)}
 html[data-th] #mhHome .tile .s.muted{color:var(--ink)}
 html[data-th] #mhHome .tile .s .cashline{color:var(--ink)}
+html[data-th] #mhHome .cal .day.none .st{color:var(--ink) !important}
 html[data-th] #mhHome .cal .day .ed{color:var(--green-hover);background:var(--green-soft)}
 html[data-th] #mhHome .mh-more .lg-panel{border:1px solid var(--border)}
 html[data-th] #mhSheet .attach{color:var(--green-hover)}
 html[data-th] #mhSheet .attach.missing{color:var(--danger)}
 html[data-th] #mhSheet .attach.missing, html[data-th] #mhHome .attach.missing{color:var(--danger) !important;border-color:color-mix(in srgb, var(--danger) 35%, white) !important}
+html[data-th] #mhSheet .he .reason{color:var(--ink)}
+html[data-th] #mhSheet button.attach{border:1.5px dashed color-mix(in srgb, var(--danger) 35%, white);background:var(--surface)}
+html[data-th] #mhHome .sr-seg{background:var(--green-soft)}
 html[data-th] #mhHome .sr-seg button{color:var(--ink)}
-html[data-th] #mhHome .sr-seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink)}
-html[data-th] #mhHome .sr-note{color:var(--ink)}
-html[data-th] #mhHome .sr-legend{color:var(--ink)}
-html[data-th] #mhHome .sr-k.r i{background:var(--danger)}
-html[data-th] #mhHome .sr-k.y i{background:var(--warn)}
-html[data-th] #mhHome .sr-k.g i{background:var(--th-good)}
-html[data-th] #mhHome .sr-k.slow i{background:var(--green)}
-html[data-th] #mhHome .sr-k.t{color:var(--ink)}
-html[data-th] #mhHome .sr-k.t u{background:var(--ink)}
+html[data-th] #mhHome .sr-seg button[aria-pressed="true"]{background:var(--surface)}
+html[data-th] #mhHome .sr-key{background:var(--surface);border:1px solid var(--border);color:var(--ink)}
+html[data-th] #mhHome .sr-key li u{background:var(--ink)}
+html[data-th] #mhHome .sr-key i.r{background:var(--danger)}
+html[data-th] #mhHome .sr-key i.y{background:var(--warn)}
+html[data-th] #mhHome .sr-key i.g{background:var(--th-good)}
+html[data-th] #mhHome .sr-key i.slow{background:var(--border-strong)}
+html[data-th] #mhHome .sr-item.open{background:var(--surface);box-shadow:0 0 0 1.5px var(--green-soft), 0 10px 26px -18px rgba(20,50,90,.45)}
 html[data-th] #mhHome .sr-row{color:var(--ink)}
-html[data-th] #mhHome .sr-l small{color:var(--ink)}
+html[data-th] #mhHome .sr-m1, html[data-th] #mhHome .sr-m2{color:var(--ink)}
+html[data-th] #mhHome .sr-m2{color:var(--ink)}
+html[data-th] #mhHome .sr-m1 i, html[data-th] #mhHome .sr-m2 i{color:var(--muted)}
 html[data-th] #mhHome .sr-act.r{background:var(--danger-soft);color:var(--danger)}
 html[data-th] #mhHome .sr-act.y{background:var(--th-hl);color:var(--ink)}
 html[data-th] #mhHome .sr-act.g{background:var(--th-good-soft);color:var(--ink)}
-html[data-th] #mhHome .sr-act.slow{background:var(--green-soft);color:var(--green-hover)}
+html[data-th] #mhHome .sr-act.slow{background:var(--green-soft);color:var(--ink)}
 html[data-th] #mhHome .sr-t{background:var(--green-soft)}
-html[data-th] #mhHome .sr-t .zr{background:var(--danger-soft)}
-html[data-th] #mhHome .sr-t .zy{background:var(--th-hl)}
 html[data-th] #mhHome .sr-t i{background:var(--th-good)}
 html[data-th] #mhHome .sr-row.is-r .sr-t i{background:linear-gradient(90deg,var(--danger),var(--danger))}
 html[data-th] #mhHome .sr-row.is-y .sr-t i{background:linear-gradient(90deg,var(--warn),var(--warn))}
 html[data-th] #mhHome .sr-row.is-g .sr-t i{background:linear-gradient(90deg,var(--th-good),var(--th-good))}
-html[data-th] #mhHome .sr-row.is-slow .sr-t i{background:linear-gradient(90deg,var(--green-soft),var(--green));background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.28) 0 6px,transparent 6px 12px),linear-gradient(90deg,var(--green-soft),var(--green))}
-html[data-th] #mhHome .sr-val .sr-t{background:var(--th-tint)}
+html[data-th] #mhHome .sr-row.is-slow .sr-t i{background:var(--border-strong)}
 html[data-th] #mhHome .sr-t u{background:var(--ink)}
 html[data-th] #mhHome .sr-v small{color:var(--ink)}
 html[data-th] #mhHome .sr-row.is-r .sr-v b{color:var(--danger)}
+html[data-th] #mhHome .sr-chev{color:var(--green)}
 html[data-th] #mhHome .sr-axis{color:var(--ink)}
 html[data-th] #mhHome .sr-more{border:1.5px solid var(--border);background:var(--surface);color:var(--green-hover)}
 html[data-th] #mhHome .sr-nos{color:var(--ink)}
 html[data-th] #mhHome .sr-nos b{color:var(--ink)}
-html[data-th] #mhHome .sr-lv{background:var(--surface);border:1px solid var(--border)}
+html[data-th] #mhHome .sr-pg > div{background:var(--surface)}
+html[data-th] #mhHome .sr-pg small{color:var(--ink)}
+html[data-th] #mhHome .sr-pg b{color:var(--ink)}
+html[data-th] #mhHome .sr-pg b.tr{color:var(--danger)}
+html[data-th] #mhHome .sr-pn{background:var(--green-soft)}
+html[data-th] #mhHome .sr-lnk{color:var(--green-hover)}
+html[data-th] #mhHome .sr-po{border:1.5px solid var(--border)}
+html[data-th] #mhHome .sr-po-h span{color:var(--ink)}
+html[data-th] #mhHome .sr-q input{border:1.5px solid var(--border-strong);background:var(--surface);color:var(--ink)}
+html[data-th] #mhHome .sr-chips button{border:1.5px solid var(--border);background:var(--surface);color:var(--green-hover)}
+html[data-th] #mhHome .sr-chips button:hover{border-color:var(--green)}
+html[data-th] #mhHome .sr-est small{color:var(--ink)}
+html[data-th] #mhHome .sr-lv{background:var(--surface);border:1.5px solid var(--border)}
 html[data-th] #mhHome .sr-x{border:1.5px solid var(--border);background:var(--surface)}
-html[data-th] #mhHome .sr-opt input{accent-color:var(--green)}
-html[data-th] #mhHome .sr-opt small{color:var(--ink)}
-html[data-th] #mhHome .sr-custom input{border:1.5px solid var(--border-strong)}
-html[data-th] #mhHome .sw.r{background:var(--danger)}
-html[data-th] #mhHome .sw.y{background:var(--warn)}
-html[data-th] #mhHome .sw.g{background:var(--th-good)}
+html[data-th] #mhHome .sr-in input{border:1.5px solid var(--border-strong)}
+html[data-th] #mhHome .sr-lv-n{color:var(--ink)}
+html[data-th] #view-app .page-head p{color:var(--ink) !important}
+html[data-th] #view-app .nav-group .heading{color:var(--ink)}
+html[data-th] #view-app table th, html[data-th] #view-app .lg-tbl th{color:var(--ink) !important}
+html[data-th] #view-app table td{color:var(--ink)}
+html[data-th] #view-app :is(.lg-kpi-l,.bk-tile-l,.stat-label){color:var(--ink) !important}
+html[data-th] #view-app :is(.lg-kpi-s,.bk-tile-s){color:var(--ink)}
+html[data-th] #view-app .bk-row-m small{color:var(--ink)}
+html[data-th] #view-app .bk-ic{background:var(--green-soft);color:var(--green-hover)}
+html[data-th] #view-app .bk-dim{color:var(--ink) !important}
+html[data-th] #view-app .bk-note{color:var(--ink);background:var(--th-tint)}
+html[data-th] #view-app .bk-empty{color:var(--ink)}
+html[data-th] #view-app .lg-act-t .s{color:var(--ink)}
+html[data-th] #view-app :is(.toggle-sub){color:var(--ink)}
+html[data-th] #view-app .sl-help{color:var(--ink)}
+html[data-th] #view-app .sl-tile small{color:var(--ink)}
+html[data-th] #view-app .sl-tile span{color:var(--ink)}
+html[data-th] #view-app .sl-s{color:var(--ink)}
+html[data-th] #view-app .sl-av{background:var(--green-soft);color:var(--green-hover)}
+html[data-th] #view-app .sl-av.g{background:var(--th-good-soft);color:var(--ink)}
+html[data-th] #view-app .sl-av.w{background:var(--danger-soft);color:var(--danger)}
+html[data-th] #view-app .empty-mini{color:var(--ink)}
+html[data-th] #view-app :is(.sl-tile.warn b,.sl-warn,.bk-tile.warn .bk-tile-v,.wk-t.w b,.t-amber,.v-amber){color:var(--th-warn-text, #C2410C) !important}
+html[data-th] #view-app :is(.lg-pill.warn,.qt-hintbox.qt-warn,.qt-hold,.qt-changed,.sl-pill.st-new,.cq-due .cq-pill,.bk-alert.amber b,.cc-diff.warn,.bk-tag,.bk-flag.amber .bk-flag-v,.lg-pill.demo,.adm-badge){color:var(--ink) !important}
+html[data-th] #view-app #openItemsBadge{color:var(--ink) !important;background:var(--th-hl) !important}
+html[data-th] #view-app .lg-sev.md, html[data-th] #view-app .lg-ag i.d30{background:var(--warn)}
+html[data-th] #view-app .lg-conf.warn > span:first-child{background:var(--th-hl);color:var(--ink)}
+html[data-th] #view-app .lg-conf small{color:var(--ink)}
+html[data-th] #view-app .qt-row .sl-s.qt-hint, html[data-th] #view-app .qt-row .sl-s.qt-hint.sl-warn{background:var(--th-hl);color:var(--ink) !important;border-left:4px solid var(--warn)}
+html[data-th] #view-app .qt-row .sl-s.qt-hint.sl-bad{background:var(--danger-soft);border-left-color:var(--danger)}
+html[data-th] #view-app .qt-row .sl-good{color:var(--ink)}
+html[data-th] #view-app :is(.sl-card-h b,.settings-card h2,.panel-head h2,.panel-card > h2,.lg-ph b) .nf-ic{background:var(--green-soft);color:var(--green-hover)}
+html[data-th] #view-app .acc-hint{color:var(--ink) !important}
+html[data-th] #view-app .settings-section-title{color:var(--ink) !important}
+html[data-th] #view-app .settings-card .sub{color:var(--ink)}
+html[data-th] #view-app .field label{color:var(--ink)}
+html[data-th] #view-app .conv-preview, html[data-th] #view-app .conv-time{color:var(--ink)}
+html[data-th] #view-app .inv-row-sub{color:var(--ink)}
+html[data-th] #view-app .notif-text{color:var(--ink)}
+html[data-th] #view-app .bk-bar-t{background:var(--green-soft)}
+html[data-th] #view-app .bk-bar-t i{background:var(--green)}
+html[data-th] #view-app .sl-card-h .bk-dim, html[data-th] #view-app .sl-card-h > span, html[data-th] #view-app .sl-card-h small{color:var(--ink) !important}

@@ -46,20 +46,35 @@ Themes are visual only. They change fonts, colours, spacing, borders, shadows, b
 - `themes/base.css`: the engine. Maps each component to tokens and adds shared polish: hover, press, disabled, focus rings, menus and badges.
 - `themes/t01…t10-*.css`: each theme sets its tokens, fonts and signature details.
 
-## The 10 themes
+## The 10 themes (round 3)
 
-| # | Theme | Direction | Type | Signature |
-|---|---|---|---|---|
-| 01 | Meridian | Refined contemporary enterprise | Inter Tight + Inter | Crisp white on a cool canvas, royal blue actions with a soft inner highlight, small uppercase table headers |
-| 02 | Atelier | Modern editorial software | Newsreader + Inter | Serif titles and figures, ink rules instead of boxes, outlined status labels, deep teal |
-| 03 | Verdant | Fresh contemporary business | Plus Jakarta Sans | Emerald-tinted menu, pill buttons, round emerald icon badges |
-| 04 | Architect | Architectural minimalism | Archivo + IBM Plex Sans/Mono | Square corners, ink rule on every panel, grid lines in tables, mono figures, one orange accent |
-| 05 | Tonal | Elegant neutral layering | DM Sans | No borders or shadows; slate tones separate surfaces; menu and header melt into the canvas |
-| 06 | Coastline | Refined colour-rich enterprise | Figtree | Each headline number coloured by meaning (teal in, cobalt out, red late, amber stock) |
-| 07 | Nifti Signature | Original Nifti identity | Sora + Inter | Navy from the logo, an azure "wing" mark on titles, azure top edges on number cards |
-| 08 | Soft Surface | Premium soft-surface | Manrope | No borders, gentle elevation, a floating menu panel |
-| 09 | Harbor Light | Maritime clarity | Lexend | Navy top bar with a sun-yellow edge; yellow marks what needs you |
-| 10 | Clarity | Legibility first | Atkinson Hyperlegible | Larger, darker text, thick field borders, underlined links, strong focus rings |
+What changed in round 3, following your feedback:
+- **Page colour vs tables:** the page background is now a clearly different tone from tables and cards, like the current look but with more contrast. Tables and cards are white with a visible edge, and tables have a tinted header band.
+- **Coloured summary boxes:** the 8 Home summary boxes are colour-coded by meaning, Coastline-style.
+- **Fonts:** premium modern fonts only.
+- **Text:** no light-gray text.
+
+| # | Theme | Page colour | Accent | Type | Signature |
+|---|---|---|---|---|---|
+| 01 | Evergreen | Sage | Deep green | Instrument Serif + Instrument Sans | Closest to today, serif titles |
+| 02 | Harbor Slate | Slate blue | Navy | Onest | Navy menu, yellow marks what needs you |
+| 03 | Celadon | Soft teal | Teal | Manrope | Pill buttons, filled teal menu highlight |
+| 04 | Pewter Emerald | Cool gray | Emerald | Geist + Geist Mono | Black menu highlight, left-edge tile colours |
+| 05 | Coastline Deep | Aqua | Teal | Figtree | Numbers coloured by meaning |
+| 06 | Ivory Forest | Warm stone | Forest green | Fraunces + Hanken Grotesk | Serif section titles and figures |
+| 07 | Indigo Mist | Lavender gray | Indigo | Sora + Albert Sans | Top-edge tile colours |
+| 08 | Sky Royal | Sky blue | Royal blue | Bricolage Grotesque + Instrument Sans | Characterful titles, pill buttons |
+| 09 | Jade Fresh | Mint | Jade | Plus Jakarta Sans | Solid coloured tile icons |
+| 10 | Lagoon | Cool teal-gray | Teal | Be Vietnam Pro | Deep teal menu, mint highlights |
+
+Summary-box colour key, the same in every theme:
+- **Blue:** sales.
+- **Slate:** costs and what you owe.
+- **Green or red:** profit or loss.
+- **Amber:** cash today.
+- **Teal:** customer orders.
+- **Red:** owed to you (late money).
+- **Violet:** coming from suppliers.
 
 ## Stage 6 · Quality check
 

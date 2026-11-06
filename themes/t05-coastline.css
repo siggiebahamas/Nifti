@@ -1,0 +1,21 @@
+/* 05 · Coastline Deep */
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&display=swap');
+html[data-th="coastline"], html[data-th="coastline"] #view-app, html[data-th="coastline"] .app-view-wrap{
+  --th-canvas:#D5E5EC; --surface:#FFFFFF; --border:#C1D5DE; --border-soft:#D8E5EB; --border-strong:#B3CAD5; --th-edge:#B3CAD5; --th-line:#D8E5EB;
+  --ink:#0B1F2C; --body:#1A3242; --faint:#1A3242;
+  --green:#0E7490; --green-hover:#0A5970; --green-soft:#DCF1F6; --clay:#0E7490; --clay-soft:#DCF1F6; --blue:#0E7490; --blue-soft:#DCF1F6;
+  --danger:#C8283A; --danger-soft:#FCE8EA; --warn:#E08A00; --warn-soft:#FFF3D2; --lowstock:#E08A00; --lowstock-soft:#FFF3D2; --lowstock-fill:#F2A20C;
+  --th-good:#11784A; --th-good-soft:#DFF3E8; --th-tint:#F8FAFB; --th-sunk:#E2F1F6; --th-hl:#FFF1C7; --th-hl-line:#F2C24C;
+  --font-h:'Figtree',system-ui,sans-serif; --font-b:'Figtree',system-ui,sans-serif; --font-n:'Figtree',system-ui,sans-serif; --th-num-font:'Figtree',system-ui,sans-serif;
+  --th-side-bg:#FFFFFF; --th-side-border:#B3CAD5; --th-side-ink:#0B1F2C; --th-side-muted:#3B4653;
+  --th-side-on-bg:#DCF1F6; --th-side-on-ink:#0A5970; --th-side-on-bar:#0E7490; --th-side-hover:#E2F1F6;
+  --th-top-bg:#FFFFFF; --th-top-border:#B3CAD5; --th-search-bg:#E2F1F6;
+  --th-r:14px; --th-r-s:10px; --th-r-btn:10px; --th-shadow:0 1px 2px rgba(15,23,42,.06); --th-shadow-h:0 10px 24px -14px rgba(15,23,42,.35);
+  --th-h1:32px; --th-h1-w:800; --th-h1-ls:-.025em; --th-kpi:27px; --th-kpi-w:800;
+  --th-head:#E2F1F6; --th-row-h:#DCF1F6; --th-zebra:#F5FAFC; --th-chip-on-bg:#0A5970; --th-avatar-bg:#DCF1F6; --th-avatar-ink:#0A5970;
+  --th-k-sales:#0E7490; --th-k-costs:#2F55C4; --th-k-cash:#E78B00; --th-k-orders:#0F8A5F; --th-k-sup:#7A5BC7;
+}
+html[data-th="coastline"] #view-app .nav-item{font-weight:600;}
+html[data-th="coastline"] #mhHome .mosaic .tile{box-shadow:inset 0 -5px 0 var(--tk), 0 2px 6px -3px rgba(11,31,44,.18);}
+html[data-th="coastline"] #mhHome .mosaic .tile .v{color:var(--tk);}
+html[data-th="coastline"] #mhHome .mosaic .tile:nth-child(3):not(:has(.tr)) .v, html[data-th="coastline"] #mhHome .mosaic .tile:nth-child(6) .v{color:var(--tk);}

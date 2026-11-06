@@ -1,0 +1,20 @@
+/* 07 · Indigo Mist */
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Albert+Sans:wght@400;500;600;700&display=swap');
+html[data-th="indigo"], html[data-th="indigo"] #view-app, html[data-th="indigo"] .app-view-wrap{
+  --th-canvas:#E0E4F2; --surface:#FFFFFF; --border:#CCD2E6; --border-soft:#E0E4F0; --border-strong:#C0C7DF; --th-edge:#C0C7DF; --th-line:#E0E4F0;
+  --ink:#121838; --body:#252C4D; --faint:#252C4D;
+  --green:#3346A6; --green-hover:#253585; --green-soft:#E6E9FA; --clay:#3346A6; --clay-soft:#E6E9FA; --blue:#3346A6; --blue-soft:#E6E9FA;
+  --danger:#C8283A; --danger-soft:#FCE8EA; --warn:#E08A00; --warn-soft:#FFF3D2; --lowstock:#E08A00; --lowstock-soft:#FFF3D2; --lowstock-fill:#F2A20C;
+  --th-good:#11784A; --th-good-soft:#DFF3E8; --th-tint:#F8FAFB; --th-sunk:#ECEEFA; --th-hl:#FFF1C7; --th-hl-line:#F2C24C;
+  --font-h:'Sora',system-ui,sans-serif; --font-b:'Albert Sans',system-ui,sans-serif; --font-n:'Sora',system-ui,sans-serif; --th-num-font:'Sora',system-ui,sans-serif;
+  --th-side-bg:#FFFFFF; --th-side-border:#C0C7DF; --th-side-ink:#252C4D; --th-side-muted:#3B4653;
+  --th-side-on-bg:#3346A6; --th-side-on-ink:#FFFFFF; --th-side-on-bar:transparent; --th-side-hover:#ECEEFA;
+  --th-top-bg:#FFFFFF; --th-top-border:#C0C7DF; --th-search-bg:#ECEEFA;
+  --th-r:14px; --th-r-s:10px; --th-r-btn:10px; --th-shadow:0 1px 2px rgba(15,23,42,.06); --th-shadow-h:0 10px 24px -14px rgba(15,23,42,.35);
+  --th-h1:30px; --th-h1-w:700; --th-h1-ls:-.03em; --th-kpi:27px; --th-kpi-w:700;
+  --th-head:#ECEEFA; --th-row-h:#E6E9FA; --th-zebra:#F8F9FD; --th-chip-on-bg:#253585; --th-avatar-bg:#E6E9FA; --th-avatar-ink:#253585;
+  --th-k-sales:#3346A6; --th-k-costs:#5E6584; --th-k-cash:#E08A00; --th-k-orders:#0E7490; --th-k-sup:#C2410C;
+}
+html[data-th="indigo"] #view-app .nav-item{font-weight:600;}
+html[data-th="indigo"] #view-app .nav-item.active .nav-badge{background:rgba(255,255,255,.22) !important;color:#fff !important;}
+html[data-th="indigo"] #mhHome .mosaic .tile{box-shadow:inset 0 4px 0 var(--tk), 0 1px 2px rgba(18,24,56,.06);}

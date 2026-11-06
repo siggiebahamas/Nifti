@@ -1,0 +1,22 @@
+/* 01 · Evergreen */
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Instrument+Sans:wght@400;500;600;700&display=swap');
+html[data-th="evergreen"], html[data-th="evergreen"] #view-app, html[data-th="evergreen"] .app-view-wrap{
+  --th-canvas:#DFE8E2; --surface:#FFFFFF; --border:#C9D6CE; --border-soft:#DCE5DF; --border-strong:#BDCDC3; --th-edge:#BDCDC3; --th-line:#DCE5DF;
+  --ink:#11231A; --body:#1F3229; --faint:#1F3229;
+  --green:#17663F; --green-hover:#0F4F30; --green-soft:#DDEFE4; --clay:#17663F; --clay-soft:#DDEFE4; --blue:#2F6FB2; --blue-soft:#DDEFE4;
+  --danger:#C8283A; --danger-soft:#FCE8EA; --warn:#E08A00; --warn-soft:#FFF3D2; --lowstock:#E08A00; --lowstock-soft:#FFF3D2; --lowstock-fill:#F2A20C;
+  --th-good:#11784A; --th-good-soft:#DFF3E8; --th-tint:#F8FAFB; --th-sunk:#E6F0EA; --th-hl:#FFF1C7; --th-hl-line:#F2C24C;
+  --font-h:'Instrument Serif',Georgia,serif; --font-b:'Instrument Sans',system-ui,sans-serif; --font-n:'Instrument Sans',system-ui,sans-serif; --th-num-font:'Instrument Sans',system-ui,sans-serif;
+  --th-side-bg:#FFFFFF; --th-side-border:#BDCDC3; --th-side-ink:#11231A; --th-side-muted:#3B4653;
+  --th-side-on-bg:#DDEFE4; --th-side-on-ink:#0F4F30; --th-side-on-bar:#17663F; --th-side-hover:#E6F0EA;
+  --th-top-bg:#FFFFFF; --th-top-border:#BDCDC3; --th-search-bg:#E6F0EA;
+  --th-r:12px; --th-r-s:9px; --th-r-btn:9px; --th-shadow:0 1px 2px rgba(15,23,42,.06); --th-shadow-h:0 10px 24px -14px rgba(15,23,42,.35);
+  --th-h1:40px; --th-h1-w:400; --th-h1-ls:-.01em; --th-kpi:27px; --th-kpi-w:600;
+  --th-head:#E6F0EA; --th-row-h:#DDEFE4; --th-zebra:#F7FAF8; --th-chip-on-bg:#0F4F30; --th-avatar-bg:#DDEFE4; --th-avatar-ink:#0F4F30;
+  --th-k-sales:#2F6FB2; --th-k-costs:#5D6B79; --th-k-cash:#E08A00; --th-k-orders:#0E7490; --th-k-sup:#7A5BC7;
+}
+html[data-th="evergreen"] #view-app .nav-item{font-weight:600;}
+html[data-th="evergreen"] #view-app :is(.panel-head h2,.lg-ph b,.settings-card h2,.sl-card-h b){font-family:'Instrument Sans',sans-serif;font-weight:700;}
+html[data-th="evergreen"] #mhHome .sect-h h4{font-family:'Instrument Serif',serif;font-weight:400;font-size:28px;}
+html[data-th="evergreen"] #mhHome .hero h3{font-weight:400;font-size:44px;}
+html[data-th="evergreen"] #view-app .nav-item.active{font-weight:700;}

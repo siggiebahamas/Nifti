@@ -1,0 +1,24 @@
+/* 10 · Lagoon */
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap');
+html[data-th="lagoon"], html[data-th="lagoon"] #view-app, html[data-th="lagoon"] .app-view-wrap{
+  --th-canvas:#DDE8E9; --surface:#FFFFFF; --border:#C6D7D9; --border-soft:#DCE6E7; --border-strong:#B9CDCF; --th-edge:#B9CDCF; --th-line:#DCE6E7;
+  --ink:#0D2326; --body:#1C3437; --faint:#1C3437;
+  --green:#0F7C6B; --green-hover:#0B5F52; --green-soft:#DCF1EC; --clay:#0F7C6B; --clay-soft:#DCF1EC; --blue:#1F6FB2; --blue-soft:#DCF1EC;
+  --danger:#C8283A; --danger-soft:#FCE8EA; --warn:#E08A00; --warn-soft:#FFF3D2; --lowstock:#E08A00; --lowstock-soft:#FFF3D2; --lowstock-fill:#F2A20C;
+  --th-good:#11784A; --th-good-soft:#DFF3E8; --th-tint:#F8FAFB; --th-sunk:#E3F1EE; --th-hl:#FFF1C7; --th-hl-line:#F2C24C;
+  --font-h:'Be Vietnam Pro',system-ui,sans-serif; --font-b:'Be Vietnam Pro',system-ui,sans-serif; --font-n:'Be Vietnam Pro',system-ui,sans-serif; --th-num-font:'Be Vietnam Pro',system-ui,sans-serif;
+  --th-side-bg:#0F3B42; --th-side-border:#0F3B42; --th-side-ink:#D3E4E5; --th-side-muted:#9FB3CC;
+  --th-side-on-bg:rgba(255,255,255,.12); --th-side-on-ink:#FFFFFF; --th-side-on-bar:#5FD3B8; --th-side-hover:rgba(255,255,255,.08);
+  --th-top-bg:#FFFFFF; --th-top-border:#B9CDCF; --th-search-bg:#E3F1EE;
+  --th-r:12px; --th-r-s:9px; --th-r-btn:9px; --th-shadow:0 1px 2px rgba(15,23,42,.06); --th-shadow-h:0 10px 24px -14px rgba(15,23,42,.35);
+  --th-h1:30px; --th-h1-w:700; --th-h1-ls:-.025em; --th-kpi:27px; --th-kpi-w:700;
+  --th-head:#E3F1EE; --th-row-h:#DCF1EC; --th-zebra:#F6FAFA; --th-chip-on-bg:#0B5F52; --th-avatar-bg:#DCF1EC; --th-avatar-ink:#0B5F52;
+  --th-k-sales:#1F6FB2; --th-k-costs:#56707A; --th-k-cash:#E08A00; --th-k-orders:#0F7C6B; --th-k-sup:#7A5BC7;
+}
+html[data-th="lagoon"] #view-app .nav-item{font-weight:600;}
+html[data-th="lagoon"] #view-app .sidebar .logo-bird{filter:brightness(0) invert(1);}
+html[data-th="lagoon"] #view-app .sidebar .brand{color:#FFFFFF;}
+html[data-th="lagoon"] #view-app .nav-badge{background:rgba(255,255,255,.14) !important;color:#FFFFFF !important;}
+html[data-th="lagoon"] #view-app .nav-item.active .nav-badge{background:#5FD3B8 !important;color:#0D2326 !important;}
+html[data-th="lagoon"] #view-app #openItemsBadge{background:#FFE08A !important;color:#0D2326 !important;border:0 !important;}
+html[data-th="lagoon"] #view-app .nav-group .heading{color:#93B5B8;}

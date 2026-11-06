@@ -1,0 +1,21 @@
+/* 09 · Jade Fresh */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+html[data-th="jade"], html[data-th="jade"] #view-app, html[data-th="jade"] .app-view-wrap{
+  --th-canvas:#DBEDE4; --surface:#FFFFFF; --border:#C4DCD0; --border-soft:#DAE9E1; --border-strong:#B7D3C5; --th-edge:#B7D3C5; --th-line:#DAE9E1;
+  --ink:#0E2219; --body:#1C3428; --faint:#1C3428;
+  --green:#12805C; --green-hover:#0C6447; --green-soft:#DCF3E9; --clay:#12805C; --clay-soft:#DCF3E9; --blue:#2463B5; --blue-soft:#DCF3E9;
+  --danger:#C8283A; --danger-soft:#FCE8EA; --warn:#E08A00; --warn-soft:#FFF3D2; --lowstock:#E08A00; --lowstock-soft:#FFF3D2; --lowstock-fill:#F2A20C;
+  --th-good:#11784A; --th-good-soft:#DFF3E8; --th-tint:#F8FAFB; --th-sunk:#E4F4EC; --th-hl:#FFF1C7; --th-hl-line:#F2C24C;
+  --font-h:'Plus Jakarta Sans',system-ui,sans-serif; --font-b:'Plus Jakarta Sans',system-ui,sans-serif; --font-n:'Plus Jakarta Sans',system-ui,sans-serif; --th-num-font:'Plus Jakarta Sans',system-ui,sans-serif;
+  --th-side-bg:#F4FAF7; --th-side-border:#B7D3C5; --th-side-ink:#0E2219; --th-side-muted:#3B4653;
+  --th-side-on-bg:#12805C; --th-side-on-ink:#FFFFFF; --th-side-on-bar:transparent; --th-side-hover:#E4F4EC;
+  --th-top-bg:#FFFFFF; --th-top-border:#B7D3C5; --th-search-bg:#E4F4EC;
+  --th-r:18px; --th-r-s:12px; --th-r-btn:999px; --th-shadow:0 1px 2px rgba(15,23,42,.06); --th-shadow-h:0 10px 24px -14px rgba(15,23,42,.35);
+  --th-h1:31px; --th-h1-w:800; --th-h1-ls:-.03em; --th-kpi:27px; --th-kpi-w:800;
+  --th-head:#E4F4EC; --th-row-h:#DCF3E9; --th-zebra:#F6FBF8; --th-chip-on-bg:#0C6447; --th-avatar-bg:#DCF3E9; --th-avatar-ink:#0C6447;
+  --th-k-sales:#2463B5; --th-k-costs:#5A6C66; --th-k-cash:#E28800; --th-k-orders:#12805C; --th-k-sup:#7B58C9;
+}
+html[data-th="jade"] #view-app .nav-item{font-weight:600;}
+html[data-th="jade"] #view-app .nav-item{border-radius:12px;font-weight:600;}
+html[data-th="jade"] #view-app .nav-item.active .nav-badge{background:rgba(255,255,255,.24) !important;color:#fff !important;}
+html[data-th="jade"] #mhHome .mosaic .tile .ic{background:var(--tk) !important;} html[data-th="jade"] #mhHome .mosaic .tile .ic .ico{color:#fff !important;}

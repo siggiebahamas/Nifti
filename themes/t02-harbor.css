@@ -1,0 +1,25 @@
+/* 02 · Harbor Slate */
+@import url('https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap');
+html[data-th="harbor"], html[data-th="harbor"] #view-app, html[data-th="harbor"] .app-view-wrap{
+  --th-canvas:#DCE4EE; --surface:#FFFFFF; --border:#C7D2DF; --border-soft:#DDE4EC; --border-strong:#BCC9D8; --th-edge:#BCC9D8; --th-line:#DDE4EC;
+  --ink:#0E1D30; --body:#1C2C40; --faint:#1C2C40;
+  --green:#1C4E8F; --green-hover:#123B70; --green-soft:#E1EAF6; --clay:#1C4E8F; --clay-soft:#E1EAF6; --blue:#1C4E8F; --blue-soft:#E1EAF6;
+  --danger:#C8283A; --danger-soft:#FCE8EA; --warn:#E08A00; --warn-soft:#FFF3D2; --lowstock:#E08A00; --lowstock-soft:#FFF3D2; --lowstock-fill:#F2A20C;
+  --th-good:#11784A; --th-good-soft:#DFF3E8; --th-tint:#F8FAFB; --th-sunk:#E7EEF7; --th-hl:#FFF1C7; --th-hl-line:#F2C24C;
+  --font-h:'Onest',system-ui,sans-serif; --font-b:'Onest',system-ui,sans-serif; --font-n:'Onest',system-ui,sans-serif; --th-num-font:'Onest',system-ui,sans-serif;
+  --th-side-bg:#13294A; --th-side-border:#13294A; --th-side-ink:#D6E1EF; --th-side-muted:#9FB3CC;
+  --th-side-on-bg:rgba(255,255,255,.12); --th-side-on-ink:#FFFFFF; --th-side-on-bar:#F2B705; --th-side-hover:rgba(255,255,255,.08);
+  --th-top-bg:#FFFFFF; --th-top-border:#BCC9D8; --th-search-bg:#E7EEF7;
+  --th-r:12px; --th-r-s:9px; --th-r-btn:9px; --th-shadow:0 1px 2px rgba(15,23,42,.06); --th-shadow-h:0 10px 24px -14px rgba(15,23,42,.35);
+  --th-h1:31px; --th-h1-w:800; --th-h1-ls:-.025em; --th-kpi:27px; --th-kpi-w:700;
+  --th-head:#E7EEF7; --th-row-h:#E1EAF6; --th-zebra:#F7F9FC; --th-chip-on-bg:#123B70; --th-avatar-bg:#E1EAF6; --th-avatar-ink:#123B70;
+  --th-k-sales:#1C4E8F; --th-k-costs:#5E6E83; --th-k-cash:#E39A00; --th-k-orders:#0E7490; --th-k-sup:#6A5AD0;
+}
+html[data-th="harbor"] #view-app .nav-item{font-weight:600;}
+html[data-th="harbor"] #view-app .sidebar .logo-bird{filter:brightness(0) invert(1);}
+html[data-th="harbor"] #view-app .sidebar .brand{color:#FFFFFF;}
+html[data-th="harbor"] #view-app .nav-item.active .nav-badge{background:#F2B705 !important;color:#0E1D30 !important;}
+html[data-th="harbor"] #view-app .nav-badge{background:rgba(255,255,255,.14) !important;color:#FFFFFF !important;}
+html[data-th="harbor"] #view-app #openItemsBadge{background:#F2B705 !important;color:#0E1D30 !important;border:0 !important;}
+html[data-th="harbor"] #view-app .nav-group .heading{color:#9FB3CC;}
+html[data-th="harbor"] #mhHome .hero h3::after, html[data-th="harbor"] #view-app .page-head h1::after{content:"";display:block;width:44px;height:4px;border-radius:3px;background:#F2B705;margin-top:10px;}
