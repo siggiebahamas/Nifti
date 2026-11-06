@@ -1,5 +1,5 @@
   /* ===== Readability pass: bigger, darker, roomier (applies to every page) ===== */
-  #view-app{--muted:#3F4A57;--faint:#2B3440;--body:#1F2933;--warn:#E8890B;--lowstock:#D9480F;--lowstock-fill:#F59E0B;}
+  #view-app{--muted:#3F4A57;--faint:#2B3440;--body:#1F2933;--warn:#E0B400;--lowstock:#8C7200;--lowstock-fill:#E5B800;}
   #view-app{font-size:16px;}
   /* page titles and section headers */
   #view-app .page-head h1{font-size:30px !important;letter-spacing:-.02em;line-height:1.15;}
@@ -59,15 +59,15 @@
   #view-app .empty-mini{font-size:15px;color:#2B3440;padding:18px 4px;line-height:1.5;}
   #view-app .sl-actions{margin:4px 0 16px;}
   /* warning colours: orange text, or dark text on yellow; no brown */
-  #view-app :is(.sl-tile.warn b,.sl-warn,.bk-tile.warn .bk-tile-v,.wk-t.w b,.t-amber,.v-amber){color:#C2410C !important;}
+  #view-app :is(.sl-tile.warn b,.sl-warn,.bk-tile.warn .bk-tile-v,.wk-t.w b,.t-amber,.v-amber){color:#A88900 !important;}
   #view-app :is(.lg-pill.warn,.qt-hintbox.qt-warn,.qt-hold,.qt-changed,.sl-pill.st-new,.cq-due .cq-pill,.bk-alert.amber b,.cc-diff.warn,.bk-tag,.bk-flag.amber .bk-flag-v,.lg-pill.demo,.adm-badge){color:#13243A !important;}
   #view-app #openItemsBadge{color:#13243A !important;background:#FFF1C2 !important;}
-  #view-app .lg-sev.md, #view-app .lg-ag i.d30{background:#F08C00;}
+  #view-app .lg-sev.md, #view-app .lg-ag i.d30{background:#E0B400;}
   /* Month-end close: room between the edge, the status mark and the text; actions never cut off */
   #view-app .lg-conf{gap:16px;padding:16px 20px;align-items:center;}
   #view-app .bk-list .lg-conf{border-bottom:1px solid var(--border);}
   #view-app .lg-conf > span:first-child{width:32px;height:32px;font-size:15px;}
-  #view-app .lg-conf.warn > span:first-child{background:#FFE9B0;color:#13243A;}
+  #view-app .lg-conf.warn > span:first-child{background:#FFEFA6;color:#13243A;}
   #view-app .lg-conf > div{gap:3px;min-width:0;}
   #view-app .lg-conf b{font-size:16px;}
   #view-app .lg-conf small{font-size:14.5px;opacity:1;color:#2B3440;}
@@ -79,7 +79,7 @@
   #view-app .qt-row{background:var(--surface);border:1px solid var(--border) !important;border-radius:16px;padding:18px 20px !important;align-items:flex-start;}
   #view-app .qt-row .sl-mid{display:grid;gap:6px;}
   #view-app .qt-row .sl-t{font-size:18px;}
-  #view-app .qt-row .sl-s.qt-hint, #view-app .qt-row .sl-s.qt-hint.sl-warn{display:inline-block;justify-self:start;background:#FFF4D6;color:#13243A !important;border-left:4px solid #F5A30B;border-radius:8px;padding:8px 12px;font-weight:600;font-size:15px;}
+  #view-app .qt-row .sl-s.qt-hint, #view-app .qt-row .sl-s.qt-hint.sl-warn{display:inline-block;justify-self:start;background:#FFF4D6;color:#13243A !important;border-left:4px solid #E5B800;border-radius:8px;padding:8px 12px;font-weight:600;font-size:15px;}
   #view-app .qt-row .sl-s.qt-hint.sl-bad{background:#FDECEC;border-left-color:#D92D3A;}
   #view-app .qt-row .sl-good{color:#0E6B3E;font-size:14.5px;}
   #view-app .qt-row .sl-right{gap:10px;}

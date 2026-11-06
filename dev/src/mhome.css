@@ -7,7 +7,7 @@
   #mhHome .hero h3{margin:0;}
   #mhHome .mh-sp{flex:1;}
   #mhHome .sect-h{gap:10px;}
-  #mhHome .alertline{background:#FEF3C7;border:1px solid #F5D27A;border-radius:16px;padding:12px 16px;font-size:15.5px;color:#13243A;}
+  #mhHome .alertline{background:#FEF3C7;border:1px solid #EBCB55;border-radius:16px;padding:12px 16px;font-size:15.5px;color:#13243A;}
   #mhHome .lane .more, #mhHome .cell .more{border:0;background:none;color:#1D4F86;font-weight:800;font-size:14.5px;padding:6px 4px;justify-self:start;cursor:pointer;}
   #mhHome .task h5{font-weight:700;} #mhHome .task h5 b{font-weight:800;}
   #mhHome .tile .s.muted{color:#2C3E55;} #mhHome .tile .s .cashline{font-weight:700;color:#13243A;}

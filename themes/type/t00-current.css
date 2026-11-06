@@ -1,0 +1,12 @@
+/* Current (Home style everywhere) */
+html[data-ty="current"], html[data-ty="current"] #view-app, html[data-ty="current"] #mhSheet, html[data-ty="current"] body{
+  --ty-fb:'Plus Jakarta Sans',system-ui,sans-serif; --ty-fh:'Plus Jakarta Sans',system-ui,sans-serif; --ty-fn:'Plus Jakarta Sans',system-ui,sans-serif;
+  --ty-k:1.0625; --ty-min:14px; --ty-body:17px; --ty-lead:17.5px; --ty-lh:1.5;
+  --ty-display:40px; --ty-h1:36px; --ty-h1-w:800; --ty-h1-ls:-.03em; --ty-h2:22px; --ty-h2-w:700; --ty-cap:14px;
+  --ty-lbl:17px; --ty-lbl-w:700; --ty-lbl-tt:none; --ty-lbl-ls:-.005em;
+  --ty-val:29px; --ty-val-w:800; --ty-val-ls:-.02em; --ty-sub:16px; --ty-sub-w:700;
+  --ty-th:14.5px; --ty-th-w:800; --ty-th-tt:uppercase; --ty-th-ls:.04em; --ty-td:16.5px;
+  --ty-row:17.5px; --ty-row-w:700; --ty-small:16px;
+  --ty-pill:14px; --ty-pill-w:700; --ty-tab:16.5px; --ty-tab-w:700; --ty-btn:16.5px; --ty-btn-w:700;
+  --ty-nav:16.5px; --ty-nav-w:600;
+}

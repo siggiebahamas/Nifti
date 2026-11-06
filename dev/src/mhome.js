@@ -103,11 +103,11 @@ function mhTiles(boss){
     out.push(tile({ic: 'costs', bg: '#EBEFF6', c: '#3E4B66', k: 'Costs', v: mhK(cost), s: pct(cost), sc: 'muted', a: "go('money')"}));
     out.push(tile({ic: 'pl', bg: pl >= 0 ? '#DAF0E3' : '#FCE4DE', c: pl >= 0 ? '#0E653C' : '#B42318', k: pl >= 0 ? 'Profit' : 'Loss', v: (pl < 0 ? '−' : '') + mhPeso(pl), vc: pl >= 0 ? 'tg' : 'tr', s: pct(pl), sc: 'muted', a: "go('profit')"}));
     const rec = BK.counts.find(c => c.day === APP_TODAY && !c.reopenedAt), exp = cashExpected(APP_TODAY).cash, who = mhWho(APP_TODAY), s = mhSched();
-    out.push(tile({ic: 'cash', bg: '#FEF3C7', c: '#E89B0C', k: 'Cash today', v: rec ? `<span class="cpill ok"><b>${mhPeso(rec.counted && rec.counted.cash)}</b> counted</span>` : `<span class="cpill wait"><b>${mhPeso(exp)}</b> expected</span>`,
+    out.push(tile({ic: 'cash', bg: '#FEF3C7', c: '#C9A200', k: 'Cash today', v: rec ? `<span class="cpill ok"><b>${mhPeso(rec.counted && rec.counted.cash)}</b> counted</span>` : `<span class="cpill wait"><b>${mhPeso(exp)}</b> expected</span>`,
       s: `<span class="cashline">${mhEsc(rec ? rec.by : who)}${!rec && s.over && s.over[APP_TODAY] ? ' (covering)' : ''} · ${rec ? (rec.at ? new Date(rec.at).toLocaleTimeString('en-PH', {hour: 'numeric', minute: '2-digit'}) : 'counted') : 'to count at closing'}</span>`, a: rec ? `mhOpenDay('${APP_TODAY}')` : 'mhOpenSched()'}));
   } else if(isPageAllowedForViewAsRole('cashcount') && BK.loaded){
     const done = BK.countDays.some(c => c.day === APP_TODAY && !c.reopened);
-    out.push(tile({ic: 'cash', bg: '#FEF3C7', c: '#E89B0C', k: 'Cash today', v: done ? '<span class="cpill ok"><b>Counted</b></span>' : '<span class="cpill wait"><b>To count</b></span>', s: done ? 'Thank you' : 'Before closing', sc: 'muted', a: "go('cashcount')"}));
+    out.push(tile({ic: 'cash', bg: '#FEF3C7', c: '#C9A200', k: 'Cash today', v: done ? '<span class="cpill ok"><b>Counted</b></span>' : '<span class="cpill wait"><b>To count</b></span>', s: done ? 'Thank you' : 'Before closing', sc: 'muted', a: "go('cashcount')"}));
   }
   const ic = {'Customer orders': ['cust', '#DDEFF5', '#0E5E75'], 'Owed to you': ['owed', '#FCE4DE', '#B42318'], 'You owe suppliers': ['owe', '#EBEFF6', '#3E4B66'], 'Coming from suppliers': ['sup', '#DDEFF5', '#0E5E75']};
   oneHomeTiles().forEach(t => { const i = ic[t.lbl] || ['sup', '#EBEFF6', '#3E4B66'];
@@ -335,7 +335,7 @@ function mhRenderSched(){
     cells += past ? `<div class="md past"><span class="dn">${d}</span><span class="w">${by[k] ? mhAv(w) + `<span>${mhEsc(mhFirst(w))}</span>` : ''}</span></div>`
       : `<button class="md${k === APP_TODAY ? ' today' : ''}${o ? ' ovr' : ''}" type="button" onclick="mhSchSwap('${k}')" aria-label="${mhLabel(k)}: ${mhEsc(w)}${o ? ', swapped' : ''}. Tap to change."><span class="dn">${d}${k === APP_TODAY ? ' · Today' : ''}</span><span class="w">${mhAv(w)}<span>${mhEsc(mhFirst(w))}</span></span></button>`; }
   const base = mhWho(APP_TODAY, Object.assign({}, s, {over: {}}));
-  mhSheet(`${mhHead(`<span class="av" style="background:#FEF3C7;color:#E89B0C;width:48px;height:48px">${mhIco('cash')}</span>`, 'Who counts the cash', 'Set the rule once. The person on duty shows on Home and in the calendar.')}
+  mhSheet(`${mhHead(`<span class="av" style="background:#FEF3C7;color:#C9A200;width:48px;height:48px">${mhIco('cash')}</span>`, 'Who counts the cash', 'Set the rule once. The person on duty shows on Home and in the calendar.')}
     <div class="sheet-b" style="max-width:1100px;margin:0 auto;width:100%">
       <div><div class="sec">HOW IT REPEATS</div><div class="modes">${MH_MODES.map(([k, a, b]) => `<button type="button" aria-pressed="${s.mode === k}" onclick="MH.sd.s.mode='${k}'; mhRenderSched()"><b>${a}</b><small>${b}</small></button>`).join('')}</div></div>
       <div><div class="sec">WHO TAKES TURNS ${s.mode === 'same' ? '(THE FIRST ONE COUNTS EVERY DAY)' : '(IN THIS ORDER)'}</div><div class="ppl">${all.map((n, j) => { const i = s.people.indexOf(n); return `<button type="button" aria-pressed="${i >= 0}" onclick="mhSchTog(${j})">${mhAv(n)}${mhEsc(n)}${i >= 0 ? `<i>${i + 1}</i>` : ''}</button>`; }).join('')}</div></div>

@@ -1,0 +1,13 @@
+/* 03 · Playfair Display + Open Sans: editorial. Large high-contrast serif page and section titles; all figures and reading text in clean Open Sans. */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap');
+html[data-ty="playfair"], html[data-ty="playfair"] #view-app, html[data-ty="playfair"] #mhSheet, html[data-ty="playfair"] body{
+  --ty-fb:'Open Sans',system-ui,sans-serif; --ty-fh:'Playfair Display',Georgia,serif; --ty-fn:'Open Sans',system-ui,sans-serif;
+  --ty-k:1.0625; --ty-min:14px; --ty-body:17px; --ty-lead:18px; --ty-lh:1.55;
+  --ty-display:46px; --ty-h1:42px; --ty-h1-w:700; --ty-h1-ls:-.01em; --ty-h2:25px; --ty-h2-w:700; --ty-h2-ls:-.005em; --ty-cap:14px;
+  --ty-lbl:16px; --ty-lbl-w:600; --ty-lbl-tt:none; --ty-lbl-ls:0;
+  --ty-val:29px; --ty-val-w:700; --ty-val-ls:-.02em; --ty-sub:15.5px; --ty-sub-w:500;
+  --ty-th:14.5px; --ty-th-w:700; --ty-th-tt:none; --ty-th-ls:0; --ty-td:16.5px;
+  --ty-row:17.5px; --ty-row-w:600; --ty-small:16px;
+  --ty-pill:14.5px; --ty-pill-w:600; --ty-tab:16px; --ty-tab-w:600; --ty-btn:16px; --ty-btn-w:600;
+  --ty-nav:16.5px; --ty-nav-w:500;
+}

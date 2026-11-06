@@ -61,7 +61,7 @@ iframe{width:100%;height:100%;border:0;display:block}
 </head>
 <body>
 <header>
-  <div class="top"><h1>Nifti · Design lab</h1><p>Your real dashboard with demo data, in 10 typography themes. Same colours, pages, numbers and buttons; only the fonts, sizes and text colour change (no gray text). Click inside to use it.</p>
+  <div class="top"><h1>Nifti · Design lab</h1><p>Your real dashboard with demo data. Current (your Home style on every page) plus 5 font pairings, each a heading font + a body font. Same colours, pages, numbers and buttons; only the type changes. Click inside to use it.</p>
     <div class="seg" role="group" aria-label="Screen size"><button type="button" data-dev="desk">Desktop</button><button type="button" data-dev="phone">Phone</button></div>
     <div class="seg" role="group" aria-label="Compare"><button type="button" data-cmp="0">One theme</button><button type="button" data-cmp="1">Compare two</button></div>
     <button type="button" class="lnk" id="btnAbout" aria-expanded="false">About this theme</button></div>
@@ -77,36 +77,28 @@ iframe{width:100%;height:100%;border:0;display:block}
 <div class="note" id="note"></div>
 <script>
 const THEMES = [
-  ['cur','Current','How it reads today','', 'IBM Plex Sans', ['#F3F3F0','#0F1317','#1F6B45','#FFFFFF'], null],
-  ['geist','Geist Precise','Clean and exact; figures in a mono face so columns line up','t01-geist','Geist + Geist Mono', ['#0E1114','#F3F3F0','#1F6B45','#FFFFFF'],
-    'Modern and exact, like good banking software. Geist for text, Geist Mono for every peso amount so columns line up. Table headers in small capitals; labels in bold sentence case.'],
-  ['inter','Inter Swiss','The most familiar modern business type; tight bold titles','t02-inter','Inter Tight + Inter', ['#0E1114','#F3F3F0','#1F6B45','#FFFFFF'],
-    'The most widely used business typeface, set carefully: tight, heavy titles in Inter Tight and very readable Inter for everything else.'],
-  ['manrope','Manrope Rounded','Soft geometric shapes, heavier weights, a touch friendlier','t03-manrope', 'Manrope', ['#0E1114','#F3F3F0','#1F6B45','#FFFFFF'],
-    'Rounded geometric letters with strong weights. Labels and row titles are bold, so the eye lands on them first.'],
-  ['jakarta','Jakarta Friendly','Warm and modern; bold labels, uppercase table headers','t04-jakarta','Plus Jakarta Sans', ['#0E1114','#F3F3F0','#1F6B45','#FFFFFF'],
-    'Friendly and contemporary (the font of your approved Home), used across every page with heavy labels and uppercase table headers.'],
-  ['publicsans','Public Sans Civic','Built for government forms; plain, sturdy, very legible','t05-publicsans','Public Sans', ['#0E1114','#F3F3F0','#1F6B45','#FFFFFF'],
-    'Designed for public-service websites where everyone must be able to read: neutral, sturdy, slightly larger text throughout.'],
-  ['franklin','Franklin Newsroom','Newspaper strength; heavy titles, uppercase bold labels','t06-franklin','Libre Franklin', ['#0E1114','#F3F3F0','#1F6B45','#FFFFFF'],
-    'The strength of a newspaper headline. Black-weight titles, uppercase bold labels on every summary box, big confident numbers.'],
-  ['fraunces','Fraunces Classic','Serif titles and serif numbers; a classic ledger feel','t07-fraunces','Fraunces + Hanken Grotesk', ['#0E1114','#F3F3F0','#1F6B45','#FFFFFF'],
-    'Classic and premium. Serif page titles, section titles and totals, with a clean sans-serif for everything you read in detail.'],
-  ['newsreader','Newsreader Editorial','Largest text of the ten; serif titles, roomy reading','t08-newsreader','Newsreader + Source Sans 3', ['#0E1114','#F3F3F0','#1F6B45','#FFFFFF'],
-    'Reads like a well-edited report. Serif titles, the largest body text of the ten (17px), generous line spacing.'],
-  ['lexend','Lexend Easy Read','Made to reduce reading effort; calm weights, wide letters','t09-lexend','Lexend', ['#0E1114','#F3F3F0','#1F6B45','#FFFFFF'],
-    'A typeface researched for easier reading: wider letters and spacing, calm weights, taller line height. Gentle on long days.'],
-  ['redhat','Red Hat Corporate','Corporate trio: display titles, text body, mono figures','t10-redhat','Red Hat Display + Text + Mono', ['#0E1114','#F3F3F0','#1F6B45','#FFFFFF'],
-    'A complete corporate family: Display for titles, Text for reading, Mono for every amount. Uppercase table headers, bold labels.']
+  ['cur','Current','Your Home style on every page: Plus Jakarta Sans, bold labels, heavy numbers','t00-current','Plus Jakarta Sans', ['#0F1317','#F3F3F0','#1F6B45','#FFFFFF'],
+    'What the live app uses now. The type style of your Home page (the 8 status boxes, What to do, Where every order is) applied to every page: Plus Jakarta Sans throughout, bold sentence-case labels, extra-bold numbers, uppercase table headers. Everything is one size up from before.'],
+  ['montserrat','Montserrat + Open Sans','Bold geometric: UPPERCASE section titles, labels, table headers and pills','t01-montserrat','Montserrat · Open Sans', ['#0E1114','#F3F3F0','#1F6B45','#FFFFFF'],
+    'Headings: Montserrat, a wide geometric sans. Section titles, summary-box labels, table headers and status pills are in spaced-out capitals, so the structure of each page reads at a glance. Body: Open Sans, regular weight, roomy line spacing. Numbers: Montserrat bold, wide and unmistakable. Feels like a modern bank or logistics console.'],
+  ['inter','Inter + Roboto','Swiss and light: tight titles, big figures, regular-weight body','t02-inter','Inter · Roboto', ['#0E1114','#F3F3F0','#1F6B45','#FFFFFF'],
+    'Headings: Inter, set tight. Body: Roboto at regular weight; labels and buttons are medium, not bold, so the page feels calm and only the numbers shout. Numbers: Inter semibold, the largest of the five (32px). The lightest, most minimal option; the opposite of the heavy Current style.'],
+  ['playfair','Playfair Display + Open Sans','Editorial: large high-contrast serif titles over a clean sans','t03-playfair','Playfair Display · Open Sans', ['#0E1114','#F3F3F0','#1F6B45','#FFFFFF'],
+    'Headings: Playfair Display, a high-contrast serif, at the biggest title size of the five (42px). Body and numbers: Open Sans, so every figure stays plain and clear. Reads like a premium annual report or magazine. The most distinctive and "luxury" option.'],
+  ['merriweather','Merriweather + Roboto',"Banker's ledger: sturdy serif titles and serif totals",'t04-merriweather','Merriweather · Roboto', ['#0E1114','#F3F3F0','#1F6B45','#FFFFFF'],
+    'Headings: Merriweather, a sturdy low-contrast serif built for screens, compact and heavy. The big totals in summary boxes are also in Merriweather, like figures on a bank statement. Body and table figures: Roboto. Uppercase table headers. Traditional, trustworthy, accountant-friendly.'],
+  ['robotoslab','Roboto Slab + Open Sans','Workshop: slab-serif titles, labels, headers and figures','t05-robotoslab','Roboto Slab · Open Sans', ['#0E1114','#F3F3F0','#1F6B45','#FFFFFF'],
+    'Headings: Roboto Slab, a slab serif with square, blocky ends. Summary-box labels, table headers and every peso amount are also in the slab, so numbers look stamped and solid. Body: Open Sans. Industrial and practical, suited to hardware, construction and wholesale shops.']
 ];
 const TABS = [['dashboard','Home'],['orders','Orders'],['messages','Messages'],['suppliers','Customers & suppliers'],['inventory','Stock'],['money','Money overview'],['sales','Sales'],['expenses','Expenses'],['cashcount','Cash count'],['collections','Who owes you'],['profit','Profit & prices'],['issues','To check'],['ledger','Books & reports'],['bank','Bank & deposits'],['payroll','Payroll'],['close','Month-end close'],['store','Online store'],['prices','Price list'],['followups','Follow-ups'],['watchdog',"Owner's watchdog"],['team','Team'],['settings','Settings'],['history','Edit history']];
 const $ = s => document.querySelector(s);
-const st = Object.assign({a:'geist', b:'cur', tab:'dashboard', dev:'desk', cmp:'0'}, Object.fromEntries(new URLSearchParams(location.hash.slice(1))));
+const st = Object.assign({a:'montserrat', b:'cur', tab:'dashboard', dev:'desk', cmp:'0'}, Object.fromEntries(new URLSearchParams(location.hash.slice(1))));
 const F = {A:{el:$('#appA'), ready:false}, B:{el:$('#appB'), ready:false}};
 $('#themes').innerHTML = THEMES.map((t,i) => `<button type="button" class="th" data-th="${t[0]}"><span class="tag"></span><b><span>${i ? String(i).padStart(2,'0') : '—'}</span>${t[1]}</b><small>${t[2]}</small><em>${t[4]}</em><span class="sw">${t[5].map(c => `<i style="background:${c}"></i>`).join('')}</span></button>`).join('');
 $('#tabs').innerHTML = TABS.map((t,i) => `<button type="button" data-tab="${t[0]}"><span>${i + 1}</span>${t[1]}</button>`).join('');
 function note(m){ const n = $('#note'); n.textContent = m; n.classList.add('on'); clearTimeout(note.t); note.t = setTimeout(() => n.classList.remove('on'), 1600); }
 const T = id => THEMES.find(x => x[0] === id) || THEMES[1];
+if(!THEMES.some(t => t[0] === st.a)) st.a = 'montserrat'; if(!THEMES.some(t => t[0] === st.b)) st.b = 'cur';
 function sync(){
   document.querySelectorAll('.th').forEach(b => { const a = b.dataset.th === st.a, bb = st.cmp === '1' && b.dataset.th === st.b; b.classList.toggle('a', a); b.classList.toggle('b', bb && !a); b.querySelector('.tag').textContent = a ? (st.cmp === '1' ? 'A' : 'ON') : bb ? 'B' : ''; b.setAttribute('aria-pressed', a || bb); });
   document.querySelectorAll('.tabs button').forEach(b => b.setAttribute('aria-pressed', b.dataset.tab === st.tab));
@@ -121,8 +113,9 @@ function sync(){
 }
 function applyTheme(k){ const f = F[k]; if(!f.ready) return; const d = f.el.contentDocument, t = T(k === 'A' ? st.a : st.b);
   d.querySelectorAll('link[data-nth]').forEach(l => l.remove());
-  if(t[0] === 'cur'){ d.documentElement.removeAttribute('data-ty'); return; }
-  ['type/ink.css','type/base.css','type/' + t[3] + '.css'].forEach(f2 => { const l = d.createElement('link'); l.rel = 'stylesheet'; l.href = new URL('../themes/' + f2, location.href).href; l.dataset.nth = '1'; d.head.appendChild(l); });
+  // the live app already carries the type engine and the Current theme; other themes add only their own font and size file
+  if(t[0] === 'cur'){ d.documentElement.setAttribute('data-ty', 'current'); return; }
+  const l = d.createElement('link'); l.rel = 'stylesheet'; l.href = new URL('../themes/type/' + t[3] + '.css', location.href).href; l.dataset.nth = '1'; d.head.appendChild(l);
   d.documentElement.setAttribute('data-ty', t[0]); }
 function openTab(k){ const f = F[k]; if(!f.ready) return; const w = f.el.contentWindow;
   try{ if(w.mhClose) w.mhClose(); w.scrollTo(0, 0);
@@ -142,9 +135,9 @@ document.querySelectorAll('[data-dev]').forEach(b => b.addEventListener('click',
 document.querySelectorAll('[data-cmp]').forEach(b => b.addEventListener('click', () => { st.cmp = b.dataset.cmp; sync(); if(st.cmp === '1' && F.B.ready){ applyTheme('B'); openTab('B'); } }));
 function about(){ const t = T(st.a);
   $('#about').innerHTML = `<div><h2>${t[1]}${t[4] ? ' · ' + t[4] : ''}</h2><p>${t[6] || 'The app as it looks today.'}</p>
-    <h2 style="margin-top:12px">What stays exactly the same</h2><ul><li>All 22 pages, every tab inside them, every menu item and the order of the menu.</li><li>Every table, card, number, chart, form, button and what it does.</li><li>Owner and staff permissions, the demo data, phone layout and bottom menu.</li><li>Only fonts, text sizes, weights and text colour change. Gray text is now near-black everywhere.</li></ul></div>
-    <div><h2>Quality check</h2><div class="qc">${['Looks premium','Typography professionally selected','All text near-black, nothing gray','Summary-box labels 15px or larger','Buttons polished (hover, press, disabled, focus)','Cohesive across every page','Easy to navigate','Financial figures easy to read','Alerts and statuses instantly clear','Has its own recognizable identity'].map(q => `<b>✓</b><span>${q}</span>`).join('')}</div>
-    <p style="margin-top:8px">Checked on every page at desktop and phone width. Red always means late, short or a loss; amber means order soon or pending; green means done or healthy.</p></div>`; }
+    <h2 style="margin-top:12px">What stays exactly the same</h2><ul><li>All 22 pages, every tab inside them, every menu item and the order of the menu.</li><li>Every table, card, number, chart, form, button and what it does.</li><li>Owner and staff permissions, the demo data, phone layout and bottom menu.</li><li>Only fonts, text sizes, weights and capitals change. Text stays near-black everywhere; nothing is orange.</li></ul></div>
+    <div><h2>Quality check</h2><div class="qc">${['Looks premium','Typography professionally selected','All text near-black, nothing gray','Nothing important under 14px','Buttons polished (hover, press, disabled, focus)','Cohesive across every page','Easy to navigate','Financial figures easy to read','Alerts and statuses instantly clear','Has its own recognizable identity'].map(q => `<b>✓</b><span>${q}</span>`).join('')}</div>
+    <p style="margin-top:8px">Checked on every page at desktop and phone width. Red always means late, short or a loss; yellow means order soon or pending; green means done or healthy.</p></div>`; }
 $('#btnAbout').addEventListener('click', () => { const on = !$('#about').classList.contains('on'); $('#about').classList.toggle('on', on); $('#btnAbout').setAttribute('aria-expanded', on); if(on) about(); });
 document.addEventListener('keydown', e => { if(/INPUT|SELECT|TEXTAREA/.test(e.target.tagName)) return; const i = THEMES.findIndex(t => t[0] === st.a);
   if(e.key === 'ArrowRight' || e.key === 'ArrowLeft'){ pick(THEMES[(i + (e.key === 'ArrowRight' ? 1 : THEMES.length - 1)) % THEMES.length][0]); } });

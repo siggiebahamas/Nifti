@@ -12,7 +12,7 @@
 :is(#mhHome,#mhSheet) .pill::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor;flex:none}
 :is(#mhHome,#mhSheet) .pill.r{background:var(--rbg);color:var(--r)}
 :is(#mhHome,#mhSheet) .pill.y{background:var(--ybg);color:var(--y)}
-:is(#mhHome,#mhSheet) .pill.y::before{background:#F5A30B}
+:is(#mhHome,#mhSheet) .pill.y::before{background:#E5B800}
 :is(#mhHome,#mhSheet) .pill.g{background:var(--gbg);color:var(--g)}
 :is(#mhHome,#mhSheet) .pill.b{background:var(--bbg);color:var(--b)}
 :is(#mhHome,#mhSheet) .pill.n{background:#EDF1F6;color:var(--ink2)}
@@ -211,7 +211,7 @@
 :is(#mhHome,#mhSheet) .month .md .w .av{width:32px;height:32px;font-size:12.5px}
 :is(#mhHome,#mhSheet) .month .md .w span:last-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 :is(#mhHome,#mhSheet) .month .md.past{opacity:.6}
-:is(#mhHome,#mhSheet) .month .md.today{border:2px solid #F5B32A;background:#FFFBEB}
+:is(#mhHome,#mhSheet) .month .md.today{border:2px solid #E5B800;background:#FFFBEB}
 :is(#mhHome,#mhSheet) .month .md.ovr{border:2px dashed #2B6CB0;background:#EEF5FC}
 :is(#mhHome,#mhSheet) .month .md.blank{visibility:hidden}
 :is(#mhHome,#mhSheet) .cover{background:#FFFBEB;border:1px solid #FCE3A1;border-radius:16px;padding:16px;display:grid;gap:10px}
@@ -287,8 +287,8 @@
 :is(#mhHome,#mhSheet) .cal .day.r{background:#FDECE8;border-color:#F4C3B8}
 :is(#mhHome,#mhSheet) .cal .day.b{background:#E8F0FB;border-color:#BED3EF}
 :is(#mhHome,#mhSheet) .cal .day.b .st{color:#0F3F7A}
-:is(#mhHome,#mhSheet) .cal .day.today{background:#FFFBEB;border:2px dashed #F5B32A}
-:is(#mhHome,#mhSheet) .tcount{justify-self:start;background:#FFD166;color:#13243A;border-radius:999px;padding:2px 12px;font-size:16px !important}
+:is(#mhHome,#mhSheet) .cal .day.today{background:#FFFBEB;border:2px dashed #E5B800}
+:is(#mhHome,#mhSheet) .tcount{justify-self:start;background:#FFE27A;color:#13243A;border-radius:999px;padding:2px 12px;font-size:16px !important}
 :is(#mhHome,#mhSheet) .cal .day.future{background:#FBFCFE;border:1.5px solid #CCD7E4;box-shadow:inset 0 0 0 3px #F3F6FA}
 :is(#mhHome,#mhSheet) .cal .day.future .nm{color:#2C3E55;font-weight:700}
 :is(#mhHome,#mhSheet) .cal .day.future .st{font-size:14.5px;color:#4A5B70;font-weight:700}
@@ -453,7 +453,7 @@
 #mhHome .tile .s{line-height:1.3}
 :is(#mhHome,#mhSheet) .linkbtn{border:0;background:none;padding:0;font:inherit;font-weight:800;color:var(--blue);cursor:pointer;min-height:24px}
 :is(#mhHome,#mhSheet) .cashline{display:flex;gap:8px;align-items:center;color:#13243A;font-weight:600}
-:is(#mhHome,#mhSheet) .cashline i{width:9px;height:9px;border-radius:50%;background:#F5A30B;flex:none}
+:is(#mhHome,#mhSheet) .cashline i{width:9px;height:9px;border-radius:50%;background:#E5B800;flex:none}
 :is(#mhHome,#mhSheet) .spl{display:inline-block;justify-self:start;border-radius:999px;padding:2px 10px;font-size:13px;font-weight:700;line-height:1.35;white-space:normal}
 :is(#mhHome,#mhSheet) .spl.r{background:#FDE2DD;color:#B42318}
 :is(#mhHome,#mhSheet) .spl.y{background:#FEF0C2;color:#13243A}

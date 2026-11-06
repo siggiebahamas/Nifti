@@ -1,0 +1,15 @@
+/* 01 · Montserrat + Open Sans: bold geometric. Uppercase Montserrat for section titles, labels, table headers and pills; wide Montserrat figures; calm Open Sans for reading. */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap');
+html[data-ty="montserrat"], html[data-ty="montserrat"] #view-app, html[data-ty="montserrat"] #mhSheet, html[data-ty="montserrat"] body{
+  --ty-fb:'Open Sans',system-ui,sans-serif; --ty-fh:'Montserrat',system-ui,sans-serif; --ty-fn:'Montserrat',system-ui,sans-serif;
+  --ty-lbl-f:'Montserrat',system-ui,sans-serif; --ty-th-f:'Montserrat',system-ui,sans-serif; --ty-pill-f:'Montserrat',system-ui,sans-serif;
+  --ty-k:1.0625; --ty-min:14px; --ty-body:16.5px; --ty-lead:17px; --ty-lh:1.55;
+  --ty-display:38px; --ty-h1:34px; --ty-h1-w:800; --ty-h1-ls:-.02em; --ty-h2:18px; --ty-h2-w:800; --ty-h2-ls:.04em; --ty-h2-tt:uppercase; --ty-cap:14px;
+  --ty-lbl:14px; --ty-lbl-w:700; --ty-lbl-tt:uppercase; --ty-lbl-ls:.06em;
+  --ty-val:28px; --ty-val-w:700; --ty-val-ls:-.01em; --ty-sub:15.5px; --ty-sub-w:600;
+  --ty-th:14px; --ty-th-w:700; --ty-th-tt:uppercase; --ty-th-ls:.06em; --ty-td:16px;
+  --ty-row:17px; --ty-row-w:700; --ty-small:15.5px;
+  --ty-pill:14px; --ty-pill-w:700; --ty-pill-ls:.04em; --ty-pill-tt:uppercase;
+  --ty-tab:15.5px; --ty-tab-w:600; --ty-btn:15.5px; --ty-btn-w:700;
+  --ty-nav:16px; --ty-nav-w:600;
+}
