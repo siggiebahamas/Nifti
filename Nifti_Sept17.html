@@ -5091,6 +5091,169 @@ tbody tr:hover{background:#F6F6F3}
   }
 
 /* ===== Round 7 css end ===== */
+
+/* ===== Round 8 css begin ===== */
+
+  /* ===== Round 8 ===== */
+  /* every table: headers and cells centered */
+  html[data-ty] #view-app table :is(th,td), html[data-ty] #mhSheet table :is(th,td){text-align:center !important;vertical-align:middle !important;}
+  html[data-ty] #view-app table th .sort-arrow{margin-left:4px;}
+  html[data-ty] #view-app table td > :is(.status-pill,.ord-view,.row-action,.btn,.ord-qty,.pipe-tag,.score-badge){margin-left:auto;margin-right:auto;}
+  html[data-ty] #view-app table td :is(.sup-name,.sup-cat,.sku-name,.inv-row-sub){text-align:center;}
+  html[data-ty] #view-app #page-orders .orders-table tbody tr.ord-turn td:first-child{box-shadow:inset 5px 0 0 #FACC15;}
+  html[data-ty] #view-app #page-orders td.ord-v{width:auto;text-align:center !important;}
+  html[data-ty] #view-app .ord-view{display:inline-flex !important;justify-content:center;align-items:center;min-width:92px;vertical-align:middle;}
+  html[data-ty] #view-app #page-orders td.ord-due{text-align:center !important;} html[data-ty] #view-app #page-orders td.ord-due i{margin-left:auto;margin-right:auto;}
+  /* profit: item names on the left, numbers centered; cost and price look like boxes you can tap */
+  html[data-ty] #view-app #page-profit .bk-tbl :is(th,td):first-child{text-align:left !important;}
+  html[data-ty] #view-app #page-profit .bk-num{width:110px;max-width:100%;text-align:center;border:1.5px solid #C9D3DE !important;border-radius:10px;padding:8px 10px !important;background:#FFFFFF url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231F6B45' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5z'/%3E%3C/svg%3E") right 8px center/14px no-repeat;font-weight:700;cursor:text;}
+  html[data-ty] #view-app #page-profit .bk-num:hover{border-color:#1F6B45;} html[data-ty] #view-app #page-profit .bk-num:focus{border-color:#1F6B45;box-shadow:0 0 0 3px #DCEFE3;outline:0;background-image:none;}
+  /* status pills: plain words, no symbols */
+  html[data-ty] #view-app .status-pill{gap:0 !important;}
+  /* To check / What changed: no "why" line, larger text, real buttons */
+  html[data-ty] #view-app .lg-card-h b{font-size:20px !important;}
+  html[data-ty] #view-app .lg-card-g{gap:8px 18px !important;} html[data-ty] #view-app .lg-card-g > span{font-size:15.5px !important;font-weight:700;color:#344054 !important;}
+  html[data-ty] #view-app .lg-card-g > p{font-size:17px !important;line-height:1.45;color:#0E1114 !important;}
+  html[data-ty] #view-app .lg-card .bk-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;}
+  html[data-ty] #view-app .lg-card .bk-actions .sl-link{display:inline-flex;align-items:center;padding:8px 16px;border-radius:999px;border:1.5px solid #D5DBE2;background:#FFFFFF;color:#1F6B45 !important;font-weight:700;font-size:15.5px !important;text-decoration:none !important;}
+  html[data-ty] #view-app .lg-card .bk-actions .sl-link:hover{border-color:#1F6B45;background:#F3FAF6;}
+  html[data-ty] #view-app .lg-card .bk-actions .sl-link:nth-child(3){background:#1F6B45;border-color:#1F6B45;color:#FFFFFF !important;}
+  html[data-ty] #view-app .lg-card .bk-actions .sl-link.bk-dim{color:#1F2329 !important;}
+  /* both sides on one page */
+  html[data-ty] #view-app .nf-half{background:transparent;margin:0 0 26px;}
+  html[data-ty] #view-app .nf-half-h{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:0 0 12px;margin-bottom:14px;border-bottom:2px solid #DDE1E6;}
+  html[data-ty] #view-app .nf-half-h i{width:12px;height:12px;border-radius:50%;flex:none;}
+  html[data-ty] #view-app .nf-half-supplier > .nf-half-h{border-bottom-color:#2563EB;} html[data-ty] #view-app .nf-half-supplier > .nf-half-h i{background:#2563EB;}
+  html[data-ty] #view-app .nf-half-buyer > .nf-half-h{border-bottom-color:#7C3AED;} html[data-ty] #view-app .nf-half-buyer > .nf-half-h i{background:#7C3AED;}
+  html[data-ty] #view-app .nf-half-h b{font-size:21px;font-weight:800;color:#0E1114;} html[data-ty] #view-app .nf-half-h small{font-size:15.5px;color:#344054;font-weight:600;}
+  html[data-ty] #view-app .nf-half-h .btn{margin-left:auto;}
+  html[data-ty] #view-app #page-orders .nf-half :is(.page-head,.role-toggle,details.ord-perf,#buyerAgingReportView,#supplierAgingReportView){display:none !important;}
+  html[data-ty] #view-app #page-orders > .nf-orders-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;}
+  html[data-ty] #view-app #page-suppliers.nf-replaced > :not(#nfPartners){display:none !important;}
+  html[data-ty] #view-app .nf-two-col{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;align-items:start;}
+  html[data-ty] #view-app .nf-pt{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:6px 12px;align-items:center;background:#FFFFFF;border:1px solid #DDE1E6;border-radius:16px;padding:14px 16px;margin-bottom:10px;}
+  html[data-ty] #view-app .nf-pt .pt-av{width:46px;height:46px;border-radius:50%;}
+  html[data-ty] #view-app .nf-pt-m{min-width:0;display:grid;gap:2px;} html[data-ty] #view-app .nf-pt .pt-name{font-size:17px;font-weight:700;color:#0E1114;} html[data-ty] #view-app .nf-pt-m small{font-size:15px;color:#344054;}
+  html[data-ty] #view-app .nf-pt-a{grid-column:2 / -1;display:flex;gap:8px;flex-wrap:wrap;}
+  html[data-ty] #view-app .nf-pt-a .btn{padding:7px 14px !important;font-size:15px !important;border-radius:999px;}
+  /* pictures: initials bubbles and photos */
+  html[data-ty] .nf-has-av .nf-ini{display:grid;place-items:center;width:100%;height:100%;border-radius:inherit;color:#FFFFFF;font-weight:800;font-size:15px;letter-spacing:.02em;}
+  html[data-ty] #view-app .sl-row .sl-av.nf-has-av{border-radius:50%;width:40px;height:40px;overflow:hidden;}
+  .nf-av-big{display:block;width:104px;height:104px;border-radius:50%;overflow:hidden;box-shadow:0 0 0 4px #FFFFFF, 0 0 0 6px #D5DBE2;}
+  .nf-av-big .nf-ini{font-size:34px !important;} .nf-av-big img{width:100%;height:100%;object-fit:cover;}
+  .nf-av-acts{display:grid;gap:10px;margin-top:6px;} .nf-av-acts .btn{justify-content:center;display:flex;cursor:pointer;}
+  .nf-cam{position:relative;background:#0E1114;border-radius:16px;overflow:hidden;aspect-ratio:4/3;display:grid;place-items:center;margin-bottom:12px;}
+  .nf-cam video{width:100%;height:100%;object-fit:cover;} .nf-cam-msg{position:absolute;color:#FFFFFF;font-weight:700;font-size:16px;}
+  .nf-cam-acts{display:flex;gap:10px;justify-content:center;} .nf-cam-acts .btn{flex:1;justify-content:center;min-height:50px;font-size:17px !important;}
+  .nf-ok-img{border-radius:16px;overflow:hidden;margin:6px 0 14px;background:#F3F4F6;display:grid;place-items:center;max-height:60vh;} .nf-ok-img img{max-width:100%;max-height:60vh;display:block;}
+  html[data-ty] .nf-take{display:inline-flex !important;align-items:center;gap:8px;margin:0 8px 8px 0;} html[data-ty] .nf-take svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;}
+  /* the order sheet */
+  html[data-ty] #orderDetailModal.nfo-modal #orderDetailModalBody{padding:0 !important;}
+  html[data-ty] .nfo{display:grid;gap:16px;padding:6px 4px 4px;font-size:16px;color:#0E1114;}
+  html[data-ty] .nfo-head{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center;padding-right:36px;}
+  html[data-ty] .nfo-head .nf-av{width:56px;height:56px;border-radius:50%;overflow:hidden;}
+  html[data-ty] .nfo-h-m small{font-size:14.5px;font-weight:700;color:#344054;letter-spacing:.02em;} html[data-ty] .nfo-h-m h3{font-size:23px;font-weight:800;margin:2px 0;line-height:1.2;} html[data-ty] .nfo-h-m span{font-size:16px;color:#1F2329;font-weight:600;}
+  html[data-ty] .nfo-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;position:relative;}
+  html[data-ty] .nfo-steps li{display:grid;justify-items:center;gap:6px;text-align:center;position:relative;}
+  html[data-ty] .nfo-steps li::before{content:'';position:absolute;top:15px;left:-50%;right:50%;height:3px;background:#E3E7EC;z-index:0;} html[data-ty] .nfo-steps li:first-child::before{display:none;}
+  html[data-ty] .nfo-steps li.done::before, html[data-ty] .nfo-steps li.now::before{background:#16A34A;}
+  html[data-ty] .nfo-steps i{position:relative;z-index:1;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-weight:800;font-size:14px;background:#EEF1F4;color:#475467;}
+  html[data-ty] .nfo-steps li.done i{background:#16A34A;color:#FFFFFF;} html[data-ty] .nfo-steps li.now i{background:#FFFFFF;color:#0E1114;box-shadow:inset 0 0 0 3px #1F6B45;}
+  html[data-ty] .nfo-steps span{font-size:13.5px;font-weight:700;color:#344054;line-height:1.15;} html[data-ty] .nfo-steps li.now span{color:#0E1114;font-weight:800;}
+  html[data-ty] .nfo-next{border-radius:18px;padding:18px 18px 16px;border:1.5px solid #DDE1E6;background:#FFFFFF;display:grid;gap:10px;}
+  html[data-ty] .nfo-next.t-y{background:#FEFCE8;border-color:#FACC15;} html[data-ty] .nfo-next.t-r{background:#FEF2F2;border-color:#FCA5A5;} html[data-ty] .nfo-next.t-g{background:#F0FDF4;border-color:#86EFAC;}
+  html[data-ty] .nfo-next h4{font-size:20px;font-weight:800;margin:0;} html[data-ty] .nfo-next p{font-size:16px;margin:0;color:#1F2329;line-height:1.45;}
+  html[data-ty] .nfo-slot:empty{display:none;}
+  html[data-ty] .nfo-slot{background:#FFFFFF;border:1px solid #E3E7EC;border-radius:14px;padding:14px;}
+  html[data-ty] .nfo-slot :is(.spine-inline-action,.expand-grid){margin:0 !important;}
+  html[data-ty] .nfo-slot .expand-grid{grid-template-columns:repeat(auto-fit,minmax(180px,1fr)) !important;gap:12px !important;}
+  html[data-ty] .nfo-slot :is(label,.expand-field label){font-size:15.5px !important;font-weight:700 !important;color:#0E1114 !important;display:block;margin-bottom:6px;}
+  html[data-ty] .nfo-slot :is(input:not([type=checkbox]):not([type=radio]):not([type=file]),select,textarea){width:100%;min-height:48px;font-size:16.5px !important;border:1.5px solid #C9D3DE;border-radius:12px;padding:10px 12px;background:#FFFFFF;}
+  html[data-ty] .nfo-slot :is(input,select,textarea):focus{border-color:#1F6B45;box-shadow:0 0 0 3px #DCEFE3;outline:0;}
+  html[data-ty] .nfo-slot .btn{min-height:48px;font-size:16.5px !important;border-radius:12px;}
+  html[data-ty] .nfo-slot .btn-primary{padding:12px 22px !important;}
+  html[data-ty] .nfo-btns{display:flex;flex-wrap:wrap;gap:10px;}
+  html[data-ty] .nfo-btns .btn{min-height:50px;font-size:16.5px !important;border-radius:14px;padding:12px 22px !important;}
+  html[data-ty] .nfo-btns .btn-primary{flex:1 1 220px;justify-content:center;}
+  html[data-ty] .nfo-items{border:1px solid #E3E7EC;border-radius:16px;padding:12px 16px;background:#FFFFFF;}
+  html[data-ty] .nfo-sec{font-size:14px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#0E1114;margin-bottom:6px;}
+  html[data-ty] .nfo-li{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:14px;align-items:baseline;padding:9px 0;border-top:1px solid #EEF1F4;}
+  html[data-ty] .nfo-li:first-of-type{border-top:0;} html[data-ty] .nfo-li b{font-weight:700;} html[data-ty] .nfo-li span{color:#344054;font-weight:600;font-variant-numeric:tabular-nums;} html[data-ty] .nfo-li strong{font-weight:800;font-variant-numeric:tabular-nums;}
+  html[data-ty] .nfo-li.sub span:first-child{color:#1F2329;} html[data-ty] .nfo-li.tot{border-top:2px solid #0E1114;} html[data-ty] .nfo-li.tot strong{font-size:19px;}
+  html[data-ty] .nfo-addr{font-size:15.5px;color:#1F2329;margin-top:8px;}
+  html[data-ty] .nfo-quick .btn{border-radius:999px;}
+  html[data-ty] .nfo-more{border-top:1px solid #E3E7EC;padding-top:12px;}
+  html[data-ty] .nfo-more > summary{cursor:pointer;font-size:16.5px;font-weight:800;color:#1F6B45;list-style:none;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+  html[data-ty] .nfo-more > summary::before{content:'＋';font-weight:800;} html[data-ty] .nfo-more[open] > summary::before{content:'−';}
+  html[data-ty] .nfo-more > summary small{font-size:14.5px;color:#344054;font-weight:600;}
+  html[data-ty] .nfo-legacy{margin-top:12px;}
+  .nf-seg-src{display:none !important;}
+  html[data-ty] .nf-seg{display:flex;flex-wrap:wrap;gap:8px;}
+  html[data-ty] .nf-seg button{flex:1 1 auto;min-height:46px;padding:8px 14px;border-radius:12px;border:1.5px solid #C9D3DE;background:#FFFFFF;font-weight:700;font-size:15.5px;color:#1F2329;cursor:pointer;}
+  html[data-ty] .nf-seg button.on{border-color:#1F6B45;background:#E8F5EE;color:#0F4D2E;box-shadow:inset 0 0 0 1.5px #1F6B45;}
+  @media (max-width:760px){
+    html[data-ty] #view-app .nf-two-col{grid-template-columns:1fr;}
+    html[data-ty] .nfo-head{grid-template-columns:auto minmax(0,1fr);} html[data-ty] .nfo-head > .status-pill{grid-column:1 / -1;justify-self:start;}
+    html[data-ty] .nfo-steps span{font-size:12.5px;} html[data-ty] .nfo-steps i{width:28px;height:28px;font-size:13px;} html[data-ty] .nfo-steps li::before{top:13px;}
+    html[data-ty] .nfo-li{grid-template-columns:minmax(0,1fr) auto;} html[data-ty] .nfo-li span{grid-column:1;grid-row:2;}
+  }
+  html[data-ty] .nfo-slot .spine-inline-action{background:transparent !important;border:0 !important;padding:0 !important;box-shadow:none !important;}
+  html[data-ty] .nfo-slot :is(.expand-field label){text-transform:none !important;letter-spacing:0 !important;}
+  /* cut sections */
+  html[data-ty] #view-app .nf-cut{display:none !important;}
+  html[data-ty] #view-app .nf-acct{margin:8px 2px 0;} html[data-ty] #view-app .nf-acct .lg-link{background:none;border:0;padding:0;cursor:pointer;font-size:15.5px;font-weight:700;color:#1F6B45;}
+  /* sub-tabs as cards that say what they are for */
+  html[data-ty] #view-app .nf-tabcards{display:grid !important;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px !important;background:transparent !important;padding:0 !important;border:0 !important;margin-bottom:18px !important;}
+  html[data-ty] #view-app .nf-tabcards > :is(button,.team-tab){display:grid !important;justify-items:start;text-align:left;gap:4px;padding:14px 16px !important;border-radius:16px !important;border:1.5px solid #DDE1E6 !important;background:#FFFFFF !important;font-size:16.5px !important;font-weight:800 !important;color:#0E1114 !important;box-shadow:none !important;min-height:72px;}
+  html[data-ty] #view-app .nf-tabcards > :is(button,.team-tab):hover{border-color:#1F6B45 !important;}
+  html[data-ty] #view-app .nf-tabcards > :is(button.active,button.on,.team-tab.active){border-color:#1F6B45 !important;background:#E8F5EE !important;box-shadow:inset 0 0 0 1.5px #1F6B45 !important;color:#0F4D2E !important;}
+  html[data-ty] #view-app .nf-tab-d{font-size:14.5px;font-weight:600;color:#344054;line-height:1.3;}
+  /* online store */
+  html[data-ty] #view-app .nfs{display:grid;gap:18px;}
+  html[data-ty] #view-app .nfs-hero{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(260px,320px);gap:24px;align-items:center;background:linear-gradient(135deg,#EAF6EF 0%,#F3F8FF 100%);border:1px solid #D5E7DC;border-radius:22px;padding:26px;}
+  html[data-ty] #view-app .nfs-chip{display:inline-block;padding:5px 12px;border-radius:999px;background:#EEF1F4;font-weight:800;font-size:14px;color:#1F2329;}
+  html[data-ty] #view-app .nfs-chip.on{background:#DCFCE7;color:#15803D;}
+  html[data-ty] #view-app .nfs-hero h2{font-size:30px;font-weight:800;margin:10px 0 6px;line-height:1.15;} html[data-ty] #view-app .nfs-hero p{font-size:17px;margin:0 0 14px;color:#1F2329;}
+  html[data-ty] #view-app .nfs-open .toggle-row{background:#FFFFFF;border-radius:14px;padding:10px 14px;border:1px solid #DDE1E6;margin-bottom:12px;}
+  html[data-ty] #view-app .nfs-share > div{display:flex !important;flex-wrap:wrap;gap:10px !important;}
+  html[data-ty] #view-app .nfs-share :is(a,button){min-height:48px;padding:10px 18px !important;font-size:16px !important;border-radius:14px !important;display:inline-flex;align-items:center;gap:8px;font-weight:700;}
+  html[data-ty] #view-app .nfs-share a[href*="fb-messenger"]{background:#0084FF !important;border-color:#0084FF !important;color:#FFFFFF !important;}
+  html[data-ty] #view-app .nfs-share a[href^="viber"]{background:#7360F2 !important;border-color:#7360F2 !important;color:#FFFFFF !important;}
+  html[data-ty] #view-app .nfs-phone{background:#FFFFFF;border:10px solid #0E1114;border-radius:34px;padding:14px 12px;box-shadow:0 24px 50px -24px rgba(15,25,40,.5);display:grid;gap:10px;}
+  html[data-ty] #view-app .nfs-ph-top b{display:block;font-size:17px;font-weight:800;} html[data-ty] #view-app .nfs-ph-top small{font-size:13.5px;color:#344054;line-height:1.3;display:block;}
+  html[data-ty] #view-app .nfs-ph-del{font-size:13px;font-weight:700;color:#15803D;background:#F0FDF4;border-radius:8px;padding:5px 8px;}
+  html[data-ty] #view-app .nfs-ph-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  html[data-ty] #view-app .nfs-ph-item{border:1px solid #E3E7EC;border-radius:12px;padding:8px;display:grid;gap:3px;position:relative;}
+  html[data-ty] #view-app .nfs-ph-img{height:46px;border-radius:8px;background:linear-gradient(135deg,#DBEAFE,#E0E7FF);display:grid;place-items:center;font-weight:800;color:#1E3A8A;font-size:15px;}
+  html[data-ty] #view-app .nfs-ph-item b{font-size:13px;line-height:1.2;} html[data-ty] #view-app .nfs-ph-item small{font-size:13px;font-weight:800;color:#0E1114;}
+  html[data-ty] #view-app .nfs-ph-item i{font-style:normal;position:absolute;right:8px;bottom:8px;font-size:12px;font-weight:800;color:#FFFFFF;background:#1F6B45;border-radius:999px;padding:2px 8px;}
+  html[data-ty] #view-app .nfs-ph-cta{background:#1F6B45;color:#FFFFFF;text-align:center;border-radius:12px;padding:10px;font-weight:800;font-size:14px;}
+  html[data-ty] #view-app .nfs-card{background:#FFFFFF;border:1px solid #DDE1E6;border-radius:20px;padding:20px 22px;}
+  html[data-ty] #view-app .nfs-h{display:flex;gap:14px;align-items:flex-start;margin-bottom:14px;}
+  html[data-ty] #view-app .nfs-h > i{flex:none;width:36px;height:36px;border-radius:50%;background:#1F6B45;color:#FFFFFF;font-style:normal;font-weight:800;display:grid;place-items:center;font-size:16px;}
+  html[data-ty] #view-app .nfs-h h3{font-size:21px;font-weight:800;margin:0;} html[data-ty] #view-app .nfs-h p{margin:2px 0 0;font-size:16px;color:#1F2329;}
+  html[data-ty] #view-app .nfs-fields{display:grid;gap:12px;}
+  html[data-ty] #view-app .nfs-fields input:not([type=radio]){min-height:48px;font-size:16.5px !important;border:1.5px solid #C9D3DE;border-radius:12px;padding:10px 12px;width:100%;}
+  html[data-ty] #view-app .nfs-fields .store-radio{display:flex;gap:10px;align-items:flex-start;border:1.5px solid #DDE1E6;border-radius:14px;padding:12px 14px;margin:8px 0;cursor:pointer;font-size:16px;}
+  html[data-ty] #view-app .nfs-fields .store-radio:has(input:checked){border-color:#1F6B45;background:#F0FDF4;}
+  html[data-ty] #view-app .nfs-save{margin-top:12px;} html[data-ty] #view-app .nfs-save .btn{min-height:48px;padding:12px 28px !important;font-size:16.5px !important;border-radius:14px;}
+  html[data-ty] #view-app .nfs-more{background:#FFFFFF;border:1px solid #DDE1E6;border-radius:20px;padding:16px 22px;}
+  html[data-ty] #view-app .nfs-more > summary{cursor:pointer;font-weight:800;font-size:17px;color:#1F6B45;display:flex;gap:10px;flex-wrap:wrap;align-items:baseline;}
+  html[data-ty] #view-app .nfs-more > summary small{font-size:14.5px;font-weight:600;color:#344054;}
+  html[data-ty] #view-app .nfs-more-b > .panel-card{border:0 !important;box-shadow:none !important;padding:12px 0 0 !important;}
+  @media (max-width:760px){ html[data-ty] #view-app .nfs-hero{grid-template-columns:1fr;padding:18px;} html[data-ty] #view-app .nfs-phone{max-width:300px;justify-self:center;} html[data-ty] #view-app .nfs-hero h2{font-size:25px;} }
+  /* orders table fits its half */
+  html[data-ty] #view-app #page-orders .orders-table{min-width:0 !important;}
+  html[data-ty] #view-app #page-orders .orders-table :is(td,th){padding:14px 10px !important;}
+  html[data-ty] #view-app #page-orders .orders-table .status-pill{white-space:normal !important;max-width:230px;line-height:1.25;text-align:center;}
+  html[data-ty] #view-app .nf-tabcards > :is(button,.team-tab){white-space:normal !important;height:auto !important;}
+  html[data-ty] #view-app .nf-tabcards .nf-tab-d{white-space:normal;}
+  html[data-ty] #view-app .nfs-ph-del, html[data-ty] #view-app .nfs-ph-item b, html[data-ty] #view-app .nfs-ph-item small{font-size:14px;}
+  html[data-ty] #view-app .nfs-ph-item i{position:static;justify-self:start;font-size:14px;margin-top:4px;}
+  html[data-ty] #view-app :is(.nf-tabcards,.sl-tabs,.adm-tabs,.team-tabs,section,div) > .nf-cut, html[data-ty] #view-app .app-page .nf-cut{display:none !important;}
+  @media (max-width:760px){ html[data-ty] #view-app .topbar .user-chip.user-chip{font-size:0 !important;gap:0 !important;} }
+
+/* ===== Round 8 css end ===== */
   .settings-card:empty{display:none;}
   #supplierChips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;} #supplierChips .chip{flex-shrink:0;}
 </style>
@@ -5821,7 +5984,6 @@ tbody tr:hover{background:#F6F6F3}
       <div class="nav-item" data-page="ledger" onclick="go('ledger')" style="position:relative;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M8 7h8M8 11h6"/></svg><span>Books &amp; reports</span></div>
       <div class="nav-item" data-page="collections" onclick="colTab='cash'; pickLens('collections','supplier')" style="position:relative;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/></svg><span>Bank &amp; deposits</span></div>
       <div class="nav-item" data-page="payroll" onclick="go('payroll')" style="position:relative;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg><span>Payroll</span></div>
-      <div class="nav-item" data-page="close" onclick="go('close')" style="position:relative;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span>Month-end close</span></div>
     </div>
     <div class="nav-group">
       <div class="heading">Sell more</div>
@@ -5875,7 +6037,6 @@ tbody tr:hover{background:#F6F6F3}
       <button class="more-sheet-item" data-page="ledger" onclick="closeMoreSheet(); go('ledger')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M8 7h8M8 11h6"/></svg><span>Books &amp; reports</span></button>
       <button class="more-sheet-item" data-page="collections" onclick="closeMoreSheet(); colTab='cash'; pickLens('collections','supplier')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/></svg><span>Bank &amp; deposits</span></button>
       <button class="more-sheet-item" data-page="payroll" onclick="closeMoreSheet(); go('payroll')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg><span>Payroll</span></button>
-      <button class="more-sheet-item" data-page="close" onclick="closeMoreSheet(); go('close')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><span>Month-end close</span></button>
       <button class="more-sheet-item" data-page="store" onclick="closeMoreSheet(); go('store')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l1.5-5h15L21 9"/><path d="M4 9v11h16V9"/><path d="M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0"/><path d="M10 20v-6h4v6"/></svg><span>Online store</span></button>
       <button class="more-sheet-item" data-page="prices" onclick="closeMoreSheet(); go('prices')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg><span>Price list</span></button>
       <button class="more-sheet-item" data-page="followups" onclick="closeMoreSheet(); go('followups')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg><span>Follow-ups</span></button>
@@ -6750,7 +6911,7 @@ tbody tr:hover{background:#F6F6F3}
       </div>
 
       <div id="page-money" class="app-page">
-        <div class="page-head bk-head"><div><h1>Money overview</h1><p>Your profit, where the money went, and the five things to check every day.</p></div></div>
+        <div class="page-head bk-head"><div><h1>Money overview</h1><p>Your profit, where the money went, and who owes who.</p></div></div>
         <div id="bkMoneyBody"></div>
       </div>
       <div id="page-expenses" class="app-page">
@@ -14616,13 +14777,6 @@ async function colRenderCash(body){
         <div class="sl-mid"><div class="sl-t">${escapeHtml(h)}${xs[0].withDriver ? ' <span class="sl-pill st-new">still on the road</span>' : ''}</div><div class="sl-s">${xs.length} payment${xs.length > 1 ? 's' : ''} · oldest ${fuDueLabel(xs[xs.length - 1].date).toLowerCase()}</div></div>
         <div class="sl-right"><b>${fmtPHP(xs.reduce((s, x) => s + x.amount, 0))}</b></div></div>`).join('')
         : '<div class="empty-mini"><b>All cash is in the bank</b>Cash payments you or your drivers record show up here until you deposit them.</div>'}</div>
-    <div class="sl-card"><div class="sl-card-h"><b>🏦 Match your bank or GCash statement</b></div>
-      <div class="sl-sub">Download your statement as CSV from your bank or GCash app (or copy the rows), then paste or upload it. We match every deposit to an invoice or cash deposit, and show what doesn't add up.</div>
-      <textarea id="bankPaste" rows="4" class="sl-ta" placeholder="Date, Description, Amount&#10;09/25/2026, INSTAPAY FROM DELA CRUZ HARDWARE REF 7012, 18900.00"></textarea>
-      <div class="sl-actions"><button class="btn btn-primary" onclick="colMatchBank()">Match it</button>
-        <label class="btn btn-outline">⬆ Upload CSV<input type="file" accept=".csv,.txt,text/csv" style="display:none" onchange="colReadBankFile(this)"></label>
-        ${!myBusiness ? '<button class="btn btn-outline" onclick="colSampleBank()">Try a sample</button>' : ''}</div>
-      <div id="bankResult">${colBankResult ? colBankResultHtml() : ''}</div></div>
     <div class="sl-card"><div class="sl-card-h"><b>🧾 Every payment, last 30 days</b></div>
       ${led.filter(x => slDaysAgo(x.date) <= 30).slice(0, 60).map(x => `<div class="sl-row tight"><div class="sl-mid"><div class="sl-t">${escapeHtml(x.po.buyerName)} <span class="sl-dim">· ${escapeHtml(x.po.poNumber)}</span></div>
         <div class="sl-s">${stmtDate(x.date)} · ${PAYMENT_METHOD_LABELS[x.method] || escapeHtml(x.method)}${x.ref ? ' · ' + escapeHtml(x.ref) : ''} · ${escapeHtml(x.collector)}</div></div>
@@ -15303,7 +15457,7 @@ function qtRenderTab(body){
   const list = qtWaiting(), st = qtStats(), auto = collSettings().quote_nudges !== false;
   const value = list.reduce((s, w) => s + poTotal(w.po), 0), needs = list.filter(w => w.needsYou).length;
   body.innerHTML = `<div class="sl-tiles">
-      <div class="sl-tile ${needs ? 'warn' : ''}"><small>Waiting for their OK</small><b>${list.length ? hmPeso(value) : '0'}</b><span>${list.length} order${list.length === 1 ? '' : 's'}${needs ? ` · ${needs} need you` : ''}</span></div>
+      <div class="sl-tile ${needs ? 'warn' : ''}"><small>Waiting for customer's OK</small><b>${list.length ? hmPeso(value) : '0'}</b><span>${list.length} order${list.length === 1 ? '' : 's'}${needs ? ` · ${needs} need you` : ''}</span></div>
       <div class="sl-tile"><small>Said yes (30 days)</small><b>${st.yes} of ${st.sent}</b><span>${st.value ? hmPeso(st.value) + (st.avg !== null ? ` · ~${st.avg < 1 ? 'same day' : st.avg.toFixed(1) + ' days'}` : '') : 'send one to start'}</span></div>
     </div>
     <div class="sl-actions"><button class="btn btn-primary" onclick="openCustomerPoImport({tentative: true})">📝 Send an order for their OK</button></div>
@@ -21503,7 +21657,7 @@ function lgWhatChanged(p, prev, r){
 }
 function lgInsightCard(c){
   return `<div class="lg-card ${c.lvl}"><div class="lg-card-h"><span class="bk-dot ${c.lvl}" aria-hidden="true"></span><b>${escapeHtml(c.t)}</b><span class="lg-pill">${escapeHtml(c.basis || '')}</span></div>
-    <div class="lg-card-g"><span>What happened</span><p>${escapeHtml(c.what)}</p><span>Why it matters</span><p>${escapeHtml(c.why)}</p><span>Evidence</span><p>${c.code ? `<a class="lg-link" onclick="LGV.acct='${c.code}'; LGV.tab='gl'; renderLedgerPage()">${escapeHtml(c.ev)}</a>` : escapeHtml(c.ev)}</p><span>Next step</span><p>${escapeHtml(c.next)}</p></div></div>`;
+    <div class="lg-card-g"><span>What happened</span><p>${escapeHtml(c.what)}</p><span>Evidence</span><p>${c.code ? `<a class="lg-link" onclick="LGV.acct='${c.code}'; LGV.tab='gl'; renderLedgerPage()">${escapeHtml(c.ev)}</a>` : escapeHtml(c.ev)}</p><span>Next step</span><p>${escapeHtml(c.next)}</p></div></div>`;
 }
 function lgConfidenceHtml(noCost){
   const pending = BK.expenses.filter(e => !e.deletedAt && e.status === 'submitted').length;
@@ -21935,7 +22089,7 @@ async function renderIssuesPage(){
 function issCardHtml(i){
   const hist = (i.dec && i.dec.history) || [];
   return `<div class="lg-card ${i.lvl}"><div class="lg-card-h"><span class="bk-dot ${i.lvl}" aria-hidden="true"></span><b>${escapeHtml(i.title)}</b><span class="lg-pill">${escapeHtml(i.kind)}</span><span class="lg-pill st">${escapeHtml(ISS_LABEL[i.status])}${i.dec && i.dec.assigned_to && i.status === 'assigned' ? ' · ' + escapeHtml(i.dec.assigned_to) : ''}</span></div>
-    <div class="lg-card-g"><span>What happened</span><p>${escapeHtml(i.what)}</p><span>Why it matters</span><p>${escapeHtml(i.why)}</p>
+    <div class="lg-card-g"><span>What happened</span><p>${escapeHtml(i.what)}</p>
       <span>Evidence</span><p>${i.ev.map(([l, a]) => `<a class="lg-link" onclick="${a.replace(/"/g, '&quot;')}">${escapeHtml(l)}</a>`).join(' · ')} <small class="bk-dim">(${escapeHtml(i.basis)}, ${bkDayLabel(i.date)})</small></p>
       <span>Next step</span><p>${escapeHtml(i.next)}</p></div>
     <div class="bk-actions">${['resolved', 'accepted'].includes(i.status) ? `<button class="sl-link" onclick="issDecide('${i.fp}','new')">Reopen</button>` : `<button class="sl-link" onclick="issDecide('${i.fp}','assigned')">Assign</button><button class="sl-link" onclick="issDecide('${i.fp}','waiting')">Waiting</button><button class="sl-link" onclick="issDecide('${i.fp}','resolved')">Fixed</button><button class="sl-link bk-dim" onclick="issDecide('${i.fp}','accepted')">It's fine</button>`}</div>
@@ -22768,7 +22922,7 @@ function mhOrderRows(){
     if(stage === 4 && inv && inv.daysOverdue > 0){ note = `Payment ${inv.daysOverdue} day${inv.daysOverdue > 1 ? 's' : ''} late`; tone = 'r'; }
     else if(stage === 4){ note = inv && inv.due ? 'Due ' + hmDay(inv.due) : 'Waiting for payment'; tone = 'y'; }
     else if(lateBy){ note = `${lateBy} day${lateBy > 1 ? 's' : ''} late`; tone = 'r'; }
-    else if(stage === 0) note = tone === 'r' ? 'Waiting for your OK' : 'Waiting for their OK';
+    else if(stage === 0) note = tone === 'r' ? 'Waiting for your OK' : (sell ? "Waiting for customer's OK" : "Waiting for supplier's OK");
     else if(stage === 1) note = rd ? 'Deliver ' + hmDay(rd) : 'Being prepared';
     else if(stage === 2) note = rd ? 'Arrives ' + hmDay(rd) : 'On the way';
     else if(stage === 3){ note = sell ? 'Delivered · bill it' : 'Received · pay the supplier'; if(tone !== 'r') tone = 'y'; }
@@ -23476,108 +23630,416 @@ async function nfRenderReports(){
   try{ LENS_TABS.cheques = [['supplier', 'Checks you got'], ['buyer', 'Checks you gave']]; delete LENS_TABS.analytics; }catch(e){}
 })();
 
-/* ===== Round 7: photos and pictures instead of plain initials =====
-   Every person and business gets a picture: a photo you upload, or one of the ready-made icons.
-   Customers always have a blue ring and a blue tag, suppliers a purple ring and a purple tag, so
-   you can tell them apart at a glance (red, yellow and green stay for good and bad news only).
-   Pictures are kept on this device. */
-const NF_AV_KEY = 'nifti-avatars-v1';
-const NF_ICONS = {
-  store: '<path d="M10 26h44l-3-10H13z"/><path d="M14 26v22h36V26"/><path d="M27 48V36h10v12"/>',
-  steel: '<path d="M12 20h40M12 44h40M26 20v24M38 20v24"/>',
-  cement: '<path d="M18 18h28l4 30H14z"/><path d="M22 28h20M22 36h20"/>',
-  produce: '<path d="M32 50c10 0 16-8 16-18S40 16 32 16s-16 6-16 16 6 18 16 18z"/><path d="M32 16c0-5 3-8 8-9M32 16c-3-4-7-5-11-4"/>',
-  truck: '<path d="M10 22h26v20H10zM36 28h10l6 7v7H36"/><circle cx="18" cy="45" r="4"/><circle cx="44" cy="45" r="4"/>',
-  helmet: '<path d="M12 40h40M16 40a16 16 0 0 1 32 0"/><path d="M28 24v-6h8v6"/><path d="M14 40v5h36v-5"/>',
-  weld: '<path d="M18 46l16-16M34 30l6-14 6 6-14 6"/><path d="M14 22l3 3M22 14l1 4M12 32l4-1"/>',
-  box: '<path d="M32 12l18 9v22l-18 9-18-9V21z"/><path d="M14 21l18 9 18-9M32 30v22"/>',
-  wrench: '<path d="M38 14a10 10 0 0 0-9 14L14 43l7 7 15-15a10 10 0 0 0 14-9l-6 2-5-5 2-6z"/>',
-  fish: '<path d="M10 32c8-10 22-12 32 0-10 12-24 10-32 0z"/><path d="M42 32l10-8v16z"/><circle cx="22" cy="30" r="1.5"/>',
-  rice: '<path d="M16 30h32c0 10-7 18-16 18s-16-8-16-18z"/><path d="M24 30c0-6 4-12 8-14M32 30c0-7 3-12 8-13"/>',
-  person: '<circle cx="32" cy="24" r="10"/><path d="M14 52c2-10 9-15 18-15s16 5 18 15"/>',
-};
-// ready-made "photos" for the people in the demo team
-const NF_FACES = {
-  liza: ['#F6D5C0', '#3B2A20', '#E9F2FF', 'long'], rico: ['#C99A78', '#1E1A16', '#FFF4E5', 'short'], ana: ['#E8C4A8', '#5A3A28', '#FCEFF5', 'bun'],
-  mark: ['#B9866A', '#24201C', '#EAF7F1', 'cap'], dela: ['#D9A988', '#2B2420', '#EEF2F7', 'short'],
-};
-function nfFaceSvg(skin, hair, bg, style){
-  const h = style === 'long' ? `<path d="M14 34c0-14 8-22 18-22s18 8 18 22v14H14z" fill="${hair}"/>` : style === 'bun' ? `<circle cx="32" cy="12" r="6" fill="${hair}"/><path d="M18 28c0-10 6-15 14-15s14 5 14 15z" fill="${hair}"/>`
-    : style === 'cap' ? `<path d="M17 26c0-9 7-14 15-14s15 5 15 14z" fill="#1F6B45"/><path d="M40 24h12v3H40z" fill="#1F6B45"/>` : `<path d="M19 27c0-10 6-14 13-14s13 4 13 14c-4-4-9-5-13-5s-9 1-13 5z" fill="${hair}"/>`;
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" fill="${bg}"/>${style === 'long' ? h : ''}<path d="M10 64c2-12 11-18 22-18s20 6 22 18z" fill="#3E5A80"/><rect x="27" y="38" width="10" height="10" rx="3" fill="${skin}"/><circle cx="32" cy="29" r="12" fill="${skin}"/>${style !== 'long' ? h : ''}<circle cx="27.5" cy="30" r="1.4" fill="#222"/><circle cx="36.5" cy="30" r="1.4" fill="#222"/><path d="M28 35c2.5 2 5.5 2 8 0" stroke="#7A3E2E" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>`;
-}
-function nfIconSvg(key, side){
-  const g = side === 'cust' ? ['#3B82F6', '#1D4ED8'] : side === 'sup' ? ['#8B5CF6', '#6D28D9'] : ['#2F855A', '#1F6B45'];
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${g[0]}"/><stop offset="1" stop-color="${g[1]}"/></linearGradient></defs><rect width="64" height="64" fill="url(#g)"/><g fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">${NF_ICONS[key] || NF_ICONS.store}</g></svg>`;
-}
-const nfUri = svg => 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+/* ===== Pictures: a real photo when there is one, otherwise clean initials (like Viber) =====
+   Tap your own picture, a teammate's, or a chat's to take a photo on the spot or upload one.
+   Customers have a blue ring and suppliers a purple ring. Photos are kept on this device. */
+const NF_AV_KEY = 'nifti-avatars-v2';
+const NF_INI_COLORS = ['#2563EB', '#0891B2', '#7C3AED', '#DB2777', '#4F46E5', '#0D9488', '#475569', '#9333EA', '#0369A1', '#BE185D'];
 function nfAvStore(){ try{ return JSON.parse(localStorage.getItem(NF_AV_KEY) || '{}'); }catch(e){ return {}; } }
-function nfAvSave(k, v){ const s = nfAvStore(); if(v) s[k] = v; else delete s[k]; try{ localStorage.setItem(NF_AV_KEY, JSON.stringify(s)); }catch(e){ showToast('That photo is too big to keep on this device. Try a smaller one.', 'error'); } }
+function nfAvSave(k, v){ const s = nfAvStore(); if(v) s[k] = v; else delete s[k]; try{ localStorage.setItem(NF_AV_KEY, JSON.stringify(s)); return true; }catch(e){ showToast('That photo is too big to keep on this device. Try a smaller one.', 'error'); return false; } }
 function nfAvKey(name){ return String(name || '').toLowerCase().replace(/\(you\)/, '').replace(/[^a-z0-9]+/g, ' ').trim(); }
-function nfGuessIcon(name){
-  const n = String(name || '').toLowerCase();
-  return /steel|metal|beam|rebar|iron/.test(n) ? 'steel' : /cement|aggregate|sand/.test(n) ? 'cement' : /produce|fresh|vegetable|fruit|farm/.test(n) ? 'produce' : /poultry|chicken|meat/.test(n) ? 'produce'
-    : /seafood|fish/.test(n) ? 'fish' : /rice|grain/.test(n) ? 'rice' : /weld|fabricat/.test(n) ? 'weld' : /construct|builder|scaffold|contractor/.test(n) ? 'helmet'
-    : /packag|box|carton/.test(n) ? 'box' : /truck|logistic|freight|express/.test(n) ? 'truck' : /hardware|supply|store|trading/.test(n) ? 'store' : 'store';
+function nfInitials(name){ const w = String(name || '?').replace(/\(you\)/i, '').replace(/\b(co|corp|inc)\.?$/i, '').trim().split(/\s+/).filter(x => /[A-Za-z0-9]/.test(x)); return ((w[0] || '?')[0] + (w[1] ? w[1][0] : '')).toUpperCase(); }
+function nfIniColor(name){ let h = 0; String(name).split('').forEach(c => { h = (h * 31 + c.charCodeAt(0)) >>> 0; }); return NF_INI_COLORS[h % NF_INI_COLORS.length]; }
+function nfSamplePhoto(name){
+  if(typeof NF_PHOTOS === 'undefined' || (typeof myBusiness !== 'undefined' && myBusiness)) return null;
+  const n = nfAvKey(name); if(NF_PHOTOS[n]) return NF_PHOTOS[n];
+  const first = n.split(' ')[0]; return ['liza', 'rico', 'ana', 'mark'].includes(first) ? NF_PHOTOS[first] : null;
 }
-function nfFaceFor(name){ const n = nfAvKey(name); const k = Object.keys(NF_FACES).find(f => n.startsWith(f) || n.split(' ').includes(f)); return k ? nfUri(nfFaceSvg(...NF_FACES[k])) : null; }
-function nfAvatarSrc(name, side){
-  const v = nfAvStore()[nfAvKey(name)];
-  if(v && v.startsWith('icon:')) return nfUri(nfIconSvg(v.slice(5), side));
-  if(v) return v;
-  return nfFaceFor(name) || nfUri(nfIconSvg(nfGuessIcon(name), side));
-}
-function nfAvatarImg(name, side){ return `<img class="nf-av-img" alt="" src="${nfAvatarSrc(name, side)}">`; }
+function nfPhotoFor(name){ return nfAvStore()[nfAvKey(name)] || nfSamplePhoto(name); }
+function nfAvatarInner(name){ const p = nfPhotoFor(name); return p ? `<img class="nf-av-img" alt="" src="${p}">` : `<span class="nf-ini" style="background:${nfIniColor(name)}">${escapeHtml(nfInitials(name))}</span>`; }
 
-// put pictures into every avatar on screen
 function nfAvName(el){
   const conv = el.closest('.conv-item'); if(conv){ const n = conv.querySelector('.conv-name'); return n && n.textContent; }
   if(el.closest('#threadHeadInfo')){ const d = el.parentElement.querySelector(':scope > div:not(.conv-avatar) > div'); return d && d.textContent; }
   const pt = el.closest('.pt-row'); if(pt){ const n = pt.querySelector('.pt-name'); return n && n.firstChild && n.firstChild.textContent; }
   const tp = el.closest('.team-person, .team-person-chip, [class*="team-person"]'); if(tp){ const n = tp.querySelector('.team-person-name'); return n && n.textContent; }
   if(el.closest('.user-chip')) return '__me';
-  const one = el.closest('.one-msg'); if(one){ const b = one.querySelector('b'); return b && b.textContent; }
+  const sl = el.closest('.sl-row'); if(sl && el.classList.contains('sl-av')){ const t = sl.querySelector('.sl-t'); return t && t.firstChild && t.firstChild.textContent; }
+  const nfo = el.closest('[data-nf-who]'); if(nfo) return nfo.dataset.nfWho;
   return null;
 }
 function nfAvSide(el){
   const conv = el.closest('.conv-item');
   if(conv){ const k = conv.querySelector('.conv-kind'); return k && /customer/i.test(k.textContent) ? 'cust' : k ? 'sup' : null; }
   if(el.closest('#threadHeadInfo') && typeof getActiveConv === 'function'){ const c = getActiveConv(); if(c) return (c.side || (supplierConversations.includes(c) ? 'supplier' : 'buyer')) === 'supplier' ? 'cust' : 'sup'; }
-  if(el.closest('#page-suppliers')) return currentAppRole === 'supplier' ? 'cust' : 'sup';
+  const r = el.closest('[data-nf-side]'); if(r) return r.dataset.nfSide;
   return null;
 }
 function nfMyName(){ try{ const me = typeof teamMe === 'function' && teamMe(); return (me && me.name) || 'Dela Cruz'; }catch(e){ return 'Dela Cruz'; } }
 function nfAvatars(){
-  document.querySelectorAll('#view-app :is(.conv-avatar,.pt-av,.team-avatar,.user-chip .avatar), #mhSheet .conv-avatar').forEach(el => {
+  document.querySelectorAll('#view-app :is(.conv-avatar,.pt-av,.team-avatar,.user-chip .avatar,.sl-row .sl-av,.nf-av), #orderDetailModal .nf-av').forEach(el => {
     let name = nfAvName(el); if(!name) return; if(name === '__me') name = nfMyName();
-    const side = nfAvSide(el), sig = name + '|' + side + '|' + (nfAvStore()[nfAvKey(name)] || '').slice(0, 40);
-    if(el.dataset.nfav === sig && el.querySelector('img')) return;
+    const side = nfAvSide(el), photo = nfPhotoFor(name), sig = name + '|' + side + '|' + (photo ? photo.length + photo.slice(-24) : 'ini');
+    if(el.dataset.nfav === sig && el.firstElementChild) return;
     el.dataset.nfav = sig; el.classList.add('nf-has-av'); el.classList.toggle('nf-cust', side === 'cust'); el.classList.toggle('nf-sup', side === 'sup');
-    el.innerHTML = nfAvatarImg(name, side);
+    el.innerHTML = nfAvatarInner(name);
     const conv = el.closest('.conv-item'); if(conv){ conv.classList.toggle('nf-cust', side === 'cust'); conv.classList.toggle('nf-sup', side === 'sup'); }
-    if(el.closest('#threadHeadInfo') || el.closest('.user-chip') || el.closest('.team-person, [class*="team-person"]')){ el.classList.add('nf-av-edit'); el.title = 'Change picture'; el.onclick = ev => { ev.stopPropagation(); nfAvPicker(name, side); }; }
+    if(el.closest('#threadHeadInfo') || el.closest('.user-chip') || el.closest('.team-person, [class*="team-person"]') || el.closest('.pt-row')){ el.classList.add('nf-av-edit'); el.title = 'Change photo'; el.onclick = ev => { ev.stopPropagation(); nfAvPicker(name); }; }
   });
 }
-// choose a picture: upload a photo or pick an icon
-function nfAvPicker(name, side){
-  const icons = Object.keys(NF_ICONS);
-  slModal('nfAv', `<div class="sl-sheet-h"><b>Picture for ${escapeHtml(name)}</b><button class="sl-x" onclick="slClose('nfAv')">✕</button></div>
-    <div class="sl-sub">Upload a photo or logo, or pick a picture below.</div>
-    <div class="nf-av-now">${nfAvatarImg(name, side)}</div>
-    <label class="btn btn-primary nf-av-up">Upload a photo<input type="file" accept="image/*" hidden onchange="nfAvUpload(this, ${escapeHtml(JSON.stringify(name))})"></label>
-    <div class="nf-av-grid">${icons.map(k => `<button type="button" onclick='nfAvSave(${JSON.stringify(nfAvKey(name))}, "icon:${k}"); slClose("nfAv"); nfAvatars();' aria-label="${k}"><img alt="" src="${nfUri(k === 'person' ? nfIconSvg('person', side) : nfIconSvg(k, side))}"></button>`).join('')}</div>
-    <button class="btn btn-outline" onclick='nfAvSave(${JSON.stringify(nfAvKey(name))}, null); slClose("nfAv"); nfAvatars();'>Use the default picture</button>`);
+function nfAvPicker(name){
+  const has = !!nfAvStore()[nfAvKey(name)];
+  slModal('nfAv', `<div class="sl-sheet-h"><b>Photo for ${escapeHtml(name)}</b><button class="sl-x" onclick="slClose('nfAv')">✕</button></div>
+    <div class="nf-av-now"><span class="nf-has-av nf-av-big">${nfAvatarInner(name)}</span></div>
+    <div class="nf-av-acts"><button class="btn btn-primary" onclick='nfTakePhoto(d => nfAvSet(${JSON.stringify(name)}, d), {title: "Photo for ${escapeHtml(name).replace(/"/g, '')}", face: true})'>Take a photo</button>
+      <label class="btn btn-outline">Upload a photo<input type="file" accept="image/*" hidden onchange='nfPickFile(this, d => nfAvSet(${JSON.stringify(name)}, d))'></label>
+      ${has ? `<button class="btn btn-outline" onclick='nfAvSave(${JSON.stringify(nfAvKey(name))}, null); slClose("nfAv"); nfAvatars();'>Remove photo</button>` : ''}</div>`);
 }
-function nfAvUpload(input, name){
-  const f = input.files && input.files[0]; if(!f) return;
-  const img = new Image(), url = URL.createObjectURL(f);
-  img.onload = () => { const c = document.createElement('canvas'), S = 160, s = Math.min(img.width, img.height); c.width = c.height = S;
-    c.getContext('2d').drawImage(img, (img.width - s) / 2, (img.height - s) / 2, s, s, 0, 0, S, S); URL.revokeObjectURL(url);
-    nfAvSave(nfAvKey(name), c.toDataURL('image/jpeg', 0.82)); slClose('nfAv'); nfAvatars(); showToast('Picture saved.', 'success'); };
-  img.onerror = () => showToast("That file isn't a photo we can read.", 'error');
-  img.src = url;
+function nfAvSet(name, dataUrl){ nfSquare(dataUrl, 160, sq => { if(nfAvSave(nfAvKey(name), sq)){ slClose('nfAv'); nfAvatars(); showToast('Photo saved.', 'success'); } }); }
+function nfSquare(src, S, cb){ const img = new Image(); img.onload = () => { const c = document.createElement('canvas'), s = Math.min(img.width, img.height); c.width = c.height = S; c.getContext('2d').drawImage(img, (img.width - s) / 2, (img.height - s) / 2, s, s, 0, 0, S, S); cb(c.toDataURL('image/jpeg', 0.82)); }; img.src = src; }
+function nfPickFile(input, cb){ const f = input.files && input.files[0]; if(!f) return; const r = new FileReader(); r.onload = () => nfConfirmPhoto(r.result, cb, () => input.click()); r.readAsDataURL(f); input.value = ''; }
+
+/* ---------- take a photo on the spot, then confirm before it is used ---------- */
+let nfCam = null;
+function nfTakePhoto(cb, opts){
+  opts = opts || {};
+  const fallback = () => { const i = document.createElement('input'); i.type = 'file'; i.accept = 'image/*'; i.setAttribute('capture', opts.face ? 'user' : 'environment'); i.onchange = () => nfPickFile(i, cb); i.click(); };
+  if(!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia)) return fallback();
+  slModal('nfCam', `<div class="sl-sheet-h"><b>${escapeHtml(opts.title || 'Take a photo')}</b><button class="sl-x" onclick="nfCamStop(); slClose('nfCam')">✕</button></div>
+    <div class="nf-cam"><video id="nfCamV" autoplay playsinline muted></video><div class="nf-cam-msg" id="nfCamMsg">Starting the camera…</div></div>
+    <div class="nf-cam-acts"><button class="btn btn-primary nf-snap" id="nfSnap" disabled onclick="nfCamSnap()">Take photo</button></div>`);
+  navigator.mediaDevices.getUserMedia({video: {facingMode: opts.face ? 'user' : 'environment'}, audio: false}).then(stream => {
+    nfCam = {stream, cb}; const v = document.getElementById('nfCamV'); if(!v){ nfCamStop(); return; } v.srcObject = stream;
+    const m = document.getElementById('nfCamMsg'); if(m) m.remove(); const b = document.getElementById('nfSnap'); if(b) b.disabled = false;
+  }).catch(() => { slClose('nfCam'); fallback(); });
 }
-(function(){ let raf = 0; const run = () => { raf = 0; try{ nfAvatars(); }catch(e){} };
+function nfCamStop(){ if(nfCam && nfCam.stream) nfCam.stream.getTracks().forEach(t => t.stop()); }
+function nfCamSnap(){
+  const v = document.getElementById('nfCamV'); if(!v || !nfCam) return;
+  const c = document.createElement('canvas'), W = Math.min(1280, v.videoWidth || 640), H = Math.round(W * ((v.videoHeight || 480) / (v.videoWidth || 640)));
+  c.width = W; c.height = H; c.getContext('2d').drawImage(v, 0, 0, W, H);
+  const data = c.toDataURL('image/jpeg', 0.85), cb = nfCam.cb; nfCamStop(); slClose('nfCam');
+  nfConfirmPhoto(data, cb, () => nfTakePhoto(cb));
+}
+function nfConfirmPhoto(data, cb, retake){
+  window._nfPhotoCb = cb; window._nfPhotoRetake = retake; window._nfPhotoData = data;
+  slModal('nfOk', `<div class="sl-sheet-h"><b>Use this photo?</b><button class="sl-x" onclick="slClose('nfOk')">✕</button></div>
+    <div class="nf-ok-img"><img alt="Your photo" src="${data}"></div>
+    <div class="nf-cam-acts"><button class="btn btn-outline" onclick="slClose('nfOk'); window._nfPhotoRetake && window._nfPhotoRetake()">Retake</button><button class="btn btn-primary" onclick="slClose('nfOk'); window._nfPhotoCb && window._nfPhotoCb(window._nfPhotoData)">Yes, upload it</button></div>`);
+}
+// every photo upload in the app also offers "Take a photo" (with the same confirm step)
+function nfDataUrlToFile(data, name){ const [h, b] = data.split(','), bin = atob(b), u = new Uint8Array(bin.length); for(let i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i); return new File([u], name || 'photo.jpg', {type: (h.match(/:(.*?);/) || [])[1] || 'image/jpeg'}); }
+function nfCameraButtons(){
+  document.querySelectorAll('#view-app input[type=file], #orderDetailModal input[type=file], .sl-sheet input[type=file], .share-modal input[type=file]').forEach(inp => {
+    if(inp.dataset.nfCam || inp.closest('.nf-av-acts')) return; const acc = inp.getAttribute('accept') || '';
+    if(acc && !/image/.test(acc)) return; inp.dataset.nfCam = '1';
+    const host = inp.closest('label') || inp; const b = document.createElement('button'); b.type = 'button'; b.className = 'btn btn-outline nf-take';
+    b.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 4h-5L7.5 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3.5z"/><circle cx="12" cy="13" r="3.5"/></svg>Take a photo';
+    b.onclick = ev => { ev.preventDefault(); ev.stopPropagation(); nfTakePhoto(data => { try{ const dt = new DataTransfer(); dt.items.add(nfDataUrlToFile(data, 'photo-' + Date.now() + '.jpg')); inp.files = dt.files; inp.dispatchEvent(new Event('change', {bubbles: true})); }catch(e){ showToast("This browser can't attach the photo. Use Upload instead.", 'error'); } }); };
+    host.insertAdjacentElement('beforebegin', b);
+  });
+}
+(function(){ let raf = 0; const run = () => { raf = 0; try{ nfAvatars(); nfCameraButtons(); }catch(e){} };
+  const start = () => { new MutationObserver(() => { if(!raf) raf = requestAnimationFrame(run); }).observe(document.body, {childList: true, subtree: true}); run(); };
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start(); })();
+
+/* Sample profile photos for the demo (Unsplash license, free to use). */
+const NF_PHOTOS = {"liza": "data:image/jpeg;base64,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", "rico": "data:image/jpeg;base64,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", "ana": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5Ojf/2wBDAQoKCg0MDRoPDxo3JR8lNzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzf/wAARCABgAGADASIAAhEBAxEB/8QAHAAAAgMBAQEBAAAAAAAAAAAABQYDBAcCCAEA/8QANBAAAgEEAQIDBgYBBAMAAAAAAQIDAAQFESEGEhMxQQcyUWFxkRQiI4GhsUIVJFLBQ2Jy/8QAGQEAAgMBAAAAAAAAAAAAAAAAAAIBAwQF/8QAIhEAAwACAgMAAgMAAAAAAAAAAAECAxESIQQTMQVBUWGB/9oADAMBAAIRAxEAPwBagROPyL9qJwqmh+mtLtnlojrdF4MxbADeqjZPFBFreORdeGKktMNE3JjXe6rx5m045H3ojaZu0A94fejbDii1BioFOzEKIx24SPtRdD4bqj/rtkiFiw0Pgakg6lxcnuy/U+lTyYetHN9jI5l2V5+tVLfERIDtf5ojPmsdobnQE+WzUS5O0I2HGqOTD1opNioV2e3+aoXOPh3sp/NF5Mlan/MVRub61I94UcmHrQBu8dC3uqQfrQ6fDl04B4+dHZbu3J96ufxtt2+9UcmClIV8f0jk7xBJbx7U/Wv2R6VyljGXljYAeejXoHpzHww46AIgA7RVLq+wSXHy9qjfaT5VW20tjrt6PPFvY3c5/SLH96tRYrJltBXAHrvijmNmggSRZF0dnVHbjJWsWFlkXQITSjetsfKobrY6mRMlLwWhXZdvVt73zVGQ3BX9IMvy/wC60XovpVczC17f68AEqqj1NNE/SmISExJbdvGu7fNM7SCcbZhcdzP3FXbn0JFGP9wbBGSZ+5eDz5055D2d2k/c1vO6P6d3IpSNhPiL57OYfqAe4Tww+IoVquiax1P0oK96/uu5qxDY5a52IIppP/kU59H4NMjKWkHaq+nxrTcRgoLGMKiDz+FJ7Fy0DxtTs88XtjlrQbuYZ4x8WFD2luf+bV6YzeAtchAySoDsUg3Xs5thsp3fepd8RJnkadhF/wBhCP8A0FQdRQs2PuCo/wDGf6qxgZUewhIIP5BXedmijx8xcgDsNS9OBVtUeaJJmR3QjnuP91clH4iwMewp7gQT6fOp5bESTu48u4/3VfLJ4TQRq2gw2w/j/umY8o1vpeNsX0pbd0bOWXv7AwBAPI2T61NaZeC/d40imjkT3kkXX2I4NS5PB2mXx8CTqxEaDs07KBx8iKj6bwUeKjn8OZ5F1oBmLdv3rO9s1LSRUmzFst0baOK4lkB/N4cewP3OhSP7WISJbC7QFdqVDEaYEehpsyfTX4/IyStdTqu/cjk7e37UC9plgLbpe0i8aSV4ZeHlbuYjR9aIemtk2ty9AvpLLXNh2TxyCWM62j+n7itPxfV9ndRDukEb+RVj61h/St7+YwOd9wOvrRO7yKxStGyDmnrEqe0U+3U6ZuUeXgmPbGwY/I1xc3QUbKisu9n+Th/H3KTSH8yjsBan3JZCyjgUvMqsR5UKX82Vtr6J2E6wvcbapAyCQINAk11l+p77KxGJtRxnzCnzpVhDyEcGitrbM2uKvUSU8qOYrcFddtAuo3NlkbRwgbtAYKfJiG3qnSC0IFKXXUSjskc6dW7UA+Gtk1NpaJxt7NOTO+J0xBkbZSRJAHCjkg65H34r9ir67fFrPZ2d9MkhLM8fYe8/Nd7FJvsvyXjR3GIuT+lGwmiYn3dnkfTfI+pptyOFuLW5lkxHgxpM3e6MXQhvXRQjj5Via1T2dTE5pa6/0huMrJFmYEmiuYZ500Y54wCQPXYJHypZ9rd8gxlpB5yysxUfAAAE/wA01WeItsXbyXl0ytdSHcsvP7KuyTqsY6vzMuazM1y+0ii3HEh/xUH1+Z86Mc7v+hc9JT0VsQxR1kU6ZaZruzN52zoOGUapOs7nwiG8gKdenckiRRmTT2zt2kesZ+XxBrWvvZgfc9A4WdxbSCSFmRx5EVxe32Tcgy3LnXAp8ucdGyhlUaI2KCX2OXR/LVnFFO2W7C3HHFHbWAccUNsF8qMeNFawNNOwVFGyTQNKdPSLkMI44pS6zwrtJHdXDI1qoIYB9Mdn0H0+FfL3rxVQrYWhDejysOP2FK19lbzJSl7uYufh6UlHU8f8bkru+hg9nyWVtlrq2mkAW5hEcLMdcg7A38SP6p+uJMjaxqIZBIvl+cbIrFwSqaHx2DRWz6vzFlGIvxHjIOAJh3Efv51lyRT7RvrwuCXE0S9eeSIyXLAso4HoKw7Ic31wsZJQyseBvfNM2S6qyt9C8LSrHG3BWNdb/eliWMhw6+YqcMOe2Y/JwU5JbfHs+Jmu4+TDMEdfgCOD9+KK9PylPxMMYLxqpOj/AJDVABNNEzdrkK/DAHhh8CKIY29MMyvGxQ+pXzrQzmrpmr42Qvj7YMwO4hr5H4VVv1HNC8JdOr2zxkG2nJBUD3SBvYHp86L33kaZFdrTObDXFLfVGXa4u3t42/RhPaAPU+povDceDBJL/wAELfYVn0krO5Zjsk7NRTOn+LSmnkf6Jd7NSx8VFFydVKOKr2d7H/JK1RFd11uvlBdWmRlN1G8INTmvhoKaxyym9uCORVc2pU7U0R1UUx1xRsx5vFxtbaDHS08zZCCATCPlvD7h3L3Eev11ThI7vG6SgLLGe1gDsfIj5VnNnO0E6SKdMjBgfpWh3T+JJ46+7JGN/wBj+6eWcnzsUxxqf2f/2Q==", "mark": "data:image/jpeg;base64,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", "metro steel co": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5Ojf/2wBDAQoKCg0MDRoPDxo3JR8lNzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzf/wAARCABgAGADASIAAhEBAxEB/8QAGwAAAgIDAQAAAAAAAAAAAAAAAwQCBQAGBwH/xAAxEAACAgEDAgQEBgEFAAAAAAABAgADBAURIRIxBkFRYQcTInEUI0KBobHBM1JigpH/xAAZAQEAAwEBAAAAAAAAAAAAAAAAAQIDBAX/xAAeEQEAAgIDAQEBAAAAAAAAAAAAAQIDEQQhMRJBUf/aAAwDAQACEQMRAD8AbVYVV4niiFUSVWKsmFnqiTAgRCSQSTUSYEAYT2nhSG2mEQFjXImuMkSJEJLFB6QbKIywgmECKrCqskqwqpAgqwgWTCSYT2gQCyQWEC/tJaclma/XVslQO3Uw36vtK2tFY3K1KTedQF0zwrLPKwWRC1ezEc7dpX1HrB3BBHkRIrkrbxN8VqehdMiwjBWDZZdQuwgmEZZYJhAIiw6JMrSMokAapJiuMLX7QgqgVmoOKMOxutVdlK17/qcjgAeZPpEtA8SadjUVYt9vTZ0cPt9LNxuo9+Rx7yz1vES/SMpXVT01lx1DsVG4M17T83Hx9Rrw1w3uR8Tav5KKlaltiernjsOTObPqdQ6+LvuV/f4o0+3EtZjdU6P0lGrJfv8A7Ryf2lfgZ9GfmC3DuS6mwMOpDuNx/R9pYGpXx1/Gp87p/MAJBG/3AHP9xXRNPxagbseuutmdiVr49ufWZ45iLNs1Jmvp1kg2TaOskE6TtecScQLiOOsWsEBypI3XXI0pxHaq4EEr9oZaoeuqHWuQkk+Or1sjjdWBBHqDOaY+q4GBr2RiZGUi34xOLY4UDrKn6W589u/uJtPxK146RpIxcLKanUL2GzVMA9aDufbfgCcuxfDp8Q2tlJmn8SxJtZ9iWY9yfvMcuv1vx5mJ6b9qeuY5obH0l63ZuC6Abb/tLXwvpv4XDsuc9d97/mP69PA/zNc0LR6tMpWi5BY1ZLm9lA2A8uO82/whqNOq6dYldZrsxbDVYh/9DfvMsOvptyZn47NskC6SzemL2V7TrcSrsSLWLLG1IncskWeOseqSLY677SxpTfykDGauiprbnVK0Uszsdgo9SZzrxN8QrXZ8bQvy6xwclh9Te6jyHv3lZ8R/FL5+o26XiWkYWM/S4U8W2DuT6gHgD23mlC4nv3Epa38B8ix77GtuY22Md2ZzuW+5MHj5N+BeuRpxK2j9LcD9/X7TA+88O28omOu4bf4a8R06vm2afqyLi5Fij5TqCK7ePqAJJ2I5+4lU3iC7A8QX5GjZRqZn5Uc9SDgbjt5A8ym46T29e3nJV11pv0AAnknzJlYpFZ3DS2W1qxEun6J8QqMl1o1mlcdjx8+vcpv7juP5m3v0ugdGDKw3DKdwR6icE34M6T8LtSfK03LwLWLfhXDV7nsjb8fbcfzNa2ZNmuWI3LLS9ZX3jiaCzxR2jObm16ZpuVn3/wCnjVNa3/Ub7RfF8pr/AMVso4/gfJRTsci6qk8+Rbc/wsiRxO3Ke+6y6wAPa7OQOwJO5/uRW3ZufMQDH6SR3UyNjAqftvMkn67d1EKG3lVj3EgRxLdhGkGw20z5g34iot3E8Z9gDCTyOD95tfwszRT4quxidhkY7Lt/yXZh/maIb+lpaeD9RGN4r03LJ2UZCBvs30n+4gd5vEr7/OWORxuJWZB23myH/9k=", "corazon welding shop": "data:image/jpeg;base64,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", "balintawak fresh produce": "data:image/jpeg;base64,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"};
+
+/* ===== Round 8 =====
+   1. One order sheet: who, what, where it is, and the ONE next step with its fields already open.
+      Everything else (change, cancel, return, documents) sits under "More options".
+   2. Both sides of the business on one page: selling to customers and buying from suppliers,
+      no switching back and forth.
+   3. Small fixes: Paid samples in the demo, clearer profit editing. */
+
+/* ---------- 1. the order sheet ---------- */
+const NF_STAGE_NAMES = ['Ordered', 'Confirmed', 'Preparing', 'On the way', 'Delivered', 'Billed', 'Paid'];
+function nfStageIdx(o){
+  const paid = o.status === 'paid' || (o.invoice && o.invoice.status === 'paid');
+  if(paid) return 6; if(o.invoice || o.status === 'invoiced') return 5;
+  if(['delivered', 'partially_delivered'].includes(o.status)) return 4; if(['shipped', 'in_customs'].includes(o.status)) return 3;
+  if(o.status === 'preparing') return 2; if(o.status === 'confirmed') return 1; return 0;
+}
+function nfNextStep(o, sell){
+  const id = o.id, who = sell ? o.buyerName : o.supplierName;
+  const q = s => `'${id}'` + (s ? `,'${s}'` : '');
+  const amend = typeof pendingAmendment === 'function' && pendingAmendment(o);
+  if(sell){
+    if(amend) return {tone: 'y', title: `${who} wants to change this order`, text: 'Look at the change and say yes or no.', btns: [['Yes, accept the change', `respondAmendment(${q()}, true)`], ['No, keep it as is', `respondAmendment(${q()}, false)`, 1]]};
+    if(o.rma && o.rma.status === 'open') return {tone: 'r', title: `${who} returned something`, text: 'Settle it with a credit or a replacement.', btns: [['Settle the return', `openResolveRmaForm(${q()})`]], inline: true};
+    if(typeof poHasPaymentsAwaitingSupplier === 'function' && poHasPaymentsAwaitingSupplier(o)) return {tone: 'y', title: `${who} says they paid`, text: 'Check your bank or GCash, then confirm it here.', form: 'openMarkPaidForm'};
+    switch(o.status){
+      case 'sent': return {tone: 'y', title: 'Can you fill this order?', text: `${who} is waiting for your yes. Check the items and the delivery date below.`,
+        btns: [['Yes, confirm the order', `confirmSupplierPO(${q()})`], ['Change price or quantity', `openCounterForm(${q()})`, 1, 1], ['Send only part', `openPartialConfirmForm(${q()})`, 1, 1], ['Ask for a deposit first', `openDepositRequestForm(${q()})`, 1, 1]]};
+      case 'quote': return {tone: 'g', title: `Waiting for ${who} to confirm`, text: 'You sent this for their OK. Nifti reminds them for you. Nothing to do yet.', btns: [['Message ' + who, `nfMessage(${q()})`, 1]]};
+      case 'countered': return {tone: 'y', title: 'They want a different price', text: 'Accept their price, or offer another one.', btns: [['Accept', `acceptCounter(${q('supplier')})`], ['Offer another price', `openNegotiateForm(${q('supplier')})`, 1, 1], ['Decline', `rejectCounter(${q('supplier')})`, 1]]};
+      case 'confirmed': return {tone: 'y', title: 'Start preparing', text: 'Tap when you start packing or loading this order.', btns: [['Start preparing', `markSupplierPreparing(${q()})`]]};
+      case 'preparing': return {tone: 'y', title: 'Ready to send it out?', text: 'Fill in how it is going out, then tap to mark it shipped.', form: 'openShipForm'};
+      case 'shipped': return {tone: 'g', title: 'On the way', text: 'When it arrives, confirm the delivery here. A photo of the signed receipt helps.', form: 'openSupplierDeliveryConfirm'};
+      case 'in_customs': return {tone: 'y', title: 'At customs', text: 'Update when it clears customs.', form: 'openCustomsForm'};
+      case 'delivered': return {tone: 'y', title: 'Delivered. Send the bill', text: `One tap makes the invoice and sends it to ${who}.`, btns: [['Send the bill', `issueInvoice(${q()})`]]};
+      case 'partially_delivered': return {tone: 'y', title: 'Part of it was delivered', text: 'Settle the short items, then bill.', btns: [['Settle it', `acknowledgePartialDelivery(${q()})`]]};
+      case 'invoiced': return o.invoice && o.invoice.status !== 'paid' ? {tone: 'y', title: `Waiting for ${who}'s payment`, text: 'Record a payment when it comes in.', form: 'openMarkPaidForm'} : {tone: 'g', title: 'Done, paid in full', text: 'Nothing left to do.'};
+      case 'paid': return {tone: 'g', title: 'Done, paid in full', text: 'Nothing left to do.', btns: [['Print the receipt', `generateReceipt(${q()})`, 1]]};
+    }
+  } else {
+    if(amend) return {tone: 'g', title: `Waiting for ${who} to answer your change`, text: 'They will say yes or no. Nothing to do yet.'};
+    switch(o.status){
+      case 'draft': return {tone: 'y', title: 'Send this order', text: `Check the items, then send it to ${who}.`, btns: [['Send to ' + who, `openSendConfirmModal(${q()})`], ['Edit items', `editDraftPO(${q()})`, 1]]};
+      case 'sent': return {tone: 'g', title: `Waiting for ${who} to confirm`, text: 'They will say yes, or offer a new price. Nothing to do yet.', btns: [['Message ' + who, `nfMessage(${q()})`, 1]]};
+      case 'quote': return {tone: 'y', title: `${who} sent you a price`, text: 'Look at the items and prices. Say yes, or ask for changes.', more: true};
+      case 'countered': return {tone: 'y', title: `${who} offered a new price`, text: 'Accept it, or offer your own price.', btns: [['Accept', `acceptCounter(${q('buyer')})`], ['Offer another price', `openNegotiateForm(${q('buyer')})`, 1, 1], ['Decline', `rejectCounter(${q('buyer')})`, 1]]};
+      case 'confirmed': case 'preparing': return {tone: 'g', title: `Waiting for ${who} to ship`, text: 'They confirmed. You will see it here when it leaves their warehouse.'};
+      case 'shipped': case 'in_customs': return o.deliveryConfirmation ? {tone: 'g', title: 'Received', text: 'Waiting for their bill.'} : {tone: 'y', title: 'Did it arrive?', text: 'When it arrives, check the items and confirm. Add a photo if anything is damaged.', form: 'openDeliveryConfirm'};
+      case 'delivered': case 'partially_delivered': return {tone: 'g', title: `Waiting for ${who}'s bill`, text: 'Nothing to do until they bill you.'};
+      case 'invoiced': return o.invoice && o.invoice.status !== 'paid' ? {tone: 'y', title: 'Pay this bill', text: 'Type what you paid and how. A photo of the receipt helps.', form: 'openMarkPaidForm'} : {tone: 'g', title: 'Done, paid in full', text: 'Nothing left to do.'};
+      case 'paid': return {tone: 'g', title: 'Done, paid in full', text: 'Nothing left to do.', btns: [['Order again', `reorderFromPO(${q()})`, 1]]};
+    }
+  }
+  return {tone: 'g', title: 'Nothing to do', text: ''};
+}
+function nfMessage(id){ const o = getPO(id); if(!o) return; const sell = sideOfPo(o) === 'supplier'; closeOrderDetailModal(); go('messages');
+  setTimeout(() => { try{ selectConversation(sell ? o.buyerId : o.supplierId, sell ? 'supplier' : 'buyer'); }catch(e){} }, 350); }
+function nfOrderSheetHtml(o, sell, legacy){
+  const who = sell ? o.buyerName : o.supplierName, st = nfStageIdx(o), nx = nfNextStep(o, sell) || {};
+  const items = o.lineItems || [], sub = items.reduce((s, l) => s + (Number(l.qty) || 0) * (Number(l.unitPrice) || 0), 0), total = poTotal(o);
+  const rd = o.requestedDeliveryDate ? stmtDate(o.requestedDeliveryDate) : 'not set';
+  const btn = (b, i) => `<button type="button" class="btn ${b[2] ? 'btn-outline' : 'btn-primary'}${b[3] ? ' nf-inline-btn' : ''}" ${b[3] ? `data-nf-inline="${escapeHtml(b[1])}"` : `onclick="${b[1]}"`}>${escapeHtml(b[0])}</button>`;
+  return `<div class="nfo" data-nf-who="${escapeHtml(who)}" data-nf-side="${sell ? 'cust' : 'sup'}">
+    <div class="nfo-head"><span class="nf-av"></span><div class="nfo-h-m"><small>${escapeHtml(o.poNumber)} · ${sell ? 'Customer order' : 'Order to a supplier'}</small><h3>${escapeHtml(who)}</h3>
+      <span>${bkPeso(total)} · ${sell ? 'deliver by' : 'arrives by'} ${escapeHtml(rd)}</span></div>${sell ? renderSupplierActionPill(o) : renderBuyerActionPill(o)}</div>
+    <ol class="nfo-steps">${NF_STAGE_NAMES.map((n, i) => `<li class="${i < st ? 'done' : i === st ? 'now' : ''}"><i>${i < st ? '✓' : i + 1}</i><span>${n}</span></li>`).join('')}</ol>
+    <section class="nfo-next t-${nx.tone || 'g'}"><h4>${escapeHtml(nx.title || '')}</h4>${nx.text ? `<p>${escapeHtml(nx.text)}</p>` : ''}
+      <div class="nfo-slot" id="nfoSlot"></div>
+      ${nx.btns ? `<div class="nfo-btns">${nx.btns.map(btn).join('')}</div>` : ''}
+      ${nx.more ? '<div class="nfo-btns"><button type="button" class="btn btn-primary" onclick="nfOpenMore()">See the price and answer</button></div>' : ''}</section>
+    <section class="nfo-items"><div class="nfo-sec">What's in this order</div>
+      ${items.map(l => `<div class="nfo-li"><b>${escapeHtml(l.product)}</b><span>${Number(l.qty) || 0} × ${bkPeso(Number(l.unitPrice) || 0)}</span><strong>${bkPeso((Number(l.qty) || 0) * (Number(l.unitPrice) || 0))}</strong></div>`).join('')}
+      ${Math.abs(total - sub) >= 1 ? `<div class="nfo-li sub"><span>Items</span><span></span><strong>${bkPeso(sub)}</strong></div><div class="nfo-li sub"><span>VAT</span><span></span><strong>${bkPeso(total - sub)}</strong></div>` : ''}
+      <div class="nfo-li tot"><b>Total</b><span></span><strong>${bkPeso(total)}</strong></div>
+      ${o.deliveryAddress ? `<div class="nfo-addr">Deliver to: ${escapeHtml(o.deliveryAddress)}</div>` : ''}</section>
+    <div class="nfo-quick"><button type="button" class="btn btn-outline" onclick="nfMessage('${o.id}')">Message ${escapeHtml(who)}</button></div>
+    <details class="nfo-more" id="nfoMore"><summary>More options <small>change, cancel, return, documents, history</small></summary><div class="nfo-legacy" id="nfoLegacy">${legacy}</div></details></div>`;
+}
+function nfOpenMore(){ const d = document.getElementById('nfoMore'); if(d){ d.open = true; d.scrollIntoView({behavior: 'smooth', block: 'start'}); } }
+// run one of the app's own form openers, and bring the form it opens up into the next-step card
+function nfRunInline(js){
+  const legacy = document.getElementById('nfoLegacy'), slot = document.getElementById('nfoSlot'); if(!legacy || !slot) return;
+  const before = new Map(); legacy.querySelectorAll('[id]').forEach(e => before.set(e, e.innerHTML.trim().length));
+  try{ (0, eval)(js); }catch(e){ console.warn(e); }
+  const oid = currentModalOrderId || '';
+  const opened = [...legacy.querySelectorAll('[id]')].filter(e => (before.get(e) || 0) === 0 && e.innerHTML.trim().length > 20);
+  const moved = opened.find(e => oid && e.id.endsWith('_' + oid)) || opened.find(e => oid && e.id.includes(oid)) || opened[0];
+  if(moved){ slot.innerHTML = ''; slot.appendChild(moved); nfEnhanceForm(slot); setTimeout(() => { const f = slot.querySelector('input:not([type=hidden]):not([type=file]), select, textarea'); if(f && window.innerWidth > 760) f.focus({preventScroll: true}); }, 50); }
+}
+function nfRenderOrderSheet(o, sell){
+  const body = document.getElementById('orderDetailModalBody'); if(!body) return;
+  const legacy = sell ? renderSupplierPoDetail(o) : renderBuyerPoDetail(o);
+  body.innerHTML = nfOrderSheetHtml(o, sell, legacy);
+  document.getElementById('orderDetailModal').classList.add('nfo-modal');
+  const nx = nfNextStep(o, sell) || {};
+  if(nx.form) nfRunInline(`${nx.form}('${o.id}')`);
+  body.querySelectorAll('[data-nf-inline]').forEach(b => b.addEventListener('click', () => nfRunInline(b.dataset.nfInline)));
+}
+// dropdowns with a few choices become tap buttons; every field is big and easy to hit
+function nfEnhanceForm(root){
+  root.querySelectorAll('select').forEach(sel => {
+    if(sel.dataset.nfSeg || sel.multiple) return; const opts = [...sel.options].filter(op => op.value !== '' || op.text.trim());
+    if(opts.length < 2 || opts.length > 5 || opts.some(op => op.text.length > 24)) return;
+    sel.dataset.nfSeg = '1'; const seg = document.createElement('div'); seg.className = 'nf-seg';
+    const draw = () => { seg.innerHTML = opts.map(op => `<button type="button" class="${op.value === sel.value ? 'on' : ''}" data-v="${escapeHtml(op.value)}">${escapeHtml(op.text)}</button>`).join(''); };
+    seg.addEventListener('click', e => { const b = e.target.closest('button'); if(!b) return; sel.value = b.dataset.v; sel.dispatchEvent(new Event('change', {bubbles: true})); sel.dispatchEvent(new Event('input', {bubbles: true})); draw(); });
+    draw(); sel.classList.add('nf-seg-src'); sel.insertAdjacentElement('afterend', seg);
+  });
+}
+(function(){
+  const open0 = window.openOrderDetailModal, ref0 = window.refreshOrderModalIfOpen;
+  if(typeof open0 !== 'function' || open0._nf8) return;
+  window.openOrderDetailModal = function(id, isSupplierRole){
+    const o = getPO(id); if(!o) return;
+    currentModalOrderId = id; currentModalIsSupplier = !!isSupplierRole; currentAppRole = isSupplierRole ? 'supplier' : 'buyer';
+    nfRenderOrderSheet(o, !!isSupplierRole);
+    document.getElementById('orderDetailModal').classList.remove('hidden');
+  };
+  window.openOrderDetailModal._nf8 = true;
+  window.refreshOrderModalIfOpen = function(id){
+    if(currentModalOrderId !== id) return; const m = document.getElementById('orderDetailModal'); if(!m || m.classList.contains('hidden')) return;
+    const o = getPO(id); if(o) nfRenderOrderSheet(o, currentModalIsSupplier);
+  };
+})();
+
+/* ---------- 2. both sides of the business on one page ---------- */
+const NF_SIDE_HEAD = {supplier: ['Selling to customers', 'What customers order and owe you'], buyer: ['Buying from suppliers', 'What you order and owe suppliers']};
+function nfHalfHead(side, extra){ const h = NF_SIDE_HEAD[side]; return `<div class="nf-half-h"><i aria-hidden="true"></i><b>${h[0]}</b><small>${h[1]}</small>${extra || ''}</div>`; }
+const NF_DUAL = {
+  cheques: ['renderChequesPage', 'chequesContent', 'Check payments'], returns: ['renderReturnsPage', 'returnsContent', 'Returns & credits'],
+  books: ['renderBooksPage', 'booksContent', 'Tax books'], taxforms: ['renderTaxFormsPage', 'taxFormsContent', 'BIR 2307s'],
+  prices: ['renderPricesPage', 'pricesContent', 'Price list'], collections: ['renderCollectionsPage', 'collectionsContent', 'Money owed'],
+};
+const NF_DUAL_SUB = {collections: "Who owes you, and what you owe your suppliers, on one page.", prices: 'Your selling prices, and what your suppliers charge you.'};
+function nfDualWrap(page){
+  const [fn, el] = NF_DUAL[page], orig = window[fn]; if(typeof orig !== 'function' || orig._nfDual) return;
+  const w = async function(){
+    const host = document.getElementById(el); if(!host || window._nfDualIn) return orig.apply(this, arguments);
+    window._nfDualIn = true; const keep = currentAppRole, parts = {};
+    try{ for(const side of ['supplier', 'buyer']){ currentAppRole = side; host.innerHTML = ''; await orig.apply(this, arguments); parts[side] = [...host.childNodes]; } }
+    catch(e){ console.warn('dual', page, e); }
+    finally{ currentAppRole = keep; window._nfDualIn = false; }
+    host.innerHTML = '';
+    ['supplier', 'buyer'].forEach(side => { const sec = document.createElement('section'); sec.className = 'nf-half nf-half-' + side; sec.dataset.nfRole = side;
+      sec.innerHTML = nfHalfHead(side); const b = document.createElement('div'); b.className = 'nf-half-b'; (parts[side] || []).forEach(n => b.appendChild(n)); sec.appendChild(b); host.appendChild(sec); });
+    nfDualTitle(page);
+  };
+  w._nfDual = true; window[fn] = w;
+}
+function nfDualTitle(page){
+  const pg = document.getElementById('page-' + page); if(!pg) return; const h1 = pg.querySelector(':scope > .page-head h1'), p = pg.querySelector(':scope > .page-head p');
+  const t = NF_DUAL[page] && NF_DUAL[page][2]; if(h1 && t){ const badge = h1.querySelector('span'); h1.textContent = t + ' '; if(badge) h1.appendChild(badge); }
+  if(p && NF_DUAL_SUB[page]) p.textContent = NF_DUAL_SUB[page];
+}
+// whichever half you tap, the app acts for that side
+document.addEventListener('click', e => { const h = e.target.closest && e.target.closest('[data-nf-role]'); if(h && typeof currentAppRole !== 'undefined' && currentAppRole !== h.dataset.nfRole) currentAppRole = h.dataset.nfRole; }, true);
+document.addEventListener('focusin', e => { const h = e.target.closest && e.target.closest('[data-nf-role]'); if(h && typeof currentAppRole !== 'undefined' && currentAppRole !== h.dataset.nfRole) currentAppRole = h.dataset.nfRole; }, true);
+
+// Orders: customer orders and orders to suppliers, one under the other
+function nfOrdersBoth(){
+  const pg = document.getElementById('page-orders'); if(!pg) return;
+  const sv = document.getElementById('supplierOrdersView'), bv = document.getElementById('buyerOrdersView'); if(!sv || !bv) return;
+  if(!pg.querySelector(':scope > .nf-orders-head')){
+    pg.insertAdjacentHTML('afterbegin', '<div class="page-head nf-orders-head"><div><h1>Orders</h1><p>Orders from your customers and orders you sent to suppliers. Tap one to see the next step.</p></div><button class="btn btn-primary" onclick="currentAppRole=\'buyer\'; startCreatePO()">+ New order to a supplier</button></div>');
+    const s1 = document.createElement('section'); s1.className = 'nf-half nf-half-supplier'; s1.dataset.nfRole = 'supplier'; s1.innerHTML = nfHalfHead('supplier');
+    const s2 = document.createElement('section'); s2.className = 'nf-half nf-half-buyer'; s2.dataset.nfRole = 'buyer'; s2.innerHTML = nfHalfHead('buyer');
+    sv.parentNode.insertBefore(s1, sv); s1.appendChild(sv); bv.parentNode.insertBefore(s2, bv); s2.appendChild(bv);
+    pg.insertBefore(s1, s2);
+  }
+  sv.classList.remove('hidden'); bv.classList.remove('hidden');
+  ['supplierOrdersListWrap', 'buyerOrdersListWrap'].forEach(i => { const e = document.getElementById(i); if(e) e.classList.remove('hidden'); });
+  ['supplierAgingReportView', 'buyerAgingReportView'].forEach(i => { const e = document.getElementById(i); if(e) e.classList.add('hidden'); });
+  const keep = currentAppRole;
+  try{ currentAppRole = 'supplier'; renderSupplierOrdersTable(); currentAppRole = 'buyer'; renderOrdersTable(); }catch(e){ console.warn(e); } finally{ currentAppRole = keep; }
+}
+
+// Customers & suppliers: two simple lists side by side
+function nfPartners(){
+  const pg = document.getElementById('page-suppliers'); if(!pg) return; pg.classList.add('nf-replaced');
+  let host = document.getElementById('nfPartners'); if(!host){ host = document.createElement('div'); host.id = 'nfPartners'; pg.appendChild(host); }
+  const card = (s, sell) => { let rel = null; try{ rel = computeCounterpartReliability(s.id, sell); }catch(e){}
+    const score = rel && rel.status === 'ok' ? `<span class="nf-pill ${rel.tier === 'good' ? 'good' : rel.tier === 'mid' ? 'warn' : 'bad'}">${sell ? 'Pays on time' : 'Reliable'} ${rel.score}/100</span>` : '<span class="nf-pill plain">New</span>';
+    return `<div class="pt-row nf-pt" data-nf-side="${sell ? 'cust' : 'sup'}"><span class="pt-av"></span><div class="nf-pt-m"><div class="pt-name">${escapeHtml(s.name)}</div><small>${escapeHtml(s.category || '')}${s.orders ? ' · ' + s.orders + ' orders' : ''}${s.lastOrder ? ' · last ' + escapeHtml(String(s.lastOrder)) : ''}</small></div>
+      ${score}<div class="nf-pt-a">${s.isOutside ? `<button class="btn btn-outline btn-sm" onclick="currentAppRole='${sell ? 'supplier' : 'buyer'}'; resendInvite('${s.id}')">Invite to Nifti</button>` : `<button class="btn btn-outline btn-sm" onclick="nfChat('${s.id}', ${sell})">Message</button>`}
+      <button class="btn btn-primary btn-sm" onclick="${sell ? `currentAppRole='supplier'; navigate('orders')` : `currentAppRole='buyer'; startCreatePO()`}">${sell ? 'Their orders' : 'New order'}</button></div></div>`; };
+  host.innerHTML = `<div class="page-head"><h1>Customers & suppliers</h1><p>Everyone you sell to and buy from. Private to you.</p></div>
+    <div class="nf-two-col">
+      <section class="nf-half nf-half-supplier" data-nf-role="supplier">${nfHalfHead('supplier', `<button class="btn btn-outline btn-sm" onclick="currentAppRole='supplier'; navigate('invite')">+ Invite a customer</button>`)}<div class="nf-half-b">${buyersData.map(s => card(s, true)).join('') || '<div class="nf-empty">No customers yet.</div>'}</div></section>
+      <section class="nf-half nf-half-buyer" data-nf-role="buyer">${nfHalfHead('buyer', `<button class="btn btn-outline btn-sm" onclick="currentAppRole='buyer'; navigate('invite')">+ Invite a supplier</button>`)}<div class="nf-half-b">${suppliersData.map(s => card(s, false)).join('') || '<div class="nf-empty">No suppliers yet.</div>'}</div></section></div>`;
+}
+function nfChat(id, sell){ go('messages'); setTimeout(() => { try{ selectConversation(id, sell ? 'supplier' : 'buyer'); }catch(e){} }, 350); }
+
+(function(){
+  try{ ['orders', 'suppliers', 'collections', 'prices', 'returns', 'cheques', 'books', 'taxforms'].forEach(p => { delete LENS_TABS[p]; }); }catch(e){}
+  Object.keys(NF_DUAL).forEach(nfDualWrap);
+  const nav = window.navigate; if(typeof nav !== 'function' || nav._nf8) return;
+  const w = function(page){ const r = nav.apply(this, arguments);
+    setTimeout(() => { try{
+      document.querySelectorAll('#page-' + page + ' > .lens-tabs').forEach(b => b.remove());
+      if(page === 'orders') nfOrdersBoth(); if(page === 'suppliers') nfPartners(); if(NF_DUAL[page]) nfDualTitle(page);
+    }catch(e){ console.warn(e); } }, 0); return r; };
+  w._nf8 = true; w._nf7 = true; window.navigate = w;
+})();
+
+/* ---------- 3. small fixes ---------- */
+// demo: a paid sample on both sides of "Where every order is"
+function nfDemoPaid(){
+  if(!(typeof nfIsDemo === 'function' && nfIsDemo()) || window._nfPaidSeeded) return;
+  const p12 = getPO('po12'), p3 = getPO('po3'); if(!p12 || !p3) return; window._nfPaidSeeded = true;
+  if(p12.invoice){ p12.invoice.paidDate = addDaysIso(APP_TODAY, -2); }
+  if(!p3.invoice){ p3.status = 'paid'; p3.invoice = {number: 'QPT-1182', issuedDate: addDaysIso(APP_TODAY, -9), dueDate: addDaysIso(APP_TODAY, 6), status: 'paid', paidDate: addDaysIso(APP_TODAY, -1), statedTotal: poTotal(p3), attachmentName: null,
+    payments: [{id: 'nf-pay-q', method: 'gcash', amount: poTotal(p3), date: addDaysIso(APP_TODAY, -1), confirmStatus: 'confirmed', reference: 'GC 5521', submittedBy: 'buyer'}]}; }
+}
+(function(){ const f = window.nfDemoAll; if(typeof f !== 'function' || f._nf8) return; const w = function(){ f.apply(this, arguments); try{ nfDemoPaid(); }catch(e){} }; w._nf8 = true; window.nfDemoAll = w; })();
+// profit: a clear "saved" after you change a cost or price
+(function(){ const f = window.bkSetItemNumber; if(typeof f !== 'function' || f._nf8) return;
+  const w = async function(name, field, val){ const has = inventoryData.some(i => i.name === name); const r = await f.apply(this, arguments); if(has) showToast(`Saved. ${name} ${field === 'unitCost' ? 'costs you' : 'sells for'} ${bkPeso(Number(String(val).replace(/,/g, '')) || 0)} now.`, 'success'); return r; };
+  w._nf8 = true; window.bkSetItemNumber = w; })();
+
+/* ===== Round 8b: an online store that is fun to use, sub-tabs you can't miss, and less clutter ===== */
+
+/* ---------- online store: one friendly page ---------- */
+function nfStoreLayout(){
+  const el = document.getElementById('storeContent'); if(!el || el.querySelector('.nfs')) return;
+  const st = (typeof myBusiness !== 'undefined' && myBusiness) ? (myBusiness.store || {}) : (window._demoStore || {enabled: true, headline: 'Cement, steel & hardware. Same-day delivery in Metro Manila.', delivery_areas: 'Metro Manila, Bulacan', lead_time: 'Order by 2pm, delivered next day'});
+  const name = (typeof myBusiness !== 'undefined' && myBusiness && myBusiness.name) || 'Metro Steel Co.';
+  const cat = (typeof myCatalog !== 'undefined' && myCatalog) || [];
+  const feat = (st.featured && st.featured.length ? st.featured : cat.map(c => c.product)).slice(0, 4);
+  const price = p => { const c = cat.find(x => x.product === p) || {}; const v = c.price || c.unitPrice || c.basePrice; return v ? bkPeso(v) + (c.unit ? '/' + c.unit : '') : ''; };
+  const body = document.getElementById('storeTabBody'), panel = body && body.querySelector('.panel-card'), linkcard = el.querySelector('.store-linkcard'), tabs = el.querySelector('.store-tabs');
+  if(!panel) return;
+  const pick = id => { const i = document.getElementById(id); return i ? (i.closest('.toggle-row') || i.closest('.row-2') || i.closest('.field')) : null; };
+  const open = pick('stEnabled'), head = pick('stHeadline'), areas = pick('stAreas'), lead = pick('stLead');
+  const prices = panel.querySelector('input[name="stMode"]') && panel.querySelector('input[name="stMode"]').closest('.field');
+  const shareRow = linkcard && linkcard.querySelector('div[style*="display:flex"]');
+  const wrap = document.createElement('div'); wrap.className = 'nfs'; wrap.dataset.nfRole = 'supplier';
+  wrap.innerHTML = `
+    <section class="nfs-hero">
+      <div class="nfs-hero-l"><span class="nfs-chip ${st.enabled ? 'on' : ''}">${st.enabled ? 'Open for orders' : 'Closed'}</span>
+        <h2>${st.enabled ? 'Your store is open. Share it!' : 'Open your store in 1 minute'}</h2>
+        <p>Buyers tap your link, pick items and order. The order lands in Orders, like any other.</p>
+        <div class="nfs-open"></div><div class="nfs-share"></div></div>
+      <div class="nfs-phone" aria-label="How buyers see your store"><div class="nfs-ph-top"><b>${escapeHtml(name)}</b><small>${escapeHtml(st.headline || 'Your one-line headline shows here')}</small></div>
+        <div class="nfs-ph-del">${escapeHtml(st.lead_time || 'Order today, delivered tomorrow')} · ${escapeHtml(st.delivery_areas || 'Where you deliver')}</div>
+        <div class="nfs-ph-grid">${(feat.length ? feat : ['Your best seller', 'Another item']).map(p => `<div class="nfs-ph-item"><span class="nfs-ph-img">${escapeHtml(nfInitials(p))}</span><b>${escapeHtml(p)}</b><small>${price(p) || (st.price_mode === 'hidden' ? 'Ask for price' : '')}</small><i>Add</i></div>`).join('')}</div>
+        <div class="nfs-ph-cta">Send order</div></div>
+    </section>
+    <section class="nfs-card"><div class="nfs-h"><i>1</i><div><h3>What buyers see first</h3><p>Three things that make people order. Change them anytime.</p></div></div><div class="nfs-fields"></div>
+      <div class="nfs-save"><button class="btn btn-primary" onclick="saveStoreSettings()">Save</button></div></section>
+    <section class="nfs-card"><div class="nfs-h"><i>2</i><div><h3>Share a ready-made post</h3><p>Pick a post, tap share. Facebook, Messenger or Viber.</p></div></div><div id="postComposer"></div><div id="postReach"></div></section>
+    <section class="nfs-card"><div class="nfs-h"><i>3</i><div><h3>How your store is doing</h3><p>Visits and orders from your link.</p></div></div><div id="nfsStats"></div></section>
+    <details class="nfs-more"><summary>More settings <small>link name, about you, minimum order, cash on delivery, best sellers, sale prices</small></summary><div class="nfs-more-b"></div></details>`;
+  el.innerHTML = ''; el.appendChild(wrap);
+  if(open) wrap.querySelector('.nfs-open').appendChild(open);
+  if(shareRow) wrap.querySelector('.nfs-share').appendChild(shareRow);
+  const f = wrap.querySelector('.nfs-fields'); [head, areas, lead && lead.closest('.row-2') !== areas ? lead : null, prices].forEach(x => { if(x) f.appendChild(x); });
+  wrap.querySelector('.nfs-more-b').appendChild(panel);
+  const keep = currentAppRole; currentAppRole = 'supplier';
+  try{ renderPostComposer(document.getElementById('postComposer')); renderPostReach(document.getElementById('postReach')); renderStoreStats(document.getElementById('nfsStats')); }catch(e){ console.warn(e); }
+  finally{ currentAppRole = keep; }
+}
+(function(){ const f = window.renderStorePage; if(typeof f !== 'function' || f._nf8) return;
+  const w = function(){ const keep = currentAppRole; currentAppRole = 'supplier'; storeTab = 'setup';
+    try{ f.apply(this, arguments); nfStoreLayout(); }catch(e){ console.warn(e); } finally{ currentAppRole = keep; }
+    const t = document.getElementById('storePageTitle'), p = document.getElementById('storePageSub'); if(t) t.textContent = 'Online store'; if(p) p.textContent = 'Your own order page for Facebook, Messenger and Viber.'; };
+  w._nf8 = true; window.renderStorePage = w; })();
+
+/* ---------- sub-tabs you can't miss: each one says what it is for ---------- */
+const NF_TAB_DESC = {
+  'To confirm': "Orders waiting for the customer's yes", 'Today': 'Who to call or message today', 'Leads': 'People who may buy soon', 'Sell again': 'Old customers to win back',
+  'Follow up': 'Who to remind, and how much', 'Cash & bank': 'Who holds cash, what reached the bank',
+  'Overpaying': 'Orders above your agreed price', 'Spending limits': 'A cap for each person', 'Supplier report card': 'Who delivers on time',
+  'Tasks': 'Jobs for your people', 'Team chat': 'Talk with your team', 'Activity': 'Who did what',
+};
+function nfTabCards(){
+  document.querySelectorAll('#view-app :is(.sl-tabs,.adm-tabs,.team-tabs)').forEach(bar => {
+    const btns = [...bar.querySelectorAll(':scope > button, :scope > .team-tab')]; if(btns.length < 2) return;
+    let any = false;
+    btns.forEach(b => { if(b.querySelector('.nf-tab-d')) { any = true; return; } const label = (b.childNodes[0] && b.childNodes[0].textContent || b.textContent).trim(); const key = Object.keys(NF_TAB_DESC).find(k => label.startsWith(k));
+      if(key){ b.insertAdjacentHTML('beforeend', `<small class="nf-tab-d">${NF_TAB_DESC[key]}</small>`); any = true; } });
+    if(any) bar.classList.add('nf-tabcards');
+  });
+}
+
+/* ---------- less clutter: sections that repeat other pages, or that almost nobody uses ---------- */
+const NF_CUT_HEADINGS = ['Red flags', 'How sure are these numbers?', 'Something not saving?', 'Custom roles', 'Upcoming BIR filing'];
+const NF_CUT_BUTTONS = [['#page-watchdog', 'Price check'], ['#page-watchdog', 'Rules'], ['#page-collections', 'Reminder rules'], ['#page-inventory', 'Scan']];
+function nfCut(){
+  document.querySelectorAll('#view-app :is(h2,.settings-card h2,.panel-head h2,.acc-txt)').forEach(h => {
+    const t = (h.childNodes[0] && h.childNodes[0].textContent || '').trim(); if(!NF_CUT_HEADINGS.includes(t)) return;
+    const box = h.closest('section, .settings-card, .panel-card'); if(box && !box.classList.contains('nf-cut')) box.classList.add('nf-cut');
+  });
+  NF_CUT_BUTTONS.forEach(([pg, label]) => document.querySelectorAll(pg + ' button').forEach(b => { if(b.textContent.trim().replace(/\s+/g, ' ').startsWith(label) && !b.classList.contains('nf-cut')) b.classList.add('nf-cut'); }));
+}
+// Books & reports: trial balance, journal and accounts sit behind one "for your accountant" switch
+(function(){
+  if(typeof LG_TABS === 'undefined' || window._nfLgAll) return; window._nfLgAll = LG_TABS.slice();
+  const apply = () => { const acct = !!window._nfAcct; LG_TABS.length = 0; window._nfLgAll.forEach(t => { if(acct || !['tb', 'journal', 'accounts'].includes(t[0])) LG_TABS.push(t); }); };
+  apply();
+  const f = window.renderLedgerPage; if(typeof f !== 'function' || f._nf8) return;
+  const w = function(){ if(!window._nfAcct && ['tb', 'journal', 'accounts'].includes(LGV.tab)) LGV.tab = 'summary'; const r = f.apply(this, arguments);
+    const done = () => { const pg = document.getElementById('page-ledger'); if(!pg || pg.querySelector('.nf-acct')) return; pg.insertAdjacentHTML('beforeend', `<p class="nf-acct"><button class="lg-link" onclick="window._nfAcct = !window._nfAcct; (${apply.toString()})(); renderLedgerPage()">${window._nfAcct ? 'Hide the accountant pages' : 'For your accountant: trial balance, journal and accounts'}</button></p>`); };
+    if(r && r.then) r.then(done); else done(); return r; };
+  w._nf8 = true; window.renderLedgerPage = w;
+})();
+(function(){ let raf = 0; const run = () => { raf = 0; try{ nfTabCards(); nfCut(); }catch(e){} };
   const start = () => { new MutationObserver(() => { if(!raf) raf = requestAnimationFrame(run); }).observe(document.getElementById('view-app') || document.body, {childList: true, subtree: true}); run(); };
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start(); })();
 
@@ -23808,6 +24270,7 @@ function toggleTourBanner(show){
 // first order interaction rather than gating that interaction behind full setup.
 let hasShownCompleteProfileBanner = false;
 function showCompleteProfileBanner(){
+  return; // removed: an extra pop-up after every first confirm
   if(document.getElementById('completeProfileBanner')) return;
   const banner = document.createElement('div');
   banner.id = 'completeProfileBanner';
@@ -28162,49 +28625,49 @@ function refreshOrderModalIfOpen(id){
   document.getElementById('orderDetailModalBody').innerHTML = currentModalIsSupplier ? renderSupplierPoDetail(o) : renderBuyerPoDetail(o);
 }
 function getBuyerNextAction(o){
-  if(pendingAmendment(o)) return 'Awaiting supplier reply to your amendment';
-  if(o.rma && o.rma.status==='open') return 'Awaiting supplier on your return/dispute';
+  if(pendingAmendment(o)) return "Waiting for supplier's reply to your change";
+  if(o.rma && o.rma.status==='open') return "Waiting for supplier to settle your return";
   if(o.depositRequired && o.status==='confirmed' && computeDepositPaid(o) < o.depositRequired.amount){
-    return (computeDepositPaid(o) + computeDepositPending(o) >= o.depositRequired.amount) ? 'Waiting on supplier to confirm your deposit' : 'Pay the deposit';
+    return (computeDepositPaid(o) + computeDepositPending(o) >= o.depositRequired.amount) ? "Waiting for supplier to confirm your deposit" : 'Pay the deposit';
   }
   if(o.status==='invoiced' && o.invoice && o.invoice.status!=='paid'){
     const pi = computeInvoicePayments(o);
-    if(pi.pendingAmount > 0 && pi.balance - pi.pendingAmount <= 0) return 'Waiting on supplier to confirm your payment';
+    if(pi.pendingAmount > 0 && pi.balance - pi.pendingAmount <= 0) return "Waiting for supplier to confirm your payment";
   }
   switch(o.status){
-    case 'draft': return 'Send this PO';
-    case 'sent': return 'Waiting on supplier to confirm';
-    case 'countered': return 'Review counter-offer';
-    case 'quote': return 'Confirm this order';
+    case 'draft': return 'Send this order to the supplier';
+    case 'sent': return "Waiting for supplier's confirmation";
+    case 'countered': return "Answer the supplier's new price";
+    case 'quote': return "Confirm the supplier's quote";
     case 'confirmed':
-    case 'preparing': return 'Waiting on supplier to ship';
+    case 'preparing': return 'Waiting for supplier to ship';
     case 'shipped':
-    case 'in_customs': return o.deliveryConfirmation ? 'Nothing to do' : 'Confirm delivery when it arrives';
-    case 'delivered': return 'Nothing to do';
-    case 'partially_delivered': return 'Nothing to do';
-    case 'invoiced': return (o.invoice && o.invoice.status!=='paid') ? 'Pay invoice' : 'Nothing to do';
-    case 'paid': return 'Nothing to do';
-    case 'cancelled': return 'Nothing to do';
+    case 'in_customs': return o.deliveryConfirmation ? 'Done' : 'Confirm what arrived';
+    case 'delivered': return "Waiting for supplier's bill";
+    case 'partially_delivered': return "Waiting for supplier's bill";
+    case 'invoiced': return (o.invoice && o.invoice.status!=='paid') ? "Pay the supplier's bill" : 'Done, paid';
+    case 'paid': return 'Done, paid';
+    case 'cancelled': return 'Cancelled';
     default: return '—';
   }
 }
 function getSupplierNextAction(o){
-  if(pendingAmendment(o)) return "Respond to buyer's amendment request";
-  if(o.rma && o.rma.status==='open') return "Resolve buyer's return/dispute";
-  if(poHasPaymentsAwaitingSupplier(o)) return "Confirm the buyer's payment";
+  if(pendingAmendment(o)) return "Answer the customer's change request";
+  if(o.rma && o.rma.status==='open') return "Settle the customer's return";
+  if(poHasPaymentsAwaitingSupplier(o)) return "Confirm the customer's payment";
   switch(o.status){
-    case 'sent': return 'Confirm or counter this PO';
-    case 'countered': return 'Waiting on buyer';
-    case 'quote': return 'Waiting for their OK';
-    case 'confirmed': return 'Start preparing order';
-    case 'preparing': return 'Mark as shipped when ready';
+    case 'sent': return 'Confirm this order';
+    case 'countered': return "Waiting for customer's reply to your price";
+    case 'quote': return "Waiting for customer's confirmation";
+    case 'confirmed': return 'Start preparing';
+    case 'preparing': return 'Mark as shipped';
     case 'shipped':
-    case 'in_customs': return 'Nothing to do';
-    case 'delivered': return 'Send invoice';
-    case 'partially_delivered': return 'Resolve the shortfall, then send invoice';
-    case 'invoiced': return (o.invoice && o.invoice.status!=='paid') ? 'Waiting on payment' : 'Nothing to do';
-    case 'paid': return 'Nothing to do';
-    case 'cancelled': return 'Nothing to do';
+    case 'in_customs': return 'On the way to the customer';
+    case 'delivered': return 'Send the bill';
+    case 'partially_delivered': return 'Settle the short delivery, then bill';
+    case 'invoiced': return (o.invoice && o.invoice.status!=='paid') ? "Waiting for customer's payment" : 'Done, paid';
+    case 'paid': return 'Done, paid';
+    case 'cancelled': return 'Cancelled';
     default: return '—';
   }
 }
@@ -28346,16 +28809,14 @@ function getSupplierActionColorClass(o){
 // the action classifier maps it to the same green "done" bucket as an order that finished
 // normally — that loses a real, important distinction a merged pill needs to keep.
 function renderBuyerActionPill(o){
-  if(o.status === 'cancelled') return `<span class="status-pill pill-cancelled">✕ Cancelled</span>`;
+  if(o.status === 'cancelled') return `<span class="status-pill pill-cancelled">Cancelled</span>`;
   const cls = getBuyerActionColorClass(o);
-  const icon = o.status==='draft' ? '✎' : cls==='pill-lowstock' ? '●' : cls==='pill-ok' ? '✓' : '…';
-  return `<span class="status-pill ${cls}">${icon} ${getBuyerNextAction(o)}</span>`;
+  return `<span class="status-pill ${cls}">${getBuyerNextAction(o)}</span>`;
 }
 function renderSupplierActionPill(o){
-  if(o.status === 'cancelled') return `<span class="status-pill pill-cancelled">✕ Cancelled</span>`;
+  if(o.status === 'cancelled') return `<span class="status-pill pill-cancelled">Cancelled</span>`;
   const cls = getSupplierActionColorClass(o);
-  const icon = cls==='pill-lowstock' ? '●' : cls==='pill-ok' ? '✓' : '…';
-  return `<span class="status-pill ${cls}">${icon} ${getSupplierNextAction(o)}</span>`;
+  return `<span class="status-pill ${cls}">${getSupplierNextAction(o)}</span>`;
 }
 function renderOrdersTable(){
   if(!document.getElementById('orderRows')) return; // see note on renderSupplierFulfillmentDashboard above — same reasoning, buyer side

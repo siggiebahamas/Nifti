@@ -157,7 +157,7 @@ function mhOrderRows(){
     if(stage === 4 && inv && inv.daysOverdue > 0){ note = `Payment ${inv.daysOverdue} day${inv.daysOverdue > 1 ? 's' : ''} late`; tone = 'r'; }
     else if(stage === 4){ note = inv && inv.due ? 'Due ' + hmDay(inv.due) : 'Waiting for payment'; tone = 'y'; }
     else if(lateBy){ note = `${lateBy} day${lateBy > 1 ? 's' : ''} late`; tone = 'r'; }
-    else if(stage === 0) note = tone === 'r' ? 'Waiting for your OK' : 'Waiting for their OK';
+    else if(stage === 0) note = tone === 'r' ? 'Waiting for your OK' : (sell ? "Waiting for customer's OK" : "Waiting for supplier's OK");
     else if(stage === 1) note = rd ? 'Deliver ' + hmDay(rd) : 'Being prepared';
     else if(stage === 2) note = rd ? 'Arrives ' + hmDay(rd) : 'On the way';
     else if(stage === 3){ note = sell ? 'Delivered · bill it' : 'Received · pay the supplier'; if(tone !== 'r') tone = 'y'; }
