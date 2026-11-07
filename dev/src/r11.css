@@ -1,0 +1,284 @@
+  /* ===== Round 11 ===== */
+  /* every table: headers and cells centered (beats the older left-aligned rules) */
+  html[data-ty] #view-app :is(#nfZ,.app-page) :is(#nfZ,table) :is(th,td),
+  html[data-ty] :is(#orderDetailModal,.share-modal,#nfZ) :is(#nfZ,table) :is(th,td){text-align:center !important;}
+  html[data-ty] #view-app :is(#nfZ,.app-page) :is(#nfZ,table) td > :is(.ord-who,.sku-name,.inv-name,.pt-row,.stock-cell){justify-content:center;}
+  html[data-ty] #view-app :is(#nfZ,.app-page) :is(#nfZ,table) td .bar-wrap{margin-left:auto;margin-right:auto;}
+
+  /* cash count: one line with the drawer settings */
+  html[data-ty] #view-app .nf-cc-set{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 10px;margin:4px 0 16px;padding:12px 16px;border-radius:14px;background:#F5F7FA;border:1px solid #E3E7EC;font-size:15.5px;color:#1F2329;}
+  html[data-ty] #view-app .nf-cc-set .sl-link{font-weight:800;color:#1F6B45 !important;padding:0;background:none;border:0;cursor:pointer;font-size:15.5px;text-decoration:underline;text-underline-offset:3px;}
+  html[data-ty] #view-app .nf-cc-dot{color:#94A3B8;}
+  html[data-ty] #view-app #nfCashSet .nf-set-b{padding:0 4px 8px;}
+  html[data-ty] #view-app #nfCashSet .nf-set-b .panel-head{display:none;}
+
+  /* To check: the colour says what kind of problem it is */
+  html[data-ty] #view-app .nf-iss-key{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:center;margin:0 0 14px;padding:12px 16px;border-radius:14px;background:#FFFFFF;border:1px solid #E3E7EC;}
+  html[data-ty] #view-app .nf-iss-key span{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:700;color:#1F2329;}
+  html[data-ty] #view-app .nf-iss-key i{width:12px;height:12px;border-radius:50%;flex:none;}
+  html[data-ty] #view-app .nf-iss-key b{min-width:24px;padding:1px 8px;border-radius:999px;background:#EEF1F4;font-size:13.5px;text-align:center;}
+  html[data-ty] #view-app .nf-iss-key .k-r i{background:#DC2626;} html[data-ty] #view-app .nf-iss-key .k-y i{background:#FACC15;}
+  html[data-ty] #view-app .nf-iss-key .k-b i{background:#2F6FD6;} html[data-ty] #view-app .nf-iss-key .k-g i{background:#98A2B3;}
+  html[data-ty] #view-app .lg-card:is(.nfk-r,.nfk-y,.nfk-b,.nfk-g){border-left-width:5px !important;border-left-style:solid !important;}
+  html[data-ty] #view-app .lg-card.nfk-r{border-left-color:#DC2626 !important;}
+  html[data-ty] #view-app .lg-card.nfk-y{border-left-color:#FACC15 !important;}
+  html[data-ty] #view-app .lg-card.nfk-b{border-left-color:#2F6FD6 !important;}
+  html[data-ty] #view-app .lg-card.nfk-g{border-left-color:#98A2B3 !important;background:#FAFBFC !important;}
+  html[data-ty] #view-app .lg-card.nfk-r .lg-card-h > .lg-pill:not(.st){background:#FEE2E2 !important;color:#B91C1C !important;border-color:#FCA5A5 !important;}
+  html[data-ty] #view-app .lg-card.nfk-y .lg-card-h > .lg-pill:not(.st){background:#FEF9C3 !important;color:#1F2329 !important;border-color:#FACC15 !important;}
+  html[data-ty] #view-app .lg-card.nfk-b .lg-card-h > .lg-pill:not(.st){background:#E6EEF8 !important;color:#1E3A5F !important;border-color:#A9C3E8 !important;}
+  html[data-ty] #view-app .lg-card.nfk-g .lg-card-h > .lg-pill:not(.st){background:#EEF1F4 !important;color:#344054 !important;border-color:#CBD2DA !important;}
+
+  /* date badge used in lists */
+  html[data-ty] #view-app .nf-db{flex:none;width:52px;height:56px;border-radius:12px;background:#FFFFFF;border:1px solid #DDE3EA;display:grid;place-items:center;align-content:center;gap:0;line-height:1;}
+  html[data-ty] #view-app .nf-db small{font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#475467;}
+  html[data-ty] #view-app .nf-db b{font-size:21px;font-weight:800;color:#0E1114;margin-top:3px;}
+  html[data-ty] #view-app .nfc-link{background:none;border:0;padding:6px 4px;font:inherit;font-size:15px;font-weight:700;color:#1F6B45;cursor:pointer;text-decoration:underline;text-underline-offset:3px;}
+  html[data-ty] #view-app .nfc-link.nf-bad-t{color:#B91C1C;}
+
+  /* check payments: grouped by what happens next */
+  html[data-ty] #view-app .nfc-g{background:#FFFFFF;border:1px solid #DDE1E6;border-radius:16px;padding:6px 18px 8px;margin:0 0 14px;border-top:5px solid #CBD2DA;}
+  html[data-ty] #view-app .nfc-g.t-y{border-top-color:#FACC15;} html[data-ty] #view-app .nfc-g.t-b{border-top-color:#2F6FD6;} html[data-ty] #view-app .nfc-g.t-n{border-top-color:#7C9CC9;}
+  html[data-ty] #view-app .nfc-g.t-r{border-top-color:#DC2626;} html[data-ty] #view-app .nfc-g.t-g{border-top-color:#22A06B;}
+  html[data-ty] #view-app .nfc-gh{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 12px;padding:12px 0 8px;}
+  html[data-ty] #view-app .nfc-gh b{font-size:18px;font-weight:800;color:#0E1114;}
+  html[data-ty] #view-app .nfc-gh span{font-size:14.5px;color:#475467;font-style:italic;}
+  html[data-ty] #view-app .nfc-gh em{margin-left:auto;font-style:normal;font-size:18px;font-weight:800;font-variant-numeric:tabular-nums;color:#0E1114;}
+  html[data-ty] #view-app .nfc-row{display:flex;align-items:center;gap:14px;padding:12px 0;border-top:1px solid #EEF1F4;flex-wrap:wrap;}
+  html[data-ty] #view-app .nfc-m{flex:1 1 200px;min-width:0;display:grid;gap:3px;}
+  html[data-ty] #view-app .nfc-m b{font-size:17px;font-weight:700;color:#0E1114;}
+  html[data-ty] #view-app .nfc-m small{font-size:14.5px;color:#475467;}
+  html[data-ty] #view-app .nfc-row > strong{font-size:17px;font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap;}
+  html[data-ty] #view-app .nfc-row .btn-sm{padding:8px 16px !important;font-size:15px !important;border-radius:999px;}
+  html[data-ty] #view-app .nfc-g.t-g .nfc-row{opacity:.8;}
+
+  /* returns & credits */
+  html[data-ty] #view-app .nfr-form{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,.8fr) minmax(0,1.2fr) auto;gap:12px;align-items:end;padding:4px 0 10px;}
+  html[data-ty] #view-app .nfr-form .field{margin:0;} html[data-ty] #view-app .nfr-form .btn{min-height:46px;}
+  html[data-ty] #view-app .nf-tbl td .btn-sm{padding:7px 14px !important;font-size:14.5px !important;border-radius:999px;}
+  html[data-ty] #view-app .nf-sub{display:block;font-size:13.5px;color:#475467;font-weight:500;margin-top:2px;}
+  html[data-ty] #view-app tr.nf-click{cursor:pointer;} html[data-ty] #view-app tr.nf-click:hover td{background:#F8FAFC;}
+  html[data-ty] #view-app tr.nf-tr-bad td:first-child{box-shadow:inset 4px 0 0 #DC2626;}
+  html[data-ty] #view-app .nf-acts{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;}
+
+  /* delivery routes: one circle per stop */
+  html[data-ty] #view-app .nfs-key{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;margin:0 0 12px;font-size:14.5px;font-weight:700;color:#344054;}
+  html[data-ty] #view-app .nfs-key span{display:inline-flex;align-items:center;gap:7px;}
+  html[data-ty] #view-app .nfs-key i{width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:11px;font-weight:900;color:#FFFFFF;}
+  html[data-ty] #view-app .nfs-key .s-done i{background:#22A06B;} html[data-ty] #view-app .nfs-key .s-next i{background:#FFFFFF;box-shadow:inset 0 0 0 3px #2F6FD6;}
+  html[data-ty] #view-app .nfs-key .s-wait i{background:#FFFFFF;box-shadow:inset 0 0 0 2px #CBD2DA;} html[data-ty] #view-app .nfs-key .s-fail i{background:#DC2626;}
+  html[data-ty] #view-app .nfs-card{padding:16px 20px !important;margin-bottom:14px;}
+  html[data-ty] #view-app .nfs-h{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;}
+  html[data-ty] #view-app .nfs-h b{font-size:18px;font-weight:800;color:#0E1114;} html[data-ty] #view-app .nfs-h span{font-size:15px;color:#475467;}
+  html[data-ty] #view-app .nfs-h small{display:block;font-size:14.5px;color:#475467;margin-top:2px;}
+  html[data-ty] #view-app .nfs-prog{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0 6px;}
+  html[data-ty] #view-app .nfs-prog > div{display:grid;grid-template-columns:1fr auto;gap:6px 8px;align-items:baseline;padding:10px 12px;border-radius:12px;background:#F8FAFC;border:1px solid #EEF1F4;}
+  html[data-ty] #view-app .nfs-prog span{font-size:13.5px;font-weight:700;color:#475467;} html[data-ty] #view-app .nfs-prog b{font-size:16px;font-weight:800;font-variant-numeric:tabular-nums;color:#0E1114;}
+  html[data-ty] #view-app .nfs-prog i{grid-column:1 / -1;height:8px;border-radius:999px;background:#E3E7EC;overflow:hidden;display:block;}
+  html[data-ty] #view-app .nfs-prog i u{display:block;height:100%;border-radius:999px;background:#2F6FD6;} html[data-ty] #view-app .nfs-prog i.m u{background:#22A06B;}
+  html[data-ty] #view-app .nfs-list{display:grid;margin-top:6px;position:relative;}
+  html[data-ty] #view-app .nfs-row{display:grid;grid-template-columns:36px minmax(0,1fr) auto;gap:12px;align-items:center;padding:11px 0;border-top:1px solid #EEF1F4;position:relative;}
+  html[data-ty] #view-app .nfs-row:first-child{border-top:0;}
+  html[data-ty] #view-app .nfs-c{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-size:14px;font-weight:900;font-variant-numeric:tabular-nums;}
+  html[data-ty] #view-app .s-done .nfs-c{background:#22A06B;color:#FFFFFF;}
+  html[data-ty] #view-app .s-next .nfs-c{background:#FFFFFF;color:#1E4FA8;box-shadow:inset 0 0 0 3px #2F6FD6, 0 0 0 4px #DCE8FA;}
+  html[data-ty] #view-app .s-wait .nfs-c{background:#FFFFFF;color:#475467;box-shadow:inset 0 0 0 2px #CBD2DA;}
+  html[data-ty] #view-app .s-fail .nfs-c{background:#DC2626;color:#FFFFFF;}
+  html[data-ty] #view-app .nfs-mid{display:grid;gap:2px;min-width:0;} html[data-ty] #view-app .nfs-mid b{font-size:16.5px;font-weight:700;color:#0E1114;}
+  html[data-ty] #view-app .nfs-mid small{font-size:14px;color:#475467;}
+  html[data-ty] #view-app .nfs-r{display:flex;align-items:center;gap:6px;justify-content:flex-end;flex-wrap:wrap;}
+  html[data-ty] #view-app .nfs-m{display:inline-block;padding:5px 11px;border-radius:999px;font-size:14px;font-weight:800;white-space:nowrap;font-variant-numeric:tabular-nums;}
+  html[data-ty] #view-app .nfs-m.got{background:#DCFCE7;color:#15803D;} html[data-ty] #view-app .nfs-m.due{background:#FEF9C3;color:#1F2329;box-shadow:inset 0 0 0 1px #FACC15;}
+  html[data-ty] #view-app .nfs-m.bad{background:#FEE2E2;color:#B91C1C;} html[data-ty] #view-app .nfs-m.none{background:#F1F3F5;color:#475467;font-weight:700;}
+  html[data-ty] #view-app .s-done .nfs-m.due{background:#FEE2E2;color:#B91C1C;box-shadow:none;}
+  html[data-ty] #view-app .nfs-remit{margin-top:10px;padding:10px 14px;border-radius:12px;font-weight:700;font-size:15px;text-align:center;}
+  html[data-ty] #view-app .nfs-remit.ok{background:#F0FBF4;color:#15803D;border:1px solid #BBE5CB;} html[data-ty] #view-app .nfs-remit.bad{background:#FEF2F2;color:#B91C1C;border:1px solid #FCA5A5;}
+  html[data-ty] #view-app .nfs-remit-f{margin-top:12px;padding:14px;border-radius:14px;background:#F5F9FF;border:1px solid #CFE0F7;display:grid;gap:6px;}
+  html[data-ty] #view-app .nfs-remit-f b{font-size:16px;} html[data-ty] #view-app .nfs-remit-f span{font-size:14.5px;color:#344054;}
+  html[data-ty] #view-app .nfs-remit-f div{display:flex;gap:8px;} html[data-ty] #view-app .nfs-remit-f input{flex:1;min-width:0;}
+  html[data-ty] #view-app .nfs-acts{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;margin-top:12px;padding-top:12px;border-top:1px solid #EEF1F4;}
+  html[data-ty] #view-app .nfs-acts .btn-sm{border-radius:999px;padding:8px 16px !important;font-size:14.5px !important;}
+  html[data-ty] #view-app .nfs-past-h{margin-top:26px;}
+  html[data-ty] #view-app #routeBody .cq-tiles{margin-bottom:14px;}
+  /* route planner: 3 numbered steps */
+  html[data-ty] #view-app .nfp-step{display:flex;align-items:center;gap:12px;margin:20px 0 10px;}
+  html[data-ty] #view-app .nfp-step:first-child{margin-top:0;}
+  html[data-ty] #view-app .nfp-step > i{flex:none;width:34px;height:34px;border-radius:50%;background:#1F6B45;color:#FFFFFF;font-style:normal;font-weight:800;font-size:16px;display:grid;place-items:center;}
+  html[data-ty] #view-app .nfp-step b{display:block;font-size:18px;font-weight:800;color:#0E1114;} html[data-ty] #view-app .nfp-step small{display:block;font-size:14.5px;color:#475467;}
+  html[data-ty] #view-app #routeBody .rt-cand{padding:14px 16px !important;}
+  html[data-ty] #view-app #routeBody .rt-section:has(+ .nfp-step), html[data-ty] #view-app #routeBody .nfp-step + .rt-section{margin-top:4px;}
+  /* My run: every stop already open */
+  html[data-ty] #view-app .rl-stop .rl-station{cursor:default;}
+
+  /* tax books tiles: amount big, label clear, details small */
+  html[data-ty] #view-app #page-books .cq-tile{gap:6px;border-left:5px solid #CBD2DA !important;}
+  html[data-ty] #view-app #page-books .cq-tile:nth-child(1){border-left-color:#2F6FD6 !important;}
+  html[data-ty] #view-app #page-books .cq-tile:nth-child(2){border-left-color:#7C5CD6 !important;}
+  html[data-ty] #view-app #page-books .cq-tile:nth-child(3){border-left-color:#98A2B3 !important;}
+  html[data-ty] #view-app #page-books .cq-tile:nth-child(4){border-left-color:#22A06B !important;}
+  html[data-ty] #view-app #page-books .cq-tile-l{font-size:14.5px !important;font-weight:800 !important;color:#475467 !important;letter-spacing:.02em;}
+  html[data-ty] #view-app #page-books .cq-tile-v{font-size:max(22px, min(30px, 15cqi)) !important;font-weight:800 !important;color:#0E1114 !important;letter-spacing:-.01em;}
+  html[data-ty] #view-app #page-books .cq-tile-n{font-size:13.5px !important;font-weight:500 !important;font-style:italic;color:#667085 !important;}
+
+  /* BIR 2307 */
+  html[data-ty] #view-app .nf23-hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:18px;align-items:stretch;margin:0 0 16px;}
+  html[data-ty] #view-app .nf23-big{background:#FFFFFF;border:1px solid #DDE1E6;border-radius:18px;padding:20px 22px;display:grid;gap:6px;align-content:start;border-top:5px solid #22A06B;}
+  html[data-ty] #view-app .nf23-hero.bad .nf23-big{border-top-color:#DC2626;}
+  html[data-ty] #view-app .nf23-big > small{font-size:14.5px;font-weight:800;color:#475467;}
+  html[data-ty] #view-app .nf23-big > b{font-size:34px;font-weight:800;color:#0E1114;letter-spacing:-.01em;font-variant-numeric:tabular-nums;line-height:1.1;}
+  html[data-ty] #view-app .nf23-big > span{font-size:15.5px;color:#1F2329;line-height:1.45;}
+  html[data-ty] #view-app .nf23-big > i{display:block;height:10px;border-radius:999px;background:#E3E7EC;overflow:hidden;margin-top:6px;}
+  html[data-ty] #view-app .nf23-big > i u{display:block;height:100%;background:#22A06B;border-radius:999px;}
+  html[data-ty] #view-app .nf23-big > em{font-style:normal;font-size:13.5px;font-weight:700;color:#475467;}
+  html[data-ty] #view-app .t-r{color:#B91C1C !important;} html[data-ty] #view-app .t-g{color:#15803D !important;}
+  html[data-ty] #view-app .nf23-how{list-style:none;margin:0;padding:18px 20px;border-radius:18px;background:#F5F9FF;border:1px solid #D6E4F7;display:grid;gap:12px;align-content:center;counter-reset:s;}
+  html[data-ty] #view-app .nf23-how li{display:flex;gap:12px;align-items:center;font-size:16px;font-weight:600;color:#0E1114;line-height:1.35;}
+  html[data-ty] #view-app .nf23-how li > i{flex:none;width:30px;height:30px;border-radius:50%;background:#2F6FD6;color:#FFFFFF;font-style:normal;font-weight:800;display:grid;place-items:center;font-size:14.5px;}
+  html[data-ty] #view-app #page-taxforms .nf-steps{display:none !important;}
+
+  /* Home: how the business is doing */
+  html[data-ty] #mhHome #nfHomeReport .nft-wrap{display:grid;grid-template-columns:minmax(0,1.9fr) minmax(220px,1fr);gap:18px;align-items:stretch;}
+  html[data-ty] #mhHome .nft-chart{max-width:640px;width:100%;justify-self:center;padding:8px 6px 0;}
+  html[data-ty] #mhHome .nft-svg{width:100%;height:auto;display:block;overflow:visible;}
+  html[data-ty] #mhHome .nft-svg text{font-family:inherit;}
+  html[data-ty] #mhHome .nft-avg{font-size:11px;font-weight:700;fill:#64748B;}
+  html[data-ty] #mhHome .nft-cap{font-size:10.5px;font-weight:800;letter-spacing:.08em;fill:#64748B;}
+  html[data-ty] #mhHome .nft-v{font-size:12px;font-weight:800;fill:#344054;} html[data-ty] #mhHome .nft-v.now{fill:#1E4FA8;}
+  html[data-ty] #mhHome .nft-m{font-size:12.5px;font-weight:700;fill:#475467;} html[data-ty] #mhHome .nft-m.now{fill:#0E1114;font-weight:800;}
+  html[data-ty] #mhHome .nft-p{font-size:12px;font-weight:800;} html[data-ty] #mhHome .nft-p.g{fill:#15803D;} html[data-ty] #mhHome .nft-p.l{fill:#B91C1C;}
+  html[data-ty] #mhHome .nft-side{display:grid;gap:10px;align-content:start;}
+  html[data-ty] #mhHome .nft-k{padding:12px 14px;border-radius:14px;background:#FFFFFF;border:1px solid #E3E7EC;display:grid;gap:3px;}
+  html[data-ty] #mhHome .nft-k small{font-size:13.5px;font-weight:700;color:#475467;}
+  html[data-ty] #mhHome .nft-k b{font-size:19px;font-weight:800;color:#0E1114;font-variant-numeric:tabular-nums;}
+  html[data-ty] #mhHome .nft-k > span{font-size:13.5px;color:#475467;font-style:italic;}
+  html[data-ty] #mhHome .nft-k.bad{background:#FEF6F6;border-color:#F7C9C9;}
+  html[data-ty] #mhHome .nft-lists{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:18px;padding-top:16px;border-top:1px solid #E3E7EC;}
+  html[data-ty] #mhHome .nft-lists h5{margin:0 0 10px;font-size:16px;font-weight:800;color:#0E1114;} html[data-ty] #mhHome .nft-lists h5 small{font-weight:600;color:#667085;font-size:13px;}
+  html[data-ty] #mhHome .nft-lists .nf-bar{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;align-items:center;margin-bottom:10px;}
+  html[data-ty] #mhHome .nft-lists .nf-bar-k{font-size:14.5px;font-weight:600;color:#1F2329;display:flex;gap:8px;align-items:center;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  html[data-ty] #mhHome .nft-lists .nf-bar-k i{flex:none;width:20px;height:20px;border-radius:50%;background:#EEF1F4;font-style:normal;font-size:11.5px;font-weight:800;display:grid;place-items:center;}
+  html[data-ty] #mhHome .nft-lists .nf-bar-t{grid-column:1 / -1;grid-row:2;height:6px;border-radius:999px;background:#EEF1F4;overflow:hidden;display:block;}
+  html[data-ty] #mhHome .nft-lists .nf-bar-t u{display:block;height:100%;background:#7C9CC9;border-radius:999px;}
+  html[data-ty] #mhHome .nft-lists .nf-bar > b{font-size:14px;font-weight:800;font-variant-numeric:tabular-nums;}
+
+  /* Find customers / Find suppliers */
+  html[data-ty] #view-app .nfx-switch{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 16px;}
+  html[data-ty] #view-app .nfx-switch button{display:grid;gap:3px;text-align:center;padding:14px 16px;border-radius:16px;border:1.5px solid #DDE1E6;background:#FFFFFF;cursor:pointer;font:inherit;}
+  html[data-ty] #view-app .nfx-switch button b{font-size:17px;font-weight:800;color:#0E1114;} html[data-ty] #view-app .nfx-switch button small{font-size:14px;color:#475467;}
+  html[data-ty] #view-app .nfx-switch button.on{border-color:#1F6B45;background:#F3FAF6;box-shadow:0 0 0 3px #DCEFE3;}
+  html[data-ty] #view-app #page-discover:not(.nfx-cust) #nfFind{display:none;}
+  html[data-ty] #view-app #page-discover.nfx-cust :is(#discGrid,#discCategoryChips,#discViewLabel,#discoverPriceInsights,#myCatalogLinkNote,.note-card){display:none !important;}
+  html[data-ty] #view-app #nfFind{margin-bottom:18px;}
+  html[data-ty] #view-app .nfx-filters{display:grid;gap:10px;margin:0 0 14px;padding:14px 16px;border-radius:16px;background:#FFFFFF;border:1px solid #E3E7EC;}
+  html[data-ty] #view-app .nfx-filters > div{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  html[data-ty] #view-app .nfx-filters > div > span{font-size:14px;font-weight:800;color:#475467;min-width:120px;}
+  html[data-ty] #view-app .nfx-chips{display:flex;flex-wrap:wrap;gap:6px;}
+  html[data-ty] #view-app .nfx-chips button{padding:7px 14px;border-radius:999px;border:1.5px solid #DDE1E6;background:#FFFFFF;font:inherit;font-size:14.5px;font-weight:700;color:#1F2329;cursor:pointer;}
+  html[data-ty] #view-app .nfx-chips button.on{background:#1F6B45;border-color:#1F6B45;color:#FFFFFF;}
+  html[data-ty] #view-app .nfx-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;}
+  html[data-ty] #view-app .nfx-card{background:#FFFFFF;border:1px solid #DDE1E6;border-radius:16px;padding:16px 18px;display:grid;gap:10px;align-content:start;}
+  html[data-ty] #view-app .nfx-card.fit{border-color:#A7D9BC;box-shadow:inset 0 4px 0 #22A06B;}
+  html[data-ty] #view-app .nfx-top{display:grid;grid-template-columns:44px minmax(0,1fr);gap:4px 12px;align-items:center;}
+  html[data-ty] #view-app .nfx-top .nf-av{width:44px;height:44px;border-radius:50%;overflow:hidden;display:block;}
+  html[data-ty] #view-app .nfx-top b{display:block;font-size:17px;font-weight:800;color:#0E1114;} html[data-ty] #view-app .nfx-top small{display:block;font-size:14px;color:#475467;}
+  html[data-ty] #view-app .nfx-top .nf-pill{grid-column:1 / -1;justify-self:start;font-size:13.5px !important;}
+  html[data-ty] #view-app .nfx-card p{margin:0;font-size:15px;color:#1F2329;line-height:1.4;}
+  html[data-ty] #view-app .nfx-buys{display:flex;flex-wrap:wrap;gap:6px;align-items:center;}
+  html[data-ty] #view-app .nfx-buys > span{font-size:13px;font-weight:800;color:#667085;margin-right:2px;}
+  html[data-ty] #view-app .nfx-buys em{font-style:normal;padding:4px 10px;border-radius:999px;background:#F1F3F5;font-size:13.5px;font-weight:600;color:#344054;}
+  html[data-ty] #view-app .nfx-buys em.m{background:#DCFCE7;color:#15803D;font-weight:800;}
+  html[data-ty] #view-app .nfx-val{font-size:14.5px;color:#344054;} html[data-ty] #view-app .nfx-val b{color:#0E1114;}
+  html[data-ty] #view-app .nfx-acts{display:flex;flex-wrap:wrap;gap:8px;padding-top:4px;}
+  html[data-ty] #view-app .nfx-acts .btn-sm{border-radius:999px;padding:8px 16px !important;font-size:14.5px !important;}
+  html[data-ty] #view-app .nfx-note{margin:12px 0 0;text-align:center;font-size:14px;color:#667085;font-style:italic;}
+  /* intro message box */
+  html[data-ty] .sl-ta{width:100%;box-sizing:border-box;border:1.5px solid #D5DBE2;border-radius:12px;padding:12px;font:inherit;font-size:15.5px;line-height:1.45;resize:vertical;margin:8px 0 12px;}
+
+  /* More tools never folds */
+  .sidebar .nav-more .heading{cursor:default;}
+
+  @media (max-width:760px){
+    html.nf-phone #view-app :is(#nfZ,.app-page) :is(#nfZ,table.nf-cardtable) td{align-items:center !important;text-align:center !important;}
+    html.nf-phone #view-app :is(#nfZ,.app-page) :is(#nfZ,table.nf-cardtable) td:last-child:has(> :is(.btn,.row-action,.ord-view,.nf-acts)){justify-content:center;}
+    html.nf-phone #view-app :is(#nfZ,.app-page) :is(#nfZ,table.nf-cardtable) tr:has(> td:nth-child(4):last-child) > td:nth-child(4){justify-content:center !important;gap:8px;}
+    html.nf-phone :is(#orderDetailModal,#nfZ) :is(#nfZ,table.nf-cardtable) td{align-items:center !important;text-align:center !important;}
+    html.nf-phone #view-app tr.nf-tr-bad{box-shadow:inset 4px 0 0 #DC2626 !important;} html.nf-phone #view-app tr.nf-tr-bad td:first-child{box-shadow:none;}
+    html.nf-phone #view-app .nfr-form{grid-template-columns:1fr 1fr;} html.nf-phone #view-app .nfr-form .field:first-child{grid-column:1 / -1;}
+    html.nf-phone #view-app .nfr-form .field:nth-child(3){grid-column:1 / -1;} html.nf-phone #view-app .nfr-form .btn{grid-column:1 / -1;}
+    html.nf-phone #view-app .nfc-g{padding:4px 14px 6px;}
+    html.nf-phone #view-app .nfc-gh b{font-size:16.5px;} html.nf-phone #view-app .nfc-gh em{font-size:16px;}
+    html.nf-phone #view-app .nfc-row{display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:6px 12px;}
+    html.nf-phone #view-app .nfc-row .nf-db{width:46px;height:50px;} html.nf-phone #view-app .nfc-row .nf-db b{font-size:18px;}
+    html.nf-phone #view-app .nfc-row > :is(.btn,.nfc-link){grid-column:1 / -1;justify-self:stretch;}
+    html.nf-phone #view-app .nfc-row > .nfc-link{justify-self:center;}
+    html.nf-phone #view-app .nfc-m b{font-size:15.5px;} html.nf-phone #view-app .nfc-m small{font-size:13px;} html.nf-phone #view-app .nfc-row > strong{font-size:15.5px;}
+    html.nf-phone #view-app .nfs-card{padding:14px !important;}
+    html.nf-phone #view-app .nfs-prog{grid-template-columns:1fr;gap:8px;}
+    html.nf-phone #view-app .nfs-row{grid-template-columns:32px minmax(0,1fr);gap:4px 10px;}
+    html.nf-phone #view-app .nfs-r{grid-column:2;justify-content:flex-start;}
+    html.nf-phone #view-app .nfs-c{width:30px;height:30px;font-size:13px;}
+    html.nf-phone #view-app .nfs-mid b{font-size:15.5px;} html.nf-phone #view-app .nfs-mid small{font-size:13px;}
+    html.nf-phone #view-app .nfs-m{font-size:13px;padding:4px 10px;}
+    html.nf-phone #view-app .nfs-key{font-size:13px;gap:6px 12px;}
+    html.nf-phone #view-app .nfp-step b{font-size:16.5px;} html.nf-phone #view-app .nfp-step small{font-size:13.5px;}
+    html.nf-phone #view-app .nf23-hero{grid-template-columns:1fr;gap:12px;}
+    html.nf-phone #view-app .nf23-big{padding:16px;} html.nf-phone #view-app .nf23-big > b{font-size:28px;}
+    html.nf-phone #view-app .nf23-big > span{font-size:14.5px;}
+    html.nf-phone #view-app .nf23-how{padding:14px 16px;gap:10px;} html.nf-phone #view-app .nf23-how li{font-size:14.5px;}
+    html.nf-phone #mhHome #nfHomeReport .nft-wrap{grid-template-columns:1fr;gap:12px;}
+    html.nf-phone #mhHome .nft-side{grid-template-columns:1fr 1fr;gap:8px;}
+    html.nf-phone #mhHome .nft-k{padding:10px 12px;} html.nf-phone #mhHome .nft-k b{font-size:16px;} html.nf-phone #mhHome .nft-k small{font-size:12.5px;}
+    html.nf-phone #mhHome .nft-k.bad{grid-column:1 / -1;}
+    html.nf-phone #mhHome .nft-lists{grid-template-columns:1fr;gap:14px;}
+    html.nf-phone #view-app .nfx-switch button{padding:12px 10px;} html.nf-phone #view-app .nfx-switch button b{font-size:15.5px;} html.nf-phone #view-app .nfx-switch button small{font-size:12.5px;}
+    html.nf-phone #view-app .nfx-filters > div{display:grid;gap:6px;} html.nf-phone #view-app .nfx-filters > div > span{min-width:0;}
+    html.nf-phone #view-app .nfx-chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;} html.nf-phone #view-app .nfx-chips button{flex:none;}
+    html.nf-phone #view-app .nfx-grid{grid-template-columns:minmax(0,1fr);}
+    html.nf-phone #view-app .nf-cc-set{font-size:14px;} html.nf-phone #view-app .nf-cc-set .sl-link{font-size:14px;} html.nf-phone #view-app .nf-cc-dot{display:none;}
+    html.nf-phone #view-app .nf-iss-key{gap:8px 12px;padding:10px 12px;} html.nf-phone #view-app .nf-iss-key span{font-size:13.5px;}
+  }
+  /* the typed total already shows the amount */
+  html[data-ty] #view-app #page-cashcount .qs-sum:has(#ccTotal){display:none !important;}
+  html[data-ty] #view-app .lg-card.nfk-r .lg-card-h > .bk-dot{background:#DC2626 !important;} html[data-ty] #view-app .lg-card.nfk-y .lg-card-h > .bk-dot{background:#FACC15 !important;}
+  html[data-ty] #view-app .lg-card.nfk-b .lg-card-h > .bk-dot{background:#2F6FD6 !important;} html[data-ty] #view-app .lg-card.nfk-g .lg-card-h > .bk-dot{background:#98A2B3 !important;}
+  html[data-ty] #view-app .nf-iss-key span.z{opacity:.5;}
+  html[data-ty] #view-app #routeBody .rt-section label{text-transform:none;letter-spacing:0;font-size:14.5px !important;font-weight:700 !important;color:#1F2329;}
+  /* My run: every stop is open, so the "last saved" strip and the repeated note go */
+  html[data-ty] #view-app #routeBody .rl-last{display:none !important;}
+  html[data-ty] #mhHome .nft-legend{display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:center;margin:0 0 4px;font-size:13px;font-weight:700;color:#475467;}
+  html[data-ty] #mhHome .nft-legend span{display:inline-flex;align-items:center;gap:6px;}
+  html[data-ty] #mhHome .nft-legend i{width:12px;height:12px;border-radius:4px;display:inline-block;}
+  html[data-ty] #mhHome .nft-legend i.s{background:#C7D7EE;} html[data-ty] #mhHome .nft-legend i.g{background:#22A06B;} html[data-ty] #mhHome .nft-legend i.l{background:#EF4444;}
+  html[data-ty] #mhHome .nft-legend i.a{width:16px;height:0;border-radius:0;border-top:2px dashed #94A3B8;}
+  @media (max-width:760px){
+    html.nf-phone #mhHome .nft-chart{padding:4px 0 0;}
+    html.nf-phone #mhHome .nft-legend{font-size:12px;gap:4px 10px;}
+    html.nf-phone #mhHome .nft-v{font-size:11.5px;} html.nf-phone #mhHome .nft-m{font-size:12.5px;} html.nf-phone #mhHome .nft-p{font-size:11.5px;}
+    html.nf-phone #mhHome .nft-k:is(:nth-child(3),.bad){grid-column:1 / -1;}
+  }
+  html[data-ty] #view-app #page-discover.active{display:flex !important;flex-direction:column;}
+  html[data-ty] #view-app #page-discover > :is(.toggle-banner,#discProfileForm,.panel-card:has(#discoveryLeadsContent),.note-card){order:5;}
+  html[data-ty] #view-app #page-discover > .toggle-banner{margin-top:18px;}
+  html[data-ty] #view-app .nfx-cat-h{display:block;margin-top:10px;font-size:13px;font-weight:800;color:#667085;letter-spacing:.04em;text-transform:uppercase;}
+  html[data-ty] #view-app #discGrid [id^="discCatalog_"] table{margin-top:4px;}
+  html[data-ty] #view-app #page-books .cq-tile-n{font-size:14px !important;color:#475467 !important;}
+  html[data-ty] #view-app #page-books table :is(th,td){padding-left:8px !important;padding-right:8px !important;}
+  @media (max-width:760px){
+    html.nf-phone #view-app :is(#nfZ,.app-page) :is(#nfZ,table.nf-cardtable) td{white-space:normal !important;overflow-wrap:anywhere;}
+    html.nf-phone #view-app :is(#nfZ,.app-page) :is(#nfZ,table.nf-cardtable) td > *{max-width:100%;}
+    html.nf-phone #view-app .nf-iss-key{display:grid;grid-template-columns:1fr 1fr;justify-content:stretch;}
+    html.nf-phone #view-app .nf-iss-key span{font-size:13px;gap:6px;}
+    html.nf-phone #view-app .lg-card:is(.nfk-r,.nfk-y,.nfk-b,.nfk-g) .lg-card-h > .bk-dot{display:none !important;}
+  }
+  @media (max-width:760px){
+    html.nf-phone #view-app #page-routes .role-toggle.store-tabs{display:grid !important;grid-template-columns:repeat(auto-fit,minmax(0,1fr));gap:4px;overflow:visible;}
+    html.nf-phone #view-app #page-routes .role-toggle.store-tabs button{padding:9px 4px !important;font-size:14px !important;justify-content:center;white-space:nowrap;min-width:0;}
+  }
+  @media (max-width:760px){
+    html.nf-phone table.nf-cardtable tfoot tr{display:grid !important;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 12px;padding:12px 14px;border:1px solid #CBD2DA !important;border-radius:14px;background:#F5F7FA;margin-top:10px;}
+    html.nf-phone table.nf-cardtable tfoot td{display:flex !important;flex-direction:column;align-items:center;gap:2px;padding:0 !important;border:0 !important;font-weight:800;}
+    html.nf-phone table.nf-cardtable tfoot td.nf-foot-h{grid-column:1 / -1;font-size:16px !important;}
+    html.nf-phone table.nf-cardtable tfoot td:empty{display:none !important;}
+    html.nf-phone #view-app .nf-acts .btn-sm{white-space:nowrap;}
+  }
+  @media (max-width:760px){ html.nf-phone table.nf-cardtable td .nf-pill{white-space:normal;text-align:center;max-width:100%;} }
