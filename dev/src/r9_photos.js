@@ -46,7 +46,7 @@ async function nfOpAdd(poId, kind, dataUrl, caption){
 // the "Proof photos" card inside the order sheet
 function nfOpCardHtml(o, sell){
   const k = nfOpKindFor(o, sell);
-  return `<section class="nfo-photos" id="nfoPhotos" data-po="${o.id}"><div class="nfo-sec">Proof photos <small>Both sides can see these. They can't be changed or deleted.</small></div>
+  return `<section class="nfo-photos" id="nfoPhotos" data-po="${o.id}"><div class="nfo-sec">Proof photos <small>Both sides of this order can see these photos.</small></div>
     <div class="nf-op-grid" id="nfOpGrid"><div class="nf-op-empty">Loading photos…</div></div>
     <div class="nf-op-kind" id="nfOpKind">${NF_OP_KINDS.filter(x => sell ? x[0] !== 'received' : x[0] !== 'shipped').map(([v, l]) => `<button type="button" class="${v === k ? 'on' : ''}" data-v="${v}">${l}</button>`).join('')}</div>
     <div class="nf-op-acts"><button type="button" class="btn btn-primary" onclick="nfOpShoot()"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 4h-5L7.5 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3.5z"/><circle cx="12" cy="13" r="3.5"/></svg>Take a photo</button>

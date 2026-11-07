@@ -74,11 +74,11 @@ function nfLaneTabs(){
 function nfCardTables(){
   document.querySelectorAll('#view-app table, #orderDetailModal table').forEach(t => {
     if(t.dataset.nfCard === '1' || t.closest('.cal, .mh-cal, .nfb, #mhSheet')) return;
-    const heads = [...t.querySelectorAll('thead th')].map(th => th.textContent.replace(/[▲▼ⓘ]/g, '').trim());
+    const heads = [...t.querySelectorAll('thead th')].map(th => th.textContent.replace(/[▲▼ⓘ−↑↓⇅↕]/g, '').trim());
     if(heads.length < 3) return;
     t.dataset.nfCard = '1'; t.classList.add('nf-cardtable');
   });
-  document.querySelectorAll('table.nf-cardtable').forEach(t => { const heads = [...t.querySelectorAll('thead th')].map(th => th.textContent.replace(/[▲▼ⓘ]/g, '').trim());
+  document.querySelectorAll('table.nf-cardtable').forEach(t => { const heads = [...t.querySelectorAll('thead th')].map(th => th.textContent.replace(/[▲▼ⓘ−↑↓⇅↕]/g, '').trim());
     t.querySelectorAll('tbody tr').forEach(tr => { if(tr.dataset.nfL === String(heads.length)) return; tr.dataset.nfL = String(heads.length);
       [...tr.children].forEach((td, i) => { if(td.tagName === 'TD' && !td.hasAttribute('data-label')) td.setAttribute('data-label', heads[i] || ''); if(td.colSpan > 1) td.classList.add('nf-span'); }); }); });
 }

@@ -141,10 +141,10 @@ function srSection(){
   };
   const key = days
     ? `<div class="sr-key"><p><b>Smart colours</b> use each supplier's delivery time and your ${L.critical}-day critical level.</p><ul>
-        <li><i class="r"></i><b>Red · order today:</b> at or under the black line. Without an order now, stock drops below ${L.critical} days before the delivery arrives.</li>
-        <li><i class="y"></i><b>Yellow · order soon:</b> within ${L.warn} days of the line.</li>
-        <li><i class="g"></i><b>Green · covered:</b> more than that.</li>
-        <li><u></u><b>Black line · reorder point:</b> delivery time + ${L.critical} days.</li></ul></div>`
+        <li><i class="r"></i><b>Red · order today</b><span class="sr-kd">: at or under the black line. Without an order now, stock drops below ${L.critical} days before the delivery arrives.</span></li>
+        <li><i class="y"></i><b>Yellow · order soon</b><span class="sr-kd">: within ${L.warn} days of the line.</span></li>
+        <li><i class="g"></i><b>Green · covered</b><span class="sr-kd">: more than that.</span></li>
+        <li><u></u><b>Black line · reorder point</b><span class="sr-kd">: delivery time + ${L.critical} days.</span></li></ul></div>`
     : `<div class="sr-key"><p><b>${srPeso(total)} on the shelf at cost.</b>${total ? ` ${Math.round(slowV / total * 100)}% of it is slow or not selling.` : ''}</p><ul class="sr-inline">
         <li><i class="r"></i>Running out</li><li><i class="y"></i>Order soon</li><li><i class="g"></i>Healthy</li><li><i class="slow"></i>Slow or not selling: cash tied up</li></ul></div>`;
   return `<div class="sect-h"><h4>What runs out</h4><span class="mh-sp"></span>

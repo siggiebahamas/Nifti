@@ -1,0 +1,103 @@
+  /* More options: no second copy of the order's header and items */
+  html[data-ty] .nfo-legacy :is(.od-head,.od-items,.od-sums){display:none !important;}
+  /* nicer file pickers everywhere */
+  html[data-ty] input[type=file]{font-size:14px;max-width:100%;}
+  html[data-ty] input[type=file]::file-selector-button{border:1.5px solid #D5DBE2;border-radius:12px;background:#FFFFFF;padding:9px 14px;margin-right:10px;font:inherit;font-weight:700;color:#1F2329;cursor:pointer;}
+  html[data-ty] input[type=file]::file-selector-button:hover{border-color:#1F6B45;}
+  @media (max-width:760px){
+    html.nf-phone .nfo-li{grid-template-columns:minmax(0,1fr) auto !important;}
+    html.nf-phone .nfo-li > b{grid-column:1;grid-row:1;}
+    html.nf-phone .nfo-li > strong{grid-column:2;grid-row:1;}
+    html.nf-phone .nfo-li > span{grid-column:auto !important;grid-row:auto !important;}
+    html.nf-phone .nfo-li:not(.sub):not(.tot) > span{grid-column:1 !important;grid-row:2 !important;font-size:13.5px;}
+    html.nf-phone .nfo-li:is(.sub,.tot) > span:nth-child(2){display:none;}
+    html.nf-phone .nfo-li:is(.sub,.tot) > span:first-child{grid-column:1;grid-row:1;}
+    /* status chips: one swipeable row */
+    html.nf-phone #view-app .ord-seg{flex-wrap:nowrap !important;overflow-x:auto !important;scrollbar-width:none;gap:6px !important;}
+    html.nf-phone #view-app .ord-seg::-webkit-scrollbar{display:none;}
+    html.nf-phone #view-app .ord-seg button{flex:none !important;padding:7px 12px !important;font-size:14px !important;}
+    html.nf-phone #view-app .ord-quick{mask-image:linear-gradient(90deg,#000 85%,transparent);-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent);}
+    html.nf-phone #view-app .ord-q{font-size:14px !important;padding:7px 12px !important;}
+  }
+  @media (max-width:760px){
+    /* cards made from tables: small sentence-case labels, 3 values side by side when a row has 3 numbers */
+    html.nf-phone table.nf-cardtable td::before{text-transform:none !important;letter-spacing:0 !important;font-size:12px !important;font-weight:700 !important;color:#475467 !important;}
+    html.nf-phone table.nf-cardtable tr:has(> td:nth-child(4):last-child){grid-template-columns:repeat(3,minmax(0,1fr)) !important;}
+    html.nf-phone table.nf-cardtable td{font-size:14.5px !important;}
+    html.nf-phone table.nf-cardtable td:first-child{font-size:15.5px !important;}
+    /* Stock: summary boxes two across, the three buttons in one row, compact item cards */
+    html.nf-phone #page-inventory .bk-stock-t{display:grid !important;grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:10px !important;}
+    html.nf-phone #page-inventory .bk-stock .bk-actions{display:grid !important;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px !important;}
+    html.nf-phone #page-inventory .bk-stock .bk-actions .btn{white-space:normal !important;font-size:13.5px !important;padding:6px 4px !important;line-height:1.2;min-height:46px;justify-content:center;text-align:center;}
+    html.nf-phone #page-inventory table.nf-cardtable tr{grid-template-columns:minmax(0,1fr) minmax(0,1fr) !important;gap:6px 12px !important;padding:12px !important;}
+    html.nf-phone #page-inventory table.nf-cardtable td:nth-child(1){grid-column:1 / 2;grid-row:1;}
+    html.nf-phone #page-inventory table.nf-cardtable td:nth-child(3){grid-column:2;grid-row:1;align-items:flex-end;justify-self:end;}
+    html.nf-phone #page-inventory table.nf-cardtable td:nth-child(3)::before, html.nf-phone #page-inventory table.nf-cardtable td:nth-child(2)::before{display:none !important;}
+    html.nf-phone #page-inventory table.nf-cardtable td:nth-child(2){grid-column:1 / -1;grid-row:2;}
+    html.nf-phone #page-inventory table.nf-cardtable td:nth-child(2) .stock-cell{display:flex !important;align-items:center;gap:10px;width:100%;flex-wrap:wrap;}
+    html.nf-phone #page-inventory table.nf-cardtable td:nth-child(2) .bar-wrap{flex:1 1 140px;}
+    html.nf-phone #page-inventory table.nf-cardtable td:nth-child(4){grid-column:1;grid-row:3;} html.nf-phone #page-inventory table.nf-cardtable td:nth-child(5){grid-column:2;grid-row:3;}
+    html.nf-phone #page-inventory table.nf-cardtable td:nth-child(6), html.nf-phone #page-inventory table.nf-cardtable td:nth-child(7){grid-row:4;flex-direction:row !important;}
+    html.nf-phone #page-inventory table.nf-cardtable td:nth-child(6)::before, html.nf-phone #page-inventory table.nf-cardtable td:nth-child(7)::before{display:none !important;}
+    html.nf-phone #page-inventory table.nf-cardtable td:nth-child(6) .row-action, html.nf-phone #page-inventory table.nf-cardtable td:nth-child(7) .row-action{width:100%;justify-content:center;}
+    html.nf-phone #page-inventory table.nf-cardtable .status-pill-icon{white-space:nowrap;font-size:12.5px !important;}
+    html.nf-phone #page-inventory table.nf-cardtable .sku-name{font-size:15.5px !important;}
+    /* Customers & suppliers: compact cards, two buttons side by side */
+    html.nf-phone #view-app .nf-pt{grid-template-columns:44px minmax(0,1fr) !important;gap:4px 12px !important;padding:12px !important;}
+    html.nf-phone #view-app .nf-pt .pt-av{width:44px !important;height:44px !important;grid-row:1 / span 2;}
+    html.nf-phone #view-app .nf-pt .pt-name{font-size:15.5px !important;}
+    html.nf-phone #view-app .nf-pt-m small{font-size:13px !important;}
+    html.nf-phone #view-app .nf-pt > .nf-pill{grid-column:2;justify-self:start;font-size:12px !important;}
+    html.nf-phone #view-app .nf-pt-a{grid-column:1 / -1 !important;display:grid !important;grid-template-columns:1fr 1fr;gap:8px !important;margin-top:4px;}
+    html.nf-phone #view-app .nf-pt-a .btn{width:100%;justify-content:center;min-height:40px !important;font-size:14px !important;}
+    /* Books & reports tabs: one swipeable row */
+    html.nf-phone #view-app .lens-tabs.lg-tabs{display:flex !important;flex-wrap:nowrap !important;overflow-x:auto !important;scrollbar-width:none;width:100% !important;}
+    html.nf-phone #view-app .lens-tabs.lg-tabs::-webkit-scrollbar{display:none;}
+    html.nf-phone #view-app .lens-tabs.lg-tabs button{flex:none !important;white-space:nowrap !important;padding:8px 14px !important;font-size:14px !important;}
+    /* Cash count: bills three across */
+    html.nf-phone #view-app .cc-den{display:grid !important;grid-template-columns:repeat(3,minmax(0,1fr)) !important;gap:8px !important;}
+    html.nf-phone #view-app .cc-den label{padding:8px !important;min-height:0 !important;gap:2px !important;border-radius:12px !important;}
+    html.nf-phone #view-app .cc-den label > span{font-size:13px !important;font-weight:800;}
+    html.nf-phone #view-app .cc-den input{min-height:40px !important;padding:6px 8px !important;width:100%;}
+    html.nf-phone #view-app .cc-den small{font-size:12px !important;}
+    /* rows with a button on the right: text full width, amount and button underneath */
+    html.nf-phone #view-app .sl-row:has(.sl-right :is(button,.hm-go)){flex-wrap:wrap !important;row-gap:8px;}
+    html.nf-phone #view-app .sl-row:has(.sl-right :is(button,.hm-go)) .sl-mid{flex:1 1 calc(100% - 56px) !important;min-width:0;}
+    html.nf-phone #view-app .sl-row:has(.sl-right :is(button,.hm-go)) .sl-right{flex:1 1 100% !important;display:flex !important;flex-direction:row !important;justify-content:space-between;align-items:center;padding-left:52px;}
+    html.nf-phone #view-app .qt-hint{display:block;}
+    /* switches never sit on top of text */
+    html.nf-phone #view-app .switch{transform:none !important;margin:0 0 0 12px !important;flex:none !important;}
+    html.nf-phone #view-app .toggle-row{gap:12px;align-items:flex-start;}
+    html.nf-phone #view-app .toggle-row > div:first-child{flex:1 1 auto;min-width:0;}
+    /* Reports chart: amounts fit their columns */
+    html.nf-phone #view-app .nf-col b, html.nf-phone #view-app .nf-col em{font-size:11px !important;letter-spacing:-.04em;}
+    html.nf-phone #view-app .nf-col small{font-size:12.5px !important;}
+    /* New sale line: item on top, quantity and price below */
+    html.nf-phone .qs-line{display:grid !important;grid-template-columns:76px auto minmax(0,1fr) auto;gap:6px 8px !important;align-items:center;}
+    html.nf-phone .qs-line .qs-prod{grid-column:1 / -1;width:100% !important;}
+    html.nf-phone .qs-line .qs-qty{width:100% !important;} html.nf-phone .qs-line .qs-price{width:100% !important;min-width:0;}
+    html.nf-phone .qs-line .qs-price input{width:100% !important;min-width:0;}
+  }
+  @media (max-width:760px){
+    html.nf-phone #page-inventory table.nf-cardtable td:nth-child(6){grid-column:1 !important;grid-row:4 !important;}
+    html.nf-phone #page-inventory table.nf-cardtable td:nth-child(7){grid-column:2 !important;grid-row:4 !important;}
+    html.nf-phone #page-inventory table.nf-cardtable td:nth-child(2) .stock-cell > .bar-wrap{height:10px !important;min-width:0;}
+    html.nf-phone #page-inventory table.nf-cardtable td:nth-child(2) .inv-row-sub{font-size:13.5px !important;}
+    html.nf-phone table.nf-cardtable tr:has(> td:nth-child(4):last-child) td:not(:first-child){font-size:13px !important;letter-spacing:-.01em;}
+    html.nf-phone table.nf-cardtable tr:has(> td:nth-child(4):last-child) td:not(:first-child)::before{font-size:11.5px !important;}
+  }
+  @media (max-width:760px){
+    html.nf-phone #page-inventory table.nf-cardtable td:nth-child(2) .stock-cell{flex-direction:row !important;align-items:center !important;}
+    html.nf-phone #page-inventory table.nf-cardtable td:nth-child(2) .stock-cell > .bar-wrap{flex:1 1 120px !important;height:10px !important;max-height:10px;}
+    html.nf-phone #page-inventory table.nf-cardtable td{text-align:left !important;align-items:flex-start !important;}
+    html.nf-phone #page-inventory table.nf-cardtable td:nth-child(3){align-items:flex-end !important;}
+    html.nf-phone table.nf-cardtable tr:has(> td:nth-child(4):last-child){grid-template-columns:1fr 1fr !important;}
+    html.nf-phone table.nf-cardtable tr:has(> td:nth-child(4):last-child) > td:nth-child(4){grid-column:1 / -1;flex-direction:row !important;justify-content:space-between;align-items:baseline !important;border-top:1px solid #EEF1F4 !important;padding-top:6px !important;font-weight:800;}
+    html.nf-phone table.nf-cardtable tr:has(> td:nth-child(4):last-child) td:not(:first-child){font-size:14px !important;}
+    html.nf-phone table.nf-cardtable tr:has(> td:nth-child(4):last-child) td:not(:first-child)::before{font-size:12px !important;}
+  }
+  @media (max-width:760px){
+    html.nf-phone #page-inventory table.nf-cardtable .sku-name{text-align:left !important;display:flex;gap:6px;align-items:flex-start;}
+    html.nf-phone #mhHome .sr-key li:last-child{display:block !important;}
+    html.nf-phone #mhHome .sr-key li:last-child u{display:inline-block !important;vertical-align:-2px;margin-right:6px !important;}
+  }
