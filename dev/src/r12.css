@@ -1,0 +1,46 @@
+  /* ===== Round 12 ===== */
+  /* sort arrows no longer push header words off centre */
+  html[data-ty] #view-app :is(#nfZ,.app-page) :is(#nfZ,table) th.sortable-th{position:relative;}
+  html[data-ty] #view-app :is(#nfZ,.app-page) :is(#nfZ,table) th.sortable-th > .sort-arrow{position:absolute;margin-left:4px;}
+  /* order number column: same padding both sides; the late clock sits outside the centred text */
+  html[data-ty] #view-app :is(#nfZ,.app-page) :is(#nfZ,table) td.po-cell{padding-left:10px !important;padding-right:10px !important;}
+  html[data-ty] #view-app :is(#nfZ,.app-page) :is(#nfZ,table) td.po-cell > span[title]{display:inline-block;width:14px;margin-left:-19px !important;margin-right:5px !important;vertical-align:-1px;}
+  html[data-ty] #view-app :is(#nfZ,.app-page) :is(#nfZ,table) td.po-cell > span[title] svg{width:14px;height:14px;}
+
+  /* initials fill the whole circle (no ovals), everywhere a photo or initials is shown */
+  html[data-ty] .nf-has-av > .nf-ini{width:100% !important;height:100% !important;justify-self:stretch !important;align-self:stretch !important;box-sizing:border-box;border-radius:50% !important;}
+  html[data-ty] .conv-avatar.nf-has-av{border-radius:50% !important;position:relative;}
+  html[data-ty] .conv-avatar.nf-has-av > :is(.nf-ini,.nf-av-img){position:absolute !important;inset:0;width:auto !important;height:auto !important;}
+
+  /* stock: an order on the way */
+  html[data-ty] #view-app .nf-inb{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;background:#E6EEF8;color:#1E3A5F;font-size:14px;font-weight:700;white-space:nowrap;box-shadow:inset 0 0 0 1px #A9C3E8;}
+  html[data-ty] #view-app .nf-inb svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linejoin:round;}
+  html[data-ty] #view-app .nf-inb.late{background:#FEE2E2;color:#B91C1C;box-shadow:inset 0 0 0 1px #FCA5A5;}
+  html[data-ty] #view-app .nf-inb-d{display:block;margin-top:5px;font-size:13px;color:#475467;font-weight:500;}
+
+  /* money overview: profit card in accounting format */
+  html[data-ty] #view-app #bkPnlPrint{background:#F8F9FB !important;}
+  html[data-ty] #view-app #bkPnlPrint .panel-head h2{font-size:17px !important;color:#344054;font-weight:700;}
+  html[data-ty] #view-app #bkPnlPrint .pl-r{font-size:15.5px !important;font-weight:600;color:#0E1114;padding:8px 0;}
+  html[data-ty] #view-app #bkPnlPrint .pl-r b{font-weight:700;color:#0E1114;}
+  html[data-ty] #view-app #bkPnlPrint .pl-r.pl-sub{font-size:13.5px !important;font-weight:500;color:#667085;padding:3px 0 3px 16px;}
+  html[data-ty] #view-app #bkPnlPrint .pl-r.pl-sub span:last-child{color:#667085;font-variant-numeric:tabular-nums;}
+  html[data-ty] #view-app #bkPnlPrint .pl-r.pl-neg, html[data-ty] #view-app #bkPnlPrint .pl-r.pl-neg b{color:#DC2626 !important;font-weight:600;}
+  html[data-ty] #view-app #bkPnlPrint .pl-r.tot{border-top:1.5px solid #344054;margin-top:8px;padding-top:12px;font-size:16px !important;font-weight:700;}
+  html[data-ty] #view-app #bkPnlPrint .pl-grp{margin:2px 0 6px 16px;padding-left:14px;border-left:2px solid #D0D5DD;}
+  html[data-ty] #view-app #bkPnlPrint .pl-grp .pl-r.pl-sub{padding-left:0;}
+  html[data-ty] #view-app #bkPnlPrint .pl-r.big{border-top:4px double #344054;margin-top:10px;padding-top:14px;font-size:20px !important;font-weight:800;}
+  html[data-ty] #view-app #bkPnlPrint .pl-r.big span, html[data-ty] #view-app #bkPnlPrint .pl-r.big b{color:#16A34A !important;}
+  html[data-ty] #view-app #bkPnlPrint .pl-r.big.neg span, html[data-ty] #view-app #bkPnlPrint .pl-r.big.neg b{color:#DC2626 !important;}
+  /* cash outlook: just the next five */
+  html[data-ty] #view-app .nf-next5{margin-top:14px;border-top:1px solid #E3E7EC;padding-top:12px;}
+  html[data-ty] #view-app .nf-next5 h3{margin:0 0 6px;font-size:16px;font-weight:800;color:#0E1114;}
+  html[data-ty] #view-app .nf-next5 .bk-row{padding:10px 0;}
+  html[data-ty] #view-app .nf-next5 .bk-amt:not(.bk-bad){color:#15803D;}
+  html[data-ty] #view-app .nf-next5 > p{margin:8px 0 0;font-size:13.5px;color:#667085;font-style:italic;text-align:center;}
+
+  @media (max-width:760px){
+    html.nf-phone #view-app .nf-inb{font-size:13px;padding:4px 10px;}
+    html.nf-phone #view-app #bkPnlPrint .pl-r{font-size:14.5px !important;}
+    html.nf-phone #view-app #bkPnlPrint .pl-r.big{font-size:18px !important;}
+  }

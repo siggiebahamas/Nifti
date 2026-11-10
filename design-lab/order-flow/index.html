@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Order Popup Lab</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<style>
+:root{
+  --ink:#0E1114;--ink2:#344054;--mut:#667085;--mut2:#98A2B3;--line:#EAECF0;--line2:#D0D5DD;--bg:#F2F3F5;--sf:#FFFFFF;--sf2:#F8F9FB;
+  --g:#1F6B45;--g2:#22A06B;--gbg:#EAF6EF;--gln:#B7E0C7;
+  --wait:#475467;--waitbg:#EEF1F5;--waitln:#D5DBE3;
+  --cust:#2563EB;--sup:#7C3AED;--red:#DC2626;--redbg:#FEF2F2;--ybg:#FEF9C3;--yln:#FACC15;--info:#2F6FD6;--infobg:#EEF4FC;
+  --sh1:0 1px 2px rgba(16,24,40,.05);--sh2:0 1px 3px rgba(16,24,40,.06),0 18px 48px -12px rgba(16,24,40,.28);
+  --r:24px;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font:15.5px/1.45 "Plus Jakarta Sans",system-ui,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;min-height:100vh}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none;padding:0}
+svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* ---------- lab chrome ---------- */
+.top{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top-in{max-width:1440px;margin:0 auto;padding:12px 20px 10px;display:grid;gap:10px;grid-template-columns:minmax(0,1fr)}
+.row1{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.row1 h1{margin:0;font-size:17px;font-weight:800;letter-spacing:-.01em}
+.row1 p{margin:0;color:var(--mut);font-size:13.5px;flex:1;min-width:240px}
+.back{font-size:13.5px;font-weight:700;color:var(--g);text-decoration:none}
+.tabs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.tab{flex:none;display:grid;grid-template-columns:30px auto;column-gap:10px;align-items:center;text-align:left;padding:8px 14px 8px 8px;border-radius:14px;border:1.5px solid var(--line);background:#fff;transition:.15s}
+.tab b{font-size:14.5px;font-weight:800}.tab small{grid-column:2;font-size:12.5px;color:var(--mut)}
+.tab i{grid-row:span 2;width:30px;height:30px;border-radius:9px;background:var(--sf2);display:grid;place-items:center;font-style:normal;font-weight:800;font-size:14px;color:var(--ink2)}
+.tab[aria-pressed=true]{border-color:var(--g);background:var(--gbg);box-shadow:0 0 0 3px #DCEFE3}
+.tab[aria-pressed=true] i{background:var(--g);color:#fff}
+.row3{display:flex;gap:10px;align-items:center;flex-wrap:wrap;min-width:0}
+.row3 .seg{max-width:100%;overflow-x:auto;scrollbar-width:none}
+.seg{display:inline-flex;background:#EEF0F3;border-radius:12px;padding:3px;gap:2px}
+.seg button{padding:7px 13px;border-radius:9px;font-size:13.5px;font-weight:700;color:var(--ink2);white-space:nowrap}
+.seg button[aria-pressed=true]{background:#fff;color:var(--ink);box-shadow:var(--sh1)}
+.steps{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0}
+.sc{flex:none;display:inline-flex;align-items:center;gap:8px;padding:6px 12px 6px 6px;border-radius:999px;border:1.5px solid var(--line);background:#fff;font-size:13.5px;font-weight:700;color:var(--ink2)}
+.sc i{width:22px;height:22px;border-radius:50%;background:var(--sf2);display:grid;place-items:center;font-style:normal;font-size:12px;font-weight:800}
+.sc.done i{background:var(--g2);color:#fff}.sc[aria-pressed=true]{border-color:var(--ink);color:var(--ink)}.sc[aria-pressed=true] i{background:var(--ink);color:#fff}
+.mini{font-size:13px;font-weight:700;color:var(--g);padding:6px 4px;white-space:nowrap}
+
+.wrap{max-width:1440px;margin:0 auto;padding:18px 20px 60px;display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:20px;align-items:start}
+.stage{position:relative;border-radius:28px;overflow:hidden;min-height:760px;background:#E9ECF0;display:grid;place-items:center;padding:36px 20px 70px}
+.stage::before{content:"";position:absolute;inset:0;background:
+  linear-gradient(#fff 0 0) 32px 30px/220px 14px no-repeat,linear-gradient(#fff 0 0) 32px 70px/calc(100% - 64px) 120px no-repeat,
+  linear-gradient(#fff 0 0) 32px 206px/calc(50% - 40px) 200px no-repeat,linear-gradient(#fff 0 0) calc(50% + 8px) 206px/calc(50% - 40px) 200px no-repeat,
+  linear-gradient(#fff 0 0) 32px 422px/calc(100% - 64px) 300px no-repeat;opacity:.9}
+.stage::after{content:"";position:absolute;inset:0;background:rgba(15,23,42,.38);backdrop-filter:blur(2px)}
+.stage > *{position:relative;z-index:1}
+.demo{position:absolute;left:0;right:0;bottom:18px;display:flex;justify-content:center;gap:10px;z-index:2}
+.demo button{background:rgba(255,255,255,.95);border-radius:999px;padding:8px 16px;font-size:13.5px;font-weight:700;color:var(--ink2);box-shadow:var(--sh1)}
+.notes{position:sticky;top:150px;background:#fff;border:1px solid var(--line);border-radius:22px;padding:20px 22px;display:grid;gap:14px}
+.notes h2{margin:0;font-size:20px;font-weight:800;letter-spacing:-.01em}.notes .tg{margin:-8px 0 0;color:var(--mut);font-size:14px}
+.notes h3{margin:0;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+.notes ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.notes li{display:grid;grid-template-columns:20px 1fr;gap:8px;font-size:14.5px;color:var(--ink2)}
+.notes li svg{color:var(--g2);margin-top:1px}
+.notes .box{background:var(--sf2);border-radius:14px;padding:12px 14px;font-size:14px;color:var(--ink2)}
+.notes .box b{color:var(--ink)}
+.rules{border-top:1px solid var(--line);padding-top:14px}
+.cmp{display:flex;gap:18px;overflow-x:auto;padding:28px 24px 70px;align-items:flex-start;justify-content:safe center;width:100%}
+.wrap.all{grid-template-columns:minmax(0,1fr);max-width:none}
+.cB.narrow .b-amt{display:none}.wrap.all .notes{display:none}
+.cmp > div{zoom:.8}.cmp .pop,.cmp .cB.narrow{width:400px}
+.cmp > div{flex:none;display:grid;gap:10px;justify-items:center}
+.cmp > div > b{color:#fff;font-size:17px;letter-spacing:.02em}
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);opacity:0;background:#101828;color:#fff;border-radius:14px;padding:12px 18px;font-size:14.5px;font-weight:600;z-index:50;transition:.25s;pointer-events:none;box-shadow:var(--sh2);max-width:min(92vw,520px);text-align:center}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ---------- shared popup parts ---------- */
+.pop{background:var(--sf);border-radius:var(--r);box-shadow:var(--sh2);width:480px;max-width:100%;display:flex;flex-direction:column;overflow:hidden}
+.anim .pop{animation:popin .28s cubic-bezier(.2,.8,.2,1)}
+@keyframes popin{from{opacity:0;transform:translateY(10px) scale(.985)}to{opacity:1;transform:none}}
+.av{flex:none;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:800;font-size:15px;letter-spacing:.02em;box-shadow:0 0 0 2.5px #fff,0 0 0 4.5px var(--ring)}
+.x{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:var(--mut);background:var(--sf2);flex:none}
+.x:hover{background:#EEF0F3;color:var(--ink)}
+.turn{display:inline-flex;align-items:center;gap:7px;padding:5px 12px 5px 9px;border-radius:999px;font-size:13px;font-weight:800;white-space:nowrap}
+.turn i{width:8px;height:8px;border-radius:50%;background:currentColor}
+.turn.you{background:var(--gbg);color:var(--g);box-shadow:inset 0 0 0 1px var(--gln)}
+.turn.you i{animation:pulse 1.6s infinite}
+.turn.them{background:var(--waitbg);color:var(--wait);box-shadow:inset 0 0 0 1px var(--waitln)}
+.turn.done{background:var(--g2);color:#fff}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(34,160,107,.5)}70%{box-shadow:0 0 0 7px rgba(34,160,107,0)}100%{box-shadow:0 0 0 0 rgba(34,160,107,0)}}
+.btn1{width:100%;min-height:56px;border-radius:16px;background:var(--g);color:#fff;font-size:17px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:10px;box-shadow:0 1px 2px rgba(16,24,40,.08),0 8px 18px -8px rgba(31,107,69,.6);transition:transform .1s,background .15s}
+.btn1:hover{background:#1A5C3B}.btn1:active{transform:scale(.985)}
+.btn1.lock{background:#EEF0F3;color:var(--mut);box-shadow:none;cursor:not-allowed}
+.btn1.soft{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line2)}
+.btn2{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1.5px var(--line2);font-size:14.5px;font-weight:700;color:var(--ink2);white-space:nowrap}
+.btn2:hover{box-shadow:inset 0 0 0 1.5px var(--ink2)}
+.quiet{font-size:14px;font-weight:700;color:var(--mut);text-decoration:underline;text-underline-offset:3px;padding:6px}
+.quiet.bad{color:var(--red)}
+.lbl{display:flex;align-items:baseline;justify-content:space-between;gap:8px;font-size:14.5px;font-weight:800;color:var(--ink);margin:0 0 8px}
+.lbl small{font-size:12.5px;font-weight:700;color:var(--mut);background:var(--sf2);padding:2px 8px;border-radius:999px}
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.tile{position:relative;display:grid;justify-items:center;gap:6px;padding:14px 6px 12px;border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1.5px var(--line);font-size:13.5px;font-weight:700;color:var(--ink2);transition:.15s;text-align:center;line-height:1.2}
+.tile svg.i{width:26px;height:26px;color:var(--ink2)}
+.tile:hover{box-shadow:inset 0 0 0 1.5px var(--line2)}
+.tile.on{background:var(--gbg);box-shadow:inset 0 0 0 2px var(--g);color:var(--g)}.tile.on svg.i{color:var(--g)}
+.tile.on::after{content:"";position:absolute;top:7px;right:7px;width:16px;height:16px;border-radius:50%;background:var(--g) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4L18 8'/%3E%3C/svg%3E") center/11px no-repeat}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:42px;padding:0 15px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1.5px var(--line);font-size:14.5px;font-weight:700;color:var(--ink2);transition:.15s}
+.chip.on{background:var(--ink);color:#fff;box-shadow:none}
+.photo{width:100%;display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:16px;border:1.5px dashed var(--line2);background:var(--sf2);text-align:left}
+.photo .ph{width:46px;height:46px;border-radius:12px;background:#fff;display:grid;place-items:center;color:var(--ink2);box-shadow:var(--sh1);flex:none}
+.photo b{display:block;font-size:15px}.photo span{font-size:13.5px;color:var(--mut)}
+.photo.on{border-style:solid;border-color:var(--gln);background:var(--gbg)}
+.photo .thumb{width:46px;height:46px;border-radius:12px;flex:none;background:linear-gradient(135deg,#F5F1E8 0 55%,#E7E0D0 55%);position:relative;overflow:hidden;box-shadow:var(--sh1)}
+.photo .thumb::before{content:"";position:absolute;left:8px;right:8px;top:9px;height:3px;border-radius:2px;background:#9AA4B2;box-shadow:0 7px 0 #B6BEC9,0 14px 0 #B6BEC9}
+.photo .thumb::after{content:"";position:absolute;right:6px;bottom:6px;width:16px;height:9px;border-bottom:2px solid #1E3A8A;border-radius:0 0 50% 50%;transform:rotate(-12deg)}
+.amt{display:flex;align-items:center;gap:8px;padding:0 16px;height:58px;border-radius:16px;box-shadow:inset 0 0 0 1.5px var(--line2);font-size:24px;font-weight:800;font-variant-numeric:tabular-nums}
+.amt span{color:var(--mut);font-weight:700}
+.items{display:grid;gap:0}
+.it{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;padding:10px 0;border-top:1px solid var(--line)}
+.it:first-child{border-top:0}
+.it b{font-size:15px;font-weight:700}.it small{font-size:13.5px;color:var(--mut)}.it strong{font-size:15px;font-variant-numeric:tabular-nums;grid-row:span 2;align-self:center}
+.ok{display:inline-flex;align-items:center;gap:4px;font-size:12.5px;font-weight:800;color:var(--g2)}
+.ok svg.i{width:14px;height:14px;stroke-width:2.6}
+.oline{display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:16px;background:var(--sf2)}
+.oline span{flex:1;min-width:0;font-size:14px;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.oline span b{color:var(--ink)}
+.oline > b{font-size:16px;font-variant-numeric:tabular-nums}
+.tot{display:flex;justify-content:space-between;align-items:baseline;padding-top:10px;margin-top:4px;border-top:1.5px solid var(--ink2);font-weight:800}
+.tot b{font-size:18px;font-variant-numeric:tabular-nums}
+.card{border-radius:16px;background:var(--sf2);padding:14px 16px}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:14px}
+.kv span{color:var(--mut)}.kv b{text-align:right;font-weight:700}
+.track{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:center}
+.track .dot{width:44px;height:44px;border-radius:50%;background:var(--infobg);color:var(--info);display:grid;place-items:center}
+.track b{display:block;font-size:15px}.track span{font-size:13.5px;color:var(--mut)}
+.bar{height:8px;border-radius:999px;background:#E4E7EC;overflow:hidden;margin-top:10px}.bar u{display:block;height:100%;background:var(--info);border-radius:999px}
+.bill{border-radius:18px;border:1px solid var(--line);background:#fff;padding:16px;display:grid;gap:10px;position:relative;overflow:hidden}
+.bill::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--g2)}
+.bill .bh{display:flex;justify-content:space-between;align-items:center;font-size:13.5px;color:var(--mut);font-weight:700}
+.bill .ba{font-size:30px;font-weight:800;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+.due{display:flex;align-items:center;gap:14px}
+.due .cal{width:54px;height:58px;border-radius:14px;background:#fff;box-shadow:inset 0 0 0 1.5px var(--line);display:grid;place-items:center;align-content:center;line-height:1}
+.due .cal small{font-size:11px;font-weight:800;color:var(--red);letter-spacing:.06em}.due .cal b{font-size:22px;font-weight:800;margin-top:3px}
+.due p{margin:0;font-size:14px;color:var(--ink2)}.due p b{display:block;font-size:22px;color:var(--ink);font-variant-numeric:tabular-nums}
+.payto{display:grid;gap:8px}
+.pt{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;background:#fff;box-shadow:inset 0 0 0 1.5px var(--line)}
+.pt i{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-style:normal;font-weight:800;font-size:12px;color:#fff;flex:none}
+.pt div{flex:1;min-width:0}.pt b{display:block;font-size:14.5px}.pt span{font-size:13px;color:var(--mut)}
+.pt button{font-size:13px;font-weight:800;color:var(--g);padding:6px 8px}
+.count{display:grid;gap:8px}
+.cr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 12px;align-items:center;padding:12px 14px;border-radius:14px;background:#fff;box-shadow:inset 0 0 0 1.5px var(--line)}
+.cr b{font-size:15px}.cr small{display:block;font-size:13px;color:var(--mut)}
+.cr .yn{display:flex;gap:6px}
+.cr .yn button{min-height:40px;padding:0 13px;border-radius:999px;font-size:14px;font-weight:800;box-shadow:inset 0 0 0 1.5px var(--line2);color:var(--ink2)}
+.cr .yn button.on.y{background:var(--g);color:#fff;box-shadow:none}.cr .yn button.on.n{background:var(--red);color:#fff;box-shadow:none}
+.sumtl{display:grid;gap:0;position:relative}
+.sumtl div{display:grid;grid-template-columns:22px 1fr auto;gap:10px;align-items:center;padding:7px 0;font-size:14px}
+.sumtl i{width:22px;height:22px;border-radius:50%;background:var(--g2);display:grid;place-items:center;color:#fff}
+.sumtl i svg.i{width:13px;height:13px;stroke-width:3}
+.sumtl span{color:var(--mut);font-size:13px;white-space:nowrap}
+.seal{width:84px;height:84px;border-radius:50%;margin:4px auto 2px;display:grid;place-items:center;background:var(--g2);color:#fff;box-shadow:0 0 0 8px var(--gbg),0 0 0 9px var(--gln);animation:seal .5s cubic-bezier(.2,1.4,.4,1)}
+.seal svg.i{width:40px;height:40px;stroke-width:2.6}
+@keyframes seal{from{transform:scale(.6);opacity:0}to{transform:none;opacity:1}}
+.waitbox{display:flex;gap:14px;align-items:center;padding:16px;border-radius:18px;background:var(--waitbg)}
+.waitbox .spin{width:44px;height:44px;border-radius:50%;flex:none;background:conic-gradient(var(--wait) 0 25%,#D5DBE3 0);-webkit-mask:radial-gradient(circle 15px,transparent 98%,#000);mask:radial-gradient(circle 15px,transparent 98%,#000);animation:spin 2.4s linear infinite}
+@keyframes spin{to{transform:rotate(1turn)}}
+.waitbox b{display:block;font-size:15px}.waitbox span{font-size:13.5px;color:var(--ink2)}
+.stockup{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:16px;background:var(--gbg);box-shadow:inset 0 0 0 1px var(--gln)}
+.stockup b{display:block;font-size:22px;color:var(--g);font-variant-numeric:tabular-nums;line-height:1.2}.stockup span{display:block;font-size:14px;color:var(--ink2)}
+.stockup > svg.i{width:26px;height:26px;color:var(--g)}
+
+/* grids never grow wider than the popup */
+.cA .a-body,.cB .b-now,.cD .d-body,.cE .e-in,.cC .help .hb,.cA .a-foot,.cD .d-foot{grid-template-columns:minmax(0,1fr)}
+.oline{min-width:0}
+/* ---------- A · Focus ---------- */
+.cA .a-top{display:flex;align-items:center;gap:14px;padding:18px 18px 14px 20px}
+.cA .a-who{flex:1;min-width:0}.cA .a-who b{display:block;font-size:17px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cA .a-who span{font-size:13.5px;color:var(--mut)}
+.cA .a-prog{padding:0 20px 14px;display:grid;gap:9px;border-bottom:1px solid var(--line)}
+.cA .segs{display:grid;grid-template-columns:repeat(6,1fr);gap:5px}
+.cA .segs i{height:6px;border-radius:999px;background:#E4E7EC}.cA .segs i.d{background:var(--g2)}.cA .segs i.n{background:var(--ink)}
+.cA .a-pl{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:13.5px;font-weight:700;color:var(--ink2)}
+.cA .a-body{padding:22px 20px 8px;display:grid;gap:20px;overflow:auto}
+.cA .a-hero{display:grid;justify-items:center;text-align:center;gap:8px}
+.cA .a-ic{width:64px;height:64px;border-radius:20px;display:grid;place-items:center;background:var(--gbg);color:var(--g);box-shadow:inset 0 0 0 1px var(--gln)}
+.cA .a-ic.them{background:var(--waitbg);color:var(--wait);box-shadow:inset 0 0 0 1px var(--waitln)}
+.cA .a-ic.done{background:var(--g2);color:#fff;box-shadow:none}
+.cA .a-ic svg.i{width:30px;height:30px}
+.cA .a-hero h2{margin:4px 0 0;font-size:24px;font-weight:800;letter-spacing:-.015em;line-height:1.2}
+.cA .a-hero p{margin:0;font-size:15.5px;color:var(--ink2);max-width:360px}
+.cA .a-rcpt{border-radius:16px;background:var(--sf2);padding:12px 16px}
+.cA .a-rcpt .rh{display:flex;justify-content:space-between;font-size:12.5px;font-weight:800;color:var(--mut);letter-spacing:.04em;text-transform:uppercase;padding-bottom:4px}
+.cA .a-foot{padding:14px 20px 18px;display:grid;gap:12px;border-top:1px solid var(--line);background:#fff}
+.cA .a-sec{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+
+/* ---------- B · Journey ---------- */
+.cB{width:840px}
+.cB .b-top{display:flex;align-items:center;gap:14px;padding:18px 20px;border-bottom:1px solid var(--line)}
+.cB .b-who{flex:1;min-width:0}.cB .b-who b{display:block;font-size:18px;font-weight:800}.cB .b-who span{font-size:13.5px;color:var(--mut)}
+.cB .b-amt{text-align:right;margin-right:6px}.cB .b-amt b{display:block;font-size:19px;font-weight:800;font-variant-numeric:tabular-nums}.cB .b-amt span{font-size:12.5px;color:var(--mut)}
+.cB .b-grid{display:grid;grid-template-columns:300px minmax(0,1fr);min-height:0;overflow:auto}
+.cB .b-rail{list-style:none;margin:0;padding:20px 18px 20px 20px;background:var(--sf2);border-right:1px solid var(--line);position:relative}
+.cB .b-rail li{position:relative;display:grid;grid-template-columns:28px 1fr;gap:12px;padding:0 0 18px}
+.cB .b-rail li::before{content:"";position:absolute;left:13px;top:28px;bottom:0;width:2px;background:#E4E7EC}
+.cB .b-rail li.d::before{background:var(--g2)}
+.cB .b-rail li:last-child::before{display:none}
+.cB .b-rail .n{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:12.5px;font-weight:800;background:#fff;color:var(--mut);box-shadow:inset 0 0 0 2px #D0D5DD;position:relative;z-index:1}
+.cB .b-rail li.d .n{background:var(--g2);color:#fff;box-shadow:none}.cB .b-rail li.d .n svg.i{width:14px;height:14px;stroke-width:3}
+.cB .b-rail li.now .n{background:var(--ink);color:#fff;box-shadow:0 0 0 5px rgba(14,17,20,.08)}
+.cB .b-rail li.now.them .n{background:var(--wait)}
+.cB .b-rail b{display:block;font-size:14.5px;font-weight:800;line-height:1.3}
+.cB .b-rail span{display:block;font-size:13px;color:var(--mut);line-height:1.35;margin-top:2px}
+.cB .b-rail li.nx b{color:var(--mut2)}.cB .b-rail li.nx span{color:var(--mut2)}
+.cB .b-rail li.now b{font-size:15.5px}
+.cB .b-rail .tagnow{display:inline-block;margin-top:6px}
+.cB .b-now{padding:22px 24px 22px;display:grid;gap:18px;align-content:start}
+.cB .b-kick{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:13px;font-weight:800;color:var(--mut);letter-spacing:.04em;text-transform:uppercase}
+.cB .b-now h2{margin:-6px 0 0;font-size:26px;font-weight:800;letter-spacing:-.015em;line-height:1.15}
+.cB .b-now > p{margin:-10px 0 0;color:var(--ink2);font-size:15.5px}
+.cB .b-acts{display:grid;gap:10px;padding-top:4px}
+.cB .b-sec{display:flex;gap:8px;flex-wrap:wrap}
+.cB.narrow{width:440px}
+.cB.narrow .b-grid{grid-template-columns:1fr}
+.cB.narrow .b-rail{border-right:0;border-bottom:1px solid var(--line);padding:16px 18px 4px}
+.cB.narrow .b-rail li{padding-bottom:12px}.cB.narrow .b-rail li.nx div > span{display:none}
+
+/* ---------- C · Chat ---------- */
+.cC{width:460px;background:#EEF1F5}
+.cC .c-head{display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border-bottom:1px solid var(--line)}
+.cC .c-who{flex:1;min-width:0}.cC .c-who b{display:block;font-size:16.5px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cC .c-who span{font-size:13px;color:var(--mut)}
+.cC .c-prog{display:flex;gap:4px;padding:10px 16px;background:#fff;border-bottom:1px solid var(--line);align-items:center}
+.cC .c-prog i{flex:1;height:4px;border-radius:999px;background:#E4E7EC}.cC .c-prog i.d{background:var(--g2)}.cC .c-prog i.n{background:var(--ink)}
+.cC .c-prog span{flex:none;font-size:12.5px;font-weight:800;color:var(--ink2);margin-left:8px}
+.cC .c-body{padding:16px 14px 10px;display:grid;gap:10px;overflow:auto;align-content:start;max-height:520px}
+.cC .day{justify-self:center;font-size:12px;font-weight:800;color:var(--mut);background:rgba(255,255,255,.8);padding:4px 10px;border-radius:999px}
+.cC .bub{max-width:84%;padding:11px 14px;border-radius:18px;font-size:15px;line-height:1.4;box-shadow:var(--sh1);position:relative}
+.cC .bub small{display:block;font-size:11.5px;margin-top:4px;opacity:.7;font-weight:600}
+.cC .bub.them{background:#fff;justify-self:start;border-bottom-left-radius:6px}
+.cC .bub.me{background:var(--g);color:#fff;justify-self:end;border-bottom-right-radius:6px}
+.cC .bub.me .ck{display:inline-flex;vertical-align:-3px;margin-right:4px}
+.cC .bub.me .ck svg.i{width:16px;height:16px;stroke-width:2.6}
+.cC .ev{justify-self:center;display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--ink2);background:#fff;border-radius:999px;padding:6px 12px 6px 8px;box-shadow:var(--sh1)}
+.cC .ev i{width:22px;height:22px;border-radius:50%;background:var(--g2);color:#fff;display:grid;place-items:center}.cC .ev i svg.i{width:13px;height:13px;stroke-width:3}
+.cC .ord{width:84%;justify-self:start;background:#fff;border-radius:18px;border-bottom-left-radius:6px;padding:12px 14px;box-shadow:var(--sh1)}
+.cC .ord .oh{display:flex;justify-content:space-between;font-size:12.5px;font-weight:800;color:var(--mut);margin-bottom:2px}
+.cC .help{justify-self:start;width:92%;display:grid;grid-template-columns:30px 1fr;gap:8px;align-items:end}
+.cC .help .nl{width:30px;height:30px;border-radius:50%;background:var(--g);color:#fff;display:grid;place-items:center;font-weight:800;font-size:13px}
+.cC .help .hb{background:#fff;border-radius:18px;border-bottom-left-radius:6px;padding:13px 14px;box-shadow:0 0 0 2px var(--g),var(--sh1);display:grid;gap:12px}
+.cC .help .hb > p{margin:0;font-size:15.5px;font-weight:600}
+.cC .help.them .hb{box-shadow:0 0 0 1.5px var(--waitln),var(--sh1)}
+.cC .help.them .nl{background:var(--wait)}
+.cC .typing{justify-self:start;display:flex;gap:4px;background:#fff;border-radius:18px;padding:12px 14px;box-shadow:var(--sh1)}
+.cC .typing i{width:7px;height:7px;border-radius:50%;background:var(--mut2);animation:dots 1.2s infinite}.cC .typing i:nth-child(2){animation-delay:.2s}.cC .typing i:nth-child(3){animation-delay:.4s}
+@keyframes dots{0%,60%,100%{opacity:.3;transform:none}30%{opacity:1;transform:translateY(-3px)}}
+.cC .c-dock{background:#fff;border-top:1px solid var(--line);padding:12px 14px 14px;display:grid;gap:10px;border-radius:20px 20px 0 0;box-shadow:0 -8px 20px -14px rgba(16,24,40,.35)}
+.cC .c-qr{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none}
+.cC .c-qr .btn2{min-height:38px;font-size:13.5px;padding:0 13px}
+.cC .tiles{grid-template-columns:repeat(4,minmax(0,1fr))}.cC .tile{padding:10px 4px 9px;font-size:12.5px}.cC .tile svg.i{width:22px;height:22px}
+
+/* ---------- D · Checklist ---------- */
+.cD .d-top{display:flex;align-items:center;gap:14px;padding:18px 18px 16px 20px;border-bottom:1px solid var(--line)}
+.cD .ring{position:relative;width:58px;height:58px;flex:none}
+.cD .ring > svg{width:58px;height:58px;transform:rotate(-90deg)}
+.cD .ring b svg.i{width:22px;height:22px;stroke-width:2.6;color:var(--g2)}
+.cD .ring b{position:absolute;inset:0;display:grid;place-items:center;font-size:14px;font-weight:800}
+.cD .d-who{flex:1;min-width:0}.cD .d-who small{display:block;font-size:12.5px;font-weight:800;color:var(--mut);letter-spacing:.04em;text-transform:uppercase}
+.cD .d-who b{display:block;font-size:19px;font-weight:800;letter-spacing:-.01em}.cD .d-who span{font-size:13.5px;color:var(--mut)}
+.cD .d-body{padding:18px 20px 6px;display:grid;gap:14px;overflow:auto}
+.cD .d-intro{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.cD .d-intro h2{margin:0;font-size:19px;font-weight:800;letter-spacing:-.01em;line-height:1.25}
+.cD .d-list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.cD .d-list > li{display:grid;grid-template-columns:32px minmax(0,1fr);gap:12px;padding:14px;border-radius:18px;background:#fff;box-shadow:inset 0 0 0 1.5px var(--line);transition:.2s}
+.cD .d-list > li.dn{box-shadow:inset 0 0 0 1.5px var(--gln);background:#FBFEFC}
+.cD .d-list > li > .nb{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:14px;background:var(--sf2);color:var(--ink2);box-shadow:inset 0 0 0 1.5px var(--line2)}
+.cD .d-list > li.dn > .nb{background:var(--g2);color:#fff;box-shadow:none;animation:pop .3s}
+.cD .d-list > li.dn > .nb svg.i{width:16px;height:16px;stroke-width:3}
+@keyframes pop{50%{transform:scale(1.18)}}
+.cD .d-list .lbl{margin-top:5px}
+.cD .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.cD .tile{grid-template-columns:28px 1fr;justify-items:start;align-items:center;text-align:left;padding:12px 12px;font-size:14px}
+.cD .tile svg.i{width:24px;height:24px}
+.cD .d-foot{padding:14px 20px 18px;border-top:1px solid var(--line);display:grid;gap:10px}
+.cD .d-next{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--mut);justify-content:center}
+.cD .d-next b{color:var(--ink2)}
+.cD .d-sec{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+
+/* ---------- E · Deck ---------- */
+.cE{width:540px;background:linear-gradient(180deg,#fff 0,#F6F7F9 100%)}
+.cE .e-top{display:flex;align-items:center;gap:14px;padding:18px 20px 12px}
+.cE .e-who{flex:1;min-width:0}.cE .e-who b{display:block;font-size:17px;font-weight:800}.cE .e-who span{font-size:13.5px;color:var(--mut)}
+.cE .e-track{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:8px 46px 16px;scrollbar-width:none;scroll-behavior:smooth}
+.cE .e-card{flex:0 0 100%;scroll-snap-align:center;border-radius:22px;background:#fff;box-shadow:0 1px 2px rgba(16,24,40,.06),0 10px 28px -14px rgba(16,24,40,.3);display:flex;flex-direction:column;overflow:hidden;transition:.25s;min-height:500px}
+.cE .e-card.nx,.cE .e-card.d{opacity:.9;transform:scale(.95)}
+.cE .e-band{display:flex;align-items:center;gap:10px;padding:12px 16px;font-size:13px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--mut);border-bottom:1px solid var(--line)}
+.cE .e-band > i{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-style:normal;background:var(--sf2);color:var(--ink2);letter-spacing:0}
+.cE .now .e-band{color:var(--ink);background:linear-gradient(90deg,var(--gbg),#fff)}.cE .now .e-band > i{background:var(--g);color:#fff}
+.cE .e-band .turn{letter-spacing:0;text-transform:none}
+.cE .now.them .e-band{background:linear-gradient(90deg,var(--waitbg),#fff)}.cE .now.them .e-band > i{background:var(--wait)}
+.cE .now.done .e-band{background:linear-gradient(90deg,var(--gbg),#fff)}.cE .now.done .e-band > i{background:var(--g2)}
+.cE .d .e-band > i{background:var(--g2);color:#fff}.cE .d .e-band > i svg.i{width:14px;height:14px;stroke-width:3}
+.cE .e-in{padding:18px 18px 18px;display:grid;gap:16px;align-content:start;flex:1}
+.cE .e-in h2{margin:0;font-size:22px;font-weight:800;letter-spacing:-.015em;line-height:1.2}
+.cE .e-in > p{margin:-8px 0 0;font-size:15px;color:var(--ink2)}
+.cE .stamp{margin:40px auto 6px;width:150px;height:150px;border-radius:50%;border:3px solid var(--g2);color:var(--g2);display:grid;place-items:center;align-content:center;text-align:center;transform:rotate(-8deg);gap:2px}
+.cE .stamp b{font-size:24px;font-weight:800;letter-spacing:.08em}.cE .stamp span{font-size:12.5px;font-weight:800}
+.cE .stamp svg.i{width:34px;height:34px;stroke-width:2.6;margin:0 auto}
+.cE .e-done{text-align:center;display:grid;gap:4px}.cE .e-done b{font-size:17px}.cE .e-done span{font-size:14px;color:var(--mut)}
+.cE .e-ghost{margin:40px auto 0;width:90px;height:90px;border-radius:28px;background:var(--sf2);display:grid;place-items:center;color:var(--mut2)}
+.cE .e-ghost svg.i{width:40px;height:40px}
+.cE .e-up{text-align:center;display:grid;gap:6px;padding:0 12px}.cE .e-up small{font-size:12.5px;font-weight:800;color:var(--mut2);letter-spacing:.06em;text-transform:uppercase}
+.cE .e-up b{font-size:18px;color:var(--ink2)}.cE .e-up span{font-size:14px;color:var(--mut)}
+.cE .e-nav{display:flex;align-items:center;justify-content:center;gap:12px;padding:0 16px 18px}
+.cE .e-dots{display:flex;gap:6px}
+.cE .e-dots button{width:30px;height:30px;border-radius:50%;font-size:12px;font-weight:800;background:#fff;box-shadow:inset 0 0 0 1.5px var(--line2);color:var(--mut)}
+.cE .e-dots button.d{background:var(--g2);color:#fff;box-shadow:none}.cE .e-dots button.now{background:var(--ink);color:#fff;box-shadow:0 0 0 4px rgba(14,17,20,.1)}
+.cE .e-dots button.view{outline:2px solid var(--info);outline-offset:2px}
+.cE .e-arr{width:40px;height:40px;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 1.5px var(--line2);display:grid;place-items:center;color:var(--ink2)}
+.cE .e-sec{display:flex;gap:8px;flex-wrap:wrap}
+
+/* ---------- small screens: the popup becomes the phone screen ---------- */
+@media (max-width:1100px){.wrap{grid-template-columns:minmax(0,1fr)}.notes{position:static}}
+@media (max-width:760px){
+  .top-in{padding:10px 12px 8px}.row1 p{display:none}
+  .wrap{padding:0 0 40px;gap:14px}
+  .stage{border-radius:0;padding:0;min-height:0;display:block;background:#fff}
+  .stage::before,.stage::after{display:none}
+  .demo{position:static;padding:12px;background:var(--bg)}
+  .pop,.cB,.cC,.cE{width:100%;border-radius:0;box-shadow:none}
+  .anim .pop{animation:none}
+  .cB .b-grid{grid-template-columns:1fr}.cB .b-rail{border-right:0;border-bottom:1px solid var(--line);padding:16px 16px 4px}
+  .cB .b-rail li{padding-bottom:12px}.cB .b-rail li.nx div > span{display:none}.cB .b-amt{display:none}
+  .cB .b-now{padding:18px 16px}
+  .cC .c-body{max-height:none}
+  .cE .e-track{padding:8px 22px 14px}
+  .tiles{gap:6px}.tile{font-size:12.5px;padding:12px 4px 10px}
+  .notes{margin:0 12px;border-radius:18px}
+  .cmp{padding:16px 12px 40px;justify-content:flex-start;scroll-snap-type:x mandatory;background:#E9ECF0}.cmp > div{zoom:1;scroll-snap-align:center}.cmp > div > b{color:var(--ink)}.cmp .pop,.cmp .cB.narrow{width:330px;border-radius:20px;box-shadow:var(--sh2)}
+}
+</style>
+</head>
+<body>
+<div class="top"><div class="top-in">
+  <div class="row1"><a class="back" href="../">‹ Design lab</a><h1>Order popup · 5 ways</h1><p>Tap the steps to walk an order from To confirm to Paid. Every button inside works. Prototype only, nothing is saved.</p></div>
+  <div class="tabs" id="tabs"></div>
+  <div class="row3">
+    <div class="seg" id="side"><button data-act="side" data-v="sell">Selling to a customer</button><button data-act="side" data-v="buy">Buying from a supplier</button></div>
+    <div class="seg" id="view"><button data-act="view" data-v="one">One at a time</button><button data-act="view" data-v="all">All 5 side by side</button></div>
+    <div class="steps" id="steps"></div>
+    <button class="mini" data-act="reset">Start over</button>
+  </div>
+</div></div>
+<div class="wrap">
+  <section class="stage" id="stage"></section>
+  <aside class="notes" id="notes"></aside>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+const IC = {
+  clip:'<rect x="5" y="4" width="14" height="17" rx="2.5"/><path d="M9 4h6v3H9zM9 13.5l2 2 4-4"/>',
+  box:'<path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M3 7.5 12 12l9-4.5M12 12v9"/>',
+  truck:'<path d="M2 6h12v10H2zM14 10h4.5L22 13.5V16h-8z"/><circle cx="6" cy="17.5" r="2"/><circle cx="18" cy="17.5" r="2"/>',
+  pin:'<path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><path d="M9.2 9.8l2 2 3.8-3.8"/>',
+  receipt:'<path d="M6 2.5h12v19l-3-2-3 2-3-2-3 2z"/><path d="M9 7.5h6M9 11h6M9 14.5h3.5"/>',
+  paid:'<circle cx="12" cy="12" r="9"/><path d="M8 12.5l2.8 2.8L16.5 9.5"/>',
+  check:'<path d="M5 12.5l4.5 4.5L19 7.5"/>', x:'<path d="M6 6l12 12M18 6 6 18"/>', arrow:'<path d="M5 12h14M13 6l6 6-6 6"/>',
+  left:'<path d="M15 6l-6 6 6 6"/>', right:'<path d="M9 6l6 6-6 6"/>',
+  cam:'<path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/>',
+  bike:'<circle cx="5.5" cy="16.5" r="3"/><circle cx="18.5" cy="16.5" r="3"/><path d="M5.5 16.5 9 10h5.5l4 6.5M9 10 7.5 6.5H5M14.5 10l-1.2-3.5H16"/>',
+  store:'<path d="M3 9l1.5-5h15L21 9M4 9v11h16V9M9.5 20v-6h5v6"/><path d="M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0"/>',
+  courier:'<path d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5z"/><path d="M7.5 5.2l9 4.5M3 7.5 12 12l9-4.5M12 12v9"/>',
+  cash:'<rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.6"/><path d="M5.5 9.5v5M18.5 9.5v5"/>',
+  gcash:'<rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 18h3"/>',
+  bank:'<path d="M3 10h18M5 10v7.5M9.5 10v7.5M14.5 10v7.5M19 10v7.5M3 20.5h18M12 3l9 5H3z"/>',
+  cheque:'<rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 14h5M15 11h3"/>',
+  msg:'<path d="M20 11.5a7.5 7.5 0 0 1-10.9 6.7L4 19.5l1.3-4.4A7.5 7.5 0 1 1 20 11.5z"/>',
+  clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>', print:'<path d="M6 9V3h12v6M6 17H4v-6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v6h-2M7 14h10v7H7z"/>',
+  copy:'<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/>',
+  bell:'<path d="M6 16v-5a6 6 0 1 1 12 0v5l2 2H4z"/><path d="M10 21h4"/>', edit:'<path d="M4 20h4L19 9l-4-4L4 16z"/>',
+  again:'<path d="M4 12a8 8 0 0 1 14-5.3L20 9M20 4v5h-5M20 12a8 8 0 0 1-14 5.3L4 15M4 20v-5h5"/>', lock:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',
+  dl:'<path d="M12 3v12M7 10l5 5 5-5M4 20h16"/>', up:'<path d="M12 19V5M6 11l6-6 6 6"/>', spark:'<path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/>'
+};
+const ic = (n, cls) => `<svg class="i${cls ? ' ' + cls : ''}" viewBox="0 0 24 24" aria-hidden="true">${IC[n] || ''}</svg>`;
+const peso = n => '₱' + Number(n).toLocaleString('en-PH');
+
+const O = {
+  sell: {who: 'Corazon Welding Shop', first: 'Corazon', ini: 'CW', bg: '#0F766E', ring: '#2563EB', role: 'Customer', po: 'PO-2026-0853', total: 95800, by: 'Sat, Aug 30',
+    items: [{n: 'Angle Bars 1½"', q: 150, u: 'pcs', p: 520, have: 210}, {n: 'Welding Rods 3.2mm', q: 20, u: 'boxes', p: 890, have: 46}], addr: 'Cainta, near the public market',
+    start: ['Order received', 'Mon, Aug 25 · 4:30 PM']},
+  buy: {who: 'Metro Steel Co.', first: 'Metro Steel', ini: 'MS', bg: '#7C3AED', ring: '#7C3AED', role: 'Supplier', po: 'PO-2026-0798', total: 112000, by: 'Fri, Aug 29',
+    items: [{n: 'Galvanized Wire 12ga', q: 200, u: 'rolls', p: 560}], addr: 'Your main warehouse, Marikina', start: ['You sent the order', 'Mon, Aug 25 · 3:10 PM']}
+};
+const TILE_HOW = [['truck', 'Our truck'], ['bike', 'Lalamove'], ['courier', 'Courier'], ['store', 'They pick up']];
+const TILE_PAY = [['cash', 'Cash'], ['gcash', 'GCash'], ['bank', 'Bank'], ['cheque', 'Check']];
+const STEPS = {
+  sell: [
+    {name: 'To confirm', turn: 'you', icon: 'clip', title: 'Can you fill this order?', text: 'Corazon Welding Shop wants 2 items by Sat, Aug 30.',
+      tasks: [{id: 'stock', type: 'stock', label: 'Do you have enough?'}, {id: 'date', type: 'chips', label: 'Delivery day', options: ['Sat, Aug 30', 'Fri, Aug 29', 'Another day'], def: 0}],
+      primary: 'Yes, I can fill it', sec: [['edit', 'Change price or quantity'], ['box', 'Send only part'], ['cash', 'Ask for a deposit first']], quiet: "No, I can't fill it",
+      done: 'You said yes', when: 'Tue, Aug 26 · 9:12 AM', next: 'You say yes or change it', ask: 'Corazon sent you an order. Can you fill it by Sat, Aug 30?', reply: 'Yes, I can fill it'},
+    {name: 'Preparing', turn: 'you', icon: 'box', title: 'Pack it and send it out', text: 'Choose how it goes out. Tap the button when it leaves.',
+      tasks: [{id: 'how', type: 'tiles', label: 'Who delivers it?', options: TILE_HOW, req: 1}, {id: 'driver', type: 'chips', label: 'Driver', options: ['Mark Santos', 'Rico Reyes', 'Someone else'], def: 0, showIf: ['how', 0]}, {id: 'eta', type: 'chips', label: 'It arrives', options: ['Today', 'Tomorrow', 'Sat, Aug 30'], def: 0}],
+      primary: "It left. It's on the way", sec: [['print', 'Print delivery receipt'], ['msg', 'Message Corazon']],
+      done: 'Sent out with Mark Santos', when: 'Thu, Aug 28 · 9:40 AM', next: 'You pack it and send it out', ask: 'Great. Now pack it. Who is delivering it?', reply: 'Sent out with Mark Santos'},
+    {name: 'On the way', turn: 'you', icon: 'truck', title: 'Get it signed when it arrives', text: 'Mark Santos left at 9:40 AM. It should arrive before 2 PM.',
+      tasks: [{id: 'live', type: 'track'}, {id: 'photo', type: 'photo', label: 'Photo of the signed receipt', hint: 'Settles any question later', opt: 1}],
+      primary: 'It arrived', sec: [['msg', 'Message Corazon'], ['x', "It couldn't be delivered"]],
+      done: 'Delivered and signed', when: 'Thu, Aug 28 · 2:05 PM', next: 'Your driver delivers it', ask: "It's on the way with Mark. When it arrives, snap the signed receipt.", reply: 'Delivered and signed'},
+    {name: 'Delivered', turn: 'you', icon: 'pin', title: 'Send the bill', text: 'One tap makes the invoice and sends it to Corazon.',
+      tasks: [{id: 'bill', type: 'bill'}, {id: 'terms', type: 'chips', label: 'They pay within', options: ['7 days', '15 days', '30 days'], def: 2}],
+      primary: 'Send the bill', sec: [['edit', 'Add a discount'], ['box', 'Change an item']],
+      done: 'Bill sent · INV-2026-0442', when: 'Thu, Aug 28 · 2:20 PM', next: 'You send the bill', ask: 'Delivered and signed. Ready to send the bill?', reply: 'Bill sent'},
+    {name: 'Billed', turn: 'them', icon: 'receipt', title: 'Waiting for Corazon to pay', text: 'When the money comes in, record it here.',
+      tasks: [{id: 'due', type: 'due'}, {id: 'method', type: 'tiles', label: 'How did they pay?', options: TILE_PAY, req: 1}, {id: 'slip', type: 'photo', label: 'Photo of the payment slip', opt: 1}],
+      primary: 'Record the payment', sec: [['bell', 'Send a friendly reminder'], ['cash', 'They paid only part']], dTitle: 'When the money comes in',
+      done: '₱95,800 received by GCash', when: 'Fri, Sep 12 · 11:02 AM', next: 'Corazon pays you', ask: 'Bill sent. Corazon has until Sep 27. Did the money come in?', reply: 'Received ₱95,800', them: 'Paid na po via GCash. Salamat!'},
+    {name: 'Paid', turn: 'done', icon: 'paid', title: 'Paid in full', text: '₱95,800 received on Sep 12. This order is complete.',
+      tasks: [{id: 'sum', type: 'summary'}], primary: 'Print the receipt', last: 1, sec: [['msg', 'Message Corazon'], ['again', 'Their other orders']],
+      done: 'Paid in full', when: 'Fri, Sep 12', next: 'All done', ask: 'All done. ₱95,800 is in.'}
+  ],
+  buy: [
+    {name: 'To confirm', turn: 'them', icon: 'clip', title: 'Waiting for Metro Steel to say yes', text: "They usually answer within 2 hours. You'll get a message the moment they do.",
+      tasks: [{id: 'w', type: 'wait', b: 'Order sent Mon, 3:10 PM', s: 'Seen by Metro Steel'}], wait: ['bell', 'Remind them'], sec: [['msg', 'Message Metro Steel'], ['edit', 'Change my order']], quiet: 'Cancel this order', quietBad: 1,
+      done: 'Metro Steel said yes', when: 'Tue, Aug 26 · 10:05 AM', next: 'Metro Steel says yes', ask: 'Your order is with Metro Steel. Waiting for their yes.', them: 'Yes po, we can deliver Fri, Aug 29.'},
+    {name: 'Preparing', turn: 'them', icon: 'box', title: 'Metro Steel is packing it', text: 'It should arrive Fri, Aug 29 on their truck.',
+      tasks: [{id: 'w', type: 'wait', b: 'Arrives Fri, Aug 29', s: 'By their truck · to your main warehouse'}], wait: ['msg', 'Message Metro Steel'], sec: [['edit', 'Change delivery address']],
+      done: 'Left their warehouse', when: 'Thu, Aug 28 · 8:15 AM', next: 'Metro Steel packs it', ask: "They're packing your order now.", them: 'On the way na po. Driver is Jun.'},
+    {name: 'On the way', turn: 'you', icon: 'truck', title: 'Did it arrive?', text: 'Count what came, then confirm. Your stock updates by itself.',
+      tasks: [{id: 'count', type: 'count', label: 'What arrived', req: 1}, {id: 'photo', type: 'photo', label: 'Photo of the delivery receipt', hint: 'Helps if anything is wrong later', opt: 1}],
+      primary: 'Yes, I got everything', sec: [['x', 'Something is missing or damaged']],
+      done: 'You received 200 rolls', when: 'Fri, Aug 29 · 1:30 PM', next: 'You check what arrived', ask: 'Their truck is on the way. When it arrives, count what came.', reply: 'Got all 200 rolls'},
+    {name: 'Delivered', turn: 'them', icon: 'pin', title: "Waiting for Metro Steel's bill", text: 'Nothing to do until they bill you.',
+      tasks: [{id: 'up', type: 'stockup'}], wait: ['bell', 'Ask for the bill'], sec: [],
+      done: 'Bill received · MS-1188', when: 'Fri, Aug 29 · 5:10 PM', next: 'Metro Steel bills you', ask: 'Received. Now waiting for their bill.', them: "Here's our bill po, MS-1188."},
+    {name: 'Billed', turn: 'you', icon: 'receipt', title: 'Pay this bill', text: 'Pay any way below, then tell Metro Steel here.',
+      tasks: [{id: 'due', type: 'due'}, {id: 'payto', type: 'payto'}, {id: 'method', type: 'tiles', label: 'How did you pay?', options: TILE_PAY, req: 1}, {id: 'slip', type: 'photo', label: 'Photo of your payment slip', hint: 'They confirm faster with a photo', opt: 1}],
+      primary: 'I paid ₱112,000', sec: [['cash', 'Pay part only']],
+      done: 'You paid ₱112,000 by bank', when: 'Sat, Sep 20 · 10:40 AM', next: 'You pay the bill', ask: 'Their bill is in. ₱112,000, due Sep 28.', reply: 'Paid ₱112,000'},
+    {name: 'Paid', turn: 'done', icon: 'paid', title: 'All paid', text: 'Metro Steel confirmed your ₱112,000 on Sep 20.',
+      tasks: [{id: 'sum', type: 'summary'}], primary: 'Order this again', last: 1, sec: [['dl', 'Download the receipt'], ['msg', 'Message Metro Steel']],
+      done: 'All paid', when: 'Sat, Sep 20', next: 'All done', ask: 'All done. Metro Steel confirmed your payment.'}
+  ]
+};
+
+const CONCEPTS = [
+  {id: 'A', name: 'Focus', tag: 'One big next step', render: rA,
+    why: ['Opens straight on the one thing to do, in plain words, with one big green button.', 'Choices are big picture tiles and chips: no dropdowns, almost no typing.', 'The few other options sit underneath as small buttons, so they never compete.'],
+    best: 'Busy owners who want to clear their list fast, on a phone.', trade: 'Shows what is next, not the full history.'},
+  {id: 'B', name: 'Journey', tag: 'The whole trip on one screen', render: rB,
+    why: ['Left: every step with who did it and when, like a parcel tracker.', "Right: today's step with its button. No switching screens.", 'Answers "where is it?" and "what do I do?" at the same time.'],
+    best: 'Owners on a laptop who like to double-check everything.', trade: 'Wide on a computer. On a phone the trip sits above the action.'},
+  {id: 'C', name: 'Chat', tag: 'Feels like Messenger', render: rC,
+    why: ['Each step reads like a message. The order arrives as a card; your answers show as green bubbles.', 'Choices are quick-reply buttons, like Viber and Messenger.', 'The big button always sits at the bottom, where the thumb is.'],
+    best: 'Staff who live in Messenger and Viber all day.', trade: 'Gets longer as an order moves along.'},
+  {id: 'D', name: 'Checklist', tag: 'Tick these, then go', render: rD,
+    why: ['Each step is 1 to 3 numbered tasks that turn green when done.', 'The button stays locked and says exactly what is missing ("Pick who delivers it").', 'Optional things are marked optional, so nobody worries about them.'],
+    best: 'New staff and anyone afraid of tapping the wrong thing.', trade: 'A little slower for people who already know the flow.'},
+  {id: 'E', name: 'Deck', tag: 'All six steps as cards', render: rE,
+    why: ['Swipe left to see what is done, right to see what is coming.', 'The current card is in front, with its one button.', 'Done cards carry a stamp with the date, like a passport.'],
+    best: 'Learning the flow, and anyone who likes to see the whole picture.', trade: 'Swiping is less obvious on a computer, so it has arrows too.'}
+];
+
+const S = {c: 'A', side: 'sell', step: 0, view: 'one', picks: {}, photo: {}, deck: null};
+const K = (t) => S.side + S.step + '.' + t.id;
+const pick = t => { const v = S.picks[K(t)]; return v != null ? v : t.def; };
+const ord = () => O[S.side], steps = () => STEPS[S.side], cur = () => steps()[S.step];
+function shown(st, t){ if(!t.showIf) return true; const dep = st.tasks.find(x => x.id === t.showIf[0]); return pick(dep) === t.showIf[1]; }
+function taskOk(t){
+  if(t.opt || ['stock', 'track', 'bill', 'due', 'payto', 'summary', 'wait', 'stockup'].includes(t.type)) return true;
+  if(t.type === 'photo') return !!S.photo[K(t)];
+  if(t.type === 'count') return ord().items.every((it, i) => S.picks[K(t) + i] != null);
+  return pick(t) != null;
+}
+const missing = st => st.tasks.filter(t => shown(st, t) && !taskOk(t));
+function primaryLabel(st){
+  if(S.side === 'sell' && S.step === 4){ const m = pick(st.tasks[1]); return m != null ? `Record ${peso(95800)} by ${TILE_PAY[m][1]}` : st.primary; }
+  if(S.side === 'buy' && S.step === 2){ const t = st.tasks[0]; if(ord().items.some((it, i) => S.picks[K(t) + i] === 0)) return 'Report what is wrong'; }
+  return st.primary;
+}
+const lockText = st => { const m = missing(st)[0]; if(!m) return ''; return m.type === 'count' ? 'Check each item to continue' : m.type === 'tiles' ? `Pick: ${m.label.replace(/\?$/, '').toLowerCase()}` : 'Fill in the step above'; };
+
+/* ---------- shared pieces ---------- */
+const orderLine = o => `<div class="oline"><span><b>${o.items.length} item${o.items.length > 1 ? 's' : ''}</b> · ${o.items.map(it => it.n).join(', ')}</span><b>${peso(o.total)}</b></div>`;
+const avatar = o => `<span class="av" style="background:${o.bg};--ring:${o.ring}">${o.ini}</span>`;
+function turnBadge(st){ const o = ord();
+  if(st.turn === 'done') return `<span class="turn done">${ic('check')}Done</span>`;
+  return st.turn === 'you' ? '<span class="turn you"><i></i>Your turn</span>' : `<span class="turn them"><i></i>Waiting on ${o.first}</span>`; }
+function itemsHtml(o, withStock){
+  return `<div class="items">${o.items.map(it => `<div class="it"><b>${it.n}</b><strong>${peso(it.q * it.p)}</strong><small>${it.q} ${it.u} × ${peso(it.p)}${withStock ? ` &nbsp;<span class="ok">${ic('check')}You have ${it.have}</span>` : ''}</small></div>`).join('')}</div>
+    <div class="tot"><span>Total</span><b>${peso(o.total)}</b></div>`;
+}
+function taskHtml(st, t, opts){
+  opts = opts || {}; const k = K(t), o = ord(), lab = t.label ? `<div class="lbl">${t.label}${t.opt ? '<small>Optional</small>' : ''}</div>` : '';
+  switch(t.type){
+    case 'stock': return opts.noStock ? '' : `<div>${lab}<div class="card" style="background:#fff;box-shadow:inset 0 0 0 1.5px var(--line)">${itemsHtml(o, true)}</div></div>`;
+    case 'chips': return `<div>${lab}<div class="chips">${t.options.map((x, i) => `<button class="chip${pick(t) === i ? ' on' : ''}" data-act="pick" data-k="${k}" data-v="${i}">${x}</button>`).join('')}</div></div>`;
+    case 'tiles': return `<div>${lab}<div class="tiles">${t.options.map((x, i) => `<button class="tile${pick(t) === i ? ' on' : ''}" data-act="pick" data-k="${k}" data-v="${i}">${ic(x[0])}<span>${x[1]}</span></button>`).join('')}</div></div>`;
+    case 'photo': { const on = S.photo[k];
+      return `<div>${lab}<button class="photo${on ? ' on' : ''}" data-act="photo" data-k="${k}">${on ? '<span class="thumb"></span>' : `<span class="ph">${ic('cam')}</span>`}<span><b>${on ? 'Photo added' : 'Take a photo'}</b><span>${on ? 'Tap to take it again' : (t.hint || 'Or pick one from your gallery')}</span></span></button></div>`; }
+    case 'track': return `<div class="card"><div class="track"><span class="dot">${ic('truck')}</span><div><b>With Mark Santos · Truck NBX 4821</b><span>Left 9:40 AM · about 2 PM at ${o.addr.split(',')[0]}</span></div></div><div class="bar"><u style="width:62%"></u></div></div>`;
+    case 'bill': return `<div class="bill"><div class="bh"><span>Bill INV-2026-0442</span><span>To ${o.who}</span></div><div class="ba">${peso(o.total)}</div>
+      <div class="kv"><span>Items</span><b>${o.items.length} items, delivered Aug 28</b><span>Pay by</span><b>${['Thu, Sep 4', 'Fri, Sep 12', 'Sat, Sep 27'][pick(st.tasks[1])]}</b></div></div>`;
+    case 'due': return `<div class="due"><span class="cal"><small>SEP</small><b>${S.side === 'sell' ? 27 : 28}</b></span><p><b>${peso(o.total)}</b>${S.side === 'sell' ? 'due Sat, Sep 27 · in 30 days' : 'due Sun, Sep 28 · in 30 days'}</p></div>`;
+    case 'payto': return `<div class="payto"><div class="lbl">Pay Metro Steel here</div>
+      <div class="pt"><i style="background:#B91C1C">BPI</i><div><b>0123-4567-89</b><span>Metro Steel Co. · BPI savings</span></div><button data-act="toast" data-v="Account number copied (prototype)">Copy</button></div>
+      <div class="pt"><i style="background:#2563EB">G</i><div><b>0917 555 0198</b><span>GCash · Metro Steel Co.</span></div><button data-act="toast" data-v="GCash number copied (prototype)">Copy</button></div></div>`;
+    case 'count': return `<div>${lab}<div class="count">${o.items.map((it, i) => { const v = S.picks[k + i]; return `<div class="cr"><div><b>${it.n}</b><small>${it.q} ${it.u} ordered</small></div><div class="yn"><button class="y${v === 1 ? ' on' : ''}" data-act="pick" data-k="${k + i}" data-v="1">All ${it.q} here</button><button class="n${v === 0 ? ' on' : ''}" data-act="pick" data-k="${k + i}" data-v="0">Problem</button></div></div>`; }).join('')}</div></div>`;
+    case 'wait': return `<div class="waitbox"><span class="spin"></span><div><b>${t.b}</b><span>${t.s}</span></div></div>`;
+    case 'stockup': return `<div class="stockup">${ic('up')}<div><b>+200 rolls</b><span>Galvanized Wire 12ga is now 206 rolls in stock</span></div></div>`;
+    case 'summary': { const st0 = steps(); return `<div class="card"><div class="sumtl"><div><i>${ic('check')}</i><b style="font-size:14px">${o.start[0]}</b><span>${o.start[1].split(' · ')[0]}</span></div>${st0.slice(0, 5).map(x => `<div><i>${ic('check')}</i><b style="font-size:14px;font-weight:600">${x.done}</b><span>${x.when.split(' · ')[0]}</span></div>`).join('')}</div></div>`; }
+  }
+  return '';
+}
+const tasksHtml = (st, opts) => st.tasks.filter(t => shown(st, t)).map(t => taskHtml(st, t, opts)).join('');
+function primaryHtml(st, opts){
+  opts = opts || {};
+  if(!st.primary && st.wait) return `<button class="btn1 soft" data-act="sec" data-v="${st.wait[1]}">${ic(st.wait[0])}${st.wait[1]}</button>`;
+  const miss = missing(st);
+  if(miss.length && opts.lock) return `<button class="btn1 lock" data-act="locked">${ic('lock')}${lockText(st)}</button>`;
+  return `<button class="btn1" data-act="primary">${primaryLabel(st)}${st.last ? '' : ic('arrow')}</button>`;
+}
+const secBtns = st => st.sec.map(s => `<button class="btn2" data-act="sec" data-v="${s[1]}">${ic(s[0])}${s[1]}</button>`).join('');
+const quietHtml = st => st.quiet ? `<div style="text-align:center"><button class="quiet${st.quietBad ? ' bad' : ''}" data-act="sec" data-v="${st.quiet}">${st.quiet}</button></div>` : '';
+const closeBtn = () => `<button class="x" aria-label="Close" data-act="toast" data-v="Closes the popup (prototype)">${ic('x')}</button>`;
+
+/* ---------- A · Focus ---------- */
+function rA(){
+  const o = ord(), st = cur(), n = S.step;
+  return `<div class="pop cA">
+    <div class="a-top">${avatar(o)}<div class="a-who"><b>${o.who}</b><span>${o.role} · ${o.po}</span></div>${closeBtn()}</div>
+    <div class="a-prog"><div class="segs">${steps().map((x, i) => `<i class="${i < n || st.turn === 'done' ? 'd' : i === n ? 'n' : ''}"></i>`).join('')}</div>
+      <div class="a-pl"><span>Step ${n + 1} of 6 · ${st.name}</span>${turnBadge(st)}</div></div>
+    <div class="a-body">
+      <div class="a-hero">${st.turn === 'done' ? `<div class="seal">${ic('check')}</div>` : `<span class="a-ic ${st.turn}">${ic(st.icon)}</span>`}<h2>${st.title}</h2><p>${st.text}</p></div>
+      ${tasksHtml(st, {noStock: true})}
+      ${st.tasks.some(t => t.type === 'stock') || n === 0 ? `<div class="a-rcpt"><div class="rh"><span>${S.side === 'sell' ? 'What they ordered' : 'What you ordered'}</span><span>${S.side === 'sell' ? 'Deliver by ' : 'Arrives '}${o.by}</span></div>${itemsHtml(o, st.tasks.some(t => t.type === 'stock'))}</div>` : st.turn === 'done' ? '' : orderLine(o)}
+    </div>
+    <div class="a-foot">${primaryHtml(st)}${st.sec.length ? `<div class="a-sec">${secBtns(st)}</div>` : ''}${quietHtml(st)}</div></div>`;
+}
+
+/* ---------- B · Journey ---------- */
+function rB(narrow){
+  const o = ord(), st = cur(), n = S.step, all = steps(), fin = st.turn === 'done';
+  const rail = `<ol class="b-rail"><li class="d s"><span class="n">${ic('check')}</span><div><b>${o.start[0]}</b><span>${o.start[1]}</span></div></li>
+    ${all.map((x, i) => { const d = i < n || (fin && i === n), now = i === n && !fin;
+      return `<li class="${d ? 'd' : now ? 'now ' + x.turn : 'nx'}"><span class="n">${d ? ic('check') : i + 1}</span><div><b>${d ? x.done : x.name}</b><span>${d ? x.when : now ? (x.turn === 'you' ? 'Now · your turn' : 'Now · waiting on ' + o.first) : x.next}</span></div></li>`; }).join('')}</ol>`;
+  return `<div class="pop cB${narrow ? ' narrow' : ''}">
+    <div class="b-top">${avatar(o)}<div class="b-who"><b>${o.who}</b><span>${o.role} · ${o.po} · ${S.side === 'sell' ? 'deliver by ' : 'arrives '}${o.by}</span></div><div class="b-amt"><b>${peso(o.total)}</b><span>${o.items.length} item${o.items.length > 1 ? 's' : ''}</span></div>${closeBtn()}</div>
+    <div class="b-grid">${rail}
+      <section class="b-now"><div class="b-kick">Step ${n + 1} of 6 · ${st.name} ${turnBadge(st)}</div>
+        ${fin ? `<div class="seal" style="margin:0">${ic('check')}</div>` : ''}<h2>${st.title}</h2><p>${st.text}</p>
+        ${fin ? '' : tasksHtml(st)}
+        <div class="b-acts">${primaryHtml(st)}${st.sec.length ? `<div class="b-sec">${secBtns(st)}</div>` : ''}${quietHtml(st)}</div></section></div></div>`;
+}
+
+/* ---------- C · Chat ---------- */
+function rC(){
+  const o = ord(), st = cur(), n = S.step, all = steps(), fin = st.turn === 'done';
+  const order = `<div class="ord"><div class="oh"><span>NEW ORDER · ${o.po}</span><span>${o.start[1].split(' · ')[1]}</span></div>${itemsHtml(o, S.side === 'sell' && n === 0)}<div style="font-size:13px;color:var(--mut);margin-top:8px">${S.side === 'sell' ? 'Deliver by ' : 'Arrives '}${o.by} · ${o.addr}</div></div>`;
+  let h = `<span class="day">${o.start[1].split(' · ')[0]}</span>` + (S.side === 'sell' ? order : `<div class="bub me" style="width:84%">${order.replace('class="ord"', 'style="color:var(--ink);background:#fff;border-radius:14px;padding:10px 12px"').replace('NEW ORDER', 'YOUR ORDER')}</div>`);
+  all.slice(0, fin ? n : n).forEach((x, i) => {
+    if(x.them) h += `<div class="bub them">${x.them}<small>${o.first} · ${x.when.split(' · ').pop()}</small></div>`;
+    if(x.reply) h += `<div class="bub me"><span class="ck">${ic('check')}</span>${x.reply}<small>You · ${x.when.split(' · ').pop()}</small></div>`;
+    h += `<span class="ev"><i>${ic('check')}</i>${x.name} done · ${x.when.split(' · ')[0]}</span>`;
+  });
+  const body = fin ? `<div class="help"><span class="nl">N</span><div class="hb"><div class="seal" style="width:64px;height:64px;margin:4px auto 0">${ic('check')}</div><p style="text-align:center"><b style="display:block;font-size:19px;font-weight:800;margin-bottom:2px">${st.title}</b>${st.ask}</p>${tasksHtml(st)}</div></div>`
+    : st.turn === 'them' ? `<div class="help them"><span class="nl">N</span><div class="hb"><p>${st.ask}</p>${tasksHtml(st)}</div></div>`
+    : `<div class="help"><span class="nl">N</span><div class="hb"><p>${st.ask}</p>${tasksHtml(st, {noStock: true})}</div></div>`;
+  return `<div class="pop cC">
+    <div class="c-head">${avatar(o)}<div class="c-who"><b>${o.who}</b><span>${o.po} · ${peso(o.total)}</span></div>${closeBtn()}</div>
+    <div class="c-prog">${all.map((x, i) => `<i class="${i < n || fin ? 'd' : i === n ? 'n' : ''}"></i>`).join('')}<span>${fin ? 'Done' : `${n + 1}/6 · ${st.name}`}</span></div>
+    <div class="c-body" id="cBody">${h}${body}</div>
+    <div class="c-dock">${primaryHtml(st)}${st.sec.length || st.quiet ? `<div class="c-qr">${secBtns(st)}${st.quiet ? `<button class="btn2" data-act="sec" data-v="${st.quiet}" style="color:var(--mut)">${st.quiet}</button>` : ''}</div>` : ''}</div></div>`;
+}
+
+/* ---------- D · Checklist ---------- */
+function rD(){
+  const o = ord(), st = cur(), n = S.step, fin = st.turn === 'done';
+  const pct = fin ? 1 : n / 6, C = 2 * Math.PI * 25;
+  const tasks = st.tasks.filter(t => shown(st, t)), act = tasks.filter(t => !['track', 'bill', 'due', 'payto', 'summary', 'wait', 'stockup'].includes(t.type));
+  const info = tasks.filter(t => !act.includes(t));
+  const need = act.filter(t => !t.opt).length, got = act.filter(t => !t.opt && taskOk(t)).length;
+  let i = 0;
+  return `<div class="pop cD">
+    <div class="d-top"><span class="ring"><svg viewBox="0 0 58 58"><circle cx="29" cy="29" r="25" fill="none" stroke="#E4E7EC" stroke-width="6"/><circle cx="29" cy="29" r="25" fill="none" stroke="${fin ? 'var(--g2)' : 'var(--g)'}" stroke-width="6" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C * (1 - pct)}" style="transition:.4s"/></svg><b>${fin ? ic('check') : (n) + '/6'}</b></span>
+      <div class="d-who"><small>Step ${n + 1} · ${st.name}</small><b>${st.title}</b><span>${o.who} · ${o.po}</span></div>${closeBtn()}</div>
+    <div class="d-body">
+      ${info.map(t => taskHtml(st, t)).join('')}
+      ${act.length ? `<div class="d-intro"><h2>${st.dTitle || (act.every(t => t.opt) ? (act.length === 1 ? 'One optional thing' : 'Optional things') : st.turn === 'them' ? 'While you wait' : act.length === 1 ? 'Do this one thing' : `Do these ${act.length} things`)}</h2>${need ? `<span class="turn ${got === need ? 'you' : 'them'}">${got} of ${need} done</span>` : turnBadge(st)}</div>
+        <ol class="d-list">${act.map(t => { i++; const dn = t.type === 'photo' ? !!S.photo[K(t)] : t.type === 'stock' ? true : taskOk(t); return `<li class="${dn ? 'dn' : ''}"><span class="nb">${dn ? ic('check') : i}</span><div>${taskHtml(st, t)}</div></li>`; }).join('')}</ol>`
+        : `<div class="d-intro"><h2>${fin ? 'Everything is done' : 'Nothing for you to do yet'}</h2>${turnBadge(st)}</div><p style="margin:-6px 0 0;color:var(--ink2)">${st.text}</p>`}
+      ${st.tasks.some(t => t.type === 'stock') || fin ? '' : orderLine(o)}
+    </div>
+    <div class="d-foot">${primaryHtml(st, {lock: true})}${st.sec.length ? `<div class="d-sec">${secBtns(st)}</div>` : ''}${quietHtml(st)}
+      ${!fin ? `<div class="d-next">${ic('arrow')}<span>After this: <b>${steps()[Math.min(5, n + 1)].name}</b> · ${steps()[Math.min(5, n + 1)].next}</span></div>` : ''}</div></div>`;
+}
+
+/* ---------- E · Deck ---------- */
+function rE(){
+  const o = ord(), n = S.step, all = steps(), fin = all[n].turn === 'done';
+  const card = (x, i) => { const d = i < n, now = i === n;
+    const band = `<div class="e-band"><i>${d ? ic('check') : i + 1}</i><span>${x.name}</span><span style="flex:1"></span>${now ? turnBadge(x) : d ? `<span style="color:var(--g2)">Done</span>` : '<span>Coming up</span>'}</div>`;
+    if(d) return `<article class="e-card d">${band}<div class="e-in"><div class="stamp">${ic('check')}<b>DONE</b><span>${x.when.split(' · ')[0]}</span></div><div class="e-done"><b>${x.done}</b><span>${x.when}</span></div></div></article>`;
+    if(now) return `<article class="e-card now ${x.turn}">${band}<div class="e-in">${x.turn === 'done' ? `<div class="seal">${ic('check')}</div>` : ''}<h2 ${x.turn === 'done' ? 'style="text-align:center"' : ''}>${x.title}</h2><p ${x.turn === 'done' ? 'style="text-align:center"' : ''}>${x.text}</p>${tasksHtml(x)}${primaryHtml(x)}${x.sec.length ? `<div class="e-sec">${secBtns(x)}</div>` : ''}${quietHtml(x)}</div></article>`;
+    return `<article class="e-card nx">${band}<div class="e-in"><div class="e-ghost">${ic(x.icon)}</div><div class="e-up"><small>Step ${i + 1}</small><b>${x.name}</b><span>${x.next}</span></div></div></article>`; };
+  const v = S.deck == null ? n : S.deck;
+  return `<div class="pop cE">
+    <div class="e-top">${avatar(o)}<div class="e-who"><b>${o.who}</b><span>${o.po} · ${peso(o.total)} · ${S.side === 'sell' ? 'deliver by ' : 'arrives '}${o.by}</span></div>${closeBtn()}</div>
+    <div class="e-track" id="eTrack">${all.map(card).join('')}</div>
+    <div class="e-nav"><button class="e-arr" data-act="deck" data-v="${Math.max(0, v - 1)}" aria-label="Previous step">${ic('left')}</button>
+      <div class="e-dots">${all.map((x, i) => `<button class="${i < n || (fin && i === n) ? 'd' : i === n ? 'now' : ''}${i === v && i !== n ? ' view' : ''}" data-act="deck" data-v="${i}" aria-label="${x.name}">${i < n || (fin && i === n) ? '✓' : i + 1}</button>`).join('')}</div>
+      <button class="e-arr" data-act="deck" data-v="${Math.min(5, v + 1)}" aria-label="Next step">${ic('right')}</button></div></div>`;
+}
+
+/* ---------- page ---------- */
+const $ = id => document.getElementById(id);
+function render(){
+  const c = CONCEPTS.find(x => x.id === S.c), st = cur();
+  $('tabs').innerHTML = CONCEPTS.map(x => `<button class="tab" data-act="concept" data-v="${x.id}" aria-pressed="${x.id === S.c && S.view === 'one'}"><i>${x.id}</i><b>${x.name}</b><small>${x.tag}</small></button>`).join('');
+  document.querySelectorAll('#side button').forEach(b => b.setAttribute('aria-pressed', b.dataset.v === S.side));
+  document.querySelectorAll('#view button').forEach(b => b.setAttribute('aria-pressed', b.dataset.v === S.view));
+  $('steps').innerHTML = steps().map((x, i) => `<button class="sc${i < S.step ? ' done' : ''}" data-act="step" data-v="${i}" aria-pressed="${i === S.step}"><i>${i < S.step ? '✓' : i + 1}</i>${x.name}</button>`).join('');
+  const demo = st.turn === 'them' && !st.primary ? `<div class="demo"><button data-act="skip">Demo: pretend ${ord().first} did their part ›</button></div>` : '';
+  const key = S.c + S.side + S.step + S.view; $('stage').classList.toggle('anim', key !== S._k); S._k = key;
+  if(S.view === 'all'){
+    $('stage').innerHTML = `<div class="cmp">${CONCEPTS.map(x => `<div><b>${x.id} · ${x.name}</b>${x.id === 'B' ? rB(true) : x.render()}</div>`).join('')}</div>${demo}`;
+  } else $('stage').innerHTML = c.render() + demo;
+  document.querySelector('.wrap').classList.toggle('all', S.view === 'all');
+  $('notes').innerHTML = `<h2>${c.id} · ${c.name}</h2><p class="tg">${c.tag}</p><h3>Why it works</h3><ul>${c.why.map(w => `<li>${ic('check')}<span>${w}</span></li>`).join('')}</ul>
+    <div class="box"><b>Best for:</b> ${c.best}<br><b>Trade-off:</b> ${c.trade}</div>
+    <div class="rules"><h3>Same in all five</h3><ul style="margin-top:10px">
+      <li>${ic('check')}<span>One green button per step, always at the bottom, saying exactly what happens.</span></li>
+      <li>${ic('check')}<span><b style="color:var(--g)">Your turn</b> (green) or <b style="color:var(--wait)">Waiting on them</b> (slate) at the top, so you know in one look if you need to act.</span></li>
+      <li>${ic('check')}<span>Picture tiles and chips instead of dropdowns. Typing only for amounts.</span></li>
+      <li>${ic('check')}<span>Big tap targets: 56px main button, 16px text, nothing smaller than 13px.</span></li>
+      <li>${ic('check')}<span>Smart defaults are already picked (delivery day, pay terms, amount), so most steps are one tap.</span></li></ul></div>`;
+  if(S.c === 'E' || S.view === 'all'){ requestAnimationFrame(() => document.querySelectorAll('#eTrack').forEach(t => { const v = S.deck == null ? S.step : S.deck; const el = t.children[v]; if(el){ t._quiet = true; t.style.scrollBehavior = 'auto'; el.scrollIntoView({block: 'nearest', inline: 'center', behavior: 'instant'}); t.style.scrollBehavior = ''; setTimeout(() => { t._quiet = false; }, 200); } })); }
+  requestAnimationFrame(() => document.querySelectorAll('#cBody').forEach(b => { b.scrollTop = b.scrollHeight; }));
+}
+let tt;
+function toast(t){ const e = $('toast'); e.textContent = t; e.classList.add('on'); clearTimeout(tt); tt = setTimeout(() => e.classList.remove('on'), 2400); }
+function advance(){
+  const st = cur();
+  if(st.last){ toast(S.side === 'sell' ? 'The receipt opens, ready to print (prototype).' : 'A new order opens with the same items (prototype).'); return; }
+  const m = missing(st); if(m.length){ toast(lockText(st)); return; }
+  S.step = Math.min(5, S.step + 1); S.deck = null;
+  const nx = cur(); toast(nx.turn === 'done' ? (S.side === 'sell' ? 'Paid in full. Nice work.' : 'All paid. Nice work.') : `Done. Next: ${nx.name}${nx.turn === 'them' ? ` (waiting on ${ord().first})` : ''}`);
+  render();
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-act]'); if(!b) return; const a = b.dataset.act, v = b.dataset.v;
+  if(a === 'concept'){ S.c = v; S.view = 'one'; S.deck = null; }
+  else if(a === 'side'){ S.side = v; S.step = 0; S.deck = null; }
+  else if(a === 'view'){ S.view = v; }
+  else if(a === 'step'){ S.step = Number(v); S.deck = null; }
+  else if(a === 'reset'){ S.step = 0; S.picks = {}; S.photo = {}; S.deck = null; }
+  else if(a === 'pick'){ S.picks[b.dataset.k] = Number(v); }
+  else if(a === 'photo'){ S.photo[b.dataset.k] = !S.photo[b.dataset.k] || true; toast('Camera opens. Photo saved to the order (prototype).'); }
+  else if(a === 'primary'){ advance(); return; }
+  else if(a === 'locked'){ toast(lockText(cur())); return; }
+  else if(a === 'skip'){ S.step = Math.min(5, S.step + 1); S.deck = null; toast(`${ord().first} did their part. Next: ${cur().name}`); }
+  else if(a === 'deck'){ S.deck = Number(v) === S.step ? null : Number(v); }
+  else if(a === 'sec'){ toast(`"${v}" opens here (prototype).`); return; }
+  else if(a === 'toast'){ toast(v); return; }
+  render();
+});
+document.addEventListener('scroll', e => { const t = e.target; if(!(t instanceof Element) || t.id !== 'eTrack') return; clearTimeout(t._s); t._s = setTimeout(() => { if(t._quiet) return; const kids = [...t.children]; const tr = t.getBoundingClientRect(), mid = tr.left + tr.width / 2; let best = 0, bd = 1e9; kids.forEach((k, i) => { const r = k.getBoundingClientRect(), d = Math.abs(r.left + r.width / 2 - mid); if(d < bd){ bd = d; best = i; } });
+  const want = best === S.step ? null : best; if(want !== S.deck){ S.deck = want; const dots = t.parentElement.querySelectorAll('.e-dots button'); dots.forEach((d, i) => d.classList.toggle('view', i === best && i !== S.step)); } }, 120); }, true);
+render();
+</script>
+</body>
+</html>

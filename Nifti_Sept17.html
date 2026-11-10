@@ -6093,6 +6093,56 @@ tbody tr:hover{background:#F6F6F3}
   @media (max-width:760px){ html.nf-phone table.nf-cardtable td .nf-pill{white-space:normal;text-align:center;max-width:100%;} }
 
 /* ===== Round 11 css end ===== */
+
+/* ===== Round 12 css begin ===== */
+  /* ===== Round 12 ===== */
+  /* sort arrows no longer push header words off centre */
+  html[data-ty] #view-app :is(#nfZ,.app-page) :is(#nfZ,table) th.sortable-th{position:relative;}
+  html[data-ty] #view-app :is(#nfZ,.app-page) :is(#nfZ,table) th.sortable-th > .sort-arrow{position:absolute;margin-left:4px;}
+  /* order number column: same padding both sides; the late clock sits outside the centred text */
+  html[data-ty] #view-app :is(#nfZ,.app-page) :is(#nfZ,table) td.po-cell{padding-left:10px !important;padding-right:10px !important;}
+  html[data-ty] #view-app :is(#nfZ,.app-page) :is(#nfZ,table) td.po-cell > span[title]{display:inline-block;width:14px;margin-left:-19px !important;margin-right:5px !important;vertical-align:-1px;}
+  html[data-ty] #view-app :is(#nfZ,.app-page) :is(#nfZ,table) td.po-cell > span[title] svg{width:14px;height:14px;}
+
+  /* initials fill the whole circle (no ovals), everywhere a photo or initials is shown */
+  html[data-ty] .nf-has-av > .nf-ini{width:100% !important;height:100% !important;justify-self:stretch !important;align-self:stretch !important;box-sizing:border-box;border-radius:50% !important;}
+  html[data-ty] .conv-avatar.nf-has-av{border-radius:50% !important;position:relative;}
+  html[data-ty] .conv-avatar.nf-has-av > :is(.nf-ini,.nf-av-img){position:absolute !important;inset:0;width:auto !important;height:auto !important;}
+
+  /* stock: an order on the way */
+  html[data-ty] #view-app .nf-inb{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;background:#E6EEF8;color:#1E3A5F;font-size:14px;font-weight:700;white-space:nowrap;box-shadow:inset 0 0 0 1px #A9C3E8;}
+  html[data-ty] #view-app .nf-inb svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linejoin:round;}
+  html[data-ty] #view-app .nf-inb.late{background:#FEE2E2;color:#B91C1C;box-shadow:inset 0 0 0 1px #FCA5A5;}
+  html[data-ty] #view-app .nf-inb-d{display:block;margin-top:5px;font-size:13px;color:#475467;font-weight:500;}
+
+  /* money overview: profit card in accounting format */
+  html[data-ty] #view-app #bkPnlPrint{background:#F8F9FB !important;}
+  html[data-ty] #view-app #bkPnlPrint .panel-head h2{font-size:17px !important;color:#344054;font-weight:700;}
+  html[data-ty] #view-app #bkPnlPrint .pl-r{font-size:15.5px !important;font-weight:600;color:#0E1114;padding:8px 0;}
+  html[data-ty] #view-app #bkPnlPrint .pl-r b{font-weight:700;color:#0E1114;}
+  html[data-ty] #view-app #bkPnlPrint .pl-r.pl-sub{font-size:13.5px !important;font-weight:500;color:#667085;padding:3px 0 3px 16px;}
+  html[data-ty] #view-app #bkPnlPrint .pl-r.pl-sub span:last-child{color:#667085;font-variant-numeric:tabular-nums;}
+  html[data-ty] #view-app #bkPnlPrint .pl-r.pl-neg, html[data-ty] #view-app #bkPnlPrint .pl-r.pl-neg b{color:#DC2626 !important;font-weight:600;}
+  html[data-ty] #view-app #bkPnlPrint .pl-r.tot{border-top:1.5px solid #344054;margin-top:8px;padding-top:12px;font-size:16px !important;font-weight:700;}
+  html[data-ty] #view-app #bkPnlPrint .pl-grp{margin:2px 0 6px 16px;padding-left:14px;border-left:2px solid #D0D5DD;}
+  html[data-ty] #view-app #bkPnlPrint .pl-grp .pl-r.pl-sub{padding-left:0;}
+  html[data-ty] #view-app #bkPnlPrint .pl-r.big{border-top:4px double #344054;margin-top:10px;padding-top:14px;font-size:20px !important;font-weight:800;}
+  html[data-ty] #view-app #bkPnlPrint .pl-r.big span, html[data-ty] #view-app #bkPnlPrint .pl-r.big b{color:#16A34A !important;}
+  html[data-ty] #view-app #bkPnlPrint .pl-r.big.neg span, html[data-ty] #view-app #bkPnlPrint .pl-r.big.neg b{color:#DC2626 !important;}
+  /* cash outlook: just the next five */
+  html[data-ty] #view-app .nf-next5{margin-top:14px;border-top:1px solid #E3E7EC;padding-top:12px;}
+  html[data-ty] #view-app .nf-next5 h3{margin:0 0 6px;font-size:16px;font-weight:800;color:#0E1114;}
+  html[data-ty] #view-app .nf-next5 .bk-row{padding:10px 0;}
+  html[data-ty] #view-app .nf-next5 .bk-amt:not(.bk-bad){color:#15803D;}
+  html[data-ty] #view-app .nf-next5 > p{margin:8px 0 0;font-size:13.5px;color:#667085;font-style:italic;text-align:center;}
+
+  @media (max-width:760px){
+    html.nf-phone #view-app .nf-inb{font-size:13px;padding:4px 10px;}
+    html.nf-phone #view-app #bkPnlPrint .pl-r{font-size:14.5px !important;}
+    html.nf-phone #view-app #bkPnlPrint .pl-r.big{font-size:18px !important;}
+  }
+
+/* ===== Round 12 css end ===== */
   .settings-card:empty{display:none;}
   #supplierChips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;} #supplierChips .chip{flex-shrink:0;}
 </style>
@@ -18993,10 +19043,10 @@ function renderMoneyPage(){
       <section class="panel-card bk-pnl" id="bkPnlPrint"><div class="panel-head"><h2>Profit for ${bkMonthLabel(m)}</h2></div>
         <div class="pl-r"><span>Sales</span><b>${bkPeso(p.sales)}</b></div>
         <div class="pl-r pl-sub"><span>At the counter</span><span>${bkPeso(p.counter)}</span></div><div class="pl-r pl-sub"><span>Customer orders</span><span>${bkPeso(p.orders)}</span></div>
-        <div class="pl-r"><span>− Cost of what you sold</span><b>${bkPeso(p.cost)}</b></div>
+        <div class="pl-r pl-neg"><span>− Cost of what you sold</span><b>${bkPeso(p.cost)}</b></div>
         <div class="pl-r tot"><span>Gross profit</span><b>${bkPeso(p.gross)}</b></div>
-        <div class="pl-r"><span>− Expenses</span><b>${bkPeso(p.expenses)}</b></div>
-        ${cats.map(([k, v]) => `<div class="pl-r pl-sub"><span>${escapeHtml(k)}</span><span>${bkPeso(v)}</span></div>`).join('')}
+        <div class="pl-r pl-neg"><span>− Expenses</span><b>${bkPeso(p.expenses)}</b></div>
+        ${cats.length ? `<div class="pl-grp">${cats.map(([k, v]) => `<div class="pl-r pl-sub"><span>${escapeHtml(k)}</span><span>${bkPeso(v)}</span></div>`).join('')}</div>` : ''}
         <div class="pl-r big ${p.net < 0 ? 'neg' : ''}"><span>${p.net < 0 ? 'Loss' : 'Profit'}</span><b>${bkPeso(Math.abs(p.net))}</b></div>${dl(p.net, prev.sales ? prev.net : 0)}
         ${p.drawings ? `<div class="bk-note">The owner took ${bkPeso(p.drawings)} this month. That comes out of profit, but it isn't an expense.</div>` : ''}
         ${p.missingCost ? `<div class="bk-note">Some items have no cost yet, so profit looks higher than it is. <a class="lg-link" onclick="go('profit')">Add costs</a></div>` : ''}</section>
@@ -22713,7 +22763,7 @@ function lgForecastHtml(){
     ${hz.map(h => `<tr class="${h.end < 0 ? 'bk-tr-bad' : ''}"><td>${h.n} days</td><td class="r">${bkPeso(h.inn)}</td><td class="r">${bkPeso(h.out)}</td><td class="r">${bkPeso(h.end)}</td></tr>`).join('')}</tbody></table></div>
     ${low ? `<div class="bk-alert red"><b>Cash could run short within ${low.n} days</b><span>Collect overdue invoices first, or move a supplier payment. See the list below.</span></div>` : ''}
     <div class="bk-note"><b>How this is worked out:</b> starts from ${bkPeso(start)} recorded in cash, GCash and bank (not your real bank balance). Adds unpaid invoices on their due date (overdue ones as if paid today), takes off supplier bills on their due date, monthly bills marked "every month" on their usual day, and payroll repeating like the last one. Counter utang (${bkPeso(utang)}) has no due date, so it's left out. New sales are not guessed.</div>
-    <details class="lg-det"><summary>Show the ${items.length} items</summary>${items.sort((a, b) => a.d.localeCompare(b.d)).slice(0, 120).map(x => `<div class="bk-row"><div class="bk-row-m"><b>${escapeHtml(x.what)}</b><small>${bkDayLabel(x.d)}${x.late ? ' · overdue' : ''}</small></div><span class="bk-amt ${x.amt < 0 ? 'bk-bad' : ''}">${bkPeso(x.amt)}</span></div>`).join('')}</details></section>`;
+    ${items.length ? `<div class="nf-next5"><h3>Next money in and out</h3>${items.sort((a, b) => a.d.localeCompare(b.d)).slice(0, 5).map(x => `<div class="bk-row"><div class="bk-row-m"><b>${escapeHtml(x.what)}</b><small>${bkDayLabel(x.d)}${x.late ? ' · overdue' : ''}</small></div><span class="bk-amt ${x.amt < 0 ? 'bk-bad' : ''}">${bkPeso(x.amt)}</span></div>`).join('')}${items.length > 5 ? `<p>${items.length - 5} more in the next 90 days are already counted in the table above.</p>` : ''}</div>` : ''}</section>`;
 }
 
 /* ============ BOOKS: branches, approvals, issues to check, month-end close, payroll ============ */
@@ -25643,6 +25693,25 @@ function nfCardFoot(){
 (function(){ let raf = 0; const run = () => { raf = 0; try{ nfIssuesColour(); nfOpenDetails(); nfBooksTiles(); nfCardFoot(); }catch(e){} };
   new MutationObserver(() => { if(!raf) raf = requestAnimationFrame(run); }).observe(document.getElementById('view-app') || document.body, {childList: true, subtree: true}); })();
 
+/* ===== Round 12 =====
+   Stock: an order already on the way shows in the Status column ("200 on the way · arrives Aug 29")
+   instead of a crowded "+200 inbound" line under the bar, and the action opens that order. */
+function nfInboundInfo(name, qty){
+  const open = ['sent', 'confirmed', 'preparing', 'shipped', 'in_customs'];
+  let pos = [];
+  try{ pos = purchaseOrders.filter(po => po.buyerId === ME_BUYER && open.includes(po.status) && (po.lineItems || []).some(l => resolveSkuId(l.product) === resolveSkuId(name))); }catch(e){}
+  const when = po => (po.shipping && po.shipping.eta) || po.requestedDeliveryDate || '';
+  pos.sort((a, b) => String(when(a) || '9999').localeCompare(String(when(b) || '9999')));
+  const po = pos[0], d = po ? when(po) : '';
+  const day = d ? new Date(String(d).slice(0, 10) + 'T00:00:00').toLocaleDateString('en-PH', {month: 'short', day: 'numeric'}) : '';
+  const late = d && String(d).slice(0, 10) < APP_TODAY;
+  const sub = po ? (po.status === 'shipped' || po.status === 'in_customs' ? (late ? 'late, was due ' + day : 'arrives ' + day) : po.status === 'sent' ? 'ordered, not confirmed yet' : 'confirmed' + (day ? ', due ' + day : '')) : '';
+  return {
+    pill: `<span class="nf-inb${late ? ' late' : ''}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M1 6h13v10H1zM14 10h4l3 3v3h-7z"/><circle cx="5.5" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/></svg>${qty} on the way</span>${sub ? `<small class="nf-inb-d">${escapeHtml(sub)}</small>` : ''}`,
+    action: po ? `<span class="row-action" onclick="openOrderDetailModal('${po.id}', false)">See the order</span>` : ''
+  };
+}
+
 function renderSidebarForViewAsRole(){
   const allowed = computeAllowedPages(getEffectiveRoles());
   document.querySelectorAll('.nav-item[data-page], .bnav-item[data-page], .more-sheet-item[data-page]').forEach(el => {
@@ -27019,7 +27088,8 @@ function renderInventoryTable(){
     // an item's tracking state, which is exactly why the table looked inconsistent row to row.
     const inboundSkuId = resolveSkuId(item.name);
     const inboundInfo = inboundSkuId ? getInboundQty(inboundSkuId, false) : {status:'not_tracked'};
-    const inboundHtml = (inboundInfo.status==='ok' && inboundInfo.quantity>0) ? `<div class="inv-row-sub" style="color:var(--green);">+${inboundInfo.quantity} inbound</div>` : '';
+    const inboundHtml = '';
+    const nfInb = (inboundInfo.status==='ok' && inboundInfo.quantity>0 && tracked && (item.status==='critical' || item.status==='warning')) ? nfInboundInfo(item.name, inboundInfo.quantity) : null;
     let stockCellHtml;
     if(!tracked){
       stockCellHtml = `<div class="stock-cell"><div class="inv-row-num">${item.onHand} on hand</div><div class="inv-row-sub">Low-stock alerts are off</div>${inboundHtml}</div>`;
@@ -27044,9 +27114,9 @@ function renderInventoryTable(){
     let mainRow = `<tr>
       <td style="${flagColor ? `border-left:6px solid ${flagColor};` : ''}"><div class="sku-name">${flagIcon}${item.name}</div></td>
       <td>${stockCellHtml}</td>
-      <td><span class="status-pill-icon ${sm.cls}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">${sm.icon}</svg>${sm.label}</span></td>
+      <td>${nfInb ? nfInb.pill : `<span class="status-pill-icon ${sm.cls}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">${sm.icon}</svg>${sm.label}</span>`}</td>
       ${warehouseCell}${supplierCell}
-      <td>${actionCell}</td>
+      <td>${nfInb && nfInb.action ? nfInb.action : actionCell}</td>
       <td>${editCell}</td>
     </tr>`;
 
