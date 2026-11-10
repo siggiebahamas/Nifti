@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Orders And Who Needs You</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="../r13/lab.css">
+<style>
+.pgw{padding:26px 28px 34px;display:grid;gap:16px;background:#F5F6F9;min-height:760px;align-content:start}
+.frame-p .pgw{padding:16px 12px 28px;gap:12px}
+.ptop{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
+.ptop h2{margin:0;font-size:30px;font-weight:800;letter-spacing:-.02em;line-height:1.1}.ptop p{margin:4px 0 0;font-size:15px;color:var(--ink2)}
+.acts{display:flex;gap:8px;flex-wrap:wrap}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.st{background:#fff;border-radius:16px;box-shadow:var(--shc);border:1px solid #E7EAF0;padding:12px 14px;display:grid;gap:2px;cursor:pointer;text-align:left}
+.st.on{box-shadow:0 0 0 2px var(--ink)}
+.st small{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--ink2)}.st small i{width:9px;height:9px;border-radius:50%}
+.st b{font-size:24px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.2}.st span{font-size:13px;color:var(--mut)}
+.flt{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.flt button{min-height:38px;padding:0 14px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1.5px var(--line);font-size:14px;font-weight:700;color:var(--ink2)}
+.flt button.on{background:var(--ink);color:#fff;box-shadow:none}.flt button b{margin-left:5px;font-weight:800}
+.srch{flex:1;min-width:180px;display:flex;align-items:center;gap:8px;height:40px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1.5px var(--line);padding:0 14px;color:var(--mut);font-size:14px}
+.card{background:#fff;border-radius:18px;box-shadow:var(--shc);border:1px solid #E7EAF0;overflow:hidden}
+.band{display:flex;justify-content:space-between;align-items:center;padding:11px 18px;font-size:14px;font-weight:800;letter-spacing:.05em;text-transform:uppercase}
+.band b{font-size:20px;letter-spacing:0}.band small{font-size:13px;letter-spacing:0;text-transform:none;font-weight:700;opacity:.8;margin-left:8px}
+.band.red{background:#FCECEC;color:#B8403F}.band.yel{background:#FEF7C3;color:#0E1114}.band.gray{background:#EEF1F5;color:#344054}.band.green{background:#E8F4EC;color:#2A7650}
+.side-tag{font-size:12px;font-weight:800;color:var(--mut);letter-spacing:.02em}
+.side-tag.sell::before{content:"Selling"}.side-tag.buy::before{content:"Buying"}
+.step{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;color:var(--ink2);background:var(--sf2);box-shadow:inset 0 0 0 1px var(--line);border-radius:8px;padding:2px 8px;white-space:nowrap}
+.step i{width:7px;height:7px;border-radius:50%;background:#98A2B3}.step i.you{background:var(--g2)}.step i.done{background:#D0D5DD}
+/* view 1 rows */
+.or{display:grid;grid-template-columns:auto auto minmax(0,1fr) auto auto;gap:14px;align-items:center;padding:13px 18px;border-top:1px solid var(--line);cursor:pointer}
+.or:hover{background:#FAFBFC}
+.or .who{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.or .who b{font-size:15.5px;font-weight:800}
+.or .why{font-size:14.5px;color:var(--ink2);margin-top:2px}.or .why b.r{color:var(--redi)}
+.or .am{font-size:16px;font-weight:800;font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}.or .am small{display:block;font-size:12px;color:var(--mut);font-weight:600}
+.or .bt{min-width:120px}
+.exp{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:14px;padding:6px 0 4px}
+.box{border-radius:14px;background:var(--sf2);padding:12px 14px;display:grid;gap:6px}
+.box h5{margin:0;font-size:12px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--mut)}
+.li{display:flex;justify-content:space-between;gap:10px;font-size:14px}.li b{font-variant-numeric:tabular-nums}
+.kv2{display:grid;grid-template-columns:1fr 1fr;gap:8px}.kv2 div{background:#fff;border-radius:10px;padding:8px 10px}.kv2 small{display:block;font-size:12px;color:var(--mut);font-weight:700}.kv2 b{font-size:15px}
+.mini-acts{display:flex;gap:8px;flex-wrap:wrap}
+/* view 2 partner cards */
+.pc{display:grid;gap:10px;padding:14px 18px;border-top:1px solid var(--line)}
+.pc-h{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center}
+.pc-h b{font-size:16px;font-weight:800}.pc-h .why{font-size:14.5px;color:var(--ink2)}.pc-h .why b.r{color:var(--redi)}
+.money{text-align:right}.money b{display:block;font-size:17px;font-variant-numeric:tabular-nums}.money small{font-size:12px;color:var(--mut);font-weight:700}
+.money.r b{color:var(--redi)}
+.pos{display:grid;gap:6px;margin-left:58px}
+.po{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;gap:12px;align-items:center;padding:9px 12px;border-radius:12px;background:var(--sf2)}
+.po .n{font-size:13.5px;font-weight:800;color:var(--ink2);white-space:nowrap}.po .t{font-size:14px;color:var(--ink);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.po .a{font-size:14.5px;font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}
+.po .btn1{min-height:34px;font-size:13.5px;padding:0 12px}
+.po .lnk2{font-size:13.5px;font-weight:800;color:var(--ink2);text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.facts{display:flex;gap:14px;flex-wrap:wrap;margin-left:58px;font-size:13px;color:var(--mut)}.facts b{color:var(--ink2)}
+/* view 3 split */
+.split{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);gap:14px;align-items:start}
+.wl .wr{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center;padding:11px 14px;border-top:1px solid var(--line);cursor:pointer}
+.wl .wr:hover{background:#FAFBFC}.wl .wr.on{background:#EEF4FC;box-shadow:inset 3px 0 0 #2F6FD6}
+.wl .wr b{font-size:15px;font-weight:800;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.wl .wr small{font-size:13px;color:var(--ink2);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wl .wr .n{min-width:24px;height:24px;border-radius:999px;display:grid;place-items:center;font-size:12px;font-weight:800;padding:0 6px}
+.wl .wr .n.red{background:var(--redbg);color:var(--redi)}.wl .wr .n.yel{background:var(--yelbg)}.wl .wr .n.gray{background:var(--graybg);color:var(--ink2)}.wl .wr .n.green{background:var(--gbg);color:var(--g)}
+.dt-h{display:flex;align-items:center;gap:14px;padding:18px 18px 14px;border-bottom:2px solid var(--ink)}
+.dt-h b{display:block;font-size:20px;font-weight:800;line-height:1.2}.dt-h > div > span{font-size:14px;color:var(--mut)}
+.dt-b{padding:16px 18px;display:grid;gap:14px}
+.dt-b .kv4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.dt-b .kv4 div{background:var(--sf2);border-radius:12px;padding:10px 12px}.dt-b .kv4 small{display:block;font-size:12px;color:var(--mut);font-weight:700}.dt-b .kv4 b{font-size:16px;font-variant-numeric:tabular-nums}
+.oc{border-radius:14px;box-shadow:inset 0 0 0 1.5px var(--line);padding:12px 14px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center}
+.oc b{font-size:15px;display:block}.oc small{font-size:13.5px;color:var(--ink2)}
+.backx{display:none}
+@container scr (max-width:860px){
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .or{grid-template-columns:auto minmax(0,1fr) auto;row-gap:8px;padding:13px 14px;align-items:start}
+  .or > .dt{grid-row:1/3}.or .bt{grid-column:1/-1;width:100%}.or > .av{display:none}
+  .exp{grid-template-columns:minmax(0,1fr)}
+  .pos,.facts{margin-left:0}
+  .po{grid-template-columns:auto minmax(0,1fr) auto}.po .btn1,.po .lnk2{grid-column:1/-1;justify-self:start}
+  .split{grid-template-columns:minmax(0,1fr)}.split.detail .wl{display:none}.split:not(.detail) .pd{display:none}
+  .backx{display:inline-flex}
+  .dt-b .kv4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ptop h2{font-size:25px}
+}
+</style>
+</head>
+<body>
+<header class="lab-top"><div class="lab-in">
+  <div class="lab-r1"><a class="lab-back" href="index.html">‹ Round 14</a><h1>Orders + Who needs you · 3 ways</h1><p>Customers & suppliers folded into Orders: most urgent on top, both sides on one page. Tap rows, filters and tiles.</p></div>
+  <div class="lab-tabs" id="tabs"></div>
+  <div class="lab-r3" id="r3"></div>
+</div></header>
+<main class="lab-wrap" id="wrap"><section class="lab-stage" id="stage"></section><aside class="lab-notes" id="notes"></aside></main>
+<div class="toast" id="toast"></div>
+<script src="../r13/lab.js"></script>
+<script>
+/* orders: [id, side, who, po, step, turn, band, why, amount, amountLabel, date, button, items] */
+const O = [
+  ['b55', 'sell', 'Bayview Construction Co.', 'PO-0855', 'Delivered', 'you', 'red', '<b class="r">Delivered Aug 12, never billed.</b> Send the bill so they can pay.', 78000, 'not billed', 'AUG 12', 'Send the bill', [['Steel Rebar 12mm', 1200, 65]]],
+  ['r10', 'sell', 'Riverside Builders Corp', 'PO-0810', 'Billed', 'you', 'red', '<b class="r">₱17,504 is 6 days late.</b> They say they paid ₱14,500: check your bank.', 17504, 'owes you', 'AUG 20', 'Check payment', [['Rebar 12mm', 300, 64]]],
+  ['m98', 'buy', 'Metro Steel Co.', 'PO-0798', 'On the way', 'you', 'red', '<b class="r">Arrives today.</b> Count what came so your stock updates.', 107957, 'order', 'AUG 26', 'Count it', [['Galvanized Wire 12ga', 200, 539]]],
+  ['c05', 'buy', 'Cebu Aggregates', 'PO-0805', 'To confirm', 'you', 'yel', 'They offered a new price, 2 days ago. Accept it, or offer yours.', 31920, 'their offer', 'AUG 24', 'Answer', [['Portland Cement 40kg', 150, 212.8]]],
+  ['c53', 'sell', 'Corazon Welding Shop', 'PO-0853', 'To confirm', 'you', 'yel', 'New order: 150 angle bars by Sun, Aug 30. You have 60.', 14280, 'new order', 'AUG 30', 'Answer', [['Angle Bars', 150, 85]]],
+  ['m20', 'sell', 'Manila Bay Scaffolding Co.', 'PO-0820', 'Preparing', 'you', 'yel', 'Pack it and send it out by Sat, Aug 29.', 24600, 'order', 'AUG 29', 'Send it out', [['Angle Bars', 60, 85], ['Welding Plates 6mm', 40, 480]]],
+  ['c77', 'buy', 'Cebu Aggregates', 'PO-0877', 'To confirm', 'you', 'yel', 'They sent you a price for 2 items. Confirm or change.', 63056, 'their price', 'AUG 25', 'See price', [['Portland Cement 40kg', 200, 228], ['Washed Sand (cu.m)', 10, 1080]]],
+  ['k62', 'buy', 'Marikina Packaging Supply', 'PO-0862', 'Draft', 'you', 'yel', 'Draft not sent yet.', 6048, 'draft', 'AUG 25', 'Send it', [['Packing tape', 120, 45]]],
+  ['m65', 'buy', 'Metro Steel Co.', 'PO-0765', 'Billed', 'you', 'yel', 'Bill due Sep 11. ₱15,400 you sent is waiting to clear.', 97496, 'you owe', 'SEP 11', 'Pay', [['Structural I-Beams', 30, 3200]]],
+  ['v40', 'sell', 'Cavite Steel Works', 'PO-0740', 'Paid', 'you', 'yel', 'Paid. One BIR 2307 form (₱1,840) is still missing.', 1840, 'form missing', 'JUL 20', 'Ask for 2307', [['Rebar 16mm', 200, 82]]],
+  ['r71', 'sell', 'Riverside Builders Corp', 'PO-0871', 'To confirm', 'them', 'gray', 'Waiting for their OK. Price hold ends tomorrow.', 77280, 'quote', 'AUG 27', 'Nudge', [['Steel Rebar 12mm', 800, 65]]],
+  ['m66', 'sell', 'Manila Bay Scaffolding Co.', 'PO-0866', 'To confirm', 'them', 'gray', 'Waiting for their OK. Sent 6 days ago, opened once.', 80640, 'quote', 'AUG 20', 'Nudge', [['Welding Plates 6mm', 150, 480]]],
+  ['n79', 'buy', 'Northline Welding Materials', 'PO-0879', 'To confirm', 'them', 'gray', 'Seen yesterday 3:22 PM. They usually answer the same day.', 8534, 'order', 'AUG 25', 'Message', [['Welding Rods 3.2mm', 40, 98]]],
+  ['c39', 'buy', 'Cebu Aggregates', 'PO-0839', 'Preparing', 'them', 'gray', 'Packing it. Arrives Wed, Sep 2.', 43680, 'order', 'SEP 2', 'Message', [['Portland Cement 40kg', 200, 195]]],
+  ['q36', 'buy', 'Quezon Produce Traders', 'PO-0836', 'Paid', 'done', 'green', 'All paid Aug 20.', 12400, 'paid', 'AUG 20', '', [['Tomatoes', 200, 62]]]
+];
+const PI = {'Bayview Construction Co.': {side: 'sell', owe: 0, label: 'owes nothing', orders: 14, last: '4 days ago', ot: 95, buys: 'Steel Rebar 12mm, Angle Bars'},
+  'Riverside Builders Corp': {side: 'sell', owe: 17504, label: 'owes you', late: 1, orders: 11, last: '5 days ago', ot: 60, buys: 'Rebar 12mm, Cement'},
+  'Corazon Welding Shop': {side: 'sell', owe: 0, label: 'owes nothing', orders: 7, last: '3 weeks ago', ot: 100, buys: 'Angle Bars, Welding Rods', quiet: 1},
+  'Manila Bay Scaffolding Co.': {side: 'sell', owe: 0, label: 'owes nothing', orders: 9, last: '1 week ago', ot: 90, buys: 'I-Beams, Welding Plates'},
+  'Cavite Steel Works': {side: 'sell', owe: 0, label: 'owes nothing', orders: 9, last: '1 week ago', ot: 100, buys: 'Rebar 16mm'},
+  'Metro Steel Co.': {side: 'buy', owe: 97496, label: 'you owe', orders: 34, last: '2 days ago', ot: 92, buys: 'Wire, Rebar, I-Beams'},
+  'Cebu Aggregates': {side: 'buy', owe: 0, label: 'you owe nothing', orders: 21, last: '5 days ago', ot: 84, buys: 'Cement, Sand'},
+  'Marikina Packaging Supply': {side: 'buy', owe: 0, label: 'you owe nothing', orders: 3, last: '1 month ago', ot: 100, buys: 'Packing tape'},
+  'Northline Welding Materials': {side: 'buy', owe: 0, label: 'you owe nothing', orders: 9, last: '3 weeks ago', ot: 71, buys: 'Welding Rods'},
+  'Quezon Produce Traders': {side: 'buy', owe: 0, label: 'you owe nothing', orders: 12, last: '1 week ago', ot: 96, buys: 'Tomatoes'}};
+const BANDS = [['red', 'Needs you now'], ['yel', 'This week'], ['gray', 'Waiting on them'], ['green', 'All good']];
+const V = [
+  {id: '1', name: 'One list, most urgent first', tag: 'Every order in 4 bands', why: ['Selling and buying in one list: Needs you now, This week, Waiting on them, All good.', 'Each row: who, the order and its step, the one thing to do, the money, one button.', 'Tap a row: the items, plus a snapshot of that customer or supplier (owes, orders, pays on time). No other page needed.'], best: 'Clearing your list every morning.'},
+  {id: '2', name: 'By customer & supplier', tag: 'Each one, with their orders under them', why: ['Customers and suppliers sorted by who needs you most, with what they owe (or you owe).', 'Their open orders sit right under them, each with its step and button.', 'Short facts on each: orders, last order, pays on time. This replaces the Customers & suppliers page.'], best: 'Owners who think in people: "What do I need to do for Riverside?"'},
+  {id: '3', name: 'Split: who, then their orders', tag: 'List on the left, everything on the right', why: ['Left: who needs you, with a coloured count of what is waiting on you.', 'Right: everything about them: money, their orders with buttons, what they usually buy.', 'On a phone, the list opens into a full page for that customer or supplier.'], best: 'Laptop users who work through people one by one.'}
+];
+const S = {v: '1', view: 'both', side: 'all', band: null, open: 'b55', who: 'Riverside Builders Corp', detail: false};
+if(window.innerWidth < 700) S.view = 'p';
+const vis = () => O.filter(o => (S.side === 'all' || o[1] === S.side) && (!S.band || o[6] === S.band));
+const cnt = b => O.filter(o => (S.side === 'all' || o[1] === S.side) && o[6] === b).length;
+const sum = b => O.filter(o => (S.side === 'all' || o[1] === S.side) && o[6] === b).reduce((s, o) => s + o[8], 0);
+const pTop = (t, s) => `<div class="ptop"><div><h2>${t}</h2><p>${s}</p></div><div class="acts"><button class="btn2" data-act="toast" data-v="Opens: Enter a customer's order (prototype)">${ic('file')}Customer's order</button><button class="btn1 sm" data-act="toast" data-v="Opens: New order to a supplier (prototype)">${ic('plus')}Order from a supplier</button></div></div>`;
+const statsH = () => `<div class="stats">${BANDS.map(([b, l]) => `<button class="st${S.band === b ? ' on' : ''}" data-act="band" data-v="${b}"><small><i style="background:${b === 'red' ? 'var(--red)' : b === 'yel' ? 'var(--yel)' : b === 'gray' ? 'var(--gray)' : 'var(--g2)'}"></i>${l}</small><b>${cnt(b)}</b><span>${sum(b) ? peso(sum(b)) : '—'}</span></button>`).join('')}</div>`;
+const fltH = () => `<div class="flt">${[['all', 'Everything', O.length], ['sell', 'Selling', O.filter(o => o[1] === 'sell').length], ['buy', 'Buying', O.filter(o => o[1] === 'buy').length]].map(([k, l, n]) => `<button class="${S.side === k ? 'on' : ''}" data-act="side" data-v="${k}">${l}<b>${n}</b></button>`).join('')}<div class="srch">${ic('search')}Search name, order # or item</div></div>`;
+const stepH = o => `<span class="step"><i class="${o[5]}"></i>${o[3]} · ${o[4]}</span>`;
+function partnerSnap(n){ const p = PI[n] || {};
+  return `<div class="box"><h5>${p.side === 'sell' ? 'This customer' : 'This supplier'}</h5><div class="kv2"><div><small>${p.label}</small><b>${p.owe ? peso(p.owe) : '₱0'}</b></div><div><small>Orders</small><b>${p.orders}</b></div><div><small>Last order</small><b>${p.last}</b></div><div><small>${p.side === 'sell' ? 'Pays on time' : 'On time'}</small><b>${p.ot}%</b></div></div>
+    <div style="font-size:13.5px;color:var(--ink2)">${p.side === 'sell' ? 'Usually buys' : 'You usually buy'}: ${p.buys}</div><div class="mini-acts"><button class="btn2" data-act="toast" data-v="Opens the chat (prototype)">${ic('msg')}Message</button><button class="btn2" data-act="toast" data-v="Calls them (prototype)">${ic('phone')}Call</button></div></div>`; }
+function v1(){
+  const L = vis();
+  return `<div class="pgw">${pTop('Orders', 'Everything you sell and buy, most urgent on top.')}${statsH()}${fltH()}
+    <div class="card">${BANDS.map(([b, h]) => { const r = L.filter(o => o[6] === b); return r.length ? `<div class="band ${b}"><span>${h}<small>${b === 'gray' ? 'nothing to do' : b === 'green' ? 'done' : ''}</small></span><b>${r.length}</b></div>${r.map(o => `
+      <div class="or" data-act="open" data-v="${o[0]}">${(() => { const m = o[10].match(/^([A-Z]{3}) (\d+)$/); return `<span class="dt ${b === 'yel' ? 'yel' : b}"><small>${m[1]}</small><b>${m[2]}</b></span>`; })()}${av(o[2], 40)}
+        <div><div class="who"><b>${o[2]}</b>${stepH(o)}<span class="side-tag ${o[1]}"></span></div><div class="why">${o[7]}</div></div>
+        <div class="am">${peso(o[8])}<small>${o[9]}</small></div>${o[11] ? `<button class="btn1 sm bt" data-act="toast" data-v="${o[11]} (prototype)">${o[11]}</button>` : '<span></span>'}
+        ${S.open === o[0] ? `<div class="exp"><div class="box"><h5>What's in ${o[3]}</h5>${o[12].map(([n, q, p]) => `<div class="li"><span>${q} × ${n}</span><b>${peso(q * p)}</b></div>`).join('')}<div class="li" style="border-top:1.5px solid var(--ink2);padding-top:6px;font-weight:800"><span>Total</span><b>${peso(o[12].reduce((s, x) => s + x[1] * x[2], 0))}</b></div></div>${partnerSnap(o[2])}</div>` : ''}</div>`).join('')}` : ''; }).join('') || '<div style="padding:30px;text-align:center;color:var(--mut)">Nothing here.</div>'}</div></div>`;
+}
+function v2(){
+  const L = vis(); const names = [...new Set(L.map(o => o[2]))];
+  const rank = {red: 0, yel: 1, gray: 2, green: 3};
+  const groups = names.map(n => { const os = L.filter(o => o[2] === n); const b = os.map(o => o[6]).sort((x, y) => rank[x] - rank[y])[0]; return {n, os, b}; }).sort((a, b) => rank[a.b] - rank[b.b]);
+  return `<div class="pgw">${pTop('Orders', 'Who needs you, and their orders under them.')}${statsH()}${fltH()}
+    <div class="card">${BANDS.map(([b, h]) => { const g = groups.filter(x => x.b === b); return g.length ? `<div class="band ${b}"><span>${h}</span><b>${g.length}</b></div>${g.map(x => { const p = PI[x.n] || {}; const lead = x.os.find(o => o[6] === b) || x.os[0];
+      return `<div class="pc"><div class="pc-h">${av(x.n, 46)}<div><b>${x.n}</b> <span class="side-tag ${p.side}"></span><div class="why">${lead[7]}</div></div><div class="money${p.late ? ' r' : ''}"><b>${p.owe ? peso(p.owe) : '₱0'}</b><small>${p.label}</small></div></div>
+        <div class="pos">${x.os.map(o => `<div class="po"><span class="n">${o[3]}</span><span class="t">${stepH(o).replace(o[3] + ' · ', '')} ${o[12].map(i => i[0]).join(', ')}</span><span class="a">${peso(o[8])}</span>${o[11] ? (o[5] === 'you' ? `<button class="btn1 sm" data-act="toast" data-v="${o[11]} (prototype)">${o[11]}</button>` : `<button class="lnk2" data-act="toast" data-v="${o[11]} (prototype)">${o[11]}</button>`) : '<span></span>'}</div>`).join('')}</div>
+        <div class="facts"><span><b>${p.orders}</b> orders</span><span>last <b>${p.last}</b></span><span>${p.side === 'sell' ? 'pays on time' : 'on time'} <b>${p.ot}%</b></span>${p.quiet ? '<span class="pill yel">Ordering less</span>' : ''}</div></div>`; }).join('')}` : ''; }).join('')}</div></div>`;
+}
+function v3(){
+  const L = vis(); const names = [...new Set(L.map(o => o[2]))]; const rank = {red: 0, yel: 1, gray: 2, green: 3};
+  const g = names.map(n => { const os = L.filter(o => o[2] === n); return {n, os, b: os.map(o => o[6]).sort((x, y) => rank[x] - rank[y])[0], mine: os.filter(o => o[5] === 'you' && o[6] !== 'green').length}; }).sort((a, b) => rank[a.b] - rank[b.b] || b.mine - a.mine);
+  const sel = g.find(x => x.n === S.who) || g[0]; const p = sel ? PI[sel.n] || {} : {};
+  return `<div class="pgw">${pTop('Orders', 'Who needs you on the left. Everything about them on the right.')}${fltH()}
+    <div class="split${S.detail ? ' detail' : ''}"><div class="card wl">${BANDS.map(([b, h]) => { const r = g.filter(x => x.b === b); return r.length ? `<div class="band ${b}" style="padding:9px 14px;font-size:12.5px"><span>${h}</span><b style="font-size:16px">${r.length}</b></div>${r.map(x => `<div class="wr${sel && x.n === sel.n ? ' on' : ''}" data-act="who" data-v="${x.n}">${av(x.n, 38)}<div style="min-width:0"><b>${x.n}</b><small>${x.os.find(o => o[6] === b)[7].replace(/<[^>]+>/g, '')}</small></div>${x.mine ? `<span class="n ${b}">${x.mine}</span>` : '<span></span>'}</div>`).join('')}` : ''; }).join('')}</div>
+    ${sel ? `<div class="card pd"><div class="dt-h"><button class="btn2 backx" data-act="back" style="min-height:36px;padding:0 10px">${ic('left')}</button>${av(sel.n, 52)}<div><b>${sel.n}</b><span>${p.side === 'sell' ? 'Customer' : 'Supplier'} · ${p.orders} orders · last ${p.last}</span></div></div>
+      <div class="dt-b"><div class="kv4"><div><small>${p.label}</small><b style="${p.late ? 'color:var(--redi)' : ''}">${p.owe ? peso(p.owe) : '₱0'}</b></div><div><small>Open orders</small><b>${sel.os.filter(o => o[6] !== 'green').length}</b></div><div><small>${p.side === 'sell' ? 'Pays on time' : 'On time'}</small><b>${p.ot}%</b></div><div><small>Last order</small><b>${p.last}</b></div></div>
+        <div class="lbl" style="margin:0">Their orders</div>${sel.os.map(o => `<div class="oc">${(() => { const m = o[10].match(/^([A-Z]{3}) (\d+)$/); return `<span class="dt ${o[6]}"><small>${m[1]}</small><b>${m[2]}</b></span>`; })()}<div><b>${o[3]} · ${peso(o[8])}</b><small>${o[7].replace(/<[^>]+>/g, '')}</small></div>${o[11] ? (o[5] === 'you' ? `<button class="btn1 sm" data-act="toast" data-v="${o[11]} (prototype)">${o[11]}</button>` : `<button class="btn2" data-act="toast" data-v="${o[11]} (prototype)">${o[11]}</button>`) : '<span class="pill green">Done</span>'}</div>`).join('')}
+        <div style="font-size:14px;color:var(--ink2)">${p.side === 'sell' ? 'Usually buys' : 'You usually buy'}: <b>${p.buys}</b></div>
+        <div class="mini-acts"><button class="btn2" data-act="toast" data-v="Opens the chat (prototype)">${ic('msg')}Message</button><button class="btn2" data-act="toast" data-v="Calls them (prototype)">${ic('phone')}Call</button><button class="btn2" data-act="toast" data-v="${p.side === 'sell' ? 'New order for them' : 'New order to them'} (prototype)">${ic('plus')}New order</button></div></div></div>` : ''}</div></div>`;
+}
+const R = {1: v1, 2: v2, 3: v3};
+function render(){
+  $('tabs').innerHTML = V.map(x => `<button class="lab-tab" aria-pressed="${S.v === x.id}" data-act="v" data-v="${x.id}"><i>${x.id}</i><b>${x.name}</b><small>${x.tag}</small></button>`).join('');
+  $('r3').innerHTML = seg('vw', [['both', 'Laptop + phone'], ['d', 'Laptop'], ['p', 'Phone']], S.view, 'view');
+  $('wrap').classList.toggle('wide', S.view !== 'p');
+  const pg = R[S.v]();
+  const desk = `<div class="frame-d">${pg}</div>`, phone = `<div class="frame-p"><div class="notch"><span>9:41</span><span>●●●</span></div><div class="scroll">${pg}</div></div>`;
+  $('stage').innerHTML = S.view === 'd' ? desk : S.view === 'p' ? phone : `<div style="flex:1 1 720px;min-width:0;display:flex;justify-content:center">${desk}</div><div>${phone}</div>`;
+  const x = V.find(v => v.id === S.v);
+  $('notes').innerHTML = `<h2>${x.id} · ${x.name}</h2><p class="tg">${x.tag}</p><h3>Why it works</h3><ul>${x.why.map(w => `<li>${ic('check')}<span>${w}</span></li>`).join('')}</ul><div class="box"><b>Best for:</b> ${x.best}</div>
+    <div class="box"><b>Same in all 3:</b> the four bands (Needs you now, This week, Waiting on them, All good) are also the tiles at the top: tap one to see only that. Selling and buying share one page, with a filter.</div>`;
+}
+document.addEventListener('click', e => { const b = e.target.closest('[data-act]'); if(!b) return; const a = b.dataset.act, v = b.dataset.v;
+  if(a === 'toast'){ e.stopPropagation(); return toast(v); }
+  if(a === 'v') S.v = v; else if(a === 'view') S.view = v; else if(a === 'side') S.side = v; else if(a === 'band') S.band = S.band === v ? null : v;
+  else if(a === 'open') S.open = S.open === v ? null : v; else if(a === 'who'){ S.who = v; S.detail = true; } else if(a === 'back') S.detail = false;
+  render(); });
+render();
+</script>
+</body>
+</html>

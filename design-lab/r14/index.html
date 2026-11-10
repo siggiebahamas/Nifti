@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Round 14 Choices</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="../r13/lab.css">
+<style>
+.band{background:radial-gradient(800px 260px at 85% -20%,rgba(52,211,153,.35),transparent 60%),linear-gradient(135deg,#03251C 0%,#064E3B 55%,#0B6B57 100%);color:#fff;padding:34px 20px 80px}
+.band .bin{max-width:1080px;margin:0 auto}.band a{color:#C8EFDF;font-size:14px;font-weight:700;text-decoration:none}
+.band h1{margin:12px 0 6px;font-size:36px;font-weight:800;letter-spacing:-.02em;line-height:1.1}.band p{margin:0;font-size:17px;color:#C8EFDF;max-width:660px}
+.wrap{max-width:1080px;margin:-52px auto 0;padding:0 20px 60px;display:grid;gap:18px}
+.live{background:#fff;border-radius:18px;border:1px solid #E7EAF0;box-shadow:var(--shc);padding:18px 20px;display:grid;gap:10px}
+.live h2{margin:0;font-size:18px;font-weight:800;display:flex;align-items:center;gap:10px}.live h2 span{font-size:12px;letter-spacing:.06em;text-transform:uppercase;background:var(--gbg);color:var(--g);border-radius:999px;padding:4px 10px}
+.live ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}.live li{display:grid;grid-template-columns:22px 1fr;gap:10px;font-size:15px;color:var(--ink2)}.live li b{color:var(--ink)}
+.live li svg{width:20px;height:20px;padding:3px;border-radius:50%;background:var(--g2);color:#fff;stroke-width:3}
+.audit{background:#fff;border-radius:18px;border:1px solid #E7EAF0;box-shadow:var(--shc);overflow:hidden}
+.audit h2{margin:0;padding:16px 20px 12px;font-size:18px;font-weight:800;border-bottom:2px solid var(--ink)}
+.ar{display:grid;grid-template-columns:minmax(0,1.1fr) auto minmax(0,2fr);gap:14px;align-items:center;padding:12px 20px;border-top:1px solid var(--line);font-size:14.5px}
+.ar b{font-size:15px}.ar span{color:var(--ink2)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.c{display:grid;gap:10px;background:#fff;border-radius:18px;border:1px solid #E7EAF0;box-shadow:var(--shc);padding:18px 20px;text-decoration:none;color:inherit;transition:transform .15s,box-shadow .15s;align-content:start}
+.c:hover{transform:translateY(-2px);box-shadow:var(--sh2)}
+.c .top{display:flex;align-items:center;gap:12px}.c .top span{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:#DDF5EC;color:#047857}.c .top span svg{width:24px;height:24px}
+.c h3{margin:0;font-size:18px;font-weight:800;line-height:1.2}.c small{font-size:13px;font-weight:800;color:var(--mut);letter-spacing:.04em;text-transform:uppercase}
+.c p{margin:0;font-size:15px;color:var(--ink2)}.c .go{display:inline-flex;align-items:center;gap:6px;font-weight:800;color:var(--g);font-size:15px}
+.c .opts{display:flex;flex-wrap:wrap;gap:6px}.c .opts i{font-style:normal;font-size:12.5px;font-weight:700;color:var(--ink2);background:var(--sf2);border-radius:999px;padding:3px 10px;box-shadow:inset 0 0 0 1px var(--line)}
+@media (max-width:640px){ .band h1{font-size:28px} .band{padding:24px 16px 72px} .wrap{padding:0 12px 40px} .ar{grid-template-columns:minmax(0,1fr) auto;padding:12px 14px} .ar span:last-child{grid-column:1/-1} }
+</style>
+</head>
+<body>
+<div class="band"><div class="bin"><a href="../">‹ Design lab</a><h1>Round 14 · pick your favourites</h1><p>Two sets of options below. Everything else you asked for is already in the app.</p></div></div>
+<div class="wrap">
+  <div class="live"><h2>Already in the app <span>Live</span></h2><ul id="live"></ul></div>
+  <div class="audit"><h2>Ways to add an order: what we kept and why</h2><div id="audit"></div></div>
+  <div class="cards" id="cards"></div>
+</div>
+<script src="../r13/lab.js"></script>
+<script>
+$('live').innerHTML = [
+  ['To confirm (buying): read receipts', '. Sent ✓, Seen ✓✓ with the time, then "their turn". "Seen" is now recorded the moment the supplier opens the order.'],
+  ['Preparing (buying): usual time', '. The days until it arrives, today outlined, and how often they deliver on time.'],
+  ['Messages: Customers and Suppliers apart', '. Unread chats first in each group. Each chat shows its order and step, with a green dot when it is your turn.'],
+  ['New order popup, one question at a time', '. Selling: "How did they send their order?". Buying: "How do you want to make your order?". The button stays locked until every line is sure.']
+].map(([b, t]) => `<li>${ic('check')}<span><b>${b}</b>${t}</span></li>`).join('');
+$('audit').innerHTML = [
+  ['Paste a message', 'pill green', 'Kept', 'Rebuilt reader: Taglish, commas, "x100", "limampung sako", printed PO lines. 43 of 43 test messages read right. Sizes must match (10mm is never 12mm). Unsure lines must be tapped.'],
+  ['Type it in', 'pill green', 'Kept', 'Pick from your items and type how many. 100% exact. For photos and handwritten POs: their photo stays on screen while you type.'],
+  ['Upload a file', 'pill green', 'Kept', 'Excel and CSV read by their columns. A PDF made on a computer is read as text. Scanned PDFs are refused with a clear message.'],
+  ['Send your order form', 'pill green', 'Kept', 'They pick from your items and prices themselves, so nothing is misread. Selling only.'],
+  ['The usual order', 'pill green', 'Kept', 'Their (or your) last order, ready to check. Exact.'],
+  ['Read a photo automatically', 'pill red', 'Removed', 'The phone\'s text scanner misreads handwriting and numbers. A wrong quantity is worse than typing it.'],
+  ['Say it out loud', 'pill red', 'Removed', 'Voice typing does not work on every phone and mishears Tagalog numbers. Not reliable enough for orders.']
+].map(([n, c, t, w]) => `<div class="ar"><b>${n}</b><span class="${c}">${t}</span><span>${w}</span></div>`).join('');
+$('cards').innerHTML = [
+  ['orders.html', 'users', 'Orders + Who needs you', '3 ways', 'Customers & suppliers folded into Orders, with Needs you now, This week, Waiting on them and All good.', ['One list, most urgent first', 'By customer & supplier', 'Split: who, then their orders']],
+  ['horizon.html', 'spark', 'Horizon in 5 colour combos', '5 palettes · 22 pages', 'The Horizon look you liked, in five palettes that are not navy and gold.', ['Emerald Glass', 'Graphite Lime', 'Electric Blue', 'Arctic Light', 'Lemon Ink']]
+].map(([h, i, t, n, p, o]) => `<a class="c" href="${h}"><div class="top"><span>${ic(i)}</span><div><small>${n}</small><h3>${t}</h3></div></div><p>${p}</p><div class="opts">${o.map(x => `<i>${x}</i>`).join('')}</div><span class="go">Open ${ic('arrow')}</span></a>`).join('');
+</script>
+</body>
+</html>
