@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Round 13 Choices</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="lab.css">
+<style>
+.band{background:linear-gradient(160deg,var(--navy),var(--navy2));color:#fff;padding:34px 20px 80px}
+.band .bin{max-width:1080px;margin:0 auto}
+.band a{color:#C9D5EA;font-size:14px;font-weight:700;text-decoration:none}
+.band h1{margin:12px 0 6px;font-size:36px;font-weight:800;letter-spacing:-.02em;line-height:1.1}.band p{margin:0;font-size:17px;color:#D6DEEC;max-width:640px}
+.wrap{max-width:1080px;margin:-52px auto 0;padding:0 20px 60px;display:grid;gap:18px}
+.live{background:#fff;border-radius:18px;border:1px solid #E7EAF0;box-shadow:var(--shc);padding:18px 20px;display:grid;gap:10px}
+.live h2{margin:0;font-size:18px;font-weight:800;display:flex;align-items:center;gap:10px}.live h2 span{font-size:12px;letter-spacing:.06em;text-transform:uppercase;background:var(--gbg);color:var(--g);border-radius:999px;padding:4px 10px}
+.live ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}.live li{display:grid;grid-template-columns:22px 1fr;gap:10px;font-size:15px;color:var(--ink2)}.live li b{color:var(--ink)}
+.live li svg{width:20px;height:20px;padding:3px;border-radius:50%;background:var(--g2);color:#fff;stroke-width:3}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.c{display:grid;gap:10px;background:#fff;border-radius:18px;border:1px solid #E7EAF0;box-shadow:var(--shc);padding:18px 20px;text-decoration:none;color:inherit;transition:transform .15s,box-shadow .15s;align-content:start}
+.c:hover{transform:translateY(-2px);box-shadow:var(--sh2)}
+.c .top{display:flex;align-items:center;gap:12px}.c .top span{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:#E3ECFF;color:#1B4DB5}.c .top span svg{width:24px;height:24px}
+.c h3{margin:0;font-size:18px;font-weight:800;line-height:1.2}.c small{font-size:13px;font-weight:800;color:var(--mut);letter-spacing:.04em;text-transform:uppercase}
+.c p{margin:0;font-size:15px;color:var(--ink2)}
+.c .go{display:inline-flex;align-items:center;gap:6px;font-weight:800;color:var(--g);font-size:15px}
+.c .opts{display:flex;flex-wrap:wrap;gap:6px}.c .opts i{font-style:normal;font-size:12.5px;font-weight:700;color:var(--ink2);background:var(--sf2);border-radius:999px;padding:3px 10px;box-shadow:inset 0 0 0 1px var(--line)}
+@media (max-width:600px){ .band h1{font-size:28px} .band{padding:24px 16px 72px} .wrap{padding:0 12px 40px} }
+</style>
+</head>
+<body>
+<div class="band"><div class="bin"><a href="../">‹ Design lab</a><h1>Round 13 · pick your favourites</h1><p>Five sets of options to choose from. Each one works on a laptop and a phone, and every button responds. Nothing is saved.</p></div></div>
+<div class="wrap">
+  <div class="live"><h2>Already in the app <span>Live</span></h2><ul id="live"></ul></div>
+  <div class="cards" id="cards"></div>
+</div>
+<script src="lab.js"></script>
+<script>
+$('live').innerHTML = [
+  ['Focus order popup with the lock button', ': one next step, big tiles, and a button that says what is missing. Works on both sides, all 6 steps.'],
+  ['Take a photo or attach one', ' wherever the popup asks for proof: receipts, waybills, payment slips.'],
+  ['No more spinner when waiting', ': a calm "their turn" card shows the ball is with the supplier (option A below).'],
+  ['No purple, no rings, no coloured chat bars', ' in Messages, Customers & suppliers and everywhere else.'],
+  ['Price lock & receipts removed', ': prices stay as the owner sets them.']
+].map(([b, t]) => `<li>${ic('check')}<span><b>${b}</b>${t}</span></li>`).join('');
+$('cards').innerHTML = [
+  ['waiting.html', 'clock', 'Waiting on the supplier', '5 ways', 'Replaces the gray spinner on To confirm and Preparing when you buy.', ['Hand-off', 'Read receipts', 'Usual time', 'Their to-do', 'Turn switch']],
+  ['chats.html', 'msg', 'Messages: the chat list', '5 ways', 'Calmer chat heads: no purple, no side bars, no rings.', ['Clean list', 'Customers, then suppliers', 'With the order', 'Viber style', 'Needs a reply first']],
+  ['new-order.html', 'file', 'New order popups', '3 ways', '"Enter a customer\'s PO" and "Paste from Viber", in Focus style with the lock button.', ['One question at a time', 'One sheet, numbered', 'Their words → your order']],
+  ['partners.html', 'users', 'Customers & suppliers', '3 ways', 'Useful on its own: who matters and what is urgent, without jumping to Orders.', ['Who needs you', 'Report cards', 'Ranked board']],
+  ['money.html', 'wallet', 'Money overview to Settings', '3 looks · 22 pages', 'Pinoy Permit-style pages: plain answers, colour groups, numbers that line up.', ['Horizon', 'Plain answer', 'Check-up']]
+].map(([h, i, t, n, p, o]) => `<a class="c" href="${h}"><div class="top"><span>${ic(i)}</span><div><small>${n}</small><h3>${t}</h3></div></div><p>${p}</p><div class="opts">${o.map(x => `<i>${x}</i>`).join('')}</div><span class="go">Open ${ic('arrow')}</span></a>`).join('');
+</script>
+</body>
+</html>

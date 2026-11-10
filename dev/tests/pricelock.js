@@ -29,8 +29,10 @@ const FILE = 'file://' + require('path').resolve(__dirname, '../../Nifti_Sept17.
   await m.evaluate(() => plDemoApprove());
   await m.evaluate(() => qsSave()); await m.waitForTimeout(200);
   ok(await m.evaluate(() => BK.sales.length) === before + 1, 'saved after the OK');
-  ok(await m.evaluate(() => !!document.getElementById('bkRcpt')), 'receipt opens after the sale');
+  ok(await m.evaluate(() => !document.getElementById('bkRcpt')), 'no receipt pops up after the sale (removed in Round 13)');
+  await m.evaluate(() => { const n = BK.sales.reduce((a, x) => String(x.at || '') > String(a.at || '') ? x : a); bkReceipt(n.id); }); await m.waitForTimeout(300);
   const rc = await m.evaluate(() => document.getElementById('bkRcpt').innerText);
+  if(!(/regular/.test(rc) && /Discount given/.test(rc))) console.log('RECEIPT TEXT:', rc.slice(0, 400));
   ok(/regular/.test(rc) && /Discount given/.test(rc), 'receipt shows the regular price and the discount');
   await m.screenshot({path: __dirname + '/shots/3_receipt.png'});
   await m.evaluate(() => slClose('bkRcpt'));
@@ -49,9 +51,8 @@ const FILE = 'file://' + require('path').resolve(__dirname, '../../Nifti_Sept17.
   await m.evaluate(() => renderSalesBooksPage()); await m.waitForTimeout(100);
   const page = await m.evaluate(() => document.getElementById('page-sales').innerText);
   ok(/Discounts · Today/.test(page), 'sales page shows discounts by cashier');
-  ok(/Price lock/.test(page), 'owner sees price lock settings');
+  ok(!/Price lock/.test(page), 'price lock box is gone from Sales (Round 13)');
   console.log(JSON.stringify(await m.evaluate(() => plDiscountsBy(APP_TODAY))));
-  await m.evaluate(() => { document.querySelector('.pl-set').open = true; document.querySelector('.pl-set').scrollIntoView(); });
   await m.screenshot({path: __dirname + '/shots/4_owner_sales.png'});
   // switching off the receipt
   await m.evaluate(() => bkSaveSettings({receipt_auto: false}));

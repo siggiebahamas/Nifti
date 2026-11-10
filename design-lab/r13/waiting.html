@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Waiting On Supplier</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="lab.css">
+<style>
+/* the Focus popup, as built in the app */
+.fp{width:440px;max-width:100%;background:#fff;border-radius:24px;box-shadow:var(--sh2);overflow:hidden;display:flex;flex-direction:column}
+.frame-p .fp{width:100%;border-radius:0;box-shadow:none;flex:1}
+.fp-top{display:flex;align-items:center;gap:12px;padding:16px 16px 12px 20px}
+.fp-who{flex:1;min-width:0}.fp-who b{display:block;font-size:17px;font-weight:800}.fp-who span{font-size:13.5px;color:var(--mut);font-weight:600}
+.fp-x{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--sf2);color:var(--ink2)}
+.fp-prog{padding:0 20px 12px;display:grid;gap:9px;border-bottom:1px solid var(--line)}
+.segs{display:grid;grid-template-columns:repeat(6,1fr);gap:5px}.segs i{height:6px;border-radius:999px;background:#E4E7EC}.segs i.d{background:var(--g2)}.segs i.n{background:var(--ink)}
+.fp-pl{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:var(--ink2)}.fp-pl b{color:var(--ink);font-weight:800}
+.fp-body{padding:20px 20px 16px;display:grid;gap:18px;grid-template-columns:minmax(0,1fr);flex:1;align-content:start}
+.hero{display:grid;justify-items:center;text-align:center;gap:7px}
+.hero .ic{width:58px;height:58px;border-radius:18px;display:grid;place-items:center;background:#EEF1F5;color:#475467;box-shadow:inset 0 0 0 1px #D5DBE3}.hero .ic svg.i{width:28px;height:28px}
+.hero h2{margin:2px 0 0;font-size:22px;font-weight:800;letter-spacing:-.015em;line-height:1.2}.hero p{margin:0;font-size:15px;color:var(--ink2)}
+.oline{display:flex;align-items:center;gap:12px;padding:12px 15px;border-radius:15px;background:var(--sf2)}
+.oline span{flex:1;min-width:0;font-size:14px;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.oline span b{color:var(--ink)}.oline > b{font-size:16px}
+.fp-foot{padding:12px 20px 16px;display:grid;gap:10px;border-top:1px solid var(--line)}
+.btn1.soft{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line2)}
+.fp-sec{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.quiet{justify-self:center;font-size:14px;font-weight:700;color:var(--red);text-decoration:underline;text-underline-offset:3px}
+
+/* A · hand-off */
+.wa{border-radius:20px;background:#EEF1F5;padding:18px 16px 16px;display:grid;justify-items:center;gap:10px;text-align:center}
+.wa-row{display:flex;align-items:center;gap:6px}
+.wa-me{display:grid;justify-items:center;gap:3px;color:var(--g2)}.wa-me svg.i{width:34px;height:34px;padding:7px;border-radius:50%;background:#fff;stroke-width:2.6;box-shadow:inset 0 0 0 1.5px var(--gln)}
+.wa-me small{font-size:12px;font-weight:800;color:var(--mut)}
+.wa-line{display:flex;align-items:center;color:#98A2B3;margin-top:-16px}.wa-line i{display:block;width:44px;border-top:2px dashed #B8C0CC}.wa-line svg.i{width:18px;height:18px;margin-left:-4px;stroke-width:2.2}
+.wa .av{width:58px;height:58px;font-size:18px;box-shadow:0 0 0 4px #fff,0 6px 16px -6px rgba(16,24,40,.35)}
+.wa-t b{display:block;font-size:17px;font-weight:800}.wa-t span{font-size:14px;color:var(--ink2)}
+.wa-n{font-size:13.5px;font-weight:700;color:#475467;background:#fff;border-radius:999px;padding:5px 12px;box-shadow:inset 0 0 0 1px #D5DBE3}
+
+/* B · read receipts */
+.wb{border-radius:20px;box-shadow:inset 0 0 0 1.5px var(--line);padding:6px 16px}
+.wb-r{display:grid;grid-template-columns:30px minmax(0,1fr) auto;gap:12px;align-items:center;padding:11px 0;position:relative}
+.wb-r + .wb-r{border-top:1px solid var(--line)}
+.wb-r .k{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--gbg);color:var(--g)}.wb-r .k svg.i{width:16px;height:16px;stroke-width:2.6}
+.wb-r .k.two{display:flex;align-items:center;justify-content:center;width:30px}.wb-r .k.two svg.i{width:13px;height:13px}.wb-r .k.two svg.i:last-child{margin-left:-6px}
+.wb-r b{font-size:15px;font-weight:700}.wb-r small{display:block;font-size:13px;color:var(--mut)}.wb-r time{font-size:13px;color:var(--mut);font-weight:600;white-space:nowrap}
+.wb-r.now .k{background:#fff;color:#475467;box-shadow:inset 0 0 0 2px #98A2B3}.wb-r.now .k i{width:8px;height:8px;border-radius:50%;background:#98A2B3}
+.wb-r.now b{color:var(--ink)}.wb-r.next{opacity:.55}.wb-r.next .k{background:var(--sf2);color:var(--mut2);box-shadow:inset 0 0 0 1.5px var(--line)}
+.wb-r .tag{font-size:12px;font-weight:800;color:#475467;background:#EEF1F5;border-radius:999px;padding:3px 9px}
+
+/* C · usual time */
+.wc{border-radius:20px;background:var(--sf2);padding:16px;display:grid;gap:12px}
+.wc-h{display:flex;align-items:center;gap:12px}.wc-h .k{width:42px;height:42px;border-radius:12px;background:#fff;display:grid;place-items:center;color:var(--ink2);box-shadow:var(--sh1)}
+.wc-h b{display:block;font-size:16px;font-weight:800}.wc-h span{font-size:13.5px;color:var(--ink2)}
+.wc-bar{height:10px;border-radius:999px;background:#E4E7EC;overflow:hidden;position:relative}.wc-bar u{position:absolute;left:0;top:0;bottom:0;border-radius:999px;background:linear-gradient(90deg,#98A2B3,#667085)}
+.wc-sc{display:flex;justify-content:space-between;font-size:12.5px;font-weight:700;color:var(--mut)}
+.wc-days{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.wc-days div{border-radius:12px;background:#fff;box-shadow:inset 0 0 0 1.5px var(--line);padding:8px 0;text-align:center;line-height:1.1}
+.wc-days small{display:block;font-size:11px;font-weight:800;color:var(--mut);letter-spacing:.04em}.wc-days b{font-size:17px}
+.wc-days .past{background:#EEF1F5;box-shadow:none;color:var(--mut)}.wc-days .today{box-shadow:inset 0 0 0 2px var(--ink)}
+.wc-days .arr{background:var(--gbg);box-shadow:inset 0 0 0 2px var(--g2);color:var(--g)}.wc-days .arr small{color:var(--g)}
+.wc-f{font-size:13.5px;color:var(--ink2);display:flex;gap:8px;align-items:flex-start}.wc-f svg.i{width:17px;height:17px;color:var(--mut);margin-top:1px}
+
+/* D · their to-do */
+.wd{border-radius:20px;box-shadow:inset 0 0 0 1.5px var(--line);overflow:hidden}
+.wd-h{display:flex;align-items:center;gap:10px;padding:12px 16px;background:#F6F7F9;border-bottom:1px solid var(--line);font-size:13px;font-weight:800;color:var(--ink2);letter-spacing:.03em;text-transform:uppercase}
+.wd-h .av{width:26px;height:26px;font-size:10.5px}
+.wd ol{list-style:none;margin:0;padding:6px 16px}
+.wd li{display:grid;grid-template-columns:26px minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px 0;font-size:15px;font-weight:600}
+.wd li + li{border-top:1px dashed var(--line)}
+.wd li i{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;box-shadow:inset 0 0 0 1.5px var(--line2);color:transparent}
+.wd li.dn i{background:var(--g2);box-shadow:none;color:#fff}.wd li.dn i svg.i{width:15px;height:15px;stroke-width:3}.wd li.dn span{color:var(--mut);text-decoration:line-through;text-decoration-color:#C7CDD6}
+.wd li.now{font-weight:800}.wd li.now i{box-shadow:inset 0 0 0 2px #475467}
+.wd li em{font-style:normal;font-size:12px;font-weight:800;color:#475467;background:#EEF1F5;border-radius:999px;padding:3px 9px}
+.wd li.later{color:var(--mut)}
+
+/* E · turn switch */
+.we{display:grid;gap:12px;justify-items:center;text-align:center}
+.we-sw{display:grid;grid-template-columns:1fr 1fr;width:100%;max-width:340px;border-radius:999px;background:#EEF1F5;padding:4px;position:relative}
+.we-sw > span{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:8px;min-height:46px;border-radius:999px;font-size:15px;font-weight:800;color:var(--mut)}
+.we-sw > span .av{width:28px;height:28px;font-size:11px}
+.we-sw > span.on{background:#fff;color:var(--ink);box-shadow:0 1px 2px rgba(16,24,40,.08),0 6px 14px -8px rgba(16,24,40,.35)}
+.we b{font-size:17px;font-weight:800}.we p{margin:-6px 0 0;font-size:14px;color:var(--ink2)}
+.we-bell{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;color:var(--ink2);background:var(--sf2);border-radius:999px;padding:7px 14px}.we-bell svg.i{width:16px;height:16px}
+
+.cmp{display:flex;gap:18px;overflow-x:auto;width:100%;padding:4px 4px 10px;justify-content:safe center;align-items:flex-start}
+.cmp > div{flex:none;display:grid;gap:10px;justify-items:center;zoom:.82}
+.cmp > div > b{font-size:16px;font-weight:800}
+</style>
+</head>
+<body>
+<header class="lab-top"><div class="lab-in">
+  <div class="lab-r1"><a class="lab-back" href="index.html">‹ Round 13</a><h1>Waiting on the supplier · 5 ways</h1><p>Replaces the gray spinner on To confirm and Preparing when you buy. Tap the buttons; nothing is saved.</p></div>
+  <div class="lab-tabs" id="tabs"></div>
+  <div class="lab-r3" id="r3"></div>
+</div></header>
+<main class="lab-wrap" id="wrap"><section class="lab-stage" id="stage"></section><aside class="lab-notes" id="notes"></aside></main>
+<div class="toast" id="toast"></div>
+<script src="lab.js"></script>
+<script>
+const SUP = 'Metro Steel Co.', SF = 'Metro Steel';
+const V = [
+  {id: 'A', name: 'Hand-off', tag: 'The ball is with them', why: ['You → them, with their face. Anyone gets it without reading.', 'One line says what they are doing, one says you have nothing to do.', 'This is what the app shows right now.'], best: 'Everyone. Clearest at a glance.'},
+  {id: 'B', name: 'Read receipts', tag: 'Like Messenger: sent, seen, answered', why: ['Sent ✓ and Seen ✓✓ with times, the way Messenger and Viber show it.', 'The step they are on has a soft ring; the next step is faded.', 'Answers "did they even see it?" without calling.'], best: 'Owners who chase suppliers by chat.'},
+  {id: 'C', name: 'Usual time', tag: 'How long they normally take', why: ['"They usually answer in about 2 hours" with a calm bar, no spinning.', 'Preparing shows the days until it arrives, today outlined.', 'Says when Nifti will remind them, so you do not have to.'], best: 'Busy owners planning their day.'},
+  {id: 'D', name: 'Their to-do', tag: 'What they do next, ticked off', why: ['A short list of their steps: done ones are ticked and crossed out.', 'The one they are on now has a small "now" tag.', 'Makes it obvious the next move is theirs, not yours.'], best: 'New staff learning how orders move.'},
+  {id: 'E', name: 'Turn switch', tag: 'You | Them, one side lit', why: ['A two-sided switch: their side is lit, yours is not.', 'One sentence: "The ball is with Metro Steel."', 'A bell line says you will get a message when they answer.'], best: 'The fastest read. Least to look at.'}
+];
+const S = {v: 'A', view: 'pop', step: 'both'};
+const STEPS = {
+  confirm: {n: 0, name: 'To confirm', icon: 'clip', title: 'Waiting for Metro Steel to say yes', text: "They will say yes, or offer a new price.", foot: ['Message Metro Steel', [['edit', 'Change my order']], 'Cancel this order']},
+  prep: {n: 1, name: 'Preparing', icon: 'box', title: 'Metro Steel is packing it', text: 'It should arrive Fri, Aug 29 on their truck.', foot: ['Message Metro Steel', [['edit', 'Change delivery address']], '']}
+};
+function ind(v, k){
+  const prep = k === 'prep';
+  switch(v){
+    case 'A': return `<div class="wa"><div class="wa-row"><span class="wa-me">${ic('check')}<small>You</small></span><span class="wa-line"><i></i>${ic('arrow')}</span>${av(SUP, 58)}</div>
+      <div class="wa-t"><b>Metro Steel's turn</b><span>${prep ? 'Packing your order now' : 'Sent Mon, Aug 25 · we\'ll tell you when they answer'}</span></div><div class="wa-n">Nothing for you to do right now.</div></div>`;
+    case 'B': return `<div class="wb">${(prep ? [['ok', 'They said yes', 'Tue · 10:05 AM'], ['ok', 'Packing started', 'Thu · 8:15 AM'], ['now', 'Send it out', 'they do this next'], ['next', 'It arrives', 'Fri, Aug 29']]
+        : [['ok', 'Sent to Metro Steel', 'Mon · 3:10 PM'], ['seen', 'Seen by Metro Steel', 'Mon · 3:22 PM'], ['now', 'They say yes', 'they do this next'], ['next', 'They pack it', '']]).map(([s, t, w]) =>
+        `<div class="wb-r ${s === 'now' ? 'now' : s === 'next' ? 'next' : ''}"><span class="k${s === 'seen' ? ' two' : ''}">${s === 'now' ? '<i></i>' : s === 'next' ? '' : s === 'seen' ? ic('check') + ic('check') : ic('check')}</span><div><b>${t}</b>${s === 'now' ? '' : ''}</div>${s === 'now' ? '<span class="tag">Their turn</span>' : `<time>${w}</time>`}</div>`).join('')}</div>`;
+    case 'C': return prep ? `<div class="wc"><div class="wc-h"><span class="k">${ic('cal')}</span><div><b>Arrives Fri, Aug 29</b><span>3 days to go · they're usually on time</span></div></div>
+        <div class="wc-days">${[['MON', 25, 'past'], ['TUE', 26, 'past'], ['WED', 27, 'today'], ['THU', 28, ''], ['FRI', 29, 'arr']].map(([d, n, c]) => `<div class="${c}"><small>${d}</small><b>${n}</b></div>`).join('')}</div>
+        <div class="wc-f">${ic('bell')}<span>If it hasn't left by Thursday night, we'll ask them for you.</span></div></div>`
+      : `<div class="wc"><div class="wc-h"><span class="k">${ic('clock')}</span><div><b>They usually answer in about 2 hours</b><span>1 hr 10 min so far</span></div></div>
+        <div><div class="wc-bar"><u style="width:58%"></u></div><div class="wc-sc" style="margin-top:6px"><span>Sent 3:10 PM</span><span>Usually by 5:10 PM</span></div></div>
+        <div class="wc-f">${ic('bell')}<span>No answer by 5:10 PM? We'll remind them for you.</span></div></div>`;
+    case 'D': return `<div class="wd"><div class="wd-h">${av(SUP, 26)}What Metro Steel does next</div><ol>${(prep ? [['dn', 'Say yes to your order'], ['now', 'Pack it'], ['later', 'Send it out'], ['later', 'Deliver Fri, Aug 29']] : [['dn', 'Get your order'], ['now', 'Say yes, or offer a price'], ['later', 'Pack it'], ['later', 'Send it out']]).map(([c, t]) =>
+        `<li class="${c}"><i>${c === 'dn' ? ic('check') : ''}</i><span>${t}</span>${c === 'now' ? '<em>Now</em>' : ''}</li>`).join('')}</ol></div>`;
+    case 'E': return `<div class="we"><div class="we-sw"><span>You</span><span class="on">${av(SUP, 28)}Metro Steel</span></div><b>The ball is with Metro Steel</b><p>${prep ? 'They are packing it. It should arrive Fri, Aug 29.' : 'Nothing for you to do. They will say yes or offer a price.'}</p><div class="we-bell">${ic('bell')}We'll message you when ${prep ? 'it leaves' : 'they answer'}</div></div>`;
+  }
+}
+function pop(v, k){
+  const st = STEPS[k];
+  return `<div class="fp"><div class="fp-top">${av(SUP, 44)}<div class="fp-who"><b>${SUP}</b><span>Supplier · PO-2026-0798</span></div><button class="fp-x" data-act="toast" data-v="Closes the popup (prototype)">${ic('x')}</button></div>
+    <div class="fp-prog"><div class="segs">${[0, 1, 2, 3, 4, 5].map(i => `<i class="${i < st.n ? 'd' : i === st.n ? 'n' : ''}"></i>`).join('')}</div><div class="fp-pl"><span>Step ${st.n + 1} of 6 · <b>${st.name}</b></span><span class="turn them"><i></i>Waiting on ${SF}</span></div></div>
+    <div class="fp-body"><div class="hero"><span class="ic">${ic(st.icon)}</span><h2>${st.title}</h2><p>${st.text}</p></div>${ind(v, k)}
+      <div class="oline"><span><b>1 item</b> · Galvanized Wire 12ga</span><b>₱112,000</b></div></div>
+    <div class="fp-foot"><button class="btn1 soft full" data-act="toast" data-v="Opens your chat with Metro Steel (prototype)">${ic('msg')}${st.foot[0]}</button>
+      <div class="fp-sec">${st.foot[1].map(([i, l]) => `<button class="btn2" data-act="toast" data-v="${l} (prototype)">${ic(i)}${l}</button>`).join('')}</div>${st.foot[2] ? `<button class="quiet" data-act="toast" data-v="Asks before cancelling (prototype)">${st.foot[2]}</button>` : ''}</div></div>`;
+}
+function render(){
+  $('tabs').innerHTML = V.map(x => `<button class="lab-tab" aria-pressed="${S.v === x.id && S.view !== 'all'}" data-act="v" data-v="${x.id}"><i>${x.id}</i><b>${x.name}</b><small>${x.tag}</small></button>`).join('');
+  $('r3').innerHTML = seg('vw', [['pop', 'Popup'], ['phone', 'Phone'], ['all', 'All 5 side by side']], S.view, 'view') + (S.view !== 'all' ? seg('st', [['both', 'Both steps'], ['confirm', 'To confirm'], ['prep', 'Preparing']], S.step, 'step') : seg('st', [['confirm', 'To confirm'], ['prep', 'Preparing']], S.step === 'prep' ? 'prep' : 'confirm', 'step'));
+  const ks = S.step === 'both' ? ['confirm', 'prep'] : [S.step];
+  $('wrap').classList.toggle('wide', S.view === 'all'); $('notes').style.display = S.view === 'all' ? 'none' : '';
+  if(S.view === 'all'){ const k = S.step === 'prep' ? 'prep' : 'confirm'; $('stage').innerHTML = `<div class="cmp">${V.map(x => `<div><b>${x.id} · ${x.name}</b>${pop(x.id, k)}</div>`).join('')}</div>`; }
+  else if(S.view === 'phone') $('stage').innerHTML = ks.map(k => `<div><p class="lab-cap">${STEPS[k].name}</p><div class="frame-p"><div class="notch"><span>9:41</span><span>●●●</span></div>${pop(S.v, k)}</div></div>`).join('');
+  else $('stage').innerHTML = ks.map(k => `<div><p class="lab-cap">${STEPS[k].name}</p>${pop(S.v, k)}</div>`).join('');
+  const x = V.find(v => v.id === S.v);
+  $('notes').innerHTML = `<h2>${x.id} · ${x.name}</h2><p class="tg">${x.tag}</p><h3>Why it works</h3><ul>${x.why.map(w => `<li>${ic('check')}<span>${w}</span></li>`).join('')}</ul>
+    <div class="box"><b>Best for:</b> ${x.best}</div><div class="box"><b>Same in all 5:</b> a slate "Waiting on Metro Steel" badge, no spinning circle, one quiet button to message them.</div>`;
+}
+document.addEventListener('click', e => { const b = e.target.closest('[data-act]'); if(!b) return; const a = b.dataset.act, v = b.dataset.v;
+  if(a === 'v'){ S.v = v; if(S.view === 'all') S.view = 'pop'; } else if(a === 'view') S.view = v; else if(a === 'step') S.step = v; else if(a === 'toast') return toast(v); render(); });
+render();
+</script>
+</body>
+</html>

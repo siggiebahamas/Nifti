@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>New Order Popups</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="lab.css">
+<style>
+.pp{width:560px;max-width:100%;background:#fff;border-radius:24px;box-shadow:var(--sh2);overflow:hidden;display:flex;flex-direction:column;max-height:820px}
+.pp.wide{width:900px}
+.frame-p .pp{width:100%;max-height:none;border-radius:0;box-shadow:none;flex:1;min-height:0}
+.ph{display:flex;align-items:center;gap:12px;padding:16px 16px 12px 20px}
+.ph .ic0{width:44px;height:44px;border-radius:14px;background:var(--gbg);color:var(--g);display:grid;place-items:center;box-shadow:inset 0 0 0 1px var(--gln);flex:none}
+.ph h3{margin:0;font-size:18px;font-weight:800;line-height:1.2}.ph p{margin:1px 0 0;font-size:13.5px;color:var(--mut);font-weight:600}
+.ph > div{flex:1;min-width:0}
+.x{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--sf2);color:var(--ink2);flex:none}
+.pg{padding:0 20px 12px;display:grid;gap:8px;border-bottom:1px solid var(--line)}
+.segs{display:grid;gap:5px}.segs i{height:6px;border-radius:999px;background:#E4E7EC}.segs i.d{background:var(--g2)}.segs i.n{background:var(--ink)}
+.pgl{display:flex;justify-content:space-between;font-size:13.5px;font-weight:600;color:var(--ink2)}.pgl b{color:var(--ink);font-weight:800}
+.pb{flex:1;min-height:0;overflow-y:auto;padding:20px;display:grid;gap:18px;grid-template-columns:minmax(0,1fr);align-content:start}
+.pf{padding:12px 20px 16px;display:grid;gap:10px;border-top:1px solid var(--line);background:#fff}
+.q{display:grid;justify-items:center;text-align:center;gap:6px}
+.q h2{margin:0;font-size:24px;font-weight:800;letter-spacing:-.015em;line-height:1.2}.q p{margin:0;font-size:15px;color:var(--ink2)}
+.back{justify-self:start;display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:800;color:var(--ink2);padding:4px 2px}
+.back svg.i{width:17px;height:17px}
+.who{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.wb{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:16px;box-shadow:inset 0 0 0 1.5px var(--line);background:#fff;text-align:left;min-width:0;position:relative}
+.wb .av{width:38px;height:38px;font-size:13px}.wb span{font-size:14.5px;font-weight:700;line-height:1.25;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.wb.on{background:var(--gbg);box-shadow:inset 0 0 0 2px var(--g);color:var(--g)}
+.wb.new{border:1.5px dashed var(--line2);box-shadow:none;color:var(--ink2)}.wb.new i{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--sf2)}
+.how{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.hw{display:flex;align-items:center;gap:12px;padding:14px;border-radius:16px;box-shadow:inset 0 0 0 1.5px var(--line);background:#fff;text-align:left;position:relative}
+.hw > svg.i{width:44px;height:44px;padding:10px;border-radius:12px;background:var(--sf2);color:var(--ink2)}
+.hw b{display:block;font-size:15px}.hw small{display:block;font-size:13px;color:var(--mut);line-height:1.3}
+.hw.on{background:var(--gbg);box-shadow:inset 0 0 0 2px var(--g)}.hw.on > svg.i{background:#fff;color:var(--g)}
+.hw.on::after,.wb.on::after{content:"";position:absolute;top:8px;right:8px;width:16px;height:16px;border-radius:50%;background:var(--g) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 12.5l4 4L18 8'/%3E%3C/svg%3E") center/11px no-repeat}
+.paste{min-height:150px;font-size:15.5px}
+.sample{justify-self:start;font-size:13.5px;font-weight:700;color:var(--g);text-decoration:underline;text-underline-offset:3px}
+.ph2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pbtn{display:flex;align-items:center;gap:12px;padding:14px;border-radius:16px;border:1.5px dashed var(--line2);background:var(--sf2);text-align:left}
+.pbtn > svg.i{width:42px;height:42px;padding:10px;border-radius:12px;background:#fff;color:var(--ink2);box-shadow:var(--sh1)}
+.pbtn b{display:block;font-size:15px}.pbtn small{font-size:13px;color:var(--mut)}
+.shot{display:flex;align-items:center;gap:14px;padding:12px 14px;border-radius:16px;background:var(--gbg);box-shadow:inset 0 0 0 1px var(--gln)}
+.shot .th{width:56px;height:64px;border-radius:10px;background:#fff;box-shadow:var(--sh1);position:relative;overflow:hidden;flex:none}
+.shot .th::before{content:"";position:absolute;left:8px;right:8px;top:10px;height:3px;background:#9AA4B2;box-shadow:0 8px 0 #B6BEC9,0 16px 0 #B6BEC9,0 24px 0 #B6BEC9,0 32px 0 #C7CDD6}
+.shot b{display:block;font-size:15px;color:var(--g)}.shot span{font-size:13.5px;color:var(--ink2)}
+.reading{border-radius:16px;background:var(--sf2);padding:14px 16px;display:grid;gap:8px}
+.reading b{font-size:15px}.reading .rl{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--ink2)}
+.reading .rl i{width:18px;height:18px;border-radius:50%;background:var(--g2);display:grid;place-items:center;color:#fff}.reading .rl i svg.i{width:11px;height:11px;stroke-width:3}
+.reading .rl.wait{color:var(--mut2)}.reading .rl.wait i{background:#E4E7EC}
+/* read lines */
+.lines{display:grid;gap:8px}
+.ln{border-radius:16px;box-shadow:inset 0 0 0 1.5px var(--line);padding:12px 14px;display:grid;gap:4px;background:#fff;transition:box-shadow .2s,background .2s}
+.ln-h{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;align-items:center}
+.ln-h b{font-size:15.5px}.ln-h strong{font-size:15.5px;font-variant-numeric:tabular-nums}
+.ln small{font-size:13.5px;color:var(--mut)}
+.ln .src{font-size:12.5px;color:var(--mut);font-style:italic}
+.ln .ok{display:inline-flex;align-items:center;gap:4px;font-size:12.5px;font-weight:800;color:var(--g2)}.ln .ok svg.i{width:13px;height:13px;stroke-width:2.8}
+.ln.need{box-shadow:inset 0 0 0 1.5px var(--yelln);background:#FFFDF0}
+.ln.need .ask{font-size:14px;font-weight:800;color:var(--ink);margin-top:4px}
+.ln.need .chips{margin-top:6px}
+.ln.hl{box-shadow:inset 0 0 0 2px var(--ink)}
+.tot{display:flex;justify-content:space-between;align-items:baseline;padding:10px 4px 0;border-top:1.5px solid var(--ink2);font-weight:800}.tot b{font-size:19px;font-variant-numeric:tabular-nums}
+.need-flash{animation:nf 1.2s ease}
+@keyframes nf{20%,60%{box-shadow:0 0 0 3px #fff,0 0 0 5px var(--ink)}}
+.done{display:grid;justify-items:center;text-align:center;gap:10px;padding:10px 0}
+.seal{width:84px;height:84px;border-radius:50%;display:grid;place-items:center;background:var(--g2);color:#fff;box-shadow:0 0 0 8px var(--gbg),0 0 0 9px var(--gln);animation:seal .5s cubic-bezier(.2,1.4,.4,1)}.seal svg.i{width:40px;height:40px;stroke-width:2.6}
+@keyframes seal{from{transform:scale(.6);opacity:0}to{transform:none;opacity:1}}
+.done h2{margin:4px 0 0;font-size:24px;font-weight:800}.done p{margin:0;color:var(--ink2);max-width:380px}
+.alts{display:grid;gap:8px}
+.alt{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;background:var(--sf2);text-align:left;width:100%}
+.alt svg.i:first-child{width:36px;height:36px;padding:8px;border-radius:10px;background:#fff;color:var(--ink2)}
+.alt b{display:block;font-size:14.5px}.alt small{font-size:13px;color:var(--mut)}.alt > span{flex:1}
+/* T2 numbered sheet */
+.ns{display:grid;grid-template-columns:34px minmax(0,1fr);gap:14px}
+.ns > .k{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:15px;background:#fff;box-shadow:inset 0 0 0 2px var(--line2);color:var(--ink2);position:relative}
+.ns.dn > .k{background:var(--g2);box-shadow:none;color:#fff}.ns.dn > .k svg.i{width:17px;height:17px;stroke-width:3}
+.ns.now > .k{box-shadow:inset 0 0 0 2px var(--ink);color:var(--ink)}
+.ns > div{min-width:0;display:grid;gap:10px;padding-bottom:4px}
+.ns h4{margin:5px 0 0;font-size:16.5px;font-weight:800}.ns.off h4{color:var(--mut2)}
+.ns + .ns{position:relative}
+.rail{position:relative}.rail::before{content:"";position:absolute;left:16px;top:40px;bottom:12px;width:2px;background:var(--line)}
+.whochips{display:flex;flex-wrap:wrap;gap:8px}
+.wc{display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:0 14px 0 5px;border-radius:999px;box-shadow:inset 0 0 0 1.5px var(--line);font-size:14px;font-weight:700;background:#fff}
+.wc .av{width:32px;height:32px;font-size:11.5px}.wc.on{background:var(--ink);color:#fff;box-shadow:none}
+.wc.plus{padding:0 14px;color:var(--ink2)}
+.tabs4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;background:#EEF0F3;border-radius:14px;padding:4px}
+.tabs4 button{display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 4px;border-radius:11px;font-size:13px;font-weight:700;color:var(--ink2)}
+.tabs4 button svg.i{width:20px;height:20px}.tabs4 button.on{background:#fff;color:var(--ink);box-shadow:var(--sh1)}
+.sum{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:14px;background:var(--gbg);color:var(--g);font-size:14px;font-weight:700}
+/* T3 split */
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:0;min-height:0;flex:1}
+.split > section{min-width:0;padding:18px 20px;display:grid;gap:14px;align-content:start;overflow-y:auto}
+.split > section + section{border-left:1px solid var(--line);background:#FBFCFD}
+.sh{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:12.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+.sh span{letter-spacing:0;text-transform:none;font-size:13px;color:var(--ink2);background:#fff;box-shadow:inset 0 0 0 1px var(--line);border-radius:999px;padding:2px 9px}
+.bubble{background:#fff;border-radius:18px 18px 18px 6px;box-shadow:var(--sh1),inset 0 0 0 1px var(--line);padding:12px 14px;font-size:15px;line-height:1.6;white-space:pre-wrap}
+.bubble .sl{display:block;border-radius:6px;padding:0 4px;margin:0 -4px;transition:background .15s;cursor:default}
+.bubble .sl.m{background:var(--gbg)}.bubble .sl.u{background:var(--yelbg)}.bubble .sl.hl{background:#E4E7EC}
+.whobar{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:14px;background:var(--sf2)}
+.whobar .av{width:34px;height:34px;font-size:12px}.whobar b{font-size:15px}.whobar small{display:block;font-size:12.5px;color:var(--mut)}.whobar > div{flex:1;min-width:0}
+.whobar select{border:0;background:#fff;box-shadow:inset 0 0 0 1.5px var(--line2);border-radius:10px;height:36px;padding:0 10px;font-weight:700;font-size:14px;max-width:100%}
+.mtabs{display:none}
+@container scr (max-width:600px){
+  .who,.how{grid-template-columns:minmax(0,1fr)}
+  .ph2{grid-template-columns:minmax(0,1fr)}
+  .q h2{font-size:22px}
+  .split{grid-template-columns:minmax(0,1fr)}.split > section + section{border-left:0}
+  .split.m-them > section.ours,.split.m-ours > section.them{display:none}
+  .mtabs{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:0 16px 12px;background:#EEF0F3;border-radius:12px;padding:3px}
+  .mtabs button{min-height:40px;border-radius:9px;font-size:14px;font-weight:800;color:var(--ink2);display:flex;align-items:center;justify-content:center;gap:6px}
+  .mtabs button.on{background:#fff;color:var(--ink);box-shadow:var(--sh1)}.mtabs i{font-style:normal;font-size:12px;background:var(--ink);color:#fff;border-radius:999px;padding:1px 7px}
+  .tabs4 button{font-size:12px}
+  .pb{padding:16px}.pf{padding:12px 16px 16px}.ph{padding:12px 12px 10px 16px}.pg{padding:0 16px 10px}
+}
+@media (max-width:700px){ .who,.how,.ph2{grid-template-columns:minmax(0,1fr)} .split{grid-template-columns:minmax(0,1fr)} .split > section + section{border-left:0} .split.m-them > section.ours,.split.m-ours > section.them{display:none}
+  .mtabs{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:0 16px 12px;background:#EEF0F3;border-radius:12px;padding:3px} .mtabs button{min-height:40px;border-radius:9px;font-size:14px;font-weight:800;color:var(--ink2)} .mtabs button.on{background:#fff;color:var(--ink)} .pp.wide{width:100%} }
+</style>
+</head>
+<body>
+<header class="lab-top"><div class="lab-in">
+  <div class="lab-r1"><a class="lab-back" href="index.html">‹ Round 13</a><h1>New order popups · 3 ways</h1><p>"Enter a customer's PO" when selling and "Paste from Viber" when buying. Focus style, with the locked button. Try it: pick, paste, check.</p></div>
+  <div class="lab-tabs" id="tabs"></div>
+  <div class="lab-r3" id="r3"></div>
+</div></header>
+<main class="lab-wrap" id="wrap"><section class="lab-stage" id="stage"></section><aside class="lab-notes" id="notes"></aside></main>
+<div class="toast" id="toast"></div>
+<script src="lab.js"></script>
+<script>
+const SIDE = {
+  sell: {title: "Enter a customer's PO", sub: 'Their order becomes your order, in your item names and prices', who: 'Whose order is this?', whoLock: 'Pick the customer', role: 'customer',
+    people: ['Bayview Construction Co.', 'Cavite Steel Works', 'Corazon Welding Shop', 'Manila Bay Scaffolding Co.', 'Riverside Builders Corp'],
+    how: [['msg', 'paste', 'Paste their message', 'Viber, Messenger, text'], ['cam', 'photo', 'Photo of their PO', 'Paper or screen'], ['file', 'file', 'Upload a file', 'PDF, Excel, CSV'], ['type', 'type', 'Type it in', 'Pick from your items']],
+    text: 'PO No. JH-551\nDeliver by Oct 3\n1. Portland cement 40kg 100 bags 245.00\n2. rebar 10mm - 50 pcs\nsemento 20 sako',
+    lines: [{src: 1, s: '1. Portland cement 40kg 100 bags 245.00', name: 'Portland Cement 40kg', qty: 100, u: 'bags', p: 236, note: 'Their PO says ₱245. Your price list: ₱236.'}, {src: 2, s: '2. rebar 10mm - 50 pcs', name: 'Steel Rebar 10mm', qty: 50, u: 'pcs', p: 48},
+      {src: 3, s: 'semento 20 sako', need: 1, qty: 20, u: 'bags', opts: [['Portland Cement 40kg', 236], ['White Cement 40kg', 410], ['Not an item', 0]]}],
+    make: 'Create the order', done: ['Order PO-2026-0878 is ready', 'Bayview Construction Co. gets a copy to confirm. It is in Orders under To confirm.'], doneBtn: 'Open the order'},
+  buy: {title: 'Paste from Viber', sub: 'The message you would send on Viber becomes an order you can check', who: 'Who are you ordering from?', whoLock: 'Pick the supplier', role: 'supplier',
+    people: ['Metro Steel Co.', 'Cebu Aggregates', 'Balintawak Fresh Produce', 'Marikina Packaging Supply', 'Northline Welding Materials'],
+    how: [['msg', 'paste', 'Paste the message', 'What you would send on Viber'], ['cam', 'photo', 'Photo of a list', 'Handwritten is fine'], ['mic', 'say', 'Say it', '"Semento, sampung sako"'], ['type', 'type', 'Type it in', 'Pick from their items']],
+    text: 'Good morning po! Order namin:\n10 bags cement\n5 box nails 2"\nrebar 10mm x100',
+    lines: [{src: 1, s: '10 bags cement', name: 'Portland Cement 40kg', qty: 10, u: 'bags', p: 228}, {src: 2, s: '5 box nails 2"', need: 1, qty: 5, u: 'boxes', opts: [['Common Nails 2" (box)', 680], ['Concrete Nails 2" (box)', 760], ['Not an item', 0]]},
+      {src: 3, s: 'rebar 10mm x100', name: 'Steel Rebar 10mm', qty: 100, u: 'pcs', p: 46}],
+    make: 'Make the order', done: ['Saved as a draft', 'Check it once more, then send it to Metro Steel Co. Nothing is sent until you tap Send.'], doneBtn: 'Send to Metro Steel'}
+};
+const T = [
+  {id: '1', name: 'One question at a time', tag: 'A big question per screen', why: ['Each screen asks one thing in big words: who, how, their order, then a check.', 'Picture tiles for choices. The button stays locked and says what is missing.', 'Reading shows each line being found, no spinning circle.'], best: 'First-timers and 65-year-old owners.', trade: 'One more tap than the others.'},
+  {id: '2', name: 'One sheet, numbered', tag: 'Steps 1, 2, 3 that turn green', why: ['Everything on one sheet, top to bottom, like a form you already know.', 'Each step turns green when done, so you see what is left.', 'The button at the bottom names the next thing to do.'], best: 'Owners who do this every day.', trade: 'Longer to scroll on a small phone.'},
+  {id: '3', name: 'Their words → your order', tag: 'Their message beside your order', why: ['Left: exactly what they sent. Right: the order Nifti made from it.', 'Each line is shaded where it came from: green found, yellow needs you.', 'Point at a line to see which words it came from. On a phone, two tabs.'], best: 'Checking long Viber orders fast, without mistakes.', trade: 'Needs a wider screen to shine; phone uses tabs.'}
+];
+const S = {t: '1', side: 'sell', view: 'both', step: 0, who: null, how: 'paste', text: '', read: 0, reading: false, fix: {}, done: false, mtab: 'them', hl: null};
+if(window.innerWidth < 700) S.view = 'p';
+function reset(){ Object.assign(S, {step: 0, who: null, how: 'paste', text: '', read: 0, reading: false, fix: {}, done: false, mtab: 'them', hl: null}); }
+const D = () => SIDE[S.side];
+const lineOf = l => l.need ? (S.fix[l.src] != null ? {name: l.opts[S.fix[l.src]][0], p: l.opts[S.fix[l.src]][1], skip: l.opts[S.fix[l.src]][1] === 0} : null) : {name: l.name, p: l.p};
+const total = () => D().lines.reduce((s, l) => { const x = lineOf(l); return s + (x && !x.skip ? x.p * l.qty : 0); }, 0);
+const hasContent = () => (S.how === 'paste' || S.how === 'type') ? S.text.trim().length > 5 : S.how === 'photo' || S.how === 'file' || S.how === 'say' ? !!S.text : false;
+function missing(){
+  if(S.who == null) return {t: D().whoLock, k: 'who'};
+  if(!hasContent()) return {t: S.side === 'sell' ? 'Paste or add their order' : 'Paste your Viber message', k: 'content'};
+  if(!S.read) return null;
+  const u = D().lines.find(l => l.need && S.fix[l.src] == null); if(u) return {t: `Pick what “${u.s}” is`, k: 'line' + u.src};
+  return null;
+}
+function primary(){
+  if(S.reading) return `<button class="btn1 full lock">${ic('clock')}Reading their order…</button>`;
+  const m = missing();
+  if(m) return `<button class="btn1 full lock" data-act="locked" data-k="${m.k}">${ic('lock')}${m.t}</button>`;
+  if(!S.read) return `<button class="btn1 full" data-act="read">${ic('spark')}Read the order</button>`;
+  return `<button class="btn1 full" data-act="make">${D().make} · ${peso(total())}${ic('arrow')}</button>`;
+}
+/* shared bits */
+const head = (n, of) => `<div class="ph"><span class="ic0">${ic(S.side === 'sell' ? 'file' : 'msg')}</span><div><h3>${D().title}</h3><p>${S.side === 'sell' ? 'Selling to a customer' : 'Buying from a supplier'}</p></div><button class="x" data-act="toast" data-v="Closes the popup (prototype)">${ic('x')}</button></div>
+  ${of ? `<div class="pg"><div class="segs" style="grid-template-columns:repeat(${of},1fr)">${Array.from({length: of}, (_, i) => `<i class="${i < n ? 'd' : i === n ? 'n' : ''}"></i>`).join('')}</div><div class="pgl"><span>Step ${n + 1} of ${of} · <b>${['Who', 'How', 'Their order', 'Check it'][n]}</b></span><span class="turn you"><i></i>Your turn</span></div></div>` : ''}`;
+const whoGrid = () => `<div class="who" data-need="who">${D().people.map((p, i) => `<button class="wb${S.who === i ? ' on' : ''}" data-act="who" data-v="${i}">${av(p, 38)}<span>${p}</span></button>`).join('')}<button class="wb new" data-act="toast" data-v="Adds a new ${D().role}: name and mobile only (prototype)"><i>${ic('plus')}</i><span>New ${D().role}</span></button></div>`;
+const howGrid = () => `<div class="how">${D().how.map(([i, k, l, s]) => `<button class="hw${S.how === k ? ' on' : ''}" data-act="how" data-v="${k}">${ic(i)}<span><b>${l}</b><small>${s}</small></span></button>`).join('')}</div>`;
+function content(){
+  if(S.how === 'paste' || S.how === 'type') return `<div data-need="content"><textarea class="in paste" id="ta" placeholder="${S.side === 'sell' ? 'Paste their order here' : 'Paste the message here'}">${S.text}</textarea></div>${S.text ? '' : `<button class="sample" data-act="sample">Use a sample ${S.side === 'sell' ? 'PO' : 'Viber message'}</button>`}`;
+  if(S.text) return `<div class="shot"><span class="th"></span><div><b>${S.how === 'file' ? 'PO-JH-551.pdf added' : S.how === 'say' ? 'Got 3 items from what you said' : 'Photo added'}</b><span>Ready to read · <button class="link" data-act="clear">Remove</button></span></div></div>`;
+  if(S.how === 'say') return `<button class="pbtn" data-need="content" data-act="sample" style="width:100%">${ic('mic')}<span><b>Tap and say the order</b><small>Item by item, Tagalog or English</small></span></button>`;
+  return `<div class="ph2" data-need="content"><button class="pbtn" data-act="sample">${ic('cam')}<span><b>Take a photo</b><small>Use the camera</small></span></button><button class="pbtn" data-act="sample">${ic(S.how === 'file' ? 'file' : 'img')}<span><b>${S.how === 'file' ? 'Choose a file' : 'Attach a photo'}</b><small>${S.how === 'file' ? 'PDF, Excel or CSV' : 'From your gallery or files'}</small></span></button></div>`;
+}
+function readingBox(){ const L = D().lines; return `<div class="reading"><b>Reading their order…</b>${L.map((l, i) => `<div class="rl${i < S.read ? '' : ' wait'}"><i>${i < S.read ? ic('check') : ''}</i>${l.s}</div>`).join('')}</div>`; }
+function linesHtml(withSrc){
+  return `<div class="lines">${D().lines.map(l => { const x = lineOf(l);
+    if(l.need && !x) return `<div class="ln need" data-need="line${l.src}" data-src="${l.src}"><div class="ln-h"><b>“${l.s}”</b><strong>${l.qty} ${l.u}</strong></div><div class="ask">Which item is this?</div><div class="chips">${l.opts.map((o, i) => `<button class="chip" data-act="fix" data-k="${l.src}" data-v="${i}">${o[0]}</button>`).join('')}</div></div>`;
+    return `<div class="ln${S.hl === l.src ? ' hl' : ''}" data-src="${l.src}"><div class="ln-h"><b>${x.skip ? `<s style="color:var(--mut)">“${l.s}”</s>` : x.name}</b><strong>${x.skip ? 'Skipped' : peso(x.p * l.qty)}</strong></div>
+      ${x.skip ? `<small>Not added to the order. <button class="link" data-act="unfix" data-k="${l.src}">Undo</button></small>` : `<small>${l.qty} ${l.u} × ${peso(x.p)} &nbsp;<span class="ok">${ic('check')}${l.need ? 'You picked it' : 'Found in your items'}</span></small>`}
+      ${l.note ? `<small>${l.note}</small>` : ''}${withSrc ? `<span class="src">from: “${l.s}”</span>` : ''}${l.need && !x.skip ? `<small><button class="link" data-act="unfix" data-k="${l.src}">Change</button></small>` : ''}</div>`; }).join('')}</div>
+    <div class="tot"><span>Total</span><b>${peso(total())}</b></div>`;
+}
+function doneHtml(){ const d = D(); return `<div class="done"><div class="seal">${ic('check')}</div><h2>${d.done[0]}</h2><p>${d.done[1].replace('Bayview Construction Co.', d.people[S.who] || '').replace('Metro Steel Co.', d.people[S.who] || '')}</p></div>
+  <div class="lines">${D().lines.map(l => { const x = lineOf(l); return x && !x.skip ? `<div class="ln"><div class="ln-h"><b>${x.name}</b><strong>${peso(x.p * l.qty)}</strong></div><small>${l.qty} ${l.u} × ${peso(x.p)}</small></div>` : ''; }).join('')}</div><div class="tot"><span>Total</span><b>${peso(total())}</b></div>`; }
+const doneFoot = () => `<div class="pf"><button class="btn1 full" data-act="toast" data-v="${D().doneBtn} (prototype)">${D().doneBtn.replace('Metro Steel Co.', D().people[S.who])}${ic('arrow')}</button><button class="link" style="justify-self:center" data-act="again">Start over</button></div>`;
+/* ---------- theme 1: one question at a time ---------- */
+function t1(){
+  if(S.done) return `<div class="pp">${head(0, 0)}<div class="pb">${doneHtml()}</div>${doneFoot()}</div>`;
+  const n = S.step, d = D(); let body = '', btn = '';
+  const back = n ? `<button class="back" data-act="step" data-v="${n - 1}">${ic('left')}Back</button>` : '';
+  if(n === 0){ body = `<div class="q"><h2>${d.who}</h2><p>Tap one. You can add a new one.</p></div>${whoGrid()}`; btn = S.who == null ? `<button class="btn1 full lock" data-act="locked" data-k="who">${ic('lock')}${d.whoLock}</button>` : `<button class="btn1 full" data-act="step" data-v="1">Next${ic('arrow')}</button>`; }
+  if(n === 1){ body = `${back}<div class="q"><h2>How did they send it?</h2><p>${d.people[S.who]}</p></div>${howGrid()}${S.side === 'sell' ? `<div class="alts"><button class="alt" data-act="toast" data-v="Sends your order form link to the customer (prototype)">${ic('store')}<span><b>Skip the typing</b><small>Send them your order form. It comes back as an order.</small></span>${ic('right')}</button></div>` : ''}`; btn = `<button class="btn1 full" data-act="step" data-v="2">Next${ic('arrow')}</button>`; }
+  if(n === 2){ body = `${back}<div class="q"><h2>${S.how === 'paste' ? (S.side === 'sell' ? 'Paste their message' : 'Paste your Viber message') : S.how === 'type' ? 'Type the order' : S.how === 'say' ? 'Say the order' : 'Add their PO'}</h2><p>We match each line to your items.</p></div>${S.reading ? readingBox() : content()}`;
+    btn = primary().replace('data-act="make"', 'data-act="step" data-v="3"'); }
+  if(n === 3){ body = `${back}<div class="q"><h2>Check what we read</h2><p>${D().lines.filter(l => l.need && S.fix[l.src] == null).length ? 'One line needs you. Tap the right item.' : 'All matched. Check the total, then go.'}</p></div>${linesHtml(false)}`; btn = primary(); }
+  return `<div class="pp">${head(n, 4)}<div class="pb">${body}</div><div class="pf">${btn}</div></div>`;
+}
+/* ---------- theme 2: one sheet, numbered ---------- */
+function t2(){
+  if(S.done) return `<div class="pp">${head(0, 0)}<div class="pb">${doneHtml()}</div>${doneFoot()}</div>`;
+  const d = D(), s1 = S.who != null, s2 = s1 && hasContent(), s3 = s2 && S.read && !missing();
+  const st = (ok, now) => ok ? 'dn' : now ? 'now' : 'off';
+  const k = (ok, n) => ok ? ic('check') : n;
+  return `<div class="pp">${head(0, 0)}<div class="pb rail">
+    <div class="ns ${st(s1, true)}"><span class="k">${k(s1, 1)}</span><div><h4>${d.who}</h4><div class="whochips" data-need="who">${d.people.map((p, i) => `<button class="wc${S.who === i ? ' on' : ''}" data-act="who" data-v="${i}">${av(p, 32)}${p.replace(/ (Co\.|Corp|Supply|Materials|Traders)$/, '')}</button>`).join('')}<button class="wc plus" data-act="toast" data-v="Adds a new ${d.role} (prototype)">+ New</button></div></div></div>
+    <div class="ns ${st(s2, s1)}"><span class="k">${k(s2, 2)}</span><div><h4>Their order</h4>${s1 ? `<div class="tabs4">${d.how.map(([i, kk, l]) => `<button class="${S.how === kk ? 'on' : ''}" data-act="how" data-v="${kk}">${ic(i)}${l.split(' ').slice(0, 2).join(' ').replace('Paste their', 'Paste').replace('Paste the', 'Paste').replace('Photo of', 'Photo').replace('Upload a', 'File').replace('Type it', 'Type').replace('Say it', 'Say')}</button>`).join('')}</div>${S.reading ? readingBox() : content()}` : ''}</div></div>
+    <div class="ns ${st(s3, s2 && S.read)}"><span class="k">${k(s3, 3)}</span><div><h4>Check what we read</h4>${S.read && !S.reading ? linesHtml(false) : s2 ? '<p style="margin:0;color:var(--mut);font-size:14px">Tap "Read the order" below.</p>' : ''}</div></div>
+  </div><div class="pf">${primary()}</div></div>`;
+}
+/* ---------- theme 3: their words → your order ---------- */
+function t3(){
+  if(S.done) return `<div class="pp">${head(0, 0)}<div class="pb">${doneHtml()}</div>${doneFoot()}</div>`;
+  const d = D(), L = d.lines, txt = S.text;
+  const srcLines = txt ? txt.split('\n') : [];
+  const bubble = txt && (S.how === 'paste' || S.how === 'type') ? `<div class="bubble">${srcLines.map(s => { const l = L.find(x => x.s === s); const cls = l && S.read ? (l.need && S.fix[l.src] == null ? 'u' : 'm') : ''; return `<span class="sl ${cls}${l && S.hl === l.src ? ' hl' : ''}" ${l ? `data-src="${l.src}"` : ''}>${s || ' '}</span>`; }).join('')}</div>` : content();
+  const found = L.filter(l => lineOf(l)).length;
+  return `<div class="pp wide">${head(0, 0)}
+    <div class="mtabs"><button class="${S.mtab === 'them' ? 'on' : ''}" data-act="mtab" data-v="them">Their message</button><button class="${S.mtab === 'ours' ? 'on' : ''}" data-act="mtab" data-v="ours">Your order${S.read ? ` <i>${found}/${L.length}</i>` : ''}</button></div>
+    <div class="split m-${S.mtab}"><section class="them"><div class="sh">What they sent ${txt ? `<button class="link" data-act="clear" style="text-transform:none;letter-spacing:0">Clear</button>` : ''}</div>
+      <div class="whobar" data-need="who">${S.who != null ? av(d.people[S.who], 34) : `<span class="av" style="background:#E4E7EC;color:#667085;width:34px;height:34px">?</span>`}<div><small>${S.side === 'sell' ? 'Customer' : 'Supplier'}</small><select data-act-sel="who"><option value="">${d.whoLock}…</option>${d.people.map((p, i) => `<option value="${i}" ${S.who === i ? 'selected' : ''}>${p}</option>`).join('')}</select></div></div>
+      ${!txt ? `<div class="chips">${d.how.map(([i, k, l]) => `<button class="chip${S.how === k ? ' on' : ''}" data-act="how" data-v="${k}">${l}</button>`).join('')}</div>` : ''}${bubble}</section>
+      <section class="ours"><div class="sh">Your order ${S.read ? `<span>${found} of ${L.length} found</span>` : ''}</div>${S.reading ? readingBox() : S.read ? linesHtml(true) : `<div class="reading" style="background:#fff;box-shadow:inset 0 0 0 1.5px var(--line)"><b>Nothing read yet</b><span style="font-size:14px;color:var(--mut)">${txt ? 'Tap "Read the order".' : 'Add their message on the left.'} Each line shows up here, matched to your items.</span></div>`}</section></div>
+    <div class="pf">${primary()}</div></div>`;
+}
+const R = {1: t1, 2: t2, 3: t3};
+function render(keepFocus){
+  const ta = document.activeElement && document.activeElement.id === 'ta' ? document.activeElement.selectionStart : null;
+  $('tabs').innerHTML = T.map(x => `<button class="lab-tab" aria-pressed="${S.t === x.id}" data-act="t" data-v="${x.id}"><i>${x.id}</i><b>${x.name}</b><small>${x.tag}</small></button>`).join('');
+  $('r3').innerHTML = seg('sd', [['sell', "Selling: Enter a customer's PO"], ['buy', 'Buying: Paste from Viber']], S.side, 'side') + seg('vw', [['both', 'Popup + phone'], ['d', 'Popup'], ['p', 'Phone']], S.view, 'view') + `<button class="btn2" data-act="again">${ic('again' in IC ? 'again' : 'left')}Start over</button>`;
+  const pop = R[S.t]();
+  $('wrap').classList.toggle('wide', S.t === '3' && S.view !== 'p');
+  if(S.view === 'd') $('stage').innerHTML = pop;
+  else if(S.view === 'p') $('stage').innerHTML = `<div class="frame-p"><div class="notch"><span>9:41</span><span>●●●</span></div>${pop}</div>`;
+  else $('stage').innerHTML = `<div style="flex:1 1 560px;min-width:0;display:flex;justify-content:center">${pop}</div><div class="frame-p"><div class="notch"><span>9:41</span><span>●●●</span></div>${pop}</div>`;
+  const x = T.find(t => t.id === S.t);
+  $('notes').innerHTML = `<h2>${x.id} · ${x.name}</h2><p class="tg">${x.tag}</p><h3>Why it works</h3><ul>${x.why.map(w => `<li>${ic('check')}<span>${w}</span></li>`).join('')}</ul><div class="box"><b>Best for:</b> ${x.best}</div><div class="box"><b>Trade-off:</b> ${x.trade}</div>
+    <div class="box"><b>Same in all 3:</b> one green button that stays locked and says what is missing ("${D().whoLock}", "Pick what ‘${D().lines.find(l => l.need).s}’ is"). Lines Nifti is unsure about turn yellow with two or three choices to tap.</div>`;
+  if(ta != null){ const t = document.querySelectorAll('#ta'); t.forEach(e => {}); const f = document.querySelector('#stage #ta'); if(f){ f.focus(); f.setSelectionRange(ta, ta); } }
+}
+function readIt(){ S.reading = true; S.read = 0; S.mtab = 'ours'; render(); let i = 0; const L = D().lines;
+  const tick = () => { i++; S.read = i; if(i < L.length){ render(); setTimeout(tick, 380); } else { setTimeout(() => { S.reading = false; S.read = L.length; if(S.t === '1') S.step = 3; render(); }, 380); } }; setTimeout(tick, 380); }
+function flash(k){ document.querySelectorAll(`[data-need="${k}"]`).forEach(e => { e.scrollIntoView({behavior: 'smooth', block: 'center'}); e.classList.remove('need-flash'); void e.offsetWidth; e.classList.add('need-flash'); });
+  document.querySelectorAll('.btn1.lock').forEach(b => { b.classList.remove('shake'); void b.offsetWidth; b.classList.add('shake'); }); }
+document.addEventListener('click', e => { const b = e.target.closest('[data-act]'); if(!b) return; const a = b.dataset.act, v = b.dataset.v;
+  if(a === 't'){ S.t = v; } else if(a === 'side'){ S.side = v; reset(); } else if(a === 'view') S.view = v; else if(a === 'again') reset();
+  else if(a === 'who'){ S.who = Number(v); } else if(a === 'how'){ if(S.how !== v){ S.how = v; S.text = ''; S.read = 0; S.fix = {}; } }
+  else if(a === 'sample'){ S.text = (S.how === 'paste' || S.how === 'type') ? D().text : D().text; S.read = 0; S.fix = {}; }
+  else if(a === 'clear'){ S.text = ''; S.read = 0; S.fix = {}; }
+  else if(a === 'step'){ S.step = Number(v); } else if(a === 'read'){ return readIt(); } else if(a === 'fix'){ S.fix[Number(b.dataset.k)] = Number(v); } else if(a === 'unfix'){ delete S.fix[Number(b.dataset.k)]; }
+  else if(a === 'make'){ S.done = true; } else if(a === 'mtab'){ S.mtab = v; } else if(a === 'locked'){ return flash(b.dataset.k); } else if(a === 'toast') return toast(v);
+  render(); });
+document.addEventListener('input', e => { if(e.target.id === 'ta'){ S.text = e.target.value; S.read = 0; S.fix = {}; document.querySelectorAll('#ta').forEach(t => { if(t !== e.target) t.value = S.text; }); document.querySelectorAll('.pf').forEach(p => { p.innerHTML = S.t === '1' && S.step === 2 ? primary().replace('data-act="make"', 'data-act="step" data-v="3"') : primary(); }); } });
+document.addEventListener('change', e => { if(e.target.dataset && e.target.dataset.actSel === 'who'){ S.who = e.target.value === '' ? null : Number(e.target.value); render(); } });
+document.addEventListener('mouseover', e => { const l = e.target.closest && e.target.closest('[data-src]'); const v = l ? Number(l.dataset.src) : null; if(v === S.hl || S.t !== '3') return; S.hl = v;
+  document.querySelectorAll('[data-src]').forEach(x => { const on = Number(x.dataset.src) === v; x.classList.toggle(x.classList.contains('sl') ? 'hl' : 'hl', on); }); });
+render();
+</script>
+</body>
+</html>

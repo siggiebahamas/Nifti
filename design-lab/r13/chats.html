@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Chat List Styles</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="lab.css">
+<style>
+.app{display:grid;grid-template-columns:380px minmax(0,1fr);height:720px;background:#fff}
+.frame-p .app{grid-template-columns:minmax(0,1fr);height:100%}
+.frame-p .thread{display:none}
+.list{border-right:1px solid var(--line);display:flex;flex-direction:column;min-height:0}
+.lh{padding:16px 16px 10px;display:grid;gap:10px}
+.lh h3{margin:0;font-size:22px;font-weight:800;letter-spacing:-.01em}
+.srch{display:flex;align-items:center;gap:10px;height:44px;border-radius:999px;background:var(--sf2);box-shadow:inset 0 0 0 1px var(--line);padding:0 14px;color:var(--mut);font-size:14.5px}
+.srch svg.i{width:18px;height:18px}
+.flt{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}.flt::-webkit-scrollbar{display:none}
+.flt button{flex:none;min-height:34px;padding:0 13px;border-radius:999px;font-size:13.5px;font-weight:700;color:var(--ink2);box-shadow:inset 0 0 0 1.5px var(--line)}
+.flt button.on{background:var(--ink);color:#fff;box-shadow:none}
+.rows{flex:1;overflow-y:auto;min-height:0;padding:4px 8px 12px;scrollbar-width:thin}
+.empty{color:var(--mut);font-size:14px;text-align:center;padding:30px 10px}
+.thread{display:flex;flex-direction:column;background:#F7F8FA;min-width:0}
+.th{display:flex;align-items:center;gap:12px;padding:14px 18px;background:#fff;border-bottom:1px solid var(--line)}
+.th b{font-size:17px;font-weight:800;display:block}.th span{font-size:13px;color:var(--mut)}
+.msgs{flex:1;padding:18px;display:grid;gap:10px;align-content:start}
+.bub{max-width:70%;padding:11px 14px;border-radius:16px;background:#fff;box-shadow:var(--sh1);font-size:14.5px}
+.bub.me{justify-self:end;background:var(--g);color:#fff}
+.bub small{display:block;font-size:12px;opacity:.7;margin-top:4px}
+
+/* row base */
+.r{display:grid;grid-template-columns:auto minmax(0,1fr) auto;column-gap:12px;align-items:center;padding:10px;border-radius:14px;cursor:pointer;width:100%;text-align:left}
+.r:hover{background:#F6F7F9}.r.on{background:#EEF1F5}
+.r .nm{font-size:15.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.r .pv{font-size:14px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.r .tm{font-size:12.5px;color:var(--mut);font-weight:600;white-space:nowrap;justify-self:end}
+.r .ct{min-width:22px;height:22px;border-radius:999px;background:var(--g2);color:#fff;font-size:12px;font-weight:800;display:grid;place-items:center;padding:0 6px;justify-self:end}
+.r.un .nm{font-weight:800}.r.un .pv{color:var(--ink);font-weight:600}.r.un .tm{color:var(--g);font-weight:800}
+.mid{display:grid;gap:2px;min-width:0}
+.rgt{display:grid;gap:6px;justify-items:end}
+.role{font-size:13px;color:var(--mut);font-weight:700}
+
+/* A clean */
+.sA .mid .l2{display:flex;gap:6px;min-width:0;align-items:baseline}.sA .role{flex:none;white-space:nowrap}.sA .role::after{content:" ·"}
+/* B grouped */
+.gh{display:flex;justify-content:space-between;align-items:center;padding:14px 10px 6px;font-size:12.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);position:sticky;top:0;background:#fff;z-index:1}
+.gh span{font-size:12px;background:var(--sf2);color:var(--ink2);border-radius:999px;padding:2px 9px;letter-spacing:0}
+.sB .r.un .nm::after{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--g2);margin-left:8px;vertical-align:2px}
+/* C order context */
+.sC .r{grid-template-columns:auto minmax(0,1fr) auto;align-items:start;padding:12px 10px}
+.sC .r .av{margin-top:2px}
+.oc{justify-self:start;display:inline-flex;align-items:center;gap:6px;margin-top:5px;font-size:12.5px;font-weight:700;color:var(--ink2);background:var(--sf2);box-shadow:inset 0 0 0 1px var(--line);border-radius:8px;padding:3px 8px;max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.oc i{width:7px;height:7px;border-radius:50%;flex:none}
+.oc i.you{background:var(--g2)}.oc i.them{background:#98A2B3}.oc i.done{background:#D0D5DD}
+.sC .r.un{position:relative}.sC .r.un::before{content:"";position:absolute;left:-2px;top:50%;width:6px;height:6px;margin-top:-3px;border-radius:50%;background:var(--g2)}
+.sC .r + .r{border-top:1px solid #F2F4F7;border-radius:0}.sC .r:hover,.sC .r.on{border-radius:14px}
+/* D viber */
+.sD .r{padding:9px 10px}.sD .avw{position:relative}.sD .avw .av{width:52px;height:52px;font-size:16px}
+.sD .badge{position:absolute;right:-3px;bottom:-3px;width:22px;height:22px;border-radius:50%;background:#fff;display:grid;place-items:center;color:#475467;box-shadow:0 0 0 1.5px #fff,0 1px 3px rgba(16,24,40,.2)}
+.sD .badge svg.i{width:13px;height:13px;stroke-width:2.2}
+.sD .nm{font-size:16px}
+/* E needs reply */
+.sec2{margin:8px 2px 4px;padding:12px 10px 4px;font-size:15px;font-weight:800;display:flex;align-items:center;gap:8px}
+.sec2 small{font-size:13px;color:var(--mut);font-weight:600}
+.reply{border-radius:18px;background:#F3FAF6;box-shadow:inset 0 0 0 1px #DCEFE3;padding:4px;margin-bottom:6px}
+.reply .r:hover,.reply .r.on{background:#E6F4EC}
+.sE .rest .r .nm{font-weight:600}.sE .rest .r .av{opacity:.9}
+.rb{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:800;color:var(--g);background:#fff;border-radius:999px;padding:3px 9px;box-shadow:inset 0 0 0 1px var(--gln);white-space:nowrap}
+</style>
+</head>
+<body>
+<header class="lab-top"><div class="lab-in">
+  <div class="lab-r1"><a class="lab-back" href="index.html">‹ Round 13</a><h1>Messages: the chat list · 5 ways</h1><p>No purple, no coloured side bars, no rings around pictures. Tap a chat or a filter.</p></div>
+  <div class="lab-tabs" id="tabs"></div>
+  <div class="lab-r3" id="r3"></div>
+</div></header>
+<main class="lab-wrap" id="wrap"><section class="lab-stage" id="stage"></section><aside class="lab-notes" id="notes"></aside></main>
+<div class="toast" id="toast"></div>
+<script src="lab.js"></script>
+<script>
+const C = [
+  {n: 'Balintawak Fresh Produce', side: 'sup', t: 'Today', pv: "Order's ready for pickup po", un: 1, oc: ['PO-0861 · On the way', 'them'], photo: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=96&h=96&fit=crop'},
+  {n: 'Bayview Construction Co.', side: 'cust', t: 'Aug 25', pv: 'Also, can you send the mill certificate?', un: 0, oc: ['PO-0855 · Send the bill', 'you']},
+  {n: 'Metro Steel Co.', side: 'sup', t: 'Aug 24', pv: 'Also — heads up, port congestion this week', un: 2, oc: ['PO-0798 · Did it arrive?', 'you'], photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=96&h=96&fit=crop'},
+  {n: 'Quezon Produce Traders', side: 'sup', t: 'Aug 22', pv: 'Looks good, proceed with the order', un: 0, oc: ['PO-0836 · Paid', 'done']},
+  {n: 'Cebu Aggregates', side: 'sup', t: 'Aug 22', pv: '📎 Price_List_Sept2026.pdf', un: 0, oc: ['PO-0839 · Packing it', 'them']},
+  {n: 'Riverside Builders Corp', side: 'cust', t: 'Aug 21', pv: 'Yes, same address. Thanks!', un: 1, oc: ['PO-0810 · Says they paid', 'you']},
+  {n: 'Corazon Welding Shop', side: 'cust', t: 'Aug 20', pv: 'Thanks for the heads-up po', un: 0, oc: ['PO-0853 · Can you fill it?', 'you'], photo: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=96&h=96&fit=crop'}
+];
+const V = [
+  {id: 'A', name: 'Clean list', tag: 'What the app shows now', why: ['Picture, name and time on top; "Customer ·" or "Supplier ·" in gray before the last message.', 'Unread chats: bold name and a green number. Nothing else is coloured.', 'The open chat sits on a soft gray, rounded background.'], best: 'Everyone. Calm and familiar.'},
+  {id: 'B', name: 'Customers, then suppliers', tag: 'Two short groups', why: ['Two headings with a count: Customers and Suppliers.', 'No labels on each row: the heading already says it.', 'Unread shows as a small green dot after the name.'], best: 'Shops that talk to both sides every day.'},
+  {id: 'C', name: 'With the order', tag: 'What each chat is about', why: ['Under each chat, a small gray tag with the order and its step.', 'A green dot on the tag means it is your turn; gray means theirs.', 'You can tell what to do before you open the chat.'], best: 'Owners who chat mainly about orders.'},
+  {id: 'D', name: 'Viber style', tag: 'Big pictures, nothing extra', why: ['Bigger pictures and names, like Viber, so it feels known on day one.', 'A tiny gray icon on the picture: a store for customers, a truck for suppliers.', 'Unread: bold and a green number.'], best: 'Staff who live in Viber and Messenger.'},
+  {id: 'E', name: 'Needs a reply first', tag: 'Unanswered chats on top', why: ['"Waiting for your reply" holds only the chats you have not answered.', 'Everything else sits below, quieter.', 'The top box empties as you reply, like an inbox at zero.'], best: 'Busy owners who reply in batches.'}
+];
+const S = {v: 'A', view: 'both', f: 'all', on: 1};
+if(window.innerWidth < 700) S.view = 'p';
+const filt = () => C.map((c, i) => Object.assign({i}, c)).filter(c => S.f === 'all' || (S.f === 'un' && c.un) || (S.f === 'cust' && c.side === 'cust') || (S.f === 'sup' && c.side === 'sup'));
+const pic = (c, size) => c.photo ? `<span class="av" style="width:${size}px;height:${size}px"><img alt="" src="${c.photo}"></span>` : av(c.n, size);
+const roleT = c => c.side === 'cust' ? 'Customer' : 'Supplier';
+function row(c, v){
+  const on = c.i === S.on ? ' on' : '', un = c.un ? ' un' : '';
+  if(v === 'A') return `<button class="r${on}${un}" data-act="open" data-v="${c.i}">${pic(c, 46)}<div class="mid"><span class="nm">${c.n}</span><div class="l2"><span class="role">${roleT(c)}</span><span class="pv">${c.pv}</span></div></div><div class="rgt"><span class="tm">${c.t}</span>${c.un ? `<span class="ct">${c.un}</span>` : '<span style="height:22px"></span>'}</div></button>`;
+  if(v === 'B') return `<button class="r${on}${un}" data-act="open" data-v="${c.i}">${pic(c, 44)}<div class="mid"><span class="nm">${c.n}</span><span class="pv">${c.pv}</span></div><span class="tm" style="align-self:start;margin-top:3px">${c.t}</span></button>`;
+  if(v === 'C') return `<button class="r${on}${un}" data-act="open" data-v="${c.i}">${pic(c, 44)}<div class="mid"><span class="nm">${c.n}</span><span class="pv">${roleT(c)} · ${c.pv}</span><span class="oc"><i class="${c.oc[1]}"></i>${c.oc[0]}</span></div><div class="rgt"><span class="tm">${c.t}</span>${c.un ? `<span class="ct">${c.un}</span>` : ''}</div></button>`;
+  if(v === 'D') return `<button class="r${on}${un}" data-act="open" data-v="${c.i}"><span class="avw">${pic(c, 52)}<span class="badge" title="${roleT(c)}">${ic(c.side === 'cust' ? 'store' : 'truck')}</span></span><div class="mid"><span class="nm">${c.n}</span><span class="pv">${c.pv}</span></div><div class="rgt"><span class="tm">${c.t}</span>${c.un ? `<span class="ct">${c.un}</span>` : '<span style="height:22px"></span>'}</div></button>`;
+  if(v === 'E') return `<button class="r${on}${un}" data-act="open" data-v="${c.i}">${pic(c, 44)}<div class="mid"><span class="nm">${c.n}</span><span class="pv">${roleT(c)} · ${c.pv}</span></div><div class="rgt"><span class="tm">${c.t}</span>${c.un ? `<span class="rb">${c.un} new</span>` : ''}</div></button>`;
+}
+function listHtml(v){
+  const L = filt(); let body;
+  if(!L.length) body = '<div class="empty">No chats here.</div>';
+  else if(v === 'B'){ const g = [['cust', 'Customers'], ['sup', 'Suppliers']].map(([k, h]) => { const r = L.filter(c => c.side === k); return r.length ? `<div class="gh">${h}<span>${r.length}</span></div>${r.map(c => row(c, v)).join('')}` : ''; }).join(''); body = g; }
+  else if(v === 'E'){ const u = L.filter(c => c.un), r = L.filter(c => !c.un);
+    body = (u.length ? `<div class="sec2">Waiting for your reply <small>${u.length}</small></div><div class="reply">${u.map(c => row(c, v)).join('')}</div>` : `<div class="sec2">All replied ${ic('check')}</div>`) + (r.length ? `<div class="sec2" style="color:var(--mut)">Everything else</div><div class="rest">${r.map(c => row(c, v)).join('')}</div>` : ''); }
+  else body = L.map(c => row(c, v)).join('');
+  const fl = [['all', 'All'], ['un', 'Unread'], ['cust', 'Customers'], ['sup', 'Suppliers']];
+  return `<div class="list s${v}"><div class="lh"><h3>Messages</h3><div class="srch">${ic('search')}Search chats</div><div class="flt">${fl.map(([k, l]) => `<button class="${S.f === k ? 'on' : ''}" data-act="f" data-v="${k}">${l}${k === 'un' ? ' · ' + C.filter(c => c.un).length : ''}</button>`).join('')}</div></div><div class="rows">${body}</div></div>`;
+}
+function threadHtml(){ const c = C[S.on];
+  return `<div class="thread"><div class="th">${pic(c, 42)}<div><b>${c.n}</b><span>${roleT(c)} · last active ${c.t}</span></div></div><div class="msgs"><div class="bub">${c.pv}<small>${c.t}, 9:00 AM</small></div><div class="bub me">Noted po, salamat!<small>${c.t}, 9:05 AM</small></div></div></div>`; }
+function render(){
+  $('tabs').innerHTML = V.map(x => `<button class="lab-tab" aria-pressed="${S.v === x.id && S.view !== 'all'}" data-act="v" data-v="${x.id}"><i>${x.id}</i><b>${x.name}</b><small>${x.tag}</small></button>`).join('');
+  $('r3').innerHTML = seg('vw', [['both', 'Laptop + phone'], ['d', 'Laptop'], ['p', 'Phone'], ['all', 'All 5 side by side']], S.view, 'view');
+  $('wrap').classList.toggle('wide', S.view === 'all' || S.view === 'd'); $('notes').style.display = S.view === 'all' ? 'none' : '';
+  const desk = v => `<div class="frame-d" style="max-width:980px"><div class="app">${listHtml(v)}${threadHtml()}</div></div>`;
+  const phone = v => `<div class="frame-p"><div class="notch"><span>9:41</span><span>●●●</span></div><div class="app">${listHtml(v)}</div></div>`;
+  if(S.view === 'all') $('stage').innerHTML = `<div style="display:flex;gap:18px;overflow-x:auto;width:100%;justify-content:safe center;padding-bottom:8px">${V.map(x => `<div style="flex:none;zoom:.85"><p class="lab-cap">${x.id} · ${x.name}</p>${phone(x.id)}</div>`).join('')}</div>`;
+  else if(S.view === 'd') $('stage').innerHTML = desk(S.v);
+  else if(S.view === 'p') $('stage').innerHTML = phone(S.v);
+  else $('stage').innerHTML = `<div style="flex:1 1 640px;min-width:0;display:flex;justify-content:center">${desk(S.v)}</div><div>${phone(S.v)}</div>`;
+  const x = V.find(v => v.id === S.v);
+  $('notes').innerHTML = `<h2>${x.id} · ${x.name}</h2><p class="tg">${x.tag}</p><h3>Why it works</h3><ul>${x.why.map(w => `<li>${ic('check')}<span>${w}</span></li>`).join('')}</ul><div class="box"><b>Best for:</b> ${x.best}</div>
+    <div class="box"><b>Same in all 5:</b> no purple, no coloured bars, pictures without rings, green only for unread. The same calm pictures go on Customers & suppliers.</div>`;
+}
+document.addEventListener('click', e => { const b = e.target.closest('[data-act]'); if(!b) return; const a = b.dataset.act, v = b.dataset.v;
+  if(a === 'v'){ S.v = v; if(S.view === 'all') S.view = 'both'; } else if(a === 'view') S.view = v; else if(a === 'f') S.f = v; else if(a === 'open'){ S.on = Number(v); C[S.on].un = 0; } else if(a === 'toast') return toast(v); render(); });
+render();
+</script>
+</body>
+</html>
