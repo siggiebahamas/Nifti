@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Message With Context</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="../r13/lab.css">
+<style>
+:root{--bl:#DCE8FD;--bli:#163E8C;--blln:#B9D1FA}
+.lab-r3{gap:12px}
+.scn{display:flex;gap:8px;flex-wrap:wrap}
+.scn button{min-height:38px;padding:0 14px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1.5px var(--line2);font-size:13.5px;font-weight:700;color:var(--ink2)}
+.scn button[aria-pressed=true]{background:var(--ink);color:#fff;box-shadow:none}
+.scn small{font-size:12.5px;font-weight:800;color:var(--mut);letter-spacing:.04em;text-transform:uppercase;align-self:center;margin-right:2px}
+
+/* app shell inside the frames */
+.app{display:grid;grid-template-columns:200px minmax(0,1fr);min-height:720px;background:#fff}
+.frame-p .app{grid-template-columns:minmax(0,1fr);min-height:740px}
+.side{background:#FAFAFA;border-right:1px solid #E5E5E5;padding:16px 10px;display:grid;gap:2px;align-content:start}
+.side .lg{font-weight:800;font-size:17px;padding:2px 10px 12px}
+.side span{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:9px;font-size:14px;font-weight:600;color:#344054}
+.side span.on{background:#EBEBEB;color:#0E1114;font-weight:700}
+.side span svg.i{width:17px;height:17px}
+.frame-p .side{display:none}
+.main{min-width:0;display:flex;flex-direction:column}
+
+/* Orders (step 1) */
+.ord{padding:22px 24px;display:grid;gap:12px;align-content:start}
+.frame-p .ord{padding:14px 12px}
+.ord h2{margin:0;font-size:26px;font-weight:800;letter-spacing:-.02em}.ord > p{margin:-6px 0 0;color:var(--ink2);font-size:14.5px}
+.ocard{border:1px solid #E5E5E5;border-radius:16px;overflow:hidden}
+.oband{padding:9px 16px;font-size:13px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;display:flex;justify-content:space-between}
+.oband.blue{background:#DCE8FD;color:#163E8C}.oband.yel{background:#FEF7C3;color:#0E1114}
+.ogrp{padding:14px 16px;display:grid;grid-template-columns:46px minmax(0,1fr);gap:10px 12px}
+.frame-p .ogrp{grid-template-columns:40px minmax(0,1fr);padding:12px}
+.ogrp .nm{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.ogrp .nm b{font-size:16px}
+.tagw{font-size:12px;font-weight:800;color:#1D2939;border:1.5px solid #D0D5DD;border-radius:999px;padding:0 8px}
+.ogrp .fx{font-size:13px;color:var(--mut)}
+.orow{grid-column:2;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 12px;align-items:center;background:#EAF1FE;border-radius:12px;padding:10px 12px}
+.orow.y{background:#FFFBE6}
+.frame-p .orow{grid-column:1/-1;grid-template-columns:minmax(0,1fr)}
+.orow .l1{font-size:13px;color:var(--ink2);display:flex;gap:8px;flex-wrap:wrap;align-items:center}.orow .l1 b{color:var(--ink)}
+.orow .l2{font-size:14.5px;margin-top:2px}.orow .l2 b{font-weight:800}
+.orow .bt{display:flex;gap:8px;align-items:center}
+.frame-p .orow .bt .btn2, .frame-p .orow .bt .btn1{flex:1;justify-content:center}
+.dtile{width:46px;border-radius:11px;display:grid;justify-items:center;padding:5px 0;line-height:1.05;background:#CFE0FC;color:#0B2A6B}
+.dtile small{font-size:10.5px;font-weight:800;letter-spacing:.05em}.dtile b{font-size:19px;font-weight:800}
+.dtile.y{background:#FEF08A;color:#1F2329}
+.pulse{position:relative}
+.pulse::after{content:"";position:absolute;inset:-5px;border-radius:999px;box-shadow:0 0 0 3px #22A06B;animation:pl 1.4s ease-out infinite;pointer-events:none}
+@keyframes pl{0%{opacity:1;transform:scale(.96)}100%{opacity:0;transform:scale(1.12)}}
+.hint{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:#1F6B45;background:#EAF6EF;border:1px solid #B7E0C7;border-radius:12px;padding:10px 12px}
+
+/* Messages (step 2) */
+.msgs{display:grid;grid-template-columns:250px minmax(0,1fr);flex:1;min-height:0}
+.msgs.c3{grid-template-columns:minmax(0,1fr) 310px}
+.frame-p .msgs, .frame-p .msgs.c3{grid-template-columns:minmax(0,1fr)}
+.clist{border-right:1px solid #E5E5E5;padding:12px 10px;display:grid;gap:4px;align-content:start}
+.frame-p .clist{display:none}
+.clist h4{margin:4px 8px 6px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+.ci{display:grid;grid-template-columns:36px minmax(0,1fr);gap:9px;align-items:center;padding:8px;border-radius:12px}
+.ci.on{background:#F2F4F7}
+.ci b{font-size:14px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ci small{font-size:12.5px;color:var(--mut);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ini{border-radius:50%;display:grid;place-items:center;background:#fff;border:2px solid #98A2B3;color:#0E1114;font-weight:800;flex:none}
+.thread{display:flex;flex-direction:column;min-width:0;min-height:640px;background:#fff}
+.frame-p .thread{min-height:712px}
+.th-h{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid #E5E5E5}
+.th-h .bk{display:none}
+.frame-p .th-h{padding:10px 12px}.frame-p .th-h .bk{display:inline-flex}
+.th-h b{font-size:16px}.th-h small{display:block;font-size:12.5px;color:var(--mut)}
+.th-h .sp{flex:1}
+.body{flex:1;padding:14px 16px;display:flex;flex-direction:column;gap:10px;background:#F7F8FA;overflow:hidden}
+.frame-p .body{padding:12px}
+.b{max-width:78%;padding:10px 13px;border-radius:16px;font-size:14.5px;line-height:1.45;background:#fff;border:1px solid #E5E5E5;align-self:flex-start}
+.b.me{align-self:flex-end;background:#1F6B45;color:#fff;border-color:#1F6B45}
+.b small{display:block;font-size:11.5px;opacity:.75;margin-top:4px}
+.b .oc{display:inline-flex;align-items:center;gap:6px;margin-top:6px;font-size:12px;font-weight:800;background:rgba(255,255,255,.18);border-radius:8px;padding:2px 8px}
+.b.new{animation:pop .35s ease-out}
+@keyframes pop{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.daysep{align-self:center;font-size:12px;font-weight:700;color:var(--mut);background:#EEF0F3;border-radius:999px;padding:2px 10px}
+.comp{border-top:1px solid #E5E5E5;padding:10px 12px;display:grid;gap:8px;background:#fff}
+.comp .row{display:flex;gap:8px;align-items:flex-end}
+.comp textarea{flex:1;min-height:46px;max-height:150px;resize:none;border:0;border-radius:14px;box-shadow:inset 0 0 0 1.5px var(--line2);padding:11px 13px;font-size:15px;line-height:1.45;outline:none;background:#fff}
+.comp textarea:focus{box-shadow:inset 0 0 0 2px var(--ink)}
+.comp textarea.ready{box-shadow:inset 0 0 0 2px #EAB308;background:#FFFDF2}
+.comp .send{min-height:46px;border-radius:14px;background:#1F6B45;color:#fff;font-weight:800;font-size:15.5px;padding:0 18px;display:inline-flex;align-items:center;gap:7px}
+.comp .send:hover{background:#1A5C3B}
+.comp .send.big{min-height:52px;padding:0 22px;font-size:16.5px}
+.lang{display:inline-flex;background:#EEF0F3;border-radius:10px;padding:2px}
+.lang button{padding:4px 10px;border-radius:8px;font-size:12.5px;font-weight:800;color:var(--ink2)}
+.lang button[aria-pressed=true]{background:#fff;color:var(--ink);box-shadow:var(--sh1)}
+.rl{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px 10px;font-size:13.5px;font-weight:700;color:#7A5B00}
+.rl > span{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.rl.two > b{flex-basis:100%}
+.comp textarea.tall{min-height:118px}
+.rl b{display:inline-flex;align-items:center;gap:6px}
+.rl .lk{color:var(--ink2);text-decoration:underline;text-underline-offset:3px;font-weight:700}
+
+/* pinned order chip (A) */
+.pin{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center;margin:10px 16px 0;padding:9px 12px;border-radius:12px;background:var(--bl);border:1px solid var(--blln);color:var(--bli)}
+.frame-p .pin{margin:8px 12px 0;grid-template-columns:auto minmax(0,1fr)}
+.frame-p .pin .lk{grid-column:1/-1}
+.pin b{font-size:14px;color:#0E1114}.pin small{display:block;font-size:12.5px;color:#163E8C;font-weight:700}
+.pin .lk{font-size:13px;font-weight:800;color:#163E8C;text-decoration:underline;text-underline-offset:3px}
+.pin svg.i{width:18px;height:18px}
+
+/* task banner + choices (B) */
+.task{margin:10px 16px 0;border-radius:14px;padding:12px 14px;background:#FEF7C3;border:1px solid #FACC15;display:grid;gap:4px}
+.frame-p .task{margin:8px 12px 0}
+.task small{font-size:12px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#7A5B00}
+.task b{font-size:15px}.task span{font-size:13.5px;color:#344054}
+.task.done{background:#E6F4EC;border-color:#9FD5B5}
+.task.done small{color:#146C3C}
+.task .acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.task .acts .btn2{white-space:normal;text-align:left;min-height:40px;padding:8px 14px;max-width:100%;line-height:1.3}
+.task span{overflow-wrap:anywhere}
+.choices{display:grid;gap:8px}
+.choices .hd{display:flex;justify-content:space-between;align-items:center;font-size:13.5px;font-weight:800}
+.ch{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 12px;align-items:center;background:#fff;border:1.5px solid #D0D5DD;border-radius:14px;padding:10px 12px}
+.frame-p .ch{grid-template-columns:minmax(0,1fr)}
+.ch:hover{border-color:#1F6B45}
+.ch .t{font-size:12.5px;font-weight:800;color:#1F6B45;letter-spacing:.02em;text-transform:uppercase}
+.ch p{margin:2px 0 0;font-size:14px;line-height:1.45;color:#1D2939}
+.ch .cb{display:flex;gap:6px;align-items:center}
+.ch .cb .send{min-height:40px;border-radius:999px;font-size:14px;padding:0 16px}
+.ch .cb .lk{font-size:13px;font-weight:700;color:var(--ink2);text-decoration:underline;text-underline-offset:3px;padding:0 4px}
+.undo{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#101828;color:#fff;border-radius:12px;padding:10px 14px;font-size:14px;font-weight:700}
+.undo button{color:#9FE3BE;font-weight:800;text-decoration:underline;text-underline-offset:3px}
+
+/* order panel (C) */
+.opanel{border-left:1px solid #E5E5E5;padding:14px;display:grid;gap:12px;align-content:start;background:#fff}
+.frame-p .opanel{display:none}
+.opanel h5{margin:0;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+.op-top{display:grid;gap:4px}.op-top b{font-size:16px}.op-top .st{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;border:1px solid #D0D5DD;border-radius:8px;padding:1px 8px;justify-self:start}
+.op-top .st i{width:8px;height:8px;border-radius:50%;background:#3B6FD8}
+.op-alert{background:var(--bl);border:1px solid var(--blln);color:#0E1114;border-radius:12px;padding:10px 12px;font-size:14px}
+.op-alert b{display:block;color:#163E8C}
+.op-alert.y{background:#FEF7C3;border-color:#FACC15}.op-alert.y b{color:#7A5B00}
+.op-items{display:grid;gap:6px;font-size:14px}.op-items div{display:flex;justify-content:space-between;gap:8px}.op-items .tot{border-top:1px solid #E5E5E5;padding-top:6px;font-weight:800}
+.op-steps{display:grid;gap:0}
+.op-steps div{display:grid;grid-template-columns:18px 1fr;gap:8px;font-size:13.5px;padding:4px 0;color:var(--mut)}
+.op-steps div i{width:12px;height:12px;border-radius:50%;border:2px solid #D0D5DD;margin-top:3px}
+.op-steps div.done{color:var(--ink2)}.op-steps div.done i{background:#22A06B;border-color:#22A06B}
+.op-steps div.now{color:var(--ink);font-weight:700}.op-steps div.now i{border-color:#3B6FD8;background:#fff;box-shadow:0 0 0 3px #DCE8FD}
+.op-steps div.new{color:#146C3C;font-weight:700}.op-steps div.new i{background:#22A06B;border-color:#22A06B}
+.op-acts{display:grid;gap:6px}.op-acts .btn2{justify-content:center}
+.chips2{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.chips2::-webkit-scrollbar{display:none}
+.chips2 button{flex:none;min-height:36px;padding:0 13px;border-radius:999px;background:#F3FAF6;box-shadow:inset 0 0 0 1.5px #B7E0C7;color:#1F6B45;font-size:13.5px;font-weight:800}
+.chips2 button.on{background:#1F6B45;color:#fff;box-shadow:none}
+.pcard{margin:8px 12px 0;border-radius:12px;background:var(--bl);border:1px solid var(--blln);overflow:hidden}
+.pcard > button{width:100%;display:flex;align-items:center;gap:10px;padding:9px 12px;text-align:left}
+.pcard > button b{font-size:14px}.pcard > button small{display:block;font-size:12.5px;font-weight:700;color:#163E8C}
+.pcard > button .sp{flex:1}
+.pcard .in2{padding:0 12px 12px;display:grid;gap:10px}
+.pcard .op-items{background:#fff;border-radius:10px;padding:8px 10px}
+.pcard .op-acts{grid-template-columns:1fr 1fr}
+.frame-d .pcard{display:none}
+
+.frame-d{max-width:1180px}
+.frame-p .hide-p{display:none}
+.key2{display:flex;gap:6px;align-items:center;font-size:12.5px;color:var(--mut);font-weight:700}
+</style>
+</head>
+<body>
+<header class="lab-top"><div class="lab-in">
+  <div class="lab-r1"><a class="lab-back" href="index.html">‹ Round 17</a><h1>Message with the order still in view</h1><p>You tap Message on an order. Messages opens on that chat, and shows what you came to say and a message ready to send.</p></div>
+  <div class="lab-tabs" id="tabs"></div>
+  <div class="lab-r3" id="r3"></div>
+</div></header>
+<main class="lab-wrap" id="wrap"><section class="lab-stage" id="stage"></section><aside class="lab-notes" id="notes"></aside></main>
+<div class="toast" id="toast"></div>
+<script src="../r13/lab.js"></script>
+<script>
+/* Three situations you might tap Message from. Today in the demo: Wed, Aug 26. */
+const SC = {
+  r: {who: 'Riverside Builders Corp', side: 'Customer', po: 'PO-2026-0871', step: 'To confirm', band: 'blue', band2: 'Waiting on them', mon: 'AUG', day: '27',
+    when: 'Price hold ends tomorrow.', rest: 'Waiting for their OK.', btn: 'Remind them', items: [['Steel Rebar 12mm', 800, 64]], total: 51200 + 26080, totalTxt: '₱77,280',
+    items2: [['800 × Steel Rebar 12mm', '₱51,200'], ['20 × Galvanized Wire 12ga', '₱26,080']],
+    why: 'You tapped <b>Remind them</b> on PO-2026-0871', whyS: 'Price hold ends tomorrow, Thu Aug 27 · ₱77,280 · waiting for their OK',
+    hist: [['them', 'Thanks for the quote. Let me check with the site engineer.', 'Aug 23, 4:10 PM'], ['me', 'Sure! The price holds until Aug 27.', 'Aug 23, 4:15 PM']],
+    steps: [['Sent to them', 'Aug 23', 'done'], ['Opened 3 times', 'last Aug 25', 'done'], ['Their OK', 'price holds until Aug 27', 'now'], ['Preparing', '', ''], ['Delivered', '', '']],
+    alert: ['Price hold ends tomorrow', 'After Aug 27 the price can change. A short reminder usually gets a yes today.'], next: 'Manila Bay Scaffolding Co. is also waiting (6 days)',
+    opAct: ['Hold the price 3 more days', 'Call them'],
+    t: {en: [['Friendly reminder', 'Remind about tomorrow', 'Hi Riverside Builders! Quick reminder: your price for PO-2026-0871 (800 × Steel Rebar 12mm, ₱77,280) holds until tomorrow, Thu Aug 27. Can you give us your OK today so we can reserve the stock?'],
+      ['Offer more time', 'Offer 3 more days', 'Hi! If you need a few more days, we can hold the ₱77,280 price for PO-2026-0871 until Sun, Aug 30. Just reply YES.'],
+      ['Ask about changes', 'Ask about changes', 'Hi! Anything you\'d like to change on PO-2026-0871 before you say yes? We can adjust the quantity or the delivery date.']],
+      fil: [['Paalala', 'Paalala para bukas', 'Hi po, Riverside Builders! Paalala lang po: hanggang bukas, Huwebes Aug 27, ang presyo ng PO-2026-0871 (800 × Steel Rebar 12mm, ₱77,280). Pwede po ba ang OK ngayon para ma-reserve namin ang stock?'],
+      ['Dagdag na araw', 'Dagdag na 3 araw', 'Hi po! Kung kailangan pa ng ilang araw, pwede naming i-hold ang ₱77,280 na presyo ng PO-2026-0871 hanggang Linggo, Aug 30. Reply lang po ng YES.'],
+      ['May babaguhin?', 'May babaguhin?', 'Hi po! May gusto po ba kayong baguhin sa PO-2026-0871 bago mag-OK? Pwede naming ayusin ang dami o ang delivery date.']]}},
+  c: {who: 'Cebu Aggregates', side: 'Supplier', po: 'PO-2026-0839', step: 'Preparing', band: 'blue', band2: 'Waiting on them', mon: 'SEP', day: '2',
+    when: 'Arrives in 7 days.', rest: 'They are packing it.', btn: 'Message', totalTxt: '₱43,680',
+    items2: [['200 × Portland Cement 40kg', '₱43,680']],
+    why: 'You tapped <b>Message</b> on PO-2026-0839', whyS: 'Arrives Wed, Sep 2 · 200 × Portland Cement 40kg · you have 12 bags left (2 days)',
+    hist: [['me', 'Hi! Sending PO-2026-0839 for 200 bags.', 'Aug 21, 9:02 AM'], ['them', 'Received po. We will deliver on Sep 2.', 'Aug 21, 11:40 AM']],
+    steps: [['Sent to them', 'Aug 21', 'done'], ['They said yes', 'Aug 21', 'done'], ['Preparing', 'arrives Sep 2', 'now'], ['On the way', '', ''], ['Received', '', '']],
+    alert: ['Your stock runs out first', 'Portland Cement runs out Aug 28, before this order arrives on Sep 2.'], next: 'Northline Welding hasn\'t answered yet',
+    opAct: ['Ask to deliver earlier', 'Call them'], y: 1,
+    t: {en: [['Check the date', 'Still on track?', 'Hi Cebu Aggregates! Just checking on PO-2026-0839 (200 × Portland Cement 40kg). Is it still on track to arrive on Wed, Sep 2?'],
+      ['Ask for it earlier', 'Can it come earlier?', 'Hi! Can PO-2026-0839 come earlier? We\'re running low on Portland Cement. Even half the order this week would help.'],
+      ['Ask for proof', 'Send a photo when loaded', 'Hi! Please send a photo once PO-2026-0839 is loaded, plus the driver\'s name and plate number. Thank you!']],
+      fil: [['Kumusta ang order', 'On time pa ba?', 'Hi po, Cebu Aggregates! Kumusta po ang PO-2026-0839 (200 × Portland Cement 40kg)? Darating pa rin po ba sa Miyerkules, Sep 2?'],
+      ['Paagahin', 'Pwede bang mapaaga?', 'Hi po! Pwede po bang mapaaga ang PO-2026-0839? Paubos na po ang Portland Cement namin. Kahit kalahati muna ngayong linggo.'],
+      ['Picture pagkakarga', 'Picture kapag naikarga', 'Hi po! Pakisend po ng picture kapag naikarga na ang PO-2026-0839, pati pangalan ng driver at plate number. Salamat po!']]}},
+  m: {who: 'Manila Bay Scaffolding Co.', side: 'Customer', po: 'PO-2026-0866', step: 'To confirm', band: 'blue', band2: 'Waiting on them', mon: 'AUG', day: '20',
+    when: 'Sent 6 days ago.', rest: 'Opened once. Waiting for their OK.', btn: 'Remind them', totalTxt: '₱80,640',
+    items2: [['150 × Welding Plates 6mm', '₱80,640']],
+    why: 'You tapped <b>Remind them</b> on PO-2026-0866', whyS: 'Sent 6 days ago · opened once · ₱80,640 · waiting for their OK',
+    hist: [['me', 'Hi! Here is PO-2026-0866 for the welding plates you asked about.', 'Aug 20, 2:30 PM'], ['them', 'Ok thanks, will review.', 'Aug 20, 5:12 PM']],
+    steps: [['Sent to them', 'Aug 20', 'done'], ['Opened once', 'Aug 20', 'done'], ['Their OK', 'no answer for 6 days', 'now'], ['Preparing', '', ''], ['Delivered', '', '']],
+    alert: ['No answer in 6 days', 'They opened it once. Offering a smaller first delivery often gets a yes.'], next: 'Riverside\'s price hold ends tomorrow',
+    opAct: ['Split into 2 deliveries', 'Call them'],
+    t: {en: [['Follow up', 'Follow up', 'Hi Manila Bay Scaffolding! Following up on PO-2026-0866 (150 × Welding Plates 6mm, ₱80,640). Did you get a chance to look at it?'],
+      ['Offer a smaller start', 'Start with 75?', 'Hi! If the full 150 is too many right now, we can start with 75 this week and send the rest later. Want me to change it?'],
+      ['Offer a call', 'Offer a quick call', 'Hi! Would a quick call be easier? Tell me a good time today and I\'ll ring you.']],
+      fil: [['Follow-up', 'Follow-up', 'Hi po, Manila Bay Scaffolding! Follow-up lang po sa PO-2026-0866 (150 × Welding Plates 6mm, ₱80,640). Natingnan n\'yo na po ba?'],
+      ['Paunti-unti', '75 muna?', 'Hi po! Kung marami pa ang 150 ngayon, pwede pong 75 muna ngayong linggo at ang iba sa susunod. Gusto n\'yo po bang palitan?'],
+      ['Tawag na lang', 'Tawagan ko kayo?', 'Hi po! Mas madali po ba kung tawagan ko kayo? Sabihin n\'yo lang po kung anong oras ngayong araw.']]}}
+};
+const CHATS = [['Riverside Builders Corp', 'r', 'Thanks for the quote. Let me check…'], ['Manila Bay Scaffolding Co.', 'm', 'Ok thanks, will review.'], ['Bayview Construction Co.', '', 'Also, can you send the mill cert…'], ['Cebu Aggregates', 'c', 'Received po. We will deliver on…'], ['Metro Steel Co.', '', 'Arriving tomorrow morning.']];
+
+const V = [
+  {id: 'a', n: 'A', name: 'Ready to send', tag: 'The message is already typed', why: [
+      'Messages opens on that customer\'s chat with the order pinned at the top, so you remember why you came.',
+      'The box already holds the right message for that order, outlined in yellow. Change a word or just tap <b>Send</b>.',
+      'The order number rides along with the message, so they know which order you mean.',
+      '<b>Other message</b> swaps in another ready message. <b>Write my own</b> clears the box.'],
+    best: 'Speed. One tap from Orders, one tap to send.', give: 'Only one message shows at a time.'},
+  {id: 'b', n: 'B', name: 'Pick a message', tag: 'Why you came + 3 ready messages', why: [
+      'A yellow card at the top says why you came: "You tapped Remind them on PO-2026-0871 · price hold ends tomorrow".',
+      'Under it, 3 ready messages for that situation. Each one has its own <b>Send</b> button. <b>Edit first</b> puts it in the box.',
+      'Switch to <b>Filipino</b> and the 3 messages change to Filipino.',
+      'After you send, the card turns green with <b>Back to Orders</b> and the next person who needs you. You never lose your place.'],
+    best: 'Owners and staff who don\'t like typing, and anyone working through a list of people to chase.', give: 'Takes a bit more space above the chat until you send.', pick: 1},
+  {id: 'c', n: 'C', name: 'Order beside the chat', tag: 'The whole order stays open on the right', why: [
+      'On a laptop, the order sits in a panel on the right: what\'s in it, the total, where it is, and the one thing to watch.',
+      'Above the box, tap-to-fill messages: <b>Remind about tomorrow</b>, <b>Offer 3 more days</b>, <b>Ask about changes</b>.',
+      'On a phone, the order is a blue card at the top of the chat. Tap it to see the details.',
+      'When you send, the order panel adds "Reminder sent" to its steps, so the order remembers what you did.'],
+    best: 'Longer talks where you need the details: quantities, totals, dates.', give: 'Laptop needs a wider screen; the chat column is narrower.'}
+];
+const S = {v: 'b', view: 'both', step: 2, sc: 'r', lang: 'en', alt: 0, sent: null, chip: 0, open: false, undo: false, editing: null};
+if(window.innerWidth < 700) S.view = 'p';
+const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+const sc = () => SC[S.sc];
+const T = () => sc().t[S.lang];
+const iniH = (n, s) => `<span class="ini" style="width:${s}px;height:${s}px;font-size:${Math.round(s / 2.9)}px">${ini(n)}</span>`;
+
+function sideH(on){ return `<nav class="side"><div class="lg">Nifti</div>${[['home', 'Home'], ['truck', 'Orders'], ['msg', 'Messages'], ['box', 'Stock'], ['wallet', 'Money']].map(([i, l]) => `<span class="${l === on ? 'on' : ''}">${ic(i)}${l}</span>`).join('')}</nav>`; }
+
+/* step 1: the Orders page you came from */
+function ordersH(){
+  const x = sc();
+  return `<div class="ord"><h2>Orders</h2><p>Who needs you, and their orders under them.</p>
+    <div class="hint">${ic('arrow')}Tap <b>${x.btn}</b> (or Message) to see what happens next.</div>
+    <div class="ocard"><div class="oband ${x.y ? 'yel' : 'blue'}"><span>${x.y ? 'Coming up' : x.band2}</span><b>${x.y ? 7 : 4}</b></div>
+      <div class="ogrp">${iniH(x.who, 44)}<div><div class="nm"><b>${x.who}</b><span class="tagw">${x.side}</span></div><div class="fx">${x.side === 'Customer' ? '11 orders · last 5 days ago' : '21 orders · last 5 days ago'}</div></div>
+        <div class="dtile${x.y ? ' y' : ''}"><small>${x.mon}</small><b>${x.day}</b></div>
+        <div class="orow${x.y ? ' y' : ''}" style="grid-column:2"><div><div class="l1"><b>${x.po}</b><span class="tagw" style="border-radius:8px">${x.step}</span>${x.items2[0][0]}</div><div class="l2"><b>${x.when}</b> ${x.rest}</div></div>
+          <div class="bt"><b style="font-size:16px">${x.totalTxt}</b><button class="btn2 pulse" data-act="go2">${x.btn === 'Message' ? ic('msg') : ic('bell')}${x.btn}</button></div></div>
+        <div style="grid-column:2;display:flex;gap:16px;font-size:14px;font-weight:700"><button class="link pulse" data-act="go2" style="border-radius:6px">Message</button><span class="link">New order</span></div>
+      </div></div></div>`;
+}
+
+/* the chat history and anything just sent */
+function bodyH(){
+  const x = sc();
+  return `<div class="body"><span class="daysep">Earlier</span>${x.hist.map(([w, t, d]) => `<div class="b${w === 'me' ? ' me' : ''}">${esc(t)}<small>${d}</small></div>`).join('')}
+    ${S.sent ? `<span class="daysep">Today</span><div class="b me new">${esc(S.sent)}<span class="oc">${ic('file')}${x.po}</span><small>10:42 AM · Sent ✓</small></div>` : ''}</div>`;
+}
+function headH(){ const x = sc(); return `<div class="th-h"><button class="bk btn2" style="min-height:36px;padding:0 10px" data-act="go1">${ic('left')}</button>${iniH(x.who, 40)}<div><b>${x.who}</b><small>${x.side} · last active today</small></div><span class="sp"></span><button class="btn2" style="min-height:38px" data-act="toast" data-v="Calls them (prototype)">${ic('phone')}<span class="hide-p">Call</span></button></div>`; }
+function clistH(){ return `<div class="clist"><h4>Chats</h4>${CHATS.map(([n, k, l]) => `<div class="ci${k === S.sc ? ' on' : ''}">${iniH(n, 36)}<div style="min-width:0"><b>${n}</b><small>${l}</small></div></div>`).join('')}</div>`; }
+function langH(){ return `<span class="lang">${[['en', 'English'], ['fil', 'Filipino']].map(([k, l]) => `<button aria-pressed="${S.lang === k}" data-act="lang" data-v="${k}">${l}</button>`).join('')}</span>`; }
+
+/* A: one ready message in the box, order pinned on top */
+function vA(){
+  const x = sc(), t = T()[S.alt % 3];
+  const ready = S.editing === null ? t[2] : S.editing;
+  return `<div class="msgs">${clistH()}<div class="thread">${headH()}
+    <div class="pin">${ic('file')}<div><b>${x.po} · ${x.totalTxt}</b><small>${x.when} ${x.rest}</small></div><span class="lk" data-act="toast" data-v="Opens ${x.po} (prototype)">Open order</span></div>
+    ${bodyH()}
+    <div class="comp">${S.sent ? `<div class="rl" style="color:#146C3C"><b>${ic('check')}Sent. ${x.po} goes with it.</b><button class="btn2" style="min-height:36px" data-act="go1">${ic('left')}Back to Orders</button></div>` :
+      `<div class="rl two"><b>${ic('spark')}Ready to send. Change anything you like.</b><span>${langH()}<button class="lk" data-act="alt">Other message</button><button class="lk" data-act="mine">Write my own</button></span></div>`}
+      <div class="row"><textarea class="ta tall${!S.sent && S.editing === null ? ' ready' : ''}" rows="4" placeholder="Type a message…">${S.sent ? '' : esc(ready)}</textarea><button class="send big" data-act="sendA">Send ${ic('arrow')}</button></div></div>
+  </div></div>`;
+}
+
+/* B: why you came + 3 messages with their own Send */
+function vB(){
+  const x = sc();
+  const task = S.sent
+    ? `<div class="task done"><small>Done</small><b>Message sent to ${x.who}</b><span>${x.po} is attached, so they know which order you mean.</span>
+        <div class="acts"><button class="btn1 sm" data-act="go1">${ic('left')}Back to Orders</button><button class="btn2" data-act="toast" data-v="Opens the next chat (prototype)">Next: ${x.next} ${ic('right')}</button></div></div>`
+    : `<div class="task"><small>Why you're here</small><b>${x.why}</b><span>${x.whyS}</span></div>`;
+  const choices = S.sent ? '' : `<div class="choices"><div class="hd"><span>Tap Send on the one you like</span>${langH()}</div>
+      ${T().map(([h, , m], i) => `<div class="ch"><div><div class="t">${h}</div><p>${esc(m)}</p></div><div class="cb"><button class="lk" data-act="edit" data-v="${i}">Edit first</button><button class="send" data-act="sendB" data-v="${i}">Send ${ic('arrow')}</button></div></div>`).join('')}</div>`;
+  return `<div class="msgs">${clistH()}<div class="thread">${headH()}${task}
+    ${bodyH()}
+    <div class="comp">${S.undo ? `<div class="undo"><span>Sent to ${x.who}.</span><button data-act="undo">Undo</button></div>` : ''}${choices}
+      <div class="row"><textarea class="ta" rows="${S.editing !== null ? 3 : 1}" placeholder="Or type your own message…">${S.editing !== null ? esc(S.editing) : ''}</textarea><button class="send" data-act="sendTa">Send ${ic('arrow')}</button></div></div>
+  </div></div>`;
+}
+
+/* C: the order stays open beside the chat */
+function vC(){
+  const x = sc(), t = T();
+  const steps = (S.sent ? [...x.steps.slice(0, 2), ['Reminder sent', 'today 10:42 AM', 'new'], ...x.steps.slice(2)] : x.steps);
+  const stepsH = `<div class="op-steps">${steps.map(([a, b, c]) => `<div class="${c}"><i></i><span>${a}${b ? ` · <span style="font-weight:500">${b}</span>` : ''}</span></div>`).join('')}</div>`;
+  const itemsH = `<div class="op-items">${x.items2.map(([a, b]) => `<div><span>${a}</span><b>${b}</b></div>`).join('')}<div class="tot"><span>Total</span><span>${x.totalTxt}</span></div></div>`;
+  const actsH = `<div class="op-acts">${x.opAct.map(a => `<button class="btn2" data-act="toast" data-v="${a} (prototype)">${a}</button>`).join('')}<button class="btn2" data-act="toast" data-v="Opens ${x.po} (prototype)">Open the full order</button></div>`;
+  return `<div class="msgs c3"><div class="thread">${headH()}
+    <div class="pcard"><button data-act="pc">${ic('file')}<div><b>${x.po} · ${x.totalTxt}</b><small>${x.alert[0]}</small></div><span class="sp"></span>${ic(S.open ? 'up' : 'down')}</button>
+      ${S.open ? `<div class="in2">${itemsH}${stepsH}<div class="op-acts">${x.opAct.map(a => `<button class="btn2" data-act="toast" data-v="${a} (prototype)">${a}</button>`).join('')}</div></div>` : ''}</div>
+    ${bodyH()}
+    <div class="comp">${S.sent ? `<div class="rl" style="color:#146C3C"><b>${ic('check')}Sent. Added to the order's steps.</b><button class="btn2" style="min-height:36px" data-act="go1">${ic('left')}Back to Orders</button></div>` :
+      `<div class="rl" style="color:var(--ink2)"><b>Tap one to fill the box</b>${langH()}</div><div class="chips2">${t.map(([, c], i) => `<button class="${S.chip === i ? 'on' : ''}" data-act="chip" data-v="${i}">${c}</button>`).join('')}</div>`}
+      <div class="row"><textarea class="ta tall" rows="4" placeholder="Type a message…">${S.sent ? '' : esc(S.editing !== null ? S.editing : t[S.chip][2])}</textarea><button class="send" data-act="sendTa">Send ${ic('arrow')}</button></div></div>
+  </div>
+  <aside class="opanel"><h5>The order</h5><div class="op-top"><b>${x.po}</b><span class="st"><i></i>${x.step}</span><span style="font-size:13px;color:var(--mut)">${x.who}</span></div>
+    <div class="op-alert${x.y ? ' y' : ''}"><b>${x.alert[0]}</b>${x.alert[1]}</div>${itemsH}<h5>Where it is</h5>${stepsH}${actsH}</aside></div>`;
+}
+
+function page(){
+  if(S.step === 1) return `<div class="app">${sideH('Orders')}<div class="main">${ordersH()}</div></div>`;
+  return `<div class="app">${sideH('Messages')}<div class="main">${S.v === 'a' ? vA() : S.v === 'b' ? vB() : vC()}</div></div>`;
+}
+function render(){
+  $('tabs').innerHTML = V.map(x => `<button class="lab-tab" aria-pressed="${S.v === x.id}" data-act="v" data-v="${x.id}"><i>${x.n}</i><b>${x.name}${x.pick ? ' · my pick' : ''}</b><small>${x.tag}</small></button>`).join('');
+  $('r3').innerHTML = seg('vw', [['both', 'Laptop + phone'], ['d', 'Laptop'], ['p', 'Phone']], S.view, 'view') + seg('st', [['1', '1 · On Orders'], ['2', '2 · After you tap Message']], String(S.step), 'step')
+    + `<div class="scn"><small>Situation</small>${[['r', 'Price hold ends tomorrow'], ['c', 'Supplier delivery check'], ['m', 'No answer in 6 days']].map(([k, l]) => `<button aria-pressed="${S.sc === k}" data-act="sc" data-v="${k}">${l}</button>`).join('')}</div>`;
+  $('wrap').classList.toggle('wide', S.view !== 'p');
+  const pg = page();
+  const desk = `<div class="frame-d">${pg}</div>`, phone = `<div class="frame-p"><div class="notch"><span>9:41</span><span>●●●</span></div><div class="scroll">${pg}</div></div>`;
+  $('stage').innerHTML = S.view === 'd' ? desk : S.view === 'p' ? phone : `<div style="flex:1 1 760px;min-width:0;display:flex;justify-content:center">${desk}</div><div>${phone}</div>`;
+  const x = V.find(v => v.id === S.v);
+  $('notes').innerHTML = `<h2>${x.n} · ${x.name}${x.pick ? ' <span class="pill green nodot" style="vertical-align:middle">My pick</span>' : ''}</h2><p class="tg">${x.tag}</p><h3>How it works</h3><ul>${x.why.map(w => `<li>${ic('check')}<span>${w}</span></li>`).join('')}</ul>
+    <div class="box"><b>Best for:</b> ${x.best}</div><div class="box"><b>You give up:</b> ${x.give}</div>
+    <div class="box"><b>All three:</b> Messages opens on the right chat, the order number goes with your message, and the ready messages change with the situation and language. Try the 3 situations above.</div>`;
+}
+function sendNow(text){ if(!String(text || '').trim()) return toast('Type a message first'); S.sent = text.trim(); S.editing = null; render(); }
+document.addEventListener('click', e => { const b = e.target.closest('[data-act]'); if(!b) return; const a = b.dataset.act, v = b.dataset.v;
+  const ta = (b.closest('.comp') || document).querySelector('textarea'), fr = b.closest('.frame-p') ? '.frame-p' : '.frame-d';
+  const focusTa = () => { const t = document.querySelector(fr + ' .comp textarea'); if(t){ t.focus(); t.setSelectionRange(t.value.length, t.value.length); } };
+  if(a === 'toast'){ e.stopPropagation(); return toast(v); }
+  if(a === 'v'){ S.v = v; S.sent = null; S.editing = null; S.undo = false; S.chip = 0; S.alt = 0; }
+  else if(a === 'view') S.view = v;
+  else if(a === 'step'){ S.step = Number(v); S.sent = null; S.editing = null; S.undo = false; }
+  else if(a === 'sc'){ S.sc = v; S.sent = null; S.editing = null; S.undo = false; S.chip = 0; S.alt = 0; }
+  else if(a === 'go2'){ S.step = 2; S.sent = null; S.editing = null; S.undo = false; }
+  else if(a === 'go1'){ S.step = 1; S.sent = null; S.editing = null; S.undo = false; }
+  else if(a === 'lang'){ S.lang = v; S.editing = null; }
+  else if(a === 'alt'){ S.alt++; S.editing = null; }
+  else if(a === 'mine'){ S.editing = ''; render(); focusTa(); return; }
+  else if(a === 'sendA'){ return sendNow(ta ? ta.value : ''); }
+  else if(a === 'sendTa'){ return sendNow(ta ? ta.value : ''); }
+  else if(a === 'sendB'){ S.undo = true; clearTimeout(S._u); S._u = setTimeout(() => { S.undo = false; render(); }, 5000); return sendNow(T()[Number(v)][2]); }
+  else if(a === 'undo'){ S.sent = null; S.undo = false; toast('Not sent'); }
+  else if(a === 'edit'){ S.editing = T()[Number(v)][2]; render(); focusTa(); return; }
+  else if(a === 'chip'){ S.chip = Number(v); S.editing = null; }
+  else if(a === 'pc'){ S.open = !S.open; }
+  render(); });
+document.addEventListener('input', e => { if(e.target.classList.contains('ta')){ S.editing = e.target.value; e.target.classList.remove('ready'); } });
+render();
+</script>
+</body>
+</html>

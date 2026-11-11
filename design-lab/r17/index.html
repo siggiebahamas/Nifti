@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Round 17 Choices</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="../r13/lab.css">
+<style>
+.band{background:radial-gradient(800px 260px at 85% -20%,rgba(52,211,153,.35),transparent 60%),linear-gradient(135deg,#03251C 0%,#064E3B 55%,#0B6B57 100%);color:#fff;padding:34px 20px 80px}
+.band .bin{max-width:1080px;margin:0 auto}.band a{color:#C8EFDF;font-size:14px;font-weight:700;text-decoration:none}
+.band h1{margin:12px 0 6px;font-size:36px;font-weight:800;letter-spacing:-.02em;line-height:1.1}.band p{margin:0;font-size:17px;color:#C8EFDF;max-width:660px}
+.wrap{max-width:1080px;margin:-52px auto 0;padding:0 20px 60px;display:grid;gap:18px}
+.live{background:#fff;border-radius:18px;border:1px solid #E7EAF0;box-shadow:var(--shc);padding:18px 20px;display:grid;gap:10px}
+.live h2{margin:0;font-size:18px;font-weight:800;display:flex;align-items:center;gap:10px}.live h2 span{font-size:12px;letter-spacing:.06em;text-transform:uppercase;background:var(--gbg);color:var(--g);border-radius:999px;padding:4px 10px}
+.live ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}.live li{display:grid;grid-template-columns:22px 1fr;gap:10px;font-size:15px;color:var(--ink2)}.live li b{color:var(--ink)}
+.live li svg{width:20px;height:20px;padding:3px;border-radius:50%;background:var(--g2);color:#fff;stroke-width:3}
+.audit{background:#fff;border-radius:18px;border:1px solid #E7EAF0;box-shadow:var(--shc);overflow:hidden}
+.audit h2{margin:0;padding:16px 20px 12px;font-size:18px;font-weight:800;border-bottom:2px solid var(--ink)}
+.ar{display:grid;grid-template-columns:minmax(0,1.1fr) auto minmax(0,2fr);gap:14px;align-items:center;padding:12px 20px;border-top:1px solid var(--line);font-size:14.5px}
+.ar b{font-size:15px}.ar span{color:var(--ink2)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.c{display:grid;gap:10px;background:#fff;border-radius:18px;border:1px solid #E7EAF0;box-shadow:var(--shc);padding:18px 20px;text-decoration:none;color:inherit;transition:transform .15s,box-shadow .15s;align-content:start}
+.c:hover{transform:translateY(-2px);box-shadow:var(--sh2)}
+.c .top{display:flex;align-items:center;gap:12px}.c .top span{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:#DDF5EC;color:#047857}.c .top span svg{width:24px;height:24px}
+.c h3{margin:0;font-size:18px;font-weight:800;line-height:1.2}.c small{font-size:13px;font-weight:800;color:var(--mut);letter-spacing:.04em;text-transform:uppercase}
+.c p{margin:0;font-size:15px;color:var(--ink2)}.c .go{display:inline-flex;align-items:center;gap:6px;font-weight:800;color:var(--g);font-size:15px}
+.c .opts{display:flex;flex-wrap:wrap;gap:6px}.c .opts i{font-style:normal;font-size:12.5px;font-weight:700;color:var(--ink2);background:var(--sf2);border-radius:999px;padding:3px 10px;box-shadow:inset 0 0 0 1px var(--line)}
+@media (max-width:640px){ .band h1{font-size:28px} .band{padding:24px 16px 72px} .wrap{padding:0 12px 40px} .ar{grid-template-columns:minmax(0,1fr) auto;padding:12px 14px} .ar span:last-child{grid-column:1/-1} }
+</style>
+</head>
+<body>
+<div class="band"><div class="bin"><a href="../">‹ Design lab</a><h1>Round 17 · pick your favourites</h1><p>Two things to look at. The rest is already in the app.</p></div></div>
+<div class="wrap">
+  <div class="live"><h2>Already in the app <span>Live</span></h2><ul id="live"></ul></div>
+  <div class="cards" id="cards"></div>
+</div>
+<script src="../r13/lab.js"></script>
+<script>
+$('live').innerHTML = [
+  ['Where every order is', ': no step numbers above the 6 steps, and each count is bigger and bold navy ("To confirm – 6").'],
+  ['Fewer examples everywhere', '. Act Today shows 3, This Week 5, and every other list shows its first 3 or 4 with a "Show all" button: What runs out, Stock, Profit & prices, Cash count, Expenses, To check, Find customers, the Orders bands, and Next money in and out. The same late payment no longer shows twice in Act Today.'],
+  ['Orders: totals on one line', '. Each box at the top reads "7 orders ··· ₱341,869" with the peso total on the right, bigger. On a phone each colour is one row.'],
+  ['Orders: darker blue dates', '. The month and day on the light blue date tiles are darker blue; the tile colour is unchanged.'],
+  ['Money overview: profit statement', '. White card, the same title size and fonts as "Money in and out", darker sub-lines, and light blue notes instead of gray.'],
+  ['"Coming up" stays', ' as the name of the yellow band on Orders.']
+].map(([b, t]) => `<li>${ic('check')}<span><b>${b}</b>${t}</span></li>`).join('');
+$('cards').innerHTML = [
+  ['messages.html', 'msg', 'Message with the order still in view', '3 ways', 'You tap Message on an order. Messages opens on that chat and keeps the order in front of you, with messages ready to tap and send, in English or Filipino.', ['A · Ready to send', 'B · Pick a message (my pick)', 'C · Order beside the chat']],
+  ['review.html', 'clip', 'The whole app, part by part', '15 parts × 3 options', 'Every part I\'d change or merge: the menu, Home, money pages, people pages, stock and extra tools. My pick is marked, and your choices copy back to me in one tap.', ['Menu', 'Home', 'Money', 'People', 'Stock', 'Extra tools']]
+].map(([h, i, t, n, p, o]) => `<a class="c" href="${h}"><div class="top"><span>${ic(i)}</span><div><small>${n}</small><h3>${t}</h3></div></div><p>${p}</p><div class="opts">${o.map(x => `<i>${x}</i>`).join('')}</div><span class="go">Open ${ic('arrow')}</span></a>`).join('');
+</script>
+</body>
+</html>

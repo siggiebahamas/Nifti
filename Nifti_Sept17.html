@@ -6732,6 +6732,82 @@ tbody tr:hover{background:#F6F6F3}
   }
 
 /* ===== Round 16 css end ===== */
+
+/* ===== Round 17 css begin ===== */
+  /* ---------- Shorter lists: hidden extras and the "Show all" button ---------- */
+  #view-app .nf-cap-h{display:none !important;}
+  #view-app .nf-capm{display:flex;justify-content:center;padding:12px 0 4px;}
+  #view-app .nf-capm button, #nfOrd .nfo-capm button{font:inherit;font-size:15px;font-weight:800;color:#1F6B45;background:#fff;border:1.5px solid #D0D5DD;border-radius:999px;padding:8px 20px;cursor:pointer;min-height:42px;}
+  #view-app .nf-capm button:hover, #nfOrd .nfo-capm button:hover{border-color:#1F6B45;background:#F3FAF6;}
+  #nfOrd .nfo-capm{display:flex;justify-content:center;padding:4px 16px 16px;}
+  #page-discover .nf-capm{padding-top:16px;}
+
+  /* ---------- Home · Where every order is: no step numbers, bigger counts ---------- */
+  html[data-ty] :is(#mhHome,#mhSheet) .ob3 .hdr .sh{row-gap:6px;}
+  html[data-ty] :is(#mhHome,#mhSheet) .sh .sh-t{align-items:center;column-gap:8px;}
+  html[data-ty] :is(#mhHome,#mhSheet) .sh .sh-t b{font-size:16px !important;line-height:1.25;}
+  html[data-ty] :is(#mhHome,#mhSheet) .sh .sh-c{align-items:center;gap:7px;}
+  html[data-ty] :is(#mhHome,#mhSheet) .sh .sc-d{font-size:20px !important;line-height:1;color:#1A4F8C;}
+  html[data-ty] :is(#mhHome,#mhSheet) .sh .sh-t .sc{font-size:25px !important;line-height:1;color:#1A4F8C;font-weight:800;}
+  html.nf-phone #mhHome .nfb-stages button{display:flex !important;align-items:center;gap:7px;min-height:50px;}
+  html.nf-phone #mhHome .nfb-stages em{display:none !important;}
+  html.nf-phone #mhHome .nfb-stages b{font-size:15px !important;}
+  html.nf-phone #mhHome .nfb-stages span{font-size:19px !important;line-height:1;}
+  html.nf-phone #mhHome .nfb-stages span::before{content:"– ";font-size:15px;font-weight:700;}
+  html.nf-phone #mhHome .nfb-stages button.late:not(.on){border-color:#F3B4B4;background:#FFF5F5;}
+
+  /* ---------- Orders: count and peso total on one line ---------- */
+  #nfOrd .nfo-st{gap:6px;}
+  #nfOrd .nfo-st .ln{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:2px 10px;}
+  #nfOrd .nfo-st .ln b{font-size:24px;}
+  #nfOrd .nfo-st .ln em{margin-left:auto;font-size:21px;font-weight:800;color:#0E1114;letter-spacing:-.01em;}
+  #nfOrd .nfo-st .ln em.z{font-size:16px;font-weight:700;color:#475467;}
+  @media (max-width:1240px){ #nfOrd .nfo-st .ln b{font-size:22px;} #nfOrd .nfo-st .ln em{font-size:19px;} }
+  @media (max-width:1100px){ #nfOrd .nfo-stats{grid-template-columns:repeat(2,minmax(0,1fr));} }
+  @media (max-width:760px){
+    #nfOrd .nfo-st .ln{gap:2px 6px;}
+    #nfOrd .nfo-st .ln b{font-size:20px;} #nfOrd .nfo-st .ln b span{font-size:12.5px;}
+    #nfOrd .nfo-st .ln em{font-size:16.5px;} #nfOrd .nfo-st .ln em.z{font-size:14px;}
+  }
+  /* phone: one row per colour, so the count and the total always share a line */
+  @media (max-width:560px){
+    #nfOrd .nfo-stats{grid-template-columns:minmax(0,1fr);gap:8px;}
+    #nfOrd .nfo-st{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 14px;}
+    #nfOrd .nfo-st .k{font-size:14px;letter-spacing:0;text-transform:none;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    #nfOrd .nfo-st .ln{flex-wrap:nowrap;gap:10px;flex:none;}
+    #nfOrd .nfo-st .ln b{font-size:19px;white-space:nowrap;}
+    #nfOrd .nfo-st .ln em{min-width:80px;text-align:right;font-size:17px;white-space:nowrap;}
+  }
+  @media (max-width:380px){
+    #nfOrd .nfo-st{display:grid;gap:4px;}
+    #nfOrd .nfo-st .ln{justify-content:space-between;}
+  }
+  /* date tiles: darker blue words on the light blue tile */
+  #nfOrd .nfo-dt.blue{color:#0B2A6B;}
+
+  /* ---------- Money overview: profit statement in the same style as the other cards ---------- */
+  html[data-ty] #view-app #bkPnlPrint{background:#fff !important;}
+  html[data-ty] #view-app #page-money .bk-pnl .panel-head h2{font-size:22px !important;font-weight:700 !important;color:#0E1114;letter-spacing:-.01em;}
+  html[data-ty] #view-app #bkPnlPrint .pl-r{font-size:16px !important;font-weight:400;color:#0E1114;padding:7px 0;}
+  html[data-ty] #view-app #bkPnlPrint .pl-r > span:first-child{font-weight:500;}
+  html[data-ty] #view-app #bkPnlPrint .pl-r b{font-weight:700;color:#0E1114;}
+  html[data-ty] #view-app #bkPnlPrint .pl-r.pl-sub{font-size:15px !important;font-weight:400;color:#344054;padding:4px 0 4px 16px;}
+  html[data-ty] #view-app #bkPnlPrint .pl-r.pl-sub > span, html[data-ty] #view-app #bkPnlPrint .pl-r.pl-sub > span:last-child{font-weight:400;color:#344054 !important;font-variant-numeric:tabular-nums;}
+  html[data-ty] #view-app #bkPnlPrint .pl-grp{border-left:2px solid #E5E7EB;margin:2px 0 6px 2px;padding-left:14px;}
+  html[data-ty] #view-app #bkPnlPrint .pl-grp .pl-r.pl-sub{padding-left:0;}
+  html[data-ty] #view-app #bkPnlPrint .pl-r.pl-neg > span, html[data-ty] #view-app #bkPnlPrint .pl-r.pl-neg b{color:#C81E1E !important;font-weight:600;}
+  html[data-ty] #view-app #bkPnlPrint .pl-r.tot{border-top:1px solid #E5E5E5;margin-top:6px;padding-top:12px;font-size:16.5px !important;}
+  html[data-ty] #view-app #bkPnlPrint .pl-r.tot > span{font-weight:700;}
+  html[data-ty] #view-app #bkPnlPrint .pl-r.big{border-top:2px solid #0E1114;margin-top:10px;padding-top:14px;font-size:21px !important;}
+  html[data-ty] #view-app #bkPnlPrint .pl-r.big > span, html[data-ty] #view-app #bkPnlPrint .pl-r.big b{font-weight:800;color:#15803D !important;}
+  html[data-ty] #view-app #bkPnlPrint .pl-r.big.neg > span, html[data-ty] #view-app #bkPnlPrint .pl-r.big.neg b{color:#C81E1E !important;}
+  html[data-ty] #view-app #bkPnlPrint > small{font-size:15px;font-weight:700;}
+  html[data-ty] #view-app #page-money .bk-note{background:#EEF4FF;color:#1D2939;border:1px solid #D6E4FB;font-size:15px;}
+  html.nf-phone #view-app #bkPnlPrint .pl-r{font-size:15px !important;}
+  html.nf-phone #view-app #bkPnlPrint .pl-r.pl-sub{font-size:14px !important;}
+  html.nf-phone #view-app #bkPnlPrint .pl-r.big{font-size:19px !important;}
+
+/* ===== Round 17 css end ===== */
   .settings-card:empty{display:none;}
   #supplierChips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;} #supplierChips .chip{flex-shrink:0;}
 </style>
@@ -23352,7 +23428,7 @@ function lgForecastHtml(){
     ${hz.map(h => `<tr class="${h.end < 0 ? 'bk-tr-bad' : ''}"><td>${h.n} days</td><td class="r">${bkPeso(h.inn)}</td><td class="r">${bkPeso(h.out)}</td><td class="r">${bkPeso(h.end)}</td></tr>`).join('')}</tbody></table></div>
     ${low ? `<div class="bk-alert red"><b>Cash could run short within ${low.n} days</b><span>Collect overdue invoices first, or move a supplier payment. See the list below.</span></div>` : ''}
     <div class="bk-note"><b>How this is worked out:</b> starts from ${bkPeso(start)} recorded in cash, GCash and bank (not your real bank balance). Adds unpaid invoices on their due date (overdue ones as if paid today), takes off supplier bills on their due date, monthly bills marked "every month" on their usual day, and payroll repeating like the last one. Counter utang (${bkPeso(utang)}) has no due date, so it's left out. New sales are not guessed.</div>
-    ${items.length ? `<div class="nf-next5"><h3>Next money in and out</h3>${items.sort((a, b) => a.d.localeCompare(b.d)).slice(0, 5).map(x => `<div class="bk-row"><div class="bk-row-m"><b>${escapeHtml(x.what)}</b><small>${bkDayLabel(x.d)}${x.late ? ' · overdue' : ''}</small></div><span class="bk-amt ${x.amt < 0 ? 'bk-bad' : ''}">${bkPeso(x.amt)}</span></div>`).join('')}${items.length > 5 ? `<p>${items.length - 5} more in the next 90 days are already counted in the table above.</p>` : ''}</div>` : ''}</section>`;
+    ${items.length ? `<div class="nf-next5"><h3>Next money in and out</h3>${items.sort((a, b) => a.d.localeCompare(b.d)).slice(0, 4).map(x => `<div class="bk-row"><div class="bk-row-m"><b>${escapeHtml(x.what)}</b><small>${bkDayLabel(x.d)}${x.late ? ' · overdue' : ''}</small></div><span class="bk-amt ${x.amt < 0 ? 'bk-bad' : ''}">${bkPeso(x.amt)}</span></div>`).join('')}${items.length > 4 ? `<p>${items.length - 4} more in the next 90 days are already counted in the table above.</p>` : ''}</div>` : ''}</section>`;
 }
 
 /* ============ BOOKS: branches, approvals, issues to check, month-end close, payroll ============ */
@@ -24199,7 +24275,7 @@ function srSection(){
   const nr = known.filter(r => r.risk === 'r').length, ny = known.filter(r => r.risk === 'y').length, ng = known.filter(r => r.risk === 'g').length;
   const total = rows.reduce((a, r) => a + r.value, 0), slowV = rows.filter(r => r.slow).reduce((a, r) => a + r.value, 0);
   const list = days ? known.sort((a, b) => a.days - b.days) : rows.slice().sort((a, b) => b.value - a.value);
-  const mxV = Math.max(1, ...list.map(r => r.value)), shown = srAll ? list : list.slice(0, 8);
+  const mxV = Math.max(1, ...list.map(r => r.value)), shown = srAll ? list : list.slice(0, 4);
   const row = r => {
     const meta = `<span class="sr-m1">${r.wh ? '<em>' + srI('pin') + escapeHtml(r.wh) + '</em><i>·</i>' : ''}<em>${srI('box')}${r.on}${r.unit ? ' ' + escapeHtml(r.unit) : ''} on hand</em><i>·</i><em>${srI('rate')}${r.rate ? 'sells ' + srNum(r.rate) + '/day' : 'no sales yet'}</em></span>
       <span class="sr-m2"><em>${srI('truck')}${escapeHtml(r.sup || 'No supplier set')}</em><i>·</i><em>delivers in ${r.lead} day${r.lead === 1 ? '' : 's'}${r.leadKnown ? '' : ' (assumed)'}</em></span>`;
@@ -24236,7 +24312,7 @@ function srSection(){
     ${key}
     <div class="sr-list">${shown.map(row).join('')}</div>
     ${days ? `<div class="sr-axis sr-axis16"><span class="sr-axl"><em class="sr-dl">Days left <b aria-hidden="true">→</b></em></span><span class="sr-ax" aria-hidden="true">${[0, 7, 14, 21, 30, 45].map(v => `<i style="left:${v / SR_MAXD * 100}%">${v}${v === 45 ? '+' : ''}</i>`).join('')}</span><span class="sr-axr"><em class="sr-dl">Days left</em></span></div>` : ''}
-    ${list.length > 8 ? `<button type="button" class="sr-more" onclick="srAll=!srAll; srRefresh()">${srAll ? 'Show fewer' : `Show all ${list.length}`}</button>` : ''}
+    ${list.length > 4 ? `<button type="button" class="sr-more" onclick="srAll=!srAll; srRefresh()">${srAll ? 'Show fewer' : `Show all ${list.length}`}</button>` : ''}
     ${days && nos.length ? `<p class="sr-nos"><b>No sales recorded yet (${nos.length}):</b> ${nos.map(r => escapeHtml(r.name) + (r.wh ? ' (' + escapeHtml(r.wh) + ')' : '')).join(', ')}.</p>` : ''}`;
 }
 
@@ -24362,7 +24438,7 @@ function mhLanes(items, boss){
   const L = {r: [], y: [], g: []};
   items.forEach(i => { const t = lgSev(i.tone); (t === 'hi' ? L.r : L.y).push({h: i.t, d: i.s || '', b: i.b, act: i.a, amt: i.amt}); });
   if(boss && BK.loaded){
-    bkFlags().forEach(f => { if(f.lvl === 'red') L.r.push({h: f.t + ': ' + f.v, d: f.s || '', b: 'Open', act: f.a}); else if(f.lvl === 'amber') L.y.push({h: f.t + ': ' + f.v, d: f.s || '', b: 'Open', act: f.a}); else L.g.push({h: f.t, d: f.v + (f.s ? ' · ' + f.s : '')}); });
+    bkFlags().forEach(f => { if(f.k === 'late' && f.lvl !== 'green' && L.r.concat(L.y).some(x => /late paying|overdue/i.test(String(x.h)))) return; if(f.lvl === 'red') L.r.push({h: f.t + ': ' + f.v, d: f.s || '', b: 'Open', act: f.a}); else if(f.lvl === 'amber') L.y.push({h: f.t + ': ' + f.v, d: f.s || '', b: 'Open', act: f.a}); else L.g.push({h: f.t, d: f.v + (f.s ? ' · ' + f.s : '')}); });
     const p = bkPnl(bkMonth(APP_TODAY)), pl = p.sales - p.cost - p.expenses;
     if(pl > 0) L.g.unshift({h: 'Profit ' + mhPeso(pl) + ' this month', d: p.sales ? Math.round(pl / p.sales * 100) + ' of every ₱100 sold stays with you.' : ''});
   }
@@ -24371,10 +24447,10 @@ function mhLanes(items, boss){
   return L;
 }
 function mhLane(k, list){
-  const name = {r: 'Act Today', y: 'This Week', g: 'Fine'}[k], key = 'lane' + k, open = MH.open[key], show = open ? list : list.slice(0, 5);
+  const name = {r: 'Act Today', y: 'This Week', g: 'Fine'}[k], key = 'lane' + k, open = MH.open[key], cap = {r: 3, y: 5, g: 3}[k], show = open ? list : list.slice(0, cap);
   return `<div class="lane"><div class="lane-h ${k}"><span>${name}</span><span>${list.length}</span></div>
     ${show.map(a => `<div class="task"><div><h5>${a.h}</h5>${a.d ? `<p>${a.d}</p>` : ''}</div>${a.b ? `<button class="btn" type="button" onclick="${a.act}">${mhEsc(a.b)}</button>` : ''}</div>`).join('') || `<div class="task"><div><p>Nothing here.</p></div></div>`}
-    ${list.length > 5 ? `<button class="more" type="button" onclick="MH.open['${key}']=!MH.open['${key}']; renderMistHome()">${open ? 'Show less' : '+ ' + (list.length - 5) + ' more'}</button>` : ''}</div>`;
+    ${list.length > cap ? `<button class="more" type="button" onclick="MH.open['${key}']=!MH.open['${key}']; renderMistHome()">${open ? 'Show less' : '+ ' + (list.length - cap) + ' more'}</button>` : ''}</div>`;
 }
 
 /* order board (compact) */
@@ -24410,7 +24486,7 @@ function mhOrderRows(){
 function mhBoard(){
   const rows = mhOrderRows(), by = (i, side) => rows.filter(r => r.stage === i && (!side || r.side === side));
   const lbl = side => `<span class="lane-lbl">${mhIco(side)}<b>${side === 'sell' ? 'Selling' : 'Buying'}</b><small>${side === 'sell' ? 'to customers' : 'from suppliers'}</small></span>`;
-  const sh = (s, d, i, n) => `<div class="sh"><span class="sn">${i + 1}</span><span class="sh-t"><b>${s}</b><span class="sh-c"><span class="sc-d" aria-hidden="true">–</span><span class="sc">${n}</span></span></span><small>${d}</small></div>`;
+  const sh = (s, d, i, n) => `<div class="sh"><span class="sh-t"><b>${s}</b><span class="sh-c"><span class="sc-d" aria-hidden="true">–</span><span class="sc">${n}</span></span></span><small>${d}</small></div>`;
   const order = {r: 0, y: 1, g: 2};
   return `<div class="ob ob3 cmp"><div class="hdr"><span></span>${MH_STAGES.map(([s, d], i) => `<div>${sh(s, d, i, by(i).length)}</div>`).join('')}</div>${['sell', 'buy'].map(side => `<div class="lane-row ${side}">${lbl(side)}${MH_STAGES.map((x, i) => {
     const os = by(i, side).sort((a, b) => order[a.tone] - order[b.tone]), k = side + i, open = MH.open[k], show = open ? os : os.slice(0, 2);
@@ -26240,7 +26316,7 @@ function nfDiscoverLayout(){
 /* ---------- 9. Every page: sections that only showed after a tap are now open ---------- */
 const NF_OPEN_DETAILS = /^(Show the \d+ items|Stops|What is a 2307|How you.re doing)/;
 // Home lists and the order board show every item (tap "Show less" to shorten)
-try{ if(typeof MH !== 'undefined'){ const o = MH.open || {}; MH.open = new Proxy(o, {get: (t, k) => k in t ? t[k] : (typeof k === 'string' && /^(lane[ryg]|sell\d|buy\d)$/.test(k))}); } }catch(e){}
+try{ if(typeof MH !== 'undefined'){ const o = MH.open || {}; MH.open = new Proxy(o, {get: (t, k) => k in t ? t[k] : (typeof k === 'string' && /^(sell\d|buy\d)$/.test(k))}); } }catch(e){}
 function nfOpenDetails(){ document.querySelectorAll('#view-app .app-page.active details:not([open])').forEach(d => { const s = d.querySelector('summary'); if(s && NF_OPEN_DETAILS.test(s.textContent.trim()) && !d.dataset.nfOpened){ d.open = true; d.dataset.nfOpened = '1'; } }); }
 
 
@@ -27633,13 +27709,13 @@ function nfoPaint(){
   const all = nfoAll(), seen = all.filter(nfoMatch), vis = seen.filter(r => !NFO.band || r.band === NFO.band);
   const st = document.getElementById('nfoStats');
   if(st) st.innerHTML = NFO_BANDS.map(([b, l]) => { const rs = seen.filter(r => r.band === b), sum = rs.reduce((a, r) => a + (Number(r.amt) || 0), 0);
-    return `<button type="button" class="nfo-st s-${b}${NFO.band === b ? ' on' : ''}" aria-pressed="${NFO.band === b}" onclick="nfoSet('band','${b}')"><span class="k"><i></i>${l}</span><b>${rs.length}<span> order${rs.length === 1 ? '' : 's'}</span></b><em${rs.length ? '' : ' class="z"'}>${rs.length ? nfoPeso(sum) : 'Nothing'}</em></button>`; }).join('');
+    return `<button type="button" class="nfo-st s-${b}${NFO.band === b ? ' on' : ''}" aria-pressed="${NFO.band === b}" onclick="nfoSet('band','${b}')"><span class="k"><i></i>${l}</span><span class="ln"><b>${rs.length}<span> order${rs.length === 1 ? '' : 's'}</span></b><em${rs.length ? '' : ' class="z"'}>${rs.length ? nfoPeso(sum) : 'Nothing'}</em></span></button>`; }).join('');
   const ch = document.getElementById('nfoChips');
   if(ch) ch.innerHTML = [['all', 'Everything', all.length], ['sell', 'Selling', all.filter(r => r.sell).length], ['buy', 'Buying', all.filter(r => !r.sell).length]]
     .map(([k, l, n]) => `<button type="button" class="${NFO.side === k ? 'on' : ''}" aria-pressed="${NFO.side === k}" onclick="nfoSet('side','${k}')">${l}<b>${n}</b></button>`).join('');
   const G = nfoGroups(vis), body = document.getElementById('nfoBody');
   if(body) body.innerHTML = all.length ? `<div class="nfo-card">${NFO_BANDS.map(([b, h]) => { const g = G.filter(x => x.band === b); if(!g.length) return '';
-      return `<div class="nfo-band b-${b}"><span>${h}</span><b>${vis.filter(r => r.band === b).length}</b></div>${g.map(nfoGroupHtml).join('')}`; }).join('') || `<div class="nfo-empty">Nothing matches. <button type="button" onclick="NFO.q=''; NFO.band=null; NFO.side='all'; nfoRender()">Show everything</button></div>`}</div>
+      return `<div class="nfo-band b-${b}"><span>${h}</span><b>${vis.filter(r => r.band === b).length}</b></div>${nfoCapGroups(b, g)}`; }).join('') || `<div class="nfo-empty">Nothing matches. <button type="button" onclick="NFO.q=''; NFO.band=null; NFO.side='all'; nfoRender()">Show everything</button></div>`}</div>
       <div class="nfo-key"><span><i class="k-red"></i>Late or today: do it now</span><span><i class="k-yel"></i>Coming up</span><span><i class="k-blue"></i>Waiting on them</span><span><i class="k-green"></i>Done</span><span><i class="k-today"></i>Today</span></div>`
     : `<div class="nfo-card"><div class="nfo-empty">No orders yet. Tap <b>Customer's order</b> or <b>Order from a supplier</b> to start.</div></div>`;
   const pp = document.getElementById('nfoPeopleWrap'); if(pp) pp.innerHTML = nfoPeopleHtml(all);
@@ -27676,6 +27752,58 @@ function nfoSoon(){ clearTimeout(NFO.t); NFO.t = setTimeout(() => { const pg = d
   try{ jumpToParty = function(id, side){ const r = document.getElementById('globalSearchResults'), i = document.getElementById('globalSearchInput'); if(r) r.classList.add('hidden'); if(i) i.value = '';
     const p = [...(buyersData || []), ...(suppliersData || [])].find(x => x.id === id); NFO.q = p ? p.name : ''; NFO.band = null; NFO.side = 'all'; navigate('orders'); }; }catch(e){}
 })();
+
+/* ===== Round 17: shorter lists everywhere ===== */
+// Every long list shows its first few. The rest open with "Show N more", so nothing is lost.
+const NF_CAP_OPEN = new Set();
+const NF_CAPS = [
+  {k: 'inv', page: 'inventory', box: '#invTableBody', items: ':scope > tr', n: 4, noun: ['product', 'products'], at: 'table'},
+  {k: 'profit', page: 'profit', box: '#page-profit section.bk-list table.bk-tbl > tbody', items: ':scope > tr', n: 4, noun: ['item', 'items'], at: 'table'},
+  {k: 'cc', page: 'cashcount', box: '#page-cashcount section.bk-list table.bk-tbl > tbody', items: ':scope > tr', n: 4, noun: ['count', 'counts'], at: 'table'},
+  {k: 'exp', page: 'expenses', box: '#bkExpBody > section.bk-list:last-of-type', items: ':scope > .bk-row', heads: ':scope > .bk-day', n: 4, noun: ['expense', 'expenses'], at: 'list'},
+  {k: 'iss', page: 'issues', box: '#issBody', items: ':scope > .lg-card', n: 4, noun: ['check', 'checks'], at: 'list'},
+  {k: 'find', page: 'discover', box: '#nfFind .nfx-grid', items: ':scope > article', n: 3, noun: ['business', 'businesses'], at: 'box'}
+];
+function nfCapToggle(k){ if(NF_CAP_OPEN.has(k)) NF_CAP_OPEN.delete(k); else NF_CAP_OPEN.add(k); nfCapRun(); }
+function nfCapRun(){
+  const pg = document.querySelector('#view-app .app-page.active'); if(!pg) return;
+  NF_CAPS.forEach(c => {
+    if(pg.id !== 'page-' + c.page) return;
+    const box = document.querySelector(c.box); if(!box) return;
+    const items = [...box.querySelectorAll(c.items)].filter(e => e.style.display !== 'none');
+    const open = NF_CAP_OPEN.has(c.k), over = items.length > c.n;
+    items.forEach((e, i) => { const hide = over && !open && i >= c.n; if(e.classList.contains('nf-cap-h') !== hide) e.classList.toggle('nf-cap-h', hide); });
+    if(c.heads){ const hs = c.heads.replace(':scope > ', ''), is = c.items.replace(':scope > ', '');
+      box.querySelectorAll(c.heads).forEach(h => { let n = h.nextElementSibling, any = false;
+      while(n && !n.matches(hs)){ if(n.matches(is) && !n.classList.contains('nf-cap-h')) any = true; n = n.nextElementSibling; }
+      if(h.classList.contains('nf-cap-h') === any) h.classList.toggle('nf-cap-h', !any); }); }
+    let btn = pg.querySelector(`.nf-capm[data-capk="${c.k}"]`);
+    if(!over){ if(btn) btn.remove(); return; }
+    const label = open ? 'Show fewer' : `Show all ${items.length} ${c.noun[1]}`;
+    if(!btn){
+      btn = document.createElement('div'); btn.className = 'nf-capm'; btn.dataset.capk = c.k;
+      btn.innerHTML = `<button type="button" onclick="nfCapToggle('${c.k}')"></button>`;
+      const anchor = c.at === 'table' ? (box.closest('.lg-tbl-wrap') || box.closest('table')) : c.at === 'box' ? box : items[items.length - 1];
+      anchor.insertAdjacentElement('afterend', btn);
+    }
+    const b = btn.querySelector('button'); if(b.textContent !== label){ b.textContent = label; b.setAttribute('aria-expanded', String(open)); }
+  });
+}
+let _nfCapRaf = 0;
+function nfCapSoon(){ if(_nfCapRaf) return; _nfCapRaf = requestAnimationFrame(() => { _nfCapRaf = 0; try{ nfCapRun(); }catch(e){ console.warn(e); } }); }
+(function(){
+  const start = () => { const v = document.getElementById('view-app'); if(!v){ return setTimeout(start, 300); }
+    new MutationObserver(nfCapSoon).observe(v, {childList: true, subtree: true}); nfCapSoon(); };
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
+})();
+
+/* Orders: each colour band shows 4 customers or suppliers, the rest behind "Show N more" */
+const NFO_OPEN = {};
+function nfoCapGroups(b, g){
+  const n = 4, all = NFO.band === b || !!NFO.q.trim(), open = all || NFO_OPEN[b], show = open ? g : g.slice(0, n);
+  return show.map(nfoGroupHtml).join('') + (g.length > n && !all
+    ? `<div class="nfo-capm"><button type="button" aria-expanded="${!!NFO_OPEN[b]}" onclick="NFO_OPEN['${b}']=!NFO_OPEN['${b}']; nfoPaint()">${NFO_OPEN[b] ? 'Show fewer' : `Show ${g.length - n} more`}</button></div>` : '');
+}
 
 function renderSidebarForViewAsRole(){
   const allowed = computeAllowedPages(getEffectiveRoles());

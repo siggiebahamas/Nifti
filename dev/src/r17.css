@@ -1,0 +1,72 @@
+  /* ---------- Shorter lists: hidden extras and the "Show all" button ---------- */
+  #view-app .nf-cap-h{display:none !important;}
+  #view-app .nf-capm{display:flex;justify-content:center;padding:12px 0 4px;}
+  #view-app .nf-capm button, #nfOrd .nfo-capm button{font:inherit;font-size:15px;font-weight:800;color:#1F6B45;background:#fff;border:1.5px solid #D0D5DD;border-radius:999px;padding:8px 20px;cursor:pointer;min-height:42px;}
+  #view-app .nf-capm button:hover, #nfOrd .nfo-capm button:hover{border-color:#1F6B45;background:#F3FAF6;}
+  #nfOrd .nfo-capm{display:flex;justify-content:center;padding:4px 16px 16px;}
+  #page-discover .nf-capm{padding-top:16px;}
+
+  /* ---------- Home · Where every order is: no step numbers, bigger counts ---------- */
+  html[data-ty] :is(#mhHome,#mhSheet) .ob3 .hdr .sh{row-gap:6px;}
+  html[data-ty] :is(#mhHome,#mhSheet) .sh .sh-t{align-items:center;column-gap:8px;}
+  html[data-ty] :is(#mhHome,#mhSheet) .sh .sh-t b{font-size:16px !important;line-height:1.25;}
+  html[data-ty] :is(#mhHome,#mhSheet) .sh .sh-c{align-items:center;gap:7px;}
+  html[data-ty] :is(#mhHome,#mhSheet) .sh .sc-d{font-size:20px !important;line-height:1;color:#1A4F8C;}
+  html[data-ty] :is(#mhHome,#mhSheet) .sh .sh-t .sc{font-size:25px !important;line-height:1;color:#1A4F8C;font-weight:800;}
+  html.nf-phone #mhHome .nfb-stages button{display:flex !important;align-items:center;gap:7px;min-height:50px;}
+  html.nf-phone #mhHome .nfb-stages em{display:none !important;}
+  html.nf-phone #mhHome .nfb-stages b{font-size:15px !important;}
+  html.nf-phone #mhHome .nfb-stages span{font-size:19px !important;line-height:1;}
+  html.nf-phone #mhHome .nfb-stages span::before{content:"– ";font-size:15px;font-weight:700;}
+  html.nf-phone #mhHome .nfb-stages button.late:not(.on){border-color:#F3B4B4;background:#FFF5F5;}
+
+  /* ---------- Orders: count and peso total on one line ---------- */
+  #nfOrd .nfo-st{gap:6px;}
+  #nfOrd .nfo-st .ln{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:2px 10px;}
+  #nfOrd .nfo-st .ln b{font-size:24px;}
+  #nfOrd .nfo-st .ln em{margin-left:auto;font-size:21px;font-weight:800;color:#0E1114;letter-spacing:-.01em;}
+  #nfOrd .nfo-st .ln em.z{font-size:16px;font-weight:700;color:#475467;}
+  @media (max-width:1240px){ #nfOrd .nfo-st .ln b{font-size:22px;} #nfOrd .nfo-st .ln em{font-size:19px;} }
+  @media (max-width:1100px){ #nfOrd .nfo-stats{grid-template-columns:repeat(2,minmax(0,1fr));} }
+  @media (max-width:760px){
+    #nfOrd .nfo-st .ln{gap:2px 6px;}
+    #nfOrd .nfo-st .ln b{font-size:20px;} #nfOrd .nfo-st .ln b span{font-size:12.5px;}
+    #nfOrd .nfo-st .ln em{font-size:16.5px;} #nfOrd .nfo-st .ln em.z{font-size:14px;}
+  }
+  /* phone: one row per colour, so the count and the total always share a line */
+  @media (max-width:560px){
+    #nfOrd .nfo-stats{grid-template-columns:minmax(0,1fr);gap:8px;}
+    #nfOrd .nfo-st{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 14px;}
+    #nfOrd .nfo-st .k{font-size:14px;letter-spacing:0;text-transform:none;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    #nfOrd .nfo-st .ln{flex-wrap:nowrap;gap:10px;flex:none;}
+    #nfOrd .nfo-st .ln b{font-size:19px;white-space:nowrap;}
+    #nfOrd .nfo-st .ln em{min-width:80px;text-align:right;font-size:17px;white-space:nowrap;}
+  }
+  @media (max-width:380px){
+    #nfOrd .nfo-st{display:grid;gap:4px;}
+    #nfOrd .nfo-st .ln{justify-content:space-between;}
+  }
+  /* date tiles: darker blue words on the light blue tile */
+  #nfOrd .nfo-dt.blue{color:#0B2A6B;}
+
+  /* ---------- Money overview: profit statement in the same style as the other cards ---------- */
+  html[data-ty] #view-app #bkPnlPrint{background:#fff !important;}
+  html[data-ty] #view-app #page-money .bk-pnl .panel-head h2{font-size:22px !important;font-weight:700 !important;color:#0E1114;letter-spacing:-.01em;}
+  html[data-ty] #view-app #bkPnlPrint .pl-r{font-size:16px !important;font-weight:400;color:#0E1114;padding:7px 0;}
+  html[data-ty] #view-app #bkPnlPrint .pl-r > span:first-child{font-weight:500;}
+  html[data-ty] #view-app #bkPnlPrint .pl-r b{font-weight:700;color:#0E1114;}
+  html[data-ty] #view-app #bkPnlPrint .pl-r.pl-sub{font-size:15px !important;font-weight:400;color:#344054;padding:4px 0 4px 16px;}
+  html[data-ty] #view-app #bkPnlPrint .pl-r.pl-sub > span, html[data-ty] #view-app #bkPnlPrint .pl-r.pl-sub > span:last-child{font-weight:400;color:#344054 !important;font-variant-numeric:tabular-nums;}
+  html[data-ty] #view-app #bkPnlPrint .pl-grp{border-left:2px solid #E5E7EB;margin:2px 0 6px 2px;padding-left:14px;}
+  html[data-ty] #view-app #bkPnlPrint .pl-grp .pl-r.pl-sub{padding-left:0;}
+  html[data-ty] #view-app #bkPnlPrint .pl-r.pl-neg > span, html[data-ty] #view-app #bkPnlPrint .pl-r.pl-neg b{color:#C81E1E !important;font-weight:600;}
+  html[data-ty] #view-app #bkPnlPrint .pl-r.tot{border-top:1px solid #E5E5E5;margin-top:6px;padding-top:12px;font-size:16.5px !important;}
+  html[data-ty] #view-app #bkPnlPrint .pl-r.tot > span{font-weight:700;}
+  html[data-ty] #view-app #bkPnlPrint .pl-r.big{border-top:2px solid #0E1114;margin-top:10px;padding-top:14px;font-size:21px !important;}
+  html[data-ty] #view-app #bkPnlPrint .pl-r.big > span, html[data-ty] #view-app #bkPnlPrint .pl-r.big b{font-weight:800;color:#15803D !important;}
+  html[data-ty] #view-app #bkPnlPrint .pl-r.big.neg > span, html[data-ty] #view-app #bkPnlPrint .pl-r.big.neg b{color:#C81E1E !important;}
+  html[data-ty] #view-app #bkPnlPrint > small{font-size:15px;font-weight:700;}
+  html[data-ty] #view-app #page-money .bk-note{background:#EEF4FF;color:#1D2939;border:1px solid #D6E4FB;font-size:15px;}
+  html.nf-phone #view-app #bkPnlPrint .pl-r{font-size:15px !important;}
+  html.nf-phone #view-app #bkPnlPrint .pl-r.pl-sub{font-size:14px !important;}
+  html.nf-phone #view-app #bkPnlPrint .pl-r.big{font-size:19px !important;}

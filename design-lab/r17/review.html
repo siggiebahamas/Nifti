@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dashboard Review</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="../r13/lab.css">
+<style>
+body{background:#F4F5F7}
+.band{background:radial-gradient(800px 260px at 85% -20%,rgba(52,211,153,.35),transparent 60%),linear-gradient(135deg,#03251C 0%,#064E3B 55%,#0B6B57 100%);color:#fff;padding:30px 20px 76px}
+.band .bin{max-width:1180px;margin:0 auto}.band a{color:#C8EFDF;font-size:14px;font-weight:700;text-decoration:none}
+.band h1{margin:12px 0 6px;font-size:34px;font-weight:800;letter-spacing:-.02em;line-height:1.1}.band p{margin:0;font-size:16.5px;color:#C8EFDF;max-width:760px}
+.wrap{max-width:1180px;margin:-50px auto 0;padding:0 20px 120px;display:grid;gap:16px}
+.top5{background:#fff;border:1px solid #E5E7EB;border-radius:18px;padding:18px 20px;display:grid;gap:10px;box-shadow:var(--shc)}
+.top5 h2{margin:0;font-size:18px;font-weight:800}.top5 p{margin:0;color:var(--ink2);font-size:15px}
+.top5 ol{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px}
+.top5 li{display:grid;grid-template-columns:28px 1fr;gap:8px;align-items:start;background:#F3FAF6;border:1px solid #B7E0C7;border-radius:12px;padding:10px 12px;font-size:14px;color:#1D2939}
+.top5 li b{display:block;font-size:14.5px;color:#0E1114}
+.top5 li span.n{width:26px;height:26px;border-radius:50%;background:#1F6B45;color:#fff;display:grid;place-items:center;font-weight:800;font-size:13px}
+.grp{margin:14px 2px 0;font-size:13px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:#475467}
+.sec{background:#fff;border:1px solid #E5E7EB;border-radius:20px;padding:20px;display:grid;grid-template-columns:300px minmax(0,1fr);gap:20px;box-shadow:var(--shc);scroll-margin-top:20px}
+.sec.done{border-color:#9FD5B5}
+.sec-l{display:grid;gap:10px;align-content:start}
+.sec-l .no{display:flex;align-items:center;gap:10px}
+.sec-l .no span{width:30px;height:30px;border-radius:9px;background:#0E1114;color:#fff;display:grid;place-items:center;font-weight:800;font-size:14px;flex:none}
+.sec-l h3{margin:0;font-size:19px;font-weight:800;letter-spacing:-.01em;line-height:1.25}
+.sec-l .now{font-size:14.5px;color:#344054;line-height:1.5}.sec-l .now b{color:#0E1114}
+.sec-l .why{font-size:14px;color:#7A5B00;background:#FEF7C3;border:1px solid #FACC15;border-radius:12px;padding:9px 12px;font-weight:600}
+.thumbs{display:flex;gap:8px;flex-wrap:wrap}
+.thumbs button{position:relative;flex:1 1 90px;min-width:90px;height:120px;border-radius:12px;overflow:hidden;border:1px solid #E5E7EB;background:#F8F9FB}
+.thumbs button img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+.thumbs button span{position:absolute;left:6px;bottom:6px;background:rgba(14,17,20,.78);color:#fff;font-size:11.5px;font-weight:700;border-radius:6px;padding:2px 7px}
+.thumbs button:hover{border-color:#1F6B45}
+.opts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;align-content:start}
+.opt{position:relative;text-align:left;display:grid;gap:7px;align-content:start;border:1.5px solid #D0D5DD;border-radius:16px;padding:14px 14px 12px;background:#fff;transition:.12s}
+.opt:hover{border-color:#98A2B3}
+.opt[aria-pressed=true]{border:2px solid #1F6B45;background:#F3FAF6;padding:13.5px 13.5px 11.5px;box-shadow:0 0 0 3px #DCEFE3}
+.opt .h{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.opt .h i{font-style:normal;width:26px;height:26px;border-radius:8px;background:#EEF0F3;display:grid;place-items:center;font-weight:800;font-size:13.5px;color:#344054;flex:none}
+.opt[aria-pressed=true] .h i{background:#1F6B45;color:#fff}
+.opt .h b{font-size:15.5px;font-weight:800;line-height:1.25}
+.opt .pk{font-size:11.5px;font-weight:800;color:#146C3C;background:#DCF5E5;border:1px solid #9FD5B5;border-radius:999px;padding:1px 8px;white-space:nowrap}
+.opt p{margin:0;font-size:14px;color:#344054;line-height:1.45}
+.opt .gv{display:grid;gap:3px;font-size:13.5px;line-height:1.4;border-top:1px dashed #E5E7EB;padding-top:7px;margin-top:2px}
+.opt .gv span{display:grid;grid-template-columns:16px 1fr;gap:4px}
+.opt .gv .g{color:#146C3C}.opt .gv .x{color:#912018}
+.opt .gv .g::before{content:"+";font-weight:800}.opt .gv .x::before{content:"−";font-weight:800}
+.keep{grid-column:1/-1;justify-self:start;font-size:13.5px;font-weight:700;color:#475467;border:1.5px dashed #D0D5DD;border-radius:999px;padding:6px 14px;background:#fff}
+.keep[aria-pressed=true]{border-style:solid;border-color:#0E1114;color:#0E1114;background:#F2F4F7}
+.note{grid-column:1/-1;font-size:13px;color:#667085}
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-top:1px solid #E5E7EB}
+.bar .bin{max-width:1180px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.bar .ct{font-size:15px;font-weight:800}.bar .ct small{display:block;font-size:13px;font-weight:600;color:#667085}
+.bar .sp{flex:1}
+.bar .dots{display:flex;gap:4px;flex-wrap:wrap}
+.bar .dots a{width:22px;height:22px;border-radius:6px;background:#EEF0F3;color:#475467;font-size:11.5px;font-weight:800;display:grid;place-items:center;text-decoration:none}
+.bar .dots a.on{background:#1F6B45;color:#fff}
+.bar .m{display:none}
+.lb{position:fixed;inset:0;z-index:80;background:rgba(14,17,20,.72);display:none;align-items:flex-start;justify-content:center;padding:24px;overflow:auto}
+.lb.on{display:flex}
+.lb .in{background:#fff;border-radius:16px;max-width:min(1000px,100%);overflow:hidden;box-shadow:var(--sh2)}
+.lb .in .hd{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;font-weight:800;border-bottom:1px solid #E5E7EB;position:sticky;top:0;background:#fff}
+.lb img{display:block;max-width:100%;height:auto;margin:0 auto}
+@media (max-width:980px){ .sec{grid-template-columns:minmax(0,1fr)} .opts{grid-template-columns:minmax(0,1fr)} .thumbs button{height:110px} }
+@media (max-width:640px){ .bar .bin{flex-wrap:nowrap;gap:8px;padding:10px 12px} .bar .ct{font-size:14px} .bar .ct small{display:none} .bar .d{display:none} .bar .m{display:inline} .bar .btn2, .bar .btn1{min-height:40px} .band h1{font-size:26px} .band{padding:22px 16px 70px} .wrap{padding:0 12px 150px} .sec{padding:16px} .bar .dots{display:none} .lb{padding:10px} }
+</style>
+</head>
+<body>
+<div class="band"><div class="bin"><a href="index.html">‹ Round 17</a><h1>The whole app, part by part</h1><p>15 parts I'd change or merge. Each one has 3 options, and I've marked my pick. Tap the option you want for each part; your choices collect at the bottom with a Copy button you can paste back to me.</p></div></div>
+<div class="wrap" id="wrap"></div>
+<div class="bar"><div class="bin"><div class="ct" id="ct"></div><div class="dots" id="dots"></div><span class="sp"></span><button class="btn2" id="pickAll"><span class="d">Use all my picks</span><span class="m">My picks</span></button><button class="btn1 sm" id="copy"><span class="d">Copy my choices</span><span class="m">Copy</span></button></div></div>
+<div class="lb" id="lb"><div class="in"><div class="hd"><span id="lbT"></span><button class="btn2" id="lbX" style="min-height:36px">Close</button></div><img id="lbI" alt=""></div></div>
+<div class="toast" id="toast"></div>
+<script src="../r13/lab.js"></script>
+<script>
+/* [id, group, title, now, why, thumbs[[img,label]], options[[name, what, gain, give]], pick(0-2), note] */
+const R = [
+  ['menu', 'Finding your way', 'The menu has 26 pages',
+    'Home, Orders, Messages, Stock, then <b>6 Money</b>, <b>4 Bookkeeping</b>, <b>4 Sell more</b>, <b>2 Control</b>, <b>5 More tools</b> and Settings.',
+    'Most days you use 5 or 6 of them, but you read 26 names to find one.',
+    [['menu', 'Menu today', 'center 32%']],
+    [['5 main pages', 'Home, Orders, Messages, Stock, Money. Everything else becomes tabs inside them (Money → Overview · Sales · Expenses · Cash count · Who owes you · Books). Settings moves under your name at the top.', 'The menu fits on one screen and matches the phone\'s bottom bar', 'Rare pages are one more tap away'],
+     ['8 everyday pages + More', 'Keep Home, Orders, Messages, Stock, Sales, Expenses, Who owes you and Money overview. Everything else goes into one "More tools" page with big tiles.', 'Small change, nothing moves far', 'Still two places to look'],
+     ['Menu by job', 'The owner sees everything. The cashier sees Sales and Cash count. Warehouse staff see Orders and Stock.', 'Staff only see their own work', 'The owner\'s menu stays long']], 0],
+  ['help', 'Finding your way', 'Helper boxes on every page',
+    '"1 · 2 · 3" step boxes on 6 pages, "PRO · free in pilot" badges on 5 pages, long subtitles, and a yellow <b>"7 open items need your action"</b> box above the menu.',
+    'They help the first time, then they\'re in the way every day after.',
+    [['books', 'Tax books'], ['cheques', 'Check payments']],
+    [['Show helpers once', 'Step boxes show the first time, then become a small "How it works" link. PRO only shows in Settings → Your plan. The yellow box above the menu goes (the bell and Home already show it).', 'Calmer pages, same help when you need it', 'New staff see the steps only once'],
+     ['Remove them all', 'No step boxes, no badges, short one-line subtitles.', 'The cleanest pages', 'New users get less guidance'],
+     ['Keep them, make them smaller', 'Each helper shrinks to one thin line.', 'Guidance stays', 'Still on every page']], 0],
+  ['settings', 'Finding your way', 'Settings has 19 sections',
+    'One long list from Optional tools to Pause your business.', 'Hard to find one switch, especially on a phone.',
+    [['settings', 'Settings']],
+    [['4 groups + search', 'Your business · People · Money & tax · App & help, with a search box on top.', 'Any setting in 2 taps', 'Things move from where people learned them'],
+     ['Search box only', 'Keep the list, add a search box on top.', 'Tiny change', 'The long list stays'],
+     ['Move some out', 'Team & roles and Spending approval go to Team. Your plan and Help go under your name. 14 left.', 'A shorter list', 'Settings spread over more places']], 0],
+
+  ['home', 'Home', 'Home is about 7 phone screens long',
+    'Get set up, 8 tiles, What to do, Where every order is, How the business is doing, What runs out, and the Cash drawer calendar.',
+    'The things that need you today get pushed down by charts and history.',
+    [['home', 'Home today']],
+    [['Home = today only', 'Home keeps What to do, Where every order is and What runs out. "How the business is doing" moves to Money overview. The Cash drawer calendar moves to Cash count.', 'Half the scrolling, and everything left needs action', 'Charts are one tap away'],
+     ['3 tabs on Home', 'Today · Orders & stock · Business.', 'Nothing leaves Home', 'Some owners never tap the other tabs'],
+     ['Choose your Home', 'A "Change what\'s on Home" list where each owner turns sections on or off.', 'Fits every owner', 'One more thing to explain']], 0],
+  ['tiles', 'Home', 'The 8 number tiles on Home',
+    'Sales, Costs, Profit, Cash today, Customer orders, Owed to you, You owe suppliers, From suppliers.',
+    'Half of them repeat What to do or Money overview.',
+    [['tiles', 'Tiles today']],
+    [['Keep 4', 'Sales this month, Cash today, Owed to you, You owe.', 'The four numbers owners ask about every day', 'Costs and profit move to Money overview'],
+     ['One slim row of 8', 'All 8 numbers in one thin row, no icons or notes.', 'Keeps everything, a third of the space', 'Smaller text'],
+     ['3 numbers in the greeting', '"Good morning · ₱263K sales this month · ₱4,140 to count · ₱17,504 owed to you".', 'The calmest top of the page', 'The numbers stop being big tap targets']], 0],
+
+  ['profit', 'Money', 'Profit shows up in 3 places',
+    '<b>Money overview</b> (profit statement), <b>Profit & prices</b> (sales, cost, gross profit) and <b>Books & reports</b> Summary (the same tiles again).',
+    'Same numbers, three different looks. Owners wonder which one is right.',
+    [['money', 'Money overview'], ['profit', 'Profit & prices'], ['ledger', 'Books & reports']],
+    [['One Profit page', 'Money overview keeps the statement. Profit & prices becomes its "Per item" tab. Books & reports keeps only the accountant views (Profit & loss, Balance sheet, Ledger).', 'One answer to "how much did I make?"', 'Books & reports loses its Summary tab'],
+     ['Drop the Summary tab only', 'Books & reports opens on Profit & loss. The rest stays.', 'The smallest change', 'Still two profit pages'],
+     ['Keep all 3, link them', 'Each page says "same numbers as Money overview" with a link.', 'Nothing moves', 'Still repeats']], 0],
+  ['counter', 'Money', 'Sales and Cash count are two pages for one counter',
+    'Sales lists today\'s sales. Cash count shows what should be in the drawer and every past count.',
+    'At closing you jump between the two.',
+    [['sales', 'Sales'], ['cashcount', 'Cash count']],
+    [['One "Counter" page', 'Today\'s sales on top, "Count the drawer" right under it, past counts in a tab.', 'Closing is one page, top to bottom', 'A longer page'],
+     ['Keep both, add a closing button', 'Sales ends with a big "Close the day: count the cash" button.', 'Tiny change', 'Still two pages'],
+     ['Count from Home', 'The Home drawer calendar becomes where you count; the Cash count page goes.', 'One less page', 'Makes Home longer (clashes with "Home = today only")']], 0],
+  ['paid', 'Money', 'Getting paid is spread over 3 pages',
+    '<b>Who owes you</b>, its Cash & bank tab (also in the menu as <b>Bank & deposits</b>), and <b>Check payments</b> under More tools.',
+    'Every peso coming in should be in one place.',
+    [['collections', 'Who owes you'], ['cheques', 'Check payments']],
+    [['One "Getting paid" page', 'Tabs: Who owes you · Checks · Cash & bank.', 'All money coming in, one place', 'Checks leave More tools'],
+     ['Checks inside Who owes you', 'A "Checks to deposit" section above the customer list.', 'The deposit date sits next to who owes', 'A longer page'],
+     ['Remove the duplicate menu name', '"Bank & deposits" leaves the menu (it opens the same page as Who owes you).', 'The smallest change', 'Checks stay separate']], 0],
+  ['prices', 'Money', 'Two price pages',
+    '<b>Price list</b> (announce new prices, supplier price changes) and <b>Profit & prices</b> (cost, your price and margin for each item).',
+    'You change a price on one page and check the profit on another.',
+    [['prices', 'Price list'], ['profit', 'Profit & prices']],
+    [['One "Prices" page', 'Each item shows cost, your price and margin, with a "Change price" button that tells your buyers. Supplier price changes in a second tab.', 'Change a price and see the profit at once', 'A wider table'],
+     ['Keep both, clear jobs', 'Price list = what buyers see. Profit & prices = your costs and margins.', 'Each page has one job', 'Two pages to keep up to date'],
+     ['Prices inside Stock', 'Each product in Stock shows cost and price; tap to change.', 'One list of products for everything', 'The Stock table gets busier']], 0],
+
+  ['chase', 'People', 'Three places to chase people',
+    '<b>Follow-ups</b> (orders waiting for a yes, leads), <b>Orders</b> ("Waiting on them" with Remind buttons) and <b>Who owes you</b> (payment reminders).',
+    'The same customer can show up in all three.',
+    [['followups', 'Follow-ups'], ['collections', 'Who owes you']],
+    [['Chase from Orders', 'The Follow-ups page goes. Its nudges already live on the Orders rows, and leads move to Find customers.', 'One less page, nothing lost', 'Leads move to a new home'],
+     ['Follow-ups = the one chase list', 'Orders waiting for a yes, unpaid bills and leads in one list, each with a ready message.', 'A single "people to chase" list', 'Repeats what Orders shows'],
+     ['A "To follow up" filter in Messages', 'Chats with someone to chase rise to the top with a yellow tag.', 'You chase where you talk', 'Messages gets busier']], 0],
+  ['wrong', 'People', 'Two places for "something\'s wrong"',
+    '<b>To check</b> (cash short, missing stock, sold below cost) and <b>Owner\'s watchdog</b> (staff paid above the agreed price), plus Act Today on Home.',
+    'Problems split across two pages are easy to miss.',
+    [['issues', 'To check'], ['watchdog', 'Owner\'s watchdog']],
+    [['One "To check" list', 'Watchdog alerts join To check. Spending limits move to Settings → Spending approval.', 'One list of problems to clear', 'The Watchdog page goes'],
+     ['Keep both, Home shows the top 3', 'Nothing moves; Home\'s Act Today picks the worst 3 from both.', 'No change to learn', 'Two pages to clear'],
+     ['Clearer names', '"Money leaks" (To check) and "Team spending" (Watchdog).', 'Says what each one is for', 'Still two pages']], 0],
+  ['team', 'People', 'Team page repeats Messages and Settings',
+    'Tasks, Team chat and Activity. Team chat is a second chat app; Activity is the same as Settings → Activity log.',
+    'Two places to chat means messages get missed.',
+    [['team', 'Team'], ['messages', 'Messages']],
+    [['Team chat moves into Messages', 'A "Team" group in Messages. Activity stays in Settings. Team keeps your people and their tasks.', 'One place to chat', 'The Team page gets smaller'],
+     ['Tasks move to Home', 'Assign any "What to do" item to a person. The Team page goes.', 'One less page', 'A bigger change'],
+     ['Keep as is', 'No change.', 'Nothing to learn', 'Two chats stay']], 0],
+
+  ['stock', 'Stock', 'Stock: 8 tiles before the table',
+    '4 tiles, 3 buttons, 4 more tiles, then 2 rows of filters. The product table starts halfway down the screen.',
+    'You came to see your products.',
+    [['inventory', 'Stock today']],
+    [['4 tiles, one filter row', 'Reorder now, Missing this month, Bad stock, Stock value. Warehouses become a dropdown next to the filters.', 'The table starts near the top', '"Promised" and "Last count" move into the history'],
+     ['"What runs out" bars on top', 'The same bars as Home replace the tiles.', 'Same picture on Home and Stock', 'Repeats Home'],
+     ['Table first', 'The tiles shrink into one sentence above the table: "2 to reorder · ₱1,456 missing · ₱339,414 on the shelf".', 'The most compact', 'Less colour to catch the eye']], 0],
+  ['sides', 'Pages with both sides', 'Customers and suppliers stacked on 6 pages',
+    'Who owes you, Price list, Tax books, Check payments, BIR 2307s and Returns show "Selling to customers", then "Buying from suppliers" below it.',
+    'Every one of these pages is twice as long as it needs to be.',
+    [['returns', 'Returns & credits'], ['taxforms', 'BIR 2307s']],
+    [['Two tabs: Customers | Suppliers', 'The same chips as Orders. The page opens on the side that needs you.', 'Half the length, same habit as Orders', 'The other side is one tap away'],
+     ['Side by side', 'Two columns on a laptop, tabs on a phone.', 'See both on a big screen', 'Narrow columns'],
+     ['Fold the quiet side', 'Keep them stacked, but a side with nothing to do shrinks to one line.', 'Less change', 'Still long when both are busy']], 0],
+  ['tools', 'Extra tools', 'Extra tools are in everyone\'s menu',
+    'Check payments, Returns & credits, Delivery routes, Tax books and BIR 2307s show for every shop, even ones that never use them.',
+    'A small sari-sari supplier doesn\'t need BIR 2307s on day one.',
+    [['routes', 'Delivery routes'], ['returns', 'Returns & credits']],
+    [['Off until you need them', 'Settings → Optional tools gets a switch for each one (Routes already works this way).', 'New owners see a short menu', 'You switch on what you use'],
+     ['Fold into their parent pages', 'Returns → on each order. Routes → Orders. Tax books and 2307s → Books & reports tabs. Checks → Getting paid.', 'No extra pages at all', 'The biggest move'],
+     ['Keep in More tools', 'No change.', 'Nothing moves', 'The menu stays long']], 0]
+];
+const TOP5 = [['menu', '5 main pages', 'The biggest calm-down for older owners.'], ['home', 'Home = today only', 'Half the scrolling.'], ['sides', 'Customers | Suppliers tabs', 'Halves 6 long pages.'], ['help', 'Show helpers once', 'Removes repeated boxes.'], ['tools', 'Extra tools off until needed', 'Shorter menu for new shops.']];
+const KEY = 'nifti-r17-review';
+let C = {}; try{ C = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; }catch(e){ C = {}; }
+const save = () => { try{ localStorage.setItem(KEY, JSON.stringify(C)); }catch(e){} };
+const IMG = n => `img/${n}.jpg`;
+function secH(s, i){
+  const [id, , title, now, why, th, opts, pick] = s, ch = C[id];
+  return `<section class="sec${ch !== undefined ? ' done' : ''}" id="s-${id}"><div class="sec-l"><div class="no"><span>${i + 1}</span><h3>${title}</h3></div><div class="now"><b>Now:</b> ${now}</div><div class="why">${why}</div>
+      <div class="thumbs">${th.map(([n, l, pos]) => `<button type="button" data-img="${n}" data-l="${l}" aria-label="See ${l} bigger"><img src="${IMG(n)}" alt="${l}" loading="lazy"${pos ? ` style="object-position:${pos}"` : ''}><span>${l}</span></button>`).join('')}</div></div>
+    <div class="opts">${opts.map(([n, w, g, x], k) => `<button type="button" class="opt" aria-pressed="${ch === k}" data-s="${id}" data-k="${k}"><span class="h"><i>${'ABC'[k]}</i><b>${n}</b>${k === pick ? '<span class="pk">My pick</span>' : ''}</span><p>${w}</p><span class="gv"><span class="g">${g}</span><span class="x">${x}</span></span></button>`).join('')}
+      <button type="button" class="keep" aria-pressed="${ch === -1}" data-s="${id}" data-k="-1">Leave it as it is</button></div></section>`;
+}
+function render(){
+  let html = `<div class="top5"><h2>If you only do five</h2><p>These give the biggest calm-down for the least change. The rest can follow.</p><ol>${TOP5.map(([id, n, t], i) => `<li><span class="n">${i + 1}</span><span><b>${n}</b>${t} <a href="#s-${id}" style="color:#1F6B45;font-weight:700">See it</a></span></li>`).join('')}</ol></div>`;
+  let g = '';
+  R.forEach((s, i) => { if(s[1] !== g){ g = s[1]; html += `<div class="grp">${g}</div>`; } html += secH(s, i); });
+  $('wrap').innerHTML = html; bar();
+}
+function bar(){
+  const n = R.filter(s => C[s[0]] !== undefined).length;
+  $('ct').innerHTML = `${n} of ${R.length} chosen<small>${n === R.length ? 'All done. Tap Copy and paste it to me.' : 'Your choices stay on this device.'}</small>`;
+  $('dots').innerHTML = R.map((s, i) => `<a href="#s-${s[0]}" class="${C[s[0]] !== undefined ? 'on' : ''}" title="${s[2]}">${i + 1}</a>`).join('');
+}
+function text(){
+  return 'Round 17 review, my choices:\n' + R.map((s, i) => { const c = C[s[0]]; return `${i + 1}. ${s[2]}: ${c === undefined ? '(not chosen)' : c === -1 ? 'Leave it as it is' : 'ABC'[c] + ' · ' + s[6][c][0]}`; }).join('\n');
+}
+document.addEventListener('click', e => {
+  const o = e.target.closest('[data-s]');
+  if(o){ const id = o.dataset.s, k = Number(o.dataset.k); if(C[id] === k) delete C[id]; else C[id] = k; save();
+    const i = R.findIndex(s => s[0] === id); const el = document.getElementById('s-' + id); el.outerHTML = secH(R[i], i); bar(); return; }
+  const t = e.target.closest('[data-img]');
+  if(t){ $('lbI').src = IMG(t.dataset.img); $('lbT').textContent = t.dataset.l + ' (today)'; $('lb').classList.add('on'); return; }
+  if(e.target.id === 'lbX' || e.target.id === 'lb'){ $('lb').classList.remove('on'); return; }
+});
+document.addEventListener('keydown', e => { if(e.key === 'Escape') $('lb').classList.remove('on'); });
+$('pickAll').onclick = () => { R.forEach(s => { C[s[0]] = s[7]; }); save(); render(); toast('All 15 set to my picks. Change any you like.'); };
+$('copy').onclick = async () => { const t = text();
+  try{ await navigator.clipboard.writeText(t); toast('Copied. Paste it in our chat.'); }
+  catch(err){ const ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); toast('Copied. Paste it in our chat.'); }catch(e2){ prompt('Copy this:', t); } ta.remove(); } };
+render();
+</script>
+</body>
+</html>
