@@ -6532,6 +6532,206 @@ tbody tr:hover{background:#F6F6F3}
   html.nf-phone #mhHome .nft-lab{font-size:17px;} html.nf-phone #mhHome .nft-lab2{font-size:13.5px;}
 
 /* ===== Round 15 css end ===== */
+
+/* ===== Round 16 css begin ===== */
+  /* ---------- Claude-like colours: a soft gray side menu, white pages ---------- */
+  body{--bg:#FFFFFF;}
+  html .app-view-wrap, html #view-app, html #view-app .main{background:#FFFFFF !important;}
+  html #view-app .sidebar{background:#FAFAFA !important;border-right:1px solid #E5E5E5 !important;}
+  html #view-app .sidebar .nav-item:not(.active):hover{background:#F0F0F0 !important;}
+  html[data-ty] #view-app .sidebar .nav-item.active{background:#EBEBEB !important;color:#0E1114 !important;box-shadow:none !important;font-weight:700 !important;}
+  html[data-ty] #view-app .sidebar .nav-item.active svg{color:#0E1114 !important;stroke:#0E1114 !important;}
+  html[data-ty] #view-app .sidebar .nav-item.active .nav-badge{box-shadow:0 0 0 2px #EBEBEB;}
+  html #view-app .topbar{background:#FFFFFF !important;border-bottom:1px solid #E5E5E5 !important;}
+  html #view-app .topbar .search{background:#F7F7F7 !important;border-color:#E5E5E5 !important;}
+  html.nf-phone #view-app .bottom-nav, html.nf-phone .bottom-nav{background:#FAFAFA !important;border-top:1px solid #E5E5E5 !important;}
+
+  /* ---------- Customers & suppliers page removed (it lives at the bottom of Orders now) ---------- */
+  #view-app .nav-item[data-page="suppliers"], #bottomNav .bnav-item[data-page="suppliers"]{display:none !important;}
+
+  /* ---------- Home: "Where every order is" ---------- */
+  :is(#mhHome,#mhSheet) .legend.nf-lg16{gap:8px 10px;}
+  :is(#mhHome,#mhSheet) .legend.nf-lg16 .lg{gap:0;}
+  html :is(#mhHome,#mhSheet) .ob3 .hdr .sh{grid-template-columns:minmax(0,1fr);row-gap:4px;}
+  :is(#mhHome,#mhSheet) .sh .sh-t{display:inline-flex;align-items:baseline;column-gap:8px;flex-wrap:wrap;}
+  :is(#mhHome,#mhSheet) .sh .sh-c{display:inline-flex;align-items:baseline;gap:6px;white-space:nowrap;}
+  :is(#mhHome,#mhSheet) .sh .sh-t b{font-size:15px;}
+  :is(#mhHome,#mhSheet) .sh .sc-d{color:#1A4F8C;font-weight:700;font-size:15px;}
+  :is(#mhHome,#mhSheet) .sh .sh-t .sc{color:#1A4F8C;font-weight:800;font-size:17px;line-height:1;}
+  html.nf-phone #mhHome .nfb-stages span{color:#1A4F8C !important;font-weight:800 !important;font-size:14.5px !important;}
+
+  /* ---------- Home: "What runs out" ---------- */
+  html #mhHome .sr-key ul.sr-k4{display:flex !important;flex-wrap:wrap;gap:8px 26px !important;}
+  html #mhHome .sr-key ul.sr-k4 li{display:inline-flex !important;align-items:center;gap:8px;}
+  html #mhHome .sr-key ul.sr-k4 li i, html #mhHome .sr-key ul.sr-k4 li u{margin:0 !important;transform:none !important;vertical-align:middle;}
+  html.nf-phone #mhHome .sr-key ul.sr-k4 li:last-child{display:inline-flex !important;}
+  html.nf-phone #mhHome .sr-key ul.sr-k4 li:last-child u{margin:0 !important;}
+  #mhHome .sr-axis.sr-axis16{height:auto;align-items:center;margin-top:2px;}
+  #mhHome .sr-axis16 .sr-ax{height:22px;color:#123E8C;font-weight:800;font-size:15px;}
+  #mhHome .sr-axis16 .sr-ax i{top:2px;}
+  #mhHome .sr-axis16 .sr-axl{text-align:right;}
+  #mhHome .sr-axis16 .sr-axr{text-align:right;}
+  #mhHome .sr-dl{display:inline-flex;align-items:center;gap:6px;font-style:normal;background:#DCE9FE;color:#123E8C;border:1px solid #B9D1FA;border-radius:999px;padding:4px 14px;font-size:15.5px;font-weight:800;white-space:nowrap;}
+  #mhHome .sr-dl b{font-weight:800;}
+  @media (max-width:760px){
+    #mhHome .sr-axis.sr-axis16{grid-template-columns:minmax(0,1fr);row-gap:8px;}
+    #mhHome .sr-axis.sr-axis16 > span.sr-axl{display:block !important;text-align:left;}
+    #mhHome .sr-axis.sr-axis16 > span.sr-axl b{display:none;}
+    #mhHome .sr-axis.sr-axis16 > span.sr-axr{display:none !important;}
+  }
+  html.nf-phone #mhHome .sr-axis.sr-axis16{grid-template-columns:minmax(0,1fr) !important;row-gap:8px;}
+  html.nf-phone #mhHome .sr-axis.sr-axis16 > span.sr-axl{display:block !important;text-align:left;}
+  html.nf-phone #mhHome .sr-axis.sr-axis16 > span.sr-axl b{display:none;}
+  html.nf-phone #mhHome .sr-axis.sr-axis16 > span.sr-axr{display:none !important;}
+  html.nf-phone #mhHome .sr-dl{font-size:13.5px;}
+
+  /* ---------- Orders: by customer & supplier, with a date beside every order ---------- */
+  #page-orders.nfo-on > .nf-orders-head{display:none !important;}
+  #page-orders.nfo-on:not(.nfo-table) > .nf-half{display:none !important;}
+  #page-orders.nfo-on.nfo-table > .nf-half{margin-top:22px;}
+  #nfOrd{display:grid;gap:16px;color:#0E1114;}
+  #nfOrd .nfo-top{display:flex;justify-content:space-between;align-items:flex-end;gap:12px 16px;flex-wrap:wrap;}
+  #nfOrd .nfo-top h1{margin:0;font-size:32px;font-weight:800;letter-spacing:-.02em;line-height:1.1;}
+  #nfOrd .nfo-top p{margin:6px 0 0;font-size:16px;color:#344054;}
+  #nfOrd .nfo-top p b{color:#0E1114;}
+  #nfOrd .nfo-acts{display:flex;gap:8px;flex-wrap:wrap;}
+  #nfOrd .nfo-acts .btn{min-height:44px;font-size:15px;padding:0 16px;}
+  #nfOrd .nfo-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;}
+  #nfOrd .nfo-st{background:#fff;border:1px solid #E5E5E5;border-radius:16px;padding:12px 14px;display:grid;gap:3px;text-align:left;cursor:pointer;font:inherit;color:inherit;}
+  #nfOrd .nfo-st:hover{border-color:#C9CED6;}
+  #nfOrd .nfo-st.on{box-shadow:0 0 0 2px #0E1114;border-color:transparent;}
+  #nfOrd .nfo-st .k{display:flex;align-items:center;gap:7px;font-size:12.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#344054;line-height:1.3;}
+  #nfOrd .nfo-st .k i{width:10px;height:10px;border-radius:50%;flex:none;}
+  #nfOrd .s-red .k i{background:#E5484D;} #nfOrd .s-yel .k i{background:#EAB308;} #nfOrd .s-blue .k i{background:#3B6FD8;} #nfOrd .s-green .k i{background:#22A06B;}
+  #nfOrd .nfo-st b{font-size:26px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.15;}
+  #nfOrd .nfo-st b span{font-size:14px;font-weight:700;color:#344054;margin-left:2px;}
+  #nfOrd .nfo-st em{font-style:normal;font-size:17px;font-weight:800;color:#0E1114;font-variant-numeric:tabular-nums;line-height:1.25;}
+  #nfOrd .nfo-st em.z{color:#475467;font-weight:700;font-size:15px;}
+  #nfOrd .nfo-flt{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+  #nfOrd .nfo-chips{display:flex;gap:8px;flex-wrap:wrap;}
+  #nfOrd .nfo-chips button{min-height:40px;padding:0 15px;border-radius:999px;background:#fff;border:1.5px solid #D5D9DF;font:inherit;font-size:14.5px;font-weight:700;color:#1D2939;cursor:pointer;}
+  #nfOrd .nfo-chips button b{margin-left:6px;font-weight:800;}
+  #nfOrd .nfo-chips button.on{background:#E8F5EE;border-color:#1F6B45;color:#0F4D2E;box-shadow:inset 0 0 0 1px #1F6B45;}
+  #nfOrd .nfo-q{flex:1;min-width:200px;display:flex;align-items:center;gap:8px;height:42px;border-radius:999px;background:#fff;border:1.5px solid #D5D9DF;padding:0 14px;color:#475467;}
+  #nfOrd .nfo-q svg{width:18px;height:18px;flex:none;}
+  #nfOrd .nfo-q input{border:0;outline:0;background:transparent;font:inherit;font-size:15px;color:#0E1114;width:100%;min-width:0;padding:0;}
+  #nfOrd .nfo-q:focus-within{border-color:#1F6B45;box-shadow:0 0 0 3px rgba(31,107,69,.14);}
+  #nfOrd .nfo-card{background:#fff;border:1px solid #E5E5E5;border-radius:18px;overflow:hidden;}
+  #nfOrd .nfo-band{display:flex;justify-content:space-between;align-items:center;padding:11px 18px;font-size:14px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;}
+  #nfOrd .nfo-band b{font-size:20px;letter-spacing:0;}
+  #nfOrd .nfo-band.b-red{background:#FDECEC;color:#B42318;} #nfOrd .nfo-band.b-yel{background:#FEF7C3;color:#1F2329;}
+  #nfOrd .nfo-band.b-blue{background:#DCE8FD;color:#163E8C;} #nfOrd .nfo-band.b-green{background:#E6F4EC;color:#146C3C;}
+  #nfOrd .nfo-pc{padding:16px 18px 14px;border-top:1px solid #ECECEC;}
+  #nfOrd .nfo-band + .nfo-pc{border-top:0;}
+  #nfOrd .nfo-tl{display:grid;grid-template-columns:52px minmax(0,1fr);column-gap:14px;row-gap:10px;}
+  #nfOrd :is(.nfo-a,.nfo-d){position:relative;display:grid;justify-items:center;align-content:center;}
+  #nfOrd .nfo-a::after{content:"";position:absolute;left:50%;top:50%;bottom:-10px;width:2px;margin-left:-1px;background:#C9CFD8;}
+  #nfOrd .nfo-d::before{content:"";position:absolute;left:50%;top:-10px;bottom:-10px;width:2px;margin-left:-1px;background:#C9CFD8;}
+  #nfOrd .nfo-d.last::before{bottom:50%;}
+  #nfOrd :is(.nfo-a,.nfo-d) > *{position:relative;z-index:1;}
+  /* pictures: a photo, or plain initials in a white circle, so only the dates carry colour */
+  #nfOrd .nfo-av{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;overflow:hidden;background:#fff;box-shadow:0 0 0 4px #fff;flex:none;}
+  #nfOrd .nfo-av img{width:100%;height:100%;object-fit:cover;display:block;}
+  #nfOrd .nfo-av.ini{border:2px solid #98A2B3;color:#1D2939;font-weight:800;font-size:15.5px;letter-spacing:.02em;box-sizing:border-box;}
+  #nfOrd .nfo-dt{width:52px;border-radius:12px;display:grid;justify-items:center;padding:5px 0 6px;line-height:1.05;box-shadow:0 0 0 4px #fff;}
+  #nfOrd .nfo-dt .m{font-size:11px;font-weight:800;letter-spacing:.06em;line-height:1.2;}
+  #nfOrd .nfo-dt .d{font-size:21px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.1;}
+  #nfOrd .nfo-dt.red{background:#FEE4E2;color:#B42318;} #nfOrd .nfo-dt.yel{background:#FEF08A;color:#1F2329;}
+  #nfOrd .nfo-dt.blue{background:#CFE0FC;color:#163E8C;} #nfOrd .nfo-dt.green{background:#DCF5E5;color:#146C3C;}
+  #nfOrd .nfo-dt.today{background:#0E1114;color:#fff;} #nfOrd .nfo-dt.today .m{font-size:10px;letter-spacing:.02em;}
+  #nfOrd .nfo-h{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;min-height:46px;}
+  #nfOrd .nm{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  #nfOrd .nm b{font-size:17px;font-weight:800;}
+  #nfOrd .fx{font-size:14px;color:#475467;margin-top:2px;}
+  #nfOrd .fx b{color:#1D2939;font-weight:700;}
+  #nfOrd .nfo-side{font-size:12.5px;font-weight:800;color:#1D2939;border:1.5px solid #D0D5DD;background:#fff;border-radius:999px;padding:1px 9px;white-space:nowrap;}
+  #nfOrd .nfo-money{text-align:right;}
+  #nfOrd .nfo-money b{display:block;font-size:18px;font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap;}
+  #nfOrd .nfo-money .l{font-size:13.5px;color:#475467;font-weight:700;white-space:nowrap;}
+  #nfOrd .nfo-money.r b{color:#B42318;}
+  #nfOrd .nfo-po{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:14px;align-items:center;padding:10px 14px;border-radius:14px;cursor:pointer;border:1px solid transparent;}
+  #nfOrd .nfo-po.b-red{background:#FEF4F3;} #nfOrd .nfo-po.b-yel{background:#FFFBE6;} #nfOrd .nfo-po.b-blue{background:#EAF1FE;} #nfOrd .nfo-po.b-green{background:#EFF9F3;}
+  #nfOrd .nfo-po:hover{border-color:#C9CED6;}
+  #nfOrd .nfo-po:focus-visible{outline:3px solid #1F6B45;outline-offset:2px;}
+  #nfOrd .nfo-pm{min-width:0;}
+  #nfOrd .nfo-po .l1{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  #nfOrd .nfo-po .n{font-size:14px;font-weight:800;white-space:nowrap;}
+  #nfOrd .nfo-po .it{font-size:13.5px;color:#475467;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;max-width:300px;}
+  #nfOrd .nfo-po .l2{font-size:15px;color:#1D2939;margin-top:3px;line-height:1.4;}
+  #nfOrd .nfo-po .when{font-weight:800;color:#0E1114;}
+  #nfOrd .nfo-po .when.red{color:#B42318;} #nfOrd .nfo-po .when.green{color:#146C3C;}
+  #nfOrd .nfo-step{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;color:#1D2939;background:#fff;border:1px solid #D0D5DD;border-radius:8px;padding:2px 8px;white-space:nowrap;}
+  #nfOrd .nfo-step i{width:8px;height:8px;border-radius:50%;background:#3B6FD8;}
+  #nfOrd .nfo-step.t-you i{background:#EAB308;} #nfOrd .nfo-step.t-done i{background:#22A06B;}
+  #nfOrd .nfo-amt{font-size:16px;font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right;}
+  #nfOrd .nfo-amt .l{display:block;font-size:12.5px;color:#475467;font-weight:700;}
+  #nfOrd .nfo-b{min-height:40px;min-width:128px;font-size:14px;padding:0 14px;justify-content:center;white-space:nowrap;}
+  #nfOrd .nfo-done{min-width:128px;display:inline-flex;justify-content:center;align-items:center;gap:6px;min-height:36px;border-radius:999px;background:#DCF5E5;color:#146C3C;font-size:14px;font-weight:800;}
+  #nfOrd .nfo-more{grid-column:2;display:flex;gap:16px;flex-wrap:wrap;align-items:center;border:0 !important;padding:0 !important;margin:0 !important;}
+  #nfOrd .nfo-more button{background:none;border:0;padding:4px 0;font:inherit;font-size:14px;font-weight:800;color:#1D2939;text-decoration:underline;text-underline-offset:3px;cursor:pointer;}
+  #nfOrd .nfo-empty{padding:30px;text-align:center;color:#344054;font-size:15.5px;}
+  #nfOrd .nfo-empty button{background:none;border:0;font:inherit;font-weight:800;color:#1F6B45;text-decoration:underline;cursor:pointer;}
+  #nfOrd .nfo-key{margin-top:12px;display:flex;gap:10px 18px;flex-wrap:wrap;align-items:center;font-size:14px;color:#1D2939;font-weight:600;}
+  #nfOrd .nfo-key span{display:inline-flex;align-items:center;gap:8px;}
+  #nfOrd .nfo-key i{width:22px;height:22px;border-radius:7px;display:inline-block;}
+  #nfOrd .k-red{background:#FEE4E2;} #nfOrd .k-yel{background:#FEF08A;} #nfOrd .k-blue{background:#CFE0FC;} #nfOrd .k-green{background:#DCF5E5;} #nfOrd .k-today{background:#0E1114;}
+  /* people with nothing going on (the old Customers & suppliers page) */
+  #nfOrd .nfo-people{background:#fff;border:1px solid #E5E5E5;border-radius:18px;padding:16px 18px;display:grid;gap:12px;scroll-margin-top:84px;}
+  #nfOrd .nfo-ph{display:flex;justify-content:space-between;align-items:center;gap:10px 14px;flex-wrap:wrap;}
+  #nfOrd .nfo-ph h2{margin:0;font-size:19px;font-weight:800;}
+  #nfOrd .nfo-ph p{margin:3px 0 0;font-size:14.5px;color:#344054;}
+  #nfOrd .nfo-inv{display:flex;gap:8px;flex-wrap:wrap;}
+  #nfOrd .nfo-pl{display:grid;gap:8px;}
+  #nfOrd .nfo-pp{display:grid;grid-template-columns:46px minmax(0,1fr) auto;gap:12px;align-items:center;padding:10px 12px;border-radius:14px;border:1px solid #ECECEC;}
+  #nfOrd .nfo-ppa .nfo-av{box-shadow:none;}
+  #nfOrd .nfo-ppb{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end;}
+  #nfOrd .nfo-ppb .btn{min-height:40px;}
+  #nfOrd .nfo-none{margin:0;color:#344054;font-size:15px;}
+  #nfOrd .nfo-tbl{justify-self:center;background:none;border:0;font:inherit;font-size:14.5px;font-weight:800;color:#1D2939;text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:6px 10px;min-height:40px;}
+  @media (max-width:860px){
+    #nfOrd .nfo-stats{grid-template-columns:repeat(2,minmax(0,1fr));}
+  }
+  @media (max-width:760px){
+    #nfOrd{gap:12px;}
+    #nfOrd .nfo-top h1{font-size:27px;}
+    #nfOrd .nfo-top p{font-size:15px;}
+    #nfOrd .nfo-acts{width:100%;display:grid;grid-template-columns:1fr;}
+    #nfOrd .nfo-acts .btn{font-size:15px;min-height:46px;justify-content:center;}
+    #nfOrd .nfo-acts .btn-primary{order:-1;}
+    #nfOrd .nfo-st{padding:10px 12px;}
+    #nfOrd .nfo-st .k{font-size:11.5px;letter-spacing:.02em;}
+    #nfOrd .nfo-st b{font-size:23px;}
+    #nfOrd .nfo-st em{font-size:16px;}
+    #nfOrd .nfo-chips{width:100%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));}
+    #nfOrd .nfo-chips button{padding:0 4px;font-size:14px;} #nfOrd .nfo-chips button b{margin-left:4px;}
+    #nfOrd .nfo-q{min-width:0;width:100%;flex-basis:100%;}
+    #nfOrd .nfo-band{padding:10px 12px;font-size:13px;}
+    #nfOrd .nfo-pc{padding:14px 12px 12px;}
+    #nfOrd .nfo-tl{grid-template-columns:46px minmax(0,1fr);column-gap:10px;}
+    #nfOrd .nfo-dt{width:46px;} #nfOrd .nfo-dt .d{font-size:19px;}
+    #nfOrd :is(.nfo-a,.nfo-d){align-content:start;}
+    #nfOrd .nfo-d{padding-top:8px;}
+    #nfOrd .nfo-a::after{top:23px;}
+    #nfOrd .nfo-d.last::before{bottom:auto;height:44px;}
+    #nfOrd .nfo-h{grid-template-columns:minmax(0,1fr);gap:4px;align-items:start;}
+    #nfOrd .nfo-money{text-align:left;display:flex;align-items:baseline;gap:6px;flex-wrap:wrap;}
+    #nfOrd .nfo-money b{display:inline;}
+    #nfOrd .nm b{font-size:16px;}
+    #nfOrd .fx{font-size:13.5px;}
+    #nfOrd .nfo-money b{font-size:16.5px;}
+    #nfOrd .nfo-po{grid-template-columns:minmax(0,1fr) auto;gap:8px 10px;padding:10px 12px;}
+    #nfOrd .nfo-amt{grid-column:2;grid-row:1;align-self:start;}
+    #nfOrd :is(.nfo-b,.nfo-done){grid-column:1/-1;width:100%;min-height:44px;}
+    #nfOrd .nfo-po .it{max-width:none;flex-basis:100%;white-space:normal;}
+    #nfOrd .nfo-po .l2{font-size:14.5px;}
+    #nfOrd .nfo-key{gap:8px 12px;font-size:13px;}
+    #nfOrd .nfo-people{padding:14px 12px;}
+    #nfOrd .nfo-inv{width:100%;display:grid;grid-template-columns:1fr 1fr;}
+    #nfOrd .nfo-pp{grid-template-columns:46px minmax(0,1fr);padding:10px;}
+    #nfOrd .nfo-ppb{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;}
+  }
+
+/* ===== Round 16 css end ===== */
   .settings-card:empty{display:none;}
   #supplierChips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;} #supplierChips .chip{flex-shrink:0;}
 </style>
@@ -24022,11 +24222,11 @@ function srSection(){
       ${open ? srPanel(r) : ''}</div>`;
   };
   const key = days
-    ? `<div class="sr-key"><p><b>Smart colours</b> use each supplier's delivery time and your ${L.critical}-day critical level.</p><ul>
-        <li><i class="r"></i><b>Red · order today</b><span class="sr-kd">: at or under the black line. Without an order now, stock drops below ${L.critical} days before the delivery arrives.</span></li>
-        <li><i class="y"></i><b>Yellow · order soon</b><span class="sr-kd">: within ${L.warn} days of the line.</span></li>
-        <li><i class="g"></i><b>Green · covered</b><span class="sr-kd">: more than that.</span></li>
-        <li><u></u><b>Black line · reorder point</b><span class="sr-kd">: delivery time + ${L.critical} days.</span></li></ul></div>`
+    ? `<div class="sr-key"><p><b>Smart colours</b> use each supplier's delivery time and your ${L.critical}-day critical level.</p><ul class="sr-k4">
+        <li><i class="r"></i><b>Red · order today</b></li>
+        <li><i class="y"></i><b>Yellow · order soon</b></li>
+        <li><i class="g"></i><b>Green · covered</b></li>
+        <li><u></u><b>Black line · reorder point</b></li></ul></div>`
     : `<div class="sr-key"><p><b>${srPeso(total)} on the shelf at cost.</b>${total ? ` ${Math.round(slowV / total * 100)}% of it is slow or not selling.` : ''}</p><ul class="sr-inline">
         <li><i class="r"></i>Running out</li><li><i class="y"></i>Order soon</li><li><i class="g"></i>Healthy</li><li><i class="slow"></i>Slow or not selling: cash tied up</li></ul></div>`;
   return `<div class="sect-h"><h4>What runs out</h4><span class="mh-sp"></span>
@@ -24035,7 +24235,7 @@ function srSection(){
     ${srEdit ? srLevelsPanel(L) : ''}
     ${key}
     <div class="sr-list">${shown.map(row).join('')}</div>
-    ${days ? `<div class="sr-axis" aria-hidden="true"><span></span><span class="sr-ax">${[0, 7, 14, 21, 30, 45].map(v => `<i style="left:${v / SR_MAXD * 100}%">${v}${v === 45 ? '+' : ''}</i>`).join('')}</span><span>days left</span></div>` : ''}
+    ${days ? `<div class="sr-axis sr-axis16"><span class="sr-axl"><em class="sr-dl">Days left <b aria-hidden="true">→</b></em></span><span class="sr-ax" aria-hidden="true">${[0, 7, 14, 21, 30, 45].map(v => `<i style="left:${v / SR_MAXD * 100}%">${v}${v === 45 ? '+' : ''}</i>`).join('')}</span><span class="sr-axr"><em class="sr-dl">Days left</em></span></div>` : ''}
     ${list.length > 8 ? `<button type="button" class="sr-more" onclick="srAll=!srAll; srRefresh()">${srAll ? 'Show fewer' : `Show all ${list.length}`}</button>` : ''}
     ${days && nos.length ? `<p class="sr-nos"><b>No sales recorded yet (${nos.length}):</b> ${nos.map(r => escapeHtml(r.name) + (r.wh ? ' (' + escapeHtml(r.wh) + ')' : '')).join(', ')}.</p>` : ''}`;
 }
@@ -24122,7 +24322,7 @@ function renderMistHome(){
       ${mhAlerts(boss)}
       <section class="sect glass"><div class="sect-h"><h4>What to do</h4></div><div class="lanes">${['r', 'y', 'g'].map(k => mhLane(k, lanes[k])).join('')}</div></section>
       <section class="sect glass"><div class="sect-h"><h4>Where every order is</h4><button class="sch-btn" type="button" onclick="go('orders')">All orders ›</button></div>
-        <div class="legend"><span class="lg"><span class="spl r">Late</span>late or waiting on you</span><span class="lg"><span class="spl y">Pending</span>coming up, on track</span><span class="lg"><span class="spl g">Done</span>completed</span></div>
+        <div class="legend nf-lg16"><span class="lg"><span class="spl r">Late</span></span><span class="lg"><span class="spl y">Pending</span></span><span class="lg"><span class="spl g">Done</span></span></div>
         <div class="num">${mhBoard()}</div></section>
       ${isPageAllowedForViewAsRole('inventory') && typeof srSection === 'function' ? `<section class="sect glass" id="srCard">${srSection()}</section>` : ''}
       ${boss && BK.loaded ? `<section class="sect glass" id="mhDrawer">${mhDrawer()}</section>` : ''}
@@ -24210,7 +24410,7 @@ function mhOrderRows(){
 function mhBoard(){
   const rows = mhOrderRows(), by = (i, side) => rows.filter(r => r.stage === i && (!side || r.side === side));
   const lbl = side => `<span class="lane-lbl">${mhIco(side)}<b>${side === 'sell' ? 'Selling' : 'Buying'}</b><small>${side === 'sell' ? 'to customers' : 'from suppliers'}</small></span>`;
-  const sh = (s, d, i, n) => `<div class="sh"><span class="sn">${i + 1}</span><span><b>${s}</b> <span class="sc">${n}</span></span><small>${d}</small></div>`;
+  const sh = (s, d, i, n) => `<div class="sh"><span class="sn">${i + 1}</span><span class="sh-t"><b>${s}</b><span class="sh-c"><span class="sc-d" aria-hidden="true">–</span><span class="sc">${n}</span></span></span><small>${d}</small></div>`;
   const order = {r: 0, y: 1, g: 2};
   return `<div class="ob ob3 cmp"><div class="hdr"><span></span>${MH_STAGES.map(([s, d], i) => `<div>${sh(s, d, i, by(i).length)}</div>`).join('')}</div>${['sell', 'buy'].map(side => `<div class="lane-row ${side}">${lbl(side)}${MH_STAGES.map((x, i) => {
     const os = by(i, side).sort((a, b) => order[a.tone] - order[b.tone]), k = side + i, open = MH.open[k], show = open ? os : os.slice(0, 2);
@@ -25490,7 +25690,7 @@ function nfMoreSheetHtml(){
   const out = []; let first = true;
   groups.forEach(g => {
     const head = g.querySelector('.heading'); const name = head ? (head.childNodes[0] && head.childNodes[0].textContent || head.textContent).replace(/[▾▸]/g, '').trim() : (first ? 'Every day' : 'Account'); first = false;
-    const items = [...g.querySelectorAll('.nav-item[data-page]')].filter(i => !['admin', 'growth'].includes(i.dataset.page) && !i.classList.contains('owner-only'));
+    const items = [...g.querySelectorAll('.nav-item[data-page]')].filter(i => !['admin', 'growth', 'suppliers'].includes(i.dataset.page) && !i.classList.contains('owner-only'));
     if(!items.length) return;
     out.push(`<section class="nfm-grp"><h6>${escapeHtml(name)}</h6><div class="nfm-grid">${items.map(i => { const svg = i.querySelector('svg'), label = (i.querySelector('span') || i).textContent.replace(/\d+$/, '').trim(), badge = i.querySelector('.nav-badge');
       const page = i.dataset.page, on = document.getElementById('page-' + page) && document.getElementById('page-' + page).classList.contains('active');
@@ -27257,6 +27457,225 @@ nfTrendSvg = function(months){
     s += `<rect x="${cx - pw / 2}" y="${loss ? z : z - bh}" width="${pw}" height="${bh}" rx="5" fill="${loss ? '#EF4444' : '#22A06B'}"/><text x="${cx}" y="${loss ? z + bh + 13 : z - bh - 5}" text-anchor="middle" class="nft-p ${loss ? 'l' : 'g'}">${m.profit < 0 ? '' : '+'}${nfShort(m.profit)}</text></g>`; });
   return s + '</svg>';
 };
+
+/* ===== Round 16 =====
+   1. Orders: one list grouped by customer or supplier, with a date beside every order (theme 2 with dates).
+      Light blue now means "waiting on them". Pictures without a photo are plain white circles, so only dates carry colour.
+   2. Customers & suppliers page removed. Its people, invites and buttons live at the bottom of Orders.
+   3. Global search and old links that opened Customers & suppliers now open Orders. */
+
+const NFO = {side: 'all', band: null, q: '', table: false, t: 0};
+const NFO_BANDS = [['red', 'Needs you now'], ['yel', 'Coming up'], ['blue', 'Waiting on them'], ['green', 'All good']];
+const NFO_RANK = {red: 0, yel: 1, blue: 2, green: 3};
+const NFO_MON = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+function nfoE(s){ return typeof escapeHtml === 'function' ? escapeHtml(String(s == null ? '' : s)) : String(s == null ? '' : s); }
+function nfoPeso(n){ return '₱' + Math.round(Number(n) || 0).toLocaleString('en-PH'); }
+function nfoD(d){ return d ? daysBetween(APP_TODAY, String(d).slice(0, 10)) : null; } // days from today: + is later, − is earlier
+function nfoIn(n){ return n === 0 ? 'today' : n === 1 ? 'tomorrow' : n === -1 ? 'yesterday' : n > 1 ? `in ${n} days` : `${-n} days ago`; }
+function nfoAgo(d){ const n = -(nfoD(d) || 0); return n <= 0 ? 'today' : n === 1 ? 'yesterday' : `${n} days ago`; }
+function nfoHist(o, re){ const h = (o.history || []).filter(x => re.test(String(x.action || x.text || ''))); const x = h[h.length - 1]; return x ? String(x.date || '').slice(0, 10) || null : null; }
+function nfoLast(o){ const h = o.history || [], x = h[h.length - 1]; return (x && String(x.date || '').slice(0, 10)) || o.updatedDate || o.createdDate || APP_TODAY; }
+function nfoItems(o){ return (o.lineItems || []).map(l => `${Number(l.qty) || 0} × ${l.product || ''}`).join(', '); }
+
+/* one order → what it means today */
+function nfoRow(o, unpaid){
+  const sell = sideOfPo(o) === 'supplier', st = o.status, who = sell ? o.buyerName : o.supplierName, pid = sell ? o.buyerId : o.supplierId;
+  const inv = o.invoice, paid = st === 'paid' || (inv && inv.status === 'paid'), total = poTotal(o), rd = o.requestedDeliveryDate, dRd = nfoD(rd);
+  const amend = typeof pendingAmendment === 'function' && pendingAmendment(o), rma = o.rma && o.rma.status === 'open';
+  const r = {o, id: o.id, sell, who, pid, total, amt: total, amtL: 'order', items: nfoItems(o), btn: '', act: 'open', tone: ''};
+  const set = (step, turn, band, date, when, todo, btn, act) => Object.assign(r, {step, turn, band, date: String(date || o.createdDate || APP_TODAY).slice(0, 10), when, todo, btn: btn || '', act: act || 'open'});
+  if(paid){
+    const pd = (inv && (inv.paidDate || inv.paidAt)) || o.paidDate || nfoHist(o, /paid/i) || nfoLast(o);
+    if(-nfoD(pd) > 30) return null;
+    set('Paid', 'done', 'green', pd, `Paid ${nfoAgo(pd)}.`, 'All done.'); r.amtL = 'paid'; r.tone = 'green'; return r;
+  }
+  if(sell){
+    if(amend){ set('Change asked', 'you', 'yel', nfoLast(o), 'They want to change this order.', 'Say yes or no.', 'Answer'); return r; }
+    if(rma){ set('Return', 'you', 'red', nfoLast(o), 'They returned something.', 'Settle it with a credit or a replacement.', 'Settle it'); r.tone = 'red'; return r; }
+    switch(st){
+      case 'sent': { const d = rd ? dRd : null; set('To confirm', 'you', d != null && d <= 1 ? 'red' : 'yel', rd || o.createdDate,
+        d == null ? `New order came ${nfoAgo(o.createdDate)}.` : d < 0 ? `Needed ${-d} day${d === -1 ? '' : 's'} ago.` : d === 0 ? 'Needed today.' : `Needed ${nfoIn(d)}.`, 'Say yes, or change it.', 'Answer'); r.amtL = 'new order'; if(d != null && d <= 1) r.tone = 'red'; return r; }
+      case 'quote': { const hu = o.quote && o.quote.hold_until, d = nfoD(hu);
+        set('To confirm', 'them', 'blue', hu || o.createdDate, hu ? (d < 0 ? 'Price hold ended.' : d === 0 ? 'Price hold ends today.' : `Price hold ends ${nfoIn(d)}.`) : `Sent ${nfoAgo(o.createdDate)}.`, 'Waiting for their OK.', 'Remind them', 'msg'); r.amtL = 'for their OK'; return r; }
+      case 'countered': set('To confirm', 'them', 'blue', nfoLast(o), `You offered a new price ${nfoAgo(nfoLast(o))}.`, 'Waiting for their answer.', 'Message', 'msg'); return r;
+      case 'confirmed': case 'preparing': { const late = dRd != null && dRd <= 0;
+        set('Preparing', 'you', late ? 'red' : 'yel', rd || nfoLast(o), dRd == null ? 'Confirmed.' : dRd < 0 ? `${-dRd} day${dRd === -1 ? '' : 's'} late.` : dRd === 0 ? 'Deliver today.' : `Deliver ${nfoIn(dRd)}.`,
+          st === 'confirmed' ? 'Start packing it.' : 'Pack it and send it out.', st === 'confirmed' ? 'Start preparing' : 'Send it out'); if(late) r.tone = 'red'; return r; }
+      case 'shipped': case 'in_customs': { const late = dRd != null && dRd < 0;
+        set('On the way', 'them', late ? 'red' : 'blue', rd || nfoLast(o), dRd == null ? 'On the way.' : late ? `${-dRd} day${dRd === -1 ? '' : 's'} late.` : dRd === 0 ? 'Arrives today.' : `Arrives ${nfoIn(dRd)}.`,
+          late ? 'Tell them when it will arrive.' : 'On the way to them.', 'Message', 'msg'); if(late) r.tone = 'red'; return r; }
+      case 'delivered': case 'partially_delivered': { const dd = nfoHist(o, /deliver|received/i) || rd || nfoLast(o), ago = -(nfoD(dd) || 0);
+        set('Delivered', 'you', ago >= 3 ? 'red' : 'yel', dd, `Delivered ${nfoAgo(dd)},`, st === 'partially_delivered' ? 'part of it. Settle the short items, then bill.' : 'not billed yet. Send the bill so they can pay.', 'Send the bill');
+        r.amtL = 'not billed'; if(ago >= 3) r.tone = 'red'; return r; }
+      case 'invoiced': { const u = unpaid[o.id], due = (u && u.due) || (inv && inv.dueDate), d = nfoD(due); r.amt = u ? u.balance : total; r.amtL = 'owes you';
+        if(typeof poHasPaymentsAwaitingSupplier === 'function' && poHasPaymentsAwaitingSupplier(o)){ set('Billed', 'you', 'red', due || nfoLast(o), 'They say they paid.', 'Check your bank or GCash, then confirm it.', 'Check payment'); r.tone = 'red'; return r; }
+        if(d != null && d < 0){ set('Billed', 'you', 'red', due, `${-d} day${d === -1 ? '' : 's'} late.`, 'Remind them to pay.', 'Remind them', 'msg'); r.tone = 'red'; return r; }
+        set('Billed', 'them', 'blue', due || nfoLast(o), d == null ? 'Billed.' : d === 0 ? 'Due today.' : `Due ${nfoIn(d)}.`, 'Waiting for their payment.', 'Message', 'msg'); return r; }
+    }
+    set('Open', 'them', 'blue', nfoLast(o), 'In progress.', ''); return r;
+  }
+  // buying from a supplier
+  if(amend){ set('Change asked', 'them', 'blue', nfoLast(o), 'You asked for a change.', 'Waiting for their answer.', 'Message', 'msg'); return r; }
+  if(rma){ set('Return', 'them', 'blue', nfoLast(o), 'You returned something.', 'Waiting for them to settle it.', 'Message', 'msg'); return r; }
+  switch(st){
+    case 'draft': set('Draft', 'you', 'yel', o.createdDate, `Made ${nfoAgo(o.createdDate)},`, 'not sent yet. Check it and send it.', 'Send it'); r.amtL = 'draft'; return r;
+    case 'sent': { const seen = nfoHist(o, /seen/i); set('To confirm', 'them', 'blue', seen || o.createdDate, seen ? `Seen ${nfoAgo(seen)}.` : `Sent ${nfoAgo(o.createdDate)}.`, 'Waiting for their yes.', 'Message', 'msg'); return r; }
+    case 'quote': set('To confirm', 'you', 'yel', o.createdDate, `Their price came ${nfoAgo(o.createdDate)}.`, 'Say yes, or ask for changes.', 'See price'); r.amtL = 'their price'; return r;
+    case 'countered': set('To confirm', 'you', 'yel', nfoLast(o), `New price came ${nfoAgo(nfoLast(o))}.`, 'Accept it, or offer yours.', 'Answer'); r.amtL = 'their offer'; return r;
+    case 'confirmed': case 'preparing': {
+      if(typeof getBuyerNextAction === 'function' && getBuyerNextAction(o) === 'Pay the deposit'){ set('Preparing', 'you', 'yel', nfoLast(o), 'They asked for a deposit.', 'Pay it so they can start.', 'Pay deposit'); return r; }
+      const late = dRd != null && dRd < 0;
+      set('Preparing', 'them', late ? 'red' : 'blue', rd || nfoLast(o), dRd == null ? 'Confirmed.' : late ? `${-dRd} day${dRd === -1 ? '' : 's'} late.` : dRd === 0 ? 'Arrives today.' : `Arrives ${nfoIn(dRd)}.`,
+        late ? 'Ask them when it will come.' : 'They are packing it.', late ? 'Ask them' : 'Message', 'msg'); if(late) r.tone = 'red'; return r; }
+    case 'shipped': case 'in_customs': {
+      if(o.deliveryConfirmation){ set('On the way', 'them', 'blue', nfoLast(o), `Received ${nfoAgo(nfoLast(o))}.`, 'Waiting for their bill.', 'Message', 'msg'); return r; }
+      const now = dRd != null && dRd <= 0;
+      set('On the way', 'you', now ? 'red' : 'yel', rd || nfoLast(o), dRd == null ? 'On the way.' : dRd < 0 ? `${-dRd} day${dRd === -1 ? '' : 's'} late.` : dRd === 0 ? 'Arrives today.' : `Arrives ${nfoIn(dRd)}.`,
+        'Count what came so your stock updates.', 'Count it'); if(now) r.tone = 'red'; return r; }
+    case 'delivered': case 'partially_delivered': { const dd = nfoHist(o, /deliver|received/i) || rd || nfoLast(o);
+      set('Delivered', 'them', 'blue', dd, `Received ${nfoAgo(dd)}.`, 'Waiting for their bill.', 'Message', 'msg'); return r; }
+    case 'invoiced': { const u = unpaid[o.id], due = (u && u.due) || (inv && inv.dueDate), d = nfoD(due); r.amt = u ? u.balance : total; r.amtL = 'you owe';
+      if(u && u.pending > 0 && u.balance - u.pending <= 0.5){ set('Billed', 'them', 'blue', due || nfoLast(o), 'You paid.', 'Waiting for them to confirm it.', 'Message', 'msg'); return r; }
+      const hot = d != null && d <= 0;
+      set('Billed', 'you', hot ? 'red' : 'yel', due || nfoLast(o), d == null ? 'Bill came.' : d < 0 ? `${-d} day${d === -1 ? '' : 's'} late.` : d === 0 ? 'Due today.' : `Due ${nfoIn(d)}.`, 'Pay this bill.', 'Pay'); if(hot) r.tone = 'red'; return r; }
+  }
+  set('Open', 'them', 'blue', nfoLast(o), 'In progress.', ''); return r;
+}
+function nfoAll(){
+  const unpaid = {}; try{ ['supplier', 'buyer'].forEach(role => unpaidInvoicesFor(role).forEach(x => { if(x.po) unpaid[x.po.id] = x; })); }catch(e){}
+  return purchaseOrders.filter(o => o && o.status !== 'cancelled' && ((o.supplierId === ME_SUPPLIER && o.buyerId !== ME_BUYER) || o.buyerId === ME_BUYER))
+    .map(o => { try{ return nfoRow(o, unpaid); }catch(e){ console.warn('nfoRow', o && o.id, e); return null; } }).filter(Boolean);
+}
+function nfoMatch(r){
+  if(NFO.side !== 'all' && (NFO.side === 'sell') !== r.sell) return false;
+  const q = NFO.q.trim().toLowerCase(); if(!q) return true;
+  return [r.who, r.o.poNumber, r.items].some(x => String(x || '').toLowerCase().includes(q));
+}
+
+/* people */
+function nfoPerson(sell, id, name){
+  const list = (sell ? buyersData : suppliersData) || [], s = list.find(x => x.id === id) || {id, name};
+  let rel = null; try{ rel = computeCounterpartReliability(id, sell); }catch(e){}
+  let un = []; try{ un = unpaidInvoicesFor(sell ? 'supplier' : 'buyer').filter(x => x.po && (sell ? x.po.buyerId : x.po.supplierId) === id); }catch(e){}
+  const unbilled = sell ? purchaseOrders.filter(o => o.buyerId === id && o.supplierId === ME_SUPPLIER && !o.invoice && ['delivered', 'partially_delivered'].includes(o.status)).reduce((a, o) => a + poTotal(o), 0) : 0;
+  return {s, rel, owe: un.reduce((a, x) => a + (Number(x.balance) || 0), 0), unbilled, late: un.some(x => x.daysOverdue > 0)};
+}
+function nfoAv(name){
+  const p = typeof nfPhotoFor === 'function' ? nfPhotoFor(name) : null;
+  return p ? `<span class="nfo-av"><img alt="" src="${p}"></span>` : `<span class="nfo-av ini" aria-hidden="true">${nfoE(typeof nfInitials === 'function' ? nfInitials(name) : String(name || '?').slice(0, 2).toUpperCase())}</span>`;
+}
+function nfoSideTag(sell){ return `<span class="nfo-side ${sell ? 'c' : 's'}">${sell ? 'Customer' : 'Supplier'}</span>`; }
+function nfoFacts(p, sell){
+  const s = p.s, bits = [];
+  if(s.orders) bits.push(`<b>${s.orders}</b> orders`);
+  if(s.lastOrder) bits.push(`last <b>${nfoE(s.lastOrder)}</b>`);
+  if(p.rel && p.rel.status === 'ok') bits.push(`${sell ? 'pays on time' : 'on time'} <b>${p.rel.score}</b>/100`);
+  return bits.join(' · ') || nfoE(s.category || '');
+}
+
+/* actions */
+function nfoOpen(id){ const o = getPO(id); if(!o) return; const sell = sideOfPo(o) === 'supplier'; try{ setLens(sell ? 'supplier' : 'buyer'); }catch(e){} currentAppRole = sell ? 'supplier' : 'buyer'; openOrderDetailModal(id, sell); }
+function nfoNew(sell, id){ currentAppRole = sell ? 'supplier' : 'buyer'; if(typeof nfwOpen === 'function') nfwOpen(sell ? 'sell' : 'buy', id ? (sell ? {buyerId: id} : {supplierId: id}) : null); else if(sell) openCustomerPoImport(); else startCreatePO(); }
+function nfoChat(id, sell){ if(typeof nfChat === 'function') nfChat(id, sell); else go('messages'); }
+function nfoInvite(sell){ currentAppRole = sell ? 'supplier' : 'buyer'; navigate('invite'); }
+function nfoSet(k, v){ if(k === 'band') NFO.band = NFO.band === v ? null : v; else NFO[k] = v; nfoPaint(); }
+function nfoTable(){ NFO.table = !NFO.table; const pg = document.getElementById('page-orders'); if(pg) pg.classList.toggle('nfo-table', NFO.table);
+  const b = document.getElementById('nfoTblBtn'); if(b) b.textContent = NFO.table ? 'Hide the table' : 'See every order in a table, with filters and export';
+  if(NFO.table){ const h = document.querySelector('#page-orders > .nf-half'); if(h) h.scrollIntoView({behavior: 'smooth', block: 'start'}); } }
+
+/* drawing */
+function nfoTile(r){
+  const [y, m, d] = r.date.split('-').map(Number), today = r.date === APP_TODAY;
+  return `<span class="nfo-dt ${today ? 'today' : r.band}" title="${nfoE(new Date(y, m - 1, d).toLocaleDateString('en-PH', {weekday: 'short', month: 'short', day: 'numeric'}))}"><span class="m">${today ? 'TODAY' : NFO_MON[m - 1]}</span><span class="d">${d}</span></span>`;
+}
+function nfoBtn(r){
+  if(!r.btn) return r.turn === 'done' ? `<span class="nfo-done">✓ Done</span>` : '<span></span>';
+  const on = r.act === 'msg' ? `nfMessage('${r.id}')` : `nfoOpen('${r.id}')`;
+  return `<button type="button" class="btn ${r.turn === 'you' ? 'btn-primary' : 'btn-outline'} nfo-b" onclick="event.stopPropagation(); ${on}">${nfoE(r.btn)}</button>`;
+}
+function nfoPo(r, last){
+  return `<div class="nfo-d${last ? ' last' : ''}">${nfoTile(r)}</div>
+    <div class="nfo-po b-${r.band}" role="button" tabindex="0" onclick="nfoOpen('${r.id}')" onkeydown="if(event.key==='Enter')nfoOpen('${r.id}')">
+      <div class="nfo-pm"><div class="l1"><span class="n">${nfoE(r.o.poNumber || '')}</span><span class="nfo-step t-${r.turn}"><i></i>${nfoE(r.step)}</span><span class="it">${nfoE(r.items)}</span></div>
+        <div class="l2"><span class="when ${r.tone}">${nfoE(r.when)}</span> ${nfoE(r.todo)}</div></div>
+      <div class="nfo-amt">${nfoPeso(r.amt)}<span class="l">${nfoE(r.amtL)}</span></div>${nfoBtn(r)}</div>`;
+}
+function nfoGroups(rows){
+  const by = new Map(); rows.forEach(r => { const k = (r.sell ? 'c:' : 's:') + (r.pid || r.who); if(!by.has(k)) by.set(k, []); by.get(k).push(r); });
+  return [...by.values()].map(os => { os.sort((a, b) => a.date.localeCompare(b.date)); const band = os.map(o => o.band).sort((x, y) => NFO_RANK[x] - NFO_RANK[y])[0];
+    return {os, band, sell: os[0].sell, pid: os[0].pid, who: os[0].who, first: os.filter(o => o.band === band).map(o => o.date).sort()[0]}; })
+    .sort((a, b) => NFO_RANK[a.band] - NFO_RANK[b.band] || a.first.localeCompare(b.first));
+}
+function nfoGroupHtml(g){
+  const p = nfoPerson(g.sell, g.pid, g.who);
+  return `<div class="nfo-pc"><div class="nfo-tl">
+    <div class="nfo-a">${nfoAv(g.who)}</div>
+    <div class="nfo-h"><div class="nfo-hm"><div class="nm"><b>${nfoE(g.who)}</b>${nfoSideTag(g.sell)}</div><div class="fx">${nfoFacts(p, g.sell)}</div></div>
+      <div class="nfo-money${p.late ? ' r' : ''}"><b>${nfoPeso(p.owe || p.unbilled)}</b><span class="l">${g.sell ? (p.owe ? 'owes you' : p.unbilled ? 'not billed yet' : 'owes nothing') : (p.owe ? 'you owe' : 'you owe nothing')}</span></div></div>
+    ${g.os.map((r, i) => nfoPo(r, i === g.os.length - 1)).join('')}
+    <div class="nfo-more"><button type="button" onclick="nfoChat('${g.pid}', ${g.sell})">Message</button><button type="button" onclick="nfoNew(${g.sell}, '${g.pid}')">New order</button></div>
+  </div></div>`;
+}
+function nfoPeopleHtml(all){
+  const busy = new Set(all.map(r => (r.sell ? 'c:' : 's:') + r.pid));
+  const list = [...(buyersData || []).map(s => ({s, sell: true})), ...(suppliersData || []).map(s => ({s, sell: false}))]
+    .filter(x => !busy.has((x.sell ? 'c:' : 's:') + x.s.id) && (NFO.side === 'all' || (NFO.side === 'sell') === x.sell) && (!NFO.q.trim() || x.s.name.toLowerCase().includes(NFO.q.trim().toLowerCase())));
+  const row = x => { const p = nfoPerson(x.sell, x.s.id, x.s.name);
+    return `<div class="nfo-pp"><span class="nfo-ppa">${nfoAv(x.s.name)}</span><div class="nfo-ppm"><div class="nm"><b>${nfoE(x.s.name)}</b>${nfoSideTag(x.sell)}</div><div class="fx">${[x.s.category ? nfoE(x.s.category) : '', nfoFacts(p, x.sell)].filter(Boolean).join(' · ')}</div></div>
+      <div class="nfo-ppb">${x.s.isOutside ? `<button type="button" class="btn btn-outline btn-sm" onclick="currentAppRole='${x.sell ? 'supplier' : 'buyer'}'; resendInvite('${x.s.id}')">Invite to Nifti</button>` : `<button type="button" class="btn btn-outline btn-sm" onclick="nfoChat('${x.s.id}', ${x.sell})">Message</button>`}
+        <button type="button" class="btn btn-outline btn-sm" onclick="nfoNew(${x.sell}, '${x.s.id}')">New order</button></div></div>`; };
+  return `<section class="nfo-people" id="nfoPeople"><div class="nfo-ph"><div><h2>No open orders</h2><p>Customers and suppliers with nothing going on right now.</p></div>
+      <div class="nfo-inv"><button type="button" class="btn btn-outline btn-sm" onclick="nfoInvite(true)">+ Invite a customer</button><button type="button" class="btn btn-outline btn-sm" onclick="nfoInvite(false)">+ Invite a supplier</button></div></div>
+    ${list.length ? `<div class="nfo-pl">${list.map(row).join('')}</div>` : `<p class="nfo-none">Everyone has an order going.</p>`}</section>`;
+}
+function nfoPaint(){
+  const host = document.getElementById('nfOrd'); if(!host) return;
+  const all = nfoAll(), seen = all.filter(nfoMatch), vis = seen.filter(r => !NFO.band || r.band === NFO.band);
+  const st = document.getElementById('nfoStats');
+  if(st) st.innerHTML = NFO_BANDS.map(([b, l]) => { const rs = seen.filter(r => r.band === b), sum = rs.reduce((a, r) => a + (Number(r.amt) || 0), 0);
+    return `<button type="button" class="nfo-st s-${b}${NFO.band === b ? ' on' : ''}" aria-pressed="${NFO.band === b}" onclick="nfoSet('band','${b}')"><span class="k"><i></i>${l}</span><b>${rs.length}<span> order${rs.length === 1 ? '' : 's'}</span></b><em${rs.length ? '' : ' class="z"'}>${rs.length ? nfoPeso(sum) : 'Nothing'}</em></button>`; }).join('');
+  const ch = document.getElementById('nfoChips');
+  if(ch) ch.innerHTML = [['all', 'Everything', all.length], ['sell', 'Selling', all.filter(r => r.sell).length], ['buy', 'Buying', all.filter(r => !r.sell).length]]
+    .map(([k, l, n]) => `<button type="button" class="${NFO.side === k ? 'on' : ''}" aria-pressed="${NFO.side === k}" onclick="nfoSet('side','${k}')">${l}<b>${n}</b></button>`).join('');
+  const G = nfoGroups(vis), body = document.getElementById('nfoBody');
+  if(body) body.innerHTML = all.length ? `<div class="nfo-card">${NFO_BANDS.map(([b, h]) => { const g = G.filter(x => x.band === b); if(!g.length) return '';
+      return `<div class="nfo-band b-${b}"><span>${h}</span><b>${vis.filter(r => r.band === b).length}</b></div>${g.map(nfoGroupHtml).join('')}`; }).join('') || `<div class="nfo-empty">Nothing matches. <button type="button" onclick="NFO.q=''; NFO.band=null; NFO.side='all'; nfoRender()">Show everything</button></div>`}</div>
+      <div class="nfo-key"><span><i class="k-red"></i>Late or today: do it now</span><span><i class="k-yel"></i>Coming up</span><span><i class="k-blue"></i>Waiting on them</span><span><i class="k-green"></i>Done</span><span><i class="k-today"></i>Today</span></div>`
+    : `<div class="nfo-card"><div class="nfo-empty">No orders yet. Tap <b>Customer's order</b> or <b>Order from a supplier</b> to start.</div></div>`;
+  const pp = document.getElementById('nfoPeopleWrap'); if(pp) pp.innerHTML = nfoPeopleHtml(all);
+}
+function nfoRender(){
+  const pg = document.getElementById('page-orders'); if(!pg) return;
+  pg.classList.add('nfo-on'); pg.classList.toggle('nfo-table', NFO.table);
+  let host = document.getElementById('nfOrd'); if(!host){ host = document.createElement('div'); host.id = 'nfOrd'; pg.insertBefore(host, pg.firstChild); }
+  const a = document.activeElement, typing = a && a.id === 'nfoQ', pos = typing ? a.selectionStart : 0;
+  const t = new Date(APP_TODAY + 'T00:00:00').toLocaleDateString('en-PH', {weekday: 'short', month: 'short', day: 'numeric'});
+  host.innerHTML = `<div class="nfo-top"><div><h1>Orders</h1><p>Who needs you, and their orders under them. Today is <b>${t}</b>.</p></div>
+      <div class="nfo-acts"><button type="button" class="btn btn-outline" onclick="nfoNew(true)">+ Customer's order</button><button type="button" class="btn btn-primary" onclick="nfoNew(false)">+ Order from a supplier</button></div></div>
+    <div class="nfo-stats" id="nfoStats"></div>
+    <div class="nfo-flt"><div class="nfo-chips" id="nfoChips" role="group" aria-label="Show"></div>
+      <label class="nfo-q"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="nfoQ" type="search" placeholder="Search name, order # or item" value="${nfoE(NFO.q)}" autocomplete="off" oninput="NFO.q=this.value; nfoPaint()"></label></div>
+    <div id="nfoBody"></div>
+    <div id="nfoPeopleWrap"></div>
+    <button type="button" class="nfo-tbl" id="nfoTblBtn" onclick="nfoTable()">${NFO.table ? 'Hide the table' : 'See every order in a table, with filters and export'}</button>`;
+  nfoPaint();
+  if(typing){ const q = document.getElementById('nfoQ'); if(q){ q.focus(); try{ q.setSelectionRange(pos, pos); }catch(e){} } }
+}
+function nfoSoon(){ clearTimeout(NFO.t); NFO.t = setTimeout(() => { const pg = document.getElementById('page-orders'); if(pg && pg.classList.contains('active')) nfoRender(); }, 80); }
+
+(function(){
+  const base = nfOrdersBoth;
+  nfOrdersBoth = function(){ try{ base.apply(this, arguments); }catch(e){ console.warn(e); } try{ nfoRender(); }catch(e){ console.warn('orders', e); } };
+  ['renderOrdersTable', 'renderSupplierOrdersTable'].forEach(fn => { const f = window[fn]; if(typeof f !== 'function' || f._nfo) return; const w = function(){ const r = f.apply(this, arguments); nfoSoon(); return r; }; w._nfo = true; window[fn] = w; });
+  // the old Customers & suppliers page now opens Orders, at the people list
+  const nav = window.navigate;
+  if(typeof nav === 'function' && !nav._nf16){
+    const w = function(page){ if(page === 'suppliers'){ const r = nav.call(this, 'orders'); setTimeout(() => { const el = document.getElementById('nfoPeople'); if(el) el.scrollIntoView({block: 'start'}); }, 120); return r; } return nav.apply(this, arguments); };
+    Object.keys(nav).forEach(k => { w[k] = nav[k]; }); w._nf16 = true; window.navigate = w;
+  }
+  try{ jumpToParty = function(id, side){ const r = document.getElementById('globalSearchResults'), i = document.getElementById('globalSearchInput'); if(r) r.classList.add('hidden'); if(i) i.value = '';
+    const p = [...(buyersData || []), ...(suppliersData || [])].find(x => x.id === id); NFO.q = p ? p.name : ''; NFO.band = null; NFO.side = 'all'; navigate('orders'); }; }catch(e){}
+})();
 
 function renderSidebarForViewAsRole(){
   const allowed = computeAllowedPages(getEffectiveRoles());
