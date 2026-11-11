@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Orders With Dates</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="../r13/lab.css">
+<style>
+.pgw{padding:26px 28px 34px;display:grid;gap:16px;background:#F5F6F9;min-height:760px;align-content:start}
+.frame-p .pgw{padding:16px 12px 28px;gap:12px}
+.ptop{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
+.ptop h2{margin:0;font-size:30px;font-weight:800;letter-spacing:-.02em;line-height:1.1}.ptop p{margin:4px 0 0;font-size:15px;color:var(--ink2)}.ptop p b{color:var(--ink)}
+.acts{display:flex;gap:8px;flex-wrap:wrap}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.st{background:#fff;border-radius:16px;box-shadow:var(--shc);border:1px solid #E7EAF0;padding:12px 14px;display:grid;gap:2px;cursor:pointer;text-align:left}
+.st.on{box-shadow:0 0 0 2px var(--ink)}
+.st small{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--ink2)}.st small i{width:9px;height:9px;border-radius:50%}
+.st b{font-size:24px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.2}.st span{font-size:13px;color:var(--mut)}
+.flt{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.flt button{min-height:38px;padding:0 14px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1.5px var(--line);font-size:14px;font-weight:700;color:var(--ink2)}
+.flt button.on{background:var(--ink);color:#fff;box-shadow:none}.flt button b{margin-left:5px;font-weight:800}
+.srch{flex:1;min-width:180px;display:flex;align-items:center;gap:8px;height:40px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1.5px var(--line);padding:0 14px;color:var(--mut);font-size:14px}
+.card{background:#fff;border-radius:18px;box-shadow:var(--shc);border:1px solid #E7EAF0;overflow:hidden}
+.band{display:flex;justify-content:space-between;align-items:center;padding:11px 18px;font-size:14px;font-weight:800;letter-spacing:.05em;text-transform:uppercase}
+.band b{font-size:20px;letter-spacing:0}.band small{font-size:13px;letter-spacing:0;text-transform:none;font-weight:700;opacity:.8;margin-left:8px}
+.band.red{background:#FCECEC;color:#B8403F}.band.yel{background:#FEF7C3;color:#0E1114}.band.gray{background:#EEF1F5;color:#344054}.band.green{background:#E8F4EC;color:#2A7650}
+.side-tag{font-size:12px;font-weight:800;color:var(--mut);letter-spacing:.02em;white-space:nowrap}
+.side-tag.sell::before{content:"Selling"}.side-tag.buy::before{content:"Buying"}
+.step{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;color:var(--ink2);background:var(--sf2);box-shadow:inset 0 0 0 1px var(--line);border-radius:8px;padding:2px 8px;white-space:nowrap}
+.step i{width:7px;height:7px;border-radius:50%;background:#98A2B3}.step i.you{background:var(--g2)}.step i.done{background:#D0D5DD}
+.money{text-align:right}.money b{display:block;font-size:17px;font-variant-numeric:tabular-nums;white-space:nowrap}.money small{font-size:12px;color:var(--mut);font-weight:700;white-space:nowrap}
+.money.r b{color:var(--redi)}
+
+/* ---------- the new part: one column for the picture and every date ---------- */
+.pc{padding:16px 18px 14px;border-top:1px solid var(--line)}
+.band + .pc{border-top:0}
+.tl{display:grid;grid-template-columns:52px minmax(0,1fr);column-gap:14px;row-gap:10px}
+.tl-a,.tl-d{position:relative;display:grid;justify-items:center;align-content:center}
+.tl-a::after{content:"";position:absolute;left:50%;top:50%;bottom:-10px;width:2px;margin-left:-1px;background:#C9CFD8}
+.tl-d::before{content:"";position:absolute;left:50%;top:-10px;bottom:-10px;width:2px;margin-left:-1px;background:#C9CFD8}
+.tl-d.last::before{bottom:50%}
+.tl-a > *,.tl-d > *{position:relative;z-index:1}
+.tl-a .av{box-shadow:0 0 0 4px #fff}
+.tl .dt{box-shadow:0 0 0 4px #fff}
+.dt.today{background:var(--ink);color:#fff}
+.dt.today small{letter-spacing:.02em;font-size:10px}
+.tl-h{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;min-height:46px}
+.tl-h .nm{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.tl-h .nm b{font-size:16.5px;font-weight:800}
+.tl-h .fx{font-size:13.5px;color:var(--mut);margin-top:1px}.tl-h .fx b{color:var(--ink2);font-weight:700}
+.po{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:14px;align-items:center;padding:10px 14px;border-radius:14px;background:var(--sf2);cursor:pointer}
+.po:hover{background:#F1F3F6}
+.po .l1{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.po .n{font-size:14px;font-weight:800;color:var(--ink);white-space:nowrap}
+.po .it{font-size:13px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;max-width:280px}
+.po .l2{font-size:14.5px;color:var(--ink2);margin-top:3px;line-height:1.4}
+.po .when{font-weight:800;color:var(--ink)}.po .when.red{color:var(--redi)}.po .when.green{color:var(--g)}
+.po .a{font-size:15.5px;font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}.po .a small{display:block;font-size:11.5px;color:var(--mut);font-weight:700}
+.po .btn1,.po .btn2{min-height:38px;font-size:13.5px;padding:0 14px;min-width:118px;justify-content:center}
+.po .donep{min-width:118px;justify-content:center}
+.tl-more{grid-column:2;display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:13.5px;color:var(--mut)}
+.tl-more button{font-size:13.5px;font-weight:800;color:var(--ink2);text-decoration:underline;text-underline-offset:3px}
+/* old theme 2, for comparison */
+.oc-h{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center}
+.oc-h b{font-size:16px;font-weight:800}.oc-h .why{font-size:14.5px;color:var(--ink2)}.oc-h .why b.r{color:var(--redi)}
+.opos{display:grid;gap:6px;margin:10px 0 0 58px}
+.opo{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;gap:12px;align-items:center;padding:9px 12px;border-radius:12px;background:var(--sf2)}
+.opo .n{font-size:13.5px;font-weight:800;color:var(--ink2);white-space:nowrap}.opo .t{font-size:14px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.opo .a{font-size:14.5px;font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}
+.opo .btn1{min-height:34px;font-size:13.5px;padding:0 12px}.opo .lnk2{font-size:13.5px;font-weight:800;color:var(--ink2);text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.ofacts{display:flex;gap:14px;flex-wrap:wrap;margin:8px 0 0 58px;font-size:13px;color:var(--mut)}.ofacts b{color:var(--ink2)}
+.key{display:flex;gap:16px;flex-wrap:wrap;align-items:center;font-size:13px;color:var(--ink2);font-weight:600}
+.key span{display:inline-flex;align-items:center;gap:7px}.key i{width:22px;height:22px;border-radius:7px;display:inline-block;box-shadow:inset 0 0 0 1px rgba(16,24,40,.12)}
+@container scr (max-width:860px){
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ptop h2{font-size:25px}
+  .pc{padding:14px 12px 12px}
+  .tl{grid-template-columns:46px minmax(0,1fr);column-gap:10px}
+  .tl .dt{width:46px}.tl .dt b{font-size:19px}
+  .tl-a,.tl-d{align-content:start}.tl-d{padding-top:8px}.tl-a::after{top:23px}.tl-d.last::before{bottom:auto;height:44px}
+  .tl-h{grid-template-columns:minmax(0,1fr) auto;gap:8px}.tl-h .nm b{font-size:15.5px}
+  .po{grid-template-columns:minmax(0,1fr) auto;gap:8px 10px;padding:10px 12px}
+  .po .btn1,.po .btn2,.po .donep{grid-column:1/-1;width:100%;min-height:42px}
+  .po .a{grid-column:2;grid-row:1}
+  .po .it{max-width:none;flex-basis:100%}
+  .opos,.ofacts{margin-left:0}.opo{grid-template-columns:auto minmax(0,1fr) auto}.opo .btn1,.opo .lnk2{grid-column:1/-1;justify-self:start}
+  .key{gap:10px}
+}
+</style>
+</head>
+<body>
+<header class="lab-top"><div class="lab-in">
+  <div class="lab-r1"><a class="lab-back" href="index.html">‹ Round 15</a><h1>Orders · By customer & supplier, with dates</h1><p>Theme 2 with a date beside every order, lined up under each customer's or supplier's picture so the timeline reads top to bottom.</p></div>
+  <div class="lab-tabs" id="tabs"></div>
+  <div class="lab-r3" id="r3"></div>
+</div></header>
+<main class="lab-wrap" id="wrap"><section class="lab-stage" id="stage"></section><aside class="lab-notes" id="notes"></aside></main>
+<div class="toast" id="toast"></div>
+<script src="../r13/lab.js"></script>
+<script>
+/* Today in the demo: Wed, Aug 26.
+   [id, side, who, po, step, turn, band, when, todo, amount, amountLabel, date, button, items] */
+const O = [
+  ['b55', 'sell', 'Bayview Construction Co.', 'PO-0855', 'Delivered', 'you', 'red', 'Delivered 14 days ago,', 'never billed. Send the bill so they can pay.', 78000, 'not billed', 'AUG 12', 'Send the bill', [['Steel Rebar 12mm', 1200]]],
+  ['r10', 'sell', 'Riverside Builders Corp', 'PO-0810', 'Billed', 'you', 'red', '6 days late.', 'They say they paid ₱14,500: check your bank.', 17504, 'owes you', 'AUG 20', 'Check payment', [['Rebar 12mm', 300]]],
+  ['m98', 'buy', 'Metro Steel Co.', 'PO-0798', 'On the way', 'you', 'red', 'Arrives today.', 'Count what came so your stock updates.', 107957, 'order', 'AUG 26', 'Count it', [['Galvanized Wire 12ga', 200]]],
+  ['c05', 'buy', 'Cebu Aggregates', 'PO-0805', 'To confirm', 'you', 'yel', 'New price came 2 days ago.', 'Accept it, or offer yours.', 31920, 'their offer', 'AUG 24', 'Answer', [['Portland Cement 40kg', 150]]],
+  ['c53', 'sell', 'Corazon Welding Shop', 'PO-0853', 'To confirm', 'you', 'yel', 'Needed in 4 days.', '150 angle bars. You have 60.', 14280, 'new order', 'AUG 30', 'Answer', [['Angle Bars', 150]]],
+  ['m20', 'sell', 'Manila Bay Scaffolding Co.', 'PO-0820', 'Preparing', 'you', 'yel', 'Send out in 3 days.', 'Pack it and send it out.', 24600, 'order', 'AUG 29', 'Send it out', [['Angle Bars', 60], ['Welding Plates 6mm', 40]]],
+  ['c77', 'buy', 'Cebu Aggregates', 'PO-0877', 'To confirm', 'you', 'yel', 'Their price came yesterday.', 'Confirm or change it.', 63056, 'their price', 'AUG 25', 'See price', [['Portland Cement 40kg', 200], ['Washed Sand (cu.m)', 10]]],
+  ['k62', 'buy', 'Marikina Packaging Supply', 'PO-0862', 'Draft', 'you', 'yel', 'Made yesterday,', 'not sent yet.', 6048, 'draft', 'AUG 25', 'Send it', [['Packing tape', 120]]],
+  ['m65', 'buy', 'Metro Steel Co.', 'PO-0765', 'Billed', 'you', 'yel', 'Due in 16 days.', '₱15,400 you sent is waiting to clear.', 97496, 'you owe', 'SEP 11', 'Pay', [['Structural I-Beams', 30]]],
+  ['v40', 'sell', 'Cavite Steel Works', 'PO-0740', 'Paid', 'you', 'yel', 'Paid 37 days ago.', 'One BIR 2307 form (₱1,840) is still missing.', 1840, 'form missing', 'JUL 20', 'Ask for 2307', [['Rebar 16mm', 200]]],
+  ['r71', 'sell', 'Riverside Builders Corp', 'PO-0871', 'To confirm', 'them', 'gray', 'Price hold ends tomorrow.', 'Waiting for their OK.', 77280, 'quote', 'AUG 27', 'Nudge', [['Steel Rebar 12mm', 800]]],
+  ['m66', 'sell', 'Manila Bay Scaffolding Co.', 'PO-0866', 'To confirm', 'them', 'gray', 'Sent 6 days ago,', 'opened once. Waiting for their OK.', 80640, 'quote', 'AUG 20', 'Nudge', [['Welding Plates 6mm', 150]]],
+  ['n79', 'buy', 'Northline Welding Materials', 'PO-0879', 'To confirm', 'them', 'gray', 'Seen yesterday 3:22 PM.', 'They usually answer the same day.', 8534, 'order', 'AUG 25', 'Message', [['Welding Rods 3.2mm', 40]]],
+  ['c39', 'buy', 'Cebu Aggregates', 'PO-0839', 'Preparing', 'them', 'gray', 'Arrives in 7 days.', 'They are packing it.', 43680, 'order', 'SEP 2', 'Message', [['Portland Cement 40kg', 200]]],
+  ['q36', 'buy', 'Quezon Produce Traders', 'PO-0836', 'Paid', 'done', 'green', 'Paid 6 days ago.', 'All done.', 12400, 'paid', 'AUG 20', '', [['Tomatoes', 200]]]
+];
+const PI = {'Bayview Construction Co.': {side: 'sell', owe: 78000, label: 'not billed yet', orders: 14, last: '4 days ago', ot: 95},
+  'Riverside Builders Corp': {side: 'sell', owe: 17504, label: 'owes you', late: 1, orders: 11, last: '5 days ago', ot: 60},
+  'Corazon Welding Shop': {side: 'sell', owe: 0, label: 'owes nothing', orders: 7, last: '3 weeks ago', ot: 100, quiet: 1},
+  'Manila Bay Scaffolding Co.': {side: 'sell', owe: 0, label: 'owes nothing', orders: 9, last: '1 week ago', ot: 90},
+  'Cavite Steel Works': {side: 'sell', owe: 0, label: 'owes nothing', orders: 9, last: '1 week ago', ot: 100},
+  'Metro Steel Co.': {side: 'buy', owe: 97496, label: 'you owe', orders: 34, last: '2 days ago', ot: 92},
+  'Cebu Aggregates': {side: 'buy', owe: 0, label: 'you owe nothing', orders: 21, last: '5 days ago', ot: 84},
+  'Marikina Packaging Supply': {side: 'buy', owe: 0, label: 'you owe nothing', orders: 3, last: '1 month ago', ot: 100},
+  'Northline Welding Materials': {side: 'buy', owe: 0, label: 'you owe nothing', orders: 9, last: '3 weeks ago', ot: 71},
+  'Quezon Produce Traders': {side: 'buy', owe: 0, label: 'you owe nothing', orders: 12, last: '1 week ago', ot: 96}};
+const BANDS = [['red', 'Needs you now'], ['yel', 'This week'], ['gray', 'Waiting on them'], ['green', 'All good']];
+const RANK = {red: 0, yel: 1, gray: 2, green: 3};
+const MON = {JUL: 7, AUG: 8, SEP: 9};
+const dnum = d => { const [m, n] = d.split(' '); return MON[m] * 100 + Number(n); };
+const TODAY = 'AUG 26';
+const V = [
+  {id: 'a', n: '2+', name: 'With dates (new)', tag: 'Theme 2 + a date beside every order', why: ['Each customer or supplier keeps their picture on the left. Under it, a date sits beside each of their orders, in the same column.', 'Read straight down that column to see their timeline: earliest on top, a thin line joining them.', 'The date colour matches the urgency: red for now, yellow for this week, gray when it is their turn, green when done. Today\'s date is solid black.', 'Each order says what the date means in plain words: "Arrives today", "6 days late", "Due in 16 days". No counting needed.'], best: 'Seeing at a glance what is late, what is today and what is coming, person by person.'},
+  {id: 'b', n: '2', name: 'Before (theme 2)', tag: 'For comparison', why: ['The Round 14 version, without dates.', 'Switch between the two tabs to compare.'], best: 'Comparing.'}
+];
+const S = {v: 'a', view: 'both', side: 'all', band: null};
+if(window.innerWidth < 700) S.view = 'p';
+const vis = () => O.filter(o => (S.side === 'all' || o[1] === S.side) && (!S.band || o[6] === S.band));
+const cnt = b => O.filter(o => (S.side === 'all' || o[1] === S.side) && o[6] === b).length;
+const sum = b => O.filter(o => (S.side === 'all' || o[1] === S.side) && o[6] === b).reduce((s, o) => s + o[9], 0);
+const pTop = s => `<div class="ptop"><div><h2>Orders</h2><p>${s}</p></div><div class="acts"><button class="btn2" data-act="toast" data-v="Opens: Enter a customer's order (prototype)">${ic('file')}Customer's order</button><button class="btn1 sm" data-act="toast" data-v="Opens: New order to a supplier (prototype)">${ic('plus')}Order from a supplier</button></div></div>`;
+const statsH = () => `<div class="stats">${BANDS.map(([b, l]) => `<button class="st${S.band === b ? ' on' : ''}" data-act="band" data-v="${b}"><small><i style="background:${b === 'red' ? 'var(--red)' : b === 'yel' ? 'var(--yel)' : b === 'gray' ? 'var(--gray)' : 'var(--g2)'}"></i>${l}</small><b>${cnt(b)}</b><span>${sum(b) ? peso(sum(b)) : '—'}</span></button>`).join('')}</div>`;
+const fltH = () => `<div class="flt">${[['all', 'Everything', O.length], ['sell', 'Selling', O.filter(o => o[1] === 'sell').length], ['buy', 'Buying', O.filter(o => o[1] === 'buy').length]].map(([k, l, n]) => `<button class="${S.side === k ? 'on' : ''}" data-act="side" data-v="${k}">${l}<b>${n}</b></button>`).join('')}<div class="srch">${ic('search')}Search name, order # or item</div></div>`;
+const stepH = o => `<span class="step"><i class="${o[5]}"></i>${o[4]}</span>`;
+function groups(){
+  const L = vis(), names = [...new Set(L.map(o => o[2]))];
+  return names.map(n => { const os = L.filter(o => o[2] === n).sort((a, b) => dnum(a[11]) - dnum(b[11])); const b = os.map(o => o[6]).sort((x, y) => RANK[x] - RANK[y])[0];
+    return {n, os, b, first: Math.min(...os.filter(o => o[6] === b).map(o => dnum(o[11])))}; }).sort((a, b) => RANK[a.b] - RANK[b.b] || a.first - b.first);
+}
+function tile(o){ const [m, d] = o[11].split(' '); const today = o[11] === TODAY;
+  return `<span class="dt ${today ? 'today' : o[6]}" title="${o[11]}"><small>${today ? 'TODAY' : m}</small><b>${d}</b></span>`; }
+function btn(o){ if(!o[12]) return `<span class="pill green donep">${ic('check')}Done</span>`;
+  return o[5] === 'you' ? `<button class="btn1 sm" data-act="toast" data-v="${o[12]} (prototype)">${o[12]}</button>` : `<button class="btn2" data-act="toast" data-v="${o[12]} (prototype)">${o[12]}</button>`; }
+function vNew(){
+  const G = groups();
+  return `<div class="pgw">${pTop('Who needs you, and their orders under them. Today is <b>Wed, Aug 26</b>.')}${statsH()}${fltH()}
+    <div class="card">${BANDS.map(([b, h]) => { const g = G.filter(x => x.b === b); return g.length ? `<div class="band ${b}"><span>${h}<small>${b === 'gray' ? 'nothing to do' : b === 'green' ? 'done' : ''}</small></span><b>${g.length}</b></div>${g.map(x => { const p = PI[x.n] || {};
+      return `<div class="pc"><div class="tl">
+        <div class="tl-a">${av(x.n, 46)}</div>
+        <div class="tl-h"><div><div class="nm"><b>${x.n}</b><span class="side-tag ${p.side}"></span>${p.quiet ? '<span class="pill yel">Ordering less</span>' : ''}</div><div class="fx"><b>${p.orders}</b> orders · last <b>${p.last}</b> · ${p.side === 'sell' ? 'pays on time' : 'on time'} <b>${p.ot}%</b></div></div>
+          <div class="money${p.late ? ' r' : ''}"><b>${p.owe ? peso(p.owe) : '₱0'}</b><small>${p.label}</small></div></div>
+        ${x.os.map((o, i) => `<div class="tl-d${i === x.os.length - 1 ? ' last' : ''}">${tile(o)}</div>
+        <div class="po" data-act="toast" data-v="Opens ${o[3]} (prototype)"><div style="min-width:0"><div class="l1"><span class="n">${o[3]}</span>${stepH(o)}<span class="it">${o[13].map(i => i[1] + ' × ' + i[0]).join(', ')}</span></div>
+          <div class="l2"><span class="when ${o[6] === 'red' ? 'red' : o[6] === 'green' ? 'green' : ''}">${o[7]}</span> ${o[8]}</div></div>
+          <div class="a">${peso(o[9])}<small>${o[10]}</small></div>${btn(o)}</div>`).join('')}
+        <div class="tl-more"><button data-act="toast" data-v="Opens the chat (prototype)">Message</button><button data-act="toast" data-v="Calls them (prototype)">Call</button><button data-act="toast" data-v="${p.side === 'sell' ? 'New order for them' : 'New order to them'} (prototype)">New order</button></div>
+      </div></div>`; }).join('')}` : ''; }).join('') || '<div style="padding:30px;text-align:center;color:var(--mut)">Nothing here.</div>'}</div>
+    <div class="key"><span><i style="background:var(--redbg)"></i>Late or today: do it now</span><span><i style="background:var(--yelbg)"></i>This week</span><span><i style="background:var(--graybg)"></i>Their turn</span><span><i style="background:var(--gbg)"></i>Done</span><span><i style="background:var(--ink)"></i>Today</span></div></div>`;
+}
+function vOld(){
+  const G = groups();
+  return `<div class="pgw">${pTop('Who needs you, and their orders under them.')}${statsH()}${fltH()}
+    <div class="card">${BANDS.map(([b, h]) => { const g = G.filter(x => x.b === b); return g.length ? `<div class="band ${b}"><span>${h}</span><b>${g.length}</b></div>${g.map(x => { const p = PI[x.n] || {}; const lead = x.os.find(o => o[6] === b) || x.os[0];
+      return `<div class="pc"><div class="oc-h">${av(x.n, 46)}<div><b>${x.n}</b> <span class="side-tag ${p.side}"></span><div class="why">${lead[7]} ${lead[8]}</div></div><div class="money${p.late ? ' r' : ''}"><b>${p.owe ? peso(p.owe) : '₱0'}</b><small>${p.label}</small></div></div>
+        <div class="opos">${x.os.map(o => `<div class="opo"><span class="n">${o[3]}</span><span class="t">${stepH(o)} ${o[13].map(i => i[0]).join(', ')}</span><span class="a">${peso(o[9])}</span>${o[12] ? (o[5] === 'you' ? `<button class="btn1 sm" data-act="toast" data-v="${o[12]} (prototype)">${o[12]}</button>` : `<button class="lnk2" data-act="toast" data-v="${o[12]} (prototype)">${o[12]}</button>`) : '<span></span>'}</div>`).join('')}</div>
+        <div class="ofacts"><span><b>${p.orders}</b> orders</span><span>last <b>${p.last}</b></span><span>${p.side === 'sell' ? 'pays on time' : 'on time'} <b>${p.ot}%</b></span></div></div>`; }).join('')}` : ''; }).join('')}</div></div>`;
+}
+function render(){
+  const keep = [...document.querySelectorAll('.frame-p .scroll')].map(e => e.scrollTop);
+  $('tabs').innerHTML = V.map(x => `<button class="lab-tab" aria-pressed="${S.v === x.id}" data-act="v" data-v="${x.id}"><i>${x.n}</i><b>${x.name}</b><small>${x.tag}</small></button>`).join('');
+  $('r3').innerHTML = seg('vw', [['both', 'Laptop + phone'], ['d', 'Laptop'], ['p', 'Phone']], S.view, 'view');
+  $('wrap').classList.toggle('wide', S.view !== 'p');
+  const pg = S.v === 'a' ? vNew() : vOld();
+  const desk = `<div class="frame-d">${pg}</div>`, phone = `<div class="frame-p"><div class="notch"><span>9:41</span><span>●●●</span></div><div class="scroll">${pg}</div></div>`;
+  $('stage').innerHTML = S.view === 'd' ? desk : S.view === 'p' ? phone : `<div style="flex:1 1 720px;min-width:0;display:flex;justify-content:center">${desk}</div><div>${phone}</div>`;
+  if(S.keep) document.querySelectorAll('.frame-p .scroll').forEach((e, i) => { e.scrollTop = keep[i] || 0; }); S.keep = false;
+  const x = V.find(v => v.id === S.v);
+  $('notes').innerHTML = `<h2>${x.n} · ${x.name}</h2><p class="tg">${x.tag}</p><h3>How it works</h3><ul>${x.why.map(w => `<li>${ic('check')}<span>${w}</span></li>`).join('')}</ul><div class="box"><b>Best for:</b> ${x.best}</div>
+    <div class="box"><b>Same as before:</b> the four bands (Needs you now, This week, Waiting on them, All good), the tiles at the top and the Selling / Buying filter. This page replaces Customers & suppliers.</div>`;
+}
+document.addEventListener('click', e => { const b = e.target.closest('[data-act]'); if(!b) return; const a = b.dataset.act, v = b.dataset.v;
+  if(a === 'toast'){ e.stopPropagation(); return toast(v); }
+  if(a === 'v') S.v = v; else if(a === 'view') S.view = v; else if(a === 'side'){ S.side = v; S.keep = true; } else if(a === 'band'){ S.band = S.band === v ? null : v; S.keep = true; }
+  render(); });
+render();
+</script>
+</body>
+</html>
