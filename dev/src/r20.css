@@ -70,7 +70,7 @@
   .nf20-prev button.on{background:#1F6B45;border-color:#1F6B45;color:#FFFFFF;}
   html.nf-phone .nf20-prev{bottom:84px;font-size:14px;padding:10px 12px;}
 
-  /* ---------- tabs on top: a coloured band ---------- */
+  /* ---------- tabs on top: a colored band ---------- */
   #view-app .nf18-hubwrap:has(.nf20-band){margin-bottom:18px;}
   #view-app .nf20-band{background:linear-gradient(180deg,var(--nf20-band-bg1),var(--nf20-band-bg2));border:1px solid var(--nf20-band-line);border-radius:18px;padding:14px 18px 14px;display:grid;gap:12px;}
   #view-app .nf20-bk{display:flex;align-items:center;gap:12px;}
@@ -94,7 +94,7 @@
   html.nf-phone #view-app .nf20-band .nf18-hub button{min-height:44px;font-size:15px;padding:0 15px;}
   html.nf-phone #view-app .nf20-band .nf18-sub em{display:none;}
 
-  /* ---------- customers | suppliers: two coloured sides with a clear gap ---------- */
+  /* ---------- customers | suppliers: two colored sides with a clear gap ---------- */
   #view-app .nf-half-supplier{--side:var(--nf20-c);--side-bg:var(--nf20-c-bg);--side-line:var(--nf20-c-line);}
   #view-app .nf-half-buyer{--side:var(--nf20-s);--side-bg:var(--nf20-s-bg);--side-line:var(--nf20-s-line);}
   html[data-ty] #view-app .nf-half{background:var(--side-bg);border:1px solid var(--side-line);border-top:5px solid var(--side);border-radius:18px;padding:16px 16px 18px;margin-bottom:18px;}
@@ -122,7 +122,7 @@
   #view-app#view-app#view-app .nf-half table.nf-cardtable tbody td:first-child :is(.nf-sub,small){display:block;font-size:14.5px !important;font-weight:600 !important;color:#475467 !important;margin-top:2px;}
   #view-app#view-app#view-app .nf-half table.nf-cardtable tbody td:not(:first-child) :is(.nf-sub,small){display:block;font-size:14.5px !important;color:#475467 !important;margin-top:2px;}
   #view-app#view-app#view-app .nf-half table.nf-cardtable tbody td.nf20-none{display:none !important;}
-  #view-app#view-app#view-app .nf-half table.nf-cardtable tbody td.nf20-act{display:flex !important;flex-wrap:wrap;align-items:center;gap:10px;padding:12px 0 2px !important;}
+  #view-app#view-app#view-app .nf-half table.nf-cardtable tbody td.nf20-act{display:flex !important;flex-direction:row !important;flex-wrap:wrap;align-items:center !important;justify-content:flex-start !important;gap:10px;padding:12px 0 2px !important;}
   #view-app#view-app#view-app .nf-half table.nf-cardtable tbody td.nf20-act::before{display:none !important;}
   #view-app#view-app#view-app .nf-half table.nf-cardtable tbody td.nf20-act .nf-acts{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-start !important;}
   #view-app#view-app#view-app .nf-half table.nf-cardtable tbody td.nf20-act :is(.btn,button){min-height:40px;}

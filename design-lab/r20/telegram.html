@@ -48,12 +48,26 @@ body{background:#F4F6F8}
 .btns{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:5px;max-width:92%}
 .btns span{display:flex;align-items:center;justify-content:center;min-height:32px;border-radius:10px;background:#fff;color:#1E5BB8;font-size:12.5px;font-weight:800;box-shadow:0 1px 1px rgba(16,24,40,.06);text-align:center;padding:0 6px}
 .note{font-size:13.5px;color:var(--mut);text-align:center}
+
+.plan{background:#fff;border:1px solid var(--line);border-radius:22px;padding:20px 22px;display:grid;gap:14px}
+.plan h2{margin:0;font-size:22px;font-weight:800;letter-spacing:-.01em}
+.plan > p{margin:-6px 0 0;font-size:15.5px;color:var(--ink2)}
+.pg2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.pg2 > div{display:grid;grid-template-columns:34px minmax(0,1fr);gap:4px 12px;padding:12px 14px;border:1px solid #E4E7EC;border-radius:14px}
+.pg2 i{grid-row:span 2;font-style:normal;width:34px;height:34px;border-radius:10px;background:#3E5872;color:#fff;font-weight:800;display:grid;place-items:center}
+.pg2 b{font-size:15.5px}.pg2 span{font-size:14.5px;color:var(--ink2);line-height:1.45}
+.need{background:#FFFBE6;border:1px solid #F5E08A;border-radius:16px;padding:14px 16px;font-size:15px;color:#3F2D00}
+.need ol{margin:6px 0 0;padding-left:22px;display:grid;gap:4px}
+.cmp{width:100%;border-collapse:collapse;font-size:15px}
+.cmp th,.cmp td{padding:10px;border-top:1px solid var(--line);text-align:left;vertical-align:top}
+.cmp th{background:#F9FAFB;font-size:14px}.cmp td:first-child{font-weight:800;width:22%}
+@media (max-width:700px){ .pg2{grid-template-columns:minmax(0,1fr)} .plan{padding:14px} .cmp td,.cmp th{display:block;border-top:0;padding:3px 0;width:auto !important} .cmp tr{display:block;border-top:1px solid var(--line);padding:8px 0} .cmp tr:first-child{display:none} .cmp td:nth-child(2)::before{content:"Telegram: ";font-weight:800} .cmp td:nth-child(3)::before{content:"Viber: ";font-weight:800} }
 @media (max-width:1100px){ .grid{grid-template-columns:minmax(0,1fr)} }
 @media (max-width:700px){ .idea{grid-template-columns:minmax(0,1fr);padding:14px} .how{grid-template-columns:minmax(0,1fr)} .hx h1{font-size:26px} .wrap{padding:16px 12px 50px} }
 </style>
 </head>
 <body>
-<div class="hx"><div class="hin"><a href="index.html">‹ Round 20</a><h1>Nifti and Telegram: 10 ways they work together</h1><p>Telegram lets a business app send messages with buttons, read photos you send it, and answer questions, for free. Here's what that could do for a Nifti owner, their staff and their customers, each with a sample chat. These are ideas to pick from, not built yet.</p></div></div>
+<div class="hx"><div class="hin"><a href="index.html">‹ Round 20</a><h1>Nifti and Telegram: 10 ways they work together</h1><p>Telegram lets a business app send messages with buttons, read photos you send it, and answer questions, for free. Here's what that could do for a Nifti owner, their staff and their customers, each with a sample chat. The setup guide and practice chats are now inside Nifti (Alerts on your phone). Real messages start once Nifti's Telegram account is connected.</p></div></div>
 <div class="wrap">
   <div class="how">
     <div><i>1</i><b>Connect once</b><span>Open Nifti, tap "Connect Telegram", and scan the code with your phone. Each staff member does the same on their own phone.</span></div>
@@ -63,6 +77,40 @@ body{background:#F4F6F8}
   <div class="top3"><b>My top 3 to build first:</b> 1 · Morning brief, 2 · Approve with one tap, 4 · Payment proof matched for you. They save the owner the most time every single day and are the simplest to build.</div>
   <div class="filt" id="filt"></div>
   <div class="grid" id="grid"></div>
+
+  <section class="plan" id="learn">
+    <h2>How someone who has never used Telegram learns it</h2>
+    <p>Nobody reads a manual. The learning happens inside Nifti and inside the chat itself.</p>
+    <div class="pg2">
+      <div><i>1</i><b>A setup guide inside Nifti</b><span>"Alerts on your phone" walks through 4 steps with big numbers: get Telegram, tap Open, tap START, Nifti says hello. It's in the left menu and your account menu now.</span></div>
+      <div><i>2</i><b>Practice before it's real</b><span>All 10 alerts can be tried inside Nifti first. Tap Approve, see what happens. Nothing is sent.</span></div>
+      <div><i>3</i><b>One group, a folder for each job</b><span>Nifti makes your team group with folders (Telegram calls them topics): Daily brief, Approvals, Payments, Cash count, Running low, Orders to pack, Deliveries, Ask Nifti. Each person only joins the folders their role needs.</span></div>
+      <div><i>4</i><b>Help inside every message</b><span>Every alert has a "?" button that explains it in Taglish or English. For the first week Nifti sends one short tip a day. Typing "help" reaches a person.</span></div>
+    </div>
+  </section>
+  <section class="plan" id="build">
+    <h2>How it gets built, in plain words</h2>
+    <div class="pg2">
+      <div><i>1</i><b>One Nifti account on Telegram</b><span>Made once by Nifti for all its users. Your business doesn't make or manage anything.</span></div>
+      <div><i>2</i><b>A small program on Nifti's server</b><span>It sends the messages and listens for button taps. A tap does exactly what the same button does in Nifti, with the same roles and records.</span></div>
+      <div><i>3</i><b>People link their phone once</b><span>The 4-step START links each person's Telegram to their Nifti login, so Nifti knows who is who and what they're allowed to see.</span></div>
+      <div><i>4</i><b>Timers</b><span>The morning brief and closing-time cash count run on a timer you set.</span></div>
+      <div><i>5</i><b>Reading photos and questions</b><span>Payment screenshots and "Magkano utang ni Bayview?" are read by the same AI that turns Viber messages into orders today.</span></div>
+      <div><i>6</i><b>Customers stay separate</b><span>Customers chat one-on-one with Nifti for orders, reminders and price news. They never see your team group.</span></div>
+    </div>
+    <div class="need"><b>What I need from you to switch it on (about 2 minutes):</b><ol><li>Install Telegram on your phone and sign up with your number.</li><li>Open the chat called BotFather, type /newbot, and name it "Nifti". It gives you a long code.</li><li>Put that code into Nifti's server settings (I'll show you exactly where). Don't paste it in a chat.</li></ol>Then I connect the server and the 10 alerts start working for real.</div>
+  </section>
+  <section class="plan" id="viber">
+    <h2>Can all of this run on Viber?</h2>
+    <p>Mostly yes. The difference is cost and folders.</p>
+    <table class="cmp"><tr><th></th><th>Telegram</th><th>Viber</th></tr>
+      <tr><td>Cost</td><td>Free</td><td>Viber charges the business: about €100–115 a month for Nifti's account, plus a small fee for each message Nifti starts. Replies within 24 hours of the person writing are free.</td></tr>
+      <tr><td>Getting started</td><td>Each person taps START once</td><td>Each person taps Subscribe once</td></tr>
+      <tr><td>Team folders</td><td>Yes, one group with a folder per kind of message</td><td>No. Each person gets their alerts in their own chat with Nifti</td></tr>
+      <tr><td>Buttons, photos, questions</td><td>Yes</td><td>Yes</td></tr>
+      <tr><td>Who already has it</td><td>Fewer Filipino business owners</td><td>Almost everyone</td></tr></table>
+    <div class="top3"><b>My recommendation:</b> customers get reminders, order confirmations and price news on <b>Viber</b>, where they already are. You and your staff get the team alerts on <b>Telegram</b>: free, and with folders. Nifti pays the Viber fee once for all its users, so no business deals with Viber's paperwork.</div>
+  </section>
   <p class="note">Sample names and amounts are from the Dela Cruz Hardware demo.</p>
 </div>
 <script src="../r13/lab.js"></script>

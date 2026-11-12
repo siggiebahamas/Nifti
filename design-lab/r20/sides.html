@@ -40,7 +40,7 @@
 .po{grid-column:1 / -1;display:grid;grid-template-columns:40px minmax(0,1fr);gap:10px;margin-top:6px}
 .dt{width:40px;border-radius:10px;text-align:center;padding:4px 0;font-weight:800;line-height:1.05;align-self:start}
 .dt small{display:block;font-size:10px;letter-spacing:.04em}.dt b{font-size:17px}
-.dt.r{background:#FEE4E2;color:#B42318}.dt.y{background:#FEF3C7;color:#92400E}.dt.b{background:#DBE7FE;color:#1E40AF}
+.dt.r{background:#FEE4E2;color:#B42318}.dt.y{background:#FEF3C7;color:#1D2939}.dt.b{background:#DBE7FE;color:#1E40AF}
 .pb{border-radius:12px;padding:9px 11px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 10px;align-items:center}
 .pb.r{background:#FEF4F3}.pb.y{background:#FFFBE6}.pb.b{background:#EAF1FE}
 .pb .t{grid-column:1/-1;font-size:13.5px}.pb .t b{font-size:13.5px}.pb .t i{font-style:normal;color:var(--ink2)}
@@ -48,7 +48,7 @@
 .pb .a{font-weight:800;font-size:15px}.pb .a small{font-weight:700;color:var(--ink2);font-size:12px;margin-left:4px}
 .pb .btn1, .pb .btn2{min-height:34px;padding:0 13px;font-size:13.5px}
 .band{font-size:12px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:7px 12px;border-radius:10px;display:flex;justify-content:space-between}
-.band.r{background:#FEE4E2;color:#B42318}.band.y{background:#FEF3C7;color:#92400E}.band.b{background:#DBE7FE;color:#1E40AF}
+.band.r{background:#FEE4E2;color:#B42318}.band.y{background:#FEF3C7;color:#1D2939}.band.b{background:#DBE7FE;color:#1E40AF}
 .tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .tile{text-align:left;background:#fff;border:1px solid #E3E7EC;border-radius:14px;padding:10px 12px}
 .tile small{display:block;font-size:13px;font-weight:700;color:var(--ink2)}.tile b{display:block;font-size:22px;font-weight:800}.tile span{font-size:12.5px;color:var(--ink2);font-weight:600}
@@ -75,7 +75,7 @@
 .frame-p .vA .mid::before{left:0;right:0;top:50%;bottom:auto;width:auto;height:2px;margin:0;background:linear-gradient(90deg,var(--cb),#98A2B3,var(--sb))}
 .frame-p .vA .mid i{position:relative;top:4px}
 
-/* ---------- B · two coloured sides (live now) ---------- */
+/* ---------- B · two colored sides (live now) ---------- */
 .vB .col{background:var(--kbg);border:1px solid var(--kln);border-top:5px solid var(--k);border-radius:18px;padding:12px 12px 14px}
 
 /* ---------- C · a split header bar and a thick bar between ---------- */
@@ -109,24 +109,24 @@
 const ARW = {c: '<path d="M7 17 17 7M8 7h9v9"/>', s: '<path d="M17 7 7 17M16 17H7V8"/>', x: '<path d="M7 4 3 8l4 4M3 8h13M17 20l4-4-4-4M21 16H8"/>'};
 const svg = p => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">${p}</svg>`;
 const V = [
-  {id: 'A', name: 'A line down the middle', tag: 'White sides, a coloured line between them, a marker that stays in view', why: [
+  {id: 'A', name: 'A line down the middle', tag: 'White sides, a colored line between them, a marker that stays in view', why: [
       'Both sides stay white. A line runs down the middle, blue at the top on the customer side and teal on the supplier side.',
       'A round marker with two arrows sits on the line and stays in view as you scroll, so you always see where one side ends.',
-      'Each side has a thick coloured line under its name.',
+      'Each side has a thick colored line under its name.',
       'On a phone, the line turns sideways between the two lists.'],
-    best: 'People who like a calm, white page.', give: 'The quietest of the three. On a busy page the line is easier to miss than a colour.'},
-  {id: 'B', name: 'Two coloured sides', tag: 'Each side sits on its own light colour, with a gap between', pick: 1, live: 1, why: [
-      'Customers sit on a light blue panel, suppliers on a light teal panel, each with a thick coloured edge on top.',
-      'The white cards inside stand out on the colour, so the page reads as two clear zones at a glance.',
-      'The same two colours are on the Customer and Supplier tags everywhere else, so it matches.',
-      'On a phone the panels stack. You always know which one you\'re in by its colour.'],
-    best: 'Telling the two sides apart instantly, even from across the counter.', give: 'Adds colour to the page, and takes a bit more space for the panel edges.'},
-  {id: 'C', name: 'A split bar on top', tag: 'One header split in two colours, and a thick bar between the lists', why: [
+    best: 'People who like a calm, white page.', give: 'The quietest of the three. On a busy page the line is easier to miss than a color.'},
+  {id: 'B', name: 'Two colored sides', tag: 'Each side sits on its own light color, with a gap between', pick: 1, live: 1, why: [
+      'Customers sit on a light blue panel, suppliers on a light teal panel, each with a thick colored edge on top.',
+      'The white cards inside stand out on the color, so the page reads as two clear zones at a glance.',
+      'The same two colors are on the Customer and Supplier tags everywhere else, so it matches.',
+      'On a phone the panels stack. You always know which one you\'re in by its color.'],
+    best: 'Telling the two sides apart instantly, even from across the counter.', give: 'Adds color to the page, and takes a bit more space for the panel edges.'},
+  {id: 'C', name: 'A split bar on top', tag: 'One header split in two colors, and a thick bar between the lists', why: [
       'A solid bar across the top: blue on the left says "Selling to customers", teal on the right says "Buying from suppliers", each with its total.',
       'It stays at the top while you scroll, so the labels never leave the screen.',
-      'A thick grey bar runs between the two lists, like the spine of a book.',
-      'On a phone, each list gets its own solid coloured header that stays at the top while you scroll it.'],
-    best: 'Long pages: the labels never scroll away.', give: 'The heaviest look of the three. The two solid colours draw the eye before your numbers do.'}
+      'A thick gray bar runs between the two lists, like the spine of a book.',
+      'On a phone, each list gets its own solid colored header that stays at the top while you scroll it.'],
+    best: 'Long pages: the labels never scroll away.', give: 'The heaviest look of the three. The two solid colors draw the eye before your numbers do.'}
 ];
 const S = {v: 'B', view: 'both', pg: 'orders'};
 if(window.innerWidth < 700) S.view = 'p';

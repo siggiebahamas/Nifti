@@ -32,7 +32,7 @@
 </style>
 </head>
 <body>
-<div class="band"><div class="bin"><a href="../">‹ Design lab</a><h1>Round 15 · pick your favourites</h1><p>Two things to look at. The rest is already in the app.</p></div></div>
+<div class="band"><div class="bin"><a href="../">‹ Design lab</a><h1>Round 15 · pick your favorites</h1><p>Two things to look at. The rest is already in the app.</p></div></div>
 <div class="wrap">
   <div class="live"><h2>Already in the app <span>Live</span></h2><ul id="live"></ul></div>
   <div class="cards" id="cards"></div>
@@ -45,7 +45,7 @@ $('live').innerHTML = [
 ].map(([b, t]) => `<li>${ic('check')}<span><b>${b}</b>${t}</span></li>`).join('');
 $('cards').innerHTML = [
   ['orders.html', 'clock', 'Orders: by customer & supplier, with dates', 'Theme 2 + dates', 'A date beside every order, in the same column as the customer\'s or supplier\'s picture, joined by a thin line so each timeline reads top to bottom.', ['With dates (new)', 'Before, to compare']],
-  ['money.html', 'wallet', 'Money overview in 5 quiet backgrounds', '5 backgrounds', 'Calm off-white pages like Claude\'s, one soft colour and one accent each. Money overview only.', ['Ivory', 'Pearl', 'Stone', 'Sage', 'Mist']]
+  ['money.html', 'wallet', 'Money overview in 5 quiet backgrounds', '5 backgrounds', 'Calm off-white pages like Claude\'s, one soft color and one accent each. Money overview only.', ['Ivory', 'Pearl', 'Stone', 'Sage', 'Mist']]
 ].map(([h, i, t, n, p, o]) => `<a class="c" href="${h}"><div class="top"><span>${ic(i)}</span><div><small>${n}</small><h3>${t}</h3></div></div><p>${p}</p><div class="opts">${o.map(x => `<i>${x}</i>`).join('')}</div><span class="go">Open ${ic('arrow')}</span></a>`).join('');
 </script>
 </body>

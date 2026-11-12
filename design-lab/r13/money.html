@@ -184,7 +184,7 @@
 </head>
 <body>
 <header class="lab-top"><div class="lab-in">
-  <div class="lab-r1"><a class="lab-back" href="index.html">‹ Round 13</a><h1>Money to Settings · 3 looks, 22 pages</h1><p>Inspired by Pinoy Permit: big plain answers, colour bands, date tiles, one button per row. Click any page in the menu.</p></div>
+  <div class="lab-r1"><a class="lab-back" href="index.html">‹ Round 13</a><h1>Money to Settings · 3 looks, 22 pages</h1><p>Inspired by Pinoy Permit: big plain answers, color bands, date tiles, one button per row. Click any page in the menu.</p></div>
   <div class="lab-tabs" id="tabs"></div>
   <div class="lab-r3" id="r3"></div>
 </div></header>
@@ -194,9 +194,9 @@
 <script src="money-data.js"></script>
 <script>
 const TH = [
-  {id: 'A', name: 'Horizon', tag: 'Pinoy Permit look: navy band, colour groups', why: ['A navy band with a big title, then number tiles that sit on it, like Pinoy Permit.', 'Everything is grouped by urgency: red late, yellow soon, green done. Each group shows its count or total.', 'Every row: date tile, plain words, a status pill, the amount, and one green button.'], best: 'The strongest "wow" and the closest to Pinoy Permit.'},
+  {id: 'A', name: 'Horizon', tag: 'Pinoy Permit look: navy band, color groups', why: ['A navy band with a big title, then number tiles that sit on it, like Pinoy Permit.', 'Everything is grouped by urgency: red late, yellow soon, green done. Each group shows its count or total.', 'Every row: date tile, plain words, a status pill, the amount, and one green button.'], best: 'The strongest "wow" and the closest to Pinoy Permit.'},
   {id: 'B', name: 'Plain answer', tag: 'The answer first, then the math', why: ['Each page opens with a question and its answer in one sentence: "Yes. You kept ₱18,670."', 'A small receipt shows how the number was made: plus, minus, equals, with a double line under the total.', 'Bars and amounts line up in one column, so comparing needs no math.'], best: 'Owners and staff who are not good with numbers.'},
-  {id: 'C', name: 'Check-up', tag: 'Like Permit check: fix, confirm, coming up', why: ['A ring shows how much is in order. Chips say how many to fix, confirm and what is coming.', 'Fix these, Please confirm and Coming up, each with its colour stripe and one button.', 'Tap Done and the item moves to All good; the ring fills up. The numbers sit in one fold-out.'], best: 'Keeping people coming back daily: it feels like clearing a list.'}
+  {id: 'C', name: 'Check-up', tag: 'Like Permit check: fix, confirm, coming up', why: ['A ring shows how much is in order. Chips say how many to fix, confirm and what is coming.', 'Fix these, Please confirm and Coming up, each with its color stripe and one button.', 'Tap Done and the item moves to All good; the ring fills up. The numbers sit in one fold-out.'], best: 'Keeping people coming back daily: it feels like clearing a list.'}
 ];
 const S = {t: 'A', page: 'money', view: 'both', done: {}};
 if(window.innerWidth < 700) S.view = 'p';
@@ -263,7 +263,7 @@ function render(){
   $('stage').innerHTML = S.view === 'd' ? desk : S.view === 'p' ? phone : `<div style="flex:1 1 760px;min-width:0;display:flex;justify-content:center">${desk}</div><div>${phone}</div>`;
   const x = TH.find(t => t.id === S.t);
   $('notes').innerHTML = `<h2>${x.id} · ${x.name}</h2><p class="tg">${x.tag}</p><h3>Why it works</h3><ul>${x.why.map(w => `<li>${ic('check')}<span>${w}</span></li>`).join('')}</ul><div class="box"><b>Best for:</b> ${x.best}</div>
-    <div class="box"><b>Same in all 3:</b> every page opens with the answer in plain words, colours mean the same thing everywhere (red late, yellow soon, green done, blue information), amounts line up on the right, and each row has one button. Price lock & receipts are gone.</div>`;
+    <div class="box"><b>Same in all 3:</b> every page opens with the answer in plain words, colors mean the same thing everywhere (red late, yellow soon, green done, blue information), amounts line up on the right, and each row has one button. Price lock & receipts are gone.</div>`;
   if(S.keepScroll) document.querySelectorAll('.main').forEach((e, i) => { e.scrollTop = keep[i] || 0; });
   S.keepScroll = false;
 }

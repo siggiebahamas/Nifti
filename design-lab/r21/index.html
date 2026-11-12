@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Round 21 Choices</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="../r13/lab.css">
+<style>
+.band{background:radial-gradient(800px 260px at 85% -20%,rgba(52,211,153,.35),transparent 60%),linear-gradient(135deg,#03251C 0%,#064E3B 55%,#0B6B57 100%);color:#fff;padding:34px 20px 80px}
+.band .bin{max-width:1080px;margin:0 auto}.band a{color:#C8EFDF;font-size:14px;font-weight:700;text-decoration:none}
+.band h1{margin:12px 0 6px;font-size:36px;font-weight:800;letter-spacing:-.02em;line-height:1.1}.band p{margin:0;font-size:17px;color:#C8EFDF;max-width:660px}
+.wrap{max-width:1080px;margin:-52px auto 0;padding:0 20px 60px;display:grid;gap:18px}
+.live{background:#fff;border-radius:18px;border:1px solid #E7EAF0;box-shadow:var(--shc);padding:18px 20px;display:grid;gap:10px}
+.live h2{margin:0;font-size:18px;font-weight:800;display:flex;align-items:center;gap:10px}.live h2 span{font-size:12px;letter-spacing:.06em;text-transform:uppercase;background:var(--gbg);color:var(--g);border-radius:999px;padding:4px 10px}
+.live ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}.live li{display:grid;grid-template-columns:22px 1fr;gap:10px;font-size:15px;color:var(--ink2)}.live li b{color:var(--ink)}
+.live li svg{width:20px;height:20px;padding:3px;border-radius:50%;background:var(--g2);color:#fff;stroke-width:3}
+.audit{background:#fff;border-radius:18px;border:1px solid #E7EAF0;box-shadow:var(--shc);overflow:hidden}
+.audit h2{margin:0;padding:16px 20px 12px;font-size:18px;font-weight:800;border-bottom:2px solid var(--ink)}
+.ar{display:grid;grid-template-columns:minmax(0,1.1fr) auto minmax(0,2fr);gap:14px;align-items:center;padding:12px 20px;border-top:1px solid var(--line);font-size:14.5px}
+.ar b{font-size:15px}.ar span{color:var(--ink2)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.c{display:grid;gap:10px;background:#fff;border-radius:18px;border:1px solid #E7EAF0;box-shadow:var(--shc);padding:18px 20px;text-decoration:none;color:inherit;transition:transform .15s,box-shadow .15s;align-content:start}
+.c:hover{transform:translateY(-2px);box-shadow:var(--sh2)}
+.c .top{display:flex;align-items:center;gap:12px}.c .top span{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:#DDF5EC;color:#047857}.c .top span svg{width:24px;height:24px}
+.c h3{margin:0;font-size:18px;font-weight:800;line-height:1.2}.c small{font-size:13px;font-weight:800;color:var(--mut);letter-spacing:.04em;text-transform:uppercase}
+.c p{margin:0;font-size:15px;color:var(--ink2)}.c .go{display:inline-flex;align-items:center;gap:6px;font-weight:800;color:var(--g);font-size:15px}
+.c .opts{display:flex;flex-wrap:wrap;gap:6px}.c .opts i{font-style:normal;font-size:12.5px;font-weight:700;color:var(--ink2);background:var(--sf2);border-radius:999px;padding:3px 10px;box-shadow:inset 0 0 0 1px var(--line)}
+@media (max-width:640px){ .band h1{font-size:28px} .band{padding:24px 16px 72px} .wrap{padding:0 12px 40px} .ar{grid-template-columns:minmax(0,1fr) auto;padding:12px 14px} .ar span:last-child{grid-column:1/-1} }
+</style>
+</head>
+<body>
+<div class="band"><div class="bin"><a href="../">‹ Design lab</a><h1>Round 21 · what changed and what to read</h1><p>Your picks are live: colored sides with a slate tab band. Credits now just work, the login has a real demo button, and two ideas are written out in full.</p></div></div>
+<div class="wrap">
+  <div class="live"><h2>Already in the app <span>Live</span></h2><ul id="live"></ul></div>
+  <div class="cards" id="cards"></div>
+</div>
+<script src="../r13/lab.js"></script>
+<script>
+$('live').innerHTML = [
+  ['Slate tabs', ': the band at the top of Orders, Money and Messages is slate now, so it never looks like the teal supplier side or a green button.'],
+  ['Customers | suppliers', ': option B, colored sides, stays on every two-sided page, including Returns & credits.'],
+  ['Orders counts match', ': each band lists only its own orders, so "Needs you now · 2" shows exactly 2. The table view is gone.'],
+  ['Credits that just work', ': a credit you give comes off the customer\'s next bill by itself. If a bill is already open, one tap takes it off. The bill, their statement, your sales and both sides\' books show the lower amount.'],
+  ['Supplier credits with proof', ': "Add a credit a supplier gave you" works for any supplier, even one not on Nifti. Snap their credit slip, type the amount, and it comes off your next bill from them.'],
+  ['A demo button you can\'t miss', ': the login page has a big, centered "Try the demo shop" button.'],
+  ['Alerts on your phone', ': a setup guide for Telegram in 4 steps, your team group with a folder per job, all 10 alerts with on/off switches and practice chats you can tap, and a Viber tab with the honest costs.'],
+  ['American spelling', ': color, canceled, check and center everywhere people read.']
+].map(([b, t]) => `<li>${ic('check')}<span><b>${b}</b>${t}</span></li>`).join('');
+$('cards').innerHTML = [
+  ['../r20/handover.html#reader', 'file', 'How the notebook reader knows what each number means', 'Explained', 'Say what book it is, teach page 1 once, let the math and your own lists decide, answer one question at a time. Plus 9 more ways to keep what your people know.', ['Teach once', 'Math checks', 'One question at a time', 'Legacy features']],
+  ['../r20/telegram.html#learn', 'msg', 'Telegram: how people learn it, how it gets built, and Viber', 'Plan', 'A guide and practice inside Nifti, one group with folders, help in every message. What it takes to switch on, and what Viber costs.', ['How people learn', 'How it\'s built', 'Viber']],
+  ['../r20/band.html', 'tag', 'Band colors', 'Your pick', 'Slate is live. Green, ocean blue and teal are still there to compare.', ['Slate (live)', 'Green', 'Ocean blue', 'Teal']],
+  ['../r20/sides.html', 'route', 'Customers | suppliers', 'Your pick', 'Option B, colored sides, is live. A and C are still there to compare.', ['B · Colored sides (live)']]
+].map(([h, i, t, n, p, o]) => `<a class="c" href="${h}"><div class="top"><span>${ic(i)}</span><div><small>${n}</small><h3>${t}</h3></div></div><p>${p}</p><div class="opts">${o.map(x => `<i>${x}</i>`).join('')}</div><span class="go">Open ${ic('arrow')}</span></a>`).join('');
+</script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Band Colours</title>
+<title>Band Colors</title>
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
@@ -25,7 +25,7 @@
 .frame-p .side{display:none}
 .main{min-width:0;padding:16px 20px 24px;display:grid;gap:14px;align-content:start}
 .frame-p .main{padding:12px 10px 20px}
-/* the band, coloured by variables */
+/* the band, colored by variables */
 .bd{background:linear-gradient(180deg,var(--b1),var(--b2));border:1px solid var(--bl);border-radius:18px;padding:14px 16px;display:grid;gap:12px}
 .bd .k{display:flex;align-items:center;gap:12px}
 .bd .k span{width:38px;height:38px;border-radius:11px;background:var(--bi);color:#fff;display:grid;place-items:center}
@@ -62,7 +62,7 @@
 </head>
 <body>
 <header class="lab-top"><div class="lab-in">
-  <div class="lab-r1"><a class="lab-back" href="index.html">‹ Round 20</a><h1>The coloured band: 4 colours</h1><p>Theme C is live in the app in green. Here it is in green and three other colours, on a page with the customer (blue) and supplier (teal) columns, so you can see how they sit together.</p></div>
+  <div class="lab-r1"><a class="lab-back" href="index.html">‹ Round 20</a><h1>The colored band: 4 colors</h1><p>Theme C is live in the app in slate, your pick. Here it is next to green and two other colors, on a page with the customer (blue) and supplier (teal) columns, so you can see how they sit together.</p></div>
   <div class="lab-tabs" id="tabs"></div>
   <div class="lab-r3" id="r3"></div>
 </div></header>
@@ -71,14 +71,14 @@
 <script src="../r13/lab.js"></script>
 <script>
 const C = [
-  {id: 'G', name: 'Green', tag: 'The brand colour. Live now', pick: 1, live: 1, sw: '#1F6B45', v: {bi: '#1F6B45', b1: '#EAF5EE', b2: '#F6FBF8', bl: '#D3EADB', pl: '#B7E0C7'},
+  {id: 'G', name: 'Green', tag: 'The brand color, live until Round 21', sw: '#1F6B45', v: {bi: '#1F6B45', b1: '#EAF5EE', b2: '#F6FBF8', bl: '#D3EADB', pl: '#B7E0C7'},
     why: ['Same green as the main buttons and the Nifti logo, so the whole app feels like one thing.', 'It never clashes with the blue customer side or the teal supplier side.', 'The light tint is soft enough that the page under it still leads.'],
     give: 'Green also means "paid" and "all good", so a big green band is slightly less special.'},
-  {id: 'S', name: 'Slate', tag: 'Calm grey-blue, very quiet', sw: '#3E5872', v: {bi: '#3E5872', b1: '#EEF2F6', b2: '#F7F9FB', bl: '#D8E0E8', pl: '#C3CFDB'},
-    why: ['A calm grey-blue that reads as "this is the menu", not as a status.', 'Keeps every colour on the page for meaning: red is urgent, green is paid, blue and teal are the two sides.', 'Looks the most like a banking app: serious and neat.'],
+  {id: 'S', name: 'Slate', tag: 'Your pick. Live now', pick: 1, live: 1, sw: '#3E5872', v: {bi: '#3E5872', b1: '#EEF2F6', b2: '#F7F9FB', bl: '#D8E0E8', pl: '#C3CFDB'},
+    why: ['A calm gray-blue that reads as "this is the menu", not as a status.', 'Keeps every color on the page for meaning: red is urgent, green is paid, blue and teal are the two sides.', 'Looks the most like a banking app: serious and neat.'],
     give: 'Quieter, so the tabs stand out less than in green or blue.'},
   {id: 'B', name: 'Ocean blue', tag: 'Bright and friendly', sw: '#1E5BB8', v: {bi: '#1E5BB8', b1: '#EAF1FC', b2: '#F6F9FE', bl: '#D2E0F6', pl: '#B4CBEF'},
-    why: ['Blue is the colour most apps use for "you can tap this", so the pills look clickable straight away.', 'Bright and friendly, easy to spot from arm\'s length.'],
+    why: ['Blue is the color most apps use for "you can tap this", so the pills look clickable straight away.', 'Bright and friendly, easy to spot from arm\'s length.'],
     give: 'Customers are blue too. On Orders and Getting paid the band and the customer side look related when they aren\'t.'},
   {id: 'T', name: 'Teal', tag: 'Fresh, between blue and green', sw: '#0E6E73', v: {bi: '#0E6E73', b1: '#E8F5F5', b2: '#F5FBFB', bl: '#CBE7E6', pl: '#A9D8D6'},
     why: ['Fresh and modern, and still close to the brand green.', 'Pairs nicely with the green buttons.'],
@@ -90,7 +90,7 @@ const PG = {
   messages: {label: 'Messages', icon: 'msg', tabs: ['Chats', 'Team'], h: 'Messages', p: 'Every customer and supplier chat in one place.'}
 };
 const SIDE = [['home', 'Home'], ['truck', 'Orders'], ['msg', 'Messages'], ['box', 'Stock'], ['h', 'Money'], ['chart', 'Money overview'], ['cash', 'Counter'], ['receipt', 'Expenses'], ['wallet', 'Getting paid'], ['tag', 'Prices'], ['bell', 'To check'], ['bank', 'Payroll'], ['file', 'Books'], ['h', 'Selling & delivery'], ['clock', 'Follow-ups'], ['route', 'Deliveries'], ['ret', 'Returns & credits']];
-const S = {c: 'G', view: 'both', pg: 'orders', on: 0};
+const S = {c: 'S', view: 'both', pg: 'orders', on: 0};
 if(window.innerWidth < 700) S.view = 'p';
 const vars = c => Object.entries(c.v).map(([k, v]) => `--${k}:${v}`).join(';');
 function bandH(c, p, on){
@@ -103,13 +103,13 @@ function page(){
   const sideOn = S.pg === 'orders' ? 'Orders' : S.pg === 'messages' ? 'Messages' : ['Money overview', 'Counter', 'Expenses', 'Getting paid', 'Prices', 'To check', 'Payroll', 'Books'][on];
   return `<div class="app"><nav class="side"><div class="lg">Nifti</div>${SIDE.map(([i, l]) => i === 'h' ? `<div class="h">${l}</div>` : `<span class="${l === sideOn ? 'on' : ''}">${ic(i)}${l}</span>`).join('')}</nav>
     <div class="main">${bandH(c, p, on)}<div class="ph"><h2>${on === 0 ? p.h : p.tabs[on]}</h2><p>${p.p}</p></div>
-      <div class="btnrow"><span>+ New order</span><small>a normal green button, next to the band colour</small></div>
+      <div class="btnrow"><span>+ New order</span><small>a normal green button, next to the band color</small></div>
       <div class="stats"><i></i><i></i><i></i><i></i></div>
       ${p.cols ? `<div class="cols"><div class="cl c"><b class="t">Selling to customers</b><i></i><i></i></div><div class="cl s"><b class="t">Buying from suppliers</b><i></i><i></i></div></div>` : '<div class="cols"><div class="cl c"><b class="t">Customers</b><i></i></div><div class="cl s"><b class="t">Suppliers</b><i></i></div></div>'}
     </div></div>`;
 }
 function render(){
-  $('tabs').innerHTML = C.map(x => `<button class="lab-tab" aria-pressed="${S.c === x.id}" data-act="c" data-v="${x.id}"><i>${x.id}</i><b><span class="sw" style="background:${x.sw}"></span>${x.name}${x.pick ? ' · my pick' : ''}</b><small>${x.tag}</small></button>`).join('');
+  $('tabs').innerHTML = C.map(x => `<button class="lab-tab" aria-pressed="${S.c === x.id}" data-act="c" data-v="${x.id}"><i>${x.id}</i><b><span class="sw" style="background:${x.sw}"></span>${x.name}${x.pick ? ' · your pick' : ''}</b><small>${x.tag}</small></button>`).join('');
   $('r3').innerHTML = seg('vw', [['both', 'Laptop + phone'], ['d', 'Laptop'], ['p', 'Phone']], S.view, 'view') + `<div class="pgs"><small>Page</small>${[['orders', 'Orders'], ['money', 'Money'], ['messages', 'Messages']].map(([k, l]) => `<button aria-pressed="${S.pg === k}" data-act="pg" data-v="${k}">${l}</button>`).join('')}</div>`;
   $('wrap').classList.toggle('wide', S.view !== 'p');
   const pg = page();

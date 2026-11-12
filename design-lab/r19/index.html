@@ -47,7 +47,7 @@ $('live').innerHTML = [
   ['Nothing important lost', ': Follow-ups is back as an Orders tab (calls for today, people to win back). Books keeps its "What changed" view. To check keeps all four team spending tabs. Team keeps Activity. Stock keeps every number (one line under the tiles). Checks keep all states, including bounced and post-dated.']
 ].map(([b, t]) => `<li>${ic('check')}<span><b>${b}</b>${t}</span></li>`).join('');
 $('cards').innerHTML = [
-  ['tabs.html', 'clip', 'Tabs you can\'t miss', '3 ways', 'The tab row at the top of every page, made big enough to notice. Try it on Orders, Money and Messages.', ['A · Big tiles', 'B · A bar across the top (my pick)', 'C · A coloured band']],
+  ['tabs.html', 'clip', 'Tabs you can\'t miss', '3 ways', 'The tab row at the top of every page, made big enough to notice. Try it on Orders, Money and Messages.', ['A · Big tiles', 'B · A bar across the top (my pick)', 'C · A colored band']],
   ['orders2.html', 'truck', 'Orders in two columns', 'Mock-up', 'Customers on the left, suppliers on the right on a PC; stacked on a phone with two jump buttons.', ['Laptop', 'Phone']],
   ['tools.html', 'ret', '"Its own tab" vs "inside each order"', 'Explainer', 'What I meant, shown with one job: giving a customer a credit for dented I-beams.', ['A · Its own tab (now)', 'B · Inside each order', 'C · Both (my pick)']]
 ].map(([h, i, t, n, p, o]) => `<a class="c" href="${h}"><div class="top"><span>${ic(i)}</span><div><small>${n}</small><h3>${t}</h3></div></div><p>${p}</p><div class="opts">${o.map(x => `<i>${x}</i>`).join('')}</div><span class="go">Open ${ic('arrow')}</span></a>`).join('');

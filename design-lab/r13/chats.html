@@ -72,7 +72,7 @@
 </head>
 <body>
 <header class="lab-top"><div class="lab-in">
-  <div class="lab-r1"><a class="lab-back" href="index.html">‹ Round 13</a><h1>Messages: the chat list · 5 ways</h1><p>No purple, no coloured side bars, no rings around pictures. Tap a chat or a filter.</p></div>
+  <div class="lab-r1"><a class="lab-back" href="index.html">‹ Round 13</a><h1>Messages: the chat list · 5 ways</h1><p>No purple, no colored side bars, no rings around pictures. Tap a chat or a filter.</p></div>
   <div class="lab-tabs" id="tabs"></div>
   <div class="lab-r3" id="r3"></div>
 </div></header>
@@ -90,7 +90,7 @@ const C = [
   {n: 'Corazon Welding Shop', side: 'cust', t: 'Aug 20', pv: 'Thanks for the heads-up po', un: 0, oc: ['PO-0853 · Can you fill it?', 'you'], photo: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=96&h=96&fit=crop'}
 ];
 const V = [
-  {id: 'A', name: 'Clean list', tag: 'What the app shows now', why: ['Picture, name and time on top; "Customer ·" or "Supplier ·" in gray before the last message.', 'Unread chats: bold name and a green number. Nothing else is coloured.', 'The open chat sits on a soft gray, rounded background.'], best: 'Everyone. Calm and familiar.'},
+  {id: 'A', name: 'Clean list', tag: 'What the app shows now', why: ['Picture, name and time on top; "Customer ·" or "Supplier ·" in gray before the last message.', 'Unread chats: bold name and a green number. Nothing else is colored.', 'The open chat sits on a soft gray, rounded background.'], best: 'Everyone. Calm and familiar.'},
   {id: 'B', name: 'Customers, then suppliers', tag: 'Two short groups', why: ['Two headings with a count: Customers and Suppliers.', 'No labels on each row: the heading already says it.', 'Unread shows as a small green dot after the name.'], best: 'Shops that talk to both sides every day.'},
   {id: 'C', name: 'With the order', tag: 'What each chat is about', why: ['Under each chat, a small gray tag with the order and its step.', 'A green dot on the tag means it is your turn; gray means theirs.', 'You can tell what to do before you open the chat.'], best: 'Owners who chat mainly about orders.'},
   {id: 'D', name: 'Viber style', tag: 'Big pictures, nothing extra', why: ['Bigger pictures and names, like Viber, so it feels known on day one.', 'A tiny gray icon on the picture: a store for customers, a truck for suppliers.', 'Unread: bold and a green number.'], best: 'Staff who live in Viber and Messenger.'},
@@ -133,7 +133,7 @@ function render(){
   else $('stage').innerHTML = `<div style="flex:1 1 640px;min-width:0;display:flex;justify-content:center">${desk(S.v)}</div><div>${phone(S.v)}</div>`;
   const x = V.find(v => v.id === S.v);
   $('notes').innerHTML = `<h2>${x.id} · ${x.name}</h2><p class="tg">${x.tag}</p><h3>Why it works</h3><ul>${x.why.map(w => `<li>${ic('check')}<span>${w}</span></li>`).join('')}</ul><div class="box"><b>Best for:</b> ${x.best}</div>
-    <div class="box"><b>Same in all 5:</b> no purple, no coloured bars, pictures without rings, green only for unread. The same calm pictures go on Customers & suppliers.</div>`;
+    <div class="box"><b>Same in all 5:</b> no purple, no colored bars, pictures without rings, green only for unread. The same calm pictures go on Customers & suppliers.</div>`;
 }
 document.addEventListener('click', e => { const b = e.target.closest('[data-act]'); if(!b) return; const a = b.dataset.act, v = b.dataset.v;
   if(a === 'v'){ S.v = v; if(S.view === 'all') S.view = 'both'; } else if(a === 'view') S.view = v; else if(a === 'f') S.f = v; else if(a === 'open'){ S.on = Number(v); C[S.on].un = 0; } else if(a === 'toast') return toast(v); render(); });

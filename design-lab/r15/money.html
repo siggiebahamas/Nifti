@@ -134,7 +134,7 @@
 </head>
 <body>
 <header class="lab-top"><div class="lab-in">
-  <div class="lab-r1"><a class="lab-back" href="index.html">‹ Round 15</a><h1>Money overview · 5 quiet backgrounds</h1><p>One soft background and one accent each, like Claude's calm off-white. Same page and layout in all five, so only the colour changes.</p></div>
+  <div class="lab-r1"><a class="lab-back" href="index.html">‹ Round 15</a><h1>Money overview · 5 quiet backgrounds</h1><p>One soft background and one accent each, like Claude's calm off-white. Same page and layout in all five, so only the color changes.</p></div>
   <div class="lab-tabs" id="tabs"></div>
   <div class="lab-r3" id="r3"></div>
 </div></header>
@@ -145,8 +145,8 @@
 <script>
 const PAL = [
   {id: 'ivory', n: '1', name: 'Ivory', tag: 'Warm off-white, closest to Claude', sw: ['#FAF9F5', '#F2F0E8', '#1C1B18', '#2F6B4F'], why: ['The warm, paper-like off-white of Claude, with a slightly deeper side menu.', 'Near-black text and one deep green for the buttons that matter.', 'Feels calm and friendly, never clinical.'], best: 'The Claude look: warm, quiet and easy on older eyes.'},
-  {id: 'pearl', n: '2', name: 'Pearl', tag: 'Almost white, Nifti green', sw: ['#FDFDFC', '#F5F5F3', '#111113', '#1F6B45'], why: ['The brightest of the five: nearly white with fine gray lines.', 'Nifti\'s own green is the only colour, so it always means "tap here".', 'Crisp, like a premium phone settings screen.'], best: 'Owners who like bright, clean screens.'},
-  {id: 'stone', n: '3', name: 'Stone', tag: 'Soft neutral gray, graphite buttons', sw: ['#F3F3F1', '#E9E9E6', '#18181B', '#3F3F46'], why: ['A soft, neutral gray page with off-white cards that float on it.', 'Graphite buttons: no colour at all except red, yellow and green for status.', 'The most "serious tool" feel, like a pro finance app.'], best: 'A strict, no-colour look where only warnings stand out.'},
+  {id: 'pearl', n: '2', name: 'Pearl', tag: 'Almost white, Nifti green', sw: ['#FDFDFC', '#F5F5F3', '#111113', '#1F6B45'], why: ['The brightest of the five: nearly white with fine gray lines.', 'Nifti\'s own green is the only color, so it always means "tap here".', 'Crisp, like a premium phone settings screen.'], best: 'Owners who like bright, clean screens.'},
+  {id: 'stone', n: '3', name: 'Stone', tag: 'Soft neutral gray, graphite buttons', sw: ['#F3F3F1', '#E9E9E6', '#18181B', '#3F3F46'], why: ['A soft, neutral gray page with off-white cards that float on it.', 'Graphite buttons: no color at all except red, yellow and green for status.', 'The most "serious tool" feel, like a pro finance app.'], best: 'A strict, no-color look where only warnings stand out.'},
   {id: 'sage', n: '4', name: 'Sage', tag: 'Pale green-gray, deep sage', sw: ['#F2F4EF', '#E7EBE2', '#1A211C', '#3D5E4A'], why: ['A very pale green-gray, like linen in daylight.', 'Deep sage buttons tie in with Nifti green without shouting.', 'Restful for long days on the books.'], best: 'A natural, softer take on Nifti green.'},
   {id: 'mist', n: '5', name: 'Mist', tag: 'Cool blue-gray, steel blue', sw: ['#F3F5F8', '#E8ECF1', '#121826', '#3B6188'], why: ['A cool, airy blue-gray page: fresh and modern.', 'Steel-blue buttons, lighter than navy, with no gold anywhere.', 'Numbers in near-black read very sharply on it.'], best: 'A cool, tech-company feel.'}
 ];
@@ -202,7 +202,7 @@ function render(){
     $('stage').innerHTML = S.view === 'd' ? desk : S.view === 'p' ? phone : `<div style="flex:1 1 760px;min-width:0;display:flex;justify-content:center">${desk}</div><div>${phone}</div>`; }
   const x = PAL.find(p => p.id === S.p);
   $('notes').innerHTML = `<h2>${x.n} · ${x.name}</h2><p class="tg">${x.tag}</p><div class="sws">${x.sw.map((c, i) => `<span><i style="background:${c}"></i>${['Page', 'Side', 'Text', 'Buttons'][i]}</span>`).join('')}</div><h3>Why it works</h3><ul>${x.why.map(w => `<li>${ic('check')}<span>${w}</span></li>`).join('')}</ul><div class="box"><b>Best for:</b> ${x.best}</div>
-    <div class="box"><b>Same in all 5:</b> red, yellow and green still mean late, soon and done. The "How the business is doing" chart from Home is added here so you can see it, with the new <b>Sales</b> and <b>Profit / Loss</b> labels, in each colour.</div>`;
+    <div class="box"><b>Same in all 5:</b> red, yellow and green still mean late, soon and done. The "How the business is doing" chart from Home is added here so you can see it, with the new <b>Sales</b> and <b>Profit / Loss</b> labels, in each color.</div>`;
   if(S.keep) document.querySelectorAll('.main').forEach((e, i) => { e.scrollTop = keep[i] || 0; }); S.keep = false;
 }
 document.addEventListener('click', e => { const b = e.target.closest('[data-act]'); if(!b) return; const a = b.dataset.act, v = b.dataset.v;

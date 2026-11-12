@@ -43,15 +43,15 @@ $('live').innerHTML = [
   ['Signing in', ': your saved password belongs to your other app on the same web address, so the browser filled it into Nifti. Nifti has no account yet. The error now says that in plain words, with links to create an account or reset the password.'],
   ['Every page in your menu', ': as the owner you see all 21 pages in groups you can fold: Home, Orders, Messages, Stock; Money (all 8, from Money overview to Books); Selling & delivery; Checks, taxes & team. On a phone, a new Menu button at the bottom opens the same list.'],
   ['Who sees what', ': one panel (bottom of the menu, the Team page, or your account menu). Pick a role like Cashier or Driver, switch pages on or off, make your own roles, and tap "See Nifti as a Cashier" to check it. A bar at the bottom takes you back to your own view.'],
-  ['Tabs in a coloured band', ': theme C on Orders, Money and Messages, with big pills. Staff only see the tabs their role allows.'],
+  ['Tabs in a colored band', ': theme C on Orders, Money and Messages, with big pills. Staff only see the tabs their role allows.'],
   ['Orders in two columns', ': customers left, suppliers right, no switching buttons. Each column has its own "+ New order". On a phone they stack, with Customers and Suppliers jump buttons that stay at the top.'],
   ['Clean cards on Returns & credits', ': bold black labels on the left, values lined up on the right, no broken lines, buttons on their own row. Same on Getting paid, Checks, BIR 2307s and Price changes.'],
   ['A shorter landing page', ': from about 9,000 to 4,000 pixels tall. Hero, How it works, one "See it in action" showcase with 8 features you can click through, before and after, questions, and the button to try it. No Free or Pro badges.'],
   ['Orders badge fixed', ': it said 7 on Home and 2 on Orders. Now it\'s always the "Needs you now" number.']
 ].map(([b, t]) => `<li>${ic('check')}<span><b>${b}</b>${t}</span></li>`).join('');
 $('cards').innerHTML = [
-  ['sides.html', 'route', 'A clear line between customers and suppliers', '3 ways', 'Shown on Orders and on Returns & credits. Option B is live now so the pages stop looking messy.', ['A · A line down the middle', 'B · Two coloured sides (my pick, live)', 'C · A split bar on top']],
-  ['band.html', 'tag', 'The coloured band in 4 colours', 'Colours', 'Green (live) and three more, next to the blue customer and teal supplier columns.', ['Green (my pick)', 'Slate', 'Ocean blue', 'Teal']],
+  ['sides.html', 'route', 'A clear line between customers and suppliers', '3 ways', 'Shown on Orders and on Returns & credits. Option B is live now so the pages stop looking messy.', ['A · A line down the middle', 'B · Two colored sides (my pick, live)', 'C · A split bar on top']],
+  ['band.html', 'tag', 'The colored band in 4 colors', 'Colors', 'Green (live) and three more, next to the blue customer and teal supplier columns.', ['Green (my pick)', 'Slate', 'Ocean blue', 'Teal']],
   ['handover.html', 'file', 'When a key person leaves', 'Idea', 'Snap the old notebooks, hand over everything they held, and keep what they knew on each customer\'s page.', ['Notebook reader', 'Leaving checklist', 'Voice notes per customer']],
   ['telegram.html', 'msg', 'Nifti and Telegram: 10 ways', 'Ideas', 'Morning brief, one-tap approvals, payment proof matched, drivers, cash count, reorders, and more, each with a sample chat.', ['For the owner', 'For staff', 'For customers']]
 ].map(([h, i, t, n, p, o]) => `<a class="c" href="${h}"><div class="top"><span>${ic(i)}</span><div><small>${n}</small><h3>${t}</h3></div></div><p>${p}</p><div class="opts">${o.map(x => `<i>${x}</i>`).join('')}</div><span class="go">Open ${ic('arrow')}</span></a>`).join('');

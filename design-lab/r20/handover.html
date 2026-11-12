@@ -45,7 +45,7 @@ body{background:#F4F6F8}
 .row b{font-size:14px}.row small{display:block;font-size:12px;color:var(--mut);font-weight:600}
 .row .ck{width:20px;height:20px;border-radius:6px;background:#1F6B45;color:#fff;display:grid;place-items:center}
 .row .ck svg{width:14px;height:14px;stroke-width:3}
-.row .ck.q{background:#FEF3C7;color:#92400E;font-weight:800;font-size:13px}
+.row .ck.q{background:#FEF9C3;color:#1D2939;font-weight:800;font-size:13px}
 .row .amt{font-weight:800}
 .row.warn{background:#FFFBE6;border-color:#F5E08A}
 .btnf{display:flex;align-items:center;justify-content:center;min-height:44px;border-radius:12px;background:#1F6B45;color:#fff;font-weight:800;font-size:15px}
@@ -67,14 +67,51 @@ body{background:#F4F6F8}
 .tl > div::before{content:"";position:absolute;left:6px;top:22px;bottom:-8px;width:2px;background:#E3E7EC}
 .tl > div:last-child::before{display:none}
 .tl .d{width:14px;height:14px;border-radius:50%;margin-top:3px;background:#1F6B45}
-.tl .d.p{background:#B45309}.tl .d.v{background:#0F766E}
+.tl .d.p{background:#EAB308}.tl .d.v{background:#0F766E}
 .tl b{font-size:13.5px;display:block}.tl small{font-size:12px;color:var(--mut);font-weight:600}
-.tl .tg{display:inline-block;font-size:11px;font-weight:800;border-radius:999px;padding:1px 8px;background:#FEF3C7;color:#92400E;margin-left:6px}
+.tl .tg{display:inline-block;font-size:11px;font-weight:800;border-radius:999px;padding:1px 8px;background:#FEF9C3;color:#1D2939;margin-left:6px}
 .sum{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px 22px}
 .sum h2{margin:0 0 10px;font-size:20px;font-weight:800}
 .sum table{width:100%;border-collapse:collapse;font-size:15px}
 .sum td{padding:10px 8px;border-top:1px solid var(--line);vertical-align:top}
 .sum td:first-child{font-weight:800;width:34%}
+
+.rd{background:#fff;border:1px solid var(--line);border-radius:22px;padding:22px;display:grid;gap:18px}
+.rd h2{margin:0;font-size:26px;font-weight:800;letter-spacing:-.02em;line-height:1.2}
+.rd > p{margin:-8px 0 0;font-size:16px;color:var(--ink2);max-width:860px}
+.rdg{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:22px;align-items:start}
+.rds{display:grid;gap:10px}
+.rds > div{display:grid;grid-template-columns:34px minmax(0,1fr);gap:4px 12px;padding:12px 14px;border:1px solid #E4E7EC;border-radius:14px}
+.rds i{grid-row:span 2;font-style:normal;width:34px;height:34px;border-radius:10px;background:#3E5872;color:#fff;font-weight:800;display:grid;place-items:center}
+.rds b{font-size:16px}.rds span{font-size:14.5px;color:var(--ink2);line-height:1.45}
+.rds .chips{grid-column:2;display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}.rds .chips em{font-style:normal;font-size:12.5px;font-weight:700;border-radius:999px;padding:3px 10px;background:#F2F4F7;color:#344054}
+.rds .chips em.on{background:#3E5872;color:#fff}
+.nb{border-radius:16px;overflow:hidden;border:1px solid #E7E2CF}
+.nb .pg{position:relative;background:repeating-linear-gradient(180deg,#FFFDF5 0 33px,#C9D7EA 33px 34px);padding:6px 0 10px 40px}
+.nb .pg::before{content:"";position:absolute;left:30px;top:0;bottom:0;width:1px;background:#E8A0A0}
+.nb .ln{display:grid;grid-template-columns:62px 92px 64px 54px 82px;height:34px;align-items:center;font-family:'Segoe Script','Bradley Hand',cursive;font-size:15px;color:#22356B}
+.nb .hd{font-family:inherit;font-size:11.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;height:30px;color:#fff}
+.nb .hd span{padding:4px 6px;border-radius:8px;margin-right:4px;text-align:center}
+.nb .c1{background:#64748B}.nb .c2{background:#1D4ED8}.nb .c3{background:#0F766E}.nb .c4{background:#334155}.nb .c5{background:#15803D}
+.nb .ln.y{background:rgba(250,204,21,.25)}
+.chk{padding:12px 14px;background:#fff;border-top:1px solid #EEF0F3;display:grid;gap:8px}
+.chk div{display:grid;grid-template-columns:22px minmax(0,1fr);gap:8px;font-size:14px;color:#1D2939;line-height:1.4}
+.chk div svg{width:20px;height:20px;padding:3px;border-radius:50%;background:var(--g2);color:#fff;stroke-width:3}
+.chk div.q svg{background:#EAB308;color:#1D2939}
+.ask{margin:2px 14px 14px;padding:12px;border-radius:14px;background:#FFFBE6;border:1px solid #F5E08A;font-size:14.5px}
+.ask .bb{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}.ask .bb span{min-height:36px;display:inline-flex;align-items:center;padding:0 14px;border-radius:999px;background:#fff;border:1.5px solid #D0D5DD;font-weight:800;font-size:13.5px}
+.ask .bb span.p{background:#1F6B45;border-color:#1F6B45;color:#fff}
+.under{font-size:14.5px;color:var(--ink2);background:#F7F9FB;border:1px solid #D8E0E8;border-radius:14px;padding:12px 14px}
+.more{background:#fff;border:1px solid var(--line);border-radius:22px;padding:22px}
+.more h2{margin:0 0 6px;font-size:24px;font-weight:800;letter-spacing:-.02em}
+.more > p{margin:0 0 14px;font-size:16px;color:var(--ink2)}
+.mg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.mg > div{border:1px solid #E4E7EC;border-radius:16px;padding:14px;display:grid;gap:6px;align-content:start}
+.mg i{font-style:normal;width:38px;height:38px;border-radius:11px;background:#EEF2F6;color:#3E5872;display:grid;place-items:center}
+.mg i svg{width:20px;height:20px}
+.mg b{font-size:16px}.mg span{font-size:14.5px;color:var(--ink2);line-height:1.45}
+.mg em{font-style:normal;font-size:13.5px;color:#14532D;background:#F1F9F4;border-radius:10px;padding:7px 10px;line-height:1.4}
+@media (max-width:860px){ .rdg{grid-template-columns:minmax(0,1fr)} .mg{grid-template-columns:minmax(0,1fr)} .rd,.more{padding:16px} .nb .ln{grid-template-columns:48px 76px 52px 40px 66px;font-size:13px} .nb .pg{padding-left:34px} .nb .pg::before{left:26px} }
 @media (max-width:860px){ .step,.step.flip{grid-template-columns:minmax(0,1fr);padding:16px;gap:18px} .step.flip .txt{order:0} .prob{grid-template-columns:minmax(0,1fr)} .hx h1{font-size:26px} .art{padding:14px} .sum td:first-child{width:auto} .sum td{display:block;border-top:0;padding:4px 0} .sum tr{display:block;border-top:1px solid var(--line);padding:8px 0} }
 </style>
 </head>
@@ -103,6 +140,41 @@ body{background:#F4F6F8}
           <div class="row warn"><span class="ck q">?</span><div><b>Sta. Cruz Builders</b><small>can't read: 2,?00 · bounced check</small></div><span class="amt">Tap to type</span></div>
           <div class="btnf">OK, add 4 to Who owes you</div>
           <div class="note">The photo stays attached to each line, marked "From Mang Ben's notebook, page 3".</div></div></div>
+    </div>
+  </section>
+
+
+  <section class="rd" id="reader">
+    <span class="n" style="justify-self:start;display:inline-flex;font-size:12.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--g);background:var(--gbg);border-radius:999px;padding:5px 12px">How the reader knows what each number means</span>
+    <h2>A real notebook is messy. Nifti doesn't guess: it learns the book, checks the math, and asks you.</h2>
+    <p>A line like "8/14 · Bayview · RB12 · 40 · 7,200" could mean many things. Nifti works it out the way a new bookkeeper would on their first day: ask what book it is, learn the columns once, check every number against what it already knows, and ask about anything still unclear.</p>
+    <div class="rdg">
+      <div class="rds">
+        <div><i>1</i><b>You say what book it is</b><span>One tap before the first photo. Each kind of book tells Nifti what to expect.</span><div class="chips"><em class="on">Sales book</em><em>Utang list</em><em>Delivery book</em><em>Returns log</em><em>Price list</em><em>Stock count</em><em>Not sure</em></div></div>
+        <div><i>2</i><b>You teach it page 1, once</b><span>Nifti boxes each column in a color and guesses its name. Tap a column to fix it: Date, Customer, Item, Quantity, Price, Total, Paid or Note. It remembers the layout for the whole book, so page 2 to page 200 need no teaching.</span></div>
+        <div><i>3</i><b>It checks the numbers against your records</b><span>Quantity × your price = the total? Then it knows which number is which. Item codes are matched to your product list, names to your customers ("Nena" = Aling Nena Store), and each page's total at the bottom is checked against its lines.</span></div>
+        <div><i>4</i><b>It asks one question at a time, only when unsure</b><span>"On line 2, 'ret 5': is this a return of 5 pieces?" Each answer becomes a rule for the whole book. Over a few pages it learns the writer's own shorthand: ret = return, pd = paid, chk = check.</span></div>
+        <div><i>5</i><b>Nothing goes in until you say OK</b><span>Green lines are sure, yellow need one tap, red you type. Old records go into a "From paper" history: they show in reports and on each customer's page, but never change today's stock or cash unless you say so.</span></div>
+        <div><i>6</i><b>Even an unreadable page is kept</b><span>The photo is saved and you can search it by name or date, so nothing is lost even when rows can't be built.</span></div>
+      </div>
+      <div>
+        <div class="nb"><div class="pg">
+          <div class="ln hd"><span class="c1">Date</span><span class="c2">Customer</span><span class="c3">Item</span><span class="c4">Qty</span><span class="c5">Total</span></div>
+          <div class="ln"><span>8/14</span><span>Bayview</span><span>RB12</span><span>40</span><span>7,200</span></div>
+          <div class="ln y"><span>8/14</span><span>JR</span><span>GW16</span><span>ret 5</span><span>-475</span></div>
+          <div class="ln"><span>8/15</span><span>Nena</span><span>CMT</span><span>10</span><span>2,450</span></div>
+          <div class="ln"><span>8/15</span><span>Bayview</span><span>RB12</span><span>20</span><span>3,600 pd</span></div>
+          <div class="ln"><span></span><span></span><span></span><span>tot</span><span>12,775</span></div>
+        </div>
+        <div class="chk">
+          <div><span id="ck1"></span><span><b>RB12</b> is Rebar 12mm in your product list, at ₱180. 40 × ₱180 = ₱7,200, so <b>40 is the quantity and 7,200 is the total</b>.</span></div>
+          <div><span id="ck2"></span><span><b>Bayview</b> and <b>Nena</b> match your customers Bayview Construction Co. and Aling Nena Store.</span></div>
+          <div><span id="ck3"></span><span>The lines add up to the page total of ₱12,775, so nothing was misread.</span></div>
+          <div class="q"><span id="ck4"></span><span><b>"ret 5"</b> and the minus sign look like a return. Nifti asks you once:</span></div>
+        </div>
+        <div class="ask"><b>Line 2: is "ret 5" a return of 5 rolls of GI Wire from JR Bautista?</b><div class="bb"><span class="p">Yes, a return</span><span>No, a sale</span><span>Skip this line</span></div><small style="display:block;margin-top:6px;color:#475467">Your answer is used for every "ret" in this book.</small></div></div>
+        <p class="under" style="margin-top:12px"><b>Under the hood:</b> the photo is read by the same kind of AI that already turns Viber messages into orders. But the AI only suggests. Your product list, your customer list and the math decide, and you confirm.</p>
+      </div>
     </div>
   </section>
 
@@ -144,6 +216,23 @@ body{background:#F4F6F8}
     </div>
   </section>
 
+
+  <section class="more">
+    <h2>More ways to keep what your people know</h2>
+    <p>The notebook reader and the handover list handle the day someone leaves. These keep the knowledge growing every day, so there's never a scramble.</p>
+    <div class="mg">
+      <div><i id="m_a"></i><b>Customer playbook that writes itself</b><span>From each customer's real history.</span><em>"Pays 18 days after the bill, always after the 15th. Orders 50 bags of cement every 2 weeks. Wants morning delivery."</em></div>
+      <div><i id="m_b"></i><b>Supplier playbook</b><span>Who to call, how long they take to deliver, the best price you ever got, and who gives credits easily.</span><em>"Metro Steel: ask for Ma'am Joy. 2 days to deliver. Best rebar price: ₱172 in March."</em></div>
+      <div><i id="m_c"></i><b>A first week for the new person</b><span>Nifti turns the leaving person's repeating work into a checklist with reminders.</span><em>"Mondays: call Riverside about their check. Fridays: count the cement."</em></div>
+      <div><i id="m_d"></i><b>Ask the history</b><span>Search any name or item across orders, chats, notes, voice notes and notebook photos at once.</span><em>"Bayview 2023" shows their orders, Joy's notes and the notebook page from that year.</em></div>
+      <div><i id="m_e"></i><b>Contacts that belong to the business</b><span>Bank, BIR, supplier agents and trucking numbers live in Nifti, not in one person's phone.</span><em>When Joy leaves, Metro Steel's agent's number stays.</em></div>
+      <div><i id="m_f"></i><b>Access off in one tap</b><span>When someone leaves, their login closes and their customers and chats move to the new person with the full history.</span><em>No shared passwords to change, nothing left in their phone.</em></div>
+      <div><i id="m_g"></i><b>One question a month</b><span>Every staff member gets one short voice prompt a month: "What did you learn about a customer this month?"</span><em>Knowledge is saved long before anyone thinks of leaving.</em></div>
+      <div><i id="m_h"></i><b>"How we do things here"</b><span>The owner records the rules: how to price, when to give credit, what to check at closing. New hires listen in week 1.</span><em>Your way of running the shop, kept in your own voice.</em></div>
+      <div><i id="m_i"></i><b>Notes for the next generation</b><span>For family businesses: the stories, the relationships and the reasons behind the numbers, kept with the books.</span><em>"Why we never raise prices on Aling Nena: she was our first customer in 1998."</em></div>
+    </div>
+  </section>
+
   <div class="sum"><h2>What changes</h2><table>
     <tr><td>The utang notebook</td><td>Becomes "Who owes you", with the photo of each page kept as proof.</td></tr>
     <tr><td>Old ledgers and sales books</td><td>Added month by month, marked "From paper", so your reports show the years before Nifti too.</td></tr>
@@ -161,6 +250,8 @@ $('s3').innerHTML = li([['One story per customer:', 'orders, payments, deals, no
 const I = (id, n) => { const e = $(id); if(e) e.innerHTML = ic(n); };
 I('p1', 'file'); I('p2', 'clock'); I('p3', 'box'); ['k1', 'k2', 'k3'].forEach(k => I(k, 'check'));
 I('i1', 'home'); I('i2', 'truck'); I('i3', 'cash'); I('i4', 'msg'); I('i5', 'tag'); I('m1', 'mic'); I('m2', 'mic');
+['ck1','ck2','ck3','ck4'].forEach(k => I(k, k === 'ck4' ? 'alert' : 'check'));
+[['m_a','home'],['m_b','truck'],['m_c','clock'],['m_d','search'],['m_e','phone'],['m_f','lock'],['m_g','mic'],['m_h','book'],['m_i','users']].forEach(([k, n]) => I(k, n));
 ['w1', 'w2'].forEach(w => { $(w).innerHTML = Array.from({length: 34}, (_, i) => `<span style="height:${4 + Math.round(12 * Math.abs(Math.sin(i * 1.7 + w.length)))}px"></span>`).join(''); });
 </script>
 </body>

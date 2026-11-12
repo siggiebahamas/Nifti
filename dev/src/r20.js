@@ -181,7 +181,7 @@ function nf20Banner(){
   document.body.classList.add('nf20-previewing'); nf20MenuRoles();
 }
 
-/* ---------- 4. Tabs on top: a coloured band with the section name and big pills ---------- */
+/* ---------- 4. Tabs on top: a colored band with the section name and big pills ---------- */
 const NF20_HUB_ICON = {orders: 'orders', messages: 'messages', money: 'money'};
 function nf20Icon(page){ const s = document.querySelector('.sidebar .nav-item[data-page="' + page + '"] svg'); return s ? s.outerHTML : ''; }
 function nf20HubHtml(page){

@@ -32,7 +32,7 @@
 </style>
 </head>
 <body>
-<div class="band"><div class="bin"><a href="../">‹ Design lab</a><h1>Round 14 · pick your favourites</h1><p>Two sets of options below. Everything else you asked for is already in the app.</p></div></div>
+<div class="band"><div class="bin"><a href="../">‹ Design lab</a><h1>Round 14 · pick your favorites</h1><p>Two sets of options below. Everything else you asked for is already in the app.</p></div></div>
 <div class="wrap">
   <div class="live"><h2>Already in the app <span>Live</span></h2><ul id="live"></ul></div>
   <div class="audit"><h2>Ways to add an order: what we kept and why</h2><div id="audit"></div></div>
@@ -57,7 +57,7 @@ $('audit').innerHTML = [
 ].map(([n, c, t, w]) => `<div class="ar"><b>${n}</b><span class="${c}">${t}</span><span>${w}</span></div>`).join('');
 $('cards').innerHTML = [
   ['orders.html', 'users', 'Orders + Who needs you', '3 ways', 'Customers & suppliers folded into Orders, with Needs you now, This week, Waiting on them and All good.', ['One list, most urgent first', 'By customer & supplier', 'Split: who, then their orders']],
-  ['horizon.html', 'spark', 'Horizon in 5 colour combos', '5 palettes · 22 pages', 'The Horizon look you liked, in five palettes that are not navy and gold.', ['Emerald Glass', 'Graphite Lime', 'Electric Blue', 'Arctic Light', 'Lemon Ink']]
+  ['horizon.html', 'spark', 'Horizon in 5 color combos', '5 palettes · 22 pages', 'The Horizon look you liked, in five palettes that are not navy and gold.', ['Emerald Glass', 'Graphite Lime', 'Electric Blue', 'Arctic Light', 'Lemon Ink']]
 ].map(([h, i, t, n, p, o]) => `<a class="c" href="${h}"><div class="top"><span>${ic(i)}</span><div><small>${n}</small><h3>${t}</h3></div></div><p>${p}</p><div class="opts">${o.map(x => `<i>${x}</i>`).join('')}</div><span class="go">Open ${ic('arrow')}</span></a>`).join('');
 </script>
 </body>
