@@ -64,7 +64,7 @@ async function nf21Take(m, po, sell, amt){
 async function nf21Use(memoId, poId){
   const m = (await loadCreditMemos()).find(x => x.id === memoId), po = getPO(poId); if(!m || !po) return;
   const sell = nf21Side(m), c = computeInvoicePayments(po), room = Math.round((c.balance - (c.pendingAmount || 0)) * 100) / 100, amt = Math.min(Number(m.remaining), room);
-  if(!(amt >= 0.5)){ showToast('That bill has nothing left to pay.'); return; }
+  if(!(amt >= 0.5)){ showToast('That bill has nothing left to pay.', 'warn'); return; }
   const bill = po.invoice.number || po.poNumber, who = sell ? po.buyerName : po.supplierName;
   if(!confirm(`Take ${fmtPHP(amt)} off bill ${bill}?\n\n${sell ? who + ' will owe' : 'You will owe ' + who} ${fmtPHP(room - amt)} on this bill.${Number(m.remaining) - amt >= 0.5 ? `\n${fmtPHP(Number(m.remaining) - amt)} of the credit stays for the next bill.` : ''}`)) return;
   if(await nf21Take(m, po, sell, amt)){ showToast(`${fmtPHP(amt)} taken off ${bill}. The bill, ${sell ? 'their statement' : 'what you owe'} and the books are updated.${myBusiness && !sell ? ' (prototype)' : ''}`, 'success'); renderReturnsPage(); }
@@ -218,7 +218,7 @@ function nf21PaintAlerts(){
       <div><i>2</i><b>Tap "Open Nifti in Telegram"</b><span>On a computer, point your phone camera at the code instead.</span></div>
       <div><i>3</i><b>Tap START</b><span>The big button at the bottom of the chat. That's the only setting.</span></div>
       <div><i>4</i><b>Nifti says hello</b><span>You'll get a test message with one button. Tap it and you're done.</span></div></div>
-    <div class="nf21-cta"><button type="button" class="btn btn-primary" onclick="showToast('Opens Telegram with your private link (prototype)')">Open Nifti in Telegram</button><span class="nf21-qr" aria-hidden="true"></span><small>Your staff get their own link by Viber or text. They do the same 4 steps on their phones.</small></div>
+    <div class="nf21-cta"><button type="button" class="btn btn-primary" onclick="showToast('Opens Telegram with your private link (prototype)', 'success')">Open Nifti in Telegram</button><span class="nf21-qr" aria-hidden="true"></span><small>Your staff get their own link by Viber or text. They do the same 4 steps on their phones.</small></div>
     <h3>Your team group, with a folder for each kind of message</h3>
     <p class="nf21-p">Nifti makes one group for your business. Inside are folders (Telegram calls them topics). Each message goes into its folder, and each person only gets the folders their role needs, using the same roles as <a onclick="nf21CloseAlerts(); nf20OpenWho()">Who sees what</a>.</p>
     <div class="nf21-topics">${NF21_TOPICS.map(([t, ic, who]) => `<div><span>${ic}</span><b>${t}</b><small>${who}</small></div>`).join('')}</div>

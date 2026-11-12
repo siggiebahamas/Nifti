@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Returns and Credits</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<style>
+:root{--ink:#101828;--ink2:#344054;--mut:#475467;--line:#EAECF0;--g:#1F6B45;--g2:#22A06B;--gbg:#F0FAF4;
+  --c:#5B9BEF;--cbg:#F8FBFF;--cln:#DCE7F7;--cink:#2563EB;--csoft:#E6F0FD;--s:#10B981;--sbg:#EBF8F1;--sln:#BDE8D1;--sink:#047857;--ssoft:#D3F2E2;}
+*{box-sizing:border-box}html,body{margin:0}
+body{font:16px/1.5 "Plus Jakarta Sans",system-ui,sans-serif;color:var(--ink);background:#F2F4F7;-webkit-font-smoothing:antialiased}
+button{font:inherit;cursor:pointer}
+.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.tin{max-width:1180px;margin:0 auto;padding:14px 20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.tin a{color:var(--g);font-weight:700;text-decoration:none;font-size:14.5px}.tin h1{margin:0;font-size:18px;flex:1;min-width:200px}
+.seg{display:inline-flex;background:#EEF0F3;border-radius:999px;padding:4px;gap:2px}.seg button{border:0;background:transparent;border-radius:999px;padding:8px 16px;font-weight:700;font-size:14.5px;color:var(--ink2)}.seg button.on{background:#fff;color:var(--ink);box-shadow:0 1px 2px rgba(16,24,40,.12)}
+.wrap{max-width:1180px;margin:0 auto;padding:22px 20px 70px;display:grid;gap:34px}
+.why{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 22px}.why h2{margin:0 0 6px;font-size:19px}.why p{margin:0 0 8px;color:var(--ink2)}.why ul{margin:0;padding-left:20px;color:var(--ink2)}
+.opt{display:grid;gap:12px}.opt>header{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}.opt>header h2{margin:0;font-size:22px}.opt>header span{color:var(--mut)}
+.opt>header .rec,.rec{display:inline-block;background:var(--g);color:#fff;border-radius:999px;padding:4px 12px;font-size:13px;font-weight:800;letter-spacing:.04em}
+.note{font-size:15px;color:var(--ink2);margin:0}
+.frame{background:#fff;border:1px solid #E4E7EC;border-radius:22px;padding:24px;margin:0 auto;width:100%;transition:max-width .25s}
+body.ph .frame{max-width:390px;padding:16px}
+.ph-h{margin:0 0 4px;font-size:28px;letter-spacing:-.02em}.ph-s{margin:0 0 18px;color:var(--ink2);font-size:16px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 20px;border-radius:12px;border:1.5px solid #D0D5DD;background:#fff;font-weight:800;font-size:16px;color:var(--ink)}
+.btn.p{background:var(--g);border-color:var(--g);color:#fff}.btn.c{border-color:var(--c);color:var(--cink)}.btn.s{border-color:var(--s);color:var(--sink)}
+.btn.sm{min-height:40px;font-size:15px;padding:0 14px;border-radius:999px}
+.tag{display:inline-block;border-radius:999px;padding:3px 10px;font-size:13px;font-weight:800}
+.tag.c{background:var(--csoft);color:var(--cink)}.tag.s{background:var(--ssoft);color:var(--sink)}.tag.ok{background:#DCFCE7;color:#146C3C}.tag.w{background:#FEF3C7;color:#854D0E}.tag.n{background:#F2F4F7;color:#475467}
+.auto{display:inline-flex;align-items:center;gap:6px;font-size:15px;font-weight:700;color:#146C3C}
+details.more{border-top:1px solid var(--line);padding-top:10px;margin-top:10px}details.more summary{cursor:pointer;font-weight:800;color:var(--g);padding:8px 0;list-style:none}details.more summary::-webkit-details-marker{display:none}details.more summary::before{content:'+ '}details.more[open] summary::before{content:'− '}
+.form{display:grid;gap:12px;margin-top:12px;padding:16px;border-radius:16px;background:#F8FAFC;border:1px solid var(--line)}
+.form label{display:grid;gap:6px;font-weight:700;font-size:15px;color:var(--ink2)}
+.form :is(input,select){min-height:48px;border:1.5px solid #D0D5DD;border-radius:12px;padding:0 12px;font:inherit;font-size:16px;background:#fff}
+.form .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.snap{display:flex;align-items:center;justify-content:center;gap:8px;min-height:48px;border:1.5px dashed #98A2B3;border-radius:12px;font-weight:700;color:var(--ink2);background:#fff}
+.form[hidden]{display:none}
+/* option 1: pick who first */
+.o1-pick{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px}
+.o1-pick button{display:grid;gap:4px;justify-items:start;text-align:left;padding:18px;border-radius:18px;border:2px solid var(--line);background:#fff}
+.o1-pick button b{font-size:18px}.o1-pick button small{font-size:15px;color:var(--mut)}
+.o1-pick button.c.on{border-color:var(--c);background:var(--cbg)}.o1-pick button.s.on{border-color:var(--s);background:var(--sbg)}
+.o1-pick button.c b{color:var(--cink)}.o1-pick button.s b{color:var(--sink)}
+.o1-box{border-radius:18px;padding:18px;border:1px solid var(--line)}
+.o1-box h3{margin:0 0 12px;font-size:18px}
+.o1-item{display:grid;gap:6px;padding:14px 0;border-top:1px solid var(--line)}.o1-item:first-of-type{border-top:0}
+.o1-item b{font-size:17px}.o1-item p{margin:0;color:var(--ink2);font-size:15.5px}
+/* option 2: one list */
+.o2-sum{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.o2-sum div{flex:1 1 260px;border-radius:16px;padding:14px 16px;font-size:16px;color:var(--ink2);line-height:1.4}
+.o2-sum div b{display:block;font-size:24px;color:var(--ink)}
+.o2-sum .c{background:var(--cbg);box-shadow:inset 5px 0 0 var(--c)}.o2-sum .s{background:var(--sbg);box-shadow:inset 5px 0 0 var(--s)}
+.o2-acts{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.o2-chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.o2-chips button{min-height:42px;padding:0 16px;border-radius:999px;border:1.5px solid #D0D5DD;background:#fff;font-weight:700;font-size:15px;color:var(--ink)}
+.o2-chips button.on{border-color:var(--g);background:var(--gbg);box-shadow:inset 0 0 0 1px var(--g)}
+.o2-list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.o2-list li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 16px;align-items:center;padding:16px 18px;border-radius:16px;border:1px solid var(--line);background:#fff}
+.o2-list li.c{box-shadow:inset 5px 0 0 var(--c)}.o2-list li.s{box-shadow:inset 5px 0 0 var(--s)}
+.o2-list .t{font-size:17px;font-weight:700;line-height:1.4;color:var(--ink)}.o2-list .t em{font-style:normal;font-weight:800}
+.o2-list .d{grid-column:1;font-size:15px;color:var(--mut)}
+.o2-list .a{grid-row:1 / span 2;grid-column:2;justify-self:end;display:grid;gap:6px;justify-items:end}
+body.ph .o2-list li{grid-template-columns:minmax(0,1fr)}body.ph .o2-list .a{grid-row:auto;grid-column:1;justify-self:start;justify-items:start}
+/* option 3: two money boxes */
+.o3-two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+body.ph .o3-two{grid-template-columns:1fr}body.ph .o1-pick{grid-template-columns:1fr}body.ph .form .two{grid-template-columns:1fr}
+.o3-box{border-radius:20px;padding:20px;display:grid;gap:12px;align-content:start}
+.o3-box.c{background:var(--cbg);border:1px solid var(--cln);border-top:6px solid var(--c)}.o3-box.s{background:var(--sbg);border:1px solid var(--sln);border-top:6px solid var(--s)}
+.o3-box .k{font-size:15px;font-weight:800}.o3-box.c .k{color:var(--cink)}.o3-box.s .k{color:var(--sink)}
+.o3-box .big{font-size:36px;font-weight:800;line-height:1.1}.o3-box .sub{font-size:15.5px;color:var(--ink2)}
+.o3-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 12px;align-items:center;background:#fff;border-radius:14px;padding:12px 14px}
+.o3-row b{font-size:16px}.o3-row small{grid-column:1;font-size:14.5px;color:var(--mut)}.o3-row span{grid-row:1 / span 2;grid-column:2;font-weight:800;font-size:17px}
+.o3-foot{display:flex;gap:10px;flex-wrap:wrap;align-items:center}.o3-foot a{font-weight:700;color:var(--ink2);font-size:15px}
+.o3-hist{margin-top:16px}
+@media (max-width:640px){.frame{padding:16px}.o1-pick,.o3-two,.form .two{grid-template-columns:1fr}.o2-list li{grid-template-columns:minmax(0,1fr)}.o2-list .a{grid-row:auto;grid-column:1;justify-self:start;justify-items:start}.o2-sum div{flex-basis:100%}.btn{white-space:normal;text-align:left}.ph-h{font-size:24px}}
+</style>
+</head>
+<body>
+<div class="top"><div class="tin"><a href="./">‹ Round 22</a><h1>Returns & credits: 3 calmer layouts</h1><div class="seg" role="group" aria-label="See it on"><button type="button" class="on" data-w="pc">Computer</button><button type="button" data-w="ph">Phone</button></div></div></div>
+<main class="wrap">
+  <section class="why"><h2>Why the page feels hard today</h2>
+    <ul><li>Two columns, each with 4 number boxes, a form, a list of credits and a list of bad orders. That's 10 blocks to read before you know what to do.</li>
+      <li>The forms are always open, even when you only came to check something.</li>
+      <li>Credit cards use labels like "Left" and "Status". People have to work out what they mean.</li></ul>
+    <p style="margin-top:10px">All three below use the same rules: <b>what needs you comes first</b>, <b>forms stay closed until you ask for one</b>, <b>each credit is one plain sentence</b>, and the blue and emerald sides keep their colors.</p></section>
+
+  <section class="opt" id="o1"><header><h2>1. Pick who it's about first</h2><span>One side at a time</span></header>
+    <div class="frame"><h3 class="ph-h">Returns & credits</h3><p class="ph-s">Money off for bad or returned items.</p>
+      <p style="margin:0 0 8px;font-weight:800">Who is this about?</p>
+      <div class="o1-pick"><button type="button" class="c on" data-o1="c"><b>A customer</b><small>₱1,200 waiting to come off their bill</small></button><button type="button" class="s" data-o1="s"><b>A supplier</b><small>₱640 waiting to come off your bill</small></button></div>
+      <div id="o1Body"></div></div>
+    <p class="note">Simplest to think about: the person only ever sees one side. Good if most of your credits go one way. The cost is one extra tap to see the other side.</p></section>
+
+  <section class="opt" id="o2"><header><h2>2. One list, in plain sentences</h2><span class="rec">MY PICK</span></header>
+    <div class="frame"><h3 class="ph-h">Returns & credits</h3><p class="ph-s">Money off for bad or returned items. You never do the math.</p>
+      <div class="o2-sum"><div class="c"><b>₱1,200</b>comes off your customers' next bills</div><div class="s"><b>₱640</b>comes off your next supplier bill</div></div>
+      <div class="o2-acts"><button type="button" class="btn c" data-f="o2c">+ Give a customer a credit</button><button type="button" class="btn s" data-f="o2s">+ Add a supplier's credit</button></div>
+      <div class="form" id="o2c" hidden><label>Which customer?<select><option>Corazon Welding Shop</option><option>Bayview Construction Co.</option></select></label><div class="two"><label>How much? (₱)<input inputmode="numeric" placeholder="e.g. 500"></label><label>Why?<select><option>Damaged goods</option><option>Short delivery</option><option>Returned items</option><option>Price correction</option></select></label></div><button type="button" class="btn p">Give the credit</button></div>
+      <div class="form" id="o2s" hidden><label>Which supplier?<select><option>Metro Steel Co.</option><option>Cebu Aggregates</option><option>A supplier not on Nifti…</option></select></label><div class="two"><label>How much? (₱)<input inputmode="numeric" placeholder="e.g. 640"></label><label>Why?<select><option>Short delivery</option><option>Damaged goods</option><option>Price correction</option></select></label></div><div class="snap">Snap their credit slip</div><button type="button" class="btn p">Save the credit</button></div>
+      <div class="o2-chips" role="group" aria-label="Show"><button type="button" class="on" data-o2="wait">Waiting (2)</button><button type="button" data-o2="used">Used (2)</button><button type="button" data-o2="prob">Problems reported (2)</button></div>
+      <ul class="o2-list" id="o2List"></ul></div>
+    <p class="note">Reads like a to-do list: each line says who, how much, and what happens next. "Waiting" is open first, so the only action on the page, "Take it off now", is right there. Forms open only when you tap a button. On a phone it's one short column instead of today's very long page.</p></section>
+
+  <section class="opt" id="o3"><header><h2>3. Two money boxes</h2><span>Like two envelopes</span></header>
+    <div class="frame"><h3 class="ph-h">Returns & credits</h3><p class="ph-s">Money off for bad or returned items.</p>
+      <div class="o3-two">
+        <div class="o3-box c"><span class="k">Credits you owe customers</span><span class="big">₱1,200</span><span class="sub">Comes off their next bill by itself.</span>
+          <div class="o3-row"><b>Corazon Welding Shop</b><small>3 bent angle bars returned</small><span>₱1,200</span></div>
+          <div class="o3-foot"><button type="button" class="btn sm c">+ Give a credit</button><a href="#o3">1 problem reported</a></div></div>
+        <div class="o3-box s"><span class="k">Credits suppliers owe you</span><span class="big">₱640</span><span class="sub">Comes off your next bill from them.</span>
+          <div class="o3-row"><b>Metro Steel Co.</b><small>Short delivery, 1 bundle of rebar</small><span>₱640</span></div>
+          <button type="button" class="btn p">Take ₱640 off INV-2026-0398 now</button>
+          <div class="o3-foot"><button type="button" class="btn sm s">+ Add their credit</button><a href="#o3">1 problem reported</a></div></div></div>
+      <details class="more o3-hist"><summary>Past credits (2)</summary><ul class="o2-list" id="o3Hist"></ul></details></div>
+    <p class="note">Big and visual: two numbers tell the whole story at a glance. Best for owners who think in "how much is waiting". Past credits and problems are tucked away until needed.</p></section>
+</main>
+<script>
+const C = [
+  {side: 'c', st: 'wait', t: '<em>Corazon Welding Shop</em> gets <em>₱1,200</em> off their next bill.', d: '3 bent angle bars returned · Aug 24', a: '<span class="auto">✓ Comes off by itself</span>'},
+  {side: 's', st: 'wait', t: '<em>Metro Steel Co.</em> owes you <em>₱640</em> off your next bill.', d: 'Short delivery, 1 bundle of rebar · Aug 18', a: '<button type="button" class="btn sm p">Take it off INV-2026-0398 now</button>'},
+  {side: 'c', st: 'used', t: '<em>Bayview Construction Co.</em> got <em>₱850</em> off a bill.', d: 'Short by 1 bundle of rebar · Aug 6', a: '<span class="tag ok">Used</span>'},
+  {side: 's', st: 'used', t: '<em>Metro Steel Co.</em> took <em>₱1,500</em> off your bill.', d: 'Price correction · Jul 17', a: '<span class="tag ok">Used</span>'},
+  {side: 'c', st: 'prob', t: '<em>Cavite Steel Works</em> said their order came damaged.', d: '2 I-beams dented on delivery · PO-2026-0740', a: '<span class="tag ok">Credited</span>'},
+  {side: 's', st: 'prob', t: 'You told <em>Metro Steel Co.</em> an order came short.', d: '1 bundle of rebar missing · PO-2026-0765', a: '<span class="tag ok">Credited</span>'}];
+const row = x => `<li class="${x.side}"><div class="t"><span class="tag ${x.side}">${x.side === 'c' ? 'Customer' : 'Supplier'}</span> ${x.t}</div><div class="d">${x.d}</div><div class="a">${x.a}</div></li>`;
+const o2 = st => { document.getElementById('o2List').innerHTML = C.filter(x => x.st === st).map(row).join(''); document.querySelectorAll('[data-o2]').forEach(b => b.classList.toggle('on', b.dataset.o2 === st)); };
+document.querySelectorAll('[data-o2]').forEach(b => b.onclick = () => o2(b.dataset.o2)); o2('wait');
+document.querySelectorAll('[data-f]').forEach(b => b.onclick = () => { const f = document.getElementById(b.dataset.f); const open = f.hidden; document.querySelectorAll('.form').forEach(x => x.hidden = true); f.hidden = !open; });
+document.getElementById('o3Hist').innerHTML = C.filter(x => x.st === 'used').map(row).join('');
+const o1 = side => { const w = C.filter(x => x.side === side), b = document.getElementById('o1Body'), c = side === 'c';
+  b.innerHTML = `<div class="o1-box" style="background:${c ? 'var(--cbg)' : 'var(--sbg)'};border-color:${c ? 'var(--cln)' : 'var(--sln)'}"><h3>Waiting to come off a bill</h3>${w.filter(x => x.st === 'wait').map(x => `<div class="o1-item"><b>${x.t.replace(/<\/?em>/g, '')}</b><p>${x.d}</p><div>${x.a}</div></div>`).join('')}</div>
+    <div style="margin-top:14px"><button type="button" class="btn ${c ? 'c' : 's'}" data-f1="1">${c ? '+ Give a customer a credit' : "+ Add a supplier's credit"}</button>
+    <div class="form" id="o1f" hidden><label>${c ? 'Which customer?' : 'Which supplier?'}<select><option>${c ? 'Corazon Welding Shop' : 'Metro Steel Co.'}</option></select></label><div class="two"><label>How much? (₱)<input inputmode="numeric"></label><label>Why?<select><option>Damaged goods</option><option>Short delivery</option></select></label></div>${c ? '' : '<div class="snap">Snap their credit slip</div>'}<button type="button" class="btn p">${c ? 'Give the credit' : 'Save the credit'}</button></div></div>
+    <details class="more"><summary>Used credits (1)</summary><ul class="o2-list">${w.filter(x => x.st === 'used').map(row).join('')}</ul></details>
+    <details class="more"><summary>Problems reported (1)</summary><ul class="o2-list">${w.filter(x => x.st === 'prob').map(row).join('')}</ul></details>`;
+  b.querySelector('[data-f1]').onclick = () => { const f = document.getElementById('o1f'); f.hidden = !f.hidden; };
+  document.querySelectorAll('[data-o1]').forEach(x => x.classList.toggle('on', x.dataset.o1 === side)); };
+document.querySelectorAll('[data-o1]').forEach(x => x.onclick = () => o1(x.dataset.o1)); o1('c');
+document.querySelectorAll('[data-w]').forEach(b => b.onclick = () => { document.body.classList.toggle('ph', b.dataset.w === 'ph'); document.querySelectorAll('[data-w]').forEach(x => x.classList.toggle('on', x === b)); });
+</script>
+</body>
+</html>
