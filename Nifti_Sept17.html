@@ -7030,6 +7030,236 @@ tbody tr:hover{background:#F6F6F3}
   }
 
 /* ===== Round 19 css end ===== */
+
+/* ===== Round 20 css begin ===== */
+  /* ---------- left menu: every page for the owner, in groups that fold ---------- */
+  :root{--nf20-c:#1D4ED8;--nf20-c-bg:#F4F7FF;--nf20-c-line:#D5E0FA;--nf20-s:#0F766E;--nf20-s-bg:#F1FAF8;--nf20-s-line:#C9E9E2;
+    --nf20-band-ink:#1F6B45;--nf20-band-bg1:#EAF5EE;--nf20-band-bg2:#F6FBF8;--nf20-band-line:#D3EADB;--nf20-pill-line:#B7E0C7;}
+  .sidebar .nf20-nav .nf20-g + .nf20-g{margin-top:2px;}
+  .sidebar .nf20-nav button.nf20-h{display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:0;cursor:pointer;font:inherit;font-size:12.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#475467;padding:14px 12px 6px;margin:0;border-radius:8px;text-align:left;}
+  .sidebar .nf20-nav button.nf20-h:hover{color:#0E1114;}
+  .sidebar .nf20-nav button.nf20-h svg{width:15px;height:15px;transition:transform .15s;flex:none;}
+  .sidebar .nf20-nav .nf20-g.folded > .nf20-h svg{transform:rotate(-90deg);}
+  .sidebar .nf20-nav .nf20-g.folded > .nf20-gi{display:none;}
+  .sidebar .nf20-nav .nf20-g.nf20-empty{display:none;}
+  .sidebar .nf20-nav .nf20-gi .nav-item{display:flex !important;}
+  .sidebar .nf20-nav .nf20-gi .nav-item[style*="display: none"]{display:none !important;}
+  .sidebar .nf20-who{display:flex;align-items:center;gap:10px;width:calc(100% - 4px);margin:14px 2px 4px;padding:9px 12px;border:1.5px dashed #C9D1DB;border-radius:10px;background:#FFFFFF;font:inherit;font-size:14.5px;font-weight:700;color:#1F6B45;cursor:pointer;text-align:left;}
+  .sidebar .nf20-who:hover{border-color:#1F6B45;background:#F3FAF6;}
+  .sidebar .nf20-who svg{width:18px;height:18px;flex:none;}
+  .sidebar .nf20-who[hidden]{display:none;}
+
+  /* ---------- Who sees what ---------- */
+  body.nf20-noscroll{overflow:hidden;}
+  .nf20-ov{position:fixed;inset:0;z-index:4000;background:rgba(16,24,40,.42);display:flex;align-items:flex-start;justify-content:center;padding:4vh 16px;overflow-y:auto;}
+  .nf20-ov[hidden]{display:none;}
+  .nf20-sheet{width:min(860px,100%);background:#FFFFFF;border-radius:20px;box-shadow:0 24px 60px rgba(16,24,40,.25);display:flex;flex-direction:column;overflow:hidden;font-size:15.5px;color:#101828;}
+  .nf20-sh{display:flex;justify-content:space-between;gap:16px;padding:22px 24px 12px;}
+  .nf20-sh h2{margin:0 0 4px;font-size:24px;font-weight:800;color:#0E1114;}
+  .nf20-sh p{margin:0;color:#344054;font-size:15.5px;line-height:1.45;max-width:620px;}
+  .nf20-x{flex:none;width:42px;height:42px;border-radius:50%;border:1.5px solid #D0D5DD;background:#FFFFFF;font-size:16px;font-weight:800;color:#344054;cursor:pointer;}
+  .nf20-roles{display:flex;gap:8px;flex-wrap:wrap;padding:6px 24px 14px;border-bottom:1px solid #EAECF0;}
+  .nf20-roles button{display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:0 15px;border-radius:999px;border:1.5px solid #D0D5DD;background:#FFFFFF;font:inherit;font-size:15px;font-weight:700;color:#1D2939;cursor:pointer;}
+  .nf20-roles button b{font-size:12.5px;font-weight:800;background:#F2F4F7;color:#344054;border-radius:999px;padding:1px 8px;}
+  .nf20-roles button.on{background:#1F6B45;border-color:#1F6B45;color:#FFFFFF;}
+  .nf20-roles button.on b{background:rgba(255,255,255,.22);color:#FFFFFF;}
+  .nf20-roles .nf20-newrole{border-style:dashed;color:#1F6B45;}
+  .nf20-rc{padding:16px 24px 6px;}
+  .nf20-rch{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:14px 16px;border:1px solid #E4E7EC;border-radius:14px;background:#F9FAFB;}
+  .nf20-rch b{display:block;font-size:19px;font-weight:800;color:#0E1114;}
+  .nf20-rch small{display:block;font-size:14.5px;color:#344054;margin-top:2px;}
+  .nf20-note{margin:12px 2px 0;font-size:15px;color:#1F6B45;font-weight:700;}
+  .nf20-pg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 22px;margin-top:16px;}
+  .nf20-pg section{border:1px solid #E4E7EC;border-radius:14px;padding:6px 14px 8px;}
+  .nf20-pg h3{margin:8px 0 4px;font-size:13px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:#475467;}
+  .nf20-pr{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:48px;border-top:1px solid #F2F4F7;cursor:pointer;position:relative;}
+  .nf20-pr:first-of-type{border-top:0;}
+  .nf20-pr > span{font-size:16px;font-weight:700;color:#101828;display:flex;flex-direction:column;}
+  .nf20-pr > span small{font-size:13px;font-weight:600;color:#667085;}
+  .nf20-pr input{position:absolute;opacity:0;width:1px;height:1px;}
+  .nf20-pr i{flex:none;width:50px;height:30px;border-radius:999px;background:#D0D5DD;position:relative;transition:background .15s;}
+  .nf20-pr i::after{content:"";position:absolute;top:3px;left:3px;width:24px;height:24px;border-radius:50%;background:#FFFFFF;box-shadow:0 1px 3px rgba(16,24,40,.25);transition:transform .15s;}
+  .nf20-pr input:checked + i{background:#1F6B45;}
+  .nf20-pr input:checked + i::after{transform:translateX(20px);}
+  .nf20-pr input:focus-visible + i{outline:3px solid #93C5A8;outline-offset:2px;}
+  .nf20-pr.lock{cursor:default;} .nf20-pr input:disabled + i{opacity:.55;}
+  .nf20-quick{display:flex;gap:16px;flex-wrap:wrap;padding:14px 2px 10px;font-size:14.5px;color:#475467;}
+  .nf20-lnk{background:none;border:0;padding:4px 0;font:inherit;font-size:15px;font-weight:700;color:#1F6B45;text-decoration:underline;text-underline-offset:3px;cursor:pointer;}
+  .nf20-lnk.bad{color:#B42318;}
+  .nf20-sf{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 24px 18px;border-top:1px solid #EAECF0;background:#FCFCFD;font-size:14px;color:#475467;}
+  .nf20-sf .btn{min-width:120px;}
+  @media (max-width:720px){
+    .nf20-ov{padding:0;}
+    .nf20-sheet{border-radius:0;min-height:100%;}
+    .nf20-sh{padding:18px 16px 10px;} .nf20-sh h2{font-size:21px;}
+    .nf20-roles{flex-wrap:nowrap;overflow-x:auto;padding:4px 16px 12px;scrollbar-width:none;} .nf20-roles::-webkit-scrollbar{display:none;}
+    .nf20-roles button{flex:none;}
+    .nf20-rc{padding:14px 16px 4px;} .nf20-rch .btn{width:100%;}
+    .nf20-pg{grid-template-columns:minmax(0,1fr);}
+    .nf20-sf{padding:12px 16px 16px;flex-direction:column;align-items:stretch;} .nf20-sf .btn{width:100%;}
+  }
+  /* seeing Nifti as a staff member */
+  .nf20-prev{position:fixed;left:0;right:0;margin:0 auto;width:max-content;bottom:18px;z-index:3500;display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center;max-width:calc(100% - 24px);padding:10px 12px 10px 18px;border-radius:16px;background:#FFFFFF;border:2px solid #1F6B45;box-shadow:0 12px 32px rgba(16,24,40,.18);font-size:15px;color:#101828;}
+  .nf20-prev button{min-height:40px;padding:0 14px;border-radius:999px;border:1.5px solid #D0D5DD;background:#FFFFFF;font:inherit;font-size:14.5px;font-weight:700;color:#1D2939;cursor:pointer;}
+  .nf20-prev button.on{background:#1F6B45;border-color:#1F6B45;color:#FFFFFF;}
+  html.nf-phone .nf20-prev{bottom:84px;font-size:14px;padding:10px 12px;}
+
+  /* ---------- tabs on top: a coloured band ---------- */
+  #view-app .nf18-hubwrap:has(.nf20-band){margin-bottom:18px;}
+  #view-app .nf20-band{background:linear-gradient(180deg,var(--nf20-band-bg1),var(--nf20-band-bg2));border:1px solid var(--nf20-band-line);border-radius:18px;padding:14px 18px 14px;display:grid;gap:12px;}
+  #view-app .nf20-bk{display:flex;align-items:center;gap:12px;}
+  #view-app .nf20-bi{width:38px;height:38px;border-radius:11px;background:var(--nf20-band-ink);color:#FFFFFF;display:grid;place-items:center;flex:none;}
+  #view-app .nf20-bi svg{width:20px;height:20px;}
+  #view-app .nf20-bk b{display:block;font-size:14px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--nf20-band-ink);line-height:1.2;}
+  #view-app .nf20-bk small{display:block;font-size:14px;color:#344054;font-weight:600;}
+  html #view-app .nf20-band .nf18-hub{display:flex;gap:8px;flex-wrap:wrap;border:0;padding:0;overflow:visible;}
+  html #view-app .nf20-band .nf18-hub button{flex:none;min-height:46px;padding:0 18px;border-radius:999px;background:#FFFFFF;border:1.5px solid var(--nf20-pill-line);font-size:16px;font-weight:700;color:#1D2939;white-space:nowrap;}
+  html #view-app .nf20-band .nf18-hub button:hover{border-color:var(--nf20-band-ink);color:#0E1114;background:#FFFFFF;}
+  html #view-app .nf20-band .nf18-hub button.on{background:var(--nf20-band-ink);border-color:var(--nf20-band-ink);color:#FFFFFF;}
+  html #view-app .nf20-band .nf18-sub{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:0;padding:10px 0 0;border:0;border-top:1px dashed var(--nf20-band-line);background:transparent;overflow:visible;}
+  html #view-app .nf20-band .nf18-sub em{font-style:normal;font-size:14px;font-weight:700;color:#475467;margin-right:4px;}
+  html #view-app .nf20-band .nf18-sub button{min-height:38px;padding:0 14px;border-radius:999px;border:1.5px solid transparent;background:transparent;font-size:15px;font-weight:700;color:#344054;}
+  html #view-app .nf20-band .nf18-sub button:hover{background:#FFFFFF;}
+  html #view-app .nf20-band .nf18-sub button.on{background:#FFFFFF;border-color:var(--nf20-band-ink);color:var(--nf20-band-ink);}
+  html.nf-phone #view-app .nf20-band{padding:12px 12px 12px;border-radius:16px;gap:10px;}
+  html.nf-phone #view-app .nf20-band .nf18-hub, html.nf-phone #view-app .nf20-band .nf18-sub{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin:0 -12px;padding-left:12px;padding-right:12px;}
+  html.nf-phone #view-app .nf20-band .nf18-sub{padding-top:10px;}
+  html.nf-phone #view-app .nf20-band :is(.nf18-hub,.nf18-sub)::-webkit-scrollbar{display:none;}
+  html.nf-phone #view-app .nf20-band .nf18-hub button{min-height:44px;font-size:15px;padding:0 15px;}
+  html.nf-phone #view-app .nf20-band .nf18-sub em{display:none;}
+
+  /* ---------- customers | suppliers: two coloured sides with a clear gap ---------- */
+  #view-app .nf-half-supplier{--side:var(--nf20-c);--side-bg:var(--nf20-c-bg);--side-line:var(--nf20-c-line);}
+  #view-app .nf-half-buyer{--side:var(--nf20-s);--side-bg:var(--nf20-s-bg);--side-line:var(--nf20-s-line);}
+  html[data-ty] #view-app .nf-half{background:var(--side-bg);border:1px solid var(--side-line);border-top:5px solid var(--side);border-radius:18px;padding:16px 16px 18px;margin-bottom:18px;}
+  html[data-ty] #view-app .nf-half > .nf-half-h{border-bottom:0 !important;padding:0 0 4px;margin-bottom:12px;}
+  html[data-ty] #view-app .nf-half > .nf-half-h i{width:14px !important;height:14px !important;background:var(--side) !important;}
+  html[data-ty] #view-app .nf-half > .nf-half-h b{color:var(--side);}
+  html[data-ty] #view-app .nf-half .panel-card{background:#FFFFFF;}
+  html[data-ty] #view-app .nf-half .nfr-form{display:grid !important;grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:12px !important;align-items:end;}
+  html[data-ty] #view-app .nf-half .nfr-form > .field:first-child, html[data-ty] #view-app .nf-half .nfr-form > .btn{grid-column:1 / -1;}
+  html[data-ty] #view-app .nf-half .nfr-form :is(select,input){width:100% !important;min-width:0;}
+  @media (min-width:1100px){
+    html:not(.nf-phone) #view-app :is(#collectionsContent,#chequesContent,#taxFormsContent,#returnsContent,#pricesContent):has(> .nf-half){gap:0 28px !important;}
+  }
+
+  /* ---------- tables inside a half: clean cards ---------- */
+  #view-app#view-app#view-app .nf-half table.nf-cardtable{display:block !important;width:100% !important;min-width:0 !important;border:0 !important;background:transparent !important;}
+  #view-app#view-app#view-app .nf-half table.nf-cardtable thead{display:none !important;}
+  #view-app#view-app#view-app .nf-half table.nf-cardtable tbody{display:grid !important;grid-template-columns:minmax(0,1fr) !important;gap:12px;}
+  #view-app#view-app#view-app .nf-half table.nf-cardtable tbody tr{display:block !important;min-width:0 !important;padding:14px 16px 12px !important;border:1px solid #E3E7EC !important;border-radius:14px !important;background:#FFFFFF !important;box-shadow:0 1px 2px rgba(16,24,40,.04) !important;}
+  #view-app#view-app#view-app .nf-half table.nf-cardtable tbody td{display:block !important;position:relative !important;padding:8px 0 8px 120px !important;border:0 !important;border-top:1px solid #EEF0F3 !important;text-align:left !important;font-size:15.5px !important;line-height:1.45 !important;color:#101828 !important;white-space:normal !important;background:transparent !important;min-height:0 !important;grid-column:auto !important;}
+  #view-app#view-app#view-app .nf-half table.nf-cardtable tbody td *{text-align:left !important;}
+  #view-app#view-app#view-app .nf-half table.nf-cardtable tbody td::before{content:attr(data-label) !important;display:block !important;position:absolute !important;left:0;top:8px;width:108px;font-size:14px !important;font-weight:800 !important;color:#101828 !important;text-transform:none !important;letter-spacing:0 !important;line-height:1.45 !important;}
+  #view-app#view-app#view-app .nf-half table.nf-cardtable tbody td:first-child{padding:0 0 10px !important;border-top:0 !important;font-size:17px !important;font-weight:800 !important;}
+  #view-app#view-app#view-app .nf-half table.nf-cardtable tbody td:first-child::before{display:none !important;}
+  #view-app#view-app#view-app .nf-half table.nf-cardtable tbody td:first-child :is(.nf-sub,small){display:block;font-size:14.5px !important;font-weight:600 !important;color:#475467 !important;margin-top:2px;}
+  #view-app#view-app#view-app .nf-half table.nf-cardtable tbody td:not(:first-child) :is(.nf-sub,small){display:block;font-size:14.5px !important;color:#475467 !important;margin-top:2px;}
+  #view-app#view-app#view-app .nf-half table.nf-cardtable tbody td.nf20-none{display:none !important;}
+  #view-app#view-app#view-app .nf-half table.nf-cardtable tbody td.nf20-act{display:flex !important;flex-wrap:wrap;align-items:center;gap:10px;padding:12px 0 2px !important;}
+  #view-app#view-app#view-app .nf-half table.nf-cardtable tbody td.nf20-act::before{display:none !important;}
+  #view-app#view-app#view-app .nf-half table.nf-cardtable tbody td.nf20-act .nf-acts{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-start !important;}
+  #view-app#view-app#view-app .nf-half table.nf-cardtable tbody td.nf20-act :is(.btn,button){min-height:40px;}
+  #view-app#view-app#view-app .nf-half table.nf-cardtable tbody td.nf20-act :is(.nfc-link,.row-action,.sl-link){display:inline-flex;align-items:center;min-height:40px;padding:0 16px !important;border:1.5px solid #D0D5DD !important;border-radius:999px;background:#FFFFFF !important;color:#1D2939 !important;text-decoration:none !important;font-size:15px !important;font-weight:700;}
+  #view-app#view-app#view-app .nf-half table.nf-cardtable tbody td .nf-pill{display:inline-flex;white-space:normal !important;max-width:100%;}
+  #view-app#view-app#view-app .nf-half table.nf-cardtable{overflow:visible !important;}
+  html.nf-phone #view-app#view-app#view-app .nf-half table.nf-cardtable tbody tr{padding:12px 13px 10px !important;}
+  html.nf-phone #view-app#view-app#view-app .nf-half table.nf-cardtable tbody td{padding-left:96px !important;font-size:15px !important;}
+  html.nf-phone #view-app#view-app#view-app .nf-half table.nf-cardtable tbody td::before{width:88px;font-size:13.5px !important;}
+  html.nf-phone[data-ty] #view-app .nf-half{padding:12px 10px 14px;border-radius:16px;}
+  html.nf-phone[data-ty] #view-app .nf-half .panel-card{padding-left:12px !important;padding-right:12px !important;}
+  html.nf-phone #view-app#view-app#view-app .nf-half table.nf-cardtable tbody td:first-child, html.nf-phone #view-app#view-app#view-app .nf-half table.nf-cardtable tbody td.nf20-act{padding-left:0 !important;}
+  /* labels on every phone card: bold black, easy to read */
+  html.nf-phone table.nf-cardtable td::before{color:#101828 !important;font-weight:800 !important;}
+
+  /* ---------- Orders: two columns ---------- */
+  #page-orders.nf20-two .nfo-acts, #page-orders.nf20-two .nfo-chips{display:none !important;}
+  #page-orders.nf20-two .nf20-flt{display:flex;}
+  #page-orders.nf20-two .nf20-flt .nfo-q{flex:1 1 auto;max-width:520px;}
+  #page-orders .nf20-cols{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;align-items:start;}
+  @media (min-width:1100px){ html:not(.nf-phone) #page-orders .nf20-cols{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;} }
+  #page-orders .nf20-col{--side:var(--nf20-c);--side-bg:var(--nf20-c-bg);--side-line:var(--nf20-c-line);background:var(--side-bg);border:1px solid var(--side-line);border-top:5px solid var(--side);border-radius:18px;padding:14px 14px 16px;min-width:0;scroll-margin-top:72px;}
+  #page-orders .nf20-col.s{--side:var(--nf20-s);--side-bg:var(--nf20-s-bg);--side-line:var(--nf20-s-line);}
+  #page-orders .nf20-ch{display:grid;grid-template-columns:auto minmax(0,1fr) auto;grid-template-areas:"i t m" "b b b";align-items:center;gap:10px 12px;padding:4px 4px 14px;}
+  #page-orders .nf20-ci{grid-area:i;width:42px;height:42px;border-radius:12px;background:var(--side);color:#FFFFFF;display:grid;place-items:center;}
+  #page-orders .nf20-ci svg{width:22px;height:22px;}
+  #page-orders .nf20-ct{grid-area:t;min-width:0;}
+  #page-orders .nf20-ct b{display:block;font-size:20px;font-weight:800;color:var(--side);line-height:1.2;}
+  #page-orders .nf20-ct small{display:block;font-size:14.5px;color:#344054;font-weight:600;}
+  #page-orders .nf20-cm{grid-area:m;text-align:right;}
+  #page-orders .nf20-cm b{display:block;font-size:21px;font-weight:800;color:#0E1114;font-variant-numeric:tabular-nums;line-height:1.15;}
+  #page-orders .nf20-cm small{display:block;font-size:13.5px;color:#475467;font-weight:600;}
+  #page-orders .nf20-new{grid-area:b;justify-self:start;min-height:40px;padding:0 16px;border-radius:999px;border:1.5px solid var(--side);background:#FFFFFF;color:var(--side);font-weight:800;font-size:15px;}
+  #page-orders .nf20-new:hover{background:var(--side);color:#FFFFFF;}
+  #page-orders .nf20-col .nfo-card{background:#FFFFFF;margin:0;}
+  #page-orders .nf20-col .nfo-side{display:none !important;}
+  #page-orders .nf20-idle{margin-top:14px;background:#FFFFFF;border:1px solid #E4E7EC;border-radius:14px;padding:12px 14px 6px;}
+  #page-orders .nf20-ih{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-bottom:6px;}
+  #page-orders .nf20-ih b{font-size:16px;font-weight:800;color:#0E1114;}
+  #page-orders .nf20-idle .nfo-pp{border-top:1px solid #F2F4F7;}
+  #page-orders .nf20-idle .nfo-none{margin:4px 0 8px;color:#475467;font-size:15px;}
+  /* a half-width column: order details on top, the amount and the button on their own line */
+  #nfOrd .nf20-col .nfo-po{grid-template-columns:minmax(0,1fr) auto !important;gap:8px 12px !important;padding:11px 13px !important;}
+  #nfOrd .nf20-col .nfo-pm{grid-column:1 / -1 !important;grid-row:1 !important;}
+  #nfOrd .nf20-col .nfo-amt{grid-column:1 !important;grid-row:2 !important;text-align:left;display:flex;align-items:baseline;gap:6px;align-self:center !important;font-size:17px;}
+  #nfOrd .nf20-col .nfo-amt .l{display:inline;font-size:13.5px;}
+  #nfOrd .nf20-col .nfo-po > :is(.nfo-b,.nfo-done,span:last-child){grid-column:2 !important;grid-row:2 !important;justify-self:end;width:auto !important;}
+  #nfOrd .nf20-col .nfo-po .it{max-width:none;flex-basis:100%;white-space:normal;font-size:14px;}
+  #nfOrd .nf20-col .nfo-po .l2{font-size:15px;}
+  #nfOrd .nf20-col .nfo-pc{padding-left:14px;padding-right:14px;}
+  #nfOrd .nf20-col .nfo-pp{display:grid;grid-template-columns:46px minmax(0,1fr);gap:8px 12px;padding:10px 0;align-items:center;}
+  #nfOrd .nf20-col .nfo-ppb{grid-column:1 / -1;display:flex;gap:8px;flex-wrap:wrap;}
+  #nfOrd .nf20-col .nfo-ppb .btn{flex:1 1 0;min-height:40px;}
+  html.nf-phone #nfOrd .nf20-col .nfo-po > :is(.nfo-b,.nfo-done){min-height:44px;}
+  #page-orders .nf20-jump{display:none;}
+  @media (max-width:1099px){
+    #page-orders .nf20-jump{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:sticky;top:8px;z-index:30;margin:4px 0 14px;}
+    #page-orders .nf20-jump button{display:flex;align-items:center;justify-content:center;gap:8px;min-height:50px;border-radius:14px;border:0;font:inherit;font-size:16px;font-weight:800;color:#FFFFFF;background:var(--nf20-c);box-shadow:0 6px 16px rgba(16,24,40,.12);cursor:pointer;}
+    #page-orders .nf20-jump button.s{background:var(--nf20-s);}
+    #page-orders .nf20-jump button svg{width:20px;height:20px;}
+    #page-orders .nf20-jump button b{background:rgba(255,255,255,.22);border-radius:999px;padding:1px 9px;font-size:14px;}
+  }
+  html.nf-phone #page-orders .nf20-jump{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:sticky;top:8px;z-index:30;margin:4px 0 14px;}
+  html.nf-phone #page-orders .nf20-cols{grid-template-columns:minmax(0,1fr) !important;}
+  html.nf-phone #page-orders .nf20-col{padding:12px 10px 14px;}
+  html.nf-phone #page-orders .nf20-ch{grid-template-columns:auto minmax(0,1fr);grid-template-areas:"i t" "i m" "b b";row-gap:6px;}
+  html.nf-phone #page-orders .nf20-ct b{font-size:18px;}
+  html.nf-phone #page-orders .nf20-cm{text-align:left;display:flex;align-items:baseline;gap:6px;flex-wrap:wrap;}
+  html.nf-phone #page-orders .nf20-cm b{display:inline;font-size:18px;} html.nf-phone #page-orders .nf20-cm small{display:inline;}
+  html.nf-phone #page-orders .nf20-new{justify-self:stretch;min-height:44px;}
+  html.nf-phone #nfOrd .nf20-col .nfo-amt{grid-column:1 / -1 !important;}
+  html.nf-phone #nfOrd .nf20-col .nfo-po > :is(.nfo-b,.nfo-done){grid-column:1 / -1 !important;grid-row:3 !important;justify-self:stretch;width:100% !important;}
+
+  /* ---------- landing page: shorter, no free/pro badges ---------- */
+  #view-index .m2-badge, #view-index .f4-more{display:none !important;}
+  #view-index:not([data-nf20]) #mkPick, #view-index:not([data-nf20]) #mkFree{display:none;}
+  #view-index .nf20-how{padding:56px 0 28px;}
+  #view-index .nf20-how .f5-head{margin-bottom:26px;}
+  #view-index .nf20-show{padding:36px 0 64px;}
+  #view-index .nf20-stabs{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:6px auto 26px;max-width:980px;}
+  #view-index .nf20-stabs button{position:relative;display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 18px;border-radius:999px;border:1.5px solid #D5DED8;background:#FFFFFF;font:inherit;font-size:15.5px;font-weight:700;color:#1D2939;cursor:pointer;overflow:hidden;}
+  #view-index .nf20-stabs button svg{width:19px;height:19px;flex:none;color:#1F6B45;}
+  #view-index .nf20-stabs button:hover{border-color:#1F6B45;}
+  #view-index .nf20-stabs button.on{background:#1F6B45;border-color:#1F6B45;color:#FFFFFF;}
+  #view-index .nf20-stabs button.on svg{color:#FFFFFF;}
+  #view-index .nf20-stage{max-width:1120px;margin:0 auto;}
+  #view-index .nf20-sp{display:grid !important;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:44px;align-items:center;padding:28px 32px;border:1px solid #E4EAE6;border-radius:24px;background:#FFFFFF;box-shadow:0 18px 44px rgba(16,24,40,.07);margin:0 !important;}
+  #view-index .nf20-sp[hidden]{display:none !important;}
+  #view-index .nf20-sp.on{animation:nf20in .35s ease;}
+  @keyframes nf20in{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+  #view-index .nf20-sp .f4-spot-t{order:0;} #view-index .nf20-sp .f4-art{order:1;margin:0;}
+  #view-index .nf20-sp h3{font-size:30px;line-height:1.15;margin:0 0 10px;}
+  @media (prefers-reduced-motion: reduce){ #view-index .nf20-sp.on{animation:none;} }
+  @media (max-width:900px){
+    #view-index .nf20-stabs{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;margin:4px -16px 18px;padding:0 16px 4px;scrollbar-width:none;}
+    #view-index .nf20-stabs::-webkit-scrollbar{display:none;}
+    #view-index .nf20-stabs button{flex:none;}
+    #view-index .nf20-sp{grid-template-columns:minmax(0,1fr);gap:22px;padding:20px 16px;border-radius:20px;}
+    #view-index .nf20-sp h3{font-size:24px;}
+    #view-index .nf20-how{padding:40px 0 16px;}
+  }
+
+/* ===== Round 20 css end ===== */
   .settings-card:empty{display:none;}
   #supplierChips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;} #supplierChips .chip{flex-shrink:0;}
 </style>
@@ -9733,7 +9963,7 @@ async function handleSignIn(){
   if(errEl) errEl.textContent = '';
   if(!email || !password){ if(errEl) errEl.textContent = 'Enter your email and password.'; return; }
   const { error } = await sb.auth.signInWithPassword({ email, password });
-  if(error){ if(errEl) errEl.textContent = error.message; return; }
+  if(error){ if(errEl){ try{ nf20SignInError(errEl, error); }catch(e){ errEl.textContent = error.message; } } return; }
   const ok = await loadMyBusinessContext();
   if(!ok){ if(errEl) errEl.textContent = "Signed in, but couldn't find your business account. Contact support."; return; }
   // A full reload (rather than continuing in this tab) sends this through bootNifti()'s own
@@ -28622,6 +28852,392 @@ function nf19AfterBoot(){
   const start = () => { if(!document.querySelector('.sidebar .nav-group')) return setTimeout(start, 300); nf19Menu();
     try{ const a = document.querySelector('#view-app .app-page.active'); if(a) nf19Active(a.id.slice(5)); }catch(e){} };
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
+})();
+
+/* ===== Round 20 ===== */
+
+/* ---------- 1. Signing in: say what went wrong in plain words ---------- */
+// The browser fills in a password saved for another app on the same web address, and Nifti answered
+// with Supabase's own "Invalid login credentials". Now it says what that means and what to do next.
+function nf20SignInError(el, error){
+  const m = String((error && error.message) || error || '');
+  if(/invalid login credentials/i.test(m)){
+    el.innerHTML = `No Nifti account uses that email and password. If your browser filled them in, they may be saved from another app. `
+      + `<a onclick="nf20ToSignup()" style="cursor:pointer;text-decoration:underline;">Create a Nifti account</a> or <a onclick="toggleAccountRecovery()" style="cursor:pointer;text-decoration:underline;">reset your password</a>.`;
+    return;
+  }
+  if(/email not confirmed/i.test(m)){ el.textContent = 'Open the email we sent you and tap the link first, then sign in.'; return; }
+  if(/failed to fetch|network/i.test(m)){ el.textContent = "Can't reach Nifti right now. Check your internet and try again."; return; }
+  el.textContent = m;
+}
+function nf20ToSignup(){ const b = document.querySelectorAll('#view-login .tabs button')[1]; if(b && typeof setLoginTab === 'function') setLoginTab('signup', b); }
+
+/* ---------- 2. The owner's left menu: every page, in groups you can fold ---------- */
+const NF20_GROUPS = [
+  {k: 'main', label: '', items: [['dashboard', 'Home'], ['orders', 'Orders'], ['messages', 'Messages'], ['inventory', 'Stock']]},
+  {k: 'money', label: 'Money', items: [['money', 'Money overview'], ['sales', 'Counter'], ['expenses', 'Expenses'], ['collections', 'Getting paid'], ['profit', 'Prices'], ['issues', 'To check'], ['payroll', 'Payroll'], ['ledger', 'Books']]},
+  {k: 'sell', label: 'Selling & delivery', items: [['followups', 'Follow-ups'], ['routes', 'Deliveries'], ['returns', 'Returns & credits'], ['store', 'Online store'], ['discover', 'Find customers']]},
+  {k: 'more', label: 'Checks, taxes & team', items: [['cheques', 'Checks'], ['books', 'Tax books'], ['taxforms', 'BIR 2307s'], ['team', 'Team']]}
+];
+const NF20_PAGES = NF20_GROUPS.flatMap(g => g.items.map(x => x[0]));
+// pages that were folded into another page go with it
+const NF20_PARENT = {cashcount: 'sales', prices: 'profit', watchdog: 'issues', analytics: 'money', close: 'ledger', suppliers: 'orders', invite: 'orders'};
+const NF20_FOLD_KEY = 'nifti-menu-fold';
+function nf20Folded(){ try{ return JSON.parse(localStorage.getItem(NF20_FOLD_KEY) || '{}') || {}; }catch(e){ return {}; } }
+function nf20Fold(k){ const f = nf20Folded(); f[k] = !f[k]; try{ localStorage.setItem(NF20_FOLD_KEY, JSON.stringify(f)); }catch(e){}
+  const g = document.querySelector('.sidebar .nf20-g[data-g="' + k + '"]'); if(g){ g.classList.toggle('folded', !!f[k]); const h = g.querySelector('.nf20-h'); if(h) h.setAttribute('aria-expanded', String(!f[k])); } }
+function nf20IsOwner(){ try{ return getCurrentUserRoles().includes('Owner'); }catch(e){ return true; } }
+function nf20Menu(){
+  const sb = document.querySelector('.sidebar'); if(!sb) return;
+  let box = sb.querySelector('.nf19-nav');
+  if(!box){ const firstGroup = sb.querySelector('.nav-group'); if(!firstGroup) return;
+    box = document.createElement('div'); box.className = 'nav-group nf19-nav'; firstGroup.parentElement.insertBefore(box, firstGroup); }
+  const want = 'nf20:' + NF20_PAGES.join(',');
+  if(box.dataset.k !== want){
+    const folded = nf20Folded();
+    const keep = [...box.querySelectorAll('.nav-item[data-page]')];
+    box.innerHTML = ''; box.classList.add('nf20-nav');
+    NF20_GROUPS.forEach(g => {
+      const wrap = document.createElement('div'); wrap.className = 'nf20-g' + (folded[g.k] && g.label ? ' folded' : ''); wrap.dataset.g = g.k;
+      if(g.label){ const h = document.createElement('button'); h.type = 'button'; h.className = 'heading nf19-h nf20-h'; h.setAttribute('aria-expanded', String(!folded[g.k]));
+        h.innerHTML = `<span>${g.label}</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>`;
+        h.onclick = () => nf20Fold(g.k); wrap.appendChild(h); }
+      const list = document.createElement('div'); list.className = 'nf20-gi';
+      g.items.forEach(([p, label]) => {
+        const it = keep.find(x => x.dataset.page === p && !x.closest('.nf20-gi')) || [...sb.querySelectorAll('.nav-item[data-page="' + p + '"]')].find(x => !x.closest('.nf20-gi'));
+        if(!it) return;
+        it.classList.remove('nf18-off'); it.classList.add('nf19-on');
+        // "Bank & deposits" also says data-page="collections"; only the real Getting paid line goes in
+        if(p === 'collections' && /colTab/.test(it.getAttribute('onclick') || '')) return;
+        const span = it.querySelector('span:not(.nav-badge)'); if(span) span.textContent = label;
+        list.appendChild(it);
+      });
+      wrap.appendChild(list); box.appendChild(wrap);
+    });
+    const who = document.createElement('button'); who.type = 'button'; who.className = 'nf20-who'; who.id = 'nf20WhoLink';
+    who.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M17 11l2 2 3.5-3.5"/></svg><span>Who sees what</span>`;
+    who.onclick = () => nf20OpenWho(); box.appendChild(who);
+    box.dataset.k = want;
+  }
+  sb.querySelectorAll('.nav-item[data-page]').forEach(n => { const on = !!n.closest('.nf20-gi'); if(n.classList.contains('nf18-off') === on) n.classList.toggle('nf18-off', !on); });
+  sb.querySelectorAll('.heading, .nav-fold').forEach(h => { const on = !!h.closest('.nf19-nav'); if(h.classList.contains('nf18-off') === on) h.classList.toggle('nf18-off', !on); });
+  nf20MenuRoles();
+}
+// a staff member only sees their own pages; a group with nothing in it hides its heading too
+function nf20MenuRoles(){
+  document.querySelectorAll('.sidebar .nf20-g').forEach(g => {
+    const any = [...g.querySelectorAll('.nav-item[data-page]')].some(n => n.style.display !== 'none');
+    if(g.classList.contains('nf20-empty') === any) g.classList.toggle('nf20-empty', !any);
+  });
+  const who = document.getElementById('nf20WhoLink'); let show = true;
+  try{ show = isPrivilegedUser() && !previewRole; }catch(e){}
+  if(who && who.hidden === show) who.hidden = !show;
+}
+function nf20Active(page){
+  const target = NF20_PAGES.includes(page) ? page : (NF20_PARENT[page] || page);
+  document.querySelectorAll('.sidebar .nav-item[data-page]').forEach(n => { const on = n.classList.contains('nf19-on') && n.dataset.page === target; if(n.classList.contains('active') !== on) n.classList.toggle('active', on); });
+  const hub = (typeof nf18HubOf === 'function' && nf18HubOf(page)) || page;
+  document.querySelectorAll('#bottomNav .bnav-item[data-page]').forEach(n => { const on = n.dataset.page === hub; if(n.classList.contains('active') !== on) n.classList.toggle('active', on); });
+  // an open group follows you: if you land on a page inside a folded group, the group opens
+  const it = document.querySelector('.sidebar .nf20-g.folded .nav-item.active'); if(it){ const g = it.closest('.nf20-g'); if(g) nf20Fold(g.dataset.g); }
+}
+
+/* ---------- 3. Who sees what: the owner picks every page each role can open ---------- */
+// The roles were already there (Owner, General Manager, Purchasing Agent, Warehouse Manager, Cashier,
+// Finance, Driver, Viewer, plus your own), but the pages each one sees were fixed in the code and the
+// "preview" lived in a menu nobody found. Now it's one panel: pick a role, switch pages on or off,
+// and see Nifti exactly as they would.
+const NF20_ALSO = {sales: ['cashcount'], profit: ['prices'], issues: ['watchdog'], money: ['analytics'], ledger: ['close'], orders: ['suppliers', 'invite']};
+const NF20_RP = () => 'nifti-role-pages-' + ((typeof myBusiness !== 'undefined' && myBusiness && myBusiness.id) || 'demo');
+const NF20W = {role: null};
+function nf20LoadRolePages(){
+  try{ const o = JSON.parse(localStorage.getItem(NF20_RP()) || 'null'); if(!o) return;
+    Object.entries(o).forEach(([r, pages]) => { if(r !== 'Owner' && r in ROLE_PERMISSIONS && Array.isArray(pages)) ROLE_PERMISSIONS[r] = pages; }); }catch(e){}
+}
+function nf20SaveRolePages(){
+  const o = {}; Object.keys(ROLE_PERMISSIONS).forEach(r => { if(r !== 'Owner' && Array.isArray(ROLE_PERMISSIONS[r])) o[r] = ROLE_PERMISSIONS[r]; });
+  try{ localStorage.setItem(NF20_RP(), JSON.stringify(o)); }catch(e){}
+}
+function nf20Roles(){ try{ return getAllRoleNames().filter(r => r !== 'Owner'); }catch(e){ return []; } }
+function nf20RolePages(role){ const a = getRoleAllowedPages(role); return a === null ? null : (a || []); }
+function nf20Has(role, p){ const a = nf20RolePages(role); return a === null || a.includes(p); }
+function nf20People(role){ try{ return getActiveTeamMembers().filter(m => (m.roles || []).includes(role)).map(m => String(m.name || '').replace(/\s*\(You\)\s*/, '')); }catch(e){ return []; } }
+function nf20OpenWho(role){
+  if(typeof closeUserMenu === 'function') try{ closeUserMenu(); }catch(e){}
+  const roles = nf20Roles(); NF20W.role = role || NF20W.role || roles.find(r => r === 'Cashier') || roles[0];
+  let ov = document.getElementById('nf20Who');
+  if(!ov){ ov = document.createElement('div'); ov.id = 'nf20Who'; ov.className = 'nf20-ov'; ov.setAttribute('role', 'dialog'); ov.setAttribute('aria-modal', 'true'); ov.setAttribute('aria-label', 'Who sees what');
+    ov.addEventListener('click', e => { if(e.target === ov) nf20CloseWho(); }); document.body.appendChild(ov); }
+  ov.hidden = false; document.body.classList.add('nf20-noscroll'); nf20PaintWho();
+}
+function nf20CloseWho(){ const ov = document.getElementById('nf20Who'); if(ov) ov.hidden = true; document.body.classList.remove('nf20-noscroll'); }
+function nf20PaintWho(){
+  const ov = document.getElementById('nf20Who'); if(!ov) return;
+  const roles = nf20Roles(), role = NF20W.role, owner = nf20IsOwner(), all = nf20RolePages(role) === null;
+  const people = nf20People(role), custom = (customRoles || []).some(r => r.name === role);
+  const count = NF20_PAGES.filter(p => nf20Has(role, p)).length;
+  const row = ([p, label]) => { const on = nf20Has(role, p), lock = p === 'dashboard';
+    return `<label class="nf20-pr${lock ? ' lock' : ''}"><span>${label}${lock ? '<small>Everyone has Home</small>' : ''}</span>
+      <input type="checkbox" role="switch" ${on ? 'checked' : ''} ${lock || !owner ? 'disabled' : ''} onchange="nf20Toggle('${p}', this.checked)"><i aria-hidden="true"></i></label>`; };
+  ov.innerHTML = `<div class="nf20-sheet">
+    <div class="nf20-sh"><div><h2>Who sees what</h2><p>You're the owner, so you always see every page. Pick a role, then switch pages on or off for them.</p></div>
+      <button type="button" class="nf20-x" onclick="nf20CloseWho()" aria-label="Close">✕</button></div>
+    <div class="nf20-roles" role="tablist">${roles.map(r => `<button type="button" role="tab" class="${r === role ? 'on' : ''}" aria-selected="${r === role}" onclick="NF20W.role='${r.replace(/'/g, "\\'")}'; nf20PaintWho()">${escapeHtml(r)}<b>${NF20_PAGES.filter(p => nf20Has(r, p)).length}</b></button>`).join('')}
+      ${owner ? `<button type="button" class="nf20-newrole" onclick="nf20NewRole()">+ New role</button>` : ''}</div>
+    <div class="nf20-rc">
+      <div class="nf20-rch"><div><b>${escapeHtml(role || '')}</b><small>${people.length ? `${people.length} ${people.length === 1 ? 'person' : 'people'}: ${people.map(escapeHtml).join(', ')}` : 'Nobody has this role yet'} · sees ${count} of ${NF20_PAGES.length} pages</small></div>
+        <button type="button" class="btn btn-outline" onclick="nf20Preview('${(role || '').replace(/'/g, "\\'")}')">See Nifti as ${/^[AEIOU]/i.test(role || '') ? 'an' : 'a'} ${escapeHtml(role || '')}</button></div>
+      ${all ? `<p class="nf20-note">This role sees everything, like you. Switch a page off to hide it from them.</p>` : ''}
+      <div class="nf20-pg">${NF20_GROUPS.map(g => `<section><h3>${g.label || 'Main pages'}</h3>${g.items.map(row).join('')}</section>`).join('')}</div>
+      <div class="nf20-quick">${owner ? `<button type="button" class="nf20-lnk" onclick="nf20SetAll(true)">Turn all on</button><button type="button" class="nf20-lnk" onclick="nf20SetAll(false)">Turn all off</button>${custom ? `<button type="button" class="nf20-lnk bad" onclick="nf20RemoveRole()">Remove this role</button>` : ''}` : '<span>Only the owner can change these.</span>'}</div>
+    </div>
+    <div class="nf20-sf"><span>${myBusiness ? 'Changes save as you tap (prototype: saved on this device until staff accounts sync).' : 'Changes save as you tap.'}</span><button type="button" class="btn btn-primary" onclick="nf20CloseWho()">Done</button></div>
+  </div>`;
+  const rr = ov.querySelector('.nf20-roles'), on = rr && rr.querySelector('button.on');
+  if(on && rr.scrollWidth > rr.clientWidth) rr.scrollLeft = Math.max(0, on.offsetLeft - rr.offsetLeft - 16);
+}
+async function nf20Store(role, pages){
+  const c = (customRoles || []).find(r => r.name === role);
+  if(c){ c.allowedPages = pages;
+    if(myBusiness && c.rowId){ try{ const {error} = await sb.from('custom_roles').update({allowed_pages: pages}).eq('id', c.rowId); if(error) throw error; }catch(e){ showToast("Couldn't save that change. Try again.", 'error'); } } }
+  else { ROLE_PERMISSIONS[role] = pages; nf20SaveRolePages(); }
+  try{ logAudit('role_pages_changed', 'role', role, 'allowedPages', null, pages.join(', ')); }catch(e){}
+  try{ renderSidebarForViewAsRole(); }catch(e){}
+}
+function nf20Expand(p){ return [p, ...(NF20_ALSO[p] || [])]; }
+function nf20Toggle(p, on){
+  if(!nf20IsOwner()) return;
+  const role = NF20W.role, cur = nf20RolePages(role);
+  let pages = cur === null ? NF20_PAGES.flatMap(nf20Expand).concat(['settings']) : cur.slice();
+  pages = pages.filter(x => !nf20Expand(p).includes(x)); if(on) pages.push(...nf20Expand(p));
+  if(!pages.includes('dashboard')) pages.unshift('dashboard');
+  nf20Store(role, [...new Set(pages)]); nf20PaintWho();
+}
+function nf20SetAll(on){ if(!nf20IsOwner()) return; nf20Store(NF20W.role, on ? [...new Set(NF20_PAGES.flatMap(nf20Expand))] : ['dashboard']); nf20PaintWho(); }
+async function nf20NewRole(){
+  const name = (prompt('Name the new role, e.g. Chat Manager or Helper') || '').trim(); if(!name) return;
+  if(getAllRoleNames().some(r => r.toLowerCase() === name.toLowerCase())){ showToast('A role with that name already exists.'); return; }
+  const pages = ['dashboard', 'messages'];
+  if(myBusiness){ const {data, error} = await sb.from('custom_roles').insert({business_id: myBusiness.id, name, allowed_pages: pages}).select().single();
+    if(error){ showToast("Couldn't create that role. Try again.", 'error'); return; } customRoles.push({name: data.name, allowedPages: data.allowed_pages, rowId: data.id}); }
+  else customRoles.push({name, allowedPages: pages});
+  try{ logAudit('custom_role_created', 'role', name, 'allowedPages', null, pages.join(', ')); renderCustomRolesList(); }catch(e){}
+  NF20W.role = name; nf20PaintWho(); showNotificationToast(`"${name}" made. It starts with Home and Messages; switch on what they need.`);
+}
+function nf20RemoveRole(){ const r = NF20W.role; if(!confirm(`Remove the "${r}" role? Anyone who has it keeps their other roles.`)) return;
+  Promise.resolve(removeCustomRole(r)).then(() => { NF20W.role = null; nf20PaintWho(); }); }
+function nf20Preview(role){ nf20CloseWho(); try{ setPreviewRole(role); }catch(e){} nf20Banner(); }
+function nf20ExitPreview(){ try{ previewRole = null; renderSidebarForViewAsRole(); renderViewAsRoleMenu(); }catch(e){} nf20Banner(); nf20MenuRoles();
+  const a = document.querySelector('#view-app .app-page.active'); try{ navigate(a ? a.id.slice(5) : 'dashboard'); }catch(e){} showNotificationToast('Back to your own view.'); }
+function nf20Banner(){
+  let b = document.getElementById('nf20Prev'); let role = null; try{ role = previewRole; }catch(e){}
+  if(!role){ if(b) b.remove(); document.body.classList.remove('nf20-previewing'); return; }
+  if(!b){ b = document.createElement('div'); b.id = 'nf20Prev'; b.className = 'nf20-prev'; document.body.appendChild(b); }
+  b.innerHTML = `<span>You're seeing Nifti as ${/^[AEIOU]/i.test(role) ? 'an' : 'a'} <b>${escapeHtml(role)}</b>. Only their pages show.</span><button type="button" onclick="nf20OpenWho('${role.replace(/'/g, "\\'")}')">Change their pages</button><button type="button" class="on" onclick="nf20ExitPreview()">Back to my view</button>`;
+  document.body.classList.add('nf20-previewing'); nf20MenuRoles();
+}
+
+/* ---------- 4. Tabs on top: a coloured band with the section name and big pills ---------- */
+const NF20_HUB_ICON = {orders: 'orders', messages: 'messages', money: 'money'};
+function nf20Icon(page){ const s = document.querySelector('.sidebar .nav-item[data-page="' + page + '"] svg'); return s ? s.outerHTML : ''; }
+function nf20HubHtml(page){
+  const hub = nf18HubOf(page), H = hub && NF18_HUBS[hub]; if(!H || !H.tabs) return '';
+  const cur = nf18TabOf(page);
+  const tabs = H.tabs.filter(([p]) => { try{ return isPageAllowedForViewAsRole(p); }catch(e){ return true; } });
+  if(tabs.length < 2) return '';
+  let html = `<div class="nf20-band"><div class="nf20-bk"><span class="nf20-bi">${nf20Icon(NF20_HUB_ICON[hub] || hub)}</span><div><b>${H.label}</b><small>${tabs.length} pages here</small></div></div>`
+    + `<nav class="nf18-hub nf20-pills" aria-label="${H.label} pages">${tabs.map(([p, l]) => `<button type="button" class="${p === cur ? 'on' : ''}" aria-current="${p === cur ? 'page' : 'false'}" onclick="go('${p}')">${l}</button>`).join('')}</nav>`;
+  const sub = Object.values(NF18_SUB).find(s => s.pages.includes(page));
+  if(sub){ const on = page === 'cheques' ? 'cheques' : page === 'collections' ? ((typeof colTab !== 'undefined' && colTab === 'cash') ? 'cash' : 'follow') : page;
+    const st = sub.tabs.filter(([k]) => { const p = sub === NF18_SUB.paid ? (k === 'cheques' ? 'cheques' : 'collections') : k; try{ return isPageAllowedForViewAsRole(p); }catch(e){ return true; } });
+    if(st.length > 1) html += `<nav class="nf18-sub nf20-subp" aria-label="More"><em>In ${escapeHtml((H.tabs.find(t => t[0] === cur) || [])[1] || '')}:</em>${st.map(([k, l]) => `<button type="button" class="${k === on ? 'on' : ''}" onclick="${sub === NF18_SUB.paid ? `nf18GoPaid('${k}')` : `go('${k}')`}">${l}</button>`).join('')}</nav>`; }
+  return html + '</div>';
+}
+
+/* ---------- 5. Orders: customers on the left, suppliers on the right, no switching ---------- */
+const NF20_ARROW = {c: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>', s: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M17 7 7 17M16 17H7V8"/></svg>'};
+function nf20ColMoney(sell, rows){
+  const ids = [...new Set(rows.map(r => r.pid))]; let sum = 0;
+  ids.forEach(id => { try{ const p = nfoPerson(sell, id, ''); sum += (p.owe || 0) + (sell ? (p.unbilled || 0) : 0); }catch(e){} });
+  return sum;
+}
+function nf20Idle(sell, all){
+  const busy = new Set(all.filter(r => r.sell === sell).map(r => r.pid)), q = NFO.q.trim().toLowerCase();
+  const list = ((sell ? buyersData : suppliersData) || []).filter(s => !busy.has(s.id) && (!q || String(s.name || '').toLowerCase().includes(q)));
+  const row = s => { let p = {}; try{ p = nfoPerson(sell, s.id, s.name); }catch(e){}
+    return `<div class="nfo-pp"><span class="nfo-ppa">${nfoAv(s.name)}</span><div class="nfo-ppm"><div class="nm"><b>${nfoE(s.name)}</b></div><div class="fx">${[s.category ? nfoE(s.category) : '', nfoFacts(p, sell)].filter(Boolean).join(' · ')}</div></div>
+      <div class="nfo-ppb">${s.isOutside ? `<button type="button" class="btn btn-outline btn-sm" onclick="currentAppRole='${sell ? 'supplier' : 'buyer'}'; resendInvite('${s.id}')">Invite to Nifti</button>` : `<button type="button" class="btn btn-outline btn-sm" onclick="nfoChat('${s.id}', ${sell})">Message</button>`}
+        <button type="button" class="btn btn-outline btn-sm" onclick="nfoNew(${sell}, '${s.id}')">New order</button></div></div>`; };
+  return `<div class="nf20-idle"${sell ? ' id="nfoPeople"' : ''}><div class="nf20-ih"><b>No open orders</b><button type="button" class="nfc-link" onclick="nfoInvite(${sell})">+ Invite ${sell ? 'a customer' : 'a supplier'}</button></div>
+    ${list.length ? list.map(row).join('') : `<p class="nfo-none">Every ${sell ? 'customer' : 'supplier'} has an order going.</p>`}</div>`;
+}
+function nf20Col(sell, all, vis){
+  const k = sell ? 'c' : 's', mine = vis.filter(r => r.sell === sell), G = nfoGroups(mine), money = nf20ColMoney(sell, all.filter(r => r.sell === sell));
+  const ppl = new Set(mine.map(r => r.pid)).size;
+  const bands = NFO_BANDS.map(([b, h]) => { const g = G.filter(x => x.band === b); if(!g.length) return '';
+    return `<div class="nfo-band b-${b}"><span>${h}</span><b>${mine.filter(r => r.band === b).length}</b></div>${typeof nfoCapGroups === 'function' ? nfoCapGroups(b, g) : g.map(nfoGroupHtml).join('')}`; }).join('');
+  return `<section class="nf20-col ${k}" id="nf20Col${k.toUpperCase()}">
+    <header class="nf20-ch"><span class="nf20-ci">${NF20_ARROW[k]}</span><div class="nf20-ct"><b>${sell ? 'Selling to customers' : 'Buying from suppliers'}</b><small>${mine.length} order${mine.length === 1 ? '' : 's'} · ${ppl} ${sell ? (ppl === 1 ? 'customer' : 'customers') : (ppl === 1 ? 'supplier' : 'suppliers')}</small></div>
+      <div class="nf20-cm"><b>${nfoPeso(money)}</b><small>${sell ? 'owed to you' : 'you owe'}</small></div>
+      <button type="button" class="btn btn-sm nf20-new" onclick="nfoNew(${sell})">+ New order</button></header>
+    <div class="nfo-card">${bands || `<div class="nfo-empty">${NFO.q || NFO.band ? 'Nothing matches here.' : `No ${sell ? 'customer' : 'supplier'} orders going.`} <button type="button" onclick="nfoNew(${sell})">+ New order</button></div>`}</div>
+    ${nf20Idle(sell, all)}
+  </section>`;
+}
+function nf20Jump(k){ const el = document.getElementById('nf20Col' + k.toUpperCase()); if(el) el.scrollIntoView({behavior: 'smooth', block: 'start'}); }
+function nf20OrdersPaint(){
+  const host = document.getElementById('nfOrd'); if(!host) return;
+  NFO.side = 'all';
+  const all = nfoAll(), seen = all.filter(nfoMatch), vis = seen.filter(r => !NFO.band || r.band === NFO.band);
+  const st = document.getElementById('nfoStats');
+  if(st) st.innerHTML = NFO_BANDS.map(([b, l]) => { const rs = seen.filter(r => r.band === b), sum = rs.reduce((a, r) => a + (Number(r.amt) || 0), 0);
+    return `<button type="button" class="nfo-st s-${b}${NFO.band === b ? ' on' : ''}" aria-pressed="${NFO.band === b}" onclick="nfoSet('band','${b}')"><span class="k"><i></i>${l}</span><span class="ln"><b>${rs.length}<span> order${rs.length === 1 ? '' : 's'}</span></b><em${rs.length ? '' : ' class="z"'}>${rs.length ? nfoPeso(sum) : 'Nothing'}</em></span></button>`; }).join('');
+  const jp = document.getElementById('nf20Jump');
+  if(jp) jp.innerHTML = `<button type="button" class="c" onclick="nf20Jump('c')">${NF20_ARROW.c}Customers <b>${vis.filter(r => r.sell).length}</b></button><button type="button" class="s" onclick="nf20Jump('s')">${NF20_ARROW.s}Suppliers <b>${vis.filter(r => !r.sell).length}</b></button>`;
+  const body = document.getElementById('nfoBody');
+  if(body) body.innerHTML = `<div class="nf20-cols">${nf20Col(true, all, vis)}${nf20Col(false, all, vis)}</div>
+    <div class="nfo-key"><span><i class="k-red"></i>Late or today: do it now</span><span><i class="k-yel"></i>Coming up</span><span><i class="k-blue"></i>Waiting on them</span><span><i class="k-green"></i>Done</span><span><i class="k-today"></i>Today</span></div>`;
+  const pp = document.getElementById('nfoPeopleWrap'); if(pp) pp.innerHTML = '';
+}
+function nf20OrdersRender(){
+  const pg = document.getElementById('page-orders'); if(!pg) return;
+  pg.classList.add('nfo-on', 'nf20-two'); pg.classList.toggle('nfo-table', NFO.table);
+  let host = document.getElementById('nfOrd'); if(!host){ host = document.createElement('div'); host.id = 'nfOrd'; const hw = pg.querySelector(':scope > .nf18-hubwrap'); pg.insertBefore(host, hw ? hw.nextSibling : pg.firstChild); }
+  const a = document.activeElement, typing = a && a.id === 'nfoQ', pos = typing ? a.selectionStart : 0;
+  const t = new Date(APP_TODAY + 'T00:00:00').toLocaleDateString('en-PH', {weekday: 'short', month: 'short', day: 'numeric'});
+  const html = `<div class="nfo-top"><div><h1>Orders</h1><p>Customers on the left, suppliers on the right. Today is <b>${t}</b>.</p></div></div>
+    <div class="nfo-stats" id="nfoStats"></div>
+    <div class="nfo-flt nf20-flt"><label class="nfo-q"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="nfoQ" type="search" placeholder="Search name, order # or item" value="${nfoE(NFO.q)}" autocomplete="off" oninput="NFO.q=this.value; nfoPaint()"></label></div>
+    <div class="nf20-jump" id="nf20Jump"></div>
+    <div id="nfoBody"></div>
+    <div id="nfoPeopleWrap"></div>
+    <button type="button" class="nfo-tbl" id="nfoTblBtn" onclick="nfoTable()">${NFO.table ? 'Hide the table' : 'See every order in a table, with filters and export'}</button>`;
+  host.innerHTML = html;
+  nf20OrdersPaint();
+  if(typing){ const q = document.getElementById('nfoQ'); if(q){ q.focus(); try{ q.setSelectionRange(pos, pos); }catch(e){} } }
+}
+
+/* ---------- 6. Tables inside a half: clean cards (label left, value right, buttons on their own line) ---------- */
+function nf20Cells(){
+  document.querySelectorAll('#view-app .nf-half table.nf-cardtable tbody td').forEach(td => {
+    if(td.dataset.nf20) return; td.dataset.nf20 = '1';
+    const act = !!td.querySelector('button, .btn, .row-action, a.sl-link');
+    const txt = td.textContent.replace(/\s+/g, ' ').trim();
+    if(act && td === td.parentElement.lastElementChild) td.classList.add('nf20-act');
+    else if(!txt || txt === '—' || txt === '-') td.classList.add('nf20-none');
+  });
+}
+
+/* ---------- 7. The landing page: shorter, with one "see it in action" showcase ---------- */
+// It was 9 long blocks of features, each with a Free or Pro badge. Now: what it is, how it works,
+// one showcase you can click through, before and after, questions, and the button to try it.
+const NF20_SHOW = [
+  ['Orders from any chat', 'Orders from chat', 'chat'], ['Know exactly who owes you', 'Who owes you', 'peso'], ['Routes your drivers', 'Driver routes', 'truck'],
+  ['Cheques you never miss', 'Checks', 'check'], ['Order from every supplier', 'Buying', 'cart'], ['Know when staff overpay', 'Staff overspending', 'shield'],
+  ['Your own store', 'Your own store', 'store'], ['__books', 'Books', 'book']
+];
+const NF20_SICON = {
+  chat: '<path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.6 8.6 0 0 1-3.8-.9L3 21l1.9-5.2A8.4 8.4 0 1 1 21 11.5z"/>',
+  peso: '<path d="M7 20V4h6a4 4 0 0 1 0 8H7"/><path d="M4 8h16M4 11h16"/>',
+  truck: '<rect x="1" y="7" width="13" height="10" rx="1"/><path d="M14 10h4l3 3v4h-7"/><circle cx="5.5" cy="18" r="1.8"/><circle cx="17.5" cy="18" r="1.8"/>',
+  check: '<rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 14h6M15 14h3M6 10h12"/>',
+  cart: '<circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l2.7 12.4a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6L21 8H6"/>',
+  shield: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/>',
+  store: '<path d="M3 9l1.5-5h15L21 9"/><path d="M4 9v11h16V9"/><path d="M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0"/>',
+  book: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z"/><path d="M8 7h8M8 11h6"/>'
+};
+const NF20S = {i: 0, t: 0, stop: false};
+function nf20BooksPanel(){
+  return `<div class="f4-spot-t"><h3>Books that keep themselves</h3><p>Every sale, expense and payment lands in proper books. You always know your profit, your cash, and what to check.</p>
+    <ul class="m2-ticks"><li>Counter sales and expenses with a receipt photo</li><li>Cash short, missing stock and odd bills flagged, each with the reason</li><li>Profit and loss, ready for your accountant</li></ul>
+    <div class="f4-out"><b>₱38,400</b><span>real profit this month, not a guess</span></div></div>
+  <div class="f4-art green"><div class="f4-main"><div class="mk-stack">
+    <div class="mk-bigstat"><small>PROFIT THIS MONTH</small><b>₱38,400</b><span>Sales ₱212,000 · costs ₱173,600</span></div>
+    <div class="mk-owe"><div><b>Cash count, Tuesday</b><small>₱450 short · counted by Joy</small></div><span class="mk-btnsm p">Check</span></div>
+    <div class="mk-owe"><div><b>Electric bill</b><small>32% higher than usual</small></div><span class="mk-btnsm">See why</span></div>
+    <div class="mk-owe"><div><b>August books</b><small>closed · sent to accountant</small></div><span class="mk-green">✓</span></div>
+  </div></div></div>`;
+}
+function nf20Landing(){
+  const v = document.getElementById('view-index'), pick = document.getElementById('mkPick');
+  if(!v || !pick || v.dataset.nf20) return;
+  const spots = [...pick.querySelectorAll('.f4-spot')], find = t => spots.find(s => { const h = s.querySelector('h3'); return h && h.textContent.indexOf(t) === 0; });
+  const panels = NF20_SHOW.map(([t, label, ic]) => {
+    let inner = '';
+    if(t === '__books') inner = nf20BooksPanel();
+    else { const s = find(t); if(!s) return null; const c = s.cloneNode(true);
+      c.querySelectorAll('.m2-badge').forEach(b => b.remove());
+      c.querySelectorAll('.m2-ticks li').forEach(li => { li.textContent = li.textContent.replace(/\s*\(Pro\)\s*$/i, ''); });
+      inner = c.innerHTML; }
+    return {label, ic, inner};
+  }).filter(Boolean);
+  // How it works: keep the 3 steps and the 3 numbers
+  const sell = document.getElementById('mkSell');
+  const how = document.createElement('section'); how.className = 'nf20-how'; how.id = 'mkHowItWorks';
+  const wrap = document.createElement('div'); wrap.className = 'wrap'; how.appendChild(wrap);
+  if(sell){ const h = sell.querySelector('.f5-head'), f = sell.querySelector('.h4-flow'), n = sell.querySelector('.h4-facts'); [h, f, n].forEach(x => { if(x) wrap.appendChild(x); }); }
+  const show = document.createElement('section'); show.className = 'nf20-show'; show.id = 'mkShow';
+  show.innerHTML = `<div class="wrap"><div class="f5-head"><div class="p2-burst">SEE IT IN ACTION</div><h2>Everything between the order <span>and the payment.</span></h2><p>Selling, buying and your books, in one app. Tap any of these.</p></div>
+    <div class="nf20-stabs" role="tablist" aria-label="Features">${panels.map((p, i) => `<button type="button" role="tab" id="nf20St${i}" aria-controls="nf20Sp${i}" aria-selected="${i === 0}" class="${i === 0 ? 'on' : ''}" onclick="nf20ShowGo(${i}, true)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${NF20_SICON[p.ic]}</svg><span>${p.label}</span><i></i></button>`).join('')}</div>
+    <div class="nf20-stage">${panels.map((p, i) => `<div class="f4-spot nf20-sp${i === 0 ? ' on' : ''}" role="tabpanel" id="nf20Sp${i}" aria-labelledby="nf20St${i}"${i === 0 ? '' : ' hidden'}>${p.inner}</div>`).join('')}</div></div>`;
+  pick.replaceWith(how); how.after(show);
+  const free = document.getElementById('mkFree'); if(free) free.remove();
+  v.dataset.nf20 = '1';
+  let reduce = false; try{ reduce = matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){}
+  if(!reduce) nf20ShowTimer();
+  show.addEventListener('pointerenter', () => { clearTimeout(NF20S.t); }); show.addEventListener('pointerleave', () => { if(!NF20S.stop && !reduce) nf20ShowTimer(); });
+}
+function nf20ShowTimer(){ clearTimeout(NF20S.t); NF20S.t = setTimeout(() => { const v = document.getElementById('view-index'); if(NF20S.stop) return;
+  if(v && !v.classList.contains('hidden')){ const n = document.querySelectorAll('#mkShow .nf20-sp').length; nf20ShowGo((NF20S.i + 1) % n); } nf20ShowTimer(); }, 7000); }
+function nf20ShowGo(i, user){
+  NF20S.i = i; if(user){ NF20S.stop = true; clearTimeout(NF20S.t); }
+  document.querySelectorAll('#mkShow .nf20-stabs button').forEach((b, k) => { b.classList.toggle('on', k === i); b.setAttribute('aria-selected', String(k === i)); });
+  document.querySelectorAll('#mkShow .nf20-sp').forEach((p, k) => { p.hidden = k !== i; p.classList.toggle('on', k === i); });
+  const b = document.getElementById('nf20St' + i), row = b && b.parentElement; if(row && row.scrollWidth > row.clientWidth) row.scrollTo({left: Math.max(0, b.offsetLeft - row.offsetLeft - 24), behavior: user ? 'smooth' : 'auto'});
+}
+
+/* ---------- wiring ---------- */
+(function(){
+  try{ nf20LoadRolePages(); }catch(e){}
+  try{ nf19Menu = nf20Menu; window.nf19Menu = nf20Menu; }catch(e){}
+  try{ nf19Active = nf20Active; window.nf19Active = nf20Active; nf18Active = nf20Active; window.nf18Active = nf20Active; }catch(e){}
+  try{ nf18HubHtml = nf20HubHtml; window.nf18HubHtml = nf20HubHtml; }catch(e){}
+  try{ nfoRender = nf20OrdersRender; window.nfoRender = nf20OrdersRender; nfoPaint = nf20OrdersPaint; window.nfoPaint = nf20OrdersPaint; }catch(e){}
+  try{ const base = nfCardTables; nfCardTables = function(){ base.apply(this, arguments); try{ nf20Cells(); }catch(e){} }; }catch(e){}
+  // the role menu hides pages; keep the group headings and the menu in step
+  const rs = window.renderSidebarForViewAsRole;
+  if(typeof rs === 'function' && !rs._nf20){ const w = function(){ const r = rs.apply(this, arguments); try{ nf20MenuRoles(); const a = document.querySelector('#view-app .app-page.active'); if(a) nf18PaintHub(a.id.slice(5)); }catch(e){} return r; };
+    w._nf20 = true; window.renderSidebarForViewAsRole = w; try{ renderSidebarForViewAsRole = w; }catch(e){} }
+  const sp = window.setPreviewRole;
+  if(typeof sp === 'function' && !sp._nf20){ const w = function(){ const r = sp.apply(this, arguments); try{ nf20Banner(); }catch(e){} return r; }; w._nf20 = true; window.setPreviewRole = w; try{ setPreviewRole = w; }catch(e){} }
+  // the Orders badge counted one side only (whichever view loaded last: 7 on Home, 2 on Orders);
+  // both sides show on Orders now, so the badge is the "Needs you now" number from that page
+  const ob = window.updateOpenItemsBadge;
+  if(typeof ob === 'function' && !ob._nf20){ const w = function(){ const r = ob.apply(this, arguments);
+      try{ const n = nfoAll().filter(x => x.band === 'red').length, nb = document.getElementById('ordersNavBadge');
+        if(nb){ const d = n > 0 ? 'inline-flex' : 'none'; if(nb.style.display !== d) nb.style.display = d; if(nb.textContent !== String(n)) nb.textContent = n; } }catch(e){}
+      return r; };
+    w._nf20 = true; window.updateOpenItemsBadge = w; try{ updateOpenItemsBadge = w; }catch(e){} }
+  // Team page and the account menu open Who sees what too
+  const addEntry = () => {
+    const head = document.querySelector('#page-team .page-head > button'); if(head && !document.getElementById('nf20TeamWho')){ const b = document.createElement('button'); b.id = 'nf20TeamWho'; b.className = 'btn btn-outline'; b.textContent = 'Who sees what'; b.onclick = () => nf20OpenWho(); head.parentElement.insertBefore(b, head); }
+    // phone: a Menu button opens the full list of pages
+    const bn = document.getElementById('bottomNav');
+    if(bn){ let mb = document.getElementById('nf20MenuBtn');
+      if(!mb){ mb = document.createElement('button'); mb.type = 'button'; mb.className = 'bnav-item'; mb.id = 'nf20MenuBtn'; mb.setAttribute('aria-label', 'All pages');
+        mb.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg><span class="bnav-label">Menu</span>';
+        mb.onclick = () => { if(typeof toggleMobileSidebar === 'function') toggleMobileSidebar(); }; }
+      if(bn.lastElementChild !== mb) bn.appendChild(mb); }
+    const um = document.getElementById('userMenuDropdown'); if(um && !um.querySelector('.nf20-um')){ const d = document.createElement('div'); d.className = 'notif-item nf20-um'; d.style.cursor = 'pointer'; d.innerHTML = '<div><div class="notif-text">Who sees what</div></div>'; d.onclick = () => nf20OpenWho(); um.insertBefore(d, um.firstChild); }
+  };
+  document.addEventListener('keydown', e => { if(e.key === 'Escape'){ const ov = document.getElementById('nf20Who'); if(ov && !ov.hidden) nf20CloseWho(); } });
+  const start = () => { try{ nf20Landing(); }catch(e){ console.warn('nf20 landing', e); } try{ addEntry(); }catch(e){}
+    if(document.querySelector('.sidebar .nav-group')){ try{ nf20Menu(); const a = document.querySelector('#view-app .app-page.active'); if(a) nf20Active(a.id.slice(5)); }catch(e){} } else setTimeout(start, 300); };
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
+  [1200, 3000].forEach(ms => setTimeout(() => { try{ updateOpenItemsBadge(); }catch(e){} }, ms));
+  const nav = window.navigate;
+  if(typeof nav === 'function' && !nav._nf20){ const w = function(page){ const out = nav.apply(this, arguments); try{ addEntry(); nf20Banner(); }catch(e){} try{ updateOpenItemsBadge(); }catch(e){} return out; };
+    Object.keys(nav).forEach(k => { w[k] = nav[k]; }); w._nf20 = true; window.navigate = w; try{ navigate = w; }catch(e){} }
 })();
 
 function renderSidebarForViewAsRole(){

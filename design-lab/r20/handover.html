@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>When Someone Leaves</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="../r13/lab.css">
+<style>
+body{background:#F4F6F8}
+.hx{background:#fff;border-bottom:1px solid var(--line)}
+.hx .hin{max-width:1120px;margin:0 auto;padding:22px 20px 24px}
+.hx a{font-size:14px;font-weight:700;color:var(--g);text-decoration:none}
+.hx h1{margin:10px 0 6px;font-size:32px;font-weight:800;letter-spacing:-.02em;line-height:1.15}
+.hx p{margin:0;font-size:17px;color:var(--ink2);max-width:760px}
+.wrap{max-width:1120px;margin:0 auto;padding:22px 20px 70px;display:grid;gap:22px}
+.prob{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px 22px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.prob div{display:grid;gap:4px}.prob b{font-size:16px}.prob span{font-size:14.5px;color:var(--ink2)}
+.prob i{font-style:normal;width:40px;height:40px;border-radius:12px;background:#FEF4F3;color:#B42318;display:grid;place-items:center;margin-bottom:4px}
+.prob i svg{width:22px;height:22px}
+.step{background:#fff;border:1px solid var(--line);border-radius:22px;padding:22px;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.3fr);gap:28px;align-items:center}
+.step.flip{grid-template-columns:minmax(0,1.3fr) minmax(0,.85fr)}
+.step.flip .txt{order:2}
+.txt .n{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--g);background:var(--gbg);border-radius:999px;padding:5px 12px}
+.txt h2{margin:10px 0 8px;font-size:26px;font-weight:800;letter-spacing:-.02em;line-height:1.2}
+.txt p{margin:0 0 10px;font-size:16px;color:var(--ink2)}
+.txt ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.txt li{display:grid;grid-template-columns:22px 1fr;gap:8px;font-size:15px;color:var(--ink2)}.txt li b{color:var(--ink)}
+.txt li svg{width:20px;height:20px;padding:3px;border-radius:50%;background:var(--g2);color:#fff;stroke-width:3}
+.tagnow{display:inline-block;margin-top:12px;font-size:13px;font-weight:800;border-radius:999px;padding:4px 10px}
+.tagnow.y{background:#E8F5EE;color:#146C3C}.tagnow.n{background:#EEF2FF;color:#1E40AF}
+.art{background:linear-gradient(160deg,#F1F6F3,#F7F9FB);border-radius:20px;padding:20px;display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+.ph{width:270px;max-width:100%;background:#fff;border-radius:30px;box-shadow:0 0 0 8px #1D2939,0 18px 40px rgba(16,24,40,.18);overflow:hidden}
+.ph .top{padding:12px 16px 10px;border-bottom:1px solid #EEF0F3;display:flex;align-items:center;gap:10px}
+.ph .top b{font-size:15.5px}.ph .top small{display:block;font-size:12px;color:var(--mut);font-weight:600}
+.ph .bd{padding:12px 14px 16px;display:grid;gap:10px}
+.photo{height:150px;border-radius:14px;position:relative;overflow:hidden;background:repeating-linear-gradient(180deg,#FFFDF5 0 21px,#C9D7EA 21px 22px);border:1px solid #E7E2CF}
+.photo::before{content:"";position:absolute;left:26px;top:0;bottom:0;width:1px;background:#E8A0A0}
+.photo span{position:absolute;left:34px;font-family:'Segoe Script','Bradley Hand',cursive;font-size:14px;color:#22356B;transform:rotate(-1.5deg)}
+.photo .f{position:absolute;inset:8px;border:2.5px dashed #1F6B45;border-radius:10px}
+.cap{display:flex;justify-content:center}.cap i{width:54px;height:54px;border-radius:50%;background:#fff;box-shadow:0 0 0 4px #1F6B45;display:block}
+.row{display:grid;grid-template-columns:22px minmax(0,1fr) auto;gap:8px;align-items:center;padding:8px 10px;border:1px solid #E3E7EC;border-radius:12px;font-size:14px}
+.row b{font-size:14px}.row small{display:block;font-size:12px;color:var(--mut);font-weight:600}
+.row .ck{width:20px;height:20px;border-radius:6px;background:#1F6B45;color:#fff;display:grid;place-items:center}
+.row .ck svg{width:14px;height:14px;stroke-width:3}
+.row .ck.q{background:#FEF3C7;color:#92400E;font-weight:800;font-size:13px}
+.row .amt{font-weight:800}
+.row.warn{background:#FFFBE6;border-color:#F5E08A}
+.btnf{display:flex;align-items:center;justify-content:center;min-height:44px;border-radius:12px;background:#1F6B45;color:#fff;font-weight:800;font-size:15px}
+.btno{display:flex;align-items:center;justify-content:center;min-height:40px;border-radius:12px;border:1.5px solid #D0D5DD;background:#fff;font-weight:700;font-size:14px;color:#1D2939}
+.note{font-size:12.5px;color:var(--mut);text-align:center}
+.lst{display:grid;gap:8px}
+.it{display:grid;grid-template-columns:34px minmax(0,1fr) auto;gap:10px;align-items:center;padding:9px 10px;border:1px solid #E3E7EC;border-radius:12px}
+.it i{width:34px;height:34px;border-radius:10px;background:#EEF4FF;color:#1D4ED8;display:grid;place-items:center;font-style:normal}
+.it i svg{width:18px;height:18px}
+.it b{font-size:14px;display:block}.it small{font-size:12px;color:var(--mut);font-weight:600}
+.it em{font-style:normal;font-size:12.5px;font-weight:800;border:1.5px solid #D0D5DD;border-radius:999px;padding:4px 10px;white-space:nowrap}
+.vn{display:grid;grid-template-columns:36px minmax(0,1fr);gap:10px;align-items:center;padding:10px;border-radius:14px;background:#F1FAF8;border:1px solid #C9E9E2}
+.vn i{width:36px;height:36px;border-radius:50%;background:#0F766E;color:#fff;display:grid;place-items:center;font-style:normal}
+.vn i svg{width:18px;height:18px}
+.vn b{font-size:13.5px}.vn p{margin:2px 0 0;font-size:13.5px;color:#1D2939;line-height:1.35}
+.wave{display:flex;gap:2px;align-items:center;height:16px;margin-top:4px}.wave span{width:3px;border-radius:2px;background:#0F766E;opacity:.6}
+.tl{display:grid;gap:0}
+.tl > div{display:grid;grid-template-columns:14px minmax(0,1fr);gap:10px;padding:8px 0;position:relative}
+.tl > div::before{content:"";position:absolute;left:6px;top:22px;bottom:-8px;width:2px;background:#E3E7EC}
+.tl > div:last-child::before{display:none}
+.tl .d{width:14px;height:14px;border-radius:50%;margin-top:3px;background:#1F6B45}
+.tl .d.p{background:#B45309}.tl .d.v{background:#0F766E}
+.tl b{font-size:13.5px;display:block}.tl small{font-size:12px;color:var(--mut);font-weight:600}
+.tl .tg{display:inline-block;font-size:11px;font-weight:800;border-radius:999px;padding:1px 8px;background:#FEF3C7;color:#92400E;margin-left:6px}
+.sum{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px 22px}
+.sum h2{margin:0 0 10px;font-size:20px;font-weight:800}
+.sum table{width:100%;border-collapse:collapse;font-size:15px}
+.sum td{padding:10px 8px;border-top:1px solid var(--line);vertical-align:top}
+.sum td:first-child{font-weight:800;width:34%}
+@media (max-width:860px){ .step,.step.flip{grid-template-columns:minmax(0,1fr);padding:16px;gap:18px} .step.flip .txt{order:0} .prob{grid-template-columns:minmax(0,1fr)} .hx h1{font-size:26px} .art{padding:14px} .sum td:first-child{width:auto} .sum td{display:block;border-top:0;padding:4px 0} .sum tr{display:block;border-top:1px solid var(--line);padding:8px 0} }
+</style>
+</head>
+<body>
+<div class="hx"><div class="hin"><a href="index.html">‹ Round 20</a><h1>When a key person leaves and the notebooks stay behind</h1><p>Three steps: read the old paper into Nifti, hand over everything the person was holding before they go, and keep what they knew on each customer's page so it never walks out the door again. Everything on this page is a prototype.</p></div></div>
+<div class="wrap">
+  <div class="prob">
+    <div><i id="p1"></i><b>The notebook is half in their head</b><span>Who owes what, which customer gets which price, who pays late. Written in shorthand only they can read.</span></div>
+    <div><i id="p2"></i><b>Nobody knows what's still open</b><span>Orders they promised, money they were collecting, chats they were answering. It all goes quiet the day they leave.</span></div>
+    <div><i id="p3"></i><b>The history is lost</b><span>Years of sales and prices sit in boxes of paper nobody will ever open again.</span></div>
+  </div>
+
+  <section class="step">
+    <div class="txt"><span class="n">Step 1 · Read the old paper</span><h2>Snap the notebook. Nifti types it in for you.</h2>
+      <p>Take a photo of each page of the utang list, the price notebook or the delivery book. Nifti reads the handwriting and turns it into rows. You check each one and tap OK.</p>
+      <ul id="s1"></ul><span class="tagnow n">New: the notebook reader</span> <span class="tagnow y">Already in Nifti: opening balances, so what each customer owes starts from day one</span></div>
+    <div class="art">
+      <div class="ph"><div class="top"><div><b>Snap a notebook page</b><small>Page 3 of Mang Ben's utang list</small></div></div>
+        <div class="bd"><div class="photo"><span style="top:4px">Aling Nena — 4,500 (Jul 3)</span><span style="top:26px">Boy Hdwr — 12,800 ✓pd 5k</span><span style="top:48px">JR Bautista — 6,000</span><span style="top:70px">Sta Cruz — 2,?00 chk bounce</span><span style="top:92px">Villanueva — 3,150</span><div class="f"></div></div>
+          <div class="cap"><i></i></div><div class="note">Hold the phone over the page. It takes the photo by itself.</div></div></div>
+      <div class="ph"><div class="top"><div><b>Check what Nifti read</b><small>5 lines found · 1 to check</small></div></div>
+        <div class="bd">
+          <div class="row"><span class="ck" id="k1"></span><div><b>Aling Nena Store</b><small>since Jul 3</small></div><span class="amt">₱4,500</span></div>
+          <div class="row"><span class="ck" id="k2"></span><div><b>Boy Hardware</b><small>₱12,800, paid ₱5,000</small></div><span class="amt">₱7,800</span></div>
+          <div class="row"><span class="ck" id="k3"></span><div><b>JR Bautista Const.</b><small>no date written</small></div><span class="amt">₱6,000</span></div>
+          <div class="row warn"><span class="ck q">?</span><div><b>Sta. Cruz Builders</b><small>can't read: 2,?00 · bounced check</small></div><span class="amt">Tap to type</span></div>
+          <div class="btnf">OK, add 4 to Who owes you</div>
+          <div class="note">The photo stays attached to each line, marked "From Mang Ben's notebook, page 3".</div></div></div>
+    </div>
+  </section>
+
+  <section class="step flip">
+    <div class="txt"><span class="n">Step 2 · Before they go</span><h2>One handover list, built for you.</h2>
+      <p>In Team, tap <b>Joy is leaving</b>. Nifti gathers everything with Joy's name on it, so nothing goes quiet the day she leaves. Give each thing to someone, or all of it to one person.</p>
+      <ul id="s2"></ul><span class="tagnow n">New: the leaving checklist and voice notes</span> <span class="tagnow y">Already in Nifti: a note for the next shift, and a record of what each person did</span></div>
+    <div class="art">
+      <div class="ph"><div class="top"><div><b>Joy is leaving on Sep 15</b><small>Everything with her name on it</small></div></div>
+        <div class="bd"><div class="lst">
+          <div class="it"><i id="i1"></i><div><b>6 customers she looks after</b><small>Bayview, Riverside, +4</small></div><em>Mark ▾</em></div>
+          <div class="it"><i id="i2"></i><div><b>3 open orders</b><small>2 to deliver, 1 to bill</small></div><em>Mark ▾</em></div>
+          <div class="it"><i id="i3"></i><div><b>₱38,200 she was collecting</b><small>from 4 customers</small></div><em>Ramon ▾</em></div>
+          <div class="it"><i id="i4"></i><div><b>4 tasks and 12 chats</b><small>oldest from Aug 20</small></div><em>Mark ▾</em></div>
+          <div class="it"><i id="i5"></i><div><b>2 price deals she agreed</b><small>Cement ₱245 for Bayview</small></div><em>You ▾</em></div></div>
+          <div class="btnf">Hand everything over</div><div class="btno">Ask Joy for voice notes first</div></div></div>
+      <div class="ph"><div class="top"><div><b>Joy's voice notes</b><small>2 minutes per customer, written out for you</small></div></div>
+        <div class="bd">
+          <div class="vn"><i id="m1"></i><div><b>Bayview Construction · 0:48</b><p>"They pay only after the 15th. Ask for Engr. Cruz, not the office. They always want rebar cut to 6 metres."</p><div class="wave" id="w1"></div></div></div>
+          <div class="vn"><i id="m2"></i><div><b>Riverside Builders · 0:35</b><p>"Good payers but they send the check late. Call Ma'am Liza on Monday mornings."</p><div class="wave" id="w2"></div></div></div>
+          <div class="btno">+ Record for the next customer</div>
+          <div class="note">Saved on each customer's page. Joy can do this from her own phone in Taglish or English.</div></div></div>
+    </div>
+  </section>
+
+  <section class="step">
+    <div class="txt"><span class="n">Step 3 · It stays</span><h2>Everything lands on the customer's page.</h2>
+      <p>Open any customer and see the whole story in one line of time: what they bought, what they paid, the notebook pages, the deals, and what the people before you knew about them.</p>
+      <ul id="s3"></ul><span class="tagnow n">New: notes and voice notes on each customer</span></div>
+    <div class="art">
+      <div class="ph" style="width:340px"><div class="top"><span class="av" style="background:#1D4ED8;width:36px;height:36px;font-size:12px">BC</span><div><b>Bayview Construction Co.</b><small>Customer since 2019 · 14 orders in Nifti</small></div></div>
+        <div class="bd"><div class="tl">
+          <div><span class="d v"></span><div><b>Joy's voice note</b><small>"Pays after the 15th. Ask for Engr. Cruz." · Sep 14, 2026</small></div></div>
+          <div><span class="d"></span><div><b>PO-2026-0855 · ₱87,360</b><small>Delivered Aug 15 · not billed yet</small></div></div>
+          <div><span class="d"></span><div><b>Price deal: Cement ₱245/bag</b><small>agreed by Joy · Mar 2026</small></div></div>
+          <div><span class="d p"></span><div><b>Owed ₱6,000 at the start<span class="tg">From paper</span></b><small>Mang Ben's notebook, page 3 · checked by you</small></div></div>
+          <div><span class="d p"></span><div><b>2023 sales: ₱1.2M<span class="tg">From paper</span></b><small>12 ledger pages added month by month</small></div></div>
+        </div><div class="btno">+ Add what you know about Bayview</div></div></div>
+    </div>
+  </section>
+
+  <div class="sum"><h2>What changes</h2><table>
+    <tr><td>The utang notebook</td><td>Becomes "Who owes you", with the photo of each page kept as proof.</td></tr>
+    <tr><td>Old ledgers and sales books</td><td>Added month by month, marked "From paper", so your reports show the years before Nifti too.</td></tr>
+    <tr><td>Things only one person knew</td><td>Voice notes and written notes on each customer's page, readable by whoever takes over.</td></tr>
+    <tr><td>Open work when someone leaves</td><td>One handover list: customers, orders, collections, tasks, chats and deals, each given to a new person in one tap.</td></tr>
+    <tr><td>From now on</td><td>Every order, payment and chat is already saved in Nifti with who did it, so there's no new notebook to lose. Once a week Nifti tells you which customers have no notes yet.</td></tr>
+  </table></div>
+</div>
+<script src="../r13/lab.js"></script>
+<script>
+const li = a => a.map(([b, t]) => `<li>${ic('check')}<span><b>${b}</b> ${t}</span></li>`).join('');
+$('s1').innerHTML = li([['Reads shorthand:', '"Boy Hdwr", "pd 5k", "chk bounce" become a customer, a payment and a bounced check.'], ['Asks when unsure:', 'a smudged number is marked yellow for you to type, never guessed.'], ['Works for any notebook:', 'utang lists, price lists, delivery books, old sales ledgers.']]);
+$('s2').innerHTML = li([['Nothing is missed:', 'customers, orders, money being collected, tasks, chats and price deals all show up.'], ['One tap per item:', 'pick who takes it. Customers and chats move with their full history.'], ['What they knew, recorded:', 'Nifti asks them for a short voice note on each customer and writes it out.']]);
+$('s3').innerHTML = li([['One story per customer:', 'orders, payments, deals, notes and notebook pages, newest first.'], ['Paper is marked:', 'anything from a notebook says "From paper" and keeps the photo.'], ['Anyone can add:', 'staff add what they learn, so the next person starts ahead.']]);
+const I = (id, n) => { const e = $(id); if(e) e.innerHTML = ic(n); };
+I('p1', 'file'); I('p2', 'clock'); I('p3', 'box'); ['k1', 'k2', 'k3'].forEach(k => I(k, 'check'));
+I('i1', 'home'); I('i2', 'truck'); I('i3', 'cash'); I('i4', 'msg'); I('i5', 'tag'); I('m1', 'mic'); I('m2', 'mic');
+['w1', 'w2'].forEach(w => { $(w).innerHTML = Array.from({length: 34}, (_, i) => `<span style="height:${4 + Math.round(12 * Math.abs(Math.sin(i * 1.7 + w.length)))}px"></span>`).join(''); });
+</script>
+</body>
+</html>

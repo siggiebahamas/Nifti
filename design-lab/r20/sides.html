@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Customers And Suppliers Apart</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="../r13/lab.css">
+<style>
+:root{--cb:#1D4ED8;--cbg:#F4F7FF;--cln:#D5E0FA;--sb:#0F766E;--sbg:#F1FAF8;--sln:#C9E9E2}
+.pgs{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.pgs small{font-size:12.5px;font-weight:800;color:var(--mut);letter-spacing:.04em;text-transform:uppercase;margin-right:2px}
+.pgs button{min-height:38px;padding:0 14px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1.5px var(--line2);font-size:13.5px;font-weight:700;color:var(--ink2)}
+.pgs button[aria-pressed=true]{background:#1F6B45;color:#fff;box-shadow:none}
+.pg{padding:20px 22px 26px;background:#fff}
+.frame-p .pg{padding:12px 10px 20px}
+.pg h2{margin:0 0 2px;font-size:26px;font-weight:800;letter-spacing:-.02em}.pg .sub{margin:0 0 16px;color:var(--ink2);font-size:14.5px}
+.frame-p .pg h2{font-size:22px}
+/* the two sides */
+.cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:start}
+.frame-p .cols{grid-template-columns:minmax(0,1fr) !important;gap:18px}
+.col{min-width:0;--k:var(--cb);--kbg:var(--cbg);--kln:var(--cln)}
+.col.s{--k:var(--sb);--kbg:var(--sbg);--kln:var(--sln)}
+.ch{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center;padding:4px 2px 12px}
+.ch .ci{width:38px;height:38px;border-radius:11px;background:var(--k);color:#fff;display:grid;place-items:center}
+.ch .ci svg{width:20px;height:20px;stroke-width:2.6}
+.ch b{display:block;font-size:18px;font-weight:800;color:var(--k);line-height:1.2}.ch small{display:block;font-size:13px;color:var(--ink2);font-weight:600}
+.ch .m{text-align:right}.ch .m b{color:var(--ink);font-size:18px}.ch .m small{font-size:12.5px}
+.frame-p .ch b{font-size:16.5px}
+.stack{display:grid;gap:10px}
+/* cards inside */
+.card{background:#fff;border:1px solid #E3E7EC;border-radius:14px;padding:12px 14px}
+.card h4{margin:0 0 8px;font-size:15.5px;font-weight:800}
+.grp{display:grid;grid-template-columns:40px minmax(0,1fr);gap:4px 10px}
+.grp .who{grid-column:2;display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.grp .who b{font-size:15px}.grp .who span{font-size:15px;font-weight:800;white-space:nowrap}
+.grp .av{grid-row:1;width:36px;height:36px;font-size:12px;background:#fff !important;color:#344054 !important;box-shadow:inset 0 0 0 1.5px #98A2B3}
+.po{grid-column:1 / -1;display:grid;grid-template-columns:40px minmax(0,1fr);gap:10px;margin-top:6px}
+.dt{width:40px;border-radius:10px;text-align:center;padding:4px 0;font-weight:800;line-height:1.05;align-self:start}
+.dt small{display:block;font-size:10px;letter-spacing:.04em}.dt b{font-size:17px}
+.dt.r{background:#FEE4E2;color:#B42318}.dt.y{background:#FEF3C7;color:#92400E}.dt.b{background:#DBE7FE;color:#1E40AF}
+.pb{border-radius:12px;padding:9px 11px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 10px;align-items:center}
+.pb.r{background:#FEF4F3}.pb.y{background:#FFFBE6}.pb.b{background:#EAF1FE}
+.pb .t{grid-column:1/-1;font-size:13.5px}.pb .t b{font-size:13.5px}.pb .t i{font-style:normal;color:var(--ink2)}
+.pb .w{grid-column:1/-1;font-size:14px}.pb .w b{color:#0E1114}.pb .w b.red{color:#B42318}
+.pb .a{font-weight:800;font-size:15px}.pb .a small{font-weight:700;color:var(--ink2);font-size:12px;margin-left:4px}
+.pb .btn1, .pb .btn2{min-height:34px;padding:0 13px;font-size:13.5px}
+.band{font-size:12px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:7px 12px;border-radius:10px;display:flex;justify-content:space-between}
+.band.r{background:#FEE4E2;color:#B42318}.band.y{background:#FEF3C7;color:#92400E}.band.b{background:#DBE7FE;color:#1E40AF}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tile{text-align:left;background:#fff;border:1px solid #E3E7EC;border-radius:14px;padding:10px 12px}
+.tile small{display:block;font-size:13px;font-weight:700;color:var(--ink2)}.tile b{display:block;font-size:22px;font-weight:800}.tile span{font-size:12.5px;color:var(--ink2);font-weight:600}
+.tile.w{background:#FFFBE6;border-color:#F5E08A}.tile.bad{background:#FEF4F3;border-color:#F9C9C4}.tile.bad b{color:#B42318}
+.rc{border:1px solid #E3E7EC;border-radius:12px;padding:11px 13px 9px;background:#fff}
+.rc + .rc{margin-top:10px}
+.rc .n{font-size:15.5px;font-weight:800}.rc .r{font-size:13px;color:var(--ink2);font-weight:600;margin:1px 0 6px}
+.rc dl{margin:0;display:grid;grid-template-columns:96px minmax(0,1fr)}
+.rc dt,.rc dd{margin:0;padding:6px 0;border-top:1px solid #EEF0F3;font-size:14px}
+.rc dt{font-weight:800;color:#101828}.rc dd{color:#101828}
+.rc .act{display:flex;gap:8px;padding-top:9px;border-top:1px solid #EEF0F3}
+.rc .act button{min-height:34px;padding:0 14px;font-size:13.5px}
+.pill{font-size:12px}
+
+/* ---------- A · a line down the middle ---------- */
+.vA .cols{grid-template-columns:minmax(0,1fr) 44px minmax(0,1fr);gap:0}
+.vA .mid{position:relative;align-self:stretch}
+.vA .mid::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;margin-left:-1px;background:linear-gradient(180deg,var(--cb),#98A2B3 30%,#98A2B3 70%,var(--sb))}
+.vA .mid i{position:sticky;top:12px;display:grid;place-items:center;width:36px;height:36px;margin:0 auto;border-radius:50%;background:#fff;box-shadow:0 0 0 2px #98A2B3;color:#344054;z-index:1}
+.vA .mid i svg{width:18px;height:18px;stroke-width:2.4}
+.vA .ch{border-bottom:3px solid var(--k);margin-bottom:12px}
+.frame-p .vA .cols{grid-template-columns:minmax(0,1fr) !important}
+.frame-p .vA .mid{height:44px}
+.frame-p .vA .mid::before{left:0;right:0;top:50%;bottom:auto;width:auto;height:2px;margin:0;background:linear-gradient(90deg,var(--cb),#98A2B3,var(--sb))}
+.frame-p .vA .mid i{position:relative;top:4px}
+
+/* ---------- B · two coloured sides (live now) ---------- */
+.vB .col{background:var(--kbg);border:1px solid var(--kln);border-top:5px solid var(--k);border-radius:18px;padding:12px 12px 14px}
+
+/* ---------- C · a split header bar and a thick bar between ---------- */
+.vC .split{display:grid;grid-template-columns:minmax(0,1fr) 12px minmax(0,1fr);position:sticky;top:0;z-index:2;margin-bottom:12px;border-radius:14px;overflow:hidden;box-shadow:0 4px 14px rgba(16,24,40,.08)}
+.vC .split > div{padding:12px 14px;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:10px}
+.vC .split > div b{font-size:17px;font-weight:800}.vC .split > div small{display:block;font-size:12.5px;opacity:.9;font-weight:600}
+.vC .split > div span{text-align:right;font-weight:800;font-size:17px}
+.vC .split .c{background:var(--cb)}.vC .split .s{background:var(--sb)}.vC .split .g{background:#fff;padding:0}
+.vC .cols{grid-template-columns:minmax(0,1fr) 12px minmax(0,1fr);gap:0}
+.vC .bar{align-self:stretch;margin:0 2px;border-radius:999px;background:#DDE3EA}
+.vC .col{padding:0 10px}
+.vC .ch{display:none}
+.frame-p .vC .split{display:none}
+.frame-p .vC .cols{grid-template-columns:minmax(0,1fr) !important}
+.frame-p .vC .bar{height:10px;margin:4px 0}
+.frame-p .vC .col{padding:0}
+.frame-p .vC .ch{display:grid;background:var(--k);border-radius:14px;padding:10px 12px;margin-bottom:10px;position:sticky;top:0;z-index:2}
+.frame-p .vC .ch .ci{background:rgba(255,255,255,.2)}.frame-p .vC .ch b,.frame-p .vC .ch .m b{color:#fff}.frame-p .vC .ch small{color:#E6F0FF}
+</style>
+</head>
+<body>
+<header class="lab-top"><div class="lab-in">
+  <div class="lab-r1"><a class="lab-back" href="index.html">‹ Round 20</a><h1>A clear line between customers and suppliers</h1><p>Side by side with only white space between them looked messy. Three ways to split them clearly, shown on Orders and on Returns &amp; credits.</p></div>
+  <div class="lab-tabs" id="tabs"></div>
+  <div class="lab-r3" id="r3"></div>
+</div></header>
+<main class="lab-wrap" id="wrap"><section class="lab-stage" id="stage"></section><aside class="lab-notes" id="notes"></aside></main>
+<div class="toast" id="toast"></div>
+<script src="../r13/lab.js"></script>
+<script>
+const ARW = {c: '<path d="M7 17 17 7M8 7h9v9"/>', s: '<path d="M17 7 7 17M16 17H7V8"/>', x: '<path d="M7 4 3 8l4 4M3 8h13M17 20l4-4-4-4M21 16H8"/>'};
+const svg = p => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">${p}</svg>`;
+const V = [
+  {id: 'A', name: 'A line down the middle', tag: 'White sides, a coloured line between them, a marker that stays in view', why: [
+      'Both sides stay white. A line runs down the middle, blue at the top on the customer side and teal on the supplier side.',
+      'A round marker with two arrows sits on the line and stays in view as you scroll, so you always see where one side ends.',
+      'Each side has a thick coloured line under its name.',
+      'On a phone, the line turns sideways between the two lists.'],
+    best: 'People who like a calm, white page.', give: 'The quietest of the three. On a busy page the line is easier to miss than a colour.'},
+  {id: 'B', name: 'Two coloured sides', tag: 'Each side sits on its own light colour, with a gap between', pick: 1, live: 1, why: [
+      'Customers sit on a light blue panel, suppliers on a light teal panel, each with a thick coloured edge on top.',
+      'The white cards inside stand out on the colour, so the page reads as two clear zones at a glance.',
+      'The same two colours are on the Customer and Supplier tags everywhere else, so it matches.',
+      'On a phone the panels stack. You always know which one you\'re in by its colour.'],
+    best: 'Telling the two sides apart instantly, even from across the counter.', give: 'Adds colour to the page, and takes a bit more space for the panel edges.'},
+  {id: 'C', name: 'A split bar on top', tag: 'One header split in two colours, and a thick bar between the lists', why: [
+      'A solid bar across the top: blue on the left says "Selling to customers", teal on the right says "Buying from suppliers", each with its total.',
+      'It stays at the top while you scroll, so the labels never leave the screen.',
+      'A thick grey bar runs between the two lists, like the spine of a book.',
+      'On a phone, each list gets its own solid coloured header that stays at the top while you scroll it.'],
+    best: 'Long pages: the labels never scroll away.', give: 'The heaviest look of the three. The two solid colours draw the eye before your numbers do.'}
+];
+const S = {v: 'B', view: 'both', pg: 'orders'};
+if(window.innerWidth < 700) S.view = 'p';
+const D = {
+  orders: {
+    c: {title: 'Selling to customers', sub: '3 orders · 3 customers', money: 119144, ml: 'owed to you', html: () => `
+      <div class="band r"><span>Needs you now</span><b>2</b></div>
+      <div class="card">${grp('Bayview Construction Co.', '₱87,360', [['r', 'AUG', 15, 'PO-2026-0855', 'Delivered', '1200 × Steel Rebar 12mm', '<b class="red">Delivered 11 days ago,</b> not billed yet.', 87360, 'not billed', 'Send the bill', 1]])}</div>
+      <div class="card">${grp('Riverside Builders Corp', '₱17,504', [['r', 'AUG', 20, 'PO-2026-0810', 'Billed', '300 × Steel Rebar 12mm', '<b class="red">They say they paid.</b> Check your bank.', 17504, 'owes you', 'Check payment', 1]])}</div>
+      <div class="band y"><span>Coming up</span><b>1</b></div>
+      <div class="card">${grp('Corazon Welding Shop', '₱0', [['y', 'AUG', 30, 'PO-2026-0853', 'To confirm', '150 × Angle Bars', '<b>Needed in 4 days.</b> Say yes, or change it.', 14280, 'new order', 'Answer', 1]])}</div>`},
+    s: {title: 'Buying from suppliers', sub: '3 orders · 2 suppliers', money: 112896, ml: 'you owe', html: () => `
+      <div class="band y"><span>Coming up</span><b>2</b></div>
+      <div class="card">${grp('Metro Steel Co.', '₱112,896', [['y', 'AUG', 27, 'PO-2026-0798', 'On the way', '200 × Galvanized Wire 12ga', '<b>Arrives tomorrow.</b> Count what came.', 107957, 'order', 'Count it', 1], ['y', 'SEP', 11, 'PO-2026-0765', 'Billed', '30 × Structural I-Beams', '<b>Due in 16 days.</b> Pay this bill.', 112896, 'you owe', 'Pay', 1]])}</div>
+      <div class="band b"><span>Waiting on them</span><b>1</b></div>
+      <div class="card">${grp('Cebu Aggregates', '₱0', [['b', 'SEP', 2, 'PO-2026-0839', 'Preparing', '200 × Portland Cement 40kg', '<b>Arrives in 7 days.</b> They are packing it.', 43680, 'order', 'Message', 0]])}</div>`}
+  },
+  returns: {
+    c: {title: 'Selling to customers', sub: 'Credits you gave and bad orders', money: 1200, ml: 'credits waiting', html: () => `
+      <div class="tiles"><div class="tile w"><small>Credits waiting to be used</small><b>₱1,200</b><span>1 credit</span></div><div class="tile bad"><small>Bad orders</small><b>1</b><span>last 6 months</span></div></div>
+      <div class="card"><h4>Credits you gave</h4>${rc('Corazon Welding Shop', 'CM-00002 · Aug 24, 2026', [['Why', '3 bent angle bars returned'], ['Amount', '₱1,200'], ['Left', '<b>₱1,200</b>'], ['Status', '<span class="pill yel">Waiting to be used</span>']], true)}${rc('Bayview Construction Co.', 'CM-00001 · Aug 6, 2026', [['Why', 'Short by 1 bundle of rebar'], ['Amount', '₱850'], ['Left', '<b>₱0</b>'], ['Status', '<span class="pill green">Used</span>']])}</div>`},
+    s: {title: 'Buying from suppliers', sub: 'Credits suppliers gave you', money: 640, ml: 'comes off your bills', html: () => `
+      <div class="tiles"><div class="tile w"><small>Credits from suppliers</small><b>₱640</b><span>1 credit</span></div><div class="tile bad"><small>Bad orders</small><b>1</b><span>last 6 months</span></div></div>
+      <div class="card"><h4>Credits suppliers gave you</h4>${rc('Metro Steel Co.', 'MS-CM-118 · Aug 18, 2026', [['Why', 'Short delivery, 1 bundle of rebar'], ['Amount', '₱640'], ['Left', '<b>₱640</b>'], ['Status', '<span class="pill yel">Comes off your next bill</span>']])}${rc('Metro Steel Co.', 'MS-CM-104 · Jul 17, 2026', [['Why', 'Price correction'], ['Amount', '₱1,500'], ['Left', '<b>₱0</b>'], ['Status', '<span class="pill green">Used</span>']])}</div>`}
+  }
+};
+function grp(name, owe, pos){
+  return `<div class="grp">${av(name, 36)}<div class="who"><b>${name}</b><span>${owe}</span></div>${pos.map(([t, m, d, po, st, it, w, amt, al, btn, mine]) => `<div class="po"><span class="dt ${t}"><small>${m}</small><b>${d}</b></span><div class="pb ${t}"><div class="t"><b>${po}</b> · ${st} · <i>${it}</i></div><div class="w">${w}</div><div class="a">${peso(amt)}<small>${al}</small></div><button class="${mine ? 'btn1' : 'btn2'}" data-act="toast" data-v="${btn} (prototype)">${btn}</button></div></div>`).join('')}</div>`;
+}
+function rc(n, r, rows, act){ return `<div class="rc"><div class="n">${n}</div><div class="r">${r}</div><dl>${rows.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('')}</dl>${act ? `<div class="act"><button class="btn1" data-act="toast" data-v="Credit used (prototype)">Use it</button><button class="btn2" data-act="toast" data-v="Credit cancelled (prototype)">Cancel</button></div>` : ''}</div>`; }
+function col(k){ const c = D[S.pg][k];
+  return `<section class="col ${k}"><div class="ch"><span class="ci">${svg(ARW[k])}</span><div><b>${c.title}</b><small>${c.sub}</small></div><div class="m"><b>${peso(c.money)}</b><small>${c.ml}</small></div></div><div class="stack">${c.html()}</div></section>`; }
+function page(){
+  const h = S.pg === 'orders' ? ['Orders', 'Customers on the left, suppliers on the right.'] : ['Returns & credits', 'Money off a bill when something comes back damaged, short or wrong.'];
+  let inner;
+  if(S.v === 'A') inner = `<div class="cols">${col('c')}<div class="mid"><i>${svg(ARW.x)}</i></div>${col('s')}</div>`;
+  else if(S.v === 'C'){ const c = D[S.pg].c, s = D[S.pg].s;
+    inner = `<div class="split"><div class="c"><div><b>${c.title}</b><small>${c.sub}</small></div><span>${peso(c.money)}</span></div><div class="g"></div><div class="s"><div><b>${s.title}</b><small>${s.sub}</small></div><span>${peso(s.money)}</span></div></div><div class="cols">${col('c')}<div class="bar"></div>${col('s')}</div>`; }
+  else inner = `<div class="cols">${col('c')}${col('s')}</div>`;
+  return `<div class="pg v${S.v}"><h2>${h[0]}</h2><p class="sub">${h[1]}</p>${inner}</div>`;
+}
+function render(){
+  $('tabs').innerHTML = V.map(x => `<button class="lab-tab" aria-pressed="${S.v === x.id}" data-act="v" data-v="${x.id}"><i>${x.id}</i><b>${x.name}${x.pick ? ' · my pick' : ''}</b><small>${x.tag}</small></button>`).join('');
+  $('r3').innerHTML = seg('vw', [['both', 'Laptop + phone'], ['d', 'Laptop'], ['p', 'Phone']], S.view, 'view') + `<div class="pgs"><small>Page</small>${[['orders', 'Orders'], ['returns', 'Returns & credits']].map(([k, l]) => `<button aria-pressed="${S.pg === k}" data-act="pg" data-v="${k}">${l}</button>`).join('')}</div>`;
+  $('wrap').classList.toggle('wide', S.view !== 'p');
+  const pg = page();
+  const desk = `<div class="frame-d">${pg}</div>`, phone = `<div class="frame-p"><div class="notch"><span>9:41</span><span>●●●</span></div><div class="scroll">${pg}</div></div>`;
+  $('stage').innerHTML = S.view === 'd' ? desk : S.view === 'p' ? phone : `<div style="flex:1 1 720px;min-width:0;display:flex;justify-content:center">${desk}</div><div>${phone}</div>`;
+  const x = V.find(v => v.id === S.v);
+  $('notes').innerHTML = `<h2>${x.id} · ${x.name}${x.pick ? ' <span class="pill green nodot" style="vertical-align:middle">My pick</span>' : ''}</h2><p style="margin:-8px 0 0;color:var(--mut);font-size:14px">${x.tag}</p>
+    ${x.live ? '<div class="box" style="background:#E8F5EE"><b>Live in the app now</b> on Orders, Getting paid, Checks, BIR 2307s, Returns &amp; credits and Price changes, so the pages stop looking messy while you decide.</div>' : ''}
+    <h3>How it works</h3><ul>${x.why.map(w => `<li>${ic('check')}<span>${w}</span></li>`).join('')}</ul>
+    <div class="box"><b>Best for:</b> ${x.best}</div><div class="box"><b>You give up:</b> ${x.give}</div>
+    <div class="box"><b>Returns &amp; credits, fixed either way:</b> labels are bold black on the left, every value lines up on the right, nothing breaks onto a stray line, and the buttons sit on their own row at the bottom of the card. Switch the page above to see it.</div>`;
+}
+document.addEventListener('click', e => { const b = e.target.closest('[data-act]'); if(!b) return; const a = b.dataset.act, v = b.dataset.v;
+  if(a === 'toast'){ toast(v); return; }
+  if(a === 'v') S.v = v; else if(a === 'view') S.view = v; else if(a === 'pg') S.pg = v;
+  render(); });
+render();
+</script>
+</body>
+</html>
