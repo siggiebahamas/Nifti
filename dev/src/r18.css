@@ -32,8 +32,8 @@
   /* Getting paid: the old "Follow up / Cash & bank" switch is now the row above */
   html[data-ty] #view-app #page-collections .adm-tabs.sl-tabs, html[data-ty] #view-app #page-collections .adm-tabs.nf-tabcards{display:none !important;}
   /* Team: people and tasks only (Team chat moved to Messages, Activity is in Settings) */
-  html[data-ty] #view-app #page-team .team-tabs, html[data-ty] #view-app #page-team .team-tabs.nf-tabcards, #page-team #teamTab_chat, #page-team #teamTab_activity{display:none !important;}
-  #page-team #teamTab_tasks{display:block !important;}
+  /* Team: Tasks and Activity stay; Team chat moved to Messages */
+  html[data-ty] #view-app #page-team .team-tabs > :nth-child(2), #page-team #teamTab_chat{display:none !important;}
   /* PRO badges only where you choose your plan */
   #view-app .pro-badge{display:none !important;}
   #page-settings .pro-badge{display:inline-flex !important;}
@@ -47,7 +47,7 @@
   #view-app .nf18-mh2 h2{margin:0;font-size:24px;font-weight:800;letter-spacing:-.01em;color:#0E1114;}
   #view-app .nf18-mh2 p{margin:4px 0 0;font-size:15.5px;color:#344054;}
   #view-app .nf18-mh{margin-top:16px;}
-  html[data-ty] #view-app #nf18Team .adm-tabs, html[data-ty] #view-app #nf18Team .adm-tabs.nf-tabcards{display:none !important;}
+  /* To check · Team spending keeps all its tabs: overpaying, spending limits, supplier report card, price check */
   #page-money .nf18-mh{margin-top:18px;}
 
   /* Stock: 4 tiles, one filter row */
@@ -181,3 +181,5 @@
   html.nf-phone #view-app .messages-shell.nf18-team-on .msg-sidebar{display:none !important;}
   /* phone: the account menu opens inside the screen */
   html.nf-phone #userMenuDropdown{position:fixed !important;top:62px !important;right:10px !important;left:auto !important;width:min(320px, calc(100vw - 20px)) !important;max-height:calc(100vh - 140px);overflow-y:auto;z-index:300;}
+  #inventoryMainView .nf18-sinfo{margin:10px 2px 0;font-size:14.5px;color:#344054;font-weight:600;}
+  #view-app .nf18-hub, #view-app .nf18-sub{position:relative;}

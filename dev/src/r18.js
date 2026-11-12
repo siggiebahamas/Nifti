@@ -45,7 +45,7 @@ function nf18DemoBooks(){
 }
 function nf18DemoMoney(){
   if(!(typeof nfIsDemo === 'function' && nfIsDemo())) return;
-  try{ const po = getPO('po8'); if(po && po.invoice){ const list = paymentListFor(po, 'invoice'); for(let i = list.length - 1; i >= 0; i--) if(['nf-chq-2', 'nf-chq-4'].includes(list[i].id)) list.splice(i, 1); } }catch(e){}
+  // Round 19: every check state stays (post-dated and bounced checks are everyday in the Philippines)
 }
 function nf18DemoTools(){
   if(!(typeof nfIsDemo === 'function' && nfIsDemo())) return;
@@ -97,7 +97,7 @@ function nf18Tiles(arr){
 /* ---------- 2. Five main pages; everything else is a tab inside one of them ---------- */
 const NF18_HUBS = {
   dashboard: {label: 'Home'},
-  orders: {label: 'Orders', tabs: [['orders', 'Orders'], ['routes', 'Deliveries'], ['returns', 'Returns & credits'], ['store', 'Online store'], ['discover', 'Find customers']]},
+  orders: {label: 'Orders', tabs: [['orders', 'Orders'], ['followups', 'Follow-ups'], ['routes', 'Deliveries'], ['returns', 'Returns & credits'], ['store', 'Online store'], ['discover', 'Find customers']]},
   messages: {label: 'Messages', tabs: [['messages', 'Chats'], ['team', 'Team']]},
   inventory: {label: 'Stock'},
   money: {label: 'Money', tabs: [['money', 'Overview'], ['sales', 'Counter'], ['expenses', 'Expenses'], ['collections', 'Getting paid'], ['profit', 'Prices'], ['issues', 'To check'], ['payroll', 'Payroll'], ['ledger', 'Books']]}
@@ -106,7 +106,7 @@ const NF18_SUB = {
   paid: {pages: ['collections', 'cheques'], tabs: [['follow', 'Who owes you'], ['cheques', 'Checks'], ['cash', 'Cash & bank']]},
   books: {pages: ['ledger', 'books', 'taxforms'], tabs: [['ledger', 'Reports'], ['books', 'Tax books'], ['taxforms', 'BIR 2307s']]}
 };
-const NF18_REDIRECT = {cashcount: ['sales', 'nf18Count'], prices: ['profit', 'nf18Prices'], followups: ['orders'], watchdog: ['issues', 'nf18Team'], analytics: ['money', 'nfHomeReport']};
+const NF18_REDIRECT = {cashcount: ['sales', 'nf18Count'], prices: ['profit', 'nf18Prices'], watchdog: ['issues', 'nf18Team'], analytics: ['money', 'nfHomeReport']};
 function nf18HubOf(page){
   if(page === 'cheques') return 'money';
   if(['books', 'taxforms'].includes(page)) return 'money';
@@ -131,13 +131,15 @@ function nf18PaintHub(page){
   if(!html){ if(box) box.remove(); return; }
   if(!box){ box = document.createElement('div'); box.className = 'nf18-hubwrap'; }
   if(pg.firstElementChild !== box) pg.insertBefore(box, pg.firstChild);
-  if(box.innerHTML !== html) box.innerHTML = html;
+  // compare with what we drew last time (the browser rewrites "&" as "&amp;", so comparing innerHTML never matched,
+  // the row redrew itself non-stop and clicks on it never landed)
+  if(box.dataset.k !== html){ box.innerHTML = html; box.dataset.k = html; }
 }
 function nf18Menu(){
   // sidebar: Home, Orders, Messages, Stock, Money
-  document.querySelectorAll('.sidebar .nav-item[data-page]').forEach(n => n.classList.toggle('nf18-off', !NF18_HUBS[n.dataset.page]));
-  document.querySelectorAll('.sidebar .heading, .sidebar .nav-fold').forEach(h => h.classList.add('nf18-off'));
-  const money = document.querySelector('.sidebar .nav-item[data-page="money"] span:not(.nav-badge)'); if(money && money.textContent !== 'Money') money.textContent = 'Money';
+  // Round 19: the left menu shows 10 lines (nf19Menu); everything outside it stays hidden
+  document.querySelectorAll('.sidebar .nav-item[data-page]').forEach(n => n.classList.toggle('nf18-off', !n.closest('.nf19-nav')));
+  document.querySelectorAll('.sidebar .heading, .sidebar .nav-fold').forEach(h => h.classList.toggle('nf18-off', !h.closest('.nf19-nav')));
   const stock = document.querySelector('.sidebar .nav-item[data-page="inventory"] span:not(.nav-badge)'); if(stock && stock.textContent !== 'Stock') stock.textContent = 'Stock';
   // phone: Home, Orders, Chat, Stock, Money
   const bn = document.getElementById('bottomNav');
@@ -234,7 +236,11 @@ function nf18Stock(){
   if(!a){ a = document.createElement('button'); a.type = 'button'; a.className = 'bk-tile bad nt-bad nf18-re'; a.setAttribute('onclick', "nf18StockFilter('critical')"); row.insertBefore(a, row.firstChild); }
   if(!b){ b = document.createElement('div'); b.className = 'bk-tile nt-plain nf18-val'; row.appendChild(b); }
   const ah = `<small>Reorder now</small><b>${escapeHtml(crit.trim())}</b><span>${Number(crit) === 1 ? 'item' : 'items'} running out</span>`, bh = `<small>Stock value</small><b>${escapeHtml(val.trim())}</b><span>at what you paid</span>`;
-  if(a.innerHTML !== ah) a.innerHTML = ah; if(b.innerHTML !== bh) b.innerHTML = bh;
+  if(a.dataset.k !== ah){ a.innerHTML = ah; a.dataset.k = ah; } if(b.dataset.k !== bh){ b.innerHTML = bh; b.dataset.k = bh; }
+  const t = id => ((document.getElementById(id) || {}).textContent || '').trim(), pl = [...row.querySelectorAll('.bk-tile.nt-plain:not(.nf18-val)')].map(x => x.textContent.replace(/\s+/g, ' ').trim());
+  const info = [t('invStatTotal') && `${t('invStatTotal')} products`, t('invStatHealthy') && `${t('invStatHealthy')} healthy`, ...pl.map(x => x.replace(/^Promised to customers\s*(\d+)\s*items? in open orders/i, '$1 promised to customers').replace(/^Last spot count\s*/i, 'last spot count: ').replace(/(Today|Yesterday)by /, '$1 by '))].filter(Boolean).join(' · ');
+  let ln = row.parentElement.querySelector(':scope > .nf18-sinfo'); if(!ln){ ln = document.createElement('p'); ln.className = 'nf18-sinfo'; row.insertAdjacentElement('afterend', ln); }
+  if(ln.textContent !== info) ln.textContent = info;
   // warehouses: one dropdown next to the status filters instead of a second row
   const tb = document.querySelector('#inventoryMainView .toolbar'), tabs = [...document.querySelectorAll('#whTabs .wh-tab')];
   if(tb && tabs.length > 1){
@@ -309,7 +315,7 @@ function nf18CloseTeam(){ NF18T.on = false; const shell = document.querySelector
           if(page === 'issues') nf18Issues();
           if(page === 'money') nf18Money();
           if(page === 'discover') nf18Leads();
-          if(page === 'ledger' && typeof LGV !== 'undefined' && LGV.tab === 'summary'){ LGV.tab = 'pnl'; try{ renderLedgerPage(); }catch(e){} }
+          if(page === 'ledger' && typeof LGV !== 'undefined' && LGV.tab === 'summary' && !w._lgPicked){ LGV.tab = 'pnl'; w._lgPicked = true; try{ renderLedgerPage(); }catch(e){} }
           if(page === 'messages'){ const sh = document.querySelector('#page-messages .messages-shell'); if(sh && !NF18T.on) sh.classList.remove('nf18-team-on'); }
           nf18Soon();
         }
@@ -325,7 +331,7 @@ function nf18CloseTeam(){ NF18T.on = false; const shell = document.querySelector
     try{ if(typeof renderOneHome !== 'undefined') renderOneHome = w; }catch(e){} try{ if(typeof renderHomeV2 !== 'undefined') renderHomeV2 = w; }catch(e){}
   }
   // Books & reports opens on Profit & loss (the summary repeated Money overview)
-  try{ if(typeof LG_TABS !== 'undefined'){ const i = LG_TABS.findIndex(t => t[0] === 'summary'); if(i >= 0) LG_TABS.splice(i, 1); } if(typeof LGV !== 'undefined' && LGV.tab === 'summary') LGV.tab = 'pnl'; }catch(e){}
+  try{ if(typeof LG_TABS !== 'undefined'){ const i = LG_TABS.findIndex(t => t[0] === 'summary'); if(i >= 0){ const t = LG_TABS.splice(i, 1)[0]; t[1] = 'What changed'; const c = LG_TABS.findIndex(x => x[0] === 'cash'); LG_TABS.splice(c >= 0 ? c + 1 : LG_TABS.length, 0, t); } } if(typeof LGV !== 'undefined' && LGV.tab === 'summary') LGV.tab = 'pnl'; }catch(e){}
   // chat list: the Team chat on top
   const rcl = window.renderConversationList;
   if(typeof rcl === 'function' && !rcl._nf18){
@@ -434,7 +440,7 @@ function nf18Ctx(){
   shell.classList.toggle('nf18-ctx', on);
   const thread = shell.querySelector('.msg-thread'), comp = shell.querySelector('.msg-composer'), tabs = document.getElementById('msgPoTabs');
   const get = (id, cls, parent, before) => { let e = document.getElementById(id); if(!e && parent){ e = document.createElement(cls === 'aside' ? 'aside' : 'div'); e.id = id; e.className = id.toLowerCase(); if(before) parent.insertBefore(e, before); else parent.appendChild(e); } return e; };
-  if(!on){ ['nf18Task', 'nf18Ch', 'nf18Op', 'nf18Card'].forEach(i => { const e = document.getElementById(i); if(e) e.innerHTML = ''; }); return; }
+  if(!on){ ['nf18Task', 'nf18Ch', 'nf18Op', 'nf18Card'].forEach(i => { const e = document.getElementById(i); if(e){ e.innerHTML = ''; e.dataset.k = ''; } }); return; }
   const o = getPO(NF18M.po), sell = NF18M.sell, r = nf18Row(o), who = sell ? o.buyerName : o.supplierName, T = nf18Tpl(o, sell, r), fil = NF18M.lang === 'fil';
   const card = get('nf18Card', 'div', thread, tabs ? tabs.nextSibling : null), task = get('nf18Task', 'div', thread, card ? card.nextSibling : null);
   const ch = get('nf18Ch', 'div', comp, comp ? comp.querySelector('.composer-row') : null), op = get('nf18Op', 'aside', shell, null);
@@ -446,19 +452,19 @@ function nf18Ctx(){
   // the order, on the right (laptop) or as a card you can open (phone)
   const opH = `<div class="nf18-oph"><small>The order</small><button type="button" class="nf18-x" onclick="nf18CtxClear()" aria-label="Close">${ic18('x')}</button></div>
     <div class="nf18-opt"><b>${escapeHtml(o.poNumber)}</b><span class="nfo-step t-${r ? r.turn : 'them'}"><i></i>${escapeHtml(r ? r.step : '')}</span><span class="nf18-who">${escapeHtml(who)}</span></div>${alertH}${itemsH}<small class="nf18-lbl">Where it is</small>${stepsH}${actsH}`;
-  if(op.innerHTML !== opH) op.innerHTML = opH;
+  if(op.dataset.k !== opH){ op.innerHTML = opH; op.dataset.k = opH; }
   const cardH = `<button type="button" class="nf18-cardh b-${band}" onclick="NF18M.open=!NF18M.open; nf18Ctx()" aria-expanded="${NF18M.open}">${ic18('doc')}<span><b>${escapeHtml(o.poNumber)} · ${nf18Peso(poTotal(o))}</b><small>${escapeHtml(r ? r.when : '')}</small></span><i>${NF18M.open ? '▲' : '▼'}</i></button>${NF18M.open ? `<div class="nf18-cardb">${itemsH}${stepsH}${actsH}</div>` : ''}`;
-  if(card.innerHTML !== cardH) card.innerHTML = cardH;
+  if(card.dataset.k !== cardH){ card.innerHTML = cardH; card.dataset.k = cardH; }
   // why you came, then done
   const nx = nf18Next(o);
   const taskH = NF18M.sent
     ? `<div class="nf18-task done"><small>Done</small><b>Message sent to ${escapeHtml(who)}</b><span>${escapeHtml(o.poNumber)} goes with it, so they know which order you mean.</span>
         <div class="nf18-tacts"><button type="button" class="btn btn-primary btn-sm" onclick="nf18CtxClear(); go('orders')">${ic18('back')}Back to Orders</button>${nx ? `<button type="button" class="btn btn-outline btn-sm" onclick="nf18MsgFor('${nx.o.id}')">Next: ${escapeHtml(nx.who)} · ${escapeHtml(nx.step)}</button>` : ''}${NF18M.undoT ? `<button type="button" class="nf18-undo" onclick="nf18Undo()">Undo</button>` : ''}</div></div>`
     : `<div class="nf18-task"><small>Why you're here</small><b>${escapeHtml(o.poNumber)} · ${escapeHtml(r ? r.step : o.status)}</b><span>${escapeHtml(r ? `${r.when} ${r.todo}` : '')}</span><button type="button" class="nf18-all" onclick="nf18CtxClear()">See all chats</button></div>`;
-  if(task.innerHTML !== taskH) task.innerHTML = taskH;
+  if(task.dataset.k !== taskH){ task.innerHTML = taskH; task.dataset.k = taskH; }
   const chH = NF18M.sent ? '' : `<div class="nf18-chh"><b>Tap Send on the one you like</b><span class="lang-switch nf18-lsw" role="group" aria-label="Message language"><button type="button" class="${fil ? '' : 'active'}" aria-pressed="${!fil}" onclick="NF18M.lang='en'; nf18Ctx()">English</button><button type="button" class="${fil ? 'active' : ''}" aria-pressed="${fil}" onclick="NF18M.lang='fil'; nf18Ctx()">Filipino</button></span></div>
     <div class="nf18-chl">${T.map((t, i) => `<div class="nf18-c"><div><small>${escapeHtml(fil ? t[2] : t[0])}</small><p>${escapeHtml(fil ? t[3] : t[1])}</p></div><div class="nf18-cb"><button type="button" class="nf18-edit" onclick="nf18Edit(${i})">Edit first</button><button type="button" class="btn btn-primary btn-sm" onclick="nf18Send(${i})">Send</button></div></div>`).join('')}</div>`;
-  if(ch.innerHTML !== chH) ch.innerHTML = chH;
+  if(ch.dataset.k !== chH){ ch.innerHTML = chH; ch.dataset.k = chH; }
 }
 function nf18Next(o){
   try{ const pid = NF18M.conv, rank = {red: 0, yel: 1, blue: 2, green: 3};

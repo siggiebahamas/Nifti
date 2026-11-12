@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Round 19 Choices</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="../r13/lab.css">
+<style>
+.band{background:radial-gradient(800px 260px at 85% -20%,rgba(52,211,153,.35),transparent 60%),linear-gradient(135deg,#03251C 0%,#064E3B 55%,#0B6B57 100%);color:#fff;padding:34px 20px 80px}
+.band .bin{max-width:1080px;margin:0 auto}.band a{color:#C8EFDF;font-size:14px;font-weight:700;text-decoration:none}
+.band h1{margin:12px 0 6px;font-size:36px;font-weight:800;letter-spacing:-.02em;line-height:1.1}.band p{margin:0;font-size:17px;color:#C8EFDF;max-width:660px}
+.wrap{max-width:1080px;margin:-52px auto 0;padding:0 20px 60px;display:grid;gap:18px}
+.live{background:#fff;border-radius:18px;border:1px solid #E7EAF0;box-shadow:var(--shc);padding:18px 20px;display:grid;gap:10px}
+.live h2{margin:0;font-size:18px;font-weight:800;display:flex;align-items:center;gap:10px}.live h2 span{font-size:12px;letter-spacing:.06em;text-transform:uppercase;background:var(--gbg);color:var(--g);border-radius:999px;padding:4px 10px}
+.live ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}.live li{display:grid;grid-template-columns:22px 1fr;gap:10px;font-size:15px;color:var(--ink2)}.live li b{color:var(--ink)}
+.live li svg{width:20px;height:20px;padding:3px;border-radius:50%;background:var(--g2);color:#fff;stroke-width:3}
+.audit{background:#fff;border-radius:18px;border:1px solid #E7EAF0;box-shadow:var(--shc);overflow:hidden}
+.audit h2{margin:0;padding:16px 20px 12px;font-size:18px;font-weight:800;border-bottom:2px solid var(--ink)}
+.ar{display:grid;grid-template-columns:minmax(0,1.1fr) auto minmax(0,2fr);gap:14px;align-items:center;padding:12px 20px;border-top:1px solid var(--line);font-size:14.5px}
+.ar b{font-size:15px}.ar span{color:var(--ink2)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.c{display:grid;gap:10px;background:#fff;border-radius:18px;border:1px solid #E7EAF0;box-shadow:var(--shc);padding:18px 20px;text-decoration:none;color:inherit;transition:transform .15s,box-shadow .15s;align-content:start}
+.c:hover{transform:translateY(-2px);box-shadow:var(--sh2)}
+.c .top{display:flex;align-items:center;gap:12px}.c .top span{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:#DDF5EC;color:#047857}.c .top span svg{width:24px;height:24px}
+.c h3{margin:0;font-size:18px;font-weight:800;line-height:1.2}.c small{font-size:13px;font-weight:800;color:var(--mut);letter-spacing:.04em;text-transform:uppercase}
+.c p{margin:0;font-size:15px;color:var(--ink2)}.c .go{display:inline-flex;align-items:center;gap:6px;font-weight:800;color:var(--g);font-size:15px}
+.c .opts{display:flex;flex-wrap:wrap;gap:6px}.c .opts i{font-style:normal;font-size:12.5px;font-weight:700;color:var(--ink2);background:var(--sf2);border-radius:999px;padding:3px 10px;box-shadow:inset 0 0 0 1px var(--line)}
+@media (max-width:640px){ .band h1{font-size:28px} .band{padding:24px 16px 72px} .wrap{padding:0 12px 40px} .ar{grid-template-columns:minmax(0,1fr) auto;padding:12px 14px} .ar span:last-child{grid-column:1/-1} }
+</style>
+</head>
+<body>
+<div class="band"><div class="bin"><a href="../">‹ Design lab</a><h1>Round 19 · three things to look at</h1><p>The bugs are fixed and the menu is back. Two designs to pick and one explainer.</p></div></div>
+<div class="wrap">
+  <div class="live"><h2>Already in the app <span>Live</span></h2><ul id="live"></ul></div>
+  <div class="cards" id="cards"></div>
+</div>
+<script src="../r13/lab.js"></script>
+<script>
+$('live').innerHTML = [
+  ['Every tab works again', ': the tab rows on Orders, Money, Getting paid, Books and Messages kept redrawing themselves, so clicks never landed. Fixed, and every tab and menu line was clicked with a real mouse in the tests (49 on a laptop, 44 on a phone).'],
+  ['10 lines in the left menu', ': Home, Orders, Messages, Stock, then a Money group: Money overview, Counter, Expenses, Getting paid, Prices, Books. Pages without their own line (Payroll, To check, Follow-ups, Deliveries, Returns, Online store, Find customers, Checks, Tax books, BIR 2307s, Team) light up the line they sit under.'],
+  ['Landing pages are back', ': a fresh visit shows the Nifti home page. "Try the demo" opens the app, a reload keeps you in it, and Log out takes you back to the landing page.'],
+  ['Two columns on a PC', ': Getting paid, Checks, BIR 2307s, Returns & credits and Price changes show customers on the left and suppliers on the right. On a phone they stack. Tables inside a column turn into neat cards so nothing is cut off.'],
+  ['Nothing important lost', ': Follow-ups is back as an Orders tab (calls for today, people to win back). Books keeps its "What changed" view. To check keeps all four team spending tabs. Team keeps Activity. Stock keeps every number (one line under the tiles). Checks keep all states, including bounced and post-dated.']
+].map(([b, t]) => `<li>${ic('check')}<span><b>${b}</b>${t}</span></li>`).join('');
+$('cards').innerHTML = [
+  ['tabs.html', 'clip', 'Tabs you can\'t miss', '3 ways', 'The tab row at the top of every page, made big enough to notice. Try it on Orders, Money and Messages.', ['A · Big tiles', 'B · A bar across the top (my pick)', 'C · A coloured band']],
+  ['orders2.html', 'truck', 'Orders in two columns', 'Mock-up', 'Customers on the left, suppliers on the right on a PC; stacked on a phone with two jump buttons.', ['Laptop', 'Phone']],
+  ['tools.html', 'ret', '"Its own tab" vs "inside each order"', 'Explainer', 'What I meant, shown with one job: giving a customer a credit for dented I-beams.', ['A · Its own tab (now)', 'B · Inside each order', 'C · Both (my pick)']]
+].map(([h, i, t, n, p, o]) => `<a class="c" href="${h}"><div class="top"><span>${ic(i)}</span><div><small>${n}</small><h3>${t}</h3></div></div><p>${p}</p><div class="opts">${o.map(x => `<i>${x}</i>`).join('')}</div><span class="go">Open ${ic('arrow')}</span></a>`).join('');
+</script>
+</body>
+</html>

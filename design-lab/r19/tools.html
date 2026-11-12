@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Where Extra Tools Live</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="../r13/lab.css">
+<style>
+.pw{padding:0 0 26px;background:#fff;min-height:700px;position:relative}
+.tb{display:flex;gap:2px;padding:0 20px;border-bottom:1px solid #E5E5E5;overflow-x:auto;scrollbar-width:none}
+.tb::-webkit-scrollbar{display:none}
+.frame-p .tb{padding:0 6px}
+.tb button{flex:none;padding:15px 13px 12px;font-size:15px;font-weight:700;color:#475467;border-bottom:3px solid transparent;margin-bottom:-1px;white-space:nowrap}
+.frame-p .tb button{padding:12px 9px 10px;font-size:14px}
+.tb button.on{color:#1F6B45;border-bottom-color:#1F6B45}
+.tb button.gone{color:#B42318;text-decoration:line-through;opacity:.6}
+.body{padding:18px 22px;display:grid;gap:12px}
+.frame-p .body{padding:12px}
+.body h2{margin:0;font-size:24px;font-weight:800;letter-spacing:-.02em}.body .sub{margin:-6px 0 0;color:var(--ink2);font-size:14.5px}
+.row{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:12px;align-items:center;border:1px solid #E5E5E5;border-radius:14px;padding:12px 14px}
+.frame-p .row{grid-template-columns:minmax(0,1fr) auto}
+.row b{font-size:15px}.row small{display:block;font-size:13px;color:#475467}
+.row .m{font-weight:800;font-variant-numeric:tabular-nums}
+.pill2{font-size:12.5px;font-weight:800;border-radius:999px;padding:3px 10px}
+.pill2.y{background:#FEF08A;color:#1F2329}.pill2.g{background:#DCF5E5;color:#146C3C}
+.frame-p .row .pill2{grid-column:1/-1;justify-self:start}
+.how{display:grid;gap:8px;border-radius:14px;padding:12px 14px;background:#F7F8FA;border:1px dashed #D0D5DD}
+.how b{font-size:13px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#475467}
+.how ol{margin:0;padding-left:20px;display:grid;gap:4px;font-size:14.5px;color:#1D2939}
+.how ol li b{font-size:inherit;letter-spacing:0;text-transform:none;color:#0E1114}
+.how.good{background:#F3FAF6;border-color:#9FD5B5}
+/* order sheet */
+.sheet{border:1px solid #E5E5E5;border-radius:18px;overflow:hidden;box-shadow:var(--sh2)}
+.sh-h{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid #E5E5E5}
+.sh-h b{font-size:17px}.sh-h small{display:block;font-size:13px;color:#475467}
+.sh-b{padding:12px 16px;display:grid;gap:12px}
+.steps{display:flex;gap:4px;flex-wrap:wrap}
+.steps span{font-size:12px;font-weight:800;border-radius:999px;padding:3px 9px;background:#DCF5E5;color:#146C3C}
+.steps span.now{background:#0E1114;color:#fff}
+.items{display:grid;gap:4px;font-size:14.5px}.items div{display:flex;justify-content:space-between}.items .t{border-top:1px solid #E5E5E5;padding-top:5px;font-weight:800}
+.tool{border-radius:14px;padding:12px 14px;display:grid;gap:8px;border:2px solid #1F6B45;background:#F3FAF6;position:relative}
+.tool .new{position:absolute;top:-11px;left:12px;font-size:11.5px;font-weight:800;letter-spacing:.06em;background:#1F6B45;color:#fff;border-radius:999px;padding:2px 9px}
+.tool b{font-size:15px}.tool p{margin:0;font-size:14px;color:#344054}
+.tool .r{display:flex;gap:8px;flex-wrap:wrap}
+.tool .r .btn1.sm, .tool .r .btn2{min-height:38px;font-size:14px}
+.tool form{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto;gap:8px;align-items:end}
+.frame-p .tool form{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.frame-p .tool form .btn1{grid-column:1/-1}
+.tool label{display:grid;gap:3px;font-size:12.5px;font-weight:800;color:#344054}
+.tool label{min-width:0}
+.split > div, .sheet, .sh-b, .tool{min-width:0}
+.tool input, .tool select{width:100%;min-width:0;height:40px;border-radius:10px;border:1.5px solid #D0D5DD;padding:0 10px;font:inherit;font-size:14.5px;background:#fff}
+.dim{opacity:.35;filter:grayscale(1);pointer-events:none}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:start}
+.frame-p .split{grid-template-columns:minmax(0,1fr)}
+.lbl{font-size:12.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#475467;margin:0 0 6px}
+</style>
+</head>
+<body>
+<header class="lab-top"><div class="lab-in">
+  <div class="lab-r1"><a class="lab-back" href="index.html">‹ Round 19</a><h1>"Its own tab" or "inside each order": what's the difference?</h1><p>Example: giving a customer a credit because 2 I-beams came dented. The same job, done three ways.</p></div>
+  <div class="lab-tabs" id="tabs"></div>
+  <div class="lab-r3" id="r3"></div>
+</div></header>
+<main class="lab-wrap" id="wrap"><section class="lab-stage" id="stage"></section><aside class="lab-notes" id="notes"></aside></main>
+<div class="toast" id="toast"></div>
+<script src="../r13/lab.js"></script>
+<script>
+const TABS = ['Orders', 'Follow-ups', 'Deliveries', 'Returns & credits', 'Online store', 'Find customers'];
+const credits = `<div class="row"><div><b>Corazon Welding Shop</b><small>CM-00002 · 3 bent angle bars returned</small></div><span class="m">₱1,200</span><span class="pill2 y">Waiting to be used</span></div>
+  <div class="row"><div><b>Bayview Construction Co.</b><small>CM-00001 · short by 1 bundle of rebar</small></div><span class="m">₱850</span><span class="pill2 g">Used on their bill</span></div>`;
+const form = `<form onsubmit="return false"><label>Amount<input value="₱900"></label><label>Why<select><option>Damaged goods</option><option>Short delivery</option><option>Wrong item</option></select></label><button class="btn1 sm" data-act="toast" data-v="Credit given. It comes off Cavite's next bill (prototype)">Give the credit</button></form>`;
+function sheet(withTool){
+  return `<div class="sheet"><div class="sh-h"><div><b>PO-2026-0740 · Cavite Steel Works</b><small>200 × Steel Rebar 12mm · paid Aug 24</small></div><button class="btn2" style="min-height:34px">${ic('x')}</button></div>
+    <div class="sh-b"><div class="steps"><span>To confirm</span><span>Preparing</span><span>On the way</span><span>Delivered</span><span>Billed</span><span class="now">Paid</span></div>
+      <div class="items"><div><span>200 × Steel Rebar 12mm</span><b>₱12,800</b></div><div><span>2 × Structural I-Beams</span><b>₱7,300</b></div><div class="t"><span>Total</span><span>₱20,100</span></div></div>
+      ${withTool ? `<div class="tool"><span class="new">INSIDE THIS ORDER</span><b>Something wrong with this order?</b><p>Items came back, or arrived damaged or short. The credit comes off Cavite's next bill.</p>${form}</div>
+        <div class="tool" style="border-style:dashed"><span class="new">INSIDE THIS ORDER</span><b>Delivery</b><div class="r"><button class="btn2" data-act="toast" data-v="Added to Thursday's route (prototype)">${ic('route')}Add to Thursday's route</button></div></div>` : ''}</div></div>`;
+}
+const V = [
+  {id: 'a', n: 'A', name: 'Its own tab', tag: 'What the app does now', why: [
+      'Returns & credits is a tab at the top of Orders, next to Deliveries and Online store.',
+      'To give Cavite a credit: open Orders, tap <b>Returns & credits</b>, pick Cavite from a list, type the amount and the reason.',
+      'Good: one place shows <b>every</b> credit you gave and got.',
+      'Not so good: you have to remember the tab exists, and find the customer again.'],
+    best: 'Seeing all credits at once, for example at month-end.', give: 'Three steps away from the order the problem is about.'},
+  {id: 'b', n: 'B', name: 'Inside each order', tag: 'The tool appears on the order itself', why: [
+      'There is no Returns & credits tab. Instead, every order you open has a <b>"Something wrong with this order?"</b> box.',
+      'To give Cavite a credit: open Cavite\'s order, type the amount, tap <b>Give the credit</b>. Done in one place.',
+      'Deliveries work the same way: each order has <b>"Add to Thursday\'s route"</b>.',
+      'Not so good: there is no single page listing every credit.'],
+    best: 'Fixing a problem the moment you see it on the order.', give: 'No page that lists all credits or all routes together.'},
+  {id: 'c', n: 'C', name: 'Both', tag: 'A tab for the full list, and the button inside each order', pick: 1, why: [
+      'Keep the <b>Returns & credits</b> tab for the full list, and add the <b>"Something wrong with this order?"</b> box inside every order.',
+      'Fix things right on the order; check the whole list from the tab when you want to.',
+      'Same idea for Deliveries: "Add to route" on each order, plus the Deliveries tab for the day\'s full route.',
+      'This is what I meant by "inside each order": the button lives on the order, not only on a separate page.'],
+    best: 'Everyone: quick fixes on the order, the full picture on the tab.', give: 'Nothing big; the order popup gets one more box.'}
+];
+const S = {v: 'c', view: 'both'};
+if(window.innerWidth < 700) S.view = 'p';
+function page(){
+  const tabRow = on => `<div class="tb">${TABS.map(t => `<button class="${t === on ? 'on' : ''} ${S.v === 'b' && t === 'Returns & credits' ? 'gone' : ''}">${t}</button>`).join('')}</div>`;
+  if(S.v === 'a') return `<div class="pw">${tabRow('Returns & credits')}<div class="body"><h2>Returns & credits</h2><p class="sub">Every credit you gave and got.</p>
+    <div class="tool"><span class="new">ON THE TAB</span><b>Give a customer a credit</b><form onsubmit="return false"><label>Customer<select><option>Pick a customer…</option><option selected>Cavite Steel Works</option></select></label><label>Amount<input value="₱900"></label><button class="btn1 sm" data-act="toast" data-v="Credit given (prototype)">Give credit</button></form></div>
+    <p class="lbl">Credits you gave</p>${credits}
+    <div class="how"><b>Steps to give Cavite a credit</b><ol><li>Open <b>Orders</b></li><li>Tap the <b>Returns & credits</b> tab</li><li>Pick <b>Cavite</b>, type ₱900, tap Give credit</li></ol></div></div></div>`;
+  if(S.v === 'b') return `<div class="pw">${tabRow('Orders')}<div class="body"><h2>Orders</h2><p class="sub">You opened Cavite's order. The credit tool is right there.</p>${sheet(true)}
+    <div class="how good"><b>Steps to give Cavite a credit</b><ol><li>Open <b>Cavite's order</b></li><li>Type ₱900, tap <b>Give the credit</b></li></ol></div></div></div>`;
+  return `<div class="pw">${tabRow('Orders')}<div class="body"><h2>Orders</h2><p class="sub">The tool is on the order, and the tab still lists everything.</p>
+    <div class="split"><div><p class="lbl">Inside the order</p>${sheet(true)}</div><div><p class="lbl">The Returns & credits tab</p>${credits}<div class="row"><div><b>Cavite Steel Works</b><small>CM-00003 · 2 I-beams dented · just now</small></div><span class="m">₱900</span><span class="pill2 y">Waiting to be used</span></div></div></div>
+    <div class="how good"><b>Steps to give Cavite a credit</b><ol><li>Open <b>Cavite's order</b></li><li>Type ₱900, tap <b>Give the credit</b>; it shows on the Returns & credits tab too</li></ol></div></div></div>`;
+}
+function render(){
+  $('tabs').innerHTML = V.map(x => `<button class="lab-tab" aria-pressed="${S.v === x.id}" data-act="v" data-v="${x.id}"><i>${x.n}</i><b>${x.name}${x.pick ? ' · my pick' : ''}</b><small>${x.tag}</small></button>`).join('');
+  $('r3').innerHTML = seg('vw', [['both', 'Laptop + phone'], ['d', 'Laptop'], ['p', 'Phone']], S.view, 'view');
+  $('wrap').classList.toggle('wide', S.view !== 'p');
+  const pg = page();
+  const desk = `<div class="frame-d">${pg}</div>`, phone = `<div class="frame-p"><div class="notch"><span>9:41</span><span>●●●</span></div><div class="scroll">${pg}</div></div>`;
+  $('stage').innerHTML = S.view === 'd' ? desk : S.view === 'p' ? phone : `<div style="flex:1 1 720px;min-width:0;display:flex;justify-content:center">${desk}</div><div>${phone}</div>`;
+  const x = V.find(v => v.id === S.v);
+  $('notes').innerHTML = `<h2>${x.n} · ${x.name}${x.pick ? ' <span class="pill green nodot" style="vertical-align:middle">My pick</span>' : ''}</h2><p style="margin:-8px 0 0;color:var(--mut);font-size:14px">${x.tag}</p><h3>How it works</h3><ul>${x.why.map(w => `<li>${ic('check')}<span>${w}</span></li>`).join('')}</ul>
+    <div class="box"><b>Best for:</b> ${x.best}</div><div class="box"><b>You give up:</b> ${x.give}</div>`;
+}
+document.addEventListener('click', e => { const b = e.target.closest('[data-act]'); if(!b) return; const a = b.dataset.act, v = b.dataset.v;
+  if(a === 'toast'){ e.stopPropagation(); return toast(v); }
+  if(a === 'v') S.v = v; else if(a === 'view') S.view = v;
+  render(); });
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tabs You Can't Miss</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="../r13/lab.css">
+<style>
+.pgs{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.pgs small{font-size:12.5px;font-weight:800;color:var(--mut);letter-spacing:.04em;text-transform:uppercase;margin-right:2px}
+.pgs button{min-height:38px;padding:0 14px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1.5px var(--line2);font-size:13.5px;font-weight:700;color:var(--ink2)}
+.pgs button[aria-pressed=true]{background:var(--ink);color:#fff;box-shadow:none}
+.app{display:grid;grid-template-columns:200px minmax(0,1fr);min-height:640px;background:#fff}
+.frame-p .app{grid-template-columns:minmax(0,1fr)}
+.side{background:#FAFAFA;border-right:1px solid #E5E5E5;padding:16px 10px;display:grid;gap:2px;align-content:start}
+.side .lg{font-weight:800;font-size:17px;padding:2px 10px 12px}
+.side .h{font-size:11.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#475467;padding:12px 10px 4px}
+.side span{display:flex;align-items:center;gap:9px;padding:7px 10px;border-radius:9px;font-size:13.5px;font-weight:600;color:#344054}
+.side span.on{background:#EBEBEB;color:#0E1114;font-weight:700}
+.side span svg.i{width:16px;height:16px}
+.frame-p .side{display:none}
+.main{min-width:0;padding:0 0 24px}
+.body{padding:18px 24px;display:grid;gap:12px}
+.frame-p .body{padding:12px}
+.body h2{margin:0;font-size:26px;font-weight:800;letter-spacing:-.02em}.body .sub{margin:-6px 0 0;color:var(--ink2);font-size:14.5px}
+.frame-p .body h2{font-size:23px}
+.ghost{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.frame-p .ghost{grid-template-columns:repeat(2,minmax(0,1fr))}
+.ghost i{display:block;height:64px;border-radius:14px;border:1px solid #E5E5E5;background:#fff}
+.ghost2{height:260px;border-radius:16px;border:1px solid #E5E5E5;background:repeating-linear-gradient(180deg,#fff 0 56px,#F7F8FA 56px 57px)}
+.phonebar{display:none}
+.frame-p .phonebar{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid #E5E5E5;background:#FAFAFA;padding:6px 4px 10px;position:sticky;bottom:0}
+.phonebar span{display:grid;justify-items:center;gap:2px;font-size:11px;font-weight:700;color:#344054}
+.phonebar span.on{color:#1F6B45}.phonebar svg.i{width:20px;height:20px}
+
+/* ---------- A · big tiles ---------- */
+.ta{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;padding:16px 24px 4px}
+.frame-p .ta{display:flex;overflow-x:auto;scrollbar-width:none;padding:12px 12px 4px;gap:8px}
+.frame-p .ta::-webkit-scrollbar{display:none}
+.ta button{display:grid;grid-template-columns:36px minmax(0,1fr);gap:2px 10px;align-items:center;text-align:left;padding:10px 12px;border-radius:16px;border:1.5px solid #D0D5DD;background:#fff;min-height:64px}
+.frame-p .ta button{flex:0 0 150px}
+.ta button i{grid-row:span 2;width:36px;height:36px;border-radius:11px;display:grid;place-items:center;background:#F2F4F7;color:#344054}
+.ta button i svg.i{width:19px;height:19px}
+.ta button b{font-size:15px;font-weight:800;line-height:1.2}
+.ta button small{font-size:12.5px;color:#475467;font-weight:600;line-height:1.25}
+.ta button em{font-style:normal;font-size:11.5px;font-weight:800;background:#FEE4E2;color:#B42318;border-radius:999px;padding:1px 7px;margin-left:4px}
+.ta button.on{border-color:#1F6B45;background:#EAF6EF;box-shadow:0 0 0 3px #DCEFE3}
+.ta button.on i{background:#1F6B45;color:#fff}
+
+/* ---------- B · a bar across the top, with icons, that stays when you scroll ---------- */
+.tb{position:sticky;top:0;z-index:2;background:#fff;border-bottom:1px solid #E5E5E5;display:flex;gap:2px;padding:0 20px;overflow-x:auto;scrollbar-width:none}
+.tb::-webkit-scrollbar{display:none}
+.frame-p .tb{padding:0 6px}
+.tb button{flex:none;display:flex;align-items:center;gap:7px;padding:16px 11px 13px;font-size:15.5px;font-weight:700;color:#475467;border-bottom:3px solid transparent;margin-bottom:-1px;white-space:nowrap}
+.frame-p .tb button{padding:13px 10px 11px;font-size:14.5px}
+.tb button svg.i{width:19px;height:19px}
+.tb button em{font-style:normal;font-size:12px;font-weight:800;background:#0E1114;color:#fff;border-radius:999px;padding:1px 7px}
+.tb button:hover{color:#0E1114}
+.tb button.on{color:#1F6B45;border-bottom-color:#1F6B45}
+.tb button.on em{background:#1F6B45}
+.tbfade{position:relative}
+.frame-p .tbfade::after{content:"";position:absolute;right:0;top:0;bottom:1px;width:36px;background:linear-gradient(90deg,rgba(255,255,255,0),#fff);pointer-events:none}
+
+/* ---------- C · a coloured band with the page name and big pills ---------- */
+.tc{background:linear-gradient(180deg,#EEF6F1,#F7FBF8);border-bottom:1px solid #D7EBDD;padding:16px 24px 14px;display:grid;gap:10px}
+.frame-p .tc{padding:12px 12px 10px}
+.tc .k{display:flex;align-items:center;gap:10px}
+.tc .k span{width:34px;height:34px;border-radius:10px;background:#1F6B45;color:#fff;display:grid;place-items:center}
+.tc .k span svg.i{width:19px;height:19px}
+.tc .k b{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#1F6B45}
+.tc .k small{font-size:13.5px;color:#344054;font-weight:600}
+.tc .p{display:flex;gap:8px;flex-wrap:wrap}
+.frame-p .tc .p{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+.frame-p .tc .p::-webkit-scrollbar{display:none}
+.tc .p button{flex:none;min-height:44px;padding:0 16px;border-radius:999px;background:#fff;border:1.5px solid #B7E0C7;font-size:15px;font-weight:700;color:#1D2939;display:flex;align-items:center;gap:7px;white-space:nowrap}
+.tc .p button em{font-style:normal;font-size:12px;font-weight:800;background:#FEE4E2;color:#B42318;border-radius:999px;padding:1px 7px}
+.tc .p button.on{background:#1F6B45;border-color:#1F6B45;color:#fff}
+.tc .p button.on em{background:#fff;color:#1F6B45}
+</style>
+</head>
+<body>
+<header class="lab-top"><div class="lab-in">
+  <div class="lab-r1"><a class="lab-back" href="index.html">‹ Round 19</a><h1>Tabs at the top of every page, easy to see</h1><p>The row of tabs under the top bar was small and easy to miss. Three ways to make it stand out, on every page that has tabs.</p></div>
+  <div class="lab-tabs" id="tabs"></div>
+  <div class="lab-r3" id="r3"></div>
+</div></header>
+<main class="lab-wrap" id="wrap"><section class="lab-stage" id="stage"></section><aside class="lab-notes" id="notes"></aside></main>
+<div class="toast" id="toast"></div>
+<script src="../r13/lab.js"></script>
+<script>
+const PG = {
+  orders: {label: 'Orders', side: 'Orders', icon: 'truck', sub: 'Who needs you, and their orders under them.', tabs: [['Orders', 'truck', 'Who needs you now', 1], ['Follow-ups', 'bell', 'Who to call today', 2], ['Deliveries', 'route', 'Today\'s route', 0], ['Returns & credits', 'ret', 'Money off a bill', 0], ['Online store', 'store', 'Your order page', 0], ['Find customers', 'search', 'New buyers', 0]]},
+  money: {label: 'Money overview', side: 'Money overview', icon: 'wallet', sub: 'Your profit, where the money went, and who owes who.', tabs: [['Overview', 'chart', 'Profit this month', 0], ['Counter', 'cash', 'Today\'s sales + cash count', 0], ['Expenses', 'receipt', 'Bills and receipts', 1], ['Getting paid', 'wallet', 'Who owes you', 1], ['Prices', 'tag', 'Costs and margins', 0], ['To check', 'alert', 'Things that don\'t add up', 3], ['Payroll', 'users', 'Pay your people', 0], ['Books', 'book', 'Reports and tax', 0]]},
+  messages: {label: 'Messages', side: 'Messages', icon: 'msg', sub: 'Every customer and supplier chat in one place.', tabs: [['Chats', 'msg', 'Customers and suppliers', 2], ['Team', 'users', 'Your own people', 0]]}
+};
+const SIDE = [['home', 'Home'], ['truck', 'Orders'], ['msg', 'Messages'], ['box', 'Stock'], ['h', 'Money'], ['chart', 'Money overview'], ['cash', 'Counter'], ['receipt', 'Expenses'], ['wallet', 'Getting paid'], ['tag', 'Prices'], ['book', 'Books']];
+const V = [
+  {id: 'a', n: 'A', name: 'Big tiles', tag: 'Each tab is a card with an icon and a one-line hint', why: [
+      'Every tab is a tile you can\'t miss: an icon, its name, and a short line saying what\'s inside.',
+      'A red number shows when something there needs you (3 things to check, 1 bill to pay).',
+      'The page you\'re on is filled green with a soft glow.',
+      'On a phone the tiles slide sideways, like the photo row in a gallery app.'],
+    best: 'Owners and staff who are new to apps: the hint line explains each tab.', give: 'Takes the most space: about one row of tiles on a laptop.'},
+  {id: 'b', n: 'B', name: 'A bar across the top', tag: 'Big words with icons, a thick green line under the page you\'re on', pick: 1, why: [
+      'One full-width bar right under the top bar, with bigger words (16px) and an icon for each tab.',
+      'A thick green line sits under the tab you\'re on, like the tabs in Facebook or Shopee.',
+      'It stays at the top while you scroll, so you can switch pages from anywhere.',
+      'Little black numbers show where something needs you.'],
+    best: 'Everyday use: clear, familiar, and it uses the least space.', give: 'No hint line, so each tab name has to say it all.'},
+  {id: 'c', n: 'C', name: 'A coloured band', tag: 'The section name on top, then big pill buttons', why: [
+      'A light green band holds the section name ("ORDERS · 6 pages here") and big pill buttons for every page in it.',
+      'The page you\'re on is a solid green pill; the others are white with a green outline.',
+      'The band colour tells you which part of the app you\'re in.',
+      'On a phone the pills slide sideways inside the band.'],
+    best: 'Making it obvious that a section has more than one page.', give: 'Adds colour at the top of every page; a little busier than B.'}
+];
+const S = {v: 'b', view: 'both', pg: 'orders', on: 0};
+if(window.innerWidth < 700) S.view = 'p';
+function tabsH(p){
+  const T = p.tabs;
+  if(S.v === 'a') return `<div class="ta">${T.map(([l, i, h, n], k) => `<button class="${k === S.on ? 'on' : ''}" data-act="on" data-v="${k}"><i>${ic(i)}</i><b>${l}${n ? `<em>${n}</em>` : ''}</b><small>${h}</small></button>`).join('')}</div>`;
+  if(S.v === 'b') return `<div class="tbfade"><div class="tb">${T.map(([l, i, h, n], k) => `<button class="${k === S.on ? 'on' : ''}" data-act="on" data-v="${k}">${ic(i)}${l}${n ? `<em>${n}</em>` : ''}</button>`).join('')}</div></div>`;
+  return `<div class="tc"><div class="k"><span>${ic(p.icon)}</span><div><b>${p.label}</b><br><small>${T.length} pages here</small></div></div><div class="p">${T.map(([l, i, h, n], k) => `<button class="${k === S.on ? 'on' : ''}" data-act="on" data-v="${k}">${l}${n ? `<em>${n}</em>` : ''}</button>`).join('')}</div></div>`;
+}
+function page(){
+  const p = PG[S.pg], cur = p.tabs[S.on] || p.tabs[0];
+  return `<div class="app"><nav class="side"><div class="lg">Nifti</div>${SIDE.map(([i, l]) => i === 'h' ? `<div class="h">${l}</div>` : `<span class="${l === p.side ? 'on' : ''}">${ic(i)}${l}</span>`).join('')}</nav>
+    <div class="main">${tabsH(p)}<div class="body"><h2>${cur[0] === 'Overview' ? 'Money overview' : cur[0] === 'Chats' ? 'Messages' : cur[0]}</h2><p class="sub">${cur[2]}.</p><div class="ghost"><i></i><i></i><i></i><i></i></div><div class="ghost2"></div></div>
+    <div class="phonebar">${[['home', 'Home'], ['truck', 'Orders'], ['msg', 'Chat'], ['box', 'Stock'], ['wallet', 'Money']].map(([i, l]) => `<span class="${(S.pg === 'orders' && l === 'Orders') || (S.pg === 'money' && l === 'Money') || (S.pg === 'messages' && l === 'Chat') ? 'on' : ''}">${ic(i)}${l}</span>`).join('')}</div></div></div>`;
+}
+function render(){
+  $('tabs').innerHTML = V.map(x => `<button class="lab-tab" aria-pressed="${S.v === x.id}" data-act="v" data-v="${x.id}"><i>${x.n}</i><b>${x.name}${x.pick ? ' · my pick' : ''}</b><small>${x.tag}</small></button>`).join('');
+  $('r3').innerHTML = seg('vw', [['both', 'Laptop + phone'], ['d', 'Laptop'], ['p', 'Phone']], S.view, 'view') + `<div class="pgs"><small>Page</small>${[['orders', 'Orders'], ['money', 'Money'], ['messages', 'Messages']].map(([k, l]) => `<button aria-pressed="${S.pg === k}" data-act="pg" data-v="${k}">${l}</button>`).join('')}</div>`;
+  $('wrap').classList.toggle('wide', S.view !== 'p');
+  const pg = page();
+  const desk = `<div class="frame-d">${pg}</div>`, phone = `<div class="frame-p"><div class="notch"><span>9:41</span><span>●●●</span></div><div class="scroll">${pg}</div></div>`;
+  $('stage').innerHTML = S.view === 'd' ? desk : S.view === 'p' ? phone : `<div style="flex:1 1 720px;min-width:0;display:flex;justify-content:center">${desk}</div><div>${phone}</div>`;
+  const x = V.find(v => v.id === S.v);
+  $('notes').innerHTML = `<h2>${x.n} · ${x.name}${x.pick ? ' <span class="pill green nodot" style="vertical-align:middle">My pick</span>' : ''}</h2><p style="margin:-8px 0 0;color:var(--mut);font-size:14px">${x.tag}</p><h3>How it works</h3><ul>${x.why.map(w => `<li>${ic('check')}<span>${w}</span></li>`).join('')}</ul>
+    <div class="box"><b>Best for:</b> ${x.best}</div><div class="box"><b>You give up:</b> ${x.give}</div>
+    <div class="box"><b>Same on every page:</b> Orders, Messages, Money and Getting paid / Books all get the same style. Tap the tabs in the mock-up; they work.</div>`;
+}
+document.addEventListener('click', e => { const b = e.target.closest('[data-act]'); if(!b) return; const a = b.dataset.act, v = b.dataset.v;
+  if(a === 'v') S.v = v; else if(a === 'view') S.view = v; else if(a === 'pg'){ S.pg = v; S.on = 0; } else if(a === 'on') S.on = Number(v);
+  render(); });
+render();
+</script>
+</body>
+</html>

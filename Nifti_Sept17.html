@@ -6844,8 +6844,8 @@ tbody tr:hover{background:#F6F6F3}
   /* Getting paid: the old "Follow up / Cash & bank" switch is now the row above */
   html[data-ty] #view-app #page-collections .adm-tabs.sl-tabs, html[data-ty] #view-app #page-collections .adm-tabs.nf-tabcards{display:none !important;}
   /* Team: people and tasks only (Team chat moved to Messages, Activity is in Settings) */
-  html[data-ty] #view-app #page-team .team-tabs, html[data-ty] #view-app #page-team .team-tabs.nf-tabcards, #page-team #teamTab_chat, #page-team #teamTab_activity{display:none !important;}
-  #page-team #teamTab_tasks{display:block !important;}
+  /* Team: Tasks and Activity stay; Team chat moved to Messages */
+  html[data-ty] #view-app #page-team .team-tabs > :nth-child(2), #page-team #teamTab_chat{display:none !important;}
   /* PRO badges only where you choose your plan */
   #view-app .pro-badge{display:none !important;}
   #page-settings .pro-badge{display:inline-flex !important;}
@@ -6859,7 +6859,7 @@ tbody tr:hover{background:#F6F6F3}
   #view-app .nf18-mh2 h2{margin:0;font-size:24px;font-weight:800;letter-spacing:-.01em;color:#0E1114;}
   #view-app .nf18-mh2 p{margin:4px 0 0;font-size:15.5px;color:#344054;}
   #view-app .nf18-mh{margin-top:16px;}
-  html[data-ty] #view-app #nf18Team .adm-tabs, html[data-ty] #view-app #nf18Team .adm-tabs.nf-tabcards{display:none !important;}
+  /* To check · Team spending keeps all its tabs: overpaying, spending limits, supplier report card, price check */
   #page-money .nf18-mh{margin-top:18px;}
 
   /* Stock: 4 tiles, one filter row */
@@ -6993,8 +6993,43 @@ tbody tr:hover{background:#F6F6F3}
   html.nf-phone #view-app .messages-shell.nf18-team-on .msg-sidebar{display:none !important;}
   /* phone: the account menu opens inside the screen */
   html.nf-phone #userMenuDropdown{position:fixed !important;top:62px !important;right:10px !important;left:auto !important;width:min(320px, calc(100vw - 20px)) !important;max-height:calc(100vh - 140px);overflow-y:auto;z-index:300;}
+  #inventoryMainView .nf18-sinfo{margin:10px 2px 0;font-size:14.5px;color:#344054;font-weight:600;}
+  #view-app .nf18-hub, #view-app .nf18-sub{position:relative;}
 
 /* ===== Round 18 css end ===== */
+
+/* ===== Round 19 css begin ===== */
+  /* ---------- left menu: 10 lines, Money group with its own heading ---------- */
+  .sidebar .nf19-nav{display:block;}
+  .sidebar .nf19-nav .nf19-h{font-size:12.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#475467;padding:16px 12px 6px;margin:0;}
+  .sidebar .nf19-nav .nav-item{display:flex !important;}
+
+  /* ---------- customers | suppliers side by side on a PC, one under the other on a phone ---------- */
+  @media (min-width:1100px){
+    html:not(.nf-phone) #view-app :is(#collectionsContent,#chequesContent,#taxFormsContent,#returnsContent,#pricesContent):has(> .nf-half){display:grid !important;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 22px;align-items:start;}
+    html:not(.nf-phone) #view-app :is(#collectionsContent,#chequesContent,#taxFormsContent,#returnsContent,#pricesContent):has(> .nf-half) > :not(.nf-half){grid-column:1 / -1;}
+    html:not(.nf-phone) #view-app .nf-half{min-width:0;}
+    /* inside a half: tiles two per row, tables keep to the column */
+    html:not(.nf-phone) #view-app .nf-half :is(.stat-row,.bk-tiles,.sl-tiles,.cq-tiles,.rt-tiles){grid-template-columns:repeat(2,minmax(0,1fr)) !important;display:grid !important;}
+    html:not(.nf-phone) #view-app .nf-half :is(.stat-row,.bk-tiles,.sl-tiles,.cq-tiles,.rt-tiles) > *{min-width:0;}
+    /* tables inside a column become neat row cards (same as on a phone), so nothing is cut off */
+    html:not(.nf-phone) #view-app .nf-half .lg-tbl-wrap{overflow:visible !important;border:0 !important;background:transparent !important;box-shadow:none !important;}
+    html:not(.nf-phone) #view-app .nf-half table.nf-cardtable{display:block;width:100% !important;min-width:0 !important;border:0 !important;background:transparent !important;}
+    html:not(.nf-phone) #view-app .nf-half table.nf-cardtable thead{display:none !important;}
+    html:not(.nf-phone) #view-app .nf-half table.nf-cardtable tbody{display:grid;gap:10px;}
+    html:not(.nf-phone) #view-app .nf-half table.nf-cardtable tr{display:grid !important;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px 14px;padding:12px 14px;border:1px solid #E3E7EC !important;border-radius:14px;background:#FFFFFF;box-shadow:none !important;}
+    html:not(.nf-phone) #view-app .nf-half table.nf-cardtable td{display:flex !important;flex-direction:column;align-items:flex-start;gap:2px;padding:0 !important;border:0 !important;text-align:left !important;font-size:15px !important;min-width:0;background:transparent !important;box-shadow:none !important;white-space:normal !important;}
+    html:not(.nf-phone) #view-app .nf-half table.nf-cardtable td::before{content:attr(data-label);font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#475467;}
+    html:not(.nf-phone) #view-app .nf-half table.nf-cardtable td:first-child{grid-column:1 / -1;font-size:16.5px !important;font-weight:800;}
+    html:not(.nf-phone) #view-app .nf-half table.nf-cardtable td:first-child::before, html:not(.nf-phone) #view-app .nf-half table.nf-cardtable td[data-label=""]::before{display:none;}
+    html:not(.nf-phone) #view-app .nf-half table.nf-cardtable td:last-child:has(> :is(.btn,.row-action,button,a)){grid-column:1 / -1;flex-direction:row;flex-wrap:wrap;gap:8px;align-items:center;}
+    html:not(.nf-phone) #view-app .nf-half table.nf-cardtable tr:has(> td:first-child[style*="border-left"]), html:not(.nf-phone) #view-app .nf-half table.nf-cardtable td:first-child[style*="border-left"]{border-left-width:0;}
+    html:not(.nf-phone) #view-app .nf-half table.nf-cardtable tfoot{display:block;} html:not(.nf-phone) #view-app .nf-half table.nf-cardtable tfoot tr{display:flex !important;justify-content:space-between;}
+    /* the explainer box next to a total sits under it inside a half */
+    html:not(.nf-phone) #view-app .nf-half .nf-half-b > div:has(> .panel-card + .panel-card){grid-template-columns:minmax(0,1fr) !important;}
+  }
+
+/* ===== Round 19 css end ===== */
   .settings-card:empty{display:none;}
   #supplierChips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;} #supplierChips .chip{flex-shrink:0;}
 </style>
@@ -25230,7 +25265,7 @@ function nfDemoAll(){ try{ nfDemoCurate(); nfDemoMoney(); nfDemoTeam(); nfDemoTo
     wrap('qtSeedDemo', nfDemoCurate); wrap('bkSeedDemo', () => { nfDemoBooks(); nfDemoMoney(); }); wrap('prLoad', nfDemoPayroll);
     wrap('seedDemoCheques', nfDemoMoney);
     nfDemoAll();
-    try{ const a = document.querySelector('#view-app .app-page.active'); if(a) navigate(a.id.slice(5)); }catch(e){}
+    try{ const a = document.querySelector('#view-app .app-page.active'), app = document.getElementById('view-app'); if(a && ((typeof nf19InApp === 'function' && nf19InApp()) || (app && !app.classList.contains('hidden')))) navigate(a.id.slice(5)); }catch(e){}
   };
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => setTimeout(hook, 0)); else setTimeout(hook, 0);
 })();
@@ -28040,7 +28075,7 @@ function nf18DemoBooks(){
 }
 function nf18DemoMoney(){
   if(!(typeof nfIsDemo === 'function' && nfIsDemo())) return;
-  try{ const po = getPO('po8'); if(po && po.invoice){ const list = paymentListFor(po, 'invoice'); for(let i = list.length - 1; i >= 0; i--) if(['nf-chq-2', 'nf-chq-4'].includes(list[i].id)) list.splice(i, 1); } }catch(e){}
+  // Round 19: every check state stays (post-dated and bounced checks are everyday in the Philippines)
 }
 function nf18DemoTools(){
   if(!(typeof nfIsDemo === 'function' && nfIsDemo())) return;
@@ -28092,7 +28127,7 @@ function nf18Tiles(arr){
 /* ---------- 2. Five main pages; everything else is a tab inside one of them ---------- */
 const NF18_HUBS = {
   dashboard: {label: 'Home'},
-  orders: {label: 'Orders', tabs: [['orders', 'Orders'], ['routes', 'Deliveries'], ['returns', 'Returns & credits'], ['store', 'Online store'], ['discover', 'Find customers']]},
+  orders: {label: 'Orders', tabs: [['orders', 'Orders'], ['followups', 'Follow-ups'], ['routes', 'Deliveries'], ['returns', 'Returns & credits'], ['store', 'Online store'], ['discover', 'Find customers']]},
   messages: {label: 'Messages', tabs: [['messages', 'Chats'], ['team', 'Team']]},
   inventory: {label: 'Stock'},
   money: {label: 'Money', tabs: [['money', 'Overview'], ['sales', 'Counter'], ['expenses', 'Expenses'], ['collections', 'Getting paid'], ['profit', 'Prices'], ['issues', 'To check'], ['payroll', 'Payroll'], ['ledger', 'Books']]}
@@ -28101,7 +28136,7 @@ const NF18_SUB = {
   paid: {pages: ['collections', 'cheques'], tabs: [['follow', 'Who owes you'], ['cheques', 'Checks'], ['cash', 'Cash & bank']]},
   books: {pages: ['ledger', 'books', 'taxforms'], tabs: [['ledger', 'Reports'], ['books', 'Tax books'], ['taxforms', 'BIR 2307s']]}
 };
-const NF18_REDIRECT = {cashcount: ['sales', 'nf18Count'], prices: ['profit', 'nf18Prices'], followups: ['orders'], watchdog: ['issues', 'nf18Team'], analytics: ['money', 'nfHomeReport']};
+const NF18_REDIRECT = {cashcount: ['sales', 'nf18Count'], prices: ['profit', 'nf18Prices'], watchdog: ['issues', 'nf18Team'], analytics: ['money', 'nfHomeReport']};
 function nf18HubOf(page){
   if(page === 'cheques') return 'money';
   if(['books', 'taxforms'].includes(page)) return 'money';
@@ -28126,13 +28161,15 @@ function nf18PaintHub(page){
   if(!html){ if(box) box.remove(); return; }
   if(!box){ box = document.createElement('div'); box.className = 'nf18-hubwrap'; }
   if(pg.firstElementChild !== box) pg.insertBefore(box, pg.firstChild);
-  if(box.innerHTML !== html) box.innerHTML = html;
+  // compare with what we drew last time (the browser rewrites "&" as "&amp;", so comparing innerHTML never matched,
+  // the row redrew itself non-stop and clicks on it never landed)
+  if(box.dataset.k !== html){ box.innerHTML = html; box.dataset.k = html; }
 }
 function nf18Menu(){
   // sidebar: Home, Orders, Messages, Stock, Money
-  document.querySelectorAll('.sidebar .nav-item[data-page]').forEach(n => n.classList.toggle('nf18-off', !NF18_HUBS[n.dataset.page]));
-  document.querySelectorAll('.sidebar .heading, .sidebar .nav-fold').forEach(h => h.classList.add('nf18-off'));
-  const money = document.querySelector('.sidebar .nav-item[data-page="money"] span:not(.nav-badge)'); if(money && money.textContent !== 'Money') money.textContent = 'Money';
+  // Round 19: the left menu shows 10 lines (nf19Menu); everything outside it stays hidden
+  document.querySelectorAll('.sidebar .nav-item[data-page]').forEach(n => n.classList.toggle('nf18-off', !n.closest('.nf19-nav')));
+  document.querySelectorAll('.sidebar .heading, .sidebar .nav-fold').forEach(h => h.classList.toggle('nf18-off', !h.closest('.nf19-nav')));
   const stock = document.querySelector('.sidebar .nav-item[data-page="inventory"] span:not(.nav-badge)'); if(stock && stock.textContent !== 'Stock') stock.textContent = 'Stock';
   // phone: Home, Orders, Chat, Stock, Money
   const bn = document.getElementById('bottomNav');
@@ -28229,7 +28266,11 @@ function nf18Stock(){
   if(!a){ a = document.createElement('button'); a.type = 'button'; a.className = 'bk-tile bad nt-bad nf18-re'; a.setAttribute('onclick', "nf18StockFilter('critical')"); row.insertBefore(a, row.firstChild); }
   if(!b){ b = document.createElement('div'); b.className = 'bk-tile nt-plain nf18-val'; row.appendChild(b); }
   const ah = `<small>Reorder now</small><b>${escapeHtml(crit.trim())}</b><span>${Number(crit) === 1 ? 'item' : 'items'} running out</span>`, bh = `<small>Stock value</small><b>${escapeHtml(val.trim())}</b><span>at what you paid</span>`;
-  if(a.innerHTML !== ah) a.innerHTML = ah; if(b.innerHTML !== bh) b.innerHTML = bh;
+  if(a.dataset.k !== ah){ a.innerHTML = ah; a.dataset.k = ah; } if(b.dataset.k !== bh){ b.innerHTML = bh; b.dataset.k = bh; }
+  const t = id => ((document.getElementById(id) || {}).textContent || '').trim(), pl = [...row.querySelectorAll('.bk-tile.nt-plain:not(.nf18-val)')].map(x => x.textContent.replace(/\s+/g, ' ').trim());
+  const info = [t('invStatTotal') && `${t('invStatTotal')} products`, t('invStatHealthy') && `${t('invStatHealthy')} healthy`, ...pl.map(x => x.replace(/^Promised to customers\s*(\d+)\s*items? in open orders/i, '$1 promised to customers').replace(/^Last spot count\s*/i, 'last spot count: ').replace(/(Today|Yesterday)by /, '$1 by '))].filter(Boolean).join(' · ');
+  let ln = row.parentElement.querySelector(':scope > .nf18-sinfo'); if(!ln){ ln = document.createElement('p'); ln.className = 'nf18-sinfo'; row.insertAdjacentElement('afterend', ln); }
+  if(ln.textContent !== info) ln.textContent = info;
   // warehouses: one dropdown next to the status filters instead of a second row
   const tb = document.querySelector('#inventoryMainView .toolbar'), tabs = [...document.querySelectorAll('#whTabs .wh-tab')];
   if(tb && tabs.length > 1){
@@ -28304,7 +28345,7 @@ function nf18CloseTeam(){ NF18T.on = false; const shell = document.querySelector
           if(page === 'issues') nf18Issues();
           if(page === 'money') nf18Money();
           if(page === 'discover') nf18Leads();
-          if(page === 'ledger' && typeof LGV !== 'undefined' && LGV.tab === 'summary'){ LGV.tab = 'pnl'; try{ renderLedgerPage(); }catch(e){} }
+          if(page === 'ledger' && typeof LGV !== 'undefined' && LGV.tab === 'summary' && !w._lgPicked){ LGV.tab = 'pnl'; w._lgPicked = true; try{ renderLedgerPage(); }catch(e){} }
           if(page === 'messages'){ const sh = document.querySelector('#page-messages .messages-shell'); if(sh && !NF18T.on) sh.classList.remove('nf18-team-on'); }
           nf18Soon();
         }
@@ -28320,7 +28361,7 @@ function nf18CloseTeam(){ NF18T.on = false; const shell = document.querySelector
     try{ if(typeof renderOneHome !== 'undefined') renderOneHome = w; }catch(e){} try{ if(typeof renderHomeV2 !== 'undefined') renderHomeV2 = w; }catch(e){}
   }
   // Books & reports opens on Profit & loss (the summary repeated Money overview)
-  try{ if(typeof LG_TABS !== 'undefined'){ const i = LG_TABS.findIndex(t => t[0] === 'summary'); if(i >= 0) LG_TABS.splice(i, 1); } if(typeof LGV !== 'undefined' && LGV.tab === 'summary') LGV.tab = 'pnl'; }catch(e){}
+  try{ if(typeof LG_TABS !== 'undefined'){ const i = LG_TABS.findIndex(t => t[0] === 'summary'); if(i >= 0){ const t = LG_TABS.splice(i, 1)[0]; t[1] = 'What changed'; const c = LG_TABS.findIndex(x => x[0] === 'cash'); LG_TABS.splice(c >= 0 ? c + 1 : LG_TABS.length, 0, t); } } if(typeof LGV !== 'undefined' && LGV.tab === 'summary') LGV.tab = 'pnl'; }catch(e){}
   // chat list: the Team chat on top
   const rcl = window.renderConversationList;
   if(typeof rcl === 'function' && !rcl._nf18){
@@ -28429,7 +28470,7 @@ function nf18Ctx(){
   shell.classList.toggle('nf18-ctx', on);
   const thread = shell.querySelector('.msg-thread'), comp = shell.querySelector('.msg-composer'), tabs = document.getElementById('msgPoTabs');
   const get = (id, cls, parent, before) => { let e = document.getElementById(id); if(!e && parent){ e = document.createElement(cls === 'aside' ? 'aside' : 'div'); e.id = id; e.className = id.toLowerCase(); if(before) parent.insertBefore(e, before); else parent.appendChild(e); } return e; };
-  if(!on){ ['nf18Task', 'nf18Ch', 'nf18Op', 'nf18Card'].forEach(i => { const e = document.getElementById(i); if(e) e.innerHTML = ''; }); return; }
+  if(!on){ ['nf18Task', 'nf18Ch', 'nf18Op', 'nf18Card'].forEach(i => { const e = document.getElementById(i); if(e){ e.innerHTML = ''; e.dataset.k = ''; } }); return; }
   const o = getPO(NF18M.po), sell = NF18M.sell, r = nf18Row(o), who = sell ? o.buyerName : o.supplierName, T = nf18Tpl(o, sell, r), fil = NF18M.lang === 'fil';
   const card = get('nf18Card', 'div', thread, tabs ? tabs.nextSibling : null), task = get('nf18Task', 'div', thread, card ? card.nextSibling : null);
   const ch = get('nf18Ch', 'div', comp, comp ? comp.querySelector('.composer-row') : null), op = get('nf18Op', 'aside', shell, null);
@@ -28441,19 +28482,19 @@ function nf18Ctx(){
   // the order, on the right (laptop) or as a card you can open (phone)
   const opH = `<div class="nf18-oph"><small>The order</small><button type="button" class="nf18-x" onclick="nf18CtxClear()" aria-label="Close">${ic18('x')}</button></div>
     <div class="nf18-opt"><b>${escapeHtml(o.poNumber)}</b><span class="nfo-step t-${r ? r.turn : 'them'}"><i></i>${escapeHtml(r ? r.step : '')}</span><span class="nf18-who">${escapeHtml(who)}</span></div>${alertH}${itemsH}<small class="nf18-lbl">Where it is</small>${stepsH}${actsH}`;
-  if(op.innerHTML !== opH) op.innerHTML = opH;
+  if(op.dataset.k !== opH){ op.innerHTML = opH; op.dataset.k = opH; }
   const cardH = `<button type="button" class="nf18-cardh b-${band}" onclick="NF18M.open=!NF18M.open; nf18Ctx()" aria-expanded="${NF18M.open}">${ic18('doc')}<span><b>${escapeHtml(o.poNumber)} · ${nf18Peso(poTotal(o))}</b><small>${escapeHtml(r ? r.when : '')}</small></span><i>${NF18M.open ? '▲' : '▼'}</i></button>${NF18M.open ? `<div class="nf18-cardb">${itemsH}${stepsH}${actsH}</div>` : ''}`;
-  if(card.innerHTML !== cardH) card.innerHTML = cardH;
+  if(card.dataset.k !== cardH){ card.innerHTML = cardH; card.dataset.k = cardH; }
   // why you came, then done
   const nx = nf18Next(o);
   const taskH = NF18M.sent
     ? `<div class="nf18-task done"><small>Done</small><b>Message sent to ${escapeHtml(who)}</b><span>${escapeHtml(o.poNumber)} goes with it, so they know which order you mean.</span>
         <div class="nf18-tacts"><button type="button" class="btn btn-primary btn-sm" onclick="nf18CtxClear(); go('orders')">${ic18('back')}Back to Orders</button>${nx ? `<button type="button" class="btn btn-outline btn-sm" onclick="nf18MsgFor('${nx.o.id}')">Next: ${escapeHtml(nx.who)} · ${escapeHtml(nx.step)}</button>` : ''}${NF18M.undoT ? `<button type="button" class="nf18-undo" onclick="nf18Undo()">Undo</button>` : ''}</div></div>`
     : `<div class="nf18-task"><small>Why you're here</small><b>${escapeHtml(o.poNumber)} · ${escapeHtml(r ? r.step : o.status)}</b><span>${escapeHtml(r ? `${r.when} ${r.todo}` : '')}</span><button type="button" class="nf18-all" onclick="nf18CtxClear()">See all chats</button></div>`;
-  if(task.innerHTML !== taskH) task.innerHTML = taskH;
+  if(task.dataset.k !== taskH){ task.innerHTML = taskH; task.dataset.k = taskH; }
   const chH = NF18M.sent ? '' : `<div class="nf18-chh"><b>Tap Send on the one you like</b><span class="lang-switch nf18-lsw" role="group" aria-label="Message language"><button type="button" class="${fil ? '' : 'active'}" aria-pressed="${!fil}" onclick="NF18M.lang='en'; nf18Ctx()">English</button><button type="button" class="${fil ? 'active' : ''}" aria-pressed="${fil}" onclick="NF18M.lang='fil'; nf18Ctx()">Filipino</button></span></div>
     <div class="nf18-chl">${T.map((t, i) => `<div class="nf18-c"><div><small>${escapeHtml(fil ? t[2] : t[0])}</small><p>${escapeHtml(fil ? t[3] : t[1])}</p></div><div class="nf18-cb"><button type="button" class="nf18-edit" onclick="nf18Edit(${i})">Edit first</button><button type="button" class="btn btn-primary btn-sm" onclick="nf18Send(${i})">Send</button></div></div>`).join('')}</div>`;
-  if(ch.innerHTML !== chH) ch.innerHTML = chH;
+  if(ch.dataset.k !== chH){ ch.innerHTML = chH; ch.dataset.k = chH; }
 }
 function nf18Next(o){
   try{ const pid = NF18M.conv, rank = {red: 0, yel: 1, blue: 2, green: 3};
@@ -28486,6 +28527,101 @@ function nf18CtxClear(){ NF18M.po = null; NF18M.conv = null; nf18Ctx(); }
   const nav = window.navigate;
   if(typeof nav === 'function' && !nav._nf18m){ const w = function(page){ if(page !== 'messages' && NF18M.po){ NF18M.po = null; NF18M.conv = null; } const out = nav.apply(this, arguments); if(page === 'messages') setTimeout(() => { try{ nf18Ctx(); }catch(e){} }, 0); return out; };
     w._nf18 = true; w._nf18m = true; window.navigate = w; try{ navigate = w; }catch(e){} }
+})();
+
+/* ===== Round 19 ===== */
+
+/* ---------- 1. The left menu: 10 pages you can always see ---------- */
+const NF19_SIDE = [
+  ['dashboard', 'Home'], ['orders', 'Orders'], ['messages', 'Messages'], ['inventory', 'Stock'],
+  ['__money', 'Money'],
+  ['money', 'Money overview'], ['sales', 'Counter'], ['expenses', 'Expenses'], ['collections', 'Getting paid'], ['profit', 'Prices'], ['ledger', 'Books']
+];
+// pages without their own menu line light up the line they live under
+const NF19_PARENT = {cashcount: 'sales', cheques: 'collections', prices: 'profit', books: 'ledger', taxforms: 'ledger', issues: 'money', payroll: 'money', analytics: 'money',
+  followups: 'orders', routes: 'orders', returns: 'orders', store: 'orders', discover: 'orders', suppliers: 'orders', team: 'messages', watchdog: 'money'};
+function nf19Menu(){
+  const sb = document.querySelector('.sidebar'); if(!sb) return;
+  let box = sb.querySelector('.nf19-nav');
+  if(!box){
+    const firstGroup = sb.querySelector('.nav-group'); if(!firstGroup) return;
+    box = document.createElement('div'); box.className = 'nav-group nf19-nav'; firstGroup.parentElement.insertBefore(box, firstGroup);
+  }
+  const want = NF19_SIDE.map(x => x[0]).join(',');
+  if(box.dataset.k === want){ box.querySelectorAll('.nf18-off').forEach(n => n.classList.remove('nf18-off')); return; }
+  NF19_SIDE.forEach(([p, label]) => {
+    if(p === '__money'){ const h = document.createElement('div'); h.className = 'heading nf19-h'; h.textContent = label; box.appendChild(h); return; }
+    const it = [...sb.querySelectorAll('.nav-item[data-page="' + p + '"]')].find(x => !x.closest('.nf19-nav')) || sb.querySelector('.nav-item[data-page="' + p + '"]');
+    if(!it) return;
+    it.classList.remove('nf18-off'); it.classList.add('nf19-on');
+    const span = it.querySelector('span:not(.nav-badge)'); if(span) span.textContent = label;
+    box.appendChild(it);
+  });
+  box.dataset.k = want;
+  sb.querySelectorAll('.nav-item[data-page]').forEach(n => n.classList.toggle('nf18-off', !n.closest('.nf19-nav')));
+  sb.querySelectorAll('.heading, .nav-fold').forEach(h => h.classList.toggle('nf18-off', !h.closest('.nf19-nav')));
+}
+function nf19Active(page){
+  const target = NF19_SIDE.some(x => x[0] === page) ? page : (NF19_PARENT[page] || page);
+  document.querySelectorAll('.sidebar .nav-item[data-page]').forEach(n => n.classList.toggle('active', n.classList.contains('nf19-on') && n.dataset.page === target));
+  const hub = (typeof nf18HubOf === 'function' && nf18HubOf(page)) || page;
+  document.querySelectorAll('#bottomNav .bnav-item[data-page]').forEach(n => n.classList.toggle('active', n.dataset.page === hub));
+}
+
+/* ---------- 2. The landing pages: shown when you are not in the demo ---------- */
+// The demo used to open on every load, so logging out reloaded straight back into it.
+// Now: a fresh visit shows the landing page; "Try the demo" opens the app; a reload while in the demo stays in it;
+// logging out goes back to the landing page. A link ending in #dashboard (or any page) still opens that page directly.
+const NF19_KEY = 'nifti-in-app';
+function nf19InApp(){ try{ return sessionStorage.getItem(NF19_KEY) === '1'; }catch(e){ return false; } }
+function nf19SetInApp(on){ try{ if(on) sessionStorage.setItem(NF19_KEY, '1'); else sessionStorage.removeItem(NF19_KEY); }catch(e){} }
+function nf19AfterBoot(){
+  if(typeof myBusiness !== 'undefined' && myBusiness) return; // signed-in accounts open their app as before
+  const want = window._niftiOpenPage;
+  if(want){ navigate(want); return; }
+  if(nf19InApp()){ const a = document.querySelector('#view-app .app-page.active'); navigate(a ? a.id.slice(5) : 'dashboard'); }
+}
+
+/* ---------- wiring ---------- */
+(function(){
+  const nav = window.navigate;
+  if(typeof nav === 'function' && !nav._nf19){
+    const w = function(page){
+      // the demo keeps its 5 products even if a late seed adds the old ones back
+      try{ if(typeof nfIsDemo === 'function' && nfIsDemo() && typeof NF_DEMO_KEEP !== 'undefined' && typeof nfTrim === 'function'){ const K = NF_DEMO_KEEP;
+        nfTrim(inventoryData, i => K.invSeeded.includes(i.name), i => K.inv.includes(i.name) || K.inv.includes(i.name + '@' + i.warehouse)); } }catch(e){}
+      const out = nav.apply(this, arguments);
+      try{
+        const app = typeof appPages !== 'undefined' && appPages.includes(page);
+        if(app) nf19SetInApp(true); else if(typeof marketingPages !== 'undefined' && (marketingPages.includes(page) || page === 'login')) nf19SetInApp(false);
+        // "See every order in a table": the customer half is built the first time Orders opens, whatever page you came from
+        if(page === 'orders'){ const sv = document.getElementById('supplierOrdersView');
+          if(sv && !sv.children.length && typeof renderSupplierFulfillmentDashboard === 'function'){ const k = currentAppRole;
+            try{ currentAppRole = 'supplier'; renderSupplierFulfillmentDashboard(); window._supplierOrdersInit = true; }catch(e){ console.warn(e); } finally{ currentAppRole = k; }
+            try{ nfOrdersBoth(); }catch(e){} } }
+        if(document.getElementById('page-' + page)){ nf19Menu(); nf19Active(page);
+          // on a phone the tab row scrolls so the page you're on is in view, not cut off at the edge
+          setTimeout(() => { document.querySelectorAll('#page-' + page + ' :is(.nf18-hub,.nf18-sub)').forEach(r => { const b = r.querySelector('button.on'); if(b && r.scrollWidth > r.clientWidth) r.scrollLeft = Math.max(0, b.offsetLeft - r.offsetLeft - 16); }); }, 60); }
+      }catch(e){ console.warn('nf19 nav', e); }
+      return out; };
+    w._nf19 = true; w._nf18 = true; w._nf18m = true; window.navigate = w; try{ navigate = w; }catch(e){}
+  }
+  // the books seed adds two old products back; the demo keeps its 5
+  const bs = window.bkSeedDemo;
+  if(typeof bs === 'function' && !bs._nf19){ const w = function(){ const r = bs.apply(this, arguments); const trim = () => { try{ if(nfIsDemo()){ const K = NF_DEMO_KEEP; nfTrim(inventoryData, i => K.invSeeded.includes(i.name), i => K.inv.includes(i.name) || K.inv.includes(i.name + '@' + i.warehouse)); } }catch(e){} };
+      if(r && typeof r.then === 'function') return r.then(v => { trim(); return v; }); trim(); return r; }; w._nf19 = true; w._nf = bs._nf; window.bkSeedDemo = w; try{ bkSeedDemo = w; }catch(e){} }
+  // the Round 18 helper that lit up only the five hubs now follows the 10-line menu
+  try{ window.nf18Active = nf19Active; nf18Active = nf19Active; }catch(e){}
+  // logging out of the demo goes back to the landing page (and stays there after the reload)
+  const lo = window.logOut;
+  if(typeof lo === 'function' && !lo._nf19){
+    const w = function(){ if(!confirm('Log out of Nifti?')) return; nf19SetInApp(false); const c = window.confirm; window.confirm = () => true;
+      try{ return lo.apply(this, arguments); } finally { window.confirm = c; } };
+    w._nf19 = true; window.logOut = w; try{ logOut = w; }catch(e){}
+  }
+  const start = () => { if(!document.querySelector('.sidebar .nav-group')) return setTimeout(start, 300); nf19Menu();
+    try{ const a = document.querySelector('#view-app .app-page.active'); if(a) nf19Active(a.id.slice(5)); }catch(e){} };
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
 })();
 
 function renderSidebarForViewAsRole(){
@@ -44457,7 +44593,7 @@ async function bootNifti(){
   }
 }
 renderGoogleSignInButtons();
-bootNifti().then(() => { if(window._openSignup && !myBusiness){ navigate('login'); const b = document.querySelectorAll('#view-login .tabs button')[1]; if(b) setLoginTab('signup', b); } });
+bootNifti().then(() => { try{ nf19AfterBoot(); }catch(e){} if(window._openSignup && !myBusiness){ navigate('login'); const b = document.querySelectorAll('#view-login .tabs button')[1]; if(b) setLoginTab('signup', b); } });
 </script>
 </body>
 </html>

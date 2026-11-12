@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Orders In Two Columns</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="../r13/lab.css">
+<style>
+.pw{padding:22px 24px 30px;display:grid;gap:14px;background:#fff;min-height:760px;align-content:start}
+.frame-p .pw{padding:14px 12px 24px;gap:12px}
+.ph{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap}
+.ph h2{margin:0;font-size:28px;font-weight:800;letter-spacing:-.02em}.ph p{margin:3px 0 0;font-size:15px;color:var(--ink2)}.ph p b{color:var(--ink)}
+.frame-p .ph h2{font-size:24px}
+.acts{display:flex;gap:8px;flex-wrap:wrap}
+.frame-p .acts{width:100%}.frame-p .acts > *{flex:1;justify-content:center}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.frame-p .stats{grid-template-columns:minmax(0,1fr);gap:6px}
+.st{border:1px solid #E5E5E5;border-radius:14px;padding:10px 14px;display:grid;gap:4px;text-align:left}
+.st b{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.frame-p .st{display:flex;align-items:baseline;justify-content:space-between}
+.frame-p .st b{gap:10px}
+.st span{font-size:12.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#344054;display:flex;align-items:center;gap:7px}
+.st span i{width:9px;height:9px;border-radius:50%}
+.st b{font-size:19px;font-weight:800;font-variant-numeric:tabular-nums}
+.st b small{font-size:13px;font-weight:700;color:#475467;margin-right:8px}
+.st.on{box-shadow:0 0 0 2px #0E1114;border-color:transparent}
+.tg{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:800;color:#fff;border-radius:999px;padding:3px 9px 3px 6px;white-space:nowrap;line-height:1.2}
+.tg svg{width:12px;height:12px;stroke-width:2.8}
+.tg.c{background:#1D4ED8}.tg.s{background:#0F766E}
+.jump{display:none}
+.frame-p .jump{display:grid;grid-template-columns:1fr 1fr;gap:8px;position:sticky;top:0;z-index:3;background:#fff;padding:6px 0}
+.jump a{display:flex;align-items:center;justify-content:center;gap:8px;min-height:44px;border-radius:12px;font-size:14.5px;font-weight:800;text-decoration:none;color:#fff}
+.jump a.c{background:#1D4ED8}.jump a.s{background:#0F766E}
+.jump a b{background:rgba(255,255,255,.25);border-radius:999px;padding:0 8px;font-size:13px}
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}
+.frame-p .cols{grid-template-columns:minmax(0,1fr)}
+.col{border:1px solid #E5E5E5;border-radius:18px;overflow:hidden;scroll-margin-top:60px}
+.colh{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:13px 16px}
+.colh .t{display:flex;align-items:center;gap:10px}
+.colh .t b{font-size:17px;font-weight:800;display:block;line-height:1.2}.colh .t small{font-size:13px;font-weight:600;color:#344054}
+.colh .n{text-align:right}.colh .n b{display:block;font-size:19px;font-weight:800;font-variant-numeric:tabular-nums}.colh .n small{font-size:12.5px;font-weight:700;color:#344054}
+.col.c .colh{background:#EEF4FF;border-bottom:2px solid #1D4ED8}.col.s .colh{background:#E8F5F3;border-bottom:2px solid #0F766E}
+.ic{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;color:#fff}.ic svg{width:20px;height:20px;stroke-width:2.6}
+.col.c .ic{background:#1D4ED8}.col.s .ic{background:#0F766E}
+.band{display:flex;justify-content:space-between;align-items:center;padding:7px 16px;font-size:12px;font-weight:800;letter-spacing:.05em;text-transform:uppercase}
+.band b{font-size:15px;letter-spacing:0}
+.band.red{background:#FDECEC;color:#B42318}.band.yel{background:#FEF7C3;color:#0E1114}.band.blue{background:#DCE8FD;color:#163E8C}.band.green{background:#E6F4EC;color:#146C3C}
+.pc{padding:12px 14px;border-top:1px solid #EEF0F3}
+.band + .pc{border-top:0}
+.pch{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:10px;align-items:center;margin-bottom:8px}
+.ini{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:#fff;border:2px solid #98A2B3;font-weight:800;font-size:13.5px}
+.pch b{font-size:15.5px;display:block}.pch small{font-size:12.5px;color:#475467}
+.pch .m{text-align:right}.pch .m b{font-size:16px;font-variant-numeric:tabular-nums}.pch .m small{display:block;font-size:12px;font-weight:700}
+.pch .m.r b{color:#B42318}
+.po{display:grid;grid-template-columns:46px minmax(0,1fr);gap:4px 10px;align-items:start;border-radius:12px;padding:9px 10px;margin-top:6px}
+.po.red{background:#FEF4F3}.po.yel{background:#FFFBE6}.po.blue{background:#EAF1FE}.po.green{background:#EFF9F3}
+.dt{width:46px;border-radius:11px;display:grid;justify-items:center;padding:4px 0 5px;line-height:1.05}
+.dt small{font-size:10px;font-weight:800;letter-spacing:.05em}.dt b{font-size:18px;font-weight:800}
+.dt.red{background:#FEE4E2;color:#B42318}.dt.yel{background:#FEF08A;color:#1F2329}.dt.blue{background:#CFE0FC;color:#0B2A6B}.dt.green{background:#DCF5E5;color:#146C3C}
+.po .l1{font-size:12.5px;color:#344054;display:flex;gap:6px;flex-wrap:wrap;align-items:center}.po .l1 b{color:#0E1114;font-size:13px}
+.step{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;border:1px solid #D0D5DD;border-radius:7px;padding:1px 7px;background:#fff}
+.step i{width:7px;height:7px;border-radius:50%;background:#3B6FD8}.step.you i{background:#EAB308}.step.done i{background:#22A06B}
+.po .l2{font-size:14px;margin-top:3px;line-height:1.4}.po .l2 b{font-weight:800}
+.po .l2 b.r{color:#B42318}
+.po .l3{grid-column:2;display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:4px;flex-wrap:wrap}
+.po .l3 .a b{font-size:15px;font-variant-numeric:tabular-nums}.po .l3 .a small{font-size:12px;color:#475467;font-weight:700;margin-left:4px}
+.po .l3 .btn1.sm, .po .l3 .btn2{min-height:36px;font-size:13.5px;padding:0 14px}
+.frame-p .po .l3 .btn1, .frame-p .po .l3 .btn2{width:100%;justify-content:center}
+.done{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:800;color:#146C3C;background:#DCF5E5;border-radius:999px;padding:5px 12px}
+.done svg{width:14px;height:14px}
+.more{display:flex;gap:16px;margin:8px 0 0 50px;font-size:13.5px;font-weight:700}
+.more span{text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.old{padding:30px;text-align:center;color:var(--mut)}
+</style>
+</head>
+<body>
+<header class="lab-top"><div class="lab-in">
+  <div class="lab-r1"><a class="lab-back" href="index.html">‹ Round 19</a><h1>Orders in two columns</h1><p>Customers on the left, suppliers on the right, on a PC. On a phone, customers first and suppliers under them, with two buttons to jump between them.</p></div>
+  <div class="lab-tabs" id="tabs"></div>
+  <div class="lab-r3" id="r3"></div>
+</div></header>
+<main class="lab-wrap" id="wrap"><section class="lab-stage" id="stage"></section><aside class="lab-notes" id="notes"></aside></main>
+<div class="toast" id="toast"></div>
+<script src="../r13/lab.js"></script>
+<script>
+/* the 8 demo orders. [side, who, ini, facts, owe, oweLabel, late, band, mon, day, po, step, turn, items, bold, rest, amount, amountLabel, button] */
+const O = [
+  ['c', 'Bayview Construction Co.', 'BC', '14 orders · last 4 days ago', 87360, 'not billed yet', 0, 'red', 'AUG', 15, 'PO-2026-0855', 'Delivered', 'you', '1200 × Steel Rebar 12mm', 'Delivered 11 days ago,', 'not billed yet. Send the bill so they can pay.', 87360, 'not billed', 'Send the bill'],
+  ['c', 'Riverside Builders Corp', 'RB', '11 orders · last 5 days ago', 17504, 'owes you', 1, 'red', 'AUG', 20, 'PO-2026-0810', 'Billed', 'you', '300 × Steel Rebar 12mm', 'They say they paid.', 'Check your bank or GCash, then confirm it.', 17504, 'owes you', 'Check payment'],
+  ['c', 'Riverside Builders Corp', 'RB', '', 0, '', 0, 'blue', 'AUG', 27, 'PO-2026-0871', 'To confirm', 'them', '800 × Steel Rebar 12mm', 'Price hold ends tomorrow.', 'Waiting for their OK.', 77280, 'for their OK', 'Remind them'],
+  ['c', 'Corazon Welding Shop', 'CW', '7 orders · last 3 weeks ago', 0, 'owes nothing', 0, 'yel', 'AUG', 30, 'PO-2026-0853', 'To confirm', 'you', '150 × Angle Bars', 'Needed in 4 days.', 'Say yes, or change it.', 14280, 'new order', 'Answer'],
+  ['c', 'Cavite Steel Works', 'CS', '9 orders · last 1 week ago', 0, 'owes nothing', 0, 'green', 'AUG', 24, 'PO-2026-0740', 'Paid', 'done', '200 × Steel Rebar 12mm', 'Paid 2 days ago.', 'All done.', 16464, 'paid', ''],
+  ['s', 'Metro Steel Co.', 'MS', '34 orders · last 2 days ago', 112896, 'you owe', 0, 'yel', 'AUG', 27, 'PO-2026-0798', 'On the way', 'you', '200 × Galvanized Wire 12ga', 'Arrives tomorrow.', 'Count what came so your stock updates.', 107957, 'order', 'Count it'],
+  ['s', 'Metro Steel Co.', 'MS', '', 0, '', 0, 'yel', 'SEP', 11, 'PO-2026-0765', 'Billed', 'you', '30 × Structural I-Beams', 'Due in 16 days.', 'Pay this bill.', 112896, 'you owe', 'Pay'],
+  ['s', 'Cebu Aggregates', 'CA', '21 orders · last 5 days ago', 0, 'you owe nothing', 0, 'blue', 'SEP', 2, 'PO-2026-0839', 'Preparing', 'them', '200 × Portland Cement 40kg', 'Arrives in 7 days.', 'They are packing it.', 43680, 'order', 'Message']
+];
+const BANDS = [['red', 'Needs you now'], ['yel', 'Coming up'], ['blue', 'Waiting on them'], ['green', 'All good']];
+const RANK = {red: 0, yel: 1, blue: 2, green: 3};
+const ARR = {c: '<path d="M7 17 17 7M8 7h9v9"/>', s: '<path d="M17 7 7 17M16 17H7V8"/>'};
+const arr = s => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">${ARR[s]}</svg>`;
+const tag = s => `<span class="tg ${s}">${arr(s)}${s === 'c' ? 'Customer' : 'Supplier'}</span>`;
+const S = {view: 'both', band: null, v: 'a'};
+if(window.innerWidth < 700) S.view = 'p';
+const vis = () => O.filter(o => !S.band || o[7] === S.band);
+function groupsFor(side){
+  const L = vis().filter(o => o[0] === side), names = [...new Set(L.map(o => o[1]))];
+  return names.map(n => { const os = L.filter(o => o[1] === n).sort((a, b) => (a[8] + a[9]).localeCompare(b[8] + b[9])); const head = O.find(o => o[1] === n && o[3]); return {n, os, head, band: os.map(o => o[7]).sort((a, b) => RANK[a] - RANK[b])[0]}; });
+}
+function poH(o){
+  return `<div class="po ${o[7]}" data-act="toast" data-v="Opens ${o[10]} (prototype)"><span class="dt ${o[7]}"><small>${o[8]}</small><b>${o[9]}</b></span>
+    <div><div class="l1"><b>${o[10]}</b><span class="step ${o[12]}"><i></i>${o[11]}</span><span>${o[13]}</span></div><div class="l2"><b class="${o[7] === 'red' ? 'r' : ''}">${o[14]}</b> ${o[15]}</div></div>
+    <div class="l3"><span class="a"><b>${peso(o[16])}</b><small>${o[17]}</small></span>${o[18] ? (o[12] === 'you' ? `<button class="btn1 sm" data-act="toast" data-v="${o[18]} (prototype)">${o[18]}</button>` : `<button class="btn2" data-act="toast" data-v="${o[18]} (prototype)">${o[18]}</button>`) : `<span class="done">${ic('check')}Done</span>`}</div></div>`;
+}
+function colH(side){
+  const G = groupsFor(side), all = O.filter(o => o[0] === side), tot = side === 'c' ? 104864 : 112896;
+  const head = side === 'c' ? ['Selling to customers', `${all.length} orders · ${G.length} customers`, peso(tot), 'owed to you'] : ['Buying from suppliers', `${all.length} orders · ${G.length} suppliers`, peso(tot), 'you owe'];
+  return `<div class="col ${side}" id="col-${side}"><div class="colh"><div class="t"><span class="ic">${arr(side)}</span><div><b>${head[0]}</b><small>${head[1]}</small></div></div><div class="n"><b>${head[2]}</b><small>${head[3]}</small></div></div>
+    ${BANDS.map(([b, l]) => { const g = G.filter(x => x.band === b); if(!g.length) return ''; return `<div class="band ${b}"><span>${l}</span><b>${g.reduce((a, x) => a + x.os.length, 0)}</b></div>` + g.map(x => { const h = x.head;
+      return `<div class="pc"><div class="pch"><span class="ini">${h[2]}</span><div><b>${x.n}</b><small>${h[3]}</small></div><div class="m${h[6] ? ' r' : ''}"><b>${peso(h[4])}</b><small>${h[5]}</small></div></div>${x.os.map(poH).join('')}<div class="more"><span data-act="toast" data-v="Opens the chat (prototype)">Message</span><span data-act="toast" data-v="New order (prototype)">New order</span></div></div>`; }).join(''); }).join('') || '<div class="old">Nothing here.</div>'}</div>`;
+}
+function page(){
+  const cnt = b => O.filter(o => o[7] === b), sum = b => cnt(b).reduce((a, o) => a + o[16], 0);
+  return `<div class="pw"><div class="ph"><div><h2>Orders</h2><p>Today is <b>Wed, Aug 26</b>.</p></div><div class="acts"><button class="btn2" data-act="toast" data-v="Customer's order (prototype)">${ic('plus')}Customer's order</button><button class="btn1 sm" data-act="toast" data-v="Order from a supplier (prototype)">${ic('plus')}Order from a supplier</button></div></div>
+    <div class="stats">${BANDS.map(([b, l]) => `<button class="st${S.band === b ? ' on' : ''}" data-act="band" data-v="${b}"><span><i style="background:${b === 'red' ? '#DC2626' : b === 'yel' ? '#EAB308' : b === 'blue' ? '#3B6FD8' : '#22A06B'}"></i>${l}</span><b><small>${cnt(b).length} order${cnt(b).length === 1 ? '' : 's'}</small>${peso(sum(b))}</b></button>`).join('')}</div>
+    <div class="jump"><a class="c" href="#col-c" data-act="jump" data-v="c">${arr('c')}Customers <b>${O.filter(o => o[0] === 'c').length}</b></a><a class="s" href="#col-s" data-act="jump" data-v="s">${arr('s')}Suppliers <b>${O.filter(o => o[0] === 's').length}</b></a></div>
+    <div class="cols">${colH('c')}${colH('s')}</div></div>`;
+}
+const V = [{id: 'a', n: '2', name: 'Two columns', tag: 'Customers left, suppliers right', why: [
+    'The same Orders page you approved, split in two: <b>Selling to customers</b> on the left (blue) and <b>Buying from suppliers</b> on the right (teal).',
+    'Each column keeps the four colours (Needs you now, Coming up, Waiting on them, All good) and the date beside every order.',
+    'The four boxes on top still add up both sides and filter both columns when tapped.',
+    'On a phone the columns stack, customers first. Two big buttons at the top jump straight to customers or suppliers and stay on screen while you scroll.'],
+  best: 'Seeing at a glance what you owe suppliers and what customers owe you, side by side.', give: 'The most urgent thing is no longer always first on the page: an urgent supplier order sits at the top of the right column, not above every customer.'}];
+function render(){
+  $('tabs').innerHTML = V.map(x => `<button class="lab-tab" aria-pressed="true"><i>${x.n}</i><b>${x.name}</b><small>${x.tag}</small></button>`).join('');
+  $('r3').innerHTML = seg('vw', [['both', 'Laptop + phone'], ['d', 'Laptop'], ['p', 'Phone']], S.view, 'view');
+  $('wrap').classList.toggle('wide', S.view !== 'p');
+  const pg = page();
+  const desk = `<div class="frame-d">${pg}</div>`, phone = `<div class="frame-p"><div class="notch"><span>9:41</span><span>●●●</span></div><div class="scroll">${pg}</div></div>`;
+  $('stage').innerHTML = S.view === 'd' ? desk : S.view === 'p' ? phone : `<div style="flex:1 1 760px;min-width:0;display:flex;justify-content:center">${desk}</div><div>${phone}</div>`;
+  const x = V[0];
+  $('notes').innerHTML = `<h2>Orders · ${x.name}</h2><p style="margin:-8px 0 0;color:var(--mut);font-size:14px">${x.tag}</p><h3>How it works</h3><ul>${x.why.map(w => `<li>${ic('check')}<span>${w}</span></li>`).join('')}</ul>
+    <div class="box"><b>Best for:</b> ${x.best}</div><div class="box"><b>You give up:</b> ${x.give}</div>
+    <div class="box"><b>Same look as:</b> the two-column Getting paid, Checks, BIR 2307s, Returns and Price changes pages that are now live in the app.</div>`;
+}
+document.addEventListener('click', e => { const b = e.target.closest('[data-act]'); if(!b) return; const a = b.dataset.act, v = b.dataset.v;
+  if(a === 'toast'){ e.stopPropagation(); return toast(v); }
+  if(a === 'jump'){ e.preventDefault(); const fr = b.closest('.frame-p, .frame-d'); const col = fr && fr.querySelector('#col-' + v); const sc = fr && fr.querySelector('.scroll'); if(col && sc) sc.scrollTo({top: col.offsetTop - 60, behavior: 'smooth'}); else if(col) col.scrollIntoView({behavior: 'smooth'}); return; }
+  if(a === 'view') S.view = v; else if(a === 'band') S.band = S.band === v ? null : v;
+  render(); });
+render();
+</script>
+</body>
+</html>
