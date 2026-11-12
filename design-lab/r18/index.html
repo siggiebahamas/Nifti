@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Round 18 Choices</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="../r13/lab.css">
+<style>
+.band{background:radial-gradient(800px 260px at 85% -20%,rgba(52,211,153,.35),transparent 60%),linear-gradient(135deg,#03251C 0%,#064E3B 55%,#0B6B57 100%);color:#fff;padding:34px 20px 80px}
+.band .bin{max-width:1080px;margin:0 auto}.band a{color:#C8EFDF;font-size:14px;font-weight:700;text-decoration:none}
+.band h1{margin:12px 0 6px;font-size:36px;font-weight:800;letter-spacing:-.02em;line-height:1.1}.band p{margin:0;font-size:17px;color:#C8EFDF;max-width:660px}
+.wrap{max-width:1080px;margin:-52px auto 0;padding:0 20px 60px;display:grid;gap:18px}
+.live{background:#fff;border-radius:18px;border:1px solid #E7EAF0;box-shadow:var(--shc);padding:18px 20px;display:grid;gap:10px}
+.live h2{margin:0;font-size:18px;font-weight:800;display:flex;align-items:center;gap:10px}.live h2 span{font-size:12px;letter-spacing:.06em;text-transform:uppercase;background:var(--gbg);color:var(--g);border-radius:999px;padding:4px 10px}
+.live ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}.live li{display:grid;grid-template-columns:22px 1fr;gap:10px;font-size:15px;color:var(--ink2)}.live li b{color:var(--ink)}
+.live li svg{width:20px;height:20px;padding:3px;border-radius:50%;background:var(--g2);color:#fff;stroke-width:3}
+.audit{background:#fff;border-radius:18px;border:1px solid #E7EAF0;box-shadow:var(--shc);overflow:hidden}
+.audit h2{margin:0;padding:16px 20px 12px;font-size:18px;font-weight:800;border-bottom:2px solid var(--ink)}
+.ar{display:grid;grid-template-columns:minmax(0,1.1fr) auto minmax(0,2fr);gap:14px;align-items:center;padding:12px 20px;border-top:1px solid var(--line);font-size:14.5px}
+.ar b{font-size:15px}.ar span{color:var(--ink2)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.c{display:grid;gap:10px;background:#fff;border-radius:18px;border:1px solid #E7EAF0;box-shadow:var(--shc);padding:18px 20px;text-decoration:none;color:inherit;transition:transform .15s,box-shadow .15s;align-content:start}
+.c:hover{transform:translateY(-2px);box-shadow:var(--sh2)}
+.c .top{display:flex;align-items:center;gap:12px}.c .top span{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:#DDF5EC;color:#047857}.c .top span svg{width:24px;height:24px}
+.c h3{margin:0;font-size:18px;font-weight:800;line-height:1.2}.c small{font-size:13px;font-weight:800;color:var(--mut);letter-spacing:.04em;text-transform:uppercase}
+.c p{margin:0;font-size:15px;color:var(--ink2)}.c .go{display:inline-flex;align-items:center;gap:6px;font-weight:800;color:var(--g);font-size:15px}
+.c .opts{display:flex;flex-wrap:wrap;gap:6px}.c .opts i{font-style:normal;font-size:12.5px;font-weight:700;color:var(--ink2);background:var(--sf2);border-radius:999px;padding:3px 10px;box-shadow:inset 0 0 0 1px var(--line)}
+@media (max-width:640px){ .band h1{font-size:28px} .band{padding:24px 16px 72px} .wrap{padding:0 12px 40px} .ar{grid-template-columns:minmax(0,1fr) auto;padding:12px 14px} .ar span:last-child{grid-column:1/-1} }
+</style>
+</head>
+<body>
+<div class="band"><div class="bin"><a href="../">‹ Design lab</a><h1>Round 18 · one thing to pick</h1><p>Your review choices are in the app. One design left to choose: customers and suppliers on one page.</p></div></div>
+<div class="wrap">
+  <div class="live"><h2>Already in the app <span>Live</span></h2><ul id="live"></ul></div>
+  <div class="cards" id="cards"></div>
+</div>
+<script src="../r13/lab.js"></script>
+<script>
+$('live').innerHTML = [
+  ['Five main pages', ': Home, Orders, Messages, Stock and Money. Everything else is a tab inside one of them. Settings and the language switch are under your name at the top. On a phone, the bottom bar is the same five.'],
+  ['A much smaller demo', ': 8 orders instead of 15, 5 products, 3 suppliers, 6 chats, 4 expenses, 3 checks, 3 things to check, 3 businesses to find. Act Today has 3, This Week 4. No "Show all" buttons anywhere in the demo.'],
+  ['Where every order is', ': each count sits on the same line as its words, in a clearer blue.'],
+  ['Customer / Supplier tags', ': solid blue with ↗ for customers, solid teal with ↙ for suppliers.'],
+  ['Messages: pick a message + the order beside it', ': tap Message or Remind them on any order. The chat opens with why you came, 3 ready messages (English or Filipino) each with its own Send, and the order on the right. After you send: Back to Orders, or the next person who needs you. Team chat is now at the top of Messages.'],
+  ['Home = today only', ': 4 tiles, What to do, Where every order is and What runs out. How the business is doing moved to Money; the cash drawer calendar moved to Counter.'],
+  ['Money tabs', ': Overview · Counter (sales + cash count) · Expenses · Getting paid (Who owes you, Checks, Cash & bank) · Prices (costs, prices and price changes) · To check (with team spending) · Payroll · Books (Reports, Tax books, BIR 2307s).'],
+  ['Orders tabs', ': Orders · Deliveries · Returns & credits · Online store · Find customers (your leads moved here from Follow-ups).'],
+  ['Stock', ': 4 tiles (Reorder now, Missing, Bad stock, Stock value) and one filter row with a warehouse dropdown.'],
+  ['Helpers and Settings', ': the 1-2-3 boxes show on your first visit, then fold into "How it works". PRO badges only in Settings. Settings has a search box.']
+].map(([b, t]) => `<li>${ic('check')}<span><b>${b}</b>${t}</span></li>`).join('');
+$('cards').innerHTML = [
+  ['both.html', 'users', 'Customers and suppliers on one page', '3 ways', 'No tabs to switch. Both sides on one screen, the way Orders works. Shown on Getting paid, Checks and BIR 2307s.', ['A · One list, like Orders (my pick)', 'B · Two columns: in and out', 'C · One timeline by date']]
+].map(([h, i, t, n, p, o]) => `<a class="c" href="${h}"><div class="top"><span>${ic(i)}</span><div><small>${n}</small><h3>${t}</h3></div></div><p>${p}</p><div class="opts">${o.map(x => `<i>${x}</i>`).join('')}</div><span class="go">Open ${ic('arrow')}</span></a>`).join('');
+</script>
+</body>
+</html>

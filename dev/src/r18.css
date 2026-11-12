@@ -1,0 +1,183 @@
+  #view-app .nf18-off, #bottomNav .nf18-off, .sidebar .nf18-off{display:none !important;}
+
+  /* ---------- Home · Where every order is: count sits on the same line as the words, clearer blue ---------- */
+  html[data-ty] :is(#mhHome,#mhSheet) .sh .sh-t{align-items:baseline !important;column-gap:8px;}
+  html[data-ty] :is(#mhHome,#mhSheet) .sh .sh-c{align-items:baseline !important;gap:6px;}
+  html[data-ty] :is(#mhHome,#mhSheet) .sh .sh-t b{line-height:1.2 !important;}
+  html[data-ty] :is(#mhHome,#mhSheet) .sh .sc-d{font-size:16px !important;line-height:1.2 !important;color:#2563EB !important;font-weight:800;}
+  html[data-ty] :is(#mhHome,#mhSheet) .sh .sh-t .sc{font-size:22px !important;line-height:1 !important;color:#2563EB !important;}
+  html.nf-phone #mhHome .nfb-stages button{align-items:baseline !important;}
+  html.nf-phone #mhHome .nfb-stages span{color:#2563EB !important;}
+
+  /* ---------- Customer / Supplier tag: solid, with the same arrows as Selling ↗ and Buying ↙ ---------- */
+  #nfOrd .nfo-side{display:inline-flex;align-items:center;gap:4px;font-size:12.5px;font-weight:800;letter-spacing:.01em;border:0 !important;border-radius:999px;padding:3px 10px 3px 7px;color:#fff !important;line-height:1.2;}
+  #nfOrd .nfo-side svg{width:13px;height:13px;flex:none;}
+  #nfOrd .nfo-side.c{background:#1D4ED8 !important;}
+  #nfOrd .nfo-side.s{background:#0F766E !important;}
+
+  /* ---------- Five main pages: tabs inside each one ---------- */
+  #view-app #openItemsBadge{display:none !important;}
+  #view-app .nf18-hubwrap{display:grid;gap:8px;margin:0 0 14px;}
+  #view-app .nf18-hub{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:2px;border-bottom:1px solid #E5E5E5;padding-bottom:10px;}
+  #view-app .nf18-hub::-webkit-scrollbar{display:none;}
+  #view-app .nf18-hub button{flex:none;font:inherit;font-size:15px;font-weight:700;color:#344054;background:transparent;border:0;border-radius:999px;padding:8px 15px;cursor:pointer;min-height:40px;white-space:nowrap;}
+  #view-app .nf18-hub button:hover{background:#F2F4F7;color:#0E1114;}
+  #view-app .nf18-hub button.on{background:#0E1114;color:#fff;}
+  #view-app .nf18-sub{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;}
+  #view-app .nf18-sub::-webkit-scrollbar{display:none;}
+  #view-app .nf18-sub button{flex:none;font:inherit;font-size:14px;font-weight:700;color:#344054;background:#fff;border:1.5px solid #D0D5DD;border-radius:999px;padding:6px 14px;cursor:pointer;min-height:36px;white-space:nowrap;}
+  #view-app .nf18-sub button.on{border-color:#1F6B45;background:#EAF6EF;color:#1F6B45;}
+  html.nf-phone #view-app .nf18-hubwrap{margin:-4px 0 12px;}
+  html.nf-phone #view-app .nf18-hub button{font-size:14.5px;padding:7px 13px;}
+  /* Getting paid: the old "Follow up / Cash & bank" switch is now the row above */
+  html[data-ty] #view-app #page-collections .adm-tabs.sl-tabs, html[data-ty] #view-app #page-collections .adm-tabs.nf-tabcards{display:none !important;}
+  /* Team: people and tasks only (Team chat moved to Messages, Activity is in Settings) */
+  html[data-ty] #view-app #page-team .team-tabs, html[data-ty] #view-app #page-team .team-tabs.nf-tabcards, #page-team #teamTab_chat, #page-team #teamTab_activity{display:none !important;}
+  #page-team #teamTab_tasks{display:block !important;}
+  /* PRO badges only where you choose your plan */
+  #view-app .pro-badge{display:none !important;}
+  #page-settings .pro-badge{display:inline-flex !important;}
+  /* helper steps fold after the first visit */
+  #view-app .nf-steps.nf18-fold{display:none !important;}
+  #view-app .nf18-how{font:inherit;font-size:14px;font-weight:700;color:#1F6B45;background:none;border:0;padding:2px 0;margin:0 0 10px;cursor:pointer;text-decoration:underline;text-underline-offset:3px;}
+
+  /* merged pages: one section per old page, same look */
+  #view-app .nf18-merge{margin-top:26px;}
+  #view-app .nf18-mh2{margin:0 0 12px;padding-top:18px;border-top:1px solid #E5E5E5;}
+  #view-app .nf18-mh2 h2{margin:0;font-size:24px;font-weight:800;letter-spacing:-.01em;color:#0E1114;}
+  #view-app .nf18-mh2 p{margin:4px 0 0;font-size:15.5px;color:#344054;}
+  #view-app .nf18-mh{margin-top:16px;}
+  html[data-ty] #view-app #nf18Team .adm-tabs, html[data-ty] #view-app #nf18Team .adm-tabs.nf-tabcards{display:none !important;}
+  #page-money .nf18-mh{margin-top:18px;}
+
+  /* Stock: 4 tiles, one filter row */
+  #inventoryMainView #inventoryStatsRow, #inventoryMainView #whTabs{display:none !important;}
+  #inventoryMainView .bk-stock-t > .bk-tile.nt-plain:not(.nf18-val){display:none !important;}
+  #inventoryMainView .bk-stock-t{display:grid !important;grid-template-columns:repeat(4,minmax(0,1fr)) !important;gap:10px !important;}
+  #inventoryMainView .bk-stock-t .nf18-re, #inventoryMainView .bk-stock-t .nf18-val{display:grid;gap:2px;text-align:left;align-content:start;}
+  #inventoryMainView .bk-stock-t .nf18-re small, #inventoryMainView .bk-stock-t .nf18-val small{font-size:15px;font-weight:700;color:#0E1114;}
+  #inventoryMainView .bk-stock-t .nf18-re b, #inventoryMainView .bk-stock-t .nf18-val b{font-size:28px;font-weight:800;line-height:1.15;}
+  #inventoryMainView .bk-stock-t .nf18-re b{color:#B42318;}
+  #inventoryMainView .bk-stock-t .nf18-re span, #inventoryMainView .bk-stock-t .nf18-val span{font-size:14.5px;font-weight:600;color:#344054;}
+  #inventoryMainView .toolbar{flex-wrap:wrap;gap:10px;align-items:center;}
+  #inventoryMainView select.nf18-wh{font:inherit;font-size:15px;font-weight:700;color:#0E1114;height:42px;border:1.5px solid #D0D5DD;border-radius:999px;padding:0 34px 0 14px;background:#fff;cursor:pointer;}
+  @media (max-width:760px){ #inventoryMainView .bk-stock-t{grid-template-columns:repeat(2,minmax(0,1fr)) !important;} }
+
+  /* Settings: a search box on top */
+  #page-settings .nf18-ss{margin:0 0 16px;}
+  #page-settings .nf18-ss input{width:100%;height:50px;border:1.5px solid #D0D5DD;border-radius:14px;padding:0 16px;font:inherit;font-size:16px;background:#fff;outline:none;}
+  #page-settings .nf18-ss input:focus{border-color:#0E1114;}
+  #page-settings .nf18-ss-none{margin:10px 2px 0;color:#475467;font-size:15px;}
+
+  /* Find customers: your leads */
+  #page-discover .nf18-leads{margin-top:18px;display:grid;gap:10px;}
+  #page-discover .nf18-lh h2{margin:0;font-size:20px;font-weight:800;}
+  #page-discover .nf18-lh p{margin:2px 0 0;color:#344054;font-size:15px;}
+  #page-discover .nf18-leads > .btn{justify-self:start;}
+  #page-discover .nf18-none{margin:0;color:#475467;}
+
+  /* Messages: Team chat at the top of the list */
+  .messages-shell .nf18-tav{background:#0E7490 !important;color:#fff !important;display:grid;place-items:center;}
+  .messages-shell .nf18-tav svg{width:20px;height:20px;}
+  .messages-shell #nf18TeamPane{display:none;}
+  .messages-shell.nf18-team-on .msg-thread{display:none !important;}
+  .messages-shell.nf18-team-on #nf18TeamPane{display:flex;flex-direction:column;min-width:0;min-height:0;background:#fff;}
+  .nf18-tp-h{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid #E5E5E5;}
+  .nf18-tp-h b{display:block;font-size:18px;font-weight:800;}
+  .nf18-tp-h small{display:block;font-size:13.5px;color:#475467;}
+  .nf18-tp-back{display:none;width:38px;height:38px;border-radius:50%;border:1.5px solid #D0D5DD;background:#fff;align-items:center;justify-content:center;cursor:pointer;flex:none;}
+  .nf18-tp-back svg{width:18px;height:18px;}
+  html.nf-phone .nf18-tp-back{display:inline-flex;}
+  #nf18TeamPane .team-chat-card{flex:1;display:flex;flex-direction:column;margin:0;border:0;border-radius:0;box-shadow:none;min-height:0;}
+  #nf18TeamPane .team-chat-thread{flex:1;min-height:320px;max-height:none;overflow-y:auto;background:#F7F8FA;padding:14px 16px;}
+  #nf18TeamPane .team-chat-compose{border-top:1px solid #E5E5E5;padding:10px 12px;}
+
+  /* account menu: language on phones (the More sheet is gone) */
+  #userMenuDropdown .nf18-lang{display:none;align-items:center;justify-content:space-between;gap:8px;padding:8px 12px;border-bottom:1px solid var(--border);font-size:14.5px;font-weight:700;}
+  html.nf-phone #userMenuDropdown .nf18-lang{display:flex;}
+  /* Find customers: the old empty "Your Leads" card (leads now live in the list above it) */
+  #page-discover > .panel-card.nf18-oldleads{display:none !important;}
+  .messages-shell.nf18-team-on #nf18TeamPane{flex:1;}
+
+  /* ---------- Messages: chat with the order beside it ---------- */
+  .messages-shell #nf18Op{display:none;}
+  .messages-shell.nf18-ctx #nf18Op{display:grid;flex:0 0 330px;align-content:start;gap:12px;padding:16px;border-left:1px solid #E5E5E5;overflow-y:auto;background:#fff;}
+  @media (max-width:1680px){ html:not(.nf-phone) .messages-shell.nf18-ctx .msg-sidebar{display:none !important;} }
+  html:not(.nf-phone) .messages-shell.nf18-ctx .nf18-chl{grid-template-columns:repeat(3,minmax(0,1fr));}
+  html:not(.nf-phone) .messages-shell.nf18-ctx .nf18-c{grid-template-columns:minmax(0,1fr);align-content:space-between;}
+  html:not(.nf-phone) .messages-shell.nf18-ctx .nf18-c p{font-size:14px;}
+  html:not(.nf-phone) .messages-shell.nf18-ctx .nf18-cb{justify-content:space-between;}
+  html.nf-phone .messages-shell.nf18-ctx #nf18Op{display:none !important;}
+  .nf18-oph{display:flex;align-items:center;justify-content:space-between;}
+  .nf18-oph small, .nf18-lbl{font-size:12.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#475467;}
+  .nf18-x{width:32px;height:32px;border-radius:50%;border:1.5px solid #D0D5DD;background:#fff;display:grid;place-items:center;cursor:pointer;padding:0;}
+  .nf18-x svg{width:15px;height:15px;}
+  .nf18-opt{display:grid;gap:4px;justify-items:start;}
+  .nf18-opt b{font-size:17px;font-weight:800;}
+  .nf18-opt .nfo-step{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;color:#1D2939;background:#fff;border:1px solid #D0D5DD;border-radius:8px;padding:2px 8px;}
+  .nf18-opt .nfo-step i{width:8px;height:8px;border-radius:50%;background:#3B6FD8;}
+  .nf18-opt .nfo-step.t-you i{background:#EAB308;} .nf18-opt .nfo-step.t-done i{background:#22A06B;}
+  .nf18-who{font-size:13.5px;color:#475467;}
+  .nf18-alert{border-radius:12px;padding:10px 12px;font-size:14.5px;line-height:1.45;color:#1D2939;}
+  .nf18-alert b{font-weight:800;}
+  .nf18-alert.b-red{background:#FEF4F3;border:1px solid #F7C4BF;} .nf18-alert.b-red b{color:#B42318;}
+  .nf18-alert.b-yel{background:#FFFBE6;border:1px solid #FDE68A;}
+  .nf18-alert.b-blue{background:#EAF1FE;border:1px solid #C9DBFB;} .nf18-alert.b-blue b{color:#163E8C;}
+  .nf18-alert.b-green{background:#EFF9F3;border:1px solid #BFE5CF;} .nf18-alert.b-green b{color:#146C3C;}
+  .nf18-items{display:grid;gap:6px;font-size:14.5px;}
+  .nf18-items > div{display:flex;justify-content:space-between;gap:10px;}
+  .nf18-items b{font-variant-numeric:tabular-nums;}
+  .nf18-items .tot{border-top:1px solid #E5E5E5;padding-top:7px;font-weight:800;}
+  .nf18-steps{display:grid;gap:0;}
+  .nf18-steps > div{display:grid;grid-template-columns:18px 1fr;gap:8px;align-items:center;font-size:14px;padding:3px 0;color:#98A2B3;}
+  .nf18-steps i{width:12px;height:12px;border-radius:50%;border:2px solid #D0D5DD;}
+  .nf18-steps .done{color:#344054;} .nf18-steps .done i{background:#22A06B;border-color:#22A06B;}
+  .nf18-steps .now{color:#0E1114;font-weight:800;} .nf18-steps .now i{border-color:#2563EB;box-shadow:0 0 0 3px #DCE8FD;}
+  .nf18-acts{display:grid;gap:8px;}
+  .nf18-acts .btn{justify-content:center;width:100%;}
+  /* phone: the order as a card at the top of the chat */
+  #nf18Card{display:none;}
+  html.nf-phone .messages-shell.nf18-ctx #nf18Card:not(:empty){display:block;margin:8px 10px 0;border-radius:12px;overflow:hidden;border:1px solid #C9DBFB;background:#fff;}
+  .nf18-cardh{width:100%;display:flex;align-items:center;gap:10px;padding:9px 12px;border:0;background:#EAF1FE;text-align:left;font:inherit;cursor:pointer;}
+  .nf18-cardh.b-red{background:#FEF4F3;} .nf18-cardh.b-yel{background:#FFFBE6;} .nf18-cardh.b-green{background:#EFF9F3;}
+  .nf18-cardh svg{width:18px;height:18px;flex:none;color:#163E8C;}
+  .nf18-cardh span{flex:1;min-width:0;} .nf18-cardh b{display:block;font-size:14.5px;} .nf18-cardh small{display:block;font-size:13px;color:#344054;}
+  .nf18-cardh i{font-style:normal;font-size:12px;color:#475467;}
+  .nf18-cardb{display:grid;gap:10px;padding:12px;}
+  /* why you came */
+  #nf18Task:empty, #nf18Ch:empty{display:none;}
+  .nf18-task{margin:10px 16px 0;border-radius:14px;padding:11px 14px;background:#FEF7C3;border:1px solid #FACC15;display:grid;gap:3px;}
+  html.nf-phone .nf18-task{margin:8px 10px 0;}
+  .nf18-task small{font-size:12px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#7A5B00;}
+  .nf18-task b{font-size:15.5px;font-weight:800;}
+  .nf18-task span{font-size:14px;color:#344054;}
+  .nf18-task.done{background:#E6F4EC;border-color:#9FD5B5;} .nf18-task.done small{color:#146C3C;}
+  .nf18-tacts{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;align-items:center;}
+  .nf18-tacts .btn{display:inline-flex;align-items:center;gap:6px;white-space:normal;text-align:left;}
+  .nf18-tacts .btn svg{width:16px;height:16px;}
+  .nf18-undo{font:inherit;font-size:14px;font-weight:800;color:#1F6B45;background:none;border:0;text-decoration:underline;text-underline-offset:3px;cursor:pointer;}
+  /* 3 ready messages above the box */
+  #nf18Ch{display:grid;gap:8px;margin-bottom:10px;}
+  html.nf-phone #nf18Ch{max-height:44vh;overflow-y:auto;}
+  .nf18-chh{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;}
+  .nf18-chh b{font-size:14.5px;font-weight:800;}
+  .nf18-lsw button{font-size:13px !important;padding:4px 10px !important;}
+  .nf18-chl{display:grid;gap:8px;}
+  .nf18-c{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 12px;align-items:center;border:1.5px solid #D0D5DD;border-radius:14px;padding:10px 12px;background:#fff;}
+  .nf18-c:hover{border-color:#1F6B45;}
+  html.nf-phone .nf18-c{grid-template-columns:minmax(0,1fr);}
+  .nf18-c small{font-size:12.5px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;color:#1F6B45;}
+  .nf18-c p{margin:2px 0 0;font-size:14.5px;line-height:1.45;color:#1D2939;}
+  .nf18-cb{display:flex;gap:8px;align-items:center;justify-content:flex-end;}
+  .nf18-edit{font:inherit;font-size:13.5px;font-weight:700;color:#344054;background:none;border:0;text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:4px;}
+  .nf18-all{justify-self:start;font:inherit;font-size:13.5px;font-weight:700;color:#344054;background:none;border:0;padding:2px 0 0;text-decoration:underline;text-underline-offset:3px;cursor:pointer;}
+  html.nf-phone .nf18-all{display:none;}
+  .messages-shell #nf18Card, .messages-shell #nf18Task, .messages-shell #nf18Ch{flex:none;}
+  /* laptop: with the order open, the page grows instead of squeezing the chat */
+  html:not(.nf-phone) #view-app .messages-shell.nf18-ctx{height:auto !important;min-height:calc(100vh - 210px);}
+  html:not(.nf-phone) #view-app .messages-shell.nf18-ctx #threadBody{flex:none;min-height:220px;max-height:380px;overflow-y:auto;}
+  html #view-app .messages-shell.nf18-team-on .msg-thread{display:none !important;}
+  html #view-app .messages-shell.nf18-team-on #nf18TeamPane{display:flex !important;}
+  html.nf-phone #view-app .messages-shell.nf18-team-on .msg-sidebar{display:none !important;}
+  /* phone: the account menu opens inside the screen */
+  html.nf-phone #userMenuDropdown{position:fixed !important;top:62px !important;right:10px !important;left:auto !important;width:min(320px, calc(100vw - 20px)) !important;max-height:calc(100vh - 140px);overflow-y:auto;z-index:300;}

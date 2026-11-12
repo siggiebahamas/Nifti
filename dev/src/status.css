@@ -134,84 +134,84 @@ tbody tr:hover{background:#F6F6F3}
 .pl-box.bad{background:#FEF2F2;border:1px solid #FCA5A5}
 .pl-box.bad b{color:#DC2626}
 .pl-ln small.bk-bad{color:#DC2626}
-#mhHome .sr-key i.r{background:#DC2626}
-#mhHome .sr-key i.y{background:#FACC15}
-#mhHome .sr-key i.g{background:#16A34A}
-#mhHome .sr-act.r{background:#FEE2E2;color:#DC2626}
-#mhHome .sr-act.y{background:#FEF9C3}
-#mhHome .sr-act.g{color:#15803D}
-#mhHome .sr-t i{background:#16A34A}
-#mhHome .sr-row.is-r .sr-t i{background:linear-gradient(90deg,#DC2626,#DC2626)}
-#mhHome .sr-row.is-y .sr-t i{background:linear-gradient(90deg,#FACC15,#FACC15)}
-#mhHome .sr-row.is-g .sr-t i{background:linear-gradient(90deg,#2BB673,#16A34A)}
-#mhHome .sr-row.is-r .sr-v b{color:#DC2626}
-#mhHome .sr-row.is-y .sr-v b{background:#FDE047}
-#mhHome .sr-row.is-g .sr-v b{color:#15803D}
-#mhHome .sr-pg b.tr{color:#DC2626}
-:is(#mhHome,#mhSheet) .pill.y::before{background:#FACC15}
-:is(#mhHome,#mhSheet) .btn.danger{border:1.5px solid #FCA5A5}
-#mhHome .lane-h.r{background:#FEE2E2;color:#DC2626}
-#mhHome .lane-h.y{background:#FEF08A}
-#mhHome .lane-h.g{color:#15803D}
-#mhHome .o.flag{background:#FEE2E2}
-#mhHome .o.flag:hover{border-color:#FCA5A5}
-:is(#mhHome,#mhSheet) .cal .day.r{background:#FEE2E2}
-:is(#mhHome,#mhSheet) tr.disc td{background:#FEFCE8}
-:is(#mhHome,#mhSheet) .dtag{background:#FDE047}
-:is(#mhHome,#mhSheet) .orig{border:1.5px solid #FACC15}
-:is(#mhHome,#mhSheet) .calc .in{color:#15803D}
-:is(#mhHome,#mhSheet) .calc .out{color:#DC2626}
-:is(#mhHome,#mhSheet) .box.red{background:#FEE2E2}
-:is(#mhHome,#mhSheet) .box.green{color:#15803D}
-:is(#mhHome,#mhSheet) .prot i.ok{color:#15803D}
-:is(#mhHome,#mhSheet) .prot i.no{background:#FEE2E2;color:#DC2626}
-:is(#mhHome,#mhSheet) .po{background:#FEF2F2;border:1px solid #FCA5A5}
-:is(#mhHome,#mhSheet) .po b{color:#DC2626}
-:is(#mhHome,#mhSheet) .he .chg s{color:#DC2626}
-:is(#mhHome,#mhSheet) .ed .orow{background:#FEF2F2;border:1px solid #FCA5A5}
-:is(#mhHome,#mhSheet) .ed .rm{border:1.5px solid #FCA5A5;color:#DC2626}
-:is(#mhHome,#mhSheet) .ed .err{color:#DC2626}
-:is(#mhHome,#mhSheet) .steps div.done{color:#15803D}
-:is(#mhHome,#mhSheet) .month .md.today{border:2px solid #FACC15;background:#FEFCE8}
-:is(#mhHome,#mhSheet) .cover{background:#FEFCE8;border:1px solid #FDE047}
-:is(#mhHome,#mhSheet) .sw.late{border:2px solid #DC2626;background:#FEF2F2}
-:is(#mhHome,#mhSheet) .oc.flag{border:2px solid #DC2626}
-:is(#mhHome,#mhSheet) .oc.flag:hover{border-color:#DC2626}
-:is(#mhHome,#mhSheet) .oc .stl.late{color:#DC2626}
-:is(#mhHome,#mhSheet) .oc .stl i{background:#DC2626}
-:is(#mhHome,#mhSheet) .pv1 .badge{background:#DC2626}
-:is(#mhHome,#mhSheet) .pv3 .oc.flag{border-color:#DC2626}
-:is(#mhHome,#mhSheet) .ribbon{background:#DC2626}
-:is(#mhHome,#mhSheet) .cal .day.r{background:#FEE2E2;border-color:#FCA5A5}
-:is(#mhHome,#mhSheet) .cal .day.today{background:#FEFCE8;border:2px dashed #FACC15}
-:is(#mhHome,#mhSheet) .tcount{background:#FDE047}
-:is(#mhHome,#mhSheet) .btn.go{background:#16A34A}
-:is(#mhHome,#mhSheet) .btn.danger-f{background:#DC2626}
-:is(#mhHome,#mhSheet) .ost.late{color:#DC2626}
-:is(#mhHome,#mhSheet) .dot{background:#DC2626}
-:is(#mhHome,#mhSheet) .swl{background:#FEF2F2;border:1px solid #FECACA}
-:is(#mhHome,#mhSheet) .lt{background:#FEE2E2;color:#DC2626}
-:is(#mhHome,#mhSheet) .ob1 .row.late{background:#FEF2F2}
-:is(#mhHome,#mhSheet) .ob3 .it.late{background:#FEF2F2}
-:is(#mhHome,#mhSheet) .ob4 .trow.late{background:#FEF2F2}
-:is(#mhHome,#mhSheet) .ob4 .track i.now.late{border-color:#DC2626}
-:is(#mhHome,#mhSheet) .ob5 .needs{background:#FEF2F2}
-:is(#mhHome,#mhSheet) .ob5 .cnt{background:#DC2626}
-:is(#mhHome,#mhSheet) .ob5 .ncard{border:1px solid #FECACA}
-:is(#mhHome,#mhSheet) .ob5 .ncard:hover{border-color:#FCA5A5}
-:is(#mhHome,#mhSheet) .alertline{background:#FEF2F2}
-:is(#mhHome,#mhSheet) .switch[aria-checked="true"]{background:#16A34A}
-:is(#mhHome,#mhSheet) .cashline i{background:#FACC15}
-:is(#mhHome,#mhSheet) .spl.r{background:#FEE2E2;color:#DC2626}
-:is(#mhHome,#mhSheet) .spl.y{background:#FEF08A}
-:is(#mhHome,#mhSheet) .spl.g{color:#15803D}
-:is(#mhHome,#mhSheet) .ob3.cmp .ln.r{background:#FEF2F2;border-color:#FCA5A5}
-:is(#mhHome,#mhSheet) .ob3.cmp .ln.y{background:#FEFCE8;border-color:#FACC15}
-:is(#mhHome,#mhSheet) .cpill.wait{background:#FEF08A}
-:is(#mhHome,#mhSheet) .cpill.ok{color:#15803D}
-#mhHome .alertline{background:#FEF9C3;border:1px solid #FACC15}
+:is(#mhHome,.nf18-mh) .sr-key i.r{background:#DC2626}
+:is(#mhHome,.nf18-mh) .sr-key i.y{background:#FACC15}
+:is(#mhHome,.nf18-mh) .sr-key i.g{background:#16A34A}
+:is(#mhHome,.nf18-mh) .sr-act.r{background:#FEE2E2;color:#DC2626}
+:is(#mhHome,.nf18-mh) .sr-act.y{background:#FEF9C3}
+:is(#mhHome,.nf18-mh) .sr-act.g{color:#15803D}
+:is(#mhHome,.nf18-mh) .sr-t i{background:#16A34A}
+:is(#mhHome,.nf18-mh) .sr-row.is-r .sr-t i{background:linear-gradient(90deg,#DC2626,#DC2626)}
+:is(#mhHome,.nf18-mh) .sr-row.is-y .sr-t i{background:linear-gradient(90deg,#FACC15,#FACC15)}
+:is(#mhHome,.nf18-mh) .sr-row.is-g .sr-t i{background:linear-gradient(90deg,#2BB673,#16A34A)}
+:is(#mhHome,.nf18-mh) .sr-row.is-r .sr-v b{color:#DC2626}
+:is(#mhHome,.nf18-mh) .sr-row.is-y .sr-v b{background:#FDE047}
+:is(#mhHome,.nf18-mh) .sr-row.is-g .sr-v b{color:#15803D}
+:is(#mhHome,.nf18-mh) .sr-pg b.tr{color:#DC2626}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .pill.y::before{background:#FACC15}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .btn.danger{border:1.5px solid #FCA5A5}
+:is(#mhHome,.nf18-mh) .lane-h.r{background:#FEE2E2;color:#DC2626}
+:is(#mhHome,.nf18-mh) .lane-h.y{background:#FEF08A}
+:is(#mhHome,.nf18-mh) .lane-h.g{color:#15803D}
+:is(#mhHome,.nf18-mh) .o.flag{background:#FEE2E2}
+:is(#mhHome,.nf18-mh) .o.flag:hover{border-color:#FCA5A5}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .cal .day.r{background:#FEE2E2}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) tr.disc td{background:#FEFCE8}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .dtag{background:#FDE047}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .orig{border:1.5px solid #FACC15}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .calc .in{color:#15803D}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .calc .out{color:#DC2626}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .box.red{background:#FEE2E2}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .box.green{color:#15803D}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .prot i.ok{color:#15803D}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .prot i.no{background:#FEE2E2;color:#DC2626}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .po{background:#FEF2F2;border:1px solid #FCA5A5}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .po b{color:#DC2626}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .he .chg s{color:#DC2626}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .ed .orow{background:#FEF2F2;border:1px solid #FCA5A5}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .ed .rm{border:1.5px solid #FCA5A5;color:#DC2626}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .ed .err{color:#DC2626}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .steps div.done{color:#15803D}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .month .md.today{border:2px solid #FACC15;background:#FEFCE8}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .cover{background:#FEFCE8;border:1px solid #FDE047}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .sw.late{border:2px solid #DC2626;background:#FEF2F2}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .oc.flag{border:2px solid #DC2626}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .oc.flag:hover{border-color:#DC2626}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .oc .stl.late{color:#DC2626}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .oc .stl i{background:#DC2626}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .pv1 .badge{background:#DC2626}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .pv3 .oc.flag{border-color:#DC2626}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .ribbon{background:#DC2626}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .cal .day.r{background:#FEE2E2;border-color:#FCA5A5}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .cal .day.today{background:#FEFCE8;border:2px dashed #FACC15}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .tcount{background:#FDE047}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .btn.go{background:#16A34A}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .btn.danger-f{background:#DC2626}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .ost.late{color:#DC2626}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .dot{background:#DC2626}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .swl{background:#FEF2F2;border:1px solid #FECACA}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .lt{background:#FEE2E2;color:#DC2626}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .ob1 .row.late{background:#FEF2F2}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .ob3 .it.late{background:#FEF2F2}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .ob4 .trow.late{background:#FEF2F2}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .ob4 .track i.now.late{border-color:#DC2626}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .ob5 .needs{background:#FEF2F2}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .ob5 .cnt{background:#DC2626}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .ob5 .ncard{border:1px solid #FECACA}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .ob5 .ncard:hover{border-color:#FCA5A5}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .alertline{background:#FEF2F2}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .switch[aria-checked="true"]{background:#16A34A}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .cashline i{background:#FACC15}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .spl.r{background:#FEE2E2;color:#DC2626}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .spl.y{background:#FEF08A}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .spl.g{color:#15803D}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .ob3.cmp .ln.r{background:#FEF2F2;border-color:#FCA5A5}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .ob3.cmp .ln.y{background:#FEFCE8;border-color:#FACC15}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .cpill.wait{background:#FEF08A}
+:is(:is(#mhHome,.nf18-mh),#mhSheet) .cpill.ok{color:#15803D}
+:is(#mhHome,.nf18-mh) .alertline{background:#FEF9C3;border:1px solid #FACC15}
 #mhSheet .attach.missing{color:#DC2626}
-#mhSheet .attach.missing, #mhHome .attach.missing{color:#DC2626 !important;border-color:#FCA5A5 !important}
+#mhSheet .attach.missing, :is(#mhHome,.nf18-mh) .attach.missing{color:#DC2626 !important;border-color:#FCA5A5 !important}
 #mhSheet button.attach{border:1.5px dashed #FCA5A5}
 #view-app .sl-av.g{color:#15803D}
 #view-app .sl-av.w{background:#FEE2E2;color:#DC2626}

@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Both Sides, One Page</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="../r13/lab.css">
+<style>
+.pgs{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.pgs small{font-size:12.5px;font-weight:800;color:var(--mut);letter-spacing:.04em;text-transform:uppercase;margin-right:2px}
+.pgs button{min-height:38px;padding:0 14px;border-radius:999px;background:#fff;box-shadow:inset 0 0 0 1.5px var(--line2);font-size:13.5px;font-weight:700;color:var(--ink2)}
+.pgs button[aria-pressed=true]{background:var(--ink);color:#fff;box-shadow:none}
+.pw{padding:24px 26px 30px;display:grid;gap:14px;background:#fff;min-height:720px;align-content:start}
+.frame-p .pw{padding:14px 12px 24px;gap:12px}
+.ph h2{margin:0;font-size:28px;font-weight:800;letter-spacing:-.02em}.ph p{margin:3px 0 0;font-size:15px;color:var(--ink2)}
+.frame-p .ph h2{font-size:24px}
+/* side tags: the same solid tags as Orders */
+.tg{display:inline-flex;align-items:center;gap:4px;font-size:12px;font-weight:800;color:#fff;border-radius:999px;padding:3px 9px 3px 6px;white-space:nowrap;line-height:1.2}
+.tg svg{width:12px;height:12px;stroke-width:2.8}
+.tg.c{background:#1D4ED8}.tg.s{background:#0F766E}
+.inA{color:#146C3C}.outA{color:#0E1114}
+/* summary tiles */
+.sum{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.frame-p .sum{grid-template-columns:minmax(0,1fr)}
+.smt{border:1px solid #E5E5E5;border-radius:16px;padding:12px 14px;display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.smt span{font-size:13px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#344054;display:flex;align-items:center;gap:7px}
+.smt span i{width:9px;height:9px;border-radius:50%}
+.smt b{font-size:21px;font-weight:800;font-variant-numeric:tabular-nums}
+.smt.r{background:#FEF4F3;border-color:#F7C4BF}.smt.r b{color:#B42318}
+/* A: one list by what needs you */
+.card{border:1px solid #E5E5E5;border-radius:18px;overflow:hidden}
+.band{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;font-size:13px;font-weight:800;letter-spacing:.05em;text-transform:uppercase}
+.band b{font-size:18px;letter-spacing:0}
+.band.red{background:#FDECEC;color:#B42318}.band.yel{background:#FEF7C3;color:#0E1114}.band.blue{background:#DCE8FD;color:#163E8C}.band.green{background:#E6F4EC;color:#146C3C}
+.row{display:grid;grid-template-columns:52px minmax(0,1fr) auto auto;gap:12px;align-items:center;padding:12px 16px;border-top:1px solid #EEF0F3}
+.band + .row{border-top:0}
+.frame-p .row{grid-template-columns:46px minmax(0,1fr);row-gap:8px}
+.frame-p .row .amt{grid-column:2;text-align:left}
+.frame-p .row .act{grid-column:1/-1}
+.frame-p .row .act .btn1, .frame-p .row .act .btn2{width:100%;justify-content:center}
+.dt{width:50px;border-radius:12px;display:grid;justify-items:center;padding:5px 0 6px;line-height:1.05}
+.dt small{font-size:10.5px;font-weight:800;letter-spacing:.05em}.dt b{font-size:20px;font-weight:800}
+.dt.red{background:#FEE4E2;color:#B42318}.dt.yel{background:#FEF08A;color:#1F2329}.dt.blue{background:#CFE0FC;color:#0B2A6B}.dt.green{background:#DCF5E5;color:#146C3C}.dt.today{background:#0E1114;color:#fff}
+.who{min-width:0}.who .n{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.who .n b{font-size:15.5px}
+.who .d{font-size:14px;color:#344054;margin-top:3px}.who .d b{font-weight:800}
+.amt{text-align:right;font-variant-numeric:tabular-nums}.amt b{display:block;font-size:17px;font-weight:800;white-space:nowrap}.amt small{font-size:12.5px;font-weight:700;color:#475467;white-space:nowrap}
+.amt.ai b{color:#146C3C}.amt.late b{color:#B42318}
+.act{display:flex;justify-content:flex-end}
+.act .btn1.sm{min-height:40px}
+/* B: two columns, in and out */
+.cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:start}
+.frame-p .cols{grid-template-columns:minmax(0,1fr)}
+.col{border:1px solid #E5E5E5;border-radius:18px;overflow:hidden}
+.colh{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid #E5E5E5}
+.colh .t{display:flex;align-items:center;gap:8px;font-size:16px;font-weight:800}
+.colh .t small{font-size:13px;font-weight:600;color:#475467}
+.colh b{font-size:19px;font-weight:800;font-variant-numeric:tabular-nums}
+.col.cin .colh{background:#EEF4FF;border-bottom-color:#C9DBFB}.col.cout .colh{background:#E8F5F3;border-bottom-color:#B7E1DA}
+.col .row{grid-template-columns:50px minmax(0,1fr) auto}
+.col .row .act{grid-column:2/-1;justify-content:flex-start}
+.col .row .act .btn1, .col .row .act .btn2{min-height:36px;font-size:13.5px;padding:0 14px}
+.st{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:800;border-radius:999px;padding:2px 9px}
+.st.red{background:#FEE4E2;color:#B42318}.st.yel{background:#FEF08A;color:#1F2329}.st.blue{background:#DCE8FD;color:#163E8C}.st.green{background:#DCF5E5;color:#146C3C}
+.empty{padding:16px;color:#475467;font-size:14.5px}
+/* C: one timeline by date */
+.net{display:grid;gap:8px;border:1px solid #E5E5E5;border-radius:16px;padding:14px 16px}
+.net .l{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.net .l b{font-size:16px}.net .l span{font-size:14px;color:#344054}
+.bar{display:flex;height:14px;border-radius:999px;overflow:hidden;background:#F2F4F7}
+.bar i{display:block}.bar .bi{background:#22A06B}.bar .bo{background:#0F766E;opacity:.35}
+.net .k{display:flex;gap:16px;flex-wrap:wrap;font-size:13.5px;font-weight:700;color:#344054}.net .k span{display:flex;align-items:center;gap:6px}.net .k i{width:10px;height:10px;border-radius:3px}
+.tl{border:1px solid #E5E5E5;border-radius:18px;overflow:hidden}
+.day{display:flex;justify-content:space-between;align-items:center;padding:9px 16px;background:#F7F8FA;font-size:13px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#344054;border-top:1px solid #EEF0F3}
+.day:first-child{border-top:0}
+.day.today{background:#0E1114;color:#fff}
+.day b{font-size:14px;letter-spacing:0;text-transform:none}
+.tl .row{grid-template-columns:34px minmax(0,1fr) auto auto}
+.frame-p .tl .row{grid-template-columns:34px minmax(0,1fr)}
+.dir{width:34px;height:34px;border-radius:50%;display:grid;place-items:center}
+.dir svg{width:18px;height:18px;stroke-width:2.6}
+.dir.di{background:#DCF5E5;color:#146C3C}.dir.do{background:#E8F5F3;color:#0F766E}
+.key{display:flex;gap:16px;flex-wrap:wrap;font-size:13.5px;color:#344054}.key span{display:flex;align-items:center;gap:7px}
+</style>
+</head>
+<body>
+<header class="lab-top"><div class="lab-in">
+  <div class="lab-r1"><a class="lab-back" href="index.html">‹ Round 18</a><h1>Customers and suppliers on one page</h1><p>No tabs to switch. Both sides on one screen, the way Orders works, without clutter.</p></div>
+  <div class="lab-tabs" id="tabs"></div>
+  <div class="lab-r3" id="r3"></div>
+</div></header>
+<main class="lab-wrap" id="wrap"><section class="lab-stage" id="stage"></section><aside class="lab-notes" id="notes"></aside></main>
+<div class="toast" id="toast"></div>
+<script src="../r13/lab.js"></script>
+<script>
+/* Today in the demo: Wed, Aug 26. [side c=customer s=supplier, band, date, who, line, detail, amount, amountLabel, button, primary] */
+const PG = {
+  paid: {title: 'Getting paid', sub: 'Who owes you, and who you owe. Both on one page.',
+    tiles: [['Coming in', '₱23,204', 'in'], ['Going out', '₱112,896', 'out'], ['Overdue', '₱17,504', 'r']],
+    rows: [
+      ['c', 'red', 'AUG 20', 'Riverside Builders Corp', '6 days late.', 'PO-2026-0810 · ₱9,500 in checks to confirm', 17504, 'owes you', 'Remind them', 1],
+      ['c', 'yel', 'AUG 25', 'Mang Bert Construction', 'Utang from the counter.', '1 sale · since yesterday', 5700, 'owes you', 'Remind them', 0],
+      ['s', 'yel', 'SEP 11', 'Metro Steel Co.', 'Due in 16 days.', 'PO-2026-0765 · ₱15,400 check waiting to clear', 112896, 'you owe', 'Pay', 1],
+      ['c', 'blue', 'AUG 27', 'Riverside Builders Corp', 'Promised ₱15,000 by tomorrow.', 'Said they\'d pay Friday via BDO', 15000, 'promised', 'Remind them', 0]]},
+  checks: {title: 'Checks', sub: 'Checks you got and checks you gave. Deposit each one on the day shown.',
+    tiles: [['To deposit', '₱6,000', 'in'], ['Leaving your bank', '₱15,400', 'out'], ['Waiting to clear', '₱3,500', 'in']],
+    rows: [
+      ['c', 'red', 'TODAY', 'Riverside Builders Corp', 'Deposit today.', 'BDO · check #004512', 6000, 'to deposit', 'Deposited', 1],
+      ['s', 'yel', 'AUG 28', 'Metro Steel Co.', 'Leaves your bank in 2 days.', 'BPI · check #000781 · keep enough money in the account', 15400, 'you gave', '', 0],
+      ['c', 'blue', 'AUG 24', 'Riverside Builders Corp', 'In the bank, waiting to clear.', 'BPI · check #220190 · usually 1 to 3 days', 3500, 'clearing', 'Cleared', 0]]},
+  forms: {title: 'BIR 2307s', sub: 'Tax forms your customers owe you, and forms you owe your suppliers.',
+    tiles: [['Forms you\'re owed', '1 missing', 'in'], ['Forms you owe', '1 late', 'r'], ['Done', '2', 'out']],
+    rows: [
+      ['s', 'red', 'JUL 20', 'Metro Steel Co.', 'Late: give them the form.', '2026 Q2 · 2 payments · tax kept ₱1,120', 1120, 'you owe a form', 'Make the form', 1],
+      ['c', 'red', 'JUL 20', 'Cavite Steel Works', 'Missing: ask for it.', '2026 Q2 · 3 payments · tax kept ₱1,840', 1840, 'they owe a form', 'Remind them', 1],
+      ['c', 'blue', 'OCT 20', 'Riverside Builders Corp', 'Not due yet.', '2026 Q3 · 1 payment', 773, 'tax kept', '', 0],
+      ['c', 'green', 'JUL 20', 'Bayview Construction Co.', 'Got the form.', '2026 Q2 · 2 payments', 2650, 'tax kept', '', 0],
+      ['s', 'green', 'JUL 20', 'Cebu Aggregates', 'Given.', '2026 Q2 · 1 payment', 640, 'tax kept', '', 0]]}
+};
+const BANDS = [['red', 'Needs you now'], ['yel', 'Coming up'], ['blue', 'Waiting on them'], ['green', 'Done']];
+const ARR = {c: '<path d="M7 17 17 7M8 7h9v9"/>', s: '<path d="M17 7 7 17M16 17H7V8"/>'};
+const tag = s => `<span class="tg ${s}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">${ARR[s]}</svg>${s === 'c' ? 'Customer' : 'Supplier'}</span>`;
+const dt = (d, b) => { const [m, n] = d.split(' '); return d === 'TODAY' ? `<span class="dt today"><small>TODAY</small><b>26</b></span>` : `<span class="dt ${b}"><small>${m}</small><b>${n}</b></span>`; };
+const isIn = r => (r[0] === 'c') !== (S.pg === 'forms');
+const btn = r => r[8] ? (r[9] ? `<button class="btn1 sm" data-act="toast" data-v="${r[8]} (prototype)">${r[8]}</button>` : `<button class="btn2" data-act="toast" data-v="${r[8]} (prototype)">${r[8]}</button>`) : '';
+const amt = r => `<div class="amt ${r[1] === 'red' && r[0] === 'c' && S.pg === 'paid' ? 'late' : isIn(r) && S.pg !== 'forms' ? 'ai' : ''}"><b>${peso(r[6])}</b><small>${r[7]}</small></div>`;
+const head = p => `<div class="ph"><h2>${p.title}</h2><p>${p.sub}</p></div>`;
+const tiles = p => `<div class="sum">${p.tiles.map(([k, v, c]) => `<div class="smt ${c === 'r' ? 'r' : ''}"><span><i style="background:${c === 'in' ? '#1D4ED8' : c === 'out' ? '#0F766E' : '#DC2626'}"></i>${k}</span><b>${v}</b></div>`).join('')}</div>`;
+function vA(p){
+  return `<div class="pw">${head(p)}${tiles(p)}<div class="card">${BANDS.map(([b, l]) => { const rs = p.rows.filter(r => r[1] === b); if(!rs.length) return '';
+    return `<div class="band ${b}"><span>${l}</span><b>${rs.length}</b></div>` + rs.map(r => `<div class="row">${dt(r[2], b)}<div class="who"><div class="n"><b>${r[3]}</b>${tag(r[0])}</div><div class="d"><b>${r[4]}</b> ${r[5]}</div></div>${amt(r)}<div class="act">${btn(r)}</div></div>`).join(''); }).join('')}</div>
+    <div class="key"><span>${tag('c')} money or forms from customers</span><span>${tag('s')} money or forms for suppliers</span></div></div>`;
+}
+function vB(p){
+  const side = s => p.rows.filter(r => r[0] === s), sum = s => side(s).filter(r => r[7] !== 'promised').reduce((a, r) => a + r[6], 0);
+  const col = (s, cls, t, sub) => `<div class="col ${cls}"><div class="colh"><span class="t">${tag(s)}<span>${t}<br><small>${sub}</small></span></span><b>${S.pg === 'forms' ? side(s).length + ' forms' : peso(sum(s))}</b></div>
+    ${side(s).length ? side(s).map(r => `<div class="row">${dt(r[2], r[1])}<div class="who"><div class="n"><b>${r[3]}</b><span class="st ${r[1]}">${r[4].replace(/\.$/, '')}</span></div><div class="d">${r[5]}</div></div>${amt(r)}${r[8] ? `<div class="act">${btn(r)}</div>` : ''}</div>`).join('') : '<div class="empty">Nothing here.</div>'}</div>`;
+  const L = {paid: [['Coming in', 'from customers'], ['Going out', 'to suppliers']], checks: [['Checks you got', 'from customers'], ['Checks you gave', 'to suppliers']], forms: [['Forms you\'re owed', 'from customers'], ['Forms you owe', 'to suppliers']]}[S.pg];
+  return `<div class="pw">${head(p)}<div class="cols">${col('c', 'cin', L[0][0], L[0][1])}${col('s', 'cout', L[1][0], L[1][1])}</div></div>`;
+}
+function vC(p){
+  const MON = {JUL: 7, AUG: 8, SEP: 9, OCT: 10, TODAY: 8}, key = d => d === 'TODAY' ? 826 : MON[d.split(' ')[0]] * 100 + Number(d.split(' ')[1]);
+  const days = [...new Set(p.rows.map(r => r[2]))].sort((a, b) => key(a) - key(b));
+  const inT = p.rows.filter(isIn).reduce((a, r) => a + r[6], 0), outT = p.rows.filter(r => !isIn(r)).reduce((a, r) => a + r[6], 0), tot = inT + outT || 1;
+  const label = d => d === 'TODAY' ? 'Today · Wed, Aug 26' : key(d) < 826 ? d.replace(/(\w+) (\d+)/, (m, a, b) => a.charAt(0) + a.slice(1).toLowerCase() + ' ' + b) + ' · past due' : d.replace(/(\w+) (\d+)/, (m, a, b) => a.charAt(0) + a.slice(1).toLowerCase() + ' ' + b);
+  return `<div class="pw">${head(p)}
+    <div class="net"><div class="l"><b>${S.pg === 'forms' ? 'Forms by date' : 'Next 3 weeks'}</b><span>${S.pg === 'forms' ? `${p.rows.filter(isIn).length} from customers · ${p.rows.filter(r => !isIn(r)).length} to suppliers` : `<b class="inA">+${peso(inT)}</b> coming in · <b>−${peso(outT)}</b> going out`}</span></div>
+      <div class="bar"><i class="bi" style="width:${inT / tot * 100}%"></i><i class="bo" style="width:${outT / tot * 100}%"></i></div>
+      <div class="k"><span><i style="background:#22A06B"></i>From customers</span><span><i style="background:#0F766E;opacity:.35"></i>To suppliers</span></div></div>
+    <div class="tl">${days.map(d => `<div class="day ${d === 'TODAY' ? 'today' : ''}"><span>${label(d)}</span><b>${p.rows.filter(r => r[2] === d).length}</b></div>` + p.rows.filter(r => r[2] === d).map(r => `<div class="row"><span class="dir ${isIn(r) ? 'di' : 'do'}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">${isIn(r) ? '<path d="M17 7 7 17M16 17H7V8"/>' : '<path d="M7 17 17 7M8 7h9v9"/>'}</svg></span><div class="who"><div class="n"><b>${r[3]}</b>${tag(r[0])}</div><div class="d"><b>${r[4]}</b> ${r[5]}</div></div>${amt(r)}<div class="act">${btn(r)}</div></div>`).join('')).join('')}</div></div>`;
+}
+const V = [
+  {id: 'a', n: 'A', name: 'One list, like Orders', tag: 'Grouped by what needs you', pick: 1, why: [
+      'Everything sits in one list under the same four colours as Orders: Needs you now, Coming up, Waiting on them, Done.',
+      'Each line says who it is with the solid <b>Customer</b> (blue ↗) or <b>Supplier</b> (teal ↙) tag, so nobody mixes them up.',
+      'The tiles on top sum up both sides: what\'s coming in, what\'s going out, and what\'s late.',
+      'Same habit everywhere: learn Orders once and Getting paid, Checks and BIR 2307s read the same way.'],
+    best: 'Owners who want to know "what do I do next?" without thinking about which side it\'s on.', give: 'Money in and money out are mixed in one list; the tags do the separating.'},
+  {id: 'b', n: 'B', name: 'Two columns: in and out', tag: 'Customers on the left, suppliers on the right', why: [
+      'On a laptop, customers sit on the left and suppliers on the right, each with its own total at the top.',
+      'Like a notebook with "coming in" and "going out" pages open side by side.',
+      'On a phone, the two columns stack: customers first, then suppliers, each with its own coloured header.',
+      'Each line keeps its status in a small coloured pill (late, coming up, waiting, done).'],
+    best: 'Seeing the balance between money in and money out at a glance.', give: 'On a phone it becomes two blocks again, so you scroll past one side to reach the other.'},
+  {id: 'c', n: 'C', name: 'One timeline by date', tag: 'Every in and out, in date order', why: [
+      'A single list in date order: today on top in black, then the next days, with past-due items marked.',
+      'A green arrow ↙ is money or a form coming to you; a teal arrow ↗ is money or a form going out.',
+      'The bar on top shows the next weeks at a glance: how much comes in against how much goes out.',
+      'Best for checks and bills, where the date is what matters.'],
+    best: 'Planning cash: what lands and what leaves on each day.', give: 'Urgent items are found by date, not grouped at the top.'}
+];
+const S = {v: 'a', view: 'both', pg: 'paid'};
+if(window.innerWidth < 700) S.view = 'p';
+function render(){
+  $('tabs').innerHTML = V.map(x => `<button class="lab-tab" aria-pressed="${S.v === x.id}" data-act="v" data-v="${x.id}"><i>${x.n}</i><b>${x.name}${x.pick ? ' · my pick' : ''}</b><small>${x.tag}</small></button>`).join('');
+  $('r3').innerHTML = seg('vw', [['both', 'Laptop + phone'], ['d', 'Laptop'], ['p', 'Phone']], S.view, 'view') + `<div class="pgs"><small>Page</small>${[['paid', 'Getting paid'], ['checks', 'Checks'], ['forms', 'BIR 2307s']].map(([k, l]) => `<button aria-pressed="${S.pg === k}" data-act="pg" data-v="${k}">${l}</button>`).join('')}</div>`;
+  $('wrap').classList.toggle('wide', S.view !== 'p');
+  const p = PG[S.pg], pg = S.v === 'a' ? vA(p) : S.v === 'b' ? vB(p) : vC(p);
+  const desk = `<div class="frame-d">${pg}</div>`, phone = `<div class="frame-p"><div class="notch"><span>9:41</span><span>●●●</span></div><div class="scroll">${pg}</div></div>`;
+  $('stage').innerHTML = S.view === 'd' ? desk : S.view === 'p' ? phone : `<div style="flex:1 1 720px;min-width:0;display:flex;justify-content:center">${desk}</div><div>${phone}</div>`;
+  const x = V.find(v => v.id === S.v);
+  $('notes').innerHTML = `<h2>${x.n} · ${x.name}${x.pick ? ' <span class="pill green nodot" style="vertical-align:middle">My pick</span>' : ''}</h2><p style="margin:-8px 0 0;color:var(--mut);font-size:14px">${x.tag}</p><h3>How it works</h3><ul>${x.why.map(w => `<li>${ic('check')}<span>${w}</span></li>`).join('')}</ul>
+    <div class="box"><b>Best for:</b> ${x.best}</div><div class="box"><b>You give up:</b> ${x.give}</div>
+    <div class="box"><b>Works on:</b> Getting paid, Checks, BIR 2307s, Price changes, Tax books and Returns. Try the 3 pages above.</div>`;
+}
+document.addEventListener('click', e => { const b = e.target.closest('[data-act]'); if(!b) return; const a = b.dataset.act, v = b.dataset.v;
+  if(a === 'toast'){ e.stopPropagation(); return toast(v); }
+  if(a === 'v') S.v = v; else if(a === 'view') S.view = v; else if(a === 'pg') S.pg = v;
+  render(); });
+render();
+</script>
+</body>
+</html>
