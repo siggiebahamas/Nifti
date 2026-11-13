@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Night to Day Columns</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<style>
+:root{--ink:#101828;--ink2:#344054;--mut:#475467;--line:#EAECF0;--g:#1F6B45;--g2:#22A06B;--gbg:#EAF6EF;}
+*{box-sizing:border-box}html,body{margin:0}
+body{font:16px/1.5 "Plus Jakarta Sans",system-ui,sans-serif;color:var(--ink);background:#F2F4F7;-webkit-font-smoothing:antialiased}
+.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.tin{max-width:1180px;margin:0 auto;padding:12px 20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.tin a{color:var(--g);font-weight:700;text-decoration:none;font-size:14.5px}.tin h1{margin:0;font-size:18px;flex:1;min-width:200px}
+.seg{display:inline-flex;background:#EEF0F3;border-radius:999px;padding:4px;gap:2px}.seg button{border:0;background:transparent;border-radius:999px;padding:8px 16px;font:inherit;font-weight:700;font-size:14.5px;color:var(--ink2);cursor:pointer}.seg button.on{background:#fff;color:var(--ink);box-shadow:0 1px 2px rgba(16,24,40,.12)}
+.jump{display:flex;gap:6px}.jump a{padding:7px 12px;border-radius:999px;border:1.5px solid #D0D5DD;background:#fff;color:var(--ink);font-weight:700;font-size:14px;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:22px 20px 70px;display:grid;gap:34px}
+.why{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 22px}.why h2{margin:0 0 6px;font-size:19px}.why p{margin:0 0 6px;color:var(--ink2)}
+.opt{display:grid;gap:12px}.opt>header{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}.opt>header h2{margin:0;font-size:22px}.opt>header span{color:var(--mut)}
+.rec{display:inline-block;background:var(--g);color:#fff !important;border-radius:999px;padding:4px 12px;font-size:13px;font-weight:800;letter-spacing:.04em}
+.was{display:inline-block;background:#E4E7EC;color:#344054 !important;border-radius:999px;padding:4px 12px;font-size:13px;font-weight:800}
+.note{font-size:15px;color:var(--ink2);margin:0}
+.frame{margin:0 auto;width:100%;max-width:1180px;container-type:inline-size;transition:max-width .25s}
+body.ph .frame{max-width:390px}
+.sec{border-radius:22px;padding:44px 28px 48px;text-align:center}
+.sec .k{display:inline-block;border-radius:999px;padding:6px 16px;font-weight:800;font-size:13px;letter-spacing:.1em}
+.sec h3{margin:14px 0 4px;font-size:36px;line-height:1.15;letter-spacing:-.02em}.sec .s{margin:0 0 26px;font-size:17px}
+.list{max-width:980px;margin:0 auto;display:grid;gap:12px;text-align:left}
+.row{display:grid;grid-template-columns:128px 1fr 44px 1fr;gap:10px;align-items:stretch}
+.t{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;border-radius:16px;font-weight:800;font-size:18px;text-align:center;line-height:1.2;padding:10px 6px}
+.t small{font-size:13.5px;font-weight:600}
+.t .sky{width:26px;height:26px;margin-bottom:2px}
+.t .sky svg,.ic svg,.ar svg{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round}
+.t .sky svg{width:26px;height:26px;stroke-width:2}
+.b,.a{display:flex;gap:12px;align-items:center;border-radius:16px;padding:16px 18px;min-height:92px}
+.b b{font-weight:600;font-size:17px}.a b{font-weight:800;font-size:17px}
+.ic{width:36px;height:36px;border-radius:11px;display:grid;place-items:center;flex:none}.ic svg{width:20px;height:20px;stroke-width:2}
+.ar{display:grid;place-items:center}.ar svg{width:26px;height:26px;stroke-width:2.6}
+.res{display:inline-block;margin-top:8px;font-size:13.5px;font-weight:800;border-radius:999px;padding:3px 10px}
+.sum{max-width:980px;margin:22px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:12px;text-align:left}
+.sum > div{display:flex;gap:14px;align-items:center;border-radius:18px;padding:18px 20px}
+.sum .ic{width:48px;height:48px}.sum b{display:block;font-size:24px;line-height:1.2}.sum span{font-size:16px;line-height:1.4}
+@container (max-width:640px){ .sec{padding:30px 16px 32px}.sec h3{font-size:27px}.row{grid-template-columns:1fr}.ar{transform:rotate(90deg);height:26px}.t{flex-direction:row;justify-content:flex-start;gap:10px;padding:10px 14px}.t .sky{margin:0}.b,.a{min-height:0}.sum{grid-template-columns:1fr} }
+/* the navy page from theme 4 stays the same in every option */
+.nd .sec{background:#23415F;color:#fff}.nd .k{background:#DCFCE7;color:#14532D}.nd h3 span{color:#86EFAC}.nd .s{color:#E2E8F0}
+.nd .a{background:#fff;color:#101828}.nd .a .ic{background:var(--gbg);color:var(--g)}
+.nd .ar{color:#86EFAC}.nd .res{background:#DCFCE7;color:#14532D}.nd .sum > div{background:#fff;color:#101828}.nd .sum .ic{background:#DCFCE7;color:var(--g)}.nd .sum b{color:#14532D}.nd .sum span{color:#344054}
+/* A: solid white time pills, light steel "before" boxes with dark text */
+.na .t{background:#FFFFFF;color:#1E3A5F}.na .t small{color:#344054}.na .t .sky{color:#3B5B7E}
+.na .b{background:#C9D6E3;color:#101828}.na .b .ic{background:#A9BCD0;color:#1E3A5F}
+/* B: pale yellow time pills like morning light, soft gray "before" boxes */
+.nb .t{background:#FEF3C7;color:#1D2939}.nb .t small{color:#344054}.nb .t .sky{color:#1D2939}
+.nb .b{background:#E4E7EC;color:#101828}.nb .b .ic{background:#CDD3DC;color:#344054}
+/* C: sky-blue time pills, pale rose "before" boxes so the problem reads as a problem */
+.nc .t{background:#DBEAFE;color:#1E3A8A}.nc .t small{color:#1E40AF}.nc .t .sky{color:#1E40AF}
+.nc .b{background:#FDECEC;color:#101828}.nc .b .ic{background:#F9D0CE;color:#B42318}
+/* as it was (for comparison) */
+.v4 .sec{background:#23415F;color:#fff}.v4 .k{background:#DCFCE7;color:#14532D}.v4 h3 span{color:#86EFAC}.v4 .s{color:#CBD5E1}
+.v4 .t{border:2px solid #9FB3C8;color:#fff}.v4 .t small{color:#E2E8F0}
+.v4 .b{background:#375A7F;color:#F8FAFC}.v4 .b .ic{background:#4A6E94;color:#F1F5F9}.v4 .a{background:#fff;color:#101828}.v4 .a .ic{background:var(--gbg);color:var(--g)}
+.v4 .ar{color:#86EFAC}.v4 .res{background:#DCFCE7;color:#14532D}.v4 .sum > div{background:#fff;color:#101828}.v4 .sum .ic{background:#DCFCE7;color:var(--g)}.v4 .sum b{color:#14532D}.v4 .sum span{color:#344054}
+</style>
+</head>
+<body>
+<div class="top"><div class="tin"><a href="./">‹ Round 25</a><h1>Night to day: 3 ways for the time and "before" columns</h1>
+  <div class="seg" role="group" aria-label="Screen size"><button type="button" data-w="pc" class="on">Computer</button><button type="button" data-w="ph">Phone</button></div>
+  <div class="jump"><a href="#na">A</a><a href="#nb">B</a><a href="#nc">C</a><a href="#v4">Was</a></div></div></div>
+<main class="wrap">
+  <section class="why"><h2>What changed</h2><p>Everything you liked stays: the navy page, the white "with Nifti" boxes, the green arrows and the two boxes at the bottom. Only the two columns you pointed out change. The time pills and the "before" boxes are now solid colors with dark text, so nothing blends into the navy and nothing is see-through.</p>
+    <p>9:00 AM now reads "Big order" on one line and "comes in" on the next. Every pill also has a small sun or moon for the time of day.</p></section>
+  <section class="opt nd na" id="na"><header><h2>A. White time, steel "before"</h2><span class="rec">MY PICK</span></header><div class="frame"><div class="sec" data-v="na"></div></div>
+    <p class="note">Time pills are solid white with navy text. "Before" boxes are a light steel blue with black text: clearly a different box from the white "after", but easy to read. The quietest change, and the closest to what you picked.</p></section>
+  <section class="opt nd nb" id="nb"><header><h2>B. Morning-yellow time, gray "before"</h2><span>Warm time pills</span></header><div class="frame"><div class="sec" data-v="nb"></div></div>
+    <p class="note">Time pills are a pale morning yellow, so the time of day jumps out first. "Before" boxes are soft gray with black text, the plain "old way" next to the bright white "with Nifti".</p></section>
+  <section class="opt nd nc" id="nc"><header><h2>C. Sky-blue time, rose "before"</h2><span>The problem looks like a problem</span></header><div class="frame"><div class="sec" data-v="nc"></div></div>
+    <p class="note">Time pills are light sky blue. "Before" boxes are pale rose with a red icon, so each row reads as problem, then fix. The most colorful of the three.</p></section>
+  <section class="opt v4" id="v4"><header><h2>For comparison: as it was</h2><span class="was">LAST ROUND</span></header><div class="frame"><div class="sec" data-v="v4"></div></div></section>
+</main>
+<script>
+const I = {chat: '<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>', list: '<rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4M12 16h4M8 11h.01M8 16h.01"/>',
+  keys: '<rect width="20" height="16" x="2" y="4" rx="2"/><path d="M6 8h.01M10 8h.01M14 8h.01M18 8h.01M7 16h10"/>', mic: '<path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v3"/>',
+  phone: '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/>', pin: '<path d="M20 10c0 5-5.5 10.2-7.4 11.8a1 1 0 0 1-1.2 0C9.5 20.2 4 15 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/>',
+  clock: '<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>', bell: '<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/>',
+  book: '<path d="M2 6h4M2 10h4M2 14h4M2 18h4"/><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M16 2v20"/>', wallet: '<path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/>',
+  stack: '<path d="M12 2 2 7l10 5 10-5Z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/>', call: '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/><path d="m16 2 6 6M22 2l-6 6"/>',
+  rise: '<path d="M12 2v4M4.9 8.9l1.4 1.4M2 16h2M20 16h2M17.7 10.3l1.4-1.4M18 20H6"/><path d="M16 16a4 4 0 0 0-8 0"/>', sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M6.3 17.7l-1.4 1.4M19.1 4.9l-1.4 1.4"/>',
+  set: '<path d="M12 10V2M4.9 10.9l1.4 1.4M2 18h2M20 18h2M17.7 12.3l1.4-1.4M22 22H2M16 18a4 4 0 0 0-8 0"/><path d="m16 6-4 4-4-4"/>', moon: '<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>'};
+const ic = k => `<span class="ic"><svg viewBox="0 0 24 24">${I[k]}</svg></span>`;
+const D = [['7:00 AM', 'Opening', 'chat', 'Orders buried in 10 Viber chats', 'list', 'Every order in one list', 'Nothing gets missed', 'rise'],
+  ['9:00 AM', 'Big order<br>comes in', 'keys', 'Retyping every PO by hand', 'mic', 'Say it, or send their order form', 'In seconds', 'sun'],
+  ['11:00 AM', 'Phone keeps ringing', 'phone', '"Nasaan na yung delivery?"', 'pin', 'A tracking link they can open', 'No more calls', 'sun'],
+  ['3:00 PM', 'Who still owes?', 'clock', 'Chasing payments yourself', 'bell', 'Polite reminders, sent for you', 'On schedule', 'set'],
+  ['8:00 PM', 'Closing', 'book', 'Utang written in a notebook', 'wallet', 'Who owes you, always up to date', 'To the peso', 'moon']];
+const arrow = '<svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+const sum = `<div class="sum"><div>${ic('stack')}<p style="margin:0"><b>One place</b><span>for every order, payment and promise</span></p></div><div>${ic('call')}<p style="margin:0"><b>Fewer calls</b><span>customers check their own delivery</span></p></div></div>`;
+document.querySelectorAll('.sec[data-v]').forEach(s => { const v = s.dataset.v, sky = true;
+  s.innerHTML = `<span class="k">WHAT CHANGES</span><h3>Your day, <span>before and after Nifti.</span></h3><p class="s">From a hard day to an easy one.</p><div class="list">` +
+    D.map(d => `<div class="row"><div class="t">${sky ? `<span class="sky"><svg viewBox="0 0 24 24">${I[d[7]]}</svg></span>` : ''}<span>${d[0]}<br><small>${d[1]}</small></span></div><div class="b">${ic(d[2])}<b>${d[3]}</b></div><div class="ar">${arrow}</div><div class="a">${ic(d[4])}<div><b>${d[5]}</b><br><span class="res">${d[6]}</span></div></div></div>`).join('') + '</div>' + sum; });
+document.querySelectorAll('[data-w]').forEach(b => b.onclick = () => { document.body.classList.toggle('ph', b.dataset.w === 'ph'); document.querySelectorAll('[data-w]').forEach(x => x.classList.toggle('on', x === b)); });
+</script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Buying Side Colors</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<style>
+:root{--ink:#101828;--ink2:#344054;--line:#EAECF0;--g:#1F6B45;}
+*{box-sizing:border-box}html,body{margin:0}
+body{font:16px/1.5 "Plus Jakarta Sans",system-ui,sans-serif;color:var(--ink);background:#F2F4F7;-webkit-font-smoothing:antialiased}
+.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.tin{max-width:1180px;margin:0 auto;padding:12px 20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.tin a{color:var(--g);font-weight:700;text-decoration:none;font-size:14.5px}.tin h1{margin:0;font-size:18px;flex:1;min-width:200px}
+.seg{display:inline-flex;background:#EEF0F3;border-radius:999px;padding:4px;gap:2px}.seg button{border:0;background:transparent;border-radius:999px;padding:8px 16px;font:inherit;font-weight:700;font-size:14.5px;color:var(--ink2);cursor:pointer}.seg button.on{background:#fff;color:var(--ink);box-shadow:0 1px 2px rgba(16,24,40,.12)}
+.jump{display:flex;gap:6px;flex-wrap:wrap}.jump a{padding:7px 12px;border-radius:999px;border:1.5px solid #D0D5DD;background:#fff;color:var(--ink);font-weight:700;font-size:14px;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:22px 20px 70px;display:grid;gap:34px}
+.why{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 22px}.why h2{margin:0 0 6px;font-size:19px}.why p{margin:0 0 6px;color:var(--ink2)}
+.opt{display:grid;gap:12px}.opt>header{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}.opt>header h2{margin:0;font-size:22px}.opt>header span{color:#475467}
+.rec{display:inline-block;background:var(--g);color:#fff !important;border-radius:999px;padding:4px 12px;font-size:13px;font-weight:800;letter-spacing:.04em}
+.note{font-size:15.5px;color:var(--ink2);margin:0}
+.frame{margin:0 auto;width:100%;max-width:1180px;container-type:inline-size;transition:max-width .25s}
+body.ph .frame{max-width:390px}
+.board{display:grid;grid-template-columns:1fr 1fr;gap:18px;background:#fff;border:1px solid var(--line);border-radius:22px;padding:18px}
+.col{border-radius:18px;padding:14px;border-top:5px solid var(--acc);background:var(--bg)}
+.ch{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:12px}
+.ch h3{margin:0;font-size:20px;color:var(--acc-t)}.ch p{margin:2px 0 0;font-size:15px;color:#344054}.ch b{font-size:20px}.ch small{display:block;text-align:right;font-size:14px;color:#344054}
+.ch .ar{width:30px;height:30px;border-radius:10px;display:grid;place-items:center;background:var(--chip);color:var(--acc-t);font-weight:900;margin-right:8px;flex:none}
+.new{display:inline-block;margin-bottom:12px;padding:6px 14px;border-radius:999px;border:1.5px solid var(--acc);color:var(--acc-t);background:#fff;font-weight:800;font-size:15px}
+.band{display:flex;justify-content:space-between;align-items:center;padding:9px 14px;border-radius:12px 12px 0 0;font-size:13.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.b-red{background:#FDECEC;color:#B42318}.b-yel{background:#FEF3C7;color:#713F12}.b-blue{background:#DCE8F7;color:#1E3A8A}
+.b-green{background:#2F855A;color:#fff}.b-green span:first-child{display:inline-flex;align-items:center;gap:8px}
+.b-green span:first-child::before{content:'✓';width:21px;height:21px;border-radius:50%;display:inline-grid;place-items:center;background:#fff;color:#2F855A;font-size:13px;font-weight:900}
+.grp{background:#fff;border:1px solid var(--line);border-top:0;border-radius:0 0 14px 14px;padding:12px;margin-bottom:12px}
+.party{display:flex;justify-content:space-between;gap:10px;margin-bottom:8px}.party b{font-size:16.5px}.party small{display:block;font-size:14px;color:#344054}
+.po{border-radius:12px;padding:10px 12px;display:grid;gap:4px}.po .l1{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:14px;font-weight:800}
+.st{display:inline-flex;align-items:center;gap:5px;padding:2px 9px;border-radius:999px;background:#fff;border:1px solid #E4E7EC;font-size:13px;font-weight:700}
+.st i{width:7px;height:7px;border-radius:50%;background:currentColor}
+.po .l2{font-size:14.5px;color:#101828}.po .l3{display:flex;justify-content:space-between;align-items:center;font-weight:800;font-size:16px}
+.po.r{background:#FFF5F5}.po.y{background:#FFFBEA}.po.bl{background:#F2F6FC}.po.gr{background:#EFF9F3}
+.btn{border:0;border-radius:10px;padding:8px 14px;font:inherit;font-weight:800;font-size:14.5px;background:#1F6B45;color:#fff}
+.done{padding:4px 12px;border-radius:999px;background:#DCF5E5;color:#146C3C;font-weight:800;font-size:14px}
+@container (max-width:700px){ .board{grid-template-columns:1fr;padding:12px} }
+/* the five buying-side hues (selling side stays blue in all of them) */
+.sell{--acc:#3B82F6;--acc-t:#1D4ED8;--bg:#F5F9FF;--chip:#DBEAFE}
+.o1 .buy{--acc:#F97316;--acc-t:#C2410C;--bg:#FFF7F0;--chip:#FFEDD5}
+.o2 .buy{--acc:#FDBA74;--acc-t:#9A3412;--bg:#FFFAF5;--chip:#FFEDD5}
+.o3 .buy{--acc:#FB923C;--acc-t:#C2410C;--bg:#FFF4EC;--chip:#FED7AA}
+.o4 .buy{--acc:#667085;--acc-t:#344054;--bg:#F5F6F8;--chip:#E4E7EC}
+.o5 .buy{--acc:#475467;--acc-t:#1D2939;--bg:#EEF1F5;--chip:#D0D5DD}
+</style>
+</head>
+<body>
+<div class="top"><div class="tin"><a href="./">‹ Round 25</a><h1>Buying from suppliers: 5 colors (orange and gray)</h1>
+  <div class="seg" role="group" aria-label="Screen size"><button type="button" data-w="pc" class="on">Computer</button><button type="button" data-w="ph">Phone</button></div>
+  <div class="jump"><a href="#o1">1</a><a href="#o2">2</a><a href="#o3">3</a><a href="#o4">4</a><a href="#o5">5</a></div></div></div>
+<main class="wrap">
+  <section class="why"><h2>What you're looking at</h2><p>The Orders page with the selling side in blue and five colors for the buying side: three oranges and two grays. In all five, "All good" is the new lighter forest band with a green check on a white circle, and the order bubbles inside it are soft green again, like before Round 24. Both of those are already live in the app.</p>
+    <p><b>My pick is 4, cool gray.</b> Nifti uses red, yellow and blue to mean "do it now", "coming up" and "waiting on them". An orange side sits right between red and yellow, so a 65-year-old owner may read a calm supplier column as a warning. Gray says "the other side" without saying "hurry".</p></section>
+  <section class="opt o1" id="o1"><header><h2>1. Tangerine</h2><span>Bright orange edge and title</span></header><div class="frame" data-o></div>
+    <p class="note">Strongest contrast with the blue side. The risk: the orange title is close to the red and yellow urgency bands.</p></section>
+  <section class="opt o2" id="o2"><header><h2>2. Peach</h2><span>Soft orange, very light page</span></header><div class="frame" data-o></div>
+    <p class="note">The gentlest orange. Calm and warm, but on a dim phone screen it can look almost white, so the two sides blur together.</p></section>
+  <section class="opt o3" id="o3"><header><h2>3. Apricot</h2><span>Mid orange with a warm tint behind</span></header><div class="frame" data-o></div>
+    <p class="note">A middle ground: you see right away which side is buying. The tinted background is warmer than the selling side's.</p></section>
+  <section class="opt o4" id="o4"><header><h2>4. Cool gray</h2><span class="rec">MY PICK</span></header><div class="frame" data-o></div>
+    <p class="note">Neutral gray edge and dark title. Blue means "money coming to you", gray means "your suppliers". The color bands stay the only colors that mean "act".</p></section>
+  <section class="opt o5" id="o5"><header><h2>5. Graphite</h2><span>Darker gray, more weight</span></header><div class="frame" data-o></div>
+    <p class="note">Like 4, but heavier, so the buying side feels as important as the selling side. A bit more serious.</p></section>
+</main>
+<script>
+const po = (cls, n, st, item, line, amt, lab, btn) => `<div class="po ${cls}"><div class="l1">${n}<span class="st"><i></i>${st}</span></div><div class="l2">${item}</div><div class="l2"><b>${line}</b></div><div class="l3"><span>${amt} <small style="font-weight:600;font-size:13.5px">${lab}</small></span>${btn}</div></div>`;
+const sell = `<div class="col sell"><div class="ch"><div style="display:flex"><span class="ar">↗</span><div><h3>Selling to customers</h3><p>5 orders · 4 customers</p></div></div><div><b>₱104,864</b><small>owed to you</small></div></div><span class="new">+ New order</span>
+  <div class="band b-red">Needs you now <span>2</span></div><div class="grp"><div class="party"><div><b>Bayview Construction Co.</b><small>14 orders · last 4 days ago</small></div></div>${po('r', 'PO-2026-0855', 'Delivered', '1200 × Steel Rebar 12mm', 'Delivered 11 days ago, not billed yet.', '₱87,360', 'not billed', '<button class="btn">Send the bill</button>')}</div>
+  <div class="band b-green"><span>All good</span><span>1</span></div><div class="grp"><div class="party"><div><b>Cavite Steel Works</b><small>9 orders · last 1 week ago</small></div></div>${po('gr', 'PO-2026-0740', 'Paid', '200 × Steel Rebar 12mm', 'Paid 2 days ago. All done.', '₱16,464', 'paid', '<span class="done">✓ Done</span>')}</div></div>`;
+const buy = `<div class="col buy"><div class="ch"><div style="display:flex"><span class="ar">↙</span><div><h3>Buying from suppliers</h3><p>3 orders · 2 suppliers</p></div></div><div><b>₱112,896</b><small>you owe</small></div></div><span class="new">+ New order</span>
+  <div class="band b-yel">Coming up <span>2</span></div><div class="grp"><div class="party"><div><b>Metro Steel Co.</b><small>34 orders · last 2 days ago</small></div></div>${po('y', 'PO-2026-0798', 'On the way', '200 × Galvanized Wire 12ga', 'Arrives tomorrow. Count what came.', '₱107,957', 'order', '<button class="btn">Count it</button>')}</div>
+  <div class="band b-blue">Waiting on them <span>1</span></div><div class="grp"><div class="party"><div><b>Cebu Aggregates</b><small>21 orders · last 5 days ago</small></div></div>${po('bl', 'PO-2026-0839', 'Preparing', '200 × Portland Cement 40kg', 'Arrives in 7 days. They are packing it.', '₱43,680', 'order', '')}</div>
+  <div class="band b-green"><span>All good</span><span>1</span></div><div class="grp"><div class="party"><div><b>Northline Welding</b><small>9 orders · last 3 weeks ago</small></div></div>${po('gr', 'PO-2026-0702', 'Paid', '50 × Welding Rods 3.2mm', 'Paid 3 weeks ago. All done.', '₱6,000', 'paid', '<span class="done">✓ Done</span>')}</div></div>`;
+document.querySelectorAll('[data-o]').forEach(f => { f.innerHTML = `<div class="board">${sell}${buy}</div>`; });
+document.querySelectorAll('[data-w]').forEach(b => b.onclick = () => { document.body.classList.toggle('ph', b.dataset.w === 'ph'); document.querySelectorAll('[data-w]').forEach(x => x.classList.toggle('on', x === b)); });
+</script>
+</body>
+</html>

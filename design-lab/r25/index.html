@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Round 25 Choices</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="../r13/lab.css">
+<style>
+.band{background:radial-gradient(800px 260px at 85% -20%,rgba(52,211,153,.35),transparent 60%),linear-gradient(135deg,#03251C 0%,#064E3B 55%,#0B6B57 100%);color:#fff;padding:34px 20px 80px}
+.band .bin{max-width:1080px;margin:0 auto}.band a{color:#C8EFDF;font-size:14px;font-weight:700;text-decoration:none}
+.band h1{margin:12px 0 6px;font-size:36px;font-weight:800;letter-spacing:-.02em;line-height:1.1}.band p{margin:0;font-size:17px;color:#C8EFDF;max-width:660px}
+.wrap{max-width:1080px;margin:-52px auto 0;padding:0 20px 60px;display:grid;gap:18px}
+.live{background:#fff;border-radius:18px;border:1px solid #E7EAF0;box-shadow:var(--shc);padding:18px 20px;display:grid;gap:10px}
+.live h2{margin:0;font-size:18px;font-weight:800;display:flex;align-items:center;gap:10px}.live h2 span{font-size:12px;letter-spacing:.06em;text-transform:uppercase;background:var(--gbg);color:var(--g);border-radius:999px;padding:4px 10px}
+.live ul{margin:0;padding:0;list-style:none;display:grid;gap:8px}.live li{display:grid;grid-template-columns:22px 1fr;gap:10px;font-size:15px;color:var(--ink2)}.live li b{color:var(--ink)}
+.live li svg{width:20px;height:20px;padding:3px;border-radius:50%;background:var(--g2);color:#fff;stroke-width:3}
+.audit{background:#fff;border-radius:18px;border:1px solid #E7EAF0;box-shadow:var(--shc);overflow:hidden}
+.audit h2{margin:0;padding:16px 20px 12px;font-size:18px;font-weight:800;border-bottom:2px solid var(--ink)}
+.ar{display:grid;grid-template-columns:minmax(0,1.1fr) auto minmax(0,2fr);gap:14px;align-items:center;padding:12px 20px;border-top:1px solid var(--line);font-size:14.5px}
+.ar b{font-size:15px}.ar span{color:var(--ink2)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.c{display:grid;gap:10px;background:#fff;border-radius:18px;border:1px solid #E7EAF0;box-shadow:var(--shc);padding:18px 20px;text-decoration:none;color:inherit;transition:transform .15s,box-shadow .15s;align-content:start}
+.c:hover{transform:translateY(-2px);box-shadow:var(--sh2)}
+.c .top{display:flex;align-items:center;gap:12px}.c .top span{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:#DDF5EC;color:#047857}.c .top span svg{width:24px;height:24px}
+.c h3{margin:0;font-size:18px;font-weight:800;line-height:1.2}.c small{font-size:13px;font-weight:800;color:var(--mut);letter-spacing:.04em;text-transform:uppercase}
+.c p{margin:0;font-size:15px;color:var(--ink2)}.c .go{display:inline-flex;align-items:center;gap:6px;font-weight:800;color:var(--g);font-size:15px}
+.c .opts{display:flex;flex-wrap:wrap;gap:6px}.c .opts i{font-style:normal;font-size:12.5px;font-weight:700;color:var(--ink2);background:var(--sf2);border-radius:999px;padding:3px 10px;box-shadow:inset 0 0 0 1px var(--line)}
+@media (max-width:640px){ .band h1{font-size:28px} .band{padding:24px 16px 72px} .wrap{padding:0 12px 40px} .ar{grid-template-columns:minmax(0,1fr) auto;padding:12px 14px} .ar span:last-child{grid-column:1/-1} }
+</style>
+</head>
+<body>
+<div class="band"><div class="bin"><a href="../">‹ Design lab</a><h1>Round 25 · what changed and what's next</h1><p>Telegram alerts, notebook reading and Excel export are real now. Every list reads like the Prices table, with no repeated amounts. Plus choices for the things you asked about.</p></div></div>
+<div class="wrap">
+  <div class="live"><h2>Already in the app <span>Live</span></h2><ul id="live"></ul></div>
+  <div class="cards" id="cards"></div>
+</div>
+<script src="../r13/lab.js"></script>
+<script>
+$('live').innerHTML = [
+  ['Telegram alerts work', ': each person taps Link my Telegram (or scans a code on a computer), picks which alerts they want, can turn on quiet at night and send themselves a test. Alerts come with an Open in Nifti button. In the chat, /today shows the day at a glance.'],
+  ['Notebook reading reads real photos', ': saved pages wait on the business (not one phone), Nifti reads each one, asks only about lines it is unsure of, remembers the shop\'s shorthand, and adds the lines to Sales, Getting paid, Expenses or Stock.'],
+  ['Everything in Excel', ': one workbook with a tab for every record, including expenses, cash counts, payroll, books, stock history and team notes.'],
+  ['Locked down', ': people only see their own business and what their role allows. Nifti\'s own admin notes are hidden from businesses.'],
+  ['Tables like Prices, everywhere', ': Sales, utang, expenses, vale, payroll, bills, checks and the cash outlook now have a label on every column and big black values. On a phone each row is a card with every value under its own label.'],
+  ['No repeated amounts', ': Getting paid shows each customer once with the amount once; Orders, Home and the cash outlook stop repeating the same number.'],
+  ['Counter is now Sales', ', "for the BIR" now says summaries for your bookkeeper, and the privacy notice and terms are rewritten in plain words.'],
+  ['Lighter "All good"', ' with a green check on a white circle, and the order bubbles inside are soft green again.'],
+  ['Tagalog for everything new', ': about 480 new lines.']
+].map(([b, t]) => `<li>${ic('check')}<span><b>${b}</b>${t}</span></li>`).join('');
+$('cards').innerHTML = [
+  ['nightday.html', 'clock', 'Night to day: time and "before" columns', 'Pick one', 'Your navy theme with "Big order / comes in" on two lines, and three ways to make the time pills and "before" boxes solid and easy to read.', ['A · White + steel (my pick)', 'B · Yellow + gray', 'C · Sky + rose']],
+  ['buying.html', 'truck', 'Buying side in orange or gray', 'Pick one', 'Five colors for the supplier side, with the new lighter All good and green order bubbles.', ['1 · Tangerine', '2 · Peach', '3 · Apricot', '4 · Cool gray (my pick)', '5 · Graphite']],
+  ['plan.html', 'chart', 'Menu, first day, pricing, cash drawer', 'Read and pick', 'Three ways to keep every feature findable without a long menu, four ways to start a new shop on day one, Free vs Pro vs Business, and three ways to shrink the cash drawer calendar.', ['Menu · 3 ways', 'First day · 4 ways', 'Pricing · 3 plans', 'Cash drawer · 3 ways']],
+  ['../r24/launch.html', 'shield', 'Launch review (Round 24)', 'For reference', 'Last round\'s full run-through, for checking what is now done.', ['Scorecard', 'Must fix']]
+].map(([h, i, t, n, p, o]) => `<a class="c" href="${h}"><div class="top"><span>${ic(i)}</span><div><small>${n}</small><h3>${t}</h3></div></div><p>${p}</p><div class="opts">${o.map(x => `<i>${x}</i>`).join('')}</div><span class="go">Open ${ic('arrow')}</span></a>`).join('');
+</script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Menu, Setup and Pricing</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<style>
+:root{--ink:#101828;--ink2:#344054;--line:#EAECF0;--g:#1F6B45;--gb:#EAF6EF;--b:#1D4ED8;--bb:#EEF4FB;}
+*{box-sizing:border-box}html,body{margin:0}
+body{font:16px/1.55 "Plus Jakarta Sans",system-ui,sans-serif;color:var(--ink);background:#F2F4F7;-webkit-font-smoothing:antialiased}
+.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.tin{max-width:1180px;margin:0 auto;padding:12px 20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.tin a{color:var(--g);font-weight:700;text-decoration:none;font-size:14.5px}.tin h1{margin:0;font-size:18px;flex:1;min-width:200px}
+.jump{display:flex;gap:6px;flex-wrap:wrap}.jump a{padding:7px 12px;border-radius:999px;border:1.5px solid #D0D5DD;background:#fff;color:var(--ink);font-weight:700;font-size:14px;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:22px 20px 80px;display:grid;gap:40px}
+h2{margin:0 0 6px;font-size:26px;letter-spacing:-.01em}.lead{margin:0 0 16px;color:var(--ink2);font-size:17px;max-width:860px}
+.wrap > section,.card,.tier{min-width:0}.tw{overflow-x:auto}
+.card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px 22px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.opt h3{margin:0 0 4px;font-size:19px}.opt p{margin:6px 0 0;color:var(--ink2);font-size:15.5px}
+.rec{display:inline-block;background:var(--g);color:#fff;border-radius:999px;padding:3px 11px;font-size:12.5px;font-weight:800;letter-spacing:.05em;margin-left:6px;vertical-align:middle}
+.pro,.con{margin:10px 0 0;padding-left:20px;font-size:15px}.pro li::marker{content:'✓  ';color:#15803D;font-weight:900}.con li::marker{content:'–  ';color:#B42318;font-weight:900}
+/* mini menus */
+.mm{border:1px solid var(--line);border-radius:14px;background:#FBFCFD;padding:10px;font-size:14.5px;margin-top:10px}
+.mm .i{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:9px;font-weight:600}.mm .i.on{background:#E9EEF5}
+.mm .h{font-size:12.5px;font-weight:800;letter-spacing:.07em;color:#475467;text-transform:uppercase;margin:8px 8px 2px;display:flex;justify-content:space-between}
+.mm .n{margin-left:auto;font-size:12.5px;font-weight:800;background:#E4E7EC;border-radius:999px;padding:0 8px}
+.mm .all{margin-top:6px;border:1.5px dashed #98A2B3;color:#1D2939;justify-content:center}
+.tools{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:10px}
+.tools div{border:1px solid var(--line);border-radius:12px;padding:9px 10px;background:#fff}.tools b{display:block;font-size:14.5px}.tools small{display:block;font-size:13.5px;color:#475467;line-height:1.35}
+.srch{margin-top:10px;border:1.5px solid #D0D5DD;border-radius:12px;padding:9px 12px;color:#475467;font-size:15px;background:#fff}
+.hint{margin-top:10px;background:#FEF9C3;border-radius:12px;padding:10px 12px;font-size:14.5px}
+/* setup */
+.step{display:flex;gap:14px;align-items:flex-start}.step .no{flex:none;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--gb);color:var(--g);font-weight:900;font-size:18px}
+.time{display:inline-block;margin-top:8px;font-size:13.5px;font-weight:800;color:#1E3A8A;background:#DBEAFE;border-radius:999px;padding:3px 10px}
+.plan{border:1px solid var(--line);border-radius:16px;padding:16px;background:#FBFCFD;margin-top:14px}.plan ol{margin:6px 0 0;padding-left:22px}.plan li{margin:6px 0}
+/* pricing */
+.price{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:start}
+.tier{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px}
+.tier.best{border:2px solid var(--g);box-shadow:0 8px 24px rgba(16,24,40,.08)}
+.tier h3{margin:0;font-size:21px}.tier .amt{font-size:38px;font-weight:800;letter-spacing:-.02em;margin:8px 0 0}.tier .amt small{font-size:16px;font-weight:600;color:#475467}
+.tier .yr{font-size:14.5px;color:#344054;margin:2px 0 12px}.tier .who{font-size:15.5px;color:var(--ink2);margin:0 0 12px}
+.tier ul{margin:0;padding-left:20px;font-size:15px}.tier li{margin:5px 0}.tier li b{font-weight:800}
+.tier .tag{display:inline-block;background:var(--g);color:#fff;font-size:12.5px;font-weight:800;letter-spacing:.05em;border-radius:999px;padding:3px 10px;margin-left:6px;vertical-align:middle}
+table.econ{width:100%;border-collapse:collapse;margin-top:10px;font-variant-numeric:tabular-nums}
+table.econ th{font-size:13.5px;letter-spacing:.05em;text-transform:uppercase;color:#344054;background:#F9FAFB;padding:10px;border-bottom:1px solid var(--line);text-align:center}
+table.econ td{padding:11px 10px;border-bottom:1px solid var(--line);text-align:center;font-size:15.5px}table.econ td:first-child{text-align:left;font-weight:700}
+/* drawer options */
+.wk{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;margin-top:10px}
+.wk div{border-radius:12px;padding:8px 4px;text-align:center;font-size:13.5px;font-weight:700;border:1px solid var(--line);background:#fff}
+.wk b{display:block;font-size:15px}.ok{background:#E7F5EC !important;color:#14532D}.sh{background:#FDECEC !important;color:#B42318}.ov{background:#DCE8F7 !important;color:#1E3A8A}.nc{background:#F2F4F7 !important;color:#344054}.td{outline:2px dashed #1F6B45}
+.pl{margin-top:10px;display:grid;gap:8px}.pl div{display:flex;justify-content:space-between;gap:10px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:#fff;font-size:15px}
+.pl .chip{font-weight:800;border-radius:999px;padding:2px 10px;font-size:13.5px}
+.dots{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:7px;margin-top:10px;text-align:center;font-size:12.5px;color:#344054}
+.dots i{display:block;width:26px;height:26px;margin:0 auto 2px;border-radius:50%;background:#EAECF0;font-style:normal;font-weight:800;font-size:12.5px;line-height:26px}
+.dots i.ok{background:#22A06B !important;color:#fff}.dots i.sh{background:#D92D20 !important;color:#fff}.dots i.ov{background:#2563EB !important;color:#fff}
+@media (max-width:900px){ .grid3,.price{grid-template-columns:minmax(0,1fr)} .grid2{grid-template-columns:minmax(0,1fr)} .tools{grid-template-columns:repeat(2,minmax(0,1fr))} }
+</style>
+</head>
+<body>
+<div class="top"><div class="tin"><a href="./">‹ Round 25</a><h1>Menu, first day, pricing, and the cash drawer</h1>
+  <div class="jump"><a href="#menu">Menu</a><a href="#setup">First day</a><a href="#price">Pricing</a><a href="#drawer">Cash drawer</a></div></div></div>
+<main class="wrap">
+
+<section id="menu"><h2>Too many choices: keep every feature findable</h2>
+  <p class="lead">You're right that a bare 7-line menu would hide most of what Nifti does, and people would leave thinking it can't do much. The fix isn't fewer features or a longer menu. It's a short menu for daily work, plus one place where every tool is listed in plain words.</p>
+  <div class="grid3">
+    <div class="card opt"><h3>A. 7 daily pages + "All tools"<span class="rec">MY PICK</span></h3>
+      <div class="mm"><div class="i on">Home</div><div class="i">Orders <span class="n">2</span></div><div class="i">Messages</div><div class="i">Stock</div><div class="i">Sales</div><div class="i">Getting paid</div><div class="i">Expenses</div><div class="i all">▦ All tools (23)</div></div>
+      <div class="tools"><div><b>Payroll</b><small>Pay your staff</small></div><div><b>Checks</b><small>When to deposit</small></div><div><b>Books</b><small>For your bookkeeper</small></div><div><b>Online store</b><small>Sell on FB</small></div><div><b>Deliveries</b><small>Driver's list</small></div><div><b>Notebook</b><small>Paper into Nifti</small></div></div>
+      <p>The menu has only what most people open every day. "All tools" opens a page of every feature, each with one line saying what it's for, a search box, and a star to pin any tool to the menu.</p>
+      <ul class="pro"><li>Nothing hidden: every tool is one tap away, with a reason to tap it</li><li>New people see a calm menu on day one</li></ul><ul class="con"><li>Tools used weekly are one extra tap away until pinned</li></ul></div>
+    <div class="card opt"><h3>B. Labeled groups that open</h3>
+      <div class="mm"><div class="i on">Home</div><div class="i">Orders</div><div class="h">Money <span>▾</span></div><div class="i">Sales</div><div class="i">Expenses</div><div class="i">Getting paid</div><div class="h">Selling &amp; delivery <span>▸ 4</span></div><div class="h">Checks, taxes &amp; team <span>▸ 5</span></div><div class="h">AI tools <span>▸ 1</span></div></div>
+      <p>What the app does today. Each group shows how many pages are inside, and opens with one tap.</p>
+      <ul class="pro"><li>Already built; people can scan group names</li></ul><ul class="con"><li>Closed groups still hide what's inside them</li><li>The menu grows every time we add a feature</li></ul></div>
+    <div class="card opt"><h3>C. A menu that fits each role</h3>
+      <div class="mm"><div class="h">Cashier sees</div><div class="i on">Sales</div><div class="i">Count the cash</div><div class="i">Expenses</div><div class="i">Messages</div><div class="srch">🔍 Find a page: "utang", "resibo"…</div></div>
+      <p>Each person sees only the pages their role uses, set in Who sees what. Everyone has a search that understands plain words and Tagalog.</p>
+      <ul class="pro"><li>Staff are never overwhelmed</li></ul><ul class="con"><li>Owners still need A or B for themselves</li><li>Depends on the owner setting roles</li></ul></div>
+  </div>
+  <div class="card" style="margin-top:16px"><h3 style="margin:0 0 6px">Whichever you pick, add these so nobody misses a feature</h3>
+    <div class="grid2"><div><b>A search box that knows shop words.</b> Typing "utang", "resibo", "sahod" or "tseke" jumps to the right page.</div><div><b>One tip a week on Home.</b> "Did you know Nifti can read your old notebook?" with a Try it button. Only for tools the person hasn't opened yet.</div>
+      <div><b>Empty pages point the way.</b> An empty Checks page says what it's for and has one button to start.</div><div><b>Telegram /help.</b> The bot lists what Nifti can do, in Taglish.</div></div>
+    <div class="hint">My recommendation: A for owners, plus C for staff (it's mostly built already in Who sees what), plus the search box and weekly tip.</div></div>
+</section>
+
+<section id="setup"><h2>No first-day setup: great ways to begin</h2>
+  <p class="lead">Today a new shop lands on empty pages. The best first day is one where they type almost nothing, and by lunch Nifti already knows their items, customers and who owes them.</p>
+  <div class="grid2">
+    <div class="card step"><span class="no">1</span><div><h3 style="margin:0">Snap your notebook and price list</h3><p style="margin:6px 0 0;color:#344054">The owner takes photos of their utang notebook and their price list. The notebook reader fills in items, prices, customers and what each one owes. They check each line with a yes.</p><span class="time">About 30 minutes</span></div></div>
+    <div class="card step"><span class="no">2</span><div><h3 style="margin:0">Pick your kind of shop</h3><p style="margin:6px 0 0;color:#344054">Hardware, sari-sari, food supply, construction supply. Nifti loads the 50 most common items for that kind of shop with typical prices; they delete what they don't carry and fix prices.</p><span class="time">About 10 minutes</span></div></div>
+    <div class="card step"><span class="no">3</span><div><h3 style="margin:0">Send us your file, or we set it up</h3><p style="margin:6px 0 0;color:#344054">Upload an Excel or an old POS export and Nifti maps the columns. Or pick done-for-you setup (already in the app as a paid service): your team enters their items and customers within 2 days.</p><span class="time">5 minutes for them</span></div></div>
+    <div class="card step"><span class="no">4</span><div><h3 style="margin:0">Invite 3 suppliers and 5 customers</h3><p style="margin:6px 0 0;color:#344054">Each invite is one Viber or Messenger message. Suppliers who join bring their price list; customers who join send orders straight in. Every new shop also becomes a reason for their partners to join.</p><span class="time">About 5 minutes</span></div></div>
+  </div>
+  <div class="plan"><b>My recommended first week (to build once you go live)</b><ol>
+    <li><b>Sign-up asks one question:</b> "What kind of shop?" and loads the starter items (way 2), so nothing is empty.</li>
+    <li><b>Home shows 3 big buttons:</b> "Snap your notebook" (way 1), "Send us your Excel" (way 3), "Invite a supplier" (way 4). The Get set up checklist stays, with these on top.</li>
+    <li><b>Telegram check-ins</b> on day 1, 3 and 7 (the reminders already exist): "Snap one page of your utang notebook today."</li>
+    <li><b>First 20 sign-ups get done-for-you setup free.</b> You learn exactly where people get stuck, and they become your first success stories.</li></ol></div>
+</section>
+
+<section id="price"><h2>Free vs Pro: proposed plans</h2>
+  <p class="lead">Free has to be good enough to run a small shop every day, so people trust Nifti and invite their partners. Pro is for shops that want Nifti to chase money, keep the books and save time. The prices below are what the app uses now (₱990 Pro); I added a Business plan for bigger distributors.</p>
+  <div class="price">
+    <div class="tier"><h3>Free</h3><p class="amt">₱0</p><p class="yr">forever</p><p class="who">A small shop running day to day.</p><ul>
+      <li>Orders with customers and suppliers</li><li>Messages, stock, shop sales, expenses</li><li>Who owes you, with reminders you send yourself</li><li>Online store and Facebook posts</li><li>Telegram alerts</li><li><b>10</b> notebook pages a month</li><li>Up to <b>3</b> people</li><li>Download everything any time</li></ul></div>
+    <div class="tier best"><h3>Pro <span class="tag">MOST SHOPS</span></h3><p class="amt">₱990 <small>/ month</small></p><p class="yr">or ₱9,900 a year (2 months free)</p><p class="who">Shops that want Nifti to chase money and keep the books.</p><ul>
+      <li>Everything in Free</li><li><b>Automatic payment reminders</b> and statements</li><li>Books, profit and tax summaries for your bookkeeper</li><li>Payroll, checks, delivery routes</li><li>Credits and returns, credit limits</li><li>Price announcements and price alerts</li><li>Store results, promos, reorder reminders</li><li>Team spending caps and order watchdog</li><li><b>300</b> notebook pages a month</li><li>Up to <b>15</b> people</li></ul></div>
+    <div class="tier"><h3>Business</h3><p class="amt">₱2,990 <small>/ month</small></p><p class="yr">or ₱29,900 a year</p><p class="who">Distributors with branches, drivers and a bigger team.</p><ul>
+      <li>Everything in Pro</li><li><b>Done-for-you setup</b> included</li><li>Verified badge and featured in Find customers</li><li>Priority help</li><li><b>1,500</b> notebook pages a month</li><li>Up to <b>50</b> people</li></ul></div>
+  </div>
+  <div class="card" style="margin-top:16px"><h3 style="margin:0 0 4px">What the notebook reading costs you</h3>
+    <p style="margin:0;color:#344054">You pay Anthropic (the AI) about ₱1 to ₱2 per page, billed to your card each month. Most shops read a lot of pages in the first month (their old notebooks), then only a few handover pages a week.</p>
+    <div class="tw"><table class="econ"><thead><tr><th>Plan</th><th>Price</th><th>Pages allowed</th><th>Worst case cost</th><th>Usual month</th></tr></thead><tbody>
+      <tr><td>Free</td><td>₱0</td><td>10</td><td>about ₱17</td><td>about ₱10</td></tr>
+      <tr><td>Pro</td><td>₱990</td><td>300</td><td>about ₱510</td><td>about ₱80 (40 pages)</td></tr>
+      <tr><td>Business</td><td>₱2,990</td><td>1,500</td><td>about ₱2,550</td><td>about ₱340 (200 pages)</td></tr></tbody></table></div>
+    <div class="hint">During the free pilot every shop gets 300 pages. If the worst case worries you, lower Pro to 200 pages and sell 100 more pages for ₱199. Tell me and I'll change it.</div></div>
+</section>
+
+<section id="drawer"><h2>One more thing worth fixing: the cash drawer calendar</h2>
+  <p class="lead">On Sales, the "Cash drawer by person" calendar is a full month of big boxes, about 1,000 pixels tall on a computer and much more on a phone. Most days just say "Not counted" or "Matched". Three ways to show the same thing in a fraction of the space:</p>
+  <div class="grid3">
+    <div class="card opt"><h3>A. This week, plus problems<span class="rec">MY PICK</span></h3>
+      <div class="wk"><div class="ok">Mon<b>20</b>✓</div><div class="ok">Tue<b>21</b>✓</div><div class="ok">Wed<b>22</b>✓</div><div class="ov">Thu<b>23</b>+₱20</div><div class="sh">Fri<b>24</b>−₱800</div><div class="ok">Sat<b>25</b>✓</div><div class="td nc">Sun<b>26</b>Count</div></div>
+      <p>Seven day chips for this week, colored like now. Under them, a line: "This month: 2 short, 1 over. See the month →". The full calendar opens only when asked.</p></div>
+    <div class="card opt"><h3>B. Only the days that need a look</h3>
+      <div class="pl"><div><span>Mon, Aug 24 · Rico</span><span class="chip sh">₱800 short</span></div><div><span>Sun, Aug 23 · Liza</span><span class="chip ov">₱20 over</span></div><div><span>Thu, Aug 20 · Liza</span><span class="chip sh">₱20 short</span></div><div><span>Today · Liza</span><span class="chip nc">Not counted yet</span></div></div>
+      <p>A short list of short, over and not-counted days, newest first. Matched days don't show; the month total does.</p></div>
+    <div class="card opt"><h3>C. Small month dots</h3>
+      <div class="dots"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span>
+        <span><i>10</i></span><span><i>11</i></span><span><i>12</i></span><span><i>13</i></span><span><i>14</i></span><span><i>15</i></span><span><i>16</i></span>
+        <span><i>17</i></span><span><i>18</i></span><span><i>19</i></span><span><i class="sh">20</i></span><span><i class="ok">21</i></span><span><i class="ok">22</i></span><span><i class="ov">23</i></span>
+        <span><i class="sh">24</i></span><span><i class="ok">25</i></span><span><i>26</i></span><span><i>27</i></span><span><i>28</i></span><span><i>29</i></span><span><i>30</i></span></div>
+      <p>The whole month as small colored dots. Tap a dot to see who counted and the tally. About a quarter of today's height.</p></div>
+  </div>
+</section>
+</main>
+</body>
+</html>
