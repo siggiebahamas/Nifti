@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Notebook Reader</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Caveat:wght@600&display=swap">
+<style>
+:root{--ink:#101828;--ink2:#344054;--mut:#475467;--line:#EAECF0;--g:#1F6B45;--g2:#22A06B;--gbg:#F0FAF4;--y:#FEF9C3;}
+*{box-sizing:border-box}html,body{margin:0}
+body{font:16px/1.5 "Plus Jakarta Sans",system-ui,sans-serif;color:var(--ink);background:#F2F4F7;-webkit-font-smoothing:antialiased}
+.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.tin{max-width:1240px;margin:0 auto;padding:12px 20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.tin a{color:var(--g);font-weight:700;text-decoration:none;font-size:14.5px}.tin h1{margin:0;font-size:18px;flex:1;min-width:200px}
+.jump{display:flex;gap:6px}.jump a{padding:7px 12px;border-radius:999px;border:1.5px solid #D0D5DD;background:#fff;color:var(--ink);font-weight:700;font-size:14px}
+.wrap{max-width:1240px;margin:0 auto;padding:22px 20px 70px;display:grid;gap:34px}
+.why{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 22px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:22px}
+.why h2{margin:0 0 6px;font-size:19px}.why p{margin:0 0 8px;color:var(--ink2)}
+.route{width:100%;border-collapse:collapse;font-size:15px}.route th{text-align:left;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);padding:6px 8px;border-bottom:1px solid var(--line)}.route td{padding:8px;border-bottom:1px solid #F2F4F7}.route td:first-child{font-weight:800}
+.menu{display:grid;gap:2px;background:#FAFAFA;border:1px solid var(--line);border-radius:14px;padding:12px;font-size:15px;max-width:260px}
+.menu .h{font-size:12px;font-weight:800;letter-spacing:.1em;color:#475467;margin:8px 8px 2px}.menu .i{display:flex;align-items:center;gap:10px;padding:7px 8px;border-radius:9px;color:#1D2939}.menu .i.on{background:#ECEEF1;font-weight:700}
+.menu .i em{margin-left:auto;font-style:normal;font-size:11px;font-weight:800;background:#1F6B45;color:#fff;border-radius:999px;padding:1px 7px}
+.opt{display:grid;gap:12px}.opt>header{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}.opt>header h2{margin:0;font-size:22px}.opt>header span{color:var(--mut)}
+.rec{display:inline-block;background:var(--g);color:#fff !important;border-radius:999px;padding:4px 12px;font-size:13px;font-weight:800;letter-spacing:.04em}
+.note{font-size:15px;color:var(--ink2);margin:0}
+.phones{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:start}
+.step{display:grid;gap:8px;justify-items:center}
+.step > b{font-size:14px;font-weight:800;letter-spacing:.06em;color:var(--mut);text-transform:uppercase}
+.ph{width:100%;max-width:340px;border-radius:30px;background:#101828;padding:9px;box-shadow:0 10px 30px rgba(16,24,40,.12)}
+.sc{background:#fff;border-radius:22px;min-height:600px;overflow:hidden;display:flex;flex-direction:column}
+.bar{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line)}.bar b{font-size:16.5px}.bar .back{font-weight:800;color:var(--mut)}
+.bar small{margin-left:auto;font-size:12px;font-weight:800;background:#EEF2F6;color:#3E5872;border-radius:999px;padding:2px 9px}
+.bd{padding:16px;display:grid;gap:12px;align-content:start;flex:1}
+.bd h4{margin:0;font-size:21px;line-height:1.25}.bd p{margin:0;font-size:15px;color:var(--ink2)}
+.cam{border:2px dashed #98A2B3;border-radius:20px;padding:22px 14px;display:grid;gap:10px;justify-items:center;text-align:center;background:#F9FAFB}
+.cam .ci{width:64px;height:64px;border-radius:20px;background:#1F6B45;display:grid;place-items:center;color:#fff}
+.ci svg,.ti svg,.ic svg{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.cam .ci svg{width:32px;height:32px}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;min-height:50px;padding:0 18px;border-radius:14px;border:1.5px solid #D0D5DD;background:#fff;font:inherit;font-weight:800;font-size:16px;color:var(--ink);width:100%}
+.btn.p{background:#1F6B45;border-color:#1F6B45;color:#fff}.btn.sm{min-height:42px;font-size:15px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}.chips span{font-size:13px;font-weight:700;border-radius:999px;padding:3px 10px;background:#F2F4F7;color:#344054}
+.rec-list{display:grid;gap:6px}.rec-list div{display:flex;justify-content:space-between;gap:8px;font-size:14px;padding:9px 11px;border:1px solid var(--line);border-radius:12px}.rec-list b{font-size:14.5px}.rec-list small{display:block;color:var(--mut);font-size:12.5px}.rec-list .ok{color:#146C3C;font-weight:800;font-size:13px;white-space:nowrap}
+.found{border-radius:16px;padding:14px;background:var(--gbg);border:1px solid #CDEBD9;display:grid;gap:4px}
+.found span{font-size:12.5px;font-weight:800;letter-spacing:.08em;color:#146C3C}.found b{font-size:20px}.found a{font-size:14px;font-weight:800;color:#1F6B45}
+.lines{border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:13.5px}
+.lines .r{display:grid;grid-template-columns:38px minmax(0,1fr) 34px 64px;gap:6px;padding:7px 10px;border-top:1px solid #F2F4F7;align-items:center}
+.lines .r:first-child{border-top:0;font-size:11.5px;font-weight:800;letter-spacing:.05em;color:var(--mut);background:#F9FAFB}
+.c-date{color:#3E5872}.c-who{color:#1D4ED8;font-weight:700}.c-qty{color:#475467;text-align:right}.c-amt{color:#146C3C;font-weight:800;text-align:right}
+.lines .r.chk{background:#FEF9C3}.lines .r.chk .c-who::after{content:' ?';color:#854D0E}
+.hand{font-family:Caveat,cursive;font-size:21px;line-height:1.1;color:#1E3A8A}
+.paper{border-radius:12px;background:#FFFDF5;border:1px solid #E7E1C8;padding:10px 12px;background-image:repeating-linear-gradient(transparent 0 25px,#D7E3F4 25px 26px);display:grid;gap:0}
+.done{display:grid;gap:12px;justify-items:center;text-align:center;padding-top:20px}
+.done .ok{width:78px;height:78px;border-radius:50%;background:#DCFCE7;color:#146C3C;display:grid;place-items:center;font-size:40px;font-weight:800}
+.done .go{font-size:14px;color:var(--mut)}
+.bar2{height:6px;border-radius:999px;background:#F2F4F7;overflow:hidden;width:100%}.bar2 i{display:block;height:100%;background:#22A06B;width:66%}
+/* B tiles */
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.tile{border:1.5px solid #D0D5DD;border-radius:16px;padding:12px;display:grid;gap:4px;justify-items:start;text-align:left;background:#fff}
+.tile .ti{width:38px;height:38px;border-radius:12px;display:grid;place-items:center}.tile .ti svg{width:21px;height:21px}
+.tile b{font-size:15px;line-height:1.25}.tile small{font-size:12.5px;color:var(--mut);line-height:1.3}
+.tile.on{border-color:#1F6B45;box-shadow:inset 0 0 0 1px #1F6B45;background:var(--gbg)}
+.viewf{position:relative;border-radius:16px;background:#1D2939;height:300px;display:grid;place-items:center;overflow:hidden}
+.viewf .paper{width:76%;transform:rotate(-2deg)}
+.viewf::after{content:'';position:absolute;inset:26px 30px;border:3px solid #FDE68A;border-radius:12px}
+.viewf .lab{position:absolute;bottom:10px;left:0;right:0;text-align:center;color:#FDE68A;font-weight:800;font-size:13.5px}
+.shut{width:66px;height:66px;border-radius:50%;border:5px solid #D0D5DD;background:#1F6B45;justify-self:center}
+.q{border-radius:16px;border:1px solid var(--line);padding:14px;display:grid;gap:10px}
+.q .hand{font-size:26px;background:#FFFDF5;border-radius:10px;padding:6px 10px;border:1px solid #E7E1C8}
+.q b{font-size:18px;line-height:1.3}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+/* C chat */
+.chat{background:#EFF3F6;flex:1;padding:12px;display:grid;gap:8px;align-content:start}
+.bub{max-width:86%;border-radius:16px;padding:9px 12px;font-size:14.5px;line-height:1.4;background:#fff;color:#1D2939;justify-self:start;box-shadow:0 1px 1px rgba(16,24,40,.06)}
+.bub.me{justify-self:end;background:#DCFCE7}.bub b{font-weight:800}
+.bub .opts{display:grid;gap:6px;margin-top:8px}.bub .opts span{display:block;text-align:center;border-radius:10px;padding:7px;font-weight:800;font-size:14px;border:1.5px solid #1F6B45;color:#1F6B45;background:#fff}
+.bub .opts span.p{background:#1F6B45;color:#fff}
+.photo{width:150px;height:110px;border-radius:12px;background:#FFFDF5;border:1px solid #E7E1C8;background-image:repeating-linear-gradient(transparent 0 15px,#D7E3F4 15px 16px);display:grid;place-items:center}
+.photo .hand{font-size:15px}
+.typer{display:flex;gap:8px;padding:10px;border-top:1px solid var(--line);background:#fff}.typer span{flex:1;border:1px solid var(--line);border-radius:999px;padding:9px 14px;color:#98A2B3;font-size:14px}.typer i{width:40px;height:40px;border-radius:50%;background:#1F6B45;display:grid;place-items:center;color:#fff;font-style:normal}
+.mini-l{display:grid;gap:4px;margin-top:6px}.mini-l div{display:flex;justify-content:space-between;gap:8px;font-size:13.5px;padding:5px 8px;border-radius:8px;background:#F9FAFB}.mini-l .chk{background:#FEF9C3}
+@media (max-width:980px){ .phones{grid-template-columns:1fr}.why{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<div class="top"><div class="tin"><a href="./">‹ Round 23</a><h1>Notebook reader, its own page: 3 ways it can look</h1><div class="jump"><a href="#a">A</a><a href="#b">B</a><a href="#c">C</a></div></div></div>
+<main class="wrap">
+  <section class="why"><div><h2>Where it lives, and what it does</h2>
+      <p>Its own line in the left menu, under <b>AI tools</b>, right below Stock, so it's on screen without scrolling. (Already in the app this round; it opens today's reader until you pick a look.)</p>
+      <p>You don't have to know where things go. Nifti reads the page, works out what kind it is, puts every line in the right place, and then takes you there.</p>
+      <table class="route"><thead><tr><th>The page is…</th><th>Nifti adds it to…</th><th>Then opens</th></tr></thead><tbody>
+        <tr><td>Sales (benta)</td><td>Counter sales, by day</td><td>Counter</td></tr><tr><td>Utang (who owes me)</td><td>What each customer owes</td><td>Getting paid</td></tr>
+        <tr><td>What I owe suppliers</td><td>Bills to suppliers</td><td>Getting paid</td></tr><tr><td>Stock count</td><td>Stock on hand</td><td>Stock</td></tr><tr><td>Expenses (gastos)</td><td>Expenses by type</td><td>Expenses</td></tr></tbody></table></div>
+    <div class="menu" aria-label="The left menu"><div class="i">Home</div><div class="i">Orders</div><div class="i">Messages</div><div class="i">Stock</div><div class="h">AI TOOLS</div><div class="i on">Notebook reader<em>New</em></div><div class="h">MONEY</div><div class="i">Money overview</div><div class="i">Counter</div><div class="i">Expenses</div></div></section>
+
+  <section class="opt" id="a"><header><h2>A. One big button: snap, check, done</h2><span class="rec">MY PICK</span></header>
+    <div class="phones" id="pa"></div>
+    <p class="note">The fewest decisions. One button opens the camera. Nifti works out the kind of page by itself and says it plainly ("Looks like your sales"); one tap changes it if it's wrong. Lines it isn't sure about are yellow. Then it adds everything and takes you to the right page. Your past pages are listed so you can see what's already in.</p></section>
+  <section class="opt" id="b"><header><h2>B. Pick the page first, then one question at a time</h2><span>Six big tiles</span></header>
+    <div class="phones" id="pb"></div>
+    <p class="note">For people who like to be in control: tap what the page is, point the camera inside the yellow frame, then answer one short question per unsure line (most answers are "Yes"). Slower, but nothing surprises anyone.</p></section>
+  <section class="opt" id="c"><header><h2>C. Chat with Nifti, like Viber</h2><span>Feels like texting</span></header>
+    <div class="phones" id="pc"></div>
+    <p class="note">Everyone already knows how to send a photo in a chat. Nifti answers like a person: what it found, what it isn't sure about, and two buttons. It can also offer the next step, like sending reminders to the customers it just added.</p></section>
+</main>
+<script>
+const IC = {cam: '<path d="M3 8a2 2 0 0 1 2-2h2l2-2h6l2 2h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><circle cx="12" cy="13" r="3.5"/>',
+  sale: '<path d="M3 9l1.5-5h15L21 9"/><path d="M4 9v11h16V9"/><path d="M9 20v-6h6v6"/>', utang: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M16 11h6"/>',
+  owe: '<rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/>', stock: '<path d="M21 8 12 3 3 8v8l9 5 9-5Z"/><path d="M3 8l9 5 9-5M12 13v8"/>', exp: '<path d="M4 2v20l3-2 3 2 3-2 3 2 3-2 2 2V2l-2 2-3-2-3 2-3-2-3 2Z"/><path d="M8 9h8M8 13h6"/>', q: '<circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3M12 17h.01"/>'};
+const svg = k => `<svg viewBox="0 0 24 24">${IC[k]}</svg>`;
+const ph = (label, title, body, tag) => `<div class="step"><b>${label}</b><div class="ph"><div class="sc"><div class="bar">${title}${tag ? `<small>${tag}</small>` : ''}</div>${body}</div></div></div>`;
+const L = [['Aug 12', 'Bayview', 'GW 12', '5', '₱4,250'], ['Aug 12', 'Mang Bert', 'Semento', '10', '₱2,450'], ['Aug 12', 'Aling Nena', 'wld rod', '2', '₱840'], ['Aug 12', 'Riverside', 'RB 12', '20', '₱1,300'], ['Aug 12', 'JRC', 'Angle bar', '6', '₱510']];
+const lines = (chk) => `<div class="lines"><div class="r"><span>DATE</span><span>WHO · WHAT</span><span style="text-align:right">QTY</span><span style="text-align:right">AMOUNT</span></div>${L.map((x, i) => `<div class="r${i === chk ? ' chk' : ''}"><span class="c-date">${x[0].slice(4)}</span><span><span class="c-who">${x[1]}</span> · ${x[2]}</span><span class="c-qty">${x[3]}</span><span class="c-amt">${x[4]}</span></div>`).join('')}</div>`;
+document.getElementById('pa').innerHTML =
+  ph('1 · Start', '<b>Notebook reader</b>', `<div class="bd"><h4>Read a notebook page</h4><p>Sales, utang, stock counts, expenses. Nifti puts each line in the right place for you.</p>
+    <div class="cam"><span class="ci">${svg('cam')}</span><button class="btn p">Take a photo of the page</button><button class="btn sm">Choose a photo instead</button><div class="chips"><span>Sales</span><span>Utang</span><span>What I owe</span><span>Stock count</span><span>Expenses</span></div></div>
+    <b style="font-size:15px">Pages you already read</b><div class="rec-list"><div><span><b>Sales · Aug 11</b><small>8 lines</small></span><span class="ok">✓ In Counter</span></div><div><span><b>Utang · Jul</b><small>6 customers</small></span><span class="ok">✓ In Getting paid</span></div></div></div>`, 'AI tools') +
+  ph('2 · Check', '<span class="back">←</span><b>Your page</b>', `<div class="bd"><div class="found"><span>LOOKS LIKE YOUR SALES</span><b>5 sales · ₱9,350</b><a>Not sales? Change it</a></div>
+    ${lines(2)}<p><b style="color:#854D0E">1 line is yellow:</b> Nifti isn't sure about "wld rod". Tap it to fix, or add it as is.</p><button class="btn p">Add 5 sales</button><button class="btn sm">Fix the yellow line first</button></div>`) +
+  ph('3 · Done, and it takes you there', '<b>Notebook reader</b>', `<div class="bd"><div class="done"><span class="ok">✓</span><h4>5 sales added to Counter</h4><p>Aug 12 now shows ₱9,350. The photo is kept with the sales, and you can undo this for 30 days.</p>
+    <span class="go">Opening Counter in 3…</span><button class="btn p">Go to Counter now</button><button class="btn sm">Read another page</button></div></div>`);
+document.getElementById('pb').innerHTML =
+  ph('1 · What is this page?', '<b>Notebook reader</b>', `<div class="bd"><h4>What is on the page?</h4><div class="tiles">
+    ${[['sale', 'Sales', 'Benta for the day'], ['utang', 'Utang', 'Who owes me'], ['owe', 'What I owe', 'Bills to suppliers'], ['stock', 'Stock count', 'What is on the shelf'], ['exp', 'Expenses', 'Gastos'], ['q', 'Not sure', 'Nifti will guess']].map(t => t.concat(['#EEF2F6', '#1D2939'])).map((t, i) => `<div class="tile${i === 1 ? ' on' : ''}"><span class="ti" style="background:${t[3]};color:${t[4]}">${svg(t[0])}</span><b>${t[1]}</b><small>${t[2]}</small></div>`).join('')}</div>
+    <button class="btn p">Next: take the photo</button></div>`, 'AI tools') +
+  ph('2 · Photo', '<span class="back">←</span><b>Utang page</b>', `<div class="bd"><div class="viewf"><div class="paper"><span class="hand">Bayvw — 4,250</span><span class="hand">Mang Bert — 2,450</span><span class="hand">Riverside — 1,300</span><span class="hand">JRC — 510</span></div><span class="lab">Fit the page inside the yellow lines</span></div>
+    <p>Lay the notebook flat near a window. Hold still.</p><div class="shut"></div></div>`) +
+  ph('3 · One question at a time', '<span class="back">←</span><b>Check 2 of 3</b>', `<div class="bd"><div class="bar2"><i></i></div><div class="q"><span class="hand">Bayvw — 4,250</span><b>Is this Bayview Construction Co., owing ₱4,250?</b><div class="two"><button class="btn p">Yes</button><button class="btn">Fix it</button></div><button class="btn sm">Can't read it, skip</button></div>
+    <p>Most answers are "Yes". Nothing is added until the last step.</p><p style="font-size:13.5px;color:var(--mut)">After the last question: "4 customers added to Getting paid → Open Getting paid"</p></div>`);
+document.getElementById('pc').innerHTML =
+  ph('1 · Send a photo', '<b>Nifti assistant</b>', `<div class="chat"><div class="bub">Hi! Send me a photo of <b>any notebook page</b>: sales, utang, stock or gastos. I'll work out what it is and put it in the right place.</div>
+    <div class="bub me"><div class="photo"><span class="hand">Bayvw 4,250<br>Mang Bert 2,450</span></div></div><div class="bub">Got it. Reading your page…</div></div><div class="typer"><span>Type or send a photo</span><i>📷</i></div>`, 'AI tools') +
+  ph('2 · Nifti answers', '<b>Nifti assistant</b>', `<div class="chat"><div class="bub">This looks like your <b>utang list</b>. I found <b>4 customers who owe ₱8,510</b>.<div class="mini-l"><div><span>Bayview Construction</span><b>₱4,250</b></div><div><span>Mang Bert</span><b>₱2,450</b></div><div class="chk"><span>"Rvrsde"? Riverside</span><b>₱1,300</b></div><div><span>JRC Builders</span><b>₱510</b></div></div>
+      I wasn't sure about the yellow one.<div class="opts"><span class="p">Yes, add all 4</span><span>Fix the yellow one</span></div></div></div><div class="typer"><span>Type or send a photo</span><i>📷</i></div>`) +
+  ph('3 · Done, plus the next step', '<b>Nifti assistant</b>', `<div class="chat"><div class="bub me">Yes, add all 4</div><div class="bub">Done ✓ <b>4 customers added to Getting paid</b>, ₱8,510 in total. You can undo this for 30 days.<div class="opts"><span class="p">Open Getting paid</span><span>Send them a polite reminder</span><span>Read another page</span></div></div></div><div class="typer"><span>Type or send a photo</span><i>📷</i></div>`);
+</script>
+</body>
+</html>

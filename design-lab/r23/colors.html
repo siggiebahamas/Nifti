@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>All Good Colors</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<style>
+:root{--ink:#101828;--ink2:#344054;--mut:#475467;--line:#EAECF0;--g:#1F6B45;
+  --c:#5B9BEF;--cbg:#F8FBFF;--cln:#DCE7F7;--cink:#2563EB;--s:#10B981;--sbg:#EBF8F1;--sln:#BDE8D1;--sink:#047857;}
+*{box-sizing:border-box}html,body{margin:0}
+body{font:16px/1.5 "Plus Jakarta Sans",system-ui,sans-serif;color:var(--ink);background:#F2F4F7;-webkit-font-smoothing:antialiased}
+.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.tin{max-width:1240px;margin:0 auto;padding:12px 20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.tin a{color:var(--g);font-weight:700;text-decoration:none;font-size:14.5px}.tin h1{margin:0;font-size:18px;flex:1;min-width:200px}
+.wrap{max-width:1240px;margin:0 auto;padding:22px 20px 70px;display:grid;gap:26px}
+.why{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 22px}.why h2{margin:0 0 6px;font-size:19px}.why p{margin:0 0 8px;color:var(--ink2)}
+h2.grp{margin:8px 0 -8px;font-size:22px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.opt{background:#fff;border:1px solid #E4E7EC;border-radius:20px;padding:18px;display:grid;gap:12px;align-content:start}
+.opt header{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.opt header h3{margin:0;font-size:18px}
+.opt header .sw{width:26px;height:26px;border-radius:8px;border:1px solid rgba(16,24,40,.12)}
+.rec{display:inline-block;background:var(--g);color:#fff;border-radius:999px;padding:3px 10px;font-size:12.5px;font-weight:800;letter-spacing:.04em}
+.opt p{margin:0;font-size:14.5px;color:var(--ink2)}
+.cur{outline:3px solid #FCA5A5;outline-offset:-3px}
+/* mini Orders */
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.tile{border:1px solid #EAECF0;border-radius:12px;padding:8px 10px;background:#fff}
+.tile span{display:flex;align-items:center;gap:4px;font-size:10px;font-weight:800;letter-spacing:.02em;overflow:hidden;color:#344054;white-space:nowrap}
+.tile span i{width:7px;height:7px;border-radius:50%;flex:none}
+.tile b{display:block;font-size:15px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.col{border-radius:14px;padding:8px;border:1px solid}
+.col.c{background:var(--cbg);border-color:var(--cln);border-top:4px solid var(--c)}.col.s{background:var(--sbg);border-color:var(--sln);border-top:4px solid var(--s)}
+.col h4{margin:2px 4px 8px;font-size:13.5px}.col.c h4{color:var(--cink)}.col.s h4{color:var(--sink)}
+.band{display:flex;justify-content:space-between;align-items:center;gap:6px;border-radius:10px;padding:7px 10px;font-size:11.5px;font-weight:800;letter-spacing:.05em;margin-top:6px}
+.band.r{background:#FDECEC;color:#B42318}.band.y{background:#FEF7C3;color:#1F2329}.band.b{background:#DCE8FD;color:#163E8C}
+.band.ag{background:var(--ag-bg);color:var(--ag-tx);border:var(--ag-bd, 0)}
+.band.ag em{font-style:normal;display:inline-flex;align-items:center;gap:6px}
+.band.ag em i{display:var(--ag-ic, none);width:15px;height:15px;border-radius:50%;background:var(--ag-dot);color:#fff;font-style:normal;font-size:10px;place-items:center}
+.card{background:#fff;border-radius:10px;border:1px solid #EAECF0;padding:7px 9px;margin-top:5px;font-size:12px;line-height:1.35}
+.card b{display:block;font-size:12.5px}
+.card .pill{display:inline-block;margin-top:4px;border-radius:999px;padding:1px 8px;font-size:11px;font-weight:800;background:var(--pill-bg);color:var(--pill-tx);border:var(--pill-bd, 0)}
+.key{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:12.5px;color:#344054}
+.key span{display:inline-flex;align-items:center;gap:6px}.key i{width:14px;height:14px;border-radius:4px;display:inline-block}
+@media (max-width:1100px){ .grid{grid-template-columns:repeat(2,minmax(0,1fr))} }
+@media (max-width:720px){ .grid{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<div class="top"><div class="tin"><a href="./">‹ Round 23</a><h1>"All good" vs the emerald buying side: 3 greens, 3 non-greens</h1></div></div>
+<main class="wrap">
+  <section class="why"><h2>The problem</h2><p>The buying side is now emerald (pale green background). The "All good" band is also pale green, so inside the buying column it nearly disappears, and you can't tell "this is the supplier side" from "this is done".</p>
+    <p><b>Today</b> is shown first with a red outline. Each option below changes only "All good" (band, top tile dot, "Paid" tag and the color key). Selling stays blue; buying stays emerald.</p></section>
+  <div class="grid" id="today"></div>
+  <h2 class="grp">A. Keep "All good" green, but a green that can't be mixed up</h2>
+  <div class="grid" id="ga"></div>
+  <h2 class="grp">B. Give "All good" a color that isn't green</h2>
+  <div class="grid" id="gb"></div>
+</main>
+<script>
+const O = {
+  today: [{k: 'Today', sw: '#E6F4EC', bg: '#E6F4EC', tx: '#146C3C', dot: '#22A06B', pill: ['#E6F4EC', '#146C3C'], note: 'Pale green on pale emerald. The band blends into the buying column.', cur: true}],
+  ga: [
+    {k: 'A1. White with a green outline', rec: 1, sw: '#FFFFFF', bg: '#FFFFFF', tx: '#15803D', bd: '2px solid #16A34A', ic: 'inline-grid', dot: '#16A34A', pill: ['#FFFFFF', '#15803D', '1.5px solid #16A34A'], note: 'Green still means "done", but the band is white, so it pops out of both the blue and the emerald columns. A small check makes it clear.'},
+    {k: 'A2. Lime (yellow-green)', sw: '#ECFCCB', bg: '#ECFCCB', tx: '#3F6212', dot: '#65A30D', pill: ['#ECFCCB', '#3F6212'], note: 'A warmer, leafier green. Easy to tell from blue-green emerald, but it sits closer to the yellow of "Coming up".'},
+    {k: 'A3. Deep forest band', sw: '#166534', bg: '#166534', tx: '#FFFFFF', dot: '#166534', ic: 'inline-grid', pill: ['#166534', '#FFFFFF'], note: 'A solid dark green band with white letters. Impossible to miss, but it makes "done" the loudest thing in the column.'}],
+  gb: [
+    {k: 'B1. Quiet gray', sw: '#F2F4F7', bg: '#F2F4F7', tx: '#344054', bd: '1px solid #D0D5DD', ic: 'inline-grid', dot: '#667085', pill: ['#F2F4F7', '#344054'], note: '"All good" means nothing to do, so it gets the calmest color. Red, yellow and blue ask for action; gray says rest.'},
+    {k: 'B2. White with a dark outline', sw: '#FFFFFF', bg: '#FFFFFF', tx: '#1D2939', bd: '2px solid #475467', ic: 'inline-grid', dot: '#1D2939', pill: ['#FFFFFF', '#1D2939', '1.5px solid #475467'], note: 'Clean and neutral: a white band with a slate outline and a check. Reads as "finished" without adding a new color.'},
+    {k: 'B3. Teal', sw: '#CCFBF1', bg: '#CCFBF1', tx: '#115E59', dot: '#0D9488', pill: ['#CCFBF1', '#115E59'], note: 'A blue-green that is neither emerald nor blue. Distinct on a screen, but some people will still see it as "green" or "blue".'}]};
+const mini = o => `<div class="tiles"><div class="tile"><span><i style="background:#DC2626"></i>NEEDS YOU NOW</span><b>2</b></div><div class="tile"><span><i style="background:#EAB308"></i>COMING UP</span><b>3</b></div><div class="tile"><span><i style="background:#3B82F6"></i>WAITING</span><b>2</b></div><div class="tile"><span><i style="background:${o.dot}"></i>ALL GOOD</span><b>1</b></div></div>
+  <div class="cols"><div class="col c"><h4>Selling to customers</h4><div class="band r"><span>NEEDS YOU NOW</span><span>2</span></div><div class="band b"><span>WAITING ON THEM</span><span>1</span></div>
+      <div class="band ag"><em><i>✓</i>ALL GOOD</em><span>1</span></div><div class="card"><b>Cavite Steel Works</b>₱16,464 · Paid 2 days ago<br><span class="pill">Paid</span></div></div>
+    <div class="col s"><h4>Buying from suppliers</h4><div class="band y"><span>COMING UP</span><span>2</span></div><div class="band b"><span>WAITING ON THEM</span><span>1</span></div>
+      <div class="band ag"><em><i>✓</i>ALL GOOD</em><span>1</span></div><div class="card"><b>Metro Steel Co.</b>₱42,000 · Paid on Aug 20<br><span class="pill">Paid</span></div></div></div>
+  <div class="key"><span><i style="background:#FDECEC"></i>Do it now</span><span><i style="background:#FEF7C3"></i>Coming up</span><span><i style="background:#DCE8FD"></i>Waiting on them</span><span><i style="background:${o.bg};border:${o.bd || '1px solid rgba(16,24,40,.1)'}"></i>All good</span></div>`;
+const card = o => `<section class="opt${o.cur ? ' cur' : ''}" style="--ag-bg:${o.bg};--ag-tx:${o.tx};--ag-bd:${o.bd || '0'};--ag-dot:${o.dot};--ag-ic:${o.ic || 'none'};--pill-bg:${o.pill[0]};--pill-tx:${o.pill[1]};--pill-bd:${o.pill[2] || '0'}">
+  <header><span class="sw" style="background:${o.sw}"></span><h3>${o.k}</h3>${o.rec ? '<span class="rec">MY PICK</span>' : ''}</header>${mini(o)}<p>${o.note}</p></section>`;
+Object.keys(O).forEach(k => { document.getElementById(k).innerHTML = O[k].map(card).join(''); });
+</script>
+</body>
+</html>

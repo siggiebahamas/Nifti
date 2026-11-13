@@ -25,7 +25,7 @@ function nf22HomeAlertCard(){
   if(old && old.parentElement === rows) return;
   const c = document.createElement('section'); c.id = 'nf22AlertCard'; c.className = 'nf22-alert-card';
   c.innerHTML = `<span class="nf22-ac-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span>
-    <div class="nf22-ac-t"><b>Get Nifti alerts on your phone</b><span>New orders, payments and low stock come to Telegram. It's free. You can practice first.</span></div>
+    <div class="nf22-ac-t"><b>Get Telegram alerts on your phone</b><span>New orders, payments and low stock come to Telegram. It's free. You can practice first.</span></div>
     <div class="nf22-ac-b"><button type="button" class="btn btn-primary" onclick="nf21OpenAlerts()">Set it up</button><button type="button" class="nf22-link" onclick="try{localStorage.setItem('nifti-alerts-card-hide','1')}catch(e){} this.closest('.nf22-alert-card').remove()">Not now</button></div>`;
   rows.insertBefore(c, rows.firstChild);
 }
@@ -187,7 +187,7 @@ function nf22Soon(){ clearTimeout(nf22T); nf22T = setTimeout(nf22Page, 120); }
   // Settings: a card at the top
   const addSettings = () => { const pg = document.getElementById('page-settings'); if(!pg || document.getElementById('nf22SetAlerts')) return; const ss2 = pg.querySelector('.nf18-ss'); if(!ss2) return;
     const c = document.createElement('button'); c.type = 'button'; c.id = 'nf22SetAlerts'; c.className = 'nf22-set-alerts';
-    c.innerHTML = '<span class="nf22-ac-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span><span><b>Alerts on your phone</b><small>Telegram or Viber: new orders, payments, low stock</small></span><i aria-hidden="true">›</i>';
+    c.innerHTML = '<span class="nf22-ac-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span><span><b>Telegram alerts on your phone</b><small>Free. New orders, payments and low stock, with buttons.</small></span><i aria-hidden="true">›</i>';
     c.onclick = () => nf21OpenAlerts(); ss2.insertAdjacentElement('afterend', c); };
   // watch the app for re-renders, so the calm pass follows each page
   const start = () => { try{ nf22Foot(); addSettings(); nf22Page(); }catch(e){}

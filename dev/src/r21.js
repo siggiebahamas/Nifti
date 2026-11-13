@@ -165,7 +165,7 @@ async function nf21Remove(id){
   renderReturnsPage();
 }
 
-/* ---------- 3. Phone alerts: Telegram set up in 4 steps, a team group with folders, practice chats, Viber ---------- */
+/* ---------- 3. Phone alerts: Telegram set up in 4 steps, a team group with folders, practice chats ---------- */
 // What's real today: the setup guide, the switches and the practice chats inside Nifti.
 // Real messages start once Nifti's own Telegram account (a "bot") is made and connected to the server.
 const NF21_TG = [
@@ -198,7 +198,7 @@ function nf21OpenAlerts(tab){
   if(typeof closeUserMenu === 'function') try{ closeUserMenu(); }catch(e){}
   if(tab) NF21A.tab = tab;
   let ov = document.getElementById('nf21Alerts');
-  if(!ov){ ov = document.createElement('div'); ov.id = 'nf21Alerts'; ov.className = 'nf20-ov'; ov.setAttribute('role', 'dialog'); ov.setAttribute('aria-modal', 'true'); ov.setAttribute('aria-label', 'Alerts on your phone');
+  if(!ov){ ov = document.createElement('div'); ov.id = 'nf21Alerts'; ov.className = 'nf20-ov'; ov.setAttribute('role', 'dialog'); ov.setAttribute('aria-modal', 'true'); ov.setAttribute('aria-label', 'Telegram alerts on your phone');
     ov.addEventListener('click', e => { if(e.target === ov) nf21CloseAlerts(); }); document.body.appendChild(ov); }
   ov.hidden = false; document.body.classList.add('nf20-noscroll'); nf21PaintAlerts();
 }
@@ -214,11 +214,11 @@ function nf21PaintAlerts(){
   const ov = document.getElementById('nf21Alerts'); if(!ov) return;
   const on = nf21AlertsOn(), f = NF21_TG.find(x => x.k === NF21A.pick) || NF21_TG[0];
   const tg = `<div class="nf21-steps">
-      <div><i>1</i><b>Get Telegram</b><span>Free from the App Store or Google Play. Sign up with your mobile number, like Viber.</span></div>
+      <div><i>1</i><b>Get Telegram</b><span>Free from the App Store or Google Play. Sign up with your mobile number.</span></div>
       <div><i>2</i><b>Tap "Open Nifti in Telegram"</b><span>On a computer, point your phone camera at the code instead.</span></div>
       <div><i>3</i><b>Tap START</b><span>The big button at the bottom of the chat. That's the only setting.</span></div>
       <div><i>4</i><b>Nifti says hello</b><span>You'll get a test message with one button. Tap it and you're done.</span></div></div>
-    <div class="nf21-cta"><button type="button" class="btn btn-primary" onclick="showToast('Opens Telegram with your private link (prototype)', 'success')">Open Nifti in Telegram</button><span class="nf21-qr" aria-hidden="true"></span><small>Your staff get their own link by Viber or text. They do the same 4 steps on their phones.</small></div>
+    <div class="nf21-cta"><button type="button" class="btn btn-primary" onclick="showToast('Opens Telegram with your private link (prototype)', 'success')">Open Nifti in Telegram</button><span class="nf21-qr" aria-hidden="true"></span><small>Your staff get their own link by text message. They do the same 4 steps on their phones.</small></div>
     <h3>Your team group, with a folder for each kind of message</h3>
     <p class="nf21-p">Nifti makes one group for your business. Inside are folders (Telegram calls them topics). Each message goes into its folder, and each person only gets the folders their role needs, using the same roles as <a onclick="nf21CloseAlerts(); nf20OpenWho()">Who sees what</a>.</p>
     <div class="nf21-topics">${NF21_TOPICS.map(([t, ic, who]) => `<div><span>${ic}</span><b>${t}</b><small>${who}</small></div>`).join('')}</div>
@@ -228,19 +228,9 @@ function nf21PaintAlerts(){
         <label class="nf20-pr nf21-sw"><input type="checkbox" role="switch" aria-label="${x.t}" ${on[x.k] ? 'checked' : ''} onchange="nf21AlertToggle('${x.k}', this.checked)"><i aria-hidden="true"></i></label></div>`).join('')}</div>
       <div class="nf21-try-col"><div class="nf21-tt"><b>Practice: ${f.t}</b><small>Goes to: ${f.who}${f.topic.startsWith('(') ? '' : ' · folder: ' + f.topic}</small></div>${nf21Chat(f)}</div></div>
     <div class="nf21-help"><b>Help for anyone new to Telegram</b><ul><li>For the first week, Nifti sends one short tip a day with a picture.</li><li>Every message has a "?" button that explains it in Taglish or English.</li><li>Type "help" any time to get a person from Nifti.</li><li>Nothing to set up later. Your folders and alerts follow the roles you already set.</li></ul></div>`;
-  const vb = `<div class="nf21-vb"><p class="nf21-p"><b>Yes, almost all of this can run on Viber too.</b> The difference is cost and setup:</p>
-      <table class="nf21-cmp"><tr><th></th><th>Telegram</th><th>Viber</th></tr>
-        <tr><td>Cost</td><td>Free</td><td>Viber charges the business: about €100–115 a month for Nifti's account, plus a small fee for each message Nifti starts</td></tr>
-        <tr><td>Who starts</td><td>Each person taps START once</td><td>Each person taps Subscribe once</td></tr>
-        <tr><td>Team folders</td><td>Yes, one group with a folder per kind of message</td><td>No folders. Each person gets their own alerts in a 1-on-1 chat instead</td></tr>
-        <tr><td>Buttons, photos, questions</td><td>Yes</td><td>Yes</td></tr>
-        <tr><td>Who already has it</td><td>Fewer Filipino business owners</td><td>Almost everyone</td></tr></table>
-      <p class="nf21-p"><b>My recommendation:</b> customers get their reminders, order confirmations and price news on <b>Viber</b>, where they already are. You and your staff get the team alerts on <b>Telegram</b>, which is free and has folders. Nifti pays the Viber fee once for all its users, so you never deal with Viber's paperwork.</p>
-      <button type="button" class="btn btn-outline" onclick="showToast('We\\'ll tell you when Viber alerts are ready (prototype)')">Tell me when Viber is ready</button></div>`;
   ov.innerHTML = `<div class="nf20-sheet nf21-sheet">
-    <div class="nf20-sh"><div><h2>Alerts on your phone</h2><p>Get Nifti's important messages in the chat app you already use, with buttons that do the job right there.</p></div><button type="button" class="nf20-x" onclick="nf21CloseAlerts()" aria-label="Close">✕</button></div>
-    <div class="nf20-roles" role="tablist"><button type="button" role="tab" class="${NF21A.tab === 'tg' ? 'on' : ''}" onclick="NF21A.tab='tg'; nf21PaintAlerts()">Telegram <b>free</b></button><button type="button" role="tab" class="${NF21A.tab === 'vb' ? 'on' : ''}" onclick="NF21A.tab='vb'; nf21PaintAlerts()">Viber</button></div>
-    <div class="nf20-rc nf21-body">${NF21A.tab === 'vb' ? vb : tg}</div>
+    <div class="nf20-sh"><div><h2>Telegram alerts on your phone</h2><p>Get Nifti's important messages on Telegram, free, with buttons that do the job right there.</p></div><button type="button" class="nf20-x" onclick="nf21CloseAlerts()" aria-label="Close">✕</button></div>
+    <div class="nf20-rc nf21-body">${tg}</div>
     <div class="nf20-sf"><span>Prototype: the guide, switches and practice chats work now. Real messages start once Nifti's Telegram account is connected.</span><button type="button" class="btn btn-primary" onclick="nf21CloseAlerts()">Done</button></div></div>`;
 }
 
@@ -260,9 +250,9 @@ function nf21PaintAlerts(){
   const add = () => {
     const who = document.getElementById('nf20WhoLink');
     if(who && !document.getElementById('nf21AlertLink')){ const b = document.createElement('button'); b.type = 'button'; b.className = 'nf20-who nf21-al-link'; b.id = 'nf21AlertLink';
-      b.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg><span>Alerts on your phone</span>`;
+      b.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg><span>Telegram alerts on your phone</span>`;
       b.onclick = () => nf21OpenAlerts(); who.after(b); }
-    const um = document.getElementById('userMenuDropdown'); if(um && !um.querySelector('.nf21-um')){ const d = document.createElement('div'); d.className = 'notif-item nf21-um'; d.style.cursor = 'pointer'; d.innerHTML = '<div><div class="notif-text">Alerts on your phone</div></div>'; d.onclick = () => nf21OpenAlerts(); const w = um.querySelector('.nf20-um'); if(w) w.after(d); else um.insertBefore(d, um.firstChild); }
+    const um = document.getElementById('userMenuDropdown'); if(um && !um.querySelector('.nf21-um')){ const d = document.createElement('div'); d.className = 'notif-item nf21-um'; d.style.cursor = 'pointer'; d.innerHTML = '<div><div class="notif-text">Telegram alerts on your phone</div></div>'; d.onclick = () => nf21OpenAlerts(); const w = um.querySelector('.nf20-um'); if(w) w.after(d); else um.insertBefore(d, um.firstChild); }
     const al = document.getElementById('nf21AlertLink'); if(al && who && al.hidden !== who.hidden) al.hidden = who.hidden;
   };
   document.addEventListener('keydown', e => { if(e.key === 'Escape'){ const ov = document.getElementById('nf21Alerts'); if(ov && !ov.hidden) nf21CloseAlerts(); const pv = document.getElementById('nf21Pv'); if(pv) pv.hidden = true; } });

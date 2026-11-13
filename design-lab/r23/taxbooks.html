@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tax Books Layouts</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<style>
+:root{--ink:#101828;--ink2:#344054;--mut:#475467;--line:#EAECF0;--g:#1F6B45;
+  --c:#5B9BEF;--cbg:#F8FBFF;--cln:#DCE7F7;--cink:#2563EB;--csoft:#E6F0FD;--s:#10B981;--sbg:#EBF8F1;--sln:#BDE8D1;--sink:#047857;--ssoft:#D3F2E2;}
+*{box-sizing:border-box}html,body{margin:0}
+body{font:16px/1.5 "Plus Jakarta Sans",system-ui,sans-serif;color:var(--ink);background:#F2F4F7;-webkit-font-smoothing:antialiased}
+.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.tin{max-width:1180px;margin:0 auto;padding:12px 20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.tin a{color:var(--g);font-weight:700;text-decoration:none;font-size:14.5px}.tin h1{margin:0;font-size:18px;flex:1;min-width:200px}
+.seg{display:inline-flex;background:#EEF0F3;border-radius:999px;padding:4px;gap:2px}.seg button{border:0;background:transparent;border-radius:999px;padding:8px 16px;font:inherit;font-weight:700;font-size:14.5px;color:var(--ink2);cursor:pointer}.seg button.on{background:#fff;color:var(--ink);box-shadow:0 1px 2px rgba(16,24,40,.12)}
+.jump{display:flex;gap:6px}.jump a{padding:7px 12px;border-radius:999px;border:1.5px solid #D0D5DD;background:#fff;color:var(--ink);font-weight:700;font-size:14px;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:22px 20px 70px;display:grid;gap:34px}
+.why{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 22px}.why h2{margin:0 0 6px;font-size:19px}.why p{margin:0 0 6px;color:var(--ink2)}.why ul{margin:0;padding-left:20px;color:var(--ink2)}
+.opt{display:grid;gap:12px}.opt>header{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}.opt>header h2{margin:0;font-size:22px}.opt>header span{color:var(--mut)}
+.rec{display:inline-block;background:var(--g);color:#fff !important;border-radius:999px;padding:4px 12px;font-size:13px;font-weight:800;letter-spacing:.04em}
+.note{font-size:15px;color:var(--ink2);margin:0}
+.frame{background:#fff;border:1px solid #E4E7EC;border-radius:22px;padding:22px;margin:0 auto;width:100%;container-type:inline-size;transition:max-width .25s;display:grid;gap:18px}
+body.ph .frame{max-width:390px;padding:14px}
+.side{border-radius:18px;padding:16px 18px;border:1px solid;display:grid;gap:12px}
+.side.c{background:var(--cbg);border-color:var(--cln);border-top:5px solid var(--c);--ink-side:var(--cink);--soft:var(--csoft)}
+.side.s{background:var(--sbg);border-color:var(--sln);border-top:5px solid var(--s);--ink-side:var(--sink);--soft:var(--ssoft)}
+.side > h3{margin:0;font-size:18px;color:var(--ink-side)}.side > h3 small{display:block;font-size:14px;font-weight:600;color:var(--mut)}
+.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+.btns{display:flex;gap:8px;flex-wrap:wrap}.btn{min-height:42px;padding:0 16px;border-radius:12px;border:1.5px solid #D0D5DD;background:#fff;font:inherit;font-weight:800;font-size:15px;color:var(--ink)}.btn.p{background:#1F6B45;border-color:#1F6B45;color:#fff}
+/* 1: one line per invoice */
+.t1{width:100%;border-collapse:collapse;background:#fff;border-radius:14px;overflow:hidden}
+.t1 th{font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);background:#F9FAFB}
+.t1 td{padding:11px 12px;border-bottom:1px solid #F2F4F7;font-size:15.5px}
+.t1 .r{text-align:right}
+.t1 td.w b{display:block}.t1 td.w small{color:var(--mut);font-size:13.5px}
+.t1 tfoot td{border-top:2px solid #101828;border-bottom:0;background:#F9FAFB;vertical-align:top}
+.t1 tfoot small{display:block;font-size:12px;font-weight:800;letter-spacing:.04em;color:var(--mut);text-transform:uppercase}
+.t1 tfoot b{font-size:17px}
+.t1 .bir{display:none}.show-bir .t1 .bir{display:table-cell}
+.tog{font-weight:800;color:var(--g);background:none;border:0;font:inherit;cursor:pointer;padding:0;justify-self:start}
+@container (max-width:600px){
+  .t1 thead{display:none}.t1,.t1 tbody,.t1 tfoot{display:block}.t1 tr{display:grid;grid-template-columns:1fr auto;gap:2px 10px;padding:10px 12px;border-bottom:1px solid #F2F4F7}
+  .t1 td{padding:0;border:0;font-size:15px}.t1 td.d{grid-column:1;grid-row:2;color:var(--mut);font-size:13.5px}.t1 td.w{grid-column:1;grid-row:1}.t1 td.g{grid-column:2;grid-row:1;text-align:right;font-weight:800}.t1 td.v{grid-column:2;grid-row:2;text-align:right;font-size:13.5px;color:var(--mut)}.t1 td.v::before{content:'VAT '}.t1 td.x{display:none}
+  .t1 tfoot tr{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:12px}.t1 tfoot td{background:none;border:0;padding:0;text-align:left !important}.t1 tfoot td.lbl{grid-column:1 / -1}
+  .show-bir .t1 .bir{display:none}
+}
+/* 2: grouped by day */
+.day{background:#fff;border-radius:14px;border:1px solid var(--line);overflow:hidden}
+.day > header{display:flex;justify-content:space-between;align-items:center;padding:9px 14px;background:var(--soft);font-weight:800;font-size:14.5px;color:var(--ink-side)}
+.line{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 14px;padding:11px 14px;border-top:1px solid #F2F4F7}
+.line:first-of-type{border-top:0}
+.line b{font-size:15.5px}.line small{grid-column:1;font-size:13.5px;color:var(--mut)}.line .amt{grid-row:1 / span 2;grid-column:2;text-align:right;font-weight:800;font-size:16px}.line .amt small{display:block;font-weight:600;color:var(--mut)}
+.tot2{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.tot2 div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.tot2 span{display:block;font-size:13.5px;font-weight:700;color:var(--mut)}.tot2 b{display:block;font-size:20px}.tot2 small{display:block;font-size:13px;color:var(--mut);line-height:1.35}
+.tot2 .hi{border:2px solid var(--ink-side)}
+@container (max-width:600px){ .tot2{grid-template-columns:1fr 1fr} }
+/* 3: totals first, list below, tap to see all numbers */
+.file{border-radius:18px;padding:18px;background:#F1F5F9;border:1px solid #CBD5E1;color:#101828;display:grid;gap:12px}
+.file h3{margin:0;font-size:19px}.file p{margin:0;color:#475467;font-size:15px}
+.eq{display:grid;grid-template-columns:1fr auto 1fr auto 1.2fr;gap:10px;align-items:stretch}
+.eq > div{background:#FFFFFF;border:1px solid #E4E7EC;border-radius:14px;padding:12px 14px}.eq > i{display:grid;place-items:center;font-style:normal;font-size:24px;font-weight:800;color:#98A2B3}
+.eq span{display:block;font-size:13.5px;color:#475467}.eq b{display:block;font-size:22px}
+.eq .pay{background:#FFFFFF;color:#101828;border:2px solid #1F6B45 !important}.eq .pay span{color:#475467}.eq .pay small{display:block;font-size:13px;color:#475467}
+@container (max-width:600px){ .eq{grid-template-columns:1fr}.eq > i{height:18px} }
+.big3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.big3 div{background:#fff;border-radius:14px;padding:12px 14px;border:1px solid var(--line)}
+.big3 span{display:block;font-size:13.5px;font-weight:700;color:var(--mut)}.big3 b{display:block;font-size:21px}
+@container (max-width:600px){ .big3{grid-template-columns:1fr 1fr}.big3 div:first-child{grid-column:1 / -1} }
+.rows3{background:#fff;border-radius:14px;border:1px solid var(--line)}
+.rows3 details{border-top:1px solid #F2F4F7}.rows3 details:first-child{border-top:0}
+.rows3 summary{list-style:none;display:grid;grid-template-columns:62px minmax(0,1fr) auto 18px;gap:12px;align-items:center;padding:11px 14px;cursor:pointer}
+.rows3 summary::-webkit-details-marker{display:none}
+.rows3 summary .d{font-weight:800;font-size:14.5px;color:var(--ink-side)}.rows3 summary b{font-size:15.5px}.rows3 summary small{display:block;font-size:13px;color:var(--mut)}
+.rows3 summary .amt{text-align:right;font-weight:800}.rows3 summary .ch{color:#98A2B3;transition:transform .15s}.rows3 details[open] .ch{transform:rotate(90deg)}
+.rows3 dl{margin:0;padding:4px 14px 14px 88px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.rows3 dl div{background:#F9FAFB;border-radius:10px;padding:8px 10px}.rows3 dt{font-size:12.5px;font-weight:700;color:var(--mut)}.rows3 dd{margin:0;font-weight:800}
+@container (max-width:600px){ .rows3 summary{grid-template-columns:50px minmax(0,1fr) auto 14px;gap:8px}.rows3 dl{padding:4px 12px 12px;grid-template-columns:1fr 1fr} }
+.cap{font-size:14px;color:var(--mut);margin:0}
+</style>
+</head>
+<body>
+<div class="top"><div class="tin"><a href="./">‹ Round 23</a><h1>Tax books: 3 simpler ways, with every total labeled</h1>
+  <div class="seg" role="group" aria-label="Screen size"><button type="button" data-w="pc" class="on">Computer</button><button type="button" data-w="ph">Phone</button></div>
+  <div class="jump"><a href="#t1">1</a><a href="#t2">2</a><a href="#t3">3</a></div></div></div>
+<main class="wrap">
+  <section class="why"><h2>What's wrong today</h2>
+    <p>Each invoice takes 7 rows (Invoice, Customer, Gross, Exempt, Vatable sales, VAT, Withheld). A busy month means hundreds of rows. The totals at the bottom have no labels, so nobody knows which number is which.</p>
+    <p><b>What the totals mean, in plain words:</b></p>
+    <ul><li><b>Total sales (gross):</b> everything on your invoices, VAT included.</li><li><b>VAT-exempt:</b> sales with no VAT on them.</li><li><b>Sales before VAT (vatable):</b> the part VAT is computed on.</li><li><b>VAT 12%:</b> on sales, VAT you collected for the BIR; on purchases, VAT you already paid (you can subtract it).</li><li><b>Tax withheld (2307):</b> tax a customer kept and paid to the BIR for you. You get it back as a credit.</li></ul>
+    <p>All three options use the same sample month: 6 sales and 3 purchases.</p></section>
+  <section class="opt" id="t1"><header><h2>1. One line per invoice</h2><span>Like a normal list, BIR columns on request</span></header><div class="frame" id="f1"></div>
+    <p class="note">Each invoice is one line with the 3 numbers people care about: amount, VAT and tax withheld. The 2 extra BIR columns (exempt, before-VAT) show when you tap "Show all BIR columns". Totals sit under their own labels.</p></section>
+  <section class="opt" id="t2"><header><h2>2. Grouped by day</h2><span>A day header, then one line per invoice</span></header><div class="frame" id="f2"></div>
+    <p class="note">Reads like a diary: each day shows its total, then its invoices in one line each. The month totals are labeled boxes that say what each number means.</p></section>
+  <section class="opt" id="t3"><header><h2>3. Your VAT first, details on tap</h2><span class="rec">MY PICK</span></header><div class="frame" id="f3"></div>
+    <p class="note">Starts with the answer: VAT you collected minus VAT you paid equals what you pay this month. Then 3 big labeled totals per side, and a short list. Tap an invoice to see all 7 numbers. Nothing is hidden, but nothing is in the way.</p></section>
+</main>
+<script>
+const S = [['2026-08-05', 'Aug 5', 'INV-2026-0421', 'Riverside Builders Corp', 0, 19200, 0], ['2026-08-12', 'Aug 12', 'INV-2026-0403', 'Bayview Construction Co.', 0, 78000, 0], ['2026-08-18', 'Aug 18', 'INV-2026-0430', 'JRC Builders', 0, 25000, 250],
+  ['2026-08-20', 'Aug 20', 'INV-2026-0433', 'Mang Bert Construction', 0, 8500, 0], ['2026-08-24', 'Aug 24', 'INV-2026-0437', 'Cavite Steel Works', 0, 14700, 0], ['2026-08-24', 'Aug 24', 'INV-2026-0440', 'Aling Nena Store', 2000, 0, 0]];
+const B = [['2026-08-05', 'Aug 5', 'INV-2026-0398', 'Metro Steel Co.', 0, 100800, 0], ['2026-08-14', 'Aug 14', 'CA-5521', 'Cebu Aggregates', 0, 39000, 0], ['2026-08-22', 'Aug 22', 'NW-0912', 'Northline Welding', 0, 6250, 0]];
+const P = v => '₱' + Math.round(v).toLocaleString('en-PH');
+const row = r => { const vat = Math.round(r[5] * 0.12), gross = r[4] + r[5] + vat; return {d: r[1], inv: r[2], who: r[3], ex: r[4], vt: r[5], vat, gross, wh: r[6]}; };
+const tot = list => list.map(row).reduce((a, x) => ({gross: a.gross + x.gross, ex: a.ex + x.ex, vt: a.vt + x.vt, vat: a.vat + x.vat, wh: a.wh + x.wh, n: a.n + 1}), {gross: 0, ex: 0, vt: 0, vat: 0, wh: 0, n: 0});
+const sides = [['c', 'Selling to customers', 'Sales book · August 2026', S, 'Customer', 'Total sales'], ['s', 'Buying from suppliers', 'Purchase book · August 2026', B, 'Supplier', 'Total purchases']];
+const btns = '<div class="btns"><button class="btn p" type="button">Download for Excel</button><button class="btn" type="button">Print</button></div>';
+// 1
+document.getElementById('f1').innerHTML = sides.map(([k, t, h, L, who, totl]) => { const T = tot(L);
+  return `<section class="side ${k}"><h3>${t}<small>${h}</small></h3>${btns}<table class="t1"><thead><tr><th>Date</th><th>Invoice and ${who.toLowerCase()}</th><th class="r bir">VAT-exempt</th><th class="r bir">Before VAT</th><th class="r">Amount</th><th class="r">VAT 12%</th><th class="r">Withheld</th></tr></thead><tbody>
+    ${L.map(row).map(x => `<tr><td class="d n">${x.d}</td><td class="w"><b>${x.who}</b><small>${x.inv}</small></td><td class="r n bir">${P(x.ex)}</td><td class="r n bir">${P(x.vt)}</td><td class="r n g">${P(x.gross)}</td><td class="r n v">${P(x.vat)}</td><td class="r n x">${x.wh ? P(x.wh) : '—'}</td></tr>`).join('')}</tbody>
+    <tfoot><tr><td class="lbl" colspan="2"><b>Month total</b><br><span class="cap">${T.n} invoices</span></td><td class="r bir"><small>VAT-exempt</small><b class="n">${P(T.ex)}</b></td><td class="r bir"><small>Before VAT</small><b class="n">${P(T.vt)}</b></td><td class="r"><small>${totl}</small><b class="n">${P(T.gross)}</b></td><td class="r"><small>VAT 12%</small><b class="n">${P(T.vat)}</b></td><td class="r"><small>Tax withheld</small><b class="n">${P(T.wh)}</b></td></tr></tfoot></table>
+    <button class="tog" type="button" onclick="this.closest('.side').classList.toggle('show-bir'); this.textContent = this.closest('.side').classList.contains('show-bir') ? 'Hide extra BIR columns' : 'Show all BIR columns'">Show all BIR columns</button></section>`; }).join('');
+// 2
+document.getElementById('f2').innerHTML = sides.map(([k, t, h, L, who, totl]) => { const T = tot(L), days = [...new Set(L.map(r => r[1]))];
+  return `<section class="side ${k}"><h3>${t}<small>${h}</small></h3>${btns}
+    ${days.map(d => { const xs = L.filter(r => r[1] === d).map(row), dt = xs.reduce((a, x) => a + x.gross, 0);
+      return `<div class="day"><header><span>${d}</span><span class="n">${P(dt)}</span></header>${xs.map(x => `<div class="line"><b>${x.who}</b><small>${x.inv}${x.ex ? ' · VAT-exempt' : ''}${x.wh ? ' · ' + P(x.wh) + ' withheld' : ''}</small><span class="amt n">${P(x.gross)}<small>VAT ${P(x.vat)}</small></span></div>`).join('')}</div>`; }).join('')}
+    <div class="tot2"><div class="hi"><span>${totl}</span><b class="n">${P(T.gross)}</b><small>Everything on your invoices, VAT included</small></div><div><span>VAT 12%</span><b class="n">${P(T.vat)}</b><small>${k === 'c' ? 'You collected this for the BIR' : 'You paid this; you can subtract it'}</small></div><div><span>Tax withheld (2307)</span><b class="n">${P(T.wh)}</b><small>${k === 'c' ? 'Kept by customers, you get it back' : 'None from suppliers'}</small></div>
+      <div><span>Before VAT</span><b class="n">${P(T.vt)}</b><small>The part VAT is computed on</small></div><div><span>VAT-exempt</span><b class="n">${P(T.ex)}</b><small>${T.ex ? 'Sales with no VAT' : 'Nothing exempt this month'}</small></div><div><span>Invoices</span><b class="n">${T.n}</b><small>This month</small></div></div></section>`; }).join('');
+// 3
+const TS = tot(S), TB = tot(B), pay = TS.vat - TB.vat;
+document.getElementById('f3').innerHTML = `<section class="file"><h3>Your VAT for August</h3><p>VAT you collected minus VAT you already paid. It goes in your quarterly VAT return (BIR Form 2550Q).</p>
+  <div class="eq"><div><span>VAT you collected</span><b class="n">${P(TS.vat)}</b></div><i>−</i><div><span>VAT you paid suppliers</span><b class="n">${P(TB.vat)}</b></div><i>=</i>
+    <div class="pay"><span>VAT to pay for August</span><b class="n">${pay > 0 ? P(pay) : '₱0'}</b><small>${pay > 0 ? 'Add it to your quarterly VAT return' : P(-pay) + ' carries over to next month'}</small></div></div></section>
+  ${sides.map(([k, t, h, L, who, totl]) => { const T = tot(L);
+    return `<section class="side ${k}"><h3>${t}<small>${h} · ${T.n} invoices</small></h3>
+      <div class="big3"><div><span>${totl}</span><b class="n">${P(T.gross)}</b></div><div><span>VAT 12%</span><b class="n">${P(T.vat)}</b></div><div><span>Tax withheld</span><b class="n">${P(T.wh)}</b></div></div>
+      <div class="rows3">${L.map(row).map(x => `<details><summary><span class="d">${x.d}</span><span><b>${x.who}</b><small>${x.inv}</small></span><span class="amt n">${P(x.gross)}</span><span class="ch">›</span></summary>
+        <dl><div><dt>Amount</dt><dd class="n">${P(x.gross)}</dd></div><div><dt>VAT 12%</dt><dd class="n">${P(x.vat)}</dd></div><div><dt>Withheld</dt><dd class="n">${P(x.wh)}</dd></div><div><dt>Before VAT</dt><dd class="n">${P(x.vt)}</dd></div><div><dt>VAT-exempt</dt><dd class="n">${P(x.ex)}</dd></div><div><dt>TIN</dt><dd>Add in the file</dd></div></dl></details>`).join('')}</div>
+      ${btns}</section>`; }).join('')}`;
+document.querySelectorAll('[data-w]').forEach(b => b.onclick = () => { document.body.classList.toggle('ph', b.dataset.w === 'ph'); document.querySelectorAll('[data-w]').forEach(x => x.classList.toggle('on', x === b)); });
+</script>
+</body>
+</html>
