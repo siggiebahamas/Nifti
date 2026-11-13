@@ -1,0 +1,38 @@
+/* ===== Round 26 ===== */
+
+/* ---------- every table: the first column reads from the left ---------- */
+html #view-app#view-app#view-app#view-app table :is(th,td):first-child{text-align:left !important;padding-left:20px !important;}
+html #view-app#view-app#view-app#view-app table tr.nf25-g td:first-child{padding-left:20px !important;}
+html #view-app#view-app#view-app#view-app table.nf25-t td.t:first-child{position:relative;}
+html #view-app#view-app#view-app#view-app table.nf25-t td.t:first-child:has(> .nf25-ic){padding-left:62px !important;}
+html #view-app#view-app#view-app#view-app table.nf25-t td.t:first-child > .nf25-ic{position:absolute;left:20px;top:50%;transform:translateY(-50%);margin:0;}
+html #view-app#view-app#view-app#view-app table.nf25-t td.t:first-child small{display:block;margin-top:2px;}
+html #view-app#view-app#view-app#view-app table.nf25-t td.t:first-child small .bk-tag{margin-left:4px;}
+/* phone and half-width cards: the label sits above, so no indent and no icon offset */
+@container nf25 (max-width: 660px){
+  html #view-app#view-app#view-app#view-app .nf25-tw table.nf25-t td:first-child{padding-left:0 !important;}
+  html #view-app#view-app#view-app#view-app .nf25-tw table.nf25-t td.t:first-child:has(> .nf25-ic){padding-left:40px !important;}
+  html #view-app#view-app#view-app#view-app .nf25-tw table.nf25-t td.t:first-child > .nf25-ic{left:0;top:2px;transform:none;}
+}
+html.nf-phone #view-app#view-app#view-app#view-app table[data-nf-card] td:first-child{padding-left:0 !important;}
+
+/* ---------- status: two clean lines ---------- */
+#view-app .nf26-l1{display:block;font-weight:800;color:#101828;white-space:nowrap;}
+#view-app .nf26-l2{display:block;margin-top:2px;font-size:15px !important;font-weight:600;color:#344054;white-space:nowrap;}
+@container nf25 (max-width: 660px){ #view-app .nf26-l1, #view-app .nf26-l2{white-space:normal;} }
+
+/* ---------- buying from suppliers: cool gray (theme 4) ---------- */
+:root{--nf20-s:#667085;--nf20-s-bg:#F5F6F8;--nf20-s-line:#E4E7EC;--nf22-s-ink:#344054;--nf22-s-soft:#E4E7EC;}
+html #view-app .nf-half-buyer{--side:#667085;--side-bg:#F5F6F8;--side-line:#E4E7EC;--side-ink:#344054;--side-soft:#E4E7EC;}
+html #page-orders .nf20-col.s{--side:#667085;--side-bg:#F5F6F8;--side-line:#E4E7EC;--side-ink:#344054;--side-soft:#E4E7EC;}
+
+/* ---------- English only for now ---------- */
+html.nf26-nofil .lang-switch, html.nf26-nofil .nf18-lang, html.nf26-nofil #moreSheet .more-sheet-row:has(.lang-switch), html.nf26-nofil .topbar .lang-switch{display:none !important;}
+
+/* ---------- computers: the side menu already lists every page, so the pill row on top goes ---------- */
+html:not(.nf-phone) #view-app#view-app .nf18-hubwrap{display:none !important;}
+html.nf-phone #view-app .nf20-bk small{display:none;}
+#view-app .nf20-band .nf18-sub{display:none !important;}
+
+/* ---------- one storage place: no storage tabs, column or picker ---------- */
+html.nf26-one-store #whTabs, html.nf26-one-store #page-inventory [onclick="openManageWarehouses()"], html.nf26-one-store .expand-field:has(> #newInvWarehouse){display:none !important;}

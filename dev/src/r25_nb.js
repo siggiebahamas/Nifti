@@ -88,7 +88,13 @@ async function nb25Add(){
     } else if(kind === 'stock'){
       const { data: inv, error: e1 } = await sb.from('inventory_items').select('id, name').eq('business_id', biz); err = e1;
       if(!err){ for(const l of keep){ const name = String(l.item || '').trim().toLowerCase(), it = (inv || []).find(x => String(x.name).trim().toLowerCase() === name); const n = Number(l.q);
-          if(!it || !isFinite(n)){ missing.push(l.item || l.i); continue; }
+          if(!it){ // a price list or a first count: items Nifti doesn't know yet are added, with the price when the page has one
+            const nm = String(l.item || '').trim(); if(!nm) continue;
+            const price = Number(l.price) > 0 ? Number(l.price) : (Number(l.amt) > 0 && !(n > 1) ? Number(l.amt) : null);
+            const { data: made, error } = await sb.from('inventory_items').insert({business_id: biz, sku_code: 'SKU-' + String(Date.now()).slice(-6) + added, name: nm.slice(0, 120), warehouse: 'main', on_hand: isFinite(n) && n > 0 ? n : 0,
+              rop: 0, max_level: 0, status: 'healthy', rop_enabled: false, max_level_enabled: false, sell_price: price}).select('id, name').single();
+            if(error){ err = error; break; } (inv || []).push(made); added++; continue; }
+          if(!isFinite(n)){ missing.push(l.item || l.i); continue; }
           const { error } = await sb.from('inventory_items').update({on_hand: n}).eq('id', it.id); if(error){ err = error; break; } added++; } }
     }
   }catch(e){ err = e; }
@@ -102,6 +108,7 @@ async function nb25Add(){
   NB25.saving = false; NB25.added = added; NB25.missing = missing; NB.added = true; nf22NbPaint(); try{ nf24Badge(); }catch(e){}
   showToast(`Added ${added} line${added === 1 ? '' : 's'} from paper.`, 'success');
   try{ if(typeof loadBooksData === 'function') loadBooksData(); }catch(e){}
+  try{ if(kind === 'stock' && typeof loadRealInventory === 'function') loadRealInventory(); }catch(e){}
 }
 async function nb25Skip(){
   if(!NB24.curId || !confirm('Skip this whole page? The photo stays saved, marked skipped.')) return;

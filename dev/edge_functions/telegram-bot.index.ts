@@ -56,7 +56,10 @@ async function setup(req: Request) {
   await tg(token, "setMyCommands", {
     commands: [
       { command: "today", description: "Today at a glance" },
-      { command: "help", description: "What this bot does" },
+      { command: "utang", description: "Magkano ang sinisingil mo" },
+      { command: "benta", description: "Benta ngayong araw" },
+      { command: "stock", description: "Ilang item ang paubos na" },
+      { command: "help", description: "Ano ang kaya ng Nifti" },
       { command: "stop", description: "Stop alerts on this phone" },
     ],
   });
@@ -66,8 +69,19 @@ async function setup(req: Request) {
   return json({ ok: true, bot: username });
 }
 
-const HELP = "This is Nifti. I send alerts for your shop: new orders, payments, low stock and your daily summary. Each alert has a button that opens the right page in Nifti.\n\n" +
-  "/today  today at a glance\n/stop  stop alerts on this phone\n\nTo choose which alerts you get, open Nifti, then Settings, then Telegram alerts.";
+// /help: what Nifti can do, in Taglish, with buttons that open the right page
+const HELP = "<b>Ako si Nifti.</b> Dito ko ipapadala ang alerts ng tindahan mo: bagong order, bayad, paubos na stock, at buod ng araw. May button ang bawat alert para buksan agad ang tamang page.\n\n" +
+  "<b>Ano ang kaya ng Nifti:</b>\n" +
+  "• <b>Orders</b>: order ng customer at order mo sa supplier, iisang listahan\n" +
+  "• <b>Utang</b>: sino ang may utang, at kusang paalala sa kanila\n" +
+  "• <b>Benta</b>: benta sa tindahan (cash, GCash, utang) at bilang ng kaha\n" +
+  "• <b>Stock</b>: ano ang paubos na, bago ka pa maubusan\n" +
+  "• <b>Gastos at sahod</b>: resibo, vale at payroll\n" +
+  "• <b>Notebook</b>: picture-an ang lumang listahan, si Nifti ang magta-type\n" +
+  "• <b>Online store</b>: sariling link at ready na Facebook post\n\n" +
+  "<b>Mga utos dito:</b>\n/today  buod ng araw\n/utang  magkano ang sinisingil mo\n/benta  benta ngayong araw\n/stock  ilang item ang paubos na\n/stop  itigil ang alerts sa phone na ito\n\n" +
+  "Puwede ring i-type lang ang salita, gaya ng <i>utang</i> o <i>benta</i>. May tanong? Sa Nifti, i-tap ang <b>Need help?</b> at sasagutin ka ng tao.";
+const NOT_LINKED = "Hindi pa naka-link ang phone na ito. Buksan ang Nifti, pumunta sa <b>Settings → Telegram alerts</b>, tapos i-tap ang <b>Link my Telegram</b>.";
 
 async function onMessage(token: string, msg: any) {
   const chat = msg?.chat?.id;
@@ -90,7 +104,7 @@ async function onMessage(token: string, msg: any) {
       await reply("That link has expired or was already used. Open Nifti and tap <b>Link my Telegram</b> again.", open);
       return;
     }
-    await reply(`Linked. <b>${esc(data.member)}</b>, you will get <b>${esc(data.business)}</b> alerts here.\n\nTry /today to see today at a glance. Send /stop any time to turn alerts off.`, open);
+    await reply(`Linked. <b>${esc(data.member)}</b>, you will get <b>${esc(data.business)}</b> alerts here.\n\nTry /today to see today at a glance, or /help to see what Nifti can do. Send /stop any time to turn alerts off.`, open);
     return;
   }
   if (text.startsWith("/stop")) {
@@ -118,7 +132,25 @@ async function onMessage(token: string, msg: any) {
     await reply(rows.join("\n"), open);
     return;
   }
-  await reply(HELP, open);
+  // one number at a time, by command or by a plain shop word
+  const word = text.toLowerCase();
+  const base = appUrl.replace(/#.*$/, "");
+  const ask = /^\/utang|\butang\b|\bsingil|\bowe/.test(word) ? "utang" : /^\/benta|\bbenta\b|\bsales?\b/.test(word) ? "benta" : /^\/stock|\bstock\b|\bubos|\bpaubos/.test(word) ? "stock" : "";
+  if (ask) {
+    const { data: b } = await admin.rpc("telegram_brief", { p_chat: chat });
+    if (!b) { await reply(NOT_LINKED, open); return; }
+    const page = (hash: string, label: string) => ({ reply_markup: { inline_keyboard: [[{ text: label, url: base + hash }]] } });
+    if (ask === "utang") await reply(`<b>${esc(b.business)}</b>\nSinisingil mo sa customers: <b>${peso(b.owed_to_you)}</b>\nUtang mo sa suppliers: <b>${peso(b.you_owe)}</b>`, page("#collections", "Buksan ang Getting paid"));
+    else if (ask === "benta") await reply(`<b>${esc(b.business)}</b>\nBenta sa tindahan ngayong araw: <b>${peso(b.sales_today)}</b>`, page("#sales", "Buksan ang Sales"));
+    else await reply(`<b>${esc(b.business)}</b>\nItems na paubos na: <b>${b.low_stock}</b>`, page("#inventory", "Buksan ang Stock"));
+    return;
+  }
+  const pages = { reply_markup: { inline_keyboard: [
+    [{ text: "Orders", url: base + "#orders" }, { text: "Utang", url: base + "#collections" }],
+    [{ text: "Benta", url: base + "#sales" }, { text: "Stock", url: base + "#inventory" }],
+    [{ text: "Need help? Kausapin ang Nifti team", url: base + "#help" }],
+  ] } };
+  await reply(HELP, pages);
 }
 
 Deno.serve(async (req) => {

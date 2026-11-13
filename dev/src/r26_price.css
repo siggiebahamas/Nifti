@@ -1,0 +1,102 @@
+/* ===== Round 26: Plans & pricing sheet, subscribe steps, locked pages, help chat ===== */
+.nf26-psheet{width:min(1040px,100%);}
+.nf26-pbanner{margin:0 24px 14px;padding:12px 16px;border-radius:14px;font-size:15.5px;line-height:1.45;color:#101828;background:#F2F4F7;}
+.nf26-pbanner.good{background:#EAF6EF;color:#14532D;} .nf26-pbanner.wait{background:#FEF9C3;color:#713F12;} .nf26-pbanner.note{background:#EEF4FB;color:#1E3A8A;}
+.nf26-cyc{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.nf26-cyc.top{display:inline-grid;margin:0 24px 16px;}
+.nf26-cyc button{display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:10px 16px;border-radius:14px;border:1.5px solid #D0D5DD;background:#FFFFFF;font:inherit;cursor:pointer;text-align:left;color:#101828;min-height:48px;justify-content:center;}
+.nf26-cyc button b{font-size:16px;font-weight:800;} .nf26-cyc button span{font-size:14.5px;color:#344054;}
+.nf26-cyc button.on{border-color:#1F6B45;background:#EAF6EF;box-shadow:inset 0 0 0 1px #1F6B45;}
+.nf26-cyc button.on span{color:#14532D;font-weight:700;}
+.nf26-pcards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;padding:6px 24px 4px;align-items:stretch;}
+.nf26-pc{position:relative;display:flex;flex-direction:column;border:1.5px solid #E4E7EC;border-radius:18px;padding:22px 20px 20px;background:#FFFFFF;}
+.nf26-pc.pro{border:2.5px solid #1F6B45;}
+.nf26-pc.cur{background:#F6FBF8;}
+.nf26-flag{position:absolute;top:-13px;left:20px;background:#1F6B45;color:#FFFFFF;font-size:13px;font-weight:800;letter-spacing:.08em;border-radius:999px;padding:4px 11px;}
+.nf26-pc h3{margin:0 0 4px;font-size:21px;font-weight:800;color:#101828;display:flex;align-items:center;gap:8px;}
+.nf26-pc h3 em{font-style:normal;font-size:13.5px;font-weight:800;background:#DCF5E5;color:#14532D;border-radius:999px;padding:3px 10px;}
+.nf26-price{display:flex;align-items:baseline;gap:6px;}
+.nf26-price b{font-size:34px;font-weight:800;letter-spacing:-.02em;color:#101828;line-height:1.15;} .nf26-price span{font-size:15.5px;font-weight:600;color:#344054;}
+.nf26-who{margin:8px 0 12px;font-size:15.5px;color:#344054;line-height:1.45;}
+.nf26-pc ul, .nf26-lock ul{list-style:none;margin:0 0 18px;padding:0;display:grid;gap:8px;flex:1;align-content:start;}
+.nf26-pc li, .nf26-lock li{display:flex;gap:9px;align-items:flex-start;font-size:15px;line-height:1.4;color:#101828;}
+.nf26-pc li svg, .nf26-lock li svg{width:17px;height:17px;flex:none;margin-top:2px;color:#1F6B45;}
+.nf26-pc .btn{width:100%;min-height:48px;font-size:16px;}
+.nf26-cur{display:block;text-align:center;padding:12px;border-radius:12px;background:#EAF6EF;color:#14532D;font-size:15px;font-weight:800;}
+.nf26-cur.soft{background:#F2F4F7;color:#344054;font-weight:700;}
+.nf26-how{margin:16px 24px 22px;padding:16px 18px;border:1px solid #E4E7EC;border-radius:16px;background:#FCFCFD;}
+.nf26-how > b{display:block;font-size:16.5px;margin-bottom:8px;color:#101828;}
+.nf26-how ol{list-style:none;margin:0 0 10px;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;}
+.nf26-how li, .nf26-pstep{display:flex;gap:10px;align-items:flex-start;font-size:15px;color:#344054;line-height:1.45;}
+.nf26-how li span, .nf26-pstep > .n{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;flex:none;background:#DCF5E5;color:#14532D;font-weight:800;font-size:14.5px;}
+.nf26-how p{margin:0;font-size:15px;color:#344054;} .nf26-how a, .nf26-soft a{color:#1F6B45;font-weight:800;text-decoration:underline;cursor:pointer;}
+.nf26-back{background:none;border:0;padding:0 0 6px;font:inherit;font-size:15px;font-weight:800;color:#1F6B45;cursor:pointer;}
+.nf26-paybody{display:grid;gap:18px;padding:4px 24px 20px;}
+.nf26-pstep > div{flex:1;min-width:0;} .nf26-pstep b{display:block;font-size:17px;color:#101828;margin-bottom:6px;}
+.nf26-instr{margin:0;padding:12px 14px;border:1.5px dashed #9FD4B4;border-radius:12px;background:#F6FBF8;font:inherit;font-size:16.5px;font-weight:700;color:#101828;white-space:pre-line;line-height:1.5;}
+.nf26-soft{margin:0;font-size:15px;color:#344054;}
+.nf26-meth{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;}
+.nf26-meth button{min-height:44px;padding:0 16px;border-radius:999px;border:1.5px solid #D0D5DD;background:#FFFFFF;font:inherit;font-size:15.5px;font-weight:700;color:#101828;cursor:pointer;}
+.nf26-meth button.on{background:#EAF6EF;border-color:#1F6B45;color:#14532D;}
+.nf26-fl{display:block;font-size:15px;font-weight:700;color:#101828;margin-bottom:4px;}
+.nf26-in{width:100%;box-sizing:border-box;min-height:50px;padding:0 14px;border:1.5px solid #D0D5DD;border-radius:12px;font:inherit;font-size:17px;color:#101828;background:#FFFFFF;}
+.nf26-in:focus{outline:0;border-color:#1F6B45;box-shadow:0 0 0 3px rgba(31,107,69,.15);}
+.nf26-or{margin:10px 0;font-size:14.5px;font-weight:700;color:#344054;text-align:center;}
+.nf26-photo{display:flex;align-items:center;gap:12px;min-height:54px;padding:10px 14px;border:1.5px dashed #98A2B3;border-radius:12px;cursor:pointer;font-size:15.5px;font-weight:700;color:#101828;background:#FFFFFF;}
+.nf26-photo svg{width:24px;height:24px;color:#1F6B45;flex:none;} .nf26-photo img{width:54px;height:54px;object-fit:cover;border-radius:8px;flex:none;}
+.nf26-err{padding:10px 14px;border-radius:12px;background:#FDECEC;color:#B42318;font-size:15px;font-weight:700;}
+.nf26-demo{padding:10px 14px;border-radius:12px;background:#EEF4FB;color:#1E3A8A;font-size:15px;}
+.nf26-payfoot span{font-size:15.5px;color:#101828;} .nf26-payfoot .btn{min-height:50px;font-size:16.5px;padding:0 22px;}
+.nf26-done{padding:48px 24px;text-align:center;display:grid;gap:10px;justify-items:center;}
+.nf26-done-ic{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;background:#DCF5E5;color:#1F6B45;} .nf26-done-ic svg{width:32px;height:32px;}
+.nf26-done h2{margin:6px 0 0;font-size:26px;color:#101828;} .nf26-done p{margin:0 0 10px;max-width:440px;font-size:16px;color:#344054;}
+.nf26-done .btn{min-width:160px;min-height:48px;}
+/* Settings line */
+#view-app .nf26-set{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;}
+#view-app .nf26-set b{display:block;font-size:17px;color:#101828;} #view-app .nf26-set span{display:block;font-size:15px;color:#344054;margin-top:2px;}
+/* Home line */
+#mhHome .nf26-homeplan{display:flex;align-items:center;gap:10px;width:100%;margin:0 0 14px;padding:11px 16px;border:1px solid #D3EADB;border-radius:14px;background:#F6FBF8;font:inherit;font-size:15.5px;color:#101828;cursor:pointer;text-align:left;}
+#mhHome .nf26-homeplan svg{width:18px;height:18px;color:#1F6B45;flex:none;} #mhHome .nf26-homeplan span{flex:1;font-weight:600;} #mhHome .nf26-homeplan b{color:#1F6B45;font-weight:800;white-space:nowrap;}
+#mhHome .nf26-homeplan:hover{border-color:#1F6B45;}
+/* locked page */
+#view-app .app-page.nf26-locked > *:not(.nf26-lock):not(.page-head):not(.nf18-hubwrap){display:none !important;}
+#view-app .nf26-lock{max-width:640px;border:1.5px solid #D3EADB;border-radius:20px;padding:26px 26px 22px;background:#F6FBF8;}
+#view-app .nf26-lock-k{font-size:13px;font-weight:800;letter-spacing:.08em;color:#14532D;}
+#view-app .nf26-lock h2{margin:6px 0 12px;font-size:24px;color:#101828;}
+#view-app .nf26-lock-b{display:flex;align-items:center;gap:16px;flex-wrap:wrap;} #view-app .nf26-lock-b .btn{min-height:48px;font-size:16px;}
+.sidebar .nav-item .nf26-pro{margin-left:auto;font-style:normal;font-size:13px;font-weight:800;color:#14532D;background:#DCF5E5;border-radius:999px;padding:1px 8px;}
+#view-app .pro-badge.locked{cursor:pointer;}
+@media (max-width:860px){
+  .nf26-pcards{grid-template-columns:1fr;padding:6px 16px 4px;} .nf26-pc.pro{order:-1;}
+  .nf26-how ol{grid-template-columns:1fr;} .nf26-how, .nf26-pbanner, .nf26-cyc.top{margin-left:16px;margin-right:16px;}
+  .nf26-paybody{padding:4px 16px 18px;} .nf26-payfoot{flex-direction:column;align-items:stretch;} .nf26-payfoot .btn{width:100%;}
+}
+
+/* ---------- Need help? a chat with the Nifti team ---------- */
+.nf26-hsheet{width:min(560px,100%);max-height:92vh;}
+.nf26-hbody{display:flex;flex-direction:column;gap:10px;padding:4px 20px 14px;overflow-y:auto;min-height:220px;max-height:52vh;}
+.nf26-hm{max-width:86%;padding:10px 14px;border-radius:16px;font-size:16px;line-height:1.45;color:#101828;background:#F2F4F7;align-self:flex-start;white-space:pre-wrap;overflow-wrap:anywhere;}
+.nf26-hm.me{align-self:flex-end;background:#DCF5E5;}
+.nf26-hm small{display:block;margin-top:4px;font-size:13.5px;color:#344054;}
+.nf26-hempty{margin:auto;text-align:center;color:#344054;font-size:15.5px;max-width:380px;}
+.nf26-hchips{display:flex;gap:8px;flex-wrap:wrap;padding:0 20px 10px;}
+.nf26-hchips button{min-height:40px;padding:0 14px;border-radius:999px;border:1.5px solid #D0D5DD;background:#FFFFFF;font:inherit;font-size:15px;font-weight:700;color:#101828;cursor:pointer;}
+.nf26-hchips button:hover{border-color:#1F6B45;}
+.nf26-hsend{display:flex;gap:8px;align-items:flex-end;padding:12px 20px 16px;border-top:1px solid #EAECF0;background:#FCFCFD;}
+.nf26-hsend textarea{flex:1;min-height:50px;max-height:140px;padding:12px 14px;border:1.5px solid #D0D5DD;border-radius:14px;font:inherit;font-size:16.5px;color:#101828;resize:none;}
+.nf26-hsend textarea:focus{outline:0;border-color:#1F6B45;}
+.nf26-hsend .btn{min-height:50px;min-width:88px;font-size:16px;}
+.nf26-hviber{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 20px 12px;padding:10px 14px;border-radius:12px;background:#EEF4FB;border:1px solid #D5E3F8;font-size:15px;color:#101828;}
+.nf26-hviber a{font-weight:800;color:#1D4ED8;text-decoration:underline;white-space:nowrap;}
+.sidebar .nf26-help em{margin-left:auto;font-style:normal;min-width:22px;height:22px;border-radius:999px;background:#D92D20;color:#FFFFFF;font-size:13px;font-weight:800;display:grid;place-items:center;padding:0 6px;}
+/* admin help inbox */
+#view-app .nf26-inbox{display:grid;grid-template-columns:minmax(0,280px) minmax(0,1fr);gap:14px;}
+#view-app .nf26-ilist{display:grid;gap:6px;align-content:start;max-height:460px;overflow-y:auto;}
+#view-app .nf26-ilist button{display:block;width:100%;text-align:left;padding:10px 12px;border:1.5px solid #E4E7EC;border-radius:12px;background:#FFFFFF;font:inherit;cursor:pointer;color:#101828;}
+#view-app .nf26-ilist button.on{border-color:#1F6B45;background:#F6FBF8;}
+#view-app .nf26-ilist b{display:flex;justify-content:space-between;gap:8px;font-size:15.5px;} #view-app .nf26-ilist b i{font-style:normal;min-width:22px;text-align:center;border-radius:999px;background:#D92D20;color:#FFFFFF;font-size:13px;padding:1px 7px;}
+#view-app .nf26-ilist small{display:block;font-size:14px;color:#344054;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+#view-app .nf26-ithread{border:1px solid #E4E7EC;border-radius:14px;display:flex;flex-direction:column;min-height:260px;}
+#view-app .nf26-ithread .nf26-hbody{max-height:340px;padding:14px;}
+#view-app .nf26-ithread .nf26-hsend{padding:10px 12px;border-radius:0 0 14px 14px;}
+html.nf-phone #view-app .nf26-inbox{grid-template-columns:1fr;}

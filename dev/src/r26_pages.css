@@ -1,0 +1,32 @@
+/* ===== Round 26: page-by-page fixes ===== */
+#view-app .nf26-side{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 12px;position:sticky;top:56px;z-index:5;background:#FFFFFF;padding:6px 0;}
+#view-app .nf26-side button{display:flex;align-items:center;justify-content:center;gap:8px;min-height:48px;border-radius:14px;border:1.5px solid #D0D5DD;background:#FFFFFF;font:inherit;font-size:16px;font-weight:800;color:#101828;cursor:pointer;}
+#view-app .nf26-side button b{min-width:26px;padding:1px 8px;border-radius:999px;background:#EEF0F3;font-size:14px;}
+#view-app .nf26-side button.c.on{background:var(--nf22-c-soft);border-color:var(--nf20-c);color:var(--nf22-c-ink);}
+#view-app .nf26-side button.s.on{background:#E4E7EC;border-color:#667085;color:#1D2939;}
+html #view-app#view-app#view-app#view-app .nf26-off{display:none !important;}
+html.nf-phone #page-orders .nf20-jump{display:none !important;}
+html #view-app#view-app#view-app#view-app .nf26-rowoff{display:none !important;}
+#view-app .nf26-more{display:block;width:100%;min-height:48px;margin:0;border:0;border-top:1px solid #EAECF0;background:#F9FAFB;font:inherit;font-size:15.5px;font-weight:800;color:#1F6B45;cursor:pointer;border-radius:0 0 14px 14px;}
+#view-app .nf26-more:hover{background:#F2F4F7;}
+#view-app#view-app#view-app table.nf25-t td.a .nf26-sec{display:none;}
+#view-app#view-app#view-app table.nf25-t tr.nf26-open td.a .nf26-sec{display:inline-flex;}
+#view-app#view-app#view-app table.nf25-t tr.nf26-open td.a .nf26-dots{display:none;}
+#view-app#view-app#view-app table.nf25-t tr.nf26-tap{cursor:pointer;}
+#view-app#view-app#view-app table.nf25-t tr.nf26-open td{background:#F6FBF8;}
+#view-app .nf26-dots{width:40px;height:36px;border-radius:10px;border:1.5px solid #E4E7EC;background:#FFFFFF;font-size:20px !important;font-weight:800;line-height:1;color:#344054;cursor:pointer;}
+#view-app .nf26-foldbtn{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;min-height:56px;padding:0 20px;margin:0 0 14px;border:1px solid #E4E7EC;border-radius:16px;background:#FFFFFF;font:inherit;font-size:18px;font-weight:800;color:#101828;cursor:pointer;text-align:left;}
+#view-app .nf26-foldbtn b{margin-left:8px;padding:1px 9px;border-radius:999px;background:#EEF0F3;font-size:14.5px;}
+#view-app .nf26-foldbtn small{display:block;font-size:14.5px;font-weight:500;color:#344054;}
+#view-app .nf26-foldbtn i{font-style:normal;font-size:24px;color:#1F6B45;transition:transform .15s;} #view-app .nf26-foldbtn.open i{transform:rotate(90deg);}
+html #view-app#view-app#view-app .nf26-folded{display:none !important;}
+#view-app .nf26-editp{margin:0 0 10px;min-height:44px;}
+#view-app table.nf26-ro input.bk-num{border-color:transparent !important;background:transparent !important;box-shadow:none !important;pointer-events:none;font-weight:700;color:#101828;}
+.sidebar .nav-item.nf26-none{display:none !important;}
+/* Orders: "+ New order" is at the top of each side already */
+#page-orders .nfo-tl .nfo-links > :nth-child(2), #page-orders .nfo-tl .nfo-l2 > :nth-child(2){display:none;}
+/* small text the review listed */
+#view-app .nfo-band, #view-app .nfo-band *{font-size:14px;}
+#view-app#view-app .conv-badge, #view-app#view-app .msg-badge, #view-app#view-app .pill, #view-app#view-app .nav-badge{font-size:13.5px !important;}
+html.nf-phone #view-app#view-app [class*="pill-"]{font-size:14px !important;}
+#view-app .nft-chart text, #view-app .nf-chart text{font-size:14px;}

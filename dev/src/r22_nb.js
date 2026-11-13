@@ -7,7 +7,7 @@ const NF22_NB_KINDS = [
   ['sales', 'Sales', 'What you sold each day', '<path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/>'],
   ['utang', 'Utang (who owes me)', 'Customers who will pay later', '<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M18 8v6M15 11h6"/>'],
   ['bills', 'What I owe suppliers', 'Bills you still have to pay', '<path d="M6 2h12v20l-3-2-3 2-3-2-3 2z"/><path d="M9 7h6M9 11h6"/>'],
-  ['stock', 'Stock count', 'How many of each item', '<path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/>'],
+  ['stock', 'Stock count or price list', 'Your items, how many, and prices', '<path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8"/>'],
   ['exp', 'Expenses', 'Rent, gas, salaries, repairs', '<rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 10h20"/>'],
   ['unsure', 'Not sure', 'Nifti will figure it out with you', '<circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><path d="M12 17h.01"/>']];
 // what each column can be, each with its own color, used the same way on every screen

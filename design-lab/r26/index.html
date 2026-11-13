@@ -1,0 +1,141 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Round 26 Options</title><meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<style>
+:root{--ink:#101828;--ink2:#344054;--line:#EAECF0;--g:#1F6B45;}
+*{box-sizing:border-box}html,body{margin:0}body{font:16px/1.5 "Plus Jakarta Sans",system-ui,sans-serif;color:var(--ink);background:#F2F4F7;-webkit-font-smoothing:antialiased}
+.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}.tin{max-width:1180px;margin:0 auto;padding:12px 20px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.tin a{color:var(--g);font-weight:700;text-decoration:none;font-size:14.5px}.tin h1{margin:0;font-size:18px;flex:1;min-width:180px}
+.jump{display:flex;gap:6px;flex-wrap:wrap}.jump a{padding:7px 12px;border-radius:999px;border:1.5px solid #D0D5DD;background:#fff;color:var(--ink);font-weight:700;font-size:14px}
+.wrap{max-width:1180px;margin:0 auto;padding:22px 20px 70px;display:grid;gap:44px}
+.part > h2{margin:0 0 4px;font-size:26px;letter-spacing:-.01em}.part > p{margin:0 0 16px;color:var(--ink2);max-width:820px}
+.opts{display:grid;gap:18px}.opt{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px 20px}
+.opt > header{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}.opt h3{margin:0;font-size:19px}
+.rec{background:var(--g);color:#fff;border-radius:999px;padding:3px 11px;font-size:13px;font-weight:800;letter-spacing:.04em}
+.note{margin:12px 0 0;font-size:15px;color:var(--ink2)}
+.frame{max-width:560px;border:1px solid var(--line);border-radius:16px;padding:16px;background:#fff}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 18px;border-radius:12px;border:0;background:var(--g);color:#fff;font:inherit;font-weight:800;font-size:15.5px}
+.btn.o{background:#fff;color:var(--ink);border:1.5px solid #D0D5DD}.lnk{font-weight:800;color:var(--g);font-size:15px}
+/* A. getting paid */
+.gp{display:grid;gap:10px}.gp .nm{font-size:18px;font-weight:800}.gp .amt{font-size:24px;font-weight:800}.gp small{font-size:14.5px;color:var(--ink2)}
+.row{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.acts{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:8px}.dot.r{background:#D92D20}.dot.y{background:#EAB308}.dot.g{background:#22A06B}
+.ln{display:flex;align-items:center;font-size:15.5px;padding:7px 0;border-top:1px solid var(--line)}.ln b{margin-left:auto;font-weight:700}
+.one{font-size:16px;font-weight:700}.one.r{color:#B42318}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.steps div{border-radius:12px;padding:10px 12px;background:#F9FAFB;border:1px solid var(--line)}.steps em{display:block;font-style:normal;font-size:13.5px;font-weight:800;letter-spacing:.05em;color:var(--ink2)}.steps b{font-size:15.5px}
+.steps .r{background:#FDECEC;border-color:#F9D0CE}.steps .r b{color:#B42318}
+/* B. blues */
+.board{display:grid;grid-template-columns:1fr 1fr;gap:14px}.col{border-radius:16px;padding:12px;border-top:5px solid var(--acc);background:var(--bg);border-left:1px solid var(--ln);border-right:1px solid var(--ln);border-bottom:1px solid var(--ln)}
+.col h4{margin:0;font-size:18px;color:var(--tx)}.col p{margin:0 0 10px;font-size:14.5px;color:var(--ink2)}
+.band{border-radius:10px 10px 0 0;padding:8px 12px;font-size:14px;font-weight:800;letter-spacing:.05em;display:flex;justify-content:space-between}
+.band.red{background:#FDECEC;color:#B42318}.band.wait{background:#DCE9FB;color:#1D4ED8}
+.card{background:#fff;border:1px solid var(--line);border-top:0;border-radius:0 0 10px 10px;padding:10px 12px;margin-bottom:10px;font-size:15px}.card b{display:block}
+.buy{--acc:#667085;--bg:#F5F6F8;--ln:#E4E7EC;--tx:#344054}
+.sw{display:inline-block;width:18px;height:18px;border-radius:5px;vertical-align:-3px;margin-right:6px}
+/* C. order card */
+.oc{border-radius:14px;background:#FDF1F0;padding:14px 16px;display:grid;gap:8px;max-width:520px}
+.pill{display:inline-flex;align-items:center;gap:6px;border:1px solid #D0D5DD;background:#fff;border-radius:999px;padding:2px 10px;font-size:14px;font-weight:700}.pill i{width:8px;height:8px;border-radius:50%;background:#EAB308}
+.oc .n{font-weight:800;font-size:16px}.oc .it{color:var(--ink2);font-size:15px}.oc .why{font-size:15.5px}.oc .why b{color:#B42318}.oc .amt{font-size:20px;font-weight:800}.oc .amt small{font-size:14.5px;font-weight:600;color:var(--ink2)}
+.oc .btn{min-height:46px}.oc .full{width:100%}
+.split{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center}
+/* D. drawer */
+.wk{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}.wk em,.mo em,.md em{font-style:normal;font-size:13.5px;font-weight:800;color:var(--ink2);text-align:center}
+.c{border-radius:10px;padding:8px 4px;text-align:center;min-height:56px;border:1px solid var(--line);background:#fff}.c b{display:block;font-size:15px}.c span{font-size:13.5px;font-weight:800}
+.c.g{background:#EAF6EF;border-color:#CDE9D8}.c.g span{color:#14532D}.c.r{background:#FDECEC;border-color:#F9D0CE}.c.r span{color:#B42318}.c.y{background:#FEF9C3;border-color:#F5E58A}.c.y span{color:#713F12}
+.c.n{background:#fff;border:1.5px dashed #98A2B3}.c.n span{color:var(--g)}.c.f{background:#F9FAFB;color:#98A2B3}.c.x{border:0;background:none}
+.mo{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}.mo .c{min-height:50px;padding:5px 2px}
+.md{display:grid;grid-template-columns:repeat(7,30px);gap:6px;justify-content:start}
+.d{font-style:normal;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-size:13.5px;font-weight:800}
+.d.g{background:#CDE9D8;color:#14532D}.d.r{background:#D92D20;color:#fff}.d.y{background:#FACC15;color:#422006}.d.n{border:2px dashed #667085;color:var(--ink)}.d.f{background:#F2F4F7;color:#98A2B3}.d.x{background:none}
+.sumline{font-size:15.5px;margin:10px 0 0}.sumline b.r{color:#B42318}
+.two{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start}
+.plist{display:grid;gap:0}
+@media (max-width:760px){.board,.two{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.wrap{padding:18px 14px 60px}.opt{padding:16px 14px}.mo .c span{font-size:12.5px}}
+</style></head><body>
+<div class="top"><div class="tin"><a href="../">‹ Design lab</a><h1>Round 26: options to pick from</h1>
+<div class="jump"><a href="#a">Getting paid</a><a href="#b">Selling blue</a><a href="#c">Order card</a><a href="#d">Cash drawer</a></div></div></div>
+<main class="wrap">
+
+<section class="part" id="a"><h2>A. Getting paid: a calmer customer row</h2>
+<p>Today one customer shows three colored chips side by side (overdue, they say they paid, promised) plus a link and two buttons. Three ways to say the same thing with less.</p>
+<div class="opts">
+<div class="opt"><header><h3>1. One line that says what to do</h3><span class="rec">MY PICK</span></header><div class="frame gp">
+  <div class="row"><div><div class="nm">Riverside Builders Corp</div><small>6 days late</small></div><div class="amt">₱17,504</div></div>
+  <div class="one r">They say they paid ₱14,500. Check your bank or GCash.</div>
+  <div class="acts"><button class="btn">Check payment</button><span class="lnk">More ›</span></div></div>
+  <p class="note">Nifti picks the one thing that matters most right now and says it in a sentence. The promise, the reminder and the rest sit behind "More". No chips at all.</p></div>
+<div class="opt"><header><h3>2. A short list, one dot each</h3></header><div class="frame gp">
+  <div class="row"><div class="nm">Riverside Builders Corp</div><div class="amt">₱17,504</div></div>
+  <div><div class="ln"><i class="dot r"></i>Late<b>6 days</b></div><div class="ln"><i class="dot y"></i>Says paid<b>₱14,500</b></div><div class="ln"><i class="dot g"></i>Promised<b>₱15,000 tomorrow</b></div></div>
+  <div class="acts"><button class="btn">Check payment</button><button class="btn o">Remind</button></div></div>
+  <p class="note">Everything stays visible, but stacked in rows with the label on the left and the number on the right. One small dot carries the color.</p></div>
+<div class="opt"><header><h3>3. Three plain boxes</h3></header><div class="frame gp">
+  <div class="row"><div class="nm">Riverside Builders Corp</div><div class="amt">₱17,504</div></div>
+  <div class="steps"><div class="r"><em>LATE</em><b>6 days</b></div><div><em>SAYS PAID</em><b>₱14,500</b></div><div><em>PROMISED</em><b>₱15,000 tomorrow</b></div></div>
+  <div class="acts"><button class="btn">Check payment</button><span class="lnk">Remind</span><span class="lnk">Cancel promise</span></div></div>
+  <p class="note">Same three facts in equal boxes, each under its own label, like the tables elsewhere. Only the late box is tinted.</p></div>
+</div></section>
+
+<section class="part" id="b"><h2>B. Selling to customers: 5 darker blues</h2>
+<p>The selling side is a light blue today, close to the "Waiting on them" band, so they blur together. Each option below shows the selling column next to that band and the gray buying side.</p>
+<div class="opts"><div class="opt"><header><h3><i class="sw" style="background:#1D4ED8"></i>1. Royal blue <small style="font-weight:600;color:#344054">#1D4ED8</small></h3><span class="rec">MY PICK</span></header>
+<div class="board"><div class="col" style="--acc:#1D4ED8;--bg:#F3F6FF;--ln:#D5E0FA;--tx:#1E40AF"><h4>Selling to customers</h4><p>5 orders · 4 customers</p>
+<div class="band red"><span>NEEDS YOU NOW</span><span>2</span></div><div class="card"><b>Bayview Construction Co.</b>Order 0855 · ₱87,360</div>
+<div class="band wait"><span>WAITING ON THEM</span><span>1</span></div><div class="card"><b>Corazon Welding Shop</b>Order 0871 · ₱14,280</div></div>
+<div class="col buy"><h4>Buying from suppliers</h4><p>3 orders · 2 suppliers</p><div class="band wait"><span>WAITING ON THEM</span><span>1</span></div><div class="card"><b>Cebu Aggregates</b>Order 0839 · ₱43,680</div></div></div>
+<p class="note">Clearly darker than the waiting band, still bright. The safest step.</p></div><div class="opt"><header><h3><i class="sw" style="background:#1E40AF"></i>2. Cobalt <small style="font-weight:600;color:#344054">#1E40AF</small></h3></header>
+<div class="board"><div class="col" style="--acc:#1E40AF;--bg:#F2F5FC;--ln:#CFDAF3;--tx:#1E3A8A"><h4>Selling to customers</h4><p>5 orders · 4 customers</p>
+<div class="band red"><span>NEEDS YOU NOW</span><span>2</span></div><div class="card"><b>Bayview Construction Co.</b>Order 0855 · ₱87,360</div>
+<div class="band wait"><span>WAITING ON THEM</span><span>1</span></div><div class="card"><b>Corazon Welding Shop</b>Order 0871 · ₱14,280</div></div>
+<div class="col buy"><h4>Buying from suppliers</h4><p>3 orders · 2 suppliers</p><div class="band wait"><span>WAITING ON THEM</span><span>1</span></div><div class="card"><b>Cebu Aggregates</b>Order 0839 · ₱43,680</div></div></div>
+<p class="note">One step deeper. Strong contrast with the pale waiting band.</p></div><div class="opt"><header><h3><i class="sw" style="background:#2B5C9E"></i>3. Denim <small style="font-weight:600;color:#344054">#2B5C9E</small></h3></header>
+<div class="board"><div class="col" style="--acc:#2B5C9E;--bg:#F2F6FB;--ln:#CFDDEE;--tx:#234B80"><h4>Selling to customers</h4><p>5 orders · 4 customers</p>
+<div class="band red"><span>NEEDS YOU NOW</span><span>2</span></div><div class="card"><b>Bayview Construction Co.</b>Order 0855 · ₱87,360</div>
+<div class="band wait"><span>WAITING ON THEM</span><span>1</span></div><div class="card"><b>Corazon Welding Shop</b>Order 0871 · ₱14,280</div></div>
+<div class="col buy"><h4>Buying from suppliers</h4><p>3 orders · 2 suppliers</p><div class="band wait"><span>WAITING ON THEM</span><span>1</span></div><div class="card"><b>Cebu Aggregates</b>Order 0839 · ₱43,680</div></div></div>
+<p class="note">A softer, grayer blue. Calm next to the cool gray buying side.</p></div><div class="opt"><header><h3><i class="sw" style="background:#0B63B6"></i>4. Ocean <small style="font-weight:600;color:#344054">#0B63B6</small></h3></header>
+<div class="board"><div class="col" style="--acc:#0B63B6;--bg:#F0F7FD;--ln:#CBE0F4;--tx:#0A4F91"><h4>Selling to customers</h4><p>5 orders · 4 customers</p>
+<div class="band red"><span>NEEDS YOU NOW</span><span>2</span></div><div class="card"><b>Bayview Construction Co.</b>Order 0855 · ₱87,360</div>
+<div class="band wait"><span>WAITING ON THEM</span><span>1</span></div><div class="card"><b>Corazon Welding Shop</b>Order 0871 · ₱14,280</div></div>
+<div class="col buy"><h4>Buying from suppliers</h4><p>3 orders · 2 suppliers</p><div class="band wait"><span>WAITING ON THEM</span><span>1</span></div><div class="card"><b>Cebu Aggregates</b>Order 0839 · ₱43,680</div></div></div>
+<p class="note">A touch of teal in it, so it reads differently from the waiting band's periwinkle.</p></div><div class="opt"><header><h3><i class="sw" style="background:#1E3A5F"></i>5. Navy ink <small style="font-weight:600;color:#344054">#1E3A5F</small></h3></header>
+<div class="board"><div class="col" style="--acc:#1E3A5F;--bg:#F2F5F9;--ln:#D3DCE7;--tx:#1E3A5F"><h4>Selling to customers</h4><p>5 orders · 4 customers</p>
+<div class="band red"><span>NEEDS YOU NOW</span><span>2</span></div><div class="card"><b>Bayview Construction Co.</b>Order 0855 · ₱87,360</div>
+<div class="band wait"><span>WAITING ON THEM</span><span>1</span></div><div class="card"><b>Corazon Welding Shop</b>Order 0871 · ₱14,280</div></div>
+<div class="col buy"><h4>Buying from suppliers</h4><p>3 orders · 2 suppliers</p><div class="band wait"><span>WAITING ON THEM</span><span>1</span></div><div class="card"><b>Cebu Aggregates</b>Order 0839 · ₱43,680</div></div></div>
+<p class="note">The darkest that still reads as blue, matching the landing page navy.</p></div></div></section>
+
+<section class="part" id="c"><h2>C. The order card: less crowded</h2>
+<p>Today the order number, status pill and item share one line with empty space after it, the reason wraps under them, and the green button is squeezed into the bottom-right corner. Three ways to give each thing its own place.</p>
+<div class="opts">
+<div class="opt"><header><h3>1. Reason first, button full width</h3><span class="rec">MY PICK</span></header><div class="oc">
+  <div class="why"><b>They say they paid.</b> Check your bank or GCash.</div>
+  <div class="row"><div><div class="n">Order 0810</div><div class="it">300 × Steel Rebar 12mm</div></div><div class="amt">₱17,504 <small>owes you</small></div></div>
+  <button class="btn full">Check payment</button></div>
+  <p class="note">What needs doing is the first thing you read. The order and amount sit on one row under it. The button runs the full width, so it is never squeezed. The "Billed" pill goes away: the sentence already says where the order is.</p></div>
+<div class="opt"><header><h3>2. Two columns: facts left, action right</h3></header><div class="oc split">
+  <div style="display:grid;gap:4px"><div class="n">Order 0810 <span class="pill"><i></i>Billed</span></div><div class="it">300 × Steel Rebar 12mm</div><div class="why"><b>They say they paid.</b></div></div>
+  <div style="display:grid;gap:6px;justify-items:end"><div class="amt">₱17,504</div><button class="btn">Check payment</button></div></div>
+  <p class="note">The right side holds only the amount and the button, lined up. The left holds the order. The long explanation is cut to four words.</p></div>
+<div class="opt"><header><h3>3. Status as a header strip</h3></header><div class="oc" style="padding:0;overflow:hidden">
+  <div style="background:#F9D0CE;padding:8px 16px;font-weight:800;color:#7A271A;font-size:15px">They say they paid · check your bank or GCash</div>
+  <div style="padding:12px 16px 14px;display:grid;gap:10px"><div class="row"><div><div class="n">Order 0810</div><div class="it">300 × Steel Rebar 12mm</div></div><div class="amt">₱17,504</div></div><button class="btn full">Check payment</button></div></div>
+  <p class="note">The status becomes a colored strip across the top of the card, so every card in a band starts with the same shape. Order, amount and button follow.</p></div>
+</div></section>
+
+<section class="part" id="d"><h2>D. Cash drawer: simple, but the whole month</h2>
+<p>You liked theme A's simple day chips and theme C's full month, so a missed week is never hidden. Three ways to put them together. Green is matched, red is short, yellow is over, dashed is not counted yet.</p>
+<div class="opts">
+<div class="opt"><header><h3>1. The month in theme A's chips</h3><span class="rec">MY PICK</span></header><div class="frame" style="max-width:520px"><div class="mo"><em>M</em><em>T</em><em>W</em><em>T</em><em>F</em><em>S</em><em>S</em><div class="c x"></div><div class="c x"></div><div class="c x"></div><div class="c x"></div><div class="c x"></div><div class="c x"></div><div class="c g"><b>1</b><span>✓</span></div><div class="c g"><b>2</b><span>✓</span></div><div class="c r"><b>3</b><span>−₱350</span></div><div class="c g"><b>4</b><span>✓</span></div><div class="c g"><b>5</b><span>✓</span></div><div class="c y"><b>6</b><span>+₱20</span></div><div class="c g"><b>7</b><span>✓</span></div><div class="c g"><b>8</b><span>✓</span></div><div class="c g"><b>9</b><span>✓</span></div><div class="c g"><b>10</b><span>✓</span></div><div class="c r"><b>11</b><span>−₱800</span></div><div class="c g"><b>12</b><span>✓</span></div><div class="c n"><b>13</b><span>Count</span></div><div class="c f"><b>14</b></div><div class="c f"><b>15</b></div><div class="c f"><b>16</b></div><div class="c f"><b>17</b></div><div class="c f"><b>18</b></div><div class="c f"><b>19</b></div><div class="c f"><b>20</b></div><div class="c f"><b>21</b></div><div class="c f"><b>22</b></div><div class="c f"><b>23</b></div><div class="c f"><b>24</b></div><div class="c f"><b>25</b></div><div class="c f"><b>26</b></div><div class="c f"><b>27</b></div><div class="c f"><b>28</b></div><div class="c f"><b>29</b></div><div class="c f"><b>30</b></div></div>
+  <p class="sumline">November: <b class="r">2 short (−₱1,150)</b> · 1 over (+₱20) · 9 matched</p></div>
+  <p class="note">The same chip from theme A, repeated for the whole month. Every problem day shows its amount without tapping. About a third of today's height.</p></div>
+<div class="opt"><header><h3>2. This week big, the month as dots beside it</h3></header><div class="frame" style="max-width:none"><div class="two">
+  <div><div class="md"><em>M</em><em>T</em><em>W</em><em>T</em><em>F</em><em>S</em><em>S</em><i class="d x"></i><i class="d x"></i><i class="d x"></i><i class="d x"></i><i class="d x"></i><i class="d x"></i><i class="d g">1</i><i class="d g">2</i><i class="d r">3</i><i class="d g">4</i><i class="d g">5</i><i class="d y">6</i><i class="d g">7</i><i class="d g">8</i><i class="d g">9</i><i class="d g">10</i><i class="d r">11</i><i class="d g">12</i><i class="d n">13</i><i class="d f">14</i><i class="d f">15</i><i class="d f">16</i><i class="d f">17</i><i class="d f">18</i><i class="d f">19</i><i class="d f">20</i><i class="d f">21</i><i class="d f">22</i><i class="d f">23</i><i class="d f">24</i><i class="d f">25</i><i class="d f">26</i><i class="d f">27</i><i class="d f">28</i><i class="d f">29</i><i class="d f">30</i></div><p class="sumline">Tap a dot to open that day.</p></div>
+  <div><b style="display:block;margin-bottom:8px">This week</b><div class="wk"><div class="c g"><b>9</b><span>✓</span></div><div class="c g"><b>10</b><span>✓</span></div><div class="c r"><b>11</b><span>−₱800</span></div><div class="c g"><b>12</b><span>✓</span></div><div class="c n"><b>13</b><span>Count</span></div><div class="c f"><b>14</b></div><div class="c f"><b>15</b></div></div><p class="sumline"><b class="r">₱800 short on Wed, Nov 11</b> · counted by Rico</p></div></div></div>
+  <p class="note">This week gets the big chips with amounts. The month sits beside it as small colored dots, so a red dot from two weeks ago still catches the eye.</p></div>
+<div class="opt"><header><h3>3. Dots on top, the problem days listed under</h3></header><div class="frame" style="max-width:520px"><div class="md"><em>M</em><em>T</em><em>W</em><em>T</em><em>F</em><em>S</em><em>S</em><i class="d x"></i><i class="d x"></i><i class="d x"></i><i class="d x"></i><i class="d x"></i><i class="d x"></i><i class="d g">1</i><i class="d g">2</i><i class="d r">3</i><i class="d g">4</i><i class="d g">5</i><i class="d y">6</i><i class="d g">7</i><i class="d g">8</i><i class="d g">9</i><i class="d g">10</i><i class="d r">11</i><i class="d g">12</i><i class="d n">13</i><i class="d f">14</i><i class="d f">15</i><i class="d f">16</i><i class="d f">17</i><i class="d f">18</i><i class="d f">19</i><i class="d f">20</i><i class="d f">21</i><i class="d f">22</i><i class="d f">23</i><i class="d f">24</i><i class="d f">25</i><i class="d f">26</i><i class="d f">27</i><i class="d f">28</i><i class="d f">29</i><i class="d f">30</i></div>
+  <div class="plist" style="margin-top:12px"><div class="ln"><i class="dot r"></i>Wed, Nov 11 · Rico<b>₱800 short</b></div><div class="ln"><i class="dot y"></i>Fri, Nov 6 · Liza<b>₱20 over</b></div><div class="ln"><i class="dot r"></i>Tue, Nov 3 · Liza<b>₱350 short</b></div><div class="ln"><i class="dot n" style="background:none;border:2px dashed #667085"></i>Today · Liza<b>Count the cash</b></div></div></div>
+  <p class="note">The month is the smallest it can be. Under it, only the days that need a look, newest first, with who counted. Matched days never take a line.</p></div>
+</div></section>
+</main></body></html>

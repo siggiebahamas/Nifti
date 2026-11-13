@@ -67,7 +67,7 @@ async function nf21Use(memoId, poId){
   if(!(amt >= 0.5)){ showToast('That bill has nothing left to pay.', 'warn'); return; }
   const bill = po.invoice.number || po.poNumber, who = sell ? po.buyerName : po.supplierName;
   if(!confirm(`Take ${fmtPHP(amt)} off bill ${bill}?\n\n${sell ? who + ' will owe' : 'You will owe ' + who} ${fmtPHP(room - amt)} on this bill.${Number(m.remaining) - amt >= 0.5 ? `\n${fmtPHP(Number(m.remaining) - amt)} of the credit stays for the next bill.` : ''}`)) return;
-  if(await nf21Take(m, po, sell, amt)){ showToast(`${fmtPHP(amt)} taken off ${bill}. The bill, ${sell ? 'their statement' : 'what you owe'} and the books are updated.${myBusiness && !sell ? ' (prototype)' : ''}`, 'success'); renderReturnsPage(); }
+  if(await nf21Take(m, po, sell, amt)){ showToast(`${fmtPHP(amt)} taken off ${bill}. The bill, ${sell ? 'their statement' : 'what you owe'} and the books are updated.`, 'success'); renderReturnsPage(); }
 }
 // a new bill picks up any credit waiting for that customer (or from that supplier) by itself
 async function nf21AutoTake(poId){
@@ -101,7 +101,7 @@ async function nf21SaveSupplierCredit(){
   else demoCreditMemos.unshift(m);
   NF21P.photo = null;
   const bills = nf21Bills(false, sup.id);
-  showToast(`Saved. ${fmtPHP(amt)} from ${sup.name} ${bills.length ? `can come off bill ${bills[0].po.invoice.number || bills[0].po.poNumber} now. Tap "Take it off" below.` : 'comes off your next bill from them by itself.'}${myBusiness ? ' (prototype: kept on this device)' : ''}`, 'success');
+  showToast(`Saved. ${fmtPHP(amt)} from ${sup.name} ${bills.length ? `can come off bill ${bills[0].po.invoice.number || bills[0].po.poNumber} now. Tap "Take it off" below.` : 'comes off your next bill from them by itself.'}`, 'success');
   renderReturnsPage();
 }
 function nf21Proof(id){

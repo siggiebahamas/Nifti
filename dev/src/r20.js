@@ -135,7 +135,7 @@ function nf20PaintWho(){
       <div class="nf20-pg">${NF20_GROUPS.map(g => `<section><h3>${g.label || 'Main pages'}</h3>${g.items.map(row).join('')}</section>`).join('')}</div>
       <div class="nf20-quick">${owner ? `<button type="button" class="nf20-lnk" onclick="nf20SetAll(true)">Turn all on</button><button type="button" class="nf20-lnk" onclick="nf20SetAll(false)">Turn all off</button>${custom ? `<button type="button" class="nf20-lnk bad" onclick="nf20RemoveRole()">Remove this role</button>` : ''}` : '<span>Only the owner can change these.</span>'}</div>
     </div>
-    <div class="nf20-sf"><span>${myBusiness ? 'Changes save as you tap (prototype: saved on this device until staff accounts sync).' : 'Changes save as you tap.'}</span><button type="button" class="btn btn-primary" onclick="nf20CloseWho()">Done</button></div>
+    <div class="nf20-sf"><span>${myBusiness ? 'Changes save for your whole team as you tap.' : 'Changes save as you tap. This is the demo shop, so they stay on this device.'}</span><button type="button" class="btn btn-primary" onclick="nf20CloseWho()">Done</button></div>
   </div>`;
   const rr = ov.querySelector('.nf20-roles'), on = rr && rr.querySelector('button.on');
   if(on && rr.scrollWidth > rr.clientWidth) rr.scrollLeft = Math.max(0, on.offsetLeft - rr.offsetLeft - 16);
