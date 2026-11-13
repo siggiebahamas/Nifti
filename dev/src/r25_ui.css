@@ -1,0 +1,99 @@
+/* ---------- Tables like the Prices table: a label on every column, big black values underneath ---------- */
+#view-app .nf25-tw{overflow-x:auto;margin:0 -1px;}
+#view-app#view-app#view-app table.nf25-t{width:100%;border-collapse:collapse;background:#FFFFFF;font-variant-numeric:tabular-nums;}
+#view-app#view-app#view-app table.nf25-t thead th{padding:12px 12px;font-size:13.5px !important;letter-spacing:.05em;text-transform:uppercase;font-weight:800;color:#344054;background:#F9FAFB;border-bottom:1px solid #EAECF0;text-align:center !important;white-space:nowrap;}
+#view-app#view-app#view-app table.nf25-t td{padding:13px 12px;border-bottom:1px solid #EAECF0;font-size:16px !important;line-height:1.4;color:#101828;text-align:center !important;vertical-align:middle;}
+#view-app#view-app#view-app table.nf25-t td *{font-size:inherit;}
+#view-app#view-app#view-app table.nf25-t td.t{font-weight:600;}
+#view-app#view-app#view-app table.nf25-t td.t b{font-weight:700;color:#101828;}
+#view-app#view-app#view-app table.nf25-t td small{display:block;margin-top:3px;font-size:14.5px !important;font-weight:500;color:#344054;}
+#view-app#view-app#view-app table.nf25-t td.n{white-space:nowrap;font-weight:800;}
+#view-app#view-app#view-app table.nf25-t td.n .bk-bad{color:#C81E1E;}
+#view-app#view-app#view-app table.nf25-t td.a{white-space:nowrap;width:1%;}
+#view-app#view-app#view-app table.nf25-t td.a .bk-row-a, #view-app#view-app#view-app table.nf25-t td.a .sl-right{display:inline-flex;gap:14px;align-items:center;justify-content:center;flex-wrap:nowrap;}
+#view-app#view-app#view-app table.nf25-t td.a button{font-size:15.5px !important;font-weight:700;}
+#view-app#view-app#view-app table.nf25-t td .bk-dim, #view-app#view-app#view-app table.nf25-t td.a .bk-dim{color:#344054 !important;opacity:1 !important;}
+#view-app#view-app#view-app table.nf25-t td .bk-tag{display:inline-block;padding:2px 10px;border-radius:999px;background:#FEF9C3;color:#713F12;font-weight:700;font-size:14px !important;}
+#view-app#view-app#view-app table.nf25-t td .bk-bad{color:#C81E1E;font-weight:700;}
+#view-app#view-app#view-app table.nf25-t .nf25-ic{display:inline-grid;place-items:center;width:30px;height:30px;margin-right:8px;vertical-align:middle;border-radius:9px;background:#EEF4FB;color:#1D4ED8;}
+#view-app#view-app#view-app table.nf25-t .nf25-ic .nf-t, #view-app#view-app#view-app table.nf25-t .nf25-ic svg{width:17px;height:17px;}
+#view-app#view-app#view-app table.nf25-t tr.nf25-g td{background:#F2F4F7;padding:8px 12px;font-size:13.5px !important;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#344054;text-align:left !important;}
+#view-app#view-app#view-app table.nf25-t tr.nf25-click{cursor:pointer;}
+#view-app#view-app#view-app table.nf25-t tr.nf25-click:hover td{background:#F9FAFB;}
+#view-app#view-app#view-app table.nf25-t tr.nfc-due td{background:#FFFBEB;}
+#view-app#view-app#view-app table.nf25-t tfoot td{background:#F9FAFB;border-top:2px solid #101828;border-bottom:0;font-size:16.5px !important;}
+#view-app#view-app#view-app table.nf25-t tfoot td b{font-weight:800;}
+/* sections that now hold a table: no inner padding so the table uses the full width, like Prices */
+#view-app section.bk-list:has(> .nf25-tw), #view-app .sl-card:has(.nf25-tw){padding-bottom:0;overflow:hidden;}
+#view-app section.bk-list > .nf25-tw, #view-app .sl-card > .nf25-tw{margin:0;}
+
+/* Getting paid: status as plain chips */
+#view-app .nf25-chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;align-items:center;}
+#view-app .nf25-chip{display:inline-block;padding:4px 11px;border-radius:999px;background:#F2F4F7;color:#1D2939;font-size:14.5px !important;font-weight:700;line-height:1.35;}
+#view-app .nf25-chip.bad{background:#FDECEC;color:#B42318;}
+#view-app .nf25-chip.warn{background:#FEF9C3;color:#713F12;}
+#view-app .nf25-chip.good{background:#E7F5EC;color:#14532D;}
+#view-app .nf25-cancel{font-size:14px !important;font-weight:700;}
+
+/* narrow spaces (phones, and the half-width columns on a computer): every row is a card, each value under its own label */
+#view-app .nf25-tw{container:nf25 / inline-size;}
+@container nf25 (max-width: 660px){
+  #view-app#view-app#view-app .nf25-tw table.nf25-t thead{display:none;}
+  #view-app#view-app#view-app .nf25-tw table.nf25-t, #view-app#view-app#view-app .nf25-tw table.nf25-t tbody, #view-app#view-app#view-app .nf25-tw table.nf25-t tfoot{display:block;}
+  #view-app#view-app#view-app .nf25-tw table.nf25-t tr{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px 14px;padding:14px 16px;border-bottom:1px solid #EAECF0;}
+  #view-app#view-app#view-app .nf25-tw table.nf25-t td{display:block !important;padding:0 !important;border:0 !important;background:none !important;text-align:left !important;font-size:16px !important;}
+  #view-app#view-app#view-app .nf25-tw table.nf25-t td::before{content:attr(data-l);display:block;margin-bottom:2px;font-size:12.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#475467;}
+  #view-app#view-app#view-app .nf25-tw table.nf25-t td.t{grid-column:1;font-size:17px !important;}
+  #view-app#view-app#view-app .nf25-tw table.nf25-t td.t::before, #view-app#view-app#view-app .nf25-tw table.nf25-t td.a::before{content:none;}
+  #view-app#view-app#view-app .nf25-tw table.nf25-t td.n{grid-column:2;grid-row:1;text-align:right !important;font-size:18px !important;}
+  #view-app#view-app#view-app .nf25-tw table.nf25-t td.n::before{text-align:right;}
+  #view-app#view-app#view-app .nf25-tw table.nf25-t td.d{grid-column:1 / -1;}
+  #view-app#view-app#view-app .nf25-tw table.nf25-t td.a{grid-column:1 / -1;width:auto;}
+  #view-app#view-app#view-app .nf25-tw table.nf25-t td.a .bk-row-a, #view-app#view-app#view-app .nf25-tw table.nf25-t td.a .sl-right{justify-content:flex-start;gap:18px;}
+  #view-app#view-app#view-app .nf25-tw table.nf25-t td.a > .btn, #view-app#view-app#view-app .nf25-tw table.nf25-t td.a > button.btn{width:100%;min-height:46px;}
+  #view-app#view-app#view-app .nf25-tw table.nf25-t td.nf25-empty{display:none !important;}
+  #view-app#view-app#view-app .nf25-tw table.nf25-t tr.nf25-g{display:block;padding:0;}
+  #view-app#view-app#view-app .nf25-tw table.nf25-t tr.nf25-g td{display:block !important;padding:8px 16px !important;background:#F2F4F7 !important;}
+  #view-app#view-app#view-app .nf25-tw table.nf25-t tr.nf25-g td::before{content:none;}
+  #view-app#view-app#view-app .nf25-tw table.nf25-t tfoot tr{background:#F9FAFB;border-top:2px solid #101828;}
+  #view-app#view-app#view-app .nf25-tw table.nf25-t tfoot td:empty{display:none !important;}
+  #view-app#view-app#view-app .nf25-tw table.nf25-t tfoot td.t::before{content:none;}
+  #view-app .nf25-tw .nf25-chips{justify-content:flex-start;}
+  #view-app#view-app#view-app .nf25-tw table.nf25-t td.w{grid-column:1 / -1;}
+}
+
+html #view-app#view-app#view-app#view-app .nf25-hide, html #view-app#view-app#view-app#view-app .nf25-hide.sl-tiles, html #view-app#view-app#view-app#view-app .nf25-hide.bk-tiles{display:none !important;}
+#view-app#view-app#view-app table.nf25-t thead th{font-size:14px !important;}
+
+/* ---------- Every peso (ledger): black, bigger, and the whole width used ---------- */
+#view-app#view-app#view-app table.nf23-gl th{font-size:13.5px !important;color:#344054;text-align:center !important;}
+#view-app#view-app#view-app table.nf23-gl td{font-size:16px !important;color:#101828 !important;text-align:center !important;}
+#view-app#view-app#view-app table.nf23-gl td.d{color:#101828 !important;font-weight:500;}
+#view-app#view-app#view-app table.nf23-gl td.p{color:#101828 !important;}
+#view-app#view-app#view-app table.nf23-gl :is(th,td).n{text-align:center !important;width:auto;}
+#view-app#view-app#view-app table.nf23-gl.money td.in{color:#15803D !important;}
+#view-app#view-app#view-app table.nf23-gl.money td.out{color:#C81E1E !important;}
+#view-app#view-app#view-app table.nf23-gl tr.tot td.w{text-align:left !important;}
+#view-app .nf23-glc .nf23-note{font-size:15px;color:#344054;}
+html.nf-phone #view-app#view-app#view-app table.nf23-gl td.p{display:block !important;grid-column:1;font-size:15px !important;color:#344054 !important;}
+html.nf-phone #view-app#view-app#view-app table.nf23-gl td.p:empty{display:none !important;}
+html.nf-phone #view-app#view-app#view-app table.nf23-gl td{text-align:left !important;}
+
+/* ---------- small and gray text found in the sweep ---------- */
+#view-app .nfo-dt span.m{font-size:12.5px !important;}
+#view-app .nfo-st span.k, #view-app .nfo-step{font-size:14px !important;}
+#view-app .nfo-amt span.l, #view-app .nfo-money span.l{font-size:14px !important;color:#344054 !important;}
+#view-app .nfw-gh, #view-app .nfw-gh *, #view-app .nfw-oc{font-size:14px !important;color:#344054 !important;}
+#view-app .nf-next5, #view-app small.nft-lists, #view-app .nft-legend, #view-app .nft-k{font-size:14px !important;color:#344054 !important;}
+#view-app .nf-iss-key .z, #view-app .nf-iss-key .k-b.z, #view-app .nf-iss-key .k-g.z{opacity:1 !important;color:#475467 !important;}
+#view-app .nf-iss-key b{font-size:14px !important;}
+#view-app .nfs-prog{font-size:14px !important;}
+#view-app .nf23-big{font-size:14px !important;}
+#view-app .gs-done{color:#344054 !important;}
+#view-app .sl-tile.nf22-zero b{color:#344054 !important;}
+#view-app#view-app#view-app table.nf24-tb th{font-size:13.5px !important;color:#344054;}
+#view-app#view-app#view-app table.nf24-tb td.w small, #view-app#view-app#view-app table.nf24-tb tfoot small{font-size:14px !important;color:#344054;}
+#view-app#view-app#view-app table.nf24-tb td.d{color:#101828;}
+#view-app .sl-dim, #view-app .bk-dim{color:#344054 !important;opacity:1 !important;}
+@container nf25 (max-width: 660px){ #view-app#view-app#view-app .nf25-tw table.nf25-t td.t, #view-app#view-app#view-app .nf25-tw table.nf25-t td.t b{font-weight:800;} }
+html.nf-phone #view-app#view-app#view-app#view-app table.nf23-gl tbody td.d, html.nf-phone #view-app#view-app#view-app#view-app table.nf23-gl tbody td.p{color:#101828 !important;font-size:14.5px !important;}

@@ -113,16 +113,16 @@ function nf23GlHtml(){
   const rows = LG.lines.filter(l => l.a === code).map(l => ({l, e: em[l.eid]})).filter(x => x.e && x.e.date >= r.from && x.e.date <= r.to && (!LGV.branch || (x.e.branch || '') === LGV.branch))
     .sort((a, b) => a.e.date.localeCompare(b.e.date));
   const what = (memo, p) => { const parts = String(memo || '').split(' · '); const main = parts.shift() || 'Entry', sub = parts.concat(p ? [p] : []).filter((x, i, a) => x && a.indexOf(x) === i).join(' · ');
-    return `<b>${escapeHtml(main)}</b>${sub ? `<small>${escapeHtml(sub)}</small>` : ''}`; };
+    return `<td class="w"><b>${escapeHtml(main)}</b></td><td class="p">${escapeHtml(sub)}</td>`; };
   const body = rows.map(({l, e}) => { run = lgR(run + sign * (l.d - l.c)); const off = e.status === 'reversed' || e.kind === 'reversal';
-    return `<tr onclick="lgShowEntry('${e.id}')" class="${off ? 'off' : ''}"><td class="d">${bkDayLabel(e.date)}</td><td class="w">${what(e.memo, l.p)}</td>
+    return `<tr onclick="lgShowEntry('${e.id}')" class="${off ? 'off' : ''}"><td class="d">${bkDayLabel(e.date)}</td>${what(e.memo, l.p)}
       <td class="n in">${l.d ? (money ? '+' : '') + bkPeso(l.d) : ''}</td><td class="n out">${l.c ? (money ? '−' : '') + bkPeso(l.c) : ''}</td><td class="n bal"><small>Balance</small>${bkPeso(run)}</td></tr>`; }).join('');
   return `<section class="panel-card bk-list nf23-glc"><div class="panel-head"><h2>Every peso, line by line</h2><div class="bk-head-act"><select aria-label="Which account" onchange="LGV.acct=this.value; renderLedgerPage()">${LG.accounts.slice().sort((a, b) => a.code.localeCompare(b.code)).map(a => `<option value="${a.code}" ${a.code === code ? 'selected' : ''}>${escapeHtml(a.name)}</option>`).join('')}</select>
       <button class="btn btn-outline" onclick="lgExport('gl')">⬇ CSV</button></div></div>
-    <div class="nf23-glw"><table class="nf23-gl ${money ? 'money' : ''}"><thead><tr><th class="d">Date</th><th class="w">What</th><th class="n">${money ? 'Money in' : 'Goes up'}<small>debit</small></th><th class="n">${money ? 'Money out' : 'Goes down'}<small>credit</small></th><th class="n">Balance</th></tr></thead><tbody>
-      <tr class="tot"><td class="d"></td><td class="w"><b>Balance at the start</b></td><td class="n"></td><td class="n"></td><td class="n bal">${bkPeso(open)}</td></tr>
-      ${body || '<tr><td class="w" colspan="5">No entries in this period.</td></tr>'}
-      <tr class="tot end"><td class="d"></td><td class="w"><b>Balance at the end</b></td><td class="n"></td><td class="n"></td><td class="n bal">${bkPeso(run)}</td></tr></tbody></table></div>
+    <div class="nf23-glw"><table class="nf23-gl ${money ? 'money' : ''}"><thead><tr><th class="d">Date</th><th class="w">What</th><th class="p">Who or where</th><th class="n">${money ? 'Money in' : 'Goes up'}</th><th class="n">${money ? 'Money out' : 'Goes down'}</th><th class="n">Balance</th></tr></thead><tbody>
+      <tr class="tot"><td class="d"></td><td class="w"><b>Balance at the start</b></td><td class="p"></td><td class="n"></td><td class="n"></td><td class="n bal">${bkPeso(open)}</td></tr>
+      ${body || '<tr><td class="w" colspan="6">No entries in this period.</td></tr>'}
+      <tr class="tot end"><td class="d"></td><td class="w"><b>Balance at the end</b></td><td class="p"></td><td class="n"></td><td class="n"></td><td class="n bal">${bkPeso(run)}</td></tr></tbody></table></div>
     <p class="nf23-note">Tap a line to see where it came from. Faded lines were undone (the record was changed or removed).</p></section>`;
 }
 // Tax books: every total says what it is
