@@ -44,6 +44,6 @@ for a, b in WORDS:
         print('  (r25 words: not found)', a[:60])
     S['text'] = S['text'].replace(a, b)
 
-P("function renderSidebarForViewAsRole(){", rd('r25.js') + "\n" + rd('r25_nb.js') + "\n" + rd('r25_ui.js') + "\nfunction renderSidebarForViewAsRole(){")
+P("function renderSidebarForViewAsRole(){", rd('r25.js') + "\n" + rd('r25_nb.js') + "\n" + rd('r25_ui.js') + "\n" + rd('r25_fil.js') + "\nfunction renderSidebarForViewAsRole(){")
 t = S['text']; i = t.rindex('  .settings-card:empty{display:none;}')
 S['text'] = t[:i] + '\n/* ===== Round 25 css begin ===== */\n' + rd('r25.css') + '\n' + rd('r25_fix.css') + '\n' + rd('r25_ui.css') + '\n/* ===== Round 25 css end ===== */\n' + t[i:]

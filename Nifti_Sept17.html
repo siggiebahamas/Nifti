@@ -31120,7 +31120,7 @@ function nf22NbPaint(){
         ask = `<div class="nf22-nbq"><p class="nf22-nbql">Line ${l.n} · question ${NB.qi + 1}</p><h3>Is "<span class="nf22-hand">${nf22Esc(raw)}</span>" ${q.k === 'who' ? 'the customer' : 'the item'} <b>${nf22Esc(guess)}</b>?</h3>
           ${q.k === 'what' ? `<p class="nf22-nbmath">${l.q} × ${bkPeso(l.price)} = ${bkPeso(l.price * Number(l.q))} <em>✓ same as the ${l.a} written</em></p>` : `<p class="nf22-nbmath">${nf22Esc(guess)} is one of your customers.</p>`}
           <div class="nf22-nbbtns"><button type="button" class="btn btn-primary" data-nb="yes" data-v="${q.i}|${q.k}">Yes</button><button type="button" class="btn btn-outline" data-nb="no" data-v="${q.i}|${q.k}">No, it's something else</button></div>
-          <p class="nf22-nbteach">Your answer teaches Nifti. Next time it reads "${nf22Esc(raw)}" by itself.</p></div>`; }
+          <p class="nf22-nbteach">Your answer teaches Nifti. Next time it reads "<b>${nf22Esc(raw)}</b>" by itself.</p></div>`; }
     }
     body = `<h2>${left ? 'A few quick questions' : 'All checked. Nice work.'}</h2><p class="nf22-nbsub">${left ? `${left} question${left > 1 ? 's' : ''} left. Green lines are already sure.` : 'Every line is sure, or skipped. Look it over, then tap Next.'}</p>
       ${ask}
@@ -32115,7 +32115,9 @@ function nb25Main(){
 // Buttons are moved, not copied, so everything they did still works.
 function nf25Txt(h){ const d = document.createElement('div'); d.innerHTML = h || ''; return (d.textContent || '').trim(); }
 function nf25Split(t){ const i = t.indexOf(' · '); return i < 0 ? [t, ''] : [t.slice(0, i), t.slice(i + 3)]; }
-function nf25By(m){ return m.findIndex(x => /^by\s/i.test(nf25Txt(x))); }
+function nf25By(m){ return m.findIndex(x => /^(by|ni)\s/i.test(nf25Txt(x))); }
+function nf25En(el){ if(!el) return ''; let t = ''; const w = document.createTreeWalker(el, NodeFilter.SHOW_TEXT); let n; while((n = w.nextNode())) t += (n.__en != null && n.nodeValue === n.__fil) ? n.__en : n.nodeValue; return t.replace(/\s+/g, ' ').trim(); }
+function nf25L(t){ try{ return typeof currentLanguage !== 'undefined' && currentLanguage === 'FIL' && typeof i18nTr === 'function' ? i18nTr(t) : t; }catch(e){ return t; } }
 function nf25Strip(s, re){ return String(s || '').replace(re, ''); }
 function nf25Peso(t){ const n = Number(String(t || '').replace(/[^\d.\-−]/g, '').replace('−', '-')); return isFinite(n) ? n : 0; }
 function nf25Parts(row){
@@ -32130,33 +32132,33 @@ function nf25Parts(row){
 const nf25Sm = a => a.filter(Boolean).length ? `<small>${a.filter(Boolean).join(' · ')}</small>` : '';
 const NF25_TBL = [
   {page: 'sales', h: /^Utang/, rename: 'Utang from shop sales', cols: [['Customer', 't'], ['Sales'], ['Oldest'], ['Owes', 'n'], ['', 'a']],
-    cells: p => [p.title, p.meta[0], nf25Strip(p.meta[1], /^oldest\s*/i), p.amt, p.act], total: 3},
+    cells: p => [p.title, p.meta[0], nf25Strip(p.meta[1], /^(oldest|pinakaluma)\s*/i), p.amt, p.act], total: 3},
   {page: 'sales', h: /^Discounts/, cols: [['Who', 't'], ['What happened', 'w'], ['Amount', 'n']], cells: p => [p.title, p.meta.join(' · '), p.amt], total: 2},
   {page: 'sales', test: s => !!s.querySelector('.bk-row [onclick^="bkReceipt"], .bk-row [onclick^="bkVoidSale"]'),
     cols: [['What was sold', 't'], ['Customer'], ['Paid with'], ['Time'], ['By'], ['Amount', 'n'], ['', 'a']],
-    cells: p => { const m = p.meta, bi = nf25By(m), extra = bi >= 0 ? m.slice(bi + 1) : m.slice(3); return [p.title + nf25Sm(extra), m[0], m[1], m[2], bi >= 0 ? nf25Strip(m[bi], /^by\s+/i) : '', p.amt, p.act]; }},  // no total: the Sales tile right above already shows it
+    cells: p => { const m = p.meta, bi = nf25By(m), extra = bi >= 0 ? m.slice(bi + 1) : m.slice(3); return [p.title + nf25Sm(extra), m[0], m[1], m[2], bi >= 0 ? nf25Strip(m[bi], /^(by|ni)\s+/i) : '', p.amt, p.act]; }},  // no total: the Sales tile right above already shows it
   {page: 'expenses', h: /^Waiting for your OK/, cols: [['What', 't'], ['Paid to'], ['When'], ['By'], ['Note', 'w'], ['Amount', 'n'], ['', 'a']],
-    cells: p => { const [c, v] = nf25Split(p.title), m = p.meta, bi = nf25By(m); return [c, v, (bi >= 0 ? m.slice(0, bi) : m).join(' · '), bi >= 0 ? nf25Strip(m[bi], /^by\s+/i) : '', bi >= 0 ? m.slice(bi + 1).join(' · ') : '', p.amt, p.act]; }},
+    cells: p => { const [c, v] = nf25Split(p.title), m = p.meta, bi = nf25By(m); return [c, v, (bi >= 0 ? m.slice(0, bi) : m).join(' · '), bi >= 0 ? nf25Strip(m[bi], /^(by|ni)\s+/i) : '', bi >= 0 ? m.slice(bi + 1).join(' · ') : '', p.amt, p.act]; }},
   {page: 'expenses', h: /^Vale/, cols: [['Staff', 't'], ['Note', 'w'], ['Amount', 'n']], cells: p => [p.title, p.meta.join(' · '), p.amt], total: 2},
   {page: 'expenses', h: /^All expenses/, cols: [['What', 't'], ['Paid to'], ['Paid from'], ['By'], ['Amount', 'n'], ['', 'a']],
     cells: p => { const [c, v] = nf25Split(p.title), tagged = [], m = p.meta.map(x => x.replace(/<span class="bk-tag">[^<]*<\/span>\s*/g, t => { tagged.push(t.trim()); return ''; }).trim()).filter(Boolean), bi = nf25By(m), before = bi >= 0 ? m.slice(0, bi) : m, after = (bi >= 0 ? m.slice(bi + 1) : []).concat(tagged);
-      const from = before.length ? before[before.length - 1] : '', tags = before.slice(0, -1); return [c + nf25Sm(tags.concat(after)), v, from, bi >= 0 ? nf25Strip(m[bi], /^by\s+/i) : '', p.amt, p.act]; }},
+      const from = before.length ? before[before.length - 1] : '', tags = before.slice(0, -1); return [c + nf25Sm(tags.concat(after)), v, from, bi >= 0 ? nf25Strip(m[bi], /^(by|ni)\s+/i) : '', p.amt, p.act]; }},
   {page: 'payroll', h: /^Vale/, cols: [['Staff', 't'], ['Note', 'w'], ['Amount', 'n']], cells: p => [p.title, p.meta.join(' · '), p.amt], total: 2},
   {page: 'payroll', h: /^Payroll$/, cols: [['Pay period', 't'], ['People'], ['Status', 'w'], ['Total', 'n']], cells: p => [p.title, p.meta[0], p.meta.slice(1).join(' · '), p.amt]},
   {page: 'money', h: /^Cash outlook/, cols: [['What', 't'], ['Who'], ['When'], ['Amount', 'n']], cells: p => { const [a, b] = nf25Split(p.title); return [a, b, p.meta.join(' · '), p.amt]; }},
   {page: 'collections', h: /^Bills, oldest first/, cols: [['Supplier', 't'], ['Order'], ['Due'], ['Status', 'w'], ['You owe', 'n'], ['', 'a']],
-    cells: p => [p.title, p.meta[0], nf25Strip(p.meta[1], /^due\s+/i), p.meta.slice(2).join(' · '), p.amt, p.act], total: 4},
+    cells: p => [p.title, p.meta[0], nf25Strip(p.meta[1], /^(due|dapat bayaran)\s+/i), p.meta.slice(2).join(' · '), p.amt, p.act], total: 4},
   {page: 'cheques', row: '.nfc-row', test: s => !!s.querySelector('.nfc-row'), cols: [['Date', 'd'], ['Who', 't'], ['Bank'], ['Check'], ['When'], ['Amount', 'n'], ['', 'a']],
     cells: p => [p.date, p.title, p.meta[0], nf25Strip(p.meta[1], /^check\s+/i), p.meta.slice(2).join(' · '), p.amt, p.act]},
 ];
-function nf25Head(sec){ const h = sec.querySelector('.panel-head h2, .nfc-h, h2, h3'); return h ? h.textContent.trim() : ''; }
+function nf25Head(sec){ const h = sec.querySelector('.panel-head h2, .nfc-h, h2, h3'); return h ? nf25En(h) : ''; }
 function nf25Tablize(sec, cfg){
   const rowSel = cfg.row || '.bk-row';
   const nodes = [...sec.querySelectorAll(rowSel + ', .bk-day')].filter(n => !n.closest('table.nf25-t'));
   const rows = nodes.filter(n => n.matches(rowSel)); if(!rows.length) return;
   const first = nodes[0], parent = first.parentElement;
   const tbl = document.createElement('table'); tbl.className = 'nf25-t'; tbl.dataset.nfCard = '1';
-  tbl.innerHTML = `<thead><tr>${cfg.cols.map(([t, c]) => `<th class="${c || ''}">${t}</th>`).join('')}</tr></thead>`;
+  tbl.innerHTML = `<thead><tr>${cfg.cols.map(([t, c]) => `<th class="${c || ''}">${t ? nf25L(t) : ''}</th>`).join('')}</tr></thead>`;
   const tb = document.createElement('tbody'); tbl.appendChild(tb);
   const wrap = document.createElement('div'); wrap.className = 'nf25-tw'; wrap.appendChild(tbl); parent.insertBefore(wrap, first);
   let sum = 0, n = 0;
@@ -32167,7 +32169,7 @@ function nf25Tablize(sec, cfg){
     ['onclick', 'role', 'tabindex'].forEach(a => { if(node.hasAttribute(a)) tr.setAttribute(a, node.getAttribute(a)); });
     if(node.hasAttribute('onclick')) tr.classList.add('nf25-click');
     cells.forEach((v, i) => { const td = document.createElement('td'), [lab, cls] = cfg.cols[i] || ['', ''];
-      if(cls) td.className = cls; if(lab) td.dataset.l = lab;
+      if(cls) td.className = cls; if(lab) td.dataset.l = nf25L(lab);
       if(v && v.nodeType === 1) td.appendChild(v); else td.innerHTML = (cls === 't' && i === 0 && p.ic ? `<span class="nf25-ic" aria-hidden="true">${p.ic}</span>` : '') + (v == null ? '' : v);
       if(!td.textContent.trim() && !td.querySelector('button')) td.classList.add('nf25-empty');
       tr.appendChild(td); });
@@ -32177,7 +32179,7 @@ function nf25Tablize(sec, cfg){
   // a total in the section header just repeats the row when there is only one
   const ph = sec.querySelector('.panel-head > span.bk-dim, .panel-head > .bk-dim');
   if(ph && /₱/.test(ph.textContent)) ph.classList.add('nf25-hide');
-  if(cfg.rename){ const h = sec.querySelector('.panel-head h2'); if(h && h.textContent !== cfg.rename) h.textContent = cfg.rename; }
+  if(cfg.rename){ const h = sec.querySelector('.panel-head h2'), want = nf25L(cfg.rename); if(h && h.textContent !== want) h.textContent = want; }
 }
 function nf25Lists(){
   const page = document.querySelector('#view-app .app-page.active'); if(!page) return;
@@ -32221,33 +32223,32 @@ function nf25Dedupe(page){
   page.querySelectorAll('.tx, .sl-tile, .bk-tile, .nft-tile').forEach(t => {
     const v = t.querySelector('.v') || t.querySelector('.bk-tile-v') || t.querySelector('b'), sub = t.querySelector('.s') || t.querySelector('.bk-tile-s') || t.querySelector(':scope > span'); if(!v || !sub || sub === v || sub.dataset.nf25) return;
     const val = (v.textContent || '').trim(); if(!/^₱[\d,.]+$/.test(val)) return;
-    const st = (sub.textContent || '').trim();
-    if(st === val + ' overdue'){ sub.textContent = 'All of it is overdue'; sub.dataset.nf25 = '1'; }
-    else if(st.startsWith(val + ' ')){ sub.textContent = 'All of it ' + st.slice(val.length + 1); sub.dataset.nf25 = '1'; }
+    const st = nf25En(sub);
+    if(st === val + ' overdue'){ sub.textContent = nf25L('All of it is overdue'); sub.dataset.nf25 = '1'; }
   });
   // Orders: a customer's balance at the top of their block is not repeated when the order card below already shows
   // it, or when the same customer already showed it higher up the page
   const seen = new Set();
   page.querySelectorAll('.nfo-tl').forEach(tl => {
     const mon = tl.querySelector('.nfo-h .nfo-money'), mb = mon && mon.querySelector('b'); if(!mb) return;
-    const amt = mb.textContent.trim(), name = ((tl.querySelector('.nfo-h .nm b') || {}).textContent || '').trim();
+    const amt = mb.textContent.trim(), name = nf25En(tl.querySelector('.nfo-h .nm b'));
     if(!/^₱[\d,.]+$/.test(amt) || amt === '₱0') return;
     const inCard = [...tl.querySelectorAll('.nfo-amt')].some(x => ((x.firstChild && x.firstChild.nodeValue) || '').trim() === amt);
     const key = name + '|' + amt, dup = seen.has(key); seen.add(key);
     mon.classList.toggle('nf25-hide', inCard || dup);
   });
   page.querySelectorAll('section.panel-card').forEach(sec => {
-    const h = sec.querySelector('.panel-head h2'); if(!h || h.textContent.trim() !== 'Cash outlook') return;
+    const h = sec.querySelector('.panel-head h2'); if(!h || nf25En(h) !== 'Cash outlook') return;
     const tb = sec.querySelector('table.lg-tbl'); if(!tb || tb.dataset.nf25co) return; tb.dataset.nf25co = '1';
     const ths = tb.querySelectorAll('thead th'); const names = ['When', 'Coming in', 'Going out', 'Cash at the end'];
-    ths.forEach((th, i) => { if(names[i]) th.textContent = names[i]; });
+    ths.forEach((th, i) => { if(names[i]) th.textContent = nf25L(names[i]); });
     const lab = {'7 days': 'Next 7 days', '30 days': 'Day 8 to 30', '60 days': 'Day 31 to 60', '90 days': 'Day 61 to 90'};
     const num = td => nf25Peso(td.textContent); let pin = 0, pout = 0;
     tb.querySelectorAll('tbody tr').forEach(tr => { const td = tr.children; if(td.length < 4) return;
-      const l = td[0].textContent.trim(); if(lab[l]) td[0].textContent = lab[l];
+      const l = nf25En(td[0]); if(lab[l]) td[0].textContent = nf25L(lab[l]);
       const cin = num(td[1]), cout = num(td[2]); const din = Math.round((cin - pin) * 100) / 100, dout = Math.round((cout - pout) * 100) / 100; pin = cin; pout = cout;
       td[1].textContent = din > 0 ? bkPeso(din) : '—'; td[2].textContent = dout > 0 ? bkPeso(dout) : '—';
-      [...td].forEach((c, i) => { if(names[i]) c.dataset.label = names[i]; }); });
+      [...td].forEach((c, i) => { if(names[i]) c.dataset.label = nf25L(names[i]); }); });
   });
 }
 
@@ -32257,27 +32258,27 @@ function nf25Owed(page){
   page.querySelectorAll('.sl-card').forEach(card => {
     const rows = [...card.querySelectorAll('.sl-row.col-row')]; if(!rows.length) return;
     // open promises already show in each customer's row; keep only past promises in the Promises card
-    const promCard = [...page.querySelectorAll('.sl-card')].find(c => /Promises to pay/.test(c.textContent) && c !== card);
+    const promCard = [...page.querySelectorAll('.sl-card')].find(c => c !== card && /Promises to pay/.test(nf25En(c.querySelector('.sl-card-h') || c)));
     const promBtns = {};
     if(promCard) promCard.querySelectorAll('.sl-row').forEach(r => { const t = (r.querySelector('.sl-t') || {}).textContent || '', btn = r.querySelector('button[onclick^="colCancelPromise"]');
       if(btn){ promBtns[t.split(' · ')[0].trim()] = btn; r.remove(); } });
     const tbl = document.createElement('table'); tbl.className = 'nf25-t nf25-owed'; tbl.dataset.nfCard = '1';
-    tbl.innerHTML = '<thead><tr><th class="t">Customer</th><th class="n">Owes</th><th class="w">Status</th><th class="a"></th></tr></thead><tbody></tbody>';
+    tbl.innerHTML = `<thead><tr><th class="t">${nf25L('Customer')}</th><th class="n">${nf25L('Owes')}</th><th class="w">${nf25L('Status')}</th><th class="a"></th></tr></thead><tbody></tbody>`;
     const tb = tbl.querySelector('tbody'); let sum = 0;
     rows.forEach(r => {
-      const name = (r.querySelector('.sl-t') || {}).textContent || '', ss = r.querySelectorAll('.sl-s'), line = ss[0] ? ss[0].innerHTML : '', parts = line.split(/\s+·\s+/);
-      const owes = parts[0] || '', owesN = nf25Peso(nf25Txt(owes)); sum += owesN;
+      const name = nf25En(r.querySelector('.sl-t')), ss = r.querySelectorAll('.sl-s'), line = nf25En(ss[0]), parts = line.split(/\s+·\s+/);
+      const owes = escapeHtml(parts[0] || ''), owesN = nf25Peso(parts[0]); sum += owesN;
       const chips = [];
-      parts.slice(1).forEach(x => { const t = nf25Txt(x);
+      parts.slice(1).forEach(t => {
         let m = t.match(/^(₱[\d,.]+) overdue, (\d+)d/); if(m){ chips.push(`<span class="nf25-chip bad">${nf25Peso(m[1]) === owesN ? 'Overdue' : m[1] + ' overdue'} · ${m[2]} day${m[2] === '1' ? '' : 's'}</span>`); return; }
         m = t.match(/^(₱[\d,.]+) to confirm/); if(m){ chips.push(`<span class="nf25-chip warn">${m[1]} they say they paid</span>`); return; }
-        chips.push(`<span class="nf25-chip">${t}</span>`); });
-      const st = ss[1] ? nf25Txt(ss[1].innerHTML) : '';
+        chips.push(`<span class="nf25-chip">${escapeHtml(t)}</span>`); });
+      const st = ss[1] ? nf25En(ss[1]) : '';
       if(st){ const good = ss[1].querySelector('.sl-good'), warn = ss[1].querySelector('.sl-warn'); const clean = st.replace(/^[^\w₱]+/u, '');
         const pb = promBtns[name.trim()]; chips.push(`<span class="nf25-chip ${good ? 'good' : warn ? 'warn' : ''}">${escapeHtml(clean)}</span>`);
         if(pb && good){ pb.className = 'sl-link nf25-cancel'; pb.textContent = 'Cancel promise'; chips.push(pb.outerHTML); } }
       const tr = document.createElement('tr');
-      tr.innerHTML = `<td class="t" data-l="Customer"><b>${escapeHtml(name)}</b></td><td class="n" data-l="Owes"><b>${owes}</b></td><td class="w" data-l="Status"><div class="nf25-chips">${chips.join('')}</div></td><td class="a"></td>`;
+      tr.innerHTML = `<td class="t" data-l="${nf25L('Customer')}"><b>${escapeHtml(name)}</b></td><td class="n" data-l="${nf25L('Owes')}"><b>${owes}</b></td><td class="w" data-l="${nf25L('Status')}"><div class="nf25-chips">${chips.join('')}</div></td><td class="a"></td>`;
       const act = r.querySelector('.sl-right'); if(act) tr.lastElementChild.appendChild(act);
       tb.appendChild(tr); r.remove();
     });
@@ -32301,6 +32302,213 @@ function nf25Owed(page){
   const start = () => { run(); const app = document.getElementById('view-app'); if(app && !app.dataset.nf25ui){ app.dataset.nf25ui = '1';
       new MutationObserver(() => { clearTimeout(t); t = setTimeout(run, 90); }).observe(app, {childList: true, subtree: true}); } };
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => setTimeout(start, 800)); else setTimeout(start, 800);
+})();
+
+/* ===== Round 25: Tagalog for everything added since Round 20 ===== */
+// Same rule as the main dictionary: plain Taglish a shop owner uses every day. Names, bank names, product
+// names and the sample handwriting stay as they are.
+const NF25_FIL = {
+// menu and page names
+"Home": "Home", "Stock": "Stock", "Books": "Libro", "Getting paid": "Singilin", "Overview": "Buod", "Payroll": "Sahod", "Team": "Team",
+"AI tools": "AI tools", "Notebook reader": "Basahin ang notebook", "Selling & delivery": "Benta at delivery", "Checks, taxes & team": "Tseke, buwis at team",
+"Checks": "Mga tseke", "Deliveries": "Mga delivery", "Settings": "Settings", "Who sees what": "Sino ang nakakakita ng ano",
+"Telegram alerts on your phone": "Telegram alerts sa phone mo", "Money owed": "Mga utang", "Every page": "Lahat ng pahina",
+"What's this page?": "Ano ang pahinang ito?", "{0} pages here": "{0} pahina dito", "In Getting paid:": "Sa Singilin:", "Overview, Sales": "Buod, Benta",
+"Selling to customers": "Benta sa customer", "Buying from suppliers": "Bili sa supplier",
+"What customers order and owe you": "Ano ang order at utang ng customer sa iyo", "What you order and owe suppliers": "Ano ang order at utang mo sa supplier",
+"Customer": "Customer", "Supplier": "Supplier", "Status": "Status", "Staff": "Staff", "Time": "Oras", "By": "Ni", "Owes": "Utang", "Oldest": "Pinakaluma",
+"Who": "Sino", "What": "Ano", "When": "Kailan", "Note": "Paalala", "Date": "Petsa", "Bank": "Bangko", "Check": "Tseke", "Order": "Order", "Due": "Takdang araw",
+"You owe": "Utang mo", "People": "Tao", "Pay period": "Panahon ng sahod", "What was sold": "Ano ang nabenta", "Paid with": "Paano binayaran",
+"Paid to": "Binayaran kay", "Paid from": "Kinuha sa", "What happened": "Ano ang nangyari", "Who or where": "Sino o saan", "Item": "Item", "Sales": "Benta",
+"Total": "Kabuuan", "Amount": "Halaga",
+// home
+"Magandang umaga, {0}": "Magandang umaga, {0}", "{0}, {1} {2} · {3} things today, {4} this week": "{0}, {1} {2} · {3} gagawin ngayon, {4} ngayong linggo",
+"Get set up": "Ihanda ang Nifti", "Cash today": "Pera ngayon", "expected": "inaasahan", "August so far": "Agosto hanggang ngayon",
+"All of it is overdue": "Lahat ay lampas na sa takdang petsa", "{0} · to count at closing": "{0} · bibilangin sa pagsara",
+"What to do": "Gagawin", "Act Today": "Gawin ngayon", "This Week": "Ngayong linggo", "Fine": "Ayos", "Bill": "Singilin", "Bill {0}": "Singilin ang {0}",
+"{0} was delivered · {1}": "Na-deliver ang {0} · {1}", "Cash count: {0} short": "Bilang ng pera: kulang {0}", "Missing & bad stock: {0}": "Nawala at sirang stock: {0}",
+"Deposit {0}'s cheque": "I-deposit ang tseke ni {0}", "{0} · BDO #{1}": "{0} · BDO #{1}", "Selling below cost: {0} given away": "Benta na lugi: {0} ang nawala",
+"{0} sale below cost · {1} discounts": "{0} bentang lugi · {1} diskwento", "Profit {0} this month": "Kita ngayong buwan: {0}", "{0} of every {1} sold stays with you.": "{0} sa bawat {1} na benta ang naiiwan sa iyo.",
+"Supplier payments on schedule": "Bayad sa supplier ay nasa oras", "Next one due {0} {1}.": "Susunod na bayarin: {0} {1}.",
+"Where every order is": "Nasaan ang bawat order", "All orders ›": "Lahat ng order ›", "Late": "Huli", "Pending": "Naghihintay", "Done": "Tapos",
+"New orders waiting for a yes, from you or them.": "Bagong order na naghihintay ng oo, mula sa iyo o sa kanila.", "Accepted. Being packed or loaded.": "Tinanggap. Iniimpake o kinakarga.",
+"Left the warehouse, to you or from you.": "Umalis na sa bodega, papunta sa iyo o galing sa iyo.", "Received. Bill it, or pay the supplier.": "Natanggap. Singilin, o bayaran ang supplier.",
+"Invoice sent. Waiting to be paid.": "Naipadala ang invoice. Naghihintay ng bayad.", "Done this month.": "Tapos ngayong buwan.", "to customers": "sa customer", "from suppliers": "sa supplier",
+"Waiting for customer's OK": "Hinihintay ang OK ng customer", "Delivered · bill it": "Na-deliver · singilin na", "Payment {0} days late": "Huli ang bayad nang {0} araw", "Arrives tomorrow": "Darating bukas",
+"What runs out": "Ano ang mauubos", "Days left": "Ilang araw pa", "Pesos on the shelf": "Halaga sa estante", "Stock levels: {0}-day critical": "Antas ng stock: {0} araw ang kritikal",
+"Smart colors": "Matalinong kulay", "use each supplier's delivery time and your {0}-day critical level.": "ginagamit ang tagal ng delivery ng bawat supplier at ang {0} araw na kritikal mo.",
+"Red · order today": "Pula · umorder ngayon", "Yellow · order soon": "Dilaw · umorder agad", "Green · covered": "Berde · sapat pa", "Black line · reorder point": "Itim na guhit · oras para umorder",
+"Order today": "Umorder ngayon", "Covered": "Sapat pa", "delivers in {0} days": "nagde-deliver sa loob ng {0} araw", "sells {0}/day": "nabebenta {0}/araw", "Main": "Main",
+"No sales recorded yet ({0}):": "Wala pang naitalang benta ({0}):", "Get alerts on your phone (Telegram, free)": "Kumuha ng alerts sa phone (Telegram, libre)",
+"Get Telegram alerts on your phone": "Kumuha ng Telegram alerts sa phone mo", "New orders, payments and low stock come to Telegram. It's free. You can practice first.": "Dumarating sa Telegram ang bagong order, bayad at paubos na stock. Libre ito. Puwede ka munang mag-practice.",
+"Set it up": "I-set up", "Not now": "Mamaya na",
+// orders
+"Customers on the left, suppliers on the right. Today is": "Customer sa kaliwa, supplier sa kanan. Ngayon ay", "Needs you now": "Kailangan ka ngayon", "Coming up": "Paparating",
+"Waiting on them": "Hinihintay sila", "All good": "Ayos lahat", "{0} orders · {1} customers": "{0} order · {1} customer", "{0} orders · {1} suppliers": "{0} order · {1} supplier",
+"owed to you": "utang sa iyo", "you owe": "utang mo", "owes you": "utang sa iyo", "owes nothing": "walang utang", "you owe nothing": "wala kang utang", "orders · last": "order · huli",
+"not billed": "hindi pa nasisingil", "not billed yet. Send the bill so they can pay.": "hindi pa nasisingil. Ipadala ang singil para makabayad sila.", "Delivered {0} days ago,": "Na-deliver {0} araw na ang nakalipas,",
+"Send the bill": "Ipadala ang singil", "They say they paid.": "Sabi nila nagbayad na sila.", "Check your bank or GCash, then confirm it.": "Tingnan ang bangko o GCash mo, tapos kumpirmahin.",
+"Check payment": "Tingnan ang bayad", "Needed in {0} days.": "Kailangan sa loob ng {0} araw.", "Say yes, or change it.": "Sabihing oo, o baguhin.", "Answer": "Sagutin", "new order": "bagong order",
+"Price hold ends tomorrow.": "Bukas matatapos ang hawak na presyo.", "Waiting for their OK.": "Hinihintay ang OK nila.", "for their OK": "para sa OK nila", "Remind them": "Paalalahanan sila",
+"Paid {0} days ago.": "Nagbayad {0} araw na ang nakalipas.", "All done.": "Tapos na lahat.", "paid": "bayad na", "✓ Done": "✓ Tapos", "Arrives tomorrow.": "Darating bukas.", "Arrives in {0} days.": "Darating sa loob ng {0} araw.",
+"Count what came so your stock updates.": "Bilangin ang dumating para ma-update ang stock mo.", "Count it": "Bilangin", "order": "order", "Due in {0} days.": "Bayaran sa loob ng {0} araw.", "Pay this bill.": "Bayaran ang bill na ito.",
+"They are packing it.": "Iniimpake na nila.", "No open orders": "Walang bukas na order", "+ Invite a customer": "+ Mag-imbita ng customer", "+ Invite a supplier": "+ Mag-imbita ng supplier",
+"Every customer has an order going.": "May order ang bawat customer.", "Late or today: do it now": "Huli o ngayon: gawin na", "Billed": "Nasingil na", "On the way": "Papunta na", "Welding supplies ·": "Gamit sa welding ·",
+// messages
+"{0} new": "{0} bago", "Chats": "Mga chat", "Take a photo": "Kumuha ng litrato", "Announce to all customers": "Ianunsyo sa lahat ng customer",
+"{0} · Delivered · your turn": "{0} · Na-deliver · ikaw na", "{0} · Billed · your turn": "{0} · Nasingil · ikaw na", "{0} · On the way · your turn": "{0} · Papunta · ikaw na", "{0} · To confirm · your turn": "{0} · Kukumpirmahin · ikaw na",
+// stock
+"{0} on the way": "{0} papunta", "items running out": "item na paubos", "at what you paid": "sa presyong binayaran mo", "See the order": "Tingnan ang order", "Read a notebook": "Basahin ang notebook", "Main — Marikina": "Main — Marikina",
+// money overview
+"Your profit, where the money went, and who owes who.": "Ang kita mo, saan napunta ang pera, at sino ang may utang kanino.", "Next money in and out": "Susunod na pasok at labas ng pera",
+"Invoice {0} · {1}": "Invoice {0} · {1}", "Payroll (same as last)": "Sahod (gaya ng huli)", "{0} more in the next {1} days are already counted in the table above.": "Kasama na sa talaan sa itaas ang {0} pa sa susunod na {1} araw.",
+"How the business is doing": "Kumusta ang negosyo", "Last {0} months": "Huling {0} buwan", "Average {0}": "Karaniwan {0}", "Sales, {0} months": "Benta, {0} buwan", "Profit, {0} months": "Kita, {0} buwan",
+"Best month": "Pinakamagandang buwan", "Loss month": "Buwang lugi", "Biggest cost: Repairs · {0} {1}": "Pinakamalaking gastos: Pagkumpuni · {0} {1}", "The months before August came from the shop's old notebook.": "Ang mga buwan bago Agosto ay galing sa lumang notebook ng tindahan.",
+"See how →": "Tingnan kung paano →", "Best customers": "Pinakamagagaling na customer", "this year": "ngayong taon", "Best-selling items": "Pinakamabentang item", "Where you buy the most": "Saan ka pinakamaraming bumibili",
+"When": "Kailan", "Coming in": "Papasok", "Going out": "Lalabas", "Cash at the end": "Pera sa dulo", "Next 7 days": "Susunod na 7 araw", "Day {0} to {1}": "Araw {0} hanggang {1}",
+"How does this work?": "Paano ito gumagana?",
+// sales
+"Today's sales, then count the cash at closing.": "Benta ngayon, tapos bilangin ang pera sa pagsara.", "Utang from shop sales": "Utang mula sa benta sa tindahan", "Discounts · Today": "Diskwento · Ngayon",
+"{0} · Today": "{0} · Ngayon", "Utang": "Utang", "Cash": "Cash", "GCash": "GCash", "Edit ›": "I-edit ›", "Walk-in": "Walk-in",
+"Count the cash": "Bilangin ang pera", "Nifti already knows what should be in the drawer.": "Alam na ng Nifti kung magkano dapat ang laman ng drawer.", "How much cash is in the drawer?": "Magkano ang pera sa drawer?",
+"Count it, then type the total": "Bilangin, tapos i-type ang kabuuan", "Change fund (sukli) each morning:": "Panukli tuwing umaga:", "Alert me when short by": "Sabihan ako kapag kulang nang", "or more": "o higit pa",
+"Cash drawer by person": "Drawer ng pera bawat tao", "Tap a day for its item-by-item tally": "I-tap ang araw para makita ang bawat item", "Extra protections · {0} on": "Dagdag na proteksyon · {0} naka-on", "Edit history": "Kasaysayan ng pagbabago",
+"Who counts:": "Sino ang nagbibilang:", "Take turns: {0} → {1}": "Salitan: {0} → {1}", "Matched": "Tugma", "Scheduled": "Nakatakda", "To Count": "Bibilangin", "{0} over": "sobra {0}",
+// expenses, payroll
+"draft, not paid": "draft, hindi pa bayad", "paid {0}, {1} {2} from the drawer": "binayaran {0}, {1} {2} mula sa drawer", "{0} people": "{0} tao",
+// getting paid
+"Who owes you, and what you owe your suppliers, on one page.": "Sino ang may utang sa iyo, at ano ang utang mo sa supplier, sa isang pahina.", "Overdue · {0} days": "Lampas na · {0} araw", "Overdue · {0} day": "Lampas na · {0} araw",
+"{0} they say they paid": "{0} sabi nila bayad na", "Promised {0} by tomorrow": "Nangakong magbabayad ng {0} bukas", "Cancel promise": "Kanselahin ang pangako", "{0} supplier": "{0} supplier",
+"Bills, oldest first": "Mga bayarin, pinakaluma muna",
+// prices
+"What each item costs, what you sell it for, and every price change.": "Magkano ang puhunan sa bawat item, magkano mo ibinebenta, at bawat pagbabago ng presyo.", "{0} items have no cost yet": "{0} item ang wala pang puhunan",
+"no cost": "walang puhunan", "Announce new prices": "Ianunsyo ang bagong presyo", "Tell your buyers about new prices, and see what your suppliers are changing.": "Sabihan ang mga buyer mo ng bagong presyo, at tingnan ang binabago ng supplier mo.",
+"{0} price increase starts {1} {2} {3}. Order before then to keep today's price.": "{0} pagtaas ng presyo simula {1} {2} {3}. Umorder bago noon para makuha ang presyo ngayon.", "starts {0} {1} {2} ·": "simula {0} {1} {2} ·", "None.": "Wala.",
+"Rebar {0}mm sold below cost": "Rebar {0}mm naibenta nang lugi",
+// to check
+"Money lost or at risk": "Perang nawala o nanganganib", "Looks odd, double-check": "Kakaiba, tingnan ulit", "Not done yet": "Hindi pa tapos", "Paperwork missing": "Kulang ang papeles",
+"Team spending": "Gastos ng team", "A cap for each person": "Limitasyon bawat tao", "Orders above your agreed price": "Order na lampas sa napagkasunduang presyo", "Who delivers on time": "Sino ang nagde-deliver sa oras",
+"Orders your people sent above the price you agreed with the supplier.": "Mga order ng tao mo na lampas sa presyong napagkasunduan ninyo ng supplier.", "Rebar {0}mm ordered above your agreed price": "Rebar {0}mm inorder nang lampas sa napagkasunduang presyo",
+// books
+"What changed this month, what you own and owe, and every peso line by line. Your profit for the month is on": "Ano ang nagbago ngayong buwan, ano ang ari-arian at utang mo, at bawat piso isa-isa. Nasa", "Read my old notebook": "Basahin ang luma kong notebook",
+"What changed": "Ano ang nagbago", "What you own and owe": "Ari-arian at utang mo", "Every peso (ledger)": "Bawat piso (ledger)", "Every peso, line by line": "Bawat piso, isa-isa",
+"For your accountant: trial balance, journal and accounts": "Para sa accountant mo: trial balance, journal at mga account", "Account {0}": "Account {0}", "{0} vs {1}.": "{0} kumpara sa {1}.", "vs {0} {1}": "kumpara sa {0} {1}",
+"As of": "Hanggang", "Money in": "Pumasok", "Money out": "Lumabas", "Balance": "Natitira", "Balance at the start": "Natitira sa simula", "Balance at the end": "Natitira sa dulo",
+"Tap a line to see where it came from. Faded lines were undone (the record was changed or removed).": "I-tap ang linya para makita kung saan galing. Ang malabong linya ay binawi (binago o inalis ang talaan).",
+"Main drawer": "Main na drawer", "Payment": "Bayad", "Shop sale": "Benta sa tindahan", "Shop sales": "Benta sa tindahan",
+"Summaries for your bookkeeper: your sales and purchases, filled in from your invoices. Download it for your bookkeeper.": "Buod para sa bookkeeper mo: benta at bili mo, galing sa mga invoice mo. I-download para sa bookkeeper mo.",
+"Pick the month": "Piliin ang buwan", "Check the totals": "Tingnan ang mga kabuuan", "Download for Excel": "I-download para sa Excel", "Tap \"Download for Excel\"": "I-tap ang \"I-download para sa Excel\"",
+"Invoice and customer": "Invoice at customer", "Invoice and supplier": "Invoice at supplier", "Before VAT": "Bago ang VAT", "VAT {0}%": "VAT {0}%", "Tax withheld": "Buwis na kinaltas", "Total sales": "Kabuuang benta", "Total purchases": "Kabuuang bili",
+"Month total": "Kabuuan ng buwan", "Output VAT {0}%": "Output VAT {0}%", "Input VAT {0}%": "Input VAT {0}%", "none this month": "wala ngayong buwan", "nothing exempt this month": "walang exempt ngayong buwan", "{0} invoice": "{0} invoice",
+"Show the TIN column": "Ipakita ang TIN", "{0} · Input VAT": "{0} · Input VAT", "{0} · Output VAT": "{0} · Output VAT",
+// tax forms
+"Forms your customers owe you": "Mga form na utang ng customer mo", "Forms you owe your suppliers": "Mga form na utang mo sa supplier", "Got the form": "Natanggap ang form", "I got it": "Natanggap ko", "I gave it": "Naibigay ko",
+"Make the form": "Gawin ang form", "Given": "Naibigay", "Missing": "Kulang", "Not due yet": "Hindi pa takdang araw", "Undo": "Ibalik", "See details": "Tingnan ang detalye", "{0}% collected": "{0}% nakuha", "{0}% given": "{0}% naibigay",
+"{0} form missing": "{0} form ang kulang", "{0} form to give": "{0} form na ibibigay", "{0} payment": "{0} bayad", "You have forms for": "May form ka para sa",
+"one row per customer per quarter": "isang linya bawat customer bawat quarter", "one row per supplier per quarter": "isang linya bawat supplier bawat quarter",
+"Tax your customers kept in {0}": "Buwis na kinaltas ng customer mo noong {0}", "Tax you kept from suppliers in {0}": "Buwis na kinaltas mo sa supplier noong {0}",
+"A customer pays you {0}% less and gives that {1}% to BIR": "Nagbabayad sa iyo ang customer nang {0}% kulang at ibinibigay ang {1}% sa BIR", "You paid a supplier {0}% less and gave that {1}% to BIR": "Nagbayad ka sa supplier nang {0}% kulang at ibinigay ang {1}% sa BIR",
+"They owe you a BIR {0} form as proof": "May utang silang BIR {0} form bilang patunay", "You must give them a BIR {0} form as proof": "Kailangan mo silang bigyan ng BIR {0} form bilang patunay",
+"Give the forms to your bookkeeper: you pay that much less tax": "Ibigay ang mga form sa bookkeeper mo: mas mababa ang buwis na babayaran mo", "Tap \"Make the form\": the numbers are filled in for you": "I-tap ang \"Gawin ang form\": nakalagay na ang mga numero",
+"by the {0}th after each quarter.": "bago mag-{0} pagkatapos ng bawat quarter.", ": without them you pay this tax twice.": ": kung wala ito, dalawang beses mong babayaran ang buwis na ito.",
+// returns
+"Credits you owe customers": "Credit na utang mo sa customer", "Credits suppliers owe you": "Credit na utang ng supplier sa iyo", "+ Give a credit": "+ Magbigay ng credit", "+ Add their credit": "+ Idagdag ang credit nila",
+"Used credits": "Nagamit na credit", "Problems reported": "Mga naireklamong problema", "Give the credit": "Ibigay ang credit", "It comes off their next bill": "Ibabawas sa susunod nilang bill", "It waits on their account": "Naghihintay sa account nila",
+"✓ Comes off their next bill by itself": "✓ Kusang ibabawas sa susunod nilang bill", "{0} credit waiting. It comes off their next bill by itself.": "{0} credit na naghihintay. Kusang ibabawas sa susunod nilang bill.",
+"{0} credit waiting. It comes off your next bill from them.": "{0} credit na naghihintay. Ibabawas sa susunod mong bill mula sa kanila.", "Credited": "Na-credit", "Used": "Nagamit", "off a bill": "bawas sa bill", "off your bill": "bawas sa bill mo",
+"Take {0} off {1} now": "Ibawas ang {0} sa {1} ngayon", "You told": "Sinabihan mo si", "took": "kinuha", "got": "nakuha", "reported: Damaged goods": "inireklamo: Sirang paninda",
+"When a customer returns items or gets money off for a bad item, give a credit here. It comes off their next bill by itself.": "Kapag nagbalik ang customer o binawasan dahil sa sirang item, magbigay ng credit dito. Kusang ibabawas sa susunod nilang bill.",
+// checks
+"Checks customers gave you, and checks you gave. Nifti tells you the day each one can go to the bank.": "Mga tsekeng ibinigay sa iyo, at mga tsekeng ibinigay mo. Sinasabi ng Nifti kung kailan puwedeng i-deposit ang bawat isa.",
+"Write down each check you get": "Isulat ang bawat tsekeng natatanggap mo", "Deposit it on the day Nifti shows": "I-deposit sa araw na ipinapakita ng Nifti", "Tap when it clears or bounces": "I-tap kapag pumasok o tumalbog",
+"＋ Add a check you got": "＋ Idagdag ang tsekeng natanggap mo", "Deposited": "Naideposito", "In the bank, waiting to clear": "Nasa bangko, hinihintay pumasok", "Will come out of your bank soon": "Lalabas sa bangko mo maya-maya",
+"keep enough money in the account": "panatilihing sapat ang pera sa account", "Ask for a new check": "Humingi ng bagong tseke", "Check payments": "Bayad sa tseke", "Check number": "Numero ng tseke",
+"{0} check can go to the bank now": "{0} tseke ang puwede nang i-deposit", "{0} check · deposit on the date shown": "{0} tseke · i-deposit sa petsang nakalagay", "{0} check · usually {1} to {2} days": "{0} tseke · karaniwan {1} hanggang {2} araw",
+"{0} check · last {1} days": "{0} tseke · huling {1} araw", "dated today": "petsa ngayon", "dated tomorrow": "petsa bukas", "dated in {0} days": "petsa sa loob ng {0} araw", "dated {0} days ago": "petsa {0} araw na ang nakalipas",
+"This buyer bounced {0} cheque before.": "Tumalbog na ang {0} tseke ng buyer na ito dati.",
+// routes
+"Make today's delivery list for your driver. They tick each stop on their phone and bring back the cash.": "Gawin ang listahan ng delivery ngayon para sa driver mo. Tsini-check nila ang bawat stop sa phone at ibinabalik ang pera.",
+"Pick what to deliver and what to collect": "Piliin ang ide-deliver at sisingilin", "Send the list to your driver": "Ipadala ang listahan sa driver mo", "Watch each stop turn green": "Panoorin ang bawat stop na maging berde",
+"Today · {0} stops": "Ngayon · {0} stop", "Stops done": "Tapos na stop", "Money collected": "Perang nasingil", "Next stop": "Susunod na stop", "On the road": "Nasa daan", "My run": "Ang biyahe ko", "Edit stops": "Baguhin ang mga stop",
+"Send list on Viber": "Ipadala sa Viber", "To collect {0}": "Sisingilin {0}", "Couldn't do": "Hindi nagawa", "Couldn't: Closed": "Hindi nagawa: Sarado", "Try again": "Subukan ulit",
+// follow-ups and find customers
+"Who to call or message today": "Sino ang tatawagan o ime-message ngayon", "Orders waiting for the customer's yes": "Order na naghihintay ng oo ng customer", "People who may buy soon": "Mga posibleng bumili agad", "Old customers to win back": "Mga dating customer na babalikan",
+"{0} order · {1} need you": "{0} order · {1} kailangan ka", "opened {0}×": "binuksan {0}×", "Find customers & suppliers": "Maghanap ng customer at supplier", "Businesses that buy what you sell": "Negosyong bumibili ng ibinebenta mo",
+"Where to buy cheaper or faster": "Saan bibili nang mas mura o mas mabilis", "Your leads": "Mga lead mo", "Type of business": "Uri ng negosyo", "Area": "Lugar", "They buy": "Bumibili sila ng", "About": "Tungkol",
+"Save as a lead": "I-save bilang lead", "Send my price list": "Ipadala ang price list ko", "Buys {0} things you sell": "Bumibili ng {0} bagay na ibinebenta mo", "a month in supplies": "kada buwan sa supplies",
+"Hardware stores": "Hardware", "Contractors": "Contractor", "Fabricators": "Fabricator",
+"Sample businesses for the demo. In your account, this lists real buyers on Nifti who chose to be found.": "Halimbawang negosyo para sa demo. Sa sarili mong account, makikita dito ang tunay na buyer sa Nifti na gustong mahanap.",
+"New customers who buy what you sell, and suppliers who can sell to you for less. Nobody sees your prices or profit.": "Bagong customer na bumibili ng ibinebenta mo, at supplier na mas mura. Walang nakakakita ng presyo o kita mo.",
+"People who asked about a price or may buy soon. They used to live in Follow-ups.": "Mga nagtanong ng presyo o baka bumili agad. Dati silang nasa Follow-ups.",
+// team
+"Read a notebook someone left": "Basahin ang notebook na iniwan ng iba", "Due today": "Takdang araw ngayon", "{0} open task": "{0} bukas na gawain", "You": "Ikaw",
+// who sees what
+"Changes save as you tap.": "Nase-save habang nagta-tap ka.", "Everyone has Home": "Lahat ay may Home", "Main pages": "Pangunahing pahina", "Turn all on": "I-on lahat", "Turn all off": "I-off lahat", "+ New role": "+ Bagong role",
+"See Nifti as a Cashier": "Tingnan ang Nifti bilang Cashier", "Nobody has this role yet · sees {0} of {1} pages": "Wala pang may role na ito · nakakakita ng {0} sa {1} pahina", "General Manager": "General Manager", "Finance": "Finance", "Driver": "Driver",
+"You're the owner, so you always see every page. Pick a role, then switch pages on or off for them.": "Ikaw ang may-ari, kaya lagi mong nakikita ang lahat. Pumili ng role, tapos i-on o i-off ang mga pahina para sa kanila.",
+// online store
+"Sell on Facebook and Viber without being an online seller. Nifti makes the posts; you tap Share.": "Magbenta sa Facebook at Viber kahit hindi ka online seller. Ang Nifti ang gagawa ng post; i-tap mo lang ang Share.",
+"Post today": "Mag-post ngayon", "My week": "Linggo ko", "Get more buyers": "Dagdag na buyer", "Reply fast": "Sumagot agad", "My store": "Tindahan ko", "Today's post is ready": "Handa na ang post ngayon",
+"What do you want to post?": "Ano ang gusto mong i-post?", "Nifti's pick": "Pili ng Nifti", "Why this one:": "Bakit ito:", "Plenty in stock": "Marami sa stock", "We deliver": "Nagde-deliver kami", "Thank you": "Salamat", "One item": "Isang item",
+"The words (you can change them)": "Ang mga salita (puwede mong baguhin)", "Shorter": "Mas maikli", "Show me another idea": "Ibang ideya", "Copy words": "Kopyahin ang salita", "Save picture": "I-save ang litrato", "Copy words + save picture": "Kopyahin + i-save ang litrato",
+"Open Facebook and paste": "Buksan ang Facebook at i-paste", "I posted it": "Na-post ko na", "Send on Viber": "Ipadala sa Viber", "Copy link": "Kopyahin ang link", "Color": "Kulay", "Use my own photo": "Gamitin ang sarili kong litrato",
+"Real photos sell best": "Mas mabenta ang tunay na litrato", "Put the item on a plain floor or wall.": "Ilagay ang item sa simpleng sahig o pader.", "Stand near a door or window for light.": "Tumayo malapit sa pinto o bintana para maliwanag.", "Show the price tag, or hold one up.": "Ipakita ang presyo, o hawakan ang price tag.",
+"Post it in {0} steps": "I-post sa {0} hakbang", "{0} easy steps": "{0} madaling hakbang", "{0} of {1} posts": "{0} sa {1} post", "Plan once, see each post": "Magplano minsan, makita ang bawat post", "Open today": "Buksan ngayon", "Ready, or pick your own": "Handa na, o pumili ng sarili mo",
+"Answers in {0} taps": "Sagot sa {0} tap", "Also:": "Gayundin:", "Link and settings": "Link at settings", "QR poster": "QR poster", "Your store is open. Anyone with the link can order.": "Bukas ang tindahan mo. Puwedeng umorder ang sinumang may link.",
+"You have plenty of {0} ({1} on hand). A post turns that stock into cash.": "Marami kang {0} ({1} sa stock). Nagiging pera ang stock kapag naka-post.", "Payday is coming: Payday is {0} {1}. People buy right after. Post your price list before it.": "Malapit na ang sahod: {0} {1} ang sahod. Bumibili ang tao pagkatapos. I-post ang price list bago noon.",
+// Telegram sheet
+"Free. New orders, payments, low stock and your daily summary, with a button that opens the right page.": "Libre. Bagong order, bayad, paubos na stock at buod araw-araw, may button na nagbubukas ng tamang pahina.",
+"Free. New orders, payments and low stock, with buttons.": "Libre. Bagong order, bayad at paubos na stock, may mga button.", "You're looking at the demo shop": "Demo shop ang tinitingnan mo", "Sign up free, then come back here and tap": "Mag-sign up nang libre, tapos bumalik dito at i-tap ang",
+". Your link is private to you.": ". Ikaw lang ang may link mo.", "Almost ready": "Malapit nang handa", "Get Telegram": "Kunin ang Telegram", "Free from the App Store or Google Play. Sign up with your mobile number.": "Libre sa App Store o Google Play. Mag-sign up gamit ang mobile number mo.",
+"Tap Link my Telegram": "I-tap ang Link my Telegram", "In your own account, this opens Telegram on your phone.": "Sa sarili mong account, binubuksan nito ang Telegram sa phone mo.", "On a computer, scan the code with your phone camera instead.": "Sa computer, i-scan ang code gamit ang camera ng phone.",
+"Tap START in Telegram": "I-tap ang START sa Telegram", "The big button at the bottom of the chat. Nifti says hello, and you're done.": "Ang malaking button sa ibaba ng chat. Babati ang Nifti, at tapos ka na.", "Link my Telegram": "I-link ang Telegram ko", "Get a new link": "Kumuha ng bagong link",
+"Each person on your team links their own phone from this same page.": "Bawat tao sa team mo ay nagli-link ng sariling phone mula sa pahinang ito.", "Which alerts do you want?": "Aling alerts ang gusto mo?",
+"New orders, confirmations, deliveries, and payments a customer says they sent": "Bagong order, kumpirmasyon, delivery, at bayad na sabi ng customer ay naipadala na", "Money": "Pera",
+"Cash short or over, cheques to deposit, price OKs. Owners and managers only.": "Kulang o sobrang pera, tsekeng ide-deposit, OK sa presyo. Para sa may-ari at manager lang.", "Running low": "Paubos na",
+"The moment an item drops to its reorder point": "Agad kapag umabot ang item sa oras para umorder", "New chat messages from customers and suppliers": "Bagong chat mula sa customer at supplier", "Tasks, handover notes and delivery routes": "Gawain, bilin at ruta ng delivery",
+"Daily and weekly summary": "Buod araw-araw at lingguhan", "Every evening, and Monday morning": "Tuwing gabi, at Lunes ng umaga", "Quiet at night": "Tahimik sa gabi", "No sound from {0} PM to {1} AM. Messages still arrive.": "Walang tunog mula {0} PM hanggang {1} AM. Darating pa rin ang mensahe.",
+"Linked on your team": "Naka-link sa team mo", "What they look like": "Ganito ang itsura nila", "Open in Nifti": "Buksan sa Nifti", "Running low: {0}": "Paubos na: {0}", "Only {0} pcs left. Reorder point is {1}.": "{0} piraso na lang. Ang oras para umorder ay {1}.",
+"Riverside Builders says they paid for {0}": "Sabi ng Riverside Builders nagbayad na sila para sa {0}", "Check your account, then confirm it in Nifti.": "Tingnan ang account mo, tapos kumpirmahin sa Nifti.", "In the Telegram chat, type": "Sa Telegram chat, i-type ang",
+"any time to see today at a glance: orders to confirm and deliver, sales today, who owes you, and items running low. Type": "anumang oras para makita ang buod ngayon: order na kukumpirmahin at ide-deliver, benta ngayon, sino ang may utang, at paubos na item. I-type ang",
+"to turn alerts off on that phone.": "para patayin ang alerts sa phone na iyon.", "Send me a test": "Padalhan ako ng test", "Unlink": "I-unlink", "Checking your Telegram link…": "Tinitingnan ang Telegram link mo…", "Saved.": "Na-save.",
+"Sent. Check Telegram in a few seconds.": "Naipadala. Tingnan ang Telegram sa ilang segundo.", "Unlinked.": "Na-unlink.", "Waiting for you to tap START in Telegram…": "Hinihintay kang mag-tap ng START sa Telegram…", "Open Telegram": "Buksan ang Telegram",
+// notebook reader
+"Read my notebook": "Basahin ang notebook ko", "Paper notes into Nifti. Many pages at once, check them now or later.": "Mga sulat sa papel papunta sa Nifti. Maraming pahina nang sabay, tingnan ngayon o mamaya.", "Save and close": "I-save at isara",
+"What notebook": "Anong notebook", "Photos": "Mga litrato", "Columns": "Mga column", "Add": "Idagdag", "What kind of notebook is this?": "Anong klaseng notebook ito?", "Any notebook works. Messy is OK.": "Puwede ang kahit anong notebook. Ayos lang kahit magulo.",
+"What you sold each day": "Ano ang nabenta mo araw-araw", "Utang (who owes me)": "Utang (sino ang may utang sa akin)", "Customers who will pay later": "Customer na magbabayad mamaya", "What I owe suppliers": "Utang ko sa supplier", "Bills you still have to pay": "Mga bayarin na hindi pa nababayaran",
+"Stock count": "Bilang ng stock", "How many of each item": "Ilan ang bawat item", "Rent, gas, salaries, repairs": "Upa, gasolina, sahod, pagkumpuni", "Not sure": "Hindi sigurado", "Nifti will figure it out with you": "Aalamin ito ng Nifti kasama mo",
+"Take photos of the pages": "Kunan ng litrato ang mga pahina", "One page or a whole notebook. Check them now, or save them and check later when you have time.": "Isang pahina o buong notebook. Tingnan ngayon, o i-save at tingnan mamaya kapag may oras ka.",
+"One page per photo. Tap again for the next page.": "Isang pahina bawat litrato. I-tap ulit para sa susunod na pahina.", "Choose photos": "Pumili ng litrato", "Pick many pages from your gallery at once.": "Pumili ng maraming pahina sa gallery nang sabay.",
+"Flat": "Patag", "Lay the notebook on a table.": "Ilapag ang notebook sa mesa.", "Bright": "Maliwanag", "Near a window or under a light.": "Malapit sa bintana o sa ilalim ng ilaw.", "Whole page": "Buong pahina", "All four corners in the photo.": "Kita ang apat na sulok sa litrato.",
+"No notebook with you? Try a sample page": "Walang notebook? Subukan ang halimbawang pahina", "← Back": "← Bumalik", "Is each column right?": "Tama ba ang bawat column?", "Nifti guessed what each column is. If one is wrong, tap its name at the top and pick the right one.": "Hinulaan ng Nifti ang bawat column. Kung may mali, i-tap ang pangalan sa itaas at piliin ang tama.",
+"Yes, the columns are right": "Oo, tama ang mga column", "How many": "Ilan", "A few quick questions": "Ilang mabilis na tanong", "{0} questions left. Green lines are already sure.": "{0} tanong pa. Sigurado na ang mga berdeng linya.", "Line {0} · question {1}": "Linya {0} · tanong {1}",
+"Is \"": "Ang \"", "\" the customer": "\" ba ang customer", "{0} is one of your customers.": "Isa sa mga customer mo si {0}.", "Yes": "Oo", "No, it's something else": "Hindi, iba ito", "Your answer teaches Nifti. Next time it reads \"{0}\" by itself.": "Natututo ang Nifti sa sagot mo. Sa susunod, kusa na nitong mababasa ang \"{0}\".",
+"Can't read this line": "Hindi mabasa ang linyang ito", "Please check": "Pakitingnan", "✓ Sure": "✓ Sigurado", "All checked. Nice work.": "Natingnan lahat. Magaling.", "Ready to add to your books": "Handa nang idagdag sa libro mo",
+"Nothing has changed yet. Here is what will happen when you tap the green button.": "Wala pang nagbabago. Ito ang mangyayari kapag tinap mo ang berdeng button.", "lines": "linya", "in sales": "sa benta", "customers": "customer", "go into Sales, marked \"From paper\".": "papasok sa Benta, may markang \"Galing sa papel\".",
+"you haven't added yet are added for you.": "na hindi mo pa naidagdag ay idadagdag para sa iyo.", "The photo": "Ang litrato", "is kept with these lines, so you can always look back.": "ay itatabi kasama ng mga linya, para lagi mong mabalikan.", "You can undo this for {0} days.": "Puwede mo itong bawiin sa loob ng {0} araw.",
+"Add {0} lines to Nifti": "Idagdag ang {0} linya sa Nifti", "Done. {0} lines are in Nifti.": "Tapos. Nasa Nifti na ang {0} linya.", "Read another page": "Basahin ang isa pang pahina", "I'm done": "Tapos na ako", "Open Sales": "Buksan ang Benta",
+"{0} of sales, marked \"From paper\", with your photo kept. You can undo this for {1} days.": "{0} na benta, may markang \"Galing sa papel\", kasama ang litrato mo. Puwedeng bawiin sa loob ng {1} araw.",
+"This was the sample page, so nothing was saved. Take a photo of your own notebook to add real lines.": "Halimbawang pahina ito, kaya walang na-save. Kunan ng litrato ang sarili mong notebook para magdagdag ng tunay na linya.",
+"Demo shop: Nifti shows a sample page. In your own account it reads your real photo.": "Demo shop: halimbawang pahina ang ipinapakita ng Nifti. Sa sarili mong account, binabasa nito ang tunay mong litrato.",
+"Reading your page…": "Binabasa ang pahina mo…", "This takes about 20 seconds. Nifti looks for each line, then matches names and items to your own lists.": "Mga 20 segundo ito. Hinahanap ng Nifti ang bawat linya, tapos itinutugma ang pangalan at item sa sarili mong listahan.",
+"Nifti couldn't read this page": "Hindi mabasa ng Nifti ang pahinang ito", "Skip this page": "Laktawan ang pahinang ito", "Check it later": "Tingnan mamaya", "Already in your list.": "Nasa listahan mo na.",
+"Words you confirmed": "Mga salitang kinumpirma mo", "are remembered, so the next page reads them by itself.": "ay tatandaan, para kusang mabasa sa susunod na pahina.", "stays saved with this page, so you can always look back.": "ay mananatiling naka-save sa pahinang ito, para lagi mong mabalikan.",
+"Lines from paper are marked \"From paper\", so you can always find them.": "May markang \"Galing sa papel\" ang mga linya galing sa papel, para lagi mong mahanap.", "Adding…": "Idinadagdag…",
+// export, store results, admin
+"⬇ Everything in Excel": "⬇ Lahat sa Excel", "⬇ Everything (backup file)": "⬇ Lahat (backup file)",
+"Everything Nifti holds about your business is yours: orders, sales, expenses, stock, payroll, books, team notes and notebook pages. The Excel file has one tab for each.": "Iyo ang lahat ng hawak ng Nifti tungkol sa negosyo mo: order, benta, gastos, stock, sahod, libro, bilin ng team at mga pahina ng notebook. May isang tab ang Excel para sa bawat isa.",
+"These are example numbers for the demo shop. In your own account, every visit and order from your store link is counted here.": "Halimbawang numero ito para sa demo shop. Sa sarili mong account, binibilang dito ang bawat bisita at order mula sa link ng tindahan mo.",
+"New customers who buy what you sell, and suppliers who can sell to you for less. Nobody sees your prices or partners.": "Bagong customer na bumibili ng ibinebenta mo, at supplier na mas mura. Walang nakakakita ng presyo o mga ka-transaksyon mo.",
+"When a big customer pays you {0}% less for tax, they owe you a BIR {1} form. Collect every form here so you never pay that tax twice.": "Kapag nagbayad sa iyo ang malaking customer nang {0}% kulang dahil sa buwis, may utang silang BIR {1} form. Kolektahin dito ang bawat form para hindi mo mabayaran nang dalawang beses ang buwis.",
+"Your answer teaches Nifti. Next time it reads \"": "Natututo ang Nifti sa sagot mo. Sa susunod, kusa na nitong mababasa ang \"", "\" by itself.": "\".",
+"Payroll {0}, {1} {2}–{3}, {4} {5}": "Sahod {0}, {1} {2}–{3}, {4} {5}", "(Approved expenses, Yesterday)": "(Inaprubahang gastos, Kahapon)", "(Stock history, Today)": "(Kasaysayan ng stock, Ngayon)",
+"(Order delivered, {0}, {1} {2})": "(Na-deliver ang order, {0}, {1} {2})", "{0} · sent {1} days ago · held to {2} {3} ·": "{0} · ipinadala {1} araw na ang nakalipas · hawak hanggang {2} {3} ·",
+"Call Riverside about the overdue invoice": "Tawagan ang Riverside tungkol sa lampas na invoice",
+"Downloaded. Keep it somewhere safe.": "Na-download. Itago sa ligtas na lugar."
+};
+(function(){
+  const add = () => { if(typeof I18N_FIL === 'undefined') return false; Object.keys(NF25_FIL).forEach(k => { if(NF25_FIL[k] !== k) I18N_FIL[k] = NF25_FIL[k]; }); try{ if(typeof i18nCache !== 'undefined') i18nCache.clear(); }catch(e){} return true; };
+  if(!add()) window.addEventListener('DOMContentLoaded', add); else window.addEventListener('DOMContentLoaded', add);
 })();
 
 function renderSidebarForViewAsRole(){

@@ -78,7 +78,7 @@ function nf22NbPaint(){
         ask = `<div class="nf22-nbq"><p class="nf22-nbql">Line ${l.n} · question ${NB.qi + 1}</p><h3>Is "<span class="nf22-hand">${nf22Esc(raw)}</span>" ${q.k === 'who' ? 'the customer' : 'the item'} <b>${nf22Esc(guess)}</b>?</h3>
           ${q.k === 'what' ? `<p class="nf22-nbmath">${l.q} × ${bkPeso(l.price)} = ${bkPeso(l.price * Number(l.q))} <em>✓ same as the ${l.a} written</em></p>` : `<p class="nf22-nbmath">${nf22Esc(guess)} is one of your customers.</p>`}
           <div class="nf22-nbbtns"><button type="button" class="btn btn-primary" data-nb="yes" data-v="${q.i}|${q.k}">Yes</button><button type="button" class="btn btn-outline" data-nb="no" data-v="${q.i}|${q.k}">No, it's something else</button></div>
-          <p class="nf22-nbteach">Your answer teaches Nifti. Next time it reads "${nf22Esc(raw)}" by itself.</p></div>`; }
+          <p class="nf22-nbteach">Your answer teaches Nifti. Next time it reads "<b>${nf22Esc(raw)}</b>" by itself.</p></div>`; }
     }
     body = `<h2>${left ? 'A few quick questions' : 'All checked. Nice work.'}</h2><p class="nf22-nbsub">${left ? `${left} question${left > 1 ? 's' : ''} left. Green lines are already sure.` : 'Every line is sure, or skipped. Look it over, then tap Next.'}</p>
       ${ask}
