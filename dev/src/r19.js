@@ -4,7 +4,7 @@
 const NF19_SIDE = [
   ['dashboard', 'Home'], ['orders', 'Orders'], ['messages', 'Messages'], ['inventory', 'Stock'],
   ['__money', 'Money'],
-  ['money', 'Money overview'], ['sales', 'Counter'], ['expenses', 'Expenses'], ['collections', 'Getting paid'], ['profit', 'Prices'], ['ledger', 'Books']
+  ['money', 'Money overview'], ['sales', 'Sales'], ['expenses', 'Expenses'], ['collections', 'Getting paid'], ['profit', 'Prices'], ['ledger', 'Books']
 ];
 // pages without their own menu line light up the line they live under
 const NF19_PARENT = {cashcount: 'sales', cheques: 'collections', prices: 'profit', books: 'ledger', taxforms: 'ledger', issues: 'money', payroll: 'money', analytics: 'money',

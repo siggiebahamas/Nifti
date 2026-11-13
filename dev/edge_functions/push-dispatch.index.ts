@@ -2,177 +2,126 @@ import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "jsr:@supabase/supabase-js@2";
 import webpush from "npm:web-push@3";
 import { SMTPClient } from "https://deno.land/x/denomailer@1.6.0/mod.ts";
-// Delivers queued notifications (public.notification_outbox) to phones via Web Push, and by
-// email when email is configured: either Resend (resend_api_key + email_from, needs a domain) or
-// a Gmail account's app password (smtp_user + smtp_pass, no domain needed). Called only by the
-// database itself (pg_net from nifti_notify(), plus a 2-minute retry cron) with a shared secret
-// stored in public.app_secrets -- verify_jwt is off because there is no user session on those
-// calls, and the secret header is the authorization boundary instead.
+
+// Delivers queued notifications (public.notification_outbox) to phones via Web Push, to linked
+// Telegram chats (with an "Open in Nifti" button), and by email when email is configured: either
+// Resend (resend_api_key + email_from, needs a domain) or a Gmail account's app password
+// (smtp_user + smtp_pass, no domain needed). Called only by the database itself (pg_net from
+// nifti_notify(), plus a 2-minute retry cron) with a shared secret stored in public.app_secrets --
+// verify_jwt is off because there is no user session on those calls, and the secret header is the
+// authorization boundary instead.
 // Category 'support' rows are Help-form messages: emailed to the support inbox, never pushed.
 // Rows with to_email are messages from a business to its own customer who isn't on Nifti
 // (payment reminders, reorder reminders): emailed to that address only, never pushed.
 // Rows with only_member go to that one person's phones and nobody else's (money alerts are sent
 // as one row per owner / manager, so a phone that isn't linked to a person never gets them).
+// Telegram follows the same only_member / exclude_member rules, plus each person's own switches
+// (telegram_links.alerts) and their quiet-at-night choice (sent silently 9 PM to 7 AM Manila time).
 // The same alert sent to several people is emailed to the business inbox once.
 // The site address comes from app_secrets.app_url, so a new domain only needs that one value.
-const admin = createClient(Deno.env.get("SUPABASE_URL"), Deno.env.get("SUPABASE_SERVICE_ROLE_KEY"));
+
+const admin = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!);
 const DEFAULT_APP_URL = "https://siggiebahamas.github.io/Nifti/";
-const PREF = {
-  orders: "order_updates",
-  messages: "new_messages",
-  leads: "lead_alerts",
-  summary: "daily_summary",
-  weekly: "weekly_summary"
+const PREF: Record<string, string> = { orders: "order_updates", messages: "new_messages", leads: "lead_alerts", summary: "daily_summary", weekly: "weekly_summary" };
+// which personal Telegram switch covers each alert category
+const TG_SWITCH: Record<string, string> = {
+  orders: "orders", leads: "orders", money: "money", stock: "stock", messages: "messages",
+  team: "team", handoff: "team", driver: "team", setup: "team", summary: "summary", weekly: "summary",
 };
-function json(body, status = 200) {
-  return new Response(JSON.stringify(body), {
-    status,
-    headers: {
-      "Content-Type": "application/json"
-    }
-  });
+
+function json(body: unknown, status = 200) {
+  return new Response(JSON.stringify(body), { status, headers: { "Content-Type": "application/json" } });
 }
-async function secret(name) {
+const esc = (s: unknown) => String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+async function secret(name: string): Promise<string | null> {
   const { data } = await admin.from("app_secrets").select("value").eq("name", name).maybeSingle();
   return data?.value ?? null;
 }
 async function ensureVapid() {
   let pub = await secret("vapid_public");
   let priv = await secret("vapid_private");
-  if (pub && priv) return {
-    pub,
-    priv
-  };
+  if (pub && priv) return { pub, priv };
   const k = webpush.generateVAPIDKeys();
-  await admin.from("app_secrets").upsert([
-    {
-      name: "vapid_public",
-      value: k.publicKey
-    },
-    {
-      name: "vapid_private",
-      value: k.privateKey
-    }
-  ], {
-    onConflict: "name",
-    ignoreDuplicates: true
-  });
+  await admin.from("app_secrets").upsert(
+    [{ name: "vapid_public", value: k.publicKey }, { name: "vapid_private", value: k.privateKey }],
+    { onConflict: "name", ignoreDuplicates: true },
+  );
   pub = await secret("vapid_public");
   priv = await secret("vapid_private");
-  return {
-    pub: pub,
-    priv: priv
-  };
+  return { pub: pub!, priv: priv! };
 }
-async function makeMailer() {
+function manilaNight() {
+  const h = (new Date().getUTCHours() + 8) % 24;
+  return h >= 21 || h < 7;
+}
+
+type Mailer = { send: (to: string, subject: string, text: string) => Promise<void>; close: () => Promise<void> } | null;
+async function makeMailer(): Promise<Mailer> {
   const resendKey = await secret("resend_api_key");
   const emailFrom = await secret("email_from");
   if (resendKey && emailFrom) {
     return {
-      send: async (to, subject, text)=>{
+      send: async (to, subject, text) => {
         const r = await fetch("https://api.resend.com/emails", {
           method: "POST",
-          headers: {
-            Authorization: "Bearer " + resendKey,
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            from: emailFrom,
-            to: [
-              to
-            ],
-            subject,
-            text
-          })
+          headers: { Authorization: "Bearer " + resendKey, "Content-Type": "application/json" },
+          body: JSON.stringify({ from: emailFrom, to: [to], subject, text }),
         });
         if (!r.ok) throw new Error("resend " + r.status);
       },
-      close: async ()=>{}
+      close: async () => {},
     };
   }
   const user = await secret("smtp_user");
   const pass = await secret("smtp_pass");
   if (!user || !pass) return null;
-  const host = await secret("smtp_host") || "smtp.gmail.com";
+  const host = (await secret("smtp_host")) || "smtp.gmail.com";
   const from = emailFrom || `Nifti <${user}>`;
-  let client = null;
+  let client: SMTPClient | null = null;
   return {
-    send: async (to, subject, text)=>{
-      if (!client) client = new SMTPClient({
-        connection: {
-          hostname: host,
-          port: 465,
-          tls: true,
-          auth: {
-            username: user,
-            password: pass
-          }
-        }
-      });
-      await client.send({
-        from,
-        to,
-        subject,
-        content: text
-      });
+    send: async (to, subject, text) => {
+      if (!client) client = new SMTPClient({ connection: { hostname: host, port: 465, tls: true, auth: { username: user, password: pass } } });
+      await client.send({ from, to, subject, content: text });
     },
-    close: async ()=>{
-      if (client) await client.close();
-    }
+    close: async () => { if (client) await client.close(); },
   };
 }
-Deno.serve(async (req)=>{
+
+Deno.serve(async (req) => {
   const expected = await secret("dispatch_secret");
-  if (!expected || req.headers.get("x-dispatch-secret") !== expected) return json({
-    error: "forbidden"
-  }, 403);
-  let mailer = null;
+  if (!expected || req.headers.get("x-dispatch-secret") !== expected) return json({ error: "forbidden" }, 403);
+  let mailer: Mailer = null;
   try {
     const { pub, priv } = await ensureVapid();
     webpush.setVapidDetails("mailto:support@nifti.app", pub, priv);
     mailer = await makeMailer();
-    const supportInbox = await secret("support_inbox") || await secret("smtp_user");
-    const APP_URL = await secret("app_url") || DEFAULT_APP_URL;
-    const { data: batch, error } = await admin.rpc("claim_notifications", {
-      p_limit: 100
-    });
-    if (error) return json({
-      error: error.message
-    }, 500);
-    const prefsCache = new Map();
-    const emailed = new Set();
+    const supportInbox = (await secret("support_inbox")) || (await secret("smtp_user"));
+    const APP_URL = (await secret("app_url")) || DEFAULT_APP_URL;
+    const tgToken = await secret("telegram_bot_token");
+
+    const { data: batch, error } = await admin.rpc("claim_notifications", { p_limit: 100 });
+    if (error) return json({ error: error.message }, 500);
+
+    const prefsCache = new Map<string, Record<string, unknown> | null>();
+    const tgCache = new Map<string, Array<Record<string, any>>>();
+    const emailed = new Set<string>();
+    const night = manilaNight();
     let sent = 0;
-    for (const n of batch || []){
-      const errors = [];
+    for (const n of (batch || []) as Array<Record<string, any>>) {
+      const errors: string[] = [];
       const link = APP_URL + (String(n.url || "").startsWith("./") ? String(n.url).slice(2) : "");
       if (n.to_email) {
         if (mailer) {
-          try {
-            await mailer.send(String(n.to_email), n.title, n.body || "");
-            sent++;
-          } catch (e) {
-            errors.push("email " + String(e).slice(0, 80));
-          }
+          try { await mailer.send(String(n.to_email), n.title, n.body || ""); sent++; } catch (e) { errors.push("email " + String(e).slice(0, 80)); }
         } else errors.push("email not set up");
-        await admin.from("notification_outbox").update({
-          sent_at: new Date().toISOString(),
-          error: errors.length ? errors.join("; ") : null
-        }).eq("id", n.id);
+        await admin.from("notification_outbox").update({ sent_at: new Date().toISOString(), error: errors.length ? errors.join("; ") : null }).eq("id", n.id);
         continue;
       }
       if (n.category === "support") {
         if (mailer && supportInbox) {
-          try {
-            await mailer.send(supportInbox, n.title, n.body || "");
-            sent++;
-          } catch (e) {
-            errors.push("email " + String(e).slice(0, 80));
-          }
+          try { await mailer.send(supportInbox, n.title, n.body || ""); sent++; } catch (e) { errors.push("email " + String(e).slice(0, 80)); }
         } else errors.push("no support inbox configured");
-        await admin.from("notification_outbox").update({
-          sent_at: new Date().toISOString(),
-          error: errors.length ? errors.join("; ") : null
-        }).eq("id", n.id);
+        await admin.from("notification_outbox").update({ sent_at: new Date().toISOString(), error: errors.length ? errors.join("; ") : null }).eq("id", n.id);
         continue;
       }
       let prefs = prefsCache.get(n.business_id);
@@ -182,55 +131,76 @@ Deno.serve(async (req)=>{
         prefsCache.set(n.business_id, prefs);
       }
       const col = PREF[n.category];
-      const wanted = !prefs || !col || prefs[col] !== false;
+      const wanted = n.category === "test" || !prefs || !col || prefs[col] !== false;
       if (wanted) {
-        const { data: subs } = await admin.from("push_subscriptions").select("id, subscription, team_member_id").eq("business_id", n.business_id);
-        for (const s of subs || []){
-          if (n.only_member && s.team_member_id !== n.only_member) continue;
-          if (n.exclude_member && s.team_member_id === n.exclude_member) continue;
-          try {
-            await webpush.sendNotification(s.subscription, JSON.stringify({
-              title: n.title,
-              body: n.body,
-              url: n.url
-            }));
-            sent++;
-          } catch (err) {
-            const code = err.statusCode;
-            if (code === 404 || code === 410) await admin.from("push_subscriptions").delete().eq("id", s.id);
-            else errors.push("push " + String(code ?? err));
+        if (n.category !== "test") {
+          const { data: subs } = await admin.from("push_subscriptions").select("id, subscription, team_member_id").eq("business_id", n.business_id);
+          for (const s of subs || []) {
+            if (n.only_member && s.team_member_id !== n.only_member) continue;
+            if (n.exclude_member && s.team_member_id === n.exclude_member) continue;
+            try {
+              await webpush.sendNotification(s.subscription, JSON.stringify({ title: n.title, body: n.body, url: n.url }));
+              sent++;
+            } catch (err) {
+              const code = (err as { statusCode?: number }).statusCode;
+              if (code === 404 || code === 410) await admin.from("push_subscriptions").delete().eq("id", s.id);
+              else errors.push("push " + String(code ?? err));
+            }
+          }
+        }
+        if (tgToken) {
+          let links = tgCache.get(n.business_id);
+          if (!links) {
+            const { data } = await admin.from("telegram_links").select("id, chat_id, team_member_id, alerts").eq("business_id", n.business_id);
+            links = data || [];
+            tgCache.set(n.business_id, links);
+          }
+          for (const l of links) {
+            if (n.only_member && l.team_member_id !== n.only_member) continue;
+            if (n.exclude_member && l.team_member_id === n.exclude_member) continue;
+            const sw = TG_SWITCH[n.category];
+            const alerts = (l.alerts || {}) as Record<string, unknown>;
+            if (n.category !== "test" && sw && alerts[sw] === false) continue;
+            try {
+              const r = await fetch(`https://api.telegram.org/bot${tgToken}/sendMessage`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  chat_id: l.chat_id,
+                  text: `<b>${esc(n.title)}</b>` + (n.body ? "\n" + esc(n.body) : ""),
+                  parse_mode: "HTML",
+                  disable_web_page_preview: true,
+                  disable_notification: night && alerts.quiet === true && n.category !== "test",
+                  reply_markup: { inline_keyboard: [[{ text: "Open in Nifti", url: link }]] },
+                }),
+              });
+              const j = await r.json().catch(() => ({}));
+              if (j.ok) {
+                sent++;
+                await admin.from("telegram_links").update({ last_sent_at: new Date().toISOString() }).eq("id", l.id);
+              } else if (j.error_code === 403) {
+                // they blocked the bot or deleted the chat: stop trying
+                await admin.from("telegram_links").delete().eq("id", l.id);
+              } else errors.push("telegram " + String(j.error_code || r.status));
+            } catch (e) {
+              errors.push("telegram " + String(e).slice(0, 60));
+            }
           }
         }
         const key = n.business_id + "|" + n.title + "|" + (n.body || "");
-        if (mailer && prefs && prefs.channel_email && prefs.email_address && n.category !== "team" && !emailed.has(key)) {
+        if (mailer && prefs && prefs.channel_email && prefs.email_address && n.category !== "team" && n.category !== "test" && !emailed.has(key)) {
           emailed.add(key);
-          try {
-            await mailer.send(String(prefs.email_address), n.title, (n.body ? n.body + "\n\n" : "") + "Open Nifti: " + link);
-          } catch (e) {
-            errors.push("email " + String(e).slice(0, 80));
-          }
+          try { await mailer.send(String(prefs.email_address), n.title, (n.body ? n.body + "\n\n" : "") + "Open Nifti: " + link); }
+          catch (e) { errors.push("email " + String(e).slice(0, 80)); }
         }
       }
-      await admin.from("notification_outbox").update({
-        sent_at: new Date().toISOString(),
-        error: errors.length ? errors.join("; ").slice(0, 300) : null
-      }).eq("id", n.id);
+      await admin.from("notification_outbox").update({ sent_at: new Date().toISOString(), error: errors.length ? errors.join("; ").slice(0, 300) : null }).eq("id", n.id);
     }
-    return json({
-      ok: true,
-      processed: (batch || []).length,
-      sent
-    });
+    return json({ ok: true, processed: (batch || []).length, sent });
   } catch (e) {
     console.error(e);
-    return json({
-      error: "Unexpected error"
-    }, 500);
-  } finally{
-    if (mailer) {
-      try {
-        await mailer.close();
-      } catch (_) {}
-    }
+    return json({ error: "Unexpected error" }, 500);
+  } finally {
+    if (mailer) { try { await mailer.close(); } catch (_) { /* ignore */ } }
   }
 });

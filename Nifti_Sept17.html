@@ -7983,6 +7983,85 @@ html.nf-phone #view-app .nf24-bir{display:none;}
 .sidebar .nf23-nb .nf24-badge{margin-left:auto;}
 
 /* ===== Round 24 css end ===== */
+
+/* ===== Round 25 css begin ===== */
+/* ---------- Telegram alerts (real) ---------- */
+.nf25-sheet .nf21-body{display:grid;gap:14px;}
+.nf25-sheet h3{margin:8px 0 0;font-size:18px;color:#101828;}
+.nf25-wait{font-size:16px;color:#344054;padding:24px 0;text-align:center;}
+.nf25-st{display:grid;gap:4px;padding:16px 18px;border-radius:16px;border:1px solid #D0D5DD;background:#F9FAFB;}
+.nf25-st b{font-size:17px;color:#101828;} .nf25-st span{font-size:15.5px;color:#344054;line-height:1.5;}
+.nf25-st.demo{background:#EFF6FF;border-color:#BFD7F5;}
+.nf25-st.warn{background:#FEF9C3;border-color:#F5E08A;}
+.nf25-st.ok{grid-template-columns:auto minmax(0,1fr);gap:4px 14px;align-items:center;background:#ECFDF3;border-color:#ABEFC6;}
+.nf25-st.ok > div:not(.nf25-st-b){display:grid;gap:3px;}
+.nf25-ok{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:#FFFFFF;color:#15803D;font-size:20px;font-weight:900;box-shadow:inset 0 0 0 2px #15803D;}
+.nf25-st-b{grid-column:1 / -1;display:flex;gap:10px;flex-wrap:wrap;margin-top:6px;}
+.nf25-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;counter-reset:s;}
+.nf25-steps li{counter-increment:s;display:grid;gap:4px;padding:14px;border-radius:14px;border:1px solid #EAECF0;background:#FFFFFF;}
+.nf25-steps li::before{content:counter(s);width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:#1D4ED8;color:#FFFFFF;font-weight:800;font-size:14px;}
+.nf25-steps b{font-size:16px;color:#101828;} .nf25-steps span{font-size:14.5px;color:#344054;line-height:1.45;}
+.nf25-link{display:flex;gap:18px;align-items:center;flex-wrap:wrap;padding:16px;border-radius:16px;background:#F9FAFB;border:1px solid #EAECF0;}
+.nf25-link img{border-radius:12px;background:#FFFFFF;border:1px solid #EAECF0;}
+.nf25-link p{margin:8px 0 0;font-size:15px;color:#344054;}
+.nf25-link a{font-weight:800;color:#1D4ED8;cursor:pointer;}
+.nf25-big{min-height:54px;font-size:17px !important;padding:0 26px !important;}
+.nf25-sws{display:grid;gap:0;border:1px solid #EAECF0;border-radius:16px;background:#FFFFFF;overflow:hidden;}
+.nf25-sw{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:13px 16px;border-bottom:1px solid #F2F4F7;}
+.nf25-sw:last-child{border-bottom:0;}
+.nf25-sw b{display:block;font-size:16px;color:#101828;} .nf25-sw small{display:block;font-size:14.5px;color:#475467;margin-top:2px;line-height:1.4;}
+.nf25-team{list-style:none;margin:0;padding:0;display:grid;gap:8px;}
+.nf25-team li{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:11px 14px;border-radius:12px;border:1px solid #EAECF0;background:#FFFFFF;}
+.nf25-team b{font-size:15.5px;color:#101828;} .nf25-team span{font-size:14.5px;color:#475467;}
+.nf25-ex{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;}
+.nf25-exm{display:flex;gap:10px;padding:12px;border-radius:14px;background:#EEF4FB;border:1px solid #D6E4F5;}
+.nf25-exm > span{font-size:20px;line-height:1;}
+.nf25-exm b{display:block;font-size:15px;color:#101828;} .nf25-exm small{display:block;font-size:14px;color:#344054;margin-top:3px;line-height:1.4;}
+.nf25-exm i{display:inline-block;margin-top:8px;padding:5px 12px;border-radius:8px;background:#FFFFFF;border:1px solid #BFD7F5;font-style:normal;font-weight:800;font-size:13.5px;color:#1D4ED8;}
+.nf25-p{margin:0;font-size:15px;color:#344054;line-height:1.55;}
+@media (max-width:760px){ .nf25-steps, .nf25-ex{grid-template-columns:minmax(0,1fr);} }
+
+/* ---------- Admin switches ---------- */
+.nf25-svc{display:grid;gap:14px;}
+.nf25-svcb{display:grid;gap:8px;padding:14px 16px;border-radius:14px;border:1px solid #EAECF0;background:#FFFFFF;}
+.nf25-svch{display:flex;align-items:center;gap:10px;} .nf25-svch b{font-size:17px;color:#101828;}
+.nf25-pill{padding:3px 12px;border-radius:999px;font-size:13.5px;font-weight:800;background:#F2F4F7;color:#344054;}
+.nf25-pill.on{background:#DCFCE7;color:#166534;}
+.nf25-svcb p{margin:0;font-size:15px;color:#344054;} .nf25-svcb ol{margin:0;padding-left:20px;font-size:15px;color:#344054;line-height:1.6;}
+.nf25-in{display:flex;gap:8px;flex-wrap:wrap;} .nf25-in input{flex:1 1 240px;min-height:44px;padding:0 12px;border:1px solid #D0D5DD;border-radius:10px;font:inherit;font-size:15px;}
+
+/* ---------- Store results: example label ---------- */
+.nf25-exnote{margin:10px 0 0;padding:10px 12px;border-radius:10px;background:#EFF6FF;color:#1E3A8A;font-size:14.5px;line-height:1.45;}
+
+/* ---------- Notebook reader: reading a real page ---------- */
+.nf22-nb .nf25-use{margin:0 0 16px;padding:10px 14px;border-radius:12px;background:#F2F4F7;font-size:15px;color:#344054;}
+.nf22-nb .nf25-use a{font-weight:800;color:#1D4ED8;cursor:pointer;}
+.nf22-nb .nf25-sum{margin:-6px 0 14px;font-size:15.5px;color:#1D2939;background:#FEF9C3;border-radius:12px;padding:10px 14px;}
+.nf22-nb .nf25-reading{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:22px;align-items:center;padding:10px 0;}
+.nf22-nb .nf25-reading img{width:100%;border-radius:14px;border:1px solid #EAECF0;box-shadow:0 2px 8px rgba(16,24,40,.08);}
+.nf22-nb .nf25-reading h2{margin:8px 0 6px;} .nf22-nb .nf25-reading p{font-size:16px;color:#344054;line-height:1.5;}
+.nf22-nb .nf25-spin{display:inline-block;width:34px;height:34px;border-radius:50%;border:4px solid #D6E4F5;border-top-color:#1D4ED8;animation:nf25spin 1s linear infinite;}
+@keyframes nf25spin{to{transform:rotate(360deg);}}
+@media (prefers-reduced-motion:reduce){ .nf22-nb .nf25-spin{animation:none;} }
+@media (max-width:640px){ .nf22-nb .nf25-reading{grid-template-columns:minmax(0,1fr);} .nf22-nb .nf25-reading img{max-width:220px;} }
+
+/* ---------- "All good": a lighter forest band; the check is green on a white circle so it stands out ---------- */
+#view-app #nfOrd .nfo-band.b-green, #view-app #page-orders .nf20-col .nfo-band.b-green, #view-app #page-orders .nf20-col.s .nfo-band.b-green{background:#2F855A !important;color:#FFFFFF !important;}
+#view-app #nfOrd .nfo-band.b-green > span::before{background:#FFFFFF !important;color:#2F855A !important;width:21px !important;height:21px !important;font-size:13px !important;font-weight:900 !important;}
+#view-app #nfOrd .s-green .k i, #view-app #nfOrd .nfo-key i.k-green, #view-app .nf22-hk i.g{background:#2F855A !important;}
+/* the order bubbles inside go back to soft green, and "Done" back to the pale green pill */
+#view-app #nfOrd .nfo-po.b-green{background:#EFF9F3 !important;box-shadow:none !important;}
+#view-app #nfOrd .nfo-done{background:#DCF5E5 !important;color:#146C3C !important;box-shadow:none !important;}
+
+/* ---------- Privacy notice and terms: big plain type, no brown box ---------- */
+#view-privacy .nf25-legal-date, #view-terms .nf25-legal-date{font-size:15px;color:#475467;margin:0 0 16px;}
+#view-privacy .nf25-legal-box, #view-terms .nf25-legal-box{background:#EFF6FF;border:1px solid #BFD7F5;border-radius:12px;padding:16px 18px;margin:14px 0 24px;font-size:16.5px;color:#1E3A8A;line-height:1.6;}
+#view-privacy .feat-section h2, #view-terms .feat-section h2{font-size:21px;margin:28px 0 10px;color:#101828;}
+#view-privacy .feat-section p, #view-terms .feat-section p, #view-privacy .feat-section li, #view-terms .feat-section li{font-size:16.5px;line-height:1.7;color:#1D2939;}
+#view-privacy .feat-section ul, #view-terms .feat-section ul{padding-left:22px;margin:0 0 14px;}
+#view-privacy .feat-section li, #view-terms .feat-section li{margin-bottom:8px;}
+
+/* ===== Round 25 css end ===== */
   .settings-card:empty{display:none;}
   #supplierChips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;} #supplierChips .chip{flex-shrink:0;}
 </style>
@@ -8099,7 +8178,7 @@ html.nf-phone #view-app .nf24-bir{display:none;}
   <div class="mk-cq bad"><div class="mk-row"><b>Sta. Cruz Builders</b><b>₱6,200</b></div><small>Bounced · DAIF · 2nd time</small><span class="mk-btnsm">Ask for replacement</span></div>
 </div></div></div><div class="f4-pop"><div class="v-notif "><span class="v-nic"><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg></span><div><div class="v-ntop"><b>Nifti</b><em>7:00</em></div><strong>Deposit today: BDO #004512</strong><small>Dela Cruz Hardware · ₱18,200</small></div></div></div></div>
 </div><div class="f4-more"><b>Also in Pro:</b><span>Leads and follow-ups</span><span>Quotes and locked prices</span><span>Tentative orders confirmed</span><span>Customers due to reorder</span><span>Price changes announced ahead</span><span>Returns and credits</span><span>Cash and bank matched</span><span>Up to 15 teammates</span></div></div>
-    <div class="f4-set" data-for="buy" id="mkBuy"><div class="f5-head mk-books"><div class="p2-burst">YOUR BOOKS</div><h2>And the books <span>keep themselves.</span></h2><p>Every sale, expense and payment lands in proper books, so you always know your profit, your cash, and what to check.</p></div><div class="h4-flow c3 mk-books-flow"><div class="h4-step"><div class="h4-meta"><span class="h4-n">1</span><em>Staff</em></div><h4>Record it as it happens</h4><p>Counter sales, expenses with a receipt photo, and a cash count at closing. Works without signal.</p></div><div class="h4-step"><div class="h4-meta"><span class="h4-n">2</span><em>Nifti</em></div><h4>Checks what doesn't add up</h4><p>Cash short, missing stock, missing receipts, sales below cost, bills not sent. Each one says why.</p></div><div class="h4-step"><div class="h4-meta"><span class="h4-n">3</span><em>You</em></div><h4>See the real profit</h4><p>Profit and loss, balance sheet and cash outlook, every number traceable. Close the month and hand it to your accountant.</p></div></div><div class="f5-head"><div class="p2-burst">WHEN YOU BUY</div><h2>Buying from suppliers, <span>under control.</span></h2></div>
+    <div class="f4-set" data-for="buy" id="mkBuy"><div class="f5-head mk-books"><div class="p2-burst">YOUR BOOKS</div><h2>And the books <span>keep themselves.</span></h2><p>Every sale, expense and payment lands in proper books, so you always know your profit, your cash, and what to check.</p></div><div class="h4-flow c3 mk-books-flow"><div class="h4-step"><div class="h4-meta"><span class="h4-n">1</span><em>Staff</em></div><h4>Record it as it happens</h4><p>Shop sales, expenses with a receipt photo, and a cash count at closing. Works without signal.</p></div><div class="h4-step"><div class="h4-meta"><span class="h4-n">2</span><em>Nifti</em></div><h4>Checks what doesn't add up</h4><p>Cash short, missing stock, missing receipts, sales below cost, bills not sent. Each one says why.</p></div><div class="h4-step"><div class="h4-meta"><span class="h4-n">3</span><em>You</em></div><h4>See the real profit</h4><p>Profit and loss, balance sheet and cash outlook, every number traceable. Close the month and hand it to your accountant.</p></div></div><div class="f5-head"><div class="p2-burst">WHEN YOU BUY</div><h2>Buying from suppliers, <span>under control.</span></h2></div>
     <div class="f4-spot">
   <div class="f4-spot-t"><span class="m2-badge free">FREE</span><h3>Order from every supplier in one place</h3><p>Even suppliers who aren’t on Nifti. They get a link on Viber and tap Confirm.</p>
     <ul class="m2-ticks"><li>Price and date agreed in writing</li><li>Reorder your usual in one tap</li><li>Chat beside every order</li></ul>
@@ -8310,42 +8389,58 @@ html.nf-phone #view-app .nf24-bir{display:none;}
   <div class="nav-cta"><a onclick="navigate('login')" class="login-link">Log in</a><a onclick="navigate('login')" class="btn btn-primary">Get started</a></div>
 </div></nav>
 <section class="feat-section"><div class="wrap" style="max-width:820px;">
-  <h1 style="margin-bottom:6px;">Privacy Policy</h1>
-  <p style="font-size:14.5px;color:var(--ink);opacity:.7;margin-bottom:16px;">Last updated: September 22, 2026 · Effective for pilot use of Nifti</p>
-  <div style="background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:16px 18px;margin:14px 0 24px;font-size:15px;color:#7A4E10;line-height:1.6;">
-    <strong>This describes what Nifti actually does today, for a small pilot.</strong> It is written to be accurate about how your data is really handled. Nothing here is legal advice.
-  </div>
+  <h1 style="margin-bottom:6px;">Privacy Notice</h1>
+  <p class="nf25-legal-date">Last updated: November 13, 2026</p>
+  <div class="nf25-legal-box"><strong>Plain words, no fine print.</strong> This says what Nifti really does with your information today. It follows the Philippine Data Privacy Act of 2012 (Republic Act 10173).</div>
 
-  <h2 style="font-size:20px;margin-bottom:10px;">What data we collect</h2>
-  <ul style="font-size:15.5px;line-height:1.9;padding-left:22px;margin-bottom:14px;">
-    <li><strong>Account &amp; business information</strong> — your name, email, business name and type (buyer/supplier), and the team members you invite.</li>
-    <li><strong>Business records</strong> — purchase orders, inventory and stock levels, supplier/buyer relationships, standing price agreements, and messages exchanged with counterparties on the platform.</li>
-    <li><strong>Payment information</strong> — Nifti does not process payments or hold funds. Buyers pay suppliers directly (GCash, Maya, bank transfer, etc.). We store the payment account details a supplier chooses to show their connected buyers, and the payment records you enter (method, amount, reference number, optional receipt photo). We never ask for or store passwords, PINs, or card numbers.</li>
-    <li><strong>Usage data</strong> — basic technical data (browser type, general error logs) to keep the app working correctly.</li>
+  <h2>What we keep</h2>
+  <ul>
+    <li><strong>Your account.</strong> Your name, email, business name and type, and the people you add to your team with their roles.</li>
+    <li><strong>Your business records.</strong> Orders, prices, stock and stock counts, shop sales, expenses, cash counts, payroll, money owed both ways, credits and returns, your books, team tasks and notes, and the messages you send to customers and suppliers in Nifti.</li>
+    <li><strong>Your customers' details.</strong> Names, phone numbers and emails you type in for your own customers. Only add people who are OK with it, because you are the one in charge of their details.</li>
+    <li><strong>Photos you add.</strong> Receipts, delivery proof, product photos and notebook pages. They stay with your business until you delete them.</li>
+    <li><strong>Payments you record.</strong> Nifti never holds or moves money. We keep what you write down: method, amount, reference number, and a receipt photo if you add one. We never ask for card numbers, PINs or passwords to your bank or GCash.</li>
+    <li><strong>Telegram, if you link it.</strong> Your Telegram chat number and the name on your Telegram account, so we can send you alerts. Nifti can only send to that one chat. It cannot read your other chats or contacts.</li>
+    <li><strong>Your online store.</strong> A count of visits and orders from your store link, and where the visit came from (for example Facebook or a QR poster). We don't track who the visitors are.</li>
+    <li><strong>Technical logs.</strong> Basic errors and which browser you use, to keep the app working.</li>
   </ul>
 
-  <h2 style="font-size:20px;margin:22px 0 10px;">Where it's stored</h2>
-  <p style="font-size:15.5px;line-height:1.7;margin-bottom:14px;">Your data is stored in a Supabase-hosted PostgreSQL database, transmitted over encrypted HTTPS connections. Access to your business's data is enforced at the database level (row-level security) — a business can only ever read or write its own records, or records a counterparty has explicitly shared with it (e.g. a purchase order between a specific buyer and supplier). Team members within your business see only what their assigned role permits.</p>
-
-  <h2 style="font-size:20px;margin:22px 0 10px;">Who we share data with</h2>
-  <ul style="font-size:15.5px;line-height:1.9;padding-left:22px;margin-bottom:14px;">
-    <li><strong>Supabase</strong> — our database and authentication infrastructure provider.</li>
-    <li><strong>Your counterparties</strong> — a supplier you send a PO to sees that order's details; a buyer you're connected to sees the pricing and catalog you've shared with them. Nothing is visible to a business you haven't connected with.</li>
+  <h2>Who else handles it, and why</h2>
+  <ul>
+    <li><strong>Supabase</strong> stores the database and runs sign-in. Everything travels over encrypted connections.</li>
+    <li><strong>Anthropic</strong>, only when you tap to read a notebook page. The photo goes to Anthropic's AI (Claude) so it can read the handwriting, and the lines come back to you. Under Anthropic's business terms, your photos are not used to train their AI.</li>
+    <li><strong>Telegram</strong>, only for people who link it. Alerts go through Telegram to your own chat.</li>
+    <li><strong>Phone notification services</strong> (from Google, Apple or your browser maker) deliver alerts to phones that turned them on.</li>
+    <li><strong>An email service</strong> sends the emails you ask for, like reminders to your customers.</li>
+    <li><strong>The businesses you trade with.</strong> A supplier sees the orders you send them. A customer sees the prices and statements you share. Businesses you have not connected with see nothing.</li>
   </ul>
-  <p style="font-size:15.5px;line-height:1.7;margin-bottom:14px;">We do not sell your data, and we do not share it with anyone outside the above without your consent or a legal requirement to do so.</p>
+  <p>We do not sell your information. We don't share it with anyone else unless you say yes, or the law requires it.</p>
 
-  <h2 style="font-size:20px;margin:22px 0 10px;">Your rights</h2>
-  <p style="font-size:15.5px;line-height:1.7;margin-bottom:14px;">You can access, correct, or delete your business's data at any time from within the app, or by contacting us at <strong>ty.sigmund@gmail.com</strong>. If you close your account, we'll remove your data within a reasonable period, except where we're required to retain records (e.g. for financial/tax purposes).</p>
+  <h2>Who inside your business sees what</h2>
+  <p>Each person only sees what their role allows (see Settings, Who sees what). Owners and General Managers see everything. A cashier, for example, doesn't see payroll. The database itself enforces this, not just the screens, so one business can never read another business's records.</p>
 
-  <h2 style="font-size:20px;margin:22px 0 10px;">Security — what's actually built</h2>
-  <p style="font-size:15.5px;line-height:1.7;margin-bottom:10px;">Role-based permissions enforced at the point of every action, not just by hiding a button; an audit log recording who changed what, including denied attempts; row-level security so no business can query another's data even through a bug in the app itself.</p>
-  <p style="font-size:15.5px;line-height:1.7;margin-bottom:10px;"><strong>What this pilot does not yet have:</strong> a formal security audit, penetration testing, or SOC 2/ISO 27001 certification. Reasonable, but not enterprise-grade — appropriate for a small trusted pilot, not yet for handling sensitive data at scale.</p>
+  <h2>How long we keep it</h2>
+  <p>As long as your account is open. When you delete your business account, we remove your records within 30 days. Copies in our backups are removed as the backups roll over. Businesses you traded with keep their own copy of the orders you shared, shown as "Deleted business".</p>
 
-  <h2 style="font-size:20px;margin:22px 0 10px;">Changes to this policy</h2>
-  <p style="font-size:15.5px;line-height:1.7;">We'll update this page as the product changes, and let pilot users know of any material change directly.</p>
+  <h2>Your rights</h2>
+  <ul>
+    <li><strong>See and download everything.</strong> Settings, Your data, then "Everything in Excel".</li>
+    <li><strong>Fix mistakes.</strong> Edit your records any time, or ask us to.</li>
+    <li><strong>Delete.</strong> Settings, Your data, then "Delete my business account".</li>
+    <li><strong>Ask or complain.</strong> Write to us first. You can also go to the National Privacy Commission (privacy.gov.ph).</li>
+  </ul>
 
-  <h2 style="font-size:20px;margin:22px 0 10px;">Contact</h2>
-  <p style="font-size:15.5px;line-height:1.7;">Questions about this policy or your data: <strong>ty.sigmund@gmail.com</strong>.</p>
+  <h2>How we protect it</h2>
+  <p>Role permissions are checked on every action. An activity log records who changed what. Nifti's own admin notes about a business are kept apart where businesses can't read them. Service keys are kept on the server and never sent to your phone. What we don't have yet: an outside security audit or a security certification.</p>
+
+  <h2>Age</h2>
+  <p>Nifti is for businesses. You need to be at least 18 to open an account.</p>
+
+  <h2>Changes</h2>
+  <p>When this notice changes in a way that matters, we tell you in the app before it takes effect.</p>
+
+  <h2>Contact</h2>
+  <p>Questions, requests or complaints about your information: <strong>ty.sigmund@gmail.com</strong>.</p>
 </div></section>
 <footer><div class="wrap foot-inner">
   <div class="foot-brand"><strong>Nifti</strong></div>
@@ -8362,46 +8457,56 @@ html.nf-phone #view-app .nf24-bir{display:none;}
 </div></nav>
 <section class="feat-section"><div class="wrap" style="max-width:820px;">
   <h1 style="margin-bottom:6px;">Terms of Service</h1>
-  <p style="font-size:14.5px;color:var(--ink);opacity:.7;margin-bottom:16px;">Last updated: September 22, 2026 · Effective for pilot use of Nifti</p>
-  <div style="background:var(--warn-soft);border:1px solid var(--warn);border-radius:10px;padding:16px 18px;margin:14px 0 24px;font-size:15px;color:#7A4E10;line-height:1.6;">
-    <strong>These terms cover pilot use of Nifti.</strong> Nifti never holds or moves your money: buyers pay suppliers directly, and Nifti only records what each side says was paid and confirmed. Nothing here is legal advice.
-  </div>
+  <p class="nf25-legal-date">Last updated: November 13, 2026</p>
+  <div class="nf25-legal-box"><strong>The short version.</strong> Nifti helps you order, sell, keep stock and keep your books. It never holds or moves your money. You own your records and can download or delete them any time.</div>
 
-  <h2 style="font-size:20px;margin-bottom:10px;">1. Acceptance of terms</h2>
-  <p style="font-size:15.5px;line-height:1.7;margin-bottom:14px;">By creating an account or using Nifti, you agree to these terms. If you're using Nifti on behalf of a business, you're confirming you have the authority to bind that business to these terms.</p>
+  <h2>1. Agreeing to these terms</h2>
+  <p>By opening an account or using Nifti, you agree to these terms. If you use Nifti for a business, you confirm you're allowed to agree for that business.</p>
 
-  <h2 style="font-size:20px;margin:22px 0 10px;">2. What Nifti is</h2>
-  <p style="font-size:15.5px;line-height:1.7;margin-bottom:14px;">Nifti is a procurement platform connecting buyers and suppliers — purchase orders, inventory tracking, messaging, price agreements, and payment processing. This is a pilot version: expect bugs, and treat it as a tool you're helping test, not a finished, guaranteed-stable product.</p>
+  <h2>2. What Nifti is</h2>
+  <p>Nifti is an app for distributors and shops: orders with customers and suppliers, stock, shop sales, expenses, payroll, money owed, an online store, and summaries for your bookkeeper. We keep improving it, so screens and features can change.</p>
 
-  <h2 style="font-size:20px;margin:22px 0 10px;">3. Accounts</h2>
-  <p style="font-size:15.5px;line-height:1.7;margin-bottom:14px;">You're responsible for the accuracy of the information you provide and for keeping your login credentials secure. Team members you invite act on your business's behalf according to the role you assign them.</p>
+  <h2>3. Your account and team</h2>
+  <p>Keep your login safe and your details correct. People you add to your team act for your business within the role you give them. You're responsible for what your team does in Nifti.</p>
 
-  <h2 style="font-size:20px;margin:22px 0 10px;">4. Suppliers &amp; buyers, pricing</h2>
-  <p style="font-size:15.5px;line-height:1.7;margin-bottom:14px;">Suppliers use Nifti at no cost. Buyer accounts may be on a free trial or paid plan as shown in Settings → Billing. Data is never deleted on downgrade — you keep access to your own historical records regardless of plan.</p>
+  <h2>4. Plans and payment</h2>
+  <p>Nifti has a Free plan and paid plans, with prices on the Pricing page. Paid plans are billed monthly, and you can stop any time. If you move to a smaller plan, you keep your records and can still see and download them. While the pilot runs, paid features are free; we'll tell you at least 30 days before any charge starts.</p>
 
-  <h2 style="font-size:20px;margin:22px 0 10px;">5. Acceptable use</h2>
-  <p style="font-size:15.5px;line-height:1.7;margin-bottom:14px;">You agree not to use Nifti to commit fraud, misrepresent a business relationship, access data outside your assigned role, or interfere with the platform's normal operation.</p>
+  <h2>5. Money and payments</h2>
+  <p>Nifti is not a bank or a payment service. Customers pay suppliers directly through GCash, Maya, a bank or cash. Nifti only records what each side reports. A payment counts as paid once the supplier confirms it arrived. Check your own account before confirming.</p>
 
-  <h2 style="font-size:20px;margin:22px 0 10px;">6. Payments</h2>
-  <p style="font-size:15.5px;line-height:1.7;margin-bottom:14px;">Nifti is not a payment processor and never holds, receives, or transfers money. Buyers pay suppliers directly through their own GCash, Maya, bank, or other accounts. Nifti only records what each business reports: a buyer submits a payment with its reference number, and it counts as paid only after the supplier confirms it arrived. Suppliers are responsible for keeping their listed payment details accurate. Buyers should confirm any recently changed payment details directly with the supplier before sending money. Disputes about a specific payment are between the buyer and supplier, and may also be subject to the terms of the e-wallet or bank used.</p>
+  <h2>6. Books and taxes</h2>
+  <p>The tax pages give summaries for your bookkeeper. Nifti is not a BIR-registered accounting system and does not file anything with the BIR. You and your bookkeeper are responsible for your filings, invoices and permits.</p>
 
-  <h2 style="font-size:20px;margin:22px 0 10px;">7. Your data</h2>
-  <p style="font-size:15.5px;line-height:1.7;margin-bottom:14px;">Your business's records (orders, pricing, inventory, messages) remain yours. Nifti's role is to host and process it on your behalf, not to claim ownership of it.</p>
+  <h2>7. Notebook reading</h2>
+  <p>Notebook reading uses AI to read handwriting, and it can make mistakes. Nothing goes into your books until a person on your team checks each line and says yes. Each plan reads a set number of pages a month, shown in the app.</p>
 
-  <h2 style="font-size:20px;margin:22px 0 10px;">8. Disclaimer &amp; limitation of liability</h2>
-  <p style="font-size:15.5px;line-height:1.7;margin-bottom:14px;">Nifti is provided "as is" during this pilot, without warranty of uninterrupted or error-free operation. To the fullest extent permitted by law, Nifti's liability for any claim arising from your use of the platform is limited to the amount you've paid us in the preceding 3 months (or ₱0 if you're on a free/trial plan).</p>
+  <h2>8. Telegram alerts and reminders</h2>
+  <p>Alerts are a help, not a guarantee. They depend on Telegram, your phone and your internet, and can arrive late. Don't rely on them alone for anything urgent. Reminders you send to your customers go out in your business's name, so only message people who expect to hear from you.</p>
 
-  <h2 style="font-size:20px;margin:22px 0 10px;">9. Termination</h2>
-  <p style="font-size:15.5px;line-height:1.7;margin-bottom:14px;">You can stop using Nifti and close your account at any time. We may suspend or terminate an account for a clear violation of section 5 (Acceptable use).</p>
+  <h2>9. Your store and posts</h2>
+  <p>You're responsible for what you post: prices, photos, product claims and promos. Don't post anything that's not yours to use.</p>
 
-  <h2 style="font-size:20px;margin:22px 0 10px;">10. Governing law</h2>
-  <p style="font-size:15.5px;line-height:1.7;margin-bottom:14px;">These terms are governed by the laws of the Republic of the Philippines.</p>
+  <h2>10. Fair use</h2>
+  <p>Don't use Nifti to cheat anyone, pretend to be another business, get into records your role doesn't allow, send spam, or disrupt the app for others.</p>
 
-  <h2 style="font-size:20px;margin:22px 0 10px;">11. Changes</h2>
-  <p style="font-size:15.5px;line-height:1.7;margin-bottom:14px;">We'll notify pilot users directly of any material change to these terms.</p>
+  <h2>11. Your records</h2>
+  <p>Your records belong to you. Nifti keeps them to run the app for you, as explained in the Privacy Notice. You can download everything or delete your account from Settings.</p>
 
-  <h2 style="font-size:20px;margin:22px 0 10px;">Contact</h2>
-  <p style="font-size:15.5px;line-height:1.7;">Questions about these terms: <strong>ty.sigmund@gmail.com</strong>.</p>
+  <h2>12. No guarantees, and limits</h2>
+  <p>We work hard to keep Nifti running and correct, but it's provided as it is, without a promise that it will never stop or never have a mistake. As far as the law allows, if something goes wrong, the most Nifti owes you is what you paid us in the 3 months before (₱0 on the Free plan or during the free pilot).</p>
+
+  <h2>13. Closing an account</h2>
+  <p>You can close your account any time. We may suspend an account that clearly breaks section 10, and we'll tell you why.</p>
+
+  <h2>14. Law</h2>
+  <p>These terms follow the laws of the Republic of the Philippines.</p>
+
+  <h2>15. Changes</h2>
+  <p>When these terms change in a way that matters, we tell you in the app before it takes effect.</p>
+
+  <h2>Contact</h2>
+  <p>Questions about these terms: <strong>ty.sigmund@gmail.com</strong>.</p>
 </div></section>
 <footer><div class="wrap foot-inner">
   <div class="foot-brand"><strong>Nifti</strong></div>
@@ -10782,7 +10887,7 @@ const marketingPages = ['index','features','pricing','privacy','terms'];
 // given page reflects that page instead of always showing the homepage's copy.
 const SEO_META = {
   index: { title: 'Nifti — Procurement Software for Philippine Businesses | Orders, Inventory & Payments', description: 'Nifti is a private procurement platform built for Philippine SMEs — manage purchase orders, inventory, and GCash/Maya payments with the suppliers you already trust. No public marketplace, no cold vetting.' },
-  features: { title: 'Features — Nifti Procurement Software', description: 'Everything Nifti does for Philippine SMEs: purchase orders, inventory tracking, supplier messaging, GCash and Maya payments, and BIR-ready sales invoices — all in one place.' },
+  features: { title: 'Features — Nifti Procurement Software', description: 'Everything Nifti does for Philippine SMEs: purchase orders, inventory tracking, supplier messaging, GCash and Maya payments, and sales invoices with VAT summaries for your bookkeeper — all in one place.' },
   pricing: { title: 'Pricing — Nifti Procurement Software', description: 'Simple, transparent pricing for Nifti — the procurement platform built for Philippine SMEs. See plans and what\'s included.' },
 };
 function updateSeoMeta(page){
@@ -20012,11 +20117,11 @@ function bkSeedDemo(){
   // the stock trail: deliveries in, sales out, a bad bag, and a count that came up short
   const mv = (n, item, qty, kind, reason, by, ref) => ({id: bkUid(), item, qty, kind, reason, ref: ref || '', date: d(n), at: d(n) + 'T16:00:00', by, unitCost: (BK_DEMO_COST[item] || [0])[0]});
   BK.moves = [
-    mv(9, 'Portland Cement 40kg', 100, 'received', 'Received from Cebu Aggregates', 'Rico', 'PO-2026-0839'), mv(4, 'Portland Cement 40kg', -15, 'sold', 'Counter sale', 'Liza'),
-    mv(1, 'Portland Cement 40kg', -25, 'sold', 'Counter sale (utang)', 'Liza'), mv(0, 'Portland Cement 40kg', -10, 'sold', 'Counter sale', 'Liza'),
+    mv(9, 'Portland Cement 40kg', 100, 'received', 'Received from Cebu Aggregates', 'Rico', 'PO-2026-0839'), mv(4, 'Portland Cement 40kg', -15, 'sold', 'Shop sale', 'Liza'),
+    mv(1, 'Portland Cement 40kg', -25, 'sold', 'Shop sale (utang)', 'Liza'), mv(0, 'Portland Cement 40kg', -10, 'sold', 'Shop sale', 'Liza'),
     mv(2, 'Portland Cement 40kg', -3, 'bad', 'Damaged · bags torn in the rain', 'Rico'), mv(0, 'Portland Cement 40kg', -6, 'count', 'Spot count: system 18, shelf 12', 'Liza'),
     mv(7, 'Welding Rods 3.2mm', -4, 'count', 'Spot count: system 314, shelf 310', 'Rico'), mv(3, 'Fresh Tomatoes (Grade A)', -6, 'bad', 'Spoiled', 'Liza'),
-    mv(1, 'Galvanized Wire 12ga', 30, 'received', 'Received from Metro Steel Co.', 'Rico', 'PO-2026-0798'), mv(0, 'Galvanized Wire 12ga', -6, 'sold', 'Counter sale', 'Liza'),
+    mv(1, 'Galvanized Wire 12ga', 30, 'received', 'Received from Metro Steel Co.', 'Rico', 'PO-2026-0798'), mv(0, 'Galvanized Wire 12ga', -6, 'sold', 'Shop sale', 'Liza'),
     mv(5, 'Angle Bars', -2, 'adjust', 'Changed by hand', 'Rico'),
   ];
   // the cash counts: most days fine, one short, one not counted yet (today)
@@ -20461,7 +20566,7 @@ async function qsSave(){
   }
   BK.sales.unshift(sale); bkSaveDemo();
   const real = lines.filter(l => !l.totalOnly);
-  if(real.length) stockOut(bkStockLines(real), 'sold', (customer === 'Walk-in' ? 'Counter sale' : 'Sold to ' + customer) + bkMenuNote(real), 'Sale');
+  if(real.length) stockOut(bkStockLines(real), 'sold', (customer === 'Walk-in' ? 'Shop sale' : 'Sold to ' + customer) + bkMenuNote(real), 'Sale');
   slClose('qsModal');
   const rec = QS.paidWith === 'cash' ? Number(String(QS.received).replace(/,/g, '')) || 0 : 0;
   BK_LAST_CHANGE[sale.id] = rec > total ? {received: rec, change: Math.round((rec - total) * 100) / 100} : null;
@@ -20503,7 +20608,7 @@ async function bkPaySaleSave(id){
 }
 function renderSalesBooksPage(){
   const page = document.getElementById('page-sales'); if(!page) return;
-  if(!page.querySelector('#bkSalesBody')) page.innerHTML = bkHead('Sales', 'Every sale at the counter: walk-ins, GCash and utang. Stock comes out by itself.', `<button class="btn btn-primary" onclick="openQuickSale()">+ New sale</button>`) + '<div id="bkSalesBody"></div>';
+  if(!page.querySelector('#bkSalesBody')) page.innerHTML = bkHead('Sales', 'Every sale in your shop: walk-ins, GCash and utang. Stock comes out by itself.', `<button class="btn btn-primary" onclick="openQuickSale()">+ New sale</button>`) + '<div id="bkSalesBody"></div>';
   const body = document.getElementById('bkSalesBody');
   if(!BK.loaded){ body.innerHTML = bkLoadingHtml(); bkLoad().then(renderSalesBooksPage); return; }
   const day = bkSalesDay || APP_TODAY, boss = booksCanSeeTotals();
@@ -20883,7 +20988,7 @@ function renderMoneyPage(){
     <div class="bk-two">
       <section class="panel-card bk-pnl" id="bkPnlPrint"><div class="panel-head"><h2>Profit for ${bkMonthLabel(m)}</h2></div>
         <div class="pl-r"><span>Sales</span><b>${bkPeso(p.sales)}</b></div>
-        <div class="pl-r pl-sub"><span>At the counter</span><span>${bkPeso(p.counter)}</span></div><div class="pl-r pl-sub"><span>Customer orders</span><span>${bkPeso(p.orders)}</span></div>
+        <div class="pl-r pl-sub"><span>In the shop</span><span>${bkPeso(p.counter)}</span></div><div class="pl-r pl-sub"><span>Customer orders</span><span>${bkPeso(p.orders)}</span></div>
         <div class="pl-r pl-neg"><span>− Cost of what you sold</span><b>${bkPeso(p.cost)}</b></div>
         <div class="pl-r tot"><span>Gross profit</span><b>${bkPeso(p.gross)}</b></div>
         <div class="pl-r pl-neg"><span>− Expenses</span><b>${bkPeso(p.expenses)}</b></div>
@@ -20893,7 +20998,7 @@ function renderMoneyPage(){
         ${p.missingCost ? `<div class="bk-note">Some items have no cost yet, so profit looks higher than it is. <a class="lg-link" onclick="go('profit')">Add costs</a></div>` : ''}</section>
       <div>
         <section class="panel-card bk-pnl"><div class="panel-head"><h2>Money in and out</h2></div>
-          <div class="pl-r"><span>Received at the counter</span><b class="up">${bkPeso(f.inCounter)}</b></div>
+          <div class="pl-r"><span>Received in the shop</span><b class="up">${bkPeso(f.inCounter)}</b></div>
           <div class="pl-r"><span>Received from customer orders</span><b class="up">${bkPeso(f.inOrders)}</b></div>
           <div class="pl-r"><span>Paid to suppliers</span><b>− ${bkPeso(f.outSup)}</b></div>
           <div class="pl-r"><span>Expenses paid</span><b>− ${bkPeso(f.outExp)}</b></div>
@@ -20904,12 +21009,12 @@ function renderMoneyPage(){
 }
 function bkDownloadPnl(m){
   const p = bkPnl(m), f = bkMoneyFlows(m);
-  const rows = [['Nifti profit and money report', selfName(), bkMonthLabel(m)], [], ['Sales', p.sales], ['  At the counter', p.counter], ['  Customer orders', p.orders], ['Cost of what you sold', p.cost], ['Gross profit', p.gross], ['Expenses', p.expenses]];
+  const rows = [['Nifti profit and money report', selfName(), bkMonthLabel(m)], [], ['Sales', p.sales], ['  In the shop', p.counter], ['  Customer orders', p.orders], ['Cost of what you sold', p.cost], ['Gross profit', p.gross], ['Expenses', p.expenses]];
   Object.entries(p.byCat).sort((a, b) => b[1] - a[1]).forEach(([k, v]) => rows.push(['  ' + k, v]));
-  rows.push([p.net < 0 ? 'Loss' : 'Profit', p.net], ['Owner took (not an expense)', p.drawings], [], ['Received at the counter', f.inCounter], ['Received from customer orders', f.inOrders], ['Paid to suppliers', f.outSup], ['Expenses paid', f.outExp]);
+  rows.push([p.net < 0 ? 'Loss' : 'Profit', p.net], ['Owner took (not an expense)', p.drawings], [], ['Received in the shop', f.inCounter], ['Received from customer orders', f.inOrders], ['Paid to suppliers', f.outSup], ['Expenses paid', f.outExp]);
   rows.push([], ['Expenses list'], ['Date', 'Category', 'Paid to / staff', 'Paid from', 'Amount', 'Added by', 'Removed']);
   BK.expenses.filter(e => bkMonth(e.date) === m).forEach(e => rows.push([e.date, e.category, e.staff || e.vendor, e.paidFrom, e.amount, e.by, e.deletedAt ? 'removed: ' + e.deleteReason : '']));
-  rows.push([], ['Counter sales'], ['Date', 'Customer', 'Items', 'Paid with', 'Total', 'By', 'Removed']);
+  rows.push([], ['Shop sales'], ['Date', 'Customer', 'Items', 'Paid with', 'Total', 'By', 'Removed']);
   BK.sales.filter(s => bkMonth(s.date) === m).forEach(s => rows.push([s.date, s.customer, (s.lines || []).map(l => l.qty + ' x ' + l.product).join('; '), s.paidWith, s.total, s.by, s.voidedAt ? 'removed: ' + s.voidReason : '']));
   const esc = v => { const t = String(v == null ? '' : v); return /[",\n]/.test(t) ? '"' + t.replace(/"/g, '""') + '"' : t; };
   const blob = new Blob(['﻿' + rows.map(r => r.map(esc).join(',')).join('\r\n')], {type: 'text/csv;charset=utf-8'});
@@ -20957,7 +21062,7 @@ function stkRender(){
   if(STK.kind === 'promised'){
     const prom = bkPromised();
     slModal('stkModal', `<div class="sl-sheet-h"><b>Promised to customers</b><button class="sl-x" onclick="slClose('stkModal')">✕</button></div>
-      <div class="sl-sub">In orders you've confirmed but not delivered yet. Don't sell these at the counter.</div>
+      <div class="sl-sub">In orders you've confirmed but not delivered yet. Don't sell these in the shop.</div>
       ${Object.entries(prom).map(([k, q]) => { const it = inventoryData.filter(i => i.name.toLowerCase() === k), onHand = it.reduce((a, i) => a + Number(i.onHand), 0), name = it[0] ? it[0].name : k;
         return `<div class="bk-row"><div class="bk-row-m"><b>${escapeHtml(name)}</b><small>${onHand} on the shelf · ${Math.max(0, onHand - q)} free to sell</small></div><span class="bk-amt ${q > onHand ? 'bk-bad' : ''}">${q} promised</span><span></span></div>`; }).join('')}`);
     return;
@@ -22090,7 +22195,7 @@ Object.assign(I18N_FIL, {
 "Import from a photo": "Mag-import mula sa litrato",
 "Import inventory from CSV": "Mag-import ng stock mula sa CSV",
 "Import your product list from a spreadsheet — map columns and preview every row before anything is saved, and undo any import afterward.": "I-import ang listahan ng produkto mula sa spreadsheet — itugma ang mga column at silipin ang bawat linya bago i-save, at puwedeng i-undo pagkatapos.",
-"In orders you've confirmed but not delivered yet. Don't sell these at the counter.": "Nasa mga order na kinumpirma mo pero hindi pa na-deliver. Huwag itong ibenta sa counter.",
+"In orders you've confirmed but not delivered yet. Don't sell these in the shop.": "Nasa mga order na kinumpirma mo pero hindi pa na-deliver. Huwag itong ibenta sa tindahan.",
 "In progress": "Ginagawa pa",
 "In transit": "Nasa biyahe",
 "Inventory": "Stock",
@@ -22715,9 +22820,9 @@ Object.assign(I18N_FIL, {
 "Shown below the bar.": "Ipinapakita sa ilalim ng bar.",
 "Shrinkage / loss / theft": "Nawala / ninakaw",
 "Sold": "Nabenta",
-"Sold · Counter sale (utang) · Yesterday · by {0}": "Nabenta · Benta sa counter (utang) · Kahapon · ni {0}",
-"Sold · Counter sale · Today · by {0}": "Nabenta · Benta sa counter · Ngayon · ni {0}",
-"Sold · Counter sale · {0}, {1} {2} · by {3}": "Nabenta · Benta sa counter · {0}, {1} {2} · ni {3}",
+"Sold · Shop sale (utang) · Yesterday · by {0}": "Nabenta · Benta sa tindahan (utang) · Kahapon · ni {0}",
+"Sold · Shop sale · Today · by {0}": "Nabenta · Benta sa tindahan · Ngayon · ni {0}",
+"Sold · Shop sale · {0}, {1} {2} · by {3}": "Nabenta · Benta sa tindahan · {0}, {1} {2} · ni {3}",
 "Spot count": "Biglaang bilang",
 "Stock history": "Kasaysayan ng stock",
 "Stocktake in progress": "May bilangan ng stock na nagaganap",
@@ -22759,7 +22864,7 @@ Object.assign(I18N_FIL, {
 "Last active {0} {1} {2}": "Huling aktibo {0} {1} {2}",
 "No conversations match.": "Walang tugmang usapan.",
 "All on schedule": "Lahat ay nasa oras",
-"At the counter": "Sa counter",
+"In the shop": "Sa tindahan",
 "Bank & GCash fees": "Bayad sa bangko at GCash",
 "Bills look like the usual months": "Ang bills ay gaya ng karaniwang buwan",
 "Cash left over": "Natirang cash",
@@ -22784,7 +22889,7 @@ Object.assign(I18N_FIL, {
 "Prices OK": "Maayos ang presyo",
 "Print": "I-print",
 "Profit for {0} {1}": "Kita para sa {0} {1}",
-"Received at the counter": "Natanggap sa counter",
+"Received in the shop": "Natanggap sa tindahan",
 "Received from customer orders": "Natanggap mula sa order ng customer",
 "Rent": "Upa",
 "Repairs": "Pagkukumpuni",
@@ -23030,7 +23135,7 @@ Object.assign(I18N_FIL, {
 "Cash received": "Natanggap na cash",
 "Change (sukli)": "Sukli",
 "Count the cash →": "Bilangin ang cash →",
-"Every sale at the counter: walk-ins, GCash and utang. Stock comes out by itself.": "Bawat benta sa counter: walk-in, GCash at utang. Kusang nababawasan ang stock.",
+"Every sale in your shop: walk-ins, GCash and utang. Stock comes out by itself.": "Bawat benta sa tindahan: walk-in, GCash at utang. Kusang nababawasan ang stock.",
 "For a register total. Stock won't move; record items when you can.": "Para sa kabuuan ng kaha. Hindi gagalaw ang stock; itala ang items kapag kaya mo.",
 "GCash & Maya": "GCash at Maya",
 "Just the total": "Kabuuan lang",
@@ -23643,11 +23748,11 @@ Object.assign(I18N_FIL, {
 "− Opening balances": "− Panimulang balanse",
 "Opening balances up {0}": "Tumaas ang Panimulang balanse ng {0}",
 "Opening balances (monthly)": "Panimulang balanse (buwanan)",
-"Counter sales": "Benta sa counter",
-"{0} · Counter sales": "{0} · Benta sa counter",
-"− Counter sales": "− Benta sa counter",
-"Counter sales up {0}": "Tumaas ang Benta sa counter ng {0}",
-"Counter sales (monthly)": "Benta sa counter (buwanan)",
+"Shop sales": "Benta sa tindahan",
+"{0} · Shop sales": "{0} · Benta sa tindahan",
+"− Shop sales": "− Benta sa tindahan",
+"Shop sales up {0}": "Tumaas ang Benta sa tindahan ng {0}",
+"Shop sales (monthly)": "Benta sa tindahan (buwanan)",
 "Sales to customers (orders)": "Benta sa customer (order)",
 "{0} · Sales to customers (orders)": "{0} · Benta sa customer (order)",
 "− Sales to customers (orders)": "− Benta sa customer (order)",
@@ -23745,10 +23850,10 @@ Object.assign(I18N_FIL, {
 "− Other expenses": "− Iba pang gastos",
 "Other expenses up {0}": "Tumaas ang Iba pang gastos ng {0}",
 "Other expenses (monthly)": "Iba pang gastos (buwanan)",
-"Today · Counter sale": "Ngayon · Benta sa counter",
-"Yesterday · Counter sale": "Kahapon · Benta sa counter",
-"{0}, {1} {2} · Counter sale": "{0}, {1} {2} · Benta sa counter",
-"Counter sale": "Benta sa counter",
+"Today · Shop sale": "Ngayon · Benta sa tindahan",
+"Yesterday · Shop sale": "Kahapon · Benta sa tindahan",
+"{0}, {1} {2} · Shop sale": "{0}, {1} {2} · Benta sa tindahan",
+"Shop sale": "Benta sa tindahan",
 "Today · Utang payment": "Ngayon · Bayad sa utang",
 "Yesterday · Utang payment": "Kahapon · Bayad sa utang",
 "{0}, {1} {2} · Utang payment": "{0}, {1} {2} · Bayad sa utang",
@@ -23809,7 +23914,7 @@ Object.assign(I18N_FIL, {
 "Expected out": "Inaasahang lalabas",
 "Cash at the end": "Cash sa dulo",
 "How this is worked out:": "Paano ito kinompyut:",
-"starts from {0} recorded in cash, GCash and bank (not your real bank balance). Adds unpaid invoices on their due date (overdue ones as if paid today), takes off supplier bills on their due date, monthly bills marked \"every month\" on their usual day, and payroll repeating like the last one. Counter utang ({1}) has no due date, so it's left out. New sales are not guessed.": "nagsisimula sa {0} na naitala sa cash, GCash at bangko (hindi ang totoong balanse sa bangko). Idinadagdag ang hindi pa bayad na invoice sa due date nila (ang lampas na ay parang bayad ngayon), ibinabawas ang bills ng supplier sa due date, ang buwanang bills sa karaniwang araw, at ang payroll na gaya ng huli. Ang utang sa counter ({1}) ay walang due date kaya hindi kasama. Hindi hinuhulaan ang bagong benta.",
+"starts from {0} recorded in cash, GCash and bank (not your real bank balance). Adds unpaid invoices on their due date (overdue ones as if paid today), takes off supplier bills on their due date, monthly bills marked \"every month\" on their usual day, and payroll repeating like the last one. Shop utang ({1}) has no due date, so it's left out. New sales are not guessed.": "nagsisimula sa {0} na naitala sa cash, GCash at bangko (hindi ang totoong balanse sa bangko). Idinadagdag ang hindi pa bayad na invoice sa due date nila (ang lampas na ay parang bayad ngayon), ibinabawas ang bills ng supplier sa due date, ang buwanang bills sa karaniwang araw, at ang payroll na gaya ng huli. Ang utang sa counter ({1}) ay walang due date kaya hindi kasama. Hindi hinuhulaan ang bagong benta.",
 "Show the {0} items": "Ipakita ang {0} item",
 "Today · overdue": "Ngayon · lampas na",
 "Waiting for your OK": "Hinihintay ang OK mo",
@@ -23975,7 +24080,7 @@ Object.assign(I18N_FIL, {
 "Profit & loss · {0} {1}": "Kita at lugi · {0} {1}",
 "Total costs": "Kabuuang gastos",
 "+ Other income": "+ Iba pang kita",
-"Sales count when invoiced or sold at the counter. Costs count when approved. Tap any line to see the entries behind it. Owner drawings are not costs; they're on the balance sheet.": "Binibilang ang benta kapag na-invoice o nabenta sa counter. Binibilang ang gastos kapag naaprubahan. Pindutin ang linya para makita ang mga entry sa likod nito. Hindi gastos ang kinuha ng may-ari; nasa balance sheet ito.",
+"Sales count when invoiced or sold in the shop. Costs count when approved. Tap any line to see the entries behind it. Owner drawings are not costs; they're on the balance sheet.": "Binibilang ang benta kapag na-invoice o nabenta sa counter. Binibilang ang gastos kapag naaprubahan. Pindutin ang linya para makita ang mga entry sa likod nito. Hindi gastos ang kinuha ng may-ari; nasa balance sheet ito.",
 "Balance sheet · Today": "Balance sheet · Ngayon",
 "What you have": "Ang mayroon ka",
 "Owner's share": "Bahagi ng may-ari",
@@ -24006,7 +24111,7 @@ Object.assign(I18N_FIL, {
 "Nifti posts these from your sales, expenses, invoices, payments, stock, cash counts and payroll. Use a typed-in entry only for things that have no record here, like a loan or owner capital. Your accountant can help.": "Itinatala ito ng Nifti mula sa benta, gastos, invoice, bayad, stock, bilang ng kaha at payroll mo. Gumamit lang ng manwal na entry para sa walang record dito, gaya ng utang o kapital ng may-ari. Makakatulong ang accountant mo.",
 "Payment · {0} · {1}": "Bayad · {0} · {1}",
 "Count difference · {0}": "Pagkakaiba sa bilang · {0}",
-"Counter sale · {0}": "Benta sa counter · {0}",
+"Shop sale · {0}": "Benta sa tindahan · {0}",
 "Bad stock · {0}": "Sirang stock · {0}",
 "Stock changed by hand · {0}": "Binago nang manwal · {0}",
 "Cost of order {0}": "Puhunan ng order {0}",
@@ -24093,7 +24198,7 @@ const LG_ACCOUNTS = [
   ['2000', 'You owe suppliers (payables)', 'liability'], ['2050', 'Unpaid bills', 'liability'], ['2060', 'Credit card', 'liability'],
   ['2100', 'Output VAT', 'liability'], ['2300', 'SSS, PhilHealth, Pag-IBIG to remit', 'liability'], ['2310', 'Other payroll deductions', 'liability'],
   ['3000', "Owner's money put in (capital)", 'equity'], ['3100', 'Owner took money (drawings)', 'equity'], ['3200', 'Retained earnings', 'equity'], ['3900', 'Opening balances', 'equity'],
-  ['4000', 'Counter sales', 'income'], ['4010', 'Sales to customers (orders)', 'income'], ['4020', 'Credits and returns given', 'income'], ['4900', 'Other income (cash over)', 'income'],
+  ['4000', 'Shop sales', 'income'], ['4010', 'Sales to customers (orders)', 'income'], ['4020', 'Credits and returns given', 'income'], ['4900', 'Other income (cash over)', 'income'],
   ['5000', 'Cost of goods sold', 'expense'], ['5100', 'Bad and missing stock', 'expense'], ['5110', 'Stock changed by hand', 'expense'],
   ['6010', 'Electricity', 'expense'], ['6020', 'Water', 'expense'], ['6030', 'Internet & phone', 'expense'], ['6040', 'Gas (LPG)', 'expense'], ['6100', 'Rent', 'expense'],
   ['6200', 'Salaries', 'expense'], ['6210', 'Employer contributions', 'expense'], ['6300', 'Fuel & transport', 'expense'], ['6310', 'Delivery & shipping', 'expense'],
@@ -24128,7 +24233,7 @@ function lgExpected(){
     const byAcct = {}; same.forEach(p => { const a = lgAcctMethod(p.method); byAcct[a] = (byAcct[a] || 0) + (Number(p.amount) || 0); });
     const paid = same.reduce((a, p) => a + (Number(p.amount) || 0), 0);
     const cost = (s.lines || []).filter(l => !l.totalOnly && Number(l.unitCost) > 0).reduce((a, l) => a + (Number(l.qty) || 0) * Number(l.unitCost), 0);
-    add('sale', s.id, s.date, 'Counter sale' + (s.customer && s.customer !== 'Walk-in' ? ' · ' + s.customer : ''),
+    add('sale', s.id, s.date, 'Shop sale' + (s.customer && s.customer !== 'Walk-in' ? ' · ' + s.customer : ''),
       lgLs(Object.entries(byAcct).map(([a, v]) => lgL(a, v, 'd')), lgL('1100', s.total - paid, 'd', s.customer || 'Walk-in'), lgL('4000', s.total, 'c'), lgL('5000', cost, 'd'), lgL('1200', cost, 'c')), s.branch);
     later.forEach((p, i) => add('sale_pay', s.id + ':' + i, bkPayDate(p), 'Utang paid', lgLs(lgL(lgAcctMethod(p.method), p.amount, 'd'), lgL('1100', p.amount, 'c', s.customer || 'Walk-in')), s.branch));
   });
@@ -24286,7 +24391,7 @@ function lgOpenSource(eid){
   else if(e.type === 'payroll') go2('payroll', () => prOpenRun(id));
   else showToast('This entry was typed in by hand. Its lines are shown here.');
 }
-const LG_SRC = {sale: 'Counter sale', sale_pay: 'Utang payment', expense: 'Expense', po_sale: 'Invoice', po_cogs: 'Cost of order', po_pay: 'Customer payment', po_bill: 'Supplier bill',
+const LG_SRC = {sale: 'Shop sale', sale_pay: 'Utang payment', expense: 'Expense', po_sale: 'Invoice', po_cogs: 'Cost of order', po_pay: 'Customer payment', po_bill: 'Supplier bill',
   po_bill_pay: 'Supplier payment', stock: 'Stock change', cash_count: 'Cash count', deposit: 'Bank deposit', payroll: 'Payroll', manual: 'Typed-in entry', opening: 'Opening balances'};
 function lgShowEntry(eid){
   const e = LG.entries.find(x => x.id === eid); if(!e) return;
@@ -24406,7 +24511,7 @@ function lgPnlHtml(){
   const pct = v => v == null ? '' : ` <small>(${Math.round(v * 100)}%)</small>`;
   const exp = Object.entries(p.opex).sort((a, b) => b[1] - a[1]);
   return `<section class="panel-card pl"><div class="panel-head"><h2>Profit &amp; loss · ${escapeHtml(r.label)}</h2><div class="bk-head-act"><button class="btn btn-outline" onclick="lgExport('pnl')">⬇ CSV</button><button class="btn btn-outline" onclick="window.print()">Print</button></div></div>
-    ${lgMoneyRow('Counter sales', p.counter, {code: '4000', cls: 'pl-sub'})}${lgMoneyRow('Sales to customers (orders)', p.orders, {code: '4010', cls: 'pl-sub'})}${p.credits ? lgMoneyRow('− Credits and returns given', -p.credits, {code: '4020', cls: 'pl-sub'}) : ''}
+    ${lgMoneyRow('Shop sales', p.counter, {code: '4000', cls: 'pl-sub'})}${lgMoneyRow('Sales to customers (orders)', p.orders, {code: '4010', cls: 'pl-sub'})}${p.credits ? lgMoneyRow('− Credits and returns given', -p.credits, {code: '4020', cls: 'pl-sub'}) : ''}
     ${lgMoneyRow('Sales', p.revenue, {cls: 'pl-strong'})}
     ${lgMoneyRow('− Cost of goods sold', -p.cogs, {code: '5000'})}
     <div class="pl-r pl-strong pl-line"><span>Gross profit${pct(p.margin)}</span><b>${bkPeso(p.gross)}</b></div>
@@ -24414,7 +24519,7 @@ function lgPnlHtml(){
     ${lgMoneyRow('Total costs', -p.opexTot, {cls: 'pl-strong'})}
     ${p.other ? lgMoneyRow('+ Other income', p.other, {code: '4900'}) : ''}
     <div class="pl-r pl-total"><span>Net profit</span><b class="${p.net < 0 ? 'bk-bad' : 'bk-good'}">${bkPeso(p.net)}</b></div>
-    <div class="bk-note">Sales count when invoiced or sold at the counter. Costs count when approved. Tap any line to see the entries behind it. Owner drawings are not costs; they're on the balance sheet.</div></section>`;
+    <div class="bk-note">Sales count when invoiced or sold in the shop. Costs count when approved. Tap any line to see the entries behind it. Owner drawings are not costs; they're on the balance sheet.</div></section>`;
 }
 function lgBsHtml(){
   const asOf = LGV.asOf || APP_TODAY, s = lgSums(null, asOf);
@@ -24566,7 +24671,7 @@ async function lgAddAccount(){
 function lgExport(kind){
   const r = lgRangeNow(), em = lgEntryMap(), rows = [];
   const head = [['Nifti export', kind], ['Business', selfName()], ['Period', kind === 'bs' ? 'as of ' + (LGV.asOf || APP_TODAY) : r.from + ' to ' + r.to], ['Branch', LGV.branch || 'All'], ['Generated', new Date().toISOString()], ['Data', LG.demo ? 'SAMPLE DATA' : 'Posted ledger entries']];
-  if(kind === 'pnl'){ const p = lgPnlFor(r.from, r.to, LGV.branch); rows.push(['Line', 'Account', 'Amount'], ['Counter sales', '4000', p.counter], ['Sales to customers', '4010', p.orders], ['Credits and returns', '4020', -p.credits], ['Sales', '', p.revenue], ['Cost of goods sold', '5000', -p.cogs], ['Gross profit', '', p.gross]); Object.entries(p.opex).forEach(([c, v]) => rows.push([lgAcct(c).name, c, -v])); rows.push(['Other income', '4900', p.other], ['Net profit', '', p.net]); }
+  if(kind === 'pnl'){ const p = lgPnlFor(r.from, r.to, LGV.branch); rows.push(['Line', 'Account', 'Amount'], ['Shop sales', '4000', p.counter], ['Sales to customers', '4010', p.orders], ['Credits and returns', '4020', -p.credits], ['Sales', '', p.revenue], ['Cost of goods sold', '5000', -p.cogs], ['Gross profit', '', p.gross]); Object.entries(p.opex).forEach(([c, v]) => rows.push([lgAcct(c).name, c, -v])); rows.push(['Other income', '4900', p.other], ['Net profit', '', p.net]); }
   else if(kind === 'bs'){ const s = lgSums(null, LGV.asOf || APP_TODAY); rows.push(['Account', 'Name', 'Type', 'Balance']); Object.keys(s).sort().forEach(c => rows.push([c, lgAcct(c).name, lgAcct(c).type, lgBal(s, c)])); rows.push(['', 'Profit so far', 'equity', lgR(lgTotalOf(s, 'income') - lgTotalOf(s, 'expense'))]); }
   else if(kind === 'tb'){ const s = lgSums(r.from, r.to, LGV.branch); rows.push(['Account', 'Name', 'Debits', 'Credits', 'Balance']); Object.keys(s).sort().forEach(c => rows.push([c, lgAcct(c).name, lgR(s[c].d), lgR(s[c].c), lgBal(s, c)])); }
   else {
@@ -24603,7 +24708,7 @@ function lgForecastHtml(){
     <div class="lg-tbl-wrap"><table class="lg-tbl bk-tbl"><thead><tr><th>Next</th><th class="r">Expected in</th><th class="r">Expected out</th><th class="r">Cash at the end</th></tr></thead><tbody>
     ${hz.map(h => `<tr class="${h.end < 0 ? 'bk-tr-bad' : ''}"><td>${h.n} days</td><td class="r">${bkPeso(h.inn)}</td><td class="r">${bkPeso(h.out)}</td><td class="r">${bkPeso(h.end)}</td></tr>`).join('')}</tbody></table></div>
     ${low ? `<div class="bk-alert red"><b>Cash could run short within ${low.n} days</b><span>Collect overdue invoices first, or move a supplier payment. See the list below.</span></div>` : ''}
-    <div class="bk-note"><b>How this is worked out:</b> starts from ${bkPeso(start)} recorded in cash, GCash and bank (not your real bank balance). Adds unpaid invoices on their due date (overdue ones as if paid today), takes off supplier bills on their due date, monthly bills marked "every month" on their usual day, and payroll repeating like the last one. Counter utang (${bkPeso(utang)}) has no due date, so it's left out. New sales are not guessed.</div>
+    <div class="bk-note"><b>How this is worked out:</b> starts from ${bkPeso(start)} recorded in cash, GCash and bank (not your real bank balance). Adds unpaid invoices on their due date (overdue ones as if paid today), takes off supplier bills on their due date, monthly bills marked "every month" on their usual day, and payroll repeating like the last one. Shop utang (${bkPeso(utang)}) has no due date, so it's left out. New sales are not guessed.</div>
     ${items.length ? `<div class="nf-next5"><h3>Next money in and out</h3>${items.sort((a, b) => a.d.localeCompare(b.d)).slice(0, 4).map(x => `<div class="bk-row"><div class="bk-row-m"><b>${escapeHtml(x.what)}</b><small>${bkDayLabel(x.d)}${x.late ? ' · overdue' : ''}</small></div><span class="bk-amt ${x.amt < 0 ? 'bk-bad' : ''}">${bkPeso(x.amt)}</span></div>`).join('')}${items.length > 4 ? `<p>${items.length - 4} more in the next 90 days are already counted in the table above.</p>` : ''}</div>` : ''}</section>`;
 }
 
@@ -24737,7 +24842,7 @@ function issueRules(){
       next: 'If it\'s the same bill, remove one. If both are real, mark this as fine.', ev: [['Open expenses', `go('expenses')`]], basis: 'Same amount within 3 days'}); }));
   [bkMonth(APP_TODAY), bkPrevMonth(bkMonth(APP_TODAY))].forEach(m => bkBelowCost(m).filter(r => r.kind === 'below').forEach(r => add({fp: 'below:' + (r.s ? r.s.id : r.po.id) + ':' + r.l.product, kind: 'Below cost', lvl: 'red', date: r.s ? r.s.date : r.po.createdDate, amount: r.lost,
     title: `${r.l.product} sold below cost`, what: `${r.l.qty} sold at ${bkPeso(r.l.unitPrice)} each; cost is ${bkPeso(Number(r.l.unitCost) || bkItemCost(r.l.product))}. Lost ${bkPeso(r.lost)}.`, why: 'Every one sold this way loses money.',
-    next: 'Check the price list and who made the sale. If the cost is wrong, fix it on Profit & prices.', ev: [[r.s ? 'Open the sale' : 'Open the order', r.s ? `bkSalesDay='${r.s.date}'; go('sales')` : `setLens('supplier'); openOrderDetailModal('${r.po.id}', true)`]], basis: r.s ? 'Counter sale' : 'Customer order'})));
+    next: 'Check the price list and who made the sale. If the cost is wrong, fix it on Profit & prices.', ev: [[r.s ? 'Open the sale' : 'Open the order', r.s ? `bkSalesDay='${r.s.date}'; go('sales')` : `setLens('supplier'); openOrderDetailModal('${r.po.id}', true)`]], basis: r.s ? 'Shop sale' : 'Customer order'})));
   BK.moves.filter(x => x.date >= since && (x.kind === 'count' || x.kind === 'adjust') && x.qty < 0).forEach(x => { const v = -x.qty * (Number(x.unitCost) || bkItemCost(x.item)); if(v < 500) return;
     add({fp: 'stock:' + x.id, kind: x.kind === 'count' ? 'Missing stock' : 'Changed by hand', lvl: x.kind === 'count' ? 'red' : 'amber', date: x.date, amount: v, title: `${-x.qty} ${x.item} ${x.kind === 'count' ? 'missing in a count' : 'taken off by hand'}`,
       what: `Worth ${bkPeso(v)}. ${x.reason || ''} · by ${x.by || '—'}.`, why: 'Stock that disappears without a sale is money lost.', next: x.kind === 'count' ? 'Recount it, and check deliveries and returns for that item.' : 'Ask why it was changed by hand. Use a reason (bad, used, count) next time.',
@@ -24767,7 +24872,7 @@ function issueRules(){
   }
   const noCost = bkLiveSales().filter(x => bkMonth(x.date) === m && (x.lines || []).some(l => !l.totalOnly && !(Number(l.unitCost) > 0)));
   if(noCost.length) add({fp: 'nocost:' + m, kind: 'Missing cost', lvl: 'amber', date: APP_TODAY, title: `${noCost.length} sale${noCost.length > 1 ? 's' : ''} this month with items that have no cost`,
-    what: 'Their cost of goods is counted as ₱0.', why: 'Profit looks bigger than it really is.', next: 'Add the cost on Profit & prices. New sales pick it up.', ev: [['Open Profit & prices', `go('profit')`]], basis: 'Counter sales'});
+    what: 'Their cost of goods is counted as ₱0.', why: 'Profit looks bigger than it really is.', next: 'Add the cost on Profit & prices. New sales pick it up.', ev: [['Open Profit & prices', `go('profit')`]], basis: 'Shop sales'});
   bkCostRises().slice(0, 5).forEach(r => add({fp: 'price:' + r.po, kind: 'Supplier price up', lvl: r.margin != null && r.margin < 0.1 ? 'red' : 'amber', date: APP_TODAY, amount: r.to - r.from,
     title: `${r.name} costs more from ${r.supplier}`, what: `${bkPeso(r.from)} → ${bkPeso(r.to)} on ${r.po}.${r.sell ? ' You sell at ' + bkPeso(r.sell) + '.' : ''}`, why: 'If your price stays the same, your margin shrinks.', next: 'Compare suppliers, or update your selling price.',
     ev: [['Open Profit & prices', `go('profit')`]], basis: 'Supplier orders'}));
@@ -26235,7 +26340,7 @@ const NF_TOOL_TEXT = {
     ['A customer returns items or complains', 'Tap "Give a credit" and type the amount', 'It comes off their next bill by itself']],
   routes: ['Delivery routes', "Make today's delivery list for your driver. They tick each stop on their phone and bring back the cash.",
     ['Pick what to deliver and what to collect', 'Send the list to your driver', 'Watch each stop turn green']],
-  books: ['Tax books', 'Your sales book and purchase book for the BIR, filled in from your invoices. Download it for your bookkeeper.',
+  books: ['Tax books', 'Summaries for your bookkeeper: your sales and purchases, filled in from your invoices. Download it for your bookkeeper.',
     ['Pick the month', 'Check the totals', 'Tap "Download for Excel"']],
   taxforms: ['BIR 2307s', 'When a big customer keeps 1% of your payment for tax, they owe you a 2307 paper. Collect them here so you pay less tax.',
     ['See who still owes you a 2307', 'Tap "Remind" to ask for it', 'Tap "Mark received" when you get it']],
@@ -29084,7 +29189,7 @@ const NF18_HUBS = {
   orders: {label: 'Orders', tabs: [['orders', 'Orders'], ['followups', 'Follow-ups'], ['routes', 'Deliveries'], ['returns', 'Returns & credits'], ['store', 'Online store'], ['discover', 'Find customers']]},
   messages: {label: 'Messages', tabs: [['messages', 'Chats'], ['team', 'Team']]},
   inventory: {label: 'Stock'},
-  money: {label: 'Money', tabs: [['money', 'Overview'], ['sales', 'Counter'], ['expenses', 'Expenses'], ['collections', 'Getting paid'], ['profit', 'Prices'], ['issues', 'To check'], ['payroll', 'Payroll'], ['ledger', 'Books']]}
+  money: {label: 'Money', tabs: [['money', 'Overview'], ['sales', 'Sales'], ['expenses', 'Expenses'], ['collections', 'Getting paid'], ['profit', 'Prices'], ['issues', 'To check'], ['payroll', 'Payroll'], ['ledger', 'Books']]}
 };
 const NF18_SUB = {
   paid: {pages: ['collections', 'cheques'], tabs: [['follow', 'Who owes you'], ['cheques', 'Checks'], ['cash', 'Cash & bank']]},
@@ -29155,7 +29260,7 @@ function nf18Section(pg, id, title, sub){
 function nf18Counter(){
   const pg = document.getElementById('page-sales'); if(!pg) return;
   const h = pg.querySelector('.page-head h1'), p = pg.querySelector('.page-head p');
-  if(h && h.textContent !== 'Counter') h.textContent = 'Counter';
+  if(h && h.textContent !== 'Sales') h.textContent = 'Sales';
   if(p && !p.dataset.nf18){ p.textContent = "Today's sales, then count the cash at closing."; p.dataset.nf18 = '1'; }
   const s = nf18Section(pg, 'nf18Count', 'Count the cash', 'Nifti already knows what should be in the drawer.');
   const body = document.getElementById('bkCashBody'); if(body && body.parentElement !== s) s.appendChild(body);
@@ -29489,7 +29594,7 @@ function nf18CtxClear(){ NF18M.po = null; NF18M.conv = null; nf18Ctx(); }
 const NF19_SIDE = [
   ['dashboard', 'Home'], ['orders', 'Orders'], ['messages', 'Messages'], ['inventory', 'Stock'],
   ['__money', 'Money'],
-  ['money', 'Money overview'], ['sales', 'Counter'], ['expenses', 'Expenses'], ['collections', 'Getting paid'], ['profit', 'Prices'], ['ledger', 'Books']
+  ['money', 'Money overview'], ['sales', 'Sales'], ['expenses', 'Expenses'], ['collections', 'Getting paid'], ['profit', 'Prices'], ['ledger', 'Books']
 ];
 // pages without their own menu line light up the line they live under
 const NF19_PARENT = {cashcount: 'sales', cheques: 'collections', prices: 'profit', books: 'ledger', taxforms: 'ledger', issues: 'money', payroll: 'money', analytics: 'money',
@@ -29599,7 +29704,7 @@ function nf20ToSignup(){ const b = document.querySelectorAll('#view-login .tabs 
 /* ---------- 2. The owner's left menu: every page, in groups you can fold ---------- */
 const NF20_GROUPS = [
   {k: 'main', label: '', items: [['dashboard', 'Home'], ['orders', 'Orders'], ['messages', 'Messages'], ['inventory', 'Stock']]},
-  {k: 'money', label: 'Money', items: [['money', 'Money overview'], ['sales', 'Counter'], ['expenses', 'Expenses'], ['collections', 'Getting paid'], ['profit', 'Prices'], ['issues', 'To check'], ['payroll', 'Payroll'], ['ledger', 'Books']]},
+  {k: 'money', label: 'Money', items: [['money', 'Money overview'], ['sales', 'Sales'], ['expenses', 'Expenses'], ['collections', 'Getting paid'], ['profit', 'Prices'], ['issues', 'To check'], ['payroll', 'Payroll'], ['ledger', 'Books']]},
   {k: 'sell', label: 'Selling & delivery', items: [['followups', 'Follow-ups'], ['routes', 'Deliveries'], ['returns', 'Returns & credits'], ['store', 'Online store'], ['discover', 'Find customers']]},
   {k: 'more', label: 'Checks, taxes & team', items: [['cheques', 'Checks'], ['books', 'Tax books'], ['taxforms', 'BIR 2307s'], ['team', 'Team']]}
 ];
@@ -29873,7 +29978,7 @@ const NF20_SICON = {
 const NF20S = {i: 0, t: 0, stop: false};
 function nf20BooksPanel(){
   return `<div class="f4-spot-t"><h3>Books that keep themselves</h3><p>Every sale, expense and payment lands in proper books. You always know your profit, your cash, and what to check.</p>
-    <ul class="m2-ticks"><li>Counter sales and expenses with a receipt photo</li><li>Cash short, missing stock and odd bills flagged, each with the reason</li><li>Profit and loss, ready for your accountant</li></ul>
+    <ul class="m2-ticks"><li>Shop sales and expenses with a receipt photo</li><li>Cash short, missing stock and odd bills flagged, each with the reason</li><li>Profit and loss, ready for your accountant</li></ul>
     <div class="f4-out"><b>₱38,400</b><span>real profit this month, not a guess</span></div></div>
   <div class="f4-art green"><div class="f4-main"><div class="mk-stack">
     <div class="mk-bigstat"><small>PROFIT THIS MONTH</small><b>₱38,400</b><span>Sales ₱212,000 · costs ₱173,600</span></div>
@@ -30316,7 +30421,7 @@ const NF22_HELP = {
   store: ['Sell online without being an online seller.', ['"Post today" is ready: copy, save the picture, post.', 'Plan your week once and Nifti reminds you.', 'Ready replies for "HM?" and "Available pa?"'], 'Nothing is posted unless you tap it.'],
   discover: ['Businesses near you who may buy from you.', ['Tap a business to see why it is a good fit.', 'Send a hello with one tap.'], ''],
   cheques: ['Checks you received and checks you wrote.', ['Add a check with its date.', 'Nifti reminds you the day before it can be deposited.'], ''],
-  books: ['The sales and purchase books BIR asks for.', ['They fill in by themselves from your orders and sales.', 'Print or download when you file.'], ''],
+  books: ['Sales and purchase summaries for your bookkeeper.', ['They fill in by themselves from your orders and sales.', 'Print or download when you file.'], ''],
   taxforms: ['BIR 2307 forms from customers who withheld tax.', ['Add each 2307 you get.', 'Nifti adds them up for your quarterly filing.'], ''],
   team: ['Your people, their tasks, and who sees what.', ['Add a task for someone.', 'Tap "Who sees what" to choose their pages.'], ''],
   settings: ['Your business details and how Nifti works for you.', ['Type in the search box to find any setting.', 'Tap a section to open it.'], ''],
@@ -30926,7 +31031,7 @@ function nf22NbPaint(){
     const keep = NB.lines.filter(l => !l.skipped && !l.blur), tot = keep.reduce((a, l) => a + l.price * Number(l.q), 0), cust = [...new Set(keep.filter(l => l.who !== 'Walk-in').map(l => l.who))];
     body = `<h2>Ready to add to your books</h2><p class="nf22-nbsub">Nothing has changed yet. Here is what will happen when you tap the green button.</p>
       <div class="nf22-nbsum"><div><b>${keep.length}</b><span>lines</span></div><div><b>${bkPeso(tot)}</b><span>in sales</span></div><div><b>${cust.length}</b><span>customers</span></div></div>
-      <ul class="nf22-nbwhere"><li><b>Sales</b><span>go into Counter, marked "From paper".</span></li><li><b>Customers</b><span>you haven't added yet are added for you.</span></li><li><b>The photo</b><span>is kept with these lines, so you can always look back.</span></li></ul>
+      <ul class="nf22-nbwhere"><li><b>Sales</b><span>go into Sales, marked "From paper".</span></li><li><b>Customers</b><span>you haven't added yet are added for you.</span></li><li><b>The photo</b><span>is kept with these lines, so you can always look back.</span></li></ul>
       <p class="nf22-calm">You can undo this for 30 days.</p>`;
   }
   const canNext = s === 0 ? !!NB.kind : s === 1 ? false : s === 3 ? !nf22NbQs().length : true;
@@ -31384,7 +31489,7 @@ function nf24TaxBooks(){
 // has time. Nothing goes into the books until a person says yes, and a page that can't be read is never thrown away.
 const NB24 = {pages: [], curId: null, saved: 0};
 const NB24_KEY = 'nifti-nb-inbox';
-const NB24_GO = {sales: ['sales', 'Counter'], utang: ['collections', 'Getting paid'], bills: ['collections', 'Getting paid'], stock: ['inventory', 'Stock'], exp: ['expenses', 'Expenses'], unsure: ['sales', 'Counter']};
+const NB24_GO = {sales: ['sales', 'Sales'], utang: ['collections', 'Getting paid'], bills: ['collections', 'Getting paid'], stock: ['inventory', 'Stock'], exp: ['expenses', 'Expenses'], unsure: ['sales', 'Sales']};
 function nf24Inbox(){ try{ return JSON.parse(localStorage.getItem(NB24_KEY) || '[]') || []; }catch(e){ return []; } }
 function nf24SaveInbox(l){ try{ localStorage.setItem(NB24_KEY, JSON.stringify(l)); nf24Badge(); return true; }catch(e){ showToast('This phone is full. Check or delete a few saved pages first.', 'warn'); return false; } }
 function nf24Waiting(){ return nf24Inbox().filter(x => x.status === 'waiting').sort((a, b) => a.at - b.at); }
@@ -31484,6 +31589,422 @@ function nf24Main(){
   const start = () => { try{ nf24Badge(); nf24Key(); nf24TaxBooks(); }catch(e){} const app = document.getElementById('view-app'); if(app && !app.dataset.nf24){ app.dataset.nf24 = '1'; let t = 0;
       new MutationObserver(() => { clearTimeout(t); t = setTimeout(() => { try{ nf24Key(); nf24TaxBooks(); nf24Badge(); }catch(e){} }, 120); }).observe(app, {childList: true, subtree: true}); } };
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => setTimeout(start, 600)); else setTimeout(start, 600);
+})();
+
+/* ===== Round 25: real Telegram alerts, the admin switches for Telegram and notebook reading, full Excel export ===== */
+// Telegram: each person links their own Telegram once (a one-time t.me link), chooses which alerts they get,
+// and can send themselves a test. The bot and the sending live on the server (telegram-bot, push-dispatch).
+// The demo shop can look at everything but can't link, because it has no account behind it.
+const NF25 = {tg: null, poll: 0, linkUrl: '', qr: ''};
+function nf25Real(){ try{ return typeof myBusiness !== 'undefined' && !!myBusiness && typeof sb !== 'undefined' && !!sb; }catch(e){ return false; } }
+function nf25E(s){ return typeof escapeHtml === 'function' ? escapeHtml(String(s == null ? '' : s)) : String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'})[c]); }
+async function nf25FnError(error, data){
+  let m = (data && data.error) || (error && error.message) || 'Something went wrong. Try again.';
+  try{ if(error && error.context && typeof error.context.json === 'function'){ const j = await error.context.json(); if(j && j.error) m = j.error; } }catch(e){}
+  return m;
+}
+const NF25_TG_SW = [
+  ['orders', 'Orders', 'New orders, confirmations, deliveries, and payments a customer says they sent'],
+  ['money', 'Money', 'Cash short or over, cheques to deposit, price OKs. Owners and managers only.'],
+  ['stock', 'Running low', 'The moment an item drops to its reorder point'],
+  ['messages', 'Messages', 'New chat messages from customers and suppliers'],
+  ['team', 'Team', 'Tasks, handover notes and delivery routes'],
+  ['summary', 'Daily and weekly summary', 'Every evening, and Monday morning']];
+function nf25TgAlerts(){
+  if(nf25Real()) return Object.assign({}, (NF25.tg && NF25.tg.me && NF25.tg.me.alerts) || {});
+  try{ return JSON.parse(localStorage.getItem('nifti-tg-alerts') || '{}') || {}; }catch(e){ return {}; }
+}
+async function nf25TgLoad(){
+  if(!nf25Real()) return null;
+  const { data, error } = await sb.rpc('telegram_status');
+  NF25.tg = error ? {error: error.message} : (data || {});
+  return NF25.tg;
+}
+async function nf25TgSet(k, on){
+  const a = nf25TgAlerts();
+  if(k === 'quiet') a.quiet = !!on; else a[k] = !!on;
+  if(!nf25Real()){ try{ localStorage.setItem('nifti-tg-alerts', JSON.stringify(a)); }catch(e){} return; }
+  const { error } = await sb.rpc('telegram_set_alerts', {p_alerts: a});
+  if(error){ showToast(error.message, 'error'); return; }
+  if(NF25.tg && NF25.tg.me) NF25.tg.me.alerts = a;
+  showToast('Saved.', 'success');
+}
+async function nf25TgLink(){
+  if(!nf25Real()){ showToast('This is the demo shop. Sign up free, then link your own Telegram here.', 'warn'); return; }
+  const phone = document.documentElement.classList.contains('nf-phone') || /Android|iPhone|iPad/i.test(navigator.userAgent);
+  const { data, error } = await sb.rpc('telegram_link_code');
+  if(error){ showToast(error.message, 'error'); return; }
+  if(!data || !data.ready){ showToast('Telegram alerts are not switched on yet. The Nifti team is turning them on.', 'warn'); await nf25TgLoad(); nf25PaintAlerts(); return; }
+  NF25.linkUrl = data.url; NF25.qr = '';
+  if(phone){ try{ window.location.href = data.url; }catch(e){} }
+  else { try{ NF25.qr = await qrDataUrl(data.url, 6); }catch(e){ NF25.qr = ''; } }
+  nf25PaintAlerts(); nf25TgPoll();
+}
+function nf25TgPoll(){
+  clearInterval(NF25.poll); let n = 0;
+  NF25.poll = setInterval(async () => {
+    n++; const ov = document.getElementById('nf21Alerts');
+    if(!ov || ov.hidden || n > 80){ clearInterval(NF25.poll); return; }
+    const d = await nf25TgLoad();
+    if(d && d.me){ clearInterval(NF25.poll); NF25.linkUrl = ''; NF25.qr = ''; nf25PaintAlerts(); showToast('Linked. Nifti sent a hello message on Telegram.', 'success'); }
+  }, 3000);
+}
+async function nf25TgTest(){
+  if(!nf25Real()){ showToast('This is the demo shop. Sign up to get real messages.', 'warn'); return; }
+  const { error } = await sb.rpc('telegram_test');
+  showToast(error ? error.message : 'Sent. Check Telegram in a few seconds.', error ? 'error' : 'success');
+}
+async function nf25TgUnlink(member){
+  if(!nf25Real()) return;
+  if(!confirm(member ? 'Stop Telegram alerts for this person?' : 'Stop Telegram alerts on your phone? You can link again any time.')) return;
+  const { error } = await sb.rpc('telegram_unlink', {p_member: member || null});
+  if(error){ showToast(error.message, 'error'); return; }
+  await nf25TgLoad(); nf25PaintAlerts(); showToast('Unlinked.', 'success');
+}
+function nf25Sw(k, t, d, on){
+  return `<div class="nf25-sw"><div><b>${t}</b><small>${d}</small></div><label class="nf20-pr nf21-sw"><input type="checkbox" role="switch" aria-label="${nf25E(t)}" ${on ? 'checked' : ''} onchange="nf25TgSet('${k}', this.checked)"><i aria-hidden="true"></i></label></div>`;
+}
+const NF25_TG_EX = [
+  ['🛒', 'New order from Bayview Construction', 'PO-2026-0912 · 40 × Portland Cement 40kg · ₱9,120'],
+  ['🟡', 'Running low: Steel Rebar 12mm', 'Only 18 pcs left. Reorder point is 25.'],
+  ['💳', 'Riverside Builders says they paid for INV-0418', 'Check your account, then confirm it in Nifti.']];
+function nf25PaintAlerts(){
+  const ov = document.getElementById('nf21Alerts'); if(!ov) return;
+  const real = nf25Real();
+  if(real && !NF25.tg){ ov.innerHTML = nf25Sheet('<p class="nf25-wait">Checking your Telegram link…</p>'); nf25TgLoad().then(() => nf25PaintAlerts()); return; }
+  const st = NF25.tg || {}, me = st.me, a = nf25TgAlerts();
+  let top = '';
+  if(!real){
+    top = `<div class="nf25-st demo"><b>You're looking at the demo shop</b><span>Sign up free, then come back here and tap <b>Link my Telegram</b>. Your link is private to you.</span></div>`;
+  } else if(st.error){
+    top = `<div class="nf25-st warn"><b>Couldn't check your Telegram link</b><span>${nf25E(st.error)}</span></div>`;
+  } else if(!st.ready){
+    top = `<div class="nf25-st warn"><b>Almost ready</b><span>The Nifti team is switching on the Telegram bot. When it's on, a <b>Link my Telegram</b> button shows here.</span></div>`;
+  } else if(me){
+    top = `<div class="nf25-st ok"><span class="nf25-ok" aria-hidden="true">✓</span><div><b>Linked to ${nf25E(me.name || 'your Telegram')}</b><span>Since ${new Date(me.linked_at).toLocaleDateString('en-PH', {month: 'short', day: 'numeric', year: 'numeric'})}. Alerts come with a button that opens the right page.</span></div>
+      <div class="nf25-st-b"><button type="button" class="btn btn-primary" onclick="nf25TgTest()">Send me a test</button><button type="button" class="btn btn-outline" onclick="nf25TgUnlink()">Unlink</button></div></div>`;
+  }
+  const canLink = !real || (st.ready && !me && !st.error);
+  const steps = canLink ? `<ol class="nf25-steps">
+      <li><b>Get Telegram</b><span>Free from the App Store or Google Play. Sign up with your mobile number.</span></li>
+      <li><b>Tap Link my Telegram</b><span>${real ? 'On a computer, scan the code with your phone camera instead.' : 'In your own account, this opens Telegram on your phone.'}</span></li>
+      <li><b>Tap START in Telegram</b><span>The big button at the bottom of the chat. Nifti says hello, and you're done.</span></li></ol>
+    <div class="nf25-link">${NF25.qr ? `<img src="${NF25.qr}" alt="Scan with your phone camera to link Telegram" width="180" height="180">` : ''}
+      <div><button type="button" class="btn btn-primary nf25-big" onclick="nf25TgLink()">${NF25.linkUrl ? 'Get a new link' : 'Link my Telegram'}</button>
+      ${NF25.linkUrl ? `<p>Waiting for you to tap START in Telegram… <a href="${nf25E(NF25.linkUrl)}" target="_blank" rel="noopener">Open Telegram</a></p>` : `<p>Each person on your team links their own phone from this same page.</p>`}</div></div>` : '';
+  const sw = (!real || me) ? `<h3>Which alerts do you want?</h3><div class="nf25-sws">${NF25_TG_SW.map(([k, t, d]) => nf25Sw(k, t, d, a[k] !== false)).join('')}
+      ${nf25Sw('quiet', 'Quiet at night', 'No sound from 9 PM to 7 AM. Messages still arrive.', a.quiet === true)}</div>` : '';
+  const team = st.team && st.team.length ? `<h3>Linked on your team</h3><ul class="nf25-team">${st.team.map(t => `<li><b>${nf25E(t.member)}</b><span>${nf25E(t.tg || 'Telegram')} · since ${new Date(t.linked_at).toLocaleDateString('en-PH', {month: 'short', day: 'numeric'})}</span></li>`).join('')}</ul>` : '';
+  const ex = `<h3>What they look like</h3><div class="nf25-ex">${NF25_TG_EX.map(([ic, t, b]) => `<div class="nf25-exm"><span aria-hidden="true">${ic}</span><div><b>${t}</b><small>${b}</small><i>Open in Nifti</i></div></div>`).join('')}</div>
+    <p class="nf25-p">In the Telegram chat, type <b>/today</b> any time to see today at a glance: orders to confirm and deliver, sales today, who owes you, and items running low. Type <b>/stop</b> to turn alerts off on that phone.</p>`;
+  ov.innerHTML = nf25Sheet(top + steps + sw + team + ex);
+}
+function nf25Sheet(body){
+  return `<div class="nf20-sheet nf21-sheet nf25-sheet">
+    <div class="nf20-sh"><div><h2>Telegram alerts on your phone</h2><p>Free. New orders, payments, low stock and your daily summary, with a button that opens the right page.</p></div><button type="button" class="nf20-x" onclick="nf21CloseAlerts()" aria-label="Close">✕</button></div>
+    <div class="nf20-rc nf21-body">${body}</div>
+    <div class="nf20-sf"><span></span><button type="button" class="btn btn-primary" onclick="nf21CloseAlerts()">Done</button></div></div>`;
+}
+
+/* ---------- Admin: switch on Telegram and notebook reading ---------- */
+async function nf25AdminServices(body){
+  if(!body || body.querySelector('.nf25-svc')) return;
+  let s; try{ s = await adminRpc('admin_service_status'); }catch(e){ return; }
+  const card = document.createElement('div'); card.className = 'panel-card nf25-svc';
+  const cost = Math.round((s.reader_pages_month || 0) * 1.7);
+  card.innerHTML = `<div class="adm-h">Telegram alerts and notebook reading</div>
+    <div class="nf25-svcb"><div class="nf25-svch"><b>Telegram bot</b><span class="nf25-pill ${s.telegram ? 'on' : ''}">${s.telegram ? 'On' : 'Off'}</span></div>
+      <p>${s.telegram ? `Bot: @${nf25E(s.telegram_bot || '')} · ${s.telegram_links} phone${s.telegram_links === 1 ? '' : 's'} linked.` : 'Off. Customers see "Almost ready" on the Telegram page.'}</p>
+      <ol><li>In Telegram, open <b>@BotFather</b> and send <b>/newbot</b>.</li><li>Name it, for example "Nifti Alerts". Its username must end in "bot".</li><li>BotFather replies with a token. Copy it and paste it here.</li></ol>
+      <div class="nf25-in"><input id="nf25TgTok" type="password" autocomplete="off" placeholder="Paste the bot token" aria-label="Telegram bot token"><button type="button" class="btn btn-primary" onclick="nf25SaveSecret('telegram_bot_token', 'nf25TgTok')">${s.telegram ? 'Replace' : 'Switch on'}</button>${s.telegram ? `<button type="button" class="btn btn-outline" onclick="nf25OffSecret('telegram_bot_token')">Switch off</button>` : ''}</div></div>
+    <div class="nf25-svcb"><div class="nf25-svch"><b>Notebook reading</b><span class="nf25-pill ${s.reader ? 'on' : ''}">${s.reader ? 'On' : 'Off'}</span></div>
+      <p>${s.reader ? `${s.reader_pages_month} page${s.reader_pages_month === 1 ? '' : 's'} read this month, about ₱${cost.toLocaleString('en-PH')} on your Anthropic bill.` : 'Off. People can still save notebook pages; they get read once this is on.'}</p>
+      <ol><li>Go to <b>console.anthropic.com</b> and sign in.</li><li>Add a payment card under Billing. Each page costs about ₱1 to ₱2.</li><li>Open API keys, create a key, copy it and paste it here.</li></ol>
+      <div class="nf25-in"><input id="nf25AiKey" type="password" autocomplete="off" placeholder="Paste the API key" aria-label="Anthropic API key"><button type="button" class="btn btn-primary" onclick="nf25SaveSecret('anthropic_api_key', 'nf25AiKey')">${s.reader ? 'Replace' : 'Switch on'}</button>${s.reader ? `<button type="button" class="btn btn-outline" onclick="nf25OffSecret('anthropic_api_key')">Switch off</button>` : ''}</div></div>
+    <p class="nf25-p">Keys are saved on the server only. They never show again, not even to you.</p>`;
+  body.insertBefore(card, body.firstChild);
+}
+async function nf25SaveSecret(name, inputId){
+  const inp = document.getElementById(inputId), v = inp ? inp.value.trim() : '';
+  if(!v){ showToast('Paste it first.', 'warn'); return; }
+  try{ await adminRpc('admin_set_secret', {p_name: name, p_value: v}); }catch(e){ showToast(e.message, 'error'); return; }
+  if(inp) inp.value = '';
+  if(name === 'telegram_bot_token'){
+    const { data, error } = await sb.functions.invoke('telegram-bot', {body: {action: 'setup'}});
+    if(error || !data || !data.ok){ showToast(await nf25FnError(error, data), 'error'); renderAdminPage(); return; }
+    showToast('Telegram is on: @' + data.bot, 'success');
+  } else showToast('Notebook reading is on.', 'success');
+  renderAdminPage();
+}
+async function nf25OffSecret(name){
+  if(!confirm('Switch this off for every business?')) return;
+  try{ await adminRpc('admin_set_secret', {p_name: name, p_value: ''}); }catch(e){ showToast(e.message, 'error'); return; }
+  showToast('Switched off.', 'success'); renderAdminPage();
+}
+
+/* ---------- Export: everything in one Excel workbook ---------- */
+function nf25Label(k){ const s = String(k).replace(/_/g, ' ').replace(/\s+/g, ' ').trim(); return s.charAt(0).toUpperCase() + s.slice(1); }
+function nf25Cell(v){ if(v == null) return ''; if(typeof v === 'object') return JSON.stringify(v); return v; }
+function nf25Flat(o, pre, out){
+  Object.entries(o || {}).forEach(([k, v]) => { const key = pre ? pre + ' ' + k : k;
+    if(v && typeof v === 'object' && !Array.isArray(v)) nf25Flat(v, key, out);
+    else if(!(Array.isArray(v) && v.length && v.every(x => x && typeof x === 'object'))) out[nf25Label(key)] = nf25Cell(v); });
+  return out;
+}
+function nf25SheetName(s, used){ let n = nf25Label(s).replace(/[\\/?*[\]:]/g, ' ').slice(0, 31); let i = 2; while(used.has(n)){ n = n.slice(0, 28) + ' ' + i++; } used.add(n); return n; }
+async function nf25ExportXlsx(){
+  let data, name;
+  if(nf25Real()){
+    const { data: d, error } = await sb.rpc('my_data_export');
+    if(error){ showToast(error.message, 'error'); return; }
+    data = d; name = myBusiness.name || 'business';
+  } else {
+    try{ data = collectNiftiPersistableState(); }catch(e){ data = {}; }
+    name = 'Demo shop';
+  }
+  try{ await cpoLoadScript('https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js'); }catch(e){ showToast("Couldn't load the Excel maker. Check your internet and try again.", 'error'); return; }
+  const wb = XLSX.utils.book_new(), used = new Set(), list = [];
+  const addRows = (title, rows) => { if(!rows.length) return; const ws = XLSX.utils.json_to_sheet(rows); const cols = Object.keys(rows[0]).map(k => ({wch: Math.min(40, Math.max(10, k.length + 2))})); ws['!cols'] = cols; const n = nf25SheetName(title, used); XLSX.utils.book_append_sheet(wb, ws, n); list.push([n, rows.length]); };
+  const about = [['Nifti records'], ['Business', name], ['Downloaded', new Date().toLocaleString('en-PH')], [''], ['Each tab is one part of your records. Open in Excel or Google Sheets.'], ['']];
+  const aboutWs = XLSX.utils.aoa_to_sheet(about); XLSX.utils.book_append_sheet(wb, aboutWs, nf25SheetName('About', used));
+  Object.entries(data || {}).forEach(([key, val]) => {
+    if(Array.isArray(val)){
+      const objs = val.filter(x => x && typeof x === 'object');
+      if(!objs.length){ if(val.length) addRows(key, val.map(v => ({Value: nf25Cell(v)}))); return; }
+      addRows(key, objs.map(r => nf25Flat(r, '', {})));
+      // lists inside each row (order lines, payroll lines, ledger lines, payments, route stops) get their own tab
+      const inner = {};
+      objs.forEach(r => Object.entries(r).forEach(([f, v]) => { if(Array.isArray(v) && v.length && v.every(x => x && typeof x === 'object')){
+        (inner[f] = inner[f] || []).push(...v.map(x => Object.assign({[nf25Label(key) + ' ref']: r.po_number || r.number || r.id || ''}, nf25Flat(x, '', {})))); } }));
+      Object.entries(inner).forEach(([f, rows]) => addRows(key + ' ' + f, rows));
+    } else if(val && typeof val === 'object'){
+      addRows(key, Object.entries(nf25Flat(val, '', {})).map(([k, v]) => ({Field: k, Value: v})));
+    }
+  });
+  XLSX.utils.sheet_add_aoa(aboutWs, [['Tab', 'Rows'], ...list], {origin: 'A7'});
+  aboutWs['!cols'] = [{wch: 32}, {wch: 50}];
+  XLSX.writeFile(wb, 'Nifti records - ' + String(name).replace(/[^a-z0-9 ]+/gi, ' ').trim() + ' - ' + (typeof APP_TODAY !== 'undefined' ? APP_TODAY : new Date().niftiDay()) + '.xlsx');
+  showToast(nf25Real() ? 'Downloaded. Keep it somewhere safe.' : 'Downloaded the demo shop\'s records.', 'success');
+}
+function nf25DataCard(){
+  const c = document.getElementById('myDataCard'); if(!c || c.dataset.nf25) return; c.dataset.nf25 = '1';
+  const row = c.querySelector('div[style*="flex-wrap"]'); if(!row) return;
+  const b = document.createElement('button'); b.className = 'btn btn-primary'; b.type = 'button'; b.textContent = '⬇ Everything in Excel'; b.onclick = () => nf25ExportXlsx();
+  row.insertBefore(b, row.firstChild);
+  const j = [...row.querySelectorAll('button')].find(x => /Everything \(one file\)/.test(x.textContent)); if(j) j.textContent = '⬇ Everything (backup file)';
+  const sub = c.querySelector('.sub'); if(sub) sub.textContent = 'Everything Nifti holds about your business is yours: orders, sales, expenses, stock, payroll, books, team notes and notebook pages. The Excel file has one tab for each.';
+}
+
+/* ---------- Store results: say clearly when the numbers are examples ---------- */
+function nf25StoreStats(){
+  if(nf25Real()) return;
+  document.querySelectorAll('#view-app .panel-card').forEach(p => { if(p.dataset.nf25ex) return; const t = p.firstElementChild; if(t && /Last 30 days/.test(t.textContent) && /example numbers/.test(t.textContent)){ p.dataset.nf25ex = '1';
+    const n = document.createElement('p'); n.className = 'nf25-exnote'; n.textContent = 'These are example numbers for the demo shop. In your own account, every visit and order from your store link is counted here.'; p.appendChild(n); } });
+}
+
+/* ---------- wiring ---------- */
+(function(){
+  try{ window.nf21PaintAlerts = nf25PaintAlerts; nf21PaintAlerts = nf25PaintAlerts; }catch(e){ console.warn('nf25 alerts', e); }
+  const oa = window.nf21OpenAlerts;
+  if(typeof oa === 'function' && !oa._nf25){ const w = function(){ NF25.tg = null; NF25.linkUrl = ''; NF25.qr = ''; return oa.apply(this, arguments); }; w._nf25 = true; window.nf21OpenAlerts = w; try{ nf21OpenAlerts = w; }catch(e){} }
+  const ca = window.nf21CloseAlerts;
+  if(typeof ca === 'function' && !ca._nf25){ const w = function(){ clearInterval(NF25.poll); return ca.apply(this, arguments); }; w._nf25 = true; window.nf21CloseAlerts = w; try{ nf21CloseAlerts = w; }catch(e){} }
+  const rs = window.renderAdminSite;
+  if(typeof rs === 'function' && !rs._nf25){ const w = async function(body){ const out = await rs.apply(this, arguments); try{ await nf25AdminServices(body); }catch(e){ console.warn('nf25 admin', e); } return out; }; w._nf25 = true; window.renderAdminSite = w; try{ renderAdminSite = w; }catch(e){} }
+  const st = window.renderStoreStats;
+  if(typeof st === 'function' && !st._nf25){ const w = async function(){ const out = await st.apply(this, arguments); try{ nf25StoreStats(); }catch(e){} return out; }; w._nf25 = true; window.renderStoreStats = w; try{ renderStoreStats = w; }catch(e){} }
+  try{ window.exportFullHistory = nf25ExportXlsx; exportFullHistory = nf25ExportXlsx; }catch(e){}
+  const start = () => { try{ nf25DataCard(); }catch(e){} const app = document.getElementById('view-app'); if(app && !app.dataset.nf25){ app.dataset.nf25 = '1'; let t = 0;
+      new MutationObserver(() => { clearTimeout(t); t = setTimeout(() => { try{ nf25DataCard(); }catch(e){} }, 150); }).observe(app, {childList: true, subtree: true}); } };
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => setTimeout(start, 700)); else setTimeout(start, 700);
+})();
+
+/* ===== Round 25: the notebook reader reads real photos (signed-in businesses) ===== */
+// Pages are saved to the business (nb_pages), so anyone on the team can check them from any phone.
+// Reading goes through the nb-read service with the person's own sign-in; it counts against the
+// business's monthly page allowance (Free 10, Pro 300, Business 1,500). Every line still waits for a
+// person to say yes, then goes to the right place: Sales, Getting paid, Expenses or Stock. Words the
+// person confirms ("Bayvw" = Bayview Construction Co.) are saved, so the next page reads them by itself.
+// The demo shop keeps the sample page, labeled as a sample.
+const NB25 = {server: null, reading: false, err: '', usage: null, saving: false, summary: '', total: 0, real: false};
+const NB25_DEST = {
+  sales: ['Sales', 'sales', 'Each line becomes a sale in Sales, dated as written, marked "From paper".'],
+  unsure: ['Sales', 'sales', 'Each line becomes a sale in Sales, dated as written, marked "From paper".'],
+  utang: ['Getting paid', 'collections', 'Each customer\'s total goes into Getting paid as money they already owed you.'],
+  bills: ['Expenses', 'expenses', 'Each bill goes into Expenses as unpaid ("on credit"), so you can see what you owe.'],
+  exp: ['Expenses', 'expenses', 'Each line becomes an expense, dated as written, marked "From paper".'],
+  stock: ['Stock', 'inventory', 'Each item you already have gets the count from the page. Nifti keeps the old number in the stock history.']};
+function nb25Real(){ return typeof nf25Real === 'function' ? nf25Real() : false; }
+async function nb25Load(){
+  if(!nb25Real()) return;
+  const { data } = await sb.from('nb_pages').select('id, kind, status, created_at, created_by_name, photo').eq('business_id', myBusiness.id).eq('status', 'waiting').order('created_at').limit(60);
+  NB25.server = (data || []).map(r => ({id: r.id, kind: r.kind, at: Date.parse(r.created_at), by: r.created_by_name || 'someone', photo: r.photo, status: 'waiting'}));
+  try{ nf24Badge(); }catch(e){}
+}
+async function nb25Usage(){
+  if(!nb25Real()) return;
+  const { data } = await sb.rpc('nb_usage'); NB25.usage = data || null;
+}
+async function nb25SavePages(){
+  const pages = NB24.pages.slice(); if(!pages.length) return [];
+  const rows = pages.map(p => ({business_id: myBusiness.id, kind: NB.kind || 'unsure', photo: p.photo}));
+  const { data, error } = await sb.from('nb_pages').insert(rows).select('id');
+  if(error){ showToast("Couldn't save the pages: " + error.message, 'error'); return null; }
+  NB24.pages = []; await nb25Load();
+  return (data || []).map(r => r.id);
+}
+function nb25Open(id){
+  const x = (NB25.server || []).find(y => y.id === id); if(!x) return;
+  NB24.curId = id; NB24.saved = 0;
+  Object.assign(NB, {kind: x.kind, photo: x.photo, step: 2, added: false, qi: 0, picking: -1, lines: [], learned: [], cols: ['date', 'who', 'what', 'qty', 'amt']});
+  NB25.reading = true; NB25.err = ''; NB25.summary = ''; NB25.real = true;
+  nf22NbPaint(); nb25Read(x);
+}
+async function nb25Read(x){
+  try{
+    const { data, error } = await sb.functions.invoke('nb-read', {body: {image: x.photo, kind: x.kind, page_id: x.id}});
+    if(error || !data || !data.ok) throw new Error(await nf25FnError(error, data));
+    NB25.usage = Object.assign({}, NB25.usage || {}, {used: data.used, limit: data.limit});
+    nb25Apply(data.result || {});
+  }catch(e){ NB25.err = e.message || String(e); }
+  NB25.reading = false; nf22NbPaint();
+}
+function nb25Apply(r){
+  const cols = (r.columns || []).filter(c => NF22_NB_COLS[c]);
+  NB.cols = cols.length === 5 ? cols : ['date', 'who', 'what', 'qty', 'amt'];
+  if(r.page_kind && (NB.kind === 'unsure' || !NB.kind)) NB.kind = r.page_kind;
+  NB25.summary = r.summary || ''; NB25.total = Number(r.written_total) || 0;
+  NB.lines = (r.lines || []).map((l, i) => {
+    const amt = Number(l.amount) || 0; let q = Number(l.qty) || 0, price = Number(l.unit_price) || 0;
+    if(!q && amt){ q = 1; price = amt; } else if(q && !price && amt) price = Math.round(amt / q * 100) / 100;
+    const walk = /^walk.?in$/i.test(String(l.who || ''));
+    const ask = [];
+    if(l.readable && !l.sure){ if(l.who && !l.who_known && !walk) ask.push('who'); if(l.item && !l.item_known) ask.push('what'); if(!ask.length) ask.push('what'); }
+    return {n: i + 1, d: l.date_raw || '', w: l.who_raw || l.who || '', i: l.item_raw || l.item || '', q: String(q || ''), a: l.amount_raw || (amt ? amt.toLocaleString('en-PH') : ''),
+      who: l.who || l.who_raw || 'Walk-in', item: l.item || l.item_raw || '', price, amt: amt || price * q, date: l.date || '', paid: l.paid || 'unknown',
+      whoKnown: !!l.who_known || walk, itemKnown: !!l.item_known, sure: !!(l.sure && l.readable), blur: !l.readable, ask: l.sure ? [] : ask, note: l.note || '', ok: !!(l.sure && l.readable), skipped: false};
+  });
+}
+function nb25Amt(l){ const v = Number(l.price) * Number(l.q); return Math.round(((isFinite(v) && v > 0) ? v : (Number(l.amt) || 0)) * 100) / 100; }
+function nb25Day(l){ const t = typeof APP_TODAY !== 'undefined' ? APP_TODAY : new Date().niftiDay(); return /^\d{4}-\d{2}-\d{2}$/.test(l.date || '') && l.date <= t ? l.date : t; }
+async function nb25Add(){
+  const keep = NB.lines.filter(l => !l.skipped && !l.blur);
+  if(!keep.length){ showToast('Nothing to add. Every line was skipped.', 'warn'); return; }
+  NB25.saving = true; nf22NbPaint();
+  const biz = myBusiness.id, kind = NB.kind || 'sales'; let err = null, added = 0, missing = [];
+  try{
+    if(kind === 'sales' || kind === 'unsure'){
+      const rows = keep.filter(l => nb25Amt(l) > 0).map(l => { const amt = nb25Amt(l), credit = l.paid === 'credit';
+        return {business_id: biz, sale_date: nb25Day(l), customer_name: String(l.who || 'Walk-in').slice(0, 120), line_items: [{product: String(l.item || 'Item').slice(0, 120), qty: Number(l.q) || 1, unitPrice: Number(l.price) || amt, unitCost: 0}],
+          payments: credit ? [] : [{method: 'cash', amount: amt, date: nb25Day(l)}], total: amt, paid_with: credit ? 'credit' : 'cash', note: 'From paper'}; });
+      if(rows.length){ const { error } = await sb.from('downstream_sales').insert(rows); err = error; added = rows.length; }
+    } else if(kind === 'utang'){
+      const by = {}; keep.forEach(l => { const k = String(l.who || '').trim(); if(!k) return; by[k] = (by[k] || 0) + nb25Amt(l); });
+      const rows = Object.entries(by).filter(([, a]) => a > 0).map(([name, amount]) => ({buyer_id: null, name: name.slice(0, 120), phone: null, email: null, amount: Math.round(amount * 100) / 100, due: null, ref: 'From paper'}));
+      if(rows.length){ const { error } = await sb.rpc('record_opening_balances', {p_rows: rows}); err = error; added = rows.length; }
+    } else if(kind === 'exp' || kind === 'bills'){
+      const rows = keep.filter(l => nb25Amt(l) > 0).map(l => ({business_id: biz, spent_on: nb25Day(l), category: String(kind === 'bills' ? 'Supplier bill' : (l.item || 'Other')).slice(0, 40), amount: nb25Amt(l),
+        paid_from: kind === 'bills' || l.paid === 'credit' ? 'credit' : 'cash', vendor: String(l.who || '').slice(0, 120) || null, note: 'From paper'}));
+      if(rows.length){ const { error } = await sb.from('expenses').insert(rows); err = error; added = rows.length; }
+    } else if(kind === 'stock'){
+      const { data: inv, error: e1 } = await sb.from('inventory_items').select('id, name').eq('business_id', biz); err = e1;
+      if(!err){ for(const l of keep){ const name = String(l.item || '').trim().toLowerCase(), it = (inv || []).find(x => String(x.name).trim().toLowerCase() === name); const n = Number(l.q);
+          if(!it || !isFinite(n)){ missing.push(l.item || l.i); continue; }
+          const { error } = await sb.from('inventory_items').update({on_hand: n}).eq('id', it.id); if(error){ err = error; break; } added++; } }
+    }
+  }catch(e){ err = e; }
+  if(err){ NB25.saving = false; nf22NbPaint(); showToast(/closed/i.test(err.message || '') ? 'That month is closed in your books. Reopen it in Books first, or change the dates.' : "Couldn't add the lines: " + (err.message || err), 'error'); return; }
+  const words = [], seen = new Set();
+  NB.lines.forEach(l => { if(l.ok_who && l.w && l.who && l.w !== l.who && !seen.has('who' + l.w)){ seen.add('who' + l.w); words.push({business_id: biz, kind: 'who', raw: String(l.w).slice(0, 60), meaning: String(l.who).slice(0, 120), updated_at: new Date().toISOString()}); }
+    if(l.ok_what && l.i && l.item && l.i !== l.item && !seen.has('what' + l.i)){ seen.add('what' + l.i); words.push({business_id: biz, kind: 'what', raw: String(l.i).slice(0, 60), meaning: String(l.item).slice(0, 120), updated_at: new Date().toISOString()}); } });
+  if(words.length) await sb.from('nb_words').upsert(words, {onConflict: 'business_id,kind,raw'});
+  if(NB24.curId) await sb.from('nb_pages').update({status: 'added', kind, added_count: added, lines: keep.map(l => ({date: nb25Day(l), who: l.who, item: l.item, qty: l.q, price: l.price, amount: nb25Amt(l), paid: l.paid}))}).eq('id', NB24.curId);
+  NB25.server = (NB25.server || []).filter(x => x.id !== NB24.curId); NB24.curId = null;
+  NB25.saving = false; NB25.added = added; NB25.missing = missing; NB.added = true; nf22NbPaint(); try{ nf24Badge(); }catch(e){}
+  showToast(`Added ${added} line${added === 1 ? '' : 's'} from paper.`, 'success');
+  try{ if(typeof loadBooksData === 'function') loadBooksData(); }catch(e){}
+}
+async function nb25Skip(){
+  if(!NB24.curId || !confirm('Skip this whole page? The photo stays saved, marked skipped.')) return;
+  await sb.from('nb_pages').update({status: 'skipped'}).eq('id', NB24.curId);
+  NB25.server = (NB25.server || []).filter(x => x.id !== NB24.curId); NB24.curId = null; NB25.err = ''; NB.step = 0; NB.photo = ''; nf22NbPaint(); try{ nf24Badge(); }catch(e){}
+}
+function nb25Who(kind){ return kind === 'bills' ? 'the supplier' : kind === 'exp' ? 'who you paid' : 'the customer'; }
+function nb25Main(){
+  const ov = document.getElementById('nf22Nb'), main = ov && ov.querySelector('.nf22-nbmain'); if(!main) return;
+  const real = nb25Real(), foot = ov.querySelector('.nf22-nbfoot');
+  // the demo shop: say plainly it's a sample
+  if(!real){ main.querySelectorAll('.nf22-nbproto').forEach(p => { p.textContent = 'Demo shop: Nifti shows a sample page. In your own account it reads your real photo.'; }); return; }
+  main.querySelectorAll('.nf22-nbproto').forEach(p => p.remove());
+  if(NB24.saved){ const p = main.querySelector('.nf22-nbdone p'); if(p) p.textContent = 'They\'re saved to your business. Anyone on your team can check them from their own phone. Nothing goes into your books until a person says yes.'; }
+  if(NB.step === 0 && !NB.added && NB25.usage && !main.querySelector('.nf25-use')){
+    const u = NB25.usage, el = document.createElement('p'); el.className = 'nf25-use';
+    el.innerHTML = u.ready === false ? 'Notebook reading is being switched on by the Nifti team. You can save pages now; they get read once it\'s on.' : `This month: <b>${u.used || 0} of ${u.limit} pages</b> read.${u.used >= u.limit ? ' You\'ve used them all. <a onclick="nf22NbClose(); navigate(\'settings\')">See Pro</a>' : ''}`;
+    main.insertBefore(el, main.firstChild);
+  }
+  if(NB.step >= 2 && NB24.curId && !NB.added){
+    if(NB25.reading){
+      main.innerHTML = `<div class="nf25-reading"><img src="${NB.photo}" alt="Your page"><div><span class="nf25-spin" aria-hidden="true"></span><h2>Reading your page…</h2><p>This takes about 20 seconds. Nifti looks for each line, then matches names and items to your own lists.</p></div></div>`;
+      if(foot) foot.hidden = true; return;
+    }
+    if(NB25.err){
+      main.innerHTML = `<div class="nf25-reading"><img src="${NB.photo}" alt="Your page"><div><h2>Nifti couldn't read this page</h2><p>${nf25E(NB25.err)}</p>
+        <div class="nf22-nbbtns"><button type="button" class="btn btn-primary" data-nb="nb25retry">Try again</button><button type="button" class="btn btn-outline" data-nb="nb25skip">Skip this page</button><button type="button" class="btn btn-outline" data-nb="close">Check it later</button></div></div></div>`;
+      if(foot) foot.hidden = true; return;
+    }
+    if(foot) foot.hidden = false;
+    if(NB.step === 2){
+      const h = main.querySelector('h2'); if(h) h.textContent = NB.lines.length ? `Nifti found ${NB.lines.length} line${NB.lines.length === 1 ? '' : 's'}. Is each column right?` : 'Nifti found no lines on this page';
+      if(NB25.summary && !main.querySelector('.nf25-sum')){ const s = document.createElement('p'); s.className = 'nf25-sum'; s.textContent = NB25.summary; const sub = main.querySelector('.nf22-nbsub'); if(sub) sub.after(s); }
+    }
+    if(NB.step === 3){
+      const q = nf22NbQs()[0], box = main.querySelector('.nf22-nbq');
+      if(q && box && q.k !== 'blur'){ const l = NB.lines[q.i], m = box.querySelector('.nf22-nbmath'), h3 = box.querySelector('h3');
+        if(h3) h3.innerHTML = h3.innerHTML.replace(q.k === 'who' ? 'the customer' : 'the item', q.k === 'who' ? nb25Who(NB.kind) : 'the item');
+        if(m){ if(q.k === 'who') m.textContent = l.whoKnown ? 'Already in your list.' : `New name. Nifti adds "${l.who}" for you.`;
+          else { const calc = Number(l.q) && Number(l.price) ? `${l.q} × ${bkPeso(l.price)} = ${bkPeso(nb25Amt(l))}` : bkPeso(nb25Amt(l)); m.innerHTML = `${nf25E(calc)}${l.note ? ` <em>${nf25E(l.note)}</em>` : ''}`; } } }
+    }
+    if(NB.step === 4){
+      const d = NB25_DEST[NB.kind] || NB25_DEST.sales, where = main.querySelector('.nf22-nbwhere');
+      if(where) where.innerHTML = `<li><b>${d[0]}</b><span>${d[2]}</span></li><li><b>Words you confirmed</b><span>are remembered, so the next page reads them by itself.</span></li><li><b>The photo</b><span>stays saved with this page, so you can always look back.</span></li>`;
+      const lab = main.querySelectorAll('.nf22-nbsum span'); if(lab[1]) lab[1].textContent = NB.kind === 'stock' ? 'counted' : NB.kind === 'utang' ? 'owed to you' : (NB.kind === 'exp' || NB.kind === 'bills') ? 'in expenses' : 'in sales';
+      if(lab[2]) lab[2].textContent = NB.kind === 'bills' ? 'suppliers' : NB.kind === 'exp' ? 'paid to' : NB.kind === 'stock' ? 'items' : 'customers';
+      const tot = main.querySelector('.nf22-nbsum div:nth-child(2) b'); if(tot) tot.textContent = NB.kind === 'stock' ? String(NB.lines.filter(l => !l.skipped && !l.blur).length) : bkPeso(NB.lines.filter(l => !l.skipped && !l.blur).reduce((a, l) => a + nb25Amt(l), 0));
+      const calm = main.querySelector('.nf22-calm'); if(calm) calm.textContent = 'Lines from paper are marked "From paper", so you can always find them.';
+      const go = ov.querySelector('.nf22-nbgo'); if(go && NB25.saving){ go.disabled = true; go.textContent = 'Adding…'; }
+    }
+  }
+  if(NB.added && NB25.added == null){ const p = main.querySelector('.nf22-nbdone p'); if(p) p.textContent = 'This was the sample page, so nothing was saved. Take a photo of your own notebook to add real lines.'; }
+  if(NB.added && NB25.added != null){
+    const h = main.querySelector('.nf22-nbdone h2'), p = main.querySelector('.nf22-nbdone p'), d = NB25_DEST[NB.kind] || NB25_DEST.sales;
+    if(h) h.textContent = `Done. ${NB25.added} line${NB25.added === 1 ? ' is' : 's are'} in ${d[0]}.`;
+    if(p) p.textContent = `Marked "From paper" with your photo kept.${NB25.missing && NB25.missing.length ? ` Not added (not in your stock list yet): ${NB25.missing.join(', ')}.` : ''}`;
+    const go = main.querySelector('[data-nb="nb24go"]'); if(go){ go.dataset.v = d[1]; go.textContent = 'Open ' + d[0]; }
+  }
+}
+
+/* ---------- wiring ---------- */
+(function(){
+  if(typeof nf24Inbox !== 'function') return;
+  const inbox = nf24Inbox; nf24Inbox = function(){ return nb25Real() ? (NB25.server || []) : inbox.apply(this, arguments); };
+  const openPage = nf24OpenPage; nf24OpenPage = function(id){ if(nb25Real()) return nb25Open(id); NB25.real = false; return openPage.apply(this, arguments); };
+  const op = nf22NbOpen; nf22NbOpen = function(){ const out = op.apply(this, arguments); NB25.added = null; NB25.err = ''; NB25.reading = false; NB25.real = false;
+    if(nb25Real()) Promise.all([nb25Load(), nb25Usage()]).then(() => { const ov = document.getElementById('nf22Nb'); if(ov && !ov.hidden && NB.step === 0) nf22NbPaint(); }); return out; };
+  const pt = nf22NbPaint; nf22NbPaint = function(){ const out = pt.apply(this, arguments); try{ nb25Main(); }catch(e){ console.warn('nb25', e); } return out; };
+  const dd = nf22NbDo; nf22NbDo = function(a, v){
+    if(nb25Real()){
+      if(a === 'nb24later'){ nb25SavePages().then(ids => { if(!ids) return; NB24.saved = ids.length; nf22NbPaint(); }); return; }
+      if(a === 'nb24now'){ nb25SavePages().then(ids => { if(ids && ids.length) nb25Open(ids[0]); }); return; }
+      if(a === 'nb25retry'){ const x = (NB25.server || []).find(y => y.id === NB24.curId); if(x){ NB25.reading = true; NB25.err = ''; nf22NbPaint(); nb25Read(x); } return; }
+      if(a === 'nb25skip'){ nb25Skip(); return; }
+      if(a === 'add' && NB24.curId){ if(!NB25.saving) nb25Add(); return; }
+      if(a === 'back' && NB.step === 2 && NB24.curId){ NB24.curId = null; NB.photo = ''; NB.step = 1; NB25.err = ''; nf22NbPaint(); return; }
+    }
+    return dd.apply(this, arguments);
+  };
+  // the demo's toast must not suggest it saved anything
+  const tst = window.showToast;
+  if(typeof tst === 'function' && !tst._nb25){ const w = function(m){ if(m === 'Added from paper (prototype).') arguments[0] = nb25Real() ? 'Sample page: nothing was saved.' : 'Demo shop: nothing was saved. In your own account these lines go into your books.'; return tst.apply(this, arguments); }; Object.keys(tst).forEach(k => { w[k] = tst[k]; }); w._nb25 = true; window.showToast = w; try{ showToast = w; }catch(e){} }
 })();
 
 function renderSidebarForViewAsRole(){
@@ -37072,7 +37593,7 @@ async function generateDeliveryReceipt(id){
   const po = getPO(id);
   // Same "assign once, freeze forever" numbering as the Sales Invoice — a DR number has to
   // stay fixed to one delivery, not drift each time it's reprinted. Same entitlement gate too:
-  // "BIR-ready Sales Invoices, Delivery Receipts & VAT tracking" is one bundled Essential+
+  // "Sales invoices, delivery receipts & VAT summaries for your bookkeeper tracking" is one bundled Essential+
   // promise: the Sales Invoice side already checked this, the Delivery Receipt side hadn't.
   if(!po.deliveryReceiptNumber){
     if(!requireBirDocumentsEntitlement()) return;
@@ -45313,10 +45834,10 @@ const PLAN_DEFINITIONS = [
   // pointing at it resolves. Same supplier limit as Free, so it's never a step down.
   {id:'essential', name:'Essential', priceMonthly:790, tagline:'Retired plan.', supplierLimit:15, csvImport:true, trialDays:0,
     birDocuments:true, reorderTools:true, financialReports:false, autoReplenishment:false, deliveryRoute:false, creditLimits:false,
-    features:['Up to 15 connected suppliers','Everything in Free','CSV import for Inventory','BIR-ready Sales Invoices, Delivery Receipts &amp; VAT tracking']},
+    features:['Up to 15 connected suppliers','Everything in Free','CSV import for Inventory','Sales invoices, delivery receipts &amp; VAT summaries for your bookkeeper tracking']},
   {id:'growth', name:'Pro', priceMonthly:990, tagline:'For more than 15 suppliers, or when you want the numbers.', supplierLimit:null, csvImport:true, trialDays:30, featured:true,
     birDocuments:true, reorderTools:true, financialReports:true, autoReplenishment:true, deliveryRoute:false, creditLimits:false,
-    features:['Unlimited connected suppliers','Everything in Free','BIR-ready Sales Invoices, Delivery Receipts &amp; VAT tracking','Nifti drafts your reorders before you run out','Profit, stock-health &amp; cash-flow reports','Import &amp; customs tracking','Multiple storage locations &amp; expiry tracking','CSV import for Inventory','Priority support']},
+    features:['Unlimited connected suppliers','Everything in Free','Sales invoices, delivery receipts &amp; VAT summaries for your bookkeeper tracking','Nifti drafts your reorders before you run out','Profit, stock-health &amp; cash-flow reports','Import &amp; customs tracking','Multiple storage locations &amp; expiry tracking','CSV import for Inventory','Priority support']},
   {id:'business', name:'Business', priceMonthly:4990, tagline:'For distributors and multi-location operations.', supplierLimit:null, csvImport:true, trialDays:14,
     birDocuments:true, reorderTools:true, financialReports:true, autoReplenishment:true, deliveryRoute:true, creditLimits:true,
     features:['Everything in Growth','Manage multiple branches from one account','Connect Nifti to your other business software','Dedicated account manager']},
@@ -45397,7 +45918,7 @@ function requireCsvImportEntitlement(){
 function requireBirDocumentsEntitlement(){
   const plan = getEffectivePlan();
   if(plan.birDocuments) return true;
-  openUpgradePrompt(`BIR-ready Sales Invoices and VAT tracking are available on Essential and above. You're currently on ${plan.name}.`);
+  openUpgradePrompt(`Sales invoices and VAT summaries for your bookkeeper are available on Essential and above. You're currently on ${plan.name}.`);
   return false;
 }
 function requireReorderToolsEntitlement(){

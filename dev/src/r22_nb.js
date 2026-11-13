@@ -89,7 +89,7 @@ function nf22NbPaint(){
     const keep = NB.lines.filter(l => !l.skipped && !l.blur), tot = keep.reduce((a, l) => a + l.price * Number(l.q), 0), cust = [...new Set(keep.filter(l => l.who !== 'Walk-in').map(l => l.who))];
     body = `<h2>Ready to add to your books</h2><p class="nf22-nbsub">Nothing has changed yet. Here is what will happen when you tap the green button.</p>
       <div class="nf22-nbsum"><div><b>${keep.length}</b><span>lines</span></div><div><b>${bkPeso(tot)}</b><span>in sales</span></div><div><b>${cust.length}</b><span>customers</span></div></div>
-      <ul class="nf22-nbwhere"><li><b>Sales</b><span>go into Counter, marked "From paper".</span></li><li><b>Customers</b><span>you haven't added yet are added for you.</span></li><li><b>The photo</b><span>is kept with these lines, so you can always look back.</span></li></ul>
+      <ul class="nf22-nbwhere"><li><b>Sales</b><span>go into Sales, marked "From paper".</span></li><li><b>Customers</b><span>you haven't added yet are added for you.</span></li><li><b>The photo</b><span>is kept with these lines, so you can always look back.</span></li></ul>
       <p class="nf22-calm">You can undo this for 30 days.</p>`;
   }
   const canNext = s === 0 ? !!NB.kind : s === 1 ? false : s === 3 ? !nf22NbQs().length : true;

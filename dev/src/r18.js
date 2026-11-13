@@ -100,7 +100,7 @@ const NF18_HUBS = {
   orders: {label: 'Orders', tabs: [['orders', 'Orders'], ['followups', 'Follow-ups'], ['routes', 'Deliveries'], ['returns', 'Returns & credits'], ['store', 'Online store'], ['discover', 'Find customers']]},
   messages: {label: 'Messages', tabs: [['messages', 'Chats'], ['team', 'Team']]},
   inventory: {label: 'Stock'},
-  money: {label: 'Money', tabs: [['money', 'Overview'], ['sales', 'Counter'], ['expenses', 'Expenses'], ['collections', 'Getting paid'], ['profit', 'Prices'], ['issues', 'To check'], ['payroll', 'Payroll'], ['ledger', 'Books']]}
+  money: {label: 'Money', tabs: [['money', 'Overview'], ['sales', 'Sales'], ['expenses', 'Expenses'], ['collections', 'Getting paid'], ['profit', 'Prices'], ['issues', 'To check'], ['payroll', 'Payroll'], ['ledger', 'Books']]}
 };
 const NF18_SUB = {
   paid: {pages: ['collections', 'cheques'], tabs: [['follow', 'Who owes you'], ['cheques', 'Checks'], ['cash', 'Cash & bank']]},
@@ -171,7 +171,7 @@ function nf18Section(pg, id, title, sub){
 function nf18Counter(){
   const pg = document.getElementById('page-sales'); if(!pg) return;
   const h = pg.querySelector('.page-head h1'), p = pg.querySelector('.page-head p');
-  if(h && h.textContent !== 'Counter') h.textContent = 'Counter';
+  if(h && h.textContent !== 'Sales') h.textContent = 'Sales';
   if(p && !p.dataset.nf18){ p.textContent = "Today's sales, then count the cash at closing."; p.dataset.nf18 = '1'; }
   const s = nf18Section(pg, 'nf18Count', 'Count the cash', 'Nifti already knows what should be in the drawer.');
   const body = document.getElementById('bkCashBody'); if(body && body.parentElement !== s) s.appendChild(body);

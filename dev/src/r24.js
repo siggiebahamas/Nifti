@@ -33,7 +33,7 @@ function nf24TaxBooks(){
 // has time. Nothing goes into the books until a person says yes, and a page that can't be read is never thrown away.
 const NB24 = {pages: [], curId: null, saved: 0};
 const NB24_KEY = 'nifti-nb-inbox';
-const NB24_GO = {sales: ['sales', 'Counter'], utang: ['collections', 'Getting paid'], bills: ['collections', 'Getting paid'], stock: ['inventory', 'Stock'], exp: ['expenses', 'Expenses'], unsure: ['sales', 'Counter']};
+const NB24_GO = {sales: ['sales', 'Sales'], utang: ['collections', 'Getting paid'], bills: ['collections', 'Getting paid'], stock: ['inventory', 'Stock'], exp: ['expenses', 'Expenses'], unsure: ['sales', 'Sales']};
 function nf24Inbox(){ try{ return JSON.parse(localStorage.getItem(NB24_KEY) || '[]') || []; }catch(e){ return []; } }
 function nf24SaveInbox(l){ try{ localStorage.setItem(NB24_KEY, JSON.stringify(l)); nf24Badge(); return true; }catch(e){ showToast('This phone is full. Check or delete a few saved pages first.', 'warn'); return false; } }
 function nf24Waiting(){ return nf24Inbox().filter(x => x.status === 'waiting').sort((a, b) => a.at - b.at); }

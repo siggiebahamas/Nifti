@@ -1,0 +1,15 @@
+/* ---------- "All good": a lighter forest band; the check is green on a white circle so it stands out ---------- */
+#view-app #nfOrd .nfo-band.b-green, #view-app #page-orders .nf20-col .nfo-band.b-green, #view-app #page-orders .nf20-col.s .nfo-band.b-green{background:#2F855A !important;color:#FFFFFF !important;}
+#view-app #nfOrd .nfo-band.b-green > span::before{background:#FFFFFF !important;color:#2F855A !important;width:21px !important;height:21px !important;font-size:13px !important;font-weight:900 !important;}
+#view-app #nfOrd .s-green .k i, #view-app #nfOrd .nfo-key i.k-green, #view-app .nf22-hk i.g{background:#2F855A !important;}
+/* the order bubbles inside go back to soft green, and "Done" back to the pale green pill */
+#view-app #nfOrd .nfo-po.b-green{background:#EFF9F3 !important;box-shadow:none !important;}
+#view-app #nfOrd .nfo-done{background:#DCF5E5 !important;color:#146C3C !important;box-shadow:none !important;}
+
+/* ---------- Privacy notice and terms: big plain type, no brown box ---------- */
+#view-privacy .nf25-legal-date, #view-terms .nf25-legal-date{font-size:15px;color:#475467;margin:0 0 16px;}
+#view-privacy .nf25-legal-box, #view-terms .nf25-legal-box{background:#EFF6FF;border:1px solid #BFD7F5;border-radius:12px;padding:16px 18px;margin:14px 0 24px;font-size:16.5px;color:#1E3A8A;line-height:1.6;}
+#view-privacy .feat-section h2, #view-terms .feat-section h2{font-size:21px;margin:28px 0 10px;color:#101828;}
+#view-privacy .feat-section p, #view-terms .feat-section p, #view-privacy .feat-section li, #view-terms .feat-section li{font-size:16.5px;line-height:1.7;color:#1D2939;}
+#view-privacy .feat-section ul, #view-terms .feat-section ul{padding-left:22px;margin:0 0 14px;}
+#view-privacy .feat-section li, #view-terms .feat-section li{margin-bottom:8px;}

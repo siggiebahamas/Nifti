@@ -19,7 +19,7 @@ function nf20ToSignup(){ const b = document.querySelectorAll('#view-login .tabs 
 /* ---------- 2. The owner's left menu: every page, in groups you can fold ---------- */
 const NF20_GROUPS = [
   {k: 'main', label: '', items: [['dashboard', 'Home'], ['orders', 'Orders'], ['messages', 'Messages'], ['inventory', 'Stock']]},
-  {k: 'money', label: 'Money', items: [['money', 'Money overview'], ['sales', 'Counter'], ['expenses', 'Expenses'], ['collections', 'Getting paid'], ['profit', 'Prices'], ['issues', 'To check'], ['payroll', 'Payroll'], ['ledger', 'Books']]},
+  {k: 'money', label: 'Money', items: [['money', 'Money overview'], ['sales', 'Sales'], ['expenses', 'Expenses'], ['collections', 'Getting paid'], ['profit', 'Prices'], ['issues', 'To check'], ['payroll', 'Payroll'], ['ledger', 'Books']]},
   {k: 'sell', label: 'Selling & delivery', items: [['followups', 'Follow-ups'], ['routes', 'Deliveries'], ['returns', 'Returns & credits'], ['store', 'Online store'], ['discover', 'Find customers']]},
   {k: 'more', label: 'Checks, taxes & team', items: [['cheques', 'Checks'], ['books', 'Tax books'], ['taxforms', 'BIR 2307s'], ['team', 'Team']]}
 ];
@@ -293,7 +293,7 @@ const NF20_SICON = {
 const NF20S = {i: 0, t: 0, stop: false};
 function nf20BooksPanel(){
   return `<div class="f4-spot-t"><h3>Books that keep themselves</h3><p>Every sale, expense and payment lands in proper books. You always know your profit, your cash, and what to check.</p>
-    <ul class="m2-ticks"><li>Counter sales and expenses with a receipt photo</li><li>Cash short, missing stock and odd bills flagged, each with the reason</li><li>Profit and loss, ready for your accountant</li></ul>
+    <ul class="m2-ticks"><li>Shop sales and expenses with a receipt photo</li><li>Cash short, missing stock and odd bills flagged, each with the reason</li><li>Profit and loss, ready for your accountant</li></ul>
     <div class="f4-out"><b>₱38,400</b><span>real profit this month, not a guess</span></div></div>
   <div class="f4-art green"><div class="f4-main"><div class="mk-stack">
     <div class="mk-bigstat"><small>PROFIT THIS MONTH</small><b>₱38,400</b><span>Sales ₱212,000 · costs ₱173,600</span></div>
