@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Launch Readiness</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<style>
+:root{--ink:#101828;--ink2:#344054;--mut:#475467;--line:#EAECF0;--g:#1F6B45;--ok:#166534;--okbg:#DCFCE7;--al:#854D0E;--albg:#FEF9C3;--no:#B42318;--nobg:#FDECEC;}
+*{box-sizing:border-box}html,body{margin:0}
+body{font:16px/1.55 "Plus Jakarta Sans",system-ui,sans-serif;color:var(--ink);background:#F2F4F7;-webkit-font-smoothing:antialiased}
+.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.tin{max-width:1080px;margin:0 auto;padding:12px 20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.tin a{color:var(--g);font-weight:700;text-decoration:none;font-size:14.5px}.tin h1{margin:0;font-size:18px;flex:1;min-width:200px}
+.jump{display:flex;gap:6px;flex-wrap:wrap}.jump a{padding:6px 12px;border-radius:999px;border:1.5px solid #D0D5DD;background:#fff;color:var(--ink);font-weight:700;font-size:13.5px;text-decoration:none}
+.wrap{max-width:1080px;margin:0 auto;padding:22px 20px 80px;display:grid;gap:22px}
+.card{background:#fff;border:1px solid #E4E7EC;border-radius:20px;padding:22px 24px;min-width:0}
+.card h2{margin:0 0 10px;font-size:22px;letter-spacing:-.01em}.card h3{margin:18px 0 6px;font-size:17px}
+.card p{margin:0 0 10px;color:var(--ink2)}.card ul,.card ol{margin:0 0 6px;padding-left:22px;color:var(--ink2)}.card li{margin:4px 0}
+.verdict{background:#F0FAF4;border-color:#CDEBD9}.verdict h2{font-size:26px}
+.big{font-size:19px;color:var(--ink) !important;font-weight:600}
+.pill{display:inline-block;border-radius:999px;padding:3px 11px;font-size:13px;font-weight:800;white-space:nowrap}
+.ok{background:var(--okbg);color:var(--ok)}.al{background:var(--albg);color:var(--al)}.no{background:var(--nobg);color:var(--no)}
+.score{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.score div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;align-items:center;padding:12px 14px;border:1px solid var(--line);border-radius:14px}
+.score b{font-size:16px}.score small{grid-column:1 / -1;color:var(--mut);font-size:14.5px;line-height:1.45}
+.block{display:grid;gap:10px;counter-reset:b}
+.bl{display:grid;grid-template-columns:40px minmax(0,1fr);gap:4px 14px;padding:14px 16px;border:1px solid var(--line);border-radius:16px}
+.bl > i{grid-row:1 / span 3;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-weight:800;background:var(--nobg);color:var(--no)}
+.bl.s > i{background:var(--albg);color:var(--al)}
+.bl b{font-size:16.5px}.bl p{margin:0;font-size:15px}.bl p.fix{color:var(--ink)}.bl p.fix::before{content:'Fix: ';font-weight:800;color:var(--g)}
+details.pg{border:1px solid var(--line);border-radius:14px;margin:8px 0}
+details.pg > summary{list-style:none;display:grid;grid-template-columns:minmax(0,1fr) auto 18px;gap:10px;align-items:center;padding:12px 16px;cursor:pointer;font-weight:800;font-size:16px}
+details.pg > summary::-webkit-details-marker{display:none}details.pg > summary::after{content:'›';color:#98A2B3;font-size:20px;transition:transform .15s}details.pg[open] > summary::after{transform:rotate(90deg)}
+details.pg > div{padding:0 16px 14px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+details.pg h4{margin:0 0 4px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+details.pg ul{margin:0;padding-left:20px;font-size:15px}
+.tbl{width:100%;border-collapse:collapse;font-size:15px}.tbl th{text-align:left;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);padding:8px 10px;border-bottom:1px solid var(--line);background:#F9FAFB}
+.tbl td{padding:9px 10px;border-bottom:1px solid #F2F4F7;vertical-align:top}.tbl td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tbl td.hi{color:var(--no);font-weight:800}
+.wide{overflow-x:auto}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.plan{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.plan div{border:1px solid var(--line);border-radius:14px;padding:14px}.plan b{display:block;font-size:16px;margin-bottom:4px}.plan small{color:var(--mut);font-size:14.5px}
+@media (max-width:760px){ .score,.two,.plan{grid-template-columns:1fr} details.pg > div{grid-template-columns:1fr} .card{padding:18px 16px} }
+</style>
+</head>
+<body>
+<div class="top"><div class="tin"><a href="./">‹ Round 24</a><h1>Is Nifti ready to launch? A full run-through</h1>
+  <div class="jump"><a href="#score">Scorecard</a><a href="#must">Must fix</a><a href="#soon">Fix soon</a><a href="#pages">Every page</a><a href="#words">Words</a><a href="#proto">Prototype</a><a href="#plan">Plan</a></div></div></div>
+<main class="wrap">
+  <section class="card verdict"><h2>The short answer</h2>
+    <p class="big">Ready for a hands-on pilot with 5 to 10 shops that you set up yourself. Not ready yet for strangers to sign up alone, or to charge money.</p>
+    <p>The core loop works and feels calm: order, deliver, bill, collect, and the books fill in by themselves. What holds it back is not the idea or the look. It's four things: some features look real but aren't yet, the menu gives a 65-year-old too many choices, Filipino mode is half English, and a few trust basics (security pass, data export, privacy notice, price) aren't finished.</p>
+    <p>How I checked: I opened all 22 pages plus the notebook reader, alerts, landing, pricing, privacy and terms, on a computer (1440 wide) and a phone (390 wide). I counted words, buttons and tiny text on each page, switched to Filipino, measured load size, and ran the database's security checker.</p></section>
+
+  <section class="card" id="score"><h2>Scorecard</h2><div class="score">
+    <div><b>Usefulness</b><span class="pill ok">Ready</span><small>Covers a distributor's whole day: orders both ways, delivery, bills, collections, cash count, stock, expenses, payroll, books and taxes. Few local apps do both buying and selling in one place.</small></div>
+    <div><b>Look and calm</b><span class="pill ok">Ready</span><small>Consistent colors (red now, yellow soon, blue waiting, forest done), big titles, plain cards, "What's this page?" everywhere.</small></div>
+    <div><b>Ease of use</b><span class="pill al">Almost</span><small>Most cards have one clear button. But several pages carry 40 to 50 buttons, and phone pages run 5 to 6 screens long.</small></div>
+    <div><b>Language (English)</b><span class="pill al">Almost</span><small>Mostly plain. Leftovers: PO numbers, "Stocktake", "vatable", "margin", "cost of goods", account numbers in Books.</small></div>
+    <div><b>Navigation</b><span class="pill no">Not yet</span><small>23 lines in the menu, plus a second row of the same pages at the top of every page, plus sometimes a third small row. Too many doors for someone easily intimidated.</small></div>
+    <div><b>Filipino mode</b><span class="pill no">Not yet</span><small>Older screens are translated; everything from the last few rounds is still English, so FIL mode mixes both on the same line.</small></div>
+    <div><b>Trust and data safety</b><span class="pill no">Not yet</span><small>Some buttons only pretend (see Prototype list). Data export is a stub. Database functions need a security pass. Privacy notice predates the newest features.</small></div>
+    <div><b>Speed</b><span class="pill al">Almost</span><small>Opens in under a second on Wi-Fi. The app is one 4.5 MB file (1.4 MB to download), so the first open on weak mobile data can take 10 seconds or more.</small></div></div></section>
+
+  <section class="card" id="must"><h2>Must fix before launch</h2><p>In the order I'd do them.</p><div class="block">
+    <div class="bl"><i>1</i><b>Anything that only pretends must be finished or hidden</b><p>Telegram alerts aren't connected yet, the notebook reader reads a sample page, post reminders don't send, team permission changes and supplier credit slips save only on one phone, store results are example numbers, and "Export my data" is a stub. If a new owner taps one and nothing real happens, they stop trusting the real parts too.</p><p class="fix">For launch, show each as "Coming soon" with a "Tell me when it's ready" button, or make it real. Keep them fully working in the demo.</p></div>
+    <div class="bl"><i>2</i><b>A simple menu for first-time users</b><p>23 menu lines plus the same pages again as pills at the top of each page. Your users will freeze at "Payroll, Prices, To check, Books, Checks, Tax books, BIR 2307s…".</p><p class="fix">Start everyone on a 7-line menu: Home, Orders, Messages, Stock, Money, Selling, Notebook reader. One "Show all tools" link opens the rest. On computers, drop the duplicate pill row (keep it on phones, where there's no side menu).</p></div>
+    <div class="bl"><i>3</i><b>Finish Filipino, or hide the switch</b><p>In FIL mode the Orders page says "MGA ORDER · 6 pages here · Customers on the left, suppliers on the right · NEEDS YOU NOW · PAPARATING". The whole store, returns and books pages stay English.</p><p class="fix">Translate rounds 20 to 24 text (about 600 lines), using the same Taglish tone as the store posts. Until then, hide the FIL button.</p></div>
+    <div class="bl"><i>4</i><b>Security pass on the database</b><p>The security checker lists 45 database functions anyone can call without signing in, and 187 any signed-in user can call. Most check permission inside (32 of the 33 admin ones do). One doesn't: <b>admin_funnel_data</b> lets any signed-in user read Nifti-wide counts (number of businesses, orders this week). I tried to lock it with a one-line change, but database changes need your OK.</p><p class="fix">Approve the one-line fix. Then check each of the 45 public functions: every one should require a secret link code or only return public store info. Also move the pg_net extension out of the public schema.</p></div>
+    <div class="bl"><i>5</i><b>A real first day: "Bring your shop in"</b><p>There's an import for stock, but nothing that brings in customers, suppliers and what each one owes in one sitting. The first hour decides whether a shop stays.</p><p class="fix">One guided screen: 1) items and prices (Excel, or a photo of your price list), 2) customers and their utang (the notebook reader), 3) suppliers and what you owe, 4) cash in the drawer today. Then Home fills up immediately.</p></div>
+    <div class="bl"><i>6</i><b>Decide the price and how people pay</b><p>The Pricing page still shows Free vs Pro (₱990, free in the pilot), and "PRO · free in pilot" tags still appear inside the app, though you asked in Round 20 to drop free vs pro from the landing page.</p><p class="fix">Pick one launch offer, say it in one line, remove the PRO tags, and show how to pay (GCash or bank) with a receipt.</p></div>
+    <div class="bl"><i>7</i><b>Careful with "for the BIR"</b><p>Tax books and BIR 2307s are labeled as BIR books. Using software as your official books of account normally needs BIR registration first.</p><p class="fix">Until that's in place, call them "Summaries for your bookkeeper" and say so on the page.</p></div>
+    <div class="bl"><i>8</i><b>Update the privacy notice and terms</b><p>Both are dated September 22, before notebook photos, Telegram alerts, store posts and staff tasks existed.</p><p class="fix">Add what each new feature stores, who can see it, and how to delete it.</p></div>
+    <div class="bl"><i>9</i><b>Test the first open on a cheap phone with mobile data</b><p>1.4 MB on first download is fine on Wi-Fi, slow on prepaid data outside the city.</p><p class="fix">Try it on a ₱5,000-class Android on mobile data. Add a simple "Opening Nifti…" screen. Later, load Books, Tax and Store only when opened.</p></div></div></section>
+
+  <section class="card" id="soon"><h2>Fix in the first weeks</h2><div class="block">
+    <div class="bl s"><i>A</i><b>Pages too long on a phone</b><p>Orders 4,945 px tall (about 6 screens), Prices 5,191, Money overview 4,630, Expenses 4,386, Counter 4,198.</p><p class="fix">Show the top 3 of each list with "See all"; on Orders show one side at a time on a phone (Selling | Buying switch with counts).</p></div>
+    <div class="bl s"><i>B</i><b>Too many buttons on one page</b><p>Counter 53, Expenses 49, Orders 45, Store 38, Home 29. Every sale line has Receipt and Remove; every expense has Edit and Remove.</p><p class="fix">One main button per page. Line actions appear only after tapping a line.</p></div>
+    <div class="bl s"><i>C</i><b>Text that's too small</b><p>Labels under 13 px: Orders band names (12.5 px), Money chart labels (12 px), Tax books headers (12.5 px), Stock status tags on phone (12.5 px), Counter cash summary on phone (12.9 px).</p><p class="fix">Make 14 px the smallest anywhere.</p></div>
+    <div class="bl s"><i>D</i><b>Menu names don't match page titles</b><p>Getting paid opens "Money owed", Checks opens "Check payments", Deliveries opens "Delivery routes", Find customers opens "Find customers & suppliers", Books opens "Books & reports".</p><p class="fix">One name each, the same everywhere.</p></div>
+    <div class="bl s"><i>E</i><b>Small gray sub-rows are easy to miss</b><p>Getting paid has the same small "In Getting paid: Who owes you · Checks · Cash & bank" row that Books had.</p><p class="fix">Same fix as Books: remove it, since Checks already has its own menu line, or turn it into big tabs.</p></div>
+    <div class="bl s"><i>F</i><b>Title Case leftovers</b><p>"Start Stocktake", "Draft Reorder", "Getting Low", "All Warehouses", "Manage warehouses" for a one-store shop.</p><p class="fix">"Count all stock", "Reorder", "Running low", "All storage places"; hide storage places until a second one is added.</p></div>
+    <div class="bl s"><i>G</i><b>The demo is stuck on August 26</b><p>The demo says "Today is Wed, Aug 26" while new things (like saved notebook pages) say today's real date.</p><p class="fix">Shift the demo's dates so its "today" is the real today.</p></div>
+    <div class="bl s"><i>H</i><b>The menu's bottom box covers a heading on laptops</b><p>"Telegram alerts" and "Who sees what" sit over the "Selling & delivery" heading on shorter screens.</p><p class="fix">Move "Who sees what" into Settings, and keep only the alerts link at the bottom.</p></div>
+    <div class="bl s"><i>I</i><b>A real person to ask</b><p>"What's this page?" helps, but nervous users want a human.</p><p class="fix">A "Need help? Message us" line in the menu that opens your own Viber or phone number.</p></div></div></section>
+
+  <section class="card" id="pages"><h2>Every page, one by one</h2><p>Tap a page to see what works and what to fix.</p><div id="pg"></div></section>
+
+  <section class="card" id="words"><h2>Words to change</h2><div class="wide"><table class="tbl"><thead><tr><th>Now</th><th>Say instead</th><th>Where</th></tr></thead><tbody id="wd"></tbody></table></div></section>
+
+  <section class="card"><h2>The numbers behind this</h2><p>Counted on the demo shop. Words and buttons are on a computer; small text is the higher count of computer or phone; phone height is how tall the page is on a phone (one screen is about 800 px). Red marks the worst ones.</p><div class="wide"><table class="tbl"><thead><tr><th>Page</th><th class="n">Words</th><th class="n">Buttons</th><th class="n">Text under 13 px</th><th class="n">Phone height</th></tr></thead><tbody id="nm"></tbody></table></div></section>
+
+  <section class="card" id="proto"><h2>Still a prototype (looks real, isn't yet)</h2><div class="wide"><table class="tbl"><thead><tr><th>Feature</th><th>What works now</th><th>What's missing</th></tr></thead><tbody id="pr"></tbody></table></div></section>
+
+  <section class="card"><h2>What's genuinely strong (keep it)</h2><ul>
+    <li><b>Both sides in one place.</b> Selling to customers and buying from suppliers, side by side, with the same colors everywhere.</li>
+    <li><b>Every card says the next step.</b> "Send the bill", "Count it", "Pay", "Answer". No one has to figure out what to do.</li>
+    <li><b>Money that adds up.</b> One profit number on every page, books that fill in from orders, credits that take themselves off the next bill.</li>
+    <li><b>It speaks the shop's language.</b> Utang, vale, sukli, Taglish posts and replies.</li>
+    <li><b>Calm by design.</b> No crossed-out text, gray zeros, yellow "please check" instead of red, and nothing is added without a yes.</li></ul></section>
+
+  <section class="card" id="plan"><h2>A launch plan that fits</h2><div class="plan">
+    <div><b>1. Two weeks: close the gaps</b><small>Must-fix 1 to 4 and 6 to 8. Hide what's not real. Simple menu. Filipino finished or hidden.</small></div>
+    <div><b>2. Four weeks: pilot with 5 shops</b><small>You set each one up in person, using "Bring your shop in". Watch: do they open Nifti 5 days out of 7? Do they record sales and collections without you?</small></div>
+    <div><b>3. Then charge</b><small>Turn on the price once 3 of the 5 shops would be upset to lose it. Fix what the pilot showed, then open sign-ups.</small></div></div></section>
+</main>
+<script>
+const G = {ok: '<span class="pill ok">Ready</span>', al: '<span class="pill al">Almost</span>', no: '<span class="pill no">Not yet</span>'};
+const PG = [
+ ['Home', 'al', ['Greeting, "Get set up 3 of 6", and What to do in 3 columns (Act today, This week, Fine)', 'Telegram setup card and welcome back', 'One profit number that matches Money and Books'], ['528 words and 29 buttons on one screen', 'The order board repeats the Orders page', '3,283 px tall on a phone']],
+ ['Orders', 'al', ['Customers left, suppliers right, colored bands, one next-step button per order', 'Dates on each order, counts that match the top tiles', 'Forest "All good" band now stands out'], ['45 buttons; "PO-2026-0855" style numbers', '4,945 px on a phone because both sides stack', 'Band labels are 12.5 px']],
+ ['Messages', 'ok', ['Chats split into customers, suppliers and team', 'The order sits beside the chat'], ['12 px badges', '"Announce to all customers" could say "Message all customers"']],
+ ['Stock', 'al', ['What runs out, missing and bad stock, last count', 'Read a notebook button'], ['"Start Stocktake", "Draft Reorder", "Getting Low", "All Warehouses"', 'Warehouse column shown to one-store shops', '"Import / export data" is techy']],
+ ['Money overview', 'ok', ['Profit statement with red and green, money in and out, owed boxes', 'Cash outlook and 6-month chart'], ['4,630 px on a phone', 'Chart labels 12 px', 'Cash outlook table reads like an accountant\'s']],
+ ['Counter', 'al', ['Today\'s sales split into cash, GCash and utang', 'Cash count right on the page'], ['53 buttons: Receipt and Remove on every sale', '4,198 px on a phone']],
+ ['Expenses', 'al', ['Approve or send back, receipts, where the money went'], ['49 buttons', '"Stock bought in cash, counted as cost of goods"']],
+ ['Getting paid ("Money owed")', 'al', ['Who owes, promises to pay, automatic polite reminders', 'Bills to suppliers, oldest first'], ['Menu name and page title differ', 'Small gray sub-row: Who owes you · Checks · Cash & bank']],
+ ['Prices', 'al', ['Cost vs selling price, below-cost warnings, announce new prices'], ['25 editable boxes on one page feels like a spreadsheet', '"Margin"', '5,191 px on a phone']],
+ ['To check', 'al', ['"What happened / Evidence / Next step" in plain words; "These are checks, not accusations"'], ['The Team spending half adds 5 more tabs; move it to its own page or fold it']],
+ ['Payroll', 'ok', ['Short and clear; vale taken off the next pay'], ['Nothing major']],
+ ['Books & reports', 'al', ['No repeats with Money overview; ledger lines up; Money colors'], ['Account numbers still show ("1000 · Cash in drawer")', '"Evidence: Accounts 4000 and 4010" in What changed']],
+ ['Follow-ups', 'ok', ['To confirm, today, leads, sell again; nudges with the message ready'], ['Leads appear here and on Find customers']],
+ ['Deliveries', 'ok', ['Driver stop list, delivered and collected, send list by Viber'], ['Optional tool, already switchable in Settings']],
+ ['Returns & credits', 'ok', ['Two money boxes, add buttons centered, used credits and problems folded'], ['Nothing major']],
+ ['Online store', 'al', ['Post today with picture and words, week planner, buyers guide, replies'], ['"My store" results are example numbers', 'Real buyers ordering through the link needs a live test']],
+ ['Find customers', 'no', ['Looks good in the demo with sample businesses'], ['For real accounts it only lists businesses already on Nifti, so at launch it will look almost empty. Hide it until enough shops join, or keep just the Leads list']],
+ ['Checks', 'ok', ['Deposit today, coming up, clearing, bounced'], ['Page is called "Check payments"']],
+ ['Tax books', 'al', ['One line per invoice with Before VAT, labeled totals'], ['"For the BIR" wording (see Must fix 7)', '"Output VAT 12%" tile could say "VAT you collected"']],
+ ['BIR 2307s', 'al', ['Forms owed to you and by you, with due dates'], ['Dense; only useful to shops dealing with withholding agents. Show it only when a 2307 appears']],
+ ['Team', 'ok', ['Tasks for your people, activity'], ['"Who sees what" and "Add or manage people" repeat Settings']],
+ ['Settings', 'ok', ['Search box, grouped and folded sections'], ['20 sections; "Viber & WhatsApp" card is about sharing, name it "Share by Viber or WhatsApp"']],
+ ['Notebook reader', 'no', ['Pick the page, many photos at once, check later, one question at a time, opens the right page after'], ['Reading is a sample page. Needs real reading before launch']],
+ ['Telegram alerts', 'no', ['Setup guide, folders, switches, practice chats'], ['Nifti\'s Telegram account isn\'t connected, so no real messages yet']],
+ ['Landing, login, pricing, privacy, terms', 'al', ['Short landing, big demo button, privacy and terms pages exist'], ['Pricing still Free vs Pro', 'Privacy and terms predate the newest features', 'Before/after section waiting for your pick']]];
+document.getElementById('pg').innerHTML = PG.map(([n, g, w, f]) => `<details class="pg"><summary><span>${n}</span>${G[g]}</summary><div><div><h4>What works</h4><ul>${w.map(x => `<li>${x}</li>`).join('')}</ul></div><div><h4>What to fix</h4><ul>${f.map(x => `<li>${x}</li>`).join('')}</ul></div></div></details>`).join('');
+const WD = [['PO-2026-0855', 'Order 0855', 'Orders, Messages, To check'], ['Invoice / bill (both used)', 'Bill', 'Everywhere'], ['Start Stocktake', 'Count all stock', 'Stock'], ['Spot count', 'Count a few items', 'Stock'], ['Draft Reorder', 'Reorder', 'Stock'], ['Warehouses', 'Storage places (hidden until you have 2)', 'Stock'],
+  ['Vatable', 'Before VAT', 'Tax books tiles'], ['Output VAT / Input VAT', 'VAT you collected / VAT you paid', 'Tax books'], ['Gross profit', 'Profit before expenses', 'Money, Prices'], ['Margin', 'Profit per ₱100', 'Prices'], ['Cost of goods', 'Cost of what you sold', 'Expenses, Books'],
+  ['1000 · Cash in drawer', 'Cash in drawer (no number)', 'Books'], ['Receivables / payables', 'Customers owe you / You owe suppliers', 'Books'], ['Import / export data', 'Bring in or save your list', 'Stock'], ['Announce to all customers', 'Message all customers', 'Messages'], ['Nudge', 'Remind', 'Follow-ups'], ['6 pages here', '(drop it)', 'Top of every page']];
+document.getElementById('wd').innerHTML = WD.map(r => `<tr><td>${r[0]}</td><td><b>${r[1]}</b></td><td>${r[2]}</td></tr>`).join('');
+const NM = [['Home', 528, 29, 7, 3283], ['Orders', 457, 45, 20, 4945], ['Messages', 254, 9, 15, 1476], ['Stock', 194, 11, 3, 2842], ['Money overview', 412, 14, 30, 4630], ['Counter', 478, 53, 33, 4198], ['Expenses', 380, 49, 0, 4386], ['Getting paid', 211, 16, 0, 2235], ['Prices', 406, 16, 18, 5191], ['To check', 364, 29, 1, 3445], ['Payroll', 86, 12, 0, 977], ['Books', 245, 14, 0, 2623],
+  ['Follow-ups', 187, 14, 0, 1568], ['Deliveries', 155, 14, 2, 1420], ['Returns & credits', 174, 11, 0, 1922], ['Online store', 236, 38, 0, 3107], ['Find customers', 298, 26, 0, 2895], ['Checks', 250, 17, 0, 2507], ['Tax books', 310, 15, 20, 2644], ['BIR 2307s', 284, 16, 0, 3328], ['Team', 93, 17, 2, 1259], ['Settings', 218, 21, 0, 2894]];
+document.getElementById('nm').innerHTML = NM.map(r => `<tr><td>${r[0]}</td><td class="n">${r[1]}</td><td class="n${r[2] >= 40 ? ' hi' : ''}">${r[2]}</td><td class="n${r[3] >= 15 ? ' hi' : ''}">${r[3]}</td><td class="n${r[4] >= 4000 ? ' hi' : ''}">${r[4].toLocaleString()} px</td></tr>`).join('');
+const PR = [['Telegram alerts', 'Setup guide, switches, practice chats', 'Nifti\'s Telegram account connected to the server'], ['Notebook reader', 'The whole flow, many photos, check later', 'Real reading of handwriting; pages saved to the business, not one phone'], ['Post reminders', 'Week planner and previews', 'The morning reminder itself'],
+  ['Who sees what', 'Owner picks pages per role', 'Saving for the whole team, not one device'], ['Supplier credit slips (real accounts)', 'Add, take off a bill, see the slip', 'Saving to the business, not one device'], ['Store results', 'Charts and lists', 'Real visit and order counts'], ['Export my data', 'Button and message', 'An actual file download'], ['Bank', 'Upload a statement and match', 'No live bank connection (that\'s fine, just say so)']];
+document.getElementById('pr').innerHTML = PR.map(r => `<tr><td><b>${r[0]}</b></td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join('');
+</script>
+</body>
+</html>
