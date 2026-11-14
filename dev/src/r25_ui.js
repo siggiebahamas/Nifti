@@ -159,17 +159,18 @@ function nf25Owed(page){
     rows.forEach(r => {
       const name = nf25En(r.querySelector('.sl-t')), ss = r.querySelectorAll('.sl-s'), line = nf25En(ss[0]), parts = line.split(/\s+·\s+/);
       const owes = escapeHtml(parts[0] || ''), owesN = nf25Peso(parts[0]); sum += owesN;
-      const chips = [];
+      const chips = [], ln = (cls, label, val, extra) => `<div><i class="${cls}"></i>${escapeHtml(label)}${val ? `<b>${escapeHtml(val)}</b>` : ''}${extra || ''}</div>`;
       parts.slice(1).forEach(t => {
-        let m = t.match(/^(₱[\d,.]+) overdue, (\d+)d/); if(m){ chips.push(`<span class="nf25-chip bad">${nf25Peso(m[1]) === owesN ? 'Overdue' : m[1] + ' overdue'} · ${m[2]} day${m[2] === '1' ? '' : 's'}</span>`); return; }
-        m = t.match(/^(₱[\d,.]+) to confirm/); if(m){ chips.push(`<span class="nf25-chip warn">${m[1]} they say they paid</span>`); return; }
-        chips.push(`<span class="nf25-chip">${escapeHtml(t)}</span>`); });
+        let m = t.match(/^(₱[\d,.]+) overdue, (\d+)d/); if(m){ chips.push(ln('bad', 'Late', `${m[2]} day${m[2] === '1' ? '' : 's'}${nf25Peso(m[1]) === owesN ? '' : ' · ' + m[1]}`)); return; }
+        m = t.match(/^(₱[\d,.]+) to confirm/); if(m){ chips.push(ln('warn', 'Says paid', m[1])); return; }
+        chips.push(ln('', t, '')); });
       const st = ss[1] ? nf25En(ss[1]) : '';
       if(st){ const good = ss[1].querySelector('.sl-good'), warn = ss[1].querySelector('.sl-warn'); const clean = st.replace(/^[^\w₱]+/u, '');
-        const pb = promBtns[name.trim()]; chips.push(`<span class="nf25-chip ${good ? 'good' : warn ? 'warn' : ''}">${escapeHtml(clean)}</span>`);
-        if(pb && good){ pb.className = 'sl-link nf25-cancel'; pb.textContent = 'Cancel promise'; chips.push(pb.outerHTML); } }
+        const pb = promBtns[name.trim()]; let extra = ''; if(pb && good){ pb.className = 'sl-link nf25-cancel'; pb.textContent = 'Cancel'; extra = pb.outerHTML; }
+        const pm = clean.match(/^(Promised|Broke a promise|Promise broken)\s*(.*)$/i);
+        chips.push(pm ? ln(good ? 'good' : warn ? 'warn' : '', pm[1], pm[2].replace(/^by /, 'by '), extra) : ln(good ? 'good' : warn ? 'warn' : '', clean, '', extra)); }
       const tr = document.createElement('tr');
-      tr.innerHTML = `<td class="t" data-l="${nf25L('Customer')}"><b>${escapeHtml(name)}</b></td><td class="n" data-l="${nf25L('Owes')}"><b>${owes}</b></td><td class="w" data-l="${nf25L('Status')}"><div class="nf25-chips">${chips.join('')}</div></td><td class="a"></td>`;
+      tr.innerHTML = `<td class="t" data-l="${nf25L('Customer')}"><b>${escapeHtml(name)}</b></td><td class="n" data-l="${nf25L('Owes')}"><b>${owes}</b></td><td class="w" data-l="${nf25L('Status')}"><div class="nf26-gl">${chips.join('')}</div></td><td class="a"></td>`;
       const act = r.querySelector('.sl-right'); if(act) tr.lastElementChild.appendChild(act);
       tb.appendChild(tr); r.remove();
     });

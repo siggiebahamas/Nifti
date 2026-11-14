@@ -5,10 +5,10 @@
 const NF26_PLANS = [
   {k: 'free', name: 'Free', m: 0, y: 0, who: 'A small shop running day to day.',
     f: ['Orders with customers and suppliers', 'Messages, stock, shop sales, expenses', 'Who owes you, with reminders you send yourself', 'Online store and Facebook posts', 'Telegram alerts', '10 notebook pages a month', 'Up to 3 people', 'Download everything any time']},
-  {k: 'pro', name: 'Pro', m: 990, y: 9900, who: 'Shops that want Nifti to chase money and keep the books.',
-    f: ['Everything in Free', 'Payment reminders sent for you, and statements', 'Books, profit and summaries for your bookkeeper', 'Payroll, checks and delivery routes', 'Credits, returns and credit limits', 'Price announcements and price alerts', 'Store results, promos, reorder reminders', 'Team spending caps and order watchdog', '300 notebook pages a month', 'Up to 15 people']},
-  {k: 'business', name: 'Business', m: 2990, y: 29900, who: 'Distributors with branches, drivers and a bigger team.',
-    f: ['Everything in Pro', 'Done-for-you setup included', 'Verified badge, featured in Find customers', 'Priority help: we answer you first', '1,500 notebook pages a month', 'Up to 50 people']}
+  {k: 'pro', name: 'Pro', m: 990, y: 9900, who: 'Owner-run shops that want Nifti to chase money and keep the books.',
+    f: ['Everything in Free', 'Payment reminders sent for you, and statements', 'Books, profit and summaries for your bookkeeper', 'Payroll and check tracking', 'Credits and returns that take themselves off', 'Price announcements to all customers', 'Store results, promos, reorder reminders', '300 notebook pages a month', 'Up to 8 people']},
+  {k: 'business', name: 'Business', m: 2990, y: 29900, who: 'Distributors with drivers, branches and staff who order and collect.',
+    f: ['Everything in Pro', 'Delivery routes and driver lists', 'Branches: each with its own drawer and stock', 'Spending caps and alerts when staff overpay', 'Credit limits and a who-pays-late list', 'Supplier report card and price checks', 'Done-for-you setup, verified badge, priority help', '1,500 notebook pages a month', 'Up to 50 people']}
 ];
 const NF26P = {cycle: 'monthly', pick: null, step: 'plans', method: 'GCash', receipt: null, busy: false, instr: '', note: '', err: ''};
 const NF26_CHK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>';
@@ -129,7 +129,7 @@ const NF26_PRO_PAGES = {
   books: ['vat_books', 'Tax books', ['Sales and purchase summaries for your bookkeeper', 'VAT you collected and paid, per bill', 'One tap to export']],
   taxforms: ['bir2307', 'BIR 2307s', ['Which customers still owe you a 2307', 'Due dates so nothing is forgotten', 'A ready message to ask for the form']],
   cheques: ['cheques', 'Checks', ['The day to deposit each check', 'A warning before a check goes stale', 'Bounced checks followed up for you']],
-  routes: ['routes', 'Deliveries', ["Today's stops in one list for the driver", 'Delivered and collected, marked on the spot', 'Send the list by Viber']]
+  routes: ['routes', 'Deliveries', ["Today's stops in one list for the driver", 'Delivered and collected, marked on the spot', 'Send the list by Viber'], 'business']
 };
 function nf26Locked(page){ const c = NF26_PRO_PAGES[page]; if(!c) return false; try{ return !hasFeature(c[0]); }catch(e){ return false; } }
 function nf26Gate(page){
@@ -139,13 +139,13 @@ function nf26Gate(page){
   if(!lock){ if(old) old.remove(); return; }
   if(old) return;
   const c = document.createElement('section'); c.className = 'nf26-lock';
-  c.innerHTML = `<span class="nf26-lock-k">PART OF PRO</span><h2>${cfg[1]} comes with Pro</h2><ul>${cfg[2].map(f => `<li>${NF26_CHK}<span>${f}</span></li>`).join('')}</ul>
-    <div class="nf26-lock-b"><button type="button" class="btn btn-primary" onclick="nf26OpenPlans('pro')">See Pro · ₱990 a month</button><button type="button" class="nf26-link" onclick="nf26OpenPlans()">Compare all plans</button></div>`;
+  c.innerHTML = `<span class="nf26-lock-k">PART OF ${cfg[3] ? 'BUSINESS' : 'PRO'}</span><h2>${cfg[1]} comes with ${cfg[3] ? 'Business' : 'Pro'}</h2><ul>${cfg[2].map(f => `<li>${NF26_CHK}<span>${f}</span></li>`).join('')}</ul>
+    <div class="nf26-lock-b"><button type="button" class="btn btn-primary" onclick="nf26OpenPlans('${cfg[3] || 'pro'}')">${cfg[3] ? 'See Business · ₱2,990 a month' : 'See Pro · ₱990 a month'}</button><button type="button" class="nf26-link" onclick="nf26OpenPlans()">Compare all plans</button></div>`;
   const head = page.querySelector(':scope > .page-head'); page.insertBefore(c, head ? head.nextSibling : page.firstChild);
 }
 function nf26MenuLocks(){
   document.querySelectorAll('.sidebar .nf19-nav .nav-item[data-page]').forEach(n => { const lock = nf26Locked(n.dataset.page) && n.dataset.nf26 !== 'bank'; let t = n.querySelector('.nf26-pro');
-    if(lock && !t){ t = document.createElement('em'); t.className = 'nf26-pro'; t.textContent = 'Pro'; n.appendChild(t); } else if(!lock && t) t.remove(); });
+    if(lock && !t){ t = document.createElement('em'); t.className = 'nf26-pro'; t.textContent = (NF26_PRO_PAGES[n.dataset.page] || [])[3] ? 'Business' : 'Pro'; n.appendChild(t); } else if(!lock && t) t.remove(); });
 }
 
 /* ---------- wiring ---------- */

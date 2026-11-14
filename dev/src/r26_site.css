@@ -24,7 +24,8 @@
 .nf26-nd .ar{display:grid;place-items:center;color:#86EFAC;}
 .nf26-nd .ar svg{width:26px;height:26px;stroke-width:2.6;}
 .nf26-nd .res{display:inline-block;margin-top:8px;font-size:14px;font-weight:800;border-radius:999px;padding:3px 10px;background:#DCFCE7;color:#14532D;}
-.nf26-nd .sum{max-width:980px;margin:22px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:12px;text-align:left;}
+.nf26-nd .sum{max-width:980px;margin:22px auto 0;display:grid;grid-template-columns:132px 1fr 44px 1fr;gap:12px 10px;text-align:left;}
+.nf26-nd .sum > div:first-child{grid-column:1 / 3;} .nf26-nd .sum > div:last-child{grid-column:3 / 5;}
 .nf26-nd .sum > div{display:flex;gap:14px;align-items:center;border-radius:18px;padding:18px 20px;background:#FFFFFF;color:#101828;}
 .nf26-nd .sum p{margin:0;}
 .nf26-nd .sum .ic{width:48px;height:48px;background:#DCFCE7;color:#1F6B45;}
@@ -40,7 +41,7 @@
   .nf26-nd .row{gap:8px;}
   .nf26-nd .t .sky{margin:0;}
   .nf26-nd .b, .nf26-nd .a{min-height:0;}
-  .nf26-nd .sum{grid-template-columns:1fr;}
+  .nf26-nd .sum{grid-template-columns:1fr;} .nf26-nd .sum > div:first-child, .nf26-nd .sum > div:last-child{grid-column:auto;}
 }
 
 /* ===== Round 26: Free / Pro / Business on the landing page and the Pricing page ===== */

@@ -64,7 +64,7 @@ const NF26_SHORT = [
 function nf26Short(s){ let t = String(s || '').replace(/\s+/g, ' ').trim(); NF26_SHORT.forEach(([re, to]) => { t = t.replace(re, to); }); return t; }
 function nf26Status(root){
   (root || document).querySelectorAll('table.nf25-t td[data-l="Status"], table.nf25-t td[data-l="When"], table.nf25-t td[data-l="Note"], table.nf25-t td.w').forEach(td => {
-    if(td.dataset.nf26s || td.querySelector('button, a, .nf25-chips, input, select')) return;
+    if(td.dataset.nf26s || td.querySelector('button, a, .nf25-chips, .nf26-gl, input, select')) return;
     const t = td.textContent.replace(/\s+/g, ' ').trim(); td.dataset.nf26s = '1'; if(!t) return;
     let top = '', sub = '';
     const m = t.match(/^(−?-?₱[\d,.]+)\s+(.+)$/);

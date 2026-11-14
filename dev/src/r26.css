@@ -36,3 +36,16 @@ html.nf-phone #view-app .nf20-bk small{display:none;}
 
 /* ---------- one storage place: no storage tabs, column or picker ---------- */
 html.nf26-one-store #whTabs, html.nf26-one-store #page-inventory [onclick="openManageWarehouses()"], html.nf26-one-store .expand-field:has(> #newInvWarehouse){display:none !important;}
+
+/* ---------- selling to customers: ocean blue ---------- */
+:root{--nf20-c:#0B63B6;--nf20-c-bg:#F0F7FD;--nf20-c-line:#CBE0F4;--nf22-c-ink:#0A4F91;--nf22-c-soft:#DCEBF9;}
+html #view-app .nf-half-supplier{--side:#0B63B6;--side-bg:#F0F7FD;--side-line:#CBE0F4;--side-ink:#0A4F91;--side-soft:#DCEBF9;}
+html #page-orders .nf20-col:not(.s){--side:#0B63B6;--side-bg:#F0F7FD;--side-line:#CBE0F4;--side-ink:#0A4F91;--side-soft:#DCEBF9;}
+/* ---------- Getting paid: a short list, one dot each ---------- */
+#view-app .nf26-gl{display:grid;min-width:210px;text-align:left;}
+#view-app .nf26-gl > div{display:flex;align-items:center;gap:8px;padding:6px 0;font-size:15.5px;color:#101828;border-top:1px solid #EAECF0;}
+#view-app .nf26-gl > div:first-child{border-top:0;}
+#view-app .nf26-gl i{width:10px;height:10px;border-radius:50%;flex:none;background:#98A2B3;}
+#view-app .nf26-gl i.bad{background:#D92D20;} #view-app .nf26-gl i.warn{background:#EAB308;} #view-app .nf26-gl i.good{background:#22A06B;}
+#view-app .nf26-gl b{margin-left:auto;padding-left:14px;font-weight:700;white-space:nowrap;}
+#view-app .nf26-gl .nf25-cancel{margin-left:10px;}

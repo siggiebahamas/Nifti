@@ -266,3 +266,7 @@ revoke all on function public.send_setup_checkins() from public, anon, authentic
 select cron.unschedule(jobid) from cron.job where jobname in ('nifti-post-reminders', 'nifti-setup-checkins');
 select cron.schedule('nifti-post-reminders', '0 * * * *', $$select public.send_post_reminders()$$);
 select cron.schedule('nifti-setup-checkins', '15 1 * * *', $$select public.send_setup_checkins()$$);
+
+-- 9. (migration r26b_business_plan_features) Business earns its price: routes, spending caps and watchdog, credit limits,
+-- who-pays-late, supplier report card and price checks moved from Pro to Business; Pro is up to 8 people.
+-- See plan_features() and plan_seat_limit() in the live database.
