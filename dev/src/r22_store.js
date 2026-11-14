@@ -292,7 +292,7 @@ function nf22WeekHtml(){
           <em>${done ? '✓ Posted' : today && v ? 'Today' : past && v ? 'Missed, that\'s OK' : v ? 'Planned' : ''}</em></div>`; }).join('')}</div>
       <div class="nf22-inl nf22-plan"><label>Send it to<select data-k="who">${team.map(t => `<option ${p.who === t || (t === 'Me' && p.who === 'me') ? 'selected' : ''}>${nf22Esc(t)}</option>`).join('')}</select></label>
         <label>At<input type="time" data-k="time" value="${nf22Esc(p.time || '09:00')}"></label>
-        <label class="nf22-chk"><input type="checkbox" data-k="remind" ${p.remind ? 'checked' : ''}> Remind on Telegram <small>${typeof nf25Real === 'function' && nf25Real() ? '' : '(demo shop: nothing is sent)'}</small></label></div>
+        <label class="nf22-chk"><input type="checkbox" data-k="remind" ${p.remind ? 'checked' : ''}> Remind me on my phone <small>${typeof nf25Real === 'function' && nf25Real() ? '' : '(demo shop: nothing is sent)'}</small></label></div>
       <p class="nf22-calm">Missed a day? Nothing breaks. Nifti just offers it again tomorrow.</p></div>
     <div class="nf22-card"><div class="nf22-h"><div><h3>Good days to post, coming up</h3><p>Paydays, holidays and seasons when people in the Philippines fix and buy.</p></div></div>
       <ul class="nf22-cal">${days.map(x => `<li><span class="nf22-cal-d"><b>${typeof hmDay === 'function' ? hmDay(x.d).replace(/^\w+,\s*/, '') : x.d}</b><small>${new Date(x.d + 'T00:00:00').toLocaleDateString('en-PH', {weekday: 'short'})}</small></span><div><b>${nf22Esc(x.t)}</b><small>${nf22Esc(x.idea)}</small></div><button type="button" class="btn btn-outline" data-go="calpost" data-v="${x.type}" data-d="${nf22Esc(x.t)}">Make this post</button></li>`).join('')}</ul>

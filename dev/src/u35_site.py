@@ -3,13 +3,13 @@
 CHK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>'
 PLANS = [
   ('free', 'Free', '₱0', 'forever', '', 'A small shop running day to day.',
-   ['Orders with customers and suppliers', 'Messages, stock, shop sales, expenses', 'Who owes you, with reminders you send yourself', 'Online store and Facebook posts', 'Telegram alerts', '10 notebook pages a month', 'Up to 3 people', 'Download everything any time'],
+   ['Orders with customers and suppliers', 'Who owes you, with payment reminders sent for you', 'Promises to pay, and your own GCash or bank QR on every bill', 'Messages, stock, shop sales, expenses', 'Online store and Facebook posts', '10 notebook pages a month', 'Up to 3 people', 'Download everything any time'],
    'Start free', "navigate('login'); try{ nf20ToSignup(); }catch(e){}", 'outline'),
   ('pro', 'Pro', '₱990', '/ month', 'or ₱9,900 a year (2 months free)', 'Owner-run shops that want Nifti to chase money and keep the books.',
-   ['Everything in Free', 'Payment reminders sent for you, and statements', 'Books, profit and summaries for your bookkeeper', 'Payroll and check tracking', 'Credits and returns that take themselves off', 'Price announcements to all customers', 'Store results, promos, reorder reminders', '300 notebook pages a month', 'Up to 8 people'],
+   ['Everything in Free', 'Statements of account, sent in one tap', 'Books, profit and summaries for your bookkeeper', 'Payroll and check tracking', 'Credits and returns that take themselves off', 'Price announcements to all customers', 'Store results, promos, reorder reminders', '300 notebook pages a month', 'Up to 15 people'],
    'Start with Pro', "navigate('login'); try{ nf20ToSignup(); }catch(e){} try{ localStorage.setItem('nifti-want-plan','pro'); }catch(e){}", 'primary'),
   ('business', 'Business', '₱2,990', '/ month', 'or ₱29,900 a year', 'Distributors with drivers, branches and staff who order and collect.',
-   ['Everything in Pro', 'Delivery routes and driver lists', 'Branches: each with its own drawer and stock', 'Spending caps and alerts when staff overpay', 'Credit limits and a who-pays-late list', 'Supplier report card and price checks', 'Done-for-you setup, verified badge, priority help', '1,500 notebook pages a month', 'Up to 50 people'],
+   ['Everything in Pro', 'Delivery routes and driver lists', 'Branches: each with its own drawer and stock', 'Spending caps and alerts when staff overpay', 'Credit limits and a who-pays-late list', 'Supplier report card and price checks', 'Done-for-you setup, verified badge, priority help', '1,500 notebook pages a month', 'Up to 75 people (more? message us)'],
    'Start with Business', "navigate('login'); try{ nf20ToSignup(); }catch(e){} try{ localStorage.setItem('nifti-want-plan','business'); }catch(e){}", 'outline'),
 ]
 def card(p, short=False):
@@ -20,7 +20,7 @@ def card(p, short=False):
             f'<h3>{name}</h3><div class="nf26-pl-p"><b>{price}</b><span>{per}</span></div>' + (f'<small class="nf26-pl-alt">{alt}</small>' if alt else '<small class="nf26-pl-alt">&nbsp;</small>') +
             f'<p class="nf26-pl-who">{who}</p><ul>' + ''.join(f'<li>{CHK}<span>{f}</span></li>' for f in fl) + more + '</ul>' +
             f'<button type="button" class="plan-btn {kind}" onclick="{act}">{btn}</button></div>')
-HOW = ('<div class="nf26-pay"><b>How paying works</b><ol><li><span>1</span>Pick a plan in Nifti and send the amount by GCash, Maya or bank transfer.</li>'
+HOW = ('<div class="nf26-pay"><b>How paying works</b><ol><li><span>1</span>Pick a plan in Nifti and scan our QR with GCash, Maya or any bank app.</li>'
        '<li><span>2</span>Type the reference number, or snap the receipt.</li><li><span>3</span>We switch your plan on, usually within a few hours. No contract, stop any time.</li></ol></div>')
 
 # landing: the plans, right on the first page
@@ -47,8 +47,7 @@ P('<div class="faq-item"><div class="q">I buy and I sell. Do I need two plans?</
   '<div class="faq-item"><div class="q">How do I pay?</div><div class="a">By GCash, Maya or bank transfer. Pick a plan in Nifti, send the amount, and type the reference number. We switch you on within a few hours.</div></div>'
   '<div class="faq-item"><div class="q">What happens if I stop paying?</div><div class="a">You go back to Free. Your records stay, and you can download everything any time.</div></div>')
 # compare table: the newer features
-P('<tr><td>Teammates</td>', '<tr><td>Telegram alerts</td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr>'
-  '<tr><td>Payroll</td><td>—</td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr>'
+P('<tr><td>Teammates</td>', '<tr><td>Payroll</td><td>—</td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr>'
   '<tr><td>Books and summaries for your bookkeeper</td><td>—</td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr>'
   '<tr><td>Done-for-you setup</td><td>—</td><td>—</td><td><span class="mk-y">✓</span></td></tr>'
   '<tr><td>Notebook pages read a month</td><td>10</td><td>300</td><td>1,500</td></tr><tr><td>Teammates</td>')
@@ -59,4 +58,9 @@ for row in ['Routes for drivers and collectors', 'Credit limits per buyer', 'Ale
     a = '<tr><td>' + row + '</td><td>—</td>' + Y + Y + '</tr>'
     if S['text'].count(a) == 1: S['text'] = S['text'].replace(a, '<tr><td>' + row + '</td><td>—</td><td>—</td>' + Y + '</tr>')
     else: print('  (compare row not found)', row)
-S['text'] = S['text'].replace('<tr><td>Teammates</td><td>3</td><td>15</td><td>50</td></tr>', '<tr><td>Teammates</td><td>3</td><td>8</td><td>50</td></tr>')
+S['text'] = S['text'].replace('<tr><td>Teammates</td><td>3</td><td>15</td><td>50</td></tr>', '<tr><td>Teammates</td><td>3</td><td>15</td><td>75</td></tr>')
+
+S['text'] = S['text'].replace('<tr><td>Teammates</td><td>3</td><td>15</td><td>50</td></tr>', '<tr><td>Teammates</td><td>3</td><td>15</td><td>75</td></tr>')
+a = '<tr><td>Payment reminders sent for you</td><td>—</td>'
+if S['text'].count(a) == 1: S['text'] = S['text'].replace(a, '<tr><td>Payment reminders sent for you</td><td><span class="mk-y">✓</span></td>')
+else: print('  (reminders row not found)')

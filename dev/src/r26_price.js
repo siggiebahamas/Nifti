@@ -4,11 +4,11 @@
 // of the receipt, and sends it to the Nifti owner to switch the plan on. Nifti never holds a card.
 const NF26_PLANS = [
   {k: 'free', name: 'Free', m: 0, y: 0, who: 'A small shop running day to day.',
-    f: ['Orders with customers and suppliers', 'Messages, stock, shop sales, expenses', 'Who owes you, with reminders you send yourself', 'Online store and Facebook posts', 'Telegram alerts', '10 notebook pages a month', 'Up to 3 people', 'Download everything any time']},
+    f: ['Orders with customers and suppliers', 'Who owes you, with payment reminders sent for you', 'Promises to pay, and your own GCash or bank QR on every bill', 'Messages, stock, shop sales, expenses', 'Online store and Facebook posts', '10 notebook pages a month', 'Up to 3 people', 'Download everything any time']},
   {k: 'pro', name: 'Pro', m: 990, y: 9900, who: 'Owner-run shops that want Nifti to chase money and keep the books.',
-    f: ['Everything in Free', 'Payment reminders sent for you, and statements', 'Books, profit and summaries for your bookkeeper', 'Payroll and check tracking', 'Credits and returns that take themselves off', 'Price announcements to all customers', 'Store results, promos, reorder reminders', '300 notebook pages a month', 'Up to 8 people']},
+    f: ['Everything in Free', 'Statements of account, sent in one tap', 'Books, profit and summaries for your bookkeeper', 'Payroll and check tracking', 'Credits and returns that take themselves off', 'Price announcements to all customers', 'Store results, promos, reorder reminders', '300 notebook pages a month', 'Up to 15 people']},
   {k: 'business', name: 'Business', m: 2990, y: 29900, who: 'Distributors with drivers, branches and staff who order and collect.',
-    f: ['Everything in Pro', 'Delivery routes and driver lists', 'Branches: each with its own drawer and stock', 'Spending caps and alerts when staff overpay', 'Credit limits and a who-pays-late list', 'Supplier report card and price checks', 'Done-for-you setup, verified badge, priority help', '1,500 notebook pages a month', 'Up to 50 people']}
+    f: ['Everything in Pro', 'Delivery routes and driver lists', 'Branches: each with its own drawer and stock', 'Spending caps and alerts when staff overpay', 'Credit limits and a who-pays-late list', 'Supplier report card and price checks', 'Done-for-you setup, verified badge, priority help', '1,500 notebook pages a month', 'Up to 75 people (more? message us)']}
 ];
 const NF26P = {cycle: 'monthly', pick: null, step: 'plans', method: 'GCash', receipt: null, busy: false, instr: '', note: '', err: ''};
 const NF26_CHK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>';
@@ -43,13 +43,13 @@ function nf26PaintPlans(){
   const x = `<button type="button" class="nf20-x" onclick="nf26ClosePlans()" aria-label="Close">✕</button>`;
   if(NF26P.step === 'done'){
     ov.innerHTML = `<div class="nf20-sheet nf26-psheet"><div class="nf26-done"><span class="nf26-done-ic">${NF26_CHK}</span><h2>Thank you. We got it.</h2>
-      <p>We'll check the payment and switch your plan on, usually within a few hours. You'll get an alert here${''} and on Telegram if you linked it.</p>
+      <p>We'll check the payment and switch your plan on, usually within a few hours. You'll get an alert in Nifti when it's on.</p>
       <button type="button" class="btn btn-primary" onclick="nf26ClosePlans()">Done</button></div></div>`; return;
   }
   if(NF26P.step === 'pay'){
     const p = NF26_PLANS.find(z => z.k === NF26P.pick) || NF26_PLANS[1], amt = NF26P.cycle === 'yearly' ? p.y : p.m;
     const demo = !nf25Real();
-    const instr = demo ? 'GCash 0917 000 0000 (Nifti) · sample\nBPI 0000-0000-00 (Nifti) · sample' : NF26P.instr;
+    const instr = demo ? '' : NF26P.instr;
     ov.innerHTML = `<div class="nf20-sheet nf26-psheet">
       <div class="nf20-sh"><div><button type="button" class="nf26-back" onclick="NF26P.step='plans'; nf26PaintPlans()">‹ All plans</button><h2>Subscribe to ${p.name}</h2><p>Three short steps. No card, no contract. Stop any time.</p></div>${x}</div>
       <div class="nf26-paybody">
@@ -57,7 +57,8 @@ function nf26PaintPlans(){
           <button type="button" class="${NF26P.cycle === 'monthly' ? 'on' : ''}" onclick="NF26P.cycle='monthly'; nf26PaintPlans()"><b>Monthly</b><span>${nf26Peso(p.m)} a month</span></button>
           <button type="button" class="${NF26P.cycle === 'yearly' ? 'on' : ''}" onclick="NF26P.cycle='yearly'; nf26PaintPlans()"><b>Yearly</b><span>${nf26Peso(p.y)} a year · 2 months free</span></button></div>
         <div class="nf26-pstep"><span class="n">1</span><div><b>Send ${nf26Peso(amt)}</b>
-          ${instr ? `<pre class="nf26-instr">${escapeHtml(instr)}</pre>` : `<p class="nf26-soft">Payment details are being set up. Tap <a onclick="nf26ClosePlans(); nf26Help('I want to subscribe to ${p.name}. Where do I send the payment?')">Need help?</a> and we'll send them to you right away.</p>`}</div></div>
+          <div class="nf26-qr"><img src="pay-qr.png" alt="QR code to pay Nifti" width="200" height="200"><div><b>Scan this with GCash, Maya or any bank app</b><span>Choose "Scan QR" or "Pay QR" in your app. It goes by InstaPay to Nifti's UnionBank account ending 9050. Type the amount: <b>${nf26Peso(amt)}</b>.</span><a href="pay-qr.png" download="nifti-pay-qr.png">Save the QR to my phone</a></div></div>
+          ${instr ? `<pre class="nf26-instr">${escapeHtml(instr)}</pre>` : ''}</div></div>
         <div class="nf26-pstep"><span class="n">2</span><div><b>Tell us how you paid</b>
           <div class="nf26-meth" role="group" aria-label="Paid with">${['GCash', 'Maya', 'Bank transfer'].map(m => `<button type="button" class="${NF26P.method === m ? 'on' : ''}" onclick="nf26Keep(); NF26P.method='${m}'; nf26PaintPlans()">${m}</button>`).join('')}</div>
           <label class="nf26-fl" for="nf26Ref">Reference number from your receipt</label>
@@ -88,7 +89,7 @@ function nf26PaintPlans(){
       return `<section class="nf26-pc ${p.k}${cur ? ' cur' : ''}">${p.k === 'pro' ? '<span class="nf26-flag">MOST SHOPS</span>' : ''}<h3>${p.name}${cur ? '<em>Your plan</em>' : ''}</h3>
         <div class="nf26-price"><b>${nf26Peso(amt)}</b><span>${p.k === 'free' ? 'forever' : NF26P.cycle === 'yearly' ? 'a year' : 'a month'}</span></div>
         <p class="nf26-who">${p.who}</p><ul>${p.f.map(f => `<li>${NF26_CHK}<span>${f}</span></li>`).join('')}</ul>${btn}</section>`; }).join('')}</div>
-    <div class="nf26-how"><b>How paying works</b><ol><li><span>1</span>Choose a plan and send the amount by GCash, Maya or bank transfer.</li><li><span>2</span>Type the reference number, or snap the receipt.</li><li><span>3</span>We switch your plan on, usually within a few hours.</li></ol>
+    <div class="nf26-how"><b>How paying works</b><ol><li><span>1</span>Choose a plan and scan our QR with GCash, Maya or any bank app.</li><li><span>2</span>Type the reference number, or snap the receipt.</li><li><span>3</span>We switch your plan on, usually within a few hours.</li></ol>
       <p>No card and no contract. If you stop, you go back to Free and keep all your records. Questions? <a onclick="nf26ClosePlans(); nf26Help()">Message the Nifti team</a>.</p></div>
   </div>`;
 }

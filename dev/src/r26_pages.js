@@ -52,11 +52,6 @@ function nf26PagesPass(page){
   if(!page) return; const pid = page.id.replace(/^page-/, '');
   try{ nf26SideSwitch(page); }catch(e){ console.warn('nf26 side', e); }
   try{ nf26RowActions(page); nf26Cap(page); }catch(e){ console.warn('nf26 cap', e); }
-  if(pid === 'dashboard'){
-    // the order board repeats the Orders page: one line that opens it
-    const board = [...page.querySelectorAll('#mhHome .rows > .sect')].find(s => /Where every order is/.test((s.querySelector('h2, h3, .sect-h') || s).textContent.slice(0, 60)));
-    if(board){ let n = 0; try{ n = nfoAll().length; }catch(e){} nf26Fold(board, `Where every order is${n ? ` <b>${n}</b>` : ''}`); }
-  }
   if(nf26Phone()){
     if(pid === 'sales'){ const d = document.getElementById('nf18DrawerWrap'); if(d) nf26Fold(d, 'Cash drawer by person <small>who counted, short or over, this month</small>'); }
     if(pid === 'money'){ const r = document.getElementById('nf18ReportWrap'); if(r) nf26Fold(r, 'How the business is doing <small>sales, profit and best sellers</small>'); }

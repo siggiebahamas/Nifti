@@ -87,7 +87,6 @@ const NF26_FIND = [
   {p: 'discover', t: 'Find customers', d: 'New buyers and suppliers', w: 'find new customers bagong customer supplier hanap'},
   {p: 'settings', t: 'Settings', d: 'Your business, team and account', w: 'settings setting password account setup business ayos'},
   {p: '@notebook', t: 'Notebook reader', d: 'Turn a notebook photo into records', w: 'notebook kuwaderno kwaderno listahan sulat photo litrato'},
-  {p: '@alerts', t: 'Telegram alerts', d: 'Alerts on your phone', w: 'telegram alert alerts abiso notification'},
   {p: '@plans', t: 'Plans & pricing', d: 'Free, Pro and Business', w: 'plan plans pro upgrade subscribe subscription pricing bayad nifti business'},
   {p: '@help', t: 'Need help?', d: 'Message the Nifti team', w: 'help tulong saklolo support question tanong'},
   {p: '@start', t: 'Bring your shop in', d: 'Set up items, customers and utang', w: 'setup start simula import excel bring'}
@@ -149,7 +148,6 @@ function nf26Seen(){ try{ return JSON.parse(localStorage.getItem(NF26_SEEN) || '
 function nf26MarkSeen(k){ const s = nf26Seen(); if(s[k]) return; s[k] = Date.now(); try{ localStorage.setItem(NF26_SEEN, JSON.stringify(s)); }catch(e){} }
 const NF26_TIPS = [
   {k: '@notebook', t: 'Did you know Nifti can read your old notebook?', d: 'Take a photo of your utang or sales notebook. Nifti types it in for you, and you say yes to each line.', b: 'Try it'},
-  {k: '@alerts', t: 'Get new orders and payments on Telegram', d: "Nifti sends a message to your phone when an order comes in, someone pays, or stock runs low. It's free.", b: 'Set it up'},
   {k: 'cheques', t: 'Got a check from a customer?', d: 'Write it in Checks. Nifti tells you the day to deposit it, so nothing bounces or expires.', b: 'Open Checks'},
   {k: 'store', t: 'Your own online store, free', d: 'Share one link on Facebook. Buyers pick items and the order lands in Nifti.', b: 'See my store'},
   {k: 'payroll', t: 'Pay your staff in two taps', d: 'Nifti adds up the days, takes off vale, and makes the payslips.', b: 'Open Payroll'},

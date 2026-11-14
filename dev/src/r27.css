@@ -1,0 +1,48 @@
+/* ===== Round 27 ===== */
+/* no Telegram for now */
+html.nf27-notg #nf21AlertLink, html.nf27-notg #nf22Foot, html.nf27-notg #nf22AlertCard, html.nf27-notg #nf22SetAlerts, html.nf27-notg .nf25-svc .adm-h + .nf25-svcb{display:none !important;}
+/* Settings */
+#page-settings.nf27-closed .nf27-more{display:none !important;}
+#view-app .nf27-morebtn{margin-top:6px;}
+/* order cards: black words on a pale strip with a colored dot, then the order, then one wide button */
+html #view-app #nfOrd .nfo-po{display:grid !important;grid-template-columns:minmax(0,1fr) auto !important;grid-template-rows:auto auto auto;gap:8px 12px !important;align-items:start;padding:0 0 14px !important;overflow:hidden;background:#FFFFFF !important;border:1px solid #E4E7EC !important;}
+html #view-app #nfOrd .nfo-po .nfo-pm{display:contents !important;}
+html #view-app #nfOrd .nfo-po .l2{grid-column:1 / -1 !important;grid-row:1 !important;margin:0 !important;padding:9px 14px 9px 34px;position:relative;font-size:15px;font-weight:600;line-height:1.35;color:#101828;}
+html #view-app #nfOrd .nfo-po .l2::before{content:"";position:absolute;left:14px;top:14px;width:11px;height:11px;border-radius:50%;background:#98A2B3;}
+html #view-app #nfOrd .nfo-po .l2 .when{color:#101828 !important;font-weight:800;}
+html #view-app #nfOrd .nfo-po.b-red .l2{background:#FDECEC;} html #view-app #nfOrd .nfo-po.b-red .l2::before{background:#D92D20;}
+html #view-app #nfOrd .nfo-po.b-yel .l2{background:#FEF9C3;} html #view-app #nfOrd .nfo-po.b-yel .l2::before{background:#CA8A04;}
+html #view-app #nfOrd .nfo-po.b-blue .l2{background:#E3EEFB;} html #view-app #nfOrd .nfo-po.b-blue .l2::before{background:#2563EB;}
+html #view-app #nfOrd .nfo-po.b-green .l2{background:#E7F5EC;} html #view-app #nfOrd .nfo-po.b-green .l2::before{background:#16A34A;}
+html #view-app #nfOrd .nfo-po .l1{grid-column:1 !important;grid-row:2 !important;display:block !important;padding-left:14px;min-width:0;}
+html #view-app #nfOrd .nfo-po .l1 .nfo-step{display:none !important;}
+html #view-app #nfOrd .nfo-po .l1 .n{display:block;font-size:16px !important;}
+html #view-app #nfOrd .nfo-po .l1 .it{display:block;font-size:15px !important;color:#344054;max-width:none;white-space:normal;}
+html #view-app #nfOrd .nfo-po .nfo-amt{grid-column:2 !important;grid-row:2 !important;justify-self:end;align-self:start;padding-right:14px;text-align:right;margin:0 !important;position:static !important;}
+html #view-app #nfOrd .nfo-po > .btn, html #view-app #nfOrd .nfo-po > button{grid-column:1 / -1 !important;grid-row:3 !important;margin:2px 14px 0 !important;width:auto !important;min-height:46px;justify-content:center;}
+/* Getting paid: the customer's name is the biggest thing on its card */
+#view-app#view-app#view-app table.nf25-owed td.t b{font-size:21px;font-weight:800;letter-spacing:-.01em;}
+@container nf25 (max-width: 660px){ #view-app#view-app#view-app .nf25-tw table.nf25-owed tr{padding-top:20px;} #view-app#view-app#view-app .nf25-tw table.nf25-owed td.t{align-self:center;} }
+/* cash drawer: smaller day boxes, then three boxes that hug their numbers */
+#view-app #mhDrawer .cal .day{min-height:58px;}
+#view-app #mhDrawer .calstat{display:none;}
+#view-app .nf27-sum{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 4px;}
+#view-app .nf27-sum > div{display:grid;grid-template-columns:auto auto;gap:0 14px;align-items:baseline;padding:10px 16px;border-radius:14px;border:1px solid #E4E7EC;background:#FFFFFF;}
+#view-app .nf27-sum em{grid-column:1 / -1;font-style:normal;font-size:13.5px;font-weight:800;letter-spacing:.05em;color:#344054;}
+#view-app .nf27-sum b{font-size:22px;font-weight:800;color:#101828;line-height:1.2;} #view-app .nf27-sum span{font-size:15px;color:#344054;}
+#view-app .nf27-sum .r{background:#FDECEC;border-color:#F9D0CE;} #view-app .nf27-sum .r b{color:#B42318;}
+#view-app .nf27-sum .y{background:#FEF9C3;border-color:#F5E58A;} #view-app .nf27-sum .g{background:#EAF6EF;border-color:#CDE9D8;}
+/* pay with QR */
+.nf26-qr{display:flex;gap:16px;align-items:center;padding:14px;border:1.5px dashed #9FD4B4;border-radius:14px;background:#F6FBF8;margin-bottom:8px;}
+.nf26-qr img{width:200px;height:200px;border-radius:10px;background:#FFFFFF;flex:none;image-rendering:pixelated;}
+.nf26-qr div{display:grid;gap:6px;} .nf26-qr b{font-size:17px;color:#101828;} .nf26-qr span{font-size:15.5px;color:#344054;line-height:1.45;} .nf26-qr span b{font-size:inherit;}
+.nf26-qr a{font-size:15px;font-weight:800;color:#1F6B45;text-decoration:underline;}
+@media (max-width:620px){ .nf26-qr{flex-direction:column;text-align:center;} }
+/* install card */
+#mhHome .nf27-install{display:flex;gap:14px;align-items:center;padding:14px 16px;margin-bottom:14px;border:1.5px solid #D5E3F8;border-radius:18px;background:#F5F9FF;}
+#mhHome .nf27-install img{border-radius:12px;flex:none;} #mhHome .nf27-install b{display:block;font-size:17px;color:#101828;} #mhHome .nf27-install span{display:block;font-size:15px;color:#344054;}
+#mhHome .nf27-ib{display:flex;align-items:center;gap:14px;margin-top:8px;} #mhHome .nf27-ib .btn{min-height:46px;}
+html #view-app #nfOrd .nfo-po > .btn, html #view-app #nfOrd .nfo-po > button{justify-self:stretch !important;}
+html.nf-phone #view-app #nfOrd .nfo-po .l1{grid-column:1 / -1 !important;padding-right:14px;}
+html.nf-phone #view-app #nfOrd .nfo-po .nfo-amt{grid-column:1 / -1 !important;grid-row:3 !important;justify-self:start;padding-left:14px;text-align:left;}
+html.nf-phone #view-app #nfOrd .nfo-po > .btn, html.nf-phone #view-app #nfOrd .nfo-po > button{grid-row:4 !important;}

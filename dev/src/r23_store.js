@@ -92,7 +92,7 @@ function nf23WeekHtml(){
       ${later.length ? `<h4 class="nf23-lh">Good days to post later</h4><p class="nf23-ls">Paydays, holidays and seasons when people fix and buy. Tap one to plan it.</p><ul class="nf23-days">${later.map(x => nf23DayRow(x, log)).join('')}</ul>` : ''}
       <div class="nf23-rem"><b>Reminders</b><div class="nf22-inl nf22-plan"><label>Send it to<select data-k="who">${team.map(t => `<option ${p.who === t || (t === 'Me' && p.who === 'me') ? 'selected' : ''}>${nf22Esc(t)}</option>`).join('')}</select></label>
         <label>At<input type="time" data-k="time" value="${nf22Esc(p.time || '09:00')}"></label>
-        <label class="nf22-chk"><input type="checkbox" data-k="remind" ${p.remind ? 'checked' : ''}> Remind me on Telegram <small>${typeof nf25Real === 'function' && nf25Real() ? 'at the time you pick' : '(demo shop: nothing is sent)'}</small></label>
+        <label class="nf22-chk"><input type="checkbox" data-k="remind" ${p.remind ? 'checked' : ''}> Remind me on my phone <small>${typeof nf25Real === 'function' && nf25Real() ? 'at the time you pick' : '(demo shop: nothing is sent)'}</small></label>
         <label>Your town fiesta<input type="date" data-k="fiesta" value="${(() => { try{ return localStorage.getItem('nifti-fiesta') || ''; }catch(e){ return ''; } })()}"></label></div>
         <p class="nf22-calm">Missed a day? Nothing breaks. Nifti offers it again tomorrow.</p></div></div>`;
 }
