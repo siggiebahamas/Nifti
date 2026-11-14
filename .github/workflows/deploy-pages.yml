@@ -39,7 +39,7 @@ jobs:
         run: |
           mkdir -p _site
           cp Nifti_Sept17.html _site/index.html
-          cp manifest.json sw.js icon-512.png icon-192.png icon-maskable-512.png apple-touch-icon.png favicon-32.png favicon-48.png robots.txt sitemap.xml 404.html store.js _site/
+          cp manifest.json sw.js icon-512.png icon-192.png icon-maskable-512.png apple-touch-icon.png favicon-32.png favicon-48.png robots.txt sitemap.xml 404.html store.js pay-qr.png _site/
           # Design lab: standalone prototype of 10 dashboard concepts (sample data only), served at /design-lab/.
           cp -r design-lab _site/design-lab
           # Theme gallery: the real app in an iframe with 10 optional visual themes, served at /themes/.
