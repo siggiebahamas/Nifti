@@ -290,15 +290,12 @@ function nf26PaintStart(){
     body = `<div class="nf26-done"><span class="nf26-done-ic">${NF26_CHK}</span><h2>${NF26S.added} items are in your stock</h2><p>Next, bring in who owes you, or invite a supplier so your first order is one tap.</p>
       <div class="nf26-donebtns"><button type="button" class="btn btn-primary" onclick="nf26StartGo('home')">Next step</button><button type="button" class="btn btn-outline" onclick="nf26CloseStart(); go('inventory')">See my stock</button></div></div>`;
   } else if(NF26S.view === 'file'){
-    const o = NF26S.offer, offer = demo ? 'Free for the first 20 shops. After that, ₱3,500 one time (included in Business).'
-      : !o ? 'One-time setup by the Nifti team.' : o.included ? 'Included in your Business plan.' : o.asked ? "You've already sent us a file. We're on it." : o.free_left > 0 ? `Free for the first 20 shops. ${o.free_left} left.` : `₱${Number(o.price).toLocaleString('en-US')} one time. We'll message you before any charge.`;
-    body = `<div class="nf20-sh"><div>${back}<h2>Send us your file, or load it yourself</h2><p>Any form works: Excel, an old POS export, a PDF, even a photo of a printout.</p></div>${x}</div>
+    body = `<div class="nf20-sh"><div>${back}<h2>Load your list from a file</h2><p>Have your items in Excel, a CSV, or an old POS export? Nifti reads the columns and shows you every line before anything is added.</p></div>${x}</div>
       <div class="nf26-sgrid two">
-        <div class="nf26-scard"><b>We set it up for you</b><p>Send the file. The Nifti team loads your items, prices and customers, usually within 2 days, and messages you when it's ready.</p><p class="nf26-offer">${offer}</p>
-          ${NF26S.sent ? `<div class="nf26-sent">${NF26_CHK}<span>${demo ? 'Demo shop: nothing was sent. In your own account, ' + escapeHtml(NF26S.sentName || 'your file') + ' goes to the Nifti team.' : 'Got it: ' + escapeHtml(NF26S.sentName || 'your file') + ". We'll message you in Nifti."}</span></div>`
-            : `<input id="nf26SetupNote" class="nf26-in" maxlength="200" placeholder="Anything we should know? (optional)" aria-label="A note for the Nifti team"><label class="btn btn-primary nf26-filebtn${NF26S.busy ? ' busy' : ''}"><input type="file" hidden onchange="nf26SetupFile(this)">${NF26S.busy ? 'Sending…' : 'Choose a file to send'}</label>`}</div>
-        <div class="nf26-scard"><b>I'll load it myself</b><p>Have an Excel or CSV of your items? Nifti reads the columns and shows you every line before anything is added.</p>
-          <button type="button" class="btn btn-outline" onclick="nf26CloseStart(); go('inventory'); setTimeout(() => { try{ openImportInventoryModal(); }catch(e){} }, 500)">Upload my item list</button>
+        <div class="nf26-scard"><b>Excel or CSV of your items</b><p>Item name, price and how many you have. Any column order works; you match them once.</p>
+          <button type="button" class="btn btn-primary" onclick="nf26CloseStart(); go('inventory'); setTimeout(() => { try{ openImportInventoryModal(); }catch(e){} }, 500)">Upload my item list</button></div>
+        <div class="nf26-scard"><b>Only on paper, or a PDF printout?</b><p>Take a photo of it instead. The notebook reader types each line, and you say yes to each one.</p>
+          <button type="button" class="btn btn-outline" onclick="nf26Snap('stock')">Snap my price list</button>
           <button type="button" class="btn btn-outline" onclick="nf26CloseStart(); try{ openOpeningBalances(); }catch(e){ go('collections'); }">Type in who owes me</button></div></div>`;
   } else if(NF26S.view === 'invite'){
     body = `<div class="nf20-sh"><div>${back}<h2>Invite 3 suppliers and 5 customers</h2><p>Each invite is one Viber or Messenger message. They don't need to download anything: they open a link.</p></div>${x}</div>
@@ -314,7 +311,7 @@ function nf26PaintStart(){
       <div class="nf26-ways">
         ${way(1, 'cam', 'Snap your notebook and price list', 'Take a photo. Nifti types in your items, prices and who owes you.', 'About 5 minutes a page', 'snap', !!st.snap)}
         ${way(2, 'shop', 'Pick your kind of shop', 'Start with the 50 most common items for a shop like yours.', 'About 10 minutes', 'kind', !!st.kind)}
-        ${way(3, 'file', 'Send us your file, or we set it up', 'Excel, POS export or a photo. Load it yourself, or the Nifti team does it.', '5 minutes for you', 'file', !!st.file)}
+        ${way(3, 'file', 'Upload your Excel', 'An Excel, CSV or POS export of your items. Nifti reads the columns.', 'About 5 minutes', 'file', !!st.file)}
         ${way(4, 'people', 'Invite 3 suppliers and 5 customers', 'One Viber message each. They just open a link.', 'About 5 minutes', 'invite', c.sup >= 3 && c.cust >= 5)}
       </div>
       <div class="nf20-sf nf26-startfoot"><span>${c.items} item${c.items === 1 ? '' : 's'} · ${c.cust} customer${c.cust === 1 ? '' : 's'} · ${c.sup} supplier${c.sup === 1 ? '' : 's'} so far</span>
@@ -340,7 +337,7 @@ function nf26StartCard(page){
       <button type="button" class="nf26-link" onclick="nf26StartSet('hide', 1); document.getElementById('nf26Start').remove()">Hide</button></div>
     <div class="nf26-scb"><button type="button" onclick="nf26OpenStart('snap')">${nf26Svg('cam')}<b>Snap your notebook</b><span>Nifti types it in</span></button>
       <button type="button" onclick="nf26OpenStart('kind')">${nf26Svg('shop')}<b>Pick your kind of shop</b><span>50 starter items</span></button>
-      <button type="button" onclick="nf26OpenStart('file')">${nf26Svg('file')}<b>Send us your Excel</b><span>We set it up</span></button>
+      <button type="button" onclick="nf26OpenStart('file')">${nf26Svg('file')}<b>Upload your Excel</b><span>Nifti reads the columns</span></button>
       <button type="button" onclick="nf26OpenStart('invite')">${nf26Svg('people')}<b>Invite a supplier</b><span>One Viber message</span></button></div>`;
   // right under the greeting (and the one-line checklist), above the number tiles
   const mosaic = document.querySelector('#mhHome .mosaic');

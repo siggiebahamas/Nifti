@@ -8,7 +8,7 @@ const NF26_PLANS = [
   {k: 'pro', name: 'Pro', m: 990, y: 9900, who: 'Owner-run shops that want Nifti to chase money and keep the books.',
     f: ['Everything in Free', 'Statements of account, sent in one tap', 'Books, profit and summaries for your bookkeeper', 'Payroll and check tracking', 'Credits and returns that take themselves off', 'Price announcements to all customers', 'Store results, promos, reorder reminders', '300 notebook pages a month', 'Up to 15 people']},
   {k: 'business', name: 'Business', m: 2990, y: 29900, who: 'Distributors with drivers, branches and staff who order and collect.',
-    f: ['Everything in Pro', 'Delivery routes and driver lists', 'Branches: each with its own drawer and stock', 'Spending caps and alerts when staff overpay', 'Credit limits and a who-pays-late list', 'Supplier report card and price checks', 'Done-for-you setup, verified badge, priority help', '1,500 notebook pages a month', 'Up to 75 people (more? message us)']}
+    f: ['Everything in Pro', 'Delivery routes and driver lists', 'Branches: each with its own drawer and stock', 'Spending caps and alerts when staff overpay', 'Credit limits and a who-pays-late list', 'Supplier report card and price checks', 'Verified badge and priority help', '1,500 notebook pages a month', 'Up to 75 people (more? message us)']}
 ];
 const NF26P = {cycle: 'monthly', pick: null, step: 'plans', method: 'GCash', receipt: null, busy: false, instr: '', note: '', err: ''};
 const NF26_CHK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>';

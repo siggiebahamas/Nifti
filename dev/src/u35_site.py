@@ -9,7 +9,7 @@ PLANS = [
    ['Everything in Free', 'Statements of account, sent in one tap', 'Books, profit and summaries for your bookkeeper', 'Payroll and check tracking', 'Credits and returns that take themselves off', 'Price announcements to all customers', 'Store results, promos, reorder reminders', '300 notebook pages a month', 'Up to 15 people'],
    'Start with Pro', "navigate('login'); try{ nf20ToSignup(); }catch(e){} try{ localStorage.setItem('nifti-want-plan','pro'); }catch(e){}", 'primary'),
   ('business', 'Business', '₱2,990', '/ month', 'or ₱29,900 a year', 'Distributors with drivers, branches and staff who order and collect.',
-   ['Everything in Pro', 'Delivery routes and driver lists', 'Branches: each with its own drawer and stock', 'Spending caps and alerts when staff overpay', 'Credit limits and a who-pays-late list', 'Supplier report card and price checks', 'Done-for-you setup, verified badge, priority help', '1,500 notebook pages a month', 'Up to 75 people (more? message us)'],
+   ['Everything in Pro', 'Delivery routes and driver lists', 'Branches: each with its own drawer and stock', 'Spending caps and alerts when staff overpay', 'Credit limits and a who-pays-late list', 'Supplier report card and price checks', 'Verified badge and priority help', '1,500 notebook pages a month', 'Up to 75 people (more? message us)'],
    'Start with Business', "navigate('login'); try{ nf20ToSignup(); }catch(e){} try{ localStorage.setItem('nifti-want-plan','business'); }catch(e){}", 'outline'),
 ]
 def card(p, short=False):
@@ -49,7 +49,7 @@ P('<div class="faq-item"><div class="q">I buy and I sell. Do I need two plans?</
 # compare table: the newer features
 P('<tr><td>Teammates</td>', '<tr><td>Payroll</td><td>—</td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr>'
   '<tr><td>Books and summaries for your bookkeeper</td><td>—</td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr>'
-  '<tr><td>Done-for-you setup</td><td>—</td><td>—</td><td><span class="mk-y">✓</span></td></tr>'
+  '<tr><td>Setup help on a video call</td><td>—</td><td>—</td><td><span class="mk-y">✓</span></td></tr>'
   '<tr><td>Notebook pages read a month</td><td>10</td><td>300</td><td>1,500</td></tr><tr><td>Teammates</td>')
 
 # compare table: what moved from Pro to Business

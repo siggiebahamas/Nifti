@@ -71,6 +71,7 @@ async function nf28Founder(body){
   if(typeof rp === 'function' && !rp._nf28){ const w = async function(){
       const h = document.querySelector('#page-admin .page-head'); if(h){ const a = h.querySelector('h1'), p = h.querySelector('p'); if(a) a.textContent = 'Founder dashboard'; if(p) p.textContent = 'Only you see this. Every shop on Nifti, sign-ups, plans, payments and help messages.'; }
       const el = document.getElementById('adminContent'); const owner = !!myBusiness && document.body.getAttribute('data-owner') === '1';
+      if(el){ el.innerHTML = `<div class="nf28-gate"><b>The founder dashboard has its own page now.</b><p>It shows only real shops: sign-ups, plans, payments and help messages. No demo shop.</p><a class="btn btn-primary" href="founder.html">Open the founder dashboard</a></div>`; try{ location.href = 'founder.html'; }catch(e){} return; }
       if(!owner && el){ document.querySelectorAll('#page-admin .adm-host').forEach(x => x.classList.add('hidden'));
         el.innerHTML = `<div class="nf28-gate"><b>This page is for the founder of Nifti only.</b>
           <p>${myBusiness ? "You're signed in, but not with the founder's email. Sign out, then sign in with the founder's email." : "You're looking at the demo shop, so there is nothing to show here. Sign in with the founder's email and this page fills with every real shop, sign-ups by day, plans, payments and help messages."}</p>
