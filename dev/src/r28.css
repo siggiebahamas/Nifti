@@ -1,0 +1,18 @@
+/* ===== Round 28 ===== */
+#mhHome .nf28-paid{border:1px solid #E4E7EC;border-radius:18px;background:#FFFFFF;padding:16px 20px;margin-bottom:14px;}
+#mhHome .nf28-ph{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:6px;} #mhHome .nf28-ph b{font-size:19px;color:#101828;}
+#mhHome .nf28-pl > div{display:flex;align-items:center;gap:10px;padding:9px 0;border-top:1px solid #EAECF0;font-size:16.5px;color:#101828;}
+#mhHome .nf28-pl i{width:11px;height:11px;border-radius:50%;flex:none;background:#98A2B3;} #mhHome .nf28-pl i.g{background:#22A06B;} #mhHome .nf28-pl i.y{background:#EAB308;} #mhHome .nf28-pl i.r{background:#D92D20;}
+#mhHome .nf28-pl b{margin-left:auto;font-size:20px;font-weight:800;white-space:nowrap;}
+#view-app .nf28-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:0 0 12px;}
+#view-app .nf28-bar .btn{min-height:48px;font-size:16px;} #view-app .nf28-ok{font-size:15.5px;font-weight:700;color:#14532D;}
+.nf28-qn{margin-left:10px;font-size:14px;font-weight:700;color:#344054;} .nf28-skip{display:block;margin:10px auto 0;}
+#view-app .nf28-gate{max-width:640px;border:1.5px solid #D5E3F8;border-radius:20px;background:#F5F9FF;padding:24px;}
+#view-app .nf28-gate b{font-size:21px;color:#101828;} #view-app .nf28-gate p, #view-app .nf28-gate li{font-size:16px;color:#344054;line-height:1.5;} #view-app .nf28-gate li b{font-size:inherit;}
+#view-app .nf28-gate .btn{min-height:50px;font-size:16.5px;}
+#view-app .nf28-fd{display:grid;gap:12px;margin:12px 0;}
+#view-app .nf28-nums{display:flex;gap:10px;flex-wrap:wrap;} #view-app .nf28-nums > div{padding:10px 16px;border-radius:14px;border:1px solid #E4E7EC;background:#FFFFFF;}
+#view-app .nf28-nums .g{background:#EAF6EF;border-color:#CDE9D8;} #view-app .nf28-nums em{display:block;font-style:normal;font-size:13.5px;font-weight:800;letter-spacing:.05em;color:#344054;} #view-app .nf28-nums b{font-size:26px;font-weight:800;color:#101828;}
+#view-app .nf28-chart{display:flex;align-items:flex-end;gap:3px;height:120px;margin-top:14px;padding-top:4px;border-bottom:2px solid #D0D5DD;}
+#view-app .nf28-chart i{flex:1;background:#E4E7EC;border-radius:3px 3px 0 0;min-height:3px;} #view-app .nf28-chart i.on{background:#1F6B45;}
+#view-app .nf28-ax{display:flex;justify-content:space-between;font-size:14px;color:#344054;margin-top:4px;}

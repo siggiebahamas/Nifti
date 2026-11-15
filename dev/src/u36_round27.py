@@ -4,9 +4,9 @@ import os
 from patchlib import P, S
 HERE = os.path.dirname(__file__)
 rd = lambda n: open(os.path.join(HERE, n), encoding='utf-8').read()
-P("function renderSidebarForViewAsRole(){", rd('r27.js') + "\nfunction renderSidebarForViewAsRole(){")
+P("function renderSidebarForViewAsRole(){", rd('r27.js') + "\n" + rd('r28.js') + "\nfunction renderSidebarForViewAsRole(){")
 t = S['text']; i = t.rindex('  .settings-card:empty{display:none;}')
-S['text'] = t[:i] + '\n/* ===== Round 27 css ===== */\n' + rd('r27.css') + '\n' + t[i:]
+S['text'] = t[:i] + '\n/* ===== Round 27 css ===== */\n' + rd('r27.css') + '\n' + rd('r28.css') + '\n' + t[i:]
 # demo: owes 17,504 = says paid 14,500 + promised 3,004
 a = "amount: 15000, promised_date"
 print('  demo promise fixed' if S['text'].count(a) == 1 else '  (demo promise not found)')
