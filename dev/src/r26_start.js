@@ -290,8 +290,9 @@ function nf26PaintStart(){
     body = `<div class="nf26-done"><span class="nf26-done-ic">${NF26_CHK}</span><h2>${NF26S.added} items are in your stock</h2><p>Next, bring in who owes you, or invite a supplier so your first order is one tap.</p>
       <div class="nf26-donebtns"><button type="button" class="btn btn-primary" onclick="nf26StartGo('home')">Next step</button><button type="button" class="btn btn-outline" onclick="nf26CloseStart(); go('inventory')">See my stock</button></div></div>`;
   } else if(NF26S.view === 'file'){
-    body = `<div class="nf20-sh"><div>${back}<h2>Load your list from a file</h2><p>Have your items in Excel, a CSV, or an old POS export? Nifti reads the columns and shows you every line before anything is added.</p></div>${x}</div>
-      <div class="nf26-sgrid two">
+    body = `<div class="nf20-sh"><div>${back}<h2>Send us your file, or load it yourself</h2><p>Any form works: Excel, an old POS export, a PDF, even a photo of a printout.</p></div>${x}</div>
+      <div class="nf26-sgrid three">
+        <div class="nf26-scard nf30-setup" id="nf30Setup">${nf30SetupCard()}</div>
         <div class="nf26-scard"><b>Excel or CSV of your items</b><p>Item name, price and how many you have. Any column order works; you match them once.</p>
           <button type="button" class="btn btn-primary" onclick="nf26CloseStart(); go('inventory'); setTimeout(() => { try{ openImportInventoryModal(); }catch(e){} }, 500)">Upload my item list</button></div>
         <div class="nf26-scard"><b>Only on paper, or a PDF printout?</b><p>Take a photo of it instead. The notebook reader types each line, and you say yes to each one.</p>
@@ -311,7 +312,7 @@ function nf26PaintStart(){
       <div class="nf26-ways">
         ${way(1, 'cam', 'Snap your notebook and price list', 'Take a photo. Nifti types in your items, prices and who owes you.', 'About 5 minutes a page', 'snap', !!st.snap)}
         ${way(2, 'shop', 'Pick your kind of shop', 'Start with the 50 most common items for a shop like yours.', 'About 10 minutes', 'kind', !!st.kind)}
-        ${way(3, 'file', 'Upload your Excel', 'An Excel, CSV or POS export of your items. Nifti reads the columns.', 'About 5 minutes', 'file', !!st.file)}
+        ${way(3, 'file', 'Send us your file, or load it yourself', 'Excel, PDF or a photo. Pro and Business: the Nifti team loads it for you.', '5 minutes for you', 'file', !!st.file)}
         ${way(4, 'people', 'Invite 3 suppliers and 5 customers', 'One Viber message each. They just open a link.', 'About 5 minutes', 'invite', c.sup >= 3 && c.cust >= 5)}
       </div>
       <div class="nf20-sf nf26-startfoot"><span>${c.items} item${c.items === 1 ? '' : 's'} · ${c.cust} customer${c.cust === 1 ? '' : 's'} · ${c.sup} supplier${c.sup === 1 ? '' : 's'} so far</span>
@@ -354,3 +355,30 @@ function nf26StartBoot(){
 
 // the older "Get set up" checklist is one line until tapped
 document.addEventListener('click', e => { const h = e.target.closest && e.target.closest('#getStartedCard > :first-child'); if(h && !e.target.closest('.row-action')) h.parentElement.classList.toggle('nf26-gsopen'); });
+
+/* ---------- We set it up for you (Pro and Business) ---------- */
+const NF30S = {offer: null, busy: false, sent: false};
+function nf30SetupCard(){
+  const o = NF30S.offer, demo = !nf25Real(), job = o && o.job;
+  if(job && job.status !== 'done') return `<b>We set it up for you</b><div class="nf26-sent">${NF26_CHK}<span>${job.status === 'working' ? `The Nifti team is loading your shop: ${job.items} items and ${job.customers} customers so far.` : "Got your file. The Nifti team loads it, usually within 2 days, and messages you when it's ready."}</span></div>`;
+  if(job && job.status === 'done') return `<b>We set it up for you</b><div class="nf26-sent">${NF26_CHK}<span>Done: ${job.items} items and ${job.customers} customers added. Send another file any time.</span></div>${nf30Pick()}`;
+  if(!demo && o && !o.allowed) return `<b>We set it up for you</b><p>Comes with Pro and Business. Send your Excel or a photo of your list, and the Nifti team loads your items and who owes you.</p><button type="button" class="btn btn-primary" onclick="nf26CloseStart(); nf26OpenPlans('pro')">See Pro</button>`;
+  return `<b>We set it up for you</b><p>Send your Excel, a PDF or a photo of your list. The Nifti team loads your items and who owes you, usually within 2 days. Pro and Business.</p>${NF30S.sent && demo ? `<div class="nf26-sent">${NF26_CHK}<span>Demo shop: nothing was sent.</span></div>` : nf30Pick()}`;
+}
+function nf30Pick(){ return `<input id="nf30Note" class="nf26-in" maxlength="200" placeholder="Anything we should know? (optional)" aria-label="A note for the Nifti team"><label class="btn btn-primary nf26-filebtn${NF30S.busy ? ' busy' : ''}"><input type="file" hidden accept=".xlsx,.xls,.csv,.pdf,image/*" onchange="nf30Send(this)">${NF30S.busy ? 'Sending…' : 'Choose a file to send'}</label>`; }
+function nf30Paint(){ const el = document.getElementById('nf30Setup'); if(el) el.innerHTML = nf30SetupCard(); }
+async function nf30Load(){ if(!nf25Real()) return; try{ const { data } = await sb.rpc('setup_offer'); NF30S.offer = data || null; nf30Paint(); }catch(e){} }
+async function nf30Send(input){
+  const f = input.files && input.files[0]; if(!f || NF30S.busy) return;
+  if(f.size > 15 * 1024 * 1024){ showToast('That file is over 15 MB. Send a smaller one, or a photo.', 'warn'); return; }
+  if(!nf25Real()){ NF30S.sent = true; nf30Paint(); return; }
+  NF30S.busy = true; nf30Paint();
+  try{ const ext = (f.name.split('.').pop() || 'file').toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 5) || 'file';
+    const path = `${myBusiness.id}/setup/${Date.now()}-${nf29Safe(f.name).replace(/\.[^.]+$/, '')}.${ext}`;
+    const up = await sb.storage.from('receipts').upload(path, f, {contentType: f.type || 'application/octet-stream', upsert: false}); if(up.error) throw up.error;
+    const { error } = await sb.rpc('setup_request', {p_note: (document.getElementById('nf30Note') || {}).value || '', p_file: path}); if(error) throw error;
+    showToast("Sent. We'll message you when your shop is ready.", 'success'); await nf30Load();
+  }catch(e){ showToast((e && e.message) || "Couldn't send the file. Try again.", 'error'); }
+  NF30S.busy = false; nf30Paint();
+}
+(function(){ const base = window.nf26PaintStart; if(typeof base !== 'function') return; const w = function(){ const r = base.apply(this, arguments); if(NF26S.view === 'file' && !NF30S.offer) nf30Load(); return r; }; window.nf26PaintStart = w; try{ nf26PaintStart = w; }catch(e){} })();

@@ -1,0 +1,46 @@
+/* ===== Round 30: count the cash ===== */
+#bkCashBody .bk-daybar, #bkCashBody .cc-grid > .panel-card:not(.cc-form){display:none !important;}
+#bkCashBody .cc-grid{display:block;}
+#view-app #bkCashBody .bk-tiles.nf30-pills{display:grid !important;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;}
+#view-app .nf30-pills .bk-tile{padding:12px 16px !important;}
+#view-app .nf30-pills .nf30-row{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-top:2px;}
+#view-app .nf30-pills .nf30-row .bk-tile-v{margin:0 !important;} #view-app .nf30-pills .nf30-row .bk-tile-s{margin:0 !important;font-weight:700;}
+#view-app#view-app .nf30-pills .bk-tile.nf30-gray{background:#F2F4F7 !important;border-color:#D0D5DD !important;}
+#view-app#view-app .nf30-pills .bk-tile.nf30-gray .bk-tile-l::before{background:#667085 !important;}
+#view-app#view-app .nf30-pills .bk-tile.nf30-match{background:#EAF6EF !important;border:1px solid #CDE9D8 !important;border-radius:16px;}
+#view-app .nf30-pills .nf30-match .bk-tile-v{color:#14532D !important;}
+#view-app .nf30-pills .nf30-match .bk-tile-l{display:flex;align-items:center;gap:8px;font-weight:700;} #view-app .nf30-pills .nf30-match .bk-tile-l::before{content:"";width:9px;height:9px;border-radius:50%;background:#16A34A;}
+html.nf-phone #view-app #bkCashBody .bk-tiles.nf30-pills{grid-template-columns:1fr 1fr;}
+/* the drawer: no person pills or repeated totals; the calendar uses the same colors as the day */
+#mhDrawer.nf30-drawer .cdsum, #mhDrawer.nf30-drawer .calstat, #mhDrawer.nf30-drawer .nf27-sum, #mhDrawer.nf30-drawer .sect-h .hint{display:none !important;}
+#mhDrawer.nf30-drawer .cal .day.b{background:#FEF9C3 !important;border-color:#F5E58A !important;}
+#mhDrawer.nf30-drawer .cal .day.b .st, #mhDrawer.nf30-drawer .cal .day.b .st.tb{color:#101828 !important;}
+#mhDrawer.nf30-drawer .cal .day.r{background:#FDECEC !important;border-color:#F9D0CE !important;} #mhDrawer.nf30-drawer .cal .day.r .st{color:#B42318 !important;}
+#mhDrawer.nf30-drawer .cal .day.g{background:#EAF6EF !important;border-color:#CDE9D8 !important;} #mhDrawer.nf30-drawer .cal .day.g .st{color:#14532D !important;}
+#mhDrawer.nf30-drawer .cal .day.g .st::before{content:"✓ ";}
+#mhDrawer.nf30-drawer .cal .day.today{background:#FFFFFF !important;border:2px dashed #98A2B3 !important;} #mhDrawer.nf30-drawer .cal .day.today .tcount{background:#E4E7EC !important;color:#101828 !important;}
+#mhDrawer.nf30-drawer .cal .day.none.miss{background:#F2F4F7 !important;}
+#mhDrawer.nf30-drawer .cal .day.nf30-sel{outline:3px solid #1F6B45;outline-offset:1px;}
+#mhDrawer .nf30-day{margin-top:16px;padding-top:16px;border-top:1px solid #E4E7EC;}
+.nf30-dh{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px;} .nf30-dh b{font-size:19px;color:#101828;}
+.nf30-st{border-radius:999px;padding:3px 12px;font-size:14px;font-weight:800;border:1px solid transparent;}
+.nf30-st.y{background:#FEF9C3;border-color:#F5E58A;color:#101828;} .nf30-st.r{background:#FDECEC;border-color:#F9D0CE;color:#B42318;} .nf30-st.g{background:#EAF6EF;border-color:#CDE9D8;color:#14532D;} .nf30-st.n{background:#F2F4F7;border-color:#D0D5DD;color:#344054;}
+.nf30-tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:12px;}
+.nf30-tiles > div{background:#F5F7FA;border-radius:12px;padding:10px 14px;border:1px solid transparent;} .nf30-tiles em{display:block;font-style:normal;font-size:14px;font-weight:700;color:#344054;} .nf30-tiles b{font-size:22px;color:#101828;}
+.nf30-tiles .nf30-res.y{background:#FEF9C3;border-color:#F5E58A;} .nf30-tiles .nf30-res.y b{color:#101828;}
+.nf30-tiles .nf30-res.r{background:#FDECEC;border-color:#F9D0CE;} .nf30-tiles .nf30-res.r b, .nf30-tiles .nf30-res.r em{color:#B42318;}
+.nf30-tiles .nf30-res.g{background:#EAF6EF;border-color:#CDE9D8;} .nf30-tiles .nf30-res.g b, .nf30-tiles .nf30-res.g em{color:#14532D;}
+.nf30-lines{background:#F5F7FA;border-radius:12px;padding:6px 14px;}
+.nf30-lines > div{display:flex;justify-content:space-between;gap:12px;padding:6px 0;font-size:15.5px;color:#101828;}
+.nf30-lines .pos b, .nf30-lines .pos span{color:#15803D;} .nf30-lines .neg b, .nf30-lines .neg span{color:#C81E1E;}
+.nf30-lines .nf30-sub{padding:3px 0 3px 18px;font-size:15px;color:#344054;} .nf30-lines .nf30-sub span:first-child::before{content:"· ";}
+.nf30-lines .tot{border-top:1px dashed #D0D5DD;font-weight:800;} .nf30-lines .cnt b{font-weight:500;}
+.nf30-lines .tot.y span{color:#101828;background:#FEF9C3;border-radius:6px;padding:0 6px;} .nf30-lines .tot.r span{color:#B42318;} .nf30-lines .tot.g span{color:#14532D;}
+.nf30-more{margin-top:8px;} .nf30-none{color:#344054;margin:0;}
+#nf30FormHost .cc-form{margin:0;}
+html.nf-phone .nf30-tiles{grid-template-columns:1fr 1fr;}
+/* phone calendar: same colors as the day (over yellow, short red, matched green) */
+html.nf-phone #view-app .nfd-c.b{background:#FEF9C3 !important;color:#101828 !important;}
+html.nf-phone #view-app .nfd-c.r{background:#FDECEC !important;color:#B42318 !important;}
+html.nf-phone #view-app .nfd-c.g{background:#EAF6EF !important;color:#14532D !important;}
+html.nf-phone #view-app .nfd-c.today{box-shadow:inset 0 0 0 2px #98A2B3 !important;background:#FFFFFF !important;}

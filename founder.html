@@ -19,7 +19,7 @@ button,input,textarea,select{font:inherit}
 .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:18px}.logo i{width:32px;height:32px;border-radius:9px;background:var(--g);color:#fff;display:grid;place-items:center;font-style:normal}
 .logo small{font-weight:700;font-size:13px;color:var(--ink2);background:var(--bg);border-radius:999px;padding:2px 9px}
 .tabs{display:flex;gap:4px;flex:1;flex-wrap:wrap}.tabs button{border:0;background:none;padding:8px 14px;border-radius:10px;font-weight:700;color:var(--ink2);cursor:pointer;display:flex;align-items:center;gap:6px}
-.tabs button.on{background:var(--gbg);color:var(--g)}.tabs b{background:#D92D20;color:#fff;border-radius:999px;font-size:12.5px;padding:0 7px;min-width:20px;text-align:center}
+.tabs button.on{background:var(--gbg);color:var(--g)}.tabs b{background:#D92D20;color:#fff;border-radius:50%;font-size:12.5px;width:22px;height:22px;display:inline-grid;place-items:center;padding:0;line-height:1}
 .who{font-size:14px;color:var(--ink2)}.link{border:0;background:none;color:var(--g);font-weight:700;cursor:pointer;text-decoration:underline;padding:4px}
 main{max-width:1180px;margin:0 auto;padding:22px 20px 60px}
 h1{font-size:24px;margin:0 0 4px}.sub{color:var(--ink2);margin:0 0 18px}
@@ -40,7 +40,7 @@ tr.click{cursor:pointer}tr.click:hover td{background:#F9FAFB}
 .btn{border:0;border-radius:10px;padding:9px 16px;font-weight:800;cursor:pointer;background:var(--g);color:#fff;min-height:40px}.btn.o{background:#fff;color:var(--ink);border:1.5px solid #D0D5DD}.btn.bad{background:#fff;color:#B42318;border:1.5px solid #F9D0CE}
 .pay{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:8px}.pay b{font-size:16px}.pay span{display:block;font-size:14px;color:var(--ink2)}.pay .acts{display:flex;gap:8px;flex-wrap:wrap}
 .empty{color:var(--ink2);padding:6px 0}
-.help{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:14px}.hl{display:grid;gap:6px;align-content:start;max-height:520px;overflow:auto}.hl button{text-align:left;border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px;cursor:pointer}.hl button.on{border-color:var(--g);background:#F6FBF8}.hl b{display:flex;justify-content:space-between;font-size:15px}.hl small{display:block;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.help{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:14px}.hl{display:grid;gap:6px;align-content:start;max-height:520px;overflow:auto}.hl button{text-align:left;border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:10px 12px;cursor:pointer}.hl button.on{border-color:var(--g);background:#F6FBF8}.hl b{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:15px}.dot{background:#D92D20;color:#fff;border-radius:50%;width:22px;height:22px;display:inline-grid;place-items:center;font-size:12.5px;font-weight:800;flex:none}.hl small{display:block;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .th{border:1px solid var(--line);border-radius:12px;display:flex;flex-direction:column;min-height:340px;background:#fff}.msgs{flex:1;overflow:auto;padding:12px;display:flex;flex-direction:column;gap:8px;max-height:420px}.m{max-width:85%;padding:9px 12px;border-radius:14px;background:#F2F4F7;white-space:pre-wrap}.m.me{align-self:flex-end;background:#DCF5E5}.m small{display:block;font-size:12.5px;color:var(--ink2);margin-top:3px}
 .send{display:flex;gap:8px;padding:10px;border-top:1px solid var(--line)}.send textarea{flex:1;border:1.5px solid var(--line);border-radius:10px;padding:10px;min-height:46px;resize:vertical}
 .gate{max-width:420px;margin:60px auto;background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px}.gate h1{font-size:22px}.gate label{display:block;font-weight:700;font-size:14px;margin:12px 0 4px}.gate input{width:100%;min-height:46px;border:1.5px solid var(--line);border-radius:10px;padding:0 12px}.gate .btn{width:100%;margin-top:16px;min-height:48px}.err{color:#B42318;font-weight:700;margin-top:10px}
@@ -48,13 +48,13 @@ tr.click{cursor:pointer}tr.click:hover td{background:#F9FAFB}
 .drawer{position:fixed;inset:0;background:rgba(16,24,40,.4);display:flex;justify-content:flex-end;z-index:20}.drawer[hidden]{display:none}.dp{width:min(520px,100%);background:#fff;height:100%;overflow:auto;padding:20px}
 .kv{display:grid;grid-template-columns:140px 1fr;gap:6px 12px;font-size:14.5px}.kv dt{color:var(--ink2)}.kv dd{margin:0;font-weight:600}
 /* layout B: menu on the left */
-body.side .tin{max-width:none}body.side .tabs{display:none}body.side .wrapx{display:grid;grid-template-columns:220px minmax(0,1fr);max-width:1240px;margin:0 auto}
-body.side .sidenav{display:flex;flex-direction:column;gap:4px;padding:22px 0 0 20px;position:sticky;top:60px;align-self:start}body.side .sidenav button{text-align:left;border:0;background:none;padding:11px 14px;border-radius:10px;font-weight:700;color:var(--ink2);cursor:pointer;display:flex;justify-content:space-between}body.side .sidenav button.on{background:var(--gbg);color:var(--g)}body.side .sidenav b{background:#D92D20;color:#fff;border-radius:999px;font-size:12.5px;padding:0 7px}
+body.side .tin{max-width:none}body.side .tabs{display:none}body.side .wrapx{display:grid;grid-template-columns:220px minmax(0,1fr);min-width:0;max-width:1240px;margin:0 auto}
+body.side .sidenav{display:flex;flex-direction:column;gap:4px;padding:22px 0 0 20px;position:sticky;top:60px;align-self:start}body.side .sidenav button{text-align:left;border:0;background:none;padding:11px 14px;border-radius:10px;font-weight:700;color:var(--ink2);cursor:pointer;display:flex;justify-content:space-between}body.side .sidenav button.on{background:var(--gbg);color:var(--g)}body.side .sidenav b{background:#D92D20;color:#fff;border-radius:50%;font-size:12.5px;width:22px;height:22px;display:grid;place-items:center;padding:0;line-height:1;flex:none}
 .sidenav{display:none}
 /* layout C: one page, no tabs */
 body.one .tabs{display:none}body.one .sec{margin-bottom:34px}body.one .sec > h1{border-top:2px solid var(--line);padding-top:22px}body.one .sec:first-child > h1{border-top:0;padding-top:0}
 .pv{background:#FEF9C3;border-bottom:1px solid #F5E58A;text-align:center;padding:8px 12px;font-weight:700;font-size:14.5px}
-@media (max-width:860px){body.side .wrapx{grid-template-columns:1fr}body.side .sidenav{flex-direction:row;overflow-x:auto;position:static;padding:10px 12px 0}.grid{grid-template-columns:1fr 1fr}.help{grid-template-columns:1fr}.hide-m{display:none}}
+@media (max-width:860px){main{padding:16px 12px 50px;min-width:0}.card{padding:14px 12px;overflow-x:auto}input[type=file]{max-width:100%}body.side .wrapx{grid-template-columns:minmax(0,1fr)}body.side .sidenav button{flex:none}body.side .sidenav{flex-direction:row;overflow-x:auto;position:static;padding:10px 12px 0}.grid{grid-template-columns:1fr 1fr}.help{grid-template-columns:1fr}.hide-m{display:none}}
 </style>
 </head>
 <body>
@@ -63,7 +63,7 @@ body.one .tabs{display:none}body.one .sec{margin-bottom:34px}body.one .sec > h1{
 <div class="drawer" id="drawer" hidden onclick="if(event.target===this)this.hidden=true"><div class="dp" id="dp"></div></div>
 <script>
 const sb = supabase.createClient('https://ctryvcloavfpecbrbzxy.supabase.co', 'sb_publishable_oWW-IMSOeNNFiQDjUnpWdQ_hlezb7wS');
-const QS = new URLSearchParams(location.search), LAYOUT = ['tabs', 'side', 'one'].includes(QS.get('layout')) ? QS.get('layout') : 'tabs', PREVIEW = QS.get('preview') === '1';
+const QS = new URLSearchParams(location.search), LAYOUT = ['tabs', 'side', 'one'].includes(QS.get('layout')) ? QS.get('layout') : 'side', PREVIEW = QS.get('preview') === '1';
 if(LAYOUT !== 'tabs') document.body.classList.add(LAYOUT);
 const S = {tab: (location.hash || '#overview').slice(1), shops: [], growth: null, pays: [], inbox: [], openBiz: null, filter: 'all', q: ''};
 const $ = id => document.getElementById(id);
@@ -90,6 +90,7 @@ function sample(){
   const names = ['Santos Hardware', 'RJ Construction Supply', 'Aling Nena Store', 'Bayview Builders', 'Marikina Steel Depot', 'Golden Nail Trading'];
   S.shops = names.map((n, i) => ({id: 'x' + i, name: n, plan: ['pro', 'free', 'free', 'business', 'pro', 'free'][i], members: [4, 2, 1, 11, 6, 1][i], orders_30d: [42, 8, 3, 120, 37, 0][i], owner_email: 'owner' + (i + 1) + '@example.com', last_active: new Date(Date.now() - i * 864e5 * 2).toISOString(), created_at: new Date(Date.now() - (i + 2) * 864e5 * 5).toISOString()}));
   S.pays = [{id: 'p1', business_name: 'RJ Construction Supply', plan: 'pro', cycle: 'monthly', amount: 990, method: 'GCash', reference: '9012 345 678901', status: 'pending', created_at: new Date(Date.now() - 2 * 3600e3).toISOString()}];
+  S.jobs = [{business_id: 'x1', business_name: 'RJ Construction Supply', plan: 'pro', status: 'waiting', note: 'Prices are in column C', file_path: null, requested_by: 'Ramon', items_added: 0, customers_added: 0, created_at: new Date(Date.now() - 5 * 3600e3).toISOString(), items_now: 0, customers_now: 0}];
   S.inbox = [{business_id: 'x3', business_name: 'Bayview Builders', plan: 'business', last_message: 'We have 90 people. Can we get a bigger plan?', unread: 1}];
   $('who').textContent = 'Preview';
 }
@@ -109,35 +110,36 @@ async function signIn(){
   boot();
 }
 async function load(){
-  const r = await Promise.allSettled([rpc('admin_growth'), rpc('admin_businesses', {p_query: '', p_filter: 'all', p_limit: 200, p_offset: 0}), rpc('admin_upgrade_requests'), rpc('admin_help_inbox')]);
-  S.growth = r[0].value || {}; S.shops = r[1].value || []; S.pays = (r[2].value || []); S.inbox = r[3].value || [];
+  const r = await Promise.allSettled([rpc('admin_growth'), rpc('admin_businesses', {p_query: '', p_filter: 'all', p_limit: 200, p_offset: 0}), rpc('admin_upgrade_requests'), rpc('admin_help_inbox'), rpc('admin_setup_jobs')]);
+  S.growth = r[0].value || {}; S.shops = r[1].value || []; S.pays = (r[2].value || []); S.inbox = r[3].value || []; S.jobs = r[4].value || [];
 }
-const TABS = [['overview', 'Overview'], ['shops', 'Shops'], ['money', 'Money'], ['help', 'Help']];
+const TABS = [['overview', 'Overview'], ['shops', 'Subscriptions'], ['setups', 'Setups'], ['money', 'Money'], ['help', 'Help']];
 function paint(){
   const pend = S.pays.filter(p => p.status === 'pending').length, unread = S.inbox.reduce((s, x) => s + (x.unread || 0), 0);
-  const badge = {money: pend, help: unread};
+  const badge = {money: pend, help: unread, setups: (S.jobs || []).filter(j => j.status !== 'done').length};
   $('tabs').innerHTML = TABS.map(([k, l]) => `<button class="${S.tab === k ? 'on' : ''}" onclick="go('${k}')">${l}${badge[k] ? `<b>${badge[k]}</b>` : ''}</button>`).join('');
   $('sidenav').innerHTML = TABS.map(([k, l]) => `<button class="${S.tab === k ? 'on' : ''}" onclick="go('${k}')"><span>${l}</span>${badge[k] ? `<b>${badge[k]}</b>` : ''}</button>`).join('');
   if(LAYOUT === 'one') return onePage();
-  ({overview, shops, money, help})[S.tab] ? ({overview, shops, money, help})[S.tab]() : overview();
+  ({overview, shops, setups, money, help})[S.tab] ? ({overview, shops, setups, money, help})[S.tab]() : overview();
 }
 async function onePage(){
-  const parts = []; for(const f of [overview, money, help, shops]){ await f(); parts.push('<section class="sec">' + $('main').innerHTML + '</section>'); }
+  const parts = []; for(const f of [overview, money, help, setups, shops]){ await f(); parts.push('<section class="sec">' + $('main').innerHTML + '</section>'); }
   $('main').innerHTML = parts.join('');
 }
-function go(t){ S.tab = t; if(LAYOUT === 'one'){ paint(); const i = TABS.findIndex(x => x[0] === t); const sec = document.querySelectorAll('.sec')[[0, 3, 1, 2][i]]; if(sec) sec.scrollIntoView({behavior: 'smooth'}); return; } location.hash = t; paint(); window.scrollTo(0, 0); }
+function go(t){ S.tab = t; if(LAYOUT === 'one'){ paint(); const i = TABS.findIndex(x => x[0] === t); const sec = document.querySelectorAll('.sec')[[0, 4, 3, 1, 2][i]]; if(sec) sec.scrollIntoView({behavior: 'smooth'}); return; } location.hash = t; paint(); window.scrollTo(0, 0); }
 
 function overview(){
   const g = S.growth || {}, days = g.days || [], max = Math.max(1, ...days.map(d => d.n));
   const today = days.length ? days[days.length - 1].n : 0, week = days.slice(-7).reduce((s, d) => s + d.n, 0), month = days.reduce((s, d) => s + d.n, 0);
   const pend = S.pays.filter(p => p.status === 'pending'), unread = S.inbox.filter(x => x.unread > 0);
   const tot = Math.max(1, (g.free || 0) + (g.pro || 0) + (g.business || 0));
-  const todo = [pend.length ? [`${pend.length} payment${pend.length > 1 ? 's' : ''} to check in your bank app`, "go('money')"] : null,
+  const setupsOpen = (S.jobs || []).filter(j => j.status !== 'done');
+  const todo = [setupsOpen.length ? [`${setupsOpen.length} shop${setupsOpen.length > 1 ? 's' : ''} waiting for setup`, "go('setups')"] : null, pend.length ? [`${pend.length} payment${pend.length > 1 ? 's' : ''} to check in your bank app`, "go('money')"] : null,
     unread.length ? [`${unread.length} shop${unread.length > 1 ? 's' : ''} waiting for your answer`, "go('help')"] : null].filter(Boolean);
   $('main').innerHTML = `<h1>How Nifti is doing</h1><p class="sub">Real shops only. Updated when you open this page.</p>
     <div class="grid">
       <div class="k"><em>New shops today</em><b>${today}</b><span>${week} this week · ${month} in 30 days</span></div>
-      <div class="k click" onclick="go('shops')"><em>All shops</em><b>${g.total || 0}</b><span>${g.people || 0} people signed in</span></div>
+      <div class="k click" onclick="go('shops')"><em>All subscriptions</em><b>${g.total || 0}</b><span>${g.people || 0} people signed in</span></div>
       <div class="k"><em>Active this week</em><b>${g.active_week || 0}</b><span>made an order or a sale</span></div>
       <div class="k g"><em>Monthly income</em><b>${peso(g.mrr)}</b><span>${g.pilot ? 'launch period: nobody is charged yet' : 'from paid plans'}</span></div>
     </div>
@@ -153,7 +155,9 @@ function shops(){
   const list = S.shops.filter(b => (!q || (b.name || '').toLowerCase().includes(q) || (b.owner_email || '').toLowerCase().includes(q)) &&
     (S.filter === 'all' || (S.filter === 'new' && now - new Date(b.created_at) < 7 * 864e5) || (S.filter === 'paying' && planOf(b.plan) !== 'free') ||
      (S.filter === 'banned' && b.banned_at) || (S.filter === 'inactive' && now - new Date(b.last_active || b.created_at) > 30 * 864e5)));
-  $('main').innerHTML = `<h1>Shops</h1><p class="sub">Every business on Nifti. Tap one to see it, change its plan or suspend it.</p>
+  const g = S.growth || {};
+  $('main').innerHTML = `<h1>Subscriptions</h1><p class="sub">Every business on Nifti and its plan. Tap one to see it, change its plan or suspend it.</p>
+    <div class="grid" style="margin-bottom:14px"><div class="k"><em>Free</em><b>${g.free || 0}</b><span>₱0</span></div><div class="k g"><em>Pro</em><b>${g.pro || 0}</b><span>${peso((g.pro || 0) * 990)} a month</span></div><div class="k" style="background:#E8F1FB;border-color:#CBE0F4"><em>Business</em><b>${g.business || 0}</b><span>${peso((g.business || 0) * 2990)} a month</span></div><div class="k"><em>All</em><b>${g.total || 0}</b><span>${g.suspended || 0} suspended</span></div></div>
     <div class="bar"><input id="q" placeholder="Search name or email" value="${esc(S.q)}" oninput="S.q=this.value; shops(); const i=$('q'); i.focus(); i.setSelectionRange(i.value.length,i.value.length)"></div>
     <div class="chips" style="margin-bottom:12px">${F.map(([k, l]) => `<button class="${S.filter === k ? 'on' : ''}" onclick="S.filter='${k}'; shops()">${l}</button>`).join('')}</div>
     <div class="card" style="padding:4px 8px">${list.length ? `<table><thead><tr><th>Shop</th><th>Plan</th><th class="hide-m">People</th><th class="hide-m">Orders, 30 days</th><th>Last active</th><th class="hide-m">Joined</th></tr></thead><tbody>
@@ -178,6 +182,71 @@ async function setPlan(id, p){
 }
 async function ban(id){ const r = prompt('Why are you suspending this shop? (they will see this)'); if(r == null) return; try{ await rpc('admin_ban_business', {p_id: id, p_reason: r || 'Breaking the rules'}); toast('Suspended.'); await load(); openShop(id); }catch(e){ toast(e.message); } }
 async function unban(id){ try{ await rpc('admin_unban_business', {p_id: id}); toast('They can use Nifti again.'); await load(); openShop(id); }catch(e){ toast(e.message); } }
+
+/* ---------- Setups: load a shop's items and customers for them, one step at a time ---------- */
+const SU = {open: null, kind: 'items', rows: [], head: [], map: {}, busy: false, msg: ''};
+const SU_F = {items: [['name', 'Item name', true], ['price', 'Selling price'], ['cost', 'Cost'], ['qty', 'How many on hand'], ['unit', 'Unit (pc, bag, kg)']],
+  customers: [['name', 'Customer name', true], ['amount', 'Amount they owe', true], ['due', 'Due date (blank = today)'], ['phone', 'Mobile number'], ['ref', 'Bill or reference no.']]};
+function setups(){
+  const jobs = S.jobs || [], j = jobs.find(x => x.business_id === SU.open);
+  if(j) return setupOne(j);
+  $('main').innerHTML = `<h1>Setups</h1><p class="sub">Pro and Business shops can send you their item list or utang list. You load it into their shop here, without logging in as them, then tell them it's done.</p>
+    <div class="card" style="padding:4px 8px">${jobs.length ? `<table><thead><tr><th>Shop</th><th>Plan</th><th>Status</th><th class="hide-m">Sent</th><th class="hide-m">Added so far</th></tr></thead><tbody>
+      ${jobs.map(x => `<tr class="click" onclick="SU.open='${x.business_id}'; SU.rows=[]; SU.msg=''; setups()"><td><b>${esc(x.business_name)}</b><br><span style="font-size:13.5px;color:var(--ink2)">${esc(x.requested_by || '')}</span></td><td>${planTag(x.plan)}</td>
+        <td>${x.status === 'done' ? '<span class="tag pro">Done</span>' : x.status === 'working' ? '<span class="tag" style="background:#FEF9C3;color:#713F12">In progress</span>' : '<span class="tag bad">Waiting</span>'}</td><td class="hide-m">${ago(x.created_at)}</td><td class="hide-m">${x.items_added} items · ${x.customers_added} customers</td></tr>`).join('')}</tbody></table>`
+      : '<p class="empty" style="padding:12px">No setup requests yet. When a Pro or Business shop sends its file, it shows here and you get an alert.</p>'}</div>`;
+}
+function setupOne(j){
+  const step = n => `<span style="display:inline-grid;vertical-align:middle;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--gbg);color:var(--g);font-weight:800;margin-right:8px">${n}</span>`;
+  const F = SU_F[SU.kind];
+  const preview = SU.rows.length ? `<div style="overflow:auto;max-height:340px;border:1px solid var(--line);border-radius:10px;margin-top:10px"><table><thead><tr>${F.map(f => `<th>${f[1]}</th>`).join('')}</tr></thead><tbody>${SU.rows.slice(0, 200).map(r => `<tr>${F.map(f => `<td>${esc(pick(r, f[0]))}</td>`).join('')}</tr>`).join('')}</tbody></table></div>
+    <p class="sub" style="margin:8px 0 0">${SU.rows.length} rows${SU.rows.length > 200 ? ' (showing the first 200)' : ''}. Rows without a ${SU.kind === 'items' ? 'name' : 'name or amount'} are skipped.</p>` : '';
+  $('main').innerHTML = `<p><button class="link" onclick="SU.open=null; setups()">‹ All setups</button></p><h1>${esc(j.business_name)}</h1>
+    <p class="sub">${planTag(j.plan)} · sent ${ago(j.created_at)} by ${esc(j.requested_by || 'the owner')}${j.note ? ` · "${esc(j.note)}"` : ''} · they have ${j.items_now} items and ${j.customers_now} customers now</p>
+    <div class="card"><h2 style="justify-content:flex-start">${step(1)}Open their file</h2><p class="sub" style="margin:0 0 10px">See what they sent. If it's a photo or PDF, type it into a spreadsheet first, or ask them for an Excel.</p><button class="btn o" onclick="suFile('${j.business_id}')">Download their file</button></div>
+    <div class="card"><h2 style="justify-content:flex-start">${step(2)}Load it into their shop</h2>
+      <div class="chips" style="margin-bottom:12px"><button class="${SU.kind === 'items' ? 'on' : ''}" onclick="SU.kind='items'; SU.rows=[]; SU.head=[]; setupOne(S.jobs.find(x => x.business_id === SU.open))">Items and prices</button><button class="${SU.kind === 'customers' ? 'on' : ''}" onclick="SU.kind='customers'; SU.rows=[]; SU.head=[]; setupOne(S.jobs.find(x => x.business_id === SU.open))">Customers who owe them</button></div>
+      <p class="sub" style="margin:0 0 8px">Choose an Excel or CSV. Then tell Nifti which column is which.</p>
+      <input type="file" accept=".xlsx,.xls,.csv" onchange="suRead(this)">
+      ${SU.head.length ? `<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin-top:12px">${F.map(f => `<label style="font-weight:700;font-size:14px">${f[1]}${f[2] ? ' *' : ''}<select style="display:block;width:100%;min-height:40px;margin-top:4px;border:1.5px solid var(--line);border-radius:8px" onchange="SU.map['${f[0]}']=this.value; setupOne(S.jobs.find(x => x.business_id === SU.open))"><option value="">(none)</option>${SU.head.map(h => `<option ${SU.map[f[0]] === h ? 'selected' : ''}>${esc(h)}</option>`).join('')}</select></label>`).join('')}</div>` : ''}
+      ${preview}
+      ${SU.rows.length ? `<button class="btn" style="margin-top:12px" ${SU.busy ? 'disabled' : ''} onclick="suAdd()">${SU.busy ? 'Adding…' : `Add ${SU.kind === 'items' ? 'these items' : 'these customers'} to ${esc(j.business_name)}`}</button>` : ''}
+      ${SU.msg ? `<p style="font-weight:700;color:var(--g);margin:10px 0 0">${esc(SU.msg)}</p>` : ''}
+      <p class="sub" style="margin:10px 0 0;font-size:13.5px">So far: ${j.items_added} items and ${j.customers_added} customers added by you. Items already in their shop are skipped, so adding twice is safe.</p></div>
+    <div class="card"><h2 style="justify-content:flex-start">${step(3)}Tell them it's done</h2><p class="sub" style="margin:0 0 8px">They get a message in Nifti with what you added.</p>
+      <input id="sunote" placeholder="Optional note, e.g. 'Prices for rebar were missing, please add them.'" style="width:100%;min-height:42px;border:1.5px solid var(--line);border-radius:10px;padding:0 12px">
+      <button class="btn" style="margin-top:10px" ${j.status === 'done' ? 'disabled' : ''} onclick="suDone('${j.business_id}')">${j.status === 'done' ? 'Done and told' : 'Mark as done and tell them'}</button></div>`;
+}
+function pick(r, k){ const col = SU.map[k]; return col ? (r[col] == null ? '' : String(r[col]).trim()) : ''; }
+async function suFile(id){ if(PREVIEW){ toast('Preview: no real file.'); return; } try{ const p = await rpc('admin_setup_file', {p_business: id}); if(!p){ toast('No file.'); return; } const { data, error } = await sb.storage.from('receipts').createSignedUrl(p, 600, {download: p.split('/').pop()}); if(error) throw error; window.open(data.signedUrl, '_blank', 'noopener'); }catch(e){ toast(e.message); } }
+function loadXlsx(){ return window.XLSX ? Promise.resolve() : new Promise((res, rej) => { const sc = document.createElement('script'); sc.src = 'https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js'; sc.onload = res; sc.onerror = () => rej(new Error("Couldn't load the Excel reader.")); document.head.appendChild(sc); }); }
+async function suRead(input){
+  const f = input.files && input.files[0]; if(!f) return;
+  try{ await loadXlsx(); const wb = XLSX.read(await f.arrayBuffer(), {type: 'array'}); const rows = XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]], {defval: ''});
+    if(!rows.length){ toast('That sheet looks empty.'); return; }
+    SU.rows = rows; SU.head = Object.keys(rows[0]); SU.map = {}; SU.msg = '';
+    const guess = {name: /name|item|product|customer|pangalan/i, price: /sell|price|srp|presyo/i, cost: /cost|puhunan|buy/i, qty: /qty|quantity|stock|on.?hand|bilang/i, unit: /unit/i, amount: /amount|owe|utang|balance|total/i, due: /due|date/i, phone: /phone|mobile|cell|number/i, ref: /ref|invoice|bill|no\.?$/i};
+    SU_F[SU.kind].forEach(([k]) => { const h = SU.head.find(x => guess[k] && guess[k].test(x) && !Object.values(SU.map).includes(x)); if(h) SU.map[k] = h; });
+    setupOne(S.jobs.find(x => x.business_id === SU.open));
+  }catch(e){ toast(e.message); }
+}
+async function suAdd(){
+  const F = SU_F[SU.kind]; if(F.some(f => f[2] && !SU.map[f[0]])){ toast('Pick a column for each field marked *.'); return; }
+  const today = new Date().toISOString().slice(0, 10);
+  let rows = SU.rows.map(r => { const o = {}; F.forEach(([k]) => { o[k] = pick(r, k); }); return o; });
+  if(SU.kind === 'items') rows = rows.filter(o => o.name.length >= 2);
+  else rows = rows.filter(o => o.name.length >= 2 && Number(String(o.amount).replace(/[^0-9.]/g, '')) >= 1).map(o => { let d = o.due; const t = Date.parse(d); o.due = d && !isNaN(t) ? new Date(t).toISOString().slice(0, 10) : today; return o; });
+  if(!rows.length){ toast('No rows to add.'); return; }
+  if(PREVIEW){ SU.msg = `Preview: ${rows.length} rows would be added.`; setupOne(S.jobs.find(x => x.business_id === SU.open)); return; }
+  SU.busy = true; setupOne(S.jobs.find(x => x.business_id === SU.open)); let added = 0;
+  try{
+    if(SU.kind === 'items'){ for(let i = 0; i < rows.length; i += 500) added += await rpc('admin_setup_items', {p_business: SU.open, p_rows: rows.slice(i, i + 500)}); }
+    else { for(let i = 0; i < rows.length; i += 100){ const r = await rpc('admin_setup_customers', {p_business: SU.open, p_rows: rows.slice(i, i + 100)}); added += (r && r.count) || 0; } }
+    SU.msg = `Added ${added} ${SU.kind === 'items' ? 'items' : 'customers'}.`; SU.rows = []; SU.head = [];
+  }catch(e){ SU.msg = ''; toast(e.message + (added ? ` (${added} were added before this)` : '')); }
+  SU.busy = false; S.jobs = await rpc('admin_setup_jobs') || []; setupOne(S.jobs.find(x => x.business_id === SU.open));
+}
+async function suDone(id){ if(PREVIEW){ toast('Preview: they would be told.'); return; } try{ await rpc('admin_setup_done', {p_business: id, p_note: ($('sunote') || {}).value || ''}); toast('Done. They got a message.'); S.jobs = await rpc('admin_setup_jobs') || []; paint(); }catch(e){ toast(e.message); } }
 
 async function money(){
   const pend = S.pays.filter(p => p.status === 'pending'), done = S.pays.filter(p => p.status !== 'pending').slice(0, 15);
@@ -206,7 +275,7 @@ async function help(){
   let th = PREVIEW ? [{message: 'We have 90 people. Can we get a bigger plan?', from_name: 'Mario', created_at: new Date().toISOString()}] : []; if(S.openBiz && !PREVIEW){ try{ th = await rpc('admin_help_thread', {p_business: S.openBiz}) || []; }catch(e){} }
   const cur = list.find(x => x.business_id === S.openBiz);
   $('main').innerHTML = `<h1>Help</h1><p class="sub">Questions, complaints and requests for more than 75 people. Business plan shops are listed first.</p>
-    ${list.length ? `<div class="help"><div class="hl">${list.map(x => `<button class="${x.business_id === S.openBiz ? 'on' : ''}" onclick="S.openBiz='${x.business_id}'; help()"><b><span>${esc(x.business_name)}</span>${x.unread ? `<span class="tag bad">${x.unread}</span>` : ''}</b><small>${x.last_from_admin ? 'You: ' : ''}${esc(x.last_message || '')}</small></button>`).join('')}</div>
+    ${list.length ? `<div class="help"><div class="hl">${list.map(x => `<button class="${x.business_id === S.openBiz ? 'on' : ''}" onclick="S.openBiz='${x.business_id}'; help()"><b><span>${esc(x.business_name)}</span>${x.unread ? `<span class="dot">${x.unread}</span>` : ''}</b><small>${x.last_from_admin ? 'You: ' : ''}${esc(x.last_message || '')}</small></button>`).join('')}</div>
       <div class="th"><div class="msgs" id="msgs">${th.map(m => `<div class="m ${m.from_admin ? 'me' : ''}">${esc(m.message)}<small>${m.from_admin ? 'You' : esc(m.from_name || 'Shop')} · ${ago(m.created_at)}</small></div>`).join('')}</div>
         <div class="send"><textarea id="rep" placeholder="Answer ${esc(cur ? cur.business_name : '')}"></textarea><button class="btn" onclick="reply()">Send</button></div></div></div>`
       : '<div class="card"><p class="empty">No messages yet. When a shop taps "Need help?", it lands here and in your email.</p></div>'}`;
