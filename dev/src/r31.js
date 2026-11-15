@@ -3,18 +3,18 @@
 /* ---------- 1. Summary boxes: green good, yellow waiting, red problem, gray nothing yet, blue plain totals, teal money moved ---------- */
 // No more empty white boxes: every box says something by its color.
 const NF31_EXACT = {
-  'sales': v => v > 0 ? 'info' : 'gray',
-  'cash': v => v > 0 ? 'good' : 'gray',
-  'gcash & maya': v => v > 0 ? 'warn' : 'gray',
-  'utang': v => v > 0 ? 'warn' : 'good',
-  'days matched': v => v > 0 ? 'good' : 'gray',
-  'owner took': v => v > 0 ? 'note' : 'gray',
-  'stock bought in cash': v => v > 0 ? 'note' : 'gray',
-  'deposited this month': v => v > 0 ? 'good' : 'gray',
-  'collected this month': v => v > 0 ? 'good' : 'gray',
-  'closed': v => v > 0 ? 'good' : 'gray',
-  'stock value': v => v > 0 ? 'info' : 'gray',
-  'owed to you': v => v > 0 ? 'good' : 'gray',
+  'sales': v => v > 0 ? 'gray' : 'plain',
+  'cash': v => v > 0 ? 'good' : 'plain',
+  'gcash & maya': v => v > 0 ? 'warn' : 'plain',
+  'utang': v => v > 0 ? 'bad' : 'plain',
+  'days matched': v => v > 0 ? 'good' : 'plain',
+  'owner took': v => v > 0 ? 'note' : 'plain',
+  'stock bought in cash': v => v > 0 ? 'note' : 'plain',
+  'deposited this month': v => v > 0 ? 'good' : 'plain',
+  'collected this month': v => v > 0 ? 'good' : 'plain',
+  'closed': v => v > 0 ? 'good' : 'plain',
+  'stock value': v => v > 0 ? 'gray' : 'plain',
+  'owed to you': v => v > 0 ? 'good' : 'plain',
   'you owe': v => v > 0 ? 'bad' : 'good',
   'you owe suppliers': v => v > 0 ? 'bad' : 'good',
 };
@@ -23,9 +23,9 @@ const NF31_EXACT = {
   const wrapped = function(el, label, valueTxt){
     const l = String(label || '').toLowerCase().replace(/\s+/g, ' ').trim(), v = nfNum(valueTxt) || 0;
     if(NF31_EXACT[l]) return NF31_EXACT[l](v, el);
-    if(l.startsWith('spent in')) return el.classList.contains('warn') ? 'warn' : v > 0 ? 'info' : 'gray';
+    if(l.startsWith('spent')) return v > 0 ? 'bad' : 'plain';
     const t = base(el, label, valueTxt);
-    if(t === 'plain') return v ? 'info' : 'gray';
+    if(t === 'plain') return v ? 'gray' : 'plain';
     return t;
   };
   try{ nfToneOf = wrapped; }catch(e){} window.nfToneOf = wrapped;
@@ -53,15 +53,15 @@ function nf31NextItems(){
   return items.sort((a, b) => a.d.localeCompare(b.d) || (b.amt - a.amt));
 }
 const NF31_IC = {
-  in: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="m5 12 7 7 7-7"/></svg>',
-  out: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m19 12-7-7-7 7"/></svg>',
+  in: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg>',
+  out: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>',
   file: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>',
   go: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>',
 };
 function nf31NextHtml(){
   const items = nf31NextItems(); NF31N.items = items;
   if(!items.length) return '';
-  const show = items.slice(0, 8), tIn = items.filter(x => x.amt > 0).reduce((a, x) => a + x.amt, 0), tOut = -items.filter(x => x.amt < 0).reduce((a, x) => a + x.amt, 0);
+  const show = items.slice(0, myBusiness ? 8 : 4), tIn = items.filter(x => x.amt > 0).reduce((a, x) => a + x.amt, 0), tOut = -items.filter(x => x.amt < 0).reduce((a, x) => a + x.amt, 0);
   return `<section class="panel-card nf31-next"><div class="panel-head"><h2>Coming up: money in and out</h2><span class="nf31-sum"><b class="g">+${bkPeso(tIn)}</b> in · <b class="r">−${bkPeso(tOut)}</b> out · next 45 days</span></div>
     <p class="nf31-hint">Tap any line to see what it is, the order or bill behind it, and any file attached.</p>
     <div class="nf31-list">${show.map((x, i) => `<button type="button" class="nf31-row ${x.amt > 0 ? 'in' : 'out'}${x.late ? ' late' : ''}" onclick="nf31Open(${i})">
@@ -137,7 +137,7 @@ function nf31HelpDemo(){
   if(typeof nf25Real === 'function' && nf25Real()) return; if(NF26B._nf31) return; NF26B._nf31 = true;
   const t = (h, m) => { const d = new Date(APP_TODAY + 'T00:00:00'); d.setHours(h, m); return d.toISOString(); };
   NF26B.help = [{message: 'Hi, how do I put my GCash QR on my bills?', from_admin: false, from_name: 'You', created_at: t(9, 12)},
-    {message: 'Hi! Go to Settings, then "How customers pay you", and tap Add GCash QR. Take a photo of your QR and save. It shows on every bill from then on.', from_admin: true, created_at: t(9, 40)}];
+    {message: 'Hi! Go to Settings, then "How customers pay you", and tap Add GCash QR. Take a photo of your QR and save. It shows on every bill from then on.', from_admin: true, created_at: t(9, 40), _new: true}];
   NF26B.unread = 1; try{ nf26HelpBadge(); }catch(e){}
 }
 

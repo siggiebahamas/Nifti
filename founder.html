@@ -113,14 +113,14 @@ async function load(){
   const r = await Promise.allSettled([rpc('admin_growth'), rpc('admin_businesses', {p_query: '', p_filter: 'all', p_limit: 200, p_offset: 0}), rpc('admin_upgrade_requests'), rpc('admin_help_inbox'), rpc('admin_setup_jobs')]);
   S.growth = r[0].value || {}; S.shops = r[1].value || []; S.pays = (r[2].value || []); S.inbox = r[3].value || []; S.jobs = r[4].value || [];
 }
-const TABS = [['overview', 'Overview'], ['shops', 'Subscriptions'], ['setups', 'Setups'], ['money', 'Money'], ['help', 'Help']];
+const TABS = [['overview', 'Overview'], ['shops', 'Subscriptions'], ['setups', 'Setups'], ['money', 'Money'], ['help', 'Help'], ['settings', 'AI & settings']];
 function paint(){
   const pend = S.pays.filter(p => p.status === 'pending').length, unread = S.inbox.reduce((s, x) => s + (x.unread || 0), 0);
   const badge = {money: pend, help: unread, setups: (S.jobs || []).filter(j => j.status !== 'done').length};
   $('tabs').innerHTML = TABS.map(([k, l]) => `<button class="${S.tab === k ? 'on' : ''}" onclick="go('${k}')">${l}${badge[k] ? `<b>${badge[k]}</b>` : ''}</button>`).join('');
   $('sidenav').innerHTML = TABS.map(([k, l]) => `<button class="${S.tab === k ? 'on' : ''}" onclick="go('${k}')"><span>${l}</span>${badge[k] ? `<b>${badge[k]}</b>` : ''}</button>`).join('');
   if(LAYOUT === 'one') return onePage();
-  ({overview, shops, setups, money, help})[S.tab] ? ({overview, shops, setups, money, help})[S.tab]() : overview();
+  ({overview, shops, setups, money, help, settings})[S.tab] ? ({overview, shops, setups, money, help, settings})[S.tab]() : overview();
 }
 async function onePage(){
   const parts = []; for(const f of [overview, money, help, setups, shops]){ await f(); parts.push('<section class="sec">' + $('main').innerHTML + '</section>'); }
@@ -128,6 +128,30 @@ async function onePage(){
 }
 function go(t){ S.tab = t; if(LAYOUT === 'one'){ paint(); const i = TABS.findIndex(x => x[0] === t); const sec = document.querySelectorAll('.sec')[[0, 4, 3, 1, 2][i]]; if(sec) sec.scrollIntoView({behavior: 'smooth'}); return; } location.hash = t; paint(); window.scrollTo(0, 0); }
 
+async function settings(){
+  $('main').innerHTML = `<h1>AI &amp; settings</h1><p class="sub">Switch on the AI that reads notebook pages and the files suppliers send in chat.</p><div class="card"><p class="empty">Loading…</p></div>`;
+  let s = {}; if(PREVIEW){ s = {reader: false, reader_pages_month: 0}; } else { try{ s = await rpc('admin_service_status') || {}; }catch(e){ s = {}; } }
+  const cost = Math.round((s.reader_pages_month || 0) * 1.7);
+  $('main').innerHTML = `<h1>AI &amp; settings</h1><p class="sub">Switch on the AI that reads notebook pages and the files suppliers send in chat (invoices, price lists, delivery receipts).</p>
+    <div class="card"><div class="sw"><h2 style="margin:0">AI reading</h2><span class="tag ${s.reader ? 'ok' : ''}" style="${s.reader ? 'background:#DCFCE7;color:#15803D' : 'background:#F2F4F7;color:#475467'}">${s.reader ? 'On' : 'Off'}</span></div>
+      <p class="sub" style="margin:8px 0 12px">${s.reader ? `${s.reader_pages_month || 0} page${(s.reader_pages_month || 0) === 1 ? '' : 's'} and files read this month, about ₱${cost.toLocaleString('en-PH')} on your Anthropic bill.` : 'Off. Chats still spot quotations, invoices and deliveries from the words; reading the numbers inside files and notebook photos starts once this is on.'}</p>
+      <ol style="margin:0 0 12px;padding-left:20px;line-height:1.7">
+        <li>Open <b>console.anthropic.com</b> and sign up or sign in.</li>
+        <li>Go to <b>Billing</b> (Plans &amp; billing) and add a payment card. Buy a small amount of credit to start, for example US$10. Each page or file costs about ₱1 to ₱2.</li>
+        <li>Optional but smart: under <b>Limits</b>, set a monthly spend limit so the bill can never surprise you.</li>
+        <li>Open <b>API keys</b>, tap <b>Create key</b>, name it "Nifti", and copy it. It starts with <code>sk-ant-</code>.</li>
+        <li>Paste it below and tap Switch on. It's saved on the server only and never shown again, not even to you.</li></ol>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><input id="aiKey" type="password" autocomplete="off" placeholder="Paste the key (sk-ant-...)" style="flex:1;min-width:220px;padding:12px 14px;border:1.5px solid #D0D5DD;border-radius:12px;font:inherit">
+        <button class="btn" onclick="saveKey()">${s.reader ? 'Replace key' : 'Switch on'}</button>${s.reader ? `<button class="btn o" onclick="offKey()">Switch off</button>` : ''}</div>
+      <p class="sub" style="margin:10px 0 0;font-size:13.5px">Each shop's monthly allowance still applies: Free 10, Pro 300, Business 1,500 pages and files a month.</p></div>`;
+}
+async function saveKey(){
+  const v = ($('aiKey').value || '').trim(); if(!v){ toast('Paste the key first.'); return; }
+  if(!/^sk-ant-/.test(v)){ if(!confirm("That doesn't look like an Anthropic key (they start with sk-ant-). Save it anyway?")) return; }
+  if(PREVIEW){ toast('Preview: nothing saved.'); return; }
+  try{ await rpc('admin_set_secret', {p_name: 'anthropic_api_key', p_value: v}); $('aiKey').value = ''; toast('AI reading is on.'); settings(); }catch(e){ toast(e.message); }
+}
+async function offKey(){ if(!confirm('Switch AI reading off for every shop?')) return; try{ await rpc('admin_set_secret', {p_name: 'anthropic_api_key', p_value: ''}); toast('Switched off.'); settings(); }catch(e){ toast(e.message); } }
 function overview(){
   const g = S.growth || {}, days = g.days || [], max = Math.max(1, ...days.map(d => d.n));
   const today = days.length ? days[days.length - 1].n : 0, week = days.slice(-7).reduce((s, d) => s + d.n, 0), month = days.reduce((s, d) => s + d.n, 0);

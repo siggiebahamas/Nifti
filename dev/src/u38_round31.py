@@ -12,8 +12,8 @@ P("el.classList.remove('nt-bad', 'nt-warn', 'nt-good', 'nt-plain');", "el.classL
 P('<span>Notebook reader</span><em class="nf22-new">New</em></button></div>', '<span>Notebook reader</span></button></div>')
 P('''  const at = box.querySelector('.nf20-g[data-g="money"]') || box.querySelector('#nf22Foot');
   if(g.parentElement !== box || g.nextElementSibling !== at) box.insertBefore(g, at || null);''',
-  '''  const mg = box.querySelector('.nf20-g[data-g="money"]');
-  if(mg){ if(mg.nextElementSibling !== g) mg.after(g); }
+  '''  const groups = [...box.querySelectorAll(':scope > .nf20-g')].filter(x => x !== g), lastG = groups[groups.length - 1];
+  if(lastG){ if(lastG.nextElementSibling !== g) lastG.after(g); }
   else { const at = box.querySelector('#nf22Foot'); if(g.parentElement !== box || g.nextElementSibling !== at) box.insertBefore(g, at || null); }''')
 
 # menu foot: plain rows, plan name as a small chip, "Help" with a red count
