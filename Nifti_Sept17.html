@@ -8790,6 +8790,241 @@ html[data-ty] .sidebar .nf20-h svg, .sidebar .nf20-h svg{color:#0B0F14 !importan
 #page-help .nf32-contact a{font-weight:800;color:#1D4ED8;text-decoration:underline;}
 @media (max-width:900px){ #page-help .nf32{grid-template-columns:1fr;} #page-help .nf32-chat{min-height:0;} #page-help .nf32-body{max-height:380px;} }
 
+
+/* ===== Round 33 css ===== */
+/* ===== Messages like Viber / WhatsApp ===== */
+#page-messages .msg-search, #page-messages .msg-filter-chips{display:none !important;}
+html[data-ty] #view-app #page-messages.active > .page-head, #view-app #page-messages.active > .page-head, #view-app #page-messages > .nf18-hubwrap{display:none !important;}
+#page-messages .nf33-head{flex:none;background:#FFFFFF;border-bottom:1px solid #E9ECEF;padding:14px 14px 0;position:sticky;top:0;z-index:3;}
+#page-messages .nf33-title{display:flex;align-items:center;justify-content:space-between;margin:0 2px 10px;}
+#page-messages .nf33-title b{font-size:22px;font-weight:800;color:#0B0F14;letter-spacing:-.01em;}
+#page-messages .nf33-ico{width:38px;height:38px;border-radius:50%;border:0;background:#F2F4F7;color:#344054;display:grid;place-items:center;cursor:pointer;}
+#page-messages .nf33-ico:hover{background:#E4E7EC;} #page-messages .nf33-ico svg{width:19px;height:19px;}
+#page-messages .nf33-search{display:flex;align-items:center;gap:8px;height:42px;padding:0 12px;border-radius:12px;background:#F2F4F7;color:#667085;margin-bottom:12px;}
+#page-messages .nf33-search:focus-within{background:#FFFFFF;box-shadow:0 0 0 2px #1F6B45 inset;}
+#page-messages .nf33-search svg{width:18px;height:18px;flex:none;}
+#page-messages .nf33-search input{flex:1;min-width:0;border:0;background:transparent;font:inherit;font-size:16px;color:#101828;outline:0;}
+#page-messages .nf33-search input::-webkit-search-cancel-button{display:none;}
+#page-messages .nf33-clr{display:none;border:0;background:#D0D5DD;color:#FFFFFF;width:20px;height:20px;border-radius:50%;padding:3px;cursor:pointer;}
+#page-messages .nf33-head.searching .nf33-clr{display:grid;place-items:center;} #page-messages .nf33-clr svg{width:14px;height:14px;}
+/* tabs: always on top, colored, equal width so nothing is cut off */
+#page-messages .nf33-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:0 -14px;}
+#page-messages .nf33-tabs button{position:relative;display:flex;align-items:center;justify-content:center;gap:5px;min-width:0;height:46px;border:0;border-bottom:3px solid transparent;background:transparent;font:inherit;font-size:14.5px;font-weight:700;color:#475467;cursor:pointer;padding:0 4px;}
+#page-messages .nf33-tabs .nf33-ti{display:grid;place-items:center;flex:none;} #page-messages .nf33-tabs .nf33-ti svg{width:18px;height:18px;}
+#page-messages .nf33-tabs .nf33-tl{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+#page-messages .nf33-tabs em{flex:none;font-style:normal;min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:#E41E3F;color:#FFFFFF;font-size:12px;font-weight:800;display:grid;place-items:center;line-height:1;}
+#page-messages .nf33-tabs button[data-g="team"].on{color:#92400E;border-color:#F59E0B;}
+#page-messages .nf33-tabs button[data-g="cus"].on{color:#1D4ED8;border-color:#3B82F6;}
+#page-messages .nf33-tabs button[data-g="sup"].on{color:#047857;border-color:#10B981;}
+#page-messages .nf33-tabs button[data-g="team"] .nf33-ti{color:#D97706;} #page-messages .nf33-tabs button[data-g="cus"] .nf33-ti{color:#2563EB;} #page-messages .nf33-tabs button[data-g="sup"] .nf33-ti{color:#059669;}
+#page-messages .nf33-head.searching .nf33-tabs{opacity:.45;pointer-events:none;}
+/* rows: photo left, name and last message in the middle, time and count on the right */
+#page-messages #convList{padding:4px 6px 10px;background:#FFFFFF;}
+#page-messages .nf33-row, #page-messages .nf33-hit{display:flex;align-items:center;gap:12px;width:100%;padding:10px 10px;border:0;border-radius:12px;background:transparent;font:inherit;text-align:left;cursor:pointer;color:#101828;position:relative;}
+#page-messages .nf33-row:hover, #page-messages .nf33-hit:hover{background:#F5F6F8;}
+#page-messages .nf33-row.on{background:#EEF2F6;}
+#page-messages .nf33-row.on::before{content:'';position:absolute;left:0;top:12px;bottom:12px;width:3px;border-radius:3px;background:var(--nf33c,#98A2B3);}
+#page-messages .nf33-row[data-g="team"]{--nf33c:#F59E0B;} #page-messages .nf33-row[data-g="cus"]{--nf33c:#3B82F6;} #page-messages .nf33-row[data-g="sup"]{--nf33c:#10B981;}
+#page-messages .nf33-av{flex:none;width:50px;height:50px;border-radius:50%;overflow:hidden;display:grid;place-items:center;background:#E4E7EC;}
+#page-messages .nf33-av.sm{width:40px;height:40px;}
+#page-messages .nf33-av img{width:100%;height:100%;object-fit:cover;display:block;}
+#page-messages .nf33-av .nf-ini{width:100%;height:100%;display:grid;place-items:center;color:#FFFFFF;font-weight:800;font-size:17px;}
+#page-messages .nf33-av.sm .nf-ini{font-size:14px;}
+#page-messages .nf33-avt{background:#FEF3C7;color:#B45309;} #page-messages .nf33-avt svg{width:26px;height:26px;}
+#page-messages .nf33-mid{flex:1;min-width:0;display:grid;gap:3px;}
+#page-messages .nf33-top{display:flex;align-items:baseline;gap:8px;min-width:0;}
+#page-messages .nf33-top b{flex:1;min-width:0;font-size:16.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#0B0F14;}
+#page-messages .nf33-top time{flex:none;font-size:13px;color:#667085;}
+#page-messages .nf33-bot{display:flex;align-items:center;gap:8px;min-width:0;}
+#page-messages .nf33-pv{flex:1;min-width:0;font-size:15px;color:#667085;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+#page-messages .nf33-pv i{font-style:normal;color:#98A2B3;}
+#page-messages .nf33-pi{display:inline-flex;vertical-align:-3px;margin-right:4px;} #page-messages .nf33-pi svg{width:16px;height:16px;}
+#page-messages .nf33-badge{flex:none;font-style:normal;min-width:22px;height:22px;padding:0 7px;border-radius:999px;background:#E41E3F;color:#FFFFFF;font-size:12.5px;font-weight:800;display:grid;place-items:center;}
+#page-messages .nf33-row.un .nf33-top b{font-weight:800;} #page-messages .nf33-row.un .nf33-pv{color:#101828;font-weight:700;} #page-messages .nf33-row.un time{color:#E41E3F;font-weight:700;}
+#page-messages .nf33-oc{justify-self:start;max-width:100%;font-size:12.5px;font-weight:700;color:#92400E;background:#FEF3C7;border-radius:999px;padding:2px 9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+#page-messages .nf33-tag{flex:none;font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;border-radius:999px;padding:1px 7px;}
+#page-messages .nf33-tag[data-g="cus"]{background:#DBEAFE;color:#1D4ED8;} #page-messages .nf33-tag[data-g="sup"]{background:#D1FAE5;color:#047857;}
+#page-messages .nf33-hit mark{background:#FEF08A;color:inherit;border-radius:3px;padding:0 1px;}
+#page-messages .nf33-sh{margin:12px 10px 4px;font-size:12.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#667085;}
+#page-messages .nf33-empty, #page-messages .nf33-note{margin:16px 12px;font-size:14.5px;color:#667085;text-align:center;}
+#page-messages .nf33-note{text-align:left;margin:6px 12px;font-size:13.5px;}
+#page-messages .msg-bubble-row.nf33-flash .msg-bubble{box-shadow:0 0 0 3px #FACC15 !important;transition:box-shadow .3s;}
+
+/* computer: the chat fills the screen under the top bar, like Viber on a computer */
+@media (min-width:901px){
+  body.nf33-msgs #view-app .content, #view-app .content:has(> #page-messages.active){padding:0 !important;}
+  html[data-ty] #view-app #page-messages.active > .page-head, #view-app #page-messages.active > .page-head{display:none !important;}
+  html[data-ty] #view-app #page-messages .messages-shell, #view-app #page-messages .messages-shell{height:calc(100vh - 68px) !important;min-height:520px !important;max-height:none !important;border-radius:0 !important;border:0 !important;border-top:1px solid #E9ECEF !important;box-shadow:none !important;margin:0 !important;grid-template-columns:400px minmax(0,1fr) !important;}
+  html[data-ty] #view-app #page-messages .msg-sidebar, #view-app #page-messages .msg-sidebar{display:flex !important;flex-direction:column;min-height:0;border-right:1px solid #E9ECEF !important;background:#FFFFFF !important;}
+  #view-app #page-messages #convList{flex:1;min-height:0;overflow-y:auto;}
+  html[data-ty] #view-app #page-messages .msg-thread, #view-app #page-messages .msg-thread{min-height:0;}
+  html[data-ty] #view-app #page-messages .msg-thread-body{background:#EFEAE2 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cg fill='%23000' fill-opacity='.025'%3E%3Ccircle cx='10' cy='10' r='2'/%3E%3Ccircle cx='50' cy='40' r='2'/%3E%3Ccircle cx='25' cy='65' r='1.5'/%3E%3C/g%3E%3C/svg%3E") !important;}
+}
+/* phone: the list and the tabs fit the screen; tapping a chat opens it full screen */
+@media (max-width:900px){
+  body.nf33-msgs #view-app .content, #view-app .content:has(> #page-messages.active){padding:0 !important;}
+  html[data-ty] #view-app #page-messages .messages-shell, #view-app #page-messages .messages-shell{height:calc(100dvh - 135px) !important;min-height:420px !important;margin:0 !important;border:0 !important;border-radius:0 !important;box-shadow:none !important;}
+  html[data-ty] #view-app #page-messages .msg-sidebar, #view-app #page-messages .msg-sidebar{display:flex;flex-direction:column;min-height:0;height:100%;border:0 !important;background:#FFFFFF !important;}
+  html[data-ty] #view-app #page-messages .messages-shell.thread-active .msg-sidebar{display:none !important;}
+  #view-app #page-messages #convList{flex:1;min-height:0;overflow-y:auto;}
+  #page-messages .nf33-head{padding:10px 12px 0;}
+  #page-messages .nf33-title b{font-size:20px;}
+  #page-messages .nf33-tabs{margin:0 -12px;}
+  #page-messages .nf33-tabs button{font-size:14px;gap:5px;height:44px;}
+  #page-messages .nf33-tabs .nf33-ti svg{width:17px;height:17px;}
+  #page-messages .nf33-av{width:48px;height:48px;}
+}
+@media (max-width:600px){ #page-messages .nf33-tabs .nf33-ti{display:none;} #page-messages .nf33-tabs button{font-size:14.5px;} }
+
+/* ===== Team mission board: airy, three soft columns ===== */
+#page-team .team-filter-row:empty{display:none !important;}
+#page-team .nf33t-people{display:flex;gap:10px;overflow-x:auto;padding:2px 2px 6px;margin-bottom:14px;scrollbar-width:thin;}
+#page-team .nf33t-p{flex:none;display:flex;align-items:center;gap:10px;min-width:180px;padding:10px 14px;border:1.5px solid #E4E7EC;border-radius:16px;background:#FFFFFF;font:inherit;text-align:left;cursor:pointer;color:#101828;}
+#page-team .nf33t-p:hover{border-color:#B9C2CE;}
+#page-team .nf33t-p.on{border-color:#1F6B45;background:#F2FAF5;box-shadow:0 0 0 3px #DCF0E3;}
+#page-team .nf33t-pav{flex:none;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:#FFFFFF;font-weight:800;font-size:13.5px;}
+#page-team .nf33t-pav.all{background:#344054;font-size:12.5px;}
+#page-team .nf33t-pm{display:grid;gap:4px;min-width:0;flex:1;}
+#page-team .nf33t-pm b{font-size:15.5px;display:flex;align-items:center;gap:6px;}
+#page-team .nf33t-pm b i.late{width:8px;height:8px;border-radius:50%;background:#E41E3F;}
+#page-team .nf33t-bar{display:block;height:6px;border-radius:99px;background:#EEF0F3;overflow:hidden;} #page-team .nf33t-bar i{display:block;height:100%;background:#22A05B;border-radius:99px;}
+#page-team .nf33t-pm small{font-size:12.5px;color:#667085;}
+/* quick add, one clean line */
+#page-team .team-quickadd.nf33t-add{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding:12px !important;border-radius:16px !important;border:1.5px solid #E4E7EC !important;box-shadow:none !important;background:#FFFFFF !important;margin-bottom:16px;}
+#page-team .team-quickadd.nf33t-add > input{flex:1 1 320px;min-width:0;height:46px;border:0 !important;background:#F5F6F8 !important;border-radius:12px !important;padding:0 14px !important;font-size:16px !important;}
+#page-team .team-quickadd.nf33t-add .team-quickadd-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:0 !important;}
+#page-team .team-quickadd.nf33t-add .team-quickadd-row select, #page-team .team-quickadd.nf33t-add .team-quickadd-row input{height:46px;border-radius:12px;}
+#page-team .team-quickadd.nf33t-add .btn{height:46px;padding:0 20px;border-radius:12px;}
+/* the board */
+#page-team .nf33t-board{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:start;}
+#page-team .nf33t-col{background:#F7F8FA;border-radius:18px;padding:12px;min-height:240px;border:2px dashed transparent;transition:border-color .15s, background .15s;}
+#page-team .nf33t-col.over{border-color:#98A2B3;background:#EEF2F6;}
+#page-team .nf33t-col header{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:4px 6px 12px;}
+#page-team .nf33t-col header i{width:10px;height:10px;border-radius:50%;flex:none;}
+#page-team .nf33t-col[data-col="todo"] header i{background:#98A2B3;} #page-team .nf33t-col[data-col="doing"] header i{background:#EAB308;} #page-team .nf33t-col[data-col="done"] header i{background:#16A34A;}
+#page-team .nf33t-col header b{font-size:16px;color:#0B0F14;}
+#page-team .nf33t-n{min-width:24px;height:22px;padding:0 7px;border-radius:999px;background:#FFFFFF;border:1px solid #E4E7EC;font-size:12.5px;font-weight:800;display:grid;place-items:center;color:#344054;}
+#page-team .nf33t-col header small{width:100%;font-size:13px;color:#667085;padding-left:18px;margin-top:-2px;}
+#page-team .nf33t-list{display:grid;gap:10px;}
+#page-team .nf33t-card{background:#FFFFFF;border-radius:14px;padding:12px 14px;display:grid;gap:8px;box-shadow:0 1px 2px rgba(16,24,40,.06), 0 1px 1px rgba(16,24,40,.03);border:1px solid #EEF0F3;cursor:grab;}
+#page-team .nf33t-card:hover{box-shadow:0 6px 16px -8px rgba(16,24,40,.25);}
+#page-team .nf33t-card.dragging{opacity:.45;}
+#page-team .nf33t-card.late{border-left:4px solid #E41E3F;}
+#page-team .nf33t-card b{font-size:15.5px;line-height:1.35;color:#101828;font-weight:700;}
+#page-team .nf33t-card.done b{color:#667085;text-decoration:line-through;font-weight:600;}
+#page-team .nf33t-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+#page-team .nf33t-who{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:700;color:#344054;}
+#page-team .nf33t-av{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;color:#FFFFFF;font-size:10.5px;font-weight:800;}
+#page-team .nf33t-due{font-size:12.5px;font-weight:800;border-radius:999px;padding:2px 9px;}
+#page-team .nf33t-due.r{background:#FEE4E2;color:#B42318;} #page-team .nf33t-due.y{background:#FEF3C7;color:#92400E;} #page-team .nf33t-due.g{background:#DCFCE7;color:#15803D;} #page-team .nf33t-due.n{background:#F2F4F7;color:#475467;}
+#page-team .nf33t-acts{display:flex;align-items:center;gap:8px;}
+#page-team .nf33t-go{height:34px;padding:0 14px;border-radius:999px;border:1.5px solid #D0D5DD;background:#FFFFFF;font:inherit;font-size:14px;font-weight:700;color:#101828;cursor:pointer;}
+#page-team .nf33t-go:hover{border-color:#1F6B45;}
+#page-team .nf33t-go.done{background:#1F6B45;border-color:#1F6B45;color:#FFFFFF;}
+#page-team .nf33t-go.ghost{border-color:transparent;color:#475467;padding:0 8px;}
+#page-team .nf33t-x{margin-left:auto;width:30px;height:30px;border-radius:50%;border:0;background:transparent;color:#98A2B3;cursor:pointer;font-size:14px;}
+#page-team .nf33t-x:hover{background:#F2F4F7;color:#B42318;}
+#page-team .nf33t-empty{margin:6px 4px 10px;font-size:14px;color:#98A2B3;text-align:center;padding:18px 8px;border:1.5px dashed #E4E7EC;border-radius:12px;}
+#page-team .nf33t-more{border:0;background:transparent;font:inherit;font-weight:700;color:#1F6B45;cursor:pointer;padding:6px;}
+@media (max-width:900px){ #page-team .nf33t-board{grid-template-columns:1fr;} #page-team .nf33t-col{min-height:0;} #page-team .nf33t-p{min-width:160px;} }
+/* calmer header: slim Tasks / Activity switch, notebook button tucked away (it lives under AI tools) */
+#page-team .page-head .nf22-nbbtn{display:none !important;}
+html[data-ty] #view-app #page-team .team-tabs.nf-tabcards, #page-team .team-tabs.nf-tabcards{display:inline-flex !important;grid-template-columns:none !important;gap:4px !important;padding:4px !important;background:#F2F4F7 !important;border-radius:12px !important;border:0 !important;margin:0 0 14px !important;width:auto !important;}
+html[data-ty] #view-app #page-team .team-tabs.nf-tabcards .team-tab, #page-team .team-tabs.nf-tabcards .team-tab{min-height:38px !important;height:38px !important;padding:0 16px !important;border-radius:9px !important;border:0 !important;background:transparent !important;box-shadow:none !important;display:inline-flex !important;align-items:center;gap:6px;font-size:15px !important;font-weight:700 !important;color:#475467 !important;}
+html[data-ty] #view-app #page-team .team-tabs.nf-tabcards .team-tab.active, #page-team .team-tabs.nf-tabcards .team-tab.active{background:#FFFFFF !important;color:#101828 !important;box-shadow:0 1px 3px rgba(16,24,40,.12) !important;}
+html[data-ty] #view-app #page-team .team-tabs.nf-tabcards .team-tab small, html[data-ty] #view-app #page-team .team-tabs.nf-tabcards .team-tab .sub, #page-team .team-tabs.nf-tabcards .team-tab br + *{display:none !important;}
+
+/* ===== Help: answers on the left, live chat on the right (one at a time on a phone) ===== */
+#page-help .nf33h{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:20px;align-items:start;}
+#page-help .nf33h-hero{background:linear-gradient(135deg,#F0FAF4,#E6F4EC);border:1px solid #CFE8D9;border-radius:20px;padding:22px 22px 18px;}
+#page-help .nf33h-hero h1{margin:0;font-size:28px;color:#0B0F14;letter-spacing:-.01em;}
+#page-help .nf33h-hero p{margin:4px 0 14px;font-size:15.5px;color:#344054;}
+#page-help .nf33h-search{display:flex;align-items:center;gap:10px;height:52px;padding:0 16px;border-radius:14px;background:#FFFFFF;border:1.5px solid #B7DFC6;color:#667085;}
+#page-help .nf33h-search:focus-within{border-color:#1F6B45;box-shadow:0 0 0 3px #DCF0E3;}
+#page-help .nf33h-search svg{width:20px;height:20px;flex:none;}
+#page-help .nf33h-search input{flex:1;min-width:0;border:0;outline:0;background:transparent;font:inherit;font-size:16.5px;color:#101828;}
+#page-help .nf33h-cats{display:flex;gap:8px;overflow-x:auto;padding:14px 2px 10px;scrollbar-width:none;}
+#page-help .nf33h-cats button{flex:none;height:38px;padding:0 14px;border-radius:999px;border:1.5px solid #E4E7EC;background:#FFFFFF;font:inherit;font-size:14.5px;font-weight:700;color:#344054;cursor:pointer;}
+#page-help .nf33h-cats button.on{background:#101828;border-color:#101828;color:#FFFFFF;}
+#page-help .nf33h-faq{display:grid;gap:8px;}
+#page-help .nf33h-q{background:#FFFFFF;border:1.5px solid #EAECF0;border-radius:14px;overflow:hidden;}
+#page-help .nf33h-q.open{border-color:#1F6B45;box-shadow:0 6px 18px -12px rgba(16,24,40,.35);}
+#page-help .nf33h-qh{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;padding:15px 16px;border:0;background:transparent;font:inherit;text-align:left;cursor:pointer;color:#101828;}
+#page-help .nf33h-qh b{font-size:16px;font-weight:700;} #page-help .nf33h-qh span{flex:none;width:28px;height:28px;border-radius:50%;background:#F2F4F7;display:grid;place-items:center;font-size:18px;font-weight:800;color:#1F6B45;}
+#page-help .nf33h-a{padding:0 16px 16px;}
+#page-help .nf33h-a ol{margin:0 0 12px;padding-left:22px;display:grid;gap:6px;font-size:15.5px;color:#101828;line-height:1.5;}
+#page-help .nf33h-aa{display:flex;gap:8px;flex-wrap:wrap;} #page-help .nf33h-aa .btn{min-height:42px;}
+#page-help .nf33h-none{text-align:center;padding:24px;background:#FFFFFF;border:1.5px dashed #D0D5DD;border-radius:14px;} #page-help .nf33h-none p{margin:0 0 10px;color:#475467;}
+#page-help .nf33h-h3{margin:22px 2px 8px;font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#475467;}
+#page-help .nf33h-mine{display:grid;gap:8px;}
+#page-help .nf33h-mq{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:10px;width:100%;padding:12px 14px;border:1.5px solid #EAECF0;border-radius:14px;background:#FFFFFF;font:inherit;text-align:left;cursor:pointer;color:#101828;}
+#page-help .nf33h-mq.un{border-color:#FCA5A5;background:#FFF5F5;}
+#page-help .nf33h-mq b{font-size:15px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;} #page-help .nf33h-mq small{font-size:12.5px;color:#667085;}
+#page-help .nf33h-st{font-size:12px;font-weight:800;border-radius:999px;padding:3px 9px;white-space:nowrap;}
+#page-help .nf33h-st.ok{background:#DCFCE7;color:#15803D;} #page-help .nf33h-st.wait{background:#FEF3C7;color:#92400E;} #page-help .nf33h-mq.un .nf33h-st{background:#E41E3F;color:#FFFFFF;}
+/* chat panel, Messenger style */
+#page-help .nf33h-chat{position:sticky;top:16px;background:#FFFFFF;border:1px solid #E4E7EC;border-radius:20px;overflow:hidden;display:flex;flex-direction:column;height:min(720px, calc(100vh - 120px));box-shadow:0 18px 40px -24px rgba(16,24,40,.35);}
+#page-help .nf33h-ch{display:flex;align-items:center;gap:12px;padding:14px 16px;background:linear-gradient(135deg,#1F6B45,#15803D);color:#FFFFFF;}
+#page-help .nf33h-ch b{display:block;font-size:17px;color:#FFFFFF;} #page-help .nf33h-ch small{display:flex;align-items:center;gap:6px;font-size:13px;color:#E7F6EC;}
+#page-help .nf33h-dot{width:9px;height:9px;border-radius:50%;background:#98A2B3;flex:none;} #page-help .nf33h-dot.on{background:#4ADE80;box-shadow:0 0 0 3px rgba(74,222,128,.3);}
+#page-help .nf33h-faces{display:flex;flex:none;} #page-help .nf33h-faces i{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-weight:800;font-size:11.5px;color:#FFFFFF;border:2px solid #1F6B45;margin-left:-9px;} #page-help .nf33h-faces i:first-child{margin-left:0;}
+#page-help .nf33h-back{display:none;border:0;background:rgba(255,255,255,.18);color:#FFFFFF;width:34px;height:34px;border-radius:50%;font-size:22px;line-height:1;cursor:pointer;}
+#page-help .nf33h-body{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:#F7F8FA;}
+#page-help .nf33h-m{display:flex;align-items:flex-end;gap:8px;max-width:88%;}
+#page-help .nf33h-m > div{background:#FFFFFF;border:1px solid #E4E7EC;border-radius:18px 18px 18px 6px;padding:9px 13px;}
+#page-help .nf33h-m p{margin:0;font-size:15.5px;color:#101828;white-space:pre-wrap;line-height:1.45;}
+#page-help .nf33h-m small{display:block;margin-top:3px;font-size:12px;color:#667085;}
+#page-help .nf33h-m.me{align-self:flex-end;} #page-help .nf33h-m.me > div{background:#1F6B45;border-color:#1F6B45;border-radius:18px 18px 6px 18px;} #page-help .nf33h-m.me p{color:#FFFFFF;} #page-help .nf33h-m.me small{color:#D1EEDC;}
+#page-help .nf33h-m.fresh > div{border:2px solid #E41E3F;}
+#page-help .nf33h-mav{flex:none;width:28px;height:28px;border-radius:50%;background:#1F6B45;color:#FFFFFF;font-weight:900;font-size:13px;display:grid;place-items:center;}
+#page-help .nf33h-mav.lg{width:52px;height:52px;font-size:22px;margin:0 auto 8px;}
+#page-help .nf33h-new{display:flex;align-items:center;gap:8px;color:#E41E3F;font-weight:800;font-size:12.5px;}
+#page-help .nf33h-new:before, #page-help .nf33h-new:after{content:'';flex:1;height:1.5px;background:#E41E3F;opacity:.45;}
+#page-help .nf33h-hello{margin:auto;text-align:center;max-width:280px;color:#344054;} #page-help .nf33h-hello b{font-size:18px;color:#101828;} #page-help .nf33h-hello p{margin:4px 0 0;font-size:15px;}
+#page-help .nf33h-chips{display:flex;gap:6px;overflow-x:auto;padding:10px 12px 0;scrollbar-width:none;}
+#page-help .nf33h-chips button{flex:none;height:34px;padding:0 12px;border-radius:999px;border:1.5px solid #D0D5DD;background:#FFFFFF;font:inherit;font-size:13.5px;font-weight:700;color:#101828;cursor:pointer;}
+#page-help .nf33h-send{display:flex;align-items:flex-end;gap:8px;padding:10px 12px 12px;}
+#page-help .nf33h-send textarea{flex:1;min-height:46px;max-height:120px;padding:12px 16px;border:0;background:#F2F4F7;border-radius:24px;font:inherit;font-size:16px;color:#101828;resize:none;outline:0;}
+#page-help .nf33h-send textarea:focus{background:#FFFFFF;box-shadow:0 0 0 2px #1F6B45 inset;}
+#page-help .nf33h-sendb{flex:none;width:46px;height:46px;border-radius:50%;border:0;background:#1F6B45;color:#FFFFFF;display:grid;place-items:center;cursor:pointer;} #page-help .nf33h-sendb svg{width:20px;height:20px;}
+#page-help .nf33h-vib, #page-help .nf33h-demo{margin:0 14px 12px;font-size:13px;color:#667085;} #page-help .nf33h-vib a{color:#1D4ED8;font-weight:800;}
+#page-help .nf33h-fab{display:none;}
+@media (max-width:1100px){ #page-help .nf33h{grid-template-columns:minmax(0,1fr) 360px;} }
+@media (max-width:900px){
+  #page-help .nf33h{grid-template-columns:1fr;}
+  #page-help .nf33h.v-ans .nf33h-chat{display:none;}
+  #page-help .nf33h.v-chat .nf33h-center{display:none;}
+  #page-help .nf33h-chat{position:static;height:calc(100dvh - 190px);min-height:440px;}
+  #page-help .nf33h-back{display:grid;place-items:center;}
+  #page-help .nf33h.v-ans .nf33h-fab{display:inline-flex;position:fixed;right:16px;bottom:86px;z-index:20;align-items:center;gap:8px;height:52px;padding:0 20px;border-radius:999px;border:0;background:#1F6B45;color:#FFFFFF;font:inherit;font-size:16px;font-weight:800;box-shadow:0 10px 24px -8px rgba(16,24,40,.5);cursor:pointer;}
+  #page-help .nf33h-fab svg{width:20px;height:20px;} #page-help .nf33h-fab em{font-style:normal;min-width:22px;height:22px;border-radius:999px;background:#E41E3F;display:grid;place-items:center;font-size:12.5px;padding:0 6px;}
+  #page-help .nf33h-hero h1{font-size:24px;}
+}
+#page-help .nf33h-center, #page-help .nf33h-chat{min-width:0;}
+
+/* reminders on each customer's own app */
+.nf33r{display:grid;gap:12px;padding:2px 2px 4px;}
+.nf33r-sum{font-size:16px;color:#101828;} .nf33r-sum .r{color:#B42318;font-weight:800;}
+.nf33r-lbl{font-size:13px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#475467;}
+.nf33r-chs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;}
+.nf33r-chs button{display:flex;align-items:center;gap:8px;min-height:46px;padding:0 10px;border-radius:12px;border:1.5px solid #E4E7EC;background:#FFFFFF;font:inherit;font-size:14.5px;font-weight:700;color:#101828;cursor:pointer;min-width:0;}
+.nf33r-chs button span{flex:none;width:26px;height:26px;border-radius:8px;background:var(--c);color:#FFFFFF;display:grid;place-items:center;} .nf33r-chs button span svg{width:16px;height:16px;}
+.nf33r-chs button.on{border-color:var(--c);box-shadow:0 0 0 3px color-mix(in srgb, var(--c) 18%, transparent);}
+.nf33r-f{display:grid;gap:5px;} .nf33r-f span{font-size:14px;font-weight:700;color:#344054;}
+.nf33r-f input, .nf33r-f textarea{width:100%;padding:11px 13px;border:1.5px solid #D0D5DD;border-radius:12px;font:inherit;font-size:15.5px;color:#101828;}
+.nf33r-f textarea{resize:vertical;min-height:140px;line-height:1.45;}
+.nf33r-chk{display:flex;align-items:center;gap:8px;font-size:14.5px;color:#101828;} .nf33r-chk input{width:18px;height:18px;}
+.nf33r-how{margin:0;font-size:14px;color:#475467;background:#F7F8FA;border-radius:10px;padding:9px 12px;}
+.nf33r-acts{display:flex;gap:8px;flex-wrap:wrap;}
+.nf33r-go{flex:1 1 220px;min-height:50px;display:inline-flex !important;align-items:center;justify-content:center;gap:8px;background:var(--c) !important;border-color:var(--c) !important;font-size:16px !important;}
+.nf33r-go span{display:grid;place-items:center;} .nf33r-go svg{width:20px;height:20px;}
+#view-app .nf33r-strip{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:12px 0;padding:12px 16px;border-radius:14px;background:#F7F8FA;border:1px solid #E4E7EC;}
+#view-app .nf33r-strip.due{background:#FFFBEB;border-color:#FCD34D;}
+#view-app .nf33r-strip b{display:block;font-size:16px;color:#101828;} #view-app .nf33r-strip small{display:flex;align-items:center;gap:4px;flex-wrap:wrap;font-size:13.5px;color:#475467;margin-top:2px;}
+#view-app .nf33r-mini{width:20px;height:20px;border-radius:6px;background:var(--c);color:#FFFFFF;display:inline-grid;place-items:center;} #view-app .nf33r-mini svg{width:13px;height:13px;}
+#view-app button.nf33r-rb{display:inline-flex !important;align-items:center;gap:6px;} #view-app button.nf33r-rb span{width:20px;height:20px;border-radius:6px;background:var(--c);color:#FFFFFF;display:grid;place-items:center;} #view-app button.nf33r-rb svg{width:13px;height:13px;}
+@media (max-width:480px){ .nf33r-chs{grid-template-columns:repeat(2,minmax(0,1fr));} }
+
   .settings-card:empty{display:none;}
   #supplierChips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;} #supplierChips .chip{flex-shrink:0;}
 
@@ -34941,6 +35176,8 @@ function nf31Detect(m, conv){
   else if(/\b(on the way|otw|out for delivery|dispatched|shipped|loaded|papunta na|byahe na)\b/.test(all)) out.kind = 'shipped';
   else if(/\b(confirm|confirmed|confirming|noted|in production|po received|got your order|will prepare|ok na|sige po|approved|processing)\b/.test(all) && (out.po || nf31FindPO('', conv))) out.kind = 'confirm';
   if(pct) out.pct = Number(pct);
+  // a question is not a confirmation or a delivery ("do you have a confirmed date?")
+  if(/\?/.test(txt) && ['confirm', 'delivered', 'shipped'].includes(out.kind)) out.kind = null;
   return out.kind ? out : null;
 }
 // what this side bought from this party before: last price per item
@@ -35146,6 +35383,387 @@ function nf32Show(){
   // the Help row in the menu opens the page
   const hp = function(){ try{ nf26HelpClose && nf26HelpClose(); }catch(e){} go('help'); }; hp._nf31 = true; hp._nf32 = true;
   window.nf26Help = hp; try{ nf26Help = hp; }catch(e){}
+})();
+
+/* ===== Round 33: Messages like Viber / WhatsApp. Three colored tabs that stay on top, photo on the left,
+   last message in the middle, a search for names or words, and the chat filling the screen ===== */
+const NF33 = {tab: null, q: ''};
+const NF33_TABS = [['team', 'Team'], ['cus', 'Customers'], ['sup', 'Suppliers']];
+const NF33_IC = {
+  search: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>',
+  x: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>',
+  team: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17" cy="9" r="2.6"/><path d="M16 14.2a5 5 0 0 1 5.5 5.8"/></svg>',
+  cus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l1.5-5h15L21 9"/><path d="M4 9v11h16V9"/><path d="M3 9h18"/><path d="M9 20v-6h6v6"/></svg>',
+  sup: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1.5" y="7" width="13" height="10" rx="1"/><path d="M14.5 10H19l3 3.5V17h-7.5z"/><circle cx="6" cy="18.5" r="1.8"/><circle cx="18" cy="18.5" r="1.8"/></svg>',
+  photo: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 8"/></svg>',
+  file: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>',
+  mega: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11v2a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1z"/><path d="M15 9a4 4 0 0 1 0 6M18 6a8 8 0 0 1 0 12"/></svg>',
+};
+function nf33Tab(){
+  if(NF33.tab) return NF33.tab;
+  let t = null; try{ t = localStorage.getItem('nifti-msg-tab'); }catch(e){}
+  NF33.tab = ['team', 'cus', 'sup'].includes(t) ? t : 'cus'; return NF33.tab;
+}
+function nf33SetTab(t){ NF33.tab = t; try{ localStorage.setItem('nifti-msg-tab', t); }catch(e){} nf33Paint(); }
+function nf33Group(c){ return convSide(c) === 'supplier' ? 'cus' : 'sup'; }
+function nf33Team(){ const tm = (typeof teamMembers !== 'undefined' && teamMembers) || []; const msgs = (typeof teamChatMessages !== 'undefined' ? teamChatMessages : []).filter(m => typeof teamScoped !== 'function' || teamScoped(m)); return {tm, msgs}; }
+function nf33When(m){
+  if(!m) return ''; const t = String(m.time || ''), d = t.split(',')[0].trim();
+  if(/^today$/i.test(d)) return (t.split(',')[1] || '').trim() || 'Today';
+  if(m.date && typeof APP_TODAY !== 'undefined'){ if(m.date === APP_TODAY) return (t.split(',')[1] || d).trim(); try{ if(m.date === addDaysIso(APP_TODAY, -1)) return 'Yesterday'; }catch(e){} }
+  return d;
+}
+function nf33Preview(m){
+  if(!m) return '';
+  const me = m.from === 'me' ? 'You: ' : '';
+  if(m.attachment){ const a = m.attachment, img = a.image || /\.(jpe?g|png|webp|gif|heic)$/i.test(a.name || '');
+    return `${me}<span class="nf33-pi">${img ? NF33_IC.photo : NF33_IC.file}</span>${escapeHtml(m.text && m.text.length < 60 ? m.text : (img ? 'Photo' : a.name || 'File'))}`; }
+  return me + escapeHtml(m.text || '');
+}
+function nf33Counts(){
+  const all = allConversations(), c = {team: 0, cus: 0, sup: 0};
+  all.forEach(x => { if(x.unread > 0) c[nf33Group(x)] += x.unread; });
+  try{ const n = typeof teamUnread === 'number' ? teamUnread : 0; c.team += n; }catch(e){}
+  return c;
+}
+function nf33Row(c){
+  const side = convSide(c), last = c.messages[c.messages.length - 1], g = nf33Group(c);
+  let oc = null; try{ oc = nfwConvOrder(c, side); }catch(e){}
+  const act = c.id === activeConvId && side === currentAppRole && !(typeof NF18T !== 'undefined' && NF18T.on);
+  return `<button type="button" class="nf33-row${c.unread > 0 ? ' un' : ''}${act ? ' on' : ''}" data-g="${g}" onclick="selectConversation('${c.id}','${side}')">
+    <span class="nf33-av">${nfAvatarInner(c.name)}</span>
+    <span class="nf33-mid"><span class="nf33-top"><b>${escapeHtml(c.name)}</b><time>${escapeHtml(nf33When(last))}</time></span>
+      <span class="nf33-bot"><span class="nf33-pv">${nf33Preview(last) || '<i>No messages yet</i>'}</span>${c.unread > 0 ? `<em class="nf33-badge">${c.unread}</em>` : ''}</span>
+      ${oc && oc.turn === 'you' ? `<span class="nf33-oc" onclick="event.stopPropagation(); openOrderDetailModal('${oc.id}', ${oc.sell})">${escapeHtml(oc.n)} · ${escapeHtml(oc.label)} · your turn</span>` : ''}</span></button>`;
+}
+function nf33TeamRow(){
+  const {tm, msgs} = nf33Team(), last = msgs[msgs.length - 1], on = typeof NF18T !== 'undefined' && NF18T.on;
+  return `<button type="button" class="nf33-row${on ? ' on' : ''}" data-g="team" onclick="nf18OpenTeam()">
+    <span class="nf33-av nf33-avt">${NF33_IC.team}</span>
+    <span class="nf33-mid"><span class="nf33-top"><b>Team chat</b><time>${last ? escapeHtml(String(last.time || '')) : ''}</time></span>
+      <span class="nf33-bot"><span class="nf33-pv">${last ? escapeHtml((last.author ? last.author.split(' ')[0] + ': ' : '') + (last.text || '')) : 'Only your own people see this'}</span></span></span></button>
+    <p class="nf33-note">${tm.length ? `${tm.length} ${tm.length === 1 ? 'person' : 'people'} on your team. Customers and suppliers never see this chat.` : 'Add your staff on the Team page to chat with them here.'}</p>`;
+}
+function nf33Hl(text, q){ const s = escapeHtml(text); if(!q) return s; const i = s.toLowerCase().indexOf(escapeHtml(q).toLowerCase()); if(i < 0) return s; const n = escapeHtml(q).length; return s.slice(0, i) + '<mark>' + s.slice(i, i + n) + '</mark>' + s.slice(i + n); }
+function nf33SearchHtml(q){
+  const all = allConversations(), lq = q.toLowerCase();
+  const chats = all.filter(c => c.name.toLowerCase().includes(lq));
+  const hits = [];
+  all.forEach(c => (c.messages || []).forEach((m, i) => { const t = String(m.text || '') + ' ' + (m.attachment ? m.attachment.name : ''); if(t.toLowerCase().includes(lq)) hits.push({c, m, i}); }));
+  hits.sort((a, b) => String(b.m.date || '').localeCompare(String(a.m.date || '')));
+  const tag = c => `<span class="nf33-tag" data-g="${nf33Group(c)}">${nf33Group(c) === 'cus' ? 'Customer' : 'Supplier'}</span>`;
+  return (chats.length ? `<h6 class="nf33-sh">Chats</h6>` + chats.map(c => nf33Row(c)).join('') : '')
+    + (hits.length ? `<h6 class="nf33-sh">Messages</h6>` + hits.slice(0, 40).map(h => { const t = String(h.m.text || '') || (h.m.attachment ? h.m.attachment.name : ''), j = t.toLowerCase().indexOf(lq), snip = (j > 30 ? '…' + t.slice(j - 24) : t).slice(0, 120);
+        return `<button type="button" class="nf33-hit" onclick="nf33OpenHit('${h.c.id}','${convSide(h.c)}',${h.i})"><span class="nf33-av sm">${nfAvatarInner(h.c.name)}</span><span class="nf33-mid"><span class="nf33-top"><b>${escapeHtml(h.c.name)}</b>${tag(h.c)}<time>${escapeHtml(nf33When(h.m))}</time></span><span class="nf33-pv">${h.m.from === 'me' ? 'You: ' : ''}${nf33Hl(snip, q)}</span></span></button>`; }).join('') : '')
+    || `<p class="nf33-empty">Nothing found for "${escapeHtml(q)}".</p>`;
+}
+function nf33OpenHit(id, side, idx){
+  selectConversation(id, side);
+  setTimeout(() => { const rows = document.querySelectorAll('#threadBody .msg-bubble-row'), c = allConversations().find(x => x.id === id); if(!c) return;
+    const want = c.messages[idx]; const el = [...rows].find(r => want && r.textContent.includes(String(want.text || (want.attachment && want.attachment.name) || '').slice(0, 30)));
+    if(el){ el.scrollIntoView({block: 'center'}); el.classList.add('nf33-flash'); setTimeout(() => el.classList.remove('nf33-flash'), 1800); } }, 250);
+}
+function nf33Head(){
+  const side = document.querySelector('#page-messages .msg-sidebar'), list = document.getElementById('convList'); if(!side || !list) return null;
+  let h = document.getElementById('nf33Head');
+  if(!h){ h = document.createElement('div'); h.id = 'nf33Head'; h.className = 'nf33-head'; side.insertBefore(h, list);
+    h.innerHTML = `<div class="nf33-title"><b>Chats</b><button type="button" class="nf33-ico" title="Message all customers" aria-label="Message all customers" onclick="try{ openAnnouncementComposer(); }catch(e){}">${NF33_IC.mega}</button></div>
+      <label class="nf33-search">${NF33_IC.search}<input id="nf33Q" type="search" placeholder="Search name or message" autocomplete="off" oninput="NF33.q=this.value; nf33Paint()"><button type="button" class="nf33-clr" aria-label="Clear search" onclick="NF33.q=''; document.getElementById('nf33Q').value=''; nf33Paint()">${NF33_IC.x}</button></label>
+      <div class="nf33-tabs" role="tablist"></div>`; }
+  return h;
+}
+function nf33Paint(){
+  const h = nf33Head(), box = document.getElementById('convList'); if(!h || !box) return;
+  const tab = nf33Tab(), cnt = nf33Counts(), q = NF33.q.trim();
+  h.classList.toggle('searching', !!q);
+  h.querySelector('.nf33-tabs').innerHTML = NF33_TABS.map(([k, l]) => `<button type="button" role="tab" data-g="${k}" aria-selected="${tab === k}" class="${tab === k ? 'on' : ''}" onclick="nf33SetTab('${k}')"><span class="nf33-ti">${NF33_IC[k]}</span><span class="nf33-tl">${l}</span>${cnt[k] ? `<em>${cnt[k] > 99 ? '99+' : cnt[k]}</em>` : ''}</button>`).join('');
+  if(q){ box.innerHTML = nf33SearchHtml(q); }
+  else if(tab === 'team'){ box.innerHTML = nf33TeamRow(); }
+  else {
+    const list = allConversations().filter(c => nf33Group(c) === tab).sort((a, b) => ((b.unread > 0) - (a.unread > 0)) || convLastTs(b).localeCompare(convLastTs(a)));
+    box.innerHTML = list.length ? list.map(nf33Row).join('') : `<p class="nf33-empty">No ${tab === 'cus' ? 'customer' : 'supplier'} chats yet. They show up here as soon as one starts.</p>`;
+  }
+  box.dataset.g = q ? 'all' : tab;
+  try{ updateMessagesBadge(); }catch(e){}
+  try{ if(document.getElementById('oneHomeMsgs') && typeof renderOneHomeMessages === 'function') renderOneHomeMessages(); }catch(e){}
+}
+// opening a chat jumps to its tab so the colored tab always matches what's on screen
+(function(){
+  const rcl = function(){ try{ nf33Paint(); }catch(e){ console.warn('nf33', e); } };
+  rcl._nf18 = true; rcl._nf33 = true; window.renderConversationList = rcl; try{ renderConversationList = rcl; }catch(e){}
+  const sc = window.selectConversation;
+  if(typeof sc === 'function' && !sc._nf33){ const w = function(id){ const c = allConversations().find(x => x.id === id); if(c && !NF33.q){ const g = nf33Group(c); if(NF33.tab !== g){ NF33.tab = g; } } return sc.apply(this, arguments); };
+    Object.keys(sc).forEach(k => { w[k] = sc[k]; }); w._nf33 = true; window.selectConversation = w; try{ selectConversation = w; }catch(e){} }
+  const ot = window.nf18OpenTeam;
+  if(typeof ot === 'function' && !ot._nf33){ const w = function(){ NF33.tab = 'team'; return ot.apply(this, arguments); }; w._nf33 = true; window.nf18OpenTeam = w; try{ nf18OpenTeam = w; }catch(e){} }
+  const base = nf26AfterPass;
+  nf26AfterPass = function(page){ base(page); try{ if(page && page.id === 'page-messages'){ document.body.classList.add('nf33-msgs'); if(!document.getElementById('nf33Head')) nf33Paint(); } else document.body.classList.remove('nf33-msgs'); }catch(e){} };
+  window.nf26AfterPass = nf26AfterPass;
+})();
+
+/* ===== Round 33: Team = mission board. To do, Doing, Done. Drag a card or tap its button ===== */
+const NF33T = {who: 'all', drag: null, showAllDone: false};
+function nf33TMembers(){ try{ return getActiveTeamMembers().filter(m => m.status !== 'invited'); }catch(e){ return []; } }
+function nf33TCol(t){ return t.status === 'done' ? 'done' : t.startedAt ? 'doing' : 'todo'; }
+function nf33TDue(t){
+  if(t.status === 'done') return `<span class="nf33t-due g">✓ Done${t.completedBy ? ' by ' + escapeHtml(String(t.completedBy).split(' ')[0]) : ''}</span>`;
+  if(!t.dueDate) return '';
+  if(t.dueDate < APP_TODAY) return `<span class="nf33t-due r">Late · ${escapeHtml(bkDayLabel ? bkDayLabel(t.dueDate) : t.dueDate)}</span>`;
+  if(t.dueDate === APP_TODAY) return '<span class="nf33t-due y">Due today</span>';
+  return `<span class="nf33t-due n">${escapeHtml(typeof bkDayLabel === 'function' ? bkDayLabel(t.dueDate) : t.dueDate)}</span>`;
+}
+function nf33TCard(t){
+  const c = nf33TCol(t), who = t.assignedTo ? teamMemberName(t.assignedTo) : 'Anyone';
+  const btn = c === 'todo' ? `<button type="button" class="nf33t-go" onclick="nf33TMove('${t.id}','doing')">Start</button>`
+    : c === 'doing' ? `<button type="button" class="nf33t-go done" onclick="nf33TMove('${t.id}','done')">✓ Done</button>`
+    : `<button type="button" class="nf33t-go ghost" onclick="nf33TMove('${t.id}','todo')">Undo</button>`;
+  return `<div class="nf33t-card ${c}${t.status !== 'done' && t.dueDate && t.dueDate < APP_TODAY ? ' late' : ''}" draggable="true" data-id="${t.id}" ondragstart="NF33T.drag='${t.id}'; this.classList.add('dragging')" ondragend="this.classList.remove('dragging')">
+    <b>${escapeHtml(t.title)}</b>
+    <div class="nf33t-meta"><span class="nf33t-who"><span class="nf33t-av" style="background:${typeof nfIniColor === 'function' ? nfIniColor(who) : '#475467'}">${escapeHtml(teamInitials(who))}</span>${escapeHtml(who.split(' ')[0])}</span>${nf33TDue(t)}</div>
+    <div class="nf33t-acts">${btn}<button type="button" class="nf33t-x" title="Delete" aria-label="Delete task" onclick="deleteTask('${t.id}')">✕</button></div></div>`;
+}
+function nf33RenderTaskList(){
+  const box = document.getElementById('taskListOpen'); if(!box) return;
+  try{ nf33TSeedDemo(); }catch(e){}
+  const all = teamTasks.filter(t => teamScoped(t)), mine = NF33T.who === 'all' ? all : all.filter(t => t.assignedTo === NF33T.who);
+  const weekAgo = addDaysIso(APP_TODAY, -7);
+  const cols = [['todo', 'To do', 'Not started yet'], ['doing', 'Doing', 'Someone is on it'], ['done', 'Done', 'Last 7 days']];
+  const sortOpen = (a, b) => String(a.dueDate || '9999').localeCompare(String(b.dueDate || '9999'));
+  box.innerHTML = `<div class="nf33t-board">${cols.map(([k, h, sub]) => {
+      let list = mine.filter(t => nf33TCol(t) === k);
+      if(k === 'done'){ list = list.filter(t => !(t.completedAt || t.doneAt) || (t.completedAt || t.doneAt) >= weekAgo).sort((a, b) => String(b.completedAt || '').localeCompare(String(a.completedAt || ''))); }
+      else list.sort(sortOpen);
+      const extra = k === 'done' && !NF33T.showAllDone && list.length > 5 ? list.length - 5 : 0; if(extra) list = list.slice(0, 5);
+      return `<section class="nf33t-col" data-col="${k}" ondragover="event.preventDefault(); this.classList.add('over')" ondragleave="this.classList.remove('over')" ondrop="event.preventDefault(); this.classList.remove('over'); if(NF33T.drag) nf33TMove(NF33T.drag,'${k}'); NF33T.drag=null;">
+        <header><i></i><b>${h}</b><span class="nf33t-n">${mine.filter(t => nf33TCol(t) === k && (k !== 'done' || !t.completedAt || t.completedAt >= weekAgo)).length}</span><small>${sub}</small></header>
+        <div class="nf33t-list">${list.map(nf33TCard).join('') || `<p class="nf33t-empty">${k === 'todo' ? 'Nothing waiting. Add a job above.' : k === 'doing' ? 'Drag a card here, or tap Start.' : 'Finished jobs land here.'}</p>`}
+        ${extra ? `<button type="button" class="nf33t-more" onclick="NF33T.showAllDone=true; renderTaskList()">Show ${extra} more</button>` : ''}</div></section>`; }).join('')}</div>`;
+  const f = document.getElementById('teamTaskFilters'); if(f) f.innerHTML = '';
+}
+function nf33RenderPeople(){
+  const el = document.getElementById('teamPeopleStrip'); if(!el) return;
+  const ms = nf33TMembers(), all = teamTasks.filter(t => teamScoped(t));
+  const today = t => t.status === 'done' && (t.completedAt || t.doneAt) === APP_TODAY;
+  const chip = (id, name, mineList) => { const open = mineList.filter(t => t.status !== 'done').length, done = mineList.filter(today).length, tot = open + done, late = mineList.some(t => t.status !== 'done' && t.dueDate && t.dueDate < APP_TODAY);
+    return `<button type="button" class="nf33t-p${NF33T.who === id ? ' on' : ''}" onclick="NF33T.who='${id}'; renderTeamPeopleStrip(); renderTaskList()">
+      ${id === 'all' ? '<span class="nf33t-pav all">All</span>' : `<span class="nf33t-pav" style="background:${typeof nfIniColor === 'function' ? nfIniColor(name) : '#475467'}">${escapeHtml(teamInitials(name))}</span>`}
+      <span class="nf33t-pm"><b>${escapeHtml(id === 'all' ? 'Everyone' : name.split(' ')[0])}${late ? '<i class="late" title="Has a late job"></i>' : ''}</b><span class="nf33t-bar"><i style="width:${tot ? Math.round(done / tot * 100) : 0}%"></i></span><small>${done} of ${tot} done today</small></span></button>`; };
+  el.innerHTML = `<div class="nf33t-people">${chip('all', 'Everyone', all)}${ms.map(m => chip(m.id, m.name + ((m.id === currentUserId && !/\(you\)/i.test(m.name)) ? '' : ''), all.filter(t => t.assignedTo === m.id))).join('')}</div>`;
+}
+function nf33TMove(id, col){
+  const t = teamTasks.find(x => x.id === id); if(!t || nf33TCol(t) === col) return;
+  const me = teamMe(), now = new Date().toISOString();
+  if(col === 'done'){ setTaskFields(id, {status: 'done', completedAt: APP_TODAY, completedBy: me ? me.name : null}, {status: 'done', completed_at: now, completed_by_name: me ? me.name : null}, `Completed: "${t.title}"`); try{ showToast('Nice work! "' + t.title + '" is done.', 'success'); }catch(e){} }
+  else if(col === 'doing') setTaskFields(id, {status: 'open', startedAt: APP_TODAY, acknowledgedAt: t.acknowledgedAt || APP_TODAY, completedAt: null, completedBy: null}, {status: 'open', started_at: now, acknowledged_at: now, completed_at: null, completed_by_name: null}, `Started: "${t.title}"`);
+  else setTaskFields(id, {status: 'open', startedAt: null, completedAt: null, completedBy: null}, {status: 'open', started_at: null, completed_at: null, completed_by_name: null}, `Moved back to To do: "${t.title}"`);
+}
+function nf33TSeedDemo(){ if(myBusiness || NF33T.seeded) return; NF33T.seeded = true; const t = teamTasks.find(x => x.id === 'nf-task-3'); if(t && !t.startedAt) t.startedAt = APP_TODAY; }
+(function(){
+  try{ renderTaskList = nf33RenderTaskList; window.renderTaskList = nf33RenderTaskList; renderTeamPeopleStrip = nf33RenderPeople; window.renderTeamPeopleStrip = nf33RenderPeople; }catch(e){ console.warn('nf33 team', e); }
+  const base = nf26AfterPass;
+  nf26AfterPass = function(page){ base(page); try{ if(page && page.id === 'page-team'){ const q = page.querySelector('.team-quickadd'); if(q && !q.classList.contains('nf33t-add')) q.classList.add('nf33t-add'); } }catch(e){} };
+  window.nf26AfterPass = nf26AfterPass;
+})();
+
+/* ===== Round 33: Help = help center (answers to common questions) + a live chat with the Nifti team ===== */
+const NF33H_CATS = [['all', 'All'], ['start', 'Getting started'], ['orders', 'Orders'], ['money', 'Getting paid'], ['shop', 'Shop & stock'], ['team', 'Team'], ['plan', 'Plans']];
+const NF33H_FAQ = [
+  {c: 'start', q: 'How do I put my items in Nifti?', a: ['Snap your notebook or price list under AI tools, Notebook reader, and Nifti types it in.', 'Or upload your Excel list from Stock, "Bring in or save your list".', 'On Pro and Business, send us your file and the Nifti team loads it for you.'], go: "go('inventory')", gl: 'Open Stock'},
+  {c: 'start', q: 'Do my customers and suppliers need Nifti too?', a: ['No. You can do everything with only your side on Nifti.', 'They get a link by Viber or SMS: they can confirm an order, see what they owe, and tell you they paid, all in their browser with no sign-up.']},
+  {c: 'orders', q: 'How do I send an order to a supplier who is not on Nifti?', a: ['Open Orders and tap "+ New order".', 'Pick the supplier, or add one with just a name and phone.', 'Tap Send. Nifti gives you a link to paste in Viber or SMS. They confirm in their browser.'], go: "go('orders')", gl: 'Open Orders'},
+  {c: 'orders', q: 'How do I receive a delivery into stock?', a: ['Open the order that arrived and tap Receive.', 'Check the quantities. Stock goes up by itself, and anything short or damaged is noted on the order.'], go: "go('orders')", gl: 'Open Orders'},
+  {c: 'money', q: 'How do I record what a customer owes (utang)?', a: ['Open Getting paid and tap "+ Add what a customer owes".', 'Pick the customer, type the amount and the due date. Reminders go out on your schedule.'], go: "go('collections')", gl: 'Open Getting paid'},
+  {c: 'money', q: 'How do reminders reach customers?', a: ['Each customer can get reminders on the app they use: Viber, WhatsApp, Messenger, SMS or email.', 'Email goes out by itself. For the others, Nifti lines up the message and you send it with one tap.', 'Set each customer\'s app in Getting paid.'], go: "go('collections')", gl: 'Open Getting paid'},
+  {c: 'money', q: 'How do I put my GCash or bank QR on every bill?', a: ['Open Settings, then "How customers pay you".', 'Tap Add GCash QR and take a photo of your QR. Every bill and statement shows it from now on.'], go: "go('settings')", gl: 'Open Settings'},
+  {c: 'money', q: 'Why is my cash count short or over?', a: ['Open Sales, Count the cash, and tap the day.', 'Nifti shows what should be in the drawer: change fund, cash sales, collections, minus cash paid out. Compare it with what was counted.'], go: "go('sales')", gl: 'Open Sales'},
+  {c: 'shop', q: 'How do I snap a receipt as an expense?', a: ['Open Expenses and tap "+ Add expense".', 'Take a photo of the receipt, then pick who paid and where the money came from.'], go: "go('expenses')", gl: 'Open Expenses'},
+  {c: 'shop', q: 'How do I change my selling prices?', a: ['Open Prices. Tap a cost or a price in the list to change it.', 'To tell your customers, use "Announce new prices" and pick a start date.'], go: "go('prices')", gl: 'Open Prices'},
+  {c: 'team', q: 'How do I add my staff and choose what they see?', a: ['Open Team and tap "Add or manage people".', 'Type their name and pick a role (cashier, driver, collector). They only see the pages for that role.'], go: "go('team')", gl: 'Open Team'},
+  {c: 'team', q: 'How do I give someone a job?', a: ['Open Team. Type the job, pick the person and a due date, and tap Add task.', 'They tap Start when they begin and Done when finished. You see it move across the board.'], go: "go('team')", gl: 'Open Team'},
+  {c: 'plan', q: 'How do I upgrade to Pro or Business?', a: ['Tap Plans & pricing at the bottom of the menu and pick a plan.', 'Scan our QR with GCash, Maya or your bank app, then type the reference number. We switch you on within a few hours.'], go: 'nf26OpenPlans()', gl: 'See plans'},
+  {c: 'plan', q: 'What happens if I stop paying?', a: ['You go back to Free. Your records stay, and you can download everything any time.']},
+];
+const NF33H = {cat: 'all', q: '', open: -1, view: 'answers', pollT: null};
+function nf33HOnline(){ try{ const h = Number(new Date().toLocaleString('en-US', {timeZone: 'Asia/Manila', hour: 'numeric', hour12: false})); return h >= 8 && h < 20; }catch(e){ return true; } }
+function nf33HAsk(q){ NF33H.view = 'chat'; NF32.draft = q; nf32Paint(); setTimeout(() => { const t = document.getElementById('nf32Txt'); if(t){ t.focus(); t.setSelectionRange(t.value.length, t.value.length); } }, 50); }
+function nf33HUnreadMine(){ return (NF26B.help || []).filter(m => m.from_admin && m._new).length; }
+function nf32Paint(){
+  const pg = document.getElementById('page-help'); if(!pg) return;
+  const ta = document.getElementById('nf32Txt'); if(ta) NF32.draft = ta.value;
+  const list = NF26B.help || [], vib = NF26B.contacts && NF26B.contacts.viber, hrs = NF26B.contacts && NF26B.contacts.hours, demo = !(typeof nf25Real === 'function' && nf25Real());
+  const lastMine = list.map(m => !m.from_admin).lastIndexOf(true), firstNew = list.findIndex((m, i) => m.from_admin && m._new);
+  const q = NF33H.q.trim().toLowerCase();
+  const faqs = NF33H_FAQ.map((f, i) => ({f, i})).filter(x => (NF33H.cat === 'all' || x.f.c === NF33H.cat) && (!q || (x.f.q + ' ' + x.f.a.join(' ')).toLowerCase().includes(q)));
+  const online = nf33HOnline(), unread = nf33HUnreadMine();
+  const asked = list.filter(m => !m.from_admin).map((m, i, arr) => { const idx = list.indexOf(m); const ans = list.slice(idx + 1).find(x => x.from_admin && (list.slice(idx + 1, list.indexOf(x)).every(y => y.from_admin))); return {m, ans}; }).reverse().slice(0, 5);
+  pg.innerHTML = `<div class="nf33h ${NF33H.view === 'chat' ? 'v-chat' : 'v-ans'}">
+    <section class="nf33h-center">
+      <div class="nf33h-hero"><h1>How can we help?</h1><p>Tap a question for the answer, or chat with a real person from the Nifti team.</p>
+        <label class="nf33h-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="nf33hQ" type="search" placeholder='Try "utang", "receipt", "GCash QR"' value="${escapeHtml(NF33H.q)}" oninput="NF33H.q=this.value; NF33H.open=-1; nf32Paint(); const i=document.getElementById('nf33hQ'); i.focus(); i.setSelectionRange(i.value.length, i.value.length)"></label></div>
+      <div class="nf33h-cats">${NF33H_CATS.map(([k, l]) => `<button type="button" class="${NF33H.cat === k ? 'on' : ''}" onclick="NF33H.cat='${k}'; NF33H.open=-1; nf32Paint()">${l}</button>`).join('')}</div>
+      <div class="nf33h-faq">${faqs.map(({f, i}) => `<div class="nf33h-q${NF33H.open === i ? ' open' : ''}"><button type="button" class="nf33h-qh" aria-expanded="${NF33H.open === i}" onclick="NF33H.open = NF33H.open === ${i} ? -1 : ${i}; nf32Paint()"><b>${escapeHtml(f.q)}</b><span aria-hidden="true">${NF33H.open === i ? '−' : '+'}</span></button>
+        ${NF33H.open === i ? `<div class="nf33h-a"><ol>${f.a.map(x => `<li>${escapeHtml(x)}</li>`).join('')}</ol><div class="nf33h-aa">${f.go ? `<button type="button" class="btn btn-primary" onclick="${f.go}">${escapeHtml(f.gl || 'Take me there')}</button>` : ''}<button type="button" class="btn btn-outline" onclick="nf33HAsk(${JSON.stringify('About: ' + f.q + ' ').replace(/"/g, '&quot;')})">Still stuck? Ask us</button></div></div>` : ''}</div>`).join('')
+        || `<div class="nf33h-none"><p>No answer for "${escapeHtml(NF33H.q)}" yet.</p><button type="button" class="btn btn-primary" onclick="nf33HAsk(${JSON.stringify(NF33H.q).replace(/"/g, '&quot;')})">Ask the Nifti team</button></div>`}</div>
+      ${asked.length ? `<h3 class="nf33h-h3">My questions</h3><div class="nf33h-mine">${asked.map(x => `<button type="button" class="nf33h-mq${x.ans && x.ans._new ? ' un' : ''}" onclick="NF33H.view='chat'; nf32Paint()"><span class="nf33h-st ${x.ans ? 'ok' : 'wait'}">${x.ans ? (x.ans._new ? 'New answer' : 'Answered') : 'Waiting'}</span><b>${escapeHtml(String(x.m.message || '').slice(0, 90))}</b><small>${nf32Time(x.m.created_at)}</small></button>`).join('')}</div>` : ''}
+    </section>
+    <aside class="nf33h-chat">
+      <div class="nf33h-ch"><button type="button" class="nf33h-back" onclick="NF33H.view='answers'; nf32Paint()" aria-label="Back to answers">‹</button><span class="nf33h-faces"><i style="background:#0E7490">JY</i><i style="background:#B45309">MK</i><i style="background:#1D4ED8">SG</i></span>
+        <div><b>Nifti team</b><small><span class="nf33h-dot ${online ? 'on' : ''}"></span>${online ? 'Active now · usually answers within the hour' : 'Away · we answer first thing tomorrow'}${hrs ? ' · ' + escapeHtml(hrs) : ''}</small></div></div>
+      <div class="nf33h-body" id="nf32Body">${list.length ? list.map((m, i) => (i === firstNew ? '<div class="nf33h-new">New reply</div>' : '') + `<div class="nf33h-m${m.from_admin ? '' : ' me'}${m._new ? ' fresh' : ''}">${m.from_admin ? '<span class="nf33h-mav">N</span>' : ''}<div><p>${escapeHtml(m.message || (m.has_file ? 'Sent a file.' : ''))}</p><small>${m.from_admin ? 'Nifti team' : escapeHtml(m.from_name || 'You')} · ${nf32Time(m.created_at)}</small></div></div>`).join('')
+        : `<div class="nf33h-hello"><span class="nf33h-mav lg">N</span><b>Hi! 👋</b><p>Ask us anything about Nifti. A real person answers, right here.</p></div>`}</div>
+      <div class="nf33h-chips">${(typeof NF26_HELP_TOPICS !== 'undefined' ? NF26_HELP_TOPICS : []).map(t => `<button type="button" onclick="const x=document.getElementById('nf32Txt'); x.value=this.textContent; x.focus()">${escapeHtml(t)}</button>`).join('')}</div>
+      <div class="nf33h-send"><textarea id="nf32Txt" rows="1" maxlength="2000" placeholder="Type your question…" aria-label="Your message" onkeydown="if(event.key==='Enter' && !event.shiftKey && !event.altKey){event.preventDefault(); nf32Send();}">${escapeHtml(NF32.draft)}</textarea><button type="button" class="nf33h-sendb" ${NF32.busy ? 'disabled' : ''} onclick="nf32Send()" aria-label="Send"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.4 20.4 21 12 3.4 3.6 3.4 10l12.6 2-12.6 2z"/></svg></button></div>
+      ${vib ? `<p class="nf33h-vib">Rather use Viber? <a href="viber://chat?number=${encodeURIComponent(vib.replace(/[^\d+]/g, ''))}">Message us on Viber</a></p>` : ''}
+      ${demo ? '<p class="nf33h-demo">Demo shop: messages here are a sample. In your own account a real person answers.</p>' : ''}
+    </aside>
+    <button type="button" class="nf33h-fab" onclick="NF33H.view='chat'; nf32Paint()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Chat with us${unread ? `<em>${unread}</em>` : ''}</button>
+  </div>`;
+  const b = document.getElementById('nf32Body'); if(b) b.scrollTop = b.scrollHeight;
+}
+// replies show up while Help is open, like Messenger
+function nf33HPoll(){
+  clearInterval(NF33H.pollT);
+  NF33H.pollT = setInterval(async () => {
+    const pg = document.getElementById('page-help'); if(!pg || !pg.classList.contains('active')){ clearInterval(NF33H.pollT); return; }
+    if(!(typeof nf25Real === 'function' && nf25Real())) return;
+    try{ const { data } = await sb.rpc('help_thread'); if(Array.isArray(data) && data.length !== (NF26B.help || []).length){ const before = (NF26B.help || []).length; NF26B.help = data.map((m, i) => i >= before && m.from_admin ? Object.assign({}, m, {_new: true}) : m); nf32Paint(); } }catch(e){}
+  }, 15000);
+}
+(function(){
+  try{ window.nf32Paint = nf32Paint; }catch(e){}
+  const sh = window.nf32Show;
+  if(typeof sh === 'function' && !sh._nf33){ const w = function(){ const r = sh.apply(this, arguments); nf33HPoll(); return r; }; w._nf33 = true; window.nf32Show = w; try{ nf32Show = w; }catch(e){} }
+})();
+
+/* ===== Round 33: reminders on the app each customer actually uses (Viber, WhatsApp, Messenger, SMS, email, Nifti chat) ===== */
+// Email and Nifti chat go out by themselves. Viber, WhatsApp, Messenger and SMS open with the message ready: one tap to send.
+const NF33R = {prefs: null, cur: null, queue: null, qi: 0};
+const NF33R_CH = {
+  viber: {l: 'Viber', c: '#7360F2', ic: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.9 2 3 5.4 3 10.2c0 2.7 1.3 5 3.4 6.5V21l3.2-2.1c.8.2 1.6.3 2.4.3 5.1 0 9-3.4 9-8.1S17.1 2 12 2zm4.3 11.6c-.2.6-1.1 1.1-1.6 1.2-.4 0-.9.1-2.9-.8-2.4-1-3.9-3.5-4-3.7-.1-.2-1-1.3-1-2.5s.6-1.8.9-2c.2-.2.5-.3.6-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.1.1.3 0 .5l-.3.4-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 1.9 1.1.9 2 1.2 2.3 1.4.3.1.4.1.6-.1l.7-.9c.2-.2.4-.2.6-.1l1.8.9c.2.1.4.2.4.3.1.1.1.6-.1 1.4z"/></svg>'},
+  whatsapp: {l: 'WhatsApp', c: '#25D366', ic: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8 0-1.4.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.3.5-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.2 1.4 2.5 1.5.3.2.5.1.7-.1l.8-1c.2-.3.4-.2.6-.1l2 1c.3.1.5.2.5.3.1.2.1.8-.2 1.7z"/></svg>'},
+  messenger: {l: 'Messenger', c: '#0084FF', ic: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.4 2 2 6.1 2 11.6c0 2.9 1.2 5.4 3.2 7.1V22l3-1.7c1.1.3 2.3.5 3.8.5 5.6 0 10-4.1 10-9.6S17.6 2 12 2zm1 12.9-2.5-2.7-5 2.7 5.5-5.8 2.6 2.7 4.9-2.7-5.5 5.8z"/></svg>'},
+  sms: {l: 'Text (SMS)', c: '#475467', ic: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 9h8M8 13h5"/></svg>'},
+  email: {l: 'Email', c: '#B45309', ic: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>'},
+  chat: {l: 'Nifti chat', c: '#1F6B45', ic: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>'},
+};
+function nf33RKey(){ return 'nifti-contact-prefs:' + (myBusiness ? myBusiness.id : 'demo'); }
+async function nf33RLoad(){
+  if(NF33R.prefs) return NF33R.prefs;
+  NF33R.prefs = {};
+  if(myBusiness){ try{ const { data } = await sb.from('contact_prefs').select('*').eq('business_id', myBusiness.id); (data || []).forEach(r => { NF33R.prefs[r.party_id] = {channel: r.channel, phone: r.phone || '', handle: r.handle || '', email: r.email || ''}; }); }catch(e){} }
+  else { try{ NF33R.prefs = JSON.parse(localStorage.getItem(nf33RKey()) || '{}') || {}; }catch(e){} if(!Object.keys(NF33R.prefs).length) NF33R.prefs = {buy_riverside: {channel: 'whatsapp', phone: '0917 555 0142'}}; }
+  return NF33R.prefs;
+}
+async function nf33RSave(id, p){
+  NF33R.prefs = NF33R.prefs || {}; NF33R.prefs[id] = p;
+  if(myBusiness){ try{ await sb.from('contact_prefs').upsert({business_id: myBusiness.id, party_id: String(id), channel: p.channel, phone: p.phone || null, handle: p.handle || null, email: p.email || null, updated_at: new Date().toISOString()}); }catch(e){} }
+  else { try{ localStorage.setItem(nf33RKey(), JSON.stringify(NF33R.prefs)); }catch(e){} }
+}
+function nf33RBuyer(id){ return (buyersData || []).find(x => x.id === id) || {}; }
+function nf33ROnNifti(id){ const b = nf33RBuyer(id); return !b.isOutside && allConversations().some(c => c.id === id); }
+function nf33RPref(id){
+  const p = (NF33R.prefs || {})[id], b = nf33RBuyer(id), oc = b.outsideContact || {};
+  const base = {channel: nf33ROnNifti(id) ? 'chat' : 'viber', phone: b.phone || oc.phone || '', handle: '', email: b.email || oc.email || ''};
+  return Object.assign(base, p || {});
+}
+function nf33RPhone(s){ let d = String(s || '').replace(/[^\d+]/g, ''); if(d.startsWith('+')) d = d.slice(1); if(d.startsWith('09') && d.length === 11) d = '63' + d.slice(1); if(d.startsWith('9') && d.length === 10) d = '63' + d; return d; }
+async function nf33RText(g){
+  let text = colMessage(g), link = null;
+  try{ if(myBusiness){ const { data } = await sb.rpc('create_statement_link', {p_buyer: g.id}); if(data) link = appBaseUrl() + '#st/' + data; } else link = appBaseUrl() + '#st/demo'; }catch(e){}
+  if(link) text = text.replace('\nSalamat!', `\nSee your balance and how to pay (tap "I've paid" once you have): ${link}\nSalamat!`);
+  return text;
+}
+async function colRemindNf33(buyerId){
+  await nf33RLoad();
+  const g = colRows().find(x => x.id === buyerId); if(!g) return;
+  const p = nf33RPref(buyerId);
+  NF33R.cur = {id: buyerId, g, p: Object.assign({}, p), text: await nf33RText(g), always: true};
+  window._colPendingLog = g.needs.map(n => ({po_id: n.po.id, stage: n.stage}));
+  nf33RSheet();
+}
+function nf33RSheet(){
+  const x = NF33R.cur; if(!x) return;
+  const ch = x.p.channel, on = nf33ROnNifti(x.id), q = NF33R.queue;
+  const list = ['viber', 'whatsapp', 'messenger', 'sms', 'email'].concat(on ? ['chat'] : []);
+  const field = ch === 'viber' || ch === 'whatsapp' || ch === 'sms' ? `<label class="nf33r-f"><span>Their mobile number</span><input id="nf33rPhone" inputmode="tel" placeholder="e.g. 0917 123 4567" value="${escapeHtml(x.p.phone || '')}" oninput="NF33R.cur.p.phone=this.value"></label>`
+    : ch === 'messenger' ? `<label class="nf33r-f"><span>Their Facebook name or link (optional)</span><input id="nf33rHandle" placeholder="e.g. facebook.com/riversidebuilders or riversidebuilders" value="${escapeHtml(x.p.handle || '')}" oninput="NF33R.cur.p.handle=this.value"></label>`
+    : ch === 'email' ? `<label class="nf33r-f"><span>Their email</span><input id="nf33rEmail" type="email" placeholder="name@example.com" value="${escapeHtml(x.p.email || '')}" oninput="NF33R.cur.p.email=this.value"></label>` : '';
+  const how = ch === 'whatsapp' ? 'WhatsApp opens with the message already typed. Just tap send.'
+    : ch === 'sms' ? 'Your phone\'s Messages app opens with the message already typed.'
+    : ch === 'viber' ? 'Nifti copies the message and opens their Viber chat. Paste it (long-press, Paste) and send.'
+    : ch === 'messenger' ? 'Nifti copies the message and opens Messenger. Paste it and send.'
+    : ch === 'email' ? (collSettings().email ? 'Email reminders also go out by themselves on your schedule.' : 'Your email app opens with the message ready.')
+    : 'Sent right away in your Nifti chat with them.';
+  const btn = ch === 'viber' ? 'Copy message & open Viber' : ch === 'messenger' ? 'Copy message & open Messenger' : ch === 'chat' ? 'Send in Nifti chat' : 'Open ' + NF33R_CH[ch].l;
+  slModal('nf33rSheet', `<div class="sl-sheet-h"><b>${q ? `Reminder ${NF33R.qi + 1} of ${q.length}: ` : 'Remind '}${escapeHtml(x.g.name)}</b><button class="sl-x" onclick="slClose('nf33rSheet'); NF33R.queue=null" aria-label="Close">✕</button></div>
+    <div class="nf33r">
+      <div class="nf33r-sum"><b>${fmtPHP(x.g.total)}</b> owed${x.g.overdue > 0 ? ` · <span class="r">${fmtPHP(x.g.overdue)} late, ${x.g.maxLate} days</span>` : ''}</div>
+      <div class="nf33r-lbl">Send on the app they use</div>
+      <div class="nf33r-chs">${list.map(k => `<button type="button" class="${ch === k ? 'on' : ''}" style="--c:${NF33R_CH[k].c}" onclick="NF33R.cur.p.channel='${k}'; nf33RSheet()"><span>${NF33R_CH[k].ic}</span>${NF33R_CH[k].l}</button>`).join('')}</div>
+      ${field}
+      <label class="nf33r-f"><span>Message</span><textarea id="nf33rText" rows="7" oninput="NF33R.cur.text=this.value">${escapeHtml(x.text)}</textarea></label>
+      <label class="nf33r-chk"><input type="checkbox" ${x.always ? 'checked' : ''} onchange="NF33R.cur.always=this.checked"> Always use ${escapeHtml(NF33R_CH[ch].l)} for ${escapeHtml(x.g.name)}</label>
+      <p class="nf33r-how">${how}</p>
+      <div class="nf33r-acts"><button type="button" class="btn btn-primary nf33r-go" style="--c:${NF33R_CH[ch].c}" onclick="nf33RGo()"><span>${NF33R_CH[ch].ic}</span>${btn}</button>
+        ${q ? `<button type="button" class="btn btn-outline" onclick="nf33RNext()">Skip</button>` : ''}</div>
+    </div>`);
+}
+async function nf33RCopy(t){ try{ await navigator.clipboard.writeText(t); return true; }catch(e){ try{ const ta = document.createElement('textarea'); ta.value = t; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); ta.remove(); return true; }catch(e2){ return false; } } }
+async function nf33RGo(){
+  const x = NF33R.cur; if(!x) return; const ch = x.p.channel, t = x.text, ph = nf33RPhone(x.p.phone);
+  if((ch === 'whatsapp' || ch === 'sms') && ph.length < 10){ showToast('Type their mobile number first.', 'warn'); const i = document.getElementById('nf33rPhone'); if(i) i.focus(); return; }
+  if(ch === 'email' && !/@/.test(x.p.email || '')){ showToast('Type their email first.', 'warn'); const i = document.getElementById('nf33rEmail'); if(i) i.focus(); return; }
+  if(x.always) await nf33RSave(x.id, x.p);
+  let url = '';
+  if(ch === 'whatsapp') url = 'https://wa.me/' + ph + '?text=' + encodeURIComponent(t);
+  else if(ch === 'sms') url = 'sms:+' + ph + (/iphone|ipad|ipod/i.test(navigator.userAgent) ? '&' : '?') + 'body=' + encodeURIComponent(t);
+  else if(ch === 'email') url = 'mailto:' + encodeURIComponent(x.p.email) + '?subject=' + encodeURIComponent('Payment reminder from ' + (myBusiness ? myBusiness.name : 'us')) + '&body=' + encodeURIComponent(t);
+  else if(ch === 'viber'){ await nf33RCopy(t); url = ph.length >= 10 ? 'viber://chat?number=%2B' + ph : 'viber://forward?text=' + encodeURIComponent(t); showToast('Message copied. Paste it in Viber and send.', 'success'); }
+  else if(ch === 'messenger'){ await nf33RCopy(t); const h = String(x.p.handle || '').replace(/^https?:\/\/(www\.)?(m\.)?facebook\.com\//i, '').replace(/^@/, '').split(/[/?#]/)[0]; url = h ? 'https://m.me/' + encodeURIComponent(h) : 'https://www.messenger.com/'; showToast('Message copied. Paste it in Messenger and send.', 'success'); }
+  else if(ch === 'chat'){ if(sendTextInChat(x.id, t)){ showToast(`Reminder sent to ${x.g.name} in chat.`, 'success'); } }
+  if(url){ try{ window.open(url, '_blank', 'noopener'); }catch(e){ location.href = url; } }
+  try{ await colLogManual(); }catch(e){}
+  if(NF33R.queue) return nf33RNext();
+  slClose('nf33rSheet'); try{ renderCollectionsPage(); }catch(e){}
+}
+async function nf33RNext(){
+  const q = NF33R.queue; if(!q){ slClose('nf33rSheet'); return; }
+  NF33R.qi++;
+  if(NF33R.qi >= q.length){ NF33R.queue = null; slClose('nf33rSheet'); showToast('All reminders done for today. 👍', 'success'); try{ renderCollectionsPage(); }catch(e){} return; }
+  await colRemindNf33(q[NF33R.qi]);
+}
+async function nf33RQueue(){
+  await nf33RLoad();
+  const ids = colRows().filter(r => r.needsYou).map(r => r.id); if(!ids.length){ showToast('Nobody needs a reminder from you today.', 'success'); return; }
+  NF33R.queue = ids; NF33R.qi = 0; await colRemindNf33(ids[0]);
+}
+// a strip on Getting paid: how many reminders are ready, and which app each customer gets
+async function nf33RStrip(page){
+  if(typeof colTab !== 'undefined' && colTab !== 'follow') return;
+  const host = page.querySelector('#colBody') || page.querySelector('#collectionsContent'); if(!host) return;
+  await nf33RLoad();
+  let rows = []; try{ rows = colRows(); }catch(e){ return; }
+  const due = rows.filter(r => r.needsYou);
+  let s = document.getElementById('nf33rStrip');
+  const sig = due.map(r => r.id).join(',') + '|' + JSON.stringify(NF33R.prefs);
+  if(s && s.dataset.sig === sig && host.contains(s)) return;
+  if(!s){ s = document.createElement('div'); s.id = 'nf33rStrip'; }
+  s.dataset.sig = sig; s.className = 'nf33r-strip' + (due.length ? ' due' : '');
+  s.innerHTML = `<div><b>${due.length ? `${due.length} reminder${due.length === 1 ? '' : 's'} ready to send` : 'Reminders are on schedule'}</b><small>Each customer gets it on their own app: ${['viber', 'whatsapp', 'messenger', 'sms', 'email'].map(k => `<span class="nf33r-mini" style="--c:${NF33R_CH[k].c}">${NF33R_CH[k].ic}</span>`).join('')} Email and Nifti chat go out by themselves.</small></div>
+    ${due.length ? `<button type="button" class="btn btn-primary" onclick="nf33RQueue()">Send them now</button>` : ''}`;
+  const first = host.querySelector('.sl-tiles, .sl-card'); if(first && first.parentElement === host) host.insertBefore(s, first.nextSibling); else host.prepend(s);
+  // show each customer's app on their row
+  page.querySelectorAll('button[onclick^="colRemind("]').forEach(b => { const id = (b.getAttribute('onclick').match(/colRemind\('([^']+)'\)/) || [])[1]; if(!id) return; const p = nf33RPref(id), c = NF33R_CH[p.channel];
+    if(b.dataset.nf33 === p.channel) return; b.dataset.nf33 = p.channel; b.classList.add('nf33r-rb'); b.style.setProperty('--c', c.c); b.innerHTML = `<span>${c.ic}</span>Remind`; b.title = 'Remind by ' + c.l; });
+}
+(function(){
+  try{ window.colRemind = colRemindNf33; colRemind = colRemindNf33; }catch(e){ console.warn('nf33r', e); }
+  const bc = window.colBuyerChannel;
+  if(typeof bc === 'function' && !bc._nf33){ const w = function(id){ const p = NF33R.prefs && NF33R.prefs[id]; if(p){ if(p.channel === 'chat' && nf33ROnNifti(id)) return 'chat'; if(p.channel === 'email' && p.email && collSettings().email) return 'email'; return 'manual'; } return bc.apply(this, arguments); };
+    w._nf33 = true; window.colBuyerChannel = w; try{ colBuyerChannel = w; }catch(e){} }
+  const base = nf26AfterPass;
+  nf26AfterPass = function(page){ base(page); try{ if(page && page.id === 'page-collections') nf33RStrip(page); }catch(e){ console.warn('nf33r strip', e); } };
+  window.nf26AfterPass = nf26AfterPass;
 })();
 
 function renderSidebarForViewAsRole(){
@@ -38709,7 +39327,7 @@ function refreshTeamViews(){
 function mapTeamTaskRow(r){
   return {id:r.id, title:r.title, assignedTo:r.assigned_to, createdById:r.created_by, createdBy:r.created_by_name||'Someone',
     createdAt:(r.created_at||'').slice(0,10), dueDate:r.due_date, status:r.status,
-    acknowledgedAt: r.acknowledged_at ? r.acknowledged_at.slice(0,10) : null,
+    acknowledgedAt: r.acknowledged_at ? r.acknowledged_at.slice(0,10) : null, startedAt: r.started_at ? r.started_at.slice(0,10) : null,
     completedAt: r.completed_at ? r.completed_at.slice(0,10) : null, completedBy: r.completed_by_name || null,
     bizRole: 'both'};
 }

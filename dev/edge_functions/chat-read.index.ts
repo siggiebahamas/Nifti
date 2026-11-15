@@ -66,13 +66,18 @@ Deno.serve(async (req) => {
   const items = (Array.isArray(ctx.items) ? ctx.items : []).slice(0, 300).map((x: unknown) => String(x).slice(0, 80));
   const context = `File name: ${name}\nSent in a chat with: ${String(body?.party || "").slice(0, 120)}\nShop's items: ${items.join("; ") || "(none yet)"}\nToday is ${new Date().toISOString().slice(0, 10)}.`;
   try {
-    const msg: any = await new Anthropic({ apiKey: keyRow.value }).beta.messages.create({
-      model: "claude-opus-5-5", max_tokens: 8000,
-      betas: ["server-side-fallback-2026-07-01"], fallbacks: "default",
-      output_config: { effort: "low", format: { type: "json_schema", schema: SCHEMA } },
-      system: SYSTEM,
-      messages: [{ role: "user", content: [block, { type: "text", text: context }] }],
-    } as any);
+    // Haiku 5.5 reads printed invoices and price lists for a fraction of a peso. If it ever refuses a setting,
+    // the file is read once more with Opus 5.5 (the setup this function shipped with).
+    const client = new Anthropic({ apiKey: keyRow.value });
+    const req = { max_tokens: 8000, output_config: { effort: "low", format: { type: "json_schema", schema: SCHEMA } }, system: SYSTEM,
+      messages: [{ role: "user", content: [block, { type: "text", text: context }] }] };
+    let msg: any;
+    try { msg = await client.messages.create({ model: "claude-haiku-5-5", ...req } as any); }
+    catch (e1) {
+      if (!(e1 instanceof Anthropic.BadRequestError) && !(e1 instanceof Anthropic.NotFoundError)) throw e1;
+      console.error("chat-read haiku fallback", (e1 as any)?.message);
+      msg = await client.beta.messages.create({ model: "claude-opus-5-5", betas: ["server-side-fallback-2026-07-01"], fallbacks: "default", ...req } as any);
+    }
     if (msg.stop_reason === "refusal") { await finish(false, 0, "refusal"); return json({ error: "Nifti could not read this file." }, 422); }
     if (msg.stop_reason === "max_tokens") { await finish(false, 0, "too long"); return json({ error: "This file is too long to read at once." }, 422); }
     const text = (msg.content || []).filter((b: any) => b.type === "text").map((b: any) => b.text).join("");

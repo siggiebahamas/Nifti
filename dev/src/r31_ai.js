@@ -42,6 +42,8 @@ function nf31Detect(m, conv){
   else if(/\b(on the way|otw|out for delivery|dispatched|shipped|loaded|papunta na|byahe na)\b/.test(all)) out.kind = 'shipped';
   else if(/\b(confirm|confirmed|confirming|noted|in production|po received|got your order|will prepare|ok na|sige po|approved|processing)\b/.test(all) && (out.po || nf31FindPO('', conv))) out.kind = 'confirm';
   if(pct) out.pct = Number(pct);
+  // a question is not a confirmation or a delivery ("do you have a confirmed date?")
+  if(/\?/.test(txt) && ['confirm', 'delivered', 'shipped'].includes(out.kind)) out.kind = null;
   return out.kind ? out : null;
 }
 // what this side bought from this party before: last price per item

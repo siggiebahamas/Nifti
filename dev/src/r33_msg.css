@@ -1,0 +1,83 @@
+/* ===== Messages like Viber / WhatsApp ===== */
+#page-messages .msg-search, #page-messages .msg-filter-chips{display:none !important;}
+html[data-ty] #view-app #page-messages.active > .page-head, #view-app #page-messages.active > .page-head, #view-app #page-messages > .nf18-hubwrap{display:none !important;}
+#page-messages .nf33-head{flex:none;background:#FFFFFF;border-bottom:1px solid #E9ECEF;padding:14px 14px 0;position:sticky;top:0;z-index:3;}
+#page-messages .nf33-title{display:flex;align-items:center;justify-content:space-between;margin:0 2px 10px;}
+#page-messages .nf33-title b{font-size:22px;font-weight:800;color:#0B0F14;letter-spacing:-.01em;}
+#page-messages .nf33-ico{width:38px;height:38px;border-radius:50%;border:0;background:#F2F4F7;color:#344054;display:grid;place-items:center;cursor:pointer;}
+#page-messages .nf33-ico:hover{background:#E4E7EC;} #page-messages .nf33-ico svg{width:19px;height:19px;}
+#page-messages .nf33-search{display:flex;align-items:center;gap:8px;height:42px;padding:0 12px;border-radius:12px;background:#F2F4F7;color:#667085;margin-bottom:12px;}
+#page-messages .nf33-search:focus-within{background:#FFFFFF;box-shadow:0 0 0 2px #1F6B45 inset;}
+#page-messages .nf33-search svg{width:18px;height:18px;flex:none;}
+#page-messages .nf33-search input{flex:1;min-width:0;border:0;background:transparent;font:inherit;font-size:16px;color:#101828;outline:0;}
+#page-messages .nf33-search input::-webkit-search-cancel-button{display:none;}
+#page-messages .nf33-clr{display:none;border:0;background:#D0D5DD;color:#FFFFFF;width:20px;height:20px;border-radius:50%;padding:3px;cursor:pointer;}
+#page-messages .nf33-head.searching .nf33-clr{display:grid;place-items:center;} #page-messages .nf33-clr svg{width:14px;height:14px;}
+/* tabs: always on top, colored, equal width so nothing is cut off */
+#page-messages .nf33-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:0 -14px;}
+#page-messages .nf33-tabs button{position:relative;display:flex;align-items:center;justify-content:center;gap:5px;min-width:0;height:46px;border:0;border-bottom:3px solid transparent;background:transparent;font:inherit;font-size:14.5px;font-weight:700;color:#475467;cursor:pointer;padding:0 4px;}
+#page-messages .nf33-tabs .nf33-ti{display:grid;place-items:center;flex:none;} #page-messages .nf33-tabs .nf33-ti svg{width:18px;height:18px;}
+#page-messages .nf33-tabs .nf33-tl{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+#page-messages .nf33-tabs em{flex:none;font-style:normal;min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:#E41E3F;color:#FFFFFF;font-size:12px;font-weight:800;display:grid;place-items:center;line-height:1;}
+#page-messages .nf33-tabs button[data-g="team"].on{color:#92400E;border-color:#F59E0B;}
+#page-messages .nf33-tabs button[data-g="cus"].on{color:#1D4ED8;border-color:#3B82F6;}
+#page-messages .nf33-tabs button[data-g="sup"].on{color:#047857;border-color:#10B981;}
+#page-messages .nf33-tabs button[data-g="team"] .nf33-ti{color:#D97706;} #page-messages .nf33-tabs button[data-g="cus"] .nf33-ti{color:#2563EB;} #page-messages .nf33-tabs button[data-g="sup"] .nf33-ti{color:#059669;}
+#page-messages .nf33-head.searching .nf33-tabs{opacity:.45;pointer-events:none;}
+/* rows: photo left, name and last message in the middle, time and count on the right */
+#page-messages #convList{padding:4px 6px 10px;background:#FFFFFF;}
+#page-messages .nf33-row, #page-messages .nf33-hit{display:flex;align-items:center;gap:12px;width:100%;padding:10px 10px;border:0;border-radius:12px;background:transparent;font:inherit;text-align:left;cursor:pointer;color:#101828;position:relative;}
+#page-messages .nf33-row:hover, #page-messages .nf33-hit:hover{background:#F5F6F8;}
+#page-messages .nf33-row.on{background:#EEF2F6;}
+#page-messages .nf33-row.on::before{content:'';position:absolute;left:0;top:12px;bottom:12px;width:3px;border-radius:3px;background:var(--nf33c,#98A2B3);}
+#page-messages .nf33-row[data-g="team"]{--nf33c:#F59E0B;} #page-messages .nf33-row[data-g="cus"]{--nf33c:#3B82F6;} #page-messages .nf33-row[data-g="sup"]{--nf33c:#10B981;}
+#page-messages .nf33-av{flex:none;width:50px;height:50px;border-radius:50%;overflow:hidden;display:grid;place-items:center;background:#E4E7EC;}
+#page-messages .nf33-av.sm{width:40px;height:40px;}
+#page-messages .nf33-av img{width:100%;height:100%;object-fit:cover;display:block;}
+#page-messages .nf33-av .nf-ini{width:100%;height:100%;display:grid;place-items:center;color:#FFFFFF;font-weight:800;font-size:17px;}
+#page-messages .nf33-av.sm .nf-ini{font-size:14px;}
+#page-messages .nf33-avt{background:#FEF3C7;color:#B45309;} #page-messages .nf33-avt svg{width:26px;height:26px;}
+#page-messages .nf33-mid{flex:1;min-width:0;display:grid;gap:3px;}
+#page-messages .nf33-top{display:flex;align-items:baseline;gap:8px;min-width:0;}
+#page-messages .nf33-top b{flex:1;min-width:0;font-size:16.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#0B0F14;}
+#page-messages .nf33-top time{flex:none;font-size:13px;color:#667085;}
+#page-messages .nf33-bot{display:flex;align-items:center;gap:8px;min-width:0;}
+#page-messages .nf33-pv{flex:1;min-width:0;font-size:15px;color:#667085;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+#page-messages .nf33-pv i{font-style:normal;color:#98A2B3;}
+#page-messages .nf33-pi{display:inline-flex;vertical-align:-3px;margin-right:4px;} #page-messages .nf33-pi svg{width:16px;height:16px;}
+#page-messages .nf33-badge{flex:none;font-style:normal;min-width:22px;height:22px;padding:0 7px;border-radius:999px;background:#E41E3F;color:#FFFFFF;font-size:12.5px;font-weight:800;display:grid;place-items:center;}
+#page-messages .nf33-row.un .nf33-top b{font-weight:800;} #page-messages .nf33-row.un .nf33-pv{color:#101828;font-weight:700;} #page-messages .nf33-row.un time{color:#E41E3F;font-weight:700;}
+#page-messages .nf33-oc{justify-self:start;max-width:100%;font-size:12.5px;font-weight:700;color:#92400E;background:#FEF3C7;border-radius:999px;padding:2px 9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+#page-messages .nf33-tag{flex:none;font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;border-radius:999px;padding:1px 7px;}
+#page-messages .nf33-tag[data-g="cus"]{background:#DBEAFE;color:#1D4ED8;} #page-messages .nf33-tag[data-g="sup"]{background:#D1FAE5;color:#047857;}
+#page-messages .nf33-hit mark{background:#FEF08A;color:inherit;border-radius:3px;padding:0 1px;}
+#page-messages .nf33-sh{margin:12px 10px 4px;font-size:12.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#667085;}
+#page-messages .nf33-empty, #page-messages .nf33-note{margin:16px 12px;font-size:14.5px;color:#667085;text-align:center;}
+#page-messages .nf33-note{text-align:left;margin:6px 12px;font-size:13.5px;}
+#page-messages .msg-bubble-row.nf33-flash .msg-bubble{box-shadow:0 0 0 3px #FACC15 !important;transition:box-shadow .3s;}
+
+/* computer: the chat fills the screen under the top bar, like Viber on a computer */
+@media (min-width:901px){
+  body.nf33-msgs #view-app .content, #view-app .content:has(> #page-messages.active){padding:0 !important;}
+  html[data-ty] #view-app #page-messages.active > .page-head, #view-app #page-messages.active > .page-head{display:none !important;}
+  html[data-ty] #view-app #page-messages .messages-shell, #view-app #page-messages .messages-shell{height:calc(100vh - 68px) !important;min-height:520px !important;max-height:none !important;border-radius:0 !important;border:0 !important;border-top:1px solid #E9ECEF !important;box-shadow:none !important;margin:0 !important;grid-template-columns:400px minmax(0,1fr) !important;}
+  html[data-ty] #view-app #page-messages .msg-sidebar, #view-app #page-messages .msg-sidebar{display:flex !important;flex-direction:column;min-height:0;border-right:1px solid #E9ECEF !important;background:#FFFFFF !important;}
+  #view-app #page-messages #convList{flex:1;min-height:0;overflow-y:auto;}
+  html[data-ty] #view-app #page-messages .msg-thread, #view-app #page-messages .msg-thread{min-height:0;}
+  html[data-ty] #view-app #page-messages .msg-thread-body{background:#EFEAE2 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cg fill='%23000' fill-opacity='.025'%3E%3Ccircle cx='10' cy='10' r='2'/%3E%3Ccircle cx='50' cy='40' r='2'/%3E%3Ccircle cx='25' cy='65' r='1.5'/%3E%3C/g%3E%3C/svg%3E") !important;}
+}
+/* phone: the list and the tabs fit the screen; tapping a chat opens it full screen */
+@media (max-width:900px){
+  body.nf33-msgs #view-app .content, #view-app .content:has(> #page-messages.active){padding:0 !important;}
+  html[data-ty] #view-app #page-messages .messages-shell, #view-app #page-messages .messages-shell{height:calc(100dvh - 135px) !important;min-height:420px !important;margin:0 !important;border:0 !important;border-radius:0 !important;box-shadow:none !important;}
+  html[data-ty] #view-app #page-messages .msg-sidebar, #view-app #page-messages .msg-sidebar{display:flex;flex-direction:column;min-height:0;height:100%;border:0 !important;background:#FFFFFF !important;}
+  html[data-ty] #view-app #page-messages .messages-shell.thread-active .msg-sidebar{display:none !important;}
+  #view-app #page-messages #convList{flex:1;min-height:0;overflow-y:auto;}
+  #page-messages .nf33-head{padding:10px 12px 0;}
+  #page-messages .nf33-title b{font-size:20px;}
+  #page-messages .nf33-tabs{margin:0 -12px;}
+  #page-messages .nf33-tabs button{font-size:14px;gap:5px;height:44px;}
+  #page-messages .nf33-tabs .nf33-ti svg{width:17px;height:17px;}
+  #page-messages .nf33-av{width:48px;height:48px;}
+}
+@media (max-width:600px){ #page-messages .nf33-tabs .nf33-ti{display:none;} #page-messages .nf33-tabs button{font-size:14.5px;} }

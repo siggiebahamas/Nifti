@@ -117,11 +117,10 @@ Deno.serve(async (req) => {
 
   const client = new Anthropic({ apiKey });
   try {
-    const msg: any = await client.beta.messages.create({
-      model: "claude-opus-5-5",
+    // Sonnet 5.5 reads handwriting well at half Opus's price. If it ever refuses a setting, the same
+    // page is read once more with Opus 5.5 (the setup this function shipped with), so a page never fails on cost.
+    const req = {
       max_tokens: 16000,
-      betas: ["server-side-fallback-2026-07-01"],
-      fallbacks: "default",
       output_config: { effort: "medium", format: { type: "json_schema", schema: SCHEMA } },
       system: SYSTEM,
       messages: [{
@@ -131,7 +130,14 @@ Deno.serve(async (req) => {
           { type: "text", text: context },
         ],
       }],
-    } as any);
+    };
+    let msg: any;
+    try { msg = await client.messages.create({ model: "claude-sonnet-5-5", ...req } as any); }
+    catch (e1) {
+      if (!(e1 instanceof Anthropic.BadRequestError) && !(e1 instanceof Anthropic.NotFoundError)) throw e1;
+      console.error("nb-read sonnet fallback", (e1 as any)?.message);
+      msg = await client.beta.messages.create({ model: "claude-opus-5-5", betas: ["server-side-fallback-2026-07-01"], fallbacks: "default", ...req } as any);
+    }
     if (msg.stop_reason === "refusal") {
       await finish(false, 0, "refusal");
       return json({ error: "Nifti could not read this photo. Try a clearer photo of just the notebook page.", code: "refusal" }, 422);
