@@ -1,0 +1,331 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Messages, Team, Help Options</title><meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<style>
+:root{--ink:#101828;--ink2:#344054;--ink3:#667085;--line:#E4E7EC;--g:#1F6B45;--red:#E41E3F;
+  --team:#F59E0B;--teamBg:#FFF7E6;--teamInk:#92400E;--cus:#3B82F6;--cusBg:#EFF6FF;--cusInk:#1D4ED8;--sup:#10B981;--supBg:#ECFDF5;--supInk:#047857;}
+*{box-sizing:border-box}html,body{margin:0}body{font:16px/1.5 "Plus Jakarta Sans",system-ui,sans-serif;color:var(--ink);background:#F2F4F7;-webkit-font-smoothing:antialiased}
+button{font:inherit;cursor:pointer;color:inherit}
+.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}.tin{max-width:1240px;margin:0 auto;padding:12px 20px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.tin a{color:var(--g);font-weight:700;text-decoration:none;font-size:14.5px}.tin h1{margin:0;font-size:18px;flex:1;min-width:180px}
+.jump a{padding:7px 12px;border-radius:999px;border:1.5px solid #D0D5DD;background:#fff;color:var(--ink);font-weight:700;font-size:14px;margin-left:6px;display:inline-block}
+.wrap{max-width:1240px;margin:0 auto;padding:22px 20px 80px;display:grid;gap:56px}
+.sec>h2{margin:0 0 4px;font-size:26px}.sec>p.lead{margin:0 0 18px;color:var(--ink2);max-width:820px}
+.opt{margin-top:26px}.opt>h3{margin:0 0 4px;font-size:20px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}.opt>p{margin:0 0 12px;color:var(--ink2);max-width:860px}
+.rec{background:var(--g);color:#fff;border-radius:999px;padding:3px 11px;font-size:13px;font-weight:800}
+.frame{background:#fff;border:1px solid var(--line);border-radius:20px;padding:16px;overflow:hidden}
+.why{margin-top:10px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}.why div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:10px 14px;font-size:14.5px;color:var(--ink2)}.why b{color:var(--ink)}
+.badge{display:inline-grid;place-items:center;min-width:21px;height:21px;padding:0 6px;border-radius:999px;background:var(--red);color:#fff;font-size:12.5px;font-weight:800;line-height:1}
+.av{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:800;font-size:14px;flex:none}
+/* ---------- messages shared ---------- */
+.mshell{display:grid;grid-template-columns:340px 1fr;min-height:520px;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.mthread{background:#F7F8FA;display:flex;flex-direction:column}.mthread .th{background:#fff;border-bottom:1px solid var(--line);padding:12px 16px;display:flex;gap:10px;align-items:center}.mthread .th b{font-size:17px}
+.mthread .th small{display:block;color:var(--ink3);font-size:13px}.mthread .bd{flex:1;padding:16px;display:grid;gap:10px;align-content:start}
+.bub{max-width:70%;background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px 14px;font-size:15px}.bub.me{justify-self:end;background:var(--g);color:#fff;border:0}
+.tag{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:3px 8px;border-radius:999px}
+.tag.team{background:var(--teamBg);color:var(--teamInk)}.tag.cus{background:var(--cusBg);color:var(--cusInk)}.tag.sup{background:var(--supBg);color:var(--supInk)}
+.mlist{border-right:1px solid var(--line);background:#fff;display:flex;flex-direction:column;min-width:0}
+.msearch{padding:10px 12px;border-bottom:1px solid var(--line)}.msearch input{width:100%;border:1.5px solid var(--line);border-radius:999px;padding:9px 14px;font:inherit;font-size:15px;background:#F9FAFB}
+.ci{display:flex;gap:10px;align-items:center;padding:10px 14px;border:0;background:transparent;width:100%;text-align:left;border-left:4px solid transparent}
+.ci:hover{background:#F6F7F9}.ci.on{background:#EEF2F6}.ci .m{flex:1;min-width:0}.ci .m b{display:block;font-size:15.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ci .m small{display:block;font-size:14px;color:var(--ink3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ci.un .m b,.ci.un .m small{font-weight:800;color:#050505}
+.ci .r{display:grid;justify-items:end;gap:4px;font-size:12.5px;color:var(--ink3)}.ci.team{border-left-color:var(--team)}.ci.cus{border-left-color:var(--cus)}.ci.sup{border-left-color:var(--sup)}
+.scroll{overflow-y:auto;flex:1;max-height:460px}
+/* A: tabs */
+.atabs{display:grid;grid-template-columns:repeat(3,1fr);border-bottom:1px solid var(--line)}
+.atabs button{border:0;background:#fff;padding:12px 4px 10px;font-weight:800;font-size:14.5px;display:flex;align-items:center;justify-content:center;gap:6px;border-bottom:4px solid transparent;color:var(--ink3)}
+.atabs button i{width:10px;height:10px;border-radius:50%}
+.atabs button[data-g=team] i{background:var(--team)}.atabs button[data-g=cus] i{background:var(--cus)}.atabs button[data-g=sup] i{background:var(--sup)}
+.atabs button.on[data-g=team]{border-color:var(--team);color:var(--teamInk);background:var(--teamBg)}.atabs button.on[data-g=cus]{border-color:var(--cus);color:var(--cusInk);background:var(--cusBg)}.atabs button.on[data-g=sup]{border-color:var(--sup);color:var(--supInk);background:var(--supBg)}
+.chiprow{display:flex;gap:6px;padding:8px 12px;border-bottom:1px solid var(--line)}.chiprow button{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:4px 12px;font-weight:700;font-size:13.5px}.chiprow button.on{border-color:var(--ink);background:var(--ink);color:#fff}
+/* B: folding sections */
+.bsec{border-bottom:1px solid var(--line)}.bhead{display:flex;align-items:center;gap:8px;width:100%;border:0;padding:10px 14px;font-weight:800;font-size:14px;letter-spacing:.04em;text-transform:uppercase;position:sticky;top:0;z-index:1}
+.bhead .cnt{border-radius:999px;padding:1px 9px;font-size:12.5px}.bhead .sp{flex:1}.bhead svg{width:16px;height:16px;transition:transform .15s}.bsec.shut .bhead svg{transform:rotate(-90deg)}.bsec.shut .bbody{display:none}
+.bsec.team .bhead{background:var(--teamBg);color:var(--teamInk);border-left:5px solid var(--team)}.bsec.team .cnt{background:#FDE7B8}
+.bsec.cus .bhead{background:var(--cusBg);color:var(--cusInk);border-left:5px solid var(--cus)}.bsec.cus .cnt{background:#DBEAFE}
+.bsec.sup .bhead{background:var(--supBg);color:var(--supInk);border-left:5px solid var(--sup)}.bsec.sup .cnt{background:#D1FAE5}
+.seeall{display:block;width:100%;border:0;background:#fff;padding:8px 14px 12px;text-align:left;font-weight:800;font-size:14px}
+.bsec.cus .seeall{color:var(--cusInk)}.bsec.sup .seeall{color:var(--supInk)}
+/* C: rail */
+.cwrap{display:grid;grid-template-columns:76px 1fr;min-width:0}
+.rail{background:#F7F8FA;border-right:1px solid var(--line);display:grid;align-content:start;gap:6px;padding:10px 6px}
+.rail button{border:0;background:transparent;border-radius:14px;padding:8px 2px;display:grid;justify-items:center;gap:3px;font-size:12px;font-weight:800;color:var(--ink3);position:relative}
+.rail .ic{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;color:#fff}.rail .ic svg{width:22px;height:22px}
+.rail [data-g=all] .ic{background:#475467}.rail [data-g=team] .ic{background:var(--team)}.rail [data-g=cus] .ic{background:var(--cus)}.rail [data-g=sup] .ic{background:var(--sup)}
+.rail button.on{background:#fff;box-shadow:0 1px 3px rgba(16,24,40,.12);color:var(--ink)}.rail .badge{position:absolute;top:2px;right:6px;border:2px solid #F7F8FA}
+.chead{padding:10px 14px;font-weight:800;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--line)}
+@media (max-width:820px){.mshell{grid-template-columns:1fr !important}.tin h1{font-size:16px}.jump a{margin:4px 4px 0 0}.addt{min-width:0;flex-wrap:wrap}.addt input{min-width:0}.mthread{display:none}.scroll{max-height:420px}}
+/* ---------- team shared ---------- */
+.tm-top{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.score{display:flex;gap:10px;flex-wrap:wrap}.score div{border-radius:14px;padding:10px 14px;min-width:130px;border:1.5px solid}
+.score em{display:block;font-style:normal;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.05em}.score b{font-size:24px;font-weight:800}
+.sc-g{background:#F0FDF4;border-color:#86EFAC}.sc-g em,.sc-g b{color:#15803D}.sc-y{background:#FEF9C3;border-color:#FACC15}.sc-y em{color:#854D0E}.sc-r{background:#FEF2F2;border-color:#FCA5A5}.sc-r em,.sc-r b{color:#B42318}.sc-b{background:#EFF6FF;border-color:#93C5FD}.sc-b em,.sc-b b{color:#1D4ED8}
+.addt{display:flex;gap:8px;flex:1;min-width:260px}.addt input{flex:1;border:1.5px solid var(--line);border-radius:12px;padding:10px 14px;font:inherit}.addt select{border:1.5px solid var(--line);border-radius:12px;padding:0 10px;font:inherit;background:#fff}
+.btn{border:0;border-radius:12px;background:var(--g);color:#fff;font-weight:800;padding:10px 16px}.btn.o{background:#fff;color:var(--ink);border:1.5px solid #D0D5DD}
+/* A: board */
+.board{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.col{background:#F7F8FA;border-radius:16px;padding:10px;min-height:300px;border:2px dashed transparent}.col.over{border-color:#98A2B3;background:#EEF2F6}
+.col h4{margin:2px 4px 10px;display:flex;align-items:center;gap:8px;font-size:15px}.col h4 i{width:10px;height:10px;border-radius:50%}
+.col[data-s=todo] h4 i{background:#98A2B3}.col[data-s=doing] h4 i{background:#EAB308}.col[data-s=done] h4 i{background:#16A34A}
+.card{background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:10px 12px;margin-bottom:8px;cursor:grab;display:grid;gap:6px;box-shadow:0 1px 2px rgba(16,24,40,.05)}
+.card:active{cursor:grabbing}.card b{font-size:15px}.card .meta{display:flex;gap:6px;align-items:center;flex-wrap:wrap;font-size:13px}
+.card .who{display:flex;align-items:center;gap:6px;font-weight:700}.card .who .av{width:24px;height:24px;font-size:11px}
+.pill{border-radius:999px;padding:2px 9px;font-weight:800;font-size:12.5px}.p-r{background:#FEE4E2;color:#B42318}.p-y{background:#FEF3C7;color:#92400E}.p-g{background:#DCFCE7;color:#15803D}.p-b{background:#DBEAFE;color:#1D4ED8}.p-n{background:#F2F4F7;color:#475467}
+.col[data-s=done] .card b{text-decoration:line-through;color:var(--ink3)}
+.xp{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}.xp div{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:5px 12px 5px 5px;font-size:14px}
+.xp .bar{width:80px;height:8px;border-radius:99px;background:#EAECF0;overflow:hidden}.xp .bar i{display:block;height:100%;background:#16A34A}
+/* B: squad */
+.squad{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:14px}
+.people{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.pc{border:1.5px solid var(--line);border-radius:18px;padding:14px;display:grid;gap:10px;background:#fff;position:relative}
+.pc.sel{border-color:var(--g);box-shadow:0 0 0 3px #CDEBD9}
+.pc .hd{display:flex;gap:10px;align-items:center}.pc .hd .av{width:52px;height:52px;font-size:18px;position:relative}
+.pc .hd .av s{position:absolute;right:-2px;bottom:-2px;width:16px;height:16px;border-radius:50%;border:3px solid #fff}
+.st-in{background:#16A34A}.st-out{background:#3B82F6}.st-off{background:#98A2B3}
+.pc .nm b{display:block;font-size:17px}.pc .nm small{color:var(--ink3);font-size:13.5px}
+.pc .now{background:#F7F8FA;border-radius:12px;padding:8px 10px;font-size:14px}.pc .now em{display:block;font-style:normal;font-size:12px;font-weight:800;color:var(--ink3);text-transform:uppercase;letter-spacing:.05em}
+.lvl{display:flex;gap:6px;flex-wrap:wrap}.ring{--p:60;width:46px;height:46px;border-radius:50%;background:conic-gradient(#16A34A calc(var(--p)*1%),#EAECF0 0);display:grid;place-items:center}
+.ring span{width:36px;height:36px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:12px;font-weight:800}
+.pc .acts{display:flex;gap:6px}.pc .acts button{flex:1;border:1.5px solid #D0D5DD;background:#fff;border-radius:10px;padding:7px 4px;font-weight:700;font-size:13.5px}
+.feed{background:#0F172A;color:#E2E8F0;border-radius:18px;padding:14px;display:grid;align-content:start;gap:8px;max-height:560px;overflow:auto}
+.feed h4{margin:0 0 4px;color:#fff;display:flex;align-items:center;gap:8px}.feed h4 i{width:9px;height:9px;border-radius:50%;background:#22C55E;box-shadow:0 0 0 4px rgba(34,197,94,.25);animation:pulse 1.6s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 7px rgba(34,197,94,0)}}
+.fi{font-size:14px;border-left:3px solid #334155;padding:2px 0 2px 10px}.fi small{display:block;color:#94A3B8;font-size:12px}.fi.g{border-color:#22C55E}.fi.y{border-color:#EAB308}.fi.r{border-color:#F87171}
+.qassign{display:none;margin-top:10px;gap:8px}.qassign.on{display:flex;flex-wrap:wrap}
+/* C: day map */
+.daymap{border:1px solid var(--line);border-radius:16px;overflow:auto}
+.dm{display:grid;grid-template-columns:150px repeat(10,minmax(70px,1fr));min-width:880px}
+.dm>div{border-bottom:1px solid #F2F4F7;border-right:1px solid #F2F4F7;min-height:62px;position:relative}
+.dm .hh{min-height:34px;font-size:12.5px;font-weight:800;color:var(--ink3);display:grid;place-items:center;background:#F9FAFB}
+.dm .pn{display:flex;align-items:center;gap:8px;padding:0 10px;font-weight:800;font-size:14.5px;background:#fff;position:sticky;left:0;z-index:1}.dm .pn .av{width:30px;height:30px;font-size:12px}
+.blk{position:absolute;top:8px;bottom:8px;border-radius:10px;padding:5px 8px;font-size:12.5px;font-weight:800;color:#fff;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;cursor:pointer;z-index:2}
+.blk.g{background:#16A34A}.blk.b{background:#3B82F6}.blk.y{background:#EAB308;color:#422006}.blk.r{background:#DC2626}.blk.d{background:#D0D5DD;color:#344054;text-decoration:line-through}
+.nowline{position:absolute;top:0;bottom:0;width:2px;background:var(--red);z-index:3}
+.quests{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px;margin-top:14px}
+.q{border:1.5px solid var(--line);border-radius:16px;padding:12px 14px;background:#fff}.q b{display:block}.q small{color:var(--ink3)}.q .bar{height:10px;border-radius:99px;background:#EAECF0;margin:8px 0 4px;overflow:hidden}.q .bar i{display:block;height:100%;border-radius:99px}
+.lb{display:grid;gap:6px;margin-top:14px}.lb div{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px 12px}.lb .n{width:24px;font-weight:800;color:var(--ink3)}.lb .pts{margin-left:auto;font-weight:800}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(120px);background:#101828;color:#fff;border-radius:14px;padding:12px 18px;font-weight:700;transition:transform .25s;z-index:50}.toast.on{transform:translateX(-50%) translateY(0)}
+@media (max-width:900px){.squad{grid-template-columns:1fr}.board{grid-template-columns:1fr}}
+/* ---------- help shared ---------- */
+.appmock{display:grid;grid-template-columns:230px 1fr;min-height:560px;border:1px solid var(--line);border-radius:16px;overflow:hidden;position:relative;background:#fff}
+.side{background:#F7F8FA;border-right:1px solid var(--line);padding:14px 10px;display:flex;flex-direction:column;gap:2px}
+.side .lg{font-weight:800;font-size:18px;padding:4px 8px 12px}.side .it{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:10px;font-size:15px;font-weight:600;border:0;background:transparent;text-align:left;width:100%}
+.side .it:hover{background:#ECEEF1}.side .it svg{width:18px;height:18px;color:#344054}.side .it .badge{margin-left:auto}.side .sp{flex:1}.side .ln{border-top:1px solid var(--line);margin:8px 0}
+.side .chip{margin-left:auto;background:#E8F3EC;color:#1F6B45;border-radius:999px;padding:3px 8px;font-size:12px;font-weight:800}
+.page{padding:22px;color:var(--ink3)}.page h4{margin:0 0 8px;color:var(--ink);font-size:22px}.ph{height:14px;background:#F2F4F7;border-radius:8px;margin:10px 0}
+.overlay{position:absolute;inset:0;background:rgba(16,24,40,.35);display:none;z-index:4}.overlay.on{display:block}
+/* A: chat drawer */
+.drawer{position:absolute;top:0;right:0;bottom:0;width:min(400px,100%);background:#fff;box-shadow:-12px 0 40px -10px rgba(16,24,40,.35);transform:translateX(105%);transition:transform .25s;z-index:5;display:flex;flex-direction:column}
+.drawer.on{transform:none}.dh{background:linear-gradient(135deg,#1F6B45,#15803D);color:#fff;padding:16px;display:flex;gap:10px;align-items:center}
+.dh .faces{display:flex}.dh .faces .av{width:36px;height:36px;border:2px solid #1F6B45;margin-left:-8px;font-size:12px}.dh .faces .av:first-child{margin-left:0}
+.dh b{display:block;font-size:17px}.dh small{opacity:.9;font-size:13px}.dh .x{margin-left:auto;border:0;background:rgba(255,255,255,.18);color:#fff;border-radius:50%;width:34px;height:34px}
+.dbody{flex:1;overflow:auto;padding:14px;display:grid;gap:10px;align-content:start;background:#F7F8FA}
+.hb{max-width:85%;background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px 12px;font-size:14.5px}.hb.me{justify-self:end;background:#1F6B45;color:#fff;border:0}.hb small{display:block;font-size:12px;opacity:.75;margin-top:3px}
+.hb.new{border:2px solid var(--red)}.newline{display:flex;align-items:center;gap:8px;color:var(--red);font-weight:800;font-size:12.5px}.newline:before,.newline:after{content:'';flex:1;height:1.5px;background:var(--red);opacity:.5}
+.qchips{display:flex;gap:6px;flex-wrap:wrap;padding:10px 14px;border-top:1px solid var(--line)}.qchips button{border:1.5px solid #D0D5DD;background:#fff;border-radius:999px;padding:6px 12px;font-weight:700;font-size:13.5px}
+.dsend{display:flex;gap:8px;padding:10px 14px;border-top:1px solid var(--line)}.dsend input{flex:1;border:1.5px solid #D0D5DD;border-radius:999px;padding:10px 14px;font:inherit}
+/* B: help center */
+.hc{position:absolute;inset:24px;background:#fff;border-radius:20px;box-shadow:0 30px 80px -20px rgba(16,24,40,.5);z-index:5;display:none;overflow:hidden;flex-direction:column}.hc.on{display:flex}
+.hch{padding:20px 22px 14px;background:#F0FAF4;border-bottom:1px solid #D1EADB}.hch h5{margin:0;font-size:22px}.hch .srch{margin-top:10px;display:flex;gap:8px}.hch .srch input{flex:1;border:1.5px solid #B7DFC6;border-radius:14px;padding:12px 16px;font:inherit;font-size:16px}
+.hctabs{display:flex;gap:4px;padding:0 18px;border-bottom:1px solid var(--line)}.hctabs button{border:0;background:transparent;padding:12px 12px 10px;font-weight:800;border-bottom:3px solid transparent;color:var(--ink3);display:flex;gap:6px;align-items:center}.hctabs button.on{color:var(--ink);border-color:var(--g)}
+.hcb{flex:1;overflow:auto;padding:16px 22px;display:grid;gap:12px;align-content:start}
+.arts{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}.art{border:1.5px solid var(--line);border-radius:14px;padding:12px;background:#fff;text-align:left}.art b{display:block;font-size:15px}.art small{color:var(--ink3)}.art .ico{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;margin-bottom:6px;font-size:18px}
+.tk{display:flex;gap:10px;align-items:center;border:1.5px solid var(--line);border-radius:14px;padding:12px}.tk.un{border-color:#FCA5A5;background:#FEF2F2}.tk .m{flex:1}.tk .m b{display:block}.tk .m small{color:var(--ink3)}
+/* C: bottom sheet + page help */
+.sheet{position:absolute;left:230px;right:0;bottom:0;background:#fff;border-radius:20px 20px 0 0;box-shadow:0 -16px 40px -10px rgba(16,24,40,.35);transform:translateY(105%);transition:transform .25s;z-index:5;max-height:78%;display:flex;flex-direction:column}
+.sheet.on{transform:none}.grab{width:44px;height:5px;border-radius:9px;background:#D0D5DD;margin:8px auto 2px}
+.sh-h{display:flex;align-items:center;gap:10px;padding:8px 18px 12px}.sh-h b{font-size:19px}.sh-h .x{margin-left:auto;border:0;background:#F2F4F7;border-radius:50%;width:34px;height:34px}
+.ctx{margin:0 18px;border-radius:16px;background:#EFF6FF;border:1.5px solid #BFDBFE;padding:12px 14px}.ctx em{font-style:normal;font-size:12px;font-weight:800;color:#1D4ED8;text-transform:uppercase;letter-spacing:.05em}.ctx ol{margin:6px 0 0;padding-left:20px;font-size:14.5px}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:14px 18px 18px}.three button{border:1.5px solid var(--line);border-radius:16px;background:#fff;padding:14px 10px;display:grid;justify-items:center;gap:6px;font-weight:800;position:relative}
+.three button span{font-size:26px}.three button small{font-weight:600;color:var(--ink3);font-size:12.5px;text-align:center}.three .badge{position:absolute;top:8px;right:8px}
+.qmark{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#E8F3EC;color:#1F6B45;font-weight:800;font-size:14px;border:0;margin-left:8px;vertical-align:middle}
+@media (max-width:820px){.appmock{grid-template-columns:1fr}.side{display:none}.sheet{left:0}.hc{inset:8px}}
+</style></head><body>
+<div class="top"><div class="tin"><a href="../">‹ Design lab</a><h1>Round 31: Messages list, Team page, Help menu</h1>
+<span class="jump"><a href="#msg">Messages list x3</a><a href="#team">Team x3</a><a href="#help">Help x3</a></span></div></div>
+<div class="wrap">
+
+<!-- ================= MESSAGES ================= -->
+<section class="sec" id="msg"><h2>Messages: the list on the left, 3 ways</h2>
+<p class="lead">Every option uses the same three colors so you can spot a chat type instantly: <span class="tag team">Team</span> amber, <span class="tag cus">Customers</span> blue, <span class="tag sup">Suppliers</span> green. Unread counts are red, and unread chats are bold, like Facebook. All three are clickable. The sample shop has 14 customers and 9 suppliers.</p>
+
+<div class="opt"><h3>A. Three colored tabs <span class="rec">My pick</span></h3><p>One group at a time, so the list never gets long. Each tab shows its red unread count, so you know where to look without opening it. "Unread" shows only what needs you.</p>
+<div class="frame"><div class="mshell"><div class="mlist"><div class="atabs" id="aTabs"></div><div class="chiprow" id="aChips"><button class="on" data-f="all">All</button><button data-f="un">Unread</button></div><div class="msearch"><input placeholder="Search chats…" oninput="A.q=this.value;renderA()"></div><div class="scroll" id="aList"></div></div><div class="mthread" id="aThread"></div></div></div>
+<div class="why"><div><b>Best for:</b> shops with many customers. You only ever scroll one group.</div><div><b>Trade-off:</b> you can't see all three groups at once (red counts on the tabs cover that).</div></div></div>
+
+<div class="opt"><h3>B. Colored sections you can fold</h3><p>Everything on one list, as today, but each group has a bold colored header that stays on screen while you scroll. Only the 4 most recent chats show; "See all" opens the rest. Fold away a group you don't need.</p>
+<div class="frame"><div class="mshell"><div class="mlist"><div class="msearch"><input placeholder="Search chats…" oninput="B.q=this.value;renderB()"></div><div class="scroll" id="bList"></div></div><div class="mthread" id="bThread"></div></div></div>
+<div class="why"><div><b>Best for:</b> owners who like seeing everything at once.</div><div><b>Trade-off:</b> it still grows longer as you add people, just more slowly.</div></div></div>
+
+<div class="opt"><h3>C. Icon rail, like Slack or Viber desktop</h3><p>A narrow strip of big colored buttons on the far left (All, Team, Customers, Suppliers), each with a red count. The list beside it shows the group you picked. It's the fastest to switch with one tap, and works well on a phone too.</p>
+<div class="frame"><div class="mshell" style="grid-template-columns:400px 1fr"><div class="mlist"><div class="cwrap" style="flex:1"><div class="rail" id="cRail"></div><div style="display:flex;flex-direction:column;min-width:0"><div class="chead" id="cHead"></div><div class="msearch"><input placeholder="Search chats…" oninput="C.q=this.value;renderC()"></div><div class="scroll" id="cList"></div></div></div></div><div class="mthread" id="cThread"></div></div></div>
+<div class="why"><div><b>Best for:</b> people who jump between groups all day.</div><div><b>Trade-off:</b> takes a little width on small laptops.</div></div></div>
+</div>
+</section>
+
+<!-- ================= TEAM ================= -->
+<section class="sec" id="team"><h2>Team: a command center, 3 ways</h2>
+<p class="lead">The Team page becomes the place where the owner runs the day: who is doing what, what's late, and one-tap assigning. Everything below works: drag cards, tick tasks done, assign jobs.</p>
+
+<div class="opt"><h3>A. Mission board <span class="rec">My pick</span></h3><p>Three columns: To do, Doing, Done. Drag a card to move it. The day's score sits on top (done, late, still open), and each person has a progress bar for the day. Ticking a task gives a small win. It's simple enough for staff to use on a phone.</p>
+<div class="frame"><div class="tm-top"><div class="score" id="tA_score"></div><form class="addt" onsubmit="event.preventDefault();addTask('A',this)"><input name="t" placeholder="New job, e.g. Collect from Riverside" required><select name="w"></select><button class="btn">Add</button></form></div>
+<div class="board" id="tA_board"></div><div class="xp" id="tA_xp"></div></div></div>
+
+<div class="opt"><h3>B. Squad cards + live feed</h3><p>Each person is a card: where they are (in the shop, on delivery, off), what they're doing now, and their week's progress ring. Tap a card to give them a job or nudge them. A live feed on the right shows everything happening in the shop, like a game's activity log.</p>
+<div class="frame"><div class="tm-top"><div class="score" id="tB_score"></div></div><div class="squad"><div><div class="people" id="tB_people"></div><div class="qassign" id="tB_assign"><input id="tB_in" placeholder="Job for this person" style="flex:1;min-width:200px;border:1.5px solid var(--line);border-radius:12px;padding:10px 14px;font:inherit"><button class="btn" onclick="assignB()">Give job</button></div></div><div class="feed" id="tB_feed"></div></div></div></div>
+
+<div class="opt"><h3>C. Day map + weekly quests</h3><p>A timeline of today with one row per person (like a game schedule). Colored blocks are jobs; the red line is now. Tap a block to finish it. Below are the week's team goals with progress bars, plus a friendly leaderboard.</p>
+<div class="frame"><div class="tm-top"><div class="score" id="tC_score"></div></div><div class="daymap"><div class="dm" id="tC_map"></div></div><div class="quests" id="tC_q"></div><div class="lb" id="tC_lb"></div></div></div>
+</section>
+
+<!-- ================= HELP ================= -->
+<section class="sec" id="help"><h2>Help menu: 3 ways</h2>
+<p class="lead">In all three, "Help" is a plain row at the bottom of the left menu with a <span class="badge">1</span> red count beside it when the Nifti team answers. That's separate from the bell on top, so replies never get lost. Click "Help" in each mockup.</p>
+
+<div class="opt"><h3>A. Chat drawer, like Messenger <span class="rec">My pick</span></h3><p>Help slides in from the right as a chat with the Nifti team: real faces, "usually answers in an hour", and new replies marked in red. Quick question chips sit above the message box.</p>
+<div class="frame"><div class="appmock" id="hA"></div></div></div>
+
+<div class="opt"><h3>B. Help center with search</h3><p>A big window with a search bar ("How do I…"), short guides as cards, a Messages tab for chatting with the team, and "My questions" showing which ones got an answer (red when unread).</p>
+<div class="frame"><div class="appmock" id="hB"></div></div></div>
+
+<div class="opt"><h3>C. Bottom sheet that knows your page</h3><p>Help rises from the bottom and starts with steps for the page you're on (e.g. Expenses: how to snap a receipt). Below that are three big buttons: Message us, Watch a 1-minute guide, and Call/Viber. Small "?" buttons on pages open the same sheet.</p>
+<div class="frame"><div class="appmock" id="hC"></div></div></div>
+</section>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+const $ = s => document.querySelector(s), esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]);
+function toast(t){ const e = $('#toast'); e.textContent = t; e.classList.add('on'); clearTimeout(e._t); e._t = setTimeout(() => e.classList.remove('on'), 1800); }
+const COLORS = ['#1D4ED8','#15803D','#B45309','#0E7490','#7C2D12','#334155','#0369A1','#166534','#9F1239','#1E3A8A'];
+const ini = n => n.split(/\s+/).filter(Boolean).slice(0, 2).map(w => w[0]).join('').toUpperCase();
+const avc = n => COLORS[[...n].reduce((a, c) => a + c.charCodeAt(0), 0) % COLORS.length];
+const CHATS = [
+ {g:'team', n:'Team chat', p:'Liza: Riverside paid, check is in the drawer', t:'8:31 AM', u:2},
+ {g:'team', n:'Rico (driver)', p:'Delivered to Bayview, signed', t:'7:58 AM', u:0},
+ {g:'cus', n:'Bayview Construction Co.', p:'Can you send the mill certificate?', t:'Nov 14', u:1},
+ {g:'cus', n:'Riverside Builders Corp', p:'Yes, same address. Thanks!', t:'Nov 10', u:0},
+ {g:'cus', n:'Corazon Welding Shop', p:'Got the angle bars, thanks', t:'Nov 9', u:0},
+ {g:'cus', n:'Mang Bert Construction', p:'Pwede po ba bukas ang deliver?', t:'Nov 9', u:3},
+ {g:'cus', n:'Aling Nena Store', p:'Magkano na po ang semento?', t:'Nov 8', u:0},
+ {g:'cus', n:'JRC Builders', p:'Please quote 200 pcs rebar 12mm', t:'Nov 8', u:1},
+ {g:'cus', n:'Cavite Steel Works', p:'Do you carry 16mm?', t:'Nov 7', u:0},
+ {g:'cus', n:'Manila Bay Scaffolding', p:'Price on angle bars went up?', t:'Nov 6', u:0},
+ {g:'cus', n:'Santos Hardware', p:'Paid via GCash, ref 8812', t:'Nov 5', u:0},
+ {g:'cus', n:'Lopez Builders', p:'Order for next week', t:'Nov 4', u:0},
+ {g:'cus', n:'Reyes Fabrication', p:'Thank you!', t:'Nov 3', u:0},
+ {g:'cus', n:'Golden Gate Homes', p:'Send SOA please', t:'Nov 2', u:0},
+ {g:'cus', n:'Tan Construction', p:'Noted po', t:'Oct 30', u:0},
+ {g:'cus', n:'Villanueva Trading', p:'See you Monday', t:'Oct 28', u:0},
+ {g:'sup', n:'Metro Steel Co.', p:'Port congestion, 2-3 days late', t:'Nov 13', u:2},
+ {g:'sup', n:'Cebu Aggregates', p:'Delivered 50 bags today, DR attached', t:'Today', u:1},
+ {g:'sup', n:'Balintawak Hardware Supply', p:'Ready for pickup', t:'Nov 12', u:0},
+ {g:'sup', n:'Northline Welding', p:'Welcome aboard!', t:'Nov 10', u:0},
+ {g:'sup', n:'Iron Gate Fabrication', p:'Same warehouse as last time', t:'Nov 8', u:0},
+ {g:'sup', n:'Marikina Packaging', p:'Added 24x24 boxes', t:'Nov 6', u:0},
+ {g:'sup', n:'Holcim Dealer Pasig', p:'New price list attached', t:'Nov 4', u:0},
+ {g:'sup', n:'Pacific Paint Center', p:'Out of stock until Friday', t:'Nov 2', u:0},
+ {g:'sup', n:'Luzon Pipes Inc.', p:'Thanks for the order', t:'Oct 29', u:0},
+];
+const GN = {team:'Team', cus:'Customers', sup:'Suppliers'};
+const unread = g => CHATS.filter(c => (g === 'all' || c.g === g) && c.u).reduce((a, c) => a + c.u, 0);
+function row(c, sel){ return `<button class="ci ${c.g}${c.u ? ' un' : ''}${sel === c.n ? ' on' : ''}" onclick="pick(this,'${esc(c.n).replace(/'/g, "\\'")}')"><span class="av" style="background:${avc(c.n)}">${ini(c.n)}</span><span class="m"><b>${esc(c.n)}</b><small>${esc(c.p)}</small></span><span class="r">${c.t}${c.u ? `<span class="badge">${c.u}</span>` : ''}</span></button>`; }
+function thread(el, name){ const c = CHATS.find(x => x.n === name) || CHATS[2]; el.innerHTML = `<div class="th"><span class="av" style="background:${avc(c.n)}">${ini(c.n)}</span><div><b>${esc(c.n)}</b><small><span class="tag ${c.g}">${GN[c.g]}</span></small></div></div><div class="bd"><div class="bub">${esc(c.p)}</div><div class="bub me">Noted, thank you!</div></div>`; }
+function pick(btn, name){ const box = btn.closest('.mshell'); const c = CHATS.find(x => x.n === name); if(c) c.u = 0; thread(box.querySelector('.mthread'), name); const k = box.querySelector('#aList') ? 'A' : box.querySelector('#bList') ? 'B' : 'C'; window[k].sel = name; renderA(); renderB(); renderC(); }
+const A = {g:'cus', f:'all', q:'', sel:'Bayview Construction Co.'};
+function renderA(){
+  $('#aTabs').innerHTML = ['team','cus','sup'].map(g => `<button data-g="${g}" class="${A.g === g ? 'on' : ''}" onclick="A.g='${g}';renderA()"><i></i>${GN[g]}${unread(g) ? `<span class="badge">${unread(g)}</span>` : ''}</button>`).join('');
+  document.querySelectorAll('#aChips button').forEach(b => { b.classList.toggle('on', b.dataset.f === A.f); b.onclick = () => { A.f = b.dataset.f; renderA(); }; });
+  const l = CHATS.filter(c => c.g === A.g && (A.f === 'all' || c.u) && c.n.toLowerCase().includes(A.q.toLowerCase()));
+  $('#aList').innerHTML = l.map(c => row(c, A.sel)).join('') || '<p style="padding:20px;color:#667085">Nothing unread here.</p>';
+}
+const B = {q:'', shut:{}, all:{}, sel:'Metro Steel Co.'};
+function renderB(){
+  $('#bList').innerHTML = ['team','cus','sup'].map(g => { const l = CHATS.filter(c => c.g === g && c.n.toLowerCase().includes(B.q.toLowerCase())).sort((a, b) => (b.u > 0) - (a.u > 0)); const show = B.all[g] || B.q ? l : l.slice(0, 4);
+    return `<div class="bsec ${g}${B.shut[g] ? ' shut' : ''}"><button class="bhead" onclick="B.shut.${g}=!B.shut.${g};renderB()">${GN[g]} <span class="cnt">${l.length}</span>${unread(g) ? `<span class="badge">${unread(g)} new</span>` : ''}<span class="sp"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="m6 9 6 6 6-6"/></svg></button><div class="bbody">${show.map(c => row(c, B.sel)).join('')}${l.length > show.length ? `<button class="seeall" onclick="B.all.${g}=true;renderB()">See all ${l.length} ${GN[g].toLowerCase()} ›</button>` : ''}</div></div>`; }).join('');
+}
+const IC = {all:'<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>', team:'<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17" cy="9" r="2.6"/><path d="M16 14.2a5 5 0 0 1 5.5 5.8"/>', cus:'<path d="M3 9l1.5-5h15L21 9"/><path d="M4 9v11h16V9"/><path d="M3 9h18"/><path d="M9 20v-6h6v6"/>', sup:'<rect x="1.5" y="7" width="13" height="10" rx="1"/><path d="M14.5 10H19l3 3.5V17h-7.5z"/><circle cx="6" cy="18.5" r="1.8"/><circle cx="18" cy="18.5" r="1.8"/>'};
+const C = {g:'all', q:'', sel:'Cebu Aggregates'};
+function renderC(){
+  $('#cRail').innerHTML = ['all','team','cus','sup'].map(g => `<button data-g="${g}" class="${C.g === g ? 'on' : ''}" onclick="C.g='${g}';renderC()"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${IC[g]}</svg></span>${g === 'all' ? 'All' : GN[g]}${unread(g) ? `<span class="badge">${unread(g)}</span>` : ''}</button>`).join('');
+  $('#cHead').innerHTML = C.g === 'all' ? 'All chats' : `<span class="tag ${C.g}">${GN[C.g]}</span>`;
+  const l = CHATS.filter(c => (C.g === 'all' || c.g === C.g) && c.n.toLowerCase().includes(C.q.toLowerCase())).sort((a, b) => (b.u > 0) - (a.u > 0));
+  $('#cList').innerHTML = l.map(c => row(c, C.sel)).join('');
+}
+renderA(); renderB(); renderC(); thread($('#aThread'), A.sel); thread($('#bThread'), B.sel); thread($('#cThread'), C.sel);
+
+/* ---------- TEAM ---------- */
+const PEOPLE = [{n:'Dela Cruz', r:'Owner', st:'in', where:'In the shop'}, {n:'Liza Santos', r:'Cashier', st:'in', where:'At the counter'}, {n:'Rico Reyes', r:'Driver', st:'out', where:'On delivery · Bayview'}, {n:'Ana Reyes', r:'Stock', st:'in', where:'Warehouse'}, {n:'Mark Santos', r:'Collector', st:'off', where:'Day off'}];
+let TASKS = [
+ {id:1, t:'Call Riverside about the overdue bill', w:'Dela Cruz', s:'todo', due:'Today', late:true, h:[9,10]},
+ {id:2, t:'Count the drawer at closing', w:'Liza Santos', s:'todo', due:'6 PM', h:[17,18]},
+ {id:3, t:'Deliver 200 bags cement to Bayview', w:'Rico Reyes', s:'doing', due:'11 AM', h:[8,11]},
+ {id:4, t:'Check in Cebu delivery (50 bags)', w:'Ana Reyes', s:'doing', due:'Today', h:[9,10]},
+ {id:5, t:'Collect check from JRC Builders', w:'Rico Reyes', s:'todo', due:'3 PM', h:[14,15]},
+ {id:6, t:'Post today\'s promo on Facebook', w:'Liza Santos', s:'done', due:'Done 8:10', h:[8,9]},
+ {id:7, t:'Reorder rebar 10mm from Metro Steel', w:'Ana Reyes', s:'todo', due:'Tomorrow', h:[13,14]},
+ {id:8, t:'Send SOA to Golden Gate Homes', w:'Dela Cruz', s:'done', due:'Done 9:02', h:[11,12]},
+];
+let nid = 20;
+const pills = t => t.s === 'done' ? '<span class="pill p-g">Done</span>' : t.late ? '<span class="pill p-r">Late</span>' : t.s === 'doing' ? '<span class="pill p-y">Doing</span>' : '<span class="pill p-n">' + esc(t.due) + '</span>';
+function scoreHtml(){ const done = TASKS.filter(t => t.s === 'done').length, late = TASKS.filter(t => t.late && t.s !== 'done').length, open = TASKS.length - done;
+  return `<div class="sc-g"><em>Done today</em><b>${done}</b></div><div class="sc-y"><em>Still open</em><b>${open}</b></div><div class="sc-r"><em>Late</em><b>${late}</b></div><div class="sc-b"><em>Team score</em><b>${Math.round(done / TASKS.length * 100)}%</b></div>`; }
+function renderTeam(){
+  ['A','B','C'].forEach(k => { const s = $('#t' + k + '_score'); if(s) s.innerHTML = scoreHtml(); });
+  document.querySelectorAll('.addt select').forEach(s => { if(!s.options.length) s.innerHTML = PEOPLE.map(p => `<option>${p.n}</option>`).join(''); });
+  // A
+  $('#tA_board').innerHTML = [['todo','To do'],['doing','Doing'],['done','Done']].map(([s, h]) => `<div class="col" data-s="${s}" ondragover="event.preventDefault();this.classList.add('over')" ondragleave="this.classList.remove('over')" ondrop="dropA(event,'${s}')"><h4><i></i>${h} <span class="pill p-n">${TASKS.filter(t => t.s === s).length}</span></h4>${TASKS.filter(t => t.s === s).map(t => `<div class="card" draggable="true" ondragstart="event.dataTransfer.setData('id',${t.id})"><b>${esc(t.t)}</b><div class="meta"><span class="who"><span class="av" style="background:${avc(t.w)}">${ini(t.w)}</span>${esc(t.w.split(' ')[0])}</span>${pills(t)}${t.s !== 'done' ? `<button class="pill p-g" style="border:0;margin-left:auto" onclick="doneT(${t.id})">✓ Done</button>` : ''}</div></div>`).join('')}</div>`).join('');
+  $('#tA_xp').innerHTML = PEOPLE.filter(p => p.st !== 'off').map(p => { const mine = TASKS.filter(t => t.w === p.n), d = mine.filter(t => t.s === 'done').length; return `<div><span class="av" style="background:${avc(p.n)};width:28px;height:28px;font-size:11px">${ini(p.n)}</span>${esc(p.n.split(' ')[0])}<span class="bar"><i style="width:${mine.length ? d / mine.length * 100 : 0}%"></i></span>${d}/${mine.length}</div>`; }).join('');
+  // B
+  $('#tB_people').innerHTML = PEOPLE.map(p => { const mine = TASKS.filter(t => t.w === p.n), d = mine.filter(t => t.s === 'done').length, now = mine.find(t => t.s === 'doing') || mine.find(t => t.s === 'todo');
+    return `<div class="pc${BSEL === p.n ? ' sel' : ''}" onclick="selB('${p.n}')"><div class="hd"><span class="av" style="background:${avc(p.n)}">${ini(p.n)}<s class="st-${p.st}"></s></span><div class="nm"><b>${esc(p.n)}</b><small>${esc(p.r)} · ${esc(p.where)}</small></div></div>
+      <div class="now"><em>${now ? (now.s === 'doing' ? 'Doing now' : 'Next up') : 'Free'}</em>${now ? esc(now.t) : 'Nothing assigned. Tap to give a job.'}</div>
+      <div class="lvl"><span class="ring" style="--p:${mine.length ? Math.round(d / mine.length * 100) : 0}"><span>${d}/${mine.length}</span></span><span style="font-size:13.5px;color:#475467;align-self:center">${d >= 2 ? '🔥 On a roll' : mine.some(t => t.late && t.s !== 'done') ? '⏰ Has a late job' : 'Jobs done today'}</span></div>
+      <div class="acts"><button onclick="event.stopPropagation();selB('${p.n}')">Give job</button><button onclick="event.stopPropagation();toast('Nudge sent to ${p.n.split(' ')[0]}')">Nudge</button><button onclick="event.stopPropagation();toast('Calling ${p.n.split(' ')[0]}…')">Call</button></div></div>`; }).join('');
+  $('#tB_feed').innerHTML = '<h4><i></i>Live in the shop</h4>' + FEED.map(f => `<div class="fi ${f.c}">${esc(f.t)}<small>${f.w}</small></div>`).join('');
+  // C
+  const H = [8,9,10,11,12,13,14,15,16,17], nowH = 10.4;
+  $('#tC_map').innerHTML = '<div class="hh">People</div>' + H.map(h => `<div class="hh">${h > 12 ? h - 12 : h}${h >= 12 ? 'PM' : 'AM'}</div>`).join('') + PEOPLE.map(p => `<div class="pn"><span class="av" style="background:${avc(p.n)}">${ini(p.n)}</span>${esc(p.n.split(' ')[0])}</div>` + H.map((h, i) => { const t = TASKS.find(x => x.w === p.n && x.h && x.h[0] === h);
+      const blk = t ? `<div class="blk ${t.s === 'done' ? 'd' : t.late ? 'r' : t.s === 'doing' ? 'y' : 'b'}" style="left:4px;width:calc(${(t.h[1] - t.h[0]) * 100}% - 8px)" title="${esc(t.t)}" onclick="doneT(${t.id})">${esc(t.t)}</div>` : '';
+      const nl = Math.floor(nowH) === h ? `<div class="nowline" style="left:${(nowH - h) * 100}%"></div>` : '';
+      return `<div>${blk}${nl}</div>`; }).join('')).join('');
+  const done = TASKS.filter(t => t.s === 'done').length;
+  $('#tC_q').innerHTML = [{t:'Collect ₱80,000 this week', p:62, c:'#16A34A', s:'₱49,600 of ₱80,000'}, {t:'Every delivery checked in the same day', p:85, c:'#3B82F6', s:'11 of 13'}, {t:'Count the drawer every day', p:57, c:'#EAB308', s:'4 of 7 days'}, {t:'Finish today\'s jobs', p:Math.round(done / TASKS.length * 100), c:'#1F6B45', s:done + ' of ' + TASKS.length}].map(q => `<div class="q"><b>${q.t}</b><div class="bar"><i style="width:${q.p}%;background:${q.c}"></i></div><small>${q.s} · ${q.p}%</small></div>`).join('');
+  $('#tC_lb').innerHTML = PEOPLE.filter(p => p.st !== 'off').map(p => ({p, pts: TASKS.filter(t => t.w === p.n && t.s === 'done').length * 10 + (p.n === 'Liza Santos' ? 40 : p.n === 'Rico Reyes' ? 35 : 20)})).sort((a, b) => b.pts - a.pts).map((x, i) => `<div><span class="n">${['🥇','🥈','🥉'][i] || i + 1}</span><span class="av" style="background:${avc(x.p.n)};width:30px;height:30px;font-size:12px">${ini(x.p.n)}</span>${esc(x.p.n)}<span class="pts">${x.pts} pts this week</span></div>`).join('');
+}
+let BSEL = null;
+const FEED = [{t:'Liza recorded a sale · ₱2,280 cement', w:'8:42 AM', c:'g'}, {t:'Rico left for Bayview with 200 bags', w:'8:05 AM', c:''}, {t:'Ana started checking in the Cebu delivery', w:'9:10 AM', c:''}, {t:'Riverside bill is 6 days late', w:'Today', c:'r'}, {t:'Liza posted today\'s promo on Facebook', w:'8:10 AM', c:'g'}, {t:'Metro Steel says delivery 2-3 days late', w:'Yesterday', c:'y'}];
+function selB(n){ BSEL = n; $('#tB_assign').classList.add('on'); $('#tB_in').placeholder = 'Job for ' + n.split(' ')[0]; $('#tB_in').focus(); renderTeam(); }
+function assignB(){ const v = $('#tB_in').value.trim(); if(!v || !BSEL) return; TASKS.push({id: nid++, t: v, w: BSEL, s: 'todo', due: 'Today'}); FEED.unshift({t: 'You gave ' + BSEL.split(' ')[0] + ' a job: ' + v, w: 'Just now', c: ''}); $('#tB_in').value = ''; toast('Sent to ' + BSEL.split(' ')[0]); renderTeam(); }
+function addTask(k, f){ TASKS.push({id: nid++, t: f.t.value, w: f.w.value, s: 'todo', due: 'Today'}); f.t.value = ''; toast('Job added'); renderTeam(); }
+function dropA(e, s){ e.preventDefault(); const id = +e.dataTransfer.getData('id'), t = TASKS.find(x => x.id === id); if(t){ t.s = s; if(s === 'done'){ t.late = false; toast('Nice! ' + t.w.split(' ')[0] + ' finished a job 🎉'); } } renderTeam(); }
+function doneT(id){ const t = TASKS.find(x => x.id === id); if(!t) return; t.s = 'done'; t.late = false; FEED.unshift({t: t.w.split(' ')[0] + ' finished: ' + t.t, w: 'Just now', c: 'g'}); toast('Nice! ' + t.w.split(' ')[0] + ' finished a job 🎉'); renderTeam(); }
+renderTeam();
+
+/* ---------- HELP ---------- */
+const SIC = {home:'<path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/>', ord:'<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 9h10M7 13h6"/>', msg:'<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>', mon:'<circle cx="12" cy="12" r="9"/><path d="M12 7v10M9 9.5c0-1 1.3-2 3-2s3 .8 3 2-1.3 1.8-3 2.2-3 1-3 2.3 1.3 2 3 2 3-1 3-2"/>', star:'<path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9z"/>', help:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14"/><circle cx="12" cy="17.3" r=".6" fill="currentColor"/>'};
+const sv = k => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${SIC[k]}</svg>`;
+const HELPU = {A: 1, B: 1, C: 1};
+function sideHtml(k){ return `<div class="side"><div class="lg">Nifti</div><button class="it">${sv('home')}Home</button><button class="it">${sv('ord')}Orders</button><button class="it">${sv('msg')}Messages<span class="badge">2</span></button><button class="it">${sv('mon')}Money</button><span class="sp"></span><div class="ln"></div><button class="it">${sv('star')}Plans &amp; pricing<span class="chip">Free</span></button><button class="it" onclick="openHelp('${k}')">${sv('help')}Help${HELPU[k] ? `<span class="badge">${HELPU[k]}</span>` : ''}</button></div>`; }
+function pageHtml(t){ return `<div class="page"><h4>${t}</h4><div class="ph" style="width:60%"></div><div class="ph" style="width:85%"></div><div class="ph" style="width:40%"></div><div class="ph" style="width:75%"></div><p style="margin-top:20px">👈 Tap <b>Help</b> at the bottom of the menu.</p></div>`; }
+const CONVO = [{me:1, t:'Hi, how do I put my GCash QR on my bills?', w:'9:12 AM'}, {me:0, t:'Hi! Go to Settings → How customers pay you → Add GCash QR. Snap your QR and save. It shows on every bill from then on. 🙂', w:'9:40 AM · Joy from Nifti', nw:1}];
+function renderH(){
+  $('#hA').innerHTML = sideHtml('A') + pageHtml('Expenses') + `<div class="overlay" onclick="closeHelp('A')"></div><div class="drawer"><div class="dh"><span class="faces"><span class="av" style="background:#0E7490">JY</span><span class="av" style="background:#B45309">MK</span><span class="av" style="background:#1D4ED8">SG</span></span><div><b>Nifti team</b><small>Usually answers within an hour</small></div><button class="x" onclick="closeHelp('A')">✕</button></div>
+    <div class="dbody">${CONVO.map(m => (m.nw ? '<div class="newline">New reply</div>' : '') + `<div class="hb${m.me ? ' me' : ''}${m.nw ? ' new' : ''}">${esc(m.t)}<small>${m.w}</small></div>`).join('')}</div>
+    <div class="qchips"><button>How do I add a customer?</button><button>My count is short</button><button>Change my plan</button></div><div class="dsend"><input placeholder="Type your question…"><button class="btn">Send</button></div></div>`;
+  $('#hB').innerHTML = sideHtml('B') + pageHtml('Getting paid') + `<div class="overlay" onclick="closeHelp('B')"></div><div class="hc"><div class="hch"><div style="display:flex;align-items:center"><h5>How can we help?</h5><button class="btn o" style="margin-left:auto;padding:6px 12px" onclick="closeHelp('B')">✕</button></div><div class="srch"><input placeholder='Try "utang", "receipt", "GCash QR"'></div></div>
+    <div class="hctabs"><button class="on" onclick="hcTab(this,'g')">Guides</button><button onclick="hcTab(this,'m')">Message us</button><button onclick="hcTab(this,'q')">My questions <span class="badge">1</span></button></div>
+    <div class="hcb" id="hcBody"></div></div>`;
+  $('#hC').innerHTML = sideHtml('C') + `<div class="page"><h4>Expenses <button class="qmark" onclick="openHelp('C')">?</button></h4><div class="ph" style="width:60%"></div><div class="ph" style="width:85%"></div><div class="ph" style="width:40%"></div><p style="margin-top:20px">👈 Tap <b>Help</b>, or the <b>?</b> next to the page name.</p></div>` + `<div class="overlay" onclick="closeHelp('C')"></div><div class="sheet"><div class="grab"></div><div class="sh-h"><b>Help with Expenses</b><button class="x" onclick="closeHelp('C')">✕</button></div>
+    <div class="ctx"><em>On this page</em><ol><li>Tap <b>+ Add expense</b>.</li><li>Snap the receipt. Nifti reads the amount.</li><li>Pick who paid and from where (drawer, GCash, bank).</li></ol></div>
+    <div class="three"><button onclick="toast('Opens the chat with the Nifti team')"><span>💬</span>Message us<small>Joy answered you</small><span class="badge">1</span></button><button onclick="toast('Plays a 1-minute video')"><span>▶️</span>1-minute guide<small>Expenses, start to finish</small></button><button onclick="toast('Opens Viber / phone')"><span>📞</span>Call or Viber<small>9 AM to 6 PM</small></button></div></div>`;
+  hcTab(document.querySelector('#hB .hctabs button.on'), HC);
+}
+let HC = 'g';
+function hcTab(btn, t){ HC = t; document.querySelectorAll('#hB .hctabs button').forEach(b => b.classList.toggle('on', b === btn)); const b = $('#hcBody'); if(!b) return;
+  if(t === 'g') b.innerHTML = '<div class="arts">' + [['💸','Record what a customer owes','2 steps'],['🧾','Snap a receipt as an expense','1 minute'],['📦','Receive a delivery into stock','3 steps'],['💵','Count the cash at closing','2 minutes'],['📱','Put your GCash QR on bills','1 minute'],['👥','Add your staff and what they see','3 steps']].map(a => `<button class="art"><span class="ico" style="background:#F0FAF4">${a[0]}</span><b>${a[1]}</b><small>${a[2]}</small></button>`).join('') + '</div>';
+  if(t === 'm') b.innerHTML = CONVO.map(m => `<div class="hb${m.me ? ' me' : ''}${m.nw ? ' new' : ''}">${esc(m.t)}<small>${m.w}</small></div>`).join('') + '<div class="dsend" style="padding:0"><input placeholder="Type your question…"><button class="btn">Send</button></div>';
+  if(t === 'q') b.innerHTML = `<div class="tk un"><span class="badge">1</span><div class="m"><b>How do I put my GCash QR on my bills?</b><small>Answered by Joy · 9:40 AM</small></div><button class="btn o" onclick="hcTab(document.querySelectorAll('#hB .hctabs button')[1],'m')">Read</button></div><div class="tk"><span style="width:21px;text-align:center">✓</span><div class="m"><b>Can two people use the same phone?</b><small>Answered · Nov 2</small></div></div>`;
+}
+function openHelp(k){ const box = $('#h' + k); box.querySelector('.overlay').classList.add('on'); box.querySelector(k === 'A' ? '.drawer' : k === 'B' ? '.hc' : '.sheet').classList.add('on'); setTimeout(() => { HELPU[k] = 0; const b = box.querySelector('.side .it:last-child .badge'); if(b) b.remove(); }, 900); }
+function closeHelp(k){ const box = $('#h' + k); box.querySelector('.overlay').classList.remove('on'); box.querySelector(k === 'A' ? '.drawer' : k === 'B' ? '.hc' : '.sheet').classList.remove('on'); }
+renderH();
+</script></body></html>

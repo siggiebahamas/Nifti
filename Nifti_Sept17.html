@@ -8616,6 +8616,138 @@ html.nf-phone #view-app .nfd-c.r{background:#FDECEC !important;color:#B42318 !im
 html.nf-phone #view-app .nfd-c.g{background:#EAF6EF !important;color:#14532D !important;}
 html.nf-phone #view-app .nfd-c.today{box-shadow:inset 0 0 0 2px #98A2B3 !important;background:#FFFFFF !important;}
 
+
+/* ===== Round 31 css ===== */
+/* ---------- 1. Summary boxes: two new colors and gray for nothing yet ---------- */
+html[data-ty] #view-app :is(.bk-tile,.sl-tile).nt-info{background:#EFF6FF !important;border:1.5px solid #93C5FD !important;}
+html[data-ty] #view-app :is(.bk-tile,.sl-tile).nt-info :is(.bk-tile-v,b){color:#1D4ED8 !important;}
+html[data-ty] #view-app :is(.bk-tile,.sl-tile).nt-note{background:#ECFEFF !important;border:1.5px solid #67E8F9 !important;}
+html[data-ty] #view-app :is(.bk-tile,.sl-tile).nt-note :is(.bk-tile-v,b){color:#0E7490 !important;}
+html[data-ty] #view-app :is(.bk-tile,.sl-tile).nt-gray{background:#F2F4F7 !important;border:1.5px solid #D0D5DD !important;}
+html[data-ty] #view-app :is(.bk-tile,.sl-tile).nt-gray :is(.bk-tile-v,b){color:#475467 !important;}
+html[data-ty] #view-app :is(.bk-tile,.sl-tile):is(.nt-info,.nt-note,.nt-gray) :is(.bk-tile-l,small):first-child::before{content:'';display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:8px;vertical-align:.08em;}
+html[data-ty] #view-app :is(.bk-tile,.sl-tile).nt-info :is(.bk-tile-l,small):first-child::before{background:#2563EB;}
+html[data-ty] #view-app :is(.bk-tile,.sl-tile).nt-note :is(.bk-tile-l,small):first-child::before{background:#0891B2;}
+html[data-ty] #view-app :is(.bk-tile,.sl-tile).nt-gray :is(.bk-tile-l,small):first-child::before{background:#98A2B3;}
+html[data-ty] #view-app .stat-card.nt-info{background:#EFF6FF !important;border:1.5px solid #93C5FD !important;}
+html[data-ty] #view-app .stat-card.nt-info .stat-num{color:#1D4ED8 !important;}
+html[data-ty] #view-app .stat-card.nt-info .stat-icon-panel svg{color:#2563EB !important;}
+html[data-ty] #view-app .stat-card.nt-note{background:#ECFEFF !important;border:1.5px solid #67E8F9 !important;}
+html[data-ty] #view-app .stat-card.nt-gray{background:#F2F4F7 !important;border:1.5px solid #D0D5DD !important;}
+html[data-ty] #view-app .stat-card.nt-gray .stat-num{color:#475467 !important;}
+
+/* ---------- 2. Menu ---------- */
+/* Bank & deposits: a plain menu row like the others, no box */
+.sidebar #nf26BankNav{border:0 !important;background:transparent;font:inherit;text-align:left;width:100%;box-shadow:none !important;outline:0;cursor:pointer;color:inherit;}
+.sidebar #nf26BankNav:hover{background:#ECEEF1;}
+.sidebar #nf26BankNav:focus-visible{outline:2px solid #1F6B45;outline-offset:1px;}
+/* Plans and Help: two quiet menu rows under a thin line, not boxes */
+.sidebar .nf26-foot{gap:2px !important;margin:10px 0 14px !important;padding-top:10px;border-top:1px solid #E4E7EC;}
+.sidebar .nf26-foot button{border:0 !important;background:transparent !important;padding:8px 10px !important;border-radius:8px !important;min-height:40px;}
+.sidebar .nf26-foot button:hover{background:#ECEEF1 !important;}
+.sidebar .nf26-foot svg{color:#344054 !important;}
+.sidebar .nf26-foot .nf31-lbl{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:15.5px;font-weight:600;color:#101828;}
+.sidebar .nf26-foot .nf26-plan small{display:inline-block;flex:none;font-size:12.5px;font-weight:800;line-height:1;padding:5px 8px;border-radius:999px;background:#E8F3EC;color:#1F6B45;}
+.sidebar .nf26-foot .nf26-plan svg{color:#1F6B45 !important;}
+.sidebar .nf26-help em{background:#E41E3F !important;}
+
+/* ---------- 3. Money overview: coming up ---------- */
+#view-app .nf31-next .panel-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap;}
+#view-app .nf31-sum{font-size:15px;color:#344054;}
+#view-app .nf31-sum b.g{color:#15803D;} #view-app .nf31-sum b.r{color:#B42318;}
+#view-app .nf31-hint{margin:2px 0 10px;font-size:15px;color:#475467;}
+#view-app .nf31-list{display:grid;gap:8px;}
+#view-app .nf31-row{display:grid;grid-template-columns:40px minmax(0,1fr) auto auto 22px;align-items:center;gap:12px;width:100%;padding:12px 14px;border:1.5px solid #E4E7EC;border-radius:14px;background:#FFFFFF;font:inherit;text-align:left;cursor:pointer;color:#101828;transition:border-color .12s,box-shadow .12s;}
+#view-app .nf31-row:hover{border-color:#98A2B3;box-shadow:0 4px 14px -8px rgba(16,24,40,.25);}
+#view-app .nf31-row.in{border-left:5px solid #16A34A;}
+#view-app .nf31-row.out{border-left:5px solid #DC2626;}
+#view-app .nf31-ic{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;}
+#view-app .nf31-row.in .nf31-ic{background:#DCFCE7;color:#15803D;} #view-app .nf31-row.out .nf31-ic{background:#FEE2E2;color:#B42318;}
+#view-app .nf31-ic svg{width:18px;height:18px;}
+#view-app .nf31-m b{display:block;font-size:16px;font-weight:800;}
+#view-app .nf31-m small{display:block;font-size:14px;color:#475467;margin-top:2px;}
+#view-app .nf31-f{display:inline-flex;align-items:center;gap:3px;color:#1D4ED8;font-weight:700;}
+#view-app .nf31-f svg{width:14px;height:14px;}
+#view-app .nf31-d{text-align:right;} #view-app .nf31-d b{display:block;font-size:15px;font-weight:700;}
+#view-app .nf31-d small.late{display:inline-block;margin-top:3px;font-size:12.5px;font-weight:800;color:#B42318;background:#FEE4E2;border-radius:999px;padding:2px 8px;}
+#view-app .nf31-a{font-size:17px;font-weight:800;min-width:96px;text-align:right;}
+#view-app .nf31-row.in .nf31-a{color:#15803D;} #view-app .nf31-row.out .nf31-a{color:#B42318;}
+#view-app .nf31-go{color:#98A2B3;} #view-app .nf31-go svg{width:18px;height:18px;}
+#view-app .nf31-more{margin:10px 0 0;font-size:14px;color:#475467;text-align:center;}
+@media (max-width:640px){
+  #view-app .nf31-row{grid-template-columns:minmax(0,1fr) auto;gap:8px;padding:12px;} #view-app .nf31-ic{display:none !important;} #view-app .nf31-m{grid-column:1;} #view-app .nf31-d{grid-column:1 !important;}
+  #view-app .nf31-d{grid-column:2;grid-row:2;text-align:left;display:flex;gap:8px;align-items:center;} #view-app .nf31-d b{font-size:14px;font-weight:600;color:#475467;}
+  #view-app .nf31-a{grid-column:2;grid-row:1 / span 2;min-width:0;} #view-app .nf31-go{display:none;} #view-app .nf31-ic{width:32px;height:32px;}
+}
+/* the popup */
+.nf31-pop{padding:4px 2px 2px;display:grid;gap:10px;}
+.nf31-ph{border-radius:14px;padding:16px;border:1.5px solid;}
+.nf31-ph.in{background:#F0FDF4;border-color:#86EFAC;} .nf31-ph.out{background:#FEF2F2;border-color:#FCA5A5;}
+.nf31-ph em{font-style:normal;font-size:12.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#475467;}
+.nf31-ph h3{margin:4px 0 2px;font-size:20px;color:#101828;}
+.nf31-ph p{margin:0;font-size:15px;color:#344054;}
+.nf31-big{margin-top:8px;font-size:30px;font-weight:800;color:#101828;}
+.nf31-ph.in .nf31-big{color:#15803D;} .nf31-ph.out .nf31-big{color:#B42318;}
+.nf31-late,.nf31-due{display:inline-block;margin-top:6px;font-size:13.5px;font-weight:800;border-radius:999px;padding:3px 10px;}
+.nf31-late{background:#FEE4E2;color:#B42318;} .nf31-due{background:#FFFFFF;color:#344054;border:1px solid #D0D5DD;}
+.nf31-pop h4{margin:8px 0 0;font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#475467;}
+.nf31-items{display:grid;border:1px solid #EAECF0;border-radius:12px;overflow:hidden;}
+.nf31-items > div{display:flex;justify-content:space-between;gap:10px;padding:10px 12px;font-size:15.5px;color:#101828;}
+.nf31-items > div + div{border-top:1px solid #F2F4F7;}
+.nf31-kv{display:flex;justify-content:space-between;gap:10px;padding:2px 2px;font-size:15.5px;color:#344054;}
+.nf31-kv b{color:#101828;} .nf31-kv.g b{color:#15803D;} .nf31-kv.strong{font-size:17px;} .nf31-kv.strong b{font-weight:800;}
+.nf31-file{display:flex;align-items:center;gap:12px;width:100%;padding:12px;border:1.5px solid #BFDBFE;background:#EFF6FF;border-radius:12px;font:inherit;text-align:left;cursor:pointer;}
+.nf31-file svg{width:26px;height:26px;color:#1D4ED8;flex:none;} .nf31-file b{display:block;font-size:15.5px;color:#101828;word-break:break-word;} .nf31-file small{color:#1D4ED8;font-weight:700;font-size:13.5px;}
+.nf31-photo{display:grid;gap:6px;justify-items:center;width:100%;padding:10px;border:1.5px solid #E4E7EC;border-radius:12px;background:#F9FAFB;cursor:pointer;font:inherit;}
+.nf31-photo img{max-width:100%;max-height:260px;border-radius:8px;box-shadow:0 2px 10px -4px rgba(16,24,40,.3);background:#fff;}
+.nf31-photo span{font-size:14px;font-weight:700;color:#1D4ED8;}
+.nf31-none{margin:0;font-size:15px;color:#475467;}
+.nf31-acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px;}
+.nf31-acts .btn{min-height:46px;flex:1 1 180px;}
+
+/* ---------- 4. Messages: red counts like Facebook, and a color for each group ---------- */
+html[data-ty] #view-app .conv-item .conv-unread-badge, #view-app .conv-item .conv-unread-badge{background:#E41E3F !important;color:#FFFFFF !important;font-weight:800 !important;min-width:22px;height:22px;border-radius:999px;display:inline-grid;place-items:center;padding:0 6px;font-size:13px;}
+html[data-ty] #view-app .nfw-gh em, #view-app .nfw-gh em{background:#E41E3F !important;color:#FFFFFF !important;font-weight:800;}
+#view-app .conv-item.un .conv-name, #view-app .conv-item.un .conv-preview{font-weight:800 !important;color:#050505 !important;}
+html[data-ty] .sidebar .nav-item[data-page="messages"] .nav-badge, html[data-ty] .sidebar .nav-item[data-page="messages"].active .nav-badge, .sidebar .nav-item[data-page="messages"] .nav-badge{background:#E41E3F !important;color:#FFFFFF !important;font-weight:800;}
+#view-app .nfw-gh[data-nf31]{position:sticky;top:0;z-index:2;margin:8px 6px 4px !important;padding:8px 12px !important;border-radius:10px;border-left:5px solid;}
+#view-app .nfw-gh[data-nf31] span{font-weight:800 !important;letter-spacing:.04em;}
+#view-app .nfw-gh[data-nf31] b{border-radius:999px;padding:1px 9px;font-weight:800;}
+#view-app .nfw-gh[data-nf31="team"]{background:#FFF7E6 !important;border-color:#F59E0B;} #view-app .nfw-gh[data-nf31="team"] span{color:#92400E !important;} #view-app .nfw-gh[data-nf31="team"] b{background:#FDE7B8 !important;color:#92400E !important;}
+#view-app .nfw-gh[data-nf31="cus"]{background:#EFF6FF !important;border-color:#3B82F6;} #view-app .nfw-gh[data-nf31="cus"] span{color:#1D4ED8 !important;} #view-app .nfw-gh[data-nf31="cus"] b{background:#DBEAFE !important;color:#1D4ED8 !important;}
+#view-app .nfw-gh[data-nf31="sup"]{background:#ECFDF5 !important;border-color:#10B981;} #view-app .nfw-gh[data-nf31="sup"] span{color:#047857 !important;} #view-app .nfw-gh[data-nf31="sup"] b{background:#D1FAE5 !important;color:#047857 !important;}
+#view-app .conv-item[data-nf31]{box-shadow:inset 4px 0 0 var(--nf31c, transparent);}
+#view-app .conv-item[data-nf31="team"]{--nf31c:#F59E0B;} #view-app .conv-item[data-nf31="cus"]{--nf31c:#3B82F6;} #view-app .conv-item[data-nf31="sup"]{--nf31c:#10B981;}
+
+/* chat smarts: a small card under a message saying what Nifti saw and what to do */
+#view-app .nf31-ins{margin-top:6px;max-width:440px;border-radius:12px;border:1.5px solid;padding:9px 12px;background:#FFFFFF;font-size:14.5px;color:#101828;display:grid;gap:5px;}
+#view-app .nf31-ins-h{display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;}
+#view-app .nf31-ins-h svg{width:15px;height:15px;flex:none;}
+#view-app .nf31-ins-h i{margin-left:auto;font-style:normal;font-weight:600;text-transform:none;letter-spacing:0;font-size:12px;color:#475467;}
+#view-app .nf31-ins-b{line-height:1.45;}
+#view-app .nf31-ins-b > b{font-weight:800;}
+#view-app .nf31-it{display:block;margin-top:3px;}
+#view-app .nf31-it em{font-style:normal;font-weight:800;margin-left:6px;font-size:13.5px;}
+html[data-ty] #view-app .nf31-it em.up, #view-app .nf31-it em.up{color:#B42318 !important;} html[data-ty] #view-app .nf31-it em.down, #view-app .nf31-it em.down{color:#15803D !important;}
+#view-app .nf31-ok{display:inline-block;margin-left:8px;font-weight:800;color:#15803D;}
+#view-app .nf31-bad{display:inline-block;margin-left:8px;font-weight:800;color:#B42318;}
+#view-app .nf31-ins-a{display:flex;gap:6px;flex-wrap:wrap;}
+#view-app .nf31-ins-a button{display:inline-flex;align-items:center;gap:6px;min-height:34px;padding:0 12px;border-radius:999px;border:1.5px solid #D0D5DD;background:#FFFFFF;font:inherit;font-size:14px;font-weight:700;color:#101828;cursor:pointer;}
+#view-app .nf31-ins-a button:hover{border-color:#1F6B45;}
+#view-app .nf31-ins-a button svg{width:15px;height:15px;}
+#view-app .nf31-ins.blue{border-color:#93C5FD;background:#F5F9FF;} #view-app .nf31-ins.blue .nf31-ins-h{color:#1D4ED8;}
+#view-app .nf31-ins.amber{border-color:#FCD34D;background:#FFFBEB;} #view-app .nf31-ins.amber .nf31-ins-h{color:#92400E;}
+#view-app .nf31-ins.green{border-color:#86EFAC;background:#F0FDF4;} #view-app .nf31-ins.green .nf31-ins-h{color:#15803D;}
+#view-app .nf31-ins.red{border-color:#FCA5A5;background:#FEF2F2;} #view-app .nf31-ins.red .nf31-ins-h{color:#B42318;}
+#view-app .nf31-ins.teal{border-color:#5EEAD4;background:#F0FDFA;} #view-app .nf31-ins.teal .nf31-ins-h{color:#0F766E;}
+#view-app .nf31-ins.yellow{border-color:#FACC15;background:#FEF9C3;} #view-app .nf31-ins.yellow .nf31-ins-h{color:#854D0E;}
+#view-app .nf31-ins.gray{border-color:#E4E7EC;background:#F9FAFB;} #view-app .nf31-ins.gray .nf31-ins-h{color:#475467;}
+#view-app .nf31-ins.gray:not(:has(.nf31-ins-h)){border:0;background:transparent;padding:0;}
+.nf31-cmp{width:100%;border-collapse:collapse;font-size:15px;}
+.nf31-cmp th{font-size:12.5px;text-transform:uppercase;letter-spacing:.05em;color:#475467;text-align:left;padding:8px;border-bottom:1.5px solid #EAECF0;}
+.nf31-cmp td{padding:10px 8px;border-bottom:1px solid #F2F4F7;color:#101828;}
+.nf31-cmp .r{text-align:right;} .nf31-cmp td.up{color:#B42318;font-weight:800;} .nf31-cmp td.down{color:#15803D;font-weight:800;}
+
   .settings-card:empty{display:none;}
   #supplierChips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;} #supplierChips .chip{flex-shrink:0;}
 
@@ -26767,7 +26899,7 @@ function nfTone(all){
     const lb = el.querySelector('.bk-tile-l, :scope > small, .stat-label'), vl = el.querySelector('.bk-tile-v, :scope > b, .stat-num');
     if(!lb || !vl) return; const sig = lb.textContent + '|' + vl.textContent + '|' + el.className.replace(/\s*nt-\w+/g, '') + '|' + (el.offsetParent ? 1 : 0);
     if(el.dataset.ntSig === sig && !all) return; el.dataset.ntSig = sig;
-    const t = nfToneOf(el, lb.textContent, vl.textContent); el.classList.remove('nt-bad', 'nt-warn', 'nt-good', 'nt-plain'); el.classList.add('nt-' + t);
+    const t = nfToneOf(el, lb.textContent, vl.textContent); el.classList.remove('nt-bad', 'nt-warn', 'nt-good', 'nt-plain', 'nt-info', 'nt-note', 'nt-gray'); el.classList.add('nt-' + t);
     changed.push(vl);
   });
   document.querySelectorAll('#mhHome .tile .v').forEach(v => { const sig = v.textContent + (v.offsetParent ? 1 : 0); if(v.dataset.ntSig === sig && !all) return; v.dataset.ntSig = sig; changed.push(v); });
@@ -31851,13 +31983,14 @@ function nf23Menu(){
     let folded = {}; try{ folded = nf20Folded(); }catch(e){}
     g = document.createElement('div'); g.className = 'nf20-g nf23-ai' + (folded.ai ? ' folded' : ''); g.dataset.g = 'ai';
     g.innerHTML = `<button type="button" class="heading nf19-h nf20-h" aria-expanded="${!folded.ai}"><span>AI tools</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
-      <div class="nf20-gi"><button type="button" class="nav-item nf23-nb" id="nf23NbNav">${NF23_NB_IC}<span>Notebook reader</span><em class="nf22-new">New</em></button></div>`;
+      <div class="nf20-gi"><button type="button" class="nav-item nf23-nb" id="nf23NbNav">${NF23_NB_IC}<span>Notebook reader</span></button></div>`;
     g.querySelector('.nf20-h').onclick = () => nf20Fold('ai');
     g.querySelector('#nf23NbNav').onclick = () => { try{ nf22NbOpen(); }catch(e){ console.warn(e); } };
   }
   // right under the main pages, so it's on screen without scrolling the menu
-  const at = box.querySelector('.nf20-g[data-g="money"]') || box.querySelector('#nf22Foot');
-  if(g.parentElement !== box || g.nextElementSibling !== at) box.insertBefore(g, at || null);
+  const mg = box.querySelector('.nf20-g[data-g="money"]');
+  if(mg){ if(mg.nextElementSibling !== g) mg.after(g); }
+  else { const at = box.querySelector('#nf22Foot'); if(g.parentElement !== box || g.nextElementSibling !== at) box.insertBefore(g, at || null); }
   g.classList.remove('nf20-empty');
 }
 
@@ -33208,12 +33341,12 @@ function nf26MenuPost(){
 function nf26MenuFoot(box){
   let f = document.getElementById('nf26Foot');
   if(!f){ f = document.createElement('div'); f.id = 'nf26Foot'; f.className = 'nf26-foot';
-    f.innerHTML = `<button type="button" class="nf26-plan" id="nf26PlanNav" onclick="nf26OpenPlans()">${NF26_STAR_IC}<span><b>Plans &amp; pricing</b><small id="nf26PlanSub">See what Pro adds</small></span></button>
-      <button type="button" class="nf26-help" id="nf26HelpNav" onclick="nf26Help()">${NF26_HELP_IC}<span><b>Need help?</b><small>Message the Nifti team</small></span></button>`; }
+    f.innerHTML = `<button type="button" class="nf26-plan" id="nf26PlanNav" onclick="nf26OpenPlans()">${NF26_STAR_IC}<span class="nf31-lbl">Plans &amp; pricing</span><small id="nf26PlanSub">Free</small></button>
+      <button type="button" class="nf26-help" id="nf26HelpNav" onclick="nf26Help()" title="Message the Nifti team">${NF26_HELP_IC}<span class="nf31-lbl">Help</span></button>`; }
   const after = box.querySelector('#nf22Foot');
   if(f.parentElement !== box || box.lastElementChild !== f) box.appendChild(f);
   if(after && after.nextElementSibling !== f) box.insertBefore(after, f);
-  try{ const sub = document.getElementById('nf26PlanSub'); const t = typeof nf26PlanLine === 'function' ? nf26PlanLine() : ''; if(sub && t && sub.textContent !== t) sub.textContent = t; }catch(e){}
+  try{ const sub = document.getElementById('nf26PlanSub'); const t = typeof nf31PlanChip === 'function' ? nf31PlanChip() : ''; if(sub && t && sub.textContent !== t) sub.textContent = t; }catch(e){}
   try{ const pl = document.getElementById('nf26PlanNav'); const own = nf20IsOwner() && !previewRole; if(pl && pl.hidden === own) pl.hidden = !own; }catch(e){}
 }
 
@@ -34567,6 +34700,319 @@ function nf30Drawer(page){
   window.nf26AfterPass = nf26AfterPass;
   const sv = window.renderCashCountPage;
   if(typeof sv === 'function' && !sv._nf30){ const w = function(){ const r = sv.apply(this, arguments); const box = document.getElementById('nf30Day'); if(box) box.dataset.k = ''; return r; }; w._nf30 = true; window.renderCashCountPage = w; try{ renderCashCountPage = w; }catch(e){} }
+})();
+
+/* ===== Round 31: clear colors on every summary box, money coming up you can open, red unread counts, a calmer menu foot ===== */
+
+/* ---------- 1. Summary boxes: green good, yellow waiting, red problem, gray nothing yet, blue plain totals, teal money moved ---------- */
+// No more empty white boxes: every box says something by its color.
+const NF31_EXACT = {
+  'sales': v => v > 0 ? 'info' : 'gray',
+  'cash': v => v > 0 ? 'good' : 'gray',
+  'gcash & maya': v => v > 0 ? 'warn' : 'gray',
+  'utang': v => v > 0 ? 'warn' : 'good',
+  'days matched': v => v > 0 ? 'good' : 'gray',
+  'owner took': v => v > 0 ? 'note' : 'gray',
+  'stock bought in cash': v => v > 0 ? 'note' : 'gray',
+  'deposited this month': v => v > 0 ? 'good' : 'gray',
+  'collected this month': v => v > 0 ? 'good' : 'gray',
+  'closed': v => v > 0 ? 'good' : 'gray',
+  'stock value': v => v > 0 ? 'info' : 'gray',
+  'owed to you': v => v > 0 ? 'good' : 'gray',
+  'you owe': v => v > 0 ? 'bad' : 'good',
+  'you owe suppliers': v => v > 0 ? 'bad' : 'good',
+};
+(function(){
+  const base = nfToneOf;
+  const wrapped = function(el, label, valueTxt){
+    const l = String(label || '').toLowerCase().replace(/\s+/g, ' ').trim(), v = nfNum(valueTxt) || 0;
+    if(NF31_EXACT[l]) return NF31_EXACT[l](v, el);
+    if(l.startsWith('spent in')) return el.classList.contains('warn') ? 'warn' : v > 0 ? 'info' : 'gray';
+    const t = base(el, label, valueTxt);
+    if(t === 'plain') return v ? 'info' : 'gray';
+    return t;
+  };
+  try{ nfToneOf = wrapped; }catch(e){} window.nfToneOf = wrapped;
+})();
+
+/* ---------- 2. Menu: plans and help as two quiet rows at the bottom ---------- */
+function nf31PlanChip(){
+  try{ const s = nf26PlanNow(); if(s.pending) return 'Checking';
+    const p = NF26_PLANS.find(x => x.k === s.plan); return p ? p.name : 'Free'; }catch(e){ return ''; }
+}
+
+/* ---------- 3. Money overview: what's coming in and going out, each one opens ---------- */
+const NF31N = {items: []};
+function nf31NextItems(){
+  const items = [];
+  try{ unpaidInvoicesFor('supplier').forEach(x => items.push({k: 'in', d: x.due && x.due > APP_TODAY ? x.due : APP_TODAY, amt: x.balance, what: 'To collect · ' + (x.po.invoice && x.po.invoice.number || x.po.poNumber), who: x.po.buyerName, late: x.daysOverdue > 0, days: x.daysOverdue, po: x.po, file: x.po.invoice && x.po.invoice.attachmentName})); }catch(e){}
+  try{ unpaidInvoicesFor('buyer').forEach(x => items.push({k: 'bill', d: x.due && x.due > APP_TODAY ? x.due : APP_TODAY, amt: -x.balance, what: 'To pay · ' + (x.po.invoice && x.po.invoice.number || x.po.poNumber), who: x.po.supplierName, late: x.daysOverdue > 0, days: x.daysOverdue, po: x.po, file: x.po.invoice && x.po.invoice.attachmentName})); }catch(e){}
+  try{ const rec = {}; BK.expenses.filter(e => !e.deletedAt && e.repeat && (e.status || 'approved') === 'approved').forEach(e => { if(!rec[e.category] || e.date > rec[e.category].date) rec[e.category] = e; });
+    Object.values(rec).forEach(e => { const day = String(e.date).slice(8, 10); let m = APP_TODAY.slice(0, 7);
+      for(let i = 0; i < 2; i++){ const d = m + '-' + day; if(d > APP_TODAY && d <= addDaysIso(APP_TODAY, 45)){ items.push({k: 'exp', d, amt: -e.amount, what: e.category, who: e.vendor || '', cat: e.category, last: e, file: e.receipt ? 'Last bill photo' : (!myBusiness ? 'Last bill photo' : '')}); break; } m = bkNextMonth(m); } }); }catch(e){}
+  try{ const lastPay = (typeof PR !== 'undefined' ? PR.runs : []).filter(r => r.status === 'paid').sort((a, b) => String(b.paid_on).localeCompare(String(a.paid_on)))[0];
+    if(lastPay){ const lines = PR.lines.filter(l => l.run_id === lastPay.id), net = lines.reduce((a, l) => a + Number(l.net || 0), 0), gap = Math.max(7, daysBetween(lastPay.period_from, lastPay.period_to) + 1);
+      let d = addDaysIso(lastPay.paid_on, gap); while(d <= APP_TODAY) d = addDaysIso(d, gap);
+      if(d <= addDaysIso(APP_TODAY, 45)) items.push({k: 'pay', d, amt: -net, what: 'Payroll', who: lines.length + ' ' + (lines.length === 1 ? 'person' : 'people'), run: lastPay, lines}); } }catch(e){}
+  return items.sort((a, b) => a.d.localeCompare(b.d) || (b.amt - a.amt));
+}
+const NF31_IC = {
+  in: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="m5 12 7 7 7-7"/></svg>',
+  out: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m19 12-7-7-7 7"/></svg>',
+  file: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>',
+  go: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>',
+};
+function nf31NextHtml(){
+  const items = nf31NextItems(); NF31N.items = items;
+  if(!items.length) return '';
+  const show = items.slice(0, 8), tIn = items.filter(x => x.amt > 0).reduce((a, x) => a + x.amt, 0), tOut = -items.filter(x => x.amt < 0).reduce((a, x) => a + x.amt, 0);
+  return `<section class="panel-card nf31-next"><div class="panel-head"><h2>Coming up: money in and out</h2><span class="nf31-sum"><b class="g">+${bkPeso(tIn)}</b> in · <b class="r">−${bkPeso(tOut)}</b> out · next 45 days</span></div>
+    <p class="nf31-hint">Tap any line to see what it is, the order or bill behind it, and any file attached.</p>
+    <div class="nf31-list">${show.map((x, i) => `<button type="button" class="nf31-row ${x.amt > 0 ? 'in' : 'out'}${x.late ? ' late' : ''}" onclick="nf31Open(${i})">
+      <span class="nf31-ic">${x.amt > 0 ? NF31_IC.in : NF31_IC.out}</span>
+      <span class="nf31-m"><b>${escapeHtml(x.what)}</b><small>${escapeHtml(x.who || (x.k === 'exp' ? 'Every month' : ''))}${x.file ? ` · <span class="nf31-f">${NF31_IC.file}${escapeHtml(x.k === 'exp' ? 'photo' : 'file')}</span>` : ''}</small></span>
+      <span class="nf31-d"><b>${x.d === APP_TODAY ? 'Today' : escapeHtml(bkDayLabel(x.d))}</b>${x.late ? `<small class="late">${x.days} day${x.days === 1 ? '' : 's'} late</small>` : ''}</span>
+      <span class="nf31-a">${x.amt > 0 ? '+' : '−'}${bkPeso(Math.abs(x.amt))}</span><span class="nf31-go">${NF31_IC.go}</span></button>`).join('')}</div>
+    ${items.length > show.length ? `<p class="nf31-more">${items.length - show.length} more after these.</p>` : ''}</section>`;
+}
+function nf31DemoBill(x){
+  const e = x.last, amt = bkPeso(e.amount), due = bkDayLabel(x.d);
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="600" height="780" viewBox="0 0 600 780"><rect width="600" height="780" fill="#fbfaf7"/><rect x="0" y="0" width="600" height="96" fill="#2b4b6f"/><text x="36" y="58" font-family="Arial" font-size="30" font-weight="700" fill="#fff">${(e.category || 'Bill').toUpperCase()} BILL</text><text x="36" y="84" font-family="Arial" font-size="16" fill="#dbe6f2">${(e.vendor || 'Service provider').replace(/[<&]/g, '')} · sample photo</text>
+  <g font-family="Arial" fill="#222" font-size="18"><text x="36" y="150">Account name: Dela Cruz Hardware</text><text x="36" y="182">Account no.: 0412-5532-08</text><text x="36" y="214">Billing period: last month</text></g>
+  <line x1="36" y1="250" x2="564" y2="250" stroke="#ccc" stroke-width="2"/><g font-family="Arial" font-size="18" fill="#333"><text x="36" y="292">This month's charges</text><text x="564" y="292" text-anchor="end">${amt}</text><text x="36" y="328">Previous balance</text><text x="564" y="328" text-anchor="end">₱0.00</text></g>
+  <rect x="36" y="370" width="528" height="110" rx="10" fill="#eef3f8" stroke="#2b4b6f" stroke-width="2"/><text x="60" y="416" font-family="Arial" font-size="20" fill="#2b4b6f">TOTAL AMOUNT DUE</text><text x="540" y="458" text-anchor="end" font-family="Arial" font-size="40" font-weight="700" fill="#111">${amt}</text>
+  <text x="36" y="530" font-family="Arial" font-size="20" fill="#b42318" font-weight="700">Please pay by ${due}</text><g fill="#999"><rect x="36" y="600" width="528" height="70" fill="none" stroke="#bbb" stroke-dasharray="6 6"/></g><text x="300" y="642" font-family="Arial" font-size="16" text-anchor="middle" fill="#888">Demo shop: a made-up bill to show how photos look</text></svg>`;
+  return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+}
+function nf31Open(i){
+  const x = NF31N.items[i]; if(!x) return;
+  const row = (a, b, cls) => `<div class="nf31-kv${cls ? ' ' + cls : ''}"><span>${a}</span><b>${b}</b></div>`;
+  let head = '', body = '', acts = '';
+  if(x.po){
+    const po = x.po, inv = po.invoice || {}, tot = typeof poTotal === 'function' ? poTotal(po) : 0, paid = Math.max(0, Math.round(tot - Math.abs(x.amt))), sell = x.k === 'in';
+    head = `<div class="nf31-ph ${sell ? 'in' : 'out'}"><em>${sell ? 'Money coming in' : 'Bill to pay'}</em><h3>${escapeHtml(x.what)}</h3><p>${sell ? 'From' : 'To'} <b>${escapeHtml(x.who || '')}</b> · order ${escapeHtml(po.poNumber || '')}</p><div class="nf31-big">${bkPeso(Math.abs(x.amt))}</div>${x.late ? `<span class="nf31-late">${x.days} day${x.days === 1 ? '' : 's'} late</span>` : `<span class="nf31-due">Due ${escapeHtml(bkDayLabel(x.d))}</span>`}</div>`;
+    body = `<h4>What it's for</h4><div class="nf31-items">${(po.lineItems || []).map(l => `<div><span>${Number(l.qty) || 0} × ${escapeHtml(l.product || '')}</span><b>${bkPeso((Number(l.qty) || 0) * (Number(l.unitPrice) || 0))}</b></div>`).join('') || '<p>No items on this order.</p>'}</div>
+      ${row('Order total', bkPeso(typeof poTotal === 'function' ? poTotal(po) : 0))}${paid ? row('Paid so far', '−' + bkPeso(paid), 'g') : ''}${row(sell ? 'Still to collect' : 'Still to pay', bkPeso(Math.abs(x.amt)), 'strong')}
+      ${inv.issuedDate ? row('Invoice date', escapeHtml(bkDayLabel(inv.issuedDate))) : ''}${inv.dueDate ? row('Due date', escapeHtml(bkDayLabel(inv.dueDate))) : ''}
+      <h4>Files</h4>${x.file ? `<button type="button" class="nf31-file" onclick="nf31File('${escapeHtml(String(x.file)).replace(/'/g, '&#39;')}')">${NF31_IC.file}<span><b>${escapeHtml(x.file)}</b><small>Tap to open</small></span></button>` : `<p class="nf31-none">No file attached to this ${sell ? 'invoice' : 'bill'} yet.</p>`}`;
+    acts = `<button type="button" class="btn btn-primary" onclick="slClose('nf31Next'); openOrderDetailModal('${po.id}', ${sell})">Open order ${escapeHtml(String(po.poNumber || '').replace(/^PO-\d{4}-/, ''))}</button>${sell ? `<button type="button" class="btn btn-outline" onclick="slClose('nf31Next'); go('collections')">Getting paid</button>` : `<button type="button" class="btn btn-outline" onclick="slClose('nf31Next'); pickLens('collections','buyer')">Bills to pay</button>`}`;
+  } else if(x.k === 'exp'){
+    const e = x.last, hist = BK.expenses.filter(y => !y.deletedAt && y.category === x.cat && (y.status || 'approved') === 'approved').sort((a, b) => b.date.localeCompare(a.date)).slice(0, 4);
+    const photo = e.receipt || (!myBusiness ? nf31DemoBill(x) : '');
+    head = `<div class="nf31-ph out"><em>Monthly bill</em><h3>${escapeHtml(x.what)}</h3><p>${e.vendor ? 'To <b>' + escapeHtml(e.vendor) + '</b> · ' : ''}paid from ${escapeHtml(({cash: 'the cash drawer', bank: 'the bank', gcash: 'GCash', maya: 'Maya'})[e.paidFrom] || e.paidFrom || 'cash')}</p><div class="nf31-big">about ${bkPeso(e.amount)}</div><span class="nf31-due">Usually paid around ${escapeHtml(bkDayLabel(x.d))}</span></div>`;
+    body = `<h4>Last ${hist.length} time${hist.length === 1 ? '' : 's'}</h4><div class="nf31-items">${hist.map(y => `<div><span>${escapeHtml(bkDayLabel(y.date))}${y.by ? ' · by ' + escapeHtml(y.by) : ''}</span><b>${bkPeso(y.amount)}</b></div>`).join('')}</div>
+      <h4>Last bill photo</h4>${photo ? `<button type="button" class="nf31-photo" onclick="bkShowPhoto(${JSON.stringify(photo).replace(/"/g, '&quot;')})"><img src="${/^data:/.test(photo) ? photo : ''}" alt="" data-ref="${escapeHtml(photo)}"><span>Tap to see it big</span></button>` : `<p class="nf31-none">No photo of the last bill. Next time, snap it when you record the expense.</p>`}`;
+    acts = `<button type="button" class="btn btn-primary" onclick="slClose('nf31Next'); go('expenses')">See all expenses</button>`;
+  } else if(x.k === 'pay'){
+    head = `<div class="nf31-ph out"><em>Payroll</em><h3>Next payday</h3><p>Same as the last one, ${escapeHtml(x.who)}</p><div class="nf31-big">${bkPeso(Math.abs(x.amt))}</div><span class="nf31-due">${escapeHtml(bkDayLabel(x.d))}</span></div>`;
+    body = `<h4>Who gets paid (last time)</h4><div class="nf31-items">${x.lines.map(l => `<div><span>${escapeHtml(l.staff_name || l.name || 'Staff')}</span><b>${bkPeso(l.net)}</b></div>`).join('')}</div>`;
+    acts = `<button type="button" class="btn btn-primary" onclick="slClose('nf31Next'); go('payroll')">Open payroll</button>`;
+  }
+  slModal('nf31Next', `<div class="sl-sheet-h"><b>${x.amt > 0 ? 'Coming in' : 'Going out'}</b><button class="sl-x" onclick="slClose('nf31Next')" aria-label="Close">✕</button></div><div class="nf31-pop">${head}${body}<div class="nf31-acts">${acts}</div></div>`);
+  // real receipt photos need a short signed link
+  document.querySelectorAll('.nf31-photo img[data-ref]').forEach(async im => { const ref = im.dataset.ref; if(!ref || /^data:/.test(ref) || !myBusiness) return;
+    try{ const { data } = await sb.storage.from('receipts').createSignedUrl(ref, 300); if(data) im.src = data.signedUrl; }catch(e){} });
+}
+function nf31File(name){
+  if(!myBusiness){ showToast('Demo shop: "' + name + '" is a sample file name. In your own account the real file opens here.', 'info'); return; }
+  try{ for(const c of allConversations()){ const m = (c.messages || []).find(x => x.attachment && x.attachment.name === name && x.attachment.path);
+      if(m){ nf29Url(m.attachment.path, name, true).then(u => { if(u) window.open(u, '_blank', 'noopener'); }).catch(() => showToast("Couldn't open the file.", 'error')); return; } } }catch(e){}
+  showToast('This file is kept with the order. Open the order to see it.', 'info');
+}
+
+/* ---------- 4. Messages: red unread counts, and Team / Customers / Suppliers in their own colors ---------- */
+function nf31TagConv(){
+  const l = document.getElementById('convList'); if(!l) return;
+  let g = '';
+  [...l.children].forEach(el => {
+    if(el.classList.contains('nfw-gh')){ const t = (el.querySelector('span') || el).textContent.trim().toLowerCase(); g = /team/.test(t) ? 'team' : /supplier/.test(t) ? 'sup' : /customer|buyer/.test(t) ? 'cus' : '';
+      if(g && el.dataset.nf31 !== g){ el.dataset.nf31 = g; } return; }
+    if(el.classList.contains('conv-item') && g && el.dataset.nf31 !== g) el.dataset.nf31 = g;
+  });
+}
+function nf31WatchConv(){
+  const l = document.getElementById('convList'); if(!l || l._nf31) return; l._nf31 = true;
+  try{ new MutationObserver(() => nf31TagConv()).observe(l, {childList: true}); }catch(e){}
+  nf31TagConv();
+}
+
+/* ---------- 5. Help: a red count beside Help in the menu when the Nifti team answers ---------- */
+function nf31HelpDemo(){
+  if(typeof nf25Real === 'function' && nf25Real()) return; if(NF26B._nf31) return; NF26B._nf31 = true;
+  const t = (h, m) => { const d = new Date(APP_TODAY + 'T00:00:00'); d.setHours(h, m); return d.toISOString(); };
+  NF26B.help = [{message: 'Hi, how do I put my GCash QR on my bills?', from_admin: false, from_name: 'You', created_at: t(9, 12)},
+    {message: 'Hi! Go to Settings, then "How customers pay you", and tap Add GCash QR. Take a photo of your QR and save. It shows on every bill from then on.', from_admin: true, created_at: t(9, 40)}];
+  NF26B.unread = 1; try{ nf26HelpBadge(); }catch(e){}
+}
+
+/* ---------- wiring ---------- */
+(function(){
+  try{ window.lgForecastHtml = nf31NextHtml; lgForecastHtml = nf31NextHtml; }catch(e){ console.warn('nf31 next', e); }
+  const hp = window.nf26Help;
+  if(typeof hp === 'function' && !hp._nf31){ const w = function(){ const r = hp.apply(this, arguments); if(!(typeof nf25Real === 'function' && nf25Real())){ NF26B.unread = 0; try{ nf26HelpBadge(); }catch(e){} } return r; }; w._nf31 = true; window.nf26Help = w; try{ nf26Help = w; }catch(e){} }
+  const base = nf26AfterPass;
+  nf26AfterPass = function(page){ base(page); try{ nf31HelpDemo(); nf26HelpBadge(); }catch(e){} try{ if(page && page.id === 'page-messages') nf31WatchConv(); }catch(e){ console.warn('nf31 conv', e); } };
+  window.nf26AfterPass = nf26AfterPass;
+})();
+
+/* ===== Round 31: chat smarts. Nifti reads what suppliers and customers send and does the paperwork ===== */
+// Quotations, invoices, order confirmations, price changes and deliveries are spotted in every chat.
+// Text is checked right on the phone (free, instant). Files (PDF invoices, price lists, photos of receipts)
+// are read by the same AI that reads notebook pages, once, and the result is kept for the business.
+const NF31A = {cache: {}, busy: {}, tried: {}, loaded: false};
+const NF31_KINDS = {
+  quote: {t: 'Quotation', c: 'blue'}, invoice: {t: 'Invoice', c: 'amber'}, confirm: {t: 'Order confirmed', c: 'green'},
+  priceup: {t: 'Price going up', c: 'red'}, pricedown: {t: 'Price going down', c: 'green'}, delivered: {t: 'Delivered', c: 'teal'},
+  shipped: {t: 'On the way', c: 'teal'}, delay: {t: 'Delivery delay', c: 'yellow'}, statement: {t: 'Statement', c: 'amber'}, doc: {t: 'Document', c: 'gray'},
+};
+const NF31_SPARK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8"/></svg>';
+
+// demo shop: what the AI would have read off the sample files
+const NF31_DEMO_FILES = {
+  'Invoice_INV-2026-0398.pdf': {kind: 'invoice', doc_number: 'INV-2026-0398', po_number: 'PO-2026-0765', total: 0, summary: 'Invoice for the Structural I-Beams order.'},
+  'Price_List_Sept2026.pdf': {kind: 'quote', summary: 'New price list, cement up about 8%.', items: [{name: 'Portland Cement 40kg', unit: 'bag', unit_price: 211}, {name: 'Washed Sand', unit: 'cu.m', unit_price: 1450}, {name: 'Gravel 3/4', unit: 'cu.m', unit_price: 1650}]},
+  'Mill_Certificate_Aug2026.pdf': {kind: 'doc', summary: 'Mill certificate (quality papers) for the steel batch. Keep it with order 0798.'},
+  'DR-0412_Cebu.jpg': {kind: 'delivered', doc_number: 'DR-0412', summary: 'Delivery receipt: 50 bags Portland Cement 40kg, signed by Rico.', items: [{name: 'Portland Cement 40kg', qty: 50, unit: 'bag'}]},
+};
+
+function nf31Peso(n){ return '₱' + Math.round(Math.abs(Number(n) || 0)).toLocaleString('en-US'); }
+function nf31Amounts(t){ const out = []; String(t || '').replace(/(?:₱|php|\bp)\s?([\d][\d,]*(?:\.\d{1,2})?)/gi, (_, n) => { const v = Number(n.replace(/,/g, '')); if(v >= 1) out.push(v); }); return out; }
+function nf31PoOf(text){ const m = String(text || '').match(/\bPO[-\s#]?(\d{4})[-\s]?(\d{3,4})\b/i); return m ? `PO-${m[1]}-${m[2]}` : ''; }
+function nf31FindPO(num, conv){
+  if(num){ const p = purchaseOrders.find(x => x.poNumber === num); if(p) return p; }
+  // no number: the one open order with this party, if there is exactly one
+  if(!conv) return null; const name = conv.name;
+  const open = purchaseOrders.filter(p => (p.supplierName === name || p.buyerName === name) && !['paid', 'cancelled', 'draft'].includes(p.status));
+  return open.length === 1 ? open[0] : null;
+}
+// text rules: English, Tagalog and Taglish shop words
+function nf31Detect(m, conv){
+  const txt = String(m.text || ''), fn = m.attachment ? String(m.attachment.name || '') : '', all = (txt + ' ' + fn.replace(/[_.-]/g, ' ')).toLowerCase();
+  const out = {po: nf31PoOf(txt + ' ' + fn) || m.poRef || '', amounts: nf31Amounts(txt)};
+  const pct = (all.match(/(\d+(?:\.\d+)?)\s?%/) || [])[1];
+  if(/\b(invoice|inv\s?\d|billing|sales invoice|\bsi\s?#?\d|statement of account|\bsoa\b|singil)\b/.test(all)) out.kind = /statement of account|\bsoa\b/.test(all) ? 'statement' : 'invoice';
+  else if(/\b(price ?list|quotation|quote|price sheet|pricelist|offer|presyo nila|bagong presyo)\b/.test(all) && !/\b(went up|going up)\b/.test(all)) out.kind = 'quote';
+  else if(/(price|prices|presyo)[^.]{0,40}\b(going up|go up|went up|increase|increasing|tataas|tumaas|higher|adjust)|\b(surcharge|price increase|taas presyo|price hike)\b|\d+(\.\d+)?\s?% (increase|up|higher)/.test(all)) out.kind = 'priceup';
+  else if(/(price|prices|presyo)[^.]{0,40}\b(going down|go down|went down|decrease|lower|bababa|bumaba|discount)\b/.test(all)) out.kind = 'pricedown';
+  else if(/\b(delivered|has arrived|arrived|received by|dropped off|na-?deliver|nai-?deliver|nadeliver|natanggap|\bdr[-\s#]?\d)/.test(all)) out.kind = 'delivered';
+  else if(/\b(delay|delayed|late|congestion|behind|extra day|next week na|matatagalan)\b/.test(all)) out.kind = 'delay';
+  else if(/\b(on the way|otw|out for delivery|dispatched|shipped|loaded|papunta na|byahe na)\b/.test(all)) out.kind = 'shipped';
+  else if(/\b(confirm|confirmed|confirming|noted|in production|po received|got your order|will prepare|ok na|sige po|approved|processing)\b/.test(all) && (out.po || nf31FindPO('', conv))) out.kind = 'confirm';
+  if(pct) out.pct = Number(pct);
+  return out.kind ? out : null;
+}
+// what this side bought from this party before: last price per item
+function nf31LastPrices(conv){
+  const name = conv && conv.name, map = {};
+  purchaseOrders.filter(p => p.supplierName === name || p.buyerName === name).sort((a, b) => String(a.createdDate || a.date || '').localeCompare(String(b.createdDate || b.date || ''))).forEach(p => (p.lineItems || []).forEach(l => { map[l.product] = {price: Number(l.unitPrice) || 0, qty: Number(l.qty) || 0, po: p.poNumber}; }));
+  return map;
+}
+function nf31Match(name, prices){ const n = String(name || '').toLowerCase(); const k = Object.keys(prices).find(x => x.toLowerCase() === n) || Object.keys(prices).find(x => n.includes(x.toLowerCase().split(' ')[0]) || x.toLowerCase().includes(n.split(' ')[0])); return k || ''; }
+function nf31Ins(m, conv){
+  try{
+    if(!m || m.from !== 'them') return '';
+    const key = m.id || (conv && conv.id) + '|' + (m.time || '') + '|' + String(m.text || '').slice(0, 30);
+    let ai = m.attachment && (NF31A.cache[m.id] || (!myBusiness && NF31_DEMO_FILES[m.attachment.name]));
+    const det = nf31Detect(m, conv);
+    if(!ai && !det){ return m.attachment && nf31Readable(m) ? nf31ReadBtn(m, conv) : ''; }
+    const kind = (ai && ai.kind) || det.kind, k = NF31_KINDS[kind] || NF31_KINDS.doc;
+    const po = nf31FindPO((ai && ai.po_number) || (det && det.po), conv);
+    if(po && !m.poRef && (kind === 'confirm' || kind === 'invoice' || kind === 'delivered' || kind === 'shipped' || kind === 'delay')) m.poRef = po.poNumber; // the chat is now linked to the order
+    NF31A.last = NF31A.last || {}; NF31A.last[key] = {m, conv, ai, det, po, kind};
+    const short = po ? String(po.poNumber).replace(/^PO-\d{4}-/, '') : '';
+    let line = '', acts = '';
+    const openPo = po ? `<button type="button" onclick="openOrderDetailModal('${po.id}', ${po.supplierName === conv.name ? 'false' : 'true'})">Open order ${short}</button>` : '';
+    if(kind === 'invoice' || kind === 'statement'){
+      const amt = (ai && ai.total) || (det && det.amounts[0]) || (po && po.invoice && po.invoice.statedTotal) || (po && typeof poTotal === 'function' ? poTotal(po) : 0);
+      const num = (ai && ai.doc_number) || (po && po.invoice && po.invoice.number) || '';
+      const exp = po && typeof poTotal === 'function' ? poTotal(po) : 0, diff = amt && exp ? Math.round(amt - exp) : 0;
+      line = `<b>${escapeHtml(num || k.t)}</b>${amt ? ` · ${nf31Peso(amt)}` : ''}${po ? ` · for order ${short}` : ''}${ai && ai.doc_date ? ` · dated ${escapeHtml(ai.doc_date)}` : ''}`
+        + (po && amt ? (Math.abs(diff) < 1 ? `<span class="nf31-ok">✓ Same as the order</span>` : `<span class="nf31-bad">${diff > 0 ? nf31Peso(diff) + ' more' : nf31Peso(diff) + ' less'} than the order</span>`) : '');
+      acts = openPo;
+    } else if(kind === 'quote'){
+      const items = (ai && ai.items) || [], last = nf31LastPrices(conv);
+      line = items.length ? `<b>${items.length} item${items.length === 1 ? '' : 's'} with prices</b>${items.slice(0, 3).map(it => { const mk = nf31Match(it.name, last), was = mk ? last[mk].price : 0, ch = was && it.unit_price ? (it.unit_price - was) / was * 100 : null;
+        return `<span class="nf31-it">${escapeHtml(it.name)} <b>${it.unit_price ? nf31Peso(it.unit_price) : ''}</b>${ch != null && Math.abs(ch) >= 0.5 ? `<em class="${ch > 0 ? 'up' : 'down'}">${ch > 0 ? '▲' : '▼'} ${Math.abs(ch).toFixed(1)}% vs what you paid</em>` : ''}</span>`; }).join('')}`
+        : `<b>${escapeHtml((ai && ai.summary) || 'Prices sent in this chat')}</b>`;
+      acts = `<button type="button" onclick="nf31Compare('${escapeHtml(key).replace(/'/g, '&#39;')}')">Compare with what I paid</button>`;
+    } else if(kind === 'priceup' || kind === 'pricedown'){
+      const last = nf31LastPrices(conv), words = String(m.text || '').toLowerCase(), hit = Object.keys(last).filter(n => n.toLowerCase().split(/[\s/]+/).some(w => w.length > 3 && !/\d/.test(w) && words.includes(w.replace(/s$/, ''))));
+      const pct = det && det.pct, up = kind === 'priceup';
+      line = `<b>${up ? 'Price going up' : 'Price going down'}${pct ? ' ' + pct + '%' : ''}</b>` + (hit.length ? hit.slice(0, 2).map(n => { const was = last[n].price, now = pct ? Math.round(was * (1 + (up ? 1 : -1) * pct / 100)) : 0;
+        return `<span class="nf31-it">${escapeHtml(n)}: you last paid <b>${nf31Peso(was)}</b>${now ? ` → about <b>${nf31Peso(now)}</b>` : ''}${now && last[n].qty ? `<em class="${up ? 'up' : 'down'}">${up ? '+' : '−'}${nf31Peso(Math.abs(now - was) * last[n].qty)} on an order of ${last[n].qty}</em>` : ''}</span>`; }).join('') : `<span class="nf31-it">Nifti will compare the new prices with your last order once you get them.</span>`);
+      acts = up ? `<button type="button" onclick="nf31OrderNow('${escapeHtml(conv.name).replace(/'/g, '&#39;')}')">Order before it goes up</button>` : '';
+    } else if(kind === 'confirm'){
+      line = po ? `<b>Order ${short} confirmed</b> by ${escapeHtml(conv.name)} · ${escapeHtml(PO_STATUS_LABELS[po.status] || po.status)} now` : `<b>Confirmed</b>`;
+      acts = openPo;
+    } else if(kind === 'delivered'){
+      const it = ai && ai.items && ai.items[0];
+      line = `<b>${po ? 'Order ' + short + ' delivered' : 'Delivery done'}</b>${it ? ` · ${it.qty || ''} ${escapeHtml(it.unit || '')} ${escapeHtml(it.name)}` : ''}${ai && ai.doc_number ? ` · ${escapeHtml(ai.doc_number)}` : ''}`;
+      acts = po ? `<button type="button" onclick="openOrderDetailModal('${po.id}', ${po.supplierName === conv.name ? 'false' : 'true'})">Check it in and update stock</button>` : '';
+    } else if(kind === 'shipped'){
+      line = `<b>${po ? 'Order ' + short + ' is on the way' : 'On the way'}</b>`; acts = openPo;
+    } else if(kind === 'delay'){
+      line = `<b>${po ? 'Order ' + short + ' may be late' : 'Delivery may be late'}</b>${/\b(\d)\s?-\s?(\d)\s?days?\b/.test(m.text || '') ? ' · ' + escapeHtml((m.text.match(/\b\d\s?-\s?\d\s?days?\b/) || [''])[0]) : ''}`;
+      acts = openPo;
+    } else {
+      line = `<b>${escapeHtml((ai && ai.summary) || k.t)}</b>`; acts = openPo;
+    }
+    return `<div class="nf31-ins ${k.c}"><div class="nf31-ins-h">${NF31_SPARK}<span>Nifti saw: ${escapeHtml(k.t)}</span>${ai ? '<i>read from the file</i>' : ''}</div><div class="nf31-ins-b">${line}</div>${acts ? `<div class="nf31-ins-a">${acts}</div>` : ''}</div>`;
+  }catch(e){ console.warn('nf31 ins', e); return ''; }
+}
+function nf31Readable(m){ const a = m.attachment || {}; return /\.(pdf|jpe?g|png|webp)$/i.test(a.name || '') || a.image; }
+function nf31DocName(name){ return /(inv|invoice|bill|soa|statement|quot|price|dr[-_ ]?\d|delivery|receipt|resibo|po[-_ ]?\d|order)/i.test(String(name || '')); }
+function nf31ReadBtn(m, conv){
+  if(!m.id) return '';
+  if(NF31A.busy[m.id]) return `<div class="nf31-ins gray"><div class="nf31-ins-h">${NF31_SPARK}<span>Nifti is reading this file…</span></div></div>`;
+  // business papers read themselves; other files wait for a tap
+  if(myBusiness && !NF31A.tried[m.id] && nf31DocName(m.attachment.name)){ setTimeout(() => nf31Read(m.id, true), 400); }
+  return `<div class="nf31-ins gray"><div class="nf31-ins-a"><button type="button" onclick="nf31Read('${m.id}')">${NF31_SPARK} Read the numbers in this file</button></div></div>`;
+}
+function nf31MsgById(id){ for(const c of allConversations()){ const m = (c.messages || []).find(x => x.id === id); if(m) return {m, c}; } return null; }
+async function nf31Read(id, auto){
+  if(!myBusiness){ showToast('Demo shop: in your own account, Nifti reads the file and shows what it found.', 'info'); return; }
+  const f = nf31MsgById(id); if(!f || NF31A.busy[id]) return; NF31A.tried[id] = true;
+  const a = f.m.attachment || {}; if(!a.path){ if(!auto) showToast("This file was sent before Nifti kept files, so it can't be read.", 'info'); return; }
+  NF31A.busy[id] = true; nf31Rerender();
+  try{
+    const { data, error } = await sb.functions.invoke('chat-read', {body: {path: a.path, name: a.name, message_id: id, party: f.c.name}});
+    if(error){ let msg = ''; try{ msg = (await error.context.json()).error; }catch(e){} throw new Error(msg || error.message); }
+    if(!data || !data.result) throw new Error((data && data.error) || 'Nothing found');
+    const r = data.result; NF31A.cache[id] = r;
+    try{ await sb.from('chat_insights').upsert({business_id: myBusiness.id, message_id: id, kind: r.kind, data: r}); }catch(e){}
+  }catch(e){ if(!auto) showToast(String(e.message || e).slice(0, 160), 'error'); }
+  NF31A.busy[id] = false; nf31Rerender();
+}
+async function nf31LoadInsights(){
+  if(!myBusiness || NF31A.loaded) return; NF31A.loaded = true;
+  try{ const { data } = await sb.from('chat_insights').select('message_id, data').eq('business_id', myBusiness.id).order('created_at', {ascending: false}).limit(800);
+    (data || []).forEach(r => { NF31A.cache[r.message_id] = r.data; NF31A.tried[r.message_id] = true; }); if((data || []).length) nf31Rerender(); }catch(e){}
+}
+function nf31Rerender(){ try{ const c = allConversations().find(x => x.id === activeConvId); if(c) renderThread(c); }catch(e){} }
+function nf31Compare(key){
+  const x = NF31A.last && NF31A.last[key]; if(!x) return;
+  const items = (x.ai && x.ai.items) || [], last = nf31LastPrices(x.conv);
+  const rows = items.map(it => { const mk = nf31Match(it.name, last), was = mk ? last[mk].price : 0, ch = was && it.unit_price ? it.unit_price - was : null;
+    return `<tr><td>${escapeHtml(it.name)}</td><td class="r">${was ? nf31Peso(was) : '—'}</td><td class="r"><b>${it.unit_price ? nf31Peso(it.unit_price) : '—'}</b></td><td class="r ${ch > 0 ? 'up' : ch < 0 ? 'down' : ''}">${ch == null ? 'new item' : Math.abs(ch) < 0.5 ? 'same' : (ch > 0 ? '+' : '−') + nf31Peso(ch) + ' (' + (Math.abs(ch) / was * 100).toFixed(1) + '%)'}</td></tr>`; }).join('');
+  slModal('nf31Cmp', `<div class="sl-sheet-h"><b>New prices vs what you paid</b><button class="sl-x" onclick="slClose('nf31Cmp')" aria-label="Close">✕</button></div>
+    <div class="nf31-pop"><p class="nf31-none">From ${escapeHtml(x.conv.name)}. "You paid" is your last order with them.</p>
+    ${rows ? `<table class="nf31-cmp"><thead><tr><th>Item</th><th class="r">You paid</th><th class="r">New price</th><th class="r">Change</th></tr></thead><tbody>${rows}</tbody></table>` : `<p class="nf31-none">No item prices could be read from this message yet.</p>`}
+    <div class="nf31-acts"><button type="button" class="btn btn-primary" onclick="slClose('nf31Cmp'); nf31OrderNow('${escapeHtml(x.conv.name).replace(/'/g, '&#39;')}')">Make an order</button><button type="button" class="btn btn-outline" onclick="slClose('nf31Cmp'); go('prices')">See all my prices</button></div></div>`);
+}
+function nf31OrderNow(name){ try{ openCreatePOModal(); setTimeout(() => { const sel = document.getElementById('createPoSupplier'); if(sel){ const o = [...sel.options].find(x => x.textContent.trim() === name); if(o){ sel.value = o.value; sel.dispatchEvent(new Event('change', {bubbles: true})); } } }, 250); }catch(e){ go('orders'); } }
+
+// demo: a delivery receipt photo arrives from the cement supplier this morning
+function nf31DemoSeed(){
+  if(myBusiness) return;
+  try{ const c = buyerConversations.find(x => x.id === 'cebu'); if(c && !c.messages.some(m => m.nf31demo)){
+    c.messages.push({from: 'them', nf31demo: true, text: 'Good morning! Delivered 50 bags Portland Cement 40kg today, received by Rico. DR attached.', time: 'Today, 7:50 AM', date: APP_TODAY, attachment: {name: 'DR-0412_Cebu.jpg', size: '640 KB'}});
+    c.unread = (c.unread || 0) + 1; } }catch(e){}
+}
+(function(){
+  const base = nf26AfterPass;
+  nf26AfterPass = function(page){ base(page); try{ if(page && page.id === 'page-messages'){ nf31DemoSeed(); nf31LoadInsights(); } }catch(e){ console.warn('nf31 ai', e); } };
+  window.nf26AfterPass = nf26AfterPass;
+  try{ nf31DemoSeed(); }catch(e){}
 })();
 
 function renderSidebarForViewAsRole(){
@@ -36420,7 +36866,7 @@ function renderThread(conv){
     <div class="msg-bubble-row ${m.from}">
       ${poChipHtml}
       <div class="msg-bubble">${m.text || ''}${m.attachment ? `${nf29Att(m)}` : ''}${pendingSyncTagHtml(m)}</div>
-      <div class="msg-time">${tickHtml}${m.time}</div>
+      <div class="msg-time">${tickHtml}${m.time}</div>${typeof nf31Ins === 'function' ? nf31Ins(m, conv) : ''}
     </div>
   `;}).join('') : `<div style="text-align:center;color:var(--ink);padding:30px;font-size:15.5px;">No messages match this filter.</div>`;
   if(threadTypingConvId === conv.id){

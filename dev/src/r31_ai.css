@@ -1,0 +1,28 @@
+/* chat smarts: a small card under a message saying what Nifti saw and what to do */
+#view-app .nf31-ins{margin-top:6px;max-width:440px;border-radius:12px;border:1.5px solid;padding:9px 12px;background:#FFFFFF;font-size:14.5px;color:#101828;display:grid;gap:5px;}
+#view-app .nf31-ins-h{display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;}
+#view-app .nf31-ins-h svg{width:15px;height:15px;flex:none;}
+#view-app .nf31-ins-h i{margin-left:auto;font-style:normal;font-weight:600;text-transform:none;letter-spacing:0;font-size:12px;color:#475467;}
+#view-app .nf31-ins-b{line-height:1.45;}
+#view-app .nf31-ins-b > b{font-weight:800;}
+#view-app .nf31-it{display:block;margin-top:3px;}
+#view-app .nf31-it em{font-style:normal;font-weight:800;margin-left:6px;font-size:13.5px;}
+html[data-ty] #view-app .nf31-it em.up, #view-app .nf31-it em.up{color:#B42318 !important;} html[data-ty] #view-app .nf31-it em.down, #view-app .nf31-it em.down{color:#15803D !important;}
+#view-app .nf31-ok{display:inline-block;margin-left:8px;font-weight:800;color:#15803D;}
+#view-app .nf31-bad{display:inline-block;margin-left:8px;font-weight:800;color:#B42318;}
+#view-app .nf31-ins-a{display:flex;gap:6px;flex-wrap:wrap;}
+#view-app .nf31-ins-a button{display:inline-flex;align-items:center;gap:6px;min-height:34px;padding:0 12px;border-radius:999px;border:1.5px solid #D0D5DD;background:#FFFFFF;font:inherit;font-size:14px;font-weight:700;color:#101828;cursor:pointer;}
+#view-app .nf31-ins-a button:hover{border-color:#1F6B45;}
+#view-app .nf31-ins-a button svg{width:15px;height:15px;}
+#view-app .nf31-ins.blue{border-color:#93C5FD;background:#F5F9FF;} #view-app .nf31-ins.blue .nf31-ins-h{color:#1D4ED8;}
+#view-app .nf31-ins.amber{border-color:#FCD34D;background:#FFFBEB;} #view-app .nf31-ins.amber .nf31-ins-h{color:#92400E;}
+#view-app .nf31-ins.green{border-color:#86EFAC;background:#F0FDF4;} #view-app .nf31-ins.green .nf31-ins-h{color:#15803D;}
+#view-app .nf31-ins.red{border-color:#FCA5A5;background:#FEF2F2;} #view-app .nf31-ins.red .nf31-ins-h{color:#B42318;}
+#view-app .nf31-ins.teal{border-color:#5EEAD4;background:#F0FDFA;} #view-app .nf31-ins.teal .nf31-ins-h{color:#0F766E;}
+#view-app .nf31-ins.yellow{border-color:#FACC15;background:#FEF9C3;} #view-app .nf31-ins.yellow .nf31-ins-h{color:#854D0E;}
+#view-app .nf31-ins.gray{border-color:#E4E7EC;background:#F9FAFB;} #view-app .nf31-ins.gray .nf31-ins-h{color:#475467;}
+#view-app .nf31-ins.gray:not(:has(.nf31-ins-h)){border:0;background:transparent;padding:0;}
+.nf31-cmp{width:100%;border-collapse:collapse;font-size:15px;}
+.nf31-cmp th{font-size:12.5px;text-transform:uppercase;letter-spacing:.05em;color:#475467;text-align:left;padding:8px;border-bottom:1.5px solid #EAECF0;}
+.nf31-cmp td{padding:10px 8px;border-bottom:1px solid #F2F4F7;color:#101828;}
+.nf31-cmp .r{text-align:right;} .nf31-cmp td.up{color:#B42318;font-weight:800;} .nf31-cmp td.down{color:#15803D;font-weight:800;}
