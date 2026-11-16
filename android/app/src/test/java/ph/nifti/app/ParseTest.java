@@ -48,4 +48,22 @@ public class ParseTest {
         String[] s = Parse.splitSender("Juan: may stock pa?");
         assertEquals("Juan", s[0]); assertEquals("may stock pa?", s[1]);
     }
+
+    @Test public void openChatTimes() {
+        java.util.Calendar now = java.util.Calendar.getInstance(); now.set(2026, 10, 16, 15, 0, 0); now.set(java.util.Calendar.MILLISECOND, 0);
+        long n = now.getTimeInMillis();
+        java.util.Calendar c = java.util.Calendar.getInstance();
+        c.setTimeInMillis(Parse.when("Today", "9:41 AM", n));
+        assertEquals(9, c.get(java.util.Calendar.HOUR_OF_DAY)); assertEquals(41, c.get(java.util.Calendar.MINUTE)); assertEquals(16, c.get(java.util.Calendar.DAY_OF_MONTH));
+        c.setTimeInMillis(Parse.when("Yesterday", "9:05 PM", n));
+        assertEquals(21, c.get(java.util.Calendar.HOUR_OF_DAY)); assertEquals(15, c.get(java.util.Calendar.DAY_OF_MONTH));
+        c.setTimeInMillis(Parse.when("Nov 14", "12:30 PM", n));
+        assertEquals(14, c.get(java.util.Calendar.DAY_OF_MONTH)); assertEquals(12, c.get(java.util.Calendar.HOUR_OF_DAY));
+        c.setTimeInMillis(Parse.when("Fri, Nov 13, 2026", "08:00", n));
+        assertEquals(13, c.get(java.util.Calendar.DAY_OF_MONTH)); assertEquals(8, c.get(java.util.Calendar.HOUR_OF_DAY));
+        c.setTimeInMillis(Parse.when(null, "4:00 PM", n)); // later than now with no date line = yesterday
+        assertEquals(15, c.get(java.util.Calendar.DAY_OF_MONTH));
+        assertEquals(-1, Parse.when("Today", null, n));
+        assertEquals(-1, Parse.when("Someday", "9:00 AM", n));
+    }
 }

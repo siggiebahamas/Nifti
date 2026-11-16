@@ -1,0 +1,286 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Chat Folders and Team Board</title><meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap">
+<style>
+:root{--ink:#0B0F14;--line:#E4E7EC;--g:#1F6B45;--soft:#F2F4F7;--red:#D92D20}
+*{box-sizing:border-box}html,body{margin:0}body{font:16px/1.5 "Plus Jakarta Sans",system-ui,sans-serif;color:var(--ink);background:#F7F8FA;-webkit-font-smoothing:antialiased}
+.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}.tin{max-width:1280px;margin:0 auto;padding:12px 20px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.tin a{color:var(--g);font-weight:700;text-decoration:none;font-size:14.5px}.tin h1{margin:0;font-size:18px;flex:1;min-width:200px}
+.jump a{padding:7px 12px;border-radius:999px;border:1.5px solid #D0D5DD;background:#fff;color:var(--ink);font-weight:700;font-size:14px;margin-left:6px;display:inline-block;text-decoration:none}
+.wrap{max-width:1280px;margin:0 auto;padding:22px 20px 80px;display:grid;gap:56px}
+h2{margin:0 0 6px;font-size:28px}.lead{margin:0 0 14px;max-width:900px;font-size:16.5px}
+.answer{background:#fff;border:1px solid var(--line);border-left:4px solid var(--g);border-radius:14px;padding:14px 16px;max-width:900px;margin:0 0 20px}
+.answer b{display:block;font-size:17px;margin-bottom:2px}
+.rec{background:var(--g);color:#fff;border-radius:999px;padding:3px 11px;font-size:13px;font-weight:800}
+.opt{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;margin-bottom:22px}
+.opt > h3{margin:0;padding:14px 18px;border-bottom:1px solid var(--line);font-size:19px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.opt > h3 em{font-style:normal;font-size:13px;font-weight:800;background:var(--soft);border-radius:999px;padding:3px 10px}
+.opt > p{margin:0;padding:12px 18px 16px;font-size:15px;border-top:1px solid var(--line);background:#FCFCFD}
+.opt > p b{font-weight:800}
+.stages{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:18px;padding:18px;background:#F2F4F7;align-items:start}
+.lbl{font-size:12.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#344054;margin:0 0 8px}
+.pc{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;min-height:470px;display:grid}
+.phone{width:360px;max-width:100%;background:#0B0F14;border-radius:34px;padding:10px;justify-self:center}
+.screen{background:#fff;border-radius:26px;overflow:hidden;height:640px;display:flex;flex-direction:column}
+.ph-top{padding:12px 14px 8px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #F2F4F7}
+.ph-top b{font-size:20px;flex:1}
+.srch{background:var(--soft);border-radius:10px;padding:8px 11px;font-size:14px;color:#344054;margin:8px 12px}
+.ic{width:20px;height:20px;flex:none}
+/* chat rows */
+.row{display:grid;grid-template-columns:42px minmax(0,1fr) auto;gap:10px;align-items:center;padding:9px 12px;border-top:1px solid #F2F4F7}
+.row:first-child{border-top:0}
+.av{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:800;font-size:14px}
+.row b{display:block;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row small{display:block;font-size:13.5px;color:#344054;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .rt{display:grid;justify-items:end;gap:4px}.row time{font-size:12px;font-weight:700;color:#344054}
+.un{min-width:20px;height:20px;border-radius:999px;background:var(--red);color:#fff;font-size:11.5px;font-weight:800;display:grid;place-items:center;padding:0 6px}
+.cnt{min-width:22px;height:22px;border-radius:999px;background:var(--red);color:#fff;font-size:12px;font-weight:800;display:inline-grid;place-items:center;padding:0 6px}
+.cnt.g{background:#E4E7EC;color:#0B0F14}
+.chatstub{background:#F7F5F0;display:grid;align-content:start;gap:10px;padding:16px;border-left:1px solid var(--line)}
+.chatstub .h{display:flex;gap:10px;align-items:center;background:#fff;margin:-16px -16px 6px;padding:12px 16px;border-bottom:1px solid var(--line)}
+.chatstub .h b{font-size:16px}
+.bub{background:#fff;border-radius:4px 14px 14px 14px;padding:9px 12px;font-size:14.5px;max-width:78%}
+.bub.me{background:var(--g);color:#fff;justify-self:end;border-radius:14px 4px 14px 14px}
+.newtag{font-size:11px;font-weight:800;letter-spacing:.03em;color:#14532D;background:#DCFCE7;border-radius:999px;padding:1px 7px;margin-left:6px;vertical-align:2px}
+
+/* V1 rail */
+.v1{display:grid;grid-template-columns:84px minmax(0,1fr) minmax(0,1.1fr)}
+.v1 .rail{background:#FAFAFB;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:4px;padding:10px 6px}
+.v1 .ri{display:grid;justify-items:center;gap:3px;padding:9px 2px;border-radius:12px;font-size:11.5px;font-weight:800;color:#344054;position:relative}
+.v1 .ri svg{width:24px;height:24px}
+.v1 .ri.on{background:#E7F3EC;color:var(--g)}
+.v1 .ri .cnt{position:absolute;top:3px;right:10px;min-width:18px;height:18px;font-size:10.5px}
+.v1 .sp{flex:1}.v1 .ri.mut{color:#475467}
+.v1p{display:grid;grid-template-columns:66px minmax(0,1fr);flex:1;min-height:0}
+.v1p .rail{background:#FAFAFB;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:2px;padding:8px 4px}
+.v1p .ri{display:grid;justify-items:center;gap:2px;padding:8px 0;border-radius:12px;font-size:10.5px;font-weight:800;color:#344054;position:relative}
+.v1p .ri svg{width:22px;height:22px}.v1p .ri.on{background:#E7F3EC;color:var(--g)}
+.v1p .ri .cnt{position:absolute;top:2px;right:6px;min-width:17px;height:17px;font-size:10px}
+.v1p .sp{flex:1}
+.v1p .row{grid-template-columns:36px minmax(0,1fr) auto;padding:9px 10px;gap:8px}.v1p .av{width:36px;height:36px;font-size:12.5px}
+
+/* V2 folders */
+.v2{display:grid;grid-template-columns:210px minmax(0,1fr) minmax(0,1fr)}
+.v2 .fold{border-right:1px solid var(--line);padding:12px 10px;display:grid;gap:2px;align-content:start}
+.v2 .fi,.v2p .fi{display:grid;grid-template-columns:22px 1fr auto;gap:10px;align-items:center;padding:10px 10px;border-radius:10px;font-weight:700;font-size:15px}
+.v2 .fi.on{background:#E7F3EC;color:var(--g)}
+.v2 .fh{font-size:12px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#475467;padding:12px 10px 4px}
+.v2p .fi{grid-template-columns:44px 1fr auto;padding:12px 14px;border-top:1px solid #F2F4F7;border-radius:0}
+.v2p .fi .fb{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--soft)}
+.v2p .fi small{display:block;font-weight:500;font-size:13px;color:#344054;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.v2p .fi span{min-width:0}
+
+/* V3 stacked sections */
+.v3{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}
+.sec{padding:12px 14px 4px;display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#344054;border-top:6px solid #F7F8FA}
+.sec:first-child{border-top:0}.sec .ic{width:17px;height:17px}
+.sec .more{margin-left:auto;text-transform:none;letter-spacing:0;font-size:13px;color:var(--g)}
+.wrapsec{overflow:auto}
+.pers{display:flex;gap:10px;align-items:center;margin:8px 12px 12px;padding:11px 12px;border-radius:12px;background:#F9FAFB;border:1px dashed #D0D5DD;font-size:14px}
+.pers b{display:block;font-size:14.5px}
+
+/* V4 row strip */
+.v4{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}
+.v4 .row,.v4p .row{grid-template-columns:26px 42px minmax(0,1fr) auto;padding:0 12px 0 0;gap:10px}
+.strip{align-self:stretch;writing-mode:vertical-rl;transform:rotate(180deg);font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;display:grid;place-items:center;color:#344054;background:#F2F4F7}
+.strip.c{background:#EAF2FF;color:#1D4ED8}.strip.s{background:#EAF6EF;color:#166534}.strip.t{background:#FFF4E5;color:#9A3412}.strip.n{background:#ECFDF3;color:#14532D}
+.v4 .row > .av,.v4p .row > .av{margin:9px 0}
+.filt{display:flex;gap:8px;align-items:center;margin:0 12px 8px;font-size:14px}
+.filt span{border:1.5px solid #D0D5DD;border-radius:10px;padding:6px 10px;font-weight:700}
+
+/* V5 switcher */
+.v5{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr)}
+.sw{display:flex;align-items:center;gap:8px;margin:4px 12px 8px;padding:10px 12px;border:1.5px solid #D0D5DD;border-radius:12px;font-weight:800;font-size:16px}
+.sw .cv{margin-left:auto}
+.menu{margin:0 12px 10px;border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 40px -18px rgba(16,24,40,.35);overflow:hidden;background:#fff}
+.menu .mi{display:grid;grid-template-columns:22px 1fr auto;gap:10px;align-items:center;padding:11px 12px;border-top:1px solid #F2F4F7;font-weight:700;font-size:15px}
+.menu .mi:first-child{border-top:0}.menu .mi.on{background:#E7F3EC;color:var(--g)}
+.menu .mi small{display:block;font-weight:500;font-size:12.5px;color:#344054}
+.dim{opacity:.35}
+
+/* ---------- team boards ---------- */
+.bstages{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:18px;padding:18px;background:#F2F4F7;align-items:start}
+.board{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px}
+.col{border-radius:16px;padding:12px;display:grid;gap:10px;align-content:start;min-height:300px}
+.ch{display:flex;align-items:center;gap:8px}
+.ch b{font-size:16px;letter-spacing:.04em;text-transform:uppercase}
+.ch small{display:block;font-size:13px;font-weight:600}
+.ch .n{margin-left:auto;font-weight:800;font-size:14px;border-radius:999px;padding:1px 9px}
+.card{background:#fff;border-radius:12px;padding:11px 12px;display:grid;gap:7px;border:1px solid #EAECF0}
+.card b{font-size:15px;line-height:1.3}
+.who{display:flex;align-items:center;gap:7px;font-size:13.5px;font-weight:700}
+.mini{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:10.5px;font-weight:800}
+.tg{font-size:12.5px;font-weight:800;border-radius:8px;padding:2px 8px;justify-self:start}
+.tg.late{background:#FEE4E2;color:#B42318}.tg.today{background:#FEF0C7;color:#93370D}.tg.d{background:#F2F4F7;color:#344054}
+.act{justify-self:start;font-size:13px;font-weight:800;border-radius:9px;padding:5px 12px;border:1.5px solid #D0D5DD;background:#fff}
+.done b{text-decoration:line-through;color:#475467}
+/* phone board */
+.pboard{padding:10px 12px;display:grid;gap:10px;overflow:auto;flex:1;align-content:start}
+.ptabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:8px 12px 0}
+.ptabs span{text-align:center;font-weight:800;font-size:13.5px;border-radius:10px;padding:8px 4px}
+
+/* B1 tinted lanes */
+.b1 .todo{background:#EEF4FF}.b1 .doing{background:#FFF6E0}.b1 .dn{background:#EAF7EF}
+.b1 .todo .ch b,.b1 .todo .ch small{color:#1E3A8A}.b1 .doing .ch b,.b1 .doing .ch small{color:#7A2E0E}.b1 .dn .ch b,.b1 .dn .ch small{color:#14532D}
+.b1 .todo .n{background:#C7D7FE;color:#1E3A8A}.b1 .doing .n{background:#FEDF89;color:#7A2E0E}.b1 .dn .n{background:#BBE5CB;color:#14532D}
+.b1 .card{border-color:transparent;box-shadow:0 1px 2px rgba(16,24,40,.08)}
+/* B2 top bar */
+.b2 .col{background:#fff;border:1px solid #EAECF0;border-top:6px solid}
+.b2 .todo{border-top-color:#3E63DD}.b2 .doing{border-top-color:#F79009}.b2 .dn{border-top-color:#12B76A}
+.b2 .ch .ico{width:30px;height:30px;border-radius:50%;display:grid;place-items:center}
+.b2 .todo .ico{background:#EEF4FF;color:#3E63DD}.b2 .doing .ico{background:#FFF6E0;color:#B54708}.b2 .dn .ico{background:#EAF7EF;color:#067647}
+.b2 .ch .n{font-size:22px;padding:0;background:none}
+.b2 .card{background:#FCFCFD}
+/* B3 solid header */
+.b3 .col{padding:0;background:#fff;border:1px solid #EAECF0;overflow:hidden;gap:0}
+.b3 .ch{padding:12px 14px;color:#fff}.b3 .ch b,.b3 .ch small{color:#fff}
+.b3 .todo .ch{background:#2E5BDB}.b3 .doing .ch{background:#C4600A}.b3 .dn .ch{background:#1F6B45}
+.b3 .ch .n{background:rgba(255,255,255,.22);color:#fff}
+.b3 .body{padding:12px;display:grid;gap:10px}
+.b3 .dn .card{opacity:.7}
+/* B4 progress + edge */
+.b4wrap{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;display:grid;gap:14px}
+.prog{display:grid;gap:8px}
+.prog .bar{display:flex;height:14px;border-radius:999px;overflow:hidden;background:#F2F4F7}
+.prog .bar i{display:block}
+.prog .lg{display:flex;gap:16px;flex-wrap:wrap;font-size:14px;font-weight:700}.prog .lg span{display:flex;gap:6px;align-items:center}
+.dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+.b4 .board{border:0;padding:0}
+.b4 .col{background:#F9FAFB;border:1px solid #EAECF0}
+.b4 .card{border-left:5px solid}
+.b4 .todo .card{border-left-color:#3E63DD}.b4 .doing .card{border-left-color:#F79009}.b4 .dn .card{border-left-color:#12B76A}
+.b4 .card.lt{border-left-color:#D92D20}
+/* B5 list by status */
+.b5{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.ls{display:flex;align-items:center;gap:10px;padding:12px 16px;font-weight:800;font-size:15px}
+.ls .n{font-size:13px;border-radius:999px;padding:1px 9px}
+.ls.doing{background:#FFF6E0;color:#7A2E0E}.ls.todo{background:#EEF4FF;color:#1E3A8A}.ls.dn{background:#EAF7EF;color:#14532D}
+.ls.doing .n{background:#FEDF89}.ls.todo .n{background:#C7D7FE}.ls.dn .n{background:#BBE5CB}
+.ls .cv{margin-left:auto;font-size:13px;font-weight:700}
+.li{display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:12px;align-items:center;padding:11px 16px;border-top:1px solid #F2F4F7}
+.li b{font-size:15px;display:block}.li .who{font-size:13px}
+.ck{width:26px;height:26px;border-radius:50%;border:2.5px solid #98A2B3;display:grid;place-items:center}
+.ck.half{border-color:#F79009;background:conic-gradient(#F79009 0 50%,transparent 0)}
+.ck.ok{border-color:#12B76A;background:#12B76A;color:#fff}
+@media (max-width:980px){.stages,.bstages{grid-template-columns:1fr}.v1,.v2,.v3,.v4,.v5{grid-template-columns:1fr}.v1{grid-template-columns:76px 1fr}.chatstub,.v2 .fold{display:none}.board{grid-template-columns:1fr}}
+@media (max-width:420px){.wrap{padding:16px 16px 60px}.phone{width:100%}}
+</style></head><body>
+<div class="top"><div class="tin"><a href="../">‹ Design lab</a><h1>Round 38: chat folders and team board</h1><div class="jump"><a href="#chats">Chats ×5</a><a href="#board">Team board ×5</a></div></div></div>
+<main class="wrap">
+
+<section id="chats">
+  <h2>Chat categories, stacked top to bottom</h2>
+  <p class="lead">Today Team, Customers and Suppliers sit side by side as tabs. Here they run down the side instead, with room for New and Personal. Each one is shown on a computer and on a phone. Color is kept to one small accent, so it never fights the red counts.</p>
+  <div class="answer"><b>Where do personal chats go?</b>Into a <b>Personal</b> folder, always last and grayed. They never show red counts, never show in the team's lists, and their messages stay on your phone (Nifti keeps only the name, so it knows to leave that chat alone). Tap it to see who's in there, and move anyone back to Customers or Suppliers in one tap.</div>
+  <div id="chatOpts"></div>
+</section>
+
+<section id="board">
+  <h2>Team board: To do, Doing, Done</h2>
+  <p class="lead">Same jobs in every version. The colors mean the same thing everywhere: <b style="color:#2E5BDB">blue</b> = not started, <b style="color:#B54708">amber</b> = someone is on it, <b style="color:#067647">green</b> = done, and <b style="color:#B42318">red</b> only for late.</p>
+  <div id="boardOpts"></div>
+</section>
+</main>
+
+<script>
+const IC = {
+  new:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/></svg>',
+  cust:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9"/><path d="M4 9v11h16V9"/><path d="M3 9h18"/><path d="M9 20v-6h6v6"/></svg>',
+  supp:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 6h13v10H1z"/><path d="M14 9h4l3 3v4h-7"/><circle cx="5.5" cy="17.5" r="2"/><circle cx="17.5" cy="17.5" r="2"/></svg>',
+  team:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5c2 .7 3.2 2.6 3.6 5.5"/></svg>',
+  pers:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>',
+  all:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>',
+  down:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>',
+};
+const CAT = [
+  {k:'new', name:'New', long:'New on Viber', c:'#14532D'},
+  {k:'cust', name:'Customers', long:'Customers', c:'#1D4ED8'},
+  {k:'supp', name:'Suppliers', long:'Suppliers', c:'#166534'},
+  {k:'team', name:'Team', long:'Team', c:'#9A3412'},
+  {k:'pers', name:'Personal', long:'Personal · kept out', c:'#475467'},
+];
+const CH = [
+  {cat:'new', ini:'KB', bg:'#1F7A4D', name:'Kuya Ben Hardware', msg:'Magkano po ang 1/2 plywood?', t:'2:41 PM', un:1},
+  {cat:'cust', ini:'AN', bg:'#0F766E', name:'Aling Nena Sari-Sari', msg:'SOA_October.pdf', t:'2:20 PM', un:2},
+  {cat:'supp', ini:'MS', bg:'#475467', name:'Metro Steel', msg:'Rebar 10mm ready for pickup bukas', t:'1:40 PM', un:1},
+  {cat:'cust', ini:'BC', bg:'#15803D', name:'Bayview Construction Co.', msg:'Salamat po! Order ulit next week.', t:'1:12 PM'},
+  {cat:'team', ini:'AR', bg:'#2563EB', name:'Ana (stock)', msg:'Cement count done, 3 bags short', t:'12:05 PM', un:1},
+  {cat:'cust', ini:'RB', bg:'#1D4ED8', name:'Riverside Builders Corp', msg:'Boss, na-deposit na po yung 6k', t:'10:24 AM'},
+  {cat:'supp', ini:'HD', bg:'#7C3AED', name:'Holcim Dealer Pasig', msg:'New price list attached', t:'9:02 AM'},
+  {cat:'cust', ini:'CW', bg:'#B45309', name:'Corazon Welding Shop', msg:"You: Thanks for the heads-up", t:'Nov 10'},
+  {cat:'team', ini:'MS', bg:'#334155', name:'Mark (driver)', msg:'On the way to Bayview', t:'Nov 10'},
+  {cat:'pers', ini:'M', bg:'#98A2B3', name:'Mama', msg:'', t:'Nov 9'},
+  {cat:'pers', ini:'TR', bg:'#98A2B3', name:'Tito Ramon', msg:'', t:'Nov 8'},
+];
+const unreadOf = k => CH.filter(c => c.cat === k && k !== 'pers').reduce((s, c) => s + (c.un || 0), 0);
+const countOf = k => CH.filter(c => c.cat === k).length;
+const tagOf = k => ({new:'New', cust:'Customer', supp:'Supplier', team:'Team', pers:'Personal'})[k];
+function row(c, opt){
+  opt = opt || {};
+  const strip = opt.strip ? `<span class="strip ${({cust:'c',supp:'s',team:'t',new:'n'})[c.cat] || ''}">${({cust:'Cust',supp:'Supp',team:'Team',new:'New'})[c.cat]}</span>` : '';
+  return `<div class="row">${strip}<span class="av" style="background:${c.bg}">${c.ini}</span><span><b>${c.name}${c.cat === 'new' && !opt.strip ? '<span class="newtag">NEW</span>' : ''}</b><small>${c.msg}</small></span><span class="rt"><time>${c.t}</time>${c.un ? `<span class="un">${c.un}</span>` : ''}</span></div>`;
+}
+const stub = `<div class="chatstub"><div class="h"><span class="av" style="background:#0F766E">AN</span><span><b>Aling Nena Sari-Sari</b><br><small>Customer · Order 0857</small></span></div>
+  <div class="bub">Pa-send po ng SOA for October</div><div class="bub me">Here po, attached. ₱8,240 balance.</div><div class="bub">SOA_October.pdf</div></div>`;
+const phone = (title, inner) => `<div><p class="lbl">On a phone</p><div class="phone"><div class="screen"><div class="ph-top"><b>${title}</b>${IC.all.replace('<svg', '<svg class="ic"')}</div>${inner}</div></div></div>`;
+const pc = inner => `<div><p class="lbl">On a computer</p><div class="pc">${inner}</div></div>`;
+
+const OPTS = [
+  {t:'1. Side rail', tag:'Recommended', why:'<b>Why:</b> every folder and its red count is always in view, one tap away, on both screens. Personal sits at the bottom, out of the way. Nothing wraps, and adding a folder later (say, "Online store") just adds one more icon.',
+    pc(){ const sel='cust'; return `<div class="v1"><div class="rail">${CAT.map(c => (c.k === 'pers' ? '<span class="sp"></span>' : '') + `<div class="ri ${c.k === sel ? 'on' : ''} ${c.k === 'pers' ? 'mut' : ''}">${IC[c.k]}${c.name}${unreadOf(c.k) ? `<span class="cnt">${unreadOf(c.k)}</span>` : ''}</div>`).join('')}</div>
+      <div><div class="srch">Search customers</div>${CH.filter(c => c.cat === sel).map(c => row(c)).join('')}</div>${stub}</div>`; },
+    ph(){ const sel='cust'; return `<div class="v1p"><div class="rail">${CAT.map(c => (c.k === 'pers' ? '<span class="sp"></span>' : '') + `<div class="ri ${c.k === sel ? 'on' : ''}">${IC[c.k]}${c.name === 'Customers' ? 'Buyers' : c.name}${unreadOf(c.k) ? `<span class="cnt">${unreadOf(c.k)}</span>` : ''}</div>`).join('')}</div>
+      <div style="overflow:auto"><div class="srch" style="margin:8px">Search</div>${CH.filter(c => c.cat === sel).map(c => row(c)).join('')}</div></div>`; }},
+  {t:'2. Folders, like email', why:'<b>Why:</b> the words are spelled out, so it reads like an inbox anyone knows. On a phone the folders are the first screen, each with its newest message, then you tap in. Costs one extra tap on the phone.',
+    pc(){ const sel='cust'; return `<div class="v2"><div class="fold"><div class="fi">${IC.all.replace('<svg','<svg class="ic"')}All chats<span class="cnt">${[ 'new','cust','supp','team'].reduce((s,k)=>s+unreadOf(k),0)}</span></div><div class="fh">Folders</div>${CAT.map(c => `<div class="fi ${c.k === sel ? 'on' : ''}" ${c.k === 'pers' ? 'style="color:#475467;margin-top:10px"' : ''}>${IC[c.k].replace('<svg','<svg class="ic"')}${c.name}${c.k === 'pers' ? `<span class="cnt g">${countOf('pers')}</span>` : unreadOf(c.k) ? `<span class="cnt">${unreadOf(c.k)}</span>` : ''}</div>`).join('')}</div>
+      <div><div class="srch">Search customers</div>${CH.filter(c => c.cat === sel).map(c => row(c)).join('')}</div>${stub}</div>`; },
+    ph(){ return `<div class="v2p" style="overflow:auto"><div class="srch">Search all chats</div>${CAT.map(c => { const last = CH.find(x => x.cat === c.k); return `<div class="fi" ${c.k === 'pers' ? 'style="opacity:.75;margin-top:14px;border-top:1px solid #E4E7EC"' : ''}><span class="fb" style="color:${c.c}">${IC[c.k].replace('<svg','<svg class="ic"')}</span><span><b>${c.long}</b><small>${c.k === 'pers' ? countOf('pers') + ' chats, messages stay on your phone' : last ? last.name + ': ' + last.msg : ''}</small></span>${c.k !== 'pers' && unreadOf(c.k) ? `<span class="cnt">${unreadOf(c.k)}</span>` : `<span style="color:#475467">›</span>`}</div>`; }).join('')}</div>`; }},
+  {t:'3. One list, in sections', why:'<b>Why:</b> no switching at all. Scroll down and you pass New, then Customers, Suppliers, Team, each showing its newest 3. Best when chats are few. With 40+ customers it gets long, so each section has "See all".',
+    pc(){ return `<div class="v3"><div class="wrapsec"><div class="srch">Search all chats</div>${['new','cust','supp','team'].map(k => { const cat = CAT.find(c => c.k === k), list = CH.filter(c => c.cat === k); return `<div class="sec" style="color:${cat.c}">${IC[k].replace('<svg','<svg class="ic"')}${cat.long}${unreadOf(k) ? ` <span class="cnt">${unreadOf(k)}</span>` : ''}${list.length > 3 ? `<span class="more">See all ${list.length} ›</span>` : ''}</div>${list.slice(0, 3).map(c => row(c)).join('')}`; }).join('')}
+      <div class="pers">${IC.pers.replace('<svg','<svg class="ic"')}<span><b>Personal · ${countOf('pers')} chats kept out</b>Mama, Tito Ramon</span><span style="margin-left:auto;color:var(--g);font-weight:800">See</span></div></div>${stub}</div>`; },
+    ph(){ return `<div style="overflow:auto;flex:1"><div class="srch">Search all chats</div>${['new','cust','supp','team'].map(k => { const cat = CAT.find(c => c.k === k), list = CH.filter(c => c.cat === k); return `<div class="sec" style="color:${cat.c}">${IC[k].replace('<svg','<svg class="ic"')}${cat.long}${list.length > 2 ? `<span class="more">All ${list.length} ›</span>` : ''}</div>${list.slice(0, 2).map(c => row(c)).join('')}`; }).join('')}<div class="pers">${IC.pers.replace('<svg','<svg class="ic"')}<span><b>Personal · ${countOf('pers')} kept out</b>Mama, Tito Ramon</span></div></div>`; }},
+  {t:'4. Tag down the side of each chat', why:'<b>Why:</b> one list sorted by newest, like Viber itself, and every chat says what it is in a slim label down its left edge. Easiest to scan "who just wrote". Filtering is a small dropdown. The labels are the only color on the page.',
+    pc(){ return `<div class="v4"><div><div class="srch">Search all chats</div><div class="filt">Showing <span>All chats ▾</span></div>${CH.filter(c => c.cat !== 'pers').map(c => row(c, {strip:1})).join('')}<div class="pers">${IC.pers.replace('<svg','<svg class="ic"')}<span><b>Personal · ${countOf('pers')} kept out</b>Not shown in any list</span></div></div>${stub}</div>`; },
+    ph(){ return `<div class="v4p" style="overflow:auto;flex:1"><div class="srch">Search all chats</div><div class="filt">Showing <span>All chats ▾</span></div>${CH.filter(c => c.cat !== 'pers').map(c => row(c, {strip:1})).join('')}</div>`; }},
+  {t:'5. One switcher at the top', why:'<b>Why:</b> the list gets the full width and the page stays the calmest. The red number on the switcher shows if another folder needs you. Tap it and the folders drop down, top to bottom. Costs a tap to switch.',
+    pc(){ const sel='cust'; return `<div class="v5"><div><div class="srch">Search customers</div><div class="sw">${IC.cust.replace('<svg','<svg class="ic"')}Customers <span class="cnt">${unreadOf('cust')}</span><span style="font-size:13px;font-weight:700;color:#B42318;margin-left:6px">+${unreadOf('new') + unreadOf('supp') + unreadOf('team')} elsewhere</span><span class="cv">${IC.down}</span></div>${CH.filter(c => c.cat === sel).map(c => row(c)).join('')}</div>${stub}</div>`; },
+    ph(){ return `<div style="overflow:auto;flex:1;position:relative"><div class="sw">${IC.cust.replace('<svg','<svg class="ic"')}Customers <span class="cnt">${unreadOf('cust')}</span><span class="cv">${IC.down}</span></div>
+      <div class="menu">${CAT.map(c => `<div class="mi ${c.k === 'cust' ? 'on' : ''}" ${c.k === 'pers' ? 'style="color:#475467;border-top:6px solid #F7F8FA"' : ''}>${IC[c.k].replace('<svg','<svg class="ic"')}<span>${c.long}${c.k === 'pers' ? `<small>${countOf('pers')} chats, messages stay on your phone</small>` : ''}</span>${c.k !== 'pers' && unreadOf(c.k) ? `<span class="cnt">${unreadOf(c.k)}</span>` : ''}</div>`).join('')}</div>
+      <div class="dim">${CH.filter(c => c.cat === 'cust').slice(0, 2).map(c => row(c)).join('')}</div></div>`; }},
+];
+document.getElementById('chatOpts').innerHTML = OPTS.map(o => `<article class="opt"><h3>${o.t}${o.tag ? `<span class="rec">${o.tag}</span>` : ''}</h3><div class="stages">${pc(o.pc())}${phone('Chats', o.ph())}</div><p>${o.why}</p></article>`).join('');
+
+/* ---------- team board ---------- */
+const TK = {
+  todo: [{t:'Count Portland Cement on the shelf', w:'Ana', ini:'AR', bg:'#2563EB', tag:['late','Late · Yesterday'], act:'Start'}, {t:'Call Riverside about the overdue bill', w:'Dela', ini:'DC', bg:'#0F766E', tag:['today','Due today'], act:'Start'}, {t:'Send SOA to Aling Nena', w:'Mark', ini:'MS', bg:'#334155', tag:['d','Fri, Nov 20'], act:'Start'}],
+  doing: [{t:'Load Bayview order on the van', w:'Mark', ini:'MS', bg:'#334155', tag:['d','Tue, Nov 17'], act:'✓ Done'}, {t:'Recount rebar 10mm', w:'Ana', ini:'AR', bg:'#2563EB', tag:['today','Due today'], act:'✓ Done'}],
+  dn: [{t:'Deposit BDO check 004512', w:'Ana', ini:'AR', bg:'#2563EB', tag:['d','Today, 9:40 AM']}, {t:'Pay Metro Steel bill', w:'Dela', ini:'DC', bg:'#0F766E', tag:['d','Yesterday']}],
+};
+const HEAD = {todo:['To do','Not started yet'], doing:['Doing','Someone is on it'], dn:['Done','Last 7 days']};
+const ICO = {todo:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="12" cy="12" r="8"/></svg>', doing:'<svg viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg>', dn:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>'};
+const card = (x, k, compact) => `<div class="card ${k === 'dn' ? 'done' : ''} ${x.tag[0] === 'late' ? 'lt' : ''}"><b>${x.t}</b><span class="who"><span class="mini" style="background:${x.bg}">${x.ini}</span>${x.w}${compact && x.act ? `<span class="act" style="margin-left:auto">${x.act}</span>` : ''}</span>${x.tag ? `<span class="tg ${x.tag[0]}">${x.tag[1]}</span>` : ''}${!compact && x.act ? `<span class="act">${x.act}</span>` : ''}</div>`;
+const head = (k, withIco) => `<div class="ch">${withIco ? `<span class="ico">${ICO[k]}</span>` : ''}<span><b>${HEAD[k][0]}</b><small>${HEAD[k][1]}</small></span><span class="n">${TK[k].length}</span></div>`;
+const cols = (cls, opts) => `<div class="board">${['todo','doing','dn'].map(k => opts && opts.body ? `<div class="col ${k}">${head(k, opts.ico)}<div class="body">${TK[k].map(x => card(x, k)).join('')}</div></div>` : `<div class="col ${k}">${head(k, opts && opts.ico)}${TK[k].map(x => card(x, k)).join('')}</div>`).join('')}</div>`;
+const pTabs = (cls, active) => `<div class="ptabs">${['todo','doing','dn'].map(k => `<span style="${k === active ? cls[k] : 'background:#F2F4F7;color:#344054'}">${HEAD[k][0]} ${TK[k].length}</span>`).join('')}</div>`;
+const progress = () => { const a = TK.todo.length, b = TK.doing.length, c = TK.dn.length, t = a + b + c; return `<div class="prog"><b style="font-size:17px">${c} of ${t} jobs done this week</b><div class="bar"><i style="width:${c / t * 100}%;background:#12B76A"></i><i style="width:${b / t * 100}%;background:#F79009"></i><i style="width:${a / t * 100}%;background:#3E63DD"></i></div><div class="lg"><span><i class="dot" style="background:#12B76A"></i>Done ${c}</span><span><i class="dot" style="background:#F79009"></i>Doing ${b}</span><span><i class="dot" style="background:#3E63DD"></i>To do ${a}</span><span><i class="dot" style="background:#D92D20"></i>1 late</span></div></div>`; };
+const listView = () => [['doing','Doing now'],['todo','To do'],['dn','Done']].map(([k, l]) => `<div class="ls ${k}">${ICO[k]}${l}<span class="n">${TK[k].length}</span>${k === 'dn' ? '<span class="cv">Show ▾</span>' : ''}</div>${k === 'dn' ? '' : TK[k].map(x => `<div class="li"><span class="ck ${k === 'doing' ? 'half' : ''}"></span><span><b>${x.t}</b><span class="who"><span class="mini" style="background:${x.bg}">${x.ini}</span>${x.w} · <span class="tg ${x.tag[0]}">${x.tag[1]}</span></span></span><span class="act">${x.act}</span></div>`).join('')}`).join('');
+const phoneB = inner => `<div><p class="lbl">On a phone</p><div class="phone"><div class="screen"><div class="ph-top"><b>Team</b></div>${inner}</div></div></div>`;
+const pcB = inner => `<div><p class="lbl">On a computer</p>${inner}</div>`;
+const TABC = {
+  b1:{todo:'background:#C7D7FE;color:#1E3A8A', doing:'background:#FEDF89;color:#7A2E0E', dn:'background:#BBE5CB;color:#14532D'},
+  b3:{todo:'background:#2E5BDB;color:#fff', doing:'background:#C4600A;color:#fff', dn:'background:#1F6B45;color:#fff'},
+};
+const BOPTS = [
+  {t:'1. Soft colored lanes', tag:'Recommended', cls:'b1', why:'<b>Why:</b> each column gets its own light tint, so you know where you are at a glance, but nothing shouts. White cards pop off the tint. Red only appears on a late job. On a phone, the three become color-matched tabs.',
+    pc(){ return cols('b1'); }, ph(){ return pTabs(TABC.b1, 'todo') + `<div class="pboard b1"><div class="col todo" style="min-height:0">${TK.todo.map(x => card(x, 'todo', 1)).join('')}</div></div>`; }},
+  {t:'2. White columns, colored top edge', cls:'b2', why:'<b>Why:</b> the cleanest. A thick color line on top and a status icon (empty circle, half circle, check) tell the story, so it still works for someone color-blind. The count is big, so you see the load from across the room.',
+    pc(){ return cols('b2', {ico:1}); }, ph(){ return `<div class="pboard b2">${['todo','doing'].map(k => `<div class="col ${k}" style="min-height:0">${head(k, 1)}${TK[k].slice(0, 2).map(x => card(x, k, 1)).join('')}</div>`).join('')}</div>`; }},
+  {t:'3. Solid colored headers', cls:'b3', why:'<b>Why:</b> the boldest. Each column wears a solid color band, like sticky notes on a wall, and finished jobs fade back. Very clear from far away; a little loud if you look at it all day.',
+    pc(){ return cols('b3', {body:1}); }, ph(){ return pTabs(TABC.b3, 'doing') + `<div class="pboard b3"><div class="col doing" style="min-height:0;border:0"><div class="body" style="padding:0">${TK.doing.map(x => card(x, 'doing', 1)).join('')}</div></div></div>`; }},
+  {t:'4. Progress bar plus colored card edges', cls:'b4', why:'<b>Why:</b> the top bar answers "how is the team doing this week?" before you read a single job. Columns stay light gray-white; each card carries its status as a color edge, and a late job turns its edge red.',
+    pc(){ return `<div class="b4wrap b4">${progress()}${cols('b4')}</div>`; }, ph(){ return `<div class="pboard b4">${progress()}<div class="col todo" style="min-height:0">${head('todo')}${TK.todo.slice(0, 2).map(x => card(x, 'todo', 1)).join('')}</div></div>`; }},
+  {t:'5. One checklist, grouped by status', cls:'b5', why:'<b>Why:</b> made for the phone and for big teams. One list: Doing now on top, then To do, with Done folded away. Tap the circle to start, tap again to finish. Scales to 25 people without side-scrolling.',
+    pc(){ return `<div class="b5">${listView()}</div>`; }, ph(){ return `<div style="overflow:auto;flex:1" class="b5p">${listView()}</div>`; }},
+];
+document.getElementById('boardOpts').innerHTML = BOPTS.map(o => `<article class="opt"><h3>${o.t}${o.tag ? `<span class="rec">${o.tag}</span>` : ''}</h3><div class="bstages"><div class="${o.cls}">${pcB(o.pc())}</div>${phoneB(o.ph())}</div><p>${o.why}</p></article>`).join('');
+</script>
+</body></html>

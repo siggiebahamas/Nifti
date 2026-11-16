@@ -134,6 +134,51 @@ final class Bridge {
         });
     }
 
+    @JavascriptInterface public void print(String title) { if (allowed()) a.printPage(title == null || title.isEmpty() ? "Nifti" : title); }
+
+    @JavascriptInterface public void share(String title, String text, String url) {
+        if (!allowed()) return;
+        a.runOnUiThread(() -> {
+            String body = ((text == null ? "" : text) + (url == null || url.isEmpty() ? "" : (text == null || text.isEmpty() ? "" : "\n") + url)).trim();
+            Intent i = new Intent(Intent.ACTION_SEND).setType("text/plain").putExtra(Intent.EXTRA_TEXT, body);
+            if (title != null && !title.isEmpty()) i.putExtra(Intent.EXTRA_SUBJECT, title);
+            try { a.startActivity(Intent.createChooser(i, "Share")); } catch (Exception ignore) {}
+        });
+    }
+
+    /** A file made in the page (export, statement): saved to the phone's Downloads, then offered to open. */
+    @JavascriptInterface public void saveFile(String name, String mime, String base64) {
+        if (!allowed() || base64 == null) return;
+        try {
+            byte[] bytes = android.util.Base64.decode(base64, android.util.Base64.DEFAULT);
+            String n = (name == null || name.trim().isEmpty()) ? "nifti-file" : name.replaceAll("[\\\\/:*?\"<>|]+", "_");
+            String m = (mime == null || mime.isEmpty()) ? "application/octet-stream" : mime;
+            Uri out;
+            if (Build.VERSION.SDK_INT >= 29) {
+                android.content.ContentValues cv = new android.content.ContentValues();
+                cv.put(android.provider.MediaStore.MediaColumns.DISPLAY_NAME, n);
+                cv.put(android.provider.MediaStore.MediaColumns.MIME_TYPE, m);
+                cv.put(android.provider.MediaStore.MediaColumns.RELATIVE_PATH, android.os.Environment.DIRECTORY_DOWNLOADS);
+                out = a.getContentResolver().insert(android.provider.MediaStore.Downloads.EXTERNAL_CONTENT_URI, cv);
+                if (out == null) throw new Exception("no space");
+                try (java.io.OutputStream os = a.getContentResolver().openOutputStream(out)) { os.write(bytes); }
+            } else {
+                java.io.File f = new java.io.File(a.getExternalFilesDir(android.os.Environment.DIRECTORY_DOWNLOADS), n);
+                try (java.io.FileOutputStream os = new java.io.FileOutputStream(f)) { os.write(bytes); }
+                out = Uri.fromFile(f);
+            }
+            final Uri u = out;
+            a.runOnUiThread(() -> {
+                Toast.makeText(a, "Saved to Downloads: " + n, Toast.LENGTH_LONG).show();
+                try { a.startActivity(new Intent(Intent.ACTION_VIEW).setDataAndType(u, m).addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)); } catch (Exception ignore) {}
+            });
+        } catch (Exception e) {
+            a.runOnUiThread(() -> Toast.makeText(a, "Couldn't save the file.", Toast.LENGTH_LONG).show());
+        }
+    }
+
+    @JavascriptInterface public void retry() { a.retryLoad(); }
+
     @JavascriptInterface public void syncNow() {
         if (!allowed()) return;
         Relay.get(a).tickAsync();

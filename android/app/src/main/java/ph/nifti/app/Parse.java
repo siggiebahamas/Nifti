@@ -70,6 +70,49 @@ public final class Parse {
     public static boolean isDateHeader(String text) { return text != null && DATE_HEADER.matcher(text.trim()).matches(); }
     public static boolean isStatusWord(String text) { return text != null && STATUS_WORD.matcher(text.trim()).matches(); }
 
+    private static final String[] MONTHS = {"jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"};
+    private static final String[] DAYS = {"sun", "mon", "tue", "wed", "thu", "fri", "sat"};
+    private static final Pattern MD = Pattern.compile("^([a-z]{3})[a-z]*\\.?\\s+(\\d{1,2})(?:,?\\s+(\\d{4}))?$", Pattern.CASE_INSENSITIVE);
+    private static final Pattern DM = Pattern.compile("^(\\d{1,2})\\s+([a-z]{3})[a-z]*\\.?(?:,?\\s+(\\d{4}))?$", Pattern.CASE_INSENSITIVE);
+    private static final Pattern HM = Pattern.compile("^(\\d{1,2}):(\\d{2})\\s?([ap])?\\.?\\s?m?\\.?$", Pattern.CASE_INSENSITIVE);
+
+    /**
+     * When a message in an open Viber chat was sent, from the date line above it ("Today", "Yesterday", "Mon", "Nov 14")
+     * and the time in its bubble ("9:41 AM"). -1 when the screen doesn't say.
+     */
+    public static long when(String day, String time, long nowMs) {
+        if (time == null) return -1;
+        Matcher hm = HM.matcher(time.trim());
+        if (!hm.matches()) return -1;
+        int h = Integer.parseInt(hm.group(1)), m = Integer.parseInt(hm.group(2));
+        String ap = hm.group(3);
+        if (ap != null) { boolean pm = ap.equalsIgnoreCase("p"); if (h == 12) h = pm ? 12 : 0; else if (pm) h += 12; }
+        if (h > 23 || m > 59) return -1;
+        java.util.Calendar now = java.util.Calendar.getInstance(); now.setTimeInMillis(nowMs);
+        java.util.Calendar c = (java.util.Calendar) now.clone();
+        c.set(java.util.Calendar.HOUR_OF_DAY, h); c.set(java.util.Calendar.MINUTE, m); c.set(java.util.Calendar.SECOND, 0); c.set(java.util.Calendar.MILLISECOND, 0);
+        String d = day == null ? "" : day.trim().toLowerCase(Locale.ROOT);
+        if (d.isEmpty()) { if (c.getTimeInMillis() > nowMs + 60000) c.add(java.util.Calendar.DAY_OF_MONTH, -1); return c.getTimeInMillis(); }
+        if (d.startsWith("today") || d.startsWith("ngayon")) return c.getTimeInMillis();
+        if (d.startsWith("yesterday") || d.startsWith("kahapon")) { c.add(java.util.Calendar.DAY_OF_MONTH, -1); return c.getTimeInMillis(); }
+        for (int i = 0; i < 7; i++) if (d.startsWith(DAYS[i]) && !d.matches(".*\\d.*")) {
+            int back = (now.get(java.util.Calendar.DAY_OF_WEEK) - 1 - i + 7) % 7; if (back == 0) back = 7;
+            c.add(java.util.Calendar.DAY_OF_MONTH, -back); return c.getTimeInMillis();
+        }
+        String rest = d.replaceFirst("^(sun|mon|tue|wed|thu|fri|sat)[a-z]*,?\\s*", "");
+        Matcher md = MD.matcher(rest), dm = DM.matcher(rest);
+        String mon = null, dd = null, yy = null;
+        if (md.matches()) { mon = md.group(1); dd = md.group(2); yy = md.group(3); }
+        else if (dm.matches()) { dd = dm.group(1); mon = dm.group(2); yy = dm.group(3); }
+        if (mon == null) return -1;
+        int mi = -1; for (int i = 0; i < 12; i++) if (MONTHS[i].equalsIgnoreCase(mon)) mi = i;
+        if (mi < 0) return -1;
+        c.set(java.util.Calendar.MONTH, mi); c.set(java.util.Calendar.DAY_OF_MONTH, Integer.parseInt(dd));
+        if (yy != null) c.set(java.util.Calendar.YEAR, Integer.parseInt(yy));
+        else if (c.getTimeInMillis() > nowMs + 86400000L) c.add(java.util.Calendar.YEAR, -1);
+        return c.getTimeInMillis();
+    }
+
     public static boolean needsMedia(String kind) { return "photo".equals(kind) || "video".equals(kind) || "file".equals(kind); }
 
     /** One chat = one key, made from its name as Viber shows it. */

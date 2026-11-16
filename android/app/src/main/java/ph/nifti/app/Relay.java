@@ -109,6 +109,7 @@ public final class Relay {
         media();
         outbox();
         retryReplies(null);
+        alerts();
         if (heartbeatNow || System.currentTimeMillis() - lastHeartbeat > 10 * 60 * 1000L) heartbeat();
     }
 
@@ -347,6 +348,30 @@ public final class Relay {
         return "Viber's reply button for " + (title.isEmpty() ? "this chat" : title) + " had closed, so it couldn't be sent from your phone automatically";
     }
 
+    // ---------- Nifti's own alerts (new order, payment, message...) as phone notifications ----------
+
+    void alerts() {
+        if (!store.connected() || store.revoked()) return;
+        try {
+            long since = store.getLong("alertsSince");
+            JSONObject a = new JSONObject();
+            a.put("p_since", since > 0 ? iso(since) : JSONObject.NULL);
+            JSONArray list = new JSONArray(api.rpc("app_dev_alerts", a));
+            long newest = since;
+            for (int i = 0; i < list.length(); i++) {
+                JSONObject o = list.getJSONObject(i);
+                long at = parseIso(o.optString("at"));
+                if (at <= since) continue;
+                if (since > 0) Notify.alert(ctx, Math.abs((long) o.optString("id").hashCode()), o.optString("title", "Nifti"), o.optString("body"), o.optString("url"));
+                newest = Math.max(newest, at);
+            }
+            // the very first time, start from now (no flood of old alerts)
+            store.putLong("alertsSince", newest > 0 ? newest : System.currentTimeMillis());
+        } catch (Api.Fail f) {
+            if (f.disconnected) disconnected();
+        } catch (Exception ignore) {}
+    }
+
     // ---------- keep-alive ----------
 
     void heartbeat() {
@@ -380,10 +405,18 @@ public final class Relay {
     }
 
     static long parseIso(String s) {
+        if (s == null || s.isEmpty()) return System.currentTimeMillis();
         try {
-            SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.US);
-            f.setTimeZone(TimeZone.getTimeZone("UTC"));
-            Date d = f.parse(s);
+            // 2026-11-16T08:17:16.123456+00:00 or ...Z: keep milliseconds, normalise the zone
+            String t = s.trim().replace(' ', 'T');
+            String zone = "Z";
+            java.util.regex.Matcher m = java.util.regex.Pattern.compile("(Z|[+-]\\d{2}:?\\d{2})$").matcher(t);
+            if (m.find()) { zone = m.group(1); t = t.substring(0, m.start()); }
+            String frac = "000";
+            int dot = t.indexOf('.');
+            if (dot > 0) { frac = (t.substring(dot + 1) + "000").substring(0, 3); t = t.substring(0, dot); }
+            SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX", Locale.US);
+            Date d = f.parse(t + "." + frac + ("Z".equals(zone) ? "+00:00" : (zone.contains(":") ? zone : zone.substring(0, 3) + ":" + zone.substring(3))));
             return d == null ? System.currentTimeMillis() : d.getTime();
         } catch (Exception e) { return System.currentTimeMillis(); }
     }

@@ -1,0 +1,85 @@
+/* ===== Round 38 ===== */
+/* "4 things to look at": same size as the month picker */
+html[data-ty] #view-app .nf37-why b, .nf37-why b{font-size:17px !important;}
+.nf37-why{padding:12px 16px;}
+/* dropdowns on Money overview: the arrow sits inside, with room to breathe */
+html[data-ty] #page-money select, #page-money select{-webkit-appearance:none;appearance:none;padding-right:44px !important;padding-left:14px;
+  background:#FFFFFF url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%230B0F14' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 16px center !important;background-size:16px 16px !important;}
+
+/* Coming up: roomier rows, centered columns (the first stays left), Who gets the most room */
+.nf37-tr{grid-template-columns:120px minmax(150px,1.15fr) minmax(190px,1.9fr) minmax(110px,1fr) minmax(120px,1fr) minmax(120px,1fr) minmax(80px,.8fr) !important;column-gap:18px !important;padding:16px 20px !important;}
+.nf37-th{padding-top:12px !important;padding-bottom:12px !important;}
+.nf37-tr > span{text-align:center;justify-self:center;}
+.nf37-tr > span:first-child{text-align:left;justify-self:start;}
+.nf37-tr .r{text-align:center !important;justify-self:center !important;}
+.nf37-what b, .nf37-what small{text-align:center;}
+.nf37-io{gap:8px !important;}
+.nf37-io em{font-size:16px !important;font-weight:800;letter-spacing:.02em;}
+.nf37-io svg{width:30px !important;height:30px !important;padding:6px !important;}
+.nf37-who{font-weight:600;line-height:1.35;}
+@media (max-width:900px){
+  .nf37-tr{grid-template-columns:auto minmax(0,1fr) auto !important;padding:12px 14px !important;column-gap:12px !important;}
+  .nf37-tr > span{text-align:left;justify-self:start;}
+  .nf37-tr .nf37-amt, .nf37-tr .nf37-due, .nf37-tr .nf37-file{justify-self:end !important;text-align:right !important;}
+  .nf37-what b, .nf37-what small{text-align:left;}
+}
+/* attachments in the Coming up popup */
+.nf38-att{display:grid;gap:10px;margin-top:4px;}
+.nf38-att h4{margin:8px 0 0;}
+.nf38-thumbs{display:flex;gap:8px;flex-wrap:wrap;}
+.nf38-th{width:76px;height:76px;border-radius:12px;overflow:hidden;border:1px solid #E4E7EC;padding:0;background:#F2F4F7;cursor:zoom-in;}
+.nf38-th img{width:100%;height:100%;object-fit:cover;display:block;}
+.nf38-none, .nf38-load{font-size:14px;color:#0B0F14;}
+.nf38-add{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:center;padding:12px 14px;border-radius:14px;border:1.5px dashed #86C9A0;background:#F6FEF9;cursor:pointer;font:inherit;text-align:left;width:100%;}
+.nf38-add-ic{width:40px;height:40px;border-radius:12px;background:#1F6B45;color:#FFFFFF;display:grid;place-items:center;font-size:24px;font-weight:700;line-height:1;}
+.nf38-add b{display:block;font-size:15.5px;color:#0B0F14;} .nf38-add small{display:block;font-size:13.5px;color:#0B0F14;}
+
+/* New on Viber row: one clean line of choices, on phones too */
+.nf37v-tag{flex-wrap:nowrap !important;overflow:hidden;}
+.nf37v-tag .nf37v-g{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;}
+.nf37v-acts{display:grid !important;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;}
+.nf37v-acts button{min-width:0;padding:7px 6px !important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:center;}
+@media (max-width:900px){
+  .nf37v-tag, .nf37v-acts{padding-left:14px !important;padding-right:14px !important;}
+  .nf37v-tag{padding-top:0;}
+  .nf37v-acts button{font-size:13px !important;min-height:38px;}
+}
+/* in the open chat with a new contact: a tidy 2x2 on phones */
+@media (max-width:600px){
+  .nf37v-who > span:last-child{display:grid !important;grid-template-columns:1fr 1fr;width:100%;margin-left:0;}
+  .nf37v-who button{white-space:nowrap;}
+}
+
+/* Team: bigger Tasks / Team chat / Activity tabs */
+html[data-ty] #view-app #page-team .team-tabs.nf-tabcards .team-tab, #page-team .team-tabs.nf-tabcards .team-tab{min-height:48px !important;height:48px !important;padding:0 22px !important;font-size:17px !important;font-weight:800 !important;}
+html[data-ty] #view-app #page-team .team-tabs.nf-tabcards, #page-team .team-tabs.nf-tabcards{padding:5px !important;gap:6px !important;}
+/* Team: one tidy row of people, scrolls sideways, "+N more" for big teams */
+#page-team .nf38-people{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 8px;scrollbar-width:thin;}
+.nf38-p{display:inline-flex;align-items:center;gap:10px;flex:none;border:1.5px solid #E4E7EC;background:#FFFFFF;border-radius:999px;padding:5px 14px 5px 5px;font:inherit;color:#0B0F14;cursor:pointer;}
+.nf38-p.on{border-color:#1F6B45;background:#F0FAF4;box-shadow:0 0 0 2px rgba(31,107,69,.15);}
+.nf38-av{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;color:#FFFFFF;font-size:13px;font-weight:800;flex:none;}
+.nf38-av.all{background:#0B0F14;}
+.nf38-pn{display:grid;text-align:left;line-height:1.2;} .nf38-pn b{font-size:15px;display:flex;align-items:center;gap:5px;} .nf38-pn small{font-size:12.5px;font-weight:700;}
+.nf38-pn i.late, .nf38-pr i.late{width:8px;height:8px;border-radius:50%;background:#D92D20;display:inline-block;margin-right:4px;}
+.nf38-more{flex:none;border:1.5px dashed #D0D5DD;background:#FFFFFF;border-radius:999px;padding:0 16px;font:inherit;font-size:14.5px;font-weight:800;color:#0B0F14;cursor:pointer;min-height:46px;}
+.nf38-search{width:100%;box-sizing:border-box;border:1.5px solid #D0D5DD;border-radius:12px;padding:10px 12px;font:inherit;font-size:16px;margin-bottom:8px;}
+.nf38-plist{display:grid;gap:6px;max-height:60vh;overflow-y:auto;}
+.nf38-pr{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center;border:1px solid #E4E7EC;border-radius:12px;padding:8px 12px;background:#FFFFFF;font:inherit;color:#0B0F14;cursor:pointer;text-align:left;}
+.nf38-pr b{font-size:15px;} .nf38-pr small{font-size:13px;font-weight:700;white-space:nowrap;}
+.nf37v-chip{white-space:nowrap;flex:none;}
+html[data-ty] #view-app #page-team .nf38-pn b, #page-team .nf38-pn b{font-size:15px !important;font-weight:800 !important;line-height:1.2 !important;}
+html[data-ty] #view-app #page-team .nf38-pn small, #page-team .nf38-pn small{font-size:12.5px !important;font-weight:700 !important;line-height:1.2 !important;}
+#page-team .nf38-people{flex-wrap:nowrap;}
+@media (max-width:700px){
+  html[data-ty] #view-app #page-team .team-tabs.nf-tabcards, #page-team .team-tabs.nf-tabcards{display:grid !important;grid-template-columns:repeat(3,minmax(0,1fr)) !important;width:100% !important;box-sizing:border-box;}
+  html[data-ty] #view-app #page-team .team-tabs.nf-tabcards .team-tab, #page-team .team-tabs.nf-tabcards .team-tab{padding:0 6px !important;font-size:15.5px !important;white-space:nowrap !important;justify-content:center !important;}
+  #page-team .nf38-p{padding-right:10px;}
+}
+
+/* Play Store disclosures before each phone permission */
+.nf38-disc{padding:4px 2px 0}
+.nf38-disc p{margin:0 0 12px;font-size:15.5px;line-height:1.5;color:#0B0F14}
+.nf38-disc p b{display:block;font-size:13px;letter-spacing:.02em;text-transform:uppercase;color:#1F6B45;margin-bottom:2px}
+.nf38-disc-l{font-size:14px;font-weight:700;color:#1F6B45}
+.nf38-disc-b{display:grid;grid-template-columns:1fr 1.4fr;gap:10px;margin-top:16px}
+.nf38-disc-b .btn{min-height:48px;font-size:16px;font-weight:800}

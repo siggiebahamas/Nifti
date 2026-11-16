@@ -87,7 +87,7 @@ nf36vVirtuals = function(){
     const s = nf37vSort(t), kind = s.guess || 'customer', m = s.maybe;
     const guess = m ? `Is this <b>${nf36vEsc(m.conv.name)}</b>?` : `Looks like a new ${kind}${s.why ? ' · ' + nf36vEsc(s.why) : ''}`;
     const acts = m ? `<button type="button" class="pri" onclick="event.stopPropagation(); nf36vLink('${t.id}','${m.kind}','${nf36vEsc(m.conv.id)}')">Yes, ${nf36vEsc(m.conv.name.split(' ')[0])}</button><button type="button" onclick="event.stopPropagation(); nf36vPick('${t.id}','${kind}')">Someone else</button>`
-      : `<button type="button" class="pri" onclick="event.stopPropagation(); nf37vAdd('${t.id}','${kind}')">Add as ${kind}</button><button type="button" onclick="event.stopPropagation(); nf37vAdd('${t.id}','${kind === 'customer' ? 'supplier' : 'customer'}')">${kind === 'customer' ? 'Supplier' : 'Customer'}</button>`;
+      : ['customer', 'supplier'].map(k => `<button type="button" class="${k === kind ? 'pri' : ''}" onclick="event.stopPropagation(); nf37vAdd('${t.id}','${k}')">${k === 'customer' ? 'Customer' : 'Supplier'}</button>`).join('');
     return `<div class="nf37v-new" data-g="${nf33Group(c)}">${h.replace('class="nf33-row', 'class="nf33-row nf37v-row')}<div class="nf37v-tag"><span class="nf37v-chip">New on Viber</span><span class="nf37v-g">${guess}</span></div>
       <div class="nf37v-acts">${acts}<button type="button" class="ghost" onclick="event.stopPropagation(); nf37vPersonalize('${t.id}')">Personal</button></div></div>`;
   };

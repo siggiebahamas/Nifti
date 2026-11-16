@@ -16,20 +16,13 @@ function nf37Sweep(){
   const seen = nf37Seen();
   document.querySelectorAll(NF37_BADGES).forEach(el => {
     const raw = nf37BaseHidden(el) ? 0 : nf37Raw(el);
-    let hide = raw <= 0;
-    const pg = !hide && nf37PageOf(el);
-    if(pg && NF37_SEEN_PAGES.includes(pg) && seen[pg] != null){
-      if(raw < seen[pg]){ seen[pg] = raw; nf37SetSeen(seen); }
-      if(raw <= seen[pg]) hide = true;
-    }
-    if(el.id === 'bnavMoreBadge'){ // the phone "More" count = stock + team; hidden once both were opened
-      const inv = document.querySelector('.sidebar .nav-item[data-page="inventory"] .nav-badge'), tm = document.querySelector('.sidebar .nav-item[data-page="team"] .nav-badge');
-      if((!inv || inv.classList.contains('nf37-hide')) && (!tm || tm.classList.contains('nf37-hide'))) hide = true;
-    }
+    // a count stays until the things it counts are dealt with; only empty and 0 are hidden
+    const hide = raw <= 0;
     if(el.classList.contains('nf37-hide') !== hide) el.classList.toggle('nf37-hide', hide);
   });
 }
 function nf37MarkSeen(page){
+  return; // Round 38: opening a page no longer clears its count
   if(!NF37_SEEN_PAGES.includes(page)) return;
   const el = document.querySelector('.sidebar .nav-item[data-page="' + page + '"] .nav-badge');
   const raw = el && !nf37BaseHidden(el) ? nf37Raw(el) : 0;

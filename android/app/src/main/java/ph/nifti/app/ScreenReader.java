@@ -46,7 +46,7 @@ public class ScreenReader extends AccessibilityService {
 
     private final Runnable readNow = () -> { try { read(); } catch (Exception ignore) {} };
 
-    static final class Row { String side, text, kind, sig; }
+    static final class Row { String side, text, kind, sig, time, day; long at = -1; }
     static final class Screen { String title; List<Row> rows = new ArrayList<>(); AccessibilityNodeInfo input; }
 
     private Screen scan() {
@@ -64,11 +64,17 @@ public class ScreenReader extends AccessibilityService {
         Screen s = new Screen();
         s.title = title;
         s.input = input;
+        String day = null;
+        long now = System.currentTimeMillis();
         for (int i = 0; i < list.getChildCount(); i++) {
             AccessibilityNodeInfo c = list.getChild(i);
             if (c == null) continue;
             Row r = row(c, W);
-            if (r != null) s.rows.add(r);
+            if (r == null) continue;
+            if ("date".equals(r.side)) { day = r.text; continue; } // "Today", "Yesterday", "Nov 14": applies to the bubbles below it
+            r.day = day;
+            r.at = Parse.when(day, r.time, now);
+            s.rows.add(r);
         }
         return s;
     }
@@ -77,13 +83,18 @@ public class ScreenReader extends AccessibilityService {
         List<AccessibilityNodeInfo> texts = new ArrayList<>();
         List<AccessibilityNodeInfo> images = new ArrayList<>();
         collect(c, texts, images, 0);
-        String best = null; Rect bestR = null;
+        String best = null, time = null, header = null; Rect bestR = null, headR = null;
         for (AccessibilityNodeInfo t : texts) {
             String s = t.getText().toString().trim();
-            if (s.isEmpty() || Parse.isTime(s) || Parse.isDateHeader(s) || Parse.isStatusWord(s)) continue;
+            if (s.isEmpty()) continue;
+            if (Parse.isTime(s)) { time = s; continue; }
+            if (Parse.isDateHeader(s)) { header = s; headR = new Rect(); t.getBoundsInScreen(headR); continue; }
+            if (Parse.isStatusWord(s)) continue;
             if (best == null || s.length() > best.length()) { best = s; bestR = new Rect(); t.getBoundsInScreen(bestR); }
         }
         Row r = new Row();
+        r.time = time;
+        if (best == null && header != null && headR != null && Math.abs(headR.centerX() - W / 2) < W * 0.12) { r.side = "date"; r.text = header; return r; }
         if (best != null) {
             r.text = best;
             r.kind = Parse.kind(best, null);
@@ -166,25 +177,36 @@ public class ScreenReader extends AccessibilityService {
         fgTitle = s.title;
         List<String> now = new ArrayList<>();
         for (Row r : s.rows) now.add(r.sig);
-        if (!s.title.equals(curTitle) || snap == null) { curTitle = s.title; snap = now; return; } // just opened: what's already there is old
-        if (snap.isEmpty()) { snap = now; return; }
+        // just opened (or scrolled to older messages): everything on screen is synced, with Viber's own times.
+        // What Nifti already has is skipped, so a chat that was open, muted, or read on the phone is never missed.
+        if (!s.title.equals(curTitle) || snap == null) { curTitle = s.title; snap = now; catchUp(s); return; }
+        if (snap.isEmpty()) { snap = now; catchUp(s); return; }
         String lastOld = snap.get(snap.size() - 1);
         String prevOld = snap.size() > 1 ? snap.get(snap.size() - 2) : null;
         int idx = -1;
         for (int i = now.size() - 1; i >= 0; i--) {
             if (now.get(i).equals(lastOld) && (prevOld == null || i == 0 || now.get(i - 1).equals(prevOld))) { idx = i; break; }
         }
-        if (idx < 0) { snap = now; return; } // scrolled far or the list changed a lot: start over, send nothing
+        if (idx < 0) { snap = now; catchUp(s); return; } // scrolled or the list changed a lot: sync what's visible
         for (int i = idx + 1; i < s.rows.size(); i++) emit(s.title, s.rows.get(i));
         snap = now;
     }
 
-    private void emit(String title, Row r) {
+    private void catchUp(Screen s) {
+        int from = Math.max(0, s.rows.size() - 40);
+        for (int i = from; i < s.rows.size(); i++) emit(s.title, s.rows.get(i), true);
+    }
+
+    private void emit(String title, Row r) { emit(title, r, false); }
+
+    private void emit(String title, Row r, boolean catchup) {
         Relay relay = Relay.get(this);
         String key = Parse.chatKey(title);
         if (relay.store.ignored().contains(key)) return;
-        long t = System.currentTimeMillis();
-        String dkey = Parse.dkey(key, r.side, r.text, t) + "s";
+        if (catchup && r.text.isEmpty() && r.at < 0) return; // a picture with no time: can't tell if Nifti has it, skip
+        long t = r.at > 0 ? r.at : System.currentTimeMillis();
+        // the same bubble always gets the same key (from its own time when Viber shows one), so reopening a chat never repeats it
+        String dkey = r.at > 0 ? Parse.dkey(key, r.side, r.text, r.at) + "s" : (catchup ? Parse.sha(key + "|" + r.side + "|" + r.text + "|" + r.day).substring(0, 32) + "c" : Parse.dkey(key, r.side, r.text, t) + "s");
         if (!relay.store.firstTime(dkey)) return;
         try {
             JSONObject it = new JSONObject();
@@ -198,6 +220,7 @@ public class ScreenReader extends AccessibilityService {
             it.put("source", "screen");
             it.put("dkey", dkey);
             it.put("at", Relay.iso(t));
+            if (catchup) it.put("catchup", true);
             if ("file".equals(r.kind)) { String fn = Parse.fileName(r.text); if (fn != null) it.put("_hint", fn); }
             relay.enqueue(it, null, null, null);
         } catch (Exception ignore) {}

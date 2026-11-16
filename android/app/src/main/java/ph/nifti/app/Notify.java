@@ -11,14 +11,31 @@ import android.provider.Settings;
 /** The warnings on the phone, shown the moment something can't come through. */
 final class Notify {
     static final String WARN = "warn";
+    static final String ALERTS = "alerts";
+
+    /** One of Nifti's own alerts. Tapping it opens Nifti on that page. */
+    static void alert(Context c, long id, String title, String body, String url) {
+        Intent i = new Intent(c, MainActivity.class).putExtra("url", url == null ? "" : url).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        PendingIntent p = PendingIntent.getActivity(c, (int) (id % 100000) + 1000, i, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
+        Notification.Builder b = new Notification.Builder(c, ALERTS)
+            .setSmallIcon(R.drawable.ic_stat).setColor(0xFF1F6B45)
+            .setContentTitle(title == null || title.isEmpty() ? "Nifti" : title)
+            .setContentText(body == null ? "" : body)
+            .setStyle(new Notification.BigTextStyle().bigText(body == null ? "" : body))
+            .setAutoCancel(true).setContentIntent(p);
+        show(c, (int) (id % 100000) + 20000, b);
+    }
     private Notify() {}
 
     static void channels(Context c) {
         NotificationManager nm = c.getSystemService(NotificationManager.class);
         if (nm == null) return;
-        NotificationChannel ch = new NotificationChannel(WARN, "Didn't come through", NotificationManager.IMPORTANCE_HIGH);
-        ch.setDescription("A Viber photo, file or reply that needs one tap from you");
+        NotificationChannel ch = new NotificationChannel(WARN, "Needs one tap", NotificationManager.IMPORTANCE_HIGH);
+        ch.setDescription("A Viber reply that didn't go out, or a setting that keeps Nifti running");
         nm.createNotificationChannel(ch);
+        NotificationChannel al = new NotificationChannel(ALERTS, "Orders, payments and messages", NotificationManager.IMPORTANCE_HIGH);
+        al.setDescription("New orders, payments, reminders and messages from your business in Nifti");
+        nm.createNotificationChannel(al);
     }
 
     private static Notification.Builder base(Context c, String title, String text) {
