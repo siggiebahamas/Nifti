@@ -3,7 +3,7 @@
 /* ---------- 1. Summary boxes: green good, yellow waiting, red problem, gray nothing yet, blue plain totals, teal money moved ---------- */
 // No more empty white boxes: every box says something by its color.
 const NF31_EXACT = {
-  'sales': v => v > 0 ? 'gray' : 'plain',
+  'sales': v => v > 0 ? 'good' : 'plain',
   'cash': v => v > 0 ? 'good' : 'plain',
   'gcash & maya': v => v > 0 ? 'warn' : 'plain',
   'utang': v => v > 0 ? 'bad' : 'plain',

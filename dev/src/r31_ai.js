@@ -3,6 +3,8 @@
 // Text is checked right on the phone (free, instant). Files (PDF invoices, price lists, photos of receipts)
 // are read by the same AI that reads notebook pages, once, and the result is kept for the business.
 const NF31A = {cache: {}, busy: {}, tried: {}, loaded: false};
+// Reading the numbers inside files needs the AI key. Off for launch: the words in each message are still read (free).
+const NF31_FILES_ON = false;
 const NF31_KINDS = {
   quote: {t: 'Quotation', c: 'blue'}, invoice: {t: 'Invoice', c: 'amber'}, confirm: {t: 'Order confirmed', c: 'green'},
   priceup: {t: 'Price going up', c: 'red'}, pricedown: {t: 'Price going down', c: 'green'}, delivered: {t: 'Delivered', c: 'teal'},
@@ -57,7 +59,7 @@ function nf31Ins(m, conv){
   try{
     if(!m || m.from !== 'them') return '';
     const key = m.id || (conv && conv.id) + '|' + (m.time || '') + '|' + String(m.text || '').slice(0, 30);
-    let ai = m.attachment && (NF31A.cache[m.id] || (!myBusiness && NF31_DEMO_FILES[m.attachment.name]));
+    let ai = NF31_FILES_ON && m.attachment && (NF31A.cache[m.id] || (!myBusiness && NF31_DEMO_FILES[m.attachment.name]));
     const det = nf31Detect(m, conv);
     if(!ai && !det){ return m.attachment && nf31Readable(m) ? nf31ReadBtn(m, conv) : ''; }
     const kind = (ai && ai.kind) || det.kind, k = NF31_KINDS[kind] || NF31_KINDS.doc;
@@ -107,7 +109,7 @@ function nf31Ins(m, conv){
 function nf31Readable(m){ const a = m.attachment || {}; return /\.(pdf|jpe?g|png|webp)$/i.test(a.name || '') || a.image; }
 function nf31DocName(name){ return /(inv|invoice|bill|soa|statement|quot|price|dr[-_ ]?\d|delivery|receipt|resibo|po[-_ ]?\d|order)/i.test(String(name || '')); }
 function nf31ReadBtn(m, conv){
-  if(!m.id) return '';
+  if(!NF31_FILES_ON || !m.id) return '';
   if(NF31A.busy[m.id]) return `<div class="nf31-ins gray"><div class="nf31-ins-h">${NF31_SPARK}<span>Nifti is reading this file…</span></div></div>`;
   // business papers read themselves; other files wait for a tap
   if(myBusiness && !NF31A.tried[m.id] && nf31DocName(m.attachment.name)){ setTimeout(() => nf31Read(m.id, true), 400); }

@@ -1,0 +1,144 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Menu Counts and Leads</title><meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+<style>
+:root{--ink:#0B0F14;--line:#E4E7EC;--g:#1F6B45}
+*{box-sizing:border-box}html,body{margin:0}body{font:16px/1.5 "Plus Jakarta Sans",system-ui,sans-serif;color:var(--ink);background:#F7F8FA;-webkit-font-smoothing:antialiased}
+button{font:inherit;cursor:pointer;color:inherit}
+.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}.tin{max-width:1240px;margin:0 auto;padding:12px 20px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.tin a{color:var(--g);font-weight:700;text-decoration:none;font-size:14.5px}.tin h1{margin:0;font-size:18px;flex:1;min-width:180px}
+.jump a{padding:7px 12px;border-radius:999px;border:1.5px solid #D0D5DD;background:#fff;color:var(--ink);font-weight:700;font-size:14px;margin-left:6px;display:inline-block}
+.wrap{max-width:1240px;margin:0 auto;padding:22px 20px 80px;display:grid;gap:56px}
+.sec>h2{margin:0 0 4px;font-size:26px}.sec>p.lead{margin:0 0 18px;max-width:860px}
+.rec{background:var(--g);color:#fff;border-radius:999px;padding:3px 11px;font-size:13px;font-weight:800}
+/* ---------- menu counts ---------- */
+.menus{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.mcard{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.mcard h3{margin:0;padding:12px 14px;font-size:16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--line)}
+.mcard p{margin:0;padding:10px 14px 14px;font-size:14px;border-top:1px solid var(--line);background:#FCFCFD}
+.side{background:#F7F8FA;padding:10px 8px}
+.it{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:10px;font-size:15px;font-weight:600;position:relative}
+.it svg{width:18px;height:18px;flex:none}.it.on{background:#E9ECEF;font-weight:700}.it .n{margin-left:auto}
+.hd{font-size:12.5px;font-weight:900;letter-spacing:.07em;padding:12px 10px 4px}
+/* 1 soft red pill */
+.s1 .n{min-width:24px;height:22px;padding:0 7px;border-radius:999px;background:#FEF3F2;color:#B42318;border:1px solid #FECDCA;font-size:12.5px;font-weight:800;display:grid;place-items:center}
+.s1 .it.on .n{background:#fff;border-color:#FDA29B}
+/* 2 solid red, compact */
+.s2 .n{min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:#D92D20;color:#fff;font-size:12px;font-weight:800;display:grid;place-items:center}
+/* 3 white with red outline */
+.s3 .n{min-width:24px;height:22px;padding:0 7px;border-radius:7px;background:#fff;color:#B42318;border:1.5px solid #F04438;font-size:12.5px;font-weight:800;display:grid;place-items:center}
+/* 4 red dot + black number */
+.s4 .n{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:800;color:#0B0F14}
+.s4 .n::before{content:'';width:8px;height:8px;border-radius:50%;background:#E41E3F;box-shadow:0 0 0 3px #FEE4E2}
+/* 5 red bar on the row + red number */
+.s5 .it.has::before{content:'';position:absolute;left:0;top:9px;bottom:9px;width:3px;border-radius:3px;background:#E41E3F}
+.s5 .n{font-size:14px;font-weight:900;color:#C01048;padding-right:2px}
+/* ---------- leads ---------- */
+.opt{margin-top:28px}.opt>h3{margin:0 0 4px;font-size:21px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}.opt>p{margin:0 0 12px;max-width:860px}
+.frame{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px}
+.ltools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.ltools input{flex:1;min-width:220px;height:46px;border-radius:12px;border:1.5px solid #D0D5DD;padding:0 14px;font:inherit;font-size:16px}
+.ltools select{height:46px;border-radius:12px;border:1.5px solid #D0D5DD;padding:0 12px;font:inherit;background:#fff}
+.src{justify-self:start;width:max-content;display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:800;border-radius:999px;padding:3px 10px}
+.src.nifti{background:#EAF6EF;color:#14532D}.src.google{background:#EFF6FF;color:#1D4ED8}
+.btn{border:0;border-radius:12px;background:var(--g);color:#fff;font-weight:800;padding:0 16px;height:44px;display:inline-flex;align-items:center;gap:8px}
+.btn.o{background:#fff;color:var(--ink);border:1.5px solid #D0D5DD}.btn svg{width:18px;height:18px}
+/* A: big cards */
+.acards{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:16px}
+.ac{border:1px solid var(--line);border-radius:18px;padding:18px;display:grid;gap:12px;background:#fff;transition:box-shadow .15s}
+.ac:hover{box-shadow:0 14px 30px -18px rgba(16,24,40,.35)}
+.ac .hd2{display:flex;gap:12px;align-items:center}.av{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;color:#fff;font-weight:800;font-size:16px;flex:none}
+.ac .nm{font-size:18px;font-weight:800;line-height:1.25}.ac .meta{font-size:14.5px}
+.money{display:flex;align-items:baseline;gap:8px;padding:12px 14px;border-radius:14px;background:#F0FAF4}
+.money b{font-size:28px;font-weight:800;color:#14532D}.money span{font-size:14.5px;font-weight:700}
+.buys{font-size:15px}.buys b{font-weight:800}.why{font-size:14.5px;background:#F7F8FA;border-radius:12px;padding:10px 12px}
+.acts{display:flex;gap:8px;flex-wrap:wrap}.acts .btn{flex:1 1 auto;justify-content:center}
+/* B: list + detail */
+.bwrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:16px}
+.blist{display:grid;gap:8px;align-content:start}
+.br{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:12px;align-items:center;padding:12px 14px;border:1.5px solid var(--line);border-radius:14px;background:#fff;text-align:left;width:100%}
+.br.on{border-color:var(--g);box-shadow:0 0 0 3px #DCF0E3}.br .av{width:44px;height:44px;border-radius:12px;font-size:14px}
+.br b{display:block;font-size:16px}.br small{display:block;font-size:13.5px}.br .amt{text-align:right;font-weight:800;font-size:16px;color:#14532D}.br .amt small{font-weight:600;color:var(--ink)}
+.bdet{border:1px solid var(--line);border-radius:18px;padding:20px;display:grid;gap:14px;align-content:start;position:sticky;top:80px}
+.bdet h4{margin:0;font-size:22px}.bdet .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.kv{border-radius:12px;background:#F7F8FA;padding:10px 12px}.kv em{display:block;font-style:normal;font-size:12.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase}.kv b{font-size:18px}
+.tbl{width:100%;border-collapse:collapse;font-size:15px}.tbl td{padding:8px 4px;border-bottom:1px solid #F2F4F7}.tbl td:last-child{text-align:right;font-weight:700}
+/* C: swipe deck */
+.deck{max-width:520px;margin:0 auto;display:grid;gap:14px}
+.dcard{border-radius:22px;padding:22px;background:linear-gradient(180deg,#F0FAF4 0,#fff 120px);border:1px solid #CFE8D9;box-shadow:0 22px 50px -30px rgba(16,24,40,.45);display:grid;gap:14px;transition:transform .25s,opacity .25s}
+.dcard.out-l{transform:translateX(-120%) rotate(-8deg);opacity:0}.dcard.out-r{transform:translateX(120%) rotate(8deg);opacity:0}
+.dcard .top2{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.dcard h4{margin:0;font-size:24px;line-height:1.2}.dcard .big{font-size:36px;font-weight:800;color:#14532D;line-height:1.1}
+.dcard ul{margin:0;padding-left:20px;display:grid;gap:4px;font-size:15.5px}
+.dbtns{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}.dbtns .btn{justify-content:center;height:52px;font-size:15.5px}
+.prog{text-align:center;font-size:14px;font-weight:700}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(120px);background:#101828;color:#fff;border-radius:14px;padding:12px 18px;font-weight:700;transition:transform .25s;z-index:50}.toast.on{transform:translateX(-50%) translateY(0)}
+@media (max-width:860px){.bwrap{grid-template-columns:1fr}.bdet{position:static}.acards{grid-template-columns:1fr}}
+</style></head><body>
+<div class="top"><div class="tin"><a href="../">‹ Design lab</a><h1>Round 35: menu counts x5, finding customers x3</h1><span class="jump"><a href="#counts">Menu counts x5</a><a href="#leads">Find customers x3</a></span></div></div>
+<div class="wrap">
+<section class="sec" id="counts"><h2>Red counts in the left menu: 5 ways</h2>
+<p class="lead">All five use red so they stand out, but stay calm and businesslike. Each card shows the same menu with counts on Orders, Stock, Money overview and To check. <b>Option 1 is live in the app now</b>, so you can see it in place; tell me if you want another.</p>
+<div class="menus" id="menus"></div></section>
+
+<section class="sec" id="leads"><h2>Find customers: 3 ways</h2>
+<p class="lead">Leads come from two places, each clearly labeled. <span class="src nifti">On Nifti</span> businesses chose to be found, so you see what they buy and roughly how much a month. <span class="src google">From Google</span> businesses are any shop or builder near any area you pick, with their phone and address (we can't see what they buy). Nothing is locked to one area; type any city or "All Philippines". Every lead has a Message button.</p>
+<div class="opt"><h3>A. Clean lead cards <span class="rec">My pick</span></h3><p>One card per business: name, monthly spend as the big number, what they buy as plain words (no bubbles), why they're a good fit, and three clear buttons.</p>
+<div class="frame"><div class="ltools"><input placeholder="Search a business or what they buy, e.g. rebar" oninput="LA.q=this.value; renderA()"><select onchange="LA.src=this.value; renderA()"><option value="all">On Nifti + from Google</option><option value="nifti">On Nifti only</option><option value="google">From Google only</option></select><select><option>All Philippines</option><option>Metro Manila</option><option>Bulacan</option><option>Laguna</option><option>Cavite</option><option>Cebu</option></select></div><div class="acards" id="aCards"></div></div></div>
+<div class="opt"><h3>B. List on the left, full profile on the right</h3><p>Scan many leads fast (name, type, monthly spend). Tap one to see everything they buy, their monthly amounts, and the buttons, like an inbox.</p>
+<div class="frame"><div class="bwrap"><div class="blist" id="bList"></div><div class="bdet" id="bDet"></div></div></div></div>
+<div class="opt"><h3>C. One lead at a time (swipe deck)</h3><p>A big, exciting card per business. Tap Skip, Save or Message, and the next one slides in. It feels like a game and is great on a phone.</p>
+<div class="frame"><div class="deck" id="deck"></div></div></div>
+</section></div>
+<div class="toast" id="toast"></div>
+<script>
+const $ = s => document.querySelector(s), esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]);
+function toast(t){ const e = $('#toast'); e.textContent = t; e.classList.add('on'); clearTimeout(e._t); e._t = setTimeout(() => e.classList.remove('on'), 1800); }
+const IC = {home:'<path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/>', ord:'<rect x="1.5" y="7" width="13" height="10" rx="1"/><path d="M14.5 10H19l3 3.5V17h-7.5z"/>', msg:'<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>', stock:'<path d="M4 6h10M4 12h16M4 18h7"/>', mon:'<circle cx="12" cy="12" r="9"/><path d="M12 3v9l6 3"/>', sale:'<rect x="4" y="4" width="16" height="16" rx="2"/>', chk:'<path d="M9 11l3 3 8-8"/><rect x="3" y="3" width="18" height="18" rx="2"/>'};
+const sv = k => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${IC[k]}</svg>`;
+const MENU = [['home','Home',0,1],['ord','Orders',2],['msg','Messages',0],['stock','Stock',3],'MONEY',['mon','Money overview',4],['sale','Sales',0],['chk','To check',3]];
+const OPTS = [['s1','1. Soft red pill',true,'Light red background, dark red number, thin red edge. Clear but quiet, easy on the eyes all day.'],['s2','2. Small solid red',false,'Classic red dot with a white number, kept small so it does not shout. Most familiar (like phone apps).'],['s3','3. White with red outline',false,'White badge, red border, red number. Crisp and businesslike; looks good on gray menus.'],['s4','4. Red dot + black number',false,'A small red dot with a soft halo, and the number in black. The calmest; red says "look", black is easy to read.'],['s5','5. Red bar on the row',false,'A thin red line on the left of the row plus a bold red number. No bubble at all; very clean.']];
+$('#menus').innerHTML = OPTS.map(([c, t, rec, d]) => `<div class="mcard ${c}"><h3>${t}${rec ? ' <span class="rec">Live now</span>' : ''}</h3><div class="side">${MENU.map(m => typeof m === 'string' ? `<div class="hd">${m}</div>` : `<div class="it${m[3] ? ' on' : ''}${m[2] ? ' has' : ''}">${sv(m[0])}${m[1]}${m[2] ? `<span class="n">${m[2]}</span>` : ''}</div>`).join('')}</div><p>${d}</p></div>`).join('');
+
+const COL = ['#1F6B45','#1D4ED8','#B45309','#0E7490','#7C2D12','#334155','#9F1239'];
+const LEADS = [
+ {n:'Northgate Homebuilders', t:'Contractor', a:'Malolos, Bulacan', src:'nifti', amt:420000, buys:[['Portland Cement 40kg','₱180,000'],['Steel Rebar 12mm','₱160,000'],['Galvanized Wire 12ga','₱80,000']], why:'120-unit housing project starting next month. Buys 3 things you sell.'},
+ {n:'Sta. Rosa Hardware Center', t:'Hardware store', a:'Sta. Rosa, Laguna', src:'nifti', amt:150000, buys:[['Angle Bars','₱70,000'],['Galvanized Wire 12ga','₱50,000'],['Welding Rods 3.2mm','₱30,000']], why:'Looking for a second steel supplier. Buys 2 things you sell.'},
+ {n:'J. Ramos Metal Works', t:'Fabricator', a:'Dasmariñas, Cavite', src:'nifti', amt:95000, buys:[['Angle Bars','₱45,000'],['Structural I-Beams','₱35,000'],['Welding Rods 3.2mm','₱15,000']], why:'Makes gates, trusses and grills. Buys 2 things you sell.'},
+ {n:'Golden Bricks Construction', t:'Contractor', a:'Quezon City', src:'google', rating:'4.6 ★ (38 reviews)', phone:'0917 555 0188', why:'Building contractor near you on Google. Message them with your price list.'},
+ {n:'Mabuhay Hardware & Lumber', t:'Hardware store', a:'Marikina', src:'google', rating:'4.3 ★ (112 reviews)', phone:'(02) 8941 2210', why:'Busy hardware store on Google. Could buy rebar and cement from you in bulk.'},
+ {n:'Cebu Steel Fabricators', t:'Fabricator', a:'Mandaue, Cebu', src:'google', rating:'4.8 ★ (21 reviews)', phone:'0918 222 7741', why:'Outside your usual area, but they ship from Manila suppliers.'},
+];
+const ini = n => n.split(/\s+/).slice(0, 2).map(w => w[0]).join('').toUpperCase(), col = i => COL[i % COL.length], peso = n => '₱' + n.toLocaleString('en-US');
+const MSG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>';
+const LA = {q: '', src: 'all'};
+function srcTag(l){ return l.src === 'nifti' ? '<span class="src nifti">On Nifti</span>' : '<span class="src google">From Google</span>'; }
+function renderA(){
+  const q = LA.q.toLowerCase(), list = LEADS.map((l, i) => ({l, i})).filter(({l}) => (LA.src === 'all' || l.src === LA.src) && (!q || (l.n + ' ' + l.t + ' ' + (l.buys || []).map(b => b[0]).join(' ')).toLowerCase().includes(q)));
+  $('#aCards').innerHTML = list.map(({l, i}) => `<div class="ac"><div class="hd2"><span class="av" style="background:${col(i)}">${ini(l.n)}</span><div><div class="nm">${esc(l.n)}</div><div class="meta">${esc(l.t)} · ${esc(l.a)}</div></div></div>
+    ${srcTag(l)}
+    ${l.src === 'nifti' ? `<div class="money"><b>${peso(l.amt)}</b><span>a month in supplies</span></div><div class="buys"><b>They buy:</b> ${l.buys.map(b => esc(b[0])).join(', ')}</div>` : `<div class="money" style="background:#EFF6FF"><b style="color:#1D4ED8;font-size:20px">${esc(l.rating)}</b></div><div class="buys"><b>Phone:</b> ${esc(l.phone)}</div>`}
+    <div class="why">${esc(l.why)}</div>
+    <div class="acts"><button class="btn" onclick="toast('Opens a chat (Viber, WhatsApp or Nifti) with ${esc(l.n)}')">${MSG}Message</button><button class="btn o" onclick="toast('Price list sent')">Send price list</button><button class="btn o" onclick="toast('Saved to your leads')">Save</button></div></div>`).join('') || '<p>No match.</p>';
+}
+let BSEL = 0;
+function renderB(){
+  $('#bList').innerHTML = LEADS.map((l, i) => `<button class="br${i === BSEL ? ' on' : ''}" onclick="BSEL=${i}; renderB()"><span class="av" style="background:${col(i)}">${ini(l.n)}</span><span><b>${esc(l.n)}</b><small>${esc(l.t)} · ${esc(l.a)} · ${l.src === 'nifti' ? 'On Nifti' : 'From Google'}</small></span><span class="amt">${l.src === 'nifti' ? peso(l.amt) + '<small>a month</small>' : '<small>' + esc(l.rating) + '</small>'}</span></button>`).join('');
+  const l = LEADS[BSEL];
+  $('#bDet').innerHTML = `<div style="display:flex;gap:12px;align-items:center"><span class="av" style="background:${col(BSEL)}">${ini(l.n)}</span><div><h4>${esc(l.n)}</h4><div>${esc(l.t)} · ${esc(l.a)}</div></div></div>${srcTag(l)}
+    ${l.src === 'nifti' ? `<div class="grid2"><div class="kv"><em>Buys a month</em><b>${peso(l.amt)}</b></div><div class="kv"><em>Things you sell</em><b>${l.buys.length}</b></div></div>
+      <table class="tbl">${l.buys.map(b => `<tr><td>${esc(b[0])}</td><td>${b[1]} / month</td></tr>`).join('')}</table>` : `<div class="grid2"><div class="kv"><em>Google rating</em><b>${esc(l.rating)}</b></div><div class="kv"><em>Phone</em><b>${esc(l.phone)}</b></div></div>`}
+    <div class="why" style="background:#F7F8FA;border-radius:12px;padding:10px 12px">${esc(l.why)}</div>
+    <div class="acts" style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn" onclick="toast('Opens a chat with ${esc(l.n)}')">${MSG}Message</button><button class="btn o" onclick="toast('Price list sent')">Send price list</button><button class="btn o" onclick="toast('Saved to your leads')">Save</button></div>`;
+}
+let DI = 0;
+function renderC(){
+  if(DI >= LEADS.length){ $('#deck').innerHTML = `<div class="dcard" style="text-align:center"><h4>That's everyone for today 🎉</h4><p>New leads show up every morning.</p><button class="btn" style="justify-self:center" onclick="DI=0; renderC()">Start again</button></div>`; return; }
+  const l = LEADS[DI];
+  $('#deck').innerHTML = `<div class="prog">Lead ${DI + 1} of ${LEADS.length}</div><div class="dcard" id="dcard"><div class="top2"><div><h4>${esc(l.n)}</h4><div>${esc(l.t)} · ${esc(l.a)}</div></div>${srcTag(l)}</div>
+    ${l.src === 'nifti' ? `<div><div class="big">${peso(l.amt)}</div><div style="font-weight:700">a month in supplies</div></div><div><b>They buy</b><ul>${l.buys.map(b => `<li>${esc(b[0])} · about ${b[1]} a month</li>`).join('')}</ul></div>` : `<div><div class="big" style="color:#1D4ED8;font-size:28px">${esc(l.rating)}</div><div style="font-weight:700">${esc(l.phone)}</div></div>`}
+    <div style="background:#fff;border:1px solid #E4E7EC;border-radius:12px;padding:10px 12px">${esc(l.why)}</div></div>
+    <div class="dbtns"><button class="btn o" onclick="nextC('l','Skipped')">Skip</button><button class="btn o" onclick="nextC('r','Saved to your leads')">Save</button><button class="btn" onclick="nextC('r','Opening a chat with ${esc(l.n)}')">${MSG}Message</button></div>`;
+}
+function nextC(dir, msg){ const c = $('#dcard'); if(c) c.classList.add(dir === 'l' ? 'out-l' : 'out-r'); toast(msg); setTimeout(() => { DI++; renderC(); }, 260); }
+renderA(); renderB(); renderC();
+</script></body></html>

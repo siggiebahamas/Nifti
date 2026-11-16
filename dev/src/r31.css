@@ -3,8 +3,8 @@ html[data-ty] #view-app :is(.bk-tile,.sl-tile).nt-info{background:#EFF6FF !impor
 html[data-ty] #view-app :is(.bk-tile,.sl-tile).nt-info :is(.bk-tile-v,b){color:#1D4ED8 !important;}
 html[data-ty] #view-app :is(.bk-tile,.sl-tile).nt-note{background:#ECFEFF !important;border:1.5px solid #67E8F9 !important;}
 html[data-ty] #view-app :is(.bk-tile,.sl-tile).nt-note :is(.bk-tile-v,b){color:#0E7490 !important;}
-html[data-ty] #view-app :is(.bk-tile,.sl-tile).nt-gray{background:#F2F4F7 !important;border:1.5px solid #D0D5DD !important;}
-html[data-ty] #view-app :is(.bk-tile,.sl-tile).nt-gray :is(.bk-tile-v,b){color:#475467 !important;}
+html[data-ty] #view-app :is(.bk-tile,.sl-tile).nt-gray{background:#F9FAFB !important;border:1.5px solid #EAECF0 !important;}
+html[data-ty] #view-app :is(.bk-tile,.sl-tile).nt-gray :is(.bk-tile-v,b,.bk-tile-l,.bk-tile-s,small,span){color:#0B0F14 !important;}
 html[data-ty] #view-app :is(.bk-tile,.sl-tile):is(.nt-info,.nt-note,.nt-gray) :is(.bk-tile-l,small):first-child::before{content:'';display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:8px;vertical-align:.08em;}
 html[data-ty] #view-app :is(.bk-tile,.sl-tile).nt-info :is(.bk-tile-l,small):first-child::before{background:#2563EB;}
 html[data-ty] #view-app :is(.bk-tile,.sl-tile).nt-note :is(.bk-tile-l,small):first-child::before{background:#0891B2;}
@@ -13,8 +13,8 @@ html[data-ty] #view-app .stat-card.nt-info{background:#EFF6FF !important;border:
 html[data-ty] #view-app .stat-card.nt-info .stat-num{color:#1D4ED8 !important;}
 html[data-ty] #view-app .stat-card.nt-info .stat-icon-panel svg{color:#2563EB !important;}
 html[data-ty] #view-app .stat-card.nt-note{background:#ECFEFF !important;border:1.5px solid #67E8F9 !important;}
-html[data-ty] #view-app .stat-card.nt-gray{background:#F2F4F7 !important;border:1.5px solid #D0D5DD !important;}
-html[data-ty] #view-app .stat-card.nt-gray .stat-num{color:#475467 !important;}
+html[data-ty] #view-app .stat-card.nt-gray{background:#F9FAFB !important;border:1.5px solid #EAECF0 !important;}
+html[data-ty] #view-app .stat-card.nt-gray :is(.stat-num,.stat-label,.stat-sub,span,small){color:#0B0F14 !important;}
 
 /* ---------- 2. Menu ---------- */
 /* Bank & deposits: a plain menu row like the others, no box */

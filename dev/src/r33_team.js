@@ -15,9 +15,9 @@ function nf33TCard(t){
     : c === 'doing' ? `<button type="button" class="nf33t-go done" onclick="nf33TMove('${t.id}','done')">✓ Done</button>`
     : `<button type="button" class="nf33t-go ghost" onclick="nf33TMove('${t.id}','todo')">Undo</button>`;
   return `<div class="nf33t-card ${c}${t.status !== 'done' && t.dueDate && t.dueDate < APP_TODAY ? ' late' : ''}" draggable="true" data-id="${t.id}" ondragstart="NF33T.drag='${t.id}'; this.classList.add('dragging')" ondragend="this.classList.remove('dragging')">
-    <b>${escapeHtml(t.title)}</b>
-    <div class="nf33t-meta"><span class="nf33t-who"><span class="nf33t-av" style="background:${typeof nfIniColor === 'function' ? nfIniColor(who) : '#475467'}">${escapeHtml(teamInitials(who))}</span>${escapeHtml(who.split(' ')[0])}</span>${nf33TDue(t)}</div>
-    <div class="nf33t-acts">${btn}<button type="button" class="nf33t-x" title="Delete" aria-label="Delete task" onclick="deleteTask('${t.id}')">✕</button></div></div>`;
+    <div class="nf33t-main"><b>${escapeHtml(t.title)}</b>
+    <div class="nf33t-meta"><span class="nf33t-who"><span class="nf33t-av" style="background:${typeof nfIniColor === 'function' ? nfIniColor(who) : '#475467'}">${escapeHtml(teamInitials(who))}</span>${escapeHtml(who.split(' ')[0])}</span>${nf33TDue(t)}</div></div>
+    <div class="nf33t-acts">${btn}</div><button type="button" class="nf33t-x" title="Delete" aria-label="Delete task" onclick="deleteTask('${t.id}')">✕</button></div>`;
 }
 function nf33RenderTaskList(){
   const box = document.getElementById('taskListOpen'); if(!box) return;

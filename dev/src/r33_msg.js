@@ -42,8 +42,9 @@ function nf33Ts(c){
 }
 function nf33Counts(){
   const all = allConversations(), c = {team: 0, cus: 0, sup: 0};
-  all.forEach(x => { if(x.unread > 0) c[nf33Group(x)] += x.unread; });
-  try{ const n = typeof teamUnread === 'number' ? teamUnread : 0; c.team += n; }catch(e){}
+  // the red circle counts people (chats with something unread), not messages
+  all.forEach(x => { if(x.unread > 0) c[nf33Group(x)] += 1; });
+  try{ if(typeof teamUnreadChatCount === 'function' && teamUnreadChatCount() > 0) c.team += 1; }catch(e){}
   return c;
 }
 function nf33Row(c){

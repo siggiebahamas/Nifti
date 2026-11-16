@@ -20,9 +20,13 @@ html[data-ty] #view-app #page-messages.active > .page-head, #view-app #page-mess
 #page-messages .nf33-tabs .nf33-tl{max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.1;}
 #page-messages .nf33-tabs em{position:absolute;top:5px;left:calc(50% + 8px);font-style:normal;min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:#E41E3F;color:#FFFFFF;font-size:12px;font-weight:800;letter-spacing:0;display:grid;place-items:center;line-height:1;border:2px solid #FFFFFF;}
 #page-messages .nf33-tabs button:hover{background:#F7F8FA;}
-#page-messages .nf33-tabs button[data-g="team"].on{color:#0B0F14;border-color:#0B0F14;background:#F2F4F7;}
-#page-messages .nf33-tabs button[data-g="cus"].on{color:#1D4ED8;border-color:#2563EB;background:#EFF6FF;}
-#page-messages .nf33-tabs button[data-g="sup"].on{color:#047857;border-color:#059669;background:#ECFDF5;}
+/* each tab keeps its own color, picked or not: Team orange, Customers blue, Suppliers green */
+#page-messages .nf33-tabs button[data-g="team"]{color:#C2410C;} #page-messages .nf33-tabs button[data-g="team"] .nf33-ti{color:#EA580C;}
+#page-messages .nf33-tabs button[data-g="cus"]{color:#1D4ED8;} #page-messages .nf33-tabs button[data-g="cus"] .nf33-ti{color:#2563EB;}
+#page-messages .nf33-tabs button[data-g="sup"]{color:#047857;} #page-messages .nf33-tabs button[data-g="sup"] .nf33-ti{color:#059669;}
+#page-messages .nf33-tabs button[data-g="team"].on{border-color:#F97316;background:#FFF7ED;}
+#page-messages .nf33-tabs button[data-g="cus"].on{border-color:#2563EB;background:#EFF6FF;}
+#page-messages .nf33-tabs button[data-g="sup"].on{border-color:#059669;background:#ECFDF5;}
 #page-messages .nf33-tabs button[data-g="cus"].on .nf33-ti{color:#2563EB;} #page-messages .nf33-tabs button[data-g="sup"].on .nf33-ti{color:#059669;}
 #page-messages .nf33-head.searching .nf33-tabs{opacity:.45;pointer-events:none;}
 /* rows: photo left, name and last message in the middle, time and count on the right */
@@ -31,13 +35,13 @@ html[data-ty] #view-app #page-messages.active > .page-head, #view-app #page-mess
 #page-messages .nf33-row:hover, #page-messages .nf33-hit:hover{background:#F5F6F8;}
 #page-messages .nf33-row.on{background:#EEF2F6;}
 #page-messages .nf33-row.on::before{content:'';position:absolute;left:0;top:12px;bottom:12px;width:3px;border-radius:3px;background:var(--nf33c,#98A2B3);}
-#page-messages .nf33-row[data-g="team"]{--nf33c:#0B0F14;} #page-messages .nf33-row[data-g="cus"]{--nf33c:#3B82F6;} #page-messages .nf33-row[data-g="sup"]{--nf33c:#10B981;}
+#page-messages .nf33-row[data-g="team"]{--nf33c:#F97316;} #page-messages .nf33-row[data-g="cus"]{--nf33c:#3B82F6;} #page-messages .nf33-row[data-g="sup"]{--nf33c:#10B981;}
 #page-messages .nf33-av{flex:none;width:50px;height:50px;border-radius:50%;overflow:hidden;display:grid;place-items:center;background:#E4E7EC;}
 #page-messages .nf33-av.sm{width:40px;height:40px;}
 #page-messages .nf33-av img{width:100%;height:100%;object-fit:cover;display:block;}
 #page-messages .nf33-av .nf-ini{width:100%;height:100%;display:grid;place-items:center;color:#FFFFFF;font-weight:800;font-size:17px;}
 #page-messages .nf33-av.sm .nf-ini{font-size:14px;}
-#page-messages .nf33-avt{background:#101828;color:#FFFFFF;} #page-messages .nf33-avt svg{width:26px;height:26px;}
+#page-messages .nf33-avt{background:#FFEDD5;color:#C2410C;} #page-messages .nf33-avt svg{width:26px;height:26px;}
 #page-messages .nf33-mid{flex:1;min-width:0;display:grid;gap:3px;}
 #page-messages .nf33-top{display:flex;align-items:baseline;gap:8px;min-width:0;}
 #page-messages .nf33-top b{flex:1;min-width:0;font-size:16.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#0B0F14;}
@@ -86,8 +90,7 @@ html[data-ty] #view-app #page-messages.active > .page-head, #view-app #page-mess
 #page-messages .nf33-top b{font-weight:700 !important;}
 #page-messages .nf33-pv{font-weight:500 !important;}
 #page-messages .nf33-row, #page-messages .nf33-row *{transition:none !important;transform:none !important;}
-/* Team chat pane: black, not orange */
-#page-messages .nf18-tp-h{background:#101828 !important;border-bottom:0 !important;color:#FFFFFF !important;}
-#page-messages .nf18-tp-h b{color:#FFFFFF !important;} #page-messages .nf18-tp-h small{color:#D0D5DD !important;}
-#page-messages .nf18-tp-h .nf18-tp-back{color:#FFFFFF !important;background:rgba(255,255,255,.12) !important;border-color:transparent !important;}
-.messages-shell .nf18-tav{background:#101828 !important;color:#FFFFFF !important;}
+/* Team chat pane: orange theme */
+#page-messages .nf18-tp-h{background:#FFF7ED !important;border-bottom:1px solid #FED7AA !important;}
+#page-messages .nf18-tp-h b{color:#9A3412 !important;} #page-messages .nf18-tp-h small{color:#0B0F14 !important;}
+.messages-shell .nf18-tav{background:#FFEDD5 !important;color:#C2410C !important;}

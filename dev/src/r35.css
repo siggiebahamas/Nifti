@@ -1,0 +1,42 @@
+/* ===== Round 35 ===== */
+/* faster sale and expense entry */
+.nf35-lbl{font-size:13px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#0B0F14;margin:2px 0 6px;}
+.nf35-top, .nf35-rep{margin:4px 0 12px;}
+.nf35-chips{display:flex;gap:8px;flex-wrap:wrap;}
+.nf35-chips button{display:inline-flex;flex-direction:column;align-items:flex-start;gap:1px;min-height:44px;padding:7px 12px;border-radius:12px;border:1.5px solid #D0D5DD;background:#FFFFFF;font:inherit;text-align:left;cursor:pointer;color:#0B0F14;max-width:100%;}
+.nf35-chips button b{font-size:14.5px;font-weight:700;line-height:1.25;}
+.nf35-chips button span{font-size:12.5px;color:#0B0F14;font-weight:600;}
+.nf35-chips button:hover{border-color:#1F6B45;}
+.nf35-chips button.on{border-color:#1F6B45;background:#EAF6EF;}
+.nf35-cust{margin-top:8px;} .nf35-cust button{min-height:36px;padding:0 12px;justify-content:center;font-size:14px;font-weight:700;}
+.qs-line.nf35-line{grid-template-columns:minmax(0,1fr) 40px 64px 40px auto minmax(90px,130px) auto !important;align-items:center;}
+.nf35-step{width:40px;height:44px;border-radius:10px;border:1.5px solid #D0D5DD;background:#FFFFFF;font:inherit;font-size:22px;font-weight:800;line-height:1;color:#0B0F14;cursor:pointer;}
+.nf35-step:hover{border-color:#1F6B45;background:#F2FAF5;}
+.nf35-cash{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:-4px 0 12px;}
+.nf35-cash span{font-size:14px;font-weight:700;color:#0B0F14;}
+.nf35-cash button{min-height:38px;padding:0 14px;border-radius:999px;border:1.5px solid #D0D5DD;background:#FFFFFF;font:inherit;font-size:14.5px;font-weight:800;color:#0B0F14;cursor:pointer;}
+.nf35-cash button:hover{border-color:#1F6B45;}
+.nf35-saverow{display:flex;gap:8px;flex-wrap:wrap;} .nf35-saverow > .btn{flex:1 1 200px;width:auto !important;min-height:50px;}
+.ex-cats .nf35-hid{display:none !important;}
+.ex-cats .nf35-more{border:1.5px dashed #98A2B3 !important;background:#FFFFFF !important;font:inherit;font-weight:800;color:#0B0F14;border-radius:12px;min-height:48px;cursor:pointer;}
+@media (max-width:640px){ .qs-line.nf35-line{grid-template-columns:40px 56px 40px minmax(0,1fr) auto !important;} .qs-line.nf35-line .qs-prod{grid-column:1 / -1;} .qs-line.nf35-line .qs-x{display:none;} }
+/* AI reading is off for launch: notebook reader hidden everywhere */
+.sidebar .nf20-g[data-g="ai"], #moreSheet .nf23-mai, [onclick*="nf26OpenStart('snap')"], [onclick*="nf22NbOpen"], .nf22-nbbtn{display:none !important;}
+/* left menu counts: soft red pill (option 1 in the design lab) */
+html[data-ty] .sidebar .nav-item .nav-badge, .sidebar .nav-item .nav-badge{background:#FEF3F2 !important;color:#B42318 !important;border:1px solid #FECDCA !important;font-weight:800 !important;min-width:24px;height:22px;padding:0 7px;border-radius:999px;display:inline-grid !important;place-items:center;font-size:12.5px !important;}
+html[data-ty] .sidebar .nav-item.active .nav-badge, .sidebar .nav-item.active .nav-badge{background:#FFFFFF !important;color:#B42318 !important;border-color:#FDA29B !important;}
+html[data-ty] .sidebar .nav-item[data-page="messages"] .nav-badge{background:#FEF3F2 !important;color:#B42318 !important;border:1px solid #FECDCA !important;}
+.sidebar .nf20-h .nf26-n{background:#FEF3F2 !important;color:#B42318 !important;border:1px solid #FECDCA !important;}
+/* Getting paid on a phone: status lines never cut off */
+@media (max-width:640px){
+  #page-collections td.w, #page-collections .col-row .sl-s{white-space:normal !important;}
+  #page-collections table, #page-collections tbody, #page-collections tr, #page-collections td{max-width:100%;}
+  #page-collections td.w > div, #page-collections td.w > *{flex-wrap:wrap;}
+  #view-app #page-collections .nf26-gl{grid-template-columns:minmax(0,1fr) !important;min-width:0;width:100%;}
+  #view-app #page-collections .nf26-gl > div{flex-wrap:wrap;min-width:0;gap:2px 10px;}
+  #view-app #page-collections .nf26-gl > div > *{min-width:0;overflow-wrap:anywhere;}
+  #view-app #page-collections table.nf25-owed tr{grid-template-columns:minmax(0,1fr) auto !important;}
+  #view-app #page-collections table.nf25-owed td.w{grid-column:1 / -1;min-width:0;}
+}
+/* Buying from suppliers heading: black on its gray band */
+#view-app .lg-side.buy :is(h2,h3,b,p,small,span), #view-app [class*="buy"] .nf19-colh :is(b,small,span,p){color:#0B0F14 !important;}

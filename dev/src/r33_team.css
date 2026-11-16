@@ -81,3 +81,20 @@ html[data-ty] #view-app #page-team #exceptionLogPanel .sub, #page-team #exceptio
 html[data-ty] #view-app #page-team #exceptionLogPanel :is(div,span), #page-team #exceptionLogPanel :is(div,span){font-size:14.5px;}
 html[data-ty] #view-app #page-team #exceptionLogPanel div[style*="font-size:13px"]{font-size:13px !important;}
 html[data-ty] #view-app #page-team :is(#dormancyPanel,#vendorConsolidationPanel) h2{font-size:22px !important;}
+/* round 35: black headings on a barely-there gray, buttons on the right, bigger names and dates */
+#page-team .nf33t-col{background:#FAFBFC !important;border:1px solid #EEF0F3 !important;}
+#page-team .nf33t-col.over{background:#F3F6F9 !important;border:2px dashed #98A2B3 !important;}
+#page-team .nf33t-col header b{color:#000000 !important;}
+#page-team .nf33t-col header small{color:#000000 !important;}
+#page-team .nf33t-n{background:#FFFFFF !important;color:#000000 !important;border-color:#D0D5DD !important;}
+#page-team .nf33t-card{position:relative;grid-template-columns:minmax(0,1fr) auto !important;align-items:center;column-gap:12px;padding:14px 40px 14px 16px !important;}
+#page-team .nf33t-main{display:grid;gap:8px;min-width:0;}
+#page-team .nf33t-acts{grid-column:2;grid-row:1;justify-self:end;}
+#page-team .nf33t-x{position:absolute;top:6px;right:6px;width:28px !important;height:28px !important;font-size:13px !important;}
+#page-team .nf33t-who{font-size:16px !important;color:#000000 !important;} #page-team .nf33t-av{width:30px !important;height:30px !important;font-size:12px !important;}
+#page-team .nf33t-due{font-size:14.5px !important;padding:4px 11px !important;}
+#page-team .nf33t-due.n{background:#F3F4F6 !important;color:#000000 !important;}
+#page-team .nf33t-due.y{color:#000000 !important;background:#FEF3C7 !important;}
+#page-team .nf33t-p .nf33t-pm small{color:#000000 !important;font-size:13.5px !important;}
+#page-team .nf33t-empty{color:#000000 !important;border-color:#E4E7EC !important;}
+@media (max-width:520px){ #page-team .nf33t-card{grid-template-columns:1fr !important;} #page-team .nf33t-acts{grid-column:1;grid-row:auto;justify-self:start;} }
