@@ -16,6 +16,9 @@ for name in ["const NF26_SKIP = '", "const NF_NO = '", "const I18N_SKIP = '"]:
 P("<small>Waiting for customer's OK</small>", "<small>Waiting for Customer's OK</small>")
 P("<small>Said yes (30 days)</small>", "<small>Said Yes</small>")
 
+# expense note field announces itself to screen readers
+P('<input maxlength="500" value="${escapeHtml(EXF.note)}" oninput="EXF.note=this.value">', '<input maxlength="500" aria-label="Note (optional)" value="${escapeHtml(EXF.note)}" oninput="EXF.note=this.value">')
+
 # deleted jobs remember who and when
 P("startedAt: r.started_at ? r.started_at.slice(0,10) : null,", "startedAt: r.started_at ? r.started_at.slice(0,10) : null, deletedAt: r.deleted_at || null, deletedBy: r.deleted_by_name || null,")
 

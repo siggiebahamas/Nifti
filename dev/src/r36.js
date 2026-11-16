@@ -1,7 +1,10 @@
 /* ===== Round 36: menu open by default with real to-do counts, steady chat list, wide summary boxes, clean lead cards, task history ===== */
 
 /* ---------- 1. Menu: every section open the first time (you can still fold them); headings count real to-dos ---------- */
-(function(){ try{ if(!localStorage.getItem('nifti-menu-fold-v36')){ localStorage.setItem('nifti-menu-fold', '{}'); localStorage.setItem('nifti-menu-fold-v36', '1'); } }catch(e){} })();
+(function(){ try{ if(!localStorage.getItem('nifti-menu-fold-v36b')){ localStorage.setItem('nifti-menu-fold', '{}'); localStorage.setItem('nifti-menu-fold-26', '{}'); localStorage.setItem('nifti-menu-fold-v36', '1'); localStorage.setItem('nifti-menu-fold-v36b', '1'); } }catch(e){} })();
+// the menu's saved folds live under nifti-menu-fold-26; with nothing saved, every section is open
+nf20Folded = function(){ let f = null; try{ f = JSON.parse(localStorage.getItem('nifti-menu-fold-26') || 'null'); }catch(e){} return Object.assign({money: false, sell: false, more: false, ai: false}, f || {}); };
+try{ window.nf20Folded = nf20Folded; }catch(e){}
 function nf36GroupTodo(g){ return [...g.querySelectorAll('.nav-item')].filter(it => typeof nf26Visible !== 'function' || nf26Visible(it)).reduce((s, it) => s + (Number(((it.querySelector('.nav-badge') || {}).textContent || '').trim()) || 0), 0); }
 
 /* ---------- 2. Wide summary boxes: label and number on the left, the details on the right ---------- */
@@ -119,4 +122,30 @@ function nf36TeamBar(page){
   const base = nf26AfterPass;
   nf26AfterPass = function(page){ base(page); if(!page) return; try{ nf36Wide(page); }catch(e){} try{ if(page.id === 'page-team') nf36TeamBar(page); }catch(e){ console.warn('nf36 team', e); } };
   window.nf26AfterPass = nf26AfterPass;
+})();
+/* ---------- daily routine fixes ---------- */
+// after a cash count, the calendar shows today's result right away (it used to wait for the next page redraw)
+(function(){
+  if(typeof ccSave !== 'function' || ccSave._nf36) return;
+  const base = ccSave;
+  const w = async function(){
+    const r = await base.apply(this, arguments);
+    try{ const d = document.getElementById('mhDrawer'); if(d && typeof mhDrawer === 'function' && typeof BK !== 'undefined' && BK.loaded){ d.innerHTML = mhDrawer(); const pg = d.closest('.page'); if(pg && typeof nf26AfterPass === 'function') nf26AfterPass(pg); } }catch(e){}
+    return r;
+  };
+  w._nf36 = true; window.ccSave = w; try{ ccSave = w; }catch(e){}
+})();
+// with no schedule saved, the two people who count most often take turns; one extra count by someone else no longer reshuffles the week
+(function(){
+  if(typeof mhSched !== 'function' || mhSched._nf36) return;
+  const base = mhSched;
+  const w = function(){
+    let s = null; try{ s = bkSettings().count_schedule; }catch(e){}
+    if(s && s.people) return base.apply(this, arguments);
+    const tally = {}; ((typeof BK !== 'undefined' && BK.counts) || []).forEach(c => { const n = String(c.by || '').replace(/ \(You\)$/, '').trim(); if(n) tally[n] = (tally[n] || 0) + 1; });
+    let ps = Object.keys(tally).sort((a, b) => tally[b] - tally[a] || a.localeCompare(b)).slice(0, 2);
+    if(ps.length < 2){ try{ ps = ps.concat(mhPeople().filter(x => !ps.includes(x))).slice(0, 2); }catch(e){} }
+    return {mode: 'alternate', people: ps, start: APP_TODAY, over: {}};
+  };
+  w._nf36 = true; window.mhSched = w; try{ mhSched = w; }catch(e){}
 })();

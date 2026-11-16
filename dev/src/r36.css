@@ -53,3 +53,12 @@ html[data-ty] #view-app :is(.sl-tile,.bk-tile).nf36-wide > span i{display:block;
 /* section heading counts show only while a section is folded (open sections already show each count) */
 html[data-ty] .sidebar .nf20-nav .nf20-g:not(.folded) > button.nf20-h .nf26-n, .sidebar .nf20-nav .nf20-g:not(.folded) > button.nf20-h .nf26-n,
 html[data-ty] .sidebar .nf20-nav button.nf20-h .nf26-n[hidden], .sidebar .nf20-nav button.nf20-h .nf26-n:empty{display:none !important;}
+/* the "Sale saved · Receipt" bar and other messages never sit on top of each other */
+body:has(#bkSnack) .app-toast-stack{bottom:92px !important;}
+@media (max-width:900px){ body:has(#bkSnack) .app-toast-stack{bottom:152px !important;} }
+/* phone: every tap target at least 40px tall in the daily screens */
+@media (max-width:900px){
+  #page-orders button[data-nf25f]{min-height:40px;padding:8px 10px;}
+  .nff-moreb{min-height:40px;}
+  .sl-link{min-height:40px;padding:8px 4px;}
+}

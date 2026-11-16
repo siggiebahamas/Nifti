@@ -9183,6 +9183,15 @@ html[data-ty] #view-app :is(.sl-tile,.bk-tile).nf36-wide > span i{display:block;
 /* section heading counts show only while a section is folded (open sections already show each count) */
 html[data-ty] .sidebar .nf20-nav .nf20-g:not(.folded) > button.nf20-h .nf26-n, .sidebar .nf20-nav .nf20-g:not(.folded) > button.nf20-h .nf26-n,
 html[data-ty] .sidebar .nf20-nav button.nf20-h .nf26-n[hidden], .sidebar .nf20-nav button.nf20-h .nf26-n:empty{display:none !important;}
+/* the "Sale saved · Receipt" bar and other messages never sit on top of each other */
+body:has(#bkSnack) .app-toast-stack{bottom:92px !important;}
+@media (max-width:900px){ body:has(#bkSnack) .app-toast-stack{bottom:152px !important;} }
+/* phone: every tap target at least 40px tall in the daily screens */
+@media (max-width:900px){
+  #page-orders button[data-nf25f]{min-height:40px;padding:8px 10px;}
+  .nff-moreb{min-height:40px;}
+  .sl-link{min-height:40px;padding:8px 4px;}
+}
 
 /* ===== Round 36: Viber inside Messages ===== */
 /* bubble extras */
@@ -21979,7 +21988,7 @@ function exRender(){
       <div class="field"><label>${cat && cat.staff ? 'Staff name' : cat && cat.transfer === 'out' ? 'Bank' : cat && cat.transfer ? 'Who' : 'Paid to'} <small>(optional)</small></label>${cat && cat.staff
         ? `<input maxlength="80" value="${escapeHtml(EXF.staff)}" oninput="EXF.staff=this.value" placeholder="e.g. Rico" list="exStaff"><datalist id="exStaff">${getActiveTeamMembers().map(m => `<option value="${escapeHtml(String(m.name).replace(/ \(You\)$/, ''))}">`).join('')}</datalist>`
         : `<input maxlength="120" value="${escapeHtml(EXF.vendor)}" oninput="EXF.vendor=this.value" placeholder="${cat && cat.transfer === 'out' ? 'e.g. BDO' : cat && cat.transfer ? 'e.g. the owner' : 'e.g. Meralco'}">`}</div></div>
-    <div class="field"><label>Note <small>(optional)</small></label><input maxlength="500" value="${escapeHtml(EXF.note)}" oninput="EXF.note=this.value"></div>
+    <div class="field"><label>Note <small>(optional)</small></label><input maxlength="500" aria-label="Note (optional)" value="${escapeHtml(EXF.note)}" oninput="EXF.note=this.value"></div>
     ${EXF.cashMove ? '' : `<label class="bk-check"><input type="checkbox" ${EXF.repeat ? 'checked' : ''} onchange="EXF.repeat=this.checked"> Every month (rent, bills). Nifti reminds you if it's not in yet.</label>`}
     <div class="sl-err" id="exErr">${escapeHtml(EXF.err)}</div>
     <button class="btn btn-primary sl-wide" onclick="exSave()" ${EXF.saving ? 'disabled' : ''}>${EXF.saving ? 'Saving…' : EXF.cashMove ? 'Save' : 'Save expense'}</button>`);
@@ -36186,7 +36195,10 @@ function nf35ExpExtras(){
 /* ===== Round 36: menu open by default with real to-do counts, steady chat list, wide summary boxes, clean lead cards, task history ===== */
 
 /* ---------- 1. Menu: every section open the first time (you can still fold them); headings count real to-dos ---------- */
-(function(){ try{ if(!localStorage.getItem('nifti-menu-fold-v36')){ localStorage.setItem('nifti-menu-fold', '{}'); localStorage.setItem('nifti-menu-fold-v36', '1'); } }catch(e){} })();
+(function(){ try{ if(!localStorage.getItem('nifti-menu-fold-v36b')){ localStorage.setItem('nifti-menu-fold', '{}'); localStorage.setItem('nifti-menu-fold-26', '{}'); localStorage.setItem('nifti-menu-fold-v36', '1'); localStorage.setItem('nifti-menu-fold-v36b', '1'); } }catch(e){} })();
+// the menu's saved folds live under nifti-menu-fold-26; with nothing saved, every section is open
+nf20Folded = function(){ let f = null; try{ f = JSON.parse(localStorage.getItem('nifti-menu-fold-26') || 'null'); }catch(e){} return Object.assign({money: false, sell: false, more: false, ai: false}, f || {}); };
+try{ window.nf20Folded = nf20Folded; }catch(e){}
 function nf36GroupTodo(g){ return [...g.querySelectorAll('.nav-item')].filter(it => typeof nf26Visible !== 'function' || nf26Visible(it)).reduce((s, it) => s + (Number(((it.querySelector('.nav-badge') || {}).textContent || '').trim()) || 0), 0); }
 
 /* ---------- 2. Wide summary boxes: label and number on the left, the details on the right ---------- */
@@ -36304,6 +36316,32 @@ function nf36TeamBar(page){
   const base = nf26AfterPass;
   nf26AfterPass = function(page){ base(page); if(!page) return; try{ nf36Wide(page); }catch(e){} try{ if(page.id === 'page-team') nf36TeamBar(page); }catch(e){ console.warn('nf36 team', e); } };
   window.nf26AfterPass = nf26AfterPass;
+})();
+/* ---------- daily routine fixes ---------- */
+// after a cash count, the calendar shows today's result right away (it used to wait for the next page redraw)
+(function(){
+  if(typeof ccSave !== 'function' || ccSave._nf36) return;
+  const base = ccSave;
+  const w = async function(){
+    const r = await base.apply(this, arguments);
+    try{ const d = document.getElementById('mhDrawer'); if(d && typeof mhDrawer === 'function' && typeof BK !== 'undefined' && BK.loaded){ d.innerHTML = mhDrawer(); const pg = d.closest('.page'); if(pg && typeof nf26AfterPass === 'function') nf26AfterPass(pg); } }catch(e){}
+    return r;
+  };
+  w._nf36 = true; window.ccSave = w; try{ ccSave = w; }catch(e){}
+})();
+// with no schedule saved, the two people who count most often take turns; one extra count by someone else no longer reshuffles the week
+(function(){
+  if(typeof mhSched !== 'function' || mhSched._nf36) return;
+  const base = mhSched;
+  const w = function(){
+    let s = null; try{ s = bkSettings().count_schedule; }catch(e){}
+    if(s && s.people) return base.apply(this, arguments);
+    const tally = {}; ((typeof BK !== 'undefined' && BK.counts) || []).forEach(c => { const n = String(c.by || '').replace(/ \(You\)$/, '').trim(); if(n) tally[n] = (tally[n] || 0) + 1; });
+    let ps = Object.keys(tally).sort((a, b) => tally[b] - tally[a] || a.localeCompare(b)).slice(0, 2);
+    if(ps.length < 2){ try{ ps = ps.concat(mhPeople().filter(x => !ps.includes(x))).slice(0, 2); }catch(e){} }
+    return {mode: 'alternate', people: ps, start: APP_TODAY, over: {}};
+  };
+  w._nf36 = true; window.mhSched = w; try{ mhSched = w; }catch(e){}
 })();
 
 /* ===== Round 36: Viber on your own number, inside Nifti =====
