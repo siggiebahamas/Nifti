@@ -57,6 +57,10 @@ function nf33TMove(id, col){
 function nf33TSeedDemo(){ if(myBusiness || NF33T.seeded) return; NF33T.seeded = true; const t = teamTasks.find(x => x.id === 'nf-task-3'); if(t && !t.startedAt) t.startedAt = APP_TODAY; }
 (function(){
   try{ renderTaskList = nf33RenderTaskList; window.renderTaskList = nf33RenderTaskList; renderTeamPeopleStrip = nf33RenderPeople; window.renderTeamPeopleStrip = nf33RenderPeople; }catch(e){ console.warn('nf33 team', e); }
+  // Team chat lives in two places (Messages and the Team page): bring the chat back here when its tab is opened
+  const st = window.setTeamTab;
+  if(typeof st === 'function' && !st._nf33){ const w = function(tab){ if(tab === 'chat'){ const card = document.querySelector('.team-chat-card'), host = document.getElementById('teamTab_chat'); if(card && host && card.parentElement !== host) host.appendChild(card); try{ if(typeof NF18T !== 'undefined') NF18T.on = false; const sh = document.querySelector('#page-messages .messages-shell'); if(sh) sh.classList.remove('nf18-team-on'); }catch(e){} } return st.apply(this, arguments); };
+    w._nf33 = true; window.setTeamTab = w; try{ setTeamTab = w; }catch(e){} }
   const base = nf26AfterPass;
   nf26AfterPass = function(page){ base(page); try{ if(page && page.id === 'page-team'){ const q = page.querySelector('.team-quickadd'); if(q && !q.classList.contains('nf33t-add')) q.classList.add('nf33t-add'); } }catch(e){} };
   window.nf26AfterPass = nf26AfterPass;

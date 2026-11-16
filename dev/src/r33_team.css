@@ -55,3 +55,29 @@ html[data-ty] #view-app #page-team .team-tabs.nf-tabcards, #page-team .team-tabs
 html[data-ty] #view-app #page-team .team-tabs.nf-tabcards .team-tab, #page-team .team-tabs.nf-tabcards .team-tab{min-height:38px !important;height:38px !important;padding:0 16px !important;border-radius:9px !important;border:0 !important;background:transparent !important;box-shadow:none !important;display:inline-flex !important;align-items:center;gap:6px;font-size:15px !important;font-weight:700 !important;color:#475467 !important;}
 html[data-ty] #view-app #page-team .team-tabs.nf-tabcards .team-tab.active, #page-team .team-tabs.nf-tabcards .team-tab.active{background:#FFFFFF !important;color:#101828 !important;box-shadow:0 1px 3px rgba(16,24,40,.12) !important;}
 html[data-ty] #view-app #page-team .team-tabs.nf-tabcards .team-tab small, html[data-ty] #view-app #page-team .team-tabs.nf-tabcards .team-tab .sub, #page-team .team-tabs.nf-tabcards .team-tab br + *{display:none !important;}
+/* round 34: bigger ALL CAPS column names, black subtext, bigger task buttons */
+#page-team .nf33t-col header b{font-size:19px !important;font-weight:900 !important;letter-spacing:.06em;text-transform:uppercase;}
+#page-team .nf33t-col header i{width:12px;height:12px;}
+#page-team .nf33t-col header small{font-size:14.5px !important;color:#0B0F14 !important;font-weight:600;padding-left:20px;}
+#page-team .nf33t-n{min-width:28px;height:26px;font-size:14px;}
+#page-team .nf33t-go{height:42px !important;padding:0 20px !important;font-size:16px !important;font-weight:800 !important;}
+#page-team .nf33t-go.ghost{padding:0 12px !important;}
+#page-team .nf33t-x{width:36px;height:36px;font-size:16px;}
+#page-team .nf33t-card b{font-size:16.5px;}
+#page-team .nf33t-who{font-size:14.5px;} #page-team .nf33t-av{width:28px;height:28px;font-size:11.5px;}
+#page-team .nf33t-due{font-size:13.5px;padding:3px 10px;}
+/* Team chat: the tab shows its chat again */
+html[data-ty] #view-app #page-team .team-tabs > .team-tab[data-tab="chat"]{display:inline-flex !important;}
+html[data-ty] #view-app #page-team #teamTab_chat:not(.hidden), #view-app #page-team #teamTab_chat:not(.hidden){display:block !important;}
+#page-team #teamTab_chat .team-chat-card{display:flex;flex-direction:column;height:min(560px, calc(100vh - 320px));min-height:360px;padding:0 !important;overflow:hidden;border-radius:16px !important;}
+#page-team #teamTab_chat .team-chat-thread{flex:1;min-height:0;overflow-y:auto;padding:16px !important;background:#F7F8FA;}
+#page-team #teamTab_chat .team-chat-compose{display:flex;gap:8px;padding:12px !important;border-top:1px solid #E4E7EC;background:#FFFFFF;}
+#page-team #teamTab_chat .team-chat-compose input{flex:1;min-width:0;height:46px;border-radius:999px;border:1.5px solid #D0D5DD;padding:0 16px;font:inherit;font-size:16px;}
+#page-team #teamTab_chat .team-chat-compose .btn{height:46px;border-radius:999px;padding:0 22px;}
+/* Exception log: same size as everything else */
+#page-team #exceptionLogPanel .panel-card{margin-top:14px !important;padding:16px 18px !important;}
+html[data-ty] #view-app #page-team #exceptionLogPanel h2, #page-team #exceptionLogPanel h2{font-size:22px !important;line-height:1.3 !important;margin:0 !important;}
+html[data-ty] #view-app #page-team #exceptionLogPanel .sub, #page-team #exceptionLogPanel .sub{font-size:14px !important;color:#344054 !important;margin-top:4px;}
+html[data-ty] #view-app #page-team #exceptionLogPanel :is(div,span), #page-team #exceptionLogPanel :is(div,span){font-size:14.5px;}
+html[data-ty] #view-app #page-team #exceptionLogPanel div[style*="font-size:13px"]{font-size:13px !important;}
+html[data-ty] #view-app #page-team :is(#dormancyPanel,#vendorConsolidationPanel) h2{font-size:22px !important;}

@@ -8807,16 +8807,17 @@ html[data-ty] #view-app #page-messages.active > .page-head, #view-app #page-mess
 #page-messages .nf33-search input::-webkit-search-cancel-button{display:none;}
 #page-messages .nf33-clr{display:none;border:0;background:#D0D5DD;color:#FFFFFF;width:20px;height:20px;border-radius:50%;padding:3px;cursor:pointer;}
 #page-messages .nf33-head.searching .nf33-clr{display:grid;place-items:center;} #page-messages .nf33-clr svg{width:14px;height:14px;}
-/* tabs: always on top, colored, equal width so nothing is cut off */
+/* tabs: always on top, icon over the label so all three always fit (phone too), ALL CAPS, black when not picked */
 #page-messages .nf33-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:0 -14px;}
-#page-messages .nf33-tabs button{position:relative;display:flex;align-items:center;justify-content:center;gap:5px;min-width:0;height:46px;border:0;border-bottom:3px solid transparent;background:transparent;font:inherit;font-size:14.5px;font-weight:700;color:#475467;cursor:pointer;padding:0 4px;}
-#page-messages .nf33-tabs .nf33-ti{display:grid;place-items:center;flex:none;} #page-messages .nf33-tabs .nf33-ti svg{width:18px;height:18px;}
-#page-messages .nf33-tabs .nf33-tl{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-#page-messages .nf33-tabs em{flex:none;font-style:normal;min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:#E41E3F;color:#FFFFFF;font-size:12px;font-weight:800;display:grid;place-items:center;line-height:1;}
-#page-messages .nf33-tabs button[data-g="team"].on{color:#92400E;border-color:#F59E0B;}
-#page-messages .nf33-tabs button[data-g="cus"].on{color:#1D4ED8;border-color:#3B82F6;}
-#page-messages .nf33-tabs button[data-g="sup"].on{color:#047857;border-color:#10B981;}
-#page-messages .nf33-tabs button[data-g="team"] .nf33-ti{color:#D97706;} #page-messages .nf33-tabs button[data-g="cus"] .nf33-ti{color:#2563EB;} #page-messages .nf33-tabs button[data-g="sup"] .nf33-ti{color:#059669;}
+#page-messages .nf33-tabs button{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-width:0;height:62px;border:0;border-bottom:3px solid transparent;background:transparent;font:inherit;font-size:14.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#0B0F14;cursor:pointer;padding:0 2px;}
+#page-messages .nf33-tabs .nf33-ti{position:relative;display:grid;place-items:center;flex:none;color:#0B0F14;} #page-messages .nf33-tabs .nf33-ti svg{width:22px;height:22px;}
+#page-messages .nf33-tabs .nf33-tl{max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.1;}
+#page-messages .nf33-tabs em{position:absolute;top:5px;left:calc(50% + 8px);font-style:normal;min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:#E41E3F;color:#FFFFFF;font-size:12px;font-weight:800;letter-spacing:0;display:grid;place-items:center;line-height:1;border:2px solid #FFFFFF;}
+#page-messages .nf33-tabs button:hover{background:#F7F8FA;}
+#page-messages .nf33-tabs button[data-g="team"].on{color:#0B0F14;border-color:#0B0F14;background:#F2F4F7;}
+#page-messages .nf33-tabs button[data-g="cus"].on{color:#1D4ED8;border-color:#2563EB;background:#EFF6FF;}
+#page-messages .nf33-tabs button[data-g="sup"].on{color:#047857;border-color:#059669;background:#ECFDF5;}
+#page-messages .nf33-tabs button[data-g="cus"].on .nf33-ti{color:#2563EB;} #page-messages .nf33-tabs button[data-g="sup"].on .nf33-ti{color:#059669;}
 #page-messages .nf33-head.searching .nf33-tabs{opacity:.45;pointer-events:none;}
 /* rows: photo left, name and last message in the middle, time and count on the right */
 #page-messages #convList{padding:4px 6px 10px;background:#FFFFFF;}
@@ -8824,13 +8825,13 @@ html[data-ty] #view-app #page-messages.active > .page-head, #view-app #page-mess
 #page-messages .nf33-row:hover, #page-messages .nf33-hit:hover{background:#F5F6F8;}
 #page-messages .nf33-row.on{background:#EEF2F6;}
 #page-messages .nf33-row.on::before{content:'';position:absolute;left:0;top:12px;bottom:12px;width:3px;border-radius:3px;background:var(--nf33c,#98A2B3);}
-#page-messages .nf33-row[data-g="team"]{--nf33c:#F59E0B;} #page-messages .nf33-row[data-g="cus"]{--nf33c:#3B82F6;} #page-messages .nf33-row[data-g="sup"]{--nf33c:#10B981;}
+#page-messages .nf33-row[data-g="team"]{--nf33c:#0B0F14;} #page-messages .nf33-row[data-g="cus"]{--nf33c:#3B82F6;} #page-messages .nf33-row[data-g="sup"]{--nf33c:#10B981;}
 #page-messages .nf33-av{flex:none;width:50px;height:50px;border-radius:50%;overflow:hidden;display:grid;place-items:center;background:#E4E7EC;}
 #page-messages .nf33-av.sm{width:40px;height:40px;}
 #page-messages .nf33-av img{width:100%;height:100%;object-fit:cover;display:block;}
 #page-messages .nf33-av .nf-ini{width:100%;height:100%;display:grid;place-items:center;color:#FFFFFF;font-weight:800;font-size:17px;}
 #page-messages .nf33-av.sm .nf-ini{font-size:14px;}
-#page-messages .nf33-avt{background:#FEF3C7;color:#B45309;} #page-messages .nf33-avt svg{width:26px;height:26px;}
+#page-messages .nf33-avt{background:#101828;color:#FFFFFF;} #page-messages .nf33-avt svg{width:26px;height:26px;}
 #page-messages .nf33-mid{flex:1;min-width:0;display:grid;gap:3px;}
 #page-messages .nf33-top{display:flex;align-items:baseline;gap:8px;min-width:0;}
 #page-messages .nf33-top b{flex:1;min-width:0;font-size:16.5px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#0B0F14;}
@@ -8840,8 +8841,8 @@ html[data-ty] #view-app #page-messages.active > .page-head, #view-app #page-mess
 #page-messages .nf33-pv i{font-style:normal;color:#98A2B3;}
 #page-messages .nf33-pi{display:inline-flex;vertical-align:-3px;margin-right:4px;} #page-messages .nf33-pi svg{width:16px;height:16px;}
 #page-messages .nf33-badge{flex:none;font-style:normal;min-width:22px;height:22px;padding:0 7px;border-radius:999px;background:#E41E3F;color:#FFFFFF;font-size:12.5px;font-weight:800;display:grid;place-items:center;}
-#page-messages .nf33-row.un .nf33-top b{font-weight:800;} #page-messages .nf33-row.un .nf33-pv{color:#101828;font-weight:700;} #page-messages .nf33-row.un time{color:#E41E3F;font-weight:700;}
-#page-messages .nf33-oc{justify-self:start;max-width:100%;font-size:12.5px;font-weight:700;color:#92400E;background:#FEF3C7;border-radius:999px;padding:2px 9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+#page-messages .nf33-row.un .nf33-pv{color:#101828;} #page-messages .nf33-row.un time{color:#E41E3F;}
+#page-messages .nf33-oc{justify-self:start;max-width:100%;font-size:12.5px;font-weight:700;color:#1F2329;background:#FEF9C3;border-radius:999px;padding:2px 9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 #page-messages .nf33-tag{flex:none;font-size:11px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;border-radius:999px;padding:1px 7px;}
 #page-messages .nf33-tag[data-g="cus"]{background:#DBEAFE;color:#1D4ED8;} #page-messages .nf33-tag[data-g="sup"]{background:#D1FAE5;color:#047857;}
 #page-messages .nf33-hit mark{background:#FEF08A;color:inherit;border-radius:3px;padding:0 1px;}
@@ -8870,11 +8871,20 @@ html[data-ty] #view-app #page-messages.active > .page-head, #view-app #page-mess
   #page-messages .nf33-head{padding:10px 12px 0;}
   #page-messages .nf33-title b{font-size:20px;}
   #page-messages .nf33-tabs{margin:0 -12px;}
-  #page-messages .nf33-tabs button{font-size:14px;gap:5px;height:44px;}
-  #page-messages .nf33-tabs .nf33-ti svg{width:17px;height:17px;}
+  #page-messages .nf33-tabs button{font-size:13.5px;height:60px;}
   #page-messages .nf33-av{width:48px;height:48px;}
 }
-@media (max-width:600px){ #page-messages .nf33-tabs .nf33-ti{display:none;} #page-messages .nf33-tabs button{font-size:14.5px;} }
+@media (max-width:360px){ #page-messages .nf33-tabs button{font-size:12.5px;letter-spacing:.01em;} }
+
+/* the same weight read or unread, so names never grow or shrink when you open a chat */
+#page-messages .nf33-top b{font-weight:700 !important;}
+#page-messages .nf33-pv{font-weight:500 !important;}
+#page-messages .nf33-row, #page-messages .nf33-row *{transition:none !important;transform:none !important;}
+/* Team chat pane: black, not orange */
+#page-messages .nf18-tp-h{background:#101828 !important;border-bottom:0 !important;color:#FFFFFF !important;}
+#page-messages .nf18-tp-h b{color:#FFFFFF !important;} #page-messages .nf18-tp-h small{color:#D0D5DD !important;}
+#page-messages .nf18-tp-h .nf18-tp-back{color:#FFFFFF !important;background:rgba(255,255,255,.12) !important;border-color:transparent !important;}
+.messages-shell .nf18-tav{background:#101828 !important;color:#FFFFFF !important;}
 
 /* ===== Team mission board: airy, three soft columns ===== */
 #page-team .team-filter-row:empty{display:none !important;}
@@ -8933,6 +8943,32 @@ html[data-ty] #view-app #page-team .team-tabs.nf-tabcards, #page-team .team-tabs
 html[data-ty] #view-app #page-team .team-tabs.nf-tabcards .team-tab, #page-team .team-tabs.nf-tabcards .team-tab{min-height:38px !important;height:38px !important;padding:0 16px !important;border-radius:9px !important;border:0 !important;background:transparent !important;box-shadow:none !important;display:inline-flex !important;align-items:center;gap:6px;font-size:15px !important;font-weight:700 !important;color:#475467 !important;}
 html[data-ty] #view-app #page-team .team-tabs.nf-tabcards .team-tab.active, #page-team .team-tabs.nf-tabcards .team-tab.active{background:#FFFFFF !important;color:#101828 !important;box-shadow:0 1px 3px rgba(16,24,40,.12) !important;}
 html[data-ty] #view-app #page-team .team-tabs.nf-tabcards .team-tab small, html[data-ty] #view-app #page-team .team-tabs.nf-tabcards .team-tab .sub, #page-team .team-tabs.nf-tabcards .team-tab br + *{display:none !important;}
+/* round 34: bigger ALL CAPS column names, black subtext, bigger task buttons */
+#page-team .nf33t-col header b{font-size:19px !important;font-weight:900 !important;letter-spacing:.06em;text-transform:uppercase;}
+#page-team .nf33t-col header i{width:12px;height:12px;}
+#page-team .nf33t-col header small{font-size:14.5px !important;color:#0B0F14 !important;font-weight:600;padding-left:20px;}
+#page-team .nf33t-n{min-width:28px;height:26px;font-size:14px;}
+#page-team .nf33t-go{height:42px !important;padding:0 20px !important;font-size:16px !important;font-weight:800 !important;}
+#page-team .nf33t-go.ghost{padding:0 12px !important;}
+#page-team .nf33t-x{width:36px;height:36px;font-size:16px;}
+#page-team .nf33t-card b{font-size:16.5px;}
+#page-team .nf33t-who{font-size:14.5px;} #page-team .nf33t-av{width:28px;height:28px;font-size:11.5px;}
+#page-team .nf33t-due{font-size:13.5px;padding:3px 10px;}
+/* Team chat: the tab shows its chat again */
+html[data-ty] #view-app #page-team .team-tabs > .team-tab[data-tab="chat"]{display:inline-flex !important;}
+html[data-ty] #view-app #page-team #teamTab_chat:not(.hidden), #view-app #page-team #teamTab_chat:not(.hidden){display:block !important;}
+#page-team #teamTab_chat .team-chat-card{display:flex;flex-direction:column;height:min(560px, calc(100vh - 320px));min-height:360px;padding:0 !important;overflow:hidden;border-radius:16px !important;}
+#page-team #teamTab_chat .team-chat-thread{flex:1;min-height:0;overflow-y:auto;padding:16px !important;background:#F7F8FA;}
+#page-team #teamTab_chat .team-chat-compose{display:flex;gap:8px;padding:12px !important;border-top:1px solid #E4E7EC;background:#FFFFFF;}
+#page-team #teamTab_chat .team-chat-compose input{flex:1;min-width:0;height:46px;border-radius:999px;border:1.5px solid #D0D5DD;padding:0 16px;font:inherit;font-size:16px;}
+#page-team #teamTab_chat .team-chat-compose .btn{height:46px;border-radius:999px;padding:0 22px;}
+/* Exception log: same size as everything else */
+#page-team #exceptionLogPanel .panel-card{margin-top:14px !important;padding:16px 18px !important;}
+html[data-ty] #view-app #page-team #exceptionLogPanel h2, #page-team #exceptionLogPanel h2{font-size:22px !important;line-height:1.3 !important;margin:0 !important;}
+html[data-ty] #view-app #page-team #exceptionLogPanel .sub, #page-team #exceptionLogPanel .sub{font-size:14px !important;color:#344054 !important;margin-top:4px;}
+html[data-ty] #view-app #page-team #exceptionLogPanel :is(div,span), #page-team #exceptionLogPanel :is(div,span){font-size:14.5px;}
+html[data-ty] #view-app #page-team #exceptionLogPanel div[style*="font-size:13px"]{font-size:13px !important;}
+html[data-ty] #view-app #page-team :is(#dormancyPanel,#vendorConsolidationPanel) h2{font-size:22px !important;}
 
 /* ===== Help: answers on the left, live chat on the right (one at a time on a phone) ===== */
 #page-help .nf33h{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:20px;align-items:start;}
@@ -35420,6 +35456,13 @@ function nf33Preview(m){
     return `${me}<span class="nf33-pi">${img ? NF33_IC.photo : NF33_IC.file}</span>${escapeHtml(m.text && m.text.length < 60 ? m.text : (img ? 'Photo' : a.name || 'File'))}`; }
   return me + escapeHtml(m.text || '');
 }
+function nf33Ts(c){
+  const m = c.messages[c.messages.length - 1]; if(!m) return '';
+  const t = String(m.time || ''), d = m.date || (/^today/i.test(t) ? APP_TODAY : '');
+  const h = t.match(/(\d{1,2}):(\d{2})\s*(AM|PM)/i); let mins = 0;
+  if(h){ mins = (Number(h[1]) % 12) * 60 + Number(h[2]) + (/pm/i.test(h[3]) ? 720 : 0); }
+  return d + ' ' + String(mins).padStart(4, '0') + ' ' + String(c.messages.length).padStart(5, '0');
+}
 function nf33Counts(){
   const all = allConversations(), c = {team: 0, cus: 0, sup: 0};
   all.forEach(x => { if(x.unread > 0) c[nf33Group(x)] += x.unread; });
@@ -35480,7 +35523,8 @@ function nf33Paint(){
   if(q){ box.innerHTML = nf33SearchHtml(q); }
   else if(tab === 'team'){ box.innerHTML = nf33TeamRow(); }
   else {
-    const list = allConversations().filter(c => nf33Group(c) === tab).sort((a, b) => ((b.unread > 0) - (a.unread > 0)) || convLastTs(b).localeCompare(convLastTs(a)));
+    // order = last message only (like WhatsApp). Opening a chat or reading it never moves it; a new message does.
+    const list = allConversations().filter(c => nf33Group(c) === tab).sort((a, b) => nf33Ts(b).localeCompare(nf33Ts(a)));
     box.innerHTML = list.length ? list.map(nf33Row).join('') : `<p class="nf33-empty">No ${tab === 'cus' ? 'customer' : 'supplier'} chats yet. They show up here as soon as one starts.</p>`;
   }
   box.dataset.g = q ? 'all' : tab;
@@ -35560,6 +35604,10 @@ function nf33TMove(id, col){
 function nf33TSeedDemo(){ if(myBusiness || NF33T.seeded) return; NF33T.seeded = true; const t = teamTasks.find(x => x.id === 'nf-task-3'); if(t && !t.startedAt) t.startedAt = APP_TODAY; }
 (function(){
   try{ renderTaskList = nf33RenderTaskList; window.renderTaskList = nf33RenderTaskList; renderTeamPeopleStrip = nf33RenderPeople; window.renderTeamPeopleStrip = nf33RenderPeople; }catch(e){ console.warn('nf33 team', e); }
+  // Team chat lives in two places (Messages and the Team page): bring the chat back here when its tab is opened
+  const st = window.setTeamTab;
+  if(typeof st === 'function' && !st._nf33){ const w = function(tab){ if(tab === 'chat'){ const card = document.querySelector('.team-chat-card'), host = document.getElementById('teamTab_chat'); if(card && host && card.parentElement !== host) host.appendChild(card); try{ if(typeof NF18T !== 'undefined') NF18T.on = false; const sh = document.querySelector('#page-messages .messages-shell'); if(sh) sh.classList.remove('nf18-team-on'); }catch(e){} } return st.apply(this, arguments); };
+    w._nf33 = true; window.setTeamTab = w; try{ setTeamTab = w; }catch(e){} }
   const base = nf26AfterPass;
   nf26AfterPass = function(page){ base(page); try{ if(page && page.id === 'page-team'){ const q = page.querySelector('.team-quickadd'); if(q && !q.classList.contains('nf33t-add')) q.classList.add('nf33t-add'); } }catch(e){} };
   window.nf26AfterPass = nf26AfterPass;

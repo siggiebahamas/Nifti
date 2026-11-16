@@ -33,6 +33,13 @@ function nf33Preview(m){
     return `${me}<span class="nf33-pi">${img ? NF33_IC.photo : NF33_IC.file}</span>${escapeHtml(m.text && m.text.length < 60 ? m.text : (img ? 'Photo' : a.name || 'File'))}`; }
   return me + escapeHtml(m.text || '');
 }
+function nf33Ts(c){
+  const m = c.messages[c.messages.length - 1]; if(!m) return '';
+  const t = String(m.time || ''), d = m.date || (/^today/i.test(t) ? APP_TODAY : '');
+  const h = t.match(/(\d{1,2}):(\d{2})\s*(AM|PM)/i); let mins = 0;
+  if(h){ mins = (Number(h[1]) % 12) * 60 + Number(h[2]) + (/pm/i.test(h[3]) ? 720 : 0); }
+  return d + ' ' + String(mins).padStart(4, '0') + ' ' + String(c.messages.length).padStart(5, '0');
+}
 function nf33Counts(){
   const all = allConversations(), c = {team: 0, cus: 0, sup: 0};
   all.forEach(x => { if(x.unread > 0) c[nf33Group(x)] += x.unread; });
@@ -93,7 +100,8 @@ function nf33Paint(){
   if(q){ box.innerHTML = nf33SearchHtml(q); }
   else if(tab === 'team'){ box.innerHTML = nf33TeamRow(); }
   else {
-    const list = allConversations().filter(c => nf33Group(c) === tab).sort((a, b) => ((b.unread > 0) - (a.unread > 0)) || convLastTs(b).localeCompare(convLastTs(a)));
+    // order = last message only (like WhatsApp). Opening a chat or reading it never moves it; a new message does.
+    const list = allConversations().filter(c => nf33Group(c) === tab).sort((a, b) => nf33Ts(b).localeCompare(nf33Ts(a)));
     box.innerHTML = list.length ? list.map(nf33Row).join('') : `<p class="nf33-empty">No ${tab === 'cus' ? 'customer' : 'supplier'} chats yet. They show up here as soon as one starts.</p>`;
   }
   box.dataset.g = q ? 'all' : tab;
