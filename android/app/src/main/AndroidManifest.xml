@@ -10,6 +10,8 @@
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
+    <!-- to match a Viber chat's name to the customer with the same phone number -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <!-- so "Open Viber" works on Android 11+ -->
     <queries>

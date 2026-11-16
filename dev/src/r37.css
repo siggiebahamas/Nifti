@@ -1,0 +1,114 @@
+/* ===== Round 37 ===== */
+/* small solid red counts (theme 2), everywhere */
+html[data-ty] #view-app .nav-badge, html[data-ty] #view-app .nav-item.active .nav-badge, #view-app .nav-badge,
+html[data-ty] #view-app .sidebar .nav-item .nav-badge, html[data-ty] #view-app .sidebar .nav-item[data-page="messages"] .nav-badge,
+html[data-ty] .sidebar .nf20-nav button.nf20-h .nf26-n, .sidebar .nf20-nav button.nf20-h .nf26-n,
+html[data-ty] .sidebar .nf26-help em, .sidebar .nf26-help em,
+html[data-ty] #view-app .team-tab-count, html[data-ty] #view-app .sl-n:not(.soft), html[data-ty] #view-app .bnav-item .nav-badge,
+html[data-ty] #moreSheet .nav-badge, #moreSheet .nfm-it em, .nf36v-n, html[data-ty] #view-app .nf33-tabs em, html[data-ty] #view-app .nf33-badge{
+  background:#D92D20 !important;color:#FFFFFF !important;border:0 !important;font-weight:800 !important;font-style:normal !important;
+  min-width:20px !important;height:20px !important;padding:0 6px !important;border-radius:999px !important;font-size:12px !important;line-height:1 !important;box-shadow:none !important;}
+html[data-ty] #view-app .nav-item.active .nav-badge{background:#D92D20 !important;}
+/* a count that is empty, 0, switched off by the app, or already seen: gone */
+html body #view-app .nf37-hide.nf37-hide.nf37-hide.nf37-hide.nf37-hide.nf37-hide, html body .nf37-hide.nf37-hide.nf37-hide.nf37-hide.nf37-hide.nf37-hide,
+html[data-ty] body #view-app .sidebar .nav-item .nav-badge.nf37-hide.nf37-hide.nf37-hide.nf37-hide{display:none !important;}
+html[data-ty] body #view-app .nav-badge:empty, html[data-ty] body #view-app .sidebar .nav-item .nav-badge:empty{display:none !important;}
+
+/* what a page's red count was about */
+.nf37-why{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 14px;padding:10px 14px;border-radius:12px;background:#FEF3F2;border:1px solid #FECDCA;color:#0B0F14;font-size:15px;}
+.nf37-why b{font-weight:800;color:#0B0F14;}
+.nf37-dot{width:10px;height:10px;border-radius:50%;background:#D92D20;flex:none;}
+.nf37-why button{margin-left:auto;border:1.5px solid #D92D20;background:#FFFFFF;color:#B42318;border-radius:999px;padding:5px 14px;font:inherit;font-size:14px;font-weight:800;cursor:pointer;min-height:36px;}
+.nf37-flash{animation:nf37fl 1.6s ease;border-radius:12px;}
+@keyframes nf37fl{0%,100%{box-shadow:0 0 0 0 rgba(217,45,32,0);}25%,60%{box-shadow:0 0 0 4px rgba(217,45,32,.45);}}
+
+/* menu section headings: bigger title with a line above (theme 4) */
+html[data-ty] .sidebar .nf20-nav button.nf20-h, .sidebar .nf20-nav button.nf20-h{border-top:1.5px solid #D0D5DD !important;margin-top:14px !important;padding:12px 12px 6px !important;}
+html[data-ty] .sidebar .nf20-nav button.nf20-h > span, .sidebar .nf20-nav button.nf20-h > span{text-transform:none !important;letter-spacing:-.01em !important;font-size:16.5px !important;font-weight:800 !important;color:#0B0F14 !important;}
+html[data-ty] .sidebar .nf20-nav .nf20-g:first-child > button.nf20-h{border-top:0 !important;margin-top:4px !important;}
+
+/* side-by-side order lists: headings, counts and calendar dates in black; no tick on All good */
+html[data-ty] #view-app .nfo-band span, html[data-ty] #view-app .nfo-band b, .nfo-band span, .nfo-band b{color:#0B0F14 !important;}
+html[data-ty] #view-app .nfo-band.b-green > span::before, .nfo-band.b-green > span::before{content:none !important;display:none !important;}
+html[data-ty] #view-app .nfo-dt:not(.today), html[data-ty] #view-app .nfo-dt:not(.today) .m, html[data-ty] #view-app .nfo-dt:not(.today) .d,
+.nfo-dt:not(.today), .nfo-dt:not(.today) .m, .nfo-dt:not(.today) .d{color:#0B0F14 !important;}
+
+/* lighter yellow in the summary boxes on Stock, Sales, Getting paid, To check, Follow-ups, Bank & deposits */
+html[data-ty] :is(#page-inventory, #page-sales, #page-collections, #page-issues, #page-followups, #page-cashcount, #page-cheques) :is(.bk-tile, .sl-tile, .lg-kpi, .nt-tile).nt-warn,
+html[data-ty] :is(#page-inventory, #page-sales, #page-collections, #page-issues, #page-followups, #page-cashcount, #page-cheques) :is(.bk-tile, .sl-tile).warn,
+:is(#page-inventory, #page-sales, #page-collections, #page-issues, #page-followups, #page-cashcount, #page-cheques) :is(.bk-tile, .sl-tile, .lg-kpi).nt-warn{
+  background:#FFFCEE !important;border-color:#FBE7A1 !important;}
+
+/* To check: bigger tag in the corner of each card */
+html[data-ty] #page-issues .lg-card-h .lg-pill, #page-issues .lg-card-h .lg-pill{font-size:14.5px !important;padding:4px 12px !important;font-weight:800 !important;}
+
+/* Expenses: "higher than usual" notes in soft yellow, not red */
+html[data-ty] #view-app .bk-alert.red, .bk-alert.red{background:#FFFCEE !important;border-color:#FBE7A1 !important;color:#0B0F14 !important;}
+html[data-ty] #view-app .bk-alert.red b, .bk-alert.red b, .bk-alert.red span{color:#0B0F14 !important;}
+html[data-ty] #view-app .bk-alert.red::before, .bk-alert.red::before{background:#F5B700 !important;}
+
+/* Getting paid: lines that add up */
+#page-collections .nf37-l{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;align-items:center;gap:8px;padding:6px 0;font-size:15px;color:#0B0F14;}
+#page-collections .nf37-l + .nf37-l{border-top:1px solid #F2F4F7;}
+#page-collections .nf37-l > i{width:9px;height:9px;border-radius:50%;background:#98A2B3;}
+#page-collections .nf37-l > i.bad{background:#D92D20;} #page-collections .nf37-l > i.warn{background:#EAB308;} #page-collections .nf37-l > i.good{background:#16A34A;}
+#page-collections .nf37-l b{font-weight:800;white-space:nowrap;}
+#page-collections .nf37-why2{grid-column:2 / -1;font-size:13px;color:#0B0F14;margin-top:-4px;}
+#page-collections .nf37-cancel{border:0;background:none;color:#B42318;font:inherit;font-size:14px;font-weight:800;cursor:pointer;padding:2px 4px;}
+#page-collections .nf37-split{display:block;font-size:13px;font-weight:600;color:#0B0F14;margin-top:2px;line-height:1.35;}
+
+/* Money overview: coming up, in columns */
+.nf37-next .nf37-nh{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:12px;}
+.nf37-next .nf37-nh h2{margin:0;}
+.nf37-span{display:flex;align-items:center;gap:8px;font-size:15px;font-weight:700;color:#0B0F14;}
+.nf37-span select{height:42px;border-radius:12px;border:1.5px solid #D0D5DD;padding:0 12px;font:inherit;font-size:15.5px;font-weight:700;background:#FFFFFF;color:#0B0F14;}
+.nf37-tot{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:14px;}
+.nf37-tot > div{border-radius:14px;padding:12px 16px;border:1px solid #E4E7EC;background:#FFFFFF;}
+.nf37-tot small{display:block;font-size:14px;font-weight:700;color:#0B0F14;}
+.nf37-tot b{display:block;font-size:28px;font-weight:800;letter-spacing:-.01em;line-height:1.2;font-variant-numeric:tabular-nums;}
+.nf37-tot .in{background:#F0FAF4;border-color:#BBE5CB;} .nf37-tot .in b{color:#15803D;}
+.nf37-tot .out{background:#FEF3F2;border-color:#FECDCA;} .nf37-tot .out b{color:#B42318;}
+.nf37-tot .net.pos b{color:#15803D;} .nf37-tot .net.neg b{color:#B42318;}
+.nf37-tbl{display:grid;border:1px solid #E4E7EC;border-radius:14px;overflow:hidden;}
+.nf37-tr{display:grid;grid-template-columns:90px minmax(160px,1.3fr) minmax(140px,1.2fr) 120px 130px 130px 80px;align-items:center;gap:12px;padding:12px 16px;border:0;border-top:1px solid #EAECF0;background:#FFFFFF;font:inherit;font-size:15px;color:#0B0F14;text-align:left;cursor:pointer;width:100%;}
+.nf37-tr:hover:not(.nf37-th){background:#F9FAFB;}
+.nf37-th{border-top:0;background:#F9FAFB;cursor:default;font-size:12.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding-top:10px;padding-bottom:10px;}
+.nf37-tr .r{text-align:right;justify-self:end;}
+.nf37-io{display:inline-flex;align-items:center;gap:6px;font-weight:800;}
+.nf37-io svg{width:26px;height:26px;padding:5px;border-radius:50%;box-sizing:border-box;}
+.nf37-tr.in .nf37-io svg{background:#DCFCE7;color:#15803D;} .nf37-tr.out .nf37-io svg{background:#FEE4E2;color:#B42318;}
+.nf37-io em{font-style:normal;font-size:13.5px;}
+.nf37-what b{display:block;font-size:15.5px;} .nf37-what small{display:block;font-size:13.5px;}
+.nf37-due{font-weight:700;white-space:nowrap;}
+.nf37-st{display:inline-block;border-radius:999px;padding:3px 10px;font-size:13px;font-weight:800;background:#F2F4F7;color:#0B0F14;white-space:nowrap;}
+.nf37-st.late{background:#FEE4E2;color:#B42318;} .nf37-st.today{background:#FFFCEE;border:1px solid #FBE7A1;}
+.nf37-amt{font-size:16.5px;font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap;}
+.nf37-tr.in .nf37-amt{color:#15803D;} .nf37-tr.out .nf37-amt{color:#B42318;}
+.nf37-file{display:inline-flex;align-items:center;gap:4px;font-size:13.5px;font-weight:700;color:#1D4ED8;}
+.nf37-file svg{width:15px;height:15px;}
+.nf37-more{display:block;margin:12px auto 0;border:1.5px solid #D0D5DD;background:#FFFFFF;border-radius:999px;padding:9px 20px;font:inherit;font-size:15px;font-weight:800;color:#0B0F14;cursor:pointer;min-height:42px;}
+.nf37-none{margin:4px 0 0;font-size:15px;color:#0B0F14;}
+@media (max-width:900px){
+  .nf37-tot{grid-template-columns:1fr 1fr;} .nf37-tot .net{grid-column:1 / -1;}
+  .nf37-tot b{font-size:23px;}
+  .nf37-th{display:none;}
+  .nf37-tr{grid-template-columns:auto minmax(0,1fr) auto;grid-template-areas:"io what amt" "io who due" "io st file";row-gap:4px;column-gap:12px;}
+  .nf37-io{grid-area:io;align-self:start;} .nf37-io em{display:none;}
+  .nf37-what{grid-area:what;} .nf37-who{grid-area:who;font-size:14px;} .nf37-amt{grid-area:amt;}
+  .nf37-due{grid-area:due;justify-self:end;font-size:14px;} .nf37-tr > span[data-l="Status"]{grid-area:st;} .nf37-file{grid-area:file;justify-self:end;}
+}
+/* Getting paid lines: label left, amount right, note underneath; the split line wraps */
+#page-collections .nf26-gl > .nf37-l{display:grid !important;grid-template-columns:auto minmax(0,1fr) auto auto;align-items:center;column-gap:8px;row-gap:0;flex-wrap:nowrap;}
+#page-collections .nf26-gl > .nf37-l > span{min-width:0;}
+#page-collections .nf26-gl > .nf37-l > b{margin-left:0;padding-left:8px;text-align:right;}
+#page-collections .nf26-gl > .nf37-l > .nf37-why2{grid-column:2 / -1;grid-row:2;}
+#page-collections td.n .nf37-split{white-space:normal;text-align:right;max-width:240px;margin-left:auto;}
+@media (max-width:1300px){ #page-collections table.nf25-owed td.n .nf37-split{text-align:left;margin-left:0;} }
+@media (max-width:900px){
+  html body #page-collections table.nf25-owed td.n small.nf37-split{display:none !important;}
+  #page-collections .nf26-gl > .nf37-l{grid-template-columns:auto minmax(96px,1fr) auto;}
+  #page-collections .nf26-gl > .nf37-l > .nf37-cancel{grid-column:2 / -1;grid-row:2;justify-self:start;padding-left:0;}
+  #page-collections .nf26-gl > .nf37-l > b{white-space:normal;max-width:140px;}
+}
+.nf37-tot b{white-space:nowrap;}
+@media (max-width:420px){ .nf37-tot b{font-size:20px;} .nf37-tot > div{padding:10px 12px;} }

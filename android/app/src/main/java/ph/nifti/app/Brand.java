@@ -29,6 +29,29 @@ final class Brand {
         return "other";
     }
 
+    static String name() {
+        switch (key()) {
+            case "xiaomi": return "Xiaomi, Redmi and POCO";
+            case "oppo": return "OPPO and realme";
+            case "vivo": return "vivo";
+            case "transsion": return "Infinix and Tecno";
+            case "huawei": return "Huawei";
+            case "samsung": return "Samsung";
+            default: return "Some";
+        }
+    }
+
+    /** Xiaomi only: is Autostart on for Nifti? (true / false / null when the phone won't say) */
+    static Boolean autostartOn(Context c) {
+        if (!"xiaomi".equals(key())) return null;
+        try {
+            android.app.AppOpsManager ops = (android.app.AppOpsManager) c.getSystemService(Context.APP_OPS_SERVICE);
+            java.lang.reflect.Method m = android.app.AppOpsManager.class.getMethod("checkOpNoThrow", int.class, int.class, String.class);
+            Object r = m.invoke(ops, 10008, android.os.Process.myUid(), c.getPackageName());
+            return r instanceof Integer ? ((Integer) r) == android.app.AppOpsManager.MODE_ALLOWED : null;
+        } catch (Throwable t) { return null; }
+    }
+
     /** Phones known to close apps unless told not to */
     static boolean strict() {
         String k = key();

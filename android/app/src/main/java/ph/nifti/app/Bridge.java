@@ -81,6 +81,14 @@ final class Bridge {
                             a.startActivity(new Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS).putExtra(Settings.EXTRA_APP_PACKAGE, a.getPackageName()));
                         }
                         break;
+                    case "perms": {
+                        java.util.List<String> want = new java.util.ArrayList<>();
+                        if (Build.VERSION.SDK_INT >= 33) { want.add(Manifest.permission.POST_NOTIFICATIONS); want.add(Manifest.permission.READ_MEDIA_IMAGES); want.add(Manifest.permission.READ_MEDIA_VIDEO); }
+                        else want.add(Manifest.permission.READ_EXTERNAL_STORAGE);
+                        want.add(Manifest.permission.READ_CONTACTS);
+                        a.requestPermissions(want.toArray(new String[0]), MainActivity.REQ_PERM);
+                        break;
+                    }
                     case "photos":
                         if (Build.VERSION.SDK_INT >= 33) a.requestPermissions(new String[]{Manifest.permission.READ_MEDIA_IMAGES, Manifest.permission.READ_MEDIA_VIDEO}, MainActivity.REQ_PERM);
                         else a.requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, MainActivity.REQ_PERM);

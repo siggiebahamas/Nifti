@@ -1,0 +1,59 @@
+/* ===== Round 37: Viber that sorts itself ===== */
+/* a new contact in the chat list */
+.nf37v-new{border-left:3px solid #1F6B45;background:#F6FEF9;margin:2px 0;}
+.nf37v-new .nf37v-row{background:transparent !important;}
+.nf37v-tag{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:0 14px 6px 72px;font-size:13.5px;color:#0B0F14;}
+.nf37v-chip{display:inline-flex;align-items:center;font-size:11.5px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;color:#14532D;background:#DCFCE7;border-radius:999px;padding:2px 8px;}
+.nf37v-g b{font-weight:800;}
+.nf37v-acts{display:flex;gap:6px;flex-wrap:wrap;padding:0 14px 12px 72px;}
+.nf37v-acts button, .nf37v-who button{min-height:36px;border-radius:10px;border:1.5px solid #D0D5DD;background:#FFFFFF;font:inherit;font-size:13.5px;font-weight:800;color:#0B0F14;cursor:pointer;padding:5px 12px;}
+.nf37v-acts button.pri, .nf37v-who button.pri{background:#1F6B45;border-color:#1F6B45;color:#FFFFFF;}
+.nf37v-acts button.ghost, .nf37v-who button.ghost{border-color:transparent;background:#F2F4F7;}
+@media (max-width:900px){ .nf37v-tag, .nf37v-acts{padding-left:64px;} }
+/* quiet note about personal chats */
+.nf37v-pers{display:block;width:100%;margin:8px 0 0;border:0;background:transparent;text-align:left;font:inherit;font-size:13.5px;font-weight:700;color:#0B0F14;cursor:pointer;padding:4px 2px;text-decoration:underline;text-underline-offset:3px;}
+/* in an open chat with a new contact */
+.nf37v-who{flex-basis:100%;display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:8px 10px;margin-bottom:6px;border-radius:12px;background:#F6FEF9;border:1px solid #BBE5CB;}
+.nf37v-who b{font-size:15px;color:#0B0F14;}
+.nf37v-who > span:last-child{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto;}
+/* no phone connected: paste and photo */
+.nf37v-quick{display:flex;gap:6px;flex-wrap:wrap;}
+.nf37v-quick button, .nf37v-quick label{display:inline-flex;align-items:center;gap:6px;min-height:38px;border-radius:999px;border:1.5px solid #D0D5DD;background:#FFFFFF;font:inherit;font-size:13.5px;font-weight:800;color:#0B0F14;cursor:pointer;padding:5px 12px;}
+.nf37v-quick svg{width:16px;height:16px;}
+/* a photo on its way: calm, never an error */
+#threadBody .nf36v-wait{display:inline-flex;align-items:flex-start;gap:8px;font-size:14px;font-weight:600;color:#0B0F14;background:#F2F4F7;border-radius:12px;padding:8px 12px;}
+#threadBody .nf36v-wait > span{display:grid;gap:2px;}
+#threadBody .nf36v-addhere{font-size:13.5px;font-weight:800;color:#1F6B45;cursor:pointer;text-decoration:underline;text-underline-offset:3px;}
+#threadBody .msg-bubble-row.me .nf36v-wait{background:rgba(255,255,255,.18);color:#FFFFFF;}
+/* Connect Viber, step by step */
+.nf37v-prog{height:8px;border-radius:999px;background:#EAECF0;overflow:hidden;}
+.nf37v-prog span{display:block;height:100%;background:#1F6B45;border-radius:999px;transition:width .3s;}
+.nf37v-stepn{margin:8px 0 0;font-size:13.5px;font-weight:800;color:#0B0F14;}
+.nf37v-step{border:1.5px solid #BBE5CB;background:#F6FEF9;border-radius:16px;padding:16px;display:grid;gap:10px;}
+.nf37v-step h3{margin:0;font-size:19px;color:#0B0F14;}
+.nf37v-step p{margin:0;font-size:15px;line-height:1.5;color:#0B0F14;}
+.nf37v-tip{display:block;margin-top:6px;font-size:13.5px;}
+.nf37v-sb{display:flex;gap:8px;flex-wrap:wrap;align-items:center;} .nf37v-sb .btn{min-height:48px;flex:1 1 140px;justify-content:center;}
+.nf37v-skip{border:0;background:none;font:inherit;font-size:14px;font-weight:800;color:#0B0F14;text-decoration:underline;cursor:pointer;padding:6px;}
+.nf37v-auto{font-size:13px;color:#0B0F14;}
+.nf37v-list{list-style:none;margin:4px 0 0;padding:0;display:grid;gap:6px;}
+.nf37v-list li{display:flex;align-items:center;gap:10px;font-size:14.5px;color:#0B0F14;}
+.nf37v-list li svg, .nf37v-list li em{width:22px;height:22px;border-radius:50%;display:inline-grid;place-items:center;font-style:normal;font-size:12px;font-weight:800;flex:none;}
+.nf37v-list li em{border:2px solid #D0D5DD;} .nf37v-list li.now em{border-color:#1F6B45;color:#1F6B45;}
+.nf37v-list li.ok svg{background:#16A34A;color:#FFFFFF;padding:4px;box-sizing:border-box;} .nf37v-list li.ok span{text-decoration:line-through;text-decoration-color:#98A2B3;}
+.nf37v-list li.later span::after{content:' · later';font-weight:700;}
+.nf37v-done{display:grid;justify-items:center;text-align:center;gap:6px;padding:18px;border-radius:16px;background:#F0FAF4;border:1px solid #BBE5CB;}
+.nf37v-done svg{width:44px;height:44px;background:#16A34A;color:#FFFFFF;border-radius:50%;padding:10px;box-sizing:border-box;}
+.nf37v-done b{font-size:20px;color:#0B0F14;} .nf37v-done span{font-size:15px;color:#0B0F14;}
+/* Get the Nifti app */
+.nf37-app{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;gap:12px;align-items:center;margin:0 0 14px;padding:12px 14px;border-radius:14px;background:#F0FAF4;border:1px solid #BBE5CB;}
+.nf37-app img{border-radius:10px;}
+.nf37-app b{display:block;font-size:15.5px;color:#0B0F14;} .nf37-app small{display:block;font-size:13.5px;color:#0B0F14;line-height:1.4;}
+.nf37-app .btn{min-height:42px;white-space:nowrap;}
+.nf37-app-x{border:0;background:none;font-size:16px;cursor:pointer;color:#0B0F14;padding:6px;}
+@media (max-width:480px){ .nf37-app{grid-template-columns:auto minmax(0,1fr) auto;} .nf37-app .btn{grid-column:1 / -1;justify-content:center;} .nf37-app-x{grid-row:1;grid-column:3;} }
+.nf37-ios{list-style:none;margin:0;padding:0;display:grid;gap:12px;counter-reset:s;}
+.nf37-ios li{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:center;font-size:15.5px;color:#0B0F14;}
+.nf37-ios-ic{width:44px;height:44px;border-radius:12px;background:#F2F4F7;display:grid;place-items:center;}
+.nf37-ios-ic svg{width:24px;height:24px;color:#1D4ED8;}
+.nf37-howto{margin:8px 10px 0 0;min-height:40px;}

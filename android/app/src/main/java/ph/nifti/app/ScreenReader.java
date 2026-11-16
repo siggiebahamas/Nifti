@@ -162,6 +162,7 @@ public class ScreenReader extends AccessibilityService {
     private void read() {
         Screen s = scan();
         if (s == null) { curTitle = null; snap = null; fgTitle = null; return; }
+        if (!s.title.equals(fgTitle)) Relay.get(this).retryFor(Parse.chatKey(s.title));
         fgTitle = s.title;
         List<String> now = new ArrayList<>();
         for (Row r : s.rows) now.add(r.sig);

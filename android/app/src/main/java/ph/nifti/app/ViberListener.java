@@ -66,7 +66,7 @@ public class ViberListener extends NotificationListenerService {
 
         // keep this chat's reply button and "open chat" link so replies from Nifti can go out from this phone
         if (n.actions != null) for (Notification.Action a : n.actions) {
-            if (a != null && a.getRemoteInputs() != null && a.getRemoteInputs().length > 0) { relay.replies.put(key, a); break; }
+            if (a != null && a.getRemoteInputs() != null && a.getRemoteInputs().length > 0) { relay.replies.put(key, a); relay.retryFor(key); break; }
         }
         if (n.contentIntent != null) relay.opens.put(key, n.contentIntent);
         relay.titles.put(key, chat);
@@ -128,6 +128,7 @@ public class ViberListener extends NotificationListenerService {
             it.put("key", key);
             it.put("title", chat);
             it.put("group", group);
+            if (!group) { String ph = Contacts.phoneFor(this, chat); if (ph != null) it.put("phone", ph); }
             it.put("dir", dir);
             it.put("sender", sender == null ? (dir.equals("in") && !group ? chat : JSONObject.NULL) : sender);
             it.put("body", Parse.body(t, kind));

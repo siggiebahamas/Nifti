@@ -84,6 +84,7 @@ public class MainActivity extends Activity {
         });
         if (saved != null) web.restoreState(saved);
         else web.loadUrl(HOME);
+        if (getIntent() != null && "setup".equals(getIntent().getStringExtra("open"))) openSetupSoon();
 
         if (Build.VERSION.SDK_INT >= 33) {
             // back gesture: go back inside Nifti first, then leave the app running in the background
@@ -101,6 +102,17 @@ public class MainActivity extends Activity {
 
     void tellPage(String what) {
         runOnUiThread(() -> { if (web != null) web.evaluateJavascript("window.nf36vNative&&window.nf36vNative('" + what + "')", null); });
+    }
+
+    @Override protected void onNewIntent(Intent i) {
+        super.onNewIntent(i);
+        setIntent(i);
+        if ("setup".equals(i.getStringExtra("open"))) openSetupSoon();
+    }
+
+    private void openSetupSoon() {
+        if (web == null) return;
+        web.postDelayed(() -> { if (web != null) web.evaluateJavascript("window.nf36vSetup&&nf36vSetup()", null); }, 2500);
     }
 
     @Override protected void onResume() {

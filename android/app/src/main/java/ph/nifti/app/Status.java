@@ -64,7 +64,11 @@ final class Status {
             j.put("pendingMedia", s.list("media.json").size());
             j.put("lastIn", s.getLong("lastIn"));
             j.put("lastSent", s.getLong("lastSent"));
-            j.put("autostartDone", s.getBool("autostartDone"));
+            Boolean auto = Brand.autostartOn(c);
+            j.put("autostartDone", auto != null ? auto : s.getBool("autostartDone"));
+            j.put("autostartKnown", auto != null);
+            j.put("contacts", Contacts.allowed(c));
+            j.put("viberPhotos", s.getLong("viberPhotoSeen") > 0);
         } catch (Exception ignore) {}
         return j;
     }

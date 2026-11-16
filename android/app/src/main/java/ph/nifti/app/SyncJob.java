@@ -27,6 +27,12 @@ public class SyncJob extends JobService {
             try {
                 r.tick(true);
                 if (r.store.connected() && !Status.listenerOn(this)) Notify.listenerOff(this);
+                if (r.store.connected() && Brand.strict()) {
+                    Boolean auto = Brand.autostartOn(this);
+                    boolean needs = !Status.batteryOk(this) || Boolean.FALSE.equals(auto);
+                    long last = r.store.getLong("keepRunningAt");
+                    if (needs && System.currentTimeMillis() - last > 20 * 3600 * 1000L) { r.store.putLong("keepRunningAt", System.currentTimeMillis()); Notify.keepRunning(this, Brand.name()); }
+                }
             } catch (Throwable ignore) {}
             jobFinished(p, false);
         });

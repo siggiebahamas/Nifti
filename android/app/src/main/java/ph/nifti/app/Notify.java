@@ -83,6 +83,21 @@ final class Notify {
             .setContentIntent(openChat(c, null)));
     }
 
+    static void saveToGallery(Context c) {
+        show(c, 9004, base(c, "Let Viber photos come into Nifti by themselves",
+            "In Viber: More \u2192 Settings \u2192 Media \u2192 turn on Save to gallery and Auto-download. Then every photo lands in Nifti on its own.")
+            .setContentIntent(openChat(c, null)));
+    }
+
+    /** Xiaomi, OPPO, vivo and similar: one tap back to the setting that keeps Nifti running */
+    static void keepRunning(Context c, String brandName) {
+        Intent i = new Intent(c, MainActivity.class).putExtra("open", "setup").addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        PendingIntent p = PendingIntent.getActivity(c, 4, i, PendingIntent.FLAG_IMMUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
+        show(c, 9005, base(c, "Keep Nifti on, so no customer message is missed",
+            brandName + " phones switch apps off to save battery. Tap to allow Nifti to keep running. It takes 20 seconds.")
+            .setContentIntent(p).addAction(new Notification.Action.Builder(null, "Fix it now", p).build()));
+    }
+
     static void listenerOff(Context c) {
         Intent i = new Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         show(c, 9003, base(c, "Nifti can't see Viber messages", "Notification access for Nifti is off. Tap to turn it back on.")

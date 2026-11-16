@@ -5,7 +5,9 @@ import android.app.PendingIntent;
 import android.app.RemoteInput;
 import android.content.Context;
 import android.content.Intent;
+import android.database.ContentObserver;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.os.Handler;
 import android.os.HandlerThread;
 
@@ -50,7 +52,9 @@ public final class Relay {
     final Map<String, PendingIntent> opens = new ConcurrentHashMap<>();
     final Map<String, String> titles = new ConcurrentHashMap<>();
     private final Set<String> usedMedia = new HashSet<>();
-    private boolean loopOn;
+    private boolean loopOn, watching;
+    /** replies waiting for Viber's reply button for that chat (tried again whenever that chat shows a new notification) */
+    private final List<JSONObject> pendingReplies = new ArrayList<>();
     private long backoff, nextFlushAt, lastHeartbeat;
 
     private Relay(Context c) {
@@ -68,8 +72,24 @@ public final class Relay {
             if (loopOn) return;
             loopOn = true;
             h.post(loop);
+            watchMedia();
         });
     }
+
+    /** The moment Viber saves a photo, video or file on the phone, look for the ones still waiting. */
+    private void watchMedia() {
+        if (watching) return;
+        try {
+            ContentObserver o = new ContentObserver(h) {
+                @Override public void onChange(boolean self) { h.removeCallbacks(mediaSoon); h.postDelayed(mediaSoon, 1500); }
+            };
+            ctx.getContentResolver().registerContentObserver(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, true, o);
+            ctx.getContentResolver().registerContentObserver(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, true, o);
+            ctx.getContentResolver().registerContentObserver(MediaStore.Files.getContentUri("external"), true, o);
+            watching = true;
+        } catch (Exception ignore) {}
+    }
+    private final Runnable mediaSoon = () -> { try { media(); } catch (Throwable ignore) {} };
 
     private final Runnable loop = new Runnable() {
         @Override public void run() {
@@ -88,6 +108,7 @@ public final class Relay {
         flush();
         media();
         outbox();
+        retryReplies(null);
         if (heartbeatNow || System.currentTimeMillis() - lastHeartbeat > 10 * 60 * 1000L) heartbeat();
     }
 
@@ -193,6 +214,7 @@ public final class Relay {
                         File dst = new File(store.mediaDir(), t.getString("id") + "-" + MediaFinder.safe(f.name));
                         if (MediaFinder.copy(ctx, f.uri, dst)) {
                             usedMedia.add(f.uri.toString());
+                            store.putLong("viberPhotoSeen", now);
                             t.put("local", dst.getAbsolutePath()); t.put("mime", f.mime); t.put("name", f.name);
                             local = dst.getAbsolutePath();
                         }
@@ -217,28 +239,38 @@ public final class Relay {
                     continue;
                 }
                 long age = now - t.optLong("created", now);
-                // a photo usually appears on the phone within seconds when Viber auto-downloads it; a file almost never does
-                long wait = "file".equals(kind) ? 20000L : 75000L;
-                if (age > wait) markMissing(t, null);
-                else keep.add(t);
+                // Nifti keeps looking: a photo turns up when Viber downloads it (often right away, sometimes when
+                // the chat is opened), a file when someone taps it in Viber. The watcher above catches it the moment it lands.
+                long giveUp = "file".equals(kind) ? 24 * 3600 * 1000L : 6 * 3600 * 1000L;
+                if (age > giveUp) { markMissing(t); continue; }
+                // never found a single Viber photo on this phone: Viber's "Save to gallery" is probably off. Say so, once in a while.
+                if (!"file".equals(kind) && age > 3 * 60 * 1000L && store.getLong("viberPhotoSeen") == 0
+                        && now - store.getLong("galleryHint") > 3 * 24 * 3600 * 1000L) {
+                    store.putLong("galleryHint", now);
+                    Notify.saveToGallery(ctx);
+                }
+                keep.add(t);
             } catch (Exception e) {
                 keep.add(t);
             }
         }
-        // anything still waiting after a day is dropped from the phone (it was already marked missing on the server)
         List<JSONObject> fresh = new ArrayList<>();
-        for (JSONObject t : keep) if (now - t.optLong("created", now) < 24 * 3600 * 1000L) fresh.add(t);
+        for (JSONObject t : keep) if (now - t.optLong("created", now) < 25 * 3600 * 1000L) fresh.add(t);
         store.saveList("media.json", fresh);
     }
 
-    private void markMissing(JSONObject t, String why) {
+    /** Quietly tells Nifti the photo stayed on the phone. No alarm: Nifti shows "add it here" beside it. */
+    private void markMissing(JSONObject t) {
         try {
             JSONObject a = new JSONObject();
             a.put("p_msg", t.getString("id"));
             a.put("p_status", "missing");
             api.rpc("viber_dev_media", a);
         } catch (Exception ignore) {}
-        Notify.missing(ctx, t.optString("key"), t.optString("title"), t.optString("kind"), t.optString("hint"), why);
+    }
+    private void markMissing(JSONObject t, String why) {
+        markMissing(t);
+        if ("too big".equals(why)) Notify.missing(ctx, t.optString("key"), t.optString("title"), t.optString("kind"), t.optString("hint"), why);
     }
 
     // ---------- replies typed in Nifti ----------
@@ -249,17 +281,43 @@ public final class Relay {
             JSONArray a = new JSONArray(api.rpc("viber_dev_outbox", new JSONObject()));
             for (int i = 0; i < a.length(); i++) {
                 JSONObject o = a.getJSONObject(i);
+                o.put("_first", System.currentTimeMillis());
                 String reason = send(o);
-                JSONObject m = new JSONObject();
-                m.put("p_msg", o.getString("id"));
-                m.put("p_ok", reason == null);
-                m.put("p_reason", reason == null ? JSONObject.NULL : reason);
-                try { api.rpc("viber_dev_mark", m); } catch (Exception ignore) {}
-                if (reason != null) Notify.notSent(ctx, o.optString("key"), o.optString("title"), o.optString("body"), o.getString("id"));
+                if (reason == null) mark(o, null);
+                else pendingReplies.add(o); // try again for 30 minutes before calling it failed
             }
         } catch (Api.Fail f) {
             if (f.disconnected) disconnected();
         } catch (Exception ignore) {}
+    }
+
+    private void mark(JSONObject o, String reason) {
+        try {
+            JSONObject m = new JSONObject();
+            m.put("p_msg", o.getString("id"));
+            m.put("p_ok", reason == null);
+            m.put("p_reason", reason == null ? JSONObject.NULL : reason);
+            api.rpc("viber_dev_mark", m);
+        } catch (Exception ignore) {}
+    }
+
+    /** A reply that couldn't go out yet: try again (for one chat when it just showed a notification, or all of them). */
+    public void retryFor(String key) { h.post(() -> retryReplies(key)); }
+    private void retryReplies(String onlyKey) {
+        if (pendingReplies.isEmpty()) return;
+        long now = System.currentTimeMillis();
+        List<JSONObject> still = new ArrayList<>();
+        for (JSONObject o : pendingReplies) {
+            if (onlyKey != null && !onlyKey.equals(o.optString("key"))) { still.add(o); continue; }
+            String reason = send(o);
+            if (reason == null) { mark(o, null); continue; }
+            if (now - o.optLong("_first", now) > 30 * 60 * 1000L) {
+                mark(o, reason);
+                try { Notify.notSent(ctx, o.optString("key"), o.optString("title"), o.optString("body"), o.getString("id")); } catch (Exception ignore) {}
+            } else still.add(o);
+        }
+        pendingReplies.clear();
+        pendingReplies.addAll(still);
     }
 
     /** null when sent, otherwise the reason in plain words */

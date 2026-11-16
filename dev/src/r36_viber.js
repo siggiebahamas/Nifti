@@ -54,6 +54,7 @@ function nf36vSeed(){
   if(sup) th.push({id: 'vt2', title: sup.name, status: 'linked', party_kind: 'supplier', party_id: sup.id, party_name: sup.name, owner_user_id: 'me', owner_name: 'You', device_id: 'dv1', unread: 0, last_at: at(T, '11:40')});
   th.push({id: 'vt3', title: 'Aling Nena Sari-Sari', status: 'linked', party_kind: 'customer', party_id: null, party_name: 'Aling Nena Sari-Sari', owner_user_id: 'me', owner_name: 'You', device_id: 'dv1', unread: 2, last_at: at(T, '14:20')});
   th.push({id: 'vt4', title: 'Kuya Ben Hardware', status: 'new', owner_user_id: 'me', owner_name: 'You', device_id: 'dv1', unread: 1, last_at: at(T, '14:41'), last_text: 'Magkano po ang 1/2 plywood? 30 pcs sana'});
+  th.push({id: 'vt5', title: 'Mama', status: 'new', owner_user_id: 'me', owner_name: 'You', device_id: 'dv1', unread: 1, last_at: at(T, '12:05'), last_text: 'Anak kumain ka na? Ingat sa biyahe mamaya'});
   NF36V.threads = th;
   const M = (tid, dir, body, kind, when, extra) => Object.assign({id: 'vm' + Math.random().toString(36).slice(2, 9), thread_id: tid, dir, body, kind: kind || 'text', at: when, media_status: 'none', status: dir === 'out' ? 'sent' : 'done', source: dir === 'out' ? 'nifti' : 'notif', ack: false}, extra || {});
   const dr = 'data:image/svg+xml;utf8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="360" height="250"><rect width="360" height="250" fill="#FFFDF5"/><rect x="18" y="16" width="324" height="218" rx="6" fill="#fff" stroke="#D0D5DD"/><text x="34" y="48" font-family="Arial" font-size="17" font-weight="700" fill="#0B0F14">DELIVERY RECEIPT  No. 0412</text><text x="34" y="78" font-family="Arial" font-size="13" fill="#0B0F14">Received in good condition:</text><text x="34" y="106" font-family="Arial" font-size="13" fill="#0B0F14">20 bags Portland cement</text><text x="34" y="128" font-family="Arial" font-size="13" fill="#0B0F14">10 pcs deformed bar 10mm</text><path d="M200 200c20-24 40 10 60-12s30 6 50-4" stroke="#1D4ED8" stroke-width="2" fill="none"/><text x="34" y="210" font-family="Arial" font-size="12" fill="#0B0F14">Signature over printed name</text></svg>');
@@ -61,12 +62,13 @@ function nf36vSeed(){
     vt1: [M('vt1', 'in', 'Pwede po pa-deliver bukas yung 20 bags na semento? Same price pa rin po ba?', 'text', at(Y, '16:05')),
       M('vt1', 'out', 'Opo, bukas ng umaga. Same price po, ₱265 per bag.', 'text', at(Y, '16:20')),
       M('vt1', 'in', 'Ito po yung pirmadong DR kahapon', 'photo', at(T, '09:02'), {media_status: 'ok', media_name: 'DR-0412.jpg', _url: dr}),
-      M('vt1', 'in', '', 'photo', at(T, '13:12'), {media_status: 'missing', media_name: 'Photo'})],
+      M('vt1', 'in', 'Salamat po! Order ulit next week.', 'text', at(T, '13:12'))],
     vt2: [M('vt2', 'in', 'Price update po: angle bar 1.5mm ₱385 na simula Lunes.', 'text', at(T, '11:31')),
-      M('vt2', 'out', 'Noted po, salamat. Pa-reserve po ng 40 pcs sa lumang presyo kung kaya pa.', 'text', at(T, '11:40'), {status: 'failed', fail_reason: "Viber's reply button for this chat had closed, so it couldn't be sent from the phone automatically"})],
+      M('vt2', 'out', 'Noted po, salamat. Pa-reserve po ng 40 pcs sa lumang presyo kung kaya pa.', 'text', at(T, '11:40'))],
     vt3: [M('vt3', 'in', 'Good afternoon po! May stock pa po ba kayo ng Lucky Me pancit canton? 5 boxes po sana', 'text', at(T, '14:12')),
       M('vt3', 'in', 'SOA_October.pdf', 'file', at(T, '14:20'), {body: '', media_status: 'ok', media_name: 'SOA_October.pdf', media_size: 182000, _url: 'data:application/pdf;base64,JVBERi0xLjQKJcfsj6IKMSAwIG9iago8PC9UeXBlL0NhdGFsb2cvUGFnZXMgMiAwIFI+PgplbmRvYmoKMiAwIG9iago8PC9UeXBlL1BhZ2VzL0tpZHNbXS9Db3VudCAwPj4KZW5kb2JqCnRyYWlsZXIKPDwvUm9vdCAxIDAgUj4+CiUlRU9GCg=='})],
     vt4: [M('vt4', 'in', 'Magkano po ang 1/2 plywood? 30 pcs sana', 'text', at(T, '14:41'))],
+    vt5: [M('vt5', 'in', 'Anak kumain ka na? Ingat sa biyahe mamaya', 'text', at(T, '12:05'))],
   };
   NF36V.ver++;
 }
@@ -137,7 +139,6 @@ function nf36vIssues(){
     if(t.status === 'ignored') return;
     (NF36V.msgs[t.id] || []).forEach(m => {
       if(m.ack) return;
-      if(m.dir === 'in' && m.media_status === 'missing') out.push({id: 'm' + m.id, kind: 'missing', t, m, text: (m.kind === 'photo' ? 'A photo' : m.kind === 'video' ? 'A video' : (m.media_name || 'A file')) + ' from ' + (t.party_name || t.title) + " didn't come through"});
       if(m.dir === 'out' && m.status === 'failed') out.push({id: 'f' + m.id, kind: 'failed', t, m, text: 'Your reply to ' + (t.party_name || t.title) + " wasn't sent"});
     });
   });
@@ -167,13 +168,10 @@ function nf36vBubble(m, t){
       const url = m._url || '';
       if(m.kind === 'photo') media = `<button type="button" class="nf36v-img" data-vbp="${nf36vEsc(m.media_path || '')}" data-vbn="${nf36vEsc(m.media_name || 'photo.jpg')}" onclick="nf36vOpen(this)"><img alt="Photo from Viber" ${url ? `src="${nf36vEsc(url)}"` : ''} loading="lazy"></button>`;
       else media = `<button type="button" class="msg-attachment nf36v-file" data-vbp="${nf36vEsc(m.media_path || '')}" data-vbn="${nf36vEsc(m.media_name || 'file')}" ${url ? `data-vbu="${nf36vEsc(url)}"` : ''} onclick="nf36vOpen(this)">${ATTACHMENT_ICON_SVG}<span><b>${nf36vEsc(m.media_name || 'File')}</b><small>${m.media_size ? Math.max(1, Math.round(m.media_size / 1024)) + ' KB · ' : ''}tap to open</small></span></button>`;
-    } else if(m.media_status === 'missing' && !m.ack){
-      media = `<span class="nf36v-miss">${NF36V_IC.warn}<span><b>This ${label} didn't come through</b><small>On the phone: open the Viber chat, hold the ${label}, tap Share, then Nifti. Or add it here.</small>
-        <span class="nf36v-acts"><label class="nf36v-btn">Add it here<input type="file" ${m.kind === 'photo' ? 'accept="image/*"' : m.kind === 'video' ? 'accept="video/*"' : ''} onchange="nf36vFill('${m.id}', this)" hidden></label><button type="button" class="nf36v-btn ghost" onclick="nf36vAck('${m.id}')">Dismiss</button></span></span></span>`;
-    } else if(m.media_status === 'missing'){
-      media = `<span class="nf36v-gone">${label[0].toUpperCase() + label.slice(1)} is only on the phone</span>`;
-    } else if(m.media_status === 'waiting'){
-      media = `<span class="nf36v-wait">${NF36V_IC.clock}Getting the ${label} from the phone…</span>`;
+    } else if(m.media_status === 'missing' || m.media_status === 'waiting'){
+      const old = nf36vMins(m.at) > 360;
+      media = `<span class="nf36v-wait">${NF36V_IC.clock}<span>${old ? `The ${label} will appear here once it opens on ${nf36vEsc(nf36vOwnerPhone(t))}` : `The ${label} is coming in from ${nf36vEsc(nf36vOwnerPhone(t))}…`}
+        <label class="nf36v-addhere">or add it here<input type="file" ${m.kind === 'photo' ? 'accept="image/*"' : m.kind === 'video' ? 'accept="video/*"' : ''} onchange="nf36vFill('${m.id}', this)" hidden></label></span></span>`;
     }
   } else if(m.kind === 'voice') media = `<span class="nf36v-gone">Voice message · play it in Viber</span>`;
   else if(m.kind === 'sticker') media = `<span class="nf36v-gone">Sticker</span>`;
