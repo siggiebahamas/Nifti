@@ -483,7 +483,7 @@ async function nf36vLoad(full){
   try{
     const biz = myBusiness.id;
     const [th, dv] = await Promise.all([
-      sb.from('viber_threads').select('*').eq('business_id', biz).neq('status', 'ignored').order('last_at', {ascending: false, nullsFirst: false}).limit(300),
+      sb.from('viber_threads').select('*').eq('business_id', biz).order('last_at', {ascending: false, nullsFirst: false}).limit(300),
       sb.from('viber_devices').select('id,business_id,user_id,user_name,name,brand,model,app_version,flags,last_seen_at,revoked_at,created_at').eq('business_id', biz).is('revoked_at', null)]);
     if(th.error) return;
     const before = JSON.stringify([NF36V.threads, NF36V.devices]);
