@@ -44,6 +44,8 @@ jobs:
           cp -r design-lab _site/design-lab
           # Theme gallery: the real app in an iframe with 10 optional visual themes, served at /themes/.
           cp -r themes _site/themes
+          # Nifti for Android (brings Viber into Nifti), served at /app/nifti.apk with /app/version.json.
+          cp -r app _site/app
 
       - name: Build online store pages
         run: node .github/scripts/build-stores.mjs

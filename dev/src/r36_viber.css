@@ -1,0 +1,120 @@
+/* ===== Round 36: Viber inside Messages ===== */
+/* bubble extras */
+#threadBody .nf36v-b{display:grid;gap:6px;min-width:0;}
+#threadBody .nf36v-tx{white-space:pre-wrap;word-break:break-word;}
+#threadBody .nf36v-tx a{color:inherit;text-decoration:underline;}
+#threadBody .nf36v-from{font-size:13.5px;font-weight:800;color:#0B0F14;}
+#threadBody .nf36v-chip{justify-self:start;display:inline-flex;align-items:center;gap:4px;font-size:11.5px;font-weight:800;letter-spacing:.02em;color:#0B0F14;background:rgba(15,23,42,.06);border-radius:999px;padding:2px 8px 2px 6px;}
+#threadBody .msg-bubble-row.me .nf36v-chip{background:rgba(255,255,255,.55);}
+#threadBody .nf36v-chip svg{width:13px;height:13px;}
+#threadBody .msg-bubble-row:has(.nf36v-b) .msg-ticks{display:none;}
+#threadBody .nf36v-img{display:block;padding:0;border:0;background:transparent;cursor:zoom-in;border-radius:12px;overflow:hidden;max-width:min(320px,100%);}
+#threadBody .nf36v-img img{display:block;width:100%;height:auto;min-height:80px;max-height:340px;object-fit:cover;background:#F2F4F7;}
+#threadBody .nf36v-file{max-width:100%;}
+#threadBody .nf36v-file span{display:grid;text-align:left;} #threadBody .nf36v-file small{font-size:13px;}
+#threadBody .nf36v-wait, #threadBody .nf36v-gone{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:#0B0F14;}
+#threadBody .nf36v-wait svg{width:16px;height:16px;}
+.nf36v-miss{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px;align-items:start;background:#FEF3F2;border:1px solid #FECDCA;border-radius:12px;padding:10px 12px;color:#0B0F14;text-align:left;}
+.nf36v-miss > svg{width:18px;height:18px;color:#B42318;margin-top:2px;}
+.nf36v-miss b{display:block;font-size:14.5px;color:#B42318;} .nf36v-miss small{display:block;font-size:13.5px;line-height:1.4;color:#0B0F14;margin-top:2px;}
+.nf36v-acts{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px;}
+.nf36v-acts.big{margin-top:14px;} .nf36v-acts.big .btn{flex:1 1 140px;min-height:46px;}
+.nf36v-btn{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:6px 12px;border-radius:10px;border:1.5px solid #1F6B45;background:#1F6B45;color:#FFFFFF;font:inherit;font-size:13.5px;font-weight:800;cursor:pointer;white-space:nowrap;}
+.nf36v-btn.ghost{background:#FFFFFF;color:#0B0F14;border-color:#D0D5DD;}
+.nf36v-st{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;font-weight:700;color:#0B0F14;}
+.nf36v-st svg{width:14px;height:14px;} .nf36v-st.ok svg{color:#15803D;} .nf36v-st.q{color:#0B0F14;}
+.msg-bubble-row.me .nf36v-st{justify-self:end;}
+
+/* send on: Nifti / Viber */
+.nf36v-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:8px 14px;border-top:1px solid #EAECF0;background:#FFFFFF;}
+.nf36v-bar small{flex:1 1 220px;font-size:13.5px;color:#0B0F14;line-height:1.35;}
+.nf36v-seg{display:inline-flex;border:1.5px solid #D0D5DD;border-radius:999px;padding:2px;background:#F9FAFB;}
+.nf36v-seg button{display:inline-flex;align-items:center;gap:5px;border:0;background:transparent;border-radius:999px;padding:6px 14px;font:inherit;font-size:14px;font-weight:800;color:#0B0F14;cursor:pointer;}
+.nf36v-seg button.on{background:#0B0F14;color:#FFFFFF;}
+.nf36v-seg button svg{width:15px;height:15px;}
+.nf36v-seg.wide{display:flex;width:100%;} .nf36v-seg.wide button{flex:1;justify-content:center;min-height:42px;}
+.nf36v-on{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:800;color:#0B0F14;background:#F2F4F7;border-radius:999px;padding:5px 12px;}
+.nf36v-on svg{width:15px;height:15px;}
+.nf36v-add{border:0;background:transparent;color:#1F6B45;font:inherit;font-size:13.5px;font-weight:800;cursor:pointer;padding:4px 2px;white-space:nowrap;}
+
+/* list: the Viber mark in previews */
+.nf33-pv .nf36v-pvi{display:inline-flex;width:15px;height:15px;margin-right:4px;vertical-align:-2px;color:#0B0F14;}
+.nf33-pv .nf36v-pvi svg{width:15px;height:15px;} .nf33-pv .nf36v-pvi.bad{color:#B42318;}
+
+/* top of the chat list: warnings and new chats */
+#nf36vTop{display:grid;gap:8px;padding:0 10px;}
+#nf36vTop:empty{display:none;}
+.nf36v-warn{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center;width:100%;margin-top:8px;padding:10px 12px;border-radius:12px;border:1px solid #FECDCA;background:#FEF3F2;color:#0B0F14;font:inherit;text-align:left;cursor:pointer;}
+.nf36v-warn > svg{width:18px;height:18px;color:#B42318;}
+.nf36v-warn b{display:block;font-size:14.5px;color:#B42318;line-height:1.3;} .nf36v-warn small{display:block;font-size:13px;color:#0B0F14;margin-top:2px;}
+.nf36v-warn i{font-style:normal;font-size:13.5px;font-weight:800;color:#B42318;}
+.nf36v-new{border:1px solid #E4E7EC;border-radius:14px;background:#FFFFFF;margin-top:8px;overflow:hidden;}
+.nf36v-nh{padding:10px 12px 8px;border-bottom:1px solid #EAECF0;background:#F9FAFB;}
+.nf36v-nh b{display:flex;align-items:center;gap:6px;font-size:14.5px;color:#0B0F14;} .nf36v-nh b svg{width:16px;height:16px;}
+.nf36v-nh small{display:block;font-size:13px;color:#0B0F14;margin-top:2px;}
+.nf36v-n{font-style:normal;background:#FEF3F2;color:#B42318;border:1px solid #FECDCA;border-radius:999px;min-width:22px;height:20px;padding:0 6px;display:inline-grid;place-items:center;font-size:12px;font-weight:800;}
+.nf36v-nrow{display:grid;gap:8px;padding:10px 12px;} .nf36v-nrow + .nf36v-nrow{border-top:1px solid #F2F4F7;}
+.nf36v-nmain{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;align-items:center;border:0;background:transparent;padding:0;font:inherit;text-align:left;cursor:pointer;color:#0B0F14;}
+.nf36v-nmain b{display:block;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;} .nf36v-nmain small{display:block;font-size:13.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#0B0F14;}
+.nf36v-nacts{display:flex;gap:6px;flex-wrap:wrap;}
+.nf36v-nacts button{flex:1 1 auto;min-height:34px;border-radius:9px;border:1.5px solid #D0D5DD;background:#FFFFFF;font:inherit;font-size:13px;font-weight:800;color:#0B0F14;cursor:pointer;padding:4px 10px;}
+.nf36v-nacts button:not(.ghost):hover{border-color:#1F6B45;color:#1F6B45;}
+.nf36v-nacts button.ghost{border-color:transparent;background:#F2F4F7;}
+.nf36v-more{width:100%;border:0;border-top:1px solid #EAECF0;background:#FFFFFF;padding:9px;font:inherit;font-size:13.5px;font-weight:800;color:#1F6B45;cursor:pointer;}
+
+/* the Viber pill in the chat list header */
+.nf36v-pill{display:inline-flex;align-items:center;gap:6px;margin-left:auto;margin-right:6px;border:1.5px solid #D0D5DD;background:#FFFFFF;border-radius:999px;padding:5px 10px 5px 8px;font:inherit;font-size:13.5px;font-weight:800;color:#0B0F14;cursor:pointer;}
+.nf36v-pill svg{width:16px;height:16px;}
+.nf36v-pill i{width:8px;height:8px;border-radius:50%;background:#98A2B3;} .nf36v-pill i.ok{background:#16A34A;} .nf36v-pill i.warn{background:#D92D20;} .nf36v-pill i.off{display:none;}
+
+/* sheets */
+.nf36v-p{margin:0 0 10px;font-size:15px;line-height:1.5;color:#0B0F14;}
+.nf36v-form{display:grid;gap:12px;}
+.nf36v-f{display:grid;gap:6px;} .nf36v-f span{font-size:14px;font-weight:800;color:#0B0F14;}
+.nf36v-f textarea, .nf36v-f input:not([type=file]), .nf36v-search{width:100%;box-sizing:border-box;border:1.5px solid #D0D5DD;border-radius:12px;padding:10px 12px;font:inherit;font-size:16px;color:#0B0F14;}
+.nf36v-search{margin-bottom:8px;}
+.nf36v-sheetlist{display:grid;gap:6px;max-height:min(52vh,420px);overflow-y:auto;}
+.nf36v-pk{display:flex;align-items:center;gap:10px;width:100%;border:1.5px solid #E4E7EC;background:#FFFFFF;border-radius:12px;padding:8px 10px;font:inherit;font-size:15px;color:#0B0F14;cursor:pointer;text-align:left;}
+.nf36v-pk.on, .nf36v-pk:hover{border-color:#1F6B45;background:#F0FAF4;}
+.nf36v-newp{display:grid;gap:8px;margin-top:12px;padding-top:12px;border-top:1px solid #EAECF0;}
+.nf36v-peek{display:grid;gap:8px;max-height:46vh;overflow-y:auto;padding:4px 0;}
+.nf36v-pm{display:grid;gap:2px;max-width:85%;} .nf36v-pm.out{justify-self:end;}
+.nf36v-pm .nf36v-b{display:grid;gap:6px;background:#F2F4F7;border-radius:14px;padding:9px 12px;font-size:15px;color:#0B0F14;}
+.nf36v-pm.out .nf36v-b{background:#E7F5EC;} .nf36v-pm small{font-size:12px;color:#0B0F14;}
+.nf36v-pm .nf36v-chip{display:none;}
+.nf36v-irow{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center;padding:10px 12px;border:1px solid #FECDCA;background:#FFFBFA;border-radius:12px;}
+.nf36v-irow > svg{width:18px;height:18px;color:#B42318;} .nf36v-irow b{display:block;font-size:14.5px;color:#0B0F14;} .nf36v-irow small{display:block;font-size:13.5px;color:#0B0F14;margin-top:2px;}
+
+/* Connect Viber */
+.nf36v-setup{display:grid;gap:12px;}
+.nf36v-hero{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:center;padding:14px;border-radius:14px;background:#F0F6FF;border:1px solid #CFE0FB;}
+.nf36v-hero.ok{background:#F0FAF4;border-color:#BBE5CB;}
+.nf36v-hero > svg{width:28px;height:28px;color:#0B0F14;} .nf36v-hero b{display:block;font-size:16px;color:#0B0F14;} .nf36v-hero small{display:block;font-size:14px;color:#0B0F14;margin-top:2px;line-height:1.45;}
+.nf36v-wide{width:100%;min-height:48px;justify-content:center;text-align:center;}
+.nf36v-steps{display:grid;gap:8px;}
+.nf36v-step{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center;padding:11px 12px;border:1px solid #E4E7EC;border-radius:12px;background:#FFFFFF;}
+.nf36v-step.ok{background:#F6FEF9;border-color:#BBE5CB;} .nf36v-step.bad{border-color:#FECDCA;background:#FFFBFA;}
+.nf36v-dot{width:26px;height:26px;border-radius:50%;border:2px solid #D0D5DD;display:grid;place-items:center;font-weight:900;font-size:14px;color:#B42318;}
+.nf36v-step.ok .nf36v-dot{background:#16A34A;border-color:#16A34A;color:#FFFFFF;} .nf36v-step.ok .nf36v-dot svg{width:15px;height:15px;}
+.nf36v-step.bad .nf36v-dot{border-color:#FDA29B;background:#FEF3F2;}
+.nf36v-sx > b{display:block;font-size:15px;color:#0B0F14;} .nf36v-sx small b{display:inline;font-size:inherit;} .nf36v-sx small{display:block;font-size:13.5px;color:#0B0F14;line-height:1.45;margin-top:2px;}
+.nf36v-sb{display:grid;gap:6px;}
+.nf36v-brand{display:grid;gap:8px;padding:12px;border-radius:14px;border:1.5px solid #FDA29B;background:#FEF3F2;}
+.nf36v-brand > b{display:flex;align-items:center;gap:6px;font-size:15.5px;color:#B42318;} .nf36v-brand > b svg{width:18px;height:18px;flex:none;}
+.nf36v-brand > small{font-size:14px;color:#0B0F14;line-height:1.45;}
+.nf36v-ol{margin:0;padding-left:20px;display:grid;gap:6px;font-size:15px;color:#0B0F14;line-height:1.45;}
+.nf36v-h4{margin:8px 0 0;font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#0B0F14;}
+.nf36v-dev{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center;padding:10px 12px;border:1px solid #E4E7EC;border-radius:12px;}
+.nf36v-dev.bad{border-color:#FECDCA;background:#FFFBFA;}
+.nf36v-dev > svg{width:22px;height:22px;} .nf36v-dev b{display:block;font-size:15px;color:#0B0F14;} .nf36v-dev small{display:block;font-size:13.5px;color:#0B0F14;}
+.nf36v-dev.bad small{color:#B42318;font-weight:700;}
+.nf36v-link{justify-self:start;border:0;background:transparent;color:#B42318;font:inherit;font-size:14px;font-weight:800;cursor:pointer;padding:4px 0;}
+@media (max-width:700px){
+  .nf36v-step{grid-template-columns:auto minmax(0,1fr);} .nf36v-step > .nf36v-btn, .nf36v-step > .nf36v-sb{grid-column:2;justify-self:start;}
+  .nf36v-sb{grid-auto-flow:column;}
+  .nf36v-bar small{flex-basis:100%;order:3;}
+  .nf36v-irow{grid-template-columns:auto minmax(0,1fr);} .nf36v-irow > .btn{grid-column:2;justify-self:start;}
+}
+/* your own (green) bubbles: status in white */
+#threadBody .msg-bubble-row.me .nf36v-st{color:#FFFFFF;}
+#threadBody .msg-bubble-row.me .nf36v-st.ok svg{color:#BBF7D0;}

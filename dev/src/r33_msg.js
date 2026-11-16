@@ -55,7 +55,7 @@ function nf33Row(c){
     <span class="nf33-av">${nfAvatarInner(c.name)}</span>
     <span class="nf33-mid"><span class="nf33-top"><b>${escapeHtml(c.name)}</b><time>${escapeHtml(nf33When(last))}</time></span>
       <span class="nf33-bot"><span class="nf33-pv">${nf33Preview(last) || '<i>No messages yet</i>'}</span>${c.unread > 0 ? `<em class="nf33-badge">${c.unread}</em>` : ''}</span>
-      ${oc && oc.turn === 'you' ? `<span class="nf33-oc" onclick="event.stopPropagation(); openOrderDetailModal('${oc.id}', ${oc.sell})">${escapeHtml(oc.n)} · ${escapeHtml(oc.label)} · your turn</span>` : ''}</span></button>`;
+      ${oc && oc.turn === 'you' ? `<span class="nf33-oc" onclick="event.stopPropagation(); openOrderDetailModal('${oc.id}', ${oc.sell})">${escapeHtml(String(oc.n).replace(/^PO-/, 'Order '))} · ${escapeHtml(oc.label)} · your turn</span>` : ''}</span></button>`;
 }
 function nf33TeamRow(){
   const {tm, msgs} = nf33Team(), last = msgs[msgs.length - 1], on = typeof NF18T !== 'undefined' && NF18T.on;
@@ -98,13 +98,20 @@ function nf33Paint(){
   const tab = nf33Tab(), cnt = nf33Counts(), q = NF33.q.trim();
   h.classList.toggle('searching', !!q);
   h.querySelector('.nf33-tabs').innerHTML = NF33_TABS.map(([k, l]) => `<button type="button" role="tab" data-g="${k}" aria-selected="${tab === k}" class="${tab === k ? 'on' : ''}" onclick="nf33SetTab('${k}')"><span class="nf33-ti">${NF33_IC[k]}</span><span class="nf33-tl">${l}</span>${cnt[k] ? `<em>${cnt[k] > 99 ? '99+' : cnt[k]}</em>` : ''}</button>`).join('');
-  if(q){ box.innerHTML = nf33SearchHtml(q); }
-  else if(tab === 'team'){ box.innerHTML = nf33TeamRow(); }
+  let html;
+  if(q){ html = nf33SearchHtml(q); }
+  else if(tab === 'team'){ html = nf33TeamRow(); }
   else {
     // order = last message only (like WhatsApp). Opening a chat or reading it never moves it; a new message does.
     const list = allConversations().filter(c => nf33Group(c) === tab).sort((a, b) => nf33Ts(b).localeCompare(nf33Ts(a)));
-    box.innerHTML = list.length ? list.map(nf33Row).join('') : `<p class="nf33-empty">No ${tab === 'cus' ? 'customer' : 'supplier'} chats yet. They show up here as soon as one starts.</p>`;
+    html = list.length ? list.map(nf33Row).join('') : `<p class="nf33-empty">No ${tab === 'cus' ? 'customer' : 'supplier'} chats yet. They show up here as soon as one starts.</p>`;
   }
+  // only the highlighted chat changed? move the highlight, don't redraw (nothing on screen moves)
+  const key = html.replace(/ (on|un)(?=[ "])/g, '').replace(/<em class="nf33-badge">\d+<\/em>/g, '');
+  if(box._nf33key === key && box.dataset.g === (q ? 'all' : tab)){
+    const pickedId = (typeof NF18T !== 'undefined' && NF18T.on) ? '__team' : activeConvId;
+    box.querySelectorAll('.nf33-row').forEach(r => { const m = (r.getAttribute('onclick') || '').match(/selectConversation\('([^']+)'/), id = m ? m[1] : (/nf18OpenTeam/.test(r.getAttribute('onclick') || '') ? '__team' : ''); r.classList.toggle('on', id === pickedId); const c = id && id !== '__team' ? allConversations().find(x => x.id === id) : null; if(c && c.unread <= 0){ r.classList.remove('un'); const b = r.querySelector('.nf33-badge'); if(b) b.remove(); } });
+  } else { box.innerHTML = html; box._nf33key = key; }
   box.dataset.g = q ? 'all' : tab;
   try{ updateMessagesBadge(); }catch(e){}
   try{ if(document.getElementById('oneHomeMsgs') && typeof renderOneHomeMessages === 'function') renderOneHomeMessages(); }catch(e){}

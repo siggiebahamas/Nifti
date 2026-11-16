@@ -1,0 +1,84 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Side Colors and Headings</title><meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap">
+<style>
+:root{--ink:#0B0F14;--line:#E4E7EC;--g:#1F6B45}
+*{box-sizing:border-box}html,body{margin:0}body{font:16px/1.5 "Plus Jakarta Sans",system-ui,sans-serif;color:var(--ink);background:#F7F8FA;-webkit-font-smoothing:antialiased}
+.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}.tin{max-width:1240px;margin:0 auto;padding:12px 20px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.tin a{color:var(--g);font-weight:700;text-decoration:none;font-size:14.5px}.tin h1{margin:0;font-size:18px;flex:1;min-width:180px}
+.jump a{padding:7px 12px;border-radius:999px;border:1.5px solid #D0D5DD;background:#fff;color:var(--ink);font-weight:700;font-size:14px;margin-left:6px;display:inline-block}
+.wrap{max-width:1240px;margin:0 auto;padding:22px 20px 80px;display:grid;gap:56px}
+.sec>h2{margin:0 0 4px;font-size:26px}.sec>p.lead{margin:0 0 18px;max-width:900px}
+.opt{margin-top:26px}.opt>h3{margin:0 0 6px;font-size:20px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}.opt>p{margin:0 0 12px;max-width:900px}
+.rec{background:var(--g);color:#fff;border-radius:999px;padding:3px 11px;font-size:13px;font-weight:800}
+.sw{display:inline-flex;gap:4px;vertical-align:middle}.sw i{width:16px;height:16px;border-radius:5px;display:inline-block;border:1px solid rgba(0,0,0,.08)}
+/* side by side mock */
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.col{border-radius:18px;padding:0;overflow:hidden;border:1.5px solid}
+.ch{padding:16px 18px;display:flex;align-items:center;gap:12px}
+.ch .ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;color:#fff;flex:none}.ch .ic svg{width:22px;height:22px}
+.ch b{display:block;font-size:19px}.ch small{display:block;font-size:14.5px}
+.ch .tot{margin-left:auto;text-align:right}.ch .tot em{display:block;font-style:normal;font-size:12.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase}.ch .tot strong{font-size:22px;font-weight:800}
+.cb{padding:14px;display:grid;gap:10px}
+.card{background:#fff;border-radius:14px;border:1px solid #E4E7EC;padding:14px 16px;display:grid;gap:8px}
+.card .r1{display:flex;justify-content:space-between;gap:10px}.card .r1 b{font-size:16.5px}.card .r1 strong{font-size:17px}
+.st{display:flex;gap:8px;flex-wrap:wrap}.pill{border-radius:999px;padding:3px 10px;font-size:13px;font-weight:800}
+.p-r{background:#FEE4E2;color:#B42318}.p-y{background:#FEF9C3;color:#1F2329}.p-g{background:#DCFCE7;color:#15803D}
+.card .btns{display:flex;gap:8px}.card .btns span{border-radius:10px;padding:6px 12px;font-size:14px;font-weight:800;border:1.5px solid #D0D5DD;background:#fff}
+.card .btns span.pri{background:var(--g);color:#fff;border-color:var(--g)}
+/* selling (blue) is the same in every option */
+.sell{border-color:#BFDBFE;background:#F5F9FF}.sell .ch{background:#EFF6FF;border-bottom:1px solid #DBEAFE}.sell .ic{background:#2563EB}.sell .ch b{color:#1D4ED8}.sell .tot strong{color:#1D4ED8}
+.b1{border-color:#E7D3B4;background:#FFFBF4}.b1 .ch{background:#FDF3E3;border-bottom:1px solid #F1E2C9}.b1 .ic{background:#A16207}.b1 .ch b,.b1 .tot strong{color:#854D0E}
+.b2{border-color:#99E2DA;background:#F3FBFA}.b2 .ch{background:#E6F7F5;border-bottom:1px solid #C7EDE8}.b2 .ic{background:#0F766E}.b2 .ch b,.b2 .tot strong{color:#0F766E}
+.b3{border-color:#C7D2FE;background:#F7F8FF}.b3 .ch{background:#EEF1FF;border-bottom:1px solid #DDE3FD}.b3 .ic{background:#3F51B5}.b3 .ch b,.b3 .tot strong{color:#303F9F}
+.b4{border-color:#CBD5E1;background:#F8FAFC}.b4 .ch{background:#1E293B;border-bottom:0;color:#fff}.b4 .ch b,.b4 .ch small,.b4 .tot em,.b4 .tot strong{color:#fff}.b4 .ic{background:#334155}
+.b5{border-color:#E9C6B8;background:#FFF8F5}.b5 .ch{background:#FBEDE7;border-bottom:1px solid #F3DACF}.b5 .ic{background:#9A3B1C}.b5 .ch b,.b5 .tot strong{color:#8A3216}
+.mid{display:none}
+.ideas{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px;margin-top:14px}.ideas div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px;font-size:14.5px}.ideas b{display:block;font-size:15.5px;margin-bottom:2px}
+/* headings */
+.heads{display:grid;grid-template-columns:repeat(auto-fill,minmax(225px,1fr));gap:16px}
+.hcard{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.hcard h3{margin:0;padding:12px 14px;font-size:16px;border-bottom:1px solid var(--line);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.hcard p{margin:0;padding:10px 14px 14px;font-size:14px;border-top:1px solid var(--line);background:#FCFCFD}
+.side{background:#F7F8FA;padding:8px}
+.it{display:flex;align-items:center;gap:10px;padding:7px 10px;border-radius:10px;font-size:15px;font-weight:600}.it svg{width:17px;height:17px;flex:none}
+.it .n{margin-left:auto;min-width:22px;height:20px;padding:0 6px;border-radius:999px;background:#FEF3F2;color:#B42318;border:1px solid #FECDCA;font-size:12px;font-weight:800;display:grid;place-items:center}
+.hd{display:flex;align-items:center;gap:8px;margin:12px 4px 4px}
+/* H1 black caps + green bar */
+.h1 .hd{font-size:13.5px;font-weight:900;letter-spacing:.08em;color:#0B0F14;border-left:4px solid #1F6B45;padding-left:8px}
+/* H2 each section its own color */
+.h2 .hd{font-size:13.5px;font-weight:900;letter-spacing:.08em}.h2 .hd.m{color:#15803D}.h2 .hd.s{color:#1D4ED8}.h2 .hd.c{color:#7C2D12}
+/* H3 tinted band */
+.h3 .hd{font-size:13px;font-weight:900;letter-spacing:.07em;background:#E9EEF3;border-radius:8px;padding:6px 10px;margin:12px 0 4px}
+/* H4 bigger title case with line */
+.h4 .hd{font-size:16.5px;font-weight:800;letter-spacing:-.01em;border-top:1.5px solid #D0D5DD;padding-top:12px;margin-top:14px}
+/* H5 dot + caps + icon chip */
+.h5 .hd{font-size:13.5px;font-weight:900;letter-spacing:.08em}.h5 .hd i{width:22px;height:22px;border-radius:7px;display:grid;place-items:center;color:#fff;font-style:normal;font-size:12px}
+.h5 .hd.m i{background:#15803D}.h5 .hd.s i{background:#2563EB}.h5 .hd.c i{background:#475467}
+@media (max-width:860px){.pair{grid-template-columns:1fr}}
+</style></head><body>
+<div class="top"><div class="tin"><a href="../">‹ Design lab</a><h1>Round 36: buying side colors x5, menu headings x5</h1><span class="jump"><a href="#buy">Buying side x5</a><a href="#heads">Menu headings x5</a></span></div></div>
+<div class="wrap">
+<section class="sec" id="buy"><h2>Buying from suppliers: 5 colors beside the blue selling side</h2>
+<p class="lead">Selling stays blue in all five. Each option gives Buying its own calm color, a colored heading with an icon and the total, and white cards inside so the status pills (red late, yellow waiting, green paid) still stand out. None of them are loud, pink, lime or neon.</p>
+<div id="pairs"></div>
+<h3 style="margin:30px 0 6px">Other ways to make the side-by-side view better (in every option above)</h3>
+<div class="ideas"><div><b>Total on each heading</b>"Customers owe you ₱23,804" vs "You owe suppliers ₱112,896", so you see both sides at a glance.</div><div><b>Icons that say which way money moves</b>Arrow in on the selling side, arrow out on the buying side.</div><div><b>Same card shape on both sides</b>Name and amount on top, status pills, then one main button. Easier to compare.</div><div><b>White cards on a tinted column</b>The color says which side you're on; the white keeps everything easy to read.</div></div>
+</section>
+<section class="sec" id="heads"><h2>Menu section headings: 5 ways to make MONEY, SELLING &amp; DELIVERY and CHECKS, TAXES &amp; TEAM stand out</h2>
+<p class="lead">The page names under each heading stay the same. Only the headings change, so they read as section titles, not menu items.</p>
+<div class="heads" id="heads2"></div></section>
+</div>
+<script>
+const $ = s => document.querySelector(s);
+const IN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>', OUT = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>';
+const OPTS = [['b1','1. Warm sand','#A16207','#FDF3E3','Earthy and calm, feels like "money going out" without looking like a warning.',true],['b2','2. Teal','#0F766E','#E6F7F5','Fresh and clean; a cousin of the blue, so the page feels like one family.'],['b3','3. Indigo','#3F51B5','#EEF1FF','Deep and businesslike. Close to blue, so use it if you want both sides to feel very similar.'],['b4','4. Slate heading','#1E293B','#F8FAFC','A dark heading bar with a light column. Very strong contrast and easy to read.'],['b5','5. Clay','#9A3B1C','#FBEDE7','A muted brick tone. Warm and distinct from the red "late" pills because it is brown, not red.']];
+const sellCol = `<div class="col sell"><div class="ch"><span class="ic">${IN}</span><div><b>Selling to customers</b><small>What customers order and owe you</small></div><div class="tot"><em>They owe you</em><strong>₱23,804</strong></div></div><div class="cb"><div class="card"><div class="r1"><b>Riverside Builders Corp</b><strong>₱17,504</strong></div><div class="st"><span class="pill p-r">Late 6 days</span><span class="pill p-y">Says paid ₱14,500</span><span class="pill p-g">Promised ₱3,004</span></div><div class="btns"><span class="pri">Remind</span><span>Promise</span></div></div></div></div>`;
+const buyCol = c => `<div class="col ${c}"><div class="ch"><span class="ic">${OUT}</span><div><b>Buying from suppliers</b><small>What you order and owe suppliers</small></div><div class="tot"><em>You owe</em><strong>₱112,896</strong></div></div><div class="cb"><div class="card"><div class="r1"><b>Metro Steel Co.</b><strong>₱112,896</strong></div><div class="st"><span class="pill p-y">Waiting for your OK · ₱30,800</span><span class="pill p-g">Due Dec 2</span></div><div class="btns"><span class="pri">Pay</span><span>Open order</span></div></div></div></div>`;
+$('#pairs').innerHTML = OPTS.map(([c, t, a, b, d, r]) => `<div class="opt"><h3>${t} <span class="sw"><i style="background:${a}"></i><i style="background:${b}"></i></span>${r ? ' <span class="rec">My pick</span>' : ''}</h3><p>${d}</p><div class="pair">${sellCol}${buyCol(c)}</div></div>`).join('');
+const IC = {ord:'<rect x="1.5" y="7" width="13" height="10" rx="1"/><path d="M14.5 10H19l3 3.5V17h-7.5z"/>', mon:'<circle cx="12" cy="12" r="9"/><path d="M12 3v9l6 3"/>', sale:'<rect x="4" y="4" width="16" height="16" rx="2"/>', chk:'<path d="M9 11l3 3 8-8"/><rect x="3" y="3" width="18" height="18" rx="2"/>', fol:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/>', truck:'<rect x="1.5" y="7" width="13" height="10" rx="1"/><path d="M14.5 10H19l3 3.5V17h-7.5z"/>', bank:'<path d="M3 21h18M3 10h18M5 6l7-3 7 3M6 10v8M10 10v8M14 10v8M18 10v8"/>', team:'<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/>'};
+const sv = k => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${IC[k]}</svg>`;
+const MENU = [['m','MONEY','Money', [['mon','Money overview',5],['sale','Sales'],['chk','To check',3]]], ['s','SELLING & DELIVERY','Selling & delivery', [['fol','Follow-ups',2],['truck','Deliveries']]], ['c','CHECKS, TAXES & TEAM','Checks, taxes & team', [['chk','Checks'],['bank','Bank & deposits'],['team','Team',2]]]];
+const H = [['h1','1. Black capitals with a green bar',true,'Bold black capitals with a short green bar on the left. Clean and unmistakable.'],['h2','2. Each section its own color',false,'Money in green, Selling in blue, Checks in brown. You find a section by its color.'],['h3','3. Light gray band',false,'Each heading sits on a soft gray band, like a divider. Very clear separation.'],['h4','4. Bigger title with a line above',false,'Larger, normal-case heading with a thin line above it. Calm, like a document.'],['h5','5. Colored icon chip',false,'A small colored icon square before each heading. Friendly and quick to spot.']];
+const ICH = {m:'₱', s:'➜', c:'✓'};
+$('#heads2').innerHTML = H.map(([c, t, r, d]) => `<div class="hcard ${c}"><h3>${t}${r ? ' <span class="rec">My pick</span>' : ''}</h3><div class="side">${MENU.map(([k, caps, title, items]) => `<div class="hd ${k}">${c === 'h5' ? `<i>${ICH[k]}</i>` : ''}${c === 'h4' ? title : caps}</div>${items.map(i => `<div class="it">${sv(i[0])}${i[1]}${i[2] ? `<span class="n">${i[2]}</span>` : ''}</div>`).join('')}`).join('')}</div><p>${d}</p></div>`).join('');
+</script></body></html>

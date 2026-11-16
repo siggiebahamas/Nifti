@@ -1,0 +1,45 @@
+plugins { id 'com.android.application' }
+
+// Signing key stays off GitHub. Point NIFTI_KEYSTORE at it (see android/README.md) to make an installable release.
+def ks = System.getenv('NIFTI_KEYSTORE')
+
+android {
+    namespace 'ph.nifti.app'
+    compileSdk 36
+    defaultConfig {
+        applicationId 'ph.nifti.app'
+        minSdk 26
+        targetSdk 36
+        versionCode 1
+        versionName '1.0'
+    }
+    signingConfigs {
+        release {
+            if (ks) {
+                storeFile file(ks)
+                storePassword System.getenv('NIFTI_KEYSTORE_PASS')
+                keyAlias System.getenv('NIFTI_KEY_ALIAS') ?: 'nifti'
+                keyPassword System.getenv('NIFTI_KEY_PASS') ?: System.getenv('NIFTI_KEYSTORE_PASS')
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            if (ks) signingConfig signingConfigs.release
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    buildFeatures { buildConfig true }
+    lint { abortOnError false; checkReleaseBuilds false }
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.json:json:20240303'
+}

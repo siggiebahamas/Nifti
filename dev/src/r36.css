@@ -1,0 +1,55 @@
+/* ===== Round 36 ===== */
+/* soft red count pills: every count in the left menu, folded section headings, phone menus and page tabs */
+html[data-ty] #view-app .nav-badge, html[data-ty] #view-app .nav-item.active .nav-badge, #view-app .nav-badge,
+html[data-ty] #view-app .sidebar .nav-item .nav-badge, html[data-ty] #view-app .sidebar .nav-item[data-page="messages"] .nav-badge,
+html[data-ty] .sidebar .nf20-nav button.nf20-h .nf26-n, .sidebar .nf20-nav button.nf20-h .nf26-n,
+html[data-ty] .sidebar .nf26-help em, .sidebar .nf26-help em,
+html[data-ty] #view-app .team-tab-count, html[data-ty] #view-app .sl-n:not(.soft), html[data-ty] #view-app .bnav-item .nav-badge,
+html[data-ty] #moreSheet .nav-badge, #moreSheet .nfm-it em{
+  background:#FEF3F2 !important;color:#B42318 !important;border:1px solid #FECDCA !important;font-weight:800 !important;font-style:normal !important;
+  min-width:24px !important;height:22px !important;padding:0 7px !important;border-radius:999px !important;display:inline-grid !important;place-items:center !important;font-size:12.5px !important;line-height:1 !important;box-shadow:none !important;}
+html[data-ty] #view-app .nav-item.active .nav-badge{background:#FFFFFF !important;border-color:#FDA29B !important;}
+.sidebar .nf20-nav button.nf20-h .nf26-n[hidden]{display:none !important;}
+.team-tab-count:empty, .sl-n:empty{display:none !important;}
+/* wide summary boxes: details on the right */
+html[data-ty] #view-app :is(.sl-tile,.bk-tile).nf36-wide{display:grid !important;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto auto;column-gap:18px;align-items:center;}
+html[data-ty] #view-app .sl-tile.nf36-wide > small, html[data-ty] #view-app .bk-tile.nf36-wide > .bk-tile-l{grid-column:1;grid-row:1;}
+html[data-ty] #view-app .sl-tile.nf36-wide > b, html[data-ty] #view-app .bk-tile.nf36-wide > .bk-tile-v{grid-column:1;grid-row:2;}
+html[data-ty] #view-app .sl-tile.nf36-wide > span, html[data-ty] #view-app .bk-tile.nf36-wide > .bk-tile-s{grid-column:2;grid-row:1 / span 2;justify-self:end;text-align:right;font-size:15.5px !important;font-weight:700 !important;line-height:1.45;max-width:46cqi;}
+html[data-ty] #view-app :is(.sl-tile,.bk-tile).nf36-wide > span i{display:block;font-style:normal;}
+/* Find customers: clean lead cards */
+#view-app .nf36f-tools{display:flex;gap:10px;flex-wrap:wrap;margin:4px 0 16px;}
+#view-app .nf36f-tools input{flex:1 1 280px;min-width:0;height:48px;border-radius:12px;border:1.5px solid #D0D5DD;padding:0 14px;font:inherit;font-size:16px;}
+#view-app .nf36f-tools select{height:48px;border-radius:12px;border:1.5px solid #D0D5DD;padding:0 12px;font:inherit;font-size:15.5px;background:#FFFFFF;color:#0B0F14;}
+#view-app .nf36f-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;}
+#view-app .nf36f-card{border:1px solid #E4E7EC;border-radius:18px;padding:18px;display:grid;gap:12px;align-content:start;background:#FFFFFF;transition:box-shadow .15s;}
+#view-app .nf36f-card:hover{box-shadow:0 14px 30px -18px rgba(16,24,40,.35);}
+#view-app .nf36f-hd{display:flex;gap:12px;align-items:center;} #view-app .nf36f-hd b{display:block;font-size:18px;line-height:1.25;color:#0B0F14;} #view-app .nf36f-hd small{display:block;font-size:14.5px;color:#0B0F14;}
+#view-app .nf36f-av{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;color:#FFFFFF;font-weight:800;font-size:16px;flex:none;}
+#view-app .nf36f-src{justify-self:start;font-size:12.5px;font-weight:800;border-radius:999px;padding:3px 10px;background:#EAF6EF;color:#14532D;}
+#view-app .nf36f-money{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;padding:12px 14px;border-radius:14px;background:#F0FAF4;}
+#view-app .nf36f-money b{font-size:28px;font-weight:800;color:#14532D;line-height:1.1;} #view-app .nf36f-money span{font-size:14.5px;font-weight:700;color:#0B0F14;}
+#view-app .nf36f-buys{font-size:15.5px;color:#0B0F14;line-height:1.5;} #view-app .nf36f-buys strong{color:#14532D;}
+#view-app .nf36f-why{font-size:14.5px;background:#F9FAFB;border-radius:12px;padding:10px 12px;color:#0B0F14;}
+#view-app .nf36f-acts{display:flex;gap:8px;flex-wrap:wrap;} #view-app .nf36f-acts .btn{flex:1 1 auto;min-height:44px;}
+#view-app .nf36f-google{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr) auto auto;gap:10px;align-items:center;margin-top:18px;padding:16px;border-radius:16px;background:#EFF6FF;border:1px solid #BFDBFE;}
+#view-app .nf36f-google b{display:block;font-size:16.5px;color:#0B0F14;} #view-app .nf36f-google small{display:block;font-size:14px;color:#0B0F14;}
+#view-app .nf36f-google input{height:46px;border-radius:12px;border:1.5px solid #BFDBFE;padding:0 12px;font:inherit;font-size:15.5px;min-width:0;}
+#view-app .nf36f-google .btn{min-height:46px;white-space:nowrap;}
+@media (max-width:900px){ #view-app .nf36f-google{grid-template-columns:1fr;} #view-app .nf36f-grid{grid-template-columns:1fr;} }
+.nf36-mapps{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;} .nf36-mapps .btn{flex:1 1 120px;min-height:46px;justify-content:center;text-align:center;}
+/* Team: undo, history */
+.nf36-undo{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:9999;display:flex;align-items:center;gap:14px;background:#101828;color:#FFFFFF;border-radius:14px;padding:12px 16px;font-size:15px;font-weight:600;box-shadow:0 14px 34px -12px rgba(16,24,40,.5);max-width:calc(100vw - 32px);}
+.nf36-undo button{border:0;background:transparent;color:#86EFAC;font:inherit;font-weight:900;cursor:pointer;padding:4px 6px;}
+@media (max-width:900px){ .nf36-undo{bottom:86px;} }
+#page-team .nf36-tbar{display:flex;justify-content:flex-end;margin:-6px 0 10px;}
+#page-team .nf36-tbar button{border:1.5px solid #D0D5DD;background:#FFFFFF;border-radius:999px;padding:7px 14px;font:inherit;font-size:14.5px;font-weight:700;color:#0B0F14;cursor:pointer;}
+.nf36-hist{display:grid;gap:10px;} .nf36-hist h4{margin:6px 0 0;font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#0B0F14;}
+.nf36-hrow{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px;border:1px solid #E4E7EC;border-radius:12px;}
+.nf36-hrow b{display:block;font-size:15.5px;color:#0B0F14;} .nf36-hrow small{display:block;font-size:13.5px;color:#0B0F14;}
+.nf36-none{margin:0;font-size:14px;color:#0B0F14;}
+.nf36-ev{display:grid;max-height:320px;overflow-y:auto;border:1px solid #EAECF0;border-radius:12px;}
+.nf36-ev > div{display:flex;justify-content:space-between;gap:10px;padding:8px 12px;font-size:14.5px;color:#0B0F14;} .nf36-ev > div + div{border-top:1px solid #F2F4F7;} .nf36-ev small{white-space:nowrap;font-size:13px;}
+/* section heading counts show only while a section is folded (open sections already show each count) */
+html[data-ty] .sidebar .nf20-nav .nf20-g:not(.folded) > button.nf20-h .nf26-n, .sidebar .nf20-nav .nf20-g:not(.folded) > button.nf20-h .nf26-n,
+html[data-ty] .sidebar .nf20-nav button.nf20-h .nf26-n[hidden], .sidebar .nf20-nav button.nf20-h .nf26-n:empty{display:none !important;}

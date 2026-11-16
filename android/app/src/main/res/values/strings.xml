@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="screen_reader_desc">Lets Nifti read new messages in the Viber chat you have open on screen, because Viber shows no notification for an open chat. It only looks at Viber, never types anything except a reply you wrote in Nifti, and only for chats you linked to a customer or supplier. Turn it off here anytime.</string>
+</resources>
