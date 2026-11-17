@@ -62,7 +62,10 @@ function nf30Drawer(page){
   if(!box){ box = document.createElement('div'); box.id = 'nf30Day'; box.className = 'nf30-day'; }
   if(box.previousElementSibling !== cal) cal.insertAdjacentElement('afterend', box);
   const key = NF30C.day + '|' + JSON.stringify(mhCounts()[NF30C.day] ? mhCounts()[NF30C.day].diff : 'x') + '|' + (BK.expenses || []).length;
-  const grid = page.querySelector('#bkCashBody .cc-grid'), form0 = NF30C.form || page.querySelector('#bkCashBody .cc-form') || box.querySelector('.cc-form'); if(form0) NF30C.form = form0;
+  const grid = page.querySelector('#bkCashBody .cc-grid'), fresh = page.querySelector('#bkCashBody .cc-form'), form0 = fresh || NF30C.form || box.querySelector('.cc-form');
+  // a redraw of the count section makes a new form: use it and drop the old copy, so the form never shows twice
+  if(fresh && NF30C.form && NF30C.form !== fresh) NF30C.form.remove();
+  if(form0) NF30C.form = form0;
   if(box.dataset.k !== key){ if(NF30C.form && grid && box.contains(NF30C.form)){ grid.appendChild(NF30C.form); } box.dataset.k = key; box.innerHTML = nf30DayHtml(NF30C.day); }
   // today, not counted: the count form sits right here
   const host = box.querySelector('#nf30FormHost'), form = NF30C.form;
@@ -73,5 +76,5 @@ function nf30Drawer(page){
   nf26AfterPass = function(page){ base(page); if(!page || page.id !== 'page-sales') return; try{ nf30Pills(page); nf30Drawer(page); }catch(e){ console.warn('nf30', e); } };
   window.nf26AfterPass = nf26AfterPass;
   const sv = window.renderCashCountPage;
-  if(typeof sv === 'function' && !sv._nf30){ const w = function(){ const r = sv.apply(this, arguments); const box = document.getElementById('nf30Day'); if(box) box.dataset.k = ''; return r; }; w._nf30 = true; window.renderCashCountPage = w; try{ renderCashCountPage = w; }catch(e){} }
+  if(typeof sv === 'function' && !sv._nf30){ const w = function(){ const r = sv.apply(this, arguments); const box = document.getElementById('nf30Day'); if(box) box.dataset.k = ''; const pg = document.getElementById('page-sales'); if(pg && pg.classList.contains('active') && BK.loaded){ try{ nf30Drawer(pg); }catch(e){} } return r; }; w._nf30 = true; window.renderCashCountPage = w; try{ renderCashCountPage = w; }catch(e){} }
 })();

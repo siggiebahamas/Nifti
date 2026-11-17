@@ -36,11 +36,12 @@ function nf27Drawer(page){
     const m = t.match(/([−\-+])\s*₱([\d,]+)/); if(m){ counted++; const n = Number(m[2].replace(/,/g, '')); if(m[1] === '+'){ over += n; overN++; } else { short += n; shortN++; } }
     else if(/match|✓/i.test(t)){ ok++; counted++; } });
   const key = [short, shortN, over, overN, ok].join('|'); let box = d.querySelector('.nf27-sum');
-  if(box && box.dataset.k === key && box.previousElementSibling === cal) return;
+  const after = d.querySelector('#nf30Day') || cal; // the day panel sits under the calendar; this summary goes under it
+  if(box && box.dataset.k === key && box.previousElementSibling === after) return;
   if(!box){ box = document.createElement('div'); box.className = 'nf27-sum'; }
   box.dataset.k = key; const dd = n => `${n} day${n === 1 ? '' : 's'}`;
   box.innerHTML = `<div class="r"><em>SHORT</em><b>${shortN ? '−' + bkPeso(short) : '₱0'}</b><span>${dd(shortN)}</span></div><div class="y"><em>OVER</em><b>${overN ? '+' + bkPeso(over) : '₱0'}</b><span>${dd(overN)}</span></div><div class="g"><em>MATCHED</em><b>${dd(ok)}</b><span>of ${counted} counted</span></div>`;
-  cal.insertAdjacentElement('afterend', box);
+  if(box.previousElementSibling !== after) after.insertAdjacentElement('afterend', box);
 }
 /* ---------- Phone: put Nifti on the home screen ---------- */
 function nf27Install(page){

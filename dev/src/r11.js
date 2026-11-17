@@ -58,7 +58,7 @@ function nfIssuesColour(){
     if(!c.classList.contains('nfk-' + k)){ c.classList.remove('nfk-r', 'nfk-y', 'nfk-b', 'nfk-g'); c.classList.add('nfk-' + k); } });
   let lg = pg.querySelector('.nf-iss-key'); const html = Object.keys(n).map(k => `<span class="k-${k}${n[k] ? '' : ' z'}"><i></i>${NF_ISS_NAME[k]}<b>${n[k]}</b></span>`).join('');
   if(!lg){ lg = document.createElement('div'); lg.className = 'nf-iss-key'; const first = cards[0].parentElement; first.insertBefore(lg, cards[0]); }
-  if(lg.innerHTML !== html) lg.innerHTML = html;
+  if(lg.dataset.k !== html){ lg.dataset.k = html; lg.innerHTML = html; } // compare with what we wrote, not with the page (other passes touch it)
 }
 
 /* ---------- 3. Check payments: grouped by what happens next, one button at most ---------- */

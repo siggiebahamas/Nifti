@@ -9,6 +9,120 @@
 <meta name="google-site-verification" content="lyVSavrV_KaQEk2IS4PTKTQatvityIFRm7unf7ulgAs">
 <link rel="canonical" href="https://siggiebahamas.github.io/Nifti/">
 <!-- Google Analytics (GA4) -->
+<script>
+/* ---------- 1. Paint once per click ----------
+   Pages are drawn by a base renderer and then finished by later passes (plain words, sizes, extra sections) that were
+   scheduled with short timers. Each timer painted a half-finished page, so words changed, text vanished and sizes jumped.
+   While a click, change or back/forward is being handled, short timers are collected and run right away, in order, in
+   the same task. The browser then paints only the finished page. Long timers (toasts, polling) are left alone. */
+const NF43P = {on: false, q: [], seq: 0, now: 0, per: new Map(), rt: window.setTimeout.bind(window), rc: window.clearTimeout.bind(window), max: 800, runs: 0};
+window.NF43P = NF43P;
+(function(){
+  if(window.__nf43Paint) return; window.__nf43Paint = true;
+  const realST = NF43P.rt, realCT = NF43P.rc;
+  window.setTimeout = function(fn, d){
+    const ms = Math.max(0, Number(d) || 0);
+    if(NF43P.on && typeof fn === 'function' && ms <= NF43P.max){
+      const id = 'nf43_' + (++NF43P.seq);
+      NF43P.q.push({id, fn, args: Array.prototype.slice.call(arguments, 2), at: NF43P.now + ms, seq: NF43P.seq});
+      return id;
+    }
+    return realST.apply(window, arguments);
+  };
+  window.clearTimeout = function(id){
+    if(typeof id === 'string' && id.indexOf('nf43_') === 0){ NF43P.q = NF43P.q.filter(x => x.id !== id); return; }
+    return realCT(id);
+  };
+  // Run the collected timers in the order the clock would have run them, then give observers a few microtask turns
+  // to react; repeat until nothing new arrives. It all happens in microtasks, so the browser cannot paint in between.
+  function runQueue(){
+    let n = 0;
+    while(NF43P.q.length && n < 150){
+      NF43P.q.sort((a, b) => a.at - b.at || a.seq - b.seq);
+      const t = NF43P.q.shift(); NF43P.now = t.at; n++; NF43P.runs++;
+      const c = (NF43P.per.get(t.fn) || 0) + 1; NF43P.per.set(t.fn, c);
+      // a timer that keeps re-arming itself (a poll) goes back to the real clock
+      if(c > 6){ (NF43P.def = NF43P.def || []).push((t.fn.name || String(t.fn).slice(0, 60)) + ' x' + c); realST(() => { try{ t.fn.apply(window, t.args); }catch(e){ console.warn(e); } }, 50); continue; }
+      try{ t.fn.apply(window, t.args); }catch(e){ console.warn('nf43 timer', e); }
+    }
+    return n;
+  }
+  function step(idle){
+    if(!NF43P.on) return;
+    const n = runQueue();
+    if(NF43P.runs > 400){ (NF43P.def = NF43P.def || []).push('CAP ' + NF43P.q.length + ' left'); finish(); return; }
+    idle = n ? 0 : idle + 1;
+    if(idle >= 3) finish(); else Promise.resolve().then(() => step(idle));
+  }
+  function finish(){
+    // menu counts show or hide in the same paint as the page, not on the next sweep
+    try{ if(typeof nf37Sweep === 'function') nf37Sweep(); }catch(e){}
+    NF43P.on = false; NF43P.runs = 0; NF43P.per = new Map();
+    const base = NF43P.now, left = NF43P.q; NF43P.q = []; NF43P.now = 0;
+    left.forEach(t => realST(() => { try{ t.fn.apply(window, t.args); }catch(e){ console.warn(e); } }, Math.max(0, t.at - base)));
+  }
+  function start(){ if(NF43P.on) return; NF43P.on = true; NF43P.runs = 0; NF43P.now = 0; NF43P.per = new Map(); Promise.resolve().then(() => step(0)); }
+  NF43P.start = start;
+  ['click', 'change', 'submit', 'popstate', 'hashchange'].forEach(ev => window.addEventListener(ev, start, true));
+  // Any redraw starts the same guard the moment it begins, so timers it sets up are caught too
+  // (redraws also come from background sweeps and observers, not only from clicks).
+  const hook = (proto, prop) => { const d = Object.getOwnPropertyDescriptor(proto, prop); if(!d || !d.set) return;
+    Object.defineProperty(proto, prop, {configurable: true, enumerable: d.enumerable, get: d.get, set(v){ if(!NF43P.on && this.isConnected) start(); return d.set.call(this, v); }}); };
+  hook(Element.prototype, 'innerHTML'); hook(Element.prototype, 'outerHTML');
+  const iah = Element.prototype.insertAdjacentHTML;
+  Element.prototype.insertAdjacentHTML = function(){ if(!NF43P.on && this.isConnected) start(); return iah.apply(this, arguments); };
+  // Passes that run from animation frames or page observers open the same guard, so the timers they set run before paint
+  // A pass asked for "next frame" while this frame's passes are still running would show the page half-done for one
+  // frame. Those requests run right away in this frame instead (once per function, so animation loops still wait).
+  const rAF = window.requestAnimationFrame.bind(window), cAF = window.cancelAnimationFrame.bind(window);
+  let stage = false, stageRan = new Set(), fake = 0; const dead = new Set();
+  window.requestAnimationFrame = function(cb){
+    if(stage && typeof cb === 'function' && !stageRan.has(cb)){
+      stageRan.add(cb); const id = -(++fake);
+      Promise.resolve().then(() => { if(dead.has(id)) return; start(); try{ cb(performance.now()); }catch(e){ console.warn(e); } });
+      return id;
+    }
+    return rAF(function(t){
+      if(!stage){ stage = true; realST(() => { stage = false; stageRan = new Set(); dead.clear(); }, 0); }
+      stageRan.add(cb); start(); return cb(t);
+    });
+  };
+  window.cancelAnimationFrame = function(id){ if(id < 0){ dead.add(id); return; } return cAF(id); };
+  const RealMO = window.MutationObserver;
+  window.MutationObserver = function(cb){ return new RealMO(function(recs, obs){ start(); return cb.call(this, recs, obs); }); };
+  window.MutationObserver.prototype = RealMO.prototype;
+  // Writes that change nothing are skipped. Several passes re-set the same class or the same text on every run; each
+  // such write still woke the page observers, which ran the passes again, forever (about 10 times a second).
+  const TL = DOMTokenList.prototype, tAdd = TL.add, tRem = TL.remove, tTog = TL.toggle;
+  TL.add = function(){ for(let i = 0; i < arguments.length; i++){ if(!this.contains(arguments[i])) return tAdd.apply(this, arguments); } };
+  TL.remove = function(){ for(let i = 0; i < arguments.length; i++){ if(this.contains(arguments[i])) return tRem.apply(this, arguments); } };
+  TL.toggle = function(tok, force){ if(force !== undefined){ const has = this.contains(tok); if(!!force === has) return has; } return tTog.apply(this, arguments); };
+  const sA = Element.prototype.setAttribute;
+  Element.prototype.setAttribute = function(n, v){ if(this.getAttribute(n) === String(v)) return; return sA.call(this, n, v); };
+  const cn = Object.getOwnPropertyDescriptor(Element.prototype, 'className');
+  Object.defineProperty(Element.prototype, 'className', {configurable: true, enumerable: cn.enumerable, get: cn.get, set(v){ if(cn.get.call(this) === String(v)) return; return cn.set.call(this, v); }});
+  const tc = Object.getOwnPropertyDescriptor(Node.prototype, 'textContent');
+  Object.defineProperty(Node.prototype, 'textContent', {configurable: true, enumerable: tc.enumerable, get: tc.get, set(v){
+    const sv = v == null ? '' : String(v);
+    if(this.nodeType === 1){ const c = this.childNodes; if((c.length === 1 && c[0].nodeType === 3 && c[0].data === sv) || (c.length === 0 && sv === '')) return; }
+    else if(this.nodeType === 3 && this.data === sv) return;
+    return tc.set.call(this, v); }});
+  function wrapNav(){
+    const nav = window.navigate;
+    if(typeof nav !== 'function' || nav._nf43) return;
+    // Some finishing passes only worked because the old endless loop re-ran them. After a page switch the page is
+    // nudged twice more inside the same paint, so those passes get their second run before anything shows.
+    const poke = () => { const pg = [...document.querySelectorAll('[id^="page-"]')].find(e => e.classList.contains('active')) || document.getElementById('view-app'); if(!pg) return; const c = document.createComment('nf43'); pg.appendChild(c); c.remove(); };
+    const w = function(){ start(); const out = nav.apply(this, arguments);
+      [850, 1700].forEach(ms => NF43P.q.push({id: 'nf43_' + (++NF43P.seq), fn: poke, args: [], at: NF43P.now + ms, seq: NF43P.seq}));
+      return out; };
+    Object.keys(nav).forEach(k => { w[k] = nav[k]; }); w._nf43 = true;
+    window.navigate = w; try{ navigate = w; }catch(e){}
+  }
+  wrapNav(); window.addEventListener('load', () => { wrapNav(); realST(wrapNav, 1500); realST(wrapNav, 4000); });
+})();
+
+</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EXT9VX5NX9"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -10163,6 +10277,12 @@ html body #nf41Imp#nf41Imp#nf41Imp .nf42-t .r{text-align:right !important;}
   #page-team .nf39-card, #page-team .nf33t-col, #page-team .nf33t-list{min-width:0;}
   #page-team .nf39-card{overflow-wrap:anywhere;}
 }
+
+
+/* ===== Round 43 css ===== */
+/* ===== Round 43 css ===== */
+/* Stock: the grey summary line under the boxes repeated the boxes and came and went between visits */
+#inventoryMainView .nf18-sinfo{display:none !important;}
 
   .settings-card:empty{display:none;}
   #supplierChips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;} #supplierChips .chip{flex-shrink:0;}
@@ -29466,7 +29586,7 @@ function nfIssuesColor(){
     if(!c.classList.contains('nfk-' + k)){ c.classList.remove('nfk-r', 'nfk-y', 'nfk-b', 'nfk-g'); c.classList.add('nfk-' + k); } });
   let lg = pg.querySelector('.nf-iss-key'); const html = Object.keys(n).map(k => `<span class="k-${k}${n[k] ? '' : ' z'}"><i></i>${NF_ISS_NAME[k]}<b>${n[k]}</b></span>`).join('');
   if(!lg){ lg = document.createElement('div'); lg.className = 'nf-iss-key'; const first = cards[0].parentElement; first.insertBefore(lg, cards[0]); }
-  if(lg.innerHTML !== html) lg.innerHTML = html;
+  if(lg.dataset.k !== html){ lg.dataset.k = html; lg.innerHTML = html; } // compare with what we wrote, not with the page (other passes touch it)
 }
 
 /* ---------- 3. Check payments: grouped by what happens next, one button at most ---------- */
@@ -35863,11 +35983,12 @@ function nf27Drawer(page){
     const m = t.match(/([−\-+])\s*₱([\d,]+)/); if(m){ counted++; const n = Number(m[2].replace(/,/g, '')); if(m[1] === '+'){ over += n; overN++; } else { short += n; shortN++; } }
     else if(/match|✓/i.test(t)){ ok++; counted++; } });
   const key = [short, shortN, over, overN, ok].join('|'); let box = d.querySelector('.nf27-sum');
-  if(box && box.dataset.k === key && box.previousElementSibling === cal) return;
+  const after = d.querySelector('#nf30Day') || cal; // the day panel sits under the calendar; this summary goes under it
+  if(box && box.dataset.k === key && box.previousElementSibling === after) return;
   if(!box){ box = document.createElement('div'); box.className = 'nf27-sum'; }
   box.dataset.k = key; const dd = n => `${n} day${n === 1 ? '' : 's'}`;
   box.innerHTML = `<div class="r"><em>SHORT</em><b>${shortN ? '−' + bkPeso(short) : '₱0'}</b><span>${dd(shortN)}</span></div><div class="y"><em>OVER</em><b>${overN ? '+' + bkPeso(over) : '₱0'}</b><span>${dd(overN)}</span></div><div class="g"><em>MATCHED</em><b>${dd(ok)}</b><span>of ${counted} counted</span></div>`;
-  cal.insertAdjacentElement('afterend', box);
+  if(box.previousElementSibling !== after) after.insertAdjacentElement('afterend', box);
 }
 /* ---------- Phone: put Nifti on the home screen ---------- */
 function nf27Install(page){
@@ -36115,7 +36236,10 @@ function nf30Drawer(page){
   if(!box){ box = document.createElement('div'); box.id = 'nf30Day'; box.className = 'nf30-day'; }
   if(box.previousElementSibling !== cal) cal.insertAdjacentElement('afterend', box);
   const key = NF30C.day + '|' + JSON.stringify(mhCounts()[NF30C.day] ? mhCounts()[NF30C.day].diff : 'x') + '|' + (BK.expenses || []).length;
-  const grid = page.querySelector('#bkCashBody .cc-grid'), form0 = NF30C.form || page.querySelector('#bkCashBody .cc-form') || box.querySelector('.cc-form'); if(form0) NF30C.form = form0;
+  const grid = page.querySelector('#bkCashBody .cc-grid'), fresh = page.querySelector('#bkCashBody .cc-form'), form0 = fresh || NF30C.form || box.querySelector('.cc-form');
+  // a redraw of the count section makes a new form: use it and drop the old copy, so the form never shows twice
+  if(fresh && NF30C.form && NF30C.form !== fresh) NF30C.form.remove();
+  if(form0) NF30C.form = form0;
   if(box.dataset.k !== key){ if(NF30C.form && grid && box.contains(NF30C.form)){ grid.appendChild(NF30C.form); } box.dataset.k = key; box.innerHTML = nf30DayHtml(NF30C.day); }
   // today, not counted: the count form sits right here
   const host = box.querySelector('#nf30FormHost'), form = NF30C.form;
@@ -36126,7 +36250,7 @@ function nf30Drawer(page){
   nf26AfterPass = function(page){ base(page); if(!page || page.id !== 'page-sales') return; try{ nf30Pills(page); nf30Drawer(page); }catch(e){ console.warn('nf30', e); } };
   window.nf26AfterPass = nf26AfterPass;
   const sv = window.renderCashCountPage;
-  if(typeof sv === 'function' && !sv._nf30){ const w = function(){ const r = sv.apply(this, arguments); const box = document.getElementById('nf30Day'); if(box) box.dataset.k = ''; return r; }; w._nf30 = true; window.renderCashCountPage = w; try{ renderCashCountPage = w; }catch(e){} }
+  if(typeof sv === 'function' && !sv._nf30){ const w = function(){ const r = sv.apply(this, arguments); const box = document.getElementById('nf30Day'); if(box) box.dataset.k = ''; const pg = document.getElementById('page-sales'); if(pg && pg.classList.contains('active') && BK.loaded){ try{ nf30Drawer(pg); }catch(e){} } return r; }; w._nf30 = true; window.renderCashCountPage = w; try{ renderCashCountPage = w; }catch(e){} }
 })();
 
 /* ===== Round 31: clear colors on every summary box, money coming up you can open, red unread counts, a calmer menu foot ===== */
@@ -39373,6 +39497,9 @@ function nf42TickSure(){ NB.lines.forEach(l => { if(!l.skipped && l.sure && !l.e
   };
   window.nf22NbPaint = nf22NbPaint;
 })();
+
+/* ===== Round 43: paint once per click, header pills, popups, page fixes ===== */
+
 
 function renderSidebarForViewAsRole(){
   const allowed = computeAllowedPages(getEffectiveRoles());
