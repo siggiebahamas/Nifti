@@ -1,0 +1,108 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>To Check Layouts</title><meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap">
+<style>
+:root{--ink:#0B0F14;--sub:#344054;--line:#E4E7EC;--g:#1F6B45;--bg:#F7F8FA}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#F7F8FA}}
+:root[data-theme="dark"]{--bg:#F7F8FA}
+*{box-sizing:border-box}html,body{margin:0}body{font:16px/1.5 "Plus Jakarta Sans",system-ui,sans-serif;color:var(--ink);background:var(--bg)}
+.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}.tin{max-width:1240px;margin:0 auto;padding:12px 20px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.tin a{color:var(--g);font-weight:700;text-decoration:none;font-size:14px}.tin h1{margin:0;font-size:18px;flex:1}
+.wrap{max-width:1240px;margin:0 auto;padding:24px 20px 80px;display:grid;gap:40px}
+h2{margin:0 0 4px;font-size:24px}.lead{margin:0 0 14px;font-size:16px;color:var(--sub);max-width:860px}
+.tag{display:inline-block;border-radius:999px;padding:2px 10px;font-size:14px;font-weight:800}
+.rec{background:var(--g);color:#fff}
+.opt{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.opt>header{padding:16px 20px;border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;flex-wrap:wrap}.opt>header h3{margin:0;font-size:18px;flex:1;min-width:220px}
+.opt>footer{padding:12px 20px;border-top:1px solid var(--line);background:#FCFCFD;font-size:16px;color:var(--sub)}
+.stage{padding:18px;background:#F2F4F7;overflow-x:auto}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;min-width:880px}
+.fil{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:12px 14px;border-bottom:1px solid var(--line)}
+.chip{border:1.5px solid #D0D5DD;border-radius:999px;padding:5px 12px;font-size:14px;font-weight:700;background:#fff;display:inline-flex;gap:6px;align-items:center}
+.chip.on{border-color:var(--g);background:#E7F3EC;color:#14532D}
+.chip i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.sep{width:1px;height:24px;background:var(--line)}
+table{width:100%;border-collapse:collapse}
+th{font-size:14px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--sub);background:#F9FAFB;padding:10px 12px;border-bottom:1px solid var(--line);text-align:center}
+th:first-child{text-align:left}
+td{padding:12px;border-bottom:1px solid #F2F4F7;text-align:center;vertical-align:middle}
+td:first-child{text-align:left}
+.pt{display:grid;gap:2px}.pt b{font-size:16px}.pt small{font-size:14px;color:var(--sub)}
+.k{display:inline-block;border-radius:999px;padding:2px 10px;font-size:14px;font-weight:800;min-width:110px}
+.k.money{background:#FDECEC;color:#9F1D14}.k.stock{background:#FFF5C2;color:#713F12}.k.paper{background:#E1EDFA;color:#1A4F8C}.k.price{background:#F2F4F7;color:#344054}
+.who{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:16px}
+.av{width:30px;height:30px;border-radius:50%;display:inline-grid;place-items:center;color:#fff;font-size:14px;font-weight:800}
+.assign{border:1.5px dashed #D0D5DD;border-radius:999px;padding:4px 12px;font-size:14px;font-weight:800;color:var(--sub);background:#fff}
+.st{display:inline-flex;align-items:center;gap:6px;border:1.5px solid #D0D5DD;border-radius:10px;padding:5px 10px;font-size:14px;font-weight:800;background:#fff}
+.st i{width:9px;height:9px;border-radius:50%}
+.btn{border:1.5px solid #D0D5DD;background:#fff;border-radius:10px;padding:7px 14px;font-weight:800;font-size:14px;font-family:inherit}
+.btn.p{background:var(--g);border-color:var(--g);color:#fff}
+.amt{font-weight:800;font-variant-numeric:tabular-nums}
+.age{font-size:14px;font-weight:700;color:var(--sub)}
+.stripe{box-shadow:inset 4px 0 0 var(--c)}
+.exp td{background:#FCFCFD;text-align:left}
+.ev{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.ev div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:14px}
+.ev b{display:block;font-size:14px;text-transform:uppercase;letter-spacing:.04em;color:var(--sub);margin-bottom:2px}
+.split{display:grid;grid-template-columns:400px minmax(0,1fr);min-height:460px}
+.list{border-right:1px solid var(--line)}
+.li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;padding:12px 14px;border-bottom:1px solid #F2F4F7;box-shadow:inset 4px 0 0 var(--c)}
+.li.on{background:#F0F8F3}
+.li b{font-size:16px}.li small{font-size:14px;color:var(--sub);display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.det{padding:18px 20px;display:grid;gap:14px;align-content:start}
+.det h4{margin:0;font-size:18px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.tl{display:grid;gap:8px;border-left:2px solid var(--line);padding-left:14px;font-size:14px}
+.tl span{color:var(--sub)}
+.board{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;padding:14px}
+.col{background:#F9FAFB;border:1px solid var(--line);border-radius:14px;padding:10px;display:grid;gap:10px;align-content:start}
+.col h5{margin:0;font-size:16px;display:flex;justify-content:space-between}
+.bc{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:grid;gap:6px;box-shadow:inset 4px 0 0 var(--c)}
+.bc b{font-size:16px;line-height:1.3}
+.bc .row{justify-content:space-between}
+@media (max-width:760px){.wrap{padding:18px 16px 60px}.tin{padding:10px 16px}}
+</style></head><body>
+<div class="top"><div class="tin"><a href="../index.html">← Design lab</a><h1>To check: 3 new ways</h1></div></div>
+<div class="wrap">
+<section><h2>What changed from last time</h2><p class="lead">More detail where it helps: who is in charge of each problem, how long it has been open, how much money, and what kind it is. No "next step" line. Each row opens to show what happened and the proof. Pick one and tell me.</p></section>
+
+<section class="opt"><header><h3>A. Table you can open</h3><span class="tag rec">My pick</span></header>
+<div class="stage"><div class="card" id="A"></div></div>
+<footer>Best when there are many problems. Everything fits in one row; tap a row to see what happened and the proof. Assign and status change right in the row.</footer></section>
+
+<section class="opt"><header><h3>B. List and details side by side</h3></header>
+<div class="stage"><div class="card" id="B"></div></div>
+<footer>Best for working through problems one by one: the list stays on the left, the full story and buttons on the right. On a phone the details open as a full screen.</footer></section>
+
+<section class="opt"><header><h3>C. Board by status</h3></header>
+<div class="stage"><div class="card" id="C"></div></div>
+<footer>Best to see at a glance who is stuck. Each column is a status; cards move across as they get fixed.</footer></section>
+</div>
+<script>
+const P = {Ana: ['AR', '#0F766E'], Mark: ['MS', '#334155'], Dela: ['DC', '#1D4ED8'], Liza: ['LS', '#7C3AED']};
+const K = {money: 'Money at risk', stock: 'Missing stock', paper: 'Paperwork', price: 'Price below cost'};
+const ST = {new: ['New', '#EF4444'], on: ['Someone is on it', '#EAB308'], wait: ['Waiting on others', '#3B82F6'], done: ['Fixed', '#16A34A']};
+const ROWS = [
+  {t: 'Order 0855 delivered, not billed', d: 'Bayview got 1,200 rebar on Nov 6. No bill was sent.', k: 'money', amt: '₱87,360', who: 'Dela', age: '11 days', st: 'new', ev: ['Delivery photo, Nov 6', 'Order 0855', 'No bill on file']},
+  {t: '6 bags of cement missing in count', d: 'Count on Nov 16: system 18, shelf 12.', k: 'stock', amt: '₱1,104', who: 'Liza', age: '1 day', st: 'on', ev: ['Count by Liza, Nov 16', 'Last delivery Nov 12', 'No bad-stock note']},
+  {t: '4 expenses over ₱1,000 without a receipt', d: 'Fuel, repairs and 2 supply buys this month.', k: 'paper', amt: '₱6,850', who: null, age: '3 days', st: 'new', ev: ['Added by Rico and Mark', 'No photo attached', 'Rule: receipts over ₱1,000']},
+  {t: 'Rebar 10mm sold below cost', d: '₱51 sold vs ₱54 cost, 30 pcs yesterday.', k: 'price', amt: '₱90', who: 'Mark', age: '1 day', st: 'wait', ev: ['Sale by Rico, Nov 16', 'Cost from Metro Steel bill', 'Price list says ₱58']},
+];
+const av = w => `<span class="av" style="background:${P[w][1]}">${P[w][0]}</span>`;
+const whoCell = w => w ? `<span class="who">${av(w)}${w}</span>` : '<button class="assign">+ Assign</button>';
+const stc = s => `<span class="st"><i style="background:${ST[s][1]}"></i>${ST[s][0]} ▾</span>`;
+const kc = k => `<span class="k ${k}">${K[k]}</span>`;
+const col = r => ST[r.st][1];
+document.getElementById('A').innerHTML = `<div class="fil"><span class="chip on">All 4</span><span class="chip"><i style="background:#EF4444"></i>New 2</span><span class="chip"><i style="background:#EAB308"></i>On it 1</span><span class="chip"><i style="background:#3B82F6"></i>Waiting 1</span><span class="sep"></span><span class="chip">Everyone ▾</span><span class="chip">All kinds ▾</span></div>
+<table><thead><tr><th>Problem</th><th>Kind</th><th>Money</th><th>In charge</th><th>Open for</th><th>Status</th><th></th></tr></thead><tbody>
+${ROWS.map((r, i) => `<tr class="stripe" style="--c:${col(r)}"><td><div class="pt"><b>${r.t}</b><small>${r.d}</small></div></td><td>${kc(r.k)}</td><td class="amt">${r.amt}</td><td>${whoCell(r.who)}</td><td class="age">${r.age}</td><td>${stc(r.st)}</td><td><button class="btn">${i === 0 ? 'Close ▴' : 'Open ▾'}</button></td></tr>${i === 0 ? `<tr class="exp"><td colspan="7"><div class="ev">${r.ev.map((e, j) => `<div><b>${['Proof', 'Linked to', 'Note'][j]}</b>${e}</div>`).join('')}</div><div class="row" style="margin-top:10px"><button class="btn p">Open the order</button><button class="btn">Mark it's fine</button></div></td></tr>` : ''}`).join('')}
+</tbody></table>`;
+document.getElementById('B').innerHTML = `<div class="fil"><span class="chip on">All 4</span><span class="chip">New 2</span><span class="chip">Mine 1</span><span class="chip">Money first ▾</span></div><div class="split"><div class="list">${ROWS.map((r, i) => `<div class="li ${i === 0 ? 'on' : ''}" style="--c:${col(r)}"><b>${r.t}</b><span class="amt">${r.amt}</span><small>${kc(r.k)}${r.who ? av(r.who) + r.who : '<span class="assign">Not assigned</span>'} · ${r.age}</small></div>`).join('')}</div>
+<div class="det"><div class="row" style="justify-content:space-between"><h4>${ROWS[0].t}</h4><span class="amt" style="font-size:24px">${ROWS[0].amt}</span></div>
+<div class="row">${kc(ROWS[0].k)}${stc(ROWS[0].st)}<span class="who">${av('Dela')}Dela (in charge) ▾</span><span class="age">open for 11 days</span></div>
+<p style="margin:0">${ROWS[0].d}</p>
+<div class="ev">${ROWS[0].ev.map((e, j) => `<div><b>${['Proof', 'Linked to', 'Note'][j]}</b>${e}</div>`).join('')}</div>
+<div class="tl"><div><b>Nov 17</b> <span>Nifti flagged it: delivered 11 days, no bill</span></div><div><b>Nov 6</b> <span>Mark marked Order 0855 delivered</span></div></div>
+<div class="row"><button class="btn p">Open the order</button><button class="btn">Mark it's fine</button><button class="btn">Assign to someone</button></div></div></div>`;
+document.getElementById('C').innerHTML = `<div class="board">${Object.entries(ST).map(([k, s]) => { const rs = ROWS.filter(r => r.st === k); return `<div class="col"><h5><span>${s[0]}</span><span>${rs.length}</span></h5>${rs.map(r => `<div class="bc" style="--c:${s[1]}"><b>${r.t}</b>${kc(r.k)}<div class="row"><span class="amt">${r.amt}</span><span class="age">${r.age}</span></div><div class="row">${whoCell(r.who)}<button class="btn">Open</button></div></div>`).join('') || '<p style="margin:0;color:#475467;font-size:14px">Nothing here</p>'}</div>`; }).join('')}</div>`;
+</script>
+</body></html>

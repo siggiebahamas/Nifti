@@ -189,7 +189,7 @@ window.renderTeamActivityFeed = renderTeamActivityFeed;
 })();
 
 /* ---------- 4. Check every line from a photo: the page beside the lines, every box editable, a person ticks each line ---------- */
-const NF42C = {only: false, zoom: false};
+const NF42C = {only: false, zoom: false, agree: false};
 function nf42LineDone(l){ return !!(l.skipped || l.checked); }
 function nf42LineTone(l){ if(l.skipped) return 'sk'; if(l.checked) return 'ok'; if(l.blur && !l.typed) return 'bad'; if(l.sure && !l.edited) return 'sure'; return 'chk'; }
 function nf42Amt(l){ const v = Number(l.price) * Number(l.q); return isFinite(v) && v > 0 ? Math.round(v * 100) / 100 : 0; }
@@ -219,7 +219,7 @@ function nf42CheckHtml(){
   const who = [...new Set([].concat((typeof buyersData !== 'undefined' ? buyersData : []).map(b => b.name), (typeof suppliersData !== 'undefined' ? suppliersData : []).map(s => s.name)).filter(Boolean))];
   const items = [...new Set((typeof inventoryData !== 'undefined' ? inventoryData : []).map(x => x.name).filter(Boolean))];
   return `<div class="nf42-chk">
-    <div class="nf42-ctop"><div><h2>Check every line</h2><p>Nifti filled these in from the page. Compare with the photo, fix anything that's off, and tick each line. Nothing is saved until every line is ticked or skipped.</p></div>
+    <div class="nf42-ctop"><div><h2>Check every line</h2><p>Nifti filled these in from the page. Compare with the photo, fix anything that's off, and tick each line. Nothing is saved until every line is ticked or skipped.</p><p class="nf42-disc"><b>Please double-check.</b> Nifti reads handwriting with AI, and AI can misread names, items or numbers. You decide what goes into your books, so check each line against your notebook.</p></div>
       <div class="nf42-cprog"><b>${done} of ${lines.length}</b><span>lines checked</span><i><em style="width:${lines.length ? Math.round(done / lines.length * 100) : 0}%"></em></i></div></div>
     <div class="nf42-cbar">
       <span class="nf42-lg"><i class="sure"></i>Nifti is sure</span><span class="nf42-lg"><i class="chk"></i>Please look</span><span class="nf42-lg"><i class="bad"></i>Can't read</span><span class="nf42-lg"><i class="ok"></i>You checked</span>
@@ -269,6 +269,14 @@ function nf42TickSure(){ NB.lines.forEach(l => { if(!l.skipped && l.sure && !l.e
         NB.lines.forEach(l => { if(l.price == null || l.price === '') l.price = ''; });
         main.innerHTML = nf42CheckHtml(); ov.classList.add('nf42-wide-ov'); nf42CFoot();
       } else if(ov) ov.classList.remove('nf42-wide-ov');
+      // before anything is added, the person confirms they checked it (the books are theirs, not Nifti's)
+      if(main && NB.step === 4 && !NB.added && !main.querySelector('.nf42-agree')){
+        const d = document.createElement('label'); d.className = 'nf42-agree';
+        d.innerHTML = `<input type="checkbox" ${NF42C.agree ? 'checked' : ''}><span><b>I checked these lines and they match my notebook.</b> I understand Nifti's reading can be wrong, and I'm the one who confirms what is saved.</span>`;
+        main.prepend(d);
+        const go = ov.querySelector('.nf22-nbgo'); const sync = () => { if(go) go.disabled = !NF42C.agree; };
+        d.querySelector('input').addEventListener('change', e => { NF42C.agree = e.target.checked; sync(); }); sync();
+      }
     }catch(e){ console.warn('nf42 check', e); }
     return out;
   };

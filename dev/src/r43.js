@@ -97,6 +97,8 @@ function nf43Cols(n, w, need, gap){
 }
 function nf43Pills(page){
   if(!page) return; const id = page.id.replace('page-', ''), cfg = NF43_PAGES[id]; if(!cfg) return;
+  // Stock: make sure the Reorder and Stock value boxes exist first (they are added by another pass that can run later)
+  if(id === 'inventory' && typeof nf18Stock === 'function'){ try{ nf18Stock(); }catch(e){} }
   page.querySelectorAll(cfg.sel).forEach(box => nf43PillsFor(box, cfg));
 }
 function nf43PillsFor(box, cfg){
