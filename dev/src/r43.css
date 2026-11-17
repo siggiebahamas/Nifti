@@ -1,3 +1,34 @@
 /* ===== Round 43 css ===== */
 /* Stock: the grey summary line under the boxes repeated the boxes and came and went between visits */
 #inventoryMainView .nf18-sinfo{display:none !important;}
+
+/* ---------- Header pills ---------- */
+.nf43-old{display:none !important;}
+.nf43-pills{display:grid;grid-template-columns:repeat(var(--cols,4),minmax(0,1fr));gap:12px;margin:0 0 18px;}
+.nf43-pill{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:10px;min-width:0;padding:13px 14px 13px 11px;border-radius:18px;border:1.5px solid var(--b);background:var(--t);cursor:pointer;transition:border-color .15s, box-shadow .15s;}
+.nf43-pill:hover{box-shadow:0 4px 14px rgba(11,15,20,.08);}
+.nf43-pill:focus-visible{outline:3px solid #1F6B45;outline-offset:2px;}
+.nf43-pill .ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--i);color:var(--f);flex:none;}
+.nf43-pill .ic svg{width:22px;height:22px;}
+.nf43-pill .tx{display:grid;gap:2px;min-width:0;}
+.nf43-pills .nf43-pill .k{font-size:16px !important;font-weight:700;line-height:1.3;color:#0B0F14;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.nf43-pills .nf43-pill .v{font-size:28px !important;font-weight:800;line-height:1.15;color:#0B0F14;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.nf43-pills .nf43-pill .v .sm{font-size:16px !important;font-weight:700;margin-left:8px;letter-spacing:0;color:#344054;}
+.nf43-pill.t-red{--t:#FEF1F1;--b:#F5C2C0;--i:#FDDCDC;--f:#B42318;}
+.nf43-pill.t-yel{--t:#FFFBE8;--b:#EED98A;--i:#FBEFAE;--f:#8A6100;}
+.nf43-pill.t-grn{--t:#EEF9F2;--b:#B7E2C6;--i:#D3F0DD;--f:#15803D;}
+.nf43-pill.t-blu{--t:#EEF4FC;--b:#BCD3F0;--i:#D8E6F8;--f:#1A4F8C;}
+.nf43-pill.t-gry{--t:#F6F7F9;--b:#DCE0E5;--i:#E8EAEE;--f:#475467;}
+.nf43-empty{display:grid;gap:4px;justify-items:center;text-align:center;padding:22px 16px;margin:0 0 18px;border:1.5px dashed #D0D5DD;border-radius:18px;background:#FFFFFF;}
+.nf43-empty b{font-size:18px;}
+.nf43-empty span{font-size:16px;color:#344054;}
+@media (max-width:760px){
+  .nf43-pills{grid-template-columns:minmax(0,1fr);gap:8px;margin-bottom:14px;}
+  .nf43-pill{padding:10px 14px 10px 10px;border-radius:14px;gap:12px;}
+  .nf43-pill .ic{width:36px;height:36px;border-radius:10px;}
+  .nf43-pill .ic svg{width:19px;height:19px;}
+  .nf43-pill .tx{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex:1;}
+  .nf43-pills .nf43-pill .k{white-space:normal;overflow:visible;}
+  .nf43-pills .nf43-pill .v{font-size:18px !important;text-align:right;flex:none;}
+  .nf43-pills .nf43-pill .v .sm{display:block;font-size:14px !important;margin:0;}
+}
