@@ -1,0 +1,62 @@
+/* ===== Round 40 ===== */
+
+/* team people row: only colors change when you pick someone, never sizes */
+#page-team .nf38-p, #page-team .nf38-more{transition:background-color .15s ease, border-color .15s ease, box-shadow .15s ease !important;}
+#page-team .nf38-p b, #page-team .nf38-p small{transition:none !important;}
+
+/* delete a job: ask first */
+.nf40-del{display:grid;gap:14px;padding:4px 2px 2px;}
+.nf40-dt{display:grid;gap:2px;background:#F7F8FA;border:1px solid #E4E7EC;border-radius:14px;padding:14px 16px;}
+.nf40-dt b{font-size:17px;font-weight:800;color:#0B0F14;line-height:1.35;}
+.nf40-dt small{font-size:14.5px;color:#344054;font-weight:600;}
+.nf40-del p{margin:0;font-size:15.5px;line-height:1.5;color:#0B0F14;}
+.nf40-db{display:grid;grid-template-columns:1fr 1.3fr;gap:10px;margin-top:4px;}
+.nf40-db .btn{min-height:48px;font-size:16px;font-weight:800;}
+.nf40-danger{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;border:0;border-radius:12px;background:#D92D20;color:#FFFFFF;font:inherit;font-size:16px;font-weight:800;cursor:pointer;}
+.nf40-danger:hover{background:#B42318;}
+
+/* Trash */
+.nf40-tnote{margin:2px 2px 12px;font-size:15px;line-height:1.5;color:#344054;}
+.nf40-tlist{display:grid;gap:10px;}
+.nf40-trow{display:flex;align-items:center;gap:12px;border:1px solid #E4E7EC;border-radius:14px;padding:14px 16px;background:#FFFFFF;}
+.nf40-tm{display:grid;gap:3px;flex:1;min-width:0;}
+.nf40-tm b{font-size:16px;font-weight:800;color:#0B0F14;line-height:1.35;}
+.nf40-tm small{font-size:14px;color:#344054;}
+.nf40-tm small strong{color:#0B0F14;}
+.nf40-trow .btn{flex:none;min-height:42px;font-weight:800;}
+.nf40-empty{display:grid;justify-items:center;gap:6px;text-align:center;padding:30px 10px;color:#475467;border:1.5px dashed #D0D5DD;border-radius:14px;}
+.nf40-empty svg{width:28px;height:28px;}
+.nf40-empty b{font-size:16px;color:#0B0F14;}
+@media (max-width:520px){ .nf40-trow{flex-direction:column;align-items:stretch;} }
+html[data-ty] #view-app .nf36-tbar, .nf36-tbar{gap:8px;}
+.nf36-tbar .nf40-tb{display:inline-flex;align-items:center;gap:7px;min-height:40px;}
+.nf36-tbar .nf40-tb em{font-style:normal;min-width:22px;height:22px;padding:0 7px;border-radius:999px;background:#F2F4F7;color:#0B0F14;font-size:13px;font-weight:800;display:inline-grid;place-items:center;}
+
+/* no red "N things need you" banner on any page */
+.nf37-why{display:none !important;}
+
+/* summary pills: no small last line, no empty space. The words sit beside the number when there's room */
+html[data-ty] #view-app :is(.bk-tile,.cq-tile,.sl-tile) :is(.bk-tile-s,.cq-tile-n), html[data-ty] #view-app :is(.bk-tile,.sl-tile) > span:last-child, html[data-ty] #view-app .sl-tile > span i{font-size:16.5px !important;font-weight:600 !important;color:#0B0F14 !important;line-height:1.3 !important;opacity:1 !important;}
+html[data-ty] #view-app .cq-tile .cq-tile-l{font-size:17px !important;}
+@media (min-width:901px){
+  /* the number and its words read as one line ("2 items running out"), and wrap under the number if they must */
+  html[data-ty] #view-app :is(.bk-tile,.cq-tile,.sl-tile):has(> :nth-child(3):last-child){display:block !important;text-align:left;align-content:center !important;}
+  html[data-ty] #view-app :is(.bk-tile,.cq-tile,.sl-tile):has(> :nth-child(3):last-child) > :first-child{display:block !important;margin:0 0 6px !important;}
+  html[data-ty] #view-app :is(.bk-tile,.cq-tile,.sl-tile):has(> :nth-child(3):last-child) > :nth-child(2){display:inline !important;margin:0 8px 0 0 !important;white-space:nowrap;}
+  html[data-ty] #view-app :is(.bk-tile,.cq-tile,.sl-tile):has(> :nth-child(3):last-child) > :nth-child(3){display:inline !important;margin:0 !important;}
+  html[data-ty] #view-app .sl-tile:has(> :nth-child(3):last-child) > span:last-child i{display:inline !important;margin-right:8px;}
+}
+@media (max-width:900px){
+  html[data-ty] #view-app :is(.bk-tile,.cq-tile,.sl-tile) :is(.bk-tile-s,.cq-tile-n), html[data-ty] #view-app :is(.bk-tile,.sl-tile) > span:last-child, html[data-ty] #view-app .sl-tile > span i{font-size:15px !important;}
+}
+/* Orders strip: the word after the count is as easy to read as the rest */
+html[data-ty] #view-app #nfoStats .nfo-st .ln b span{font-size:16px !important;font-weight:700 !important;color:#0B0F14 !important;}
+html[data-ty] #view-app #nfoStats .nfo-st .k{font-size:14.5px !important;}
+
+/* Problems with orders (was "Exception Log"): readable until you pick one of the new layouts */
+html[data-ty] #view-app #page-team #exceptionLogPanel h2, #page-team #exceptionLogPanel h2{font-size:21px !important;font-weight:800 !important;}
+html[data-ty] #view-app #page-team #exceptionLogPanel .sub, #page-team #exceptionLogPanel .sub{font-size:15.5px !important;line-height:1.5 !important;max-width:none !important;}
+html[data-ty] #view-app #page-team #exceptionLogPanel div[style*="max-height"] > div, #page-team #exceptionLogPanel div[style*="max-height"] > div{padding:14px 0 !important;font-size:16.5px !important;}
+html[data-ty] #view-app #page-team #exceptionLogPanel div[style*="max-height"] > div > div > div, #page-team #exceptionLogPanel div[style*="max-height"] > div > div > div{font-size:15.5px !important;opacity:1 !important;color:#344054 !important;margin-top:3px;}
+html[data-ty] #view-app #page-team #exceptionLogPanel .row-action, #page-team #exceptionLogPanel .row-action{font-size:16px !important;}
+html[data-ty] #view-app #page-team #exceptionLogPanel div[style*="max-height"] > div > div, html[data-ty] #view-app #page-team #exceptionLogPanel div[style*="max-height"] > div > div > span{font-size:16.5px !important;}

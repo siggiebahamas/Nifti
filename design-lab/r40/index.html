@@ -1,0 +1,292 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Header Pills and Team</title><meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap">
+<style>
+:root{--ink:#0B0F14;--line:#E4E7EC;--g:#1F6B45;--soft:#F2F4F7;--red:#D92D20}
+*{box-sizing:border-box}html,body{margin:0}body{font:16px/1.5 "Plus Jakarta Sans",system-ui,sans-serif;color:var(--ink);background:#F7F8FA;-webkit-font-smoothing:antialiased}
+.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}.tin{max-width:1320px;margin:0 auto;padding:12px 20px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.tin a{color:var(--g);font-weight:700;text-decoration:none;font-size:14.5px}.tin h1{margin:0;font-size:18px;flex:1;min-width:200px}
+.jump a{padding:7px 12px;border-radius:999px;border:1.5px solid #D0D5DD;background:#fff;color:var(--ink);font-weight:700;font-size:14px;margin-left:6px;display:inline-block;text-decoration:none}
+.wrap{max-width:1320px;margin:0 auto;padding:22px 20px 80px;display:grid;grid-template-columns:minmax(0,1fr);gap:60px}
+.wrap > *, .opt, .stage{min-width:0}
+h2{margin:0 0 6px;font-size:28px;line-height:1.2}.lead{margin:0 0 16px;max-width:920px;font-size:16.5px}
+.rec{background:var(--g);color:#fff;border-radius:999px;padding:3px 11px;font-size:13px;font-weight:800}
+.goal{background:#fff;border:1px solid var(--line);border-left:4px solid var(--g);border-radius:14px;padding:14px 18px;max-width:920px;margin:0 0 22px;font-size:16px}
+.goal b{display:block;font-size:17px;margin-bottom:2px}
+
+/* side by side */
+.legend{display:grid;grid-template-columns:1fr 1fr;gap:16px;position:sticky;top:57px;z-index:5;background:#F7F8FA;padding:10px 0 8px;border-bottom:1px solid var(--line);margin-bottom:6px}
+.legend div{font-size:14px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#344054}
+.legend div small{display:block;text-transform:none;letter-spacing:0;font-weight:600;font-size:13.5px;color:#475467}
+.pr{display:grid;grid-template-columns:1fr 1fr;gap:12px 16px;align-items:start;padding:16px 0 20px;border-bottom:1px solid var(--line)}
+.pr > h3{margin:0;font-size:19px;grid-column:1 / -1}
+.side{position:relative;background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px}
+.side.now{border:2px solid var(--g);box-shadow:0 6px 18px -10px rgba(31,107,69,.45)}
+.now-tag{position:absolute;top:-11px;right:12px;background:var(--g);color:#fff;font-size:12px;font-weight:800;border-radius:999px;padding:2px 10px;letter-spacing:.02em}
+.side .sl{display:none;font-size:12.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#475467;margin-bottom:8px}
+
+/* theme A: minimal strip (Orders today) */
+.ta{display:grid;grid-template-columns:repeat(auto-fit,minmax(128px,1fr));gap:8px}
+.ta .c{border:1px solid #E4E7EC;border-radius:12px;padding:12px 14px;background:#fff;display:grid;gap:4px}
+.ta .k{display:flex;align-items:center;gap:7px;font-size:12.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase}
+.ta .k i,.tp .k i,.tb .l i{width:9px;height:9px;border-radius:50%;flex:none;display:inline-block}
+.ta .ln{display:flex;align-items:baseline;justify-content:space-between;gap:6px;flex-wrap:wrap}
+.ta .ln b{font-size:22px;font-weight:800;line-height:1.1}.ta .ln b span{font-size:13px;font-weight:700}
+.ta .ln em{font-style:normal;font-size:16px;font-weight:800}
+.ta .ln small{font-size:13px;font-weight:600;color:#344054}
+/* theme B: colored tiles (Stock today) */
+.tb{display:grid;grid-template-columns:repeat(auto-fit,minmax(128px,1fr));gap:10px}
+.tb .c{border-radius:14px;padding:14px 16px;display:grid;gap:4px;border:1px solid #EAECF0;background:#F8F9FB}
+.tb .l{display:flex;align-items:center;gap:8px;font-size:15.5px;font-weight:700}
+.tb .v{font-size:27px;font-weight:800;line-height:1.1}
+.tb .s{font-size:14px;font-weight:500;color:#344054}
+.tb .c.red{background:#FEF3F2;border-color:#FDA29B}.tb .c.red .v{color:#D92D20}
+.tb .c.yel{background:#FEFBE8;border-color:#FDE68A}
+.tb .c.grn{background:#ECFDF3;border-color:#A6F4C5}.tb .c.grn .v{color:#067647}
+.tb .c.blu{background:#EFF6FF;border-color:#BFDBFE}
+.dot-red{background:#D92D20}.dot-yel{background:#EAB308}.dot-grn{background:#16A34A}.dot-blu{background:#2E6BE6}.dot-gray{background:#98A2B3}
+
+/* theme A+: bigger, clearer words */
+.tp{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.tp .c{border:1px solid #E4E7EC;border-radius:16px;padding:16px 18px;background:#fff;display:grid;gap:6px;align-content:start;position:relative}
+.tp .c:hover{border-color:#98A2B3}
+.tp .k{display:flex;align-items:center;gap:8px;font-size:16px;font-weight:800;color:#0B0F14}
+.tp .k i{width:11px;height:11px}
+.tp .ln{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.tp .ln b{font-size:30px;font-weight:800;line-height:1.05;letter-spacing:-.01em}.tp .ln b span{font-size:17px;font-weight:700;letter-spacing:0;margin-left:5px}
+.tp .ln em{font-style:normal;font-size:19px;font-weight:800}
+.tp .do{font-size:15.5px;font-weight:600;line-height:1.4;color:#0B0F14}
+.tp .c.red .ln b{color:#B42318}
+.tp .go{position:absolute;top:14px;right:14px;color:#98A2B3;font-size:20px;line-height:1}
+.prp{padding:20px 0;border-bottom:1px solid var(--line);display:grid;gap:10px}
+.prp h3{margin:0;font-size:19px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.prp .chg{font-size:14.5px;color:#344054;margin:0}
+.prp .chg b{color:#0B0F14}
+
+/* options */
+.opt{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;margin-bottom:22px}
+.opt > h3{margin:0;padding:14px 18px;border-bottom:1px solid var(--line);font-size:19px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.opt > p{margin:0;padding:12px 18px 16px;font-size:15px;border-top:1px solid var(--line);background:#FCFCFD}
+.stage{padding:18px;background:#F2F4F7}
+.lbl{font-size:12.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#344054;margin:0 0 8px}
+.av{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:800;font-size:13px;flex:none}
+.late{display:inline-flex;align-items:center;gap:5px;font-size:13px;font-weight:800;color:#B42318;background:#FEE4E2;border-radius:999px;padding:2px 9px}
+.cnt{font-size:14px;font-weight:700;color:#344054}
+/* team 1 */
+.t1{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:start}
+.who{display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.whob{display:inline-flex;align-items:center;gap:10px;border:1.5px solid #D0D5DD;border-radius:12px;padding:8px 14px;font-weight:800;font-size:16px;background:#fff}
+.whob small{font-weight:600;color:#344054;font-size:14px}
+.dd{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 20px 40px -20px rgba(16,24,40,.35);overflow:hidden}
+.dd input,.pcol input{width:100%;border:0;border-bottom:1px solid var(--line);padding:12px 14px;font:inherit;font-size:16px;outline:0}
+.dd .rows,.pcol .rows{max-height:360px;overflow:auto}
+.prow{display:flex;align-items:center;gap:12px;padding:10px 14px;border-top:1px solid #F2F4F7}
+.prow:first-child{border-top:0}
+.prow b{font-size:16px;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.prow.on{background:#E7F3EC}
+.ph{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;font-size:12.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#475467;background:#F9FAFB}
+/* team 2 */
+.t2{display:grid;grid-template-columns:270px minmax(0,1fr);gap:0;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;min-height:460px}
+.pcol{border-right:1px solid var(--line);background:#FAFAFB;display:flex;flex-direction:column}
+.pcol .rows{max-height:none;flex:1}
+.pcol .prow{background:transparent}
+.pcol .prow small{display:block;font-size:13.5px;color:#344054;font-weight:600}
+.pcol .pm{flex:1;min-width:0}
+.pcol .pm b{display:block}
+.bar{height:6px;border-radius:999px;background:#E4E7EC;overflow:hidden;margin-top:4px}.bar i{display:block;height:100%;background:#16A34A}
+.mini{padding:16px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;align-content:start}
+.lane{border-radius:16px;padding:12px;min-height:220px}
+.lane h4{margin:0 0 10px;font-size:15px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center}
+.lane h4 span{width:34px;height:34px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:16px}
+.lane.a{background:#EAF1FF}.lane.b{background:#FFF5C2}.lane.c{background:#E3F5EA}
+.jc{background:#fff;border-radius:12px;padding:10px 12px;margin-bottom:8px;font-size:14.5px;font-weight:700;box-shadow:0 1px 2px rgba(16,24,40,.06)}
+/* team 3 */
+.ttab{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.ttab table{width:100%;border-collapse:collapse}
+.ttab th{font-size:12.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#344054;text-align:center;padding:12px 10px;background:#F9FAFB;border-bottom:1px solid var(--line)}
+.ttab th:first-child,.ttab td:first-child{text-align:left}
+.ttab td{padding:11px 10px;border-bottom:1px solid #F2F4F7;font-size:16px;font-weight:700;text-align:center}
+.ttab td .nm{display:flex;align-items:center;gap:10px}
+.ttab tr.on td{background:#E7F3EC}
+.ttab .z{color:#98A2B3;font-weight:600}
+.tbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:12px 14px;border-bottom:1px solid var(--line)}
+.chip{border:1.5px solid #D0D5DD;border-radius:999px;padding:5px 12px;font-size:14px;font-weight:800;background:#fff}
+.chip.on{border-color:var(--g);background:#E7F3EC;color:#14532D}
+
+/* problems */
+.p1{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}
+.pcolh{font-size:15px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;margin:0 0 10px;display:flex;align-items:center;gap:8px}
+.pc{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 18px;display:grid;gap:8px;margin-bottom:12px}
+.pc.open{border-left:5px solid #D92D20}.pc.done{border-left:5px solid #16A34A}
+.pc .t{display:flex;justify-content:space-between;gap:10px;align-items:baseline;flex-wrap:wrap}
+.pc .t b{font-size:18px;font-weight:800}
+.pc .t time{font-size:14.5px;font-weight:700;color:#344054}
+.pc .w{font-size:15.5px;font-weight:700;color:#344054}
+.pc .what{font-size:16.5px;line-height:1.45}
+.pc .fix{font-size:15.5px;font-weight:700;color:#067647}
+.pc .acts{display:flex;gap:8px;flex-wrap:wrap}
+.btn{border:1.5px solid #D0D5DD;border-radius:10px;background:#fff;font:inherit;font-weight:800;font-size:15px;padding:8px 14px}
+.btn.pri{background:var(--g);border-color:var(--g);color:#fff}
+.ptab{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:auto}
+.ptab table{width:100%;border-collapse:collapse;min-width:820px}
+.ptab th{font-size:12.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#344054;text-align:left;padding:12px 14px;background:#F9FAFB;border-bottom:1px solid var(--line)}
+.ptab td{padding:14px;border-bottom:1px solid #F2F4F7;font-size:16px;vertical-align:top}
+.ptab td small{display:block;font-size:14.5px;color:#067647;font-weight:700;margin-top:3px}
+.st{display:inline-block;font-size:13.5px;font-weight:800;border-radius:999px;padding:3px 11px;white-space:nowrap}
+.st.o{background:#FEE4E2;color:#B42318}.st.d{background:#DCFCE7;color:#14532D}
+.tl{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+.tld{font-size:13.5px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:#344054;margin:6px 0 10px}
+.tli{position:relative;padding:0 0 18px 28px;border-left:2px solid #E4E7EC;margin-left:8px}
+.tli:last-child{border-left-color:transparent}
+.tli::before{content:"";position:absolute;left:-8px;top:3px;width:14px;height:14px;border-radius:50%;background:#fff;border:3px solid #D92D20}
+.tli.d::before{border-color:#16A34A}
+.tli p{margin:0;font-size:17px;line-height:1.5}
+.tli small{display:block;font-size:15px;font-weight:700;margin-top:4px}
+.tli .o{color:#B42318}.tli .d2{color:#067647}
+
+@media (max-width:980px){
+  .legend{display:none}
+  .pr{grid-template-columns:1fr}
+  .side .sl{display:block}
+  .t1,.p1{grid-template-columns:1fr}
+  .t2{grid-template-columns:1fr}.pcol{border-right:0;border-bottom:1px solid var(--line)}.pcol .rows{max-height:300px}
+  .mini{grid-template-columns:1fr}
+}
+@media (max-width:520px){ .wrap{padding:16px 16px 60px} h2{font-size:24px} .ttab{overflow:auto} .ttab table{min-width:560px} }
+</style></head><body>
+<div class="top"><div class="tin"><a href="../">‹ Design lab</a><h1>Round 40: header pills, team people, problem log</h1><div class="jump"><a href="#pills">Pills</a><a href="#plus">Bigger + clearer</a><a href="#people">Team people ×3</a><a href="#problems">Problem log ×3</a></div></div></div>
+<main class="wrap">
+
+<section id="pills">
+  <h2>One look for the numbers at the top of every page</h2>
+  <p class="lead">Ten pages have a row of pills at the top. Only Orders uses the minimal strip; the other nine use colored tiles. Here is every one of them both ways, with today's real numbers. The green outline marks what the page uses now.</p>
+  <div class="legend"><div>Minimal strip<small>the Orders look</small></div><div>Colored tiles<small>the Stock look</small></div></div>
+  <div id="sbs"></div>
+</section>
+
+<section id="plus">
+  <h2>The minimal strip, bigger, with words that say what to do <span class="rec">Recommended</span></h2>
+  <div class="goal"><b>The rule every pill follows</b>Title = what it is. Big number = how many or how much. Last line = what to do about it, in plain words. If a pill doesn't lead to an action, it says "nothing to do" so nobody wonders. Tap any pill to see those items.</div>
+  <div id="plusRows"></div>
+</section>
+
+<section id="people">
+  <h2>Team people: three ways that still work with 25 or more</h2>
+  <p class="lead">The row of small pills runs out of room after 4 people. Each way below is shown with 25 people.</p>
+  <div id="peopleOpts"></div>
+</section>
+
+<section id="problems">
+  <h2>Problems with orders (was "Exception Log")</h2>
+  <p class="lead">Returns, damaged goods, short and wrong deliveries. Today it's a short list in small gray text. Three clearer ways, all at 16px or bigger. Already done in the app: the bigger text and the plain name.</p>
+  <div id="probOpts"></div>
+</section>
+</main>
+
+<script>
+/* ---------- the ten pages ---------- */
+// c = color, l/v/s = today's label, value, small line. p = the bigger, clearer version: k title, n number, u unit, e second figure, d what to do
+const PAGES = [
+  {name: 'Orders', cur: 'A', items: [
+    {c: 'red', l: 'Needs you now', v: '2', u: 'orders', e: '₱104,864', p: {k: 'Needs you now', n: '2', u: 'orders', e: '₱104,864', d: 'Confirm, pack or bill these today'}},
+    {c: 'yel', l: 'Coming up', v: '3', u: 'orders', e: '₱235,133', p: {k: 'Due this week', n: '3', u: 'orders', e: '₱235,133', d: 'Get these ready next'}},
+    {c: 'blu', l: 'Waiting on them', v: '2', u: 'orders', e: '₱120,960', p: {k: 'Waiting on them', n: '2', u: 'orders', e: '₱120,960', d: 'Nothing to do. Nudge them if it gets late'}},
+    {c: 'grn', l: 'All good', v: '1', u: 'order', e: '₱16,464', p: {k: 'Done', n: '1', u: 'order', e: '₱16,464', d: 'Delivered and paid. Nothing to do'}}],
+    chg: '<b>Coming up</b> becomes <b>Due this week</b>, and <b>All good</b> becomes <b>Done</b>, so it is clear what each group holds.'},
+  {name: 'Home', cur: 'B', items: [
+    {c: 'gray', l: 'Sales this month', v: '₱167K', s: 'November so far', p: {k: 'Sales this month', n: '₱167K', d: 'November so far'}},
+    {c: 'yel', l: 'Cash today', v: '₱4,140', s: 'Liza · to count at closing', p: {k: 'Cash to count today', n: '₱4,140', d: 'Liza counts it at closing'}},
+    {c: 'red', l: 'Owed to you', v: '₱17,504', s: 'All of it is overdue', p: {k: 'Owed to you', n: '₱17,504', d: 'All overdue. Collect it now'}},
+    {c: 'gray', l: 'You owe suppliers', v: '₱113K', s: 'Next due Dec 3', p: {k: 'You owe suppliers', n: '₱113K', d: 'Next bill due Dec 3'}}],
+    chg: '<b>Cash today</b> becomes <b>Cash to count today</b>: it says the job, not just the money.'},
+  {name: 'Stock', cur: 'B', items: [
+    {c: 'red', l: 'Reorder now', v: '2', s: 'items running out', p: {k: 'Reorder now', n: '2', u: 'items', d: 'Running out. Order them today'}},
+    {c: 'red', l: 'Missing this month', v: '₱1,456', s: 'found short in counts', p: {k: 'Missing this month', n: '₱1,456', d: 'Short in your counts. Recount these'}},
+    {c: 'yel', l: 'Bad stock this month', v: '₱822', s: 'expired, damaged, spoiled', p: {k: 'Damaged or expired', n: '₱822', d: 'Thrown out this month'}},
+    {c: 'gray', l: 'Promised to customers', v: '1', s: 'items in open orders', p: {k: 'Promised to customers', n: '1', u: 'item', d: "Set aside for open orders. Don't sell it"}},
+    {c: 'gray', l: 'Stock value', v: '₱309,034', s: 'at what you paid', p: {k: 'Stock value', n: '₱309,034', d: 'What your stock cost you'}}],
+    chg: '<b>Bad stock</b> becomes <b>Damaged or expired</b>. Every pill now ends with what to do.'},
+  {name: 'Sales', cur: 'B', items: [
+    {c: 'grn', l: 'Sales', v: '₱5,620', s: '4 sales', p: {k: 'Sales today', n: '₱5,620', d: '4 sales so far'}},
+    {c: 'grn', l: 'Cash', v: '₱4,340', s: 'goes in the drawer', p: {k: 'Cash', n: '₱4,340', d: 'Should be in the drawer at closing'}},
+    {c: 'yel', l: 'GCash & Maya', v: '₱1,280', s: 'check your phone', p: {k: 'GCash & Maya', n: '₱1,280', d: 'Check it reached your phone'}},
+    {c: 'gray', l: 'Utang', v: '₱0', s: 'not paid yet', p: {k: 'Not paid yet (utang)', n: '₱0', d: 'Nothing to collect'}}],
+    chg: '<b>Utang</b> also says <b>Not paid yet</b>, for staff who say it differently.'},
+  {name: 'Expenses', cur: 'B', items: [
+    {c: 'red', l: 'Spent in November', v: '₱18,179', s: '▼ ₱15,810 vs last month', p: {k: 'Spent in November', n: '₱18,179', d: '₱15,810 less than October'}},
+    {c: 'gray', l: 'Stock bought in cash', v: '₱0', s: 'counted as cost of what you sold', p: {k: 'Stock bought with cash', n: '₱0', d: 'Counted in the cost of what you sold'}},
+    {c: 'blu', l: 'Owner took', v: '₱5,000', s: 'not an expense', p: {k: 'Owner took', n: '₱5,000', d: 'Not counted as an expense'}}],
+    chg: 'The arrow and "vs last month" become a plain sentence.'},
+  {name: 'Prices', cur: 'B', items: [
+    {c: 'grn', l: 'Sales', v: '₱167,158', s: 'November 2026', p: {k: 'Sales', n: '₱167,158', d: 'November so far'}},
+    {c: 'yel', l: 'Cost of what you sold', v: '₱135,158', s: '4 items have no cost yet', p: {k: 'Cost of what you sold', n: '₱135,158', d: '4 items have no cost. Add it to see true profit'}},
+    {c: 'grn', l: 'Profit before expenses', v: '₱32,000', s: '19% of sales', p: {k: 'Profit before expenses', n: '₱32,000', d: '19% of what you sold'}}],
+    chg: 'The missing costs now say what to do about them.'},
+  {name: 'Money overview', cur: 'B', items: [
+    {c: 'grn', l: 'Owed to you', v: '₱23,804', s: 'customers + utang', p: {k: 'Owed to you', n: '₱23,804', d: 'Collect from customers'}},
+    {c: 'red', l: 'You owe', v: '₱112,896', s: 'supplier bills', p: {k: 'You owe', n: '₱112,896', d: 'Pay suppliers. Next due Dec 3'}}],
+    chg: 'Each one says who to collect from or pay, and when.'},
+  {name: 'To check', cur: 'B', items: [
+    {c: 'red', l: 'To check', v: '3', s: '2 important', p: {k: 'To check', n: '3', d: '2 are important. Start with those'}},
+    {c: 'yel', l: 'Money involved', v: '₱103,703', s: 'possible, not proven', p: {k: 'Money involved', n: '₱103,703', d: 'Possible, not proven yet'}},
+    {c: 'gray', l: 'Closed', v: '0', s: 'fixed or accepted', p: {k: 'Closed', n: '0', d: 'Fixed or accepted'}}],
+    chg: '"2 important" becomes "Start with those".'},
+  {name: 'Follow-ups', cur: 'B', items: [
+    {c: 'yel', l: "Waiting for Customer's OK", v: '₱77,280', s: '1 order · 1 need you', p: {k: "Waiting for the customer's OK", n: '₱77,280', d: '1 order. Send them a nudge'}},
+    {c: 'grn', l: 'Said Yes', v: '1 of 2', s: '₱87,360 · ~3.0 days', p: {k: 'Said yes', n: '1 of 2', e: '₱87,360', d: 'They take about 3 days to answer'}}],
+    chg: '"~3.0 days" becomes "They take about 3 days to answer".'},
+  {name: 'Tax books', cur: 'B', items: [
+    {c: 'gray', l: 'Sales (gross)', v: '₱0', s: '0 bills', p: {k: 'Sales (gross)', n: '₱0', d: '0 bills this month'}},
+    {c: 'gray', l: 'VAT you collected', v: '₱0', s: 'on ₱0 Before VAT', p: {k: 'VAT you collected', n: '₱0', d: 'On ₱0 before VAT'}},
+    {c: 'gray', l: 'VAT-exempt', v: '₱0', s: 'nothing exempt this month', p: {k: 'VAT-exempt', n: '₱0', d: 'Nothing exempt this month'}},
+    {c: 'gray', l: 'Tax withheld (2307)', v: '₱0', s: 'none this month', p: {k: 'Tax withheld (2307)', n: '₱0', d: 'None this month'}}],
+    chg: 'Same words, just big enough to read.'},
+];
+const dot = c => `<i class="dot-${c}"></i>`;
+const themeA = items => `<div class="ta">${items.map(x => `<div class="c"><span class="k">${dot(x.c)}${x.l}</span><span class="ln"><b>${x.v}${x.u ? `<span> ${x.u}</span>` : ''}</b>${x.e ? `<em>${x.e}</em>` : x.s ? `<small>${x.s}</small>` : ''}</span></div>`).join('')}</div>`;
+const themeB = items => `<div class="tb">${items.map(x => `<div class="c ${x.c}"><span class="l">${dot(x.c)}${x.l}</span><span class="v">${x.v}${x.u ? ' ' + x.u : ''}</span><span class="s">${x.e || x.s || ''}</span></div>`).join('')}</div>`;
+const themeP = items => `<div class="tp">${items.map(x => { const p = x.p; return `<div class="c ${x.c}"><span class="go">›</span><span class="k">${dot(x.c)}${p.k}</span><span class="ln"><b>${p.n}${p.u ? `<span>${p.u}</span>` : ''}</b>${p.e ? `<em>${p.e}</em>` : ''}</span><span class="do">${p.d}</span></div>`; }).join('')}</div>`;
+document.getElementById('sbs').innerHTML = PAGES.map(pg => `<div class="pr"><h3>${pg.name}</h3>
+  <div class="side${pg.cur === 'A' ? ' now' : ''}">${pg.cur === 'A' ? '<span class="now-tag">Using now</span>' : ''}<div class="sl">Minimal strip</div>${themeA(pg.items)}</div>
+  <div class="side${pg.cur === 'B' ? ' now' : ''}">${pg.cur === 'B' ? '<span class="now-tag">Using now</span>' : ''}<div class="sl">Colored tiles</div>${themeB(pg.items)}</div></div>`).join('');
+document.getElementById('plusRows').innerHTML = PAGES.map(pg => `<div class="prp"><h3>${pg.name}</h3>${themeP(pg.items)}<p class="chg">${pg.chg}</p></div>`).join('');
+
+/* ---------- 25 people ---------- */
+const NAMES = ['Ana Reyes', 'Mark Santos', 'Dela Cruz (You)', 'Rico Bautista', 'Liza Mendoza', 'Jun Villanueva', 'Grace Tan', 'Paolo Garcia', 'Mae Ramos', 'Carlo Aquino', 'Joy Navarro', 'Ben Torres', 'Rose Castillo', 'Arnel Cruz', 'Dina Flores', 'Noel Rivera', 'Cathy Lim', 'Edwin Ong', 'Faye Domingo', 'Gil Mercado', 'Hazel Pascual', 'Ivan Sison', 'Jenny Salazar', 'Kiko Lopez', 'Lorna Dizon'];
+const COLORS = ['#2563EB', '#334155', '#0F766E', '#7C3AED', '#B45309', '#15803D', '#BE123C', '#0369A1', '#4D7C0F', '#9333EA', '#C2410C', '#1D4ED8'];
+const PEOPLE = NAMES.map((n, i) => ({n, ini: n.replace(/\(.*\)/, '').trim().split(' ').map(x => x[0]).join('').slice(0, 2), bg: COLORS[i % COLORS.length], todo: (i * 7) % 4, doing: (i * 3) % 3, done: (i * 5) % 4, late: [0, 3, 7, 12].includes(i) ? 1 : 0}))
+  .sort((a, b) => (b.late - a.late) || ((b.todo + b.doing) - (a.todo + a.doing)) || a.n.localeCompare(b.n));
+const avatar = p => `<span class="av" style="background:${p.bg}">${p.ini}</span>`;
+const lateOnes = PEOPLE.filter(p => p.late);
+const miniBoard = who => `<div class="mini"><div class="lane a"><h4>To do <span>3</span></h4><div class="jc">Count Portland Cement on the shelf</div><div class="jc">Send SOA to Aling Nena</div><div class="jc">Call Riverside about the bill</div></div>
+  <div class="lane b"><h4>Doing <span>1</span></h4><div class="jc">Load Bayview order on the van</div></div><div class="lane c"><h4>Done <span>1</span></h4><div class="jc">Deposit BDO check 004512</div></div></div>`;
+const PEOPLE_OPTS = [
+  {t: '1. One "Showing" button with a search', tag: 'For phones', why: '<b>Why:</b> the top of the board stays one clean line however big the team is. People with late jobs are named right there, so you see them without opening anything. Tap the button for a searchable list of everyone. Best on a phone.',
+    html: `<div class="t1"><div><p class="lbl">Closed</p><div class="who"><span class="whob">Showing: Everyone <small>· 25 people</small> ▾</span><span class="cnt">Late jobs:</span>${lateOnes.map(p => `<span class="late">● ${p.n.split(' ')[0]}</span>`).join('')}</div></div>
+      <div><p class="lbl">Tapped</p><div class="dd"><input placeholder="Search a name" value=""><div class="rows"><div class="prow on"><span class="av" style="background:#0B0F14">All</span><b>Everyone</b><span class="cnt">28 open</span></div>${PEOPLE.slice(0, 9).map(p => `<div class="prow">${avatar(p)}<b>${p.n}</b>${p.late ? '<span class="late">1 late</span>' : ''}<span class="cnt">${p.todo + p.doing} open</span></div>`).join('')}<div class="prow"><b style="color:#475467">+ 15 more, scroll</b></div></div></div></div></div>`},
+  {t: '2. People down the left side', tag: 'Recommended for computers', why: '<b>Why:</b> the same pattern as the chat folders you picked: everyone is listed on the left with their open jobs, late ones on top, and a search box. Tap a name and the board shows only their jobs. Scales to 100 people with a scroll. On a phone it folds into way 1.',
+    html: `<div class="t2"><div class="pcol"><input placeholder="Search 25 people"><div class="rows"><div class="prow on"><span class="av" style="background:#0B0F14">All</span><span class="pm"><b>Everyone</b><small>28 open · 4 late</small></span></div>${PEOPLE.slice(0, 8).map(p => `<div class="prow">${avatar(p)}<span class="pm"><b>${p.n}</b><small>${p.todo + p.doing} open${p.late ? ' · <span style="color:#B42318">1 late</span>' : ''}</small><span class="bar"><i style="width:${Math.round(p.done / Math.max(1, p.todo + p.doing + p.done) * 100)}%"></i></span></span></div>`).join('')}</div></div>${miniBoard()}</div>`},
+  {t: '3. A team table you can sort', why: '<b>Why:</b> for owners who manage by numbers. One row per person: to do, doing, done today, late. Sort by any column, filter to "Late only", tap a row to see that person\'s jobs. Folds away when you don\'t need it.',
+    html: `<div class="ttab"><div class="tbar"><span class="chip on">Everyone (25)</span><span class="chip">Late only (4)</span><span class="chip">Nothing to do (6)</span><span style="margin-left:auto" class="cnt">Sorted by: late first ▾</span></div><table><thead><tr><th>Person</th><th>To do</th><th>Doing</th><th>Done today</th><th>Late</th></tr></thead><tbody>${PEOPLE.slice(0, 8).map((p, i) => `<tr${i === 1 ? ' class="on"' : ''}><td><span class="nm">${avatar(p)}${p.n}</span></td><td${p.todo ? '' : ' class="z"'}>${p.todo}</td><td${p.doing ? '' : ' class="z"'}>${p.doing}</td><td${p.done ? '' : ' class="z"'}>${p.done}</td><td>${p.late ? '<span class="late">1 late</span>' : '<span class="z">0</span>'}</td></tr>`).join('')}<tr><td colspan="5" style="text-align:center;color:#475467;font-weight:700">Show all 25</td></tr></tbody></table></div>`},
+];
+document.getElementById('peopleOpts').innerHTML = PEOPLE_OPTS.map(o => `<article class="opt"><h3>${o.t}${o.tag ? `<span class="rec">${o.tag}</span>` : ''}</h3><div class="stage">${o.html}</div><p>${o.why}</p></article>`).join('');
+
+/* ---------- problems with orders ---------- */
+const PROBS = [
+  {open: true, type: 'Damaged goods', with: 'Cavite Steel Works', order: 'Order 0740', what: '3 of 20 sheets of plywood arrived cracked.', date: 'Nov 5', fix: ''},
+  {open: true, type: 'Short delivery', with: 'Metro Steel Co.', order: 'Order 0841', what: 'Got 18 of 20 bags of cement. 2 bags short.', date: 'Nov 14', fix: ''},
+  {open: false, type: 'Return', with: 'Bayview Construction', order: 'Order 0765', what: 'They returned 3 bent angle bars.', date: 'Nov 15', fix: 'Credit note ₱1,200 given'},
+  {open: false, type: 'Short delivery', with: 'Holcim Dealer Pasig', order: 'Order 0790', what: '1 bundle of rebar was missing.', date: 'Nov 9', fix: 'Replacement came Nov 10'},
+  {open: false, type: 'Wrong item', with: 'Riverside Builders', order: 'Order 0702', what: 'Sent 12mm bars instead of 10mm.', date: 'Oct 28', fix: 'Swapped the next day'},
+];
+const card = p => `<div class="pc ${p.open ? 'open' : 'done'}"><div class="t"><b>${p.type}</b><time>${p.date}</time></div><div class="w">${p.with} · ${p.order}</div><div class="what">${p.what}</div>${p.fix ? `<div class="fix">✓ ${p.fix}</div>` : `<div class="acts"><button class="btn pri">Sort it out</button><button class="btn">Open order</button></div>`}</div>`;
+const PROB_OPTS = [
+  {t: '1. Still open on the left, sorted out on the right', tag: 'Recommended', why: '<b>Why:</b> what still needs you is never mixed in with old news. Each problem is a card in plain words: what happened, with whom, which order, and one button to sort it out. Fixed ones show how they were fixed, in green.',
+    html: `<div class="p1"><div><p class="pcolh" style="color:#B42318">● Still open (2)</p>${PROBS.filter(p => p.open).map(card).join('')}</div><div><p class="pcolh" style="color:#067647">● Sorted out (3)</p>${PROBS.filter(p => !p.open).map(card).join('')}</div></div>`},
+  {t: '2. A table with filters', why: '<b>Why:</b> best when there are many. Filter by open or sorted out, or by kind of problem, and scan one row each. On a phone each row turns into a card.',
+    html: `<div class="ptab"><div class="tbar"><span class="chip on">All (5)</span><span class="chip">Still open (2)</span><span class="chip">Sorted out (3)</span><span class="chip">Returns</span><span class="chip">Short or wrong deliveries</span><span class="chip">Damaged</span></div><table><thead><tr><th>Date</th><th>Problem</th><th>With</th><th>Order</th><th>What happened</th><th>Status</th></tr></thead><tbody>${PROBS.map(p => `<tr><td><b>${p.date}</b></td><td><b>${p.type}</b></td><td>${p.with}</td><td>${p.order}</td><td>${p.what}${p.fix ? `<small>✓ ${p.fix}</small>` : ''}</td><td>${p.open ? '<span class="st o">Still open</span>' : '<span class="st d">Sorted out</span>'}</td></tr>`).join('')}</tbody></table></div>`},
+  {t: '3. A timeline, newest first', why: '<b>Why:</b> reads like a diary. Each problem is one plain sentence under its date, with how it ended right below it. Good for looking back at a supplier\'s track record.',
+    html: `<div class="tl">${[['Nov 15', [PROBS[2]]], ['Nov 14', [PROBS[1]]], ['Nov 9', [PROBS[3]]], ['Nov 5', [PROBS[0]]], ['Oct 28', [PROBS[4]]]].map(([d, list]) => `<p class="tld">${d}</p>${list.map(p => `<div class="tli${p.open ? '' : ' d'}"><p><b>${p.with}</b> · ${p.order}: ${p.what}</p><small class="${p.open ? 'o' : 'd2'}">${p.open ? 'Still open · Sort it out ›' : '✓ ' + p.fix}</small></div>`).join('')}`).join('')}</div>`},
+];
+document.getElementById('probOpts').innerHTML = PROB_OPTS.map(o => `<article class="opt"><h3>${o.t}${o.tag ? `<span class="rec">${o.tag}</span>` : ''}</h3><div class="stage">${o.html}</div><p>${o.why}</p></article>`).join('');
+</script>
+</body></html>

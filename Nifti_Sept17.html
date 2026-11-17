@@ -9710,6 +9710,71 @@ html[data-ty] #view-app #page-team .nf38-pn small, #page-team .nf38-pn small{fon
   #view-app #page-messages .composer-row .nf-take svg{width:21px !important;height:21px !important;margin:0 !important;}
 }
 
+
+/* ===== Round 40 css ===== */
+/* ===== Round 40 ===== */
+
+/* team people row: only colors change when you pick someone, never sizes */
+#page-team .nf38-p, #page-team .nf38-more{transition:background-color .15s ease, border-color .15s ease, box-shadow .15s ease !important;}
+#page-team .nf38-p b, #page-team .nf38-p small{transition:none !important;}
+
+/* delete a job: ask first */
+.nf40-del{display:grid;gap:14px;padding:4px 2px 2px;}
+.nf40-dt{display:grid;gap:2px;background:#F7F8FA;border:1px solid #E4E7EC;border-radius:14px;padding:14px 16px;}
+.nf40-dt b{font-size:17px;font-weight:800;color:#0B0F14;line-height:1.35;}
+.nf40-dt small{font-size:14.5px;color:#0B0F14;font-weight:600;}
+.nf40-del p{margin:0;font-size:15.5px;line-height:1.5;color:#0B0F14;}
+.nf40-db{display:grid;grid-template-columns:1fr 1.3fr;gap:10px;margin-top:4px;}
+.nf40-db .btn{min-height:48px;font-size:16px;font-weight:800;}
+.nf40-danger{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;border:0;border-radius:12px;background:#D92D20;color:#FFFFFF;font:inherit;font-size:16px;font-weight:800;cursor:pointer;}
+.nf40-danger:hover{background:#B42318;}
+
+/* Trash */
+.nf40-tnote{margin:2px 2px 12px;font-size:15px;line-height:1.5;color:#0B0F14;}
+.nf40-tlist{display:grid;gap:10px;}
+.nf40-trow{display:flex;align-items:center;gap:12px;border:1px solid #E4E7EC;border-radius:14px;padding:14px 16px;background:#FFFFFF;}
+.nf40-tm{display:grid;gap:3px;flex:1;min-width:0;}
+.nf40-tm b{font-size:16px;font-weight:800;color:#0B0F14;line-height:1.35;}
+.nf40-tm small{font-size:14px;color:#0B0F14;}
+.nf40-tm small strong{color:#0B0F14;}
+.nf40-trow .btn{flex:none;min-height:42px;font-weight:800;}
+.nf40-empty{display:grid;justify-items:center;gap:6px;text-align:center;padding:30px 10px;color:#0B0F14;border:1.5px dashed #D0D5DD;border-radius:14px;}
+.nf40-empty svg{width:28px;height:28px;}
+.nf40-empty b{font-size:16px;color:#0B0F14;}
+@media (max-width:520px){ .nf40-trow{flex-direction:column;align-items:stretch;} }
+html[data-ty] #view-app .nf36-tbar, .nf36-tbar{gap:8px;}
+.nf36-tbar .nf40-tb{display:inline-flex;align-items:center;gap:7px;min-height:40px;}
+.nf36-tbar .nf40-tb em{font-style:normal;min-width:22px;height:22px;padding:0 7px;border-radius:999px;background:#F2F4F7;color:#0B0F14;font-size:13px;font-weight:800;display:inline-grid;place-items:center;}
+
+/* no red "N things need you" banner on any page */
+.nf37-why{display:none !important;}
+
+/* summary pills: no small last line, no empty space. The words sit beside the number when there's room */
+html[data-ty] #view-app :is(.bk-tile,.cq-tile,.sl-tile) :is(.bk-tile-s,.cq-tile-n), html[data-ty] #view-app :is(.bk-tile,.sl-tile) > span:last-child, html[data-ty] #view-app .sl-tile > span i{font-size:16.5px !important;font-weight:600 !important;color:#0B0F14 !important;line-height:1.3 !important;opacity:1 !important;}
+html[data-ty] #view-app .cq-tile .cq-tile-l{font-size:17px !important;}
+@media (min-width:901px){
+  /* the number and its words read as one line ("2 items running out"), and wrap under the number if they must */
+  html[data-ty] #view-app :is(.bk-tile,.cq-tile,.sl-tile):has(> :nth-child(3):last-child){display:block !important;text-align:left;align-content:center !important;}
+  html[data-ty] #view-app :is(.bk-tile,.cq-tile,.sl-tile):has(> :nth-child(3):last-child) > :first-child{display:block !important;margin:0 0 6px !important;}
+  html[data-ty] #view-app :is(.bk-tile,.cq-tile,.sl-tile):has(> :nth-child(3):last-child) > :nth-child(2){display:inline !important;margin:0 8px 0 0 !important;white-space:nowrap;}
+  html[data-ty] #view-app :is(.bk-tile,.cq-tile,.sl-tile):has(> :nth-child(3):last-child) > :nth-child(3){display:inline !important;margin:0 !important;}
+  html[data-ty] #view-app .sl-tile:has(> :nth-child(3):last-child) > span:last-child i{display:inline !important;margin-right:8px;}
+}
+@media (max-width:900px){
+  html[data-ty] #view-app :is(.bk-tile,.cq-tile,.sl-tile) :is(.bk-tile-s,.cq-tile-n), html[data-ty] #view-app :is(.bk-tile,.sl-tile) > span:last-child, html[data-ty] #view-app .sl-tile > span i{font-size:15px !important;}
+}
+/* Orders strip: the word after the count is as easy to read as the rest */
+html[data-ty] #view-app #nfoStats .nfo-st .ln b span{font-size:16px !important;font-weight:700 !important;color:#0B0F14 !important;}
+html[data-ty] #view-app #nfoStats .nfo-st .k{font-size:14.5px !important;}
+
+/* Problems with orders (was "Exception Log"): readable until you pick one of the new layouts */
+html[data-ty] #view-app #page-team #exceptionLogPanel h2, #page-team #exceptionLogPanel h2{font-size:21px !important;font-weight:800 !important;}
+html[data-ty] #view-app #page-team #exceptionLogPanel .sub, #page-team #exceptionLogPanel .sub{font-size:15.5px !important;line-height:1.5 !important;max-width:none !important;}
+html[data-ty] #view-app #page-team #exceptionLogPanel div[style*="max-height"] > div, #page-team #exceptionLogPanel div[style*="max-height"] > div{padding:14px 0 !important;font-size:16.5px !important;}
+html[data-ty] #view-app #page-team #exceptionLogPanel div[style*="max-height"] > div > div > div, #page-team #exceptionLogPanel div[style*="max-height"] > div > div > div{font-size:15.5px !important;opacity:1 !important;color:#0B0F14 !important;margin-top:3px;}
+html[data-ty] #view-app #page-team #exceptionLogPanel .row-action, #page-team #exceptionLogPanel .row-action{font-size:16px !important;}
+html[data-ty] #view-app #page-team #exceptionLogPanel div[style*="max-height"] > div > div, html[data-ty] #view-app #page-team #exceptionLogPanel div[style*="max-height"] > div > div > span{font-size:16.5px !important;}
+
   .settings-card:empty{display:none;}
   #supplierChips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;} #supplierChips .chip{flex-shrink:0;}
 
@@ -38219,6 +38284,91 @@ function nf39Board(){
   const w = function(){ const r = rtl.apply(this, arguments); try{ nf39Board(); }catch(e){ console.warn('nf39 board', e); } return r; };
   Object.keys(rtl).forEach(k => { w[k] = rtl[k]; }); w._nf39 = true;
   window.renderTaskList = w; try{ renderTaskList = w; }catch(e){}
+})();
+
+/* ===== Round 40 ===== */
+
+/* ---------- 1. Team people row: picking someone only moves the highlight. Nothing is rebuilt, nothing resizes ---------- */
+nf38People = function(){
+  const el = document.getElementById('teamPeopleStrip'); if(!el || typeof nf33TMembers !== 'function') return;
+  const ms = nf33TMembers(), all = teamTasks.filter(t => teamScoped(t) && !t.deletedAt);
+  const today = t => t.status === 'done' && (t.completedAt || t.doneAt) === APP_TODAY;
+  const stat = list => { const open = list.filter(t => t.status !== 'done').length, done = list.filter(today).length; return {open, done, tot: open + done, late: list.some(t => t.status !== 'done' && t.dueDate && t.dueDate < APP_TODAY)}; };
+  const people = ms.map(m => Object.assign({id: m.id, name: m.name}, stat(all.filter(t => t.assignedTo === m.id))));
+  people.sort((a, b) => (b.late - a.late) || (b.open - a.open) || a.name.localeCompare(b.name));
+  const pick = NF33T.who;
+  const max = window.innerWidth < 520 ? 1 : window.innerWidth < 700 ? 3 : window.innerWidth < 1200 ? 4 : NF38T.max;
+  let shown = people.slice(0, max);
+  if(pick !== 'all' && !shown.some(p => p.id === pick)){ const sel = people.find(p => p.id === pick); if(sel) shown = [sel].concat(shown.slice(0, max - 1)); }
+  const more = people.length - shown.length, ev = stat(all);
+  const chip = (p, isAll) => `<button type="button" class="nf38-p" data-id="${p.id}" aria-pressed="false" onclick="NF33T.who='${p.id}'; renderTeamPeopleStrip(); renderTaskList()">
+    ${isAll ? '<span class="nf38-av all">All</span>' : `<span class="nf38-av" style="background:${typeof nfIniColor === 'function' ? nfIniColor(p.name) : '#475467'}">${escapeHtml(teamInitials(p.name))}</span>`}
+    <span class="nf38-pn"><b>${escapeHtml(isAll ? 'Everyone' : p.name.split(' ')[0])}${p.late ? '<i class="late" title="Has a late job"></i>' : ''}</b><small>${p.done}/${p.tot} done</small></span></button>`;
+  const html = `<div class="nf38-people">${chip(Object.assign({id: 'all'}, ev), true)}${shown.map(p => chip(p)).join('')}
+    ${more > 0 ? `<button type="button" class="nf38-more" onclick="nf38AllPeople()">+${more} more</button>` : ''}</div>`;
+  if(el._nf40 !== html || !el.firstElementChild){ el.innerHTML = html; el._nf40 = html; }
+  el.querySelectorAll('.nf38-p').forEach(b => { const on = b.dataset.id === pick; b.classList.toggle('on', on); b.setAttribute('aria-pressed', on ? 'true' : 'false'); });
+};
+window.nf38People = nf38People;
+(function(){
+  // the old row drew big chips first and then swapped them for small ones on every tap: draw the small ones only
+  const w = function(){ try{ nf38People(); }catch(e){ console.warn('nf40 people', e); } };
+  w._nf36 = true; w._nf40 = true;
+  window.renderTeamPeopleStrip = w; try{ renderTeamPeopleStrip = w; }catch(e){}
+})();
+
+/* ---------- 2. Deleting a job asks first, and deleted jobs wait in Trash ---------- */
+const NF40_DEL = typeof nf36DeleteTask === 'function' ? nf36DeleteTask : window.deleteTask;
+const NF40_IC = {
+  trash: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6"/><path d="M6 7l1 12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-12"/><path d="M9 7V4h6v3"/></svg>',
+  hist: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l3 2"/></svg>',
+};
+function nf40AskDelete(id){
+  const t = teamTasks.find(x => x.id === id); if(!t) return;
+  const who = t.assignedTo ? teamMemberName(t.assignedTo) : 'Anyone';
+  slModal('nf40Del', `<div class="sl-sheet-h"><b>Delete this job?</b><button class="sl-x" onclick="slClose('nf40Del')" aria-label="Close">✕</button></div>
+    <div class="nf40-del"><div class="nf40-dt"><b>${escapeHtml(t.title)}</b><small>For ${escapeHtml(who)}</small></div>
+      <p>It goes to <b>Trash</b>, not gone for good. You can bring it back from Trash any time.</p>
+      <div class="nf40-db"><button type="button" class="btn btn-outline" onclick="slClose('nf40Del')">Keep it</button><button type="button" class="nf40-danger" onclick="slClose('nf40Del'); NF40_DEL('${id}')">${NF40_IC.trash}Move to Trash</button></div></div>`);
+}
+window.deleteTask = nf40AskDelete; try{ deleteTask = nf40AskDelete; }catch(e){}
+function nf40Ago(s){ try{ const d = new Date(s); if(isNaN(d)) return s || ''; return d.toLocaleString('en-PH', {month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit'}); }catch(e){ return s || ''; } }
+function nf40Trash(){
+  const del = teamTasks.filter(t => t.deletedAt && (typeof teamScoped !== 'function' || teamScoped(t))).sort((a, b) => String(b.deletedAt).localeCompare(String(a.deletedAt)));
+  const day = d => (typeof bkDayLabel === 'function' ? bkDayLabel(d) : d);
+  slModal('nf40Trash', `<div class="sl-sheet-h"><b>Trash${del.length ? ` (${del.length})` : ''}</b><button class="sl-x" onclick="slClose('nf40Trash')" aria-label="Close">✕</button></div>
+    <p class="nf40-tnote">Every deleted job waits here, with who deleted it and when. Bring any of them back to the board in one tap.</p>
+    <div class="nf40-tlist">${del.length ? del.map(t => { const who = t.assignedTo ? teamMemberName(t.assignedTo) : 'Anyone';
+      return `<div class="nf40-trow"><div class="nf40-tm"><b>${escapeHtml(t.title)}</b><small>Deleted by <strong>${escapeHtml(t.deletedBy || 'someone')}</strong> · ${escapeHtml(nf40Ago(t.deletedAt))}</small><small>Was for ${escapeHtml(who)}${t.dueDate ? ' · due ' + escapeHtml(day(t.dueDate)) : ''}</small></div>
+        <button type="button" class="btn btn-outline" onclick="nf40Restore('${t.id}')">Bring back</button></div>`; }).join('')
+      : `<div class="nf40-empty">${NF40_IC.trash}<b>Trash is empty</b><span>Deleted jobs show up here.</span></div>`}</div>`);
+}
+async function nf40Restore(id){
+  try{ await nf36Restore(id); }catch(e){ console.warn('nf40 restore', e); }
+  if(document.getElementById('nf40Trash')) nf40Trash();
+}
+nf36TeamBar = function(page){
+  const box = page.querySelector('#taskListOpen'); if(!box || !box.parentElement) return;
+  let bar = document.getElementById('nf36TBar');
+  const n = teamTasks.filter(t => t.deletedAt && (typeof teamScoped !== 'function' || teamScoped(t))).length, sig = 'v40|' + n;
+  if(bar && bar.dataset.sig === sig && bar.nextElementSibling === box) return;
+  if(!bar){ bar = document.createElement('div'); bar.id = 'nf36TBar'; bar.className = 'nf36-tbar'; }
+  bar.dataset.sig = sig;
+  bar.innerHTML = `<button type="button" class="nf40-tb" onclick="nf40Trash()">${NF40_IC.trash}<span>Trash</span>${n ? `<em>${n}</em>` : ''}</button><button type="button" class="nf40-tb" onclick="nf36History()">${NF40_IC.hist}<span>Job history</span></button>`;
+  box.parentElement.insertBefore(bar, box);
+};
+window.nf36TeamBar = nf36TeamBar;
+
+/* ---------- 3. No red "N things need you" banner on top of any page ---------- */
+nf37Why = function(page){ try{ const o = page && page.querySelector(':scope .nf37-why'); if(o) o.remove(); }catch(e){} };
+window.nf37Why = nf37Why;
+
+/* ---------- 4. "Exception Log" in plain words ---------- */
+(function(){
+  if(typeof renderExceptionLog !== 'function') return;
+  const base = renderExceptionLog;
+  const w = function(){ const r = base.apply(this, arguments); try{ const el = document.getElementById('exceptionLogPanel'); const h = el && el.querySelector('h2'); if(h && !h.dataset.nf40){ h.textContent = 'Problems with orders'; h.dataset.nf40 = '1'; const sub = el.querySelector('.sub'); if(sub) sub.textContent = sub.textContent.replace(/^Every dispute, rejected delivery, and short shipment/, 'Returns, damaged goods and short deliveries').replace(/Price conflicts are in the Audit Log instead, under Settings\./, ''); } }catch(e){} return r; };
+  window.renderExceptionLog = w; try{ renderExceptionLog = w; }catch(e){}
 })();
 
 function renderSidebarForViewAsRole(){
