@@ -113,6 +113,7 @@ function nf43Pills(page){
   box.classList.add('nf43-old'); nf43Fit(row);
 }
 function nf43Fit(row){
+  if(!row || !row.isConnected || !row.parentElement) return;
   const n = Number(row.dataset.n) || 0; if(!n) return;
   const phone = document.documentElement.classList.contains('nf-phone') || window.innerWidth <= 760;
   let c = 1;
@@ -128,4 +129,142 @@ function nf43NoCost(){ try{ navigate('profit'); const el = document.querySelecto
   const base = nf26AfterPass;
   nf26AfterPass = function(page){ base(page); try{ nf43Pills(page); }catch(e){ console.warn('nf43 pills', e); } };
   window.nf26AfterPass = nf26AfterPass;
+})();
+
+/* ---------- 3. One popup frame for every popup ----------
+   Title and close on top, the form in the middle (it scrolls), the buttons pinned at the bottom with the main one on
+   the right. Popups built with slModal are rearranged into this frame when they open, so every popup looks and works
+   the same on a computer and as a bottom sheet on a phone. */
+function nf43IsBtnRow(el){
+  if(!el || el.nodeType !== 1) return false;
+  if(el.matches('.sl-err, .nf43-pf')) return false;
+  if(el.matches('button.btn, a.btn')) return true;
+  const kids = [...el.children]; if(!kids.length || kids.length > 4) return false;
+  return kids.every(k => k.matches('button, a.btn, .btn')) && !!el.querySelector('.btn-primary, .btn');
+}
+function nf43Frame(m){
+  const sheet = m && m.querySelector(':scope > .sl-sheet'); if(!sheet || sheet.classList.contains('nf43-pop') || sheet.classList.contains('nf42-sheet')) return;
+  const head = sheet.querySelector(':scope > .sl-sheet-h');
+  const kids = [...sheet.children].filter(k => k !== head);
+  const foot = []; let i = kids.length - 1;
+  while(i >= 0 && nf43IsBtnRow(kids[i]) && foot.length < 3){ foot.unshift(kids[i]); i--; }
+  if(i >= 0 && kids[i].matches('.sl-err') && foot.length){ foot.unshift(kids[i]); i--; }
+  const body = document.createElement('div'); body.className = 'nf43-pb';
+  kids.slice(0, i + 1).forEach(k => body.appendChild(k));
+  sheet.classList.add('nf43-pop'); if(sheet.querySelector('table')) sheet.classList.add('nf43-wide');
+  if(head) head.after(body); else sheet.prepend(body);
+  if(foot.length){
+    const f = document.createElement('div'); f.className = 'nf43-pf';
+    const err = foot[0].matches('.sl-err') ? foot.shift() : null; if(err) f.appendChild(err);
+    const row = document.createElement('div'); row.className = 'nf43-pfr';
+    const btns = [], shells = []; foot.forEach(x => { if(x.matches('button, a.btn')) btns.push(x); else { [...x.children].forEach(c => btns.push(c)); shells.push(x); } });
+    btns.forEach(b => b.classList.remove('sl-wide'));
+    const prim = btns.filter(b => b.classList.contains('btn-primary')), rest = btns.filter(b => !b.classList.contains('btn-primary'));
+    const hasCancel = rest.some(b => /^(cancel|close|not now|back|no)\b/i.test(b.textContent.trim()));
+    if(!hasCancel && prim.length){ const c = document.createElement('button'); c.type = 'button'; c.className = 'btn btn-ghost nf43-cancel'; c.textContent = 'Cancel'; c.onclick = () => m.remove(); row.appendChild(c); }
+    rest.forEach(b => row.appendChild(b)); prim.forEach(b => row.appendChild(b));
+    f.appendChild(row); sheet.appendChild(f); shells.forEach(x => x.remove());
+  }
+}
+// Long rows of choice chips (paid with, kind) become 3 main choices + "Other", like Add expense.
+const NF43_OPEN = {};
+function nf43Seg(sheet, mid){
+  sheet.querySelectorAll('.sl-days.bk-chips, .bk-chips').forEach((g, gi) => {
+    if(g.dataset.nf43) return; const btns = [...g.querySelectorAll(':scope > button')]; if(btns.length < 5) return;
+    g.dataset.nf43 = '1'; const key = mid + ':' + gi, on = btns.find(b => b.classList.contains('on'));
+    const main = btns.slice(0, 3), rest = btns.slice(3), otherOn = !!on && rest.includes(on);
+    const seg = document.createElement('div'); seg.className = 'nf43-seg'; seg.setAttribute('role', 'group');
+    main.forEach(b => seg.appendChild(b));
+    const dd = document.createElement('div'); dd.className = 'nf43-drop'; dd.hidden = !NF43_OPEN[key];
+    const o = document.createElement('button'); o.type = 'button'; o.className = otherOn ? 'on' : ''; o.textContent = (otherOn ? on.textContent.trim() : 'Other') + ' ▾';
+    o.onclick = () => { NF43_OPEN[key] = !NF43_OPEN[key]; dd.hidden = !NF43_OPEN[key]; };
+    seg.appendChild(o);
+    rest.forEach(b => { const t = b.textContent.trim(); b.innerHTML = '<b>' + escapeHtml(t) + '</b>'; b.addEventListener('click', () => { NF43_OPEN[key] = false; }, true); dd.appendChild(b); });
+    g.replaceChildren(seg, dd); g.classList.add('nf43-segwrap');
+  });
+}
+(function(){
+  if(typeof slModal !== 'function' || slModal._nf43) return;
+  const base = slModal;
+  const w = function(id, html){ const m = base.apply(this, arguments); try{ nf43Frame(m); const sh = m.querySelector('.sl-sheet'); if(sh) nf43Seg(sh, id); }catch(e){ console.warn('nf43 frame', e); } return m; };
+  w._nf43 = true; slModal = w; window.slModal = w;
+})();
+
+/* ---------- 4. Add an expense: repeat a recent one, or pick what for, how much, paid with ---------- */
+const NF43_CAT_IC = {Electricity: 'bolt', Water: 'drop', 'Internet & phone': 'wifi', 'Gas (LPG)': 'flame', Rent: 'home', Salaries: 'users', 'Staff advance (vale)': 'hand',
+  'Stock bought in cash': 'basket', 'Fuel & transport': 'fuel', 'Delivery & shipping': 'truck', Supplies: 'boxs', Repairs: 'wrench', 'Food & meals': 'food', 'Taxes & permits': 'gov',
+  'Bank & GCash fees': 'bank', Marketing: 'mega', 'Owner took money': 'user', Other: 'dots', 'Cash to bank': 'bank', 'Owner put in cash': 'cashin'};
+Object.assign(NF43_ICON, {
+  bolt: '<path d="M13 2 3 14h9l-1 8 10-12h-9z"/>', drop: '<path d="M12 3s7 7.5 7 12a7 7 0 0 1-14 0c0-4.5 7-12 7-12z"/>', wifi: '<path d="M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0M2 9a15 15 0 0 1 20 0"/><circle cx="12" cy="19.5" r="1"/>',
+  flame: '<path d="M12 2s5 5 5 10a5 5 0 0 1-10 0c0-2 1-3.5 2-4.5 0 2 1 3 2 3 0-3-1-5 1-8.5z"/>', home: '<path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/>', users: '<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6 6 0 0 1 4 6"/>',
+  hand: '<path d="M7 11V5a1.5 1.5 0 0 1 3 0v5M10 10V4a1.5 1.5 0 0 1 3 0v6M13 10V5a1.5 1.5 0 0 1 3 0v7M16 12V8a1.5 1.5 0 0 1 3 0v6a7 7 0 0 1-7 7h-1a6 6 0 0 1-5-3l-3-5a1.5 1.5 0 0 1 2.5-1.5L7 13"/>',
+  basket: '<path d="M3 10h18l-2 10H5z"/><path d="M8 10l4-6 4 6"/>', fuel: '<path d="M4 21V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16M3 21h12M14 9h2a2 2 0 0 1 2 2v5a1.5 1.5 0 0 0 3 0V8l-3-3M7 8h4"/>',
+  truck: '<path d="M1 6h13v10H1z"/><path d="M14 9h4l3 3v4h-7"/><circle cx="5.5" cy="17.5" r="2"/><circle cx="17.5" cy="17.5" r="2"/>', boxs: '<path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/>',
+  wrench: '<path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.5-2.5z"/>', food: '<path d="M4 3v8a3 3 0 0 0 6 0V3M7 3v18M17 3c-2 0-3 3-3 6s1 4 3 4v8"/>',
+  gov: '<path d="M3 21h18M5 10v8M9.5 10v8M14.5 10v8M19 10v8M2 10l10-6 10 6z"/>', bank: '<path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/>',
+  mega: '<path d="M3 11v2a1 1 0 0 0 1 1h3l6 4V6L7 10H4a1 1 0 0 0-1 1zM17 8a5 5 0 0 1 0 8"/>', dots: '<circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/>',
+  cashin: '<rect x="2" y="6" width="20" height="12" rx="2"/><path d="M12 9v6M9 12h6"/>', camera: '<path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13.5" r="3.5"/>',
+});
+const NF43_CAT_TONE = {Utilities: 'yel', Rent: 'blu', People: 'blu', Stock: 'grn', Transport: 'yel', Supplies: 'gry', Repairs: 'blu', Other: 'gry', Taxes: 'gry', Fees: 'gry', Marketing: 'grn', Owner: 'blu', Transfer: 'grn'};
+const NF43_CAT_WORDS = {Electricity: 'kuryente meralco ilaw power light', Water: 'tubig maynilad manila water', 'Internet & phone': 'load wifi pldt globe smart converge internet', 'Gas (LPG)': 'lpg tangke gasul',
+  Rent: 'upa renta', Salaries: 'sahod sweldo suweldo pay', 'Staff advance (vale)': 'vale bale utang ng tao', 'Fuel & transport': 'gas gasolina diesel petron shell caltex pamasahe grab jeep',
+  'Delivery & shipping': 'lalamove lbc jnt courier padala', Supplies: 'gamit supplies bond paper', Repairs: 'ayos gawa sira welding', 'Food & meals': 'pagkain kain merienda lunch',
+  'Taxes & permits': 'bir permit tax buwis', 'Bank & GCash fees': 'fee singil charge', Marketing: 'ads boost facebook', 'Stock bought in cash': 'palengke paninda stock', 'Owner took money': 'kinuha owner draw'};
+const NF43_EX = {q: '', all: false, more: false, pay: false, recentAll: false};
+function nf43ExUse(){ const u = {}; (BK.expenses || []).forEach(e => { if(!e.deletedAt) u[e.category] = (u[e.category] || 0) + 1; }); return u; }
+function nf43PayUse(){ const u = {cash: 3, gcash: 2, bank: 1}; (BK.expenses || []).forEach(e => { if(!e.deletedAt && e.paidFrom) u[e.paidFrom] = (u[e.paidFrom] || 0) + 1; }); return u; }
+function nf43Ic(name, tone){ const t = {red: ['#FDDCDC', '#B42318'], yel: ['#FBEFAE', '#8A6100'], grn: ['#D3F0DD', '#15803D'], blu: ['#D8E6F8', '#1A4F8C'], gry: ['#E8EAEE', '#475467']}[tone || 'gry']; return `<i class="nf43-ic" style="background:${t[0]};color:${t[1]}">${nf43Svg(name)}</i>`; }
+function nf43ExRender(){
+  if(!EXF) return;
+  const cat = EXF.category ? bkCat(EXF.category) : null, isNew = !EXF.id;
+  const cats = EXF.cashMove ? BK_CATS.filter(c => c.transfer || c.drawing) : BK_CATS.filter(c => !c.transfer);
+  if(cat && cat.transfer) EXF.paidFrom = 'cash';
+  const use = nf43ExUse(), q = NF43_EX.q.trim().toLowerCase();
+  let list = cats.slice().sort((a, b) => (use[b.k] || 0) - (use[a.k] || 0));
+  if(q) list = list.filter(c => (c.k + ' ' + (NF43_CAT_WORDS[c.k] || '')).toLowerCase().includes(q));
+  const top = q || NF43_EX.all ? list : list.slice(0, 5);
+  if(!q && !NF43_EX.all && cat && !top.some(c => c.k === cat.k)) top[top.length - 1] = cat;
+  const catBtn = c => `<button type="button" class="nf43-cat ${EXF.category === c.k ? 'on' : ''}" onclick="nf43ExSet('category', ${JSON.stringify(c.k).replace(/"/g, '&quot;')})">${nf43Ic(NF43_CAT_IC[c.k] || 'dots', NF43_CAT_TONE[c.g])}<span>${escapeHtml(c.k)}</span></button>`;
+  const rec = isNew && !EXF.cashMove && typeof nf35RecentExpenses === 'function' ? nf35RecentExpenses() : [];
+  const recShown = NF43_EX.recentAll ? rec : rec.slice(0, 3);
+  const pu = nf43PayUse(), payAll = BK_PAID.filter(p => p[0] !== 'credit' || isNew || EXF.paidFrom === 'credit');
+  const main = payAll.slice().sort((a, b) => (pu[b[0]] || 0) - (pu[a[0]] || 0)).slice(0, 3).map(p => p[0]);
+  const payLabel = k => k === 'credit' ? 'Pay later' : (BK_PAID.find(p => p[0] === k) || [k, k])[1];
+  const otherSel = !main.includes(EXF.paidFrom);
+  const showMore = NF43_EX.more || !isNew || !!(EXF.note || EXF.repeat || (EXF.date && EXF.date !== APP_TODAY) || EXF.staff || (cat && cat.staff));
+  const vendorLabel = cat && cat.staff ? 'Staff name' : cat && cat.transfer === 'out' ? 'Bank' : cat && cat.transfer ? 'Who' : 'Paid to';
+  const note = cat && cat.drawing ? "Money the owner takes out is not an expense. It's kept apart so your profit stays right." : cat && cat.cogs ? 'Stock bought with cash counts as the cost of what you sell.' : cat && cat.transfer === 'out' ? 'Cash taken from the drawer to deposit in the bank. Snap the deposit slip.' : cat && cat.transfer === 'in' ? "Cash the owner added to the drawer, like extra change. It isn't a sale." : '';
+  slModal('exModal', `<div class="sl-sheet-h"><b>${EXF.cashMove ? 'Cash in or out of the drawer' : EXF.id ? 'Edit expense' : 'Add an expense'}</b><button class="sl-x" onclick="slClose('exModal')" aria-label="Close">✕</button></div>
+    <div class="nf43-ex">
+    ${EXF.cashMove ? `<p class="nf43-lead">Not a sale and not an expense: money moved in or out. The cash count knows about it, so the drawer still adds up.</p>` : ''}
+    ${rec.length ? `<section><div class="nf43-q">Repeat a recent one ${rec.length > 3 ? `<button type="button" class="nf43-link" onclick="NF43_EX.recentAll=!NF43_EX.recentAll; exRender()">${NF43_EX.recentAll ? 'Show fewer' : `See all ${rec.length}`}</button>` : ''}</div>
+      <div class="nf43-rec ${NF43_EX.recentAll ? 'all' : ''}">${recShown.map(e => { const c = bkCat(e.category); return `<div class="nf43-rr ${EXF.category === e.category && (EXF.vendor || '') === (e.vendor || '') ? 'on' : ''}">${nf43Ic(NF43_CAT_IC[c.k] || 'dots', NF43_CAT_TONE[c.g])}<span class="nm"><b>${escapeHtml(e.category)}</b><small>${escapeHtml([e.vendor, bkDayLabel(e.date)].filter(Boolean).join(' · '))}</small></span><em>${bkPeso(e.amount)}</em><button type="button" class="btn btn-outline" onclick="nf35UseExpense('${e.id}')">Use</button></div>`; }).join('')}</div></section>
+      <div class="nf43-or">or start a new one</div>` : ''}
+    <section><div class="nf43-q">${EXF.cashMove ? 'What happened?' : 'What for?'}</div>
+      ${EXF.cashMove ? '' : `<input class="nf43-search" type="search" placeholder="Type: kuryente, rent, gas…" value="${escapeHtml(NF43_EX.q)}" oninput="NF43_EX.q=this.value; nf43ExCats()" aria-label="Search what it was for">`}
+      <div class="nf43-cats" id="nf43Cats">${top.map(catBtn).join('')}${!q && !NF43_EX.all && list.length > top.length ? `<button type="button" class="nf43-cat more" onclick="NF43_EX.all=true; exRender()">More (${list.length - top.length})</button>` : ''}${q && !list.length ? '<p class="nf43-none">Nothing matches. Try another word, or pick Other.</p>' : ''}</div>
+      ${note ? `<p class="nf43-note">${note}</p>` : ''}</section>
+    <section><div class="nf43-q">How much?</div><div class="nf43-amt"><span>₱</span><input id="exAmt" inputmode="decimal" value="${escapeHtml(EXF.amount)}" placeholder="0" oninput="EXF.amount=this.value" aria-label="Amount in pesos"></div></section>
+    ${cat && cat.transfer ? '' : `<section><div class="nf43-q">Paid with</div>
+      <div class="nf43-seg" role="group" aria-label="Paid with">${main.map(k => `<button type="button" class="${EXF.paidFrom === k ? 'on' : ''}" onclick="NF43_EX.pay=false; nf43ExSet('paidFrom','${k}')">${escapeHtml(payLabel(k))}</button>`).join('')}<button type="button" class="${otherSel ? 'on' : ''}" onclick="NF43_EX.pay=!NF43_EX.pay; exRender()">${otherSel ? escapeHtml(payLabel(EXF.paidFrom)) : 'Other'} ▾</button></div>
+      ${NF43_EX.pay ? `<div class="nf43-drop">${payAll.filter(p => !main.includes(p[0])).map(p => `<button type="button" class="${EXF.paidFrom === p[0] ? 'on' : ''}" onclick="NF43_EX.pay=false; nf43ExSet('paidFrom','${p[0]}')"><b>${escapeHtml(payLabel(p[0]))}</b><small>${{maya: 'E-wallet', card: 'Debit or credit card', owner: 'You paid from your own pocket', credit: 'Saves it as a bill to pay', bank: 'Bank transfer', gcash: 'E-wallet', cash: 'From the cash drawer'}[p[0]] || ''}</small></button>`).join('')}</div>` : ''}</section>`}
+    <section><label class="nf43-rcpt">${nf43Svg('camera')}<span>${EXF.reading ? 'Reading the receipt…' : EXF.photo || EXF.photoRef ? '✓ Receipt photo added · Change' : 'Add a receipt photo'} <small>(optional, fills the amount for you)</small></span><input type="file" accept="image/*" capture="environment" onchange="exPhoto(this)" hidden></label></section>
+    <section class="nf43-more ${showMore ? 'open' : ''}"><button type="button" class="nf43-mt" onclick="NF43_EX.more=!NF43_EX.more; exRender()" aria-expanded="${showMore}">More details <small>date, ${vendorLabel.toLowerCase()}, note</small><span aria-hidden="true">${showMore ? '▴' : '▾'}</span></button>
+      ${showMore ? `<div class="nf43-md"><div class="row-2"><div class="field"><label>Date</label><input type="date" value="${EXF.date}" max="${APP_TODAY}" onchange="EXF.date=this.value||APP_TODAY"></div>
+        <div class="field"><label>${vendorLabel} <small>(optional)</small></label>${cat && cat.staff
+          ? `<input maxlength="80" value="${escapeHtml(EXF.staff)}" oninput="EXF.staff=this.value" placeholder="e.g. Rico" list="exStaff"><datalist id="exStaff">${getActiveTeamMembers().map(m => `<option value="${escapeHtml(String(m.name).replace(/ \(You\)$/, ''))}">`).join('')}</datalist>`
+          : `<input maxlength="120" value="${escapeHtml(EXF.vendor)}" oninput="EXF.vendor=this.value" placeholder="${cat && cat.transfer === 'out' ? 'e.g. BDO' : cat && cat.transfer ? 'e.g. the owner' : 'e.g. Meralco'}">`}</div></div>
+        <div class="field"><label>Note <small>(optional)</small></label><input maxlength="500" value="${escapeHtml(EXF.note)}" oninput="EXF.note=this.value"></div>
+        ${EXF.cashMove ? '' : `<label class="bk-check"><input type="checkbox" ${EXF.repeat ? 'checked' : ''} onchange="EXF.repeat=this.checked"> Every month (rent, bills). Nifti reminds you if it's not in yet.</label>`}</div>` : ''}</section>
+    </div>
+    <div class="sl-err" id="exErr">${escapeHtml(EXF.err)}</div>
+    <div class="nf43-btns"><button type="button" class="btn btn-ghost" onclick="slClose('exModal')">Cancel</button>${isNew && !EXF.cashMove ? `<button type="button" class="btn btn-outline" onclick="window._nf35Again='exp:'+(EXF.paidFrom||'cash'); exSave()" ${EXF.saving ? 'disabled' : ''}>Save & add another</button>` : ''}<button class="btn btn-primary" onclick="exSave()" ${EXF.saving ? 'disabled' : ''}>${EXF.saving ? 'Saving…' : EXF.cashMove ? 'Save' : 'Save expense'}</button></div>`);
+  const m = document.getElementById('exModal'); if(m){ const sh = m.querySelector('.sl-sheet'); if(sh) sh.classList.add('nf43-exsheet'); }
+}
+function nf43ExSet(k, v){ EXF[k] = v; const keep = document.querySelector('#exModal .nf43-pb'); const top = keep ? keep.scrollTop : 0; exRender(); const b = document.querySelector('#exModal .nf43-pb'); if(b) b.scrollTop = top; if(k === 'category'){ const a = document.getElementById('exAmt'); if(a && !a.value) a.focus(); } }
+function nf43ExCats(){ const box = document.getElementById('nf43Cats'); if(!box) return; const el = document.querySelector('#exModal .nf43-search'); const pos = el ? el.selectionStart : 0; const top = document.querySelector('#exModal .nf43-pb'); const st = top ? top.scrollTop : 0; exRender(); const s = document.querySelector('#exModal .nf43-search'); if(s){ s.focus(); try{ s.setSelectionRange(pos, pos); }catch(e){} } const b = document.querySelector('#exModal .nf43-pb'); if(b) b.scrollTop = st; }
+(function(){
+  if(typeof exRender !== 'function') return;
+  exRender = nf43ExRender; window.exRender = nf43ExRender;
+  const oe = window.openExpenseForm; if(typeof oe === 'function' && !oe._nf43){ const w = function(){ NF43_EX.q = ''; NF43_EX.all = false; NF43_EX.more = false; NF43_EX.pay = false; NF43_EX.recentAll = false; return oe.apply(this, arguments); }; w._nf43 = true; Object.keys(oe).forEach(k => { if(!(k in w)) w[k] = oe[k]; }); window.openExpenseForm = w; try{ openExpenseForm = w; }catch(e){} }
 })();
