@@ -138,3 +138,18 @@
 .nf43-drop[hidden]{display:none !important;}
 .nf43-segwrap .nf43-seg > button{font-size:16px !important;padding:12px 6px !important;font-weight:800 !important;}
 .nf43-segwrap .nf43-drop > button{font-size:16px !important;padding:11px 14px !important;text-align:left;}
+
+/* ---------- Six text sizes: the few places that set size by their parent ---------- */
+html #view-app #page-profit table td{font-size:16px !important;}
+html #view-app table th{font-size:14px !important;}
+html #view-app .bk-tile-l{font-size:16px !important;}
+html #view-app .bk-tile-v{font-size:28px !important;}
+html #view-app .cq-tile-v{font-size:28px !important;}
+html #view-app small{font-size:14px;}
+@media (max-width:760px){ html #view-app .bk-tile-v, html #view-app .cq-tile-v{font-size:24px !important;} html #view-app #page-profit table td{font-size:16px !important;} }
+
+/* ---------- Tables: centered, one header style, one row height; the Stock bar stays ---------- */
+html #view-app main table:not(.nf43-left) th, html #view-app main table:not(.nf43-left) td{text-align:center !important;vertical-align:middle;}
+html #view-app main table th{font-size:14px !important;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#344054;background:#F9FAFB;padding:12px 12px;}
+html #view-app main table td{padding:14px 12px;}
+html #view-app #page-money table th, html #view-app #page-money table td, html #view-app #page-ledger table th, html #view-app #page-ledger table td{text-align:inherit !important;}

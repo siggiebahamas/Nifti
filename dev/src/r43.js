@@ -97,20 +97,24 @@ function nf43Cols(n, w, need, gap){
 }
 function nf43Pills(page){
   if(!page) return; const id = page.id.replace('page-', ''), cfg = NF43_PAGES[id]; if(!cfg) return;
-  const box = page.querySelector(cfg.sel); if(!box) return;
+  page.querySelectorAll(cfg.sel).forEach(box => nf43PillsFor(box, cfg));
+}
+function nf43PillsFor(box, cfg){
   const tiles = [...box.children].filter(e => e.nodeType === 1 && !e.classList.contains('nf43-pills'));
   const pills = [];
   tiles.forEach((tile, i) => { const x = nf43Read(tile); const r = cfg.rules.find(([re]) => re.test(x.k)); if(!r) return; let p = r[1](x); if(!p) return; (Array.isArray(p) ? p : [p]).forEach(q => { if(q && q.v !== '' && q.v != null){ q.i = i; pills.push(q); } }); });
   let row = box.nextElementSibling && box.nextElementSibling.classList.contains('nf43-pills') ? box.nextElementSibling : null;
-  const allZero = cfg.empty && pills.length && pills.every(q => nf43Zero(q.v));
-  const html = allZero ? `<div class="nf43-empty"><b>No bills this month yet</b><span>Bills you make in Orders show up here, ready for your bookkeeper.</span></div>`
-    : pills.map((q, j) => `<button type="button" class="nf43-pill t-${q.tone}" data-i="${q.i}" ${q.go ? `data-go="${escapeHtml(q.go)}"` : ''}><span class="ic">${nf43Svg(q.ic)}</span><span class="tx"><span class="k">${escapeHtml(q.t)}</span><span class="v">${escapeHtml(q.v)}${q.sm ? `<span class="sm">${escapeHtml(q.sm)}</span>` : ''}</span></span></button>`).join('');
+  const allZero = cfg.empty && tiles.length && (pills.length ? pills.every(q => nf43Zero(q.v)) : tiles.every(t => nf43Zero(nf43Read(t).v)));
+  if(!pills.length && !allZero){ if(row) row.remove(); box.classList.remove('nf43-old'); box.style.removeProperty('display'); return; }
+  const buying = /Buying from suppliers/i.test(((box.closest('section, .panel-card, .nf-half') || {}).textContent || '').slice(0, 200));
+  const html = allZero ? (buying ? `<div class="nf43-empty"><b>No supplier bills this month yet</b><span>Bills you record from suppliers show up here.</span></div>` : `<div class="nf43-empty"><b>No bills this month yet</b><span>Bills you make in Orders show up here, ready for your bookkeeper.</span></div>`)
+    : pills.map(q => `<button type="button" class="nf43-pill t-${q.tone}" data-i="${q.i}" ${q.go ? `data-go="${escapeHtml(q.go)}"` : ''}><span class="ic">${nf43Svg(q.ic)}</span><span class="tx"><span class="k">${escapeHtml(q.t)}</span><span class="v">${escapeHtml(q.v)}${q.sm ? `<span class="sm">${escapeHtml(q.sm)}</span>` : ''}</span></span></button>`).join('');
   if(!row){ row = document.createElement('div'); row.className = 'nf43-pills'; box.insertAdjacentElement('afterend', row); // after the hidden old row, so passes that place things before it keep their spot
     row.addEventListener('click', e => { const b = e.target.closest('.nf43-pill'); if(!b) return; if(b.dataset.go){ try{ (new Function(b.dataset.go))(); }catch(err){} return; } const t = [...box.children].filter(el => !el.classList.contains('nf43-pills'))[Number(b.dataset.i)]; if(t){ const c = t.matches('button,[onclick],a') ? t : t.querySelector('button,[onclick],a'); if(c) c.click(); else t.click(); } });
     try{ new ResizeObserver(() => nf43Fit(row)).observe(row); }catch(e){} }
   if(row.dataset.k !== html){ row.dataset.k = html; row.innerHTML = html; }
   row.dataset.n = allZero ? 0 : pills.length;
-  box.classList.add('nf43-old'); nf43Fit(row);
+  box.classList.add('nf43-old'); box.style.setProperty('display', 'none', 'important'); nf43Fit(row);
 }
 function nf43Fit(row){
   if(!row || !row.isConnected || !row.parentElement) return;
@@ -267,4 +271,47 @@ function nf43ExCats(){ const box = document.getElementById('nf43Cats'); if(!box)
   if(typeof exRender !== 'function') return;
   exRender = nf43ExRender; window.exRender = nf43ExRender;
   const oe = window.openExpenseForm; if(typeof oe === 'function' && !oe._nf43){ const w = function(){ NF43_EX.q = ''; NF43_EX.all = false; NF43_EX.more = false; NF43_EX.pay = false; NF43_EX.recentAll = false; return oe.apply(this, arguments); }; w._nf43 = true; Object.keys(oe).forEach(k => { if(!(k in w)) w[k] = oe[k]; }); window.openExpenseForm = w; try{ openExpenseForm = w; }catch(e){} }
+})();
+
+/* ---------- 5. Names that match, short subtitles, a shorter Home ---------- */
+const NF43_NAV = {profit: 'Prices & profit', ledger: 'Monthly summary'};
+const NF43_TITLE = {profit: 'Prices & profit', ledger: 'Monthly summary'};
+const NF43_SUB = {orders: 'Customers on the left, suppliers on the right.', inventory: 'What you have and what to order.', money: 'Your profit, and where the money went.',
+  sales: "Today's sales, then count the cash.", expenses: 'Bills, rent and salaries, with receipts.', collections: 'Who owes you, and who you owe.', profit: 'What each item costs and earns.',
+  issues: "Things that don't add up.", payroll: 'Pay your staff and print payslips.', ledger: 'What changed this month, line by line.', followups: 'Win back leads and old customers.',
+  routes: "Today's delivery list for your driver.", returns: 'Credits for returned or bad items.', store: 'Your order page for Facebook and Viber.', discover: 'New buyers and better suppliers.',
+  cheques: 'Checks to deposit and checks to fund.', books: 'Sales and purchases for your bookkeeper.', taxforms: '2307 forms you give and collect.', team: 'Your people, their jobs, and who did what.',
+  settings: 'Your business details and preferences.', messages: 'Customers, suppliers and your team, in one place.'};
+function nf43SetText(el, t){ if(!el) return; const n = [...el.childNodes].find(x => x.nodeType === 3 && x.textContent.trim()); if(n){ if(n.textContent.trim() !== t) n.textContent = t; } else if(el.textContent.trim() !== t) el.textContent = t; }
+function nf43Names(page){
+  Object.entries(NF43_NAV).forEach(([k, t]) => { const s = document.querySelector(`#view-app .sidebar [data-page="${k}"] span`); if(s && s.textContent !== t) s.textContent = t; });
+  if(!page) return; const id = page.id.replace('page-', '');
+  const head = page.querySelector('.page-head'); if(!head) return;
+  const h1 = head.querySelector('h1'), p = head.querySelector('p');
+  let title = NF43_TITLE[id], sub = NF43_SUB[id];
+  if(id === 'collections' && typeof colTab !== 'undefined' && colTab === 'cash'){ title = 'Bank & deposits'; sub = 'Cash on hand, and what reached the bank.'; }
+  if(id === 'collections' && !title) title = 'Getting paid';
+  if(title) nf43SetText(h1, title);
+  if(sub && p && p.textContent.trim() !== sub) p.textContent = sub;
+}
+function nf43Home(page){
+  if(!page || page.id !== 'page-dashboard') return;
+  const home = document.getElementById('mhHome'); if(!home) return;
+  const hide = el => { if(el && el.style.getPropertyValue('display') !== 'none') el.style.setProperty('display', 'none', 'important'); };
+  // the setup checklist stays until it's done; the "new shops" cards only show to a shop with nothing in it yet
+  if(typeof inventoryData !== 'undefined' && inventoryData.length) hide(document.getElementById('nf26Start'));
+  hide(document.getElementById('nf28Paid'));        // same money as the Overdue pill; tapping the pill opens Getting paid
+  hide(document.getElementById('nf26HomePlan'));    // the plan lives in the menu
+  const rows = home.querySelector(':scope > .rows'); if(!rows) return;
+  const kids = [...rows.children];
+  const find = re => kids.find(k => re.test(((k.querySelector('h2,h3,h4,.sect-h,.tip-k,b') || {}).textContent || k.textContent || '').trim().slice(0, 60)));
+  hide(kids.find(k => /^TIP OF THE WEEK|Tip of the week/i.test(k.textContent.trim().slice(0, 30))));
+  const order = [find(/^What to do/i), document.getElementById('srCard') || find(/^What runs out/i), find(/^Where every order is/i)].filter(Boolean);
+  order.forEach((el, i) => { const want = order[i - 1] ? order[i - 1].nextElementSibling : rows.firstElementChild; if(el !== want){ if(i === 0) rows.prepend(el); else order[i - 1].after(el); } });
+}
+(function(){
+  if(typeof nf26AfterPass !== 'function') return;
+  const base = nf26AfterPass;
+  nf26AfterPass = function(page){ base(page); try{ nf43Names(page); nf43Home(page); }catch(e){ console.warn('nf43 names', e); } };
+  window.nf26AfterPass = nf26AfterPass;
 })();
