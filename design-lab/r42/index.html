@@ -1,0 +1,425 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Round 42 Review</title><meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap">
+<style>
+:root{--ink:#0B0F14;--line:#E4E7EC;--g:#1F6B45;--soft:#F2F4F7;--bg:#F7F8FA;--card:#FFFFFF;--sub:#344054}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#F7F8FA}}
+:root[data-theme="dark"]{--bg:#F7F8FA}
+*{box-sizing:border-box}html,body{margin:0}body{font:16px/1.5 "Plus Jakarta Sans",system-ui,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
+img{max-width:100%}
+.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.tin{max-width:1240px;margin:0 auto;padding:12px 20px;display:flex;gap:8px 10px;align-items:center;flex-wrap:wrap}
+.tin a.back{color:var(--g);font-weight:700;text-decoration:none;font-size:14.5px}.tin h1{margin:0;font-size:18px;flex:1;min-width:180px}
+.jump{display:flex;gap:6px;flex-wrap:wrap}.jump a{padding:6px 12px;border-radius:999px;border:1.5px solid #D0D5DD;background:#fff;color:var(--ink);font-weight:700;font-size:14px;text-decoration:none}
+.wrap{max-width:1240px;margin:0 auto;padding:24px 20px 120px;display:grid;grid-template-columns:minmax(0,1fr);gap:64px}
+.wrap > *{min-width:0}
+h2{margin:0 0 6px;font-size:30px;line-height:1.2;letter-spacing:-.01em}.lead{margin:0 0 18px;max-width:900px;font-size:16.5px}
+h3{margin:0;font-size:20px}
+.lbl{font-size:13px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--sub);margin:0 0 8px}
+.tag{display:inline-block;border-radius:999px;padding:2px 10px;font-size:13px;font-weight:800;vertical-align:middle}
+.tag.ok{background:#E3F5EA;color:#14532D}.tag.ask{background:#FFF4D6;color:#7A4B00}.tag.done{background:#1F6B45;color:#fff}
+.note{font-size:15px;color:var(--sub);margin:0}
+.box{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px}
+.tog{display:inline-flex;border:1.5px solid #D0D5DD;border-radius:12px;overflow:hidden;margin:0 0 16px;background:#fff}
+.tog button{border:0;background:#fff;font:inherit;font-weight:800;font-size:15px;padding:9px 16px;cursor:pointer;color:var(--ink)}
+.tog button.on{background:var(--g);color:#fff}
+
+/* ---------- header pills ---------- */
+.legend{display:flex;gap:8px 18px;flex-wrap:wrap;margin:0 0 18px}
+.legend span{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:700}
+.legend i{width:26px;height:26px;border-radius:8px;display:inline-grid;place-items:center}
+.legend i svg{width:15px;height:15px}
+.pg{padding:22px 0;border-top:1px solid var(--line);display:grid;gap:12px}
+.pg h3{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pg h3 small{font-size:14px;font-weight:600;color:var(--sub)}
+.pair{display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
+.pc{overflow-x:auto;padding-bottom:6px}
+.pcin{width:1104px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 20px}
+.hp-row{display:flex;flex-wrap:wrap;gap:12px}
+.hp{flex:1 1 auto;min-width:200px;display:flex;align-items:center;gap:14px;padding:14px 22px 14px 14px;border-radius:18px;border:1.5px solid var(--b);background:var(--t)}
+.white .hp{background:#fff;border-color:#DDE1E6}
+.hp .ic{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;background:var(--i);color:var(--f);flex:none}
+.hp .ic svg{width:23px;height:23px}
+.hp .tx{display:grid;gap:1px;min-width:0}
+.hp .k{font-size:16px;font-weight:700;line-height:1.3;white-space:nowrap}
+.hp .v{font-size:27px;font-weight:800;line-height:1.15;letter-spacing:-.01em;white-space:nowrap}
+.hp .v small{font-size:15px;font-weight:700;margin-left:7px;letter-spacing:0}
+.hp .v small.dn{color:#15803D}
+.ph{width:390px;max-width:100%;background:#0B0F14;border-radius:36px;padding:12px}
+.phin{background:#fff;border-radius:26px;padding:18px 16px 22px}
+.phin .hp-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.phin .hp{min-width:0;display:grid;grid-template-columns:30px minmax(0,1fr);gap:8px 9px;padding:12px;border-radius:16px;align-items:start}
+.phin .hp .ic{width:30px;height:30px;border-radius:9px}.phin .hp .ic svg{width:17px;height:17px}
+.phin .hp .tx{display:contents}
+.phin .hp .k{font-size:14px;white-space:normal;line-height:1.25;align-self:center}
+.phin .hp .v{grid-column:1 / -1;font-size:21px;white-space:normal}
+.phin .hp .v small{font-size:13px;margin-left:4px;display:inline-block}
+.words{width:100%;border-collapse:collapse;font-size:15px;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.words th{text-align:left;font-size:13px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--sub);background:#F9FAFB;padding:10px 12px;border-bottom:1px solid var(--line)}
+.words td{padding:9px 12px;border-bottom:1px solid #F2F4F7;vertical-align:top}
+.words td.old{color:#475467;text-decoration:line-through;text-decoration-color:#D0D5DD}
+.words td b{font-weight:800}
+.wt{overflow-x:auto}
+
+/* ---------- before / after ---------- */
+.ba{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;align-items:start}
+.ba > div{min-width:0}
+.shot{display:block;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
+.shot img{display:block;width:100%}
+.cap{font-size:14px;color:var(--sub);margin:6px 2px 0}
+/* add expense mockup */
+.ex{width:100%;max-width:560px;background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 18px 50px rgba(11,15,20,.12);overflow:hidden;display:grid}
+.ex.phone{max-width:390px;border-radius:24px}
+.ex header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--line)}
+.ex header b{font-size:20px}.ex header span{width:34px;height:34px;border-radius:50%;background:#F2F4F7;display:grid;place-items:center;font-weight:800}
+.ex main{padding:16px 20px;display:grid;gap:18px}
+.ex .q{font-size:16px;font-weight:800;margin:0 0 8px;display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.ex .q a{font-size:14px;color:var(--g);text-decoration:none}
+.rec{border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.rec div{display:grid;grid-template-columns:34px minmax(0,1fr) auto auto;gap:12px;align-items:center;padding:10px 12px;border-top:1px solid #F2F4F7;font-size:15px}
+.rec div:first-child{border-top:0}
+.rec i{width:34px;height:34px;border-radius:10px;display:grid;place-items:center}
+.rec i svg{width:18px;height:18px}
+.rec b{font-weight:700;display:block;line-height:1.25}.rec small{font-size:13.5px;color:var(--sub);font-weight:600}
+.rec em{font-style:normal;font-weight:800;font-variant-numeric:tabular-nums}
+.rec button{border:1.5px solid #D0D5DD;background:#fff;border-radius:10px;font:inherit;font-size:14px;font-weight:800;padding:6px 12px}
+.or{display:flex;align-items:center;gap:12px;font-size:14px;font-weight:700;color:var(--sub)}.or::before,.or::after{content:'';flex:1;height:1px;background:var(--line)}
+.srch{border:1.5px solid #D0D5DD;border-radius:12px;padding:11px 14px;font-size:16px;color:#667085;margin-bottom:10px}
+.cats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.cats span{border:1.5px solid #D0D5DD;border-radius:12px;padding:10px 12px;font-size:15px;font-weight:700;display:flex;align-items:center;gap:8px;min-height:46px}
+.cats span.on{border-color:var(--g);background:#E7F3EC}
+.cats span.more{border-style:dashed;justify-content:center}
+.cats svg{width:17px;height:17px;flex:none}
+.amt{border:1.5px solid var(--g);border-radius:12px;padding:10px 14px;font-size:26px;font-weight:800;box-shadow:0 0 0 3px rgba(31,107,69,.12)}
+.seg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1.5px solid #D0D5DD;border-radius:12px;overflow:hidden}
+.seg span{padding:10px 6px;text-align:center;font-size:15px;font-weight:800;border-left:1px solid #D0D5DD}
+.seg span:first-child{border-left:0}.seg span.on{background:var(--g);color:#fff}
+.hint{font-size:14px;color:var(--sub);margin:6px 0 0;font-weight:600}
+.drop{margin-top:8px;border:1px solid var(--line);border-radius:12px;box-shadow:0 10px 30px rgba(11,15,20,.1);overflow:hidden;font-size:15px}
+.drop div{padding:9px 12px;border-top:1px solid #F2F4F7;display:flex;justify-content:space-between;gap:10px}.drop div:first-child{border-top:0}
+.drop small{color:var(--sub);font-weight:600;font-size:13.5px}
+.rcpt{display:flex;align-items:center;gap:10px;border:1.5px dashed #D0D5DD;border-radius:12px;padding:11px 14px;font-weight:700;font-size:15px}
+.ex footer{display:flex;justify-content:flex-end;gap:10px;padding:14px 20px;border-top:1px solid var(--line);background:#fff}
+.btn{border-radius:12px;padding:11px 18px;font-weight:800;font-size:15.5px;border:1.5px solid #D0D5DD;background:#fff}
+.btn.p{background:var(--g);border-color:var(--g);color:#fff}
+
+/* ---------- recommendations ---------- */
+.recs{display:grid;gap:22px}
+.rc{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.rc > header{display:flex;gap:12px;align-items:center;padding:16px 20px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.rc > header .n{width:34px;height:34px;border-radius:10px;background:#0B0F14;color:#fff;display:grid;place-items:center;font-weight:800;font-size:15px;flex:none}
+.rc > header h3{flex:1;min-width:220px;font-size:19px}
+.rc .why{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;padding:16px 20px}
+.rc .why h4{margin:0 0 6px;font-size:14px;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+.rc .why .bad h4{color:#B42318}.rc .why .good h4{color:#15803D}
+.rc .why ul{margin:0;padding-left:20px;font-size:15.5px;line-height:1.5}
+.rc .vis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;padding:0 20px 18px}
+.rc .vis > div{min-width:0}
+.rc .vis .lbl{margin:0 0 6px}
+.frame{border:1px solid var(--line);border-radius:14px;background:#F9FAFB;padding:14px;min-height:120px}
+.frame.white{background:#fff}
+.rc .ans{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:12px 20px;border-top:1px solid var(--line);background:#FCFCFD}
+.rc .ans span{font-size:14.5px;font-weight:800;margin-right:4px}
+.rc .ans button{border:1.5px solid #D0D5DD;background:#fff;border-radius:999px;font:inherit;font-size:14.5px;font-weight:800;padding:7px 14px;cursor:pointer;color:var(--ink)}
+.rc .ans button.on.y{background:#1F6B45;border-color:#1F6B45;color:#fff}
+.rc .ans button.on.n{background:#344054;border-color:#344054;color:#fff}
+.rc .ans button.on.c{background:#FDF0B0;border-color:#E0C04A}
+.rc .ans input{flex:1;min-width:200px;border:1.5px solid #D0D5DD;border-radius:10px;padding:8px 12px;font:inherit;font-size:15px}
+.mini{font-size:14px}
+/* small building blocks used in the visuals */
+.blk{border-radius:10px;padding:8px 12px;font-size:14px;font-weight:700;margin-bottom:6px;display:flex;justify-content:space-between;gap:8px}
+.blk.g{background:#E3F5EA}.blk.r{background:#FDECEC}.blk.y{background:#FFF5C2}.blk.b{background:#E1EDFA}.blk.x{background:#EEF0F3;color:#344054}.blk.cut{background:repeating-linear-gradient(135deg,#FDECEC 0 8px,#FFF 8px 16px);color:#9F1D14;text-decoration:line-through}
+.blk small{font-weight:600}
+.menu{display:grid;gap:4px;font-size:15px}
+.menu div{padding:7px 10px;border-radius:9px;display:flex;justify-content:space-between;gap:8px;background:#fff;border:1px solid #F2F4F7}
+.menu div em{font-style:normal;font-size:13px;font-weight:700;color:#475467}
+.menu div.chg{border-color:#E0C04A;background:#FFFBEA}
+.ocard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px;display:grid;gap:8px;font-size:15px}
+.ocard .row{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.ocard .mb{background:var(--g);color:#fff;border-radius:10px;padding:8px 12px;font-weight:800;text-align:center;font-size:14.5px}
+.ocard .lk{font-size:14px;font-weight:700;color:var(--g);text-decoration:underline}
+.ocard .dots{border:1.5px solid #D0D5DD;border-radius:10px;padding:6px 10px;font-weight:800}
+.t2{width:100%;border-collapse:collapse;font-size:14.5px;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.t2 th{font-size:12.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--sub);text-align:left;padding:8px 10px;background:#F9FAFB;border-bottom:1px solid var(--line)}
+.t2 td{padding:9px 10px;border-bottom:1px solid #F2F4F7;vertical-align:middle}
+.t2 .r{text-align:right;font-variant-numeric:tabular-nums}.t2 .c{text-align:center}
+.st{display:inline-block;border-radius:999px;padding:2px 10px;font-size:13px;font-weight:800}
+.st.r{background:#FDECEC;color:#9F1D14}.st.y{background:#FFF5C2;color:#713F12}.st.g{background:#E3F5EA;color:#14532D}.st.b{background:#E1EDFA;color:#1A4F8C}.st.o{background:#FFE9D5;color:#9A3412}
+.chiprow{display:flex;gap:8px;flex-wrap:wrap}
+.chiprow span{border:1.5px solid #D0D5DD;border-radius:999px;padding:5px 12px;font-size:14px;font-weight:700;background:#fff}
+.chiprow span.on{border-color:var(--g);background:#E7F3EC}
+.scale{display:grid;gap:6px}
+.scale div{display:flex;align-items:baseline;gap:12px;border-bottom:1px dashed #E4E7EC;padding-bottom:4px}
+.scale em{font-style:normal;font-size:13px;font-weight:800;color:#475467;min-width:52px}
+.sizes{display:flex;flex-wrap:wrap;gap:6px}
+.sizes span{border:1px solid #D0D5DD;border-radius:8px;padding:2px 8px;font-weight:700;background:#fff}
+.pops{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;align-items:end}
+.pops div{border:2px solid #0B0F14;border-radius:12px;background:#fff;display:grid;grid-template-rows:auto 1fr auto;font-size:13px;font-weight:700;overflow:hidden}
+.pops div b{padding:6px 8px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between}
+.pops div i{display:block;min-height:60px;background:repeating-linear-gradient(0deg,#F2F4F7 0 8px,#fff 8px 16px)}
+.pops div u{text-decoration:none;padding:6px 8px;border-top:1px solid var(--line);text-align:right}
+.pops div u s{text-decoration:none;background:var(--g);color:#fff;border-radius:6px;padding:2px 8px}
+
+/* ---------- built this round ---------- */
+.built{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.built figure{margin:0;background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.built figure img{display:block;width:100%;border-bottom:1px solid var(--line)}
+.built figcaption{padding:12px 16px;font-size:15px}
+.built figcaption b{display:block;font-size:16.5px;margin-bottom:2px}
+
+/* ---------- handwriting ---------- */
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:0 0 18px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+.stat b{display:block;font-size:30px;font-weight:800;line-height:1.1}
+.stat span{font-size:15px;font-weight:700}
+.hwl{display:grid;gap:12px}
+.hw{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px;display:grid;gap:8px}
+.hw img{display:block;max-height:90px;width:auto;max-width:100%;border-radius:8px;border:1px solid #F2F4F7}
+.hw .meta{display:flex;gap:8px;flex-wrap:wrap;font-size:13.5px;font-weight:800}
+.hw .meta span{background:#F2F4F7;border-radius:999px;padding:2px 10px}
+.hw .meta span.miss{background:#FDECEC;color:#9F1D14}.hw .meta span.ok{background:#E3F5EA;color:#14532D}
+.hw .tr{display:grid;grid-template-columns:110px minmax(0,1fr);gap:4px 10px;font-size:15px}
+.hw .tr em{font-style:normal;font-weight:800;color:var(--sub)}
+.hw mark{background:#FDECEC;color:#9F1D14;border-radius:4px;padding:0 2px}
+
+.answers{position:fixed;left:50%;transform:translateX(-50%);bottom:14px;z-index:30;background:#0B0F14;color:#fff;border-radius:999px;padding:8px 8px 8px 18px;display:flex;gap:12px;align-items:center;box-shadow:0 12px 30px rgba(11,15,20,.3);font-size:15px;font-weight:700;max-width:calc(100% - 32px)}
+.answers button{border:0;background:#fff;color:#0B0F14;border-radius:999px;padding:8px 14px;font:inherit;font-weight:800;cursor:pointer;white-space:nowrap}
+
+@media (max-width:900px){
+  .ba, .rc .why, .rc .vis, .built{grid-template-columns:minmax(0,1fr)}
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  h2{font-size:25px}
+  .wrap{padding:18px 16px 120px;gap:48px}
+  .tin{padding:10px 16px}
+}
+@media (max-width:900px){ .jump{flex-wrap:nowrap;overflow-x:auto;width:100%;padding-bottom:2px} .jump a{white-space:nowrap} }
+@media (max-width:520px){ .answers{padding-left:14px;gap:8px} .answers span{white-space:nowrap;font-size:14px} .cats{grid-template-columns:repeat(2,minmax(0,1fr))} .pops{grid-template-columns:1fr} .seg span{font-size:14px;padding:10px 2px} }
+</style></head><body>
+<div class="top"><div class="tin"><a class="back" href="../index.html">← Design lab</a><h1>Round 42 review</h1>
+<nav class="jump"><a href="#pills">Header pills</a><a href="#expense">Add expense</a><a href="#review">Full review</a><a href="#built">Built this round</a><a href="#hand">Handwriting</a></nav></div></div>
+<div class="wrap">
+
+<section id="pills">
+  <h2>Header pills: one title, one number</h2>
+  <p class="lead">Same shape as the Money overview boxes: long, calm, and they stretch to fit. The title says what it is, the number sits under it, and there is no third line. Each pill has a colored icon so you can tell them apart before you read.</p>
+  <div class="legend" id="legend"></div>
+  <div class="tog" role="group" aria-label="Pill fill"><button id="fTint" class="on" onclick="setFill('tint')">Tinted, like Money overview</button><button id="fWhite" onclick="setFill('white')">White with colored icon</button></div>
+  <div id="pages"></div>
+  <div class="pg"><h3>Old words vs new words</h3><p class="note">The third line is gone. Anything it said that mattered went into the title or got its own pill.</p>
+    <div class="wt"><table class="words"><thead><tr><th>Page</th><th>Before (title · line under it)</th><th>After (title only)</th></tr></thead><tbody id="words"></tbody></table></div></div>
+</section>
+
+<section id="expense">
+  <h2>Add expense popup</h2>
+  <p class="lead">Two problems: the "same as before" chips wrap in a messy pile, and "Paid from" has 7 buttons (Cash drawer, GCash, Maya, Bank, Card, Owner's own money, Not paid yet). Fix: recent expenses become a short, lined-up list, and payment shows the 3 most-used ways plus "Other". Nifti picks last time's way for you.</p>
+  <div class="ba">
+    <div><p class="lbl">Now</p><a class="shot" href="img/before_expense_pc.png" target="_blank"><img src="img/before_expense_pc.png" alt="Current add expense popup with wrapped chips" loading="lazy"></a><p class="cap">Chips of different widths, 3 rows deep. Category grid and payment buttons below the fold.</p></div>
+    <div><p class="lbl">What I'd do (computer)</p>
+      <div class="ex"><header><b>Add an expense</b><span aria-hidden="true">✕</span></header><main>
+        <div><p class="q">Repeat a recent one <a href="#expense">See all 6</a></p>
+          <div class="rec" id="recList"></div></div>
+        <div class="or">or start a new one</div>
+        <div><p class="q">What for?</p><div class="srch">Type: kuryente, rent, gas…</div><div class="cats" id="cats"></div></div>
+        <div><p class="q">How much?</p><div class="amt">₱ 1,200</div></div>
+        <div><p class="q">Paid with</p><div class="seg"><span class="on">Cash drawer</span><span>GCash</span><span>Bank</span><span>Other ▾</span></div><p class="hint">Same as last time for Fuel. Other: Maya, Card, Owner's own money, Pay later.</p></div>
+        <div class="rcpt">📷 Add a receipt photo <span style="font-weight:600;color:#344054">(optional, fills the amount)</span></div>
+      </main><footer><span class="btn">Cancel</span><span class="btn p">Save expense</span></footer></div></div>
+  </div>
+  <div class="ba" style="margin-top:22px">
+    <div><p class="lbl">"Other ▾" opens a short list</p>
+      <div class="drop"><div><b>Maya</b><small>e-wallet</small></div><div><b>Card</b><small>debit or credit</small></div><div><b>Owner's own money</b><small>you paid from your pocket</small></div><div><b>Pay later</b><small>saves it as a bill to pay</small></div></div>
+      <p class="cap">"Not paid yet" becomes "Pay later" so it reads like a choice, not a mistake. Once someone uses Maya often, it moves into the main 3 by itself.</p></div>
+    <div><p class="lbl">On a phone</p>
+      <div class="ex phone"><header><b>Add an expense</b><span aria-hidden="true">✕</span></header><main>
+        <div><p class="q">Repeat a recent one</p><div class="rec" id="recListP"></div></div>
+        <div class="or">or start a new one</div>
+        <div><p class="q">What for?</p><div class="cats" id="catsP"></div></div>
+        <div><p class="q">Paid with</p><div class="seg"><span class="on">Cash</span><span>GCash</span><span>Bank</span><span>Other</span></div></div>
+      </main><footer><span class="btn">Cancel</span><span class="btn p">Save expense</span></footer></div></div>
+  </div>
+</section>
+
+<section id="review">
+  <h2>Full review: what I'd change, page by page</h2>
+  <p class="lead">I went through every page, popup, pill and table on a computer (1440px), a laptop (1024px) and a phone (390px), and measured text sizes, button counts and page lengths. Nothing below is changed yet. Tap <b>Yes</b>, <b>Not now</b> or <b>Change it</b> on each one, then <b>Copy my answers</b> at the bottom and paste them to me.</p>
+  <div class="recs" id="recs"></div>
+</section>
+
+<section id="built">
+  <h2>Built this round (already live)</h2>
+  <p class="lead">These were clear asks, so they are done. Open the app to try them.</p>
+  <div class="built">
+    <figure><img src="img/chk42_b_1440.jpg" alt="Check every line screen" loading="lazy"><figcaption><b>Check every line (notebook photos)</b>The photo stays on the left. Every line is a row you can edit: customer, item, qty, price. Nifti does the math and says if it matches what was written. Yellow = please look, red = can't read (type it in), green = you checked. Nothing saves until every line is ticked or skipped. One button ticks all the lines Nifti is sure about.</figcaption></figure>
+    <figure><img src="img/chk42_p1.jpg" alt="Check every line on a phone" loading="lazy"><figcaption><b>Same screen on a phone</b>Each line is a card. Big tick box, big inputs, amount and "same as written" under it. "See the whole page" opens the photo full screen.</figcaption></figure>
+    <figure><img src="img/r42_imp_pick_1280.jpg" alt="Add many items from Excel popup" loading="lazy"><figcaption><b>Add many items from Excel, rebuilt</b>Wide popup, 3 steps side by side: download the template, type one item per row, upload. A picture of the sheet shows exactly where to type.</figcaption></figure>
+    <figure><img src="img/r42_imp_guide_1280.jpg" alt="See how it's done guide" loading="lazy"><figcaption><b>"See how it's done" guide + locked template</b>Headers are bold, centered, colored and locked. Required columns are darker green. Prices and stock only accept numbers. If someone renames a header, Nifti still reads it when the meaning is clear (e.g. "Price" or "SRP"); if it can't tell, it says which column it skipped instead of guessing.</figcaption></figure>
+    <figure><img src="img/r42_activity_1280.jpg" alt="What your team did" loading="lazy"><figcaption><b>What your team did</b>Grouped by day (black headings), filters for person and kind of job, word labels beside each icon. First column is what was done.</figcaption></figure>
+    <figure><img src="img/r42_runsout_1280.jpg" alt="What runs out" loading="lazy"><figcaption><b>What runs out</b>"Days of stock left" said once under the scale. New On hand column on the right, beside days left.</figcaption></figure>
+  </div>
+  <p class="note" style="margin-top:14px">Also fixed: on 1024–1199px laptops, Home, Stock and Team no longer push the page sideways (the menu is a little narrower there and wide tables scroll inside their box).</p>
+</section>
+
+<section id="hand">
+  <h2>Handwriting test: 100 lines</h2>
+  <p class="lead">I read each line without seeing the answer, then a script compared my reading to the real text. 40 lines are real people's handwriting (scanned English notes from a public research set). 60 are shop-notebook lines I made in English, Tagalog and Taglish using 17 handwriting fonts, with ballpen and pencil looks, fading, blur and paper noise.</p>
+  <div class="stats"><div class="stat"><b>98 / 100</b><span>lines read perfectly</span></div><div class="stat"><b>99.9%</b><span>letters right</span></div><div class="stat"><b>77 / 77</b><span>numbers and amounts right</span></div><div class="stat"><b>60 / 60</b><span>Tagalog, Taglish and shop lines perfect</span></div></div>
+  <div class="wt"><table class="words" style="margin-bottom:18px"><thead><tr><th>Group</th><th>Lines</th><th>Perfect</th><th>Letters right</th><th>Words right</th></tr></thead><tbody>
+    <tr><td><b>Real handwriting (English scans)</b></td><td>40</td><td>38</td><td>99.8%</td><td>99.4%</td></tr>
+    <tr><td><b>English shop lines</b></td><td>20</td><td>20</td><td>100%</td><td>100%</td></tr>
+    <tr><td><b>Tagalog shop lines</b></td><td>20</td><td>20</td><td>100%</td><td>100%</td></tr>
+    <tr><td><b>Taglish shop lines</b></td><td>20</td><td>20</td><td>100%</td><td>100%</td></tr>
+    <tr><td>Blue / black / red ballpen</td><td>27</td><td>27</td><td>100%</td><td>100%</td></tr>
+    <tr><td>Faded blue ballpen</td><td>10</td><td>10</td><td>100%</td><td>100%</td></tr>
+    <tr><td>Dark pencil / light pencil</td><td>14</td><td>14</td><td>100%</td><td>100%</td></tr>
+    <tr><td>Black felt pen</td><td>9</td><td>9</td><td>100%</td><td>100%</td></tr>
+  </tbody></table></div>
+  <p class="note" style="margin:0 0 14px"><b>Be careful with these numbers.</b> The 60 shop lines use computer handwriting fonts, which are neater than a real tindera's notebook. I did the reading here; the app uses a cheaper model that is a bit weaker. The test that counts is 20–30 photos of real Filipino notebooks from your pilot shops. That's why the new Check every line screen makes a person tick every line before anything is saved.</p>
+  <p class="lbl">Samples, including the 2 misses</p>
+  <div class="hwl" id="hwl"></div>
+</section>
+</div>
+<div class="answers" id="answers"><span id="ansCount">0 of 16 answered</span><button onclick="copyAnswers()">Copy my answers</button></div>
+
+<script>
+const ICON = {
+  chart: '<path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/>', cash: '<rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01M18 12h.01"/>', peso: '<path d="M8 20V4h5a4 4 0 0 1 0 8H8"/><path d="M5 8h13M5 11h13"/>',
+  card: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h4"/>', alert: '<circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5h.01"/>', cal: '<rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/>',
+  hour: '<path d="M6 3h12M6 21h12M7 3c0 5 10 5 10 9s-10 4-10 9M17 3c0 5-10 5-10 9s10 4 10 9"/>', check: '<circle cx="12" cy="12" r="9"/><path d="m8 12.5 3 3 5-6"/>', box: '<path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/>',
+  search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>', trash: '<path d="M4 7h16M10 11v6M14 11v6"/><path d="M6 7l1 12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-12"/><path d="M9 7V4h6v3"/>', tag: '<path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.5"/>',
+  coins: '<ellipse cx="9" cy="7" rx="6" ry="3"/><path d="M3 7v5c0 1.7 2.7 3 6 3s6-1.3 6-3V7"/><path d="M15 11.5c3 .3 6 1.5 6 3.5c0 1.7-2.7 3-6 3-1.5 0-2.9-.3-4-.8"/>', phone: '<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/>', note: '<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/>',
+  wallet: '<path d="M3 7h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M3 7l12-4v4M17 13.5h.01"/>', cart: '<circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l3 12h11l2-8H6.5"/>', user: '<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',
+  up: '<path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/>', in: '<path d="M12 3v12M7 10l5 5 5-5"/><path d="M4 21h16"/>', out: '<path d="M12 21V9M7 14l5-5 5 5"/><path d="M4 3h16"/>', flag: '<path d="M5 21V4M5 4h11l-2 4 2 4H5"/>', thumb: '<path d="M7 11v10H3V11zM7 11l4-8a2 2 0 0 1 3 2l-1 5h6a2 2 0 0 1 2 2.3l-1.3 7A2 2 0 0 1 17.7 21H7"/>',
+  pct: '<path d="M19 5 5 19"/><circle cx="7" cy="7" r="2.5"/><circle cx="17" cy="17" r="2.5"/>', truck: '<path d="M1 6h13v10H1z"/><path d="M14 9h4l3 3v4h-7"/><circle cx="5.5" cy="17.5" r="2"/><circle cx="17.5" cy="17.5" r="2"/>', clip: '<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2h6v2M9 10h6M9 14h6"/>',
+  list: '<path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>', bolt: '<path d="M13 2 3 14h9l-1 8 10-12h-9z"/>', drop: '<path d="M12 3s7 7.5 7 12a7 7 0 0 1-14 0c0-4.5 7-12 7-12z"/>', home: '<path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/>', wrench: '<path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.5-2.5z"/>', fuel: '<path d="M4 21V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16M3 21h12M14 9h2a2 2 0 0 1 2 2v5a1.5 1.5 0 0 0 3 0V8l-3-3M7 8h4"/>', food: '<path d="M4 3v8a3 3 0 0 0 6 0V3M7 3v18M17 3c-2 0-3 3-3 6s1 4 3 4v8"/>',
+};
+const svg = n => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICON[n]}</svg>`;
+// tint, border, icon background, icon color
+const T = {red: ['#FEF1F1', '#F5C2C0', '#FDDCDC', '#B42318', 'Red', 'Act today'], ora: ['#FFF4EA', '#F7CFA8', '#FFE2C7', '#C2410C', 'Orange', 'Due soon'], yel: ['#FFFBE8', '#EED98A', '#FBEFAE', '#8A6100', 'Yellow', 'Check it'], grn: ['#EEF9F2', '#B7E2C6', '#D3F0DD', '#15803D', 'Green', 'Done or money in'], blu: ['#EEF4FC', '#BCD3F0', '#D8E6F8', '#1A4F8C', 'Blue', 'Good to know, or waiting on others']};
+document.getElementById('legend').innerHTML = Object.values(T).map(t => `<span><i style="background:${t[2]};color:${t[3]}">${svg('check')}</i>${t[4]} = ${t[5]}</span>`).join('');
+// [tone, icon, title, value, small, small class]
+const PAGES = [
+  ['Home', [['blu', 'chart', 'Sales this month', '₱167K'], ['yel', 'cash', 'Cash to count tonight', '₱4,140'], ['red', 'peso', 'Overdue from customers', '₱17,504'], ['ora', 'card', 'Supplier bills due', '₱113K']]],
+  ['Orders', [['red', 'alert', 'Need you today', '2 orders', '₱104,864'], ['ora', 'cal', 'Due this week', '3 orders', '₱235,133'], ['blu', 'hour', 'Waiting on others', '2 orders', '₱120,960'], ['grn', 'check', 'Done and paid', '1 order', '₱16,464']]],
+  ['Stock', [['red', 'box', 'Reorder today', '2 items'], ['ora', 'search', 'Missing in counts', '₱1,456'], ['yel', 'trash', 'Damaged or expired', '₱822'], ['blu', 'tag', 'Set aside for orders', '1 item'], ['grn', 'coins', 'Stock value', '₱309,034']]],
+  ['Sales', [['grn', 'chart', 'Sales today', '₱5,620', '4 sales'], ['blu', 'cash', 'Cash for the drawer', '₱4,340'], ['yel', 'phone', 'GCash & Maya to check', '₱1,280'], ['ora', 'note', 'Utang today', '₱0']]],
+  ['Expenses', [['ora', 'wallet', 'Spent this month', '₱18,179', '↓ ₱15,810 vs Oct', 'dn'], ['blu', 'cart', 'Stock paid in cash', '₱0'], ['blu', 'user', 'Owner took out', '₱5,000']]],
+  ['Prices', [['grn', 'chart', 'Sales this month', '₱167,158'], ['blu', 'tag', 'Cost of what you sold', '₱135,158'], ['grn', 'up', 'Profit before expenses', '₱32,000', '19%'], ['ora', 'alert', 'Items with no cost', '4']]],
+  ['Money overview', [['grn', 'in', 'Owed to you', '₱23,804'], ['ora', 'out', 'You owe suppliers', '₱112,896']]],
+  ['To check', [['red', 'flag', 'Urgent to check', '2'], ['yel', 'alert', 'Money at risk', '₱103,703'], ['blu', 'list', 'Other to check', '1'], ['grn', 'check', 'Closed this month', '0']]],
+  ['Follow-ups', [['yel', 'hour', "Waiting for the customer's OK", '₱77,280', '1 order'], ['grn', 'thumb', 'Said yes', '1 of 2', '₱87,360']]],
+  ['Tax books', [['blu', 'note', 'Sales before tax', '₱0'], ['blu', 'pct', 'VAT you collected', '₱0'], ['blu', 'pct', 'VAT-free sales', '₱0'], ['yel', 'clip', 'Tax withheld (2307)', '₱0']]],
+];
+const OLD = {
+  'Home': ['Sales this month · November so far', 'Cash today · Liza, to count at closing', 'Owed to you · All of it is overdue', 'You owe suppliers · Next due Dec 3'],
+  'Orders': ['Needs you now · ₱104,864', 'Coming up · ₱235,133', 'Waiting on them · ₱120,960', 'All good · ₱16,464'],
+  'Stock': ['Reorder now · items running out', 'Missing this month · found short in counts', 'Bad stock this month · expired, damaged, spoiled', 'Promised to customers · items in open orders', 'Stock value · at what you paid'],
+  'Sales': ['Sales · 4 sales', 'Cash · goes in the drawer', 'GCash & Maya · check your phone', 'Utang · not paid yet'],
+  'Expenses': ['Spent in November · ▼ ₱15,810 vs last month', 'Stock bought in cash · counted as cost of what you sold', 'Owner took · not an expense'],
+  'Prices': ['Sales · November 2026', 'Cost of what you sold · 4 items have no cost yet', 'Profit before expenses · 19% of sales', '(new pill: the "4 items have no cost" line)'],
+  'Money overview': ['Owed to you · customers + utang', 'You owe · supplier bills'],
+  'To check': ['To check · 2 important', 'Money involved · possible, not proven', '(new: split "To check" into urgent and other)', 'Closed · fixed or accepted'],
+  'Follow-ups': ["Waiting for Customer's OK · 1 order, 1 need you", 'Said Yes · ₱87,360, ~3.0 days'],
+  'Tax books': ['Sales (gross) · 0 bills', 'VAT you collected · on ₱0 Before VAT', 'VAT-exempt · nothing exempt this month', 'Tax withheld (2307) · none this month'],
+};
+let FILL = 'tint';
+function pill(x){ const [tone, ic, k, v, sm, cls] = x, t = T[tone]; return `<div class="hp" style="--t:${t[0]};--b:${t[1]};--i:${t[2]};--f:${t[3]}"><span class="ic">${svg(ic)}</span><span class="tx"><span class="k">${k}</span><span class="v">${v}${sm ? `<small class="${cls || ''}">${sm}</small>` : ''}</span></span></div>`; }
+function paint(){
+  document.getElementById('pages').innerHTML = PAGES.map(([name, items]) => `<div class="pg ${FILL === 'white' ? 'white' : ''}"><h3>${name}<small>${items.length} pills</small></h3><div class="pair">
+    <div><p class="lbl">Computer, real size (page area of a 1440px screen)</p><div class="pc"><div class="pcin"><div class="hp-row">${items.map(pill).join('')}</div></div></div></div>
+    <div><p class="lbl">Phone, real size</p><div class="ph"><div class="phin"><div class="hp-row">${items.map(pill).join('')}</div></div></div></div></div></div>`).join('');
+}
+function setFill(f){ FILL = f; document.getElementById('fTint').classList.toggle('on', f === 'tint'); document.getElementById('fWhite').classList.toggle('on', f === 'white'); paint(); }
+paint();
+document.getElementById('words').innerHTML = PAGES.map(([name, items]) => items.map((x, i) => `<tr>${i === 0 ? `<td rowspan="${items.length}"><b>${name}</b></td>` : ''}<td class="old">${OLD[name][i] || ''}</td><td><b>${x[2]}</b> · ${x[3]}${x[4] ? ' ' + x[4] : ''}</td></tr>`).join('')).join('');
+
+/* add expense mockup */
+const REC = [['ora', 'fuel', 'Fuel & transport', 'Petron', '₱1,200', 'Nov 14'], ['yel', 'bolt', 'Electricity', 'Meralco', '₱8,940', 'Nov 3'], ['blu', 'wrench', 'Repairs', 'Mang Ben welding', '₱3,200', 'Nov 12']];
+const recRow = (r, short) => `<div><i style="background:${T[r[0]][2]};color:${T[r[0]][3]}">${svg(r[1])}</i><span><b>${r[2]}</b><small>${r[3]}${short ? '' : ' · ' + r[5]}</small></span><em>${r[4]}</em><button type="button">Use</button></div>`;
+document.getElementById('recList').innerHTML = REC.map(r => recRow(r)).join('');
+document.getElementById('recListP').innerHTML = REC.slice(0, 2).map(r => recRow(r, true)).join('');
+const CATS = [['bolt', 'Electricity'], ['drop', 'Water'], ['home', 'Rent'], ['user', 'Salaries'], ['fuel', 'Fuel', 1]];
+document.getElementById('cats').innerHTML = CATS.map(c => `<span class="${c[2] ? 'on' : ''}">${svg(c[0])}${c[1]}</span>`).join('') + '<span class="more">More (14)</span>';
+document.getElementById('catsP').innerHTML = CATS.slice(0, 5).map(c => `<span>${svg(c[0])}${c[1]}</span>`).join('') + '<span class="more">More</span>';
+
+/* recommendations */
+const B = (c, l, r) => `<div class="blk ${c}"><span>${l}</span>${r ? `<small>${r}</small>` : ''}</div>`;
+const RECS = [
+  {t: 'One meaning per color, on every page', bad: ['Red means "act now" on Home but "money you spent" on Expenses, even when spending went down.', 'Yellow means "check it" on Sales but "coming up" on Orders. Gray and teal boxes mean nothing in particular.'], good: ['Red = act today. Orange = due soon. Yellow = check it. Green = done or money in. Blue = good to know or waiting on others.', 'Status tags, pills, row stripes and menu badges all follow the same 5.'],
+    before: `<a class="shot" href="img/pc_expenses.jpg" target="_blank"><img src="img/pc_expenses.jpg" alt="Expenses page" loading="lazy"></a>`,
+    after: `<div class="frame white">${Object.entries(T).map(([k, t]) => `<div class="blk" style="background:${t[0]};border:1.5px solid ${t[1]}"><span style="color:${t[3]}">${t[4]}</span><small>${t[5]}</small></div>`).join('')}<p class="note mini">Example: "Spent this month" becomes orange (money out), not red.</p></div>`},
+  {t: 'Fewer text sizes', bad: ['Pages use 10 to 13 different text sizes (Money overview 13, Sales 13, Home 11).', 'Deliveries still has 11px text, Messages and Follow-ups 12px. Too small for a busy shop.'], good: ['6 sizes for the whole app: 36 page title, 24 section, 28 big numbers, 18 card title, 16 normal text, 14 small labels.', 'Nothing under 14px anywhere.'],
+    before: `<div class="frame"><p class="lbl">Sizes found on Money overview</p><div class="sizes">${[12, 13, 14, 15, 16, 17, 18, 19, 21, 22, 28, 29, 36].map(s => `<span style="font-size:${Math.min(s, 22)}px">${s}</span>`).join('')}</div></div>`,
+    after: `<div class="frame white scale"><div><em>36</em><b style="font-size:30px">Page title</b></div><div><em>28</em><b style="font-size:24px">₱167,158</b></div><div><em>24</em><b style="font-size:21px">Section title</b></div><div><em>18</em><b style="font-size:17px">Card title</b></div><div><em>16</em><span>Normal text</span></div><div><em>14</em><span style="font-size:14px">Small labels</span></div></div>`},
+  {t: 'Home: shorter, to-dos first', bad: ['Home is 3.4 screens long on a computer and 4.3 on a phone.', '"Owed to you" and the Getting paid box show the same ₱17,504. "You\'re on Free", "Tip of the week" and "New shops start here" push What to do below the fold.'], good: ['Order: pills, What to do, What runs out, Where every order is. That\'s it.', 'Plan and tips move to the menu. "New shops start here" shows only until setup is done. Tapping the Overdue pill shows the Getting paid breakdown.'],
+    before: `<div class="frame">${B('x', 'Get set up 3 of 5')}${B('g', 'New shops start here', '3 cards')}${B('b', '4 pills')}${B('x', 'Getting paid', 'same ₱17,504')}${B('x', "You're on Free")}${B('b', 'Tip of the week')}${B('r', 'What to do', 'starts at 1.4 screens')}${B('x', 'Where every order is')}${B('y', 'What runs out')}</div>`,
+    after: `<div class="frame white">${B('b', '4 pills', 'tap one for details')}${B('r', 'What to do', 'visible right away')}${B('y', 'What runs out')}${B('x', 'Where every order is')}${B('cut', 'Getting paid box', 'inside the pill')}${B('cut', 'Free plan + tip', 'moved to menu')}<p class="note mini">About 1.8 screens on a computer.</p></div>`},
+  {t: 'Menu names match the page you land on', bad: ['"Bank & deposits" opens a page titled "Getting paid".', '"Books" and "Tax books" sound like the same thing. "Prices" is mostly profit.'], good: ['Every menu item opens a page with the exact same name.', 'Books becomes "Monthly summary". Prices becomes "Prices & profit". Bank & deposits gets its own title.'],
+    before: `<div class="frame"><div class="menu"><div>Prices<em>page: Prices (profit table)</em></div><div>Books<em>page: Books</em></div><div>Bank & deposits<em>page: Getting paid</em></div><div>Tax books<em>page: Tax books</em></div></div></div>`,
+    after: `<div class="frame white"><div class="menu"><div class="chg">Prices & profit<em>same title</em></div><div class="chg">Monthly summary<em>same title</em></div><div class="chg">Bank & deposits<em>same title</em></div><div>Tax books<em>same title</em></div></div></div>`},
+  {t: 'Orders: one button per card', bad: ['39 buttons on the Orders page.', 'Each card has a big button plus "Message" and "New order" links, so the eye doesn\'t know where to go.'], good: ['Each card shows only the next step as a button. Message, New order and the rest sit under "⋯".', '"+ New order" appears once, at the top of each column.'],
+    before: `<div class="frame"><div class="ocard"><div class="row"><b>Bayview Construction</b><b>₱87,360</b></div><span class="st r">Delivered 11 days ago, not billed</span><div class="mb">Send the bill</div><div class="row"><span class="lk">Message</span><span class="lk">New order</span></div></div></div>`,
+    after: `<div class="frame white"><div class="ocard"><div class="row"><b>Bayview Construction</b><b>₱87,360</b></div><span class="st r">Delivered 11 days ago, not billed</span><div class="row"><div class="mb" style="flex:1">Send the bill</div><span class="dots">⋯</span></div></div></div>`},
+  {t: 'Expenses page: clearer order', bad: ['A yellow banner ("Electricity is 51% higher") sits between the pills and the chart.', '"Approval rules" is folded in the middle of the page.'], good: ['Order: pills, Waiting for your OK, Where the money went.', 'The +51% becomes a small tag on the Electricity row. Approval rules move to Settings.'],
+    before: `<div class="frame">${B('x', 'Waiting for your OK')}${B('x', '▸ Approval rules')}${B('r', '3 pills')}${B('y', 'Electricity is 51% higher than usual…')}${B('b', 'Where the money went')}</div>`,
+    after: `<div class="frame white">${B('b', '3 pills')}${B('x', 'Waiting for your OK', '1')}<table class="t2"><thead><tr><th>Where the money went</th><th class="r">Nov</th></tr></thead><tbody><tr><td>Electricity <span class="st o">+51% vs usual</span></td><td class="r">₱8,940</td></tr><tr><td>Repairs</td><td class="r">₱2,300</td></tr></tbody></table></div>`},
+  {t: 'To check: a table with filters', bad: ['Each problem is a big card with 4 buttons (Assign, Waiting, Fixed, It\'s fine).', 'Only 2 problems fit on screen.'], good: ['Same table + filters you approved for Team › Problems: one row each, a status you can change, one "Open" button.', '8 to 10 problems fit on screen.'],
+    before: `<a class="shot" href="img/pc_issues.jpg" target="_blank"><img src="img/pc_issues.jpg" alt="To check page" loading="lazy"></a>`,
+    after: `<div class="frame white"><div class="chiprow" style="margin-bottom:8px"><span class="on">All 3</span><span>Urgent 2</span><span>Money</span><span>Stock</span></div><table class="t2"><thead><tr><th>Problem</th><th class="r">Money</th><th>Status</th><th></th></tr></thead><tbody><tr><td>Bayview order delivered, not billed</td><td class="r">₱87,360</td><td><span class="st r">Urgent</span></td><td class="lk">Open</td></tr><tr><td>6 cement bags missing in count</td><td class="r">₱1,104</td><td><span class="st y">Waiting</span></td><td class="lk">Open</td></tr></tbody></table></div>`},
+  {t: 'Getting paid: the list first', bad: ['Reminder settings, a toggle and a paragraph sit above the customer list.', 'The list you came for starts halfway down.'], good: ['Customer list first.', 'Reminders shrink to one line: "Reminders: On · 2 days before, due day, 3 and 7 days late · Change".'],
+    before: `<a class="shot" href="img/pc_collections.jpg" target="_blank"><img src="img/pc_collections.jpg" alt="Getting paid page" loading="lazy"></a>`,
+    after: `<div class="frame white"><p class="note mini" style="margin:0 0 8px">🔔 Reminders: <b>On</b> · 2 days before, due day, 3 and 7 days late · <u>Change</u></p><table class="t2"><thead><tr><th>Customer</th><th class="r">Owes</th><th>Status</th></tr></thead><tbody><tr><td>Riverside Builders</td><td class="r">₱17,504</td><td><span class="st r">6 days late</span></td></tr><tr><td>Bayview Construction</td><td class="r">₱6,300</td><td><span class="st y">Said they paid</span></td></tr></tbody></table></div>`},
+  {t: 'Checks: one row per check', bad: ['Each check is a tall card with 6 stacked labels (Date, Check, Bank, When, Amount).', 'Only 2 checks fit on screen.'], good: ['One row each: Date, From, Bank and check no., Amount, Status, one button.', 'About 3 times more checks per screen.'],
+    before: `<a class="shot" href="img/pc_cheques.jpg" target="_blank"><img src="img/pc_cheques.jpg" alt="Checks page" loading="lazy"></a>`,
+    after: `<div class="frame white"><table class="t2"><thead><tr><th>Date</th><th>From</th><th>Bank · No.</th><th class="r">Amount</th><th>Status</th></tr></thead><tbody><tr><td>Nov 17</td><td>Riverside Builders</td><td>BDO · 004512</td><td class="r">₱6,000</td><td><span class="st r">Deposit today</span></td></tr><tr><td>Nov 23</td><td>Bayview</td><td>BPI · 000918</td><td class="r">₱5,000</td><td><span class="st b">Coming up</span></td></tr></tbody></table></div>`},
+  {t: 'Empty months and ₱0 boxes', bad: ['Tax books shows four ₱0 boxes and empty sections when there are no bills.', 'Other pages show ₱0 pills too (Utang today ₱0, Stock paid in cash ₱0).'], good: ['When a page has nothing, show one line: "No bills in November yet. Bills you make in Orders show up here." plus the Download button.', 'Hide a ₱0 pill unless zero is good news (like "Missing in counts: ₱0").'],
+    before: `<a class="shot" href="img/pc_books.jpg" target="_blank"><img src="img/pc_books.jpg" alt="Tax books page" loading="lazy"></a>`,
+    after: `<div class="frame white" style="text-align:center"><p style="margin:10px 0 4px;font-weight:800;font-size:17px">No bills in November yet</p><p class="note" style="margin:0 0 12px">Bills you make in Orders show up here, ready for your bookkeeper.</p><span class="btn">Download October</span></div>`},
+  {t: 'Online store: fewer buttons', bad: ['31 buttons on the page.', '8 post types as chips plus 5 tabs plus link, QR and week dots in one strip.'], good: ['4 post types (Nifti\'s pick, One item, Price list, Sale) + "More ideas".', 'Copy link and QR poster go under one "Share my store" button.'],
+    before: `<div class="frame"><div class="chiprow">${["Nifti's pick", 'One item', 'Price list', 'Sale', 'New stock', 'We deliver', 'Open today', 'Thank you'].map((c, i) => `<span class="${i ? '' : 'on'}">${c}</span>`).join('')}</div><p class="note mini" style="margin-top:8px">+ Copy link · QR poster · This week ○○○ · 5 tabs</p></div>`,
+    after: `<div class="frame white"><div class="chiprow">${["Nifti's pick", 'One item', 'Price list', 'Sale', 'More ideas ▾'].map((c, i) => `<span class="${i ? '' : 'on'}">${c}</span>`).join('')}</div><p style="margin:10px 0 0"><span class="btn">Share my store</span></p></div>`},
+  {t: 'Find customers: one main button', bad: ['Each card has 3 buttons: Message, Send price list, Save.'], good: ['One "Message" button (the price list is offered inside the message) and a small Save icon.'],
+    before: `<div class="frame"><div class="ocard"><b>Northgate Homebuilders</b><span>₱420,000 a month in supplies</span><div class="row"><div class="mb" style="flex:1">Message</div><span class="lk">Send price list</span></div><div class="dots" style="text-align:center">Save</div></div></div>`,
+    after: `<div class="frame white"><div class="ocard"><div class="row"><b>Northgate Homebuilders</b><span class="dots" aria-label="Save">☆</span></div><span>₱420,000 a month in supplies</span><div class="mb">Message</div></div></div>`},
+  {t: 'Popups: one standard', bad: ['Popups come in many widths. The Excel one was too narrow; Add expense is long with buttons below the fold.'], good: ['3 widths: small (480px) for quick forms, medium (640px) for most, wide (860px) for tables and imports.', 'Title and ✕ at the top, buttons pinned at the bottom, main button on the right, always visible.'],
+    before: `<a class="shot" href="img/before_expense_pc.png" target="_blank"><img src="img/before_expense_pc.png" alt="Add expense popup" loading="lazy"></a>`,
+    after: `<div class="frame white"><div class="pops"><div style="height:110px"><b>Small <span>✕</span></b><i></i><u><s>Save</s></u></div><div style="height:140px"><b>Medium <span>✕</span></b><i></i><u><s>Save</s></u></div><div style="height:170px"><b>Wide <span>✕</span></b><i></i><u><s>Add</s></u></div></div></div>`},
+  {t: 'Tables line up the same way everywhere', bad: ['Stock centers every column, other tables align left. Row heights differ page to page.'], good: ['Words left, numbers right, status tags in the middle. Same row height and header style on every table.'],
+    before: `<a class="shot" href="img/pc_inventory.jpg" target="_blank"><img src="img/pc_inventory.jpg" alt="Stock page" loading="lazy"></a>`,
+    after: `<div class="frame white"><table class="t2"><thead><tr><th>Product</th><th class="r">Stock</th><th class="c">Status</th><th>Supplier</th></tr></thead><tbody><tr><td>Galvanized Wire 12ga</td><td class="r">6 / 75</td><td class="c"><span class="st r">Reorder</span></td><td>Metro Steel</td></tr><tr><td>Steel Rebar 12mm</td><td class="r">240 / 240</td><td class="c"><span class="st g">Healthy</span></td><td>Metro Steel</td></tr></tbody></table></div>`},
+  {t: 'Page subtitles: 8 words or less', bad: ['Stock: "You set your own restock levels and max levels — nothing here is auto-calculated, so it\'s always exactly what you tell it to be."', 'Several pages explain themselves in two lines before you see anything.'], good: ['One short line per page. Examples below. Longer help moves to "What\'s this page?"'],
+    before: `<div class="frame"><p class="note" style="margin:0 0 6px"><b>Stock:</b> You set your own restock levels and max levels — nothing here is auto-calculated, so it's always exactly what you tell it to be.</p><p class="note" style="margin:0"><b>Getting paid:</b> Who owes you, and what you owe your suppliers, on one page.</p></div>`,
+    after: `<div class="frame white"><p style="margin:0 0 6px"><b>Stock:</b> What you have and what to order.</p><p style="margin:0 0 6px"><b>Getting paid:</b> Who owes you, and who you owe.</p><p style="margin:0"><b>Checks:</b> Checks to deposit and checks to fund.</p></div>`},
+  {t: 'Phone: thumb-first', bad: ['On a phone, the main button of a page is often at the top, far from the thumb.', 'Orders is 3.7 screens long; Sales 4.1.'], good: ['A fixed "+" button at the bottom right on pages where you add things (Sales, Expenses, Orders, Stock).', 'Long lists show 5 rows then "Show all".'],
+    before: `<a class="shot" href="img/ph_sales.jpg" target="_blank" style="max-width:240px"><img src="img/ph_sales.jpg" alt="Sales on a phone" loading="lazy"></a>`,
+    after: `<div class="frame white" style="max-width:240px;position:relative;min-height:220px">${B('g', 'Sales today', '₱5,620')}${B('x', '5 sales', 'Show all')}<span style="position:absolute;right:12px;bottom:12px;width:52px;height:52px;border-radius:50%;background:#1F6B45;color:#fff;display:grid;place-items:center;font-size:28px;font-weight:700;box-shadow:0 8px 20px rgba(31,107,69,.35)">+</span></div>`},
+];
+let ANS = {}; try{ ANS = JSON.parse(localStorage.getItem('nf-r42-ans') || '{}') || {}; }catch(e){ ANS = {}; }
+function saveAns(){ try{ localStorage.setItem('nf-r42-ans', JSON.stringify(ANS)); }catch(e){} countAns(); }
+function countAns(){ const n = RECS.filter((r, i) => ANS[i] && ANS[i].v).length; document.getElementById('ansCount').textContent = `${n} of ${RECS.length} answered`; }
+function setAns(i, v){ ANS[i] = Object.assign({}, ANS[i], {v}); saveAns(); paintRecs(); }
+function setNote(i, t){ ANS[i] = Object.assign({}, ANS[i], {note: t}); saveAns(); }
+function paintRecs(){
+  document.getElementById('recs').innerHTML = RECS.map((r, i) => { const a = ANS[i] || {}; return `<article class="rc"><header><span class="n">${i + 1}</span><h3>${r.t}</h3><span class="tag ask">Needs your OK</span></header>
+    <div class="why"><div class="bad"><h4>What's wrong now</h4><ul>${r.bad.map(x => `<li>${x}</li>`).join('')}</ul></div><div class="good"><h4>What I'd do</h4><ul>${r.good.map(x => `<li>${x}</li>`).join('')}</ul></div></div>
+    <div class="vis"><div><p class="lbl">Now</p>${r.before}</div><div><p class="lbl">After</p>${r.after}</div></div>
+    <div class="ans"><span>Your call:</span><button type="button" class="y ${a.v === 'yes' ? 'on' : ''}" onclick="setAns(${i}, 'yes')">Yes, do it</button><button type="button" class="n ${a.v === 'no' ? 'on' : ''}" onclick="setAns(${i}, 'no')">Not now</button><button type="button" class="c ${a.v === 'change' ? 'on' : ''}" onclick="setAns(${i}, 'change')">Change it</button><input type="text" placeholder="Optional note" value="${(a.note || '').replace(/"/g, '&quot;')}" oninput="setNote(${i}, this.value)" aria-label="Note for recommendation ${i + 1}"></div></article>`; }).join('');
+  countAns();
+}
+paintRecs();
+function copyAnswers(){
+  const pills = 'Header pills: ' + (FILL === 'white' ? 'white with colored icon' : 'tinted like Money overview');
+  const lines = [pills].concat(RECS.map((r, i) => { const a = ANS[i] || {}; return `${i + 1}. ${r.t}: ${a.v === 'yes' ? 'YES' : a.v === 'no' ? 'NOT NOW' : a.v === 'change' ? 'CHANGE' : '(no answer)'}${a.note ? ' — ' + a.note : ''}`; }));
+  const txt = lines.join('\n');
+  const done = () => { const b = document.querySelector('.answers button'); b.textContent = 'Copied'; setTimeout(() => { b.textContent = 'Copy my answers'; }, 1600); };
+  if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(done, () => prompt('Copy this:', txt)); } else prompt('Copy this:', txt);
+}
+
+/* handwriting samples */
+fetch('hw/samples.json').then(r => r.json()).then(list => {
+  const diff = (t, r) => { const a = t.split(' '), b = r.split(' '); return b.map(w => a.includes(w) ? w : `<mark>${w}</mark>`).join(' '); };
+  const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+  list.sort((a, b) => (b.ce > 0) - (a.ce > 0));
+  const L = {en: 'English', tl: 'Tagalog', tg: 'Taglish'};
+  document.getElementById('hwl').innerHTML = list.map(x => `<div class="hw"><div class="meta"><span>${x.kind === 'real' ? 'Real handwriting' : 'Shop notebook'}</span><span>${L[x.lang] || x.lang}</span><span>${x.ink}</span><span class="${x.ce ? 'miss' : 'ok'}">${x.ce ? 'Missed' : 'Perfect'}</span></div>${x.noimg ? '<p class="note mini" style="margin:0">Scan not shown here: that research set does not allow re-posting its images.</p>' : `<img src="hw/${x.f}" alt="Handwritten line" loading="lazy">`}<div class="tr"><em>Written</em><span>${esc(x.truth)}</span><em>Nifti read</em><span>${x.ce ? diff(esc(x.truth), esc(x.read)) : esc(x.read)}</span></div></div>`).join('');
+}).catch(() => { document.getElementById('hwl').innerHTML = '<p class="note">Samples could not load.</p>'; });
+</script>
+</body></html>

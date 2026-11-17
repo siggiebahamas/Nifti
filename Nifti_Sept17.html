@@ -9924,6 +9924,246 @@ html body #view-app#view-app#view-app #exceptionLogPanel .nf41-pt td.nf41-go{tex
 }
 html body #nf41Imp#nf41Imp#nf41Imp .nf41-it :is(th,td), html body #nf41Imp#nf41Imp#nf41Imp .nf41-iex :is(th,td){text-align:left !important;}
 
+
+/* ===== Round 42 css ===== */
+/* ===== Round 42 ===== */
+
+/* ---------- Add many items from Excel ---------- */
+@media (min-width:761px){
+  html body .share-modal.sl-sheet.nf42-sheet.nf42-wide{max-width:860px !important;width:min(860px, 94vw) !important;padding:22px 26px 24px !important;}
+  html body .share-modal.sl-sheet.nf42-sheet{padding:22px 26px 24px !important;}
+}
+.nf42-ib{display:grid;gap:16px;}
+.nf42-lead{margin:0;font-size:16px;line-height:1.5;color:#0B0F14;}
+.nf42-steps{list-style:none;margin:0;padding:0;display:grid;gap:12px;}
+.nf42-step{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:4px 14px;align-items:center;border:1px solid #E4E7EC;border-radius:16px;padding:16px 18px;background:#FFFFFF;}
+.nf42-step.col{grid-template-columns:40px minmax(0,1fr);}
+.nf42-step.col > :nth-child(n+3){grid-column:1 / -1;margin-top:10px;}
+.nf42-n{width:36px;height:36px;border-radius:50%;background:#1F6B45;color:#FFFFFF;display:grid;place-items:center;font-size:16px;font-weight:800;align-self:start;}
+.nf42-sb{display:grid;gap:2px;min-width:0;}
+.nf42-sb b{font-size:17px;font-weight:800;color:#0B0F14;}
+.nf42-sb span{font-size:15px;color:#0B0F14;line-height:1.45;}
+.nf42-dl{display:inline-flex !important;align-items:center;gap:8px;min-height:46px;padding:0 18px !important;font-weight:800 !important;text-decoration:none !important;white-space:nowrap;}
+.nf42-dl svg, .nf42-foot svg{width:18px;height:18px;}
+/* the picture of the spreadsheet */
+.nf42-xl{display:grid;gap:10px;}
+.nf42-xg{display:grid;grid-template-columns:34px minmax(150px,1.6fr) repeat(4,minmax(78px,1fr));border:1px solid #C9D1DA;border-radius:10px;overflow:hidden;background:#FFFFFF;font-size:14px;overflow-x:auto;}
+.nf42-xg .c{padding:8px 10px;border-right:1px solid #E4E7EC;border-bottom:1px solid #E4E7EC;min-height:36px;display:flex;align-items:center;gap:6px;color:#0B0F14;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.nf42-xg .c.h{background:#F2F4F7;color:#0B0F14;font-weight:700;justify-content:center;font-size:13px;min-height:28px;padding:4px;}
+.nf42-xg .c.n{background:#F2F4F7;color:#0B0F14;font-weight:700;justify-content:center;font-size:13px;padding:4px;}
+.nf42-xg .c.hd{background:#4B8B68;color:#FFFFFF;font-weight:800;justify-content:center;font-size:13.5px;}
+.nf42-xg .c.hd.req{background:#1F6B45;}
+.nf42-xg .c.hd svg{width:13px;height:13px;flex:none;opacity:.9;}
+.nf42-xg .c.num{justify-content:flex-end;font-variant-numeric:tabular-nums;}
+.nf42-xg .c.empty{background:#FCFCFD;}
+.nf42-xg .c.type{color:#0B0F14;font-style:italic;box-shadow:inset 0 0 0 2px #1F6B45;}
+.nf42-xk{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:14px;font-weight:600;color:#0B0F14;}
+.nf42-xk span{display:inline-flex;align-items:center;gap:7px;}
+.nf42-xk i{width:14px;height:14px;border-radius:4px;display:inline-block;flex:none;}
+.nf42-xk .k1{background:#1F6B45;} .nf42-xk .k2{background:#1F6B45;box-shadow:inset 0 0 0 3px #4B8B68;} .nf42-xk .k3{background:#FFFFFF;border:1.5px solid #C9D1DA;}
+.nf42-xl.big .nf42-xg{font-size:15px;}
+.nf42-drop{display:grid;justify-items:center;gap:6px;border:2px dashed #98A2B3;border-radius:16px;padding:24px 14px;text-align:center;cursor:pointer;background:#FAFAFB;transition:border-color .15s, background-color .15s;}
+.nf42-drop:hover, .nf42-drop.over{border-color:#1F6B45;background:#F0FAF4;}
+.nf42-drop.busy{opacity:.7;pointer-events:none;}
+.nf42-drop svg{width:30px;height:30px;color:#1F6B45;}
+.nf42-drop b{font-size:17px;font-weight:800;color:#0B0F14;}
+.nf42-drop small{font-size:14px;color:#0B0F14;}
+.nf42-err{margin:8px 0 0;color:#B42318;font-weight:700;font-size:15px;}
+.nf42-how{justify-self:start;border:0;background:transparent;font:inherit;font-size:15.5px;font-weight:800;color:#1F6B45;cursor:pointer;padding:4px 0;}
+.nf42-how:hover{text-decoration:underline;}
+.nf42-back{justify-self:start;border:0;background:transparent;font:inherit;font-size:15px;font-weight:800;color:#1F6B45;cursor:pointer;padding:0;}
+.nf42-h{margin:0;font-size:19px;font-weight:800;}
+.nf42-dd{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.nf42-do, .nf42-dont{border-radius:14px;padding:14px 16px;}
+.nf42-do{background:#ECFDF3;} .nf42-dont{background:#FEF3F2;}
+.nf42-dd h4{margin:0 0 6px;display:flex;align-items:center;gap:8px;font-size:16px;font-weight:800;}
+.nf42-do h4{color:#067647;} .nf42-dont h4{color:#B42318;}
+.nf42-dd h4 svg{width:18px;height:18px;}
+.nf42-dd ul{margin:0;padding-left:20px;display:grid;gap:4px;font-size:15px;line-height:1.45;color:#0B0F14;}
+.nf42-qa{display:grid;gap:4px;font-size:15px;line-height:1.5;}
+.nf42-qa b{font-size:16px;font-weight:800;margin-top:6px;}
+.nf42-qa p{margin:0;color:#0B0F14;}
+.nf42-qa em{font-style:normal;font-weight:800;border-radius:999px;padding:1px 8px;font-size:13.5px;}
+.nf42-qa em.nw{background:#DCFCE7;color:#14532D;} .nf42-qa em.up{background:#EAF1FF;color:#1E3A8A;} .nf42-qa em.sk{background:#FEF3F2;color:#B42318;}
+.nf42-foot{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;padding-top:4px;}
+.nf42-foot .btn{min-height:48px;font-weight:800;display:inline-flex;align-items:center;gap:8px;text-decoration:none;}
+.nf42-foot.c{justify-content:center;}
+.nf42-file{display:flex;align-items:center;gap:10px;background:#F7F8FA;border-radius:12px;padding:10px 14px;font-size:15.5px;}
+.nf42-file svg{width:20px;height:20px;color:#1F6B45;flex:none;}
+.nf42-file b{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.nf42-file button{border:0;background:transparent;font:inherit;font-weight:800;color:#1F6B45;cursor:pointer;white-space:nowrap;}
+.nf42-sum{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;}
+.nf42-sum span{display:grid;gap:0;border-radius:12px;padding:10px 14px;background:#F2F4F7;font-size:14.5px;font-weight:700;color:#0B0F14;}
+.nf42-sum span b{font-size:24px;font-weight:900;color:#0B0F14;line-height:1.1;}
+.nf42-sum .nw{background:#ECFDF3;} .nf42-sum .up{background:#EAF1FF;} .nf42-sum .sk{background:#FEF3F2;} .nf42-sum .sk b{color:#B42318;}
+.nf42-tw{border:1px solid #E4E7EC;border-radius:14px;max-height:46vh;overflow:auto;}
+.nf42-t{width:100%;border-collapse:collapse;table-layout:fixed;min-width:560px;}
+.nf42-t col.c1{width:38%;} .nf42-t col.c2{width:14%;} .nf42-t col.c3{width:11%;} .nf42-t col.c4{width:11%;} .nf42-t col.c5{width:26%;}
+html body #nf41Imp#nf41Imp#nf41Imp .nf42-t th, html body #nf41Imp#nf41Imp#nf41Imp .nf42-t td{text-align:left !important;}
+html body #nf41Imp#nf41Imp#nf41Imp .nf42-t .r{text-align:right !important;}
+.nf42-t th{position:sticky;top:0;background:#F9FAFB;font-size:13px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#0B0F14;padding:10px 12px;border-bottom:1px solid #E4E7EC;}
+.nf42-t td{padding:11px 12px;border-bottom:1px solid #F2F4F7;font-size:15px;color:#0B0F14;overflow:hidden;text-overflow:ellipsis;}
+.nf42-t tr.sk td{color:#0B0F14;}
+.nf42-t .nf41-ip{white-space:normal;}
+.nf42-done{display:grid;justify-items:center;gap:8px;text-align:center;padding:18px 4px 6px;}
+.nf42-done svg{width:52px;height:52px;color:#16A34A;}
+.nf42-done b{font-size:20px;font-weight:800;}
+.nf42-done span{font-size:15.5px;color:#0B0F14;}
+@media (max-width:760px){
+  .nf42-step{grid-template-columns:36px minmax(0,1fr);padding:14px;}
+  .nf42-step > .nf42-dl{grid-column:1 / -1;margin-top:10px;justify-content:center;}
+  .nf42-dd{grid-template-columns:1fr;}
+  .nf42-foot .btn{flex:1;justify-content:center;}
+}
+
+/* ---------- What your team did ---------- */
+.nf42-af{display:grid;gap:8px;margin:4px 0 14px;}
+.nf42-fr{display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+.nf42-fl{font-size:13px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#0B0F14;min-width:44px;}
+.nf42-kd{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:1px;}
+.nf42-at{border:1px solid #E9ECEF;border-radius:16px;overflow:hidden;background:#FFFFFF;}
+.nf42-ah, .nf42-ar{display:grid;grid-template-columns:minmax(0,2.4fr) minmax(0,1.2fr) 130px 100px;gap:16px;align-items:center;padding:12px 18px;}
+.nf42-ah{background:#F9FAFB;border-bottom:1px solid #E9ECEF;font-size:13px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#0B0F14;}
+.nf42-ah span:last-child, .nf42-tm{text-align:right;}
+.nf42-day{padding:16px 18px 6px;border-top:1px solid #E9ECEF;}
+.nf42-day:nth-child(2){border-top:0;}
+.nf42-day span{font-size:15px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#000000;}
+.nf42-ar{border-top:1px solid #F2F4F7;padding-top:14px;padding-bottom:14px;}
+.nf42-day + .nf42-ar{border-top:0;}
+.nf42-aw{display:flex;align-items:center;gap:14px;font-size:16px;line-height:1.4;color:#0B0F14;min-width:0;}
+.nf42-ki{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;flex:none;}
+.nf42-ki svg{width:20px;height:20px;}
+.nf42-who{display:flex;align-items:center;gap:10px;font-size:15.5px;font-weight:700;color:#0B0F14;min-width:0;}
+.nf42-who > span:last-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.nf42-av{width:32px;height:32px;border-radius:50%;flex:none;display:grid;place-items:center;color:#FFFFFF;font-size:14px;font-weight:800;}
+.nf42-kt{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:800;border-radius:999px;padding:4px 11px 4px 9px;}
+.nf42-kt svg{width:15px;height:15px;}
+.nf42-tm{font-size:15px;font-weight:700;color:#0B0F14;white-space:nowrap;}
+#teamActivityFeed > div[style]{display:none;}
+@media (max-width:760px){
+  .nf42-ah{display:none;}
+  .nf42-ar{grid-template-columns:minmax(0,1fr) auto;gap:8px 10px;padding:12px 14px;}
+  .nf42-aw{grid-column:1 / -1;}
+  .nf42-who{font-size:14.5px;} .nf42-who .nf42-av{width:28px;height:28px;font-size:14px;}
+  .nf42-ar > span:nth-child(3){justify-self:end;}
+  .nf42-tm{grid-column:1 / -1;text-align:left;font-size:14px;color:#0B0F14;margin-top:-4px;padding-left:38px;}
+  .nf42-day{padding:14px 14px 4px;}
+}
+
+/* ---------- What runs out: one caption under the scale, and an "on hand" column ---------- */
+@media (min-width:901px){
+  html body :is(#mhHome,.nf18-mh) .sr-row.nf42-sr{grid-template-columns:minmax(0,340px) minmax(0,1fr) 110px 132px 18px !important;}
+  html body :is(#mhHome,.nf18-mh) .sr-axis.sr-axis16.nf42-ax{grid-template-columns:minmax(0,340px) minmax(0,1fr) 110px 132px 18px !important;height:auto;padding-bottom:4px;}
+  html body :is(#mhHome,.nf18-mh) .nf42-ax .sr-ax{position:relative;height:50px !important;}
+  html body :is(#mhHome,.nf18-mh) .nf42-ax .sr-axcap{position:absolute;left:0;right:0;top:28px;text-align:center;font-size:14.5px;font-weight:800;color:#0B0F14;letter-spacing:.01em;}
+}
+:is(#mhHome,.nf18-mh) .sr-oh{display:grid;justify-items:end;gap:1px;text-align:right;}
+@media (max-width:900px){ html body :is(#mhHome,.nf18-mh) .sr-oh{display:flex !important;align-items:baseline;gap:6px;} html body :is(#mhHome,.nf18-mh) .sr-oh b{font-size:17px;} }
+:is(#mhHome,.nf18-mh) .sr-oh b{font-size:19px;font-weight:800;color:#0B0F14;line-height:1.15;font-variant-numeric:tabular-nums;}
+:is(#mhHome,.nf18-mh) .sr-oh small{font-size:14px;font-weight:700;color:#0B0F14;white-space:nowrap;}
+@media (max-width:900px){
+  html body :is(#mhHome,.nf18-mh) .sr-row.nf42-sr{grid-template-columns:minmax(0,1fr) auto auto !important;}
+  html body :is(#mhHome,.nf18-mh) .sr-row.nf42-sr > .sr-l{grid-column:1 / -1;}
+  html body :is(#mhHome,.nf18-mh) .sr-row.nf42-sr > .sr-t{grid-column:1 / -1;}
+  html body :is(#mhHome,.nf18-mh) .sr-row.nf42-sr > .sr-oh{grid-column:1;justify-items:start;text-align:left;}
+  html body :is(#mhHome,.nf18-mh) .sr-row.nf42-sr > .sr-v{grid-column:2 / 4;}
+  html body :is(#mhHome,.nf18-mh) .sr-row.nf42-sr > .sr-chev{display:none;}
+  html body :is(#mhHome,.nf18-mh) .nf42-ax .sr-axcap{display:block;text-align:center;font-size:13.5px;font-weight:800;color:#0B0F14;margin-top:22px;}
+  html body :is(#mhHome,.nf18-mh) .nf42-ax .sr-ax{position:relative;height:44px !important;}
+  html body :is(#mhHome,.nf18-mh) .nf42-ax .sr-axcap{position:absolute;left:0;right:0;top:24px;margin:0;}
+}
+
+/* ---------- Check every line from a photo ---------- */
+#nf22Nb.nf42-wide-ov .nf22-nbin{max-width:1280px !important;width:100% !important;}
+#nf22Nb.nf42-wide-ov .nf22-nbmain{max-width:none !important;}
+.nf42-chk{display:grid;gap:14px;}
+.nf42-ctop{display:flex;gap:18px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;}
+.nf42-ctop h2{margin:0 0 4px;font-size:24px;}
+.nf42-ctop p{margin:0;font-size:16px;line-height:1.5;color:#0B0F14;max-width:720px;}
+.nf42-cprog{display:grid;gap:4px;min-width:180px;justify-items:end;}
+.nf42-cprog b{font-size:22px;font-weight:900;}
+.nf42-cprog span{font-size:14px;font-weight:700;color:#0B0F14;}
+.nf42-cprog i{display:block;width:180px;height:8px;border-radius:999px;background:#E4E7EC;overflow:hidden;}
+.nf42-cprog em{display:block;height:100%;background:#16A34A;border-radius:999px;transition:width .2s;}
+.nf42-cbar{display:flex;gap:10px 16px;align-items:center;flex-wrap:wrap;padding:10px 0;border-top:1px solid #E4E7EC;border-bottom:1px solid #E4E7EC;}
+.nf42-lg{display:inline-flex;align-items:center;gap:7px;font-size:14.5px;font-weight:700;color:#0B0F14;}
+.nf42-lg i{width:14px;height:14px;border-radius:4px;display:inline-block;}
+.nf42-lg i.sure, .nf42-cr.t-sure{--tone:#16A34A;} .nf42-lg i.sure{background:#BBE5CB;}
+.nf42-lg i.chk{background:#FDE68A;} .nf42-lg i.bad{background:#FECACA;} .nf42-lg i.ok{background:#16A34A;}
+.nf42-sp{flex:1;}
+.nf42-only{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:700;cursor:pointer;}
+.nf42-only input{width:18px;height:18px;accent-color:#1F6B45;}
+.nf42-cbar .btn{min-height:42px;font-weight:800;}
+.nf42-cgrid{display:grid;grid-template-columns:minmax(280px,36%) minmax(0,1fr);gap:18px;align-items:start;}
+.nf42-cph{position:sticky;top:8px;border:1px solid #E4E7EC;border-radius:14px;background:#FFFFFF;padding:10px;display:grid;gap:8px;}
+.nf42-cphh{display:flex;align-items:center;justify-content:space-between;gap:8px;}
+.nf42-cphh b{font-size:14.5px;color:#0B0F14;}
+.nf42-zoom{border:1px solid #D0D5DD;background:#FFFFFF;border-radius:999px;font:inherit;font-size:14px;font-weight:700;color:#0B0F14;padding:6px 12px;cursor:pointer;}
+.nf42-pv{max-height:calc(100vh - 330px);min-height:220px;overflow:auto;border-radius:10px;}
+.nf42-pv img{display:block;width:100%;height:auto;}
+.nf42-pv .nf22-colchip{pointer-events:none;}
+.nf42-pv .nf22-nbpage{margin:0;max-width:none;}
+.nf42-cph.zoom{position:fixed;inset:12px;z-index:10050;background:#FFFFFF;box-shadow:0 20px 60px rgba(11,15,20,.35);padding:16px;grid-template-rows:auto minmax(0,1fr);}
+.nf42-cph.zoom .nf42-pv{max-height:none;height:100%;}
+.nf42-cph.zoom .nf42-pv img{max-width:1100px;margin:0 auto;}
+.nf42-crows{display:grid;gap:10px;min-width:0;}
+.nf42-cr{display:grid;grid-template-columns:34px 24px minmax(0,1fr) auto auto;gap:8px 12px;align-items:center;border:1px solid #E4E7EC;border-left:5px solid var(--tone,#E4E7EC);border-radius:14px;padding:12px 14px 14px 10px;background:#FFFFFF;min-width:0;}
+.nf42-cr.t-sure{--tone:#7CCB9A;} .nf42-cr.t-chk{--tone:#EAB308;background:#FFFDF0;} .nf42-cr.t-bad{--tone:#EF4444;background:#FFF7F7;} .nf42-cr.t-ok{--tone:#16A34A;} .nf42-cr.t-sk{--tone:#D0D5DD;opacity:.6;}
+.nf42-cfs{grid-column:3 / -1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr) 76px 100px;gap:10px;min-width:0;}
+.nf42-ck{display:grid;place-items:center;cursor:pointer;position:relative;}
+.nf42-ck input{position:absolute;opacity:0;width:1px;height:1px;}
+.nf42-ck span{width:28px;height:28px;border-radius:8px;border:2px solid #98A2B3;background:#FFFFFF;display:grid;place-items:center;}
+.nf42-ck input:checked + span{background:#16A34A;border-color:#16A34A;}
+.nf42-ck input:checked + span::after{content:'';width:7px;height:13px;border:solid #FFFFFF;border-width:0 3px 3px 0;transform:rotate(45deg) translate(-1px,-1px);}
+.nf42-ck input:focus-visible + span{outline:3px solid #1F6B45;outline-offset:2px;}
+.nf42-cn{font-size:14px;font-weight:800;color:#0B0F14;text-align:center;}
+.nf42-cw{display:grid;gap:2px;min-width:0;}
+.nf42-hand{font-family:'Caveat', 'Comic Sans MS', cursive;font-size:22px;line-height:1.1;color:#1F2F8F;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.nf42-cw small{font-size:14px;color:#0B0F14;font-weight:600;}
+.nf42-cf{display:grid;gap:3px;min-width:0;}
+.nf42-cf span{font-size:14px;font-weight:700;color:#0B0F14;}
+.nf42-cf input{width:100%;min-width:0;border:1.5px solid #D0D5DD;border-radius:10px;padding:9px 10px;font:inherit;font-size:16px;color:#0B0F14;background:#FFFFFF;}
+.nf42-cf input:focus{outline:none;border-color:#1F6B45;box-shadow:0 0 0 3px rgba(31,107,69,.15);}
+.nf42-cf.q input{border-color:#EAB308;background:#FFFBEB;}
+.nf42-cf.num input{text-align:right;font-variant-numeric:tabular-nums;}
+.nf42-ca{display:grid;gap:1px;justify-items:end;text-align:right;}
+.nf42-ca span{display:none;}
+.nf42-ca b{font-size:18px;font-weight:800;font-variant-numeric:tabular-nums;}
+.nf42-ca small{font-size:14px;font-weight:700;white-space:nowrap;}
+.nf42-ca small.ok{color:#067647;} .nf42-ca small.bad{color:#B42318;}
+.nf42-sk{border:0;background:#F2F4F7;border-radius:10px;font:inherit;font-size:14px;font-weight:800;color:#0B0F14;padding:9px 12px;cursor:pointer;white-space:nowrap;}
+.nf42-alldone{margin:0;padding:22px;text-align:center;font-size:16px;font-weight:700;color:#067647;border:1.5px dashed #7CCB9A;border-radius:14px;}
+@media (max-width:1100px){
+  .nf42-cgrid{grid-template-columns:1fr;}
+  .nf42-cph{position:static;}
+  .nf42-cph:not(.zoom) .nf42-pv{max-height:190px;min-height:0;overflow:hidden;-webkit-mask-image:linear-gradient(#000 70%, transparent);mask-image:linear-gradient(#000 70%, transparent);}
+}
+@media (max-width:760px){
+  .nf42-cr{grid-template-columns:30px minmax(0,1fr) auto;gap:8px 10px;padding:12px;}
+  .nf42-cn{display:none;}
+  .nf42-sk{grid-column:3;grid-row:1;}
+  .nf42-ca{grid-column:2 / -1;grid-row:3;justify-items:start;text-align:left;display:flex;gap:8px;align-items:baseline;}
+  .nf42-cfs{grid-column:1 / -1;grid-template-columns:minmax(0,1fr) minmax(0,1fr);}
+  .nf42-cfs .nf42-cf:nth-child(2){grid-column:1 / -1;order:-1;}
+  .nf42-cfs .nf42-cf:nth-child(1){grid-column:1 / -1;order:-2;}
+  .nf42-cprog{justify-items:start;}
+  .nf42-cbar .btn{width:100%;}
+  .nf42-cbar .nf42-sp{display:none;}
+}
+
+/* ---------- Laptop widths (901-1199px): nothing may push the page sideways ---------- */
+@media (min-width:901px) and (max-width:1199px){
+  html #view-app .sidebar, html[data-ty] #view-app .sidebar{width:228px !important;min-width:228px !important;padding:16px 10px !important;}
+  #page-dashboard .sect, #page-dashboard .sect > *{min-width:0;}
+  html :is(#mhHome,#mhSheet) .ob3{overflow-x:visible;}
+  html :is(#mhHome,#mhSheet) .ob3 .hdr, html :is(#mhHome,#mhSheet) .ob3 .lane-row, html :is(#mhHome,#mhSheet) .ob3.mir .band6{min-width:0 !important;grid-template-columns:92px repeat(6,minmax(0,1fr)) !important;}
+  #inventoryTable{min-width:0;}
+  #inventoryMainView{min-width:0;max-width:100%;overflow-x:auto;}
+  #page-inventory, #page-inventory > *{min-width:0;}
+  #page-team .nf39-card, #page-team .nf33t-col, #page-team .nf33t-list{min-width:0;}
+  #page-team .nf39-card{overflow-wrap:anywhere;}
+}
+
   .settings-card:empty{display:none;}
   #supplierChips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;} #supplierChips .chip{flex-shrink:0;}
 
@@ -38855,6 +39095,283 @@ function nf41PriceLines(text){
   const base = nf26AfterPass;
   nf26AfterPass = function(page){ base(page); try{ nf41ImportButtons(page); }catch(e){} try{ if(page && page.id === 'page-team' && !page.querySelector('.nf41-tasks')) nf41People(); }catch(e){} };
   window.nf26AfterPass = nf26AfterPass;
+})();
+
+/* ===== Round 42 ===== */
+
+/* ---------- 1. Add many items from Excel: a wide, calm popup with a picture of the template ---------- */
+const NF42_TPL = 'templates/nifti-items-template.xlsx';
+const NF42_IC = {
+  dl: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12"/><path d="m7 11 5 5 5-5"/><path d="M4 20h16"/></svg>',
+  up: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 16V4"/><path d="m7 9 5-5 5 5"/><path d="M4 16v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg>',
+  lock: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>',
+  ok: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>',
+  no: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>',
+  done: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m8 12.5 3 3 5-6"/></svg>',
+};
+// a picture of the template, drawn like Excel: what's locked, what's required, where to type
+function nf42Sheet(big){
+  const rows = [['Portland Cement 40kg', '265.00', 'bag', '228.00', '120'], ['Deformed Bar 10mm', '185.00', 'piece', '160.00', '300'], ['GI Wire #16', '95.00', 'kg', '', '']];
+  return `<div class="nf42-xl${big ? ' big' : ''}" role="img" aria-label="The Nifti Excel template: row 1 holds the locked column names, items go from row 2 down">
+    <div class="nf42-xg">
+      <span class="c h"></span>${['A', 'B', 'C', 'D', 'E'].map(l => `<span class="c h">${l}</span>`).join('')}
+      <span class="c n">1</span>${[['Item name', 1], ['Selling price', 1], ['Unit', 0], ['Cost', 0], ['Stock on hand', 0]].map(([t, req]) => `<span class="c hd${req ? ' req' : ''}">${NF42_IC.lock}${t}</span>`).join('')}
+      ${rows.map((r, i) => `<span class="c n">${i + 2}</span>${r.map((v, j) => `<span class="c${j === 0 || j === 2 ? '' : ' num'}${v === '' ? ' empty' : ''}">${escapeHtml(v)}</span>`).join('')}`).join('')}
+      <span class="c n">5</span><span class="c type">Type here…</span><span class="c"></span><span class="c"></span><span class="c"></span><span class="c"></span>
+    </div>
+    <div class="nf42-xk"><span><i class="k1"></i>Row 1 is locked. Nifti reads these names.</span><span><i class="k2"></i>Required: Item name and Selling price</span><span><i class="k3"></i>Optional: leave empty if you don't know</span></div>
+  </div>`;
+}
+nf41ImpPaint = function(){
+  let body, wide = true;
+  if(NF41I.step === 'pick'){
+    body = `<p class="nf42-lead">Put all your items in Nifti at once. Nothing is saved until you check the list and tap Add.</p>
+      <ol class="nf42-steps">
+        <li class="nf42-step"><span class="nf42-n">1</span><div class="nf42-sb"><b>Download the template</b><span>An Excel file with the right columns, ready to fill in.</span></div>
+          <a class="btn btn-primary nf42-dl" href="${NF42_TPL}" download="Nifti items template.xlsx">${NF42_IC.dl}Download template</a></li>
+        <li class="nf42-step col"><span class="nf42-n">2</span><div class="nf42-sb"><b>Type one item per row</b><span>Prices are numbers only, like 265. Don't change row 1.</span></div>${nf42Sheet(false)}</li>
+        <li class="nf42-step col"><span class="nf42-n">3</span><div class="nf42-sb"><b>Upload it here</b><span>You'll see what's new, what changes and what's skipped before anything is saved.</span></div>
+          <label class="nf42-drop${NF41I.busy ? ' busy' : ''}"><input type="file" accept=".xlsx,.xls,.csv,text/csv" hidden onchange="nf41ImpFile(this)">${NF42_IC.up}<b>${NF41I.busy ? 'Reading your file…' : 'Choose your Excel file'}</b><small>.xlsx, .xls or .csv · or drop it here</small></label>
+          ${NF41I.err ? `<p class="nf42-err">${escapeHtml(NF41I.err)}</p>` : ''}</li>
+      </ol>
+      <button type="button" class="nf42-how" onclick="NF41I.step='guide'; nf41ImpPaint()">See how it's done, with an example ›</button>`;
+  } else if(NF41I.step === 'guide'){
+    body = `<button type="button" class="nf42-back" onclick="NF41I.step='pick'; nf41ImpPaint()">‹ Back</button>
+      <h3 class="nf42-h">How the template works</h3>${nf42Sheet(true)}
+      <div class="nf42-dd"><div class="nf42-do"><h4>${NF42_IC.ok}Do</h4><ul><li>One item per row, from row 2 down</li><li>Prices as numbers: <b>265</b> or <b>265.50</b></li><li>Leave a box empty if you don't know it</li><li>Paste from another file as values only</li></ul></div>
+        <div class="nf42-dont"><h4>${NF42_IC.no}Don't</h4><ul><li>Rename the top row (it's locked anyway)</li><li>Type ₱, "pesos" or commas in prices</li><li>Add totals or notes at the bottom</li><li>Merge cells</li></ul></div></div>
+      <div class="nf42-qa"><b>What if the top row is changed?</b><p>It can't be changed by accident: Excel keeps it locked. If you upload your own file instead, Nifti still finds the columns from names like "Product", "SRP" or "Presyo". Your Nifti screens never change because of a file.</p>
+        <b>What happens after I upload?</b><p>Nifti lists every row as <em class="nw">New item</em>, <em class="up">Price update</em> or <em class="sk">Skipped</em> with the reason. Nothing is saved until you tap Add.</p></div>
+      <div class="nf42-foot"><a class="btn btn-outline" href="${NF42_TPL}" download="Nifti items template.xlsx">${NF42_IC.dl}Download template</a><button type="button" class="btn btn-primary" onclick="NF41I.step='pick'; nf41ImpPaint()">I'm ready to upload</button></div>`;
+  } else if(NF41I.step === 'check'){
+    const add = NF41I.rows.filter(r => !r.skip && !r.ex), upd = NF41I.rows.filter(r => !r.skip && r.ex && r.change), same = NF41I.rows.filter(r => !r.skip && r.ex && !r.change), skip = NF41I.rows.filter(r => r.skip);
+    const peso = n => { const v = Number(n || 0); return '₱' + v.toLocaleString('en-US', {minimumFractionDigits: v % 1 ? 2 : 0, maximumFractionDigits: 2}); };
+    const pill = r => r.skip ? `<span class="nf41-ip sk">Skipped: ${escapeHtml(r.skip.toLowerCase())}</span>` : !r.ex ? '<span class="nf41-ip nw">New item</span>' : r.change ? `<span class="nf41-ip up">${Number(r.ex.sellPrice) !== r.price ? `Price ${peso(r.ex.sellPrice)} → ${peso(r.price)}` : 'Update'}</span>` : '<span class="nf41-ip same">No change</span>';
+    body = `<div class="nf42-file">${NF42_IC.up}<b class="nf26-raw">${escapeHtml(NF41I.file)}</b><button type="button" onclick="NF41I.step='pick'; nf41ImpPaint()">Choose another file</button></div>
+      <div class="nf42-sum"><span class="nw"><b>${add.length}</b>new</span><span class="up"><b>${upd.length}</b>price updates</span><span><b>${same.length}</b>no change</span>${skip.length ? `<span class="sk"><b>${skip.length}</b>skipped</span>` : ''}</div>
+      <div class="nf42-tw"><table class="nf42-t"><colgroup><col class="c1"><col class="c2"><col class="c3"><col class="c4"><col class="c5"></colgroup>
+        <thead><tr><th>Item</th><th class="r">Price</th><th>Unit</th><th class="r">Stock</th><th>What happens</th></tr></thead>
+        <tbody>${NF41I.rows.slice(0, 300).map(r => `<tr class="${r.skip ? 'sk' : ''}"><td class="nf26-raw">${escapeHtml(r.name || '(no name)')}</td><td class="r">${isFinite(r.price) ? peso(r.price) : '—'}</td><td>${escapeHtml(r.unit || '')}</td><td class="r">${isFinite(r.stock) ? r.stock.toLocaleString('en-US') : ''}</td><td>${pill(r)}</td></tr>`).join('')}</tbody></table></div>
+      ${NF41I.rows.length > 300 ? `<p class="nf42-lead">Showing the first 300 of ${NF41I.rows.length} rows. All of them are included.</p>` : ''}
+      <div class="nf42-foot"><button type="button" class="btn btn-outline" onclick="slClose('nf41Imp')">Cancel</button>
+        <button type="button" class="btn btn-primary" ${add.length + upd.length ? '' : 'disabled'} onclick="nf41ImpApply()">${NF41I.busy ? 'Saving…' : `Add ${add.length} item${add.length === 1 ? '' : 's'}${upd.length ? ` and update ${upd.length}` : ''}`}</button></div>`;
+  } else {
+    wide = false;
+    body = `<div class="nf42-done">${NF42_IC.done}<b>${NF41I.added} item${NF41I.added === 1 ? '' : 's'} added${NF41I.updated ? `, ${NF41I.updated} updated` : ''}</b><span>They're in Stock and Prices now, ready for orders.</span>
+      <div class="nf42-foot c"><button type="button" class="btn btn-outline" onclick="slClose('nf41Imp'); go('profit')">See my prices</button><button type="button" class="btn btn-primary" onclick="slClose('nf41Imp'); go('inventory')">See my stock</button></div></div>`;
+  }
+  let box = document.getElementById('nf41Imp');
+  if(!box || !box.querySelector('.nf41-ibody')) box = slModal('nf41Imp', `<div class="sl-sheet-h"><b>Add many items from Excel</b><button class="sl-x" onclick="slClose('nf41Imp')" aria-label="Close">✕</button></div><div class="nf41-ibody nf42-ib"></div>`);
+  box.querySelector('.nf41-ibody').innerHTML = body;
+  const sheet = box.querySelector('.sl-sheet'); if(sheet){ sheet.classList.add('nf42-sheet'); sheet.classList.toggle('nf42-wide', wide); sheet.scrollTop = 0; }
+  const drop = box.querySelector('.nf42-drop');
+  if(drop){
+    drop.ondragover = e => { e.preventDefault(); drop.classList.add('over'); };
+    drop.ondragleave = () => drop.classList.remove('over');
+    drop.ondrop = e => { e.preventDefault(); drop.classList.remove('over'); const f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]; if(f) nf41ImpFile({files: [f], value: ''}); };
+  }
+};
+window.nf41ImpPaint = nf41ImpPaint;
+nf41ImpTemplate = function(){ const a = document.createElement('a'); a.href = NF42_TPL; a.download = 'Nifti items template.xlsx'; document.body.appendChild(a); a.click(); a.remove(); };
+window.nf41ImpTemplate = nf41ImpTemplate;
+// read the "Items" sheet of the template (never the Example), and accept "Item name *" style headers
+nf41ImpFile = async function(input){
+  const f = input.files && input.files[0]; if(!f) return;
+  NF41I.busy = true; NF41I.err = ''; nf41ImpPaint();
+  try{
+    let matrix;
+    if(/\.(csv|txt)$/i.test(f.name)){ const t = await f.text(); matrix = typeof colParseCsv === 'function' ? colParseCsv(t) : t.split(/\r?\n/).map(l => l.split(',')); }
+    else { await cpoLoadScript('https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js'); const wb = XLSX.read(await f.arrayBuffer(), {type: 'array'});
+      const name = wb.SheetNames.find(n => /^items$/i.test(n)) || wb.SheetNames.find(n => !/example|how to|instructions|guide/i.test(n)) || wb.SheetNames[0];
+      matrix = XLSX.utils.sheet_to_json(wb.Sheets[name], {header: 1, raw: false, defval: ''}); }
+    matrix = (matrix || []).map((r, i) => i < 5 ? r.map(c => String(c == null ? '' : c).replace(/\s*\*+\s*$/, '').replace(/\s*\((required|optional)\)\s*$/i, '')) : r);
+    const rows = nf41ImpParse(matrix);
+    if(!rows.filter(r => !r.skip).length) throw new Error("No items with a name and a price were found. Use the template, or check your file has a column for the item name and one for the selling price.");
+    Object.assign(NF41I, {rows, file: f.name, step: 'check'});
+  }catch(e){ NF41I.err = e.message || "Couldn't read that file."; }
+  NF41I.busy = false; try{ input.value = ''; }catch(e){} nf41ImpPaint();
+};
+window.nf41ImpFile = nf41ImpFile;
+
+/* ---------- 2. What your team did: grouped by day, with filters and a word for each kind ---------- */
+const NF42A = {who: 'all', kind: 'all'};
+const NF42K = {
+  cash: ['Cash', '#15803D', '#E3F5EA', '<rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/>'],
+  order: ['Orders', '#1E40AF', '#EAF1FF', '<path d="M1 6h13v10H1z"/><path d="M14 9h4l3 3v4h-7"/><circle cx="5.5" cy="17.5" r="2"/><circle cx="17.5" cy="17.5" r="2"/>'],
+  expense: ['Expenses', '#B42318', '#FDECEC', '<path d="M3 7h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M3 7l12-4v4M17 13.5h.01"/>'],
+  stock: ['Stock', '#854D0E', '#FFF5C2', '<path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/>'],
+  task: ['Jobs', '#344054', '#EEF0F3', '<circle cx="12" cy="12" r="9"/><path d="m8 12.5 3 3 5-6"/>'],
+  handoff: ['Notes', '#0E7490', '#E0F4F8', '<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/>'],
+  price: ['Prices', '#854D0E', '#FFF5C2', '<path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.5"/>'],
+  other: ['Other', '#344054', '#EEF0F3', '<circle cx="12" cy="12" r="9"/><path d="M8 12h8"/>'],
+};
+function nf42Kind(a){ const k = String(a.kind || '').toLowerCase(); if(NF42K[k]) return k; const t = String(a.text || '').toLowerCase();
+  return /cash|drawer|collected|deposit/.test(t) ? 'cash' : /order|po-|received|delivered|sent/.test(t) ? 'order' : /expense|bill|paid for/.test(t) ? 'expense' : /stock|count|bad bag|damaged/.test(t) ? 'stock' : /price/.test(t) ? 'price' : /"|job|task|finished|started|added/.test(t) ? 'task' : 'other'; }
+function nf42Mins(t){ const m = String(t || '').match(/(\d{1,2}):(\d{2})\s*(AM|PM)/i); return m ? (Number(m[1]) % 12) * 60 + Number(m[2]) + (/pm/i.test(m[3]) ? 720 : 0) : -1; }
+function nf42DayLabel(d){
+  if(!d) return 'Earlier'; if(d === APP_TODAY) return 'Today';
+  try{ if(d === addDaysIso(APP_TODAY, -1)) return 'Yesterday'; }catch(e){}
+  try{ return new Date(d + 'T00:00:00').toLocaleDateString('en-PH', {weekday: 'short', month: 'short', day: 'numeric'}); }catch(e){ return d; }
+}
+function nf42ActItems(){
+  let items = (teamActivityLog || []).filter(a => typeof teamScoped !== 'function' || teamScoped(a)).map(a => ({actor: a.actor, text: (a.kind === 'handoff' ? 'pinned a note: ' : '') + a.action, date: String(a.date || '').slice(0, 10), time: a.time, kind: a.kind}));
+  if(myBusiness){
+    const out = [];
+    teamTasks.forEach(t => {
+      if(t.deletedAt) return;
+      out.push({actor: t.createdBy || 'Someone', text: `added the job "${t.title}"${t.assignedTo && t.assignedTo !== t.createdById ? ' for ' + teamMemberName(t.assignedTo) : ''}`, date: String(t.createdAt || '').slice(0, 10), time: '', kind: 'task'});
+      if(t.status === 'done' && t.completedAt) out.push({actor: t.completedBy || 'Someone', text: `finished the job "${t.title}"`, date: String(t.completedAt).slice(0, 10), time: '', kind: 'task'});
+    });
+    (typeof teamHandoffs !== 'undefined' ? teamHandoffs : []).forEach(h => out.push({actor: h.author, text: 'pinned a note: ' + h.text, date: String(h.date || '').slice(0, 10), time: '', kind: 'handoff'}));
+    items = out;
+  }
+  items.forEach(a => {
+    a.text = typeof nf26Plain === 'function' ? nf26Plain(String(a.text || '')) : String(a.text || '');
+    // "Yesterday" written in the time box means the day before
+    if(/^yesterday$/i.test(String(a.time || '').trim())){ try{ a.date = addDaysIso(APP_TODAY, -1); }catch(e){} a.time = ''; }
+    a.k = nf42Kind(a);
+  });
+  return items.sort((a, b) => String(b.date).localeCompare(String(a.date)) || nf42Mins(b.time) - nf42Mins(a.time));
+}
+function nf42ActSet(k, v){ NF42A[k] = v; renderTeamActivityFeed(); }
+renderTeamActivityFeed = function(){
+  const el = document.getElementById('teamActivityFeed'); if(!el) return;
+  const all = nf42ActItems();
+  const people = [...new Set(all.map(a => a.actor))].sort((a, b) => a.localeCompare(b));
+  const kinds = Object.keys(NF42K).filter(k => all.some(a => a.k === k));
+  if(NF42A.who !== 'all' && !people.includes(NF42A.who)) NF42A.who = 'all';
+  if(NF42A.kind !== 'all' && !kinds.includes(NF42A.kind)) NF42A.kind = 'all';
+  const list = all.filter(a => (NF42A.who === 'all' || a.actor === NF42A.who) && (NF42A.kind === 'all' || a.k === NF42A.kind)).slice(0, 80);
+  const ico = k => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${NF42K[k][3]}</svg>`;
+  const chip = (k, v, label, n) => `<button type="button" class="nf41-chip${NF42A[k] === v ? ' on' : ''}" aria-pressed="${NF42A[k] === v}" onclick="nf42ActSet('${k}', '${String(v).replace(/'/g, "\\'")}')">${label}${n != null ? ` <b>${n}</b>` : ''}</button>`;
+  const first = n => String(n || '').replace(/\s*\(you\)\s*/i, '').split(' ')[0];
+  const groups = []; list.forEach(a => { const d = a.date || ''; let g = groups[groups.length - 1]; if(!g || g.d !== d){ g = {d, items: []}; groups.push(g); } g.items.push(a); });
+  el.innerHTML = `<div class="nf42-af">
+      <div class="nf42-fr"><span class="nf42-fl">Who</span>${chip('who', 'all', 'Everyone', all.length)}${people.map(p => chip('who', p, escapeHtml(first(p)), all.filter(a => a.actor === p).length)).join('')}</div>
+      <div class="nf42-fr"><span class="nf42-fl">Kind</span>${chip('kind', 'all', 'All kinds')}${kinds.map(k => chip('kind', k, `<i class="nf42-kd" style="background:${NF42K[k][1]}"></i>${NF42K[k][0]}`, all.filter(a => a.k === k).length)).join('')}</div>
+    </div>
+    ${list.length ? `<div class="nf42-at" role="table" aria-label="What your team did">
+      <div class="nf42-ah" role="row"><span role="columnheader">What was done</span><span role="columnheader">Who</span><span role="columnheader">Kind</span><span role="columnheader">Time</span></div>
+      ${groups.map(g => `<div class="nf42-day" role="row"><span role="cell">${escapeHtml(nf42DayLabel(g.d))}</span></div>${g.items.map(a => `<div class="nf42-ar" role="row">
+        <span class="nf42-aw" role="cell"><span class="nf42-ki" style="background:${NF42K[a.k][2]};color:${NF42K[a.k][1]}">${ico(a.k)}</span><span class="nf26-raw">${escapeHtml(a.text.charAt(0).toUpperCase() + a.text.slice(1))}</span></span>
+        <span class="nf42-who" role="cell"><span class="nf42-av" style="background:${typeof nfIniColor === 'function' ? nfIniColor(a.actor) : '#475467'}">${escapeHtml(typeof teamInitials === 'function' ? teamInitials(a.actor) : first(a.actor).slice(0, 2))}</span><span class="nf26-raw">${escapeHtml(a.actor)}</span></span>
+        <span role="cell"><span class="nf42-kt" style="background:${NF42K[a.k][2]};color:${NF42K[a.k][1]}">${ico(a.k)}${NF42K[a.k][0]}</span></span>
+        <span class="nf42-tm" role="cell">${escapeHtml(nf42Mins(a.time) >= 0 ? a.time : '')}</span></div>`).join('')}`).join('')}</div>`
+      : `<div class="nf41-none">${all.length ? 'Nothing matches these filters.' : 'Nothing yet. What your team does shows up here.'}</div>`}`;
+};
+window.renderTeamActivityFeed = renderTeamActivityFeed;
+
+/* ---------- 3. What runs out: "days left" said once, and stock on hand gets its own column ---------- */
+(function(){
+  if(typeof srSection !== 'function') return;
+  const base = srSection;
+  srSection = function(){
+    let h = base.apply(this, arguments);
+    if(!/sr-axis16/.test(h)) return h; // only in "Days left" view
+    let rows = []; try{ rows = srRows(); }catch(e){}
+    const byCode = {}; rows.forEach(r => { byCode[r.code] = r; });
+    h = h.replace(/<span class="sr-axl">[\s\S]*?<\/em><\/span>/, '<span class="sr-axl"></span>')
+         .replace(/<span class="sr-axr">[\s\S]*?<\/em><\/span>/, '<span class="sr-axoh"></span><span class="sr-axr"></span>')
+         .replace(/(<span class="sr-ax" aria-hidden="true">[\s\S]*?)(<\/span>)(<span class="sr-axoh">)/, '$1<span class="sr-axcap">Days of stock left</span>$2$3')
+         .replace(/<div class="sr-axis sr-axis16">/, '<div class="sr-axis sr-axis16 nf42-ax">');
+    // each row: take "N on hand" out of the small line and give it a column
+    h = h.replace(/<button type="button" class="sr-row is-(\w+)" aria-expanded="(true|false)" onclick="srToggle\('([^']+)'\)">([\s\S]*?)<span class="sr-v">/g, (m, cls, exp, code, inner) => {
+      const r = byCode[code]; if(!r) return m;
+      const inner2 = inner.replace(/<em>(?:(?!<\/em>)[\s\S])*?on hand<\/em><i>·<\/i>/, '');
+      const oh = `<span class="sr-oh"><b>${Number(r.on || 0).toLocaleString('en-US')}</b><small>${r.unit ? escapeHtml(r.unit) + ' ' : ''}on hand</small></span>`;
+      return `<button type="button" class="sr-row nf42-sr is-${cls}" aria-expanded="${exp}" onclick="srToggle('${code}')">${inner2}${oh}<span class="sr-v">`;
+    });
+    h = h.replace(/<b>([\d.]+) days?<\/b><small>runs out/g, (m, d) => `<b>${d} day${d === '1' ? '' : 's'} left</b><small>runs out`);
+    return h;
+  };
+  window.srSection = srSection;
+})();
+
+/* ---------- 4. Check every line from a photo: the page beside the lines, every box editable, a person ticks each line ---------- */
+const NF42C = {only: false, zoom: false};
+function nf42LineDone(l){ return !!(l.skipped || l.checked); }
+function nf42LineTone(l){ if(l.skipped) return 'sk'; if(l.checked) return 'ok'; if(l.blur && !l.typed) return 'bad'; if(l.sure && !l.edited) return 'sure'; return 'chk'; }
+function nf42Amt(l){ const v = Number(l.price) * Number(l.q); return isFinite(v) && v > 0 ? Math.round(v * 100) / 100 : 0; }
+function nf42WrittenAmt(l){ const n = Number(String(l.a || '').replace(/[^\d.]/g, '')); return isFinite(n) && n > 0 && !/\?/.test(String(l.a)) ? n : 0; }
+function nf42Row(l, i){
+  const tone = nf42LineTone(l), unsureWho = !l.sure && (l.ask || []).includes('who'), unsureWhat = !l.sure && (l.ask || []).includes('what');
+  const amt = nf42Amt(l), wr = nf42WrittenAmt(l), diff = amt && wr && Math.abs(amt - wr) >= 1;
+  const val = v => escapeHtml(v == null ? '' : String(v));
+  return `<div class="nf42-cr t-${tone}" data-i="${i}">
+    <label class="nf42-ck" title="I checked this line"><input type="checkbox" ${l.checked ? 'checked' : ''} ${l.skipped ? 'disabled' : ''} onchange="nf42CSet(${i}, 'checked', this.checked)"><span></span></label>
+    <span class="nf42-cn">${l.n}</span>
+    <div class="nf42-cw"><span class="nf42-hand">${l.blur ? 'Hard to read' : val([l.w, l.i].filter(Boolean).join(' · '))}</span><small>${l.blur ? 'Type it below, or skip' : `written: ${val(l.q)} · ${val(l.a)}`}</small></div>
+    <div class="nf42-ca"><span>Amount</span><b data-amt>${amt ? bkPeso(amt) : '—'}</b><small data-diff class="${diff ? 'bad' : wr && amt ? 'ok' : ''}">${diff ? `Written ${bkPeso(wr)}` : wr && amt ? '✓ same as written' : ''}</small></div>
+    <button type="button" class="nf42-sk" onclick="nf42CSet(${i}, 'skipped', ${!l.skipped})">${l.skipped ? 'Undo skip' : 'Skip'}</button>
+    <div class="nf42-cfs">
+      <label class="nf42-cf${unsureWho ? ' q' : ''}"><span>${NB.kind === 'bills' ? 'Supplier' : NB.kind === 'exp' ? 'Paid to' : 'Customer'}</span><input list="nf42Who" value="${val(l.blur && !l.typed ? '' : l.who)}" placeholder="Type a name" oninput="nf42CSet(${i}, 'who', this.value)" ${l.skipped ? 'disabled' : ''}></label>
+      <label class="nf42-cf${unsureWhat ? ' q' : ''}"><span>Item</span><input list="nf42Items" value="${val(l.blur && !l.typed ? '' : l.item)}" placeholder="Type an item" oninput="nf42CSet(${i}, 'item', this.value)" ${l.skipped ? 'disabled' : ''}></label>
+      <label class="nf42-cf num"><span>Qty</span><input inputmode="decimal" value="${val(l.blur && !l.typed ? '' : l.q)}" oninput="nf42CSet(${i}, 'q', this.value)" ${l.skipped ? 'disabled' : ''}></label>
+      <label class="nf42-cf num"><span>Price ₱</span><input inputmode="decimal" value="${val(l.blur && !l.typed ? '' : l.price)}" oninput="nf42CSet(${i}, 'price', this.value)" ${l.skipped ? 'disabled' : ''}></label>
+    </div>
+  </div>`;
+}
+function nf42CheckHtml(){
+  const lines = NB.lines, done = lines.filter(nf42LineDone).length, sure = lines.filter(l => !nf42LineDone(l) && l.sure && !l.edited && !l.blur).length;
+  const toCheck = lines.filter(l => !nf42LineDone(l)).length;
+  const shown = lines.map((l, i) => [l, i]).filter(([l]) => !NF42C.only || !nf42LineDone(l));
+  const who = [...new Set([].concat((typeof buyersData !== 'undefined' ? buyersData : []).map(b => b.name), (typeof suppliersData !== 'undefined' ? suppliersData : []).map(s => s.name)).filter(Boolean))];
+  const items = [...new Set((typeof inventoryData !== 'undefined' ? inventoryData : []).map(x => x.name).filter(Boolean))];
+  return `<div class="nf42-chk">
+    <div class="nf42-ctop"><div><h2>Check every line</h2><p>Nifti filled these in from the page. Compare with the photo, fix anything that's off, and tick each line. Nothing is saved until every line is ticked or skipped.</p></div>
+      <div class="nf42-cprog"><b>${done} of ${lines.length}</b><span>lines checked</span><i><em style="width:${lines.length ? Math.round(done / lines.length * 100) : 0}%"></em></i></div></div>
+    <div class="nf42-cbar">
+      <span class="nf42-lg"><i class="sure"></i>Nifti is sure</span><span class="nf42-lg"><i class="chk"></i>Please look</span><span class="nf42-lg"><i class="bad"></i>Can't read</span><span class="nf42-lg"><i class="ok"></i>You checked</span>
+      <span class="nf42-sp"></span>
+      <label class="nf42-only"><input type="checkbox" ${NF42C.only ? 'checked' : ''} onchange="NF42C.only=this.checked; nf22NbPaint()">Show only lines left (${toCheck})</label>
+      ${sure ? `<button type="button" class="btn btn-outline" onclick="nf42TickSure()">Tick the ${sure} line${sure === 1 ? '' : 's'} Nifti is sure about</button>` : ''}
+    </div>
+    <div class="nf42-cgrid">
+      <aside class="nf42-cph"><div class="nf42-cphh"><b>${NB.photo ? 'Your photo' : 'Sample page'}</b><button type="button" class="nf42-zoom" onclick="nf42Zoom(this)">See the whole page</button></div><div class="nf42-pv">${NB.photo ? `<img src="${NB.photo}" alt="Your photo of the page">` : (typeof nf22NbPage === 'function' ? nf22NbPage('nf42-sample') : '')}</div></aside>
+      <div class="nf42-crows">${shown.map(([l, i]) => nf42Row(l, i)).join('') || '<p class="nf42-alldone">Every line is checked. Tap Next.</p>'}</div>
+    </div>
+    <datalist id="nf42Who">${who.map(n => `<option value="${escapeHtml(n)}">`).join('')}</datalist><datalist id="nf42Items">${items.map(n => `<option value="${escapeHtml(n)}">`).join('')}</datalist>
+  </div>`;
+}
+function nf42CFoot(){
+  const ov = document.getElementById('nf22Nb'); if(!ov) return;
+  const go = ov.querySelector('.nf22-nbgo'); const left = NB.lines.filter(l => !nf42LineDone(l)).length;
+  if(go){ go.disabled = left > 0; go.textContent = left ? `Tick ${left} more line${left === 1 ? '' : 's'}` : 'Next: add to my books'; }
+  const prog = ov.querySelector('.nf42-cprog'); if(prog){ const done = NB.lines.length - left; prog.querySelector('b').textContent = `${done} of ${NB.lines.length}`; prog.querySelector('em').style.width = (NB.lines.length ? Math.round(done / NB.lines.length * 100) : 0) + '%'; }
+}
+function nf42CSet(i, f, v){
+  const l = NB.lines[i]; if(!l) return;
+  if(f === 'checked'){ l.checked = !!v; if(v && l.blur && l.typed) l.blur = false; }
+  else if(f === 'skipped'){ l.skipped = !!v; if(v) l.checked = false; }
+  else { l[f] = (f === 'q' || f === 'price') ? String(v).replace(/[^\d.]/g, '') : v; l.edited = true; if(f === 'who') l.whoKnown = false; if(f === 'item') l.itemKnown = false; if(l.blur && l.who && l.item && Number(l.q) > 0 && Number(l.price) > 0){ l.typed = true; } }
+  const row = document.querySelector(`#nf22Nb .nf42-cr[data-i="${i}"]`);
+  if(f === 'skipped' || (f === 'checked' && NF42C.only)) { nf22NbPaint(); return; }
+  if(row){
+    row.className = 'nf42-cr t-' + nf42LineTone(l);
+    const amt = nf42Amt(l), wr = nf42WrittenAmt(l), diff = amt && wr && Math.abs(amt - wr) >= 1, a = row.querySelector('[data-amt]'), d = row.querySelector('[data-diff]');
+    if(a) a.textContent = amt ? bkPeso(amt) : '—';
+    if(d){ d.className = diff ? 'bad' : wr && amt ? 'ok' : ''; d.textContent = diff ? `Written ${bkPeso(wr)}` : wr && amt ? '✓ same as written' : ''; }
+    if(f !== 'checked' && l.checked){ const c = row.querySelector('.nf42-ck input'); if(c) c.checked = true; }
+  }
+  nf42CFoot();
+}
+function nf42Zoom(btn){ const a = btn.closest('.nf42-cph'); NF42C.zoom = !a.classList.contains('zoom'); a.classList.toggle('zoom', NF42C.zoom); btn.textContent = NF42C.zoom ? 'Close' : 'See the whole page'; }
+function nf42TickSure(){ NB.lines.forEach(l => { if(!l.skipped && l.sure && !l.edited && !l.blur) l.checked = true; }); nf22NbPaint(); }
+(function(){
+  if(typeof nf22NbPaint !== 'function') return;
+  const pt = nf22NbPaint;
+  nf22NbPaint = function(){
+    const out = pt.apply(this, arguments);
+    try{
+      const ov = document.getElementById('nf22Nb'), main = ov && ov.querySelector('.nf22-nbmain');
+      if(main && NB.step === 3 && !NB.added && NB.lines.length && !(typeof NB25 !== 'undefined' && (NB25.reading || NB25.err))){
+        NB.lines.forEach(l => { if(l.price == null || l.price === '') l.price = ''; });
+        main.innerHTML = nf42CheckHtml(); ov.classList.add('nf42-wide-ov'); nf42CFoot();
+      } else if(ov) ov.classList.remove('nf42-wide-ov');
+    }catch(e){ console.warn('nf42 check', e); }
+    return out;
+  };
+  window.nf22NbPaint = nf22NbPaint;
 })();
 
 function renderSidebarForViewAsRole(){
