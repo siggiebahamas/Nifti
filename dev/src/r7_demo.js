@@ -91,7 +91,7 @@ function nfDemoTeam(){
   const tm = (teamMembers || []).concat(supplierTeamMembers || []);
   const id = i => (tm[i] || tm[0] || {}).id, nm = i => (tm[i] || tm[0] || {}).name || 'Dela Cruz';
   const t = (k, title, who, due, status, done) => ({id: 'nf-task-' + k, title, assignedTo: id(who), createdById: id(0), createdBy: nm(0), createdAt: nfDay(-2), dueDate: due, status, acknowledgedAt: nfDay(-1), doneAt: done || null, bizRole: currentAppRole});
-  teamTasks.push(t(1, 'Call Riverside about the overdue invoice', 0, nfDay(0), 'open'), t(2, 'Count Portland Cement on the shelf', 1, nfDay(-1), 'open'),
+  teamTasks.push(t(1, 'Call Riverside about the overdue bill', 0, nfDay(0), 'open'), t(2, 'Count Portland Cement on the shelf', 1, nfDay(-1), 'open'),
     t(3, 'Load Bayview order on the van', 2, nfDay(1), 'open'), t(4, 'Deposit BDO check 004512', 1, nfDay(0), 'done', nfDay(0)));
   const msg = (k, who, text, time) => ({id: 'nf-chat-' + k, authorId: id(who), author: nm(who), text, date: nfDay(0), time, createdAt: nfDay(0) + 'T0' + k + ':00:00Z', bizRole: currentAppRole});
   teamChatMessages.push(msg(1, 1, 'Metro Steel says the rebar ships tomorrow.', '8:10 AM'), msg(2, 2, 'Van is ready for the Bayview delivery.', '8:25 AM'), msg(3, 0, 'Thanks! Collect the Riverside check on the way back.', '8:31 AM'));

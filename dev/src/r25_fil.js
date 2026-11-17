@@ -197,7 +197,7 @@ const NF25_FIL = {
 "Your answer teaches Nifti. Next time it reads \"": "Natututo ang Nifti sa sagot mo. Sa susunod, kusa na nitong mababasa ang \"", "\" by itself.": "\".",
 "Payroll {0}, {1} {2}–{3}, {4} {5}": "Sahod {0}, {1} {2}–{3}, {4} {5}", "(Approved expenses, Yesterday)": "(Inaprubahang gastos, Kahapon)", "(Stock history, Today)": "(Kasaysayan ng stock, Ngayon)",
 "(Order delivered, {0}, {1} {2})": "(Na-deliver ang order, {0}, {1} {2})", "{0} · sent {1} days ago · held to {2} {3} ·": "{0} · ipinadala {1} araw na ang nakalipas · hawak hanggang {2} {3} ·",
-"Call Riverside about the overdue invoice": "Tawagan ang Riverside tungkol sa lampas na invoice",
+"Call Riverside about the overdue bill": "Tawagan ang Riverside tungkol sa lampas na singil",
 "Downloaded. Keep it somewhere safe.": "Na-download. Itago sa ligtas na lugar."
 };
 (function(){

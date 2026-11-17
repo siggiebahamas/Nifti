@@ -1,0 +1,222 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Home Style Pills</title><meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap">
+<style>
+:root{--ink:#0B0F14;--line:#E4E7EC;--g:#1F6B45;--soft:#F2F4F7}
+*{box-sizing:border-box}html,body{margin:0}body{font:16px/1.5 "Plus Jakarta Sans",system-ui,sans-serif;color:var(--ink);background:#F7F8FA;-webkit-font-smoothing:antialiased}
+.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}.tin{max-width:1240px;margin:0 auto;padding:12px 20px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.tin a{color:var(--g);font-weight:700;text-decoration:none;font-size:14.5px}.tin h1{margin:0;font-size:18px;flex:1;min-width:200px}
+.jump a{padding:7px 12px;border-radius:999px;border:1.5px solid #D0D5DD;background:#fff;color:var(--ink);font-weight:700;font-size:14px;margin-left:6px;display:inline-block;text-decoration:none}
+.wrap{max-width:1240px;margin:0 auto;padding:22px 20px 80px;display:grid;grid-template-columns:minmax(0,1fr);gap:60px}
+.wrap > *{min-width:0}
+h2{margin:0 0 6px;font-size:28px;line-height:1.2}.lead{margin:0 0 14px;max-width:920px;font-size:16.5px}
+.rec{background:var(--g);color:#fff;border-radius:999px;padding:3px 11px;font-size:13px;font-weight:800}
+.tog{display:inline-flex;border:1.5px solid #D0D5DD;border-radius:12px;overflow:hidden;margin:0 0 18px}
+.tog button{border:0;background:#fff;font:inherit;font-weight:800;font-size:15px;padding:9px 16px;cursor:pointer}
+.tog button.on{background:var(--g);color:#fff}
+.pg{padding:22px 0;border-bottom:1px solid var(--line);display:grid;gap:12px}
+.pg h3{margin:0;font-size:20px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.pg h3 small{font-size:14px;font-weight:600;color:#344054}
+.lbl{font-size:12.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#344054;margin:0 0 8px}
+/* the computer frame is the real width of the page area on a 1440px screen: nothing is shrunk */
+.pc{overflow-x:auto;padding-bottom:6px}
+.pcin{width:1104px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px 0 20px 20px}
+.pcin .mos{width:1064px}
+.ph{width:390px;max-width:100%;background:#0B0F14;border-radius:36px;padding:12px}
+.phin{background:#fff;border-radius:26px;padding:18px 16px 22px;min-height:220px}
+.phin .mos{width:100%}
+.rowpair{display:grid;grid-template-columns:minmax(0,1fr);gap:18px}
+/* Home tile, measured from the live app */
+.mos{display:grid;gap:14px}
+.t{display:grid;grid-template-columns:50px minmax(0,1fr);gap:0 12px;align-items:start;background:#fff;border:1px solid #DDE1E6;border-radius:24px;padding:18px;min-height:141px}
+.t .ic{width:50px;height:50px;border-radius:16px;display:grid;place-items:center}
+.t .ic svg{width:24px;height:24px}
+.t .tx{display:grid;gap:3px;min-width:0}
+.t .k{font-size:17px;font-weight:700;color:#0E1114;line-height:1.3}
+.t .v{font-size:29px;font-weight:800;color:#0E1114;line-height:1.15;letter-spacing:-.01em}
+.t .v.pill{display:inline-flex;align-items:baseline;gap:6px;justify-self:start;background:#FDEB86;border-radius:999px;padding:0 12px;font-size:25px}
+.t .v.pill small{font-size:15px;font-weight:700}
+.t .s{font-size:16px;font-weight:700;color:#0B0F14;line-height:1.35}
+.t .s.r{color:#B42318}
+.phin .mos{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:10px}
+.phin .t{grid-template-columns:minmax(0,1fr);padding:16px 14px;border-radius:18px;min-height:102px}
+.phin .t .ic{display:none}
+.phin .t .k{font-size:14px}.phin .t .v{font-size:21px}.phin .t .v.pill{font-size:19px;padding:0 9px}.phin .t .v.pill small{font-size:13px}.phin .t .s{font-size:14px}
+.note{font-size:14.5px;color:#344054;margin:0}
+
+/* options */
+.opt{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;margin-bottom:22px}
+.opt > h3{margin:0;padding:14px 18px;border-bottom:1px solid var(--line);font-size:19px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.opt > p{margin:0;padding:12px 18px 16px;font-size:15px;border-top:1px solid var(--line);background:#FCFCFD}
+.stage{padding:18px;background:#F2F4F7}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:12px 14px;border-bottom:1px solid var(--line)}
+.chip{border:1.5px solid #D0D5DD;border-radius:999px;padding:5px 12px;font-size:14.5px;font-weight:700;background:#fff}
+.chip.on{border-color:var(--g);background:#E7F3EC;color:#14532D}
+.sep{width:1px;height:24px;background:var(--line)}
+table{width:100%;border-collapse:collapse}
+th{font-size:12.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#344054;text-align:left;padding:12px 14px;background:#F9FAFB;border-bottom:1px solid var(--line)}
+td{padding:13px 14px;border-bottom:1px solid #F2F4F7;font-size:16px;vertical-align:middle}
+tr:last-child td{border-bottom:0}
+.av{width:32px;height:32px;border-radius:50%;display:inline-grid;place-items:center;color:#fff;font-weight:800;font-size:13px;flex:none;vertical-align:middle}
+.who{display:flex;align-items:center;gap:10px;font-weight:700}
+.kind{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:800;border-radius:999px;padding:3px 10px}
+.kind svg{width:15px;height:15px}
+.k-cash{background:#E3F5EA;color:#14532D}.k-order{background:#EAF1FF;color:#1E3A8A}.k-stock{background:#FFF5C2;color:#713F12}.k-money{background:#FDECEC;color:#9F1D14}.k-job{background:#F2F4F7;color:#344054}
+.day{font-size:13.5px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:#344054;padding:14px 16px 6px}
+.li{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:12px;align-items:center;padding:11px 16px;border-top:1px solid #F2F4F7}
+.li .ki{width:40px;height:40px;border-radius:12px;display:grid;place-items:center}
+.li .ki svg{width:20px;height:20px}
+.li b{font-weight:800}
+.li p{margin:0;font-size:16px;line-height:1.4}
+.li time{font-size:14.5px;font-weight:700;color:#344054;white-space:nowrap}
+.pcards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.pcard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 16px;display:grid;gap:8px;align-content:start}
+.pcard h4{margin:0;display:flex;align-items:center;gap:10px;font-size:17px}
+.pcard h4 small{margin-left:auto;font-size:13.5px;font-weight:800;background:#F2F4F7;border-radius:999px;padding:2px 10px}
+.pcard .e{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;align-items:start;font-size:15.5px;line-height:1.4;padding-top:8px;border-top:1px solid #F2F4F7}
+.pcard .e time{font-size:13.5px;font-weight:800;color:#344054;min-width:62px;padding-top:2px}
+
+/* what runs out */
+.ro{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 20px}
+.ro .row{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.4fr) 170px;gap:18px;align-items:center;padding:12px 0;border-top:1px solid #F2F4F7}
+.ro .row:first-of-type{border-top:0}
+.ro .nm b{font-size:17px;font-weight:800}
+.ro .nm small{display:block;font-size:14.5px;color:#344054;font-weight:600;margin-top:2px}
+.bar{position:relative;height:12px;border-radius:999px;background:#E8EDF3}
+.bar i{position:absolute;left:0;top:0;bottom:0;border-radius:999px}
+.bar s{position:absolute;top:-6px;bottom:-6px;width:3px;border-radius:2px;background:#0B0F14}
+.dl{text-align:right}
+.dl b{font-size:20px;font-weight:900}
+.dl small{display:block;font-size:14.5px;font-weight:700;color:#344054}
+.red{color:#B42318}.grn{color:#067647}
+.axis{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.4fr) 170px;gap:18px;margin-top:6px}
+.ticks{position:relative;height:22px;font-size:13.5px;font-weight:700;color:#344054}
+.ticks span{position:absolute;transform:translateX(-50%)}
+.cap{font-size:14px;font-weight:700;color:#344054;text-align:center;margin-top:2px}
+.hdr{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.4fr) 170px;gap:18px;padding:0 0 10px;border-bottom:1px solid var(--line);font-size:12.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#344054;align-items:end}
+.hdr .ticks{height:auto;font-size:12.5px;letter-spacing:0;text-transform:none}
+.cnt{display:grid;grid-template-columns:86px minmax(0,1fr);gap:16px;align-items:center;padding:12px 0;border-top:1px solid #F2F4F7}
+.cnt:first-of-type{border-top:0}
+.cb{border-radius:16px;padding:10px 6px;text-align:center}
+.cb b{display:block;font-size:26px;font-weight:900;line-height:1}
+.cb small{font-size:12.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+.cb.r{background:#FDECEC;color:#B42318}.cb.g{background:#E3F5EA;color:#067647}
+.cnt .bar{margin-top:8px}
+.cnt .sub{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:14.5px;font-weight:700;color:#344054;margin-top:6px}
+.lg{display:flex;gap:16px;flex-wrap:wrap;font-size:14.5px;font-weight:700;margin:0 0 14px}
+.lg span{display:inline-flex;align-items:center;gap:7px}
+.lg i{width:12px;height:12px;border-radius:3px;display:inline-block}
+@media (max-width:860px){ .pcards{grid-template-columns:1fr} .ro .row,.axis,.hdr{grid-template-columns:1fr} .dl{text-align:left} .axis > :first-child,.axis > :last-child,.hdr > :first-child,.hdr > :last-child{display:none} }
+@media (max-width:520px){ .wrap{padding:16px 16px 60px} h2{font-size:24px} .ph{width:100%} }
+</style></head><body>
+<div class="top"><div class="tin"><a href="../">‹ Design lab</a><h1>Round 41: Home-style pills, team activity, days left</h1><div class="jump"><a href="#home">Home style ×10</a><a href="#activity">Team activity ×3</a><a href="#days">Days left ×3</a></div></div></div>
+<main class="wrap">
+
+<section id="home">
+  <h2>Every page's top numbers in the Home style</h2>
+  <p class="lead">Each page is drawn at its real size. The computer frame is exactly as wide as the page area on a 1440px screen (scroll sideways if your screen is smaller; nothing is shrunk). The phone frame is a real 390px phone. On phones, Home hides the icons to make room, so it is shown the same way here.</p>
+  <div class="tog" role="group" aria-label="Words"><button type="button" id="wNow" onclick="setWords('now')">Today's words</button><button type="button" id="wNew" class="on" onclick="setWords('new')">Clearer words (what to do)</button></div>
+  <div id="pages"></div>
+</section>
+
+<section id="activity">
+  <h2>"What your team did", three easier ways</h2>
+  <p class="lead">Today it is one long list of sentences. Each way below uses the same 8 things your team did, with bigger text, who did it at a glance, and the kind of thing it was.</p>
+  <div id="actOpts"></div>
+</section>
+
+<section id="days">
+  <h2>What runs out: three cleaner ways to show days left</h2>
+  <p class="lead">Today "Days left" shows twice under the table, once as a button on each side of the scale. Each way below says it once, plainly.</p>
+  <div id="dayOpts"></div>
+</section>
+</main>
+
+<script>
+const ICON = {
+  chart: '<path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/>', cash: '<rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01M18 12h.01"/>', peso: '<path d="M8 20V4h5a4 4 0 0 1 0 8H8"/><path d="M5 8h13M5 11h13"/>',
+  card: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h4"/>', alert: '<circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5h.01"/>', cal: '<rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/>',
+  hour: '<path d="M6 3h12M6 21h12M7 3c0 5 10 5 10 9s-10 4-10 9M17 3c0 5-10 5-10 9s10 4 10 9"/>', check: '<circle cx="12" cy="12" r="9"/><path d="m8 12.5 3 3 5-6"/>', box: '<path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/>',
+  search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>', trash: '<path d="M4 7h16M10 11v6M14 11v6"/><path d="M6 7l1 12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-12"/><path d="M9 7V4h6v3"/>', tag: '<path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.5"/>',
+  coins: '<ellipse cx="9" cy="7" rx="6" ry="3"/><path d="M3 7v5c0 1.7 2.7 3 6 3s6-1.3 6-3V7"/><path d="M15 11.5c3 .3 6 1.5 6 3.5v0c0 1.7-2.7 3-6 3-1.5 0-2.9-.3-4-.8"/>', phone: '<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/>', note: '<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/>',
+  wallet: '<path d="M3 7h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M3 7l12-4v4M17 13.5h.01"/>', cart: '<circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/><path d="M2 3h3l3 12h11l2-8H6.5"/>', user: '<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',
+  up: '<path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/>', in: '<path d="M12 3v12M7 10l5 5 5-5"/><path d="M4 21h16"/>', out: '<path d="M12 21V9M7 14l5-5 5 5"/><path d="M4 3h16"/>', flag: '<path d="M5 21V4M5 4h11l-2 4 2 4H5"/>', thumb: '<path d="M7 11v10H3V11zM7 11l4-8a2 2 0 0 1 3 2l-1 5h6a2 2 0 0 1 2 2.3l-1.3 7A2 2 0 0 1 17.7 21H7"/>',
+  pct: '<path d="M19 5 5 19"/><circle cx="7" cy="7" r="2.5"/><circle cx="17" cy="17" r="2.5"/>', truck: '<path d="M1 6h13v10H1z"/><path d="M14 9h4l3 3v4h-7"/><circle cx="5.5" cy="17.5" r="2"/><circle cx="17.5" cy="17.5" r="2"/>', clip: '<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2h6v2M9 10h6M9 14h6"/>',
+};
+const TONE = {red: ['#FDECEC', '#B42318'], yel: ['#FEF7C3', '#A16207'], grn: ['#E3F5EA', '#15803D'], blu: ['#E1EDFA', '#1A4F8C'], gray: ['#EEF0F3', '#344054']};
+const svg = n => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICON[n]}</svg>`;
+// [tone, icon, today's title, today's value, today's line, clearer title, clearer line, red line?]
+const PAGES = [
+  ['Home', 'uses this style now', [['blu', 'chart', 'Sales this month', '₱167K', 'November so far', 'Sales this month', 'November so far'], ['yel', 'cash', 'Cash today', '₱4,140|expected', 'Liza · to count at closing', 'Cash to count today', 'Liza counts it at closing'], ['red', 'peso', 'Owed to you', '₱17,504', 'All of it is overdue', 'Owed to you', 'All overdue. Collect it now', 1], ['gray', 'card', 'You owe suppliers', '₱113K', 'Next due Dec 3', 'You owe suppliers', 'Next bill due Dec 3']]],
+  ['Orders', '', [['red', 'alert', 'Needs you now', '2 orders', '₱104,864', 'Needs you now', '₱104,864 · confirm, pack or bill today', 1], ['yel', 'cal', 'Coming up', '3 orders', '₱235,133', 'Due this week', '₱235,133 · get these ready next'], ['blu', 'hour', 'Waiting on them', '2 orders', '₱120,960', 'Waiting on them', '₱120,960 · nothing to do yet'], ['grn', 'check', 'All good', '1 order', '₱16,464', 'Done', '₱16,464 · delivered and paid']]],
+  ['Stock', '', [['red', 'box', 'Reorder now', '2', 'items running out', 'Reorder now', '2 items run out soon. Order today', 1], ['red', 'search', 'Missing this month', '₱1,456', 'found short in counts', 'Missing this month', 'Short in your counts. Recount', 1], ['yel', 'trash', 'Bad stock this month', '₱822', 'expired, damaged, spoiled', 'Damaged or expired', 'Thrown out this month'], ['gray', 'tag', 'Promised to customers', '1', 'items in open orders', 'Promised to customers', "1 item set aside. Don't sell it"], ['gray', 'coins', 'Stock value', '₱309,034', 'at what you paid', 'Stock value', 'What your stock cost you']]],
+  ['Sales', '', [['grn', 'chart', 'Sales', '₱5,620', '4 sales', 'Sales today', '4 sales so far'], ['grn', 'cash', 'Cash', '₱4,340', 'goes in the drawer', 'Cash', 'Should be in the drawer at closing'], ['yel', 'phone', 'GCash & Maya', '₱1,280', 'check your phone', 'GCash & Maya', 'Check it reached your phone'], ['gray', 'note', 'Utang', '₱0', 'not paid yet', 'Not paid yet (utang)', 'Nothing to collect']]],
+  ['Expenses', '', [['red', 'wallet', 'Spent in November', '₱18,179', '▼ ₱15,810 vs last month', 'Spent in November', '₱15,810 less than October'], ['gray', 'cart', 'Stock bought in cash', '₱0', 'counted as cost of what you sold', 'Stock bought with cash', 'Counted in the cost of what you sold'], ['blu', 'user', 'Owner took', '₱5,000', 'not an expense', 'Owner took', 'Not counted as an expense']]],
+  ['Prices', '', [['grn', 'chart', 'Sales', '₱167,158', 'November 2026', 'Sales', 'November so far'], ['yel', 'tag', 'Cost of what you sold', '₱135,158', '4 items have no cost yet', 'Cost of what you sold', '4 items have no cost. Add it to see true profit'], ['grn', 'up', 'Profit before expenses', '₱32,000', '19% of sales', 'Profit before expenses', '19% of what you sold']]],
+  ['Money overview', '', [['grn', 'in', 'Owed to you', '₱23,804', 'customers + utang', 'Owed to you', 'Collect from customers'], ['red', 'out', 'You owe', '₱112,896', 'supplier bills', 'You owe', 'Pay suppliers. Next due Dec 3', 1]]],
+  ['To check', '', [['red', 'flag', 'To check', '3', '2 important', 'To check', '2 are important. Start with those', 1], ['yel', 'alert', 'Money involved', '₱103,703', 'possible, not proven', 'Money involved', 'Possible, not proven yet'], ['gray', 'check', 'Closed', '0', 'fixed or accepted', 'Closed', 'Fixed or accepted']]],
+  ['Follow-ups', '', [['yel', 'hour', "Waiting for Customer's OK", '₱77,280', '1 order · 1 need you', "Waiting for the customer's OK", '1 order. Send them a reminder'], ['grn', 'thumb', 'Said Yes', '1 of 2', '₱87,360 · ~3.0 days', 'Said yes', '₱87,360 · they answer in about 3 days']]],
+  ['Tax books', '', [['gray', 'note', 'Sales (gross)', '₱0', '0 bills', 'Sales (gross)', '0 bills this month'], ['gray', 'pct', 'VAT you collected', '₱0', 'on ₱0 Before VAT', 'VAT you collected', 'On ₱0 before VAT'], ['gray', 'pct', 'VAT-exempt', '₱0', 'nothing exempt this month', 'VAT-exempt', 'Nothing exempt this month'], ['gray', 'clip', 'Tax withheld (2307)', '₱0', 'none this month', 'Tax withheld (2307)', 'None this month']]],
+];
+let WORDS = 'new';
+function tile(x){
+  const [tone, ic, k0, v, s0, k1, s1, red] = x, [bg, fg] = TONE[tone];
+  const k = WORDS === 'new' ? k1 : k0, s = WORDS === 'new' ? s1 : s0;
+  const [val, extra] = v.split('|');
+  return `<div class="t"><span class="ic" style="background:${bg};color:${fg}">${svg(ic)}</span><span class="tx"><span class="k">${k}</span>${extra ? `<span class="v pill">${val}<small>${extra}</small></span>` : `<span class="v">${val}</span>`}<span class="s${red ? ' r' : ''}">${s}</span></span></div>`;
+}
+function grid(items, phone){ const cols = Math.min(items.length, 4); return `<div class="mos" style="grid-template-columns:repeat(${phone ? 2 : cols},minmax(0,1fr))">${items.map(tile).join('')}</div>`; }
+function paint(){
+  document.getElementById('pages').innerHTML = PAGES.map(([name, note, items]) => `<div class="pg"><h3>${name}${note ? `<span class="rec">${note}</span>` : ''}<small>${items.length} pills</small></h3>
+    <div class="rowpair"><div><p class="lbl">On a computer (real size)</p><div class="pc"><div class="pcin">${grid(items, false)}</div></div></div>
+    <div><p class="lbl">On a phone (real size)</p><div class="ph"><div class="phin">${grid(items, true)}</div></div></div></div></div>`).join('');
+}
+function setWords(w){ WORDS = w; document.getElementById('wNow').classList.toggle('on', w === 'now'); document.getElementById('wNew').classList.toggle('on', w === 'new'); paint(); }
+paint();
+
+/* ---------- team activity ---------- */
+const PPL = {Ana: ['AR', '#0F766E'], Mark: ['MS', '#334155'], Dela: ['DC', '#1D4ED8']};
+const KIND = {cash: ['Cash', 'cash', 'k-cash', '#15803D', '#E3F5EA'], order: ['Orders', 'truck', 'k-order', '#1E3A8A', '#EAF1FF'], stock: ['Stock', 'box', 'k-stock', '#713F12', '#FFF5C2'], money: ['Money', 'wallet', 'k-money', '#9F1D14', '#FDECEC'], job: ['Jobs', 'check', 'k-job', '#344054', '#F2F4F7']};
+const ACT = [
+  {who: 'Dela', full: 'Dela Cruz (You)', what: 'approved a ₱1,200 fuel expense', kind: 'money', day: 'Today', time: '9:40 AM'},
+  {who: 'Mark', full: 'Mark Santos', what: 'marked Order 0798 as received', kind: 'order', day: 'Today', time: '9:10 AM'},
+  {who: 'Ana', full: 'Ana Reyes', what: 'counted the cash drawer: ₱4,140, matched', kind: 'cash', day: 'Today', time: '7:55 AM'},
+  {who: 'Mark', full: 'Mark Santos', what: 'started the job "Load Bayview order on the van"', kind: 'job', day: 'Today', time: '7:40 AM'},
+  {who: 'Ana', full: 'Ana Reyes', what: 'recorded 2 bad bags of cement', kind: 'stock', day: 'Yesterday', time: '5:20 PM'},
+  {who: 'Dela', full: 'Dela Cruz (You)', what: 'sent Order 0857 to Aling Nena', kind: 'order', day: 'Yesterday', time: '3:05 PM'},
+  {who: 'Ana', full: 'Ana Reyes', what: 'finished the job "Deposit BDO check 004512"', kind: 'job', day: 'Yesterday', time: '11:30 AM'},
+  {who: 'Mark', full: 'Mark Santos', what: 'collected ₱6,000 from Riverside Builders', kind: 'cash', day: 'Yesterday', time: '10:15 AM'},
+];
+const av = w => `<span class="av" style="background:${PPL[w][1]}">${PPL[w][0]}</span>`;
+const kind = k => `<span class="kind ${KIND[k][2]}">${svg(KIND[k][1])}${KIND[k][0]}</span>`;
+const A1 = `<div class="card"><div class="chips"><span class="chip on">Everyone (8)</span><span class="chip">Ana (3)</span><span class="chip">Mark (3)</span><span class="chip">Dela (2)</span><span class="sep"></span><span class="chip on">All kinds</span><span class="chip">Cash</span><span class="chip">Orders</span><span class="chip">Stock</span><span class="chip">Money</span><span class="chip">Jobs</span></div>
+  <div style="overflow:auto"><table style="min-width:640px"><thead><tr><th>When</th><th>Who</th><th>What they did</th><th>Kind</th></tr></thead><tbody>${ACT.map(a => `<tr><td><b>${a.day === 'Today' ? a.time : a.day}</b>${a.day === 'Today' ? '' : `<div style="font-size:14px;color:#344054;font-weight:600">${a.time}</div>`}</td><td><span class="who">${av(a.who)}${a.full}</span></td><td>${a.what}</td><td>${kind(a.kind)}</td></tr>`).join('')}</tbody></table></div></div>`;
+const A2 = `<div class="card">${['Today', 'Yesterday'].map(d => `<div class="day">${d}</div>${ACT.filter(a => a.day === d).map(a => `<div class="li"><span class="ki" style="background:${KIND[a.kind][4]};color:${KIND[a.kind][3]}">${svg(KIND[a.kind][1])}</span><p><b>${a.full.replace(' (You)', '')}</b> ${a.what}</p><time>${a.time}</time></div>`).join('')}`).join('')}</div>`;
+const A3 = `<div class="pcards">${['Ana', 'Mark', 'Dela'].map(w => { const list = ACT.filter(a => a.who === w); return `<div class="pcard"><h4>${av(w)}${list[0].full}<small>${list.length} things</small></h4>${list.map(a => `<div class="e"><time>${a.day === 'Today' ? a.time : 'Yest. ' + a.time}</time><span>${a.what} ${kind(a.kind)}</span></div>`).join('')}</div>`; }).join('')}</div>`;
+document.getElementById('actOpts').innerHTML = [
+  ['1. A table with filters, like Problems with orders', 'Recommended', A1, '<b>Why:</b> the same look as Problems with orders, so the Activity tab feels like one page. Filter by person or by kind, and scan one row each: when, who, what, and a colored tag for the kind.'],
+  ['2. Grouped by day, with an icon for each kind', '', A2, '<b>Why:</b> the quickest to read. One line per thing, the icon tells you money, stock or orders before you read a word, and Today is always on top.'],
+  ['3. One card per person', '', A3, '<b>Why:</b> answers "what did Ana do today?" at a glance. Good for paying commissions or checking a new staff member, less good for seeing the order things happened in.'],
+].map(([t, tag, html, why]) => `<article class="opt"><h3>${t}${tag ? `<span class="rec">${tag}</span>` : ''}</h3><div class="stage">${html}</div><p>${why}</p></article>`).join('');
+
+/* ---------- days left ---------- */
+const ITEMS = [
+  {n: 'Galvanized Wire 12ga', d: 2, run: 'Nov 19', meta: 'Metro Steel · delivers in 5 days · 6 on hand', c: 'red', rop: 22},
+  {n: 'Portland Cement 40kg', d: 2.4, run: 'Nov 19', meta: 'Cebu Aggregates · delivers in 3 days · 12 on hand', c: 'red', rop: 18},
+  {n: 'Steel Rebar 12mm', d: 38, run: 'Dec 25', meta: 'Metro Steel · delivers in 5 days · 240 on hand', c: 'grn', rop: 22},
+];
+const MAX = 45, pctOf = d => Math.min(100, d / MAX * 100), col = c => c === 'red' ? '#D92D20' : '#16A34A';
+const legend = '<div class="lg"><span><i style="background:#D92D20"></i>Order today</span><span><i style="background:#EAB308"></i>Order soon</span><span><i style="background:#16A34A"></i>Covered</span><span><i style="background:#0B0F14;width:3px;height:14px;border-radius:1px"></i>Reorder point</span></div>';
+const ticks = [0, 7, 14, 21, 30, 45];
+const tickHtml = labels => `<div class="ticks">${ticks.map(t => `<span style="left:${pctOf(t)}%">${labels ? labels(t) : t}</span>`).join('')}</div>`;
+const D1 = `<div class="ro">${legend}${ITEMS.map(x => `<div class="row"><div class="nm"><b>${x.n}</b><small>${x.meta}</small></div><div class="bar"><i style="width:${Math.max(4, pctOf(x.d))}%;background:${col(x.c)}"></i><s style="left:${pctOf(x.rop / 3)}%"></s></div><div class="dl"><b class="${x.c}">${x.d} days left</b><small>runs out ${x.run}</small></div></div>`).join('')}
+  <div class="axis"><span></span><div>${tickHtml()}<div class="cap">Days of stock left</div></div><span></span></div></div>`;
+const D2 = `<div class="ro">${legend}<div class="hdr"><span>Item</span><div><div style="margin-bottom:6px">Days of stock left</div>${tickHtml(t => t === 45 ? '45+' : t)}</div><span style="text-align:right">Runs out</span></div>${ITEMS.map(x => `<div class="row"><div class="nm"><b>${x.n}</b><small>${x.meta}</small></div><div class="bar"><i style="width:${Math.max(4, pctOf(x.d))}%;background:${col(x.c)}"></i><s style="left:${pctOf(x.rop / 3)}%"></s></div><div class="dl"><b class="${x.c}">${x.run}</b><small>${x.d} days left</small></div></div>`).join('')}</div>`;
+const D3 = `<div class="ro">${legend}${ITEMS.map(x => `<div class="cnt"><div class="cb ${x.c === 'red' ? 'r' : 'g'}"><b>${x.d}</b><small>days left</small></div><div><div class="nm"><b>${x.n}</b><small>${x.meta}</small></div><div class="bar"><i style="width:${Math.max(4, pctOf(x.d))}%;background:${col(x.c)}"></i><s style="left:${pctOf(x.rop / 3)}%"></s></div><div class="sub"><span>Runs out ${x.run}</span><span>${x.c === 'red' ? 'Order today' : 'Covered'}</span></div></div></div>`).join('')}</div>`;
+document.getElementById('dayOpts').innerHTML = [
+  ['1. Said once, under the scale', 'Recommended', D1, '<b>Why:</b> the smallest change. The two "Days left" buttons go; the scale has one plain caption under it, and each row says "2 days left" in full, so the number can\'t be mistaken for pieces.'],
+  ['2. A proper header row on top', '', D2, '<b>Why:</b> reads like a table: Item, Days of stock left, Runs out. The scale numbers sit in the header, the right column shows the date first.'],
+  ['3. A countdown box on each row', '', D3, '<b>Why:</b> the number of days is the biggest thing on the row, in its own red or green box labeled "days left". Easiest to scan from across the room; no scale needed.'],
+].map(([t, tag, html, why]) => `<article class="opt"><h3>${t}${tag ? `<span class="rec">${tag}</span>` : ''}</h3><div class="stage">${html}</div><p>${why}</p></article>`).join('');
+</script>
+</body></html>
