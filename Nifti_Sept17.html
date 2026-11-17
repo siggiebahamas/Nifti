@@ -10436,6 +10436,98 @@ html #view-app main table th{font-size:14px !important;font-weight:800;letter-sp
 html #view-app main table td{padding:14px 12px;}
 html #view-app #page-money table th, html #view-app #page-money table td, html #view-app #page-ledger table th, html #view-app #page-ledger table td{text-align:inherit !important;}
 
+/* ---------- Orders ⋯ ---------- */
+#page-orders .nfo-more[hidden]{display:none !important;}
+.nf43-dotw{position:relative;display:inline-flex;}
+.nf43-dots{width:44px;height:44px;border-radius:12px;border:1.5px solid #D0D5DD;background:#FFFFFF;font-size:18px;font-weight:800;line-height:1;color:#0B0F14;cursor:pointer;display:grid;place-items:center;}
+.nf43-menu{position:absolute;right:0;top:calc(100% + 6px);z-index:30;background:#FFFFFF;border:1px solid #E4E7EC;border-radius:12px;box-shadow:0 12px 30px rgba(11,15,20,.14);display:grid;min-width:170px;overflow:hidden;}
+.nf43-menu[hidden]{display:none;}
+.nf43-menu button{all:unset;padding:12px 16px;font-size:16px;font-weight:700;color:#0B0F14;cursor:pointer;border-top:1px solid #F2F4F7;}
+.nf43-menu button:first-child{border-top:0;}
+.nf43-menu button:hover{background:#F6F7F9;}
+#page-orders .nfo-po .nfo-b{flex:1;}
+#page-orders .nfo-po{gap:10px;}
+
+/* ---------- Expenses ---------- */
+.nf43-tag{display:inline-block;margin-left:8px;border-radius:999px;padding:2px 10px;font-size:14px;font-weight:800;vertical-align:middle;}
+.nf43-tag.up{background:#FDECEC;color:#9F1D14;} .nf43-tag.dn{background:#E3F5EA;color:#14532D;}
+.nf43-rules{margin-top:16px;}
+.nf43-rh{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.nf43-rh h3{margin:0 0 4px;font-size:18px;}
+.nf43-rh p{margin:0;font-size:16px;color:#0B0F14;max-width:720px;}
+.nf43-rb{margin-top:14px;padding-top:14px;border-top:1px solid #E4E7EC;display:grid;gap:12px;}
+.nf43-rb[hidden]{display:none;}
+
+/* ---------- Getting paid ---------- */
+.nf43-claims{border:1.5px solid #EED98A;background:#FFFBE8;border-radius:16px;padding:14px;margin:0 0 14px;display:grid;gap:10px;}
+.nf43-ch{display:grid;gap:2px;}
+.nf43-ch b{font-size:18px;}
+.nf43-ch span{font-size:16px;color:#0B0F14;}
+.nf43-cr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 12px;align-items:center;background:#FFFFFF;border:1px solid #F2E6B0;border-radius:12px;padding:12px;}
+.nf43-cw{display:grid;min-width:0;}
+.nf43-cw b{font-size:16px;}
+.nf43-cw small{font-size:14px;color:#0B0F14;font-weight:600;}
+.nf43-cr em{font-style:normal;font-weight:800;font-size:18px;font-variant-numeric:tabular-nums;}
+.nf43-cb{grid-column:1 / -1;display:flex;gap:8px;flex-wrap:wrap;}
+.nf43-cb .btn{min-height:42px;font-weight:800;font-size:16px;flex:1;}
+.nf43-remline{display:flex;align-items:center;justify-content:space-between;gap:10px;border:1px solid #E4E7EC;background:#FFFFFF;border-radius:12px;padding:10px 14px;margin:0 0 14px;font-size:16px;}
+.nf43-remhid{display:none !important;}
+
+/* ---------- Find customers ---------- */
+.nf43-dcard{position:relative;}
+.nf43-star{position:absolute;top:12px;right:12px;width:44px;height:44px;border-radius:12px;border:1.5px solid #D0D5DD;background:#FFFFFF;color:#0B0F14;display:grid;place-items:center;cursor:pointer;}
+.nf43-star svg{width:24px;height:24px;}
+.nf43-star.on{color:#B7791F;border-color:#EED98A;background:#FFFBE8;}
+.nf43-star.on svg{fill:currentColor;}
+
+/* ---------- Team activity: centered headers, even kind tags ---------- */
+#teamActivityFeed .nf42-ah > *{text-align:center;justify-self:center;}
+#teamActivityFeed .nf42-ah > :first-child{justify-self:start;text-align:left;}
+#teamActivityFeed .nf42-ar .nf42-kt, #teamActivityFeed .nf42-ar [class*="nf42-kind"]{min-width:118px;justify-content:center;justify-self:center;}
+
+/* ---------- Phone + button and short lists ---------- */
+#nf43Fab{position:fixed;right:16px;bottom:calc(84px + env(safe-area-inset-bottom));z-index:900;width:58px;height:58px;border-radius:50%;border:0;background:#1F6B45;color:#FFFFFF;font-size:36px;font-weight:600;line-height:1;display:grid;place-items:center;box-shadow:0 10px 24px rgba(31,107,69,.35);cursor:pointer;}
+#nf43Fab[hidden]{display:none;}
+@media (min-width:761px){ #nf43Fab{display:none !important;} }
+tr.nf43-rowhid{display:none !important;}
+.nf43-showall{display:block;width:100%;margin:10px 0 0;min-height:44px;font-weight:800;}
+#page-orders .nfo-po .nf43-act{grid-column:1 / -1;display:flex;gap:8px;align-items:stretch;}
+#page-orders .nfo-po .nf43-act .nfo-b{flex:1;margin:0;}
+#page-orders .nfo-po .nf43-act .nf43-dots{height:auto;min-height:44px;}
+#page-expenses .bk-bar > :first-child{white-space:normal !important;overflow:visible !important;text-overflow:clip !important;}
+
+/* ---------- Checks: compact rows, still split into customers (left) and suppliers (right) ---------- */
+@media (min-width:761px){
+  #view-app#view-app#view-app #page-cheques .nf25-tw table.nf25-t{display:table !important;width:100%;border-collapse:collapse;table-layout:auto;}
+  #view-app#view-app#view-app #page-cheques .nf25-tw table.nf25-t thead{display:table-header-group !important;}
+  #view-app#view-app#view-app #page-cheques .nf25-tw table.nf25-t tbody{display:table-row-group !important;}
+  #view-app#view-app#view-app #page-cheques .nf25-tw table.nf25-t tr{display:table-row !important;border:0 !important;padding:0 !important;margin:0 !important;box-shadow:none !important;background:transparent !important;}
+  #view-app#view-app#view-app #page-cheques .nf25-tw table.nf25-t th, #view-app#view-app#view-app #page-cheques .nf25-tw table.nf25-t td{display:table-cell !important;padding:10px 8px !important;border-bottom:1px solid #F2F4F7;font-size:16px;text-align:center !important;vertical-align:middle;}
+  #view-app#view-app#view-app #page-cheques .nf25-tw table.nf25-t th{font-size:14px !important;padding:8px !important;}
+  #view-app#view-app#view-app #page-cheques .nf25-tw table.nf25-t td::before{content:none !important;display:none !important;}
+  #view-app#view-app#view-app #page-cheques .nf25-tw table.nf25-t th:nth-child(5), #view-app#view-app#view-app #page-cheques .nf25-tw table.nf25-t td:nth-child(5){display:none !important;}
+  #view-app#view-app#view-app #page-cheques .nf25-tw table.nf25-t td.t{font-weight:700;}
+  #view-app#view-app#view-app #page-cheques .nf25-tw table.nf25-t td .btn{white-space:nowrap;min-height:38px;}
+  #view-app #page-cheques .nfc-g{padding-bottom:4px;}
+}
+@media (min-width:761px){
+  #view-app#view-app#view-app #page-cheques .nf25-tw{overflow-x:auto;}
+  #view-app#view-app#view-app #page-cheques .nf25-tw table.nf25-t td .btn{padding:0 12px !important;font-size:14px !important;}
+}
+/* ---------- Online store ---------- */
+#page-store .nf43-hide{display:none !important;}
+#page-store .nf43-more{border:1.5px dashed #D0D5DD;background:#FFFFFF;border-radius:999px;padding:8px 16px;font:inherit;font-size:16px;font-weight:800;color:#0B0F14;cursor:pointer;}
+#page-store .nf43-share .btn{min-height:44px;font-weight:800;}
+#page-store .nf43-share .nf43-menu a, #page-store .nf43-share .nf43-menu button{all:unset;padding:12px 16px;font-size:16px;font-weight:700;color:#0B0F14;cursor:pointer;border-top:1px solid #F2F4F7;}
+#page-store .nf43-share .nf43-menu > :first-child{border-top:0;}
+#page-store .nf43-sttabs{grid-template-columns:repeat(3,minmax(0,1fr)) !important;}
+/* Find customers: bigger, clearer card text */
+#page-discover .nf36f-card{padding:18px 18px 16px !important;gap:10px;}
+#page-discover .nf36f-card .nf36f-hd{padding-right:52px;}
+#page-discover .nf36f-card .nf36f-hd b, #page-discover .nf36f-card h3{font-size:18px !important;line-height:1.3;}
+#page-discover .nf36f-card p, #page-discover .nf36f-card small, #page-discover .nf36f-card span{font-size:16px;line-height:1.45;}
+#page-discover .nf36f-card .btn{min-height:46px;font-size:16px;font-weight:800;}
+
   .settings-card:empty{display:none;}
   #supplierChips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;} #supplierChips .chip{flex-shrink:0;}
 
@@ -39965,6 +40057,165 @@ function nf43Home(page){
   if(typeof nf26AfterPass !== 'function') return;
   const base = nf26AfterPass;
   nf26AfterPass = function(page){ base(page); try{ nf43Names(page); nf43Home(page); }catch(e){ console.warn('nf43 names', e); } };
+  window.nf26AfterPass = nf26AfterPass;
+})();
+
+/* ---------- 6. Orders: one main button per card, the rest under ⋯ ---------- */
+function nf43Orders(page){
+  if(!page || page.id !== 'page-orders') return;
+  page.querySelectorAll('.nfo-pc').forEach(pc => {
+    const more = pc.querySelector('.nfo-more'); if(!more || more.dataset.nf43) return;
+    const po = pc.querySelector('.nfo-po'); const btns = [...more.querySelectorAll('button')]; if(!po || !btns.length) return;
+    more.dataset.nf43 = '1'; more.hidden = true;
+    const wrap = document.createElement('span'); wrap.className = 'nf43-dotw';
+    const dots = document.createElement('button'); dots.type = 'button'; dots.className = 'nf43-dots'; dots.setAttribute('aria-label', 'More for this order'); dots.textContent = '⋯';
+    const menu = document.createElement('div'); menu.className = 'nf43-menu'; menu.hidden = true;
+    btns.forEach(b => { b.className = ''; menu.appendChild(b); });
+    dots.addEventListener('click', e => { e.stopPropagation(); const open = menu.hidden; document.querySelectorAll('.nf43-menu').forEach(m => { m.hidden = true; }); menu.hidden = !open; });
+    menu.addEventListener('click', e => { e.stopPropagation(); menu.hidden = true; });
+    wrap.append(dots, menu);
+    const main = po.querySelector('.nfo-b');
+    if(main){ const act = document.createElement('div'); act.className = 'nf43-act'; main.before(act); act.append(main, wrap); } else po.appendChild(wrap);
+  });
+}
+document.addEventListener('click', () => document.querySelectorAll('.nf43-menu').forEach(m => { if(!m.hidden) m.hidden = true; }));
+
+/* ---------- 7. Expenses: pills, waiting for your OK, where the money went, then approval rules ---------- */
+function nf43Expenses(page){
+  if(!page || page.id !== 'page-expenses') return;
+  const body = page.querySelector('#bkExpBody'); if(!body) return;
+  const kids = [...body.children];
+  const tool = body.querySelector(':scope > .bk-toolbar'), pills = body.querySelector(':scope > .nf43-pills'), wait = body.querySelector(':scope > .bk-approve');
+  const where = kids.find(k => /^Where the money went/i.test(((k.querySelector('.panel-head') || {}).textContent || '').trim()));
+  const alerts = body.querySelector(':scope > .bk-alerts'), det = body.querySelector(':scope > details.lg-det');
+  // "Electricity is 51% higher than usual" becomes a tag on the Electricity bar
+  if(alerts && where){
+    alerts.querySelectorAll('.bk-alert').forEach(a => { const m = a.textContent.match(/^\s*(.+?) is (\d+)% (higher|lower) than usual/i); if(!m) return;
+      const bar = [...where.querySelectorAll('.bk-bar')].find(b => b.textContent.trim().startsWith(m[1])); if(!bar || bar.querySelector('.nf43-tag')) return;
+      const lab = bar.firstElementChild || bar; const t = document.createElement('span'); t.className = 'nf43-tag ' + (m[3].toLowerCase() === 'higher' ? 'up' : 'dn'); t.textContent = (m[3].toLowerCase() === 'higher' ? '+' : '−') + m[2] + '% vs usual'; lab.appendChild(t); });
+    alerts.style.setProperty('display', 'none', 'important');
+  }
+  // approval rules: a clear card at the bottom with what the rule is now, and Change to edit it
+  let rules = body.querySelector(':scope > .nf43-rules');
+  if(det && !rules){
+    rules = document.createElement('section'); rules.className = 'panel-card nf43-rules';
+    rules.innerHTML = `<div class="nf43-rh"><div><h3>Approval rules</h3><p class="nf43-rs"></p></div><button type="button" class="btn btn-outline">Change</button></div><div class="nf43-rb" hidden></div>`;
+    const rb = rules.querySelector('.nf43-rb'); [...det.children].filter(c => c.tagName !== 'SUMMARY').forEach(c => rb.appendChild(c));
+    rules.querySelector('.btn').addEventListener('click', () => { rb.hidden = !rb.hidden; rules.querySelector('.btn').textContent = rb.hidden ? 'Change' : 'Done'; });
+    det.style.setProperty('display', 'none', 'important'); body.appendChild(rules);
+  }
+  if(rules){ const amt = rules.querySelector('input[inputmode="decimal"]'), dual = rules.querySelector('input[type="checkbox"]');
+    const s = `Expenses your staff add from <b>${bkPeso(Number(amt && amt.value) || 2000)}</b> wait for your OK before they count.${dual && dual.checked ? ' Big ones from managers also need a second OK.' : ''}`;
+    const p = rules.querySelector('.nf43-rs'); if(p && p.dataset.k !== s){ p.dataset.k = s; p.innerHTML = s; } }
+  const order = [tool, pills, wait, where, rules].filter(Boolean);
+  order.forEach((el, i) => { if(i === 0){ if(body.firstElementChild !== el) body.prepend(el); } else if(order[i - 1].nextElementSibling !== el) order[i - 1].after(el); });
+}
+
+/* ---------- 8. Getting paid: payments to confirm on top, with buttons; reminders in one line ---------- */
+function nf43Claims(){
+  const out = [], seen = new Set(); let pos = []; try{ pos = unpaidInvoicesFor('supplier').map(r => r.po); }catch(e){}
+  pos.forEach(po => { if(seen.has(po.id)) return; seen.add(po.id);
+    ['deposit', 'invoice'].forEach(kind => { let list = []; try{ list = paymentListFor(po, kind); }catch(e){} list.forEach((p, i) => { if(paymentNeedsSupplierAction(p)) out.push({po, p, kind, key: paymentKey(p, i)}); }); });
+  });
+  return out;
+}
+function nf43Collections(page){
+  if(!page || page.id !== 'page-collections' || (typeof colTab !== 'undefined' && colTab === 'cash')) return;
+  const body = page.querySelector('#colBody'); if(!body) return;
+  const claims = nf43Claims();
+  let box = body.querySelector(':scope > .nf43-claims');
+  const html = claims.length ? `<div class="nf43-ch"><b>Payments to confirm</b><span>${claims.length} payment${claims.length === 1 ? '' : 's'} from ${new Set(claims.map(c => c.po.buyerId || c.po.buyerName)).size === 1 ? escapeHtml(claims[0].po.buyerName || 'a customer') : new Set(claims.map(c => c.po.buyerId || c.po.buyerName)).size + ' customers'}. Check your bank or GCash, then confirm each one.</span></div>` + claims.map(c => {
+      const who = c.po.buyerName || c.po.customerName || (c.po.buyer && c.po.buyer.name) || 'Customer', m = (c.p.method || '').toLowerCase();
+      const how = m === 'check' ? 'Check' : m === 'gcash' ? 'GCash' : m === 'bank' ? 'Bank transfer' : m === 'cash' ? 'Cash' : (c.p.method || 'Payment');
+      return `<div class="nf43-cr"><div class="nf43-cw"><b>${escapeHtml(who)}</b><small>${escapeHtml(c.po.poNumber ? 'Order ' + String(c.po.poNumber).replace(/^PO-\d{4}-/, '') : '')} · ${escapeHtml(how)}${c.p.date ? ' · ' + escapeHtml(bkDayLabel(String(c.p.date).slice(0, 10))) : ''}</small></div><em>${bkPeso(c.p.amount)}</em>
+        <div class="nf43-cb"><button type="button" class="btn btn-primary" onclick="confirmPaymentReceived('${c.po.id}','${c.kind}','${c.key}'); setTimeout(renderCollectionsPage, 50)">${m === 'check' ? 'Check cleared' : 'Received'}</button><button type="button" class="btn btn-outline" onclick="navigate('orders'); setTimeout(() => nfoOpen('${c.po.id}'), 80)">${m === 'check' ? 'Bounced' : 'Not received'}</button></div></div>`; }).join('') : '';
+  if(claims.length){ if(!box){ box = document.createElement('section'); box.className = 'nf43-claims'; } const ref = body.querySelector(':scope > .sl-tiles'); if(ref){ if(ref.nextElementSibling !== box) ref.after(box); } else if(body.firstElementChild !== box) body.prepend(box); if(box.dataset.k !== html){ box.dataset.k = html; box.innerHTML = html; } }
+  else if(box) box.remove();
+  // reminders: one line that says what happens, with Change to see the settings
+  const strip = body.querySelector(':scope > #nf33rStrip'), auto = body.querySelector(':scope > .sl-auto'), bar = body.querySelector(':scope > .nf28-bar');
+  const parts = [strip, auto, bar].filter(Boolean); if(!parts.length) return;
+  let line = body.querySelector(':scope > .nf43-remline');
+  const on = auto ? auto.classList.contains('on') || !!auto.querySelector('.switch.on') : true;
+  if(!line){ line = document.createElement('div'); line.className = 'nf43-remline'; line.innerHTML = `<span class="nf43-rl"></span><button type="button" class="nf43-link">Change</button>`;
+    line.querySelector('button').addEventListener('click', () => { const open = line.classList.toggle('open'); body.querySelectorAll(':scope > #nf33rStrip, :scope > .sl-auto, :scope > .nf28-bar').forEach(p => p.classList.toggle('nf43-remhid', !open)); line.querySelector('button').textContent = open ? 'Done' : 'Change'; }); }
+  const t = `🔔 Reminders: <b>${on ? 'On' : 'Off'}</b> · ${on ? '2 days before, due day, then 3, 7, 14 and 30 days late' : 'turn them on to remind customers for you'}`;
+  const rl = line.querySelector('.nf43-rl'); if(rl.dataset.k !== t){ rl.dataset.k = t; rl.innerHTML = t; }
+  const last = [...body.children].filter(c => !c.classList.contains('nf43-remline')).pop();
+  if(!line.classList.contains('open')) parts.forEach(p => p.classList.add('nf43-remhid'));
+  const anchor = box && box.isConnected ? box : body.querySelector(':scope > .sl-tiles');
+  if(anchor){ if(anchor.nextElementSibling !== line) anchor.after(line); } else if(body.firstElementChild !== line) body.prepend(line);
+  parts.forEach(p => { if(p.previousElementSibling !== line && !line.classList.contains('open')){} });
+}
+
+/* ---------- 9. Find customers: one main button, a bigger save star ---------- */
+function nf43Discover(page){
+  if(!page || page.id !== 'page-discover') return;
+  page.querySelectorAll('.nf36f-card, .nfd2-card, .nf36d-card').forEach(card => {
+    if(card.dataset.nf43) return; const btns = [...card.querySelectorAll('button')]; if(btns.length < 2) return; card.dataset.nf43 = '1';
+    const save = btns.find(b => /^save|saved/i.test(b.textContent.trim())), price = btns.find(b => /price list/i.test(b.textContent));
+    if(price) price.style.setProperty('display', 'none', 'important');
+    if(save){ const star = document.createElement('button'); star.type = 'button'; star.className = 'nf43-star' + (/saved/i.test(save.textContent) ? ' on' : ''); star.setAttribute('aria-label', 'Save'); star.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg>'; star.addEventListener('click', e => { e.stopPropagation(); save.click(); });
+      save.style.setProperty('display', 'none', 'important'); card.appendChild(star); card.classList.add('nf43-dcard'); }
+  });
+}
+
+/* ---------- 10. Phone: a + button within thumb reach on the pages where you add things ---------- */
+const NF43_FAB = {sales: () => openQuickSale(), expenses: () => openExpenseForm(), orders: () => { const b = [...document.querySelectorAll('#page-orders button')].find(x => /New order/i.test(x.textContent) && x.offsetParent !== null); if(b) b.click(); }, inventory: () => { const b = [...document.querySelectorAll('#page-inventory button')].find(x => /Add Product/i.test(x.textContent)); if(b) b.click(); }};
+const NF43_FAB_L = {sales: 'New sale', expenses: 'Add an expense', orders: 'New order', inventory: 'Add an item'};
+function nf43Fab(page){
+  let f = document.getElementById('nf43Fab');
+  const id = page ? page.id.replace('page-', '') : '', phone = window.innerWidth <= 760;
+  if(!phone || !NF43_FAB[id]){ if(f) f.hidden = true; return; }
+  if(!f){ f = document.createElement('button'); f.id = 'nf43Fab'; f.type = 'button'; f.innerHTML = '<span aria-hidden="true">+</span>'; f.addEventListener('click', () => { const k = f.dataset.page; try{ NF43_FAB[k] && NF43_FAB[k](); }catch(e){} }); document.body.appendChild(f); }
+  f.hidden = false; f.dataset.page = id; f.setAttribute('aria-label', NF43_FAB_L[id]);
+  // long lists on a phone: 5 rows, then Show all
+  page.querySelectorAll('table tbody').forEach(tb => { const rows = [...tb.children].filter(r => r.tagName === 'TR'); if(rows.length <= 7 || tb.dataset.nf43all) return;
+    rows.forEach((r, i) => r.classList.toggle('nf43-rowhid', i >= 5));
+    let more = tb.parentElement.parentElement.querySelector(':scope > .nf43-showall');
+    if(!more){ more = document.createElement('button'); more.type = 'button'; more.className = 'nf43-showall btn btn-outline'; more.addEventListener('click', () => { tb.dataset.nf43all = '1'; tb.querySelectorAll('.nf43-rowhid').forEach(r => r.classList.remove('nf43-rowhid')); more.remove(); }); tb.parentElement.after(more); }
+    more.textContent = `Show all ${rows.length}`; });
+}
+(function(){
+  if(typeof nf26AfterPass !== 'function') return;
+  const base = nf26AfterPass;
+  nf26AfterPass = function(page){ base(page); [nf43Orders, nf43Expenses, nf43Collections, nf43Discover, nf43Fab].forEach(f => { try{ f(page); }catch(e){ console.warn('nf43 page', f.name, e); } }); };
+  window.nf26AfterPass = nf26AfterPass;
+})();
+
+/* ---------- 11. Online store: the post maker up front, fewer buttons around it ---------- */
+const NF43_ST = {more: false};
+function nf43Store(page){
+  if(!page || page.id !== 'page-store') return;
+  const root = page.querySelector('.nf22s'); if(!root) return;
+  // canned replies and the long guide are gone; making posts is what the page is for
+  root.querySelectorAll('.nf22s-tabs > *').forEach(t => { if(/^(Reply fast|Get more buyers)/i.test(t.textContent.trim())) t.style.setProperty('display', 'none', 'important'); });
+  const tabs = root.querySelector('.nf22s-tabs'); if(tabs) tabs.classList.add('nf43-sttabs');
+  // one Share button instead of a link box, Copy link and QR poster
+  const link = root.querySelector('.nf22s-link');
+  if(link && !link.dataset.nf43){ link.dataset.nf43 = '1';
+    const btns = [...link.querySelectorAll('button, a')]; const url = (link.textContent.match(/\S+\/s\/\S+/) || [''])[0];
+    const w = document.createElement('span'); w.className = 'nf43-dotw nf43-share';
+    const b = document.createElement('button'); b.type = 'button'; b.className = 'btn btn-primary'; b.textContent = 'Share my store ▾';
+    const menu = document.createElement('div'); menu.className = 'nf43-menu'; menu.hidden = true;
+    btns.forEach(x => { x.className = ''; menu.appendChild(x); });
+    if(url){ const o = document.createElement('a'); o.href = url.startsWith('http') ? url : 'https://' + url; o.target = '_blank'; o.rel = 'noopener'; o.textContent = 'Open my store'; o.className = ''; menu.appendChild(o); }
+    b.addEventListener('click', e => { e.stopPropagation(); menu.hidden = !menu.hidden; });
+    menu.addEventListener('click', e => { e.stopPropagation(); menu.hidden = true; });
+    w.append(b, menu); link.replaceChildren(w);
+  }
+  // four kinds of post, the rest behind More ideas
+  const ask = [...root.querySelectorAll('div, section')].find(d => /^What do you want to post\?/.test((d.firstElementChild || {}).textContent || '') && d.querySelectorAll('button').length >= 6);
+  if(ask){ const chips = [...ask.querySelectorAll('button')].filter(x => !x.classList.contains('nf43-more')); const host = chips[0] && chips[0].parentElement;
+    chips.forEach((c, i) => c.classList.toggle('nf43-hide', !NF43_ST.more && i >= 4 && !c.classList.contains('on')));
+    let more = host && host.querySelector('.nf43-more');
+    if(host && !more){ more = document.createElement('button'); more.type = 'button'; more.className = 'nf43-more'; more.addEventListener('click', () => { NF43_ST.more = !NF43_ST.more; nf43Store(page); }); host.appendChild(more); }
+    if(more){ const t = NF43_ST.more ? 'Fewer ▴' : `More ideas (${Math.max(0, chips.length - 4)}) ▾`; if(more.textContent !== t) more.textContent = t; }
+  }
+}
+(function(){
+  if(typeof nf26AfterPass !== 'function') return;
+  const base = nf26AfterPass;
+  nf26AfterPass = function(page){ base(page); try{ nf43Store(page); }catch(e){ console.warn('nf43 store', e); } };
   window.nf26AfterPass = nf26AfterPass;
 })();
 

@@ -153,3 +153,95 @@ html #view-app main table:not(.nf43-left) th, html #view-app main table:not(.nf4
 html #view-app main table th{font-size:14px !important;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#344054;background:#F9FAFB;padding:12px 12px;}
 html #view-app main table td{padding:14px 12px;}
 html #view-app #page-money table th, html #view-app #page-money table td, html #view-app #page-ledger table th, html #view-app #page-ledger table td{text-align:inherit !important;}
+
+/* ---------- Orders ⋯ ---------- */
+#page-orders .nfo-more[hidden]{display:none !important;}
+.nf43-dotw{position:relative;display:inline-flex;}
+.nf43-dots{width:44px;height:44px;border-radius:12px;border:1.5px solid #D0D5DD;background:#FFFFFF;font-size:20px;font-weight:800;line-height:1;color:#0B0F14;cursor:pointer;display:grid;place-items:center;}
+.nf43-menu{position:absolute;right:0;top:calc(100% + 6px);z-index:30;background:#FFFFFF;border:1px solid #E4E7EC;border-radius:12px;box-shadow:0 12px 30px rgba(11,15,20,.14);display:grid;min-width:170px;overflow:hidden;}
+.nf43-menu[hidden]{display:none;}
+.nf43-menu button{all:unset;padding:12px 16px;font-size:16px;font-weight:700;color:#0B0F14;cursor:pointer;border-top:1px solid #F2F4F7;}
+.nf43-menu button:first-child{border-top:0;}
+.nf43-menu button:hover{background:#F6F7F9;}
+#page-orders .nfo-po .nfo-b{flex:1;}
+#page-orders .nfo-po{gap:10px;}
+
+/* ---------- Expenses ---------- */
+.nf43-tag{display:inline-block;margin-left:8px;border-radius:999px;padding:2px 10px;font-size:14px;font-weight:800;vertical-align:middle;}
+.nf43-tag.up{background:#FDECEC;color:#9F1D14;} .nf43-tag.dn{background:#E3F5EA;color:#14532D;}
+.nf43-rules{margin-top:16px;}
+.nf43-rh{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.nf43-rh h3{margin:0 0 4px;font-size:18px;}
+.nf43-rh p{margin:0;font-size:16px;color:#344054;max-width:720px;}
+.nf43-rb{margin-top:14px;padding-top:14px;border-top:1px solid #E4E7EC;display:grid;gap:12px;}
+.nf43-rb[hidden]{display:none;}
+
+/* ---------- Getting paid ---------- */
+.nf43-claims{border:1.5px solid #EED98A;background:#FFFBE8;border-radius:16px;padding:14px;margin:0 0 14px;display:grid;gap:10px;}
+.nf43-ch{display:grid;gap:2px;}
+.nf43-ch b{font-size:18px;}
+.nf43-ch span{font-size:16px;color:#344054;}
+.nf43-cr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 12px;align-items:center;background:#FFFFFF;border:1px solid #F2E6B0;border-radius:12px;padding:12px;}
+.nf43-cw{display:grid;min-width:0;}
+.nf43-cw b{font-size:16px;}
+.nf43-cw small{font-size:14px;color:#475467;font-weight:600;}
+.nf43-cr em{font-style:normal;font-weight:800;font-size:18px;font-variant-numeric:tabular-nums;}
+.nf43-cb{grid-column:1 / -1;display:flex;gap:8px;flex-wrap:wrap;}
+.nf43-cb .btn{min-height:42px;font-weight:800;font-size:16px;flex:1;}
+.nf43-remline{display:flex;align-items:center;justify-content:space-between;gap:10px;border:1px solid #E4E7EC;background:#FFFFFF;border-radius:12px;padding:10px 14px;margin:0 0 14px;font-size:16px;}
+.nf43-remhid{display:none !important;}
+
+/* ---------- Find customers ---------- */
+.nf43-dcard{position:relative;}
+.nf43-star{position:absolute;top:12px;right:12px;width:44px;height:44px;border-radius:12px;border:1.5px solid #D0D5DD;background:#FFFFFF;color:#475467;display:grid;place-items:center;cursor:pointer;}
+.nf43-star svg{width:24px;height:24px;}
+.nf43-star.on{color:#B7791F;border-color:#EED98A;background:#FFFBE8;}
+.nf43-star.on svg{fill:currentColor;}
+
+/* ---------- Team activity: centered headers, even kind tags ---------- */
+#teamActivityFeed .nf42-ah > *{text-align:center;justify-self:center;}
+#teamActivityFeed .nf42-ah > :first-child{justify-self:start;text-align:left;}
+#teamActivityFeed .nf42-ar .nf42-kt, #teamActivityFeed .nf42-ar [class*="nf42-kind"]{min-width:118px;justify-content:center;justify-self:center;}
+
+/* ---------- Phone + button and short lists ---------- */
+#nf43Fab{position:fixed;right:16px;bottom:calc(84px + env(safe-area-inset-bottom));z-index:900;width:58px;height:58px;border-radius:50%;border:0;background:#1F6B45;color:#FFFFFF;font-size:32px;font-weight:600;line-height:1;display:grid;place-items:center;box-shadow:0 10px 24px rgba(31,107,69,.35);cursor:pointer;}
+#nf43Fab[hidden]{display:none;}
+@media (min-width:761px){ #nf43Fab{display:none !important;} }
+tr.nf43-rowhid{display:none !important;}
+.nf43-showall{display:block;width:100%;margin:10px 0 0;min-height:44px;font-weight:800;}
+#page-orders .nfo-po .nf43-act{grid-column:1 / -1;display:flex;gap:8px;align-items:stretch;}
+#page-orders .nfo-po .nf43-act .nfo-b{flex:1;margin:0;}
+#page-orders .nfo-po .nf43-act .nf43-dots{height:auto;min-height:44px;}
+#page-expenses .bk-bar > :first-child{white-space:normal !important;overflow:visible !important;text-overflow:clip !important;}
+
+/* ---------- Checks: compact rows, still split into customers (left) and suppliers (right) ---------- */
+@media (min-width:761px){
+  #view-app#view-app#view-app #page-cheques .nf25-tw table.nf25-t{display:table !important;width:100%;border-collapse:collapse;table-layout:auto;}
+  #view-app#view-app#view-app #page-cheques .nf25-tw table.nf25-t thead{display:table-header-group !important;}
+  #view-app#view-app#view-app #page-cheques .nf25-tw table.nf25-t tbody{display:table-row-group !important;}
+  #view-app#view-app#view-app #page-cheques .nf25-tw table.nf25-t tr{display:table-row !important;border:0 !important;padding:0 !important;margin:0 !important;box-shadow:none !important;background:transparent !important;}
+  #view-app#view-app#view-app #page-cheques .nf25-tw table.nf25-t th, #view-app#view-app#view-app #page-cheques .nf25-tw table.nf25-t td{display:table-cell !important;padding:10px 8px !important;border-bottom:1px solid #F2F4F7;font-size:16px;text-align:center !important;vertical-align:middle;}
+  #view-app#view-app#view-app #page-cheques .nf25-tw table.nf25-t th{font-size:14px !important;padding:8px !important;}
+  #view-app#view-app#view-app #page-cheques .nf25-tw table.nf25-t td::before{content:none !important;display:none !important;}
+  #view-app#view-app#view-app #page-cheques .nf25-tw table.nf25-t th:nth-child(5), #view-app#view-app#view-app #page-cheques .nf25-tw table.nf25-t td:nth-child(5){display:none !important;}
+  #view-app#view-app#view-app #page-cheques .nf25-tw table.nf25-t td.t{font-weight:700;}
+  #view-app#view-app#view-app #page-cheques .nf25-tw table.nf25-t td .btn{white-space:nowrap;min-height:38px;}
+  #view-app #page-cheques .nfc-g{padding-bottom:4px;}
+}
+@media (min-width:761px){
+  #view-app#view-app#view-app #page-cheques .nf25-tw{overflow-x:auto;}
+  #view-app#view-app#view-app #page-cheques .nf25-tw table.nf25-t td .btn{padding:0 12px !important;font-size:14px !important;}
+}
+/* ---------- Online store ---------- */
+#page-store .nf43-hide{display:none !important;}
+#page-store .nf43-more{border:1.5px dashed #D0D5DD;background:#FFFFFF;border-radius:999px;padding:8px 16px;font:inherit;font-size:16px;font-weight:800;color:#344054;cursor:pointer;}
+#page-store .nf43-share .btn{min-height:44px;font-weight:800;}
+#page-store .nf43-share .nf43-menu a, #page-store .nf43-share .nf43-menu button{all:unset;padding:12px 16px;font-size:16px;font-weight:700;color:#0B0F14;cursor:pointer;border-top:1px solid #F2F4F7;}
+#page-store .nf43-share .nf43-menu > :first-child{border-top:0;}
+#page-store .nf43-sttabs{grid-template-columns:repeat(3,minmax(0,1fr)) !important;}
+/* Find customers: bigger, clearer card text */
+#page-discover .nf36f-card{padding:18px 18px 16px !important;gap:10px;}
+#page-discover .nf36f-card .nf36f-hd{padding-right:52px;}
+#page-discover .nf36f-card .nf36f-hd b, #page-discover .nf36f-card h3{font-size:18px !important;line-height:1.3;}
+#page-discover .nf36f-card p, #page-discover .nf36f-card small, #page-discover .nf36f-card span{font-size:16px;line-height:1.45;}
+#page-discover .nf36f-card .btn{min-height:46px;font-size:16px;font-weight:800;}
