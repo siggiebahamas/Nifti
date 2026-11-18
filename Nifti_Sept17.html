@@ -10536,6 +10536,45 @@ html body [onclick*="nf22NbOpen"], html body .nf22-nbbtn{display:inline-flex !im
 .nf42-agree{display:flex;gap:12px;align-items:flex-start;background:#FFFBE8;border:1.5px solid #EED98A;border-radius:14px;padding:14px 16px;margin:0 0 16px;font-size:16px;line-height:1.45;cursor:pointer;}
 .nf42-agree input{width:22px;height:22px;margin-top:2px;accent-color:#1F6B45;flex:none;}
 
+
+/* ===== Round 44 css ===== */
+/* ===== Round 44 css ===== */
+/* menu: the page you are on is clearly marked */
+html #view-app .sidebar .nav-item.active{background:#E7F3EC !important;color:#14532D !important;font-weight:800 !important;box-shadow:inset 3px 0 0 #1F6B45;}
+html #view-app .sidebar .nav-item.active svg{color:#1F6B45 !important;}
+/* names stay on one line when there is room; the amount takes only what it needs */
+#view-app#view-app#view-app .nf25-tw table.nf25-t tr{grid-template-columns:minmax(0,1fr) auto !important;}
+#view-app#view-app#view-app .nf25-tw table.nf25-t td.t b{overflow-wrap:normal;word-break:normal;}
+/* follow-ups: counts sit in the corner of each tab, not in the middle */
+#page-followups .nf-tabcards > button{position:relative;}
+#page-followups .nf-tabcards > button .sl-n{position:absolute !important;top:10px;right:10px;margin:0 !important;transform:none !important;}
+/* stock: one line in the status column */
+#inventoryTable td[data-label="Status"]{white-space:nowrap;}
+#inventoryTable .nf44-hid{display:none !important;}
+/* team: Trash and Job history as quiet links under the board */
+#page-team .nf44-tbar{display:flex !important;justify-content:flex-end;gap:8px;margin:12px 0 0 !important;position:static !important;}
+/* what runs out: name and status, then one short line */
+#page-dashboard .nf42-sr .sr-l{display:grid;gap:4px;align-content:center;}
+#page-dashboard .nf42-sr .nf44-srm{font-size:14px;font-weight:600;color:#0B0F14;line-height:1.35;}
+/* no empty gray icon boxes where an emoji used to be */
+#view-app .nf25-ic:empty{display:none !important;}
+/* row buttons are always there (no tapping a row to reveal them), so tables never shift */
+#view-app#view-app#view-app table.nf25-t td.a .nf26-sec{display:inline-flex !important;}
+#view-app#view-app#view-app table.nf25-t td.a .nf26-dots{display:none !important;}
+#view-app#view-app#view-app table.nf25-t td.a .bk-dim.nf26-sec{color:#B42318 !important;}
+/* messages: the page never scrolls; only the chat list and the messages do */
+@media (min-width:761px){
+  html body.nf44-msg{overflow:hidden !important;}
+  html #view-app #page-messages .messages-shell{min-height:0 !important;}
+}
+/* chat bar: one slim line above the message box */
+#page-messages #nf36vBar{display:flex !important;align-items:center;gap:10px;padding:6px 12px !important;flex-wrap:nowrap;min-height:0;}
+#page-messages #nf36vBar > small{display:none !important;}
+#page-messages #nf36vBar .nf36v-add{margin-left:auto;white-space:nowrap;}
+#view-app#view-app#view-app .nf25-tw table.nf25-t tr{grid-template-columns:minmax(0,1fr) fit-content(42%) !important;}
+#view-app#view-app#view-app .nf25-tw table.nf25-t td.t b{font-size:18px !important;line-height:1.3;}
+#view-app#view-app#view-app .nf25-tw table.nf25-t td.n small, #view-app#view-app#view-app .nf25-tw table.nf25-t td.n .nf37-split{white-space:normal;}
+
   .settings-card:empty{display:none;}
   #supplierChips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;} #supplierChips .chip{flex-shrink:0;}
 
@@ -40234,6 +40273,56 @@ function nf43Store(page){
   if(typeof nf26AfterPass !== 'function') return;
   const base = nf26AfterPass;
   nf26AfterPass = function(page){ base(page); try{ nf43Store(page); }catch(e){ console.warn('nf43 store', e); } };
+  window.nf26AfterPass = nf26AfterPass;
+})();
+
+/* ===== Round 44 ===== */
+
+/* ---------- 1. Small fixes that make every page easier ---------- */
+// The menu group holding the page you are on always opens, so the highlight is never hidden inside a folded group
+function nf44Menu(){
+  const a = document.querySelector('#view-app .sidebar .nav-item.active'); if(!a) return;
+  const g = a.closest('.nf20-g'); if(!g || !g.classList.contains('folded')) return;
+  g.classList.remove('folded'); const h = g.querySelector(':scope > .nf20-h'); if(h) h.setAttribute('aria-expanded', 'true');
+  try{ const k = 'nifti-menu-fold-26', f = JSON.parse(localStorage.getItem(k) || '{}') || {}; if(g.dataset.g && f[g.dataset.g]){ f[g.dataset.g] = false; localStorage.setItem(k, JSON.stringify(f)); } }catch(e){}
+}
+// Stock: "200 on the way / confirmed, due Nov 25" becomes one line: "200 arriving Nov 25"
+function nf44Stock(page){
+  if(!page || page.id !== 'page-inventory') return;
+  page.querySelectorAll('#inventoryTable .nf-inb').forEach(pill => {
+    const small = pill.parentElement.querySelector('.nf-inb-d'); if(!small) return;
+    const q = (pill.textContent.match(/([\d,]+)\s+on the way/i) || [])[1], d = (small.textContent.match(/(?:due|arriv\w*)\s+(.+)$/i) || [])[1];
+    if(!q) return; const t = d ? `${q} arriving ${d.trim()}` : `${q} on the way`;
+    const n = [...pill.childNodes].find(x => x.nodeType === 3 && x.textContent.trim()); if(n && n.textContent !== t) n.textContent = t;
+    small.classList.add('nf44-hid');
+  });
+}
+// Team: Trash and Job history move under the board, so the three lanes line up with the people column
+function nf44Team(page){
+  if(!page || page.id !== 'page-team') return;
+  const bar = document.getElementById('nf36TBar'), main = bar && bar.closest('.nf41-main'); if(!bar || !main) return;
+  if(main.lastElementChild !== bar) main.appendChild(bar);
+  bar.classList.add('nf44-tbar');
+}
+// What runs out: one short line under each item instead of two crowded ones
+function nf44RunsOut(page){
+  if(!page || page.id !== 'page-dashboard') return;
+  const many = typeof warehouses !== 'undefined' && Array.isArray(warehouses) && warehouses.length > 1;
+  document.querySelectorAll('#page-dashboard .nf42-sr .sr-l').forEach(l => {
+    if(l.dataset.nf44) return; l.dataset.nf44 = '1';
+    const m1 = l.querySelector('.sr-m1'), m2 = l.querySelector('.sr-m2'); if(!m1 || !m2) return;
+    const ems = [...m1.querySelectorAll('em')], sells = ems.find(e => /sells/i.test(e.textContent)), loc = ems.find(e => e !== sells);
+    const sup = m2.querySelector('em'), dl = [...m2.querySelectorAll('em')].find(e => /deliver/i.test(e.textContent));
+    const days = dl ? (dl.textContent.match(/(\d+)\s*day/) || [])[1] : '';
+    const parts = [sells ? sells.textContent.trim().replace(/^sells\s*/i, 'Sells ') : '', sup ? sup.textContent.trim() + (days ? ` · ${days}-day delivery` : '') : '', many && loc ? loc.textContent.trim() : ''].filter(Boolean);
+    const line = document.createElement('span'); line.className = 'nf44-srm'; line.textContent = parts.join(' · ');
+    m1.replaceWith(line); m2.remove();
+  });
+}
+(function(){
+  if(typeof nf26AfterPass !== 'function') return;
+  const base = nf26AfterPass;
+  nf26AfterPass = function(page){ base(page); try{ document.body.classList.toggle('nf44-msg', !!page && page.id === 'page-messages'); }catch(e){} [nf44Menu, nf44Stock, nf44Team, nf44RunsOut].forEach(f => { try{ f(page); }catch(e){ console.warn('nf44', f.name, e); } }); };
   window.nf26AfterPass = nf26AfterPass;
 })();
 

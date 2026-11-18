@@ -1,0 +1,36 @@
+/* ===== Round 44 css ===== */
+/* menu: the page you are on is clearly marked */
+html #view-app .sidebar .nav-item.active{background:#E7F3EC !important;color:#14532D !important;font-weight:800 !important;box-shadow:inset 3px 0 0 #1F6B45;}
+html #view-app .sidebar .nav-item.active svg{color:#1F6B45 !important;}
+/* names stay on one line when there is room; the amount takes only what it needs */
+#view-app#view-app#view-app .nf25-tw table.nf25-t tr{grid-template-columns:minmax(0,1fr) auto !important;}
+#view-app#view-app#view-app .nf25-tw table.nf25-t td.t b{overflow-wrap:normal;word-break:normal;}
+/* follow-ups: counts sit in the corner of each tab, not in the middle */
+#page-followups .nf-tabcards > button{position:relative;}
+#page-followups .nf-tabcards > button .sl-n{position:absolute !important;top:10px;right:10px;margin:0 !important;transform:none !important;}
+/* stock: one line in the status column */
+#inventoryTable td[data-label="Status"]{white-space:nowrap;}
+#inventoryTable .nf44-hid{display:none !important;}
+/* team: Trash and Job history as quiet links under the board */
+#page-team .nf44-tbar{display:flex !important;justify-content:flex-end;gap:8px;margin:12px 0 0 !important;position:static !important;}
+/* what runs out: name and status, then one short line */
+#page-dashboard .nf42-sr .sr-l{display:grid;gap:4px;align-content:center;}
+#page-dashboard .nf42-sr .nf44-srm{font-size:14px;font-weight:600;color:#344054;line-height:1.35;}
+/* no empty gray icon boxes where an emoji used to be */
+#view-app .nf25-ic:empty{display:none !important;}
+/* row buttons are always there (no tapping a row to reveal them), so tables never shift */
+#view-app#view-app#view-app table.nf25-t td.a .nf26-sec{display:inline-flex !important;}
+#view-app#view-app#view-app table.nf25-t td.a .nf26-dots{display:none !important;}
+#view-app#view-app#view-app table.nf25-t td.a .bk-dim.nf26-sec{color:#B42318 !important;}
+/* messages: the page never scrolls; only the chat list and the messages do */
+@media (min-width:761px){
+  html body.nf44-msg{overflow:hidden !important;}
+  html #view-app #page-messages .messages-shell{min-height:0 !important;}
+}
+/* chat bar: one slim line above the message box */
+#page-messages #nf36vBar{display:flex !important;align-items:center;gap:10px;padding:6px 12px !important;flex-wrap:nowrap;min-height:0;}
+#page-messages #nf36vBar > small{display:none !important;}
+#page-messages #nf36vBar .nf36v-add{margin-left:auto;white-space:nowrap;}
+#view-app#view-app#view-app .nf25-tw table.nf25-t tr{grid-template-columns:minmax(0,1fr) fit-content(42%) !important;}
+#view-app#view-app#view-app .nf25-tw table.nf25-t td.t b{font-size:18px !important;line-height:1.3;}
+#view-app#view-app#view-app .nf25-tw table.nf25-t td.n small, #view-app#view-app#view-app .nf25-tw table.nf25-t td.n .nf37-split{white-space:normal;}
