@@ -10663,7 +10663,7 @@ html #view-app .nf44-as{font-size:14px !important;}
 .nf44-cust{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;}
 .nf44-cust button{border:1.5px solid #D0D5DD;border-radius:12px;background:#FFFFFF;font:inherit;font-size:16px;font-weight:700;color:#0B0F14;min-height:46px;padding:0 10px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;}
 .nf44-cust button.on{border-color:#1F6B45;background:#E7F3EC;box-shadow:inset 0 0 0 1px #1F6B45;}
-.nf44-addnote{justify-self:start;}
+.nf44-addnote{justify-self:start;min-height:44px;padding:10px 4px !important;display:inline-flex;align-items:center;}
 @media (max-width:520px){ .nf44-cust{grid-template-columns:repeat(2,minmax(0,1fr));} .nf44-ql{grid-template-columns:minmax(0,1fr) auto 32px;} .nf44-ql .pr{grid-column:1 / 2;} .nf44-ql em{grid-column:2 / -1;} }
 .nf44-often{grid-template-columns:repeat(2,minmax(0,1fr));}
 .nf44-often > span{grid-column:1 / -1;}
@@ -16906,7 +16906,7 @@ async function renderWatchdogAlerts(){
     }
   };
   const when = a => { const d = new Date(a.created_at); const days = Math.floor((Date.now() - d.getTime()) / 86400e3);
-    return days < 1 ? d.toLocaleTimeString('en-PH', {hour: 'numeric', minute: '2-digit'}) : days === 1 ? 'yesterday' : d.toLocaleDateString('en-PH', {month: 'short', day: 'numeric'}); };
+    return days < 1 ? d.toLocaleTimeString('en-PH', {hour: 'numeric', minute: '2-digit', timeZone: 'Asia/Manila'}) : days === 1 ? 'yesterday' : d.toLocaleDateString('en-PH', {month: 'short', day: 'numeric'}); };
   const person = a => (a.actor_name || 'Someone').replace(/\s*\(.*\)\s*$/, '');
   body.innerHTML = `<div class="panel-card" style="margin-bottom:12px;"><div class="wd-sum">
       <span class="wd-sum-ic${open.length ? '' : ' ok'}" aria-hidden="true">${open.length ? '🛡' : '✓'}</span>
@@ -18525,7 +18525,7 @@ function routeBoardCard(r){
     <div style="font-size:14px;margin:6px 0;">Collected <b>${fmtPHP(t.got)}</b>${t.cheque ? ` (cash ${fmtPHP(t.cash)}, cheques ${fmtPHP(t.cheque)})` : ''}</div>
     <details><summary style="cursor:pointer;font-weight:700;font-size:14px;">Stops</summary>
       ${(r.stops || []).map((s, i) => `<div class="rt-board-stop"><span class="rt-dot ${s.status}"></span><div style="flex:1;min-width:0;"><div style="font-weight:700;">${i + 1}. ${escapeHtml(s.buyer_name)}</div>
-        <div style="font-size:14px;opacity:.8;">${s.status === 'pending' ? (Number(s.amount_due) >= 1 ? 'Collect ' + fmtPHP(s.amount_due) : 'Deliver') : s.status === 'failed' ? '✕ ' + escapeHtml((s.result || {}).reason || '') : (s.result && s.result.collected ? 'Got ' + fmtPHP(s.result.collected.amount) + ' ' + (s.result.collected.method === 'check' ? 'cheque' : s.result.collected.method) : 'Done')}${s.done_by ? ' · ' + escapeHtml(s.done_by) : ''}${s.done_at ? ' · ' + new Date(s.done_at).toLocaleTimeString('en-PH', {hour: 'numeric', minute: '2-digit'}) : ''}</div></div>
+        <div style="font-size:14px;opacity:.8;">${s.status === 'pending' ? (Number(s.amount_due) >= 1 ? 'Collect ' + fmtPHP(s.amount_due) : 'Deliver') : s.status === 'failed' ? '✕ ' + escapeHtml((s.result || {}).reason || '') : (s.result && s.result.collected ? 'Got ' + fmtPHP(s.result.collected.amount) + ' ' + (s.result.collected.method === 'check' ? 'cheque' : s.result.collected.method) : 'Done')}${s.done_by ? ' · ' + escapeHtml(s.done_by) : ''}${s.done_at ? ' · ' + new Date(s.done_at).toLocaleTimeString('en-PH', {hour: 'numeric', minute: '2-digit', timeZone: 'Asia/Manila'}) : ''}</div></div>
         ${s.has_proof ? `<span class="row-action" onclick="viewStopProof('${s.id}')">📷</span>` : ''}${s.status === 'failed' ? `<span class="row-action" onclick="reopenStop('${s.id}')">Retry</span>` : ''}</div>`).join('')}
     </details>
     ${rem ? `<div class="notif-phone ${Math.abs(rem.diff) >= 1 ? 'warn' : ''}" style="margin-top:8px;">${Math.abs(rem.diff) >= 1 ? `⚠ Remittance ${rem.diff < 0 ? 'short' : 'over'} by ${fmtPHP(Math.abs(rem.diff))}` : '✓ Remittance matches'}: counted ${fmtPHP(rem.counted_cash)} of ${fmtPHP(rem.expected_cash)} cash${rem.cheques ? ` + ${rem.cheques} cheque${rem.cheques > 1 ? 's' : ''}` : ''} · ${escapeHtml(rem.by || '')}</div>` : ''}
@@ -19326,7 +19326,7 @@ function routeStopCardHtml(r, s){
     ${s.status === 'pending'
       ? `<div class="rt-acts"><button class="btn btn-primary" onclick="openRouteSheet('${r.id}','${s.id}','done')">${handledElsewhere ? 'Mark done' : due >= 1 ? ((s.deliver_po_ids || []).length ? 'Delivered + collect' : 'Collect') : 'Delivered'}</button><button class="btn btn-outline" onclick="openRouteSheet('${r.id}','${s.id}','failed')">Can't</button></div>`
       : `<div class="rt-result ${s.status}">${s.status === 'done' ? `${res.delivered !== false && (s.deliver_po_ids || []).length ? 'Delivered' : ''}${col ? `${res.delivered !== false && (s.deliver_po_ids || []).length ? ' · ' : ''}Collected ${fmtPHP(col.amount)} ${col.method === 'check' ? 'cheque' : col.method}` : ''}${!col && Number(s.amount_due) >= 1 ? ' · nothing collected' : ''}` : '✕ ' + escapeHtml(res.reason || 'Not done')}
-          ${s.done_at ? ` · ${new Date(s.done_at).toLocaleTimeString('en-PH', {hour: 'numeric', minute: '2-digit'})}` : ''}${s.has_proof ? ` · <span class="row-action" onclick="viewStopProof('${s.id}')">📷 Photo</span>` : ''}</div>
+          ${s.done_at ? ` · ${new Date(s.done_at).toLocaleTimeString('en-PH', {hour: 'numeric', minute: '2-digit', timeZone: 'Asia/Manila'})}` : ''}${s.has_proof ? ` · <span class="row-action" onclick="viewStopProof('${s.id}')">📷 Photo</span>` : ''}</div>
         ${canUndo ? `<div class="rt-fix"><button class="btn btn-outline" onclick="openRouteSheet('${r.id}','${s.id}','${s.status === 'failed' ? 'failed' : 'done'}', true)">✏️ Fix details</button><button class="btn btn-outline" onclick="undoRouteStop('${r.id}','${s.id}')">↩ Undo</button></div>
             <div class="adm-sub" style="margin-top:4px;">You can fix or undo this until the office confirms the cash handover.</div>` : r.remit ? '<div class="adm-sub">Cash already handed over. The office can fix it on the order.</div>' : ''}`}`;
 }
@@ -23357,7 +23357,7 @@ function renderSalesBooksPage(){
     <section class="panel-card bk-list"><div class="panel-head"><h2>${bkDayLabel(day)}</h2>${day === APP_TODAY ? `<a class="lg-link" onclick="go('cashcount')">Count the cash →</a>` : ''}</div>
       ${list.length ? list.map(s => {
         const items = (s.lines || []).map(l => l.totalOnly ? 'Total only' : `${l.qty} × ${escapeHtml(l.product)}`).join(', ');
-        const time = s.at ? new Date(s.at).toLocaleTimeString('en-PH', {hour: 'numeric', minute: '2-digit'}) : '';
+        const time = s.at ? new Date(s.at).toLocaleTimeString('en-PH', {hour: 'numeric', minute: '2-digit', timeZone: 'Asia/Manila'}) : '';
         const below = (s.lines || []).some(l => (Number(l.unitCost) || 0) > (Number(l.unitPrice) || 0));
         return `<div class="bk-row${s.voidedAt ? ' void' : ''}"><div class="bk-row-m"><b>${items}</b><small>${s.pending ? '<span class="pending-sync-tag">⏳ Waiting to upload</span> ' : ''}${escapeHtml(s.customer)} · ${escapeHtml((BK_SALE_PAY.find(x => x[0] === s.paidWith) || [, s.paidWith || 'Paid'])[1])} · ${time} · by ${escapeHtml(s.by || '—')}${s.note ? ' · ' + escapeHtml(s.note) : ''}${below && boss ? ' · <span class="bk-bad">below cost</span>' : ''}${s.voidedAt ? ` · removed by ${escapeHtml(s.voidedBy || '')}: ${escapeHtml(s.voidReason || '')}` : ''}</small></div>
           <span class="bk-amt">${bkPeso(s.total)}</span>
@@ -24063,7 +24063,7 @@ function bkReceiptData(s){
   const at = s.at ? new Date(s.at) : new Date(s.date + 'T12:00:00');
   const paid = bkSalePaid(s), bal = bkSaleBalance(s), ch = BK_LAST_CHANGE[s.id];
   return {biz: (tax.registeredName || selfName()), addr: tax.registeredAddress || '', phone: c.phone || '', tin: tax.tin || '',
-    when: at.toLocaleDateString('en-PH', {month: 'short', day: 'numeric', year: 'numeric'}) + ' ' + at.toLocaleTimeString('en-PH', {hour: 'numeric', minute: '2-digit'}),
+    when: at.toLocaleDateString('en-PH', {month: 'short', day: 'numeric', year: 'numeric'}) + ' ' + at.toLocaleTimeString('en-PH', {hour: 'numeric', minute: '2-digit', timeZone: 'Asia/Manila'}),
     ref: bkSaleRef(s), lines: (s.lines || []).map(l => l.totalOnly ? {name: 'Items', qty: 1, each: s.total, sum: s.total} : {name: l.product, qty: l.qty, each: Number(l.unitPrice) || 0, sum: (Number(l.qty) || 0) * (Number(l.unitPrice) || 0),
       list: Math.max(Number(l.listPrice) || bkItemPrice(l.product) || 0, Number(l.unitPrice) || 0)}),
     total: s.total, method: (BK_SALE_PAY.find(x => x[0] === s.paidWith) || [, s.paidWith || ''])[1], paid, bal, customer: s.customer, by: s.by, ch};
@@ -28097,7 +28097,7 @@ function plOwnerRender(list){
         const list = Number(l.listPrice) || 0, p = Number(l.unitPrice) || 0, off = list > 0 && p < list ? Math.round((1 - p / list) * 100) : 0;
         return `<div class="pl-ln"><span>${escapeHtml(l.totalOnly ? 'Total only' : l.product)} <small>${escapeHtml(String(l.qty || 1))} ×</small></span><b>${bkPeso(p)}</b>${list > 0 ? `<small class="${off > max ? 'bk-bad' : ''}">list ${bkPeso(list)}${off ? ` · ${off}% off` : ''}</small>` : ''}</div>`;
       }).join('');
-      const t = new Date(r.created_at).toLocaleTimeString('en-PH', {hour: 'numeric', minute: '2-digit'});
+      const t = new Date(r.created_at).toLocaleTimeString('en-PH', {hour: 'numeric', minute: '2-digit', timeZone: 'Asia/Manila'});
       return `<div class="panel-card pl-req"><div class="pl-who"><b>${escapeHtml(r.requested_by_name || 'Staff')}</b><small>${t}${r.customer_name && r.customer_name !== 'Walk-in' ? ' · for ' + escapeHtml(r.customer_name) : ''}${r.note ? ' · ' + escapeHtml(r.note) : ''}</small></div>
         ${lines}<div class="pl-ln pl-tot"><span>Sale total</span><b>${bkPeso(r.total)}</b></div>
         <div class="pl-act"><button class="btn btn-primary" onclick="plDecide('${r.id}', true)">OK this price</button><button class="btn btn-outline" onclick="plDecide('${r.id}', false)">Say no</button></div></div>`;
@@ -28433,7 +28433,7 @@ function mhTiles(boss){
     out.push(tile({ic: 'pl', bg: pl >= 0 ? '#DAF0E3' : '#FCE4DE', c: pl >= 0 ? '#0E653C' : '#B42318', k: pl >= 0 ? 'Profit' : 'Loss', v: (pl < 0 ? '−' : '') + mhPeso(pl), vc: pl >= 0 ? 'tg' : 'tr', s: pct(pl), sc: 'muted', a: "go('profit')"}));
     const rec = BK.counts.find(c => c.day === APP_TODAY && !c.reopenedAt), exp = cashExpected(APP_TODAY).cash, who = mhWho(APP_TODAY), s = mhSched();
     out.push(tile({ic: 'cash', bg: '#FEF3C7', c: '#C9A200', k: 'Cash today', v: rec ? `<span class="cpill ok"><b>${mhPeso(rec.counted && rec.counted.cash)}</b> counted</span>` : `<span class="cpill wait"><b>${mhPeso(exp)}</b> expected</span>`,
-      s: `<span class="cashline">${mhEsc(rec ? rec.by : who)}${!rec && s.over && s.over[APP_TODAY] ? ' (covering)' : ''} · ${rec ? (rec.at ? new Date(rec.at).toLocaleTimeString('en-PH', {hour: 'numeric', minute: '2-digit'}) : 'counted') : 'to count at closing'}</span>`, a: rec ? `mhOpenDay('${APP_TODAY}')` : 'mhOpenSched()'}));
+      s: `<span class="cashline">${mhEsc(rec ? rec.by : who)}${!rec && s.over && s.over[APP_TODAY] ? ' (covering)' : ''} · ${rec ? (rec.at ? new Date(rec.at).toLocaleTimeString('en-PH', {hour: 'numeric', minute: '2-digit', timeZone: 'Asia/Manila'}) : 'counted') : 'to count at closing'}</span>`, a: rec ? `mhOpenDay('${APP_TODAY}')` : 'mhOpenSched()'}));
   } else if(isPageAllowedForViewAsRole('cashcount') && BK.loaded){
     const done = BK.countDays.some(c => c.day === APP_TODAY && !c.reopened);
     out.push(tile({ic: 'cash', bg: '#FEF3C7', c: '#C9A200', k: 'Cash today', v: done ? '<span class="cpill ok"><b>Counted</b></span>' : '<span class="cpill wait"><b>To count</b></span>', s: done ? 'Thank you' : 'Before closing', sc: 'muted', a: "go('cashcount')"}));
@@ -28602,7 +28602,7 @@ function mhTally(c){
     <div><div class="sec">HOW THIS COUNT IS PROTECTED</div><div class="prot">
       <div><i class="ok">✓</i><b>Blind count</b><span>${mhEsc(who)} didn't see what the drawer should hold.</span></div>
       <div><i class="ok">✓</i><b>Bill by bill</b><span>${dens ? 'Entered per bill and coin, not one total.' : 'Entered as one total.'}</span></div>
-      <div><i class="ok">✓</i><b>Locked${rec.at ? ' at ' + new Date(rec.at).toLocaleTimeString('en-PH', {hour: 'numeric', minute: '2-digit'}) : ''}</b><span>Only you and trusted staff can reopen it; the first count stays on record.</span></div>
+      <div><i class="ok">✓</i><b>Locked${rec.at ? ' at ' + new Date(rec.at).toLocaleTimeString('en-PH', {hour: 'numeric', minute: '2-digit', timeZone: 'Asia/Manila'}) : ''}</b><span>Only you and trusted staff can reopen it; the first count stays on record.</span></div>
       <div><i class="${big ? 'no' : 'ok'}">${big ? '!' : '✓'}</i><b>Second count</b><span>${big ? 'Needed: off by ' + mhPeso(bkSettings().cash_alert || 100) + ' or more.' : 'Not needed this day.'}</span></div></div></div>
     <button class="linkish" type="button" onclick="mhOpenProtect()">Want more? See the optional extra protections ›</button>
     ${dens ? `<details class="saw"><summary>What ${mhEsc(who)} saw when counting</summary><p style="margin-top:8px">Only these boxes. No expected amount, no sales list, no difference.</p><div class="mini num">${dens}</div></details>` : ''}`;
@@ -30101,7 +30101,7 @@ function nfStopRow(r, s, i){
   const money = col ? `<span class="nfs-m got">Collected ${nfP(col.amount)}${col.method === 'check' ? ' (check)' : ''}</span>` : st === 'fail' ? `<span class="nfs-m bad">${escapeHtml(why ? "Couldn't: " + why : 'Not done')}</span>`
     : due >= 1 ? `<span class="nfs-m due">${st === 'done' ? 'Not collected ' : 'To collect '}${nfP(due)}</span>` : st === 'done' ? '<span class="nfs-m got">Delivered</span>' : '<span class="nfs-m none">Nothing to collect</span>';
   return `<div class="nfs-row s-${st}"><span class="nfs-c" title="${NF_STOP_LBL[st]}">${st === 'done' ? '✓' : st === 'fail' ? '✕' : i + 1}</span>
-    <div class="nfs-mid"><b>${escapeHtml(s.buyer_name)}</b><small>${what}${s.address ? ' · ' + escapeHtml(String(s.address).split(',')[0]) : ''}${s.done_at && st !== 'wait' ? ' · ' + new Date(s.done_at).toLocaleTimeString('en-PH', {hour: 'numeric', minute: '2-digit'}) : ''}</small></div>
+    <div class="nfs-mid"><b>${escapeHtml(s.buyer_name)}</b><small>${what}${s.address ? ' · ' + escapeHtml(String(s.address).split(',')[0]) : ''}${s.done_at && st !== 'wait' ? ' · ' + new Date(s.done_at).toLocaleTimeString('en-PH', {hour: 'numeric', minute: '2-digit', timeZone: 'Asia/Manila'}) : ''}</small></div>
     <div class="nfs-r">${money}${s.has_proof ? `<button class="nfc-link" onclick="viewStopProof('${s.id}')">Photo</button>` : ''}${st === 'fail' && r.status !== 'done' ? `<button class="nfc-link" onclick="reopenStop('${s.id}')">Try again</button>` : ''}</div></div>`;
 }
 const NF_STOP_KEY = `<div class="nfs-key"><span class="s-done"><i>✓</i>Done</span><span class="s-next"><i></i>Next stop</span><span class="s-wait"><i></i>Not yet</span><span class="s-fail"><i>✕</i>Couldn't do</span></div>`;
@@ -31047,7 +31047,7 @@ function nfwMatch(name, cands, alias){
 
 /* ---------- 1. waiting on a supplier ---------- */
 if(typeof NFF_IC !== 'undefined'){ NFF_IC.plus = '<path d="M12 5v14M5 12h14"/>'; NFF_IC.clock = '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>'; }
-function nfwTimeNow(){ return new Date().toLocaleTimeString('en-PH', {hour: 'numeric', minute: '2-digit'}); }
+function nfwTimeNow(){ return new Date().toLocaleTimeString('en-PH', {hour: 'numeric', minute: '2-digit', timeZone: 'Asia/Manila'}); }
 function nfwHist(o, rx, actor){ return (o.history || []).find(h => rx.test(h.action || '') && (!actor || h.actor === actor)); }
 function nfwWhen(h){ if(!h) return ''; const d = h.date ? nffShort(h.date) : ''; const t = h.time && !/just now/i.test(h.time) ? h.time : ''; return [d, t].filter(Boolean).join(' · '); }
 function nfwParseDT(h){ if(!h || !h.date) return null; const m = String(h.time || '').match(/(\d{1,2}):(\d{2})\s*([AP]M)/i); const d = new Date(h.date + 'T00:00:00');
@@ -34442,7 +34442,7 @@ async function nf25AdminServices(body){
   if(!body || body.querySelector('.nf25-svc')) return;
   let s; try{ s = await adminRpc('admin_service_status'); }catch(e){ return; }
   const card = document.createElement('div'); card.className = 'panel-card nf25-svc';
-  const cost = Math.round((s.reader_pages_month || 0) * 1.7);
+  const cost = Math.round((s.reader_pages_month || 0) * 2.5);
   card.innerHTML = `<div class="adm-h">Telegram alerts and notebook reading</div>
     <div class="nf25-svcb"><div class="nf25-svch"><b>Telegram bot</b><span class="nf25-pill ${s.telegram ? 'on' : ''}">${s.telegram ? 'On' : 'Off'}</span></div>
       <p>${s.telegram ? `Bot: @${nf25E(s.telegram_bot || '')} · ${s.telegram_links} phone${s.telegram_links === 1 ? '' : 's'} linked.` : 'Off. Customers see "Almost ready" on the Telegram page.'}</p>
@@ -34450,7 +34450,7 @@ async function nf25AdminServices(body){
       <div class="nf25-in"><input id="nf25TgTok" type="password" autocomplete="off" placeholder="Paste the bot token" aria-label="Telegram bot token"><button type="button" class="btn btn-primary" onclick="nf25SaveSecret('telegram_bot_token', 'nf25TgTok')">${s.telegram ? 'Replace' : 'Switch on'}</button>${s.telegram ? `<button type="button" class="btn btn-outline" onclick="nf25OffSecret('telegram_bot_token')">Switch off</button>` : ''}</div></div>
     <div class="nf25-svcb"><div class="nf25-svch"><b>Notebook reading</b><span class="nf25-pill ${s.reader ? 'on' : ''}">${s.reader ? 'On' : 'Off'}</span></div>
       <p>${s.reader ? `${s.reader_pages_month} page${s.reader_pages_month === 1 ? '' : 's'} read this month, about ₱${cost.toLocaleString('en-PH')} on your Anthropic bill.` : 'Off. People can still save notebook pages; they get read once this is on.'}</p>
-      <ol><li>Go to <b>console.anthropic.com</b> and sign in.</li><li>Add a payment card under Billing. Each page costs about ₱1 to ₱2.</li><li>Open API keys, create a key, copy it and paste it here.</li></ol>
+      <ol><li>Go to <b>platform.claude.com</b> and sign in. It is separate from a claude.ai chat plan.</li><li><b>Settings → Billing</b>: add a card, tap <b>Buy credits</b> (US$10 is enough to start) and keep <b>Auto-reload off</b>. Each page costs about ₱2 to ₱3.</li><li><b>Settings → API keys</b>: tap <b>Create key</b>, name it "Nifti", copy it and paste it here. It starts with sk-ant- and is shown once.</li></ol>
       <div class="nf25-in"><input id="nf25AiKey" type="password" autocomplete="off" placeholder="Paste the API key" aria-label="Anthropic API key"><button type="button" class="btn btn-primary" onclick="nf25SaveSecret('anthropic_api_key', 'nf25AiKey')">${s.reader ? 'Replace' : 'Switch on'}</button>${s.reader ? `<button type="button" class="btn btn-outline" onclick="nf25OffSecret('anthropic_api_key')">Switch off</button>` : ''}</div></div>
     <p class="nf25-p">Keys are saved on the server only. They never show again, not even to you.</p>`;
   body.insertBefore(card, body.firstChild);
@@ -40738,6 +40738,7 @@ function nf44NbLeft(){ const ov = document.getElementById('nf22Nb'), sb = docume
 
 /* ---------- 7. Follow-ups: every lead shows what it could be worth, so the total adds up in front of you ---------- */
 try{
+  NF43_PAGES.followups.rules.forEach((r, i, a) => { if(String(r[0]) === String(/^Said yes/i)) a[i] = [/^Said yes/i, x => { const amt = (x.s.match(/₱[\d,.]+K?M?/) || [''])[0], m = String(x.v).match(/(\d+)\s*of\s*(\d+)/); return amt ? {t: 'Said yes, last 30 days', tone: 'grn', ic: 'thumb', v: amt, sm: m ? m[1] + ' of ' + m[2] + ' orders sent' : x.v} : (m && +m[2] ? {t: 'Said yes, last 30 days', tone: 'grn', ic: 'thumb', v: m[1] + ' of ' + m[2], sm: 'orders sent'} : null); }]; });
   NF43_PAGES.followups.rules.push(
     [/^Open leads/i, x => { const amt = (x.s.match(/₱[\d,.]+K?M?/) || [''])[0], n = nf43Num(x.v); return amt ? {t: 'Possible sales from leads', tone: 'grn', ic: 'up', v: amt, sm: nf43Plural(n, 'lead'), go: "fuTab='leads'; renderFollowupsPage()"} : null; }],
     [/^Reminders/i, x => /^\s*0\s*of\s*0/i.test(x.v) ? null : ({t: 'Reminders that became orders', tone: 'blu', ic: 'check', v: x.v})]
@@ -44195,7 +44196,7 @@ async function submitTeamChatMessage(){
   if(!text) return needText(input, 'Type a message first.');
   const me = teamMe();
   const now = new Date();
-  const msg = {id: newRecordId(), authorId: currentUserId, author: me?me.name:'Someone', text, date: APP_TODAY, time: now.toLocaleTimeString('en-PH',{hour:'numeric',minute:'2-digit'}), createdAt: now.toISOString(), bizRole: currentAppRole, _pending: !!myBusiness};
+  const msg = {id: newRecordId(), authorId: currentUserId, author: me?me.name:'Someone', text, date: APP_TODAY, time: now.toLocaleTimeString('en-PH',{hour:'numeric',minute:'2-digit',timeZone:'Asia/Manila'}), createdAt: now.toISOString(), bizRole: currentAppRole, _pending: !!myBusiness};
   teamChatMessages.push(msg);
   input.value = '';
   renderTeamChatThread();
@@ -44327,7 +44328,7 @@ function mapTeamMessageRow(r){
   const d = new Date(r.created_at);
   return {id:r.id, authorId:r.author_id, author:r.author_name, text:r.body, kind:r.kind, createdAt:r.created_at,
     date: d.toLocaleDateString('en-CA'), // local YYYY-MM-DD
-    time: d.toLocaleTimeString('en-PH',{hour:'numeric',minute:'2-digit'}), bizRole: 'both'};
+    time: d.toLocaleTimeString('en-PH',{hour:'numeric',minute:'2-digit',timeZone:'Asia/Manila'}), bizRole: 'both'};
 }
 async function loadTeamWork(){
   if(!myBusiness) return;

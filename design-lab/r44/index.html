@@ -1,0 +1,302 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Simpler Pages Lab</title><meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap">
+<style>
+:root{--ink:#0B0F14;--sub:#344054;--line:#E4E7EC;--g:#1F6B45;--bg:#F7F8FA;--done:#16A34A;--next:#2563EB;--wait:#D0D5DD;--bad:#D92D20;--yel:#FFF5C2;--yelk:#713F12}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#F7F8FA}}
+:root[data-theme="dark"]{--bg:#F7F8FA}
+*{box-sizing:border-box}html,body{margin:0}body{font:16px/1.5 "Plus Jakarta Sans",system-ui,sans-serif;color:var(--ink);background:var(--bg)}
+.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}.tin{max-width:1240px;margin:0 auto;padding:12px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.tin a{color:var(--g);font-weight:700;text-decoration:none;font-size:14px}.tin h1{margin:0;font-size:18px;flex:1;min-width:200px}
+.wrap{max-width:1240px;margin:0 auto;padding:24px 20px 80px;display:grid;gap:44px}
+.wrap>*,.opts>*,.opt{min-width:0}
+h2{margin:0 0 4px;font-size:28px}.lead{margin:0 0 16px;font-size:16px;color:var(--sub);max-width:900px}
+.tag{display:inline-block;border-radius:999px;padding:2px 10px;font-size:14px;font-weight:800}.rec{background:var(--g);color:#fff}.alt{background:#F2F4F7;color:var(--sub)}
+.opts{display:grid;gap:24px}
+.opt{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.opt>header{padding:16px 20px;border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;flex-wrap:wrap}.opt>header h3{margin:0;font-size:18px;flex:1;min-width:220px}
+.opt>footer{padding:14px 20px;border-top:1px solid var(--line);background:#FCFCFD;font-size:16px;color:var(--sub);display:grid;gap:4px}
+.opt>footer b{color:var(--ink)}
+.stage{padding:18px;background:#F2F4F7;overflow-x:auto;display:flex;gap:18px;align-items:flex-start}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;min-width:860px;flex:1}
+.ph{width:360px;flex:none;background:#fff;border:8px solid #111;border-radius:34px;overflow:hidden;min-width:360px}
+.ph .bar{height:22px;background:#111;margin:-1px auto 0;width:120px;border-radius:0 0 14px 14px}
+.pin{padding:14px}
+.hd{padding:16px 18px;border-bottom:1px solid var(--line);display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.hd h4{margin:0;font-size:24px;flex:1}
+.pills{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:14px 18px}
+.pill{border:1px solid var(--line);border-radius:14px;padding:12px 14px;display:grid;gap:2px;background:#fff}
+.pill small{font-size:14px;font-weight:700;color:var(--sub)}.pill b{font-size:24px;line-height:1.2;font-variant-numeric:tabular-nums}.pill span{font-size:14px;color:var(--sub)}
+.pill.y{background:#FFFBEB;border-color:#FDE68A}.pill.g{background:#F0F8F3;border-color:#BBE3CB}.pill.b{background:#EFF5FF;border-color:#C7DAFB}
+.from{font-size:14px;color:var(--sub);margin-top:4px;border-top:1px dashed var(--line);padding-top:6px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:0 18px 12px}
+.chip{border:1.5px solid #D0D5DD;border-radius:999px;padding:5px 12px;font-size:14px;font-weight:700;background:#fff;display:inline-flex;gap:6px;align-items:center;white-space:nowrap}
+.chip.on{border-color:var(--g);background:#E7F3EC;color:#14532D}
+.ml{border-top:1px solid var(--line)}
+.mr{display:grid;grid-template-columns:44px minmax(0,1fr) 170px 150px;gap:14px;align-items:center;padding:14px 18px;border-bottom:1px solid #F2F4F7}
+.av{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:14px;font-weight:800}
+.mr b{font-size:16px}.mr .why{font-size:14px;color:var(--sub)}
+.rs{display:inline-flex;gap:6px;align-items:center;border-radius:999px;padding:2px 10px;font-size:14px;font-weight:800;white-space:nowrap}
+.rs.y{background:var(--yel);color:var(--yelk)}.rs.b{background:#E1EDFA;color:#1A4F8C}.rs.g{background:#DCF3E4;color:#14532D}.rs.r{background:#FDECEC;color:#9F1D14}.rs.n{background:#F2F4F7;color:#344054}
+.val{text-align:right}.val b{font-size:18px;font-variant-numeric:tabular-nums;display:block}.val span{font-size:14px;color:var(--sub)}
+.btn{border:1.5px solid #D0D5DD;background:#fff;border-radius:10px;padding:8px 14px;font-weight:800;font-size:14px;font-family:inherit;white-space:nowrap;color:var(--ink)}
+.btn.p{background:var(--g);border-color:var(--g);color:#fff}.btn.w{width:100%}
+.mr .act{display:flex;justify-content:flex-end}
+.open{background:#FCFCFD;padding:4px 18px 16px 76px;border-bottom:1px solid #F2F4F7}
+.open table{width:100%;max-width:560px;border-collapse:collapse;font-size:14px}
+.open th{text-align:left;font-weight:800;color:var(--sub);padding:6px 8px;border-bottom:1px solid var(--line)}
+.open td{padding:6px 8px;border-bottom:1px solid #F2F4F7}.open td:last-child,.open th:last-child{text-align:right;font-variant-numeric:tabular-nums}
+.open tfoot td{font-weight:800;border-bottom:0}
+.board{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;padding:14px 18px 18px}
+.col{background:#F9FAFB;border:1px solid var(--line);border-radius:14px;padding:10px;display:grid;gap:10px;align-content:start;min-height:280px}
+.col h5{margin:0;font-size:16px;display:grid;gap:0}.col h5 span{font-size:14px;color:var(--sub);font-weight:700}
+.bc{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:grid;gap:4px;box-shadow:inset 4px 0 0 var(--c)}
+.bc b{font-size:16px;line-height:1.3}.bc small{font-size:14px;color:var(--sub)}.bc .v{font-weight:800;font-variant-numeric:tabular-nums}
+.call{display:grid;gap:10px}
+.cs{border:1px solid var(--line);border-radius:14px;padding:12px;display:grid;gap:8px}
+.cs.done{opacity:.55}
+.cs .t{display:flex;gap:10px;align-items:center}.cs .t b{flex:1;font-size:16px}
+.say{background:#F9FAFB;border-radius:10px;padding:8px 10px;font-size:14px;color:var(--sub);font-style:italic}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.three .btn{padding:8px 6px}
+.prog{height:8px;background:#EAECF0;border-radius:99px;overflow:hidden}.prog i{display:block;height:100%;background:var(--g)}
+.key{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;padding:10px 18px;font-size:14px;font-weight:700}
+.key span{display:inline-flex;gap:6px;align-items:center}
+.dot{width:22px;height:22px;border-radius:50%;display:inline-grid;place-items:center;color:#fff;font-size:12px;font-weight:800;flex:none}
+.dot.done{background:var(--done)}.dot.next{background:#fff;border:2.5px solid var(--next);color:var(--next)}.dot.wait{background:#fff;border:2px solid var(--wait)}.dot.bad{background:var(--bad)}
+.stop{display:grid;grid-template-columns:34px minmax(0,1fr) auto;gap:12px;align-items:center;padding:12px 18px;border-bottom:1px solid #F2F4F7}
+.stop b{font-size:16px}.stop small{font-size:14px;color:var(--sub);display:block}
+.stop .dot{width:30px;height:30px;font-size:14px}
+.sec{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;background:#F9FAFB;border-bottom:1px solid var(--line);font-weight:800}
+.sec span{font-size:14px;color:var(--sub);font-weight:700}
+.fold{padding:12px 18px;font-weight:800;color:var(--g);font-size:16px}
+.strip{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:14px 18px}
+.meter{border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:grid;gap:6px}
+.meter .row{display:flex;justify-content:space-between;font-size:14px;font-weight:700}
+.days{display:flex;gap:6px;align-items:center;padding:12px 18px;border-bottom:1px solid var(--line)}
+.days .btn.on{background:#E7F3EC;border-color:var(--g);color:#14532D}
+.drw{display:grid;grid-template-columns:minmax(0,1fr) 300px}
+.side{border-left:1px solid var(--line);padding:14px;display:grid;gap:10px;align-content:start;background:#FCFCFD}
+.side h5{margin:0;font-size:16px}
+.pick{display:flex;gap:10px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-size:14px;background:#fff}
+.pick input{width:18px;height:18px;accent-color:var(--g)}
+.lanes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;padding:14px 18px 18px}
+.lane{border-radius:14px;padding:10px;display:grid;gap:8px;align-content:start;min-height:200px;border:1px solid var(--line)}
+.lane h5{margin:0;font-size:16px;display:flex;gap:8px;align-items:center}
+.lane.w{background:#F9FAFB}.lane.n{background:#EFF5FF;border-color:#C7DAFB}.lane.d{background:#F0FAF3;border-color:#BBE3CB}.lane.x{background:#FEF3F2;border-color:#FECDCA}
+.lc{background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-size:14px}.lc b{display:block;font-size:16px}
+.tbl{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.tbl th{font-size:14px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--sub);background:#F9FAFB;padding:12px;border-bottom:1px solid var(--line);text-align:left}
+.tbl td{padding:14px 12px;border-bottom:1px solid #F2F4F7;vertical-align:top;font-size:16px}
+.tbl td small{display:block;font-size:14px;color:var(--sub)}
+.num{font-weight:800;font-size:18px;white-space:nowrap}
+.arrow{color:var(--g);font-weight:800}
+.rule{background:#fff;border:1px solid var(--line);border-left:6px solid var(--g);border-radius:16px;padding:16px 20px;display:grid;gap:6px}
+.rule b{font-size:18px}.rule ul{margin:0;padding-left:20px;color:var(--sub)}
+.jump{display:flex;gap:8px;padding:12px 18px;border-bottom:1px solid var(--line);position:relative;background:#fff;flex-wrap:wrap}
+.jump a{font-size:14px;font-weight:800;color:var(--g);text-decoration:none;border:1.5px solid #BBE3CB;border-radius:999px;padding:4px 12px;background:#F0F8F3}
+.blk{padding:14px 18px;border-bottom:1px solid #F2F4F7}.blk h5{margin:0 0 8px;font-size:18px}
+.bars{display:grid;gap:6px;font-size:14px}.bars div{display:grid;grid-template-columns:150px minmax(0,1fr) 110px;gap:10px;align-items:center}.bars i{display:block;height:10px;border-radius:99px;background:#9CC9AE}.bars span:last-child{text-align:right;font-weight:800;font-variant-numeric:tabular-nums}
+.now{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 20px;display:grid;gap:8px}
+.now ul{margin:0;padding-left:20px;display:grid;gap:4px}
+@media (max-width:760px){.wrap{padding:18px 16px 60px;gap:36px}.tin{padding:10px 16px}h2{font-size:24px}.stage{padding:12px}.tbl{display:block;overflow-x:auto}}
+</style></head><body>
+<div class="top"><div class="tin"><h1>Round 44 lab: simpler pages</h1><a href="../">‹ All labs</a><a href="#fu">Follow-ups</a><a href="#dl">Deliveries</a><a href="#tabs">Other tabbed pages</a></div></div>
+<main class="wrap">
+
+<section class="now">
+  <b style="font-size:18px">Already in the app this round</b>
+  <ul>
+    <li>Follow-ups boxes now lead with money: <b>Possible sales from leads ₱134K</b> (2 leads) and <b>Said yes, last 30 days ₱87,360</b> (1 of 2 orders sent).</li>
+    <li>Every lead row shows what it could be worth, e.g. <b>~₱85,000 possible</b>, so you can see where the total comes from.</li>
+    <li>Red count badges sit inside the top-right corner of each tab instead of floating outside it.</li>
+  </ul>
+  <span style="color:var(--sub)">Below are bigger changes to pick from. Nothing here is live until you choose.</span>
+</section>
+
+<!-- ================= FOLLOW-UPS ================= -->
+<section id="fu">
+  <h2>Follow-ups: 3 other ways</h2>
+  <p class="lead">This page has one job: <b>turn people who might buy into orders</b>. Right now that job is split across 4 tabs (To confirm, Today, Leads, Sell again), so the owner has to click around to see who's worth calling. Each idea below puts the money first and shows where every total comes from.</p>
+  <div class="opts">
+
+  <!-- A -->
+  <article class="opt">
+    <header><h3>A. One money list, biggest peso first</h3><span class="tag rec">Recommended</span></header>
+    <div class="stage"><div class="card">
+      <div class="hd"><h4>Follow-ups</h4><button class="btn">+ Add a lead</button><button class="btn p">Send an order for their OK</button></div>
+      <div class="pills">
+        <div class="pill y"><small>Waiting for a yes</small><b>₱77,280</b><span>1 order sent</span><div class="from">From: Riverside Builders Corp, order 0871</div></div>
+        <div class="pill b"><small>Possible sales from leads</small><b>₱134,000</b><span>2 leads</span><div class="from">From: JV Hardware ₱85K · RS Construction ₱49K</div></div>
+        <div class="pill g"><small>Old customers due to reorder</small><b>₱18,400</b><span>1 customer</span><div class="from">From: Corazon Welding's usual order</div></div>
+      </div>
+      <div class="chips"><span class="chip on">Everyone (4)</span><span class="chip">Waiting for a yes (1)</span><span class="chip">Leads (2)</span><span class="chip">Due to reorder (1)</span><span class="chip">Not now (0)</span></div>
+      <div class="ml">
+        <div class="mr"><div class="av" style="background:#1D4ED8">JV</div><div><b>Jojo Villareal · JV Hardware</b><div class="why"><span class="rs b">Lead · talking</span> GI wire and rebar for a new branch · last talked yesterday</div></div><div class="val"><b>~₱85,000</b><span>possible ▾</span></div><div class="act"><button class="btn p">Send a quote</button></div></div>
+        <div class="mr" style="background:#FFFDF5"><div class="av" style="background:#B45309">RB</div><div><b>Riverside Builders Corp</b><div class="why"><span class="rs y">Price hold ends tomorrow</span> Order 0871 · opened 3× · no answer yet</div></div><div class="val"><b>₱77,280</b><span>order waiting ▴</span></div><div class="act"><button class="btn p">Remind</button></div></div>
+        <div class="open"><table><thead><tr><th>Where ₱77,280 comes from</th><th>Qty</th><th>Amount</th></tr></thead><tbody><tr><td>Deformed bar 12mm</td><td>240 pcs</td><td>₱52,800</td></tr><tr><td>Portland cement 40kg</td><td>100 bags</td><td>₱24,480</td></tr></tbody><tfoot><tr><td>Order 0871 total</td><td></td><td>₱77,280</td></tr></tfoot></table></div>
+        <div class="mr"><div class="av" style="background:#0F766E">RS</div><div><b>Rhea Santos · RS Construction</b><div class="why"><span class="rs b">Lead · new</span> "Magkano po 200 bags cement, deliver sa Malabon?" · today</div></div><div class="val"><b>~₱49,000</b><span>200 bags × ₱245</span></div><div class="act"><button class="btn p">Send a quote</button></div></div>
+        <div class="mr"><div class="av" style="background:#7C3AED">CW</div><div><b>Corazon Welding Shop</b><div class="why"><span class="rs g">Due to reorder</span> Usually orders every 14 days · last order 21 days ago</div></div><div class="val"><b>₱18,400</b><span>their usual order</span></div><div class="act"><button class="btn p">Send usual order</button></div></div>
+      </div>
+    </div></div>
+    <footer><span><b>Why it makes money:</b> the biggest peso is always on top, so the owner's first call is the one most worth making. Tap any amount to see the items and quantities behind it.</span><span><b>What goes away:</b> all 4 tabs. They become filter chips that just narrow the same list.</span></footer>
+  </article>
+
+  <!-- B -->
+  <article class="opt">
+    <header><h3>B. Sales board: where every deal is</h3><span class="tag alt">For shops with many leads</span></header>
+    <div class="stage"><div class="card">
+      <div class="hd"><h4>Follow-ups</h4><span class="rs g">₱229,680 in play</span><button class="btn">+ Add a lead</button></div>
+      <div class="board">
+        <div class="col"><h5>New lead<span>~₱49,000 · 1</span></h5><div class="bc" style="--c:#0F766E"><b>RS Construction</b><small>200 bags cement, Malabon</small><span class="v">~₱49,000</span></div></div>
+        <div class="col"><h5>Talking<span>~₱85,000 · 1</span></h5><div class="bc" style="--c:#1D4ED8"><b>JV Hardware</b><small>GI wire + rebar, new branch</small><span class="v">~₱85,000</span></div></div>
+        <div class="col"><h5>Waiting for a yes<span>₱77,280 · 1</span></h5><div class="bc" style="--c:#CA8A04"><b>Riverside Builders</b><small>Hold ends tomorrow · opened 3×</small><span class="v">₱77,280</span></div></div>
+        <div class="col"><h5>Said yes<span>₱87,360 · 1</span></h5><div class="bc" style="--c:#16A34A"><b>Cavite Steel Works</b><small>Confirmed in 1 day</small><span class="v">₱87,360</span></div></div>
+        <div class="col"><h5>Due to reorder<span>₱18,400 · 1</span></h5><div class="bc" style="--c:#7C3AED"><b>Corazon Welding</b><small>7 days past usual</small><span class="v">₱18,400</span></div></div>
+      </div>
+    </div></div>
+    <footer><span><b>Why it makes money:</b> shows at a glance which step deals get stuck on. If "Waiting for a yes" keeps piling up, the price is probably the problem.</span><span><b>Trade-off:</b> drag-and-drop columns are harder on a phone, so phones get a stacked version. It also takes more getting used to than A.</span></footer>
+  </article>
+
+  <!-- C -->
+  <article class="opt">
+    <header><h3>C. Today's call sheet (made for the phone)</h3><span class="tag alt">Best for staff who do the calling</span></header>
+    <div class="stage">
+      <div class="ph"><div class="bar"></div><div class="pin call">
+        <div style="display:flex;justify-content:space-between;align-items:baseline"><b style="font-size:24px">Call today</b><span style="font-size:14px;font-weight:800;color:var(--sub)">1 of 4 done</span></div>
+        <div class="prog"><i style="width:25%"></i></div>
+        <div style="font-size:14px;color:var(--sub)">₱87,360 confirmed today · ₱229,680 still possible</div>
+        <div class="cs done"><div class="t"><span class="dot done">✓</span><b>Cavite Steel Works</b><span class="rs g">Said yes</span></div></div>
+        <div class="cs"><div class="t"><div class="av" style="background:#B45309;width:32px;height:32px">RB</div><b>Riverside Builders</b><span class="num" style="font-size:16px">₱77,280</span></div>
+          <div class="say">"Hi po! Your price for order 0871 is held until tomorrow. Shall I confirm it so we can deliver Thursday?"</div>
+          <div class="three"><button class="btn p">Viber</button><button class="btn">Call</button><button class="btn">Text</button></div>
+          <div class="three"><button class="btn">Said yes</button><button class="btn">Call back</button><button class="btn">Not now</button></div></div>
+        <div class="cs"><div class="t"><div class="av" style="background:#1D4ED8;width:32px;height:32px">JV</div><b>JV Hardware</b><span class="num" style="font-size:16px">~₱85,000</span></div>
+          <div class="say">"Sir Jojo, I have your quote for the GI wire and rebar for the new branch ready. Want me to send it?"</div></div>
+      </div></div>
+      <div style="max-width:420px;display:grid;gap:10px;font-size:16px;color:var(--sub)">
+        <b style="color:var(--ink);font-size:18px">How it works</b>
+        <span>Every morning Nifti picks who to contact, biggest peso first, and writes the first line to say.</span>
+        <span>One tap opens Viber or the phone dialer. One tap records how it went.</span>
+        <span>"Call back" asks for a day and brings them back on that day. "Not now" asks why, which teaches you what's blocking sales.</span>
+        <span>The owner sees a one-line score on Home: "4 calls, ₱87,360 confirmed".</span>
+      </div>
+    </div>
+    <footer><span><b>Why it makes money:</b> it turns following up into a daily habit you can hand to a staff member, and the ready-made opening line removes the awkward start of the call.</span><span><b>Trade-off:</b> on a computer it looks thin, so pair it with A for the owner's computer view.</span></footer>
+  </article>
+  </div>
+
+  <h3 style="margin:28px 0 10px;font-size:18px">How each number is worked out (fixed in all three)</h3>
+  <table class="tbl">
+    <thead><tr><th>Box</th><th>Number</th><th>Worked out as</th></tr></thead>
+    <tbody>
+      <tr><td>Waiting for a yes</td><td class="num">₱77,280</td><td>Total of every order you sent for their OK that is still unanswered.<small>Now: 1 order, Riverside 0871</small></td></tr>
+      <tr><td>Possible sales from leads</td><td class="num">₱134,000</td><td>Each open lead's estimated order value, added up. Leads marked "Not now" or already customers are left out.<small>JV Hardware ~₱85,000 + RS Construction ~₱49,000</small></td></tr>
+      <tr><td>Said yes, last 30 days</td><td class="num">₱87,360</td><td>Value of orders customers confirmed in the last 30 days. The small text shows how many of the orders you sent got a yes.<small>1 of 2 orders sent (the other is Riverside, still waiting)</small></td></tr>
+      <tr><td>Due to reorder</td><td class="num">₱18,400</td><td>Each late customer's usual order value: the average of their last 3 orders. It only counts customers with 3+ past orders.<small>Shown as an example. Your demo shop has nobody late right now.</small></td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ================= DELIVERIES ================= -->
+<section id="dl">
+  <h2>Deliveries: one screen instead of 4 tabs</h2>
+  <p class="lead">Today the page has <b>Today, + Plan, My run and Past</b>. The owner really only asks two things: <b>"How is today's run going?"</b> and <b>"What goes out next?"</b> Every idea below keeps the color code you like.</p>
+  <div class="key"><span><i class="dot done">✓</i>Done</span><span><i class="dot next">2</i>Next stop</span><span><i class="dot wait"></i>Not yet</span><span><i class="dot bad">✕</i>Couldn't do</span></div>
+  <div class="opts">
+
+  <article class="opt">
+    <header><h3>A. Today on top, tomorrow below, past folded</h3><span class="tag rec">Recommended</span></header>
+    <div class="stage">
+      <div class="card" style="min-width:760px">
+        <div class="hd"><h4>Deliveries</h4><button class="btn">Send list on Viber</button><button class="btn p">+ Add stops</button></div>
+        <div class="strip"><div class="meter"><div class="row"><span>Stops done</span><span>2 of 4</span></div><div class="prog"><i style="width:50%;background:var(--next)"></i></div></div><div class="meter"><div class="row"><span>Money collected</span><span>₱0 of ₱6,000</span></div><div class="prog"><i style="width:2%"></i></div></div></div>
+        <div class="sec">Today · Mark Santos · L300 van <span class="rs b">On the road</span></div>
+        <div class="stop"><span class="dot done">✓</span><div><b>Cavite Steel Works</b><small>Deliver · Dasmariñas yard · 1:40 PM</small></div><span class="rs g">Delivered</span></div>
+        <div class="stop"><span class="dot next">2</span><div><b>Riverside Builders Corp</b><small>Collect · Pasig site</small></div><span class="rs y">Collect ₱6,000</span></div>
+        <div class="stop"><span class="dot wait"></span><div><b>JV Hardware</b><small>Deliver · Marikina</small></div><span class="rs n">Not yet</span></div>
+        <div class="stop"><span class="dot bad">✕</span><div><b>Corazon Welding Shop</b><small>Deliver · Cainta</small></div><span style="display:flex;gap:8px;align-items:center"><span class="rs r">Closed</span><button class="btn">Move to tomorrow</button></span></div>
+        <div class="sec">Tomorrow <span>2 stops planned · tap + Add stops to change</span></div>
+        <div class="stop"><span class="dot wait"></span><div><b>RS Construction</b><small>Deliver · Malabon · 200 bags cement</small></div><span class="rs n">Planned</span></div>
+        <div class="stop"><span class="dot wait"></span><div><b>Corazon Welding Shop</b><small>Deliver · Cainta · moved from today</small></div><span class="rs n">Planned</span></div>
+        <div class="fold">▸ Past runs (12)</div>
+      </div>
+      <div class="ph"><div class="bar"></div><div class="pin" style="display:grid;gap:10px">
+        <b style="font-size:18px">Mark's phone (driver link)</b>
+        <span style="font-size:14px;color:var(--sub)">Opens from the Viber message. No login, only today's stops.</span>
+        <div class="cs"><div class="t"><span class="dot next">2</span><b>Riverside Builders</b></div><small style="font-size:14px;color:var(--sub)">Collect ₱6,000 · Pasig site</small><div class="three" style="grid-template-columns:1fr 1fr"><button class="btn p">Done</button><button class="btn">Couldn't</button></div><button class="btn w">Open in Maps</button></div>
+        <div class="cs"><div class="t"><span class="dot wait"></span><b>JV Hardware</b></div><small style="font-size:14px;color:var(--sub)">Deliver · Marikina</small></div>
+      </div></div>
+    </div>
+    <footer><span><b>Where the 4 tabs went:</b> <b>Today</b> is the top. <b>+ Plan</b> becomes the "+ Add stops" button and the Tomorrow section. <b>My run</b> is the driver's own link, so the owner never needs a tab for it. <b>Past</b> folds away at the bottom.</span><span><b>Bonus:</b> "Couldn't do" stops get a one-tap "Move to tomorrow" so nothing is forgotten.</span></footer>
+  </article>
+
+  <article class="opt">
+    <header><h3>B. Day switcher: Yesterday · Today · Tomorrow</h3><span class="tag alt">Simplest to learn</span></header>
+    <div class="stage"><div class="card" style="min-width:760px">
+      <div class="days"><button class="btn">‹ Yesterday</button><button class="btn on">Today, Wed 18</button><button class="btn">Tomorrow ›</button><span style="flex:1"></span><button class="btn p">+ Add stops</button></div>
+      <div class="drw">
+        <div>
+          <div class="stop"><span class="dot done">✓</span><div><b>Cavite Steel Works</b><small>Deliver · Dasmariñas yard</small></div><span class="rs g">Delivered</span></div>
+          <div class="stop"><span class="dot next">2</span><div><b>Riverside Builders Corp</b><small>Collect · Pasig site</small></div><span class="rs y">Collect ₱6,000</span></div>
+          <div class="stop"><span class="dot wait"></span><div><b>JV Hardware</b><small>Deliver · Marikina</small></div><span class="rs n">Not yet</span></div>
+          <div class="stop"><span class="dot bad">✕</span><div><b>Corazon Welding Shop</b><small>Deliver · Cainta</small></div><span class="rs r">Closed</span></div>
+        </div>
+        <div class="side"><h5>Add to today's run</h5><span style="font-size:14px;color:var(--sub)">Ready to deliver or to collect:</span>
+          <label class="pick"><input type="checkbox" checked>RS Construction · deliver · Malabon</label>
+          <label class="pick"><input type="checkbox">Bayview Construction · collect ₱12,500</label>
+          <button class="btn p w">Add 1 stop</button></div>
+      </div>
+    </div></div>
+    <footer><span><b>How it works:</b> one list, and the arrows change the day. Planning is just going to "Tomorrow" and ticking orders on the right. Past days are reached with "‹ Yesterday".</span><span><b>Trade-off:</b> looking further back means many clicks, so a calendar picker would sit behind the date.</span></footer>
+  </article>
+
+  <article class="opt">
+    <header><h3>C. Color lanes: one column per status</h3><span class="tag alt">For 2+ drivers</span></header>
+    <div class="stage"><div class="card" style="min-width:860px">
+      <div class="hd"><h4>Deliveries · Today</h4><span class="chip on">All drivers</span><span class="chip">Mark</span><span class="chip">Ben</span><button class="btn p">+ Add stops</button></div>
+      <div class="lanes">
+        <div class="lane w"><h5><i class="dot wait"></i>Not yet · 2</h5><div class="lc"><b>JV Hardware</b>Mark · Marikina</div><div class="lc"><b>Bayview Construction</b>Ben · collect ₱12,500</div></div>
+        <div class="lane n"><h5><i class="dot next">›</i>Next stop · 2</h5><div class="lc"><b>Riverside Builders</b>Mark · collect ₱6,000</div><div class="lc"><b>RS Construction</b>Ben · Malabon</div></div>
+        <div class="lane d"><h5><i class="dot done">✓</i>Done · 1</h5><div class="lc"><b>Cavite Steel Works</b>Mark · 1:40 PM</div></div>
+        <div class="lane x"><h5><i class="dot bad">✕</i>Couldn't do · 1</h5><div class="lc"><b>Corazon Welding</b>Mark · closed<br><span style="color:var(--g);font-weight:800">Move to tomorrow</span></div></div>
+      </div>
+    </div></div>
+    <footer><span><b>Why:</b> with more than one driver, the owner sees right away where trouble is: anything in the red lane needs a decision.</span><span><b>Trade-off:</b> it's overkill for a shop with one driver. Show it only when 2+ drivers are set up, otherwise use A.</span></footer>
+  </article>
+  </div>
+</section>
+
+<!-- ================= OTHER TABBED PAGES ================= -->
+<section id="tabs">
+  <h2>Other pages with tabs: how to make each simpler</h2>
+  <p class="lead">These are every page that still has a tab row. One rule decides it:</p>
+  <div class="rule"><b>Keep tabs only when they are truly different jobs. Otherwise use one page with filter chips or jump links.</b>
+    <ul><li>Filter chips narrow one list, so nothing is hidden behind a click you might forget.</li><li>Jump links scroll down one long page and still show everything.</li><li>Small "settings" tabs become a gear button in the corner.</li></ul></div>
+  <div style="height:16px"></div>
+  <table class="tbl">
+    <thead><tr><th>Page</th><th>Tabs now</th><th>Simpler way</th><th>Tabs after</th></tr></thead>
+    <tbody>
+      <tr><td><b>Follow-ups</b></td><td>4<small>To confirm · Today · Leads · Sell again</small></td><td>One money list with filter chips (idea A above).</td><td class="num arrow">0</td></tr>
+      <tr><td><b>Deliveries</b></td><td>4<small>Today · + Plan · My run · Past</small></td><td>Today, then Tomorrow, then past runs folded (idea A above).</td><td class="num arrow">0</td></tr>
+      <tr><td><b>Monthly summary</b></td><td>3<small>What changed · What you own and owe · Every peso</small></td><td>One page with jump links at the top. "Every peso" is long, so it becomes an "Open full ledger" button at the bottom.</td><td class="num arrow">0</td></tr>
+      <tr><td><b>Online store</b></td><td>3<small>Post today · My week · My store</small></td><td>Post today and My week merge into one "Posts" view with today on top and the week underneath. My store becomes a gear button.</td><td class="num arrow">0</td></tr>
+      <tr><td><b>Team</b></td><td>3<small>Tasks · Team chat · Activity</small></td><td>Team chat moves into Messages, so all chats are in one place. Activity is already a "Job history" button under the lanes.</td><td class="num arrow">0</td></tr>
+      <tr><td><b>Messages</b></td><td>2<small>Nifti · Viber</small></td><td>One inbox: every chat shows a small Viber or Nifti mark, and you filter by customers, suppliers and team.</td><td class="num arrow">0</td></tr>
+      <tr><td><b>Find customers</b></td><td>2<small>Find customers · Find suppliers</small></td><td>Keep. Finding buyers and finding suppliers really are two different jobs.</td><td class="num">2</td></tr>
+    </tbody>
+  </table>
+
+  <article class="opt" style="margin-top:24px">
+    <header><h3>Example: Monthly summary with jump links instead of tabs</h3><span class="tag alt">Pattern for any long page</span></header>
+    <div class="stage"><div class="card" style="min-width:720px">
+      <div class="hd"><h4>Monthly summary · October</h4><button class="btn">Download PDF</button></div>
+      <div class="jump"><a href="#">What changed</a><a href="#">What you own and owe</a><a href="#">Full ledger ↓</a></div>
+      <div class="blk"><h5>What changed</h5><div class="bars"><div><span>Sales</span><i style="width:90%"></i><span>₱412,300</span></div><div><span>Cost of items sold</span><i style="width:66%;background:#F4B4AE"></i><span>₱301,900</span></div><div><span>Expenses</span><i style="width:12%;background:#F4B4AE"></i><span>₱52,700</span></div><div><span><b>You kept</b></span><i style="width:14%;background:var(--g)"></i><span>₱57,700</span></div></div></div>
+      <div class="blk"><h5>What you own and owe</h5><div class="bars"><div><span>Cash and bank</span><i style="width:55%"></i><span>₱184,000</span></div><div><span>Customers owe you</span><i style="width:40%"></i><span>₱131,200</span></div><div><span>You owe suppliers</span><i style="width:30%;background:#F4B4AE"></i><span>₱98,600</span></div></div></div>
+      <div class="fold">Open full ledger (every peso, 214 lines) ›</div>
+    </div></div>
+    <footer><span><b>Why:</b> the owner reads the whole month top to bottom without clicking, and the bookkeeper still gets the full ledger one tap away.</span></footer>
+  </article>
+</section>
+
+</main>
+</body></html>

@@ -315,6 +315,7 @@ function nf44NbLeft(){ const ov = document.getElementById('nf22Nb'), sb = docume
 
 /* ---------- 7. Follow-ups: every lead shows what it could be worth, so the total adds up in front of you ---------- */
 try{
+  NF43_PAGES.followups.rules.forEach((r, i, a) => { if(String(r[0]) === String(/^Said yes/i)) a[i] = [/^Said yes/i, x => { const amt = (x.s.match(/₱[\d,.]+K?M?/) || [''])[0], m = String(x.v).match(/(\d+)\s*of\s*(\d+)/); return amt ? {t: 'Said yes, last 30 days', tone: 'grn', ic: 'thumb', v: amt, sm: m ? m[1] + ' of ' + m[2] + ' orders sent' : x.v} : (m && +m[2] ? {t: 'Said yes, last 30 days', tone: 'grn', ic: 'thumb', v: m[1] + ' of ' + m[2], sm: 'orders sent'} : null); }]; });
   NF43_PAGES.followups.rules.push(
     [/^Open leads/i, x => { const amt = (x.s.match(/₱[\d,.]+K?M?/) || [''])[0], n = nf43Num(x.v); return amt ? {t: 'Possible sales from leads', tone: 'grn', ic: 'up', v: amt, sm: nf43Plural(n, 'lead'), go: "fuTab='leads'; renderFollowupsPage()"} : null; }],
     [/^Reminders/i, x => /^\s*0\s*of\s*0/i.test(x.v) ? null : ({t: 'Reminders that became orders', tone: 'blu', ic: 'check', v: x.v})]

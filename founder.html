@@ -131,15 +131,17 @@ function go(t){ S.tab = t; if(LAYOUT === 'one'){ paint(); const i = TABS.findInd
 async function settings(){
   $('main').innerHTML = `<h1>AI &amp; settings</h1><p class="sub">Switch on the AI that reads notebook pages and the files suppliers send in chat.</p><div class="card"><p class="empty">Loading…</p></div>`;
   let s = {}; if(PREVIEW){ s = {reader: false, reader_pages_month: 0}; } else { try{ s = await rpc('admin_service_status') || {}; }catch(e){ s = {}; } }
-  const cost = Math.round((s.reader_pages_month || 0) * 1.2);
+  const cost = Math.round((s.reader_pages_month || 0) * 2.5);
   $('main').innerHTML = `<h1>AI &amp; settings</h1><p class="sub">Switch on the AI that reads notebook pages and the files suppliers send in chat (invoices, price lists, delivery receipts).</p>
     <div class="card"><div class="sw"><h2 style="margin:0">AI reading</h2><span class="tag ${s.reader ? 'ok' : ''}" style="${s.reader ? 'background:#DCFCE7;color:#15803D' : 'background:#F2F4F7;color:#475467'}">${s.reader ? 'On' : 'Off'}</span></div>
       <p class="sub" style="margin:8px 0 12px">${s.reader ? `${s.reader_pages_month || 0} page${(s.reader_pages_month || 0) === 1 ? '' : 's'} and files read this month, about ₱${cost.toLocaleString('en-PH')} on your Anthropic bill.` : 'Off. Chats still spot quotations, invoices and deliveries from the words; reading the numbers inside files and notebook photos starts once this is on.'}</p>
       <ol style="margin:0 0 12px;padding-left:20px;line-height:1.7">
-        <li>Open <b>console.anthropic.com</b> and sign up or sign in.</li>
-        <li>Go to <b>Billing</b> (Plans &amp; billing) and add a payment card. Buy US$10 of credit to start. A file from a chat costs about ₱0.20 to read; a handwritten notebook page about ₱2.</li>
-        <li>Leave <b>auto-reload off</b>. Then US$10 is the most you can ever spend: when it runs out, only AI reading pauses (the rest of Nifti keeps working) until you top up. Also set a monthly limit under <b>Limits</b> for extra safety.</li>
-        <li>Open <b>API keys</b>, tap <b>Create key</b>, name it "Nifti", and copy it. It starts with <code>sk-ant-</code>.</li>
+        <li>Open <b>platform.claude.com</b> (the Claude Console for developers) and sign in. This is separate from a claude.ai chat plan: a Pro or Max subscription does not cover it, and its billing is separate.</li>
+        <li>If it asks, create an organization (any name, e.g. "Nifti").</li>
+        <li>Go to <b>Settings → Billing</b>, add a card and tap <b>Buy credits</b>. US$10 is enough to start. A file from a chat costs about ₱0.20 to read; a handwritten notebook page about ₱2 to ₱3.</li>
+        <li>On the same page, make sure <b>Auto-reload is off</b>. Then the credit you bought is the most you can ever spend: when it runs out, only AI reading pauses (the rest of Nifti keeps working) until you top up.</li>
+        <li>Optional extra safety: <b>Settings → Limits</b>, set a monthly spend limit, e.g. US$20.</li>
+        <li>Go to <b>Settings → API keys</b>, tap <b>Create key</b>, name it "Nifti", leave the workspace as Default, then copy the key. It starts with <code>sk-ant-</code> and is shown only once.</li>
         <li>Paste it below and tap Switch on. It's saved on the server only and never shown again, not even to you.</li></ol>
       <div style="display:flex;gap:8px;flex-wrap:wrap"><input id="aiKey" type="password" autocomplete="off" placeholder="Paste the key (sk-ant-...)" style="flex:1;min-width:220px;padding:12px 14px;border:1.5px solid #D0D5DD;border-radius:12px;font:inherit">
         <button class="btn" onclick="saveKey()">${s.reader ? 'Replace key' : 'Switch on'}</button>${s.reader ? `<button class="btn o" onclick="offKey()">Switch off</button>` : ''}</div>

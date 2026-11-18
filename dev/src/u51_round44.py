@@ -6,3 +6,5 @@ rd = lambda n: open(os.path.join(HERE, n), encoding='utf-8').read()
 P("function renderSidebarForViewAsRole(){", rd('r44.js') + "\nfunction renderSidebarForViewAsRole(){")
 t = S['text']; i = t.rindex('  .settings-card:empty{display:none;}')
 S['text'] = t[:i] + '\n/* ===== Round 44 css ===== */\n' + rd('r44.css') + '\n' + t[i:]
+# show clock times in Philippine time, whatever time zone the device is set to
+S['text'] = S['text'].replace("toLocaleTimeString('en-PH', {hour: 'numeric', minute: '2-digit'})", "toLocaleTimeString('en-PH', {hour: 'numeric', minute: '2-digit', timeZone: 'Asia/Manila'})").replace("toLocaleTimeString('en-PH',{hour:'numeric',minute:'2-digit'})", "toLocaleTimeString('en-PH',{hour:'numeric',minute:'2-digit',timeZone:'Asia/Manila'})")

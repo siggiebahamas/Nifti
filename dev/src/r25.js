@@ -118,7 +118,7 @@ async function nf25AdminServices(body){
   if(!body || body.querySelector('.nf25-svc')) return;
   let s; try{ s = await adminRpc('admin_service_status'); }catch(e){ return; }
   const card = document.createElement('div'); card.className = 'panel-card nf25-svc';
-  const cost = Math.round((s.reader_pages_month || 0) * 1.7);
+  const cost = Math.round((s.reader_pages_month || 0) * 2.5);
   card.innerHTML = `<div class="adm-h">Telegram alerts and notebook reading</div>
     <div class="nf25-svcb"><div class="nf25-svch"><b>Telegram bot</b><span class="nf25-pill ${s.telegram ? 'on' : ''}">${s.telegram ? 'On' : 'Off'}</span></div>
       <p>${s.telegram ? `Bot: @${nf25E(s.telegram_bot || '')} · ${s.telegram_links} phone${s.telegram_links === 1 ? '' : 's'} linked.` : 'Off. Customers see "Almost ready" on the Telegram page.'}</p>
@@ -126,7 +126,7 @@ async function nf25AdminServices(body){
       <div class="nf25-in"><input id="nf25TgTok" type="password" autocomplete="off" placeholder="Paste the bot token" aria-label="Telegram bot token"><button type="button" class="btn btn-primary" onclick="nf25SaveSecret('telegram_bot_token', 'nf25TgTok')">${s.telegram ? 'Replace' : 'Switch on'}</button>${s.telegram ? `<button type="button" class="btn btn-outline" onclick="nf25OffSecret('telegram_bot_token')">Switch off</button>` : ''}</div></div>
     <div class="nf25-svcb"><div class="nf25-svch"><b>Notebook reading</b><span class="nf25-pill ${s.reader ? 'on' : ''}">${s.reader ? 'On' : 'Off'}</span></div>
       <p>${s.reader ? `${s.reader_pages_month} page${s.reader_pages_month === 1 ? '' : 's'} read this month, about ₱${cost.toLocaleString('en-PH')} on your Anthropic bill.` : 'Off. People can still save notebook pages; they get read once this is on.'}</p>
-      <ol><li>Go to <b>console.anthropic.com</b> and sign in.</li><li>Add a payment card under Billing. Each page costs about ₱1 to ₱2.</li><li>Open API keys, create a key, copy it and paste it here.</li></ol>
+      <ol><li>Go to <b>platform.claude.com</b> and sign in. It is separate from a claude.ai chat plan.</li><li><b>Settings → Billing</b>: add a card, tap <b>Buy credits</b> (US$10 is enough to start) and keep <b>Auto-reload off</b>. Each page costs about ₱2 to ₱3.</li><li><b>Settings → API keys</b>: tap <b>Create key</b>, name it "Nifti", copy it and paste it here. It starts with sk-ant- and is shown once.</li></ol>
       <div class="nf25-in"><input id="nf25AiKey" type="password" autocomplete="off" placeholder="Paste the API key" aria-label="Anthropic API key"><button type="button" class="btn btn-primary" onclick="nf25SaveSecret('anthropic_api_key', 'nf25AiKey')">${s.reader ? 'Replace' : 'Switch on'}</button>${s.reader ? `<button type="button" class="btn btn-outline" onclick="nf25OffSecret('anthropic_api_key')">Switch off</button>` : ''}</div></div>
     <p class="nf25-p">Keys are saved on the server only. They never show again, not even to you.</p>`;
   body.insertBefore(card, body.firstChild);
