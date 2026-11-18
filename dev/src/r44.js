@@ -312,3 +312,25 @@ function nf44NbLeft(){ const ov = document.getElementById('nf22Nb'), sb = docume
   window.nf22NbDo = nf22NbDo;
   window.addEventListener('resize', () => { try{ nf44NbLeft(); }catch(e){} });
 })();
+
+/* ---------- 7. Follow-ups: every lead shows what it could be worth, so the total adds up in front of you ---------- */
+try{
+  NF43_PAGES.followups.rules.push(
+    [/^Open leads/i, x => { const amt = (x.s.match(/₱[\d,.]+K?M?/) || [''])[0], n = nf43Num(x.v); return amt ? {t: 'Possible sales from leads', tone: 'grn', ic: 'up', v: amt, sm: nf43Plural(n, 'lead'), go: "fuTab='leads'; renderFollowupsPage()"} : null; }],
+    [/^Reminders/i, x => /^\s*0\s*of\s*0/i.test(x.v) ? null : ({t: 'Reminders that became orders', tone: 'blu', ic: 'check', v: x.v})]
+  );
+}catch(e){}
+function nf44Leads(page){
+  if(!page || page.id !== 'page-followups' || !Array.isArray(leadsCache)) return;
+  page.querySelectorAll('.sl-row').forEach(r => {
+    if(r.querySelector('.nf44-lv')) return; const t = ((r.querySelector('.sl-t') || {}).textContent || '').trim();
+    const L = leadsCache.find(l => l.name && t.startsWith(l.name)); if(!L || !(Number(L.est_value) > 0)) return;
+    const right = r.querySelector('.sl-right') || r; const v = document.createElement('span'); v.className = 'nf44-lv'; v.textContent = '~' + fmtPHP(Number(L.est_value)) + ' possible'; right.appendChild(v);
+  });
+}
+(function(){
+  if(typeof nf26AfterPass !== 'function') return;
+  const base = nf26AfterPass;
+  nf26AfterPass = function(page){ base(page); try{ nf44Leads(page); }catch(e){ console.warn('nf44 leads', e); } };
+  window.nf26AfterPass = nf26AfterPass;
+})();
