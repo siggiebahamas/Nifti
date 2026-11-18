@@ -6,6 +6,7 @@
 .nf43-pill:has(.nf47-sp) .ic{grid-column:1;grid-row:1;width:36px;height:36px;}
 .nf43-pill:has(.nf47-sp) .k{grid-column:2;grid-row:1;}
 .nf43-pills .nf43-pill .v.nf47-sp{grid-column:1 / -1;grid-row:2;display:flex;align-items:stretch;gap:0;overflow:visible;padding-left:3px;}
+@media (max-width:900px){ .nf47-dim{display:none !important;} }
 .nf47-sp .c, .nf47-sp .m{display:grid;align-content:center;line-height:1.1;min-width:0;}
 .nf47-sp .c{padding-right:14px;margin-right:14px;border-right:2px solid rgba(11,15,20,.14);text-align:center;}
 html body #view-app .nf43-pills .nf43-pill .v.nf47-sp b{font-size:28px !important;font-weight:800;letter-spacing:-.01em;color:#0B0F14;white-space:nowrap;font-variant-numeric:tabular-nums;}
@@ -26,6 +27,8 @@ html body #view-app .nf43-pills .nf43-pill .v.nf47-sp small{display:block;font-s
 html body #view-app #page-profit table.nf26-ro input.bk-num{border-color:transparent !important;background:transparent !important;box-shadow:none !important;outline:0 !important;pointer-events:none;font-weight:700;color:#0B0F14;}
 html body #view-app #page-profit table.bk-tbl:not(.nf26-ro) input.bk-num{border:2px solid #1F6B45 !important;background:#FFFFFF !important;border-radius:10px;}
 html body #view-app #page-profit .nf26-editp.nf47-editp{background:#1F6B45 !important;color:#FFFFFF !important;border-color:#1F6B45 !important;font-weight:800;font-size:16px;padding:10px 18px;border-radius:12px;box-shadow:0 2px 6px rgba(31,107,69,.25);margin:0 0 10px;}
+html body #view-app #page-profit .nf26-editp.nf47-editp::before{content:"✎";margin-right:8px;}
+html body #view-app #page-profit .nf26-editp.nf47-editp.on::before{content:"✓";}
 html body #view-app #page-profit .nf26-editp.nf47-editp:hover{background:#185737 !important;}
 html body #view-app #page-profit .nf26-editp.nf47-editp.on{background:#FFFFFF !important;color:#14532D !important;border:2px solid #1F6B45 !important;}
 #page-profit td.nf47-pe{font-weight:700;font-variant-numeric:tabular-nums;}
@@ -151,8 +154,8 @@ html body .nf46-opts button{display:grid !important;align-content:start;}
 /* Notebook reader: a panel over the page you were on, with the way back on top */
 @media (min-width:901px){
   .nf22-nb{top:14px !important;right:18px !important;bottom:14px !important;left:calc(var(--nf44-sl, 0px) + 18px) !important;border-radius:20px;border:1px solid #E4E7EC;box-shadow:0 24px 60px rgba(11,15,20,.22);}
-  .nf47-dim{position:fixed;top:0;right:0;bottom:0;left:var(--nf44-sl, 0px);background:rgba(11,15,20,.30);z-index:4099;display:none;}
-  body.nf22-nb-open .nf47-dim{display:block;}
+  .nf47-dim{position:fixed;top:0;right:0;bottom:0;background:rgba(11,15,20,.30);z-index:4099;display:none;cursor:pointer;}
+  .nf47-dim:has(+ #nf22Nb:not([hidden])){display:block;}
 }
 .nf22-nb:not([hidden]){animation:nf47in .2s ease-out;}
 @keyframes nf47in{from{transform:translateY(14px);opacity:.4;}to{transform:none;opacity:1;}}

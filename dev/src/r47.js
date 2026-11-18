@@ -57,9 +57,9 @@ function nf47PriceRow(tr){
   const cost = Number(ci.value), sell = Number(si.value), ok = cost > 0 && sell > 0, each = sell - cost, mg = ok ? Math.round(each / sell * 100) : null;
   const pe = tr.querySelector('td.nf47-pe');
   const peHtml = ok ? `<span class="${each < 0 ? 'nf47-neg' : ''}">${each < 0 ? '−' : ''}₱${Math.abs(Math.round(each * 100) / 100).toLocaleString('en-PH')}</span>` : '<span class="nf47-dim">—</span>';
-  if(pe && pe.innerHTML !== peHtml) pe.innerHTML = peHtml;
+  if(pe && pe.dataset.k47 !== peHtml){ pe.dataset.k47 = peHtml; pe.innerHTML = peHtml; }
   const m = tr.querySelector('td.nf47-mgc');
-  if(m){ const cls = mg == null ? 'n' : mg < 0 ? 'r' : mg < 20 ? 'y' : 'g'; const mh = `<span class="nf47-mg ${cls}">${mg == null ? 'No cost yet' : mg < 0 ? 'Losing ' + Math.abs(mg) + '%' : mg + '%'}</span>`; if(m.innerHTML !== mh) m.innerHTML = mh; }
+  if(m){ const cls = mg == null ? 'n' : mg < 0 ? 'r' : mg < 20 ? 'y' : 'g'; const mh = `<span class="nf47-mg ${cls}">${mg == null ? 'No cost yet' : mg < 0 ? 'Losing ' + Math.abs(mg) + '%' : mg + '%'}</span>`; if(m.dataset.k47 !== mh){ m.dataset.k47 = mh; m.innerHTML = mh; } }
   const p = tr.querySelector('td.nf47-pl');
   if(p){ const txt = p.textContent.replace(/−/g, '-'), v = nf43Num(txt), loss = v < 0 || /-\s*₱/.test(txt);
     if(p.classList.contains('nf47-loss') !== (loss && v !== 0)) p.classList.toggle('nf47-loss', loss && v !== 0); if(p.classList.contains('nf47-gain') !== (!loss && v > 0)) p.classList.toggle('nf47-gain', !loss && v > 0); }
@@ -85,7 +85,7 @@ function nf47Prices(page){
   });
   const b = page.querySelector('.nf26-editp');
   if(b){ if(!b.classList.contains('nf47-editp')){ b.classList.add('nf47-editp'); b.addEventListener('click', () => setTimeout(() => nf47Prices(page), 0)); }
-    const ro = t.classList.contains('nf26-ro'), want = ro ? '✎ Edit prices' : '✓ Done editing'; if(b.textContent !== want) b.textContent = want; b.classList.toggle('on', !ro); }
+    const ro = t.classList.contains('nf26-ro'), want = ro ? 'Edit prices' : 'Done editing'; if(b.textContent !== want) b.textContent = want; b.classList.toggle('on', !ro); }
   page.querySelectorAll('.panel-head span, .panel-head small, .bk-dim').forEach(s => { if(/Tap a cost or price to change it|Press Edit prices|saves by itself/.test(s.textContent)){ const ro = t.classList.contains('nf26-ro'); const w = ro ? 'Press Edit prices to change a cost or price' : 'Type the new number. It saves by itself.'; if(s.textContent !== w) s.textContent = w; } });
 }
 
@@ -332,7 +332,10 @@ const NF47NB = {from: null};
 })();
 function nf47NbHead(){
   const ov = document.getElementById('nf22Nb'); if(!ov || ov.hidden) return;
-  let dim = document.getElementById('nf47NbDim'); if(!dim){ dim = document.createElement('div'); dim.id = 'nf47NbDim'; dim.className = 'nf47-dim'; document.body.appendChild(dim); }
+  // the page you came from stays visible, dimmed; the menu beside it stays usable; a tap on the dim goes back
+  let dim = document.getElementById('nf47NbDim'); if(!dim){ dim = document.createElement('div'); dim.id = 'nf47NbDim'; dim.className = 'nf47-dim'; dim.addEventListener('click', () => { const c = document.querySelector('#nf22Nb .nf22-nbx'); if(c) c.click(); }); }
+  if(dim.nextElementSibling !== ov) ov.parentElement.insertBefore(dim, ov);
+  { const sb = document.querySelector('#view-app .sidebar'), l = sb && sb.offsetParent !== null ? Math.round(sb.getBoundingClientRect().right) : 0; if(dim.style.left !== l + 'px') dim.style.left = l + 'px'; }
   const x = ov.querySelector('.nf22-nbx'); if(!x) return;
   const host = x.parentElement; let b = ov.querySelector('.nf47-nbback');
   const label = 'Back to ' + nf47PageName(NF47NB.from || 'dashboard');

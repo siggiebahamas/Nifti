@@ -59,8 +59,9 @@ function nf26PagesPass(page){
   if(pid === 'issues'){ const t = document.getElementById('nf18Team'); if(t) nf26Fold(t, 'Team spending <small>orders above your agreed price, spending limits</small>'); }
   if(pid === 'profit'){
     const t = page.querySelector('table.bk-tbl'); 
-    if(t){ t.querySelectorAll('thead th').forEach(th => { if(th.textContent.trim() === 'Margin') th.textContent = 'Profit per ₱100'; });
-      t.querySelectorAll('td[data-label="Margin"]').forEach(td => { td.dataset.label = 'Profit per ₱100'; const m = td.textContent.trim().match(/^(-?\d+(?:\.\d+)?)%$/); if(m && !td.children.length) td.textContent = (Number(m[1]) < 0 ? '−₱' : '₱') + Math.abs(Math.round(Number(m[1]))); });
+    if(t){ const r47 = !!t.querySelector('.nf47-pe'); // Round 47 owns the Margin column now
+      if(!r47) t.querySelectorAll('thead th').forEach(th => { if(th.textContent.trim() === 'Margin') th.textContent = 'Profit per ₱100'; });
+      if(!r47) t.querySelectorAll('td[data-label="Margin"]').forEach(td => { td.dataset.label = 'Profit per ₱100'; const m = td.textContent.trim().match(/^(-?\d+(?:\.\d+)?)%$/); if(m && !td.children.length) td.textContent = (Number(m[1]) < 0 ? '−₱' : '₱') + Math.abs(Math.round(Number(m[1]))); });
       if(!t.dataset.nf26e){ t.dataset.nf26e = '1'; t.classList.add('nf26-ro'); const b = document.createElement('button'); b.type = 'button'; b.className = 'btn btn-outline nf26-editp'; b.textContent = 'Edit prices';
         b.onclick = () => { const ro = t.classList.toggle('nf26-ro'); b.textContent = ro ? 'Edit prices' : 'Done editing'; t.querySelectorAll('input.bk-num').forEach(i => { i.readOnly = ro; i.tabIndex = ro ? -1 : 0; }); };
         (t.closest('.nf-cardtable-wrap') || t).insertAdjacentElement('beforebegin', b); }

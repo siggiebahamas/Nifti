@@ -11153,6 +11153,7 @@ button.nf45-way, label.nf45-way{display:grid !important;width:100%;}
 .nf43-pill:has(.nf47-sp) .ic{grid-column:1;grid-row:1;width:36px;height:36px;}
 .nf43-pill:has(.nf47-sp) .k{grid-column:2;grid-row:1;}
 .nf43-pills .nf43-pill .v.nf47-sp{grid-column:1 / -1;grid-row:2;display:flex;align-items:stretch;gap:0;overflow:visible;padding-left:3px;}
+@media (max-width:900px){ .nf47-dim{display:none !important;} }
 .nf47-sp .c, .nf47-sp .m{display:grid;align-content:center;line-height:1.1;min-width:0;}
 .nf47-sp .c{padding-right:14px;margin-right:14px;border-right:2px solid rgba(11,15,20,.14);text-align:center;}
 html body #view-app .nf43-pills .nf43-pill .v.nf47-sp b{font-size:28px !important;font-weight:800;letter-spacing:-.01em;color:#0B0F14;white-space:nowrap;font-variant-numeric:tabular-nums;}
@@ -11173,6 +11174,8 @@ html body #view-app .nf43-pills .nf43-pill .v.nf47-sp small{display:block;font-s
 html body #view-app #page-profit table.nf26-ro input.bk-num{border-color:transparent !important;background:transparent !important;box-shadow:none !important;outline:0 !important;pointer-events:none;font-weight:700;color:#0B0F14;}
 html body #view-app #page-profit table.bk-tbl:not(.nf26-ro) input.bk-num{border:2px solid #1F6B45 !important;background:#FFFFFF !important;border-radius:10px;}
 html body #view-app #page-profit .nf26-editp.nf47-editp{background:#1F6B45 !important;color:#FFFFFF !important;border-color:#1F6B45 !important;font-weight:800;font-size:16px;padding:10px 18px;border-radius:12px;box-shadow:0 2px 6px rgba(31,107,69,.25);margin:0 0 10px;}
+html body #view-app #page-profit .nf26-editp.nf47-editp::before{content:"✎";margin-right:8px;}
+html body #view-app #page-profit .nf26-editp.nf47-editp.on::before{content:"✓";}
 html body #view-app #page-profit .nf26-editp.nf47-editp:hover{background:#185737 !important;}
 html body #view-app #page-profit .nf26-editp.nf47-editp.on{background:#FFFFFF !important;color:#14532D !important;border:2px solid #1F6B45 !important;}
 #page-profit td.nf47-pe{font-weight:700;font-variant-numeric:tabular-nums;}
@@ -11298,8 +11301,8 @@ html body .nf46-opts button{display:grid !important;align-content:start;}
 /* Notebook reader: a panel over the page you were on, with the way back on top */
 @media (min-width:901px){
   .nf22-nb{top:14px !important;right:18px !important;bottom:14px !important;left:calc(var(--nf44-sl, 0px) + 18px) !important;border-radius:20px;border:1px solid #E4E7EC;box-shadow:0 24px 60px rgba(11,15,20,.22);}
-  .nf47-dim{position:fixed;top:0;right:0;bottom:0;left:var(--nf44-sl, 0px);background:rgba(11,15,20,.30);z-index:4099;display:none;}
-  body.nf22-nb-open .nf47-dim{display:block;}
+  .nf47-dim{position:fixed;top:0;right:0;bottom:0;background:rgba(11,15,20,.30);z-index:4099;display:none;cursor:pointer;}
+  .nf47-dim:has(+ #nf22Nb:not([hidden])){display:block;}
 }
 .nf22-nb:not([hidden]){animation:nf47in .2s ease-out;}
 @keyframes nf47in{from{transform:translateY(14px);opacity:.4;}to{transform:none;opacity:1;}}
@@ -37014,8 +37017,9 @@ function nf26PagesPass(page){
   if(pid === 'issues'){ const t = document.getElementById('nf18Team'); if(t) nf26Fold(t, 'Team spending <small>orders above your agreed price, spending limits</small>'); }
   if(pid === 'profit'){
     const t = page.querySelector('table.bk-tbl'); 
-    if(t){ t.querySelectorAll('thead th').forEach(th => { if(th.textContent.trim() === 'Margin') th.textContent = 'Profit per ₱100'; });
-      t.querySelectorAll('td[data-label="Margin"]').forEach(td => { td.dataset.label = 'Profit per ₱100'; const m = td.textContent.trim().match(/^(-?\d+(?:\.\d+)?)%$/); if(m && !td.children.length) td.textContent = (Number(m[1]) < 0 ? '−₱' : '₱') + Math.abs(Math.round(Number(m[1]))); });
+    if(t){ const r47 = !!t.querySelector('.nf47-pe'); // Round 47 owns the Margin column now
+      if(!r47) t.querySelectorAll('thead th').forEach(th => { if(th.textContent.trim() === 'Margin') th.textContent = 'Profit per ₱100'; });
+      if(!r47) t.querySelectorAll('td[data-label="Margin"]').forEach(td => { td.dataset.label = 'Profit per ₱100'; const m = td.textContent.trim().match(/^(-?\d+(?:\.\d+)?)%$/); if(m && !td.children.length) td.textContent = (Number(m[1]) < 0 ? '−₱' : '₱') + Math.abs(Math.round(Number(m[1]))); });
       if(!t.dataset.nf26e){ t.dataset.nf26e = '1'; t.classList.add('nf26-ro'); const b = document.createElement('button'); b.type = 'button'; b.className = 'btn btn-outline nf26-editp'; b.textContent = 'Edit prices';
         b.onclick = () => { const ro = t.classList.toggle('nf26-ro'); b.textContent = ro ? 'Edit prices' : 'Done editing'; t.querySelectorAll('input.bk-num').forEach(i => { i.readOnly = ro; i.tabIndex = ro ? -1 : 0; }); };
         (t.closest('.nf-cardtable-wrap') || t).insertAdjacentElement('beforebegin', b); }
@@ -42734,9 +42738,9 @@ function nf47PriceRow(tr){
   const cost = Number(ci.value), sell = Number(si.value), ok = cost > 0 && sell > 0, each = sell - cost, mg = ok ? Math.round(each / sell * 100) : null;
   const pe = tr.querySelector('td.nf47-pe');
   const peHtml = ok ? `<span class="${each < 0 ? 'nf47-neg' : ''}">${each < 0 ? '−' : ''}₱${Math.abs(Math.round(each * 100) / 100).toLocaleString('en-PH')}</span>` : '<span class="nf47-dim">—</span>';
-  if(pe && pe.innerHTML !== peHtml) pe.innerHTML = peHtml;
+  if(pe && pe.dataset.k47 !== peHtml){ pe.dataset.k47 = peHtml; pe.innerHTML = peHtml; }
   const m = tr.querySelector('td.nf47-mgc');
-  if(m){ const cls = mg == null ? 'n' : mg < 0 ? 'r' : mg < 20 ? 'y' : 'g'; const mh = `<span class="nf47-mg ${cls}">${mg == null ? 'No cost yet' : mg < 0 ? 'Losing ' + Math.abs(mg) + '%' : mg + '%'}</span>`; if(m.innerHTML !== mh) m.innerHTML = mh; }
+  if(m){ const cls = mg == null ? 'n' : mg < 0 ? 'r' : mg < 20 ? 'y' : 'g'; const mh = `<span class="nf47-mg ${cls}">${mg == null ? 'No cost yet' : mg < 0 ? 'Losing ' + Math.abs(mg) + '%' : mg + '%'}</span>`; if(m.dataset.k47 !== mh){ m.dataset.k47 = mh; m.innerHTML = mh; } }
   const p = tr.querySelector('td.nf47-pl');
   if(p){ const txt = p.textContent.replace(/−/g, '-'), v = nf43Num(txt), loss = v < 0 || /-\s*₱/.test(txt);
     if(p.classList.contains('nf47-loss') !== (loss && v !== 0)) p.classList.toggle('nf47-loss', loss && v !== 0); if(p.classList.contains('nf47-gain') !== (!loss && v > 0)) p.classList.toggle('nf47-gain', !loss && v > 0); }
@@ -42762,7 +42766,7 @@ function nf47Prices(page){
   });
   const b = page.querySelector('.nf26-editp');
   if(b){ if(!b.classList.contains('nf47-editp')){ b.classList.add('nf47-editp'); b.addEventListener('click', () => setTimeout(() => nf47Prices(page), 0)); }
-    const ro = t.classList.contains('nf26-ro'), want = ro ? '✎ Edit prices' : '✓ Done editing'; if(b.textContent !== want) b.textContent = want; b.classList.toggle('on', !ro); }
+    const ro = t.classList.contains('nf26-ro'), want = ro ? 'Edit prices' : 'Done editing'; if(b.textContent !== want) b.textContent = want; b.classList.toggle('on', !ro); }
   page.querySelectorAll('.panel-head span, .panel-head small, .bk-dim').forEach(s => { if(/Tap a cost or price to change it|Press Edit prices|saves by itself/.test(s.textContent)){ const ro = t.classList.contains('nf26-ro'); const w = ro ? 'Press Edit prices to change a cost or price' : 'Type the new number. It saves by itself.'; if(s.textContent !== w) s.textContent = w; } });
 }
 
@@ -43009,7 +43013,10 @@ const NF47NB = {from: null};
 })();
 function nf47NbHead(){
   const ov = document.getElementById('nf22Nb'); if(!ov || ov.hidden) return;
-  let dim = document.getElementById('nf47NbDim'); if(!dim){ dim = document.createElement('div'); dim.id = 'nf47NbDim'; dim.className = 'nf47-dim'; document.body.appendChild(dim); }
+  // the page you came from stays visible, dimmed; the menu beside it stays usable; a tap on the dim goes back
+  let dim = document.getElementById('nf47NbDim'); if(!dim){ dim = document.createElement('div'); dim.id = 'nf47NbDim'; dim.className = 'nf47-dim'; dim.addEventListener('click', () => { const c = document.querySelector('#nf22Nb .nf22-nbx'); if(c) c.click(); }); }
+  if(dim.nextElementSibling !== ov) ov.parentElement.insertBefore(dim, ov);
+  { const sb = document.querySelector('#view-app .sidebar'), l = sb && sb.offsetParent !== null ? Math.round(sb.getBoundingClientRect().right) : 0; if(dim.style.left !== l + 'px') dim.style.left = l + 'px'; }
   const x = ov.querySelector('.nf22-nbx'); if(!x) return;
   const host = x.parentElement; let b = ov.querySelector('.nf47-nbback');
   const label = 'Back to ' + nf47PageName(NF47NB.from || 'dashboard');
