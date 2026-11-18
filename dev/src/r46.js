@@ -155,7 +155,7 @@ function nf46ListPop(){
     <div class="nf46-opts">
       <button type="button" onclick="slClose('nf46List'); nf41ImportOpen()"><b>Add many items from Excel</b><small>Your items with prices and stock, from an Excel or CSV file.</small></button>
       <button type="button" onclick="slClose('nf46List'); nf45Old()"><b>Bring in old records</b><small>Utang, sales, supplier bills or expenses: Excel, typing, or a photo.</small></button>
-      <button type="button" onclick="slClose('nf46List'); nf22NbOpen()"><b>Read a notebook</b><small>Take photos of handwritten pages. Nifti reads them for you to check.</small></button>
+      <button type="button" onclick="slClose('nf46List'); nf47Read()"><b>Read a notebook</b><small>Take photos of handwritten pages. Nifti reads them for you to check.</small></button>
       <button type="button" onclick="slClose('nf46List'); (typeof myBusiness !== 'undefined' && myBusiness && typeof downloadMyData === 'function') ? downloadMyData() : (typeof nf25ExportXlsx === 'function' ? nf25ExportXlsx() : exportAllData())"><b>Save everything to Excel</b><small>One file with your items, customers, orders and money. Good for backups or your accountant.</small></button></div>
     <p class="nf45-sm">Need the full data tools? <button type="button" class="nf43-link" onclick="slClose('nf46List'); navigate('datacenter')">Open the data center</button></p>`,
     `<button type="button" class="btn btn-outline" onclick="slClose('nf46List')">Close</button>`);

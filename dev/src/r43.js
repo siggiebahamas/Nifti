@@ -27,10 +27,10 @@ const NF43_PAGES = {
     [/^You owe suppliers/i, x => ({t: 'Supplier bills due', tone: 'yel', ic: 'card', v: x.v})],
   ]},
   orders: {sel: '#nfoStats', rules: [
-    [/^Needs you now/i, x => ({t: 'Need you today', tone: 'red', ic: 'alert', ...nf43Split(x.v)})],
-    [/^Coming up/i, x => ({t: 'Due this week', tone: 'yel', ic: 'cal', ...nf43Split(x.v)})],
-    [/^Waiting on them/i, x => ({t: 'Waiting on others', tone: 'blu', ic: 'hour', ...nf43Split(x.v)})],
-    [/^All good/i, x => ({t: 'Done and paid', tone: 'grn', ic: 'check', ...nf43Split(x.v)})],
+    [/^Needs you now/i, x => ({t: 'Need you today', tone: 'red', ic: 'alert', ...nf47Split(x.v, 'to handle')})],
+    [/^Coming up/i, x => ({t: 'Due this week', tone: 'yel', ic: 'cal', ...nf47Split(x.v, 'coming up')})],
+    [/^Waiting on them/i, x => ({t: 'Waiting on others', tone: 'blu', ic: 'hour', ...nf47Split(x.v, 'on hold')})],
+    [/^All good/i, x => ({t: 'Done and paid', tone: 'grn', ic: 'check', ...nf47Split(x.v, 'collected')})],
   ]},
   inventory: {sel: '#inventoryMainView .bk-stock-t', rules: [
     [/^Reorder now/i, x => ({t: 'Reorder today', tone: 'red', ic: 'box', v: nf43Plural(nf43Num(x.v), 'item')})],
@@ -77,6 +77,8 @@ const NF43_PAGES = {
     [/^Tax withheld/i, x => ({t: 'Tax withheld (2307)', tone: 'yel', ic: 'clip', v: x.v})],
   ]},
 };
+// Orders: count on the left, money on the right (split box)
+function nf47Split(v, ml){ const m = String(v).match(/^(\d+)\s+(orders?)\s*(?:·\s*)?(₱[\d,.]+)?/i); return m ? (m[3] ? {v: m[1], u: m[2], m: m[3], ml} : {v: m[1], sm: m[2]}) : {v}; }
 function nf43Split(v){ const m = String(v).match(/^(\d+)\s+(orders?)\s*(.*)$/i); return m ? {v: m[1], sm: m[2] + (m[3] ? ' · ' + m[3] : '')} : {v}; }
 function nf43Read(tile){
   const tx = e => e ? e.textContent.replace(/\s+/g, ' ').trim() : '';
@@ -110,7 +112,7 @@ function nf43PillsFor(box, cfg){
   if(!pills.length && !allZero){ if(row) row.remove(); box.classList.remove('nf43-old'); box.style.removeProperty('display'); return; }
   const buying = /Buying from suppliers/i.test(((box.closest('section, .panel-card, .nf-half') || {}).textContent || '').slice(0, 200));
   const html = allZero ? (buying ? `<div class="nf43-empty"><b>No supplier bills this month yet</b><span>Bills you record from suppliers show up here.</span></div>` : `<div class="nf43-empty"><b>No bills this month yet</b><span>Bills you make in Orders show up here, ready for your bookkeeper.</span></div>`)
-    : pills.map(q => `<button type="button" class="nf43-pill t-${q.tone}" data-i="${q.i}" ${q.go ? `data-go="${escapeHtml(q.go)}"` : ''}><span class="ic">${nf43Svg(q.ic)}</span><span class="tx"><span class="k">${escapeHtml(q.t)}</span><span class="v">${escapeHtml(q.v)}${q.sm ? `<span class="sm">${escapeHtml(q.sm)}</span>` : ''}</span></span></button>`).join('');
+    : pills.map(q => `<button type="button" class="nf43-pill t-${q.tone}" data-i="${q.i}" ${q.go ? `data-go="${escapeHtml(q.go)}"` : ''}><span class="ic">${nf43Svg(q.ic)}</span><span class="tx"><span class="k">${escapeHtml(q.t)}</span>${q.m ? `<span class="v nf47-sp"><span class="c"><b>${escapeHtml(q.v)}</b><small>${escapeHtml(q.u || '')}</small></span><span class="m"><b>${escapeHtml(q.m)}</b><small>${escapeHtml(q.ml || '')}</small></span></span>` : `<span class="v">${escapeHtml(q.v)}${q.sm ? `<span class="sm">${escapeHtml(q.sm)}</span>` : ''}</span>`}</span></button>`).join('');
   if(!row){ row = document.createElement('div'); row.className = 'nf43-pills'; box.insertAdjacentElement('afterend', row); // after the hidden old row, so passes that place things before it keep their spot
     row.addEventListener('click', e => { const b = e.target.closest('.nf43-pill'); if(!b) return; if(b.dataset.go){ try{ (new Function(b.dataset.go))(); }catch(err){} return; } const t = [...box.children].filter(el => !el.classList.contains('nf43-pills'))[Number(b.dataset.i)]; if(t){ const c = t.matches('button,[onclick],a') ? t : t.querySelector('button,[onclick],a'); if(c) c.click(); else t.click(); } });
     try{ new ResizeObserver(() => nf43Fit(row)).observe(row); }catch(e){} }
@@ -124,7 +126,7 @@ function nf43Fit(row){
   const phone = document.documentElement.classList.contains('nf-phone') || window.innerWidth <= 760;
   let c = 1;
   if(!phone){
-    let need = 0; row.querySelectorAll('.nf43-pill').forEach(p => { const k = p.querySelector('.k'), v = p.querySelector('.v'), ic = p.querySelector('.ic'), cs = getComputedStyle(p); const over = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight) + parseFloat(cs.borderLeftWidth) * 2 + ic.offsetWidth + parseFloat(cs.columnGap || cs.gap || 0) + 2; const tw = el => { const r = document.createRange(); r.selectNodeContents(el); return Math.ceil(r.getBoundingClientRect().width); }; need = Math.max(need, over + Math.max(tw(k), tw(v))); });
+    let need = 0; row.querySelectorAll('.nf43-pill').forEach(p => { const k = p.querySelector('.k'), v = p.querySelector('.v'), ic = p.querySelector('.ic'), cs = getComputedStyle(p); const over = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight) + parseFloat(cs.borderLeftWidth) * 2 + ic.offsetWidth + parseFloat(cs.columnGap || cs.gap || 0) + 2; const tw = el => { const r = document.createRange(); r.selectNodeContents(el); return Math.ceil(r.getBoundingClientRect().width); }; need = Math.max(need, v.classList.contains('nf47-sp') ? Math.max(over + tw(k), parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight) + parseFloat(cs.borderLeftWidth) * 2 + tw(v) + 4) : over + Math.max(tw(k), tw(v))); });
     c = nf43Cols(n, row.clientWidth || row.parentElement.clientWidth, need, 12);
   }
   if(row.style.getPropertyValue('--cols') !== String(c)) row.style.setProperty('--cols', String(c));

@@ -249,7 +249,7 @@ function nf20OrdersRender(){
   let host = document.getElementById('nfOrd'); if(!host){ host = document.createElement('div'); host.id = 'nfOrd'; const hw = pg.querySelector(':scope > .nf18-hubwrap'); pg.insertBefore(host, hw ? hw.nextSibling : pg.firstChild); }
   const a = document.activeElement, typing = a && a.id === 'nfoQ', pos = typing ? a.selectionStart : 0;
   const t = new Date(APP_TODAY + 'T00:00:00').toLocaleDateString('en-PH', {weekday: 'short', month: 'short', day: 'numeric'});
-  const html = `<div class="nfo-top"><div><h1>Orders</h1><p>Customers on the left, suppliers on the right. Today is <b>${t}</b>.</p></div></div>
+  const html = `<div class="nfo-top"><div><h1>Delivery orders</h1><p>Orders you deliver or receive. Customers on the left, suppliers on the right. Today is <b>${t}</b>.</p></div></div>
     <div class="nfo-stats" id="nfoStats"></div>
     <div class="nfo-flt nf20-flt"><label class="nfo-q"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="nfoQ" type="search" placeholder="Search name, order # or item" value="${nfoE(NFO.q)}" autocomplete="off" oninput="NFO.q=this.value; nfoPaint()"></label></div>
     <div class="nf20-jump" id="nf20Jump"></div>
