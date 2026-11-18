@@ -292,3 +292,23 @@ function nf44PrRows(){
   prSave = async function(pay){ if(!pay) return save.apply(this, arguments); const op = window.prompt; window.prompt = () => (PRF && PRF.paidFrom) || 'cash'; try{ return await save.apply(this, arguments); } finally{ window.prompt = op; } };
   window.prSave = prSave;
 })();
+
+/* ---------- 6. Notebook reader: the menu stays, and Columns + Check are one screen ---------- */
+try{ NF22_NB_STEPS[2] = 'Check and fix'; NF22_NB_STEPS[3] = 'Check and fix'; }catch(e){}
+function nf44NbLeft(){ const ov = document.getElementById('nf22Nb'), sb = document.querySelector('#view-app .sidebar'); if(!ov) return; const r = sb && sb.offsetParent !== null ? Math.round(sb.getBoundingClientRect().right) : 0; const v = (window.innerWidth >= 901 ? r : 0) + 'px'; if(ov.style.getPropertyValue('--nf44-sl') !== v) ov.style.setProperty('--nf44-sl', v); }
+(function(){
+  if(typeof nf22NbPaint !== 'function') return;
+  const paint = nf22NbPaint;
+  nf22NbPaint = function(){
+    // the old "which column is which" step is folded into the check screen: every field can be typed over there
+    if(typeof NB !== 'undefined' && NB.step === 2 && !NB.added && !(typeof NB25 !== 'undefined' && NB25.reading)) NB.step = 3;
+    const r = paint.apply(this, arguments); try{ nf44NbLeft();
+      // number the steps people can see: 1 What notebook, 2 Photo, 3 Check and fix, 4 Add
+      let n = 0; document.querySelectorAll('#nf22Nb .nf22-nbdots li').forEach(li => { if(getComputedStyle(li).display === 'none') return; n++; const i = li.querySelector('i'); if(i && i.textContent !== '✓' && i.textContent !== String(n)) i.textContent = String(n); });
+    }catch(e){} return r; };
+  window.nf22NbPaint = nf22NbPaint;
+  const doit = nf22NbDo;
+  nf22NbDo = function(a, v){ if(a === 'back' && typeof NB !== 'undefined' && NB.step === 3){ NB.step = 1; NB.picking = -1; nf22NbPaint(); return; } return doit.apply(this, arguments); };
+  window.nf22NbDo = nf22NbDo;
+  window.addEventListener('resize', () => { try{ nf44NbLeft(); }catch(e){} });
+})();

@@ -195,20 +195,26 @@ function nf42LineTone(l){ if(l.skipped) return 'sk'; if(l.checked) return 'ok'; 
 function nf42Amt(l){ const v = Number(l.price) * Number(l.q); return isFinite(v) && v > 0 ? Math.round(v * 100) / 100 : 0; }
 function nf42WrittenAmt(l){ const n = Number(String(l.a || '').replace(/[^\d.]/g, '')); return isFinite(n) && n > 0 && !/\?/.test(String(l.a)) ? n : 0; }
 function nf42Row(l, i){
+  // One line from the page: what was written on top, every field below it ready to type over. Long names get a wide box.
   const tone = nf42LineTone(l), unsureWho = !l.sure && (l.ask || []).includes('who'), unsureWhat = !l.sure && (l.ask || []).includes('what');
   const amt = nf42Amt(l), wr = nf42WrittenAmt(l), diff = amt && wr && Math.abs(amt - wr) >= 1;
-  const val = v => escapeHtml(v == null ? '' : String(v));
+  const val = v => escapeHtml(v == null ? '' : String(v)), blank = l.blur && !l.typed, dis = l.skipped ? 'disabled' : '';
+  const whoL = NB.kind === 'bills' ? 'Supplier' : NB.kind === 'exp' ? 'Paid to' : 'Customer';
   return `<div class="nf42-cr t-${tone}" data-i="${i}">
-    <label class="nf42-ck" title="I checked this line"><input type="checkbox" ${l.checked ? 'checked' : ''} ${l.skipped ? 'disabled' : ''} onchange="nf42CSet(${i}, 'checked', this.checked)"><span></span></label>
-    <span class="nf42-cn">${l.n}</span>
-    <div class="nf42-cw"><span class="nf42-hand">${l.blur ? 'Hard to read' : val([l.w, l.i].filter(Boolean).join(' · '))}</span><small>${l.blur ? 'Type it below, or skip' : `written: ${val(l.q)} · ${val(l.a)}`}</small></div>
-    <div class="nf42-ca"><span>Amount</span><b data-amt>${amt ? bkPeso(amt) : '—'}</b><small data-diff class="${diff ? 'bad' : wr && amt ? 'ok' : ''}">${diff ? `Written ${bkPeso(wr)}` : wr && amt ? '✓ same as written' : ''}</small></div>
-    <button type="button" class="nf42-sk" onclick="nf42CSet(${i}, 'skipped', ${!l.skipped})">${l.skipped ? 'Undo skip' : 'Skip'}</button>
+    <div class="nf42-ctop2">
+      <label class="nf42-ck" title="This line is right"><input type="checkbox" ${l.checked ? 'checked' : ''} ${dis} onchange="nf42CSet(${i}, 'checked', this.checked)" aria-label="Line ${l.n} is right"><span></span></label>
+      <span class="nf42-cn">${l.n}</span>
+      <div class="nf42-cw">${l.blur ? `<b class="nf42-blurt">Nifti couldn't read this line</b><small>Look at the photo and type what it says, or skip it.</small>` : `<span class="nf42-hand" title="${val([l.d, l.w, l.i, l.q, l.a].filter(Boolean).join(' · '))}">${val([l.w, l.i].filter(Boolean).join(' · '))}</span><small>written: ${val(l.q)} · ${val(l.a)}</small>`}</div>
+      ${l.blur ? `<button type="button" class="nf42-sk nf42-see" onclick="nf42Zoom(document.querySelector('#nf22Nb .nf42-zoom'))">See the photo</button>` : ''}
+      <button type="button" class="nf42-sk" onclick="nf42CSet(${i}, 'skipped', ${!l.skipped})">${l.skipped ? 'Undo skip' : 'Skip line'}</button>
+    </div>
     <div class="nf42-cfs">
-      <label class="nf42-cf${unsureWho ? ' q' : ''}"><span>${NB.kind === 'bills' ? 'Supplier' : NB.kind === 'exp' ? 'Paid to' : 'Customer'}</span><input list="nf42Who" value="${val(l.blur && !l.typed ? '' : l.who)}" placeholder="Type a name" oninput="nf42CSet(${i}, 'who', this.value)" ${l.skipped ? 'disabled' : ''}></label>
-      <label class="nf42-cf${unsureWhat ? ' q' : ''}"><span>Item</span><input list="nf42Items" value="${val(l.blur && !l.typed ? '' : l.item)}" placeholder="Type an item" oninput="nf42CSet(${i}, 'item', this.value)" ${l.skipped ? 'disabled' : ''}></label>
-      <label class="nf42-cf num"><span>Qty</span><input inputmode="decimal" value="${val(l.blur && !l.typed ? '' : l.q)}" oninput="nf42CSet(${i}, 'q', this.value)" ${l.skipped ? 'disabled' : ''}></label>
-      <label class="nf42-cf num"><span>Price ₱</span><input inputmode="decimal" value="${val(l.blur && !l.typed ? '' : l.price)}" oninput="nf42CSet(${i}, 'price', this.value)" ${l.skipped ? 'disabled' : ''}></label>
+      <label class="nf42-cf wide${unsureWho ? ' q' : ''}"><span>${whoL}</span><input list="nf42Who" value="${val(blank ? '' : l.who)}" placeholder="Type a name" title="${val(l.who)}" oninput="nf42CSet(${i}, 'who', this.value)" ${dis}></label>
+      <label class="nf42-cf wide${unsureWhat ? ' q' : ''}"><span>Item</span><input list="nf42Items" value="${val(blank ? '' : l.item)}" placeholder="Type an item" title="${val(l.item)}" oninput="nf42CSet(${i}, 'item', this.value)" ${dis}></label>
+      <label class="nf42-cf"><span>Date</span><input value="${val(blank ? '' : (l.date || l.d || ''))}" placeholder="e.g. 8/3" oninput="nf42CSet(${i}, 'date', this.value)" ${dis}></label>
+      <label class="nf42-cf num"><span>Qty</span><input inputmode="decimal" value="${val(blank ? '' : l.q)}" oninput="nf42CSet(${i}, 'q', this.value)" ${dis}></label>
+      <label class="nf42-cf num"><span>Price each ₱</span><input inputmode="decimal" value="${val(blank ? '' : l.price)}" oninput="nf42CSet(${i}, 'price', this.value)" ${dis}></label>
+      <div class="nf42-ca"><span>Amount</span><b data-amt>${amt ? bkPeso(amt) : '—'}</b><small data-diff class="${diff ? 'bad' : wr && amt ? 'ok' : ''}">${diff ? `Written ${bkPeso(wr)}` : wr && amt ? '✓ same as written' : ''}</small></div>
     </div>
   </div>`;
 }
@@ -219,7 +225,7 @@ function nf42CheckHtml(){
   const who = [...new Set([].concat((typeof buyersData !== 'undefined' ? buyersData : []).map(b => b.name), (typeof suppliersData !== 'undefined' ? suppliersData : []).map(s => s.name)).filter(Boolean))];
   const items = [...new Set((typeof inventoryData !== 'undefined' ? inventoryData : []).map(x => x.name).filter(Boolean))];
   return `<div class="nf42-chk">
-    <div class="nf42-ctop"><div><h2>Check every line</h2><p>Nifti filled these in from the page. Compare with the photo, fix anything that's off, and tick each line. Nothing is saved until every line is ticked or skipped.</p><p class="nf42-disc"><b>Please double-check.</b> Nifti reads handwriting with AI, and AI can misread names, items or numbers. You decide what goes into your books, so check each line against your notebook.</p></div>
+    <div class="nf42-ctop"><div><h2>Check and fix</h2><p>This is what Nifti read from your page. If something is wrong, just type over it. Tick each line when it's right. Nothing is saved until every line is ticked or skipped.</p><p class="nf42-disc"><b>Please double-check.</b> Nifti reads handwriting with AI, and AI can misread names, items or numbers. You decide what goes into your books, so check each line against your notebook.</p></div>
       <div class="nf42-cprog"><b>${done} of ${lines.length}</b><span>lines checked</span><i><em style="width:${lines.length ? Math.round(done / lines.length * 100) : 0}%"></em></i></div></div>
     <div class="nf42-cbar">
       <span class="nf42-lg"><i class="sure"></i>Nifti is sure</span><span class="nf42-lg"><i class="chk"></i>Please look</span><span class="nf42-lg"><i class="bad"></i>Can't read</span><span class="nf42-lg"><i class="ok"></i>You checked</span>
