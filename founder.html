@@ -145,7 +145,7 @@ async function settings(){
         <li>Paste it below and tap Switch on. It's saved on the server only and never shown again, not even to you.</li></ol>
       <div style="display:flex;gap:8px;flex-wrap:wrap"><input id="aiKey" type="password" autocomplete="off" placeholder="Paste the key (sk-ant-...)" style="flex:1;min-width:220px;padding:12px 14px;border:1.5px solid #D0D5DD;border-radius:12px;font:inherit">
         <button class="btn" onclick="saveKey()">${s.reader ? 'Replace key' : 'Switch on'}</button>${s.reader ? `<button class="btn o" onclick="offKey()">Switch off</button>` : ''}</div>
-      <p class="sub" style="margin:10px 0 0;font-size:13.5px">Each shop's monthly allowance still applies: Free 10, Pro 300, Business 1,500 pages and files a month.</p></div>`;
+      <p class="sub" style="margin:10px 0 0;font-size:13.5px">Each shop's monthly allowance still applies: Free 10, Pro 100, Business 400 pages a month, plus 300 extra pages in a shop's first 30 days to bring in its old notebooks. Worst case on your bill: about ₱250 a month for a Pro shop, ₱1,000 for a Business shop.</p></div>`;
 }
 async function saveKey(){
   const v = ($('aiKey').value || '').trim(); if(!v){ toast('Paste the key first.'); return; }

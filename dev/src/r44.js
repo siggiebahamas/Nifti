@@ -22,9 +22,8 @@ function nf44Stock(page){
 // Team: Trash and Job history move under the board, so the three lanes line up with the people column
 function nf44Team(page){
   if(!page || page.id !== 'page-team') return;
-  const bar = document.getElementById('nf36TBar'), main = bar && bar.closest('.nf41-main'); if(!bar || !main) return;
-  if(main.lastElementChild !== bar) main.appendChild(bar);
-  bar.classList.add('nf44-tbar');
+  // Round 45 moved Trash and Job history up, under Add or manage people (see nf45Team)
+  return;
 }
 // What runs out: one short line under each item instead of two crowded ones
 function nf44RunsOut(page){

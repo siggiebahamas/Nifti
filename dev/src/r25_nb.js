@@ -1,7 +1,7 @@
 /* ===== Round 25: the notebook reader reads real photos (signed-in businesses) ===== */
 // Pages are saved to the business (nb_pages), so anyone on the team can check them from any phone.
 // Reading goes through the nb-read service with the person's own sign-in; it counts against the
-// business's monthly page allowance (Free 10, Pro 300, Business 1,500). Every line still waits for a
+// business's monthly page allowance (Free 10, Pro 100, Business 400, plus 300 extra in the first 30 days). Every line still waits for a
 // person to say yes, then goes to the right place: Sales, Getting paid, Expenses or Stock. Words the
 // person confirms ("Bayvw" = Bayview Construction Co.) are saved, so the next page reads them by itself.
 // The demo shop keeps the sample page, labeled as a sample.

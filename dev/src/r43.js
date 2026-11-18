@@ -365,7 +365,9 @@ function nf43Expenses(page){
   if(rules){ const amt = rules.querySelector('input[inputmode="decimal"]'), dual = rules.querySelector('input[type="checkbox"]');
     const s = `Expenses your staff add from <b>${bkPeso(Number(amt && amt.value) || 2000)}</b> wait for your OK before they count.${dual && dual.checked ? ' Big ones from managers also need a second OK.' : ''}`;
     const p = rules.querySelector('.nf43-rs'); if(p && p.dataset.k !== s){ p.dataset.k = s; p.innerHTML = s; } }
-  const order = [tool, pills, wait, where, rules].filter(Boolean);
+  // the hidden box the pills are read from stays right before them, so the pills are never built twice
+  const src = body.querySelector(':scope > .bk-tiles');
+  const order = [tool, src, pills, wait, where, rules].filter(Boolean);
   order.forEach((el, i) => { if(i === 0){ if(body.firstElementChild !== el) body.prepend(el); } else if(order[i - 1].nextElementSibling !== el) order[i - 1].after(el); });
 }
 

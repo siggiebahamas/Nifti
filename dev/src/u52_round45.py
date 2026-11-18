@@ -17,3 +17,5 @@ P("mv(3, 'Fresh Tomatoes (Grade A)', -6, 'bad', 'Spoiled', 'Liza')", "mv(3, 'Ang
 _t = S['text']; _n = _t.count("'Dela Cruz', 'Bayview Construction')")
 assert _n == 2, _n
 S['text'] = _t.replace("'Dela Cruz', 'Bayview Construction')", "'Dela Cruz', 'Bayview Construction Co.')")
+# supplier bills: say plainly that you paid part and the supplier hasn't confirmed it yet
+P("r.pending > 0 ? ' · ' + bkPeso(r.pending) + ' waiting for their OK' : ''", "r.pending > 0 ? ' · You paid ' + bkPeso(r.pending) + ', not confirmed by them yet' : ' · Not paid yet'")
