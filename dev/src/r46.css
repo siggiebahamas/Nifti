@@ -1,0 +1,84 @@
+/* notebook: saved photos can be deleted */
+.nf46-saved{margin:10px 0 16px;border:1px solid #E4E7EC;border-radius:12px;background:#FFFFFF;padding:10px 12px;}
+.nf46-saved summary{cursor:pointer;font-weight:800;color:#14532D;font-size:16px;}
+.nf46-sl{display:grid;gap:8px;margin-top:10px;}
+.nf46-sp{display:grid;grid-template-columns:52px minmax(0,1fr) auto auto;gap:10px;align-items:center;border:1px solid #F2F4F7;border-radius:10px;padding:6px 8px;}
+.nf46-sp img{width:52px;height:52px;object-fit:cover;border-radius:8px;background:#F2F4F7;}
+.nf46-sp b{display:block;font-size:16px;} .nf46-sp small{display:block;font-size:14px;}
+.nf46-del{border:1.5px solid #FECDCA;background:#FFFFFF;color:#B42318;border-radius:10px;padding:6px 12px;font:inherit;font-size:14px;font-weight:800;cursor:pointer;}
+.nf46-del:hover{background:#FEF3F2;}
+.nf42-cphh .nf46-del{margin-left:6px;}
+.nf24-grid figure button.nf46-rm{width:auto !important;height:auto !important;border-radius:999px !important;padding:3px 10px !important;font-size:14px !important;font-weight:800;background:#FFFFFF !important;color:#B42318 !important;border:1.5px solid #FECDCA !important;}
+
+/* Nifti-styled typing suggestions (replaces the browser's own list) */
+.nf46-sug{position:fixed;z-index:6000;background:#FFFFFF;border:1px solid #D0D5DD;border-radius:12px;box-shadow:0 12px 28px rgba(16,24,40,.16);max-height:230px;overflow-y:auto;padding:4px;font-family:inherit;}
+.nf46-sug .o{padding:9px 12px;border-radius:8px;font-size:16px;color:#0B0F14;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.nf46-sug .o:hover, .nf46-sug .o.on{background:#E7F3EC;color:#14532D;}
+
+/* every dropdown in the app looks like Nifti */
+#view-app select, .sl-sheet select, .share-modal select, .nf22-nb select{-webkit-appearance:none;appearance:none;border:1.5px solid #D0D5DD;border-radius:10px;padding:8px 36px 8px 12px;font-family:inherit;font-size:16px;color:#0B0F14;background:#FFFFFF url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231F6B45' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right 10px center/16px;min-height:40px;cursor:pointer;}
+#view-app select:focus, .sl-sheet select:focus, .share-modal select:focus{outline:none;border-color:#1F6B45;box-shadow:0 0 0 3px #E7F3EC;}
+
+/* Follow-ups: bigger, roomier boxes; one clean row grid; equal buttons */
+.nf45-futiles .nf45-tile{grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:10px;row-gap:2px;padding:14px 18px;}
+.nf45-futiles .nf45-tile .k{grid-column:1 / -1;font-size:18px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.nf45-futiles .nf45-tile .v{grid-column:1;grid-row:2;font-size:36px;}
+.nf45-futiles .nf45-tile .sm{grid-column:2;grid-row:2;font-size:16px;font-weight:800;background:#FFFFFF;border-radius:999px;padding:3px 12px;white-space:nowrap;}
+.nf45-futiles .nf45-tile .from{grid-column:1 / -1;font-size:16px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.nf45-fur{grid-template-columns:44px minmax(0,1fr) 150px 290px;}
+.nf45-fuv{justify-self:end;text-align:right;width:150px;}
+.nf45-fua{justify-content:flex-end;gap:8px;width:290px;}
+.nf46-fumain{width:182px;justify-content:center;text-align:center;white-space:nowrap;}
+.nf46-fuside{width:96px;justify-content:center;text-align:center;}
+.nf45-fux{grid-column:2 / -1;}
+@media (max-width:900px){ .nf45-fua .nf46-fumain{flex:1 1 0 !important;min-width:0;} .nf45-fua .nf46-fuside{flex:0 0 96px !important;width:96px !important;} .nf45-fur{grid-template-columns:40px minmax(0,1fr) auto;} .nf45-fuv{grid-column:3;width:auto;} .nf45-fua{grid-column:2 / -1;width:auto;justify-content:flex-start;} .nf46-fumain{flex:1;width:auto;} .nf46-fuside{width:96px;} }
+
+/* Deliveries: day view */
+.nf46-key{display:flex;gap:16px;flex-wrap:wrap;margin:0 0 12px;font-size:14px;font-weight:700;}
+.nf46-key span{display:inline-flex;gap:6px;align-items:center;}
+.nf46-run{padding:0 !important;margin:0 0 12px;overflow:hidden;}
+.nf46-run header{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid #F2F4F7;}
+.nf46-run header b{font-size:16px;} .nf46-run header small{display:block;font-size:14px;}
+.nf46-stop{display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid #F2F4F7;cursor:pointer;}
+.nf46-stop:hover{background:#F7FBF8;}
+.nf46-stop .nf45-ld{width:30px;height:30px;font-size:14px;}
+.nf46-stop b{font-size:16px;display:block;} .nf46-stop small{font-size:14px;display:block;}
+.nf46-sr{display:flex;gap:8px;align-items:center;}
+.nf46-sr i{font-style:normal;font-size:20px;color:#98A2B3;}
+.nf46-run footer{display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:flex-end;padding:10px 16px;background:#FCFCFD;}
+.nf46-dayh{margin:18px 0 10px;font-size:18px;}
+.nf46-none{display:flex;gap:12px;align-items:center;justify-content:space-between;border:1.5px dashed #D0D5DD;border-radius:14px;padding:12px 16px;font-size:16px;background:#FFFFFF;}
+.nf46-past{margin-top:14px;border:1px solid #E4E7EC;border-radius:14px;padding:10px 14px;background:#FFFFFF;}
+.nf46-past summary{cursor:pointer;font-weight:800;font-size:16px;}
+.nf46-pl{display:grid;gap:6px;margin:10px 0;}
+.nf46-pl div{display:flex;gap:12px;font-size:14px;flex-wrap:wrap;} .nf46-pl b{min-width:110px;}
+
+/* Team: add a task right under each lane */
+.nf46-addt{display:block;width:100%;margin:8px 0 10px;border:1.5px dashed rgba(16,24,40,.25);background:rgba(255,255,255,.7);border-radius:12px;padding:9px 12px;font:inherit;font-size:16px;font-weight:800;color:#0B0F14;cursor:pointer;text-align:center;}
+.nf46-addt:hover{background:#FFFFFF;border-style:solid;}
+.nf46-tr{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;}
+.nf46-tr label span{display:block;font-size:14px;font-weight:800;margin-bottom:4px;}
+.nf46-tr select, .nf46-tr input{width:100%;}
+.nf46-tr input{border:1.5px solid #D0D5DD;border-radius:10px;padding:8px 12px;font:inherit;font-size:16px;min-height:40px;}
+
+/* Bring in or save your list: options */
+.nf46-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.nf46-opts button{display:grid;gap:4px;text-align:left;border:1.5px solid #E4E7EC;border-radius:14px;padding:14px;background:#FFFFFF;font:inherit;color:#0B0F14;cursor:pointer;}
+.nf46-opts button:hover{border-color:#1F6B45;box-shadow:0 0 0 3px #E7F3EC;}
+.nf46-opts b{font-size:16px;} .nf46-opts small{font-size:14px;}
+@media (max-width:640px){ .nf46-opts{grid-template-columns:1fr;} }
+
+/* a clear way back from pages reached by a button */
+.nf46-back{border:0;background:transparent;color:#14532D;font:inherit;font-weight:800;font-size:16px;cursor:pointer;padding:0 0 12px;display:block;}
+
+/* Monthly summary: balance rows start on the left */
+#page-ledger td.nf46-start{text-align:left !important;padding-left:16px !important;}
+
+/* Orders: New order buttons that stand out in each column */
+#page-orders .nf20-col .nf20-new{min-height:42px;padding:8px 18px !important;font-size:16px !important;font-weight:800;border-radius:12px !important;color:#FFFFFF !important;border:0 !important;box-shadow:0 2px 6px rgba(16,24,40,.12);}
+#page-orders .nf20-col.c .nf20-new{background:#1D4ED8 !important;}
+#page-orders .nf20-col.s .nf20-new{background:#1F6B45 !important;}
+#page-orders .nf20-col .nf20-new:hover{filter:brightness(1.08);}
+
+/* Prices & profit: no food-and-bundles card for shops that don't need it */
+#page-profit .bk-menu-empty{display:none !important;}

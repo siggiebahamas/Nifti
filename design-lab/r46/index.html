@@ -1,0 +1,252 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Clearer Pages Lab</title><meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap">
+<style>
+:root{--ink:#0B0F14;--sub:#344054;--line:#E4E7EC;--g:#1F6B45;--gl:#E7F3EC;--bg:#F7F8FA;--blu:#1D4ED8;--red:#B42318;--yel:#FFF5C2}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#F7F8FA}}
+:root[data-theme="dark"]{--bg:#F7F8FA}
+*{box-sizing:border-box}html,body{margin:0}body{font:16px/1.5 "Plus Jakarta Sans",system-ui,sans-serif;color:var(--ink);background:var(--bg)}
+.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}.tin{max-width:1240px;margin:0 auto;padding:12px 20px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.tin a{color:var(--g);font-weight:700;text-decoration:none;font-size:14px}.tin h1{margin:0;font-size:18px;flex:1;min-width:200px}
+.wrap{max-width:1240px;margin:0 auto;padding:24px 20px 80px;display:grid;gap:44px}.wrap>*{min-width:0}
+h2{margin:0 0 4px;font-size:28px}.lead{margin:0 0 16px;font-size:16px;color:var(--sub);max-width:900px}
+.tag{display:inline-block;border-radius:999px;padding:2px 10px;font-size:14px;font-weight:800}.rec{background:var(--g);color:#fff}.alt{background:#F2F4F7;color:var(--sub)}
+.opts{display:grid;gap:22px}.opts>*{min-width:0}
+.opt{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;min-width:0}
+.opt>header{padding:14px 20px;border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;flex-wrap:wrap}.opt>header h3{margin:0;font-size:18px;flex:1;min-width:220px}
+.opt>footer{padding:12px 20px;border-top:1px solid var(--line);background:#FCFCFD;font-size:16px;color:var(--sub)}.opt>footer b{color:var(--ink)}
+.stage{padding:18px;background:#F2F4F7;overflow-x:auto}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+.grid4{display:grid;grid-template-columns:repeat(4,minmax(200px,1fr));gap:12px;min-width:860px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+/* orders pills */
+.op{border-radius:16px;padding:14px 16px;border:1px solid var(--line);display:grid;gap:4px;background:#fff}
+.op.r{background:#FEF3F2;border-color:#FECDCA}.op.y{background:#FFFBEB;border-color:#FDE68A}.op.b{background:#EFF5FF;border-color:#C7DAFB}.op.g{background:#F0F8F3;border-color:#BBE3CB}
+.op .t{font-size:16px;font-weight:700}
+.a1 .n{display:flex;align-items:baseline;gap:8px}.a1 .n b{font-size:36px;line-height:1}.a1 .n span{font-size:16px;font-weight:700}.a1 .m{font-size:24px;font-weight:800;font-variant-numeric:tabular-nums}
+.a2 .m{font-size:32px;font-weight:800;line-height:1.1;font-variant-numeric:tabular-nums}.a2 .c{justify-self:start;background:#fff;border-radius:999px;padding:2px 12px;font-weight:800;font-size:16px}
+.a3{grid-template-columns:auto 1fr;align-items:center;column-gap:14px}.a3 .t{grid-column:1/-1}.a3 .n{font-size:40px;font-weight:800;line-height:1;padding-right:14px;border-right:2px solid rgba(16,24,40,.12);text-align:center}.a3 .n small{display:block;font-size:14px;font-weight:700}.a3 .m{font-size:26px;font-weight:800;font-variant-numeric:tabular-nums}.a3 .m small{display:block;font-size:14px;font-weight:700}
+/* month chart options */
+.mt{width:100%;border-collapse:collapse;background:#fff;border-radius:14px;overflow:hidden;min-width:640px}
+.mt th{font-size:14px;text-transform:uppercase;letter-spacing:.04em;text-align:right;padding:10px 14px;background:#F9FAFB;border-bottom:1px solid var(--line)}.mt th:first-child,.mt td:first-child{text-align:left}
+.mt td{padding:12px 14px;text-align:right;border-bottom:1px solid #F2F4F7;font-variant-numeric:tabular-nums;font-size:16px}
+.mt tr.on td{background:#F0F8F3;font-weight:800}
+.up{color:#15803D;font-weight:800}.dn{color:var(--red);font-weight:800}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px}
+svg text{font-family:inherit}
+.kb{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;align-items:end;height:200px;position:relative;padding-top:10px}
+.kb .zero{position:absolute;left:0;right:0;border-top:2px solid #98A2B3}
+.kb div{display:grid;justify-items:center;gap:4px;height:100%;position:relative}
+.kb i{position:absolute;width:56%;border-radius:6px}
+.kb .p{background:#16A34A}.kb .l{background:#D92D20}
+.kb b{position:absolute;font-size:14px;font-weight:800;white-space:nowrap}
+.kb span{position:absolute;bottom:-26px;font-size:14px}
+/* add items menu */
+.btnp{display:inline-flex;gap:8px;align-items:center;background:var(--g);color:#fff;border:0;border-radius:12px;padding:10px 16px;font:inherit;font-weight:800}
+.btno{display:inline-flex;gap:8px;align-items:center;background:#fff;color:var(--ink);border:1.5px solid #D0D5DD;border-radius:12px;padding:9px 14px;font:inherit;font-weight:800}
+.pop{background:#fff;border-radius:20px;box-shadow:0 18px 40px rgba(16,24,40,.18);width:min(720px,100%);overflow:hidden}
+.pop h4{margin:0;padding:16px 20px;border-bottom:1px solid var(--line);font-size:18px;display:flex;justify-content:space-between}
+.pop .pb{padding:16px 20px;display:grid;gap:12px}
+.ai{border:2px solid #9CC9AE;background:linear-gradient(180deg,#F0F8F3,#fff);border-radius:16px;padding:14px;display:grid;grid-template-columns:56px 1fr auto;gap:12px;align-items:center}
+.ai .ic,.way .ic{width:48px;height:48px;border-radius:12px;background:var(--gl);display:grid;place-items:center;color:var(--g)}
+.ai b{font-size:16px}.ai small{display:block;font-size:14px;color:var(--sub)}
+.ai .chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}.ai .chips span{font-size:14px;font-weight:700;background:#fff;border:1px solid #BBE3CB;border-radius:999px;padding:2px 10px}
+.ways{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.way{border:1.5px solid var(--line);border-radius:14px;padding:12px;display:grid;grid-template-columns:48px 1fr;gap:10px;align-items:center}
+.way b{font-size:16px;display:block}.way small{font-size:14px;color:var(--sub)}
+/* prices table options */
+.pl{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;min-width:640px}
+.pr{display:grid;grid-template-columns:minmax(0,1.4fr) 110px 110px minmax(160px,1fr) 90px;gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid #F2F4F7}
+.pr.h{background:#F9FAFB;font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--sub)}
+.pr b{font-size:16px}.num{text-align:right;font-variant-numeric:tabular-nums;font-weight:700}
+.bar{height:10px;border-radius:99px;background:#EAECF0;overflow:hidden}.bar u{display:block;height:100%;background:#16A34A}.bar u.w{background:#EAB308}.bar u.x{background:#D92D20}
+.chip{display:inline-block;border-radius:999px;padding:2px 10px;font-size:14px;font-weight:800}.cg{background:#DCF3E4;color:#14532D}.cy{background:var(--yel);color:#713F12}.cr{background:#FDECEC;color:#9F1D14}
+.grp{display:grid;grid-template-columns:repeat(3,minmax(220px,1fr));gap:12px;min-width:720px}
+.gc{border-radius:16px;padding:12px;display:grid;gap:8px;align-content:start}
+.gc h5{margin:0;font-size:16px;display:flex;justify-content:space-between}
+.gc.x{background:#FEF3F2;border:1px solid #FECDCA}.gc.w{background:#FFFBEB;border:1px solid #FDE68A}.gc.g{background:#F0F8F3;border:1px solid #BBE3CB}
+.it{background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:grid;gap:2px}.it b{font-size:16px}.it small{font-size:14px;color:var(--sub)}
+.it .fix{font-size:14px;font-weight:800;color:var(--g)}
+.ed{border:1.5px solid #D0D5DD;border-radius:10px;padding:6px 10px;width:96px;text-align:right;font:inherit;font-weight:800}
+/* store options */
+.phone{width:300px;border:8px solid #111;border-radius:32px;overflow:hidden;background:#fff;flex:none}
+.phone .bar0{height:20px;background:#111;width:110px;margin:0 auto;border-radius:0 0 12px 12px}
+.store{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:16px;align-items:start;min-width:760px}
+.big{font-size:28px;font-weight:800;line-height:1.1}
+.sbtn{display:flex;gap:8px;flex-wrap:wrap}.sbtn span{border-radius:12px;padding:10px 14px;font-weight:800;color:#fff}
+.post{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
+.post .img{height:120px;background:linear-gradient(135deg,#1F6B45,#2F8A5C);display:grid;place-items:center;color:#fff;font-weight:800;font-size:22px}
+.post p{margin:0;padding:10px 12px;font-size:14px}
+.wk{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}.wk div{border:1px solid var(--line);border-radius:10px;padding:8px 4px;text-align:center;font-size:14px;background:#fff}.wk div.on{background:#DCF3E4;border-color:#9CC9AE;font-weight:800}.wk div.td{border:2px solid var(--g)}
+/* menu mockups */
+.menus{display:grid;grid-template-columns:repeat(3,minmax(240px,1fr));gap:14px;min-width:780px}
+.sb{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px;display:grid;gap:4px;align-content:start}
+.sb h5{margin:0 0 6px;font-size:16px}
+.ni{display:flex;gap:10px;align-items:center;padding:8px 10px;border-radius:10px;font-weight:700}
+.ni.on{background:#F2F4F7}
+.ni i{width:20px;height:20px;border-radius:6px;background:#E4E7EC;flex:none}
+.ni.lk{color:#98A2B3}.ni.lk i{background:#F2F4F7}
+.ni em{margin-left:auto;font-style:normal;font-size:14px;font-weight:800;color:#14532D;background:var(--gl);border-radius:999px;padding:1px 8px}
+.ni.new em{background:#1F6B45;color:#fff}
+.sg{font-size:14px;font-weight:800;color:var(--sub);margin:8px 0 2px;text-transform:uppercase;letter-spacing:.04em}
+.unl{border:1.5px dashed #9CC9AE;border-radius:12px;padding:10px;background:#F7FBF8;font-size:14px}
+.unl b{display:block;font-size:14px}
+.prog{height:8px;background:#EAECF0;border-radius:99px;overflow:hidden;margin-top:6px}.prog u{display:block;height:100%;background:var(--g)}
+.types{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;min-width:760px}
+.types th,.types td{padding:10px 12px;border-bottom:1px solid #F2F4F7;text-align:center;font-size:16px}.types th:first-child,.types td:first-child{text-align:left}
+.types th{background:#F9FAFB;font-size:14px;text-transform:uppercase;letter-spacing:.04em}
+.y{color:#15803D;font-weight:800}.o{color:#98A2B3}
+.shoptype{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px;min-width:760px}
+.shoptype div{background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:12px;font-weight:800}.shoptype div.on{border-color:var(--g);background:#F0F8F3}.shoptype small{display:block;font-weight:600;font-size:14px;color:var(--sub)}
+.qa{background:#fff;border:1px solid var(--line);border-left:6px solid var(--g);border-radius:16px;padding:16px 20px;display:grid;gap:8px}
+.qa table{border-collapse:collapse;width:100%}.qa td,.qa th{border-bottom:1px solid #F2F4F7;padding:8px 10px;text-align:left;vertical-align:top;font-size:16px}.qa th{font-size:14px;text-transform:uppercase;letter-spacing:.04em;color:var(--sub)}
+@media (max-width:760px){.wrap{padding:18px 16px 60px;gap:36px}.tin{padding:10px 16px}h2{font-size:24px}.stage{padding:12px}.grid3{grid-template-columns:1fr}.ways{grid-template-columns:1fr}}
+</style></head><body>
+<div class="top"><div class="tin"><h1>Round 46 lab</h1><a href="../">‹ All labs</a><a href="#orders">Orders boxes</a><a href="#month">Monthly chart</a><a href="#add">Add items</a><a href="#prices">Prices table</a><a href="#store">Online store</a><a href="#menu">Starter menu</a><a href="#sales">Sales vs Orders</a></div></div>
+<main class="wrap">
+
+<section id="orders"><h2>Orders boxes: make the money as big as the count</h2><p class="lead">Today the order count is big and the peso total is small text after it. Three ways to give the money the same weight, using the same four boxes and colors.</p>
+<div class="opts">
+<article class="opt"><header><h3>A. Count and money, both big, on two lines</h3><span class="tag rec">Recommended</span></header><div class="stage"><div class="grid4">
+  <div class="op r a1"><span class="t">Need you today</span><div class="n"><b>2</b><span>orders</span></div><div class="m">₱104,864</div></div>
+  <div class="op y a1"><span class="t">Due this week</span><div class="n"><b>3</b><span>orders</span></div><div class="m">₱235,133</div></div>
+  <div class="op b a1"><span class="t">Waiting on others</span><div class="n"><b>2</b><span>orders</span></div><div class="m">₱120,960</div></div>
+  <div class="op g a1"><span class="t">Done and paid</span><div class="n"><b>1</b><span>order</span></div><div class="m">₱16,464</div></div></div></div>
+  <footer><b>Why:</b> keeps the count you like, and the money becomes the second thing you read instead of fine print. Boxes get about 24px taller.</footer></article>
+<article class="opt"><header><h3>B. Money first, count as a chip</h3><span class="tag alt">Best for owners who think in pesos</span></header><div class="stage"><div class="grid4">
+  <div class="op r a2"><span class="t">Need you today</span><div class="m">₱104,864</div><span class="c">2 orders</span></div>
+  <div class="op y a2"><span class="t">Due this week</span><div class="m">₱235,133</div><span class="c">3 orders</span></div>
+  <div class="op b a2"><span class="t">Waiting on others</span><div class="m">₱120,960</div><span class="c">2 orders</span></div>
+  <div class="op g a2"><span class="t">Done and paid</span><div class="m">₱16,464</div><span class="c">1 order</span></div></div></div>
+  <footer><b>Trade-off:</b> the count gets smaller. Good if the money matters more to you than how many orders there are.</footer></article>
+<article class="opt"><header><h3>C. Split box: count on the left, money on the right</h3><span class="tag alt">Most compact</span></header><div class="stage"><div class="grid4">
+  <div class="op r a3"><span class="t">Need you today</span><div class="n">2<small>orders</small></div><div class="m">₱104,864<small>to handle</small></div></div>
+  <div class="op y a3"><span class="t">Due this week</span><div class="n">3<small>orders</small></div><div class="m">₱235,133<small>coming up</small></div></div>
+  <div class="op b a3"><span class="t">Waiting on others</span><div class="n">2<small>orders</small></div><div class="m">₱120,960<small>on hold</small></div></div>
+  <div class="op g a3"><span class="t">Done and paid</span><div class="n">1<small>order</small></div><div class="m">₱16,464<small>collected</small></div></div></div></div>
+  <footer><b>Why:</b> same height as today, both numbers big, side by side like a scoreboard. On phones the two halves stack.</footer></article>
+</div></section>
+
+<section id="month"><h2>Monthly summary: 3 cleaner ways to show the months</h2><p class="lead">The current chart mixes light green, dark green and red fills, which takes too long to read. Each option below answers one question at a glance: <b>did I make money, and is it getting better?</b></p>
+<div class="opts">
+<article class="opt"><header><h3>A. Month table with arrows</h3><span class="tag rec">Recommended: clearest, no chart to learn</span></header><div class="stage">
+  <table class="mt"><thead><tr><th>Month</th><th>Sales</th><th>Costs</th><th>You kept</th><th>vs month before</th></tr></thead><tbody>
+  <tr><td>Jun</td><td>₱92,400</td><td>₱90,100</td><td class="up">₱2,300</td><td>—</td></tr>
+  <tr><td>Jul</td><td>₱88,900</td><td>₱73,700</td><td class="up">₱15,200</td><td class="up">▲ ₱12,900</td></tr>
+  <tr><td>Aug</td><td>₱121,300</td><td>₱150,600</td><td class="dn">−₱29,300</td><td class="dn">▼ ₱44,500</td></tr>
+  <tr><td>Sep</td><td>₱98,500</td><td>₱95,900</td><td class="up">₱2,600</td><td class="up">▲ ₱31,900</td></tr>
+  <tr><td>Oct</td><td>₱110,750</td><td>₱118,070</td><td class="dn">−₱7,320</td><td class="dn">▼ ₱9,920</td></tr>
+  <tr class="on"><td>Nov (so far)</td><td>₱167,158</td><td>₱170,859</td><td class="dn">−₱3,701</td><td class="up">▲ ₱3,619</td></tr></tbody></table></div>
+  <footer><b>Why:</b> every number is written out, green means you kept money, red means you lost it. Tap a month to open it.</footer></article>
+<article class="opt"><header><h3>B. One line: what you kept each month</h3><span class="tag alt">Best for spotting trends</span></header><div class="stage"><div class="card" style="min-width:640px">
+  <svg viewBox="0 0 640 220" width="100%" height="220" role="img" aria-label="What you kept each month">
+    <line x1="40" y1="120" x2="620" y2="120" stroke="#98A2B3" stroke-width="2"/><text x="36" y="124" font-size="13" text-anchor="end" fill="#344054">₱0</text>
+    <polyline fill="none" stroke="#1F6B45" stroke-width="3" points="80,108 180,72 280,190 380,107 480,135 580,129"/>
+    <g font-size="13" font-weight="800"><circle cx="80" cy="108" r="6" fill="#16A34A"/><text x="80" y="96" text-anchor="middle" fill="#15803D">₱2.3K</text>
+    <circle cx="180" cy="72" r="6" fill="#16A34A"/><text x="180" y="60" text-anchor="middle" fill="#15803D">₱15.2K</text>
+    <circle cx="280" cy="190" r="6" fill="#D92D20"/><text x="280" y="210" text-anchor="middle" fill="#B42318">−₱29.3K</text>
+    <circle cx="380" cy="107" r="6" fill="#16A34A"/><text x="380" y="95" text-anchor="middle" fill="#15803D">₱2.6K</text>
+    <circle cx="480" cy="135" r="6" fill="#D92D20"/><text x="480" y="155" text-anchor="middle" fill="#B42318">−₱7.3K</text>
+    <circle cx="580" cy="129" r="8" fill="#D92D20" stroke="#0B0F14" stroke-width="2"/><text x="580" y="152" text-anchor="middle" fill="#B42318">−₱3.7K</text></g>
+    <g font-size="13" fill="#344054" text-anchor="middle"><text x="80" y="20">Jun</text><text x="180" y="20">Jul</text><text x="280" y="20">Aug</text><text x="380" y="20">Sep</text><text x="480" y="20">Oct</text><text x="580" y="20" font-weight="800">Nov</text></g></svg></div></div>
+  <footer><b>Why:</b> one line, one color: above the gray line you made money, below it you lost money. Each dot has its number on it.</footer></article>
+<article class="opt"><header><h3>C. Profit bars up or down from zero</h3><span class="tag alt">Quickest "good month / bad month"</span></header><div class="stage"><div class="card" style="min-width:640px;padding-bottom:40px">
+  <div class="kb"><span class="zero" style="top:60%"></span>
+  <div><i class="p" style="bottom:40%;height:4%"></i><b style="bottom:45%">₱2.3K</b><span>Jun</span></div>
+  <div><i class="p" style="bottom:40%;height:26%"></i><b style="bottom:67%">₱15.2K</b><span>Jul</span></div>
+  <div><i class="l" style="top:60%;height:38%"></i><b style="top:99%;transform:translateY(4px)"></b><b style="bottom:41%" class="dn">−₱29.3K</b><span>Aug</span></div>
+  <div><i class="p" style="bottom:40%;height:5%"></i><b style="bottom:46%">₱2.6K</b><span>Sep</span></div>
+  <div><i class="l" style="top:60%;height:10%"></i><b style="bottom:41%" class="dn">−₱7.3K</b><span>Oct</span></div>
+  <div><i class="l" style="top:60%;height:6%;outline:2px solid #0B0F14"></i><b style="bottom:41%" class="dn">−₱3.7K</b><span><b style="position:static">Nov</b></span></div></div></div></div>
+  <footer><b>Why:</b> green bars go up for months you made money and red bars go down for months you lost money. No light-and-dark fills to decode.</footer></article>
+</div></section>
+
+<section id="add"><h2>Stock: one "Add items" button, with the AI reader built in</h2><p class="lead">Today Stock has four buttons near the top that overlap. One green button opens a popup on the same page. The AI reader sits at the top because it saves the most typing; the other ways are below it.</p>
+<div class="opts"><article class="opt"><header><h3>The page header, then the popup it opens</h3><span class="tag rec">Recommended</span></header><div class="stage">
+  <div class="row" style="align-items:center;margin-bottom:14px"><b style="font-size:28px;flex:1">Stock</b><span class="btno">Count stock</span><span class="btnp">+ Add items ▾</span></div>
+  <div class="pop"><h4>Add items <span>✕</span></h4><div class="pb">
+    <div class="ai"><span class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 4h-5L7.5 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3.5z"/><circle cx="12" cy="13" r="3.5"/></svg></span>
+      <div><b>Snap a photo, Nifti fills it in</b><small>Take a photo of anything with your items on it. Nifti reads the names, sizes, prices and quantities for you to check.</small><div class="chips"><span>Supplier receipt</span><span>Price list</span><span>Handwritten stock list</span><span>Delivery slip</span></div></div><span class="btnp">Take a photo</span></div>
+    <div class="ways">
+      <div class="way"><span class="ic">＋</span><div><b>Type one item</b><small>Name, price, how many. 20 seconds.</small></div></div>
+      <div class="way"><span class="ic">▦</span><div><b>Upload Excel or CSV</b><small>Your whole list at once. Nifti matches the columns.</small></div></div>
+      <div class="way"><span class="ic">★</span><div><b>Start from a ready list</b><small>50 common hardware items. Just fix the prices.</small></div></div>
+      <div class="way"><span class="ic">⇩</span><div><b>Save my list to Excel</b><small>A backup, or to send to your accountant.</small></div></div></div>
+    <p style="margin:0;font-size:14px;color:var(--sub)">Delivery slips also update stock: Nifti adds what arrived to what you already have.</p></div></div></div>
+  <footer><b>Why:</b> one button to find, the smartest option first, and you never leave the Stock page. "Count stock" stays separate because it's a daily job, not adding items.</footer></article></div></section>
+
+<section id="prices"><h2>Prices & profit: 3 cleaner ways to show every item</h2><p class="lead">Today the table has six columns and edit boxes on every row. These keep only what an owner acts on: what you pay, what you sell for, and what you make on each sale.</p>
+<div class="opts">
+<article class="opt"><header><h3>A. Simple list with a profit bar</h3><span class="tag rec">Recommended</span></header><div class="stage"><div class="pl">
+  <div class="pr h"><span>Item</span><span class="num">You pay</span><span class="num">You sell</span><span>You make on each</span><span></span></div>
+  <div class="pr"><b>Steel Rebar 12mm</b><span class="num">₱44</span><span class="num">₱64</span><span><span class="num">₱20 · 31%</span><div class="bar"><u style="width:62%"></u></div></span><span class="chip cg">Edit</span></div>
+  <div class="pr"><b>Portland Cement 40kg</b><span class="num">₱184</span><span class="num">₱228</span><span><span class="num">₱44 · 19%</span><div class="bar"><u style="width:38%"></u></div></span><span class="chip cg">Edit</span></div>
+  <div class="pr"><b>Galvanized Wire 12ga</b><span class="num">₱430</span><span class="num">₱520</span><span><span class="num">₱90 · 17%</span><div class="bar"><u style="width:34%"></u></div></span><span class="chip cg">Edit</span></div>
+  <div class="pr"><b>Structural I-Beams</b><span class="num">₱2,950</span><span class="num">₱3,650</span><span><span class="num">₱700 · 19%</span><div class="bar"><u style="width:38%"></u></div></span><span class="chip cg">Edit</span></div>
+  <div class="pr"><b>Rebar 10mm</b><span class="num">₱51</span><span class="num">₱48</span><span><span class="num dn">−₱3 · losing</span><div class="bar"><u class="x" style="width:6%"></u></div></span><span class="chip cr">Fix price</span></div></div></div>
+  <footer><b>Why:</b> one glance shows which items make money. Edit opens a small popup, so the table stays calm. Sold and total profit move into the row's popup.</footer></article>
+<article class="opt"><header><h3>B. Grouped by what needs doing</h3><span class="tag alt">Most action-focused</span></header><div class="stage"><div class="grp">
+  <div class="gc x"><h5>Losing money <span>1</span></h5><div class="it"><b>Rebar 10mm</b><small>Sell ₱48 · you pay ₱51</small><span class="fix">Raise to ₱60 →</span></div></div>
+  <div class="gc w"><h5>Thin profit, under 20% <span>3</span></h5><div class="it"><b>Galvanized Wire 12ga</b><small>₱90 on each · 17%</small></div><div class="it"><b>Portland Cement 40kg</b><small>₱44 on each · 19%</small></div><div class="it"><b>Structural I-Beams</b><small>₱700 on each · 19%</small></div></div>
+  <div class="gc g"><h5>Healthy <span>1</span></h5><div class="it"><b>Steel Rebar 12mm</b><small>₱20 on each · 31%</small></div></div></div></div>
+  <footer><b>Why:</b> the owner sees the problem items first, with a suggested fix. Best when you have many items.</footer></article>
+<article class="opt"><header><h3>C. Edit-in-place table, 4 columns only</h3><span class="tag alt">Fastest for changing many prices</span></header><div class="stage"><div class="pl">
+  <div class="pr h" style="grid-template-columns:minmax(0,1.6fr) 120px 120px 160px"><span>Item</span><span class="num">You pay</span><span class="num">You sell</span><span class="num">You make</span></div>
+  <div class="pr" style="grid-template-columns:minmax(0,1.6fr) 120px 120px 160px"><b>Steel Rebar 12mm</b><span class="num">₱44</span><span class="num"><input class="ed" value="64"></span><span class="num">₱20 <span class="chip cg">31%</span></span></div>
+  <div class="pr" style="grid-template-columns:minmax(0,1.6fr) 120px 120px 160px"><b>Portland Cement 40kg</b><span class="num">₱184</span><span class="num"><input class="ed" value="228"></span><span class="num">₱44 <span class="chip cy">19%</span></span></div>
+  <div class="pr" style="grid-template-columns:minmax(0,1.6fr) 120px 120px 160px"><b>Rebar 10mm</b><span class="num">₱51</span><span class="num"><input class="ed" value="48" style="border-color:#D92D20"></span><span class="num dn">−₱3 <span class="chip cr">losing</span></span></div></div></div>
+  <footer><b>Why:</b> only the selling price is a box you can change, and the profit updates as you type. Cost stays read-only, since it comes from supplier bills.</footer></article>
+</div></section>
+
+<section id="store"><h2>Online store: 3 simpler ways that still sell</h2><p class="lead">The one job of this page is to <b>get your link and posts in front of buyers every week</b>. Each layout keeps the share button and today's post as the stars.</p>
+<div class="opts">
+<article class="opt"><header><h3>A. One screen: your link, today's post, what it earned</h3><span class="tag rec">Recommended</span></header><div class="stage"><div class="store">
+  <div style="display:grid;gap:12px">
+    <div class="card"><b style="font-size:18px">Your store is open</b><p style="margin:4px 0 10px;color:var(--sub)">nifti.ph/s/dela-cruz-hardware</p><div class="sbtn"><span style="background:#1877F2">Share on Facebook</span><span style="background:#7360F2">Send on Viber</span><span style="background:#344054">Copy link</span></div></div>
+    <div class="row"><div class="card" style="flex:1"><small>Visits this week</small><div class="big">142</div></div><div class="card" style="flex:1"><small>Orders from the store</small><div class="big">6</div></div><div class="card" style="flex:1"><small>Sold through it</small><div class="big">₱18,400</div></div></div>
+    <div class="card"><b>This week's posts</b><div class="wk" style="margin-top:8px"><div class="on">Mon ✓</div><div class="td">Tue</div><div>Wed</div><div class="on">Thu</div><div>Fri</div><div>Sat</div><div>Sun</div></div></div></div>
+  <div class="post"><div class="img">Steel Rebar 12mm<br>₱64</div><p><b>Today's post is ready.</b> "Available na po: Steel Rebar 12mm! ₱64 per piece, delivered next day."</p><p><span class="btnp" style="padding:8px 12px">Post it</span> <span class="btno" style="padding:7px 12px">Another idea</span></p></div></div></div>
+  <footer><b>Why:</b> everything on one page with no tabs. Share is the first button, today's post is ready to go, and the numbers show the store is worth it.</footer></article>
+<article class="opt"><header><h3>B. See it like your customer</h3><span class="tag alt">Most visual</span></header><div class="stage"><div class="row" style="align-items:flex-start;min-width:700px">
+  <div class="phone"><div class="bar0"></div><div style="padding:12px;display:grid;gap:8px"><b style="font-size:18px">Dela Cruz Hardware</b><small style="color:var(--sub)">Order before 2pm, delivered next day</small>
+    <div class="post"><div class="img" style="height:80px;font-size:16px">Steel Rebar 12mm · ₱64</div></div><div class="post"><div class="img" style="height:80px;font-size:16px;background:linear-gradient(135deg,#1D4ED8,#3B82F6)">Portland Cement · ₱228</div></div><span class="btnp" style="justify-content:center">Order on Viber</span></div></div>
+  <div style="display:grid;gap:10px;max-width:360px"><b style="font-size:18px">This is what buyers see</b><span style="color:var(--sub)">Tap any item on the phone to change its photo, price or whether it shows.</span><div class="sbtn"><span style="background:#1877F2">Share</span><span style="background:#1F6B45">Add an item</span></div><span class="chip cg" style="justify-self:start">6 orders this week</span></div></div></div>
+  <footer><b>Why:</b> owners understand the store by seeing it, and editing happens right on the preview. Good for shops that are new to selling online.</footer></article>
+<article class="opt"><header><h3>C. A weekly plan with 3 posts</h3><span class="tag alt">Best for building a habit</span></header><div class="stage"><div class="card" style="min-width:640px;display:grid;gap:12px">
+  <div class="row" style="justify-content:space-between;align-items:center"><b style="font-size:18px">Post 3 times this week · 1 of 3 done</b><span class="btno">Share my store</span></div>
+  <div class="prog"><u style="width:33%"></u></div>
+  <div class="row"><div class="it" style="flex:1"><b>Mon · Steel Rebar promo</b><small>Posted · 64 people saw it</small></div><div class="it" style="flex:1;border:2px solid var(--g)"><b>Today · Cement price list</b><small>Ready to post</small><span class="fix">Post now →</span></div><div class="it" style="flex:1"><b>Thu · Delivery reminder</b><small>Nifti writes it on Thursday</small></div></div></div></div>
+  <footer><b>Why:</b> turns posting into a simple weekly checklist. Nifti writes each post and reminds you on the day.</footer></article>
+</div></section>
+
+<section id="menu"><h2>The biggest gap: a starter menu that grows with the shop</h2><p class="lead">A new owner sees 5 pages on day 1. Other pages unlock by themselves when the owner does something that needs them, with a short note saying why. Nothing is hidden for good: "All pages" is always one tap away.</p>
+<div class="opts">
+<article class="opt"><header><h3>How the menu grows: day 1, week 2, and fully set up</h3><span class="tag rec">Recommended</span></header><div class="stage"><div class="menus">
+  <div class="sb"><h5>Day 1</h5><div class="ni on"><i></i>Home</div><div class="ni"><i></i>Sales</div><div class="ni"><i></i>Getting paid</div><div class="ni"><i></i>Stock</div><div class="ni"><i></i>Orders</div>
+    <div class="sg">Unlocks as you go</div><div class="ni lk"><i></i>Expenses<em style="background:#F2F4F7;color:#667085">add a cost</em></div><div class="ni lk"><i></i>Payroll<em style="background:#F2F4F7;color:#667085">add staff</em></div><div class="ni lk"><i></i>Deliveries<em style="background:#F2F4F7;color:#667085">add a driver</em></div>
+    <div class="unl"><b>Getting started · 2 of 5</b>Add your items, record a sale, add who owes you…<div class="prog"><u style="width:40%"></u></div></div><div class="ni" style="color:var(--g)">All pages ›</div></div>
+  <div class="sb"><h5>Week 2</h5><div class="ni"><i></i>Home</div><div class="ni"><i></i>Sales</div><div class="ni"><i></i>Getting paid</div><div class="ni"><i></i>Stock</div><div class="ni"><i></i>Orders</div><div class="ni new"><i></i>Expenses<em>new</em></div><div class="ni new"><i></i>Follow-ups<em>new</em></div>
+    <div class="unl"><b>Expenses unlocked</b>You added your first cost, so Nifti now tracks your spending and profit.</div><div class="sg">Unlocks as you go</div><div class="ni lk"><i></i>Payroll<em style="background:#F2F4F7;color:#667085">add staff</em></div><div class="ni" style="color:var(--g)">All pages ›</div></div>
+  <div class="sb"><h5>Fully set up</h5><div class="ni"><i></i>Home</div><div class="sg">Daily</div><div class="ni"><i></i>Orders</div><div class="ni"><i></i>Sales</div><div class="ni"><i></i>Stock</div><div class="ni"><i></i>Messages</div><div class="sg">Money</div><div class="ni"><i></i>Getting paid</div><div class="ni"><i></i>Expenses</div><div class="ni"><i></i>Payroll</div><div class="ni"><i></i>Monthly summary</div><div class="sg">Selling</div><div class="ni"><i></i>Follow-ups</div><div class="ni"><i></i>Deliveries</div></div></div></div>
+  <footer><b>What unlocks what:</b> Expenses when you add a cost or a bill. Payroll when you add a staff member. Deliveries when you add a driver. Checks when you get your first check. Follow-ups after 3 customers. Tax books when you turn on VAT or 2307. Monthly summary after 2 weeks of sales.</footer></article>
+<article class="opt"><header><h3>Pages that fit the shop: chosen once at sign-up, changeable in Settings</h3><span class="tag rec">Recommended with the starter menu</span></header><div class="stage">
+  <div class="shoptype"><div class="on">Hardware & construction supply<small>orders, deliveries, checks</small></div><div>Sari-sari & retail store<small>counter sales, utang, stock</small></div><div>Food & eatery<small>menu items, ingredients</small></div><div>Distributor & wholesale<small>routes, suppliers, credit limits</small></div></div>
+  <table class="types"><thead><tr><th>Page</th><th>Hardware</th><th>Sari-sari</th><th>Food</th><th>Distributor</th></tr></thead><tbody>
+  <tr><td>Orders</td><td class="y">✓</td><td class="o">—</td><td class="o">—</td><td class="y">✓</td></tr>
+  <tr><td>Sales (counter)</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="o">—</td></tr>
+  <tr><td>Deliveries</td><td class="y">✓</td><td class="o">—</td><td class="o">—</td><td class="y">✓</td></tr>
+  <tr><td>Checks</td><td class="y">✓</td><td class="o">—</td><td class="o">—</td><td class="y">✓</td></tr>
+  <tr><td>Menu items & ingredients</td><td class="o">—</td><td class="o">—</td><td class="y">✓</td><td class="o">—</td></tr>
+  <tr><td>Utang list</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
+  <tr><td>Find customers</td><td class="y">✓</td><td class="o">—</td><td class="o">—</td><td class="y">✓</td></tr>
+  <tr><td>Online store</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="o">—</td></tr></tbody></table></div>
+  <footer><b>Why:</b> a sari-sari store never sees Checks or Deliveries, and a hardware store never sees "Selling food or bundles?". Any page can still be turned on in Settings.</footer></article>
+</div></section>
+
+<section id="sales"><h2>Sales vs Orders: why both, and my recommendation</h2>
+<div class="qa"><table><thead><tr><th></th><th>Orders</th><th>Sales</th></tr></thead><tbody>
+<tr><td><b>Who it's for</b></td><td>Customers who order ahead: contractors, other shops</td><td>Walk-in buyers at the counter</td></tr>
+<tr><td><b>What happens</b></td><td>Confirm, prepare, deliver, bill, get paid later</td><td>Pay now (or utang) and take the items home</td></tr>
+<tr><td><b>Money</b></td><td>Invoices, due dates, reminders</td><td>The cash drawer, counted every night by person</td></tr></tbody></table>
+<p style="margin:0"><b>My recommendation:</b> keep both, but rename Sales to <b>"Counter & cash"</b> and put the cash drawer and the count-by-person section at the top, since that's why owners open it. The walk-in sales list goes underneath. For a shop that only sells by order (a distributor), the page is hidden by the shop-type setting above.</p></div></section>
+
+</main></body></html>
