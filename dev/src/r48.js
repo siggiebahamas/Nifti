@@ -596,18 +596,22 @@ function nf48PeekClear(){
 (function(){
   const nav = navigate;
   navigate = function(page){
-    let peek = false, closing = false, prevPeek = null;
+    let peek = false, closing = false, prevPeek = null, same = false;
     try{
       const actEl = document.querySelector('#view-app .app-page.active'), from = actEl ? actEl.id.replace('page-', '') : null;
       const isApp = typeof appPages !== 'undefined' && appPages.includes(page);
       closing = !!NF48K.under && page === NF48K.under;
+      // the page already open in the side panel asked for itself again (a chat opening, a tab switch): keep the panel
+      same = !!NF48K.under && page === from && !!actEl && actEl.classList.contains('nf48-peek');
       const content = Date.now() - NF47J.t < 2500 && NF47J.src === 'content';
       peek = !closing && isApp && from && page !== from && (content || NF48K.backing) && !NF48K.off && document.getElementById('page-' + page);
-      if(peek){ if(!NF48K.under){ NF48K.under = from; NF48K.y = window.scrollY; } else if(!NF48K.backing && from !== NF48K.under) NF48K.stack.push(from); prevPeek = actEl; }
+      if(same){ /* keep */ }
+      else if(peek){ if(!NF48K.under){ NF48K.under = from; NF48K.y = window.scrollY; } else if(!NF48K.backing && from !== NF48K.under) NF48K.stack.push(from); prevPeek = actEl; }
       else { const y = NF48K.y, wasUnder = NF48K.under; nf48PeekClear(); if(closing && wasUnder){ NF47J.back = true; setTimeout(() => window.scrollTo(0, y), 0); [80, 300].forEach(ms => setTimeout(() => window.scrollTo(0, y), ms)); } }
     }catch(e){ console.warn('nf48 peek', e); }
     const r = nav.apply(this, arguments);
     if(peek){ try{ nf48PeekShow(page, prevPeek); }catch(e){ console.warn('nf48 peek show', e); nf48PeekClear(); } }
+    else if(same){ try{ const el = document.getElementById('page-' + page), base = document.getElementById('page-' + NF48K.under); if(el) el.classList.add('nf48-peek'); if(base) base.classList.add('nf48-under'); document.body.classList.add('nf48-peeking'); window.scrollTo(0, NF48K.y); nf48PeekBar(el); }catch(e){} }
     NF48K.backing = false;
     return r;
   };
@@ -643,3 +647,146 @@ NF45_AFTER.push(page => { if(page && page.classList.contains('nf48-peek')){ nf48
 /* ---------- copy that never fails silently: falls back when the browser blocks the clipboard ---------- */
 (function(){ if(typeof copyText !== 'function') return; copyText = function(t){ try{ if(String(t).includes('/s/') && typeof markStoreShared === 'function') markStoreShared(); }catch(e){}
   nf48Copy(String(t)).then(ok => { if(ok) showToast('Copied.', 'success'); else { try{ prompt('Copy this:', t); }catch(e){} } }); }; window.copyText = copyText; })();
+
+/* ---------- Edit history in a popup (was a jump to Settings): cash count edits + every logged change, in plain words ---------- */
+const NF48A = {act: 'all', q: '', n: 40};
+const NF48A_FIELD = {criticalityTier: 'how important', rop: 'reorder point', price: 'price', sellPrice: 'selling price', cost: 'cost', unitPrice: 'price', allowedPages: 'pages they can open', mergedInto: 'merged into', status: 'status', qty: 'quantity', attemptedBy: 'tried by'};
+function nf48AuditName(type, id){
+  try{ if(/sku|item|inventory/i.test(type || '')){ const s = typeof getSkuById === 'function' ? getSkuById(id) : null; if(s && (s.canonicalName || s.name || s.product)) return s.canonicalName || s.name || s.product; const it = typeof nf22Items === 'function' ? nf22Items().find(x => x.code === id || x.id === id || x.sku === id) : null; if(it) return it.name; } }catch(e){}
+  return String(id || '');
+}
+function nf48AuditEvents(){
+  const L = typeof AUDIT_ACTION_LABELS !== 'undefined' ? AUDIT_ACTION_LABELS : {}, peso = v => typeof mhPeso === 'function' ? mhPeso(v) : '₱' + Number(v || 0).toLocaleString();
+  const full = n => typeof mhFull === 'function' ? mhFull(n) : String(n || ''), day = d => typeof mhLabel === 'function' ? mhLabel(d) : String(d || '');
+  const ev = [];
+  ((typeof BK !== 'undefined' && BK.counts) || []).forEach(r => {
+    const d = day(r.day);
+    (r.edits || []).forEach(e => ev.push({kind: 'cash', who: full(e.by), what: 'Changed a cash count', sub: d + ' · Reason: ' + (e.why || '—'), before: peso(e.from), after: peso(e.to), when: e.when}));
+    if(r.reopenedAt) ev.push({kind: 'cash', who: full(r.reopenedBy || r.by), what: 'Reopened a cash count for a recount', sub: d, before: peso(r.counted && r.counted.cash), after: '', when: r.reopenedAt});
+    if(r.reviewedAt) ev.push({kind: 'cash', who: full(r.reviewedBy || 'Owner'), what: 'Checked a cash count', sub: d + (r.reviewNote ? ' · "' + r.reviewNote + '"' : ''), before: '', after: '', when: r.reviewedAt});
+    const m = /^Edited by ([^:]+): (.*) \(was (.*), now (.*)\)$/.exec(r.note || ''); if(m) ev.push({kind: 'cash', who: full(m[1]), what: 'Changed a cash count', sub: d + ' · Reason: ' + m[2], before: m[3], after: m[4], when: r.at || r.updated_at || r.day});
+  });
+  ((typeof NiftiDB !== 'undefined' && NiftiDB.auditLog) || []).forEach(a => {
+    const name = a.entityId ? nf48AuditName(a.entityType, a.entityId) : '', field = a.field ? (NF48A_FIELD[a.field] || String(a.field).replace(/([a-z])([A-Z])/g, '$1 $2').toLowerCase()) : '';
+    ev.push({kind: a.action, who: a.actor || '—', what: L[a.action] || String(a.action || '').replace(/_/g, ' '), sub: [name, field].filter(Boolean).join(' · '), before: a.oldValue == null ? '' : String(a.oldValue), after: a.newValue == null ? '' : String(a.newValue), when: a.timestamp});
+  });
+  return ev.sort((x, y) => String(y.when || '').localeCompare(String(x.when || '')));
+}
+function nf48AuditWhen(w){ if(!w) return ''; const d = new Date(w); if(isNaN(d)) return String(w); const s = d.toLocaleDateString('en-US', {month: 'short', day: 'numeric'}); return /T\d\d:/.test(String(w)) ? s + ', ' + d.toLocaleTimeString('en-US', {hour: 'numeric', minute: '2-digit'}) : s; }
+function nf48AuditRows(){
+  let list = nf48AuditEvents();
+  if(NF48A.act !== 'all') list = list.filter(a => a.kind === NF48A.act);
+  if(NF48A.q){ const q = NF48A.q.toLowerCase(); list = list.filter(a => [a.who, a.what, a.sub, a.before, a.after].join(' ').toLowerCase().includes(q)); }
+  const rows = list.slice(0, NF48A.n).map(a => `<tr><td><b>${nf48E(a.who)}</b></td><td>${nf48E(a.what)}${a.sub ? `<small>${nf48E(a.sub)}</small>` : ''}</td><td>${a.before || a.after ? `${a.before ? `<s>${nf48E(a.before)}</s> ` : ''}${a.after ? `→ <b>${nf48E(a.after)}</b>` : ''}` : '<span class="nf48-mut">—</span>'}</td><td class="nf48-when">${nf48E(nf48AuditWhen(a.when))}</td></tr>`).join('');
+  return `<p class="nf48-acount">${list.length} change${list.length === 1 ? '' : 's'}${list.length > NF48A.n ? ` · showing the newest ${NF48A.n}` : ''}</p>
+    ${rows ? `<div class="nf48-atbl"><table><thead><tr><th>Who</th><th>What changed</th><th>Before → after</th><th>When</th></tr></thead><tbody>${rows}</tbody></table></div>` : '<p class="nf48-mut nf48-aempty">No changes match.</p>'}
+    ${list.length > NF48A.n ? `<button type="button" class="btn btn-outline nf48-amore" onclick="NF48A.n += 60; nf48AuditPaint()">Show older changes</button>` : ''}`;
+}
+function nf48AuditPaint(){ const b = document.getElementById('nf48AuditList'); if(b) b.innerHTML = nf48AuditRows(); }
+function nf48EditHistory(kind){
+  NF48A.n = 40; NF48A.q = ''; NF48A.act = kind || 'all';
+  const kinds = {}; nf48AuditEvents().forEach(e => { kinds[e.kind] = kinds[e.kind] || (e.kind === 'cash' ? 'Cash counts' : e.what); });
+  const opts = Object.keys(kinds).sort((x, y) => x === 'cash' ? -1 : y === 'cash' ? 1 : kinds[x].localeCompare(kinds[y]));
+  const body = `<p class="nf45-p">Every change anyone made: cash counts, prices, orders, who can see what. Nothing here can be erased.</p>
+    <div class="nf48-afilt"><select class="nf48-asel" onchange="NF48A.act = this.value; NF48A.n = 40; nf48AuditPaint()"><option value="all">All kinds of changes</option>${opts.map(k => `<option value="${nf48E(k)}"${NF48A.act === k ? ' selected' : ''}>${nf48E(kinds[k])}</option>`).join('')}</select>
+    <input type="search" class="nf48-aq" placeholder="Search a name, item or reason" oninput="NF48A.q = this.value; NF48A.n = 40; nf48AuditPaint()"></div>
+    <div id="nf48AuditList">${nf48AuditRows()}</div>`;
+  nf45Pop('nf48Audit', 'Edit history', body, `<button type="button" class="btn btn-primary" onclick="slClose('nf48Audit')">Done</button>`, {wide: true});
+}
+(function(){ if(typeof mhEditHistory === 'function'){ mhEditHistory = function(){ nf48EditHistory(); }; window.mhEditHistory = mhEditHistory; } })();
+
+/* opening a chat (from an order, a follow-up, a note) lands on the newest message once the side panes have settled */
+(function(){ const sc = window.selectConversation; if(typeof sc !== 'function' || sc._nf48) return;
+  const w = function(){ const out = sc.apply(this, arguments); const down = () => { const b = document.querySelector('#page-messages .msg-thread-body'); if(b) b.scrollTop = b.scrollHeight; }; [80, 400].forEach(ms => setTimeout(down, ms)); return out; };
+  w._nf48 = true; window.selectConversation = w; try{ selectConversation = w; }catch(e){} })();
+
+/* ---------- Nifti-styled questions instead of the browser's grey prompt / confirm boxes ----------
+   The app asks ~85 questions with prompt() and confirm(). Rewriting every caller to wait for an answer would touch
+   every page, so: the first time a button asks, the question opens in a Nifti popup and the button's action stops
+   there (confirm says "no", prompt stops the action). When the person answers, the same button runs again and gets
+   that answer straight away. Nothing after the question runs twice; anything before it is a read or a close.
+   With no button behind the question (timers) or under test automation, the browser's own box is used as before. */
+const NF48D = {el: null, t: 0, answers: null, clear: 0, open: false, nativePrompt: window.prompt, nativeConfirm: window.confirm, nativeAlert: window.alert};
+const NF48D_STOP = 'nf48-ask: waiting for an answer';
+function nf48DOn(){ return window.NF48D_FORCE === true || (window.NF48D_FORCE !== false && !navigator.webdriver); }
+document.addEventListener('click', e => {
+  if(e.target && e.target.closest && e.target.closest('#nf48Ask')) return;
+  if(e.isTrusted){ NF48D.answers = null; clearTimeout(NF48D.clear); }
+  const t = e.target && e.target.closest ? e.target.closest('button, a, [onclick], [role="button"], [data-a], label, summary') || e.target : null;
+  if(t){ NF48D.el = t.matches('input, select, textarea, option, label') ? null : t; NF48D.t = Date.now(); }
+}, true);
+// Enter or Space on a focused control: only a button or link can be re-run; typing in a box falls back to the browser's box
+document.addEventListener('keydown', e => { if(e.key !== 'Enter' && e.key !== ' ') return; if(e.target && e.target.closest && e.target.closest('#nf48Ask')) return;
+  const t = e.target && e.target.closest ? e.target.closest('button, a, [role="button"]') : null; NF48D.el = t || null; NF48D.t = Date.now(); }, true);
+window.addEventListener('error', e => { if(String(e.message || '').includes(NF48D_STOP) || (e.error && e.error.nf48)) e.preventDefault(); });
+window.addEventListener('unhandledrejection', e => { if(e.reason && (e.reason.nf48 || String(e.reason.message || '').includes(NF48D_STOP))) e.preventDefault(); });
+function nf48DCanAsk(){ return nf48DOn() && !NF48D.open && NF48D.el && Date.now() - NF48D.t < 5000; }
+function nf48DReplay(el){
+  NF48D.open = false;
+  clearTimeout(NF48D.clear); NF48D.clear = setTimeout(() => { NF48D.answers = null; }, 5000);
+  let target = el;
+  if(!target || !target.isConnected){
+    const oc = el && el.getAttribute && el.getAttribute('onclick'), txt = el ? (el.textContent || '').trim() : '';
+    target = oc ? [...document.querySelectorAll('[onclick]')].find(x => x.getAttribute('onclick') === oc && (x.textContent || '').trim() === txt) || null : null;
+    if(!target && el && el.dataset && el.dataset.a) target = [...document.querySelectorAll('[data-a="' + el.dataset.a + '"]')].find(x => (x.dataset.v || '') === (el.dataset.v || '')) || null;
+    if(!target && oc){ try{ new Function('event', oc).call(el, {target: el, currentTarget: el, stopPropagation(){}, preventDefault(){}}); }catch(err){ if(!err.nf48) console.warn('nf48 replay', err); } return; }
+  }
+  if(!target){ showToast('That changed in the meantime. Tap it again.'); return; }
+  NF48D.el = target; NF48D.t = Date.now();
+  try{ target.click(); }catch(err){ if(!err.nf48) console.warn('nf48 replay', err); }
+}
+function nf48DDanger(msg){ return /\b(delete|remove|suspend|disconnect|throw away|cancel (this|the)|turn off|end the pilot|stop |can't be undone|log out|hide ")/i.test(msg); }
+function nf48DOptions(msg){
+  const m = /Type(?: one)?:\s*([a-z][a-z ,]+?)\s*$/i.exec(msg.split('\n').pop()); if(!m) return null;
+  const opts = m[1].split(/\s*,\s*|\s+or\s+/).map(x => x.trim()).filter(Boolean); return opts.length >= 2 && opts.length <= 6 ? opts : null;
+}
+function nf48DShow(kind, msg, def, onDone){
+  NF48D.open = true;
+  let box = document.getElementById('nf48Ask'); if(box) box.remove();
+  box = document.createElement('div'); box.id = 'nf48Ask'; box.className = 'nf48-ask'; box.setAttribute('role', 'dialog'); box.setAttribute('aria-modal', 'true');
+  const opts = kind === 'prompt' ? nf48DOptions(msg) : null, money = /\(₱\)|\(PHP\)/.test(msg);
+  const shown = opts ? String(msg).replace(/[\s.?]*Type(?: one)?:[^\n]*$/i, '?').replace(/\?\?$/, '?') : String(msg);
+  const lines = shown.split('\n'), head = lines[0], rest = lines.slice(1).join('\n').trim();
+  const long = kind === 'prompt' && !money && !opts && (/\b(why|note|message|what was done|what needs|tell them|reason)\b/i.test(msg) || String(def || '').length > 40);
+  const danger = kind === 'confirm' && nf48DDanger(msg);
+  const field = kind !== 'prompt' ? '' : opts ? `<input class="nf48-askin" type="hidden" value="${nf48E(def == null ? '' : def)}">` : long ? `<textarea class="nf48-askin" rows="3">${nf48E(def || '')}</textarea>`
+    : `<input class="nf48-askin" type="text"${money ? ' inputmode="decimal"' : ''} value="${nf48E(def == null ? '' : def)}" autocomplete="off">`;
+  const chips = opts ? `<div class="nf48-askchips">${opts.map(o => `<button type="button" class="nf48-askchip${String(def || '').toLowerCase() === o.toLowerCase() ? ' on' : ''}" data-v="${nf48E(o)}">${nf48E(o.charAt(0).toUpperCase() + o.slice(1))}</button>`).join('')}</div>` : '';
+  const okText = kind === 'alert' ? 'OK' : kind === 'confirm' ? (danger ? 'Yes, do it' : 'Yes') : 'OK';
+  box.innerHTML = `<div class="nf48-askbox"><p class="nf48-askq">${nf48E(head)}</p>${rest ? `<p class="nf48-askd">${nf48E(rest).replace(/\n/g, '<br>')}</p>` : ''}${chips}${field}
+    <div class="nf48-askb">${kind === 'alert' ? '' : `<button type="button" class="btn btn-outline" data-r="no">${kind === 'confirm' ? 'No, go back' : 'Cancel'}</button>`}<button type="button" class="btn ${danger ? 'nf48-askdanger' : 'btn-primary'}" data-r="ok">${okText}</button></div></div>`;
+  document.body.appendChild(box);
+  const inp = box.querySelector('.nf48-askin');
+  const done = ok => { const v = inp ? inp.value : null; box.remove(); NF48D.open = false; onDone(ok, v); };
+  box.addEventListener('click', e => { const b = e.target.closest('button'); if(e.target === box){ done(false); return; } if(!b) return;
+    if(b.dataset.v != null && inp){ inp.value = b.dataset.v; box.querySelectorAll('.nf48-askchip').forEach(c => c.classList.toggle('on', c === b)); return; }
+    if(b.dataset.r) done(b.dataset.r === 'ok'); });
+  box.addEventListener('keydown', e => { if(e.key === 'Escape'){ e.preventDefault(); e.stopPropagation(); done(kind === 'alert'); } else if(e.key === 'Enter' && !(inp && inp.tagName === 'TEXTAREA' && !e.metaKey && !e.ctrlKey)){ e.preventDefault(); done(true); } });
+  setTimeout(() => { if(inp && inp.type !== 'hidden'){ inp.focus(); try{ inp.select(); }catch(e){} } else { const ok = box.querySelector('[data-r="ok"]'); if(ok) ok.focus(); } }, 30);
+}
+function nf48DCopy(text){
+  nf45Pop('nf48CopyBox', 'Copy this', `<p class="nf45-p">Your browser blocked copying. Press and hold (or select) the text, then copy it.</p><textarea class="nf48-copyta" readonly rows="4">${nf48E(text || '')}</textarea>`, `<button type="button" class="btn btn-primary" onclick="slClose('nf48CopyBox')">Done</button>`);
+  setTimeout(() => { const t = document.querySelector('#nf48CopyBox .nf48-copyta'); if(t){ t.focus(); t.select(); } }, 60);
+}
+(function(){
+  window.prompt = function(msg, def){
+    msg = msg == null ? '' : String(msg);
+    if(/^Copy this/i.test(msg)){ if(nf48DOn()){ nf48DCopy(def); return null; } return NF48D.nativePrompt.apply(window, arguments); }
+    const k = 'p|' + msg; if(NF48D.answers && k in NF48D.answers) return NF48D.answers[k];
+    if(!nf48DCanAsk()) return NF48D.nativePrompt.apply(window, arguments);
+    const el = NF48D.el;
+    nf48DShow('prompt', msg, def, (ok, v) => { if(!ok) return; NF48D.answers = Object.assign(NF48D.answers || {}, {[k]: v == null ? '' : v}); nf48DReplay(el); });
+    const err = new Error(NF48D_STOP); err.nf48 = true; throw err;
+  };
+  window.confirm = function(msg){
+    msg = msg == null ? '' : String(msg);
+    const k = 'c|' + msg; if(NF48D.answers && k in NF48D.answers) return NF48D.answers[k];
+    if(!nf48DCanAsk()) return NF48D.nativeConfirm.apply(window, arguments);
+    const el = NF48D.el;
+    nf48DShow('confirm', msg, null, ok => { if(!ok) return; NF48D.answers = Object.assign(NF48D.answers || {}, {[k]: true}); nf48DReplay(el); });
+    return false;
+  };
+  window.alert = function(msg){ if(!nf48DOn() || NF48D.open) return NF48D.nativeAlert.apply(window, arguments); nf48DShow('alert', msg == null ? '' : String(msg), null, () => {}); };
+  try{ prompt = window.prompt; confirm = window.confirm; alert = window.alert; }catch(e){}
+})();
+

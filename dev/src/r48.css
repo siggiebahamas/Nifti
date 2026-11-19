@@ -163,3 +163,92 @@ html body #view-app #page-settings #nf47Pages.settings-card, html body #view-app
 
 /* inside a side panel the section chips are not needed: Back and Close are the way out */
 .app-page.nf48-peek .nf18-hubwrap{display:none !important;}
+
+/* Edit history popup */
+.nf48-afilt{display:flex;gap:8px;flex-wrap:wrap;margin:4px 0 10px;}
+.nf48-afilt .nf48-asel{flex:0 1 240px;min-height:40px;padding:8px 10px;border:1px solid var(--border);border-radius:10px;font:inherit;font-size:14px;background:#fff;color:#111;}
+.nf48-afilt .nf48-aq{flex:1 1 200px;min-height:40px;padding:8px 12px;border:1px solid var(--border);border-radius:10px;font:inherit;font-size:14px;}
+.nf48-acount{font-size:13px;color:#4b5563;margin:0 0 6px;}
+.nf48-atbl{max-height:min(56vh,520px);overflow:auto;border:1px solid var(--border);border-radius:12px;}
+.nf48-atbl table{width:100%;border-collapse:collapse;font-size:14px;}
+.nf48-atbl th{position:sticky;top:0;background:#F7F8FA;text-align:left;font-size:12px;font-weight:700;color:#374151;padding:9px 12px;border-bottom:1px solid var(--border);white-space:nowrap;}
+.nf48-atbl td{padding:9px 12px;border-bottom:1px solid #EEF0F3;vertical-align:top;color:#111;}
+.nf48-atbl tr:last-child td{border-bottom:0;}
+.nf48-atbl td small{display:block;font-size:12px;color:#4b5563;margin-top:2px;}
+.nf48-atbl td s{color:#9CA3AF;}
+.nf48-atbl .nf48-when{white-space:nowrap;color:#374151;font-size:13px;}
+.nf48-aempty{padding:14px 2px;}
+.nf48-amore{margin-top:10px;width:100%;}
+@media (max-width:640px){
+  .nf48-atbl thead{display:none;}
+  .nf48-atbl tr{display:grid;grid-template-columns:1fr auto;gap:2px 10px;padding:10px 12px;border-bottom:1px solid #EEF0F3;}
+  .nf48-atbl td{padding:0;border:0;}
+  .nf48-atbl td:nth-child(2){grid-column:1 / -1;}
+  .nf48-atbl td:nth-child(3){grid-column:1 / -1;}
+  .nf48-atbl td:nth-child(4){grid-row:1;grid-column:2;}
+}
+.nf48-mut{color:#6B7280;}
+
+/* Phone: Follow-ups top buttons. Main action gets its own full row, the two smaller ones share the row below */
+@media (max-width:640px){
+  html body #view-app #page-followups .nf45-fubtns{display:grid !important;grid-template-columns:1fr 1fr;gap:8px;width:100%;}
+  html body #view-app #page-followups .nf45-fubtns > .btn{width:100%;min-height:44px;height:auto;padding:10px 10px;white-space:normal;line-height:1.25;}
+  html body #view-app #page-followups .nf45-fubtns > .btn-primary{grid-column:1 / -1;order:-1;}
+  html body #view-app #page-team .nf45-teamhd .r1 > .btn{padding-left:10px;padding-right:10px;line-height:1.25;}
+}
+
+/* Messages with the order beside the chat (opened from an order), or Messages opened as a side panel:
+   folders shrink to the icon rail so the chat itself keeps room to read and type */
+@media (min-width:761px){
+  html body #view-app .app-page.nf48-peek#page-messages{width:calc(100vw - var(--nf48-l, 0px) - 40px);}
+}
+@media (min-width:901px){
+  html body #view-app #page-messages .messages-shell.nf18-ctx, html body #view-app #page-messages.nf48-peek .messages-shell{grid-template-columns:384px minmax(0,1fr) !important;}
+  html body #view-app #page-messages .messages-shell.nf18-ctx .msg-sidebar.nf39-side, html body #view-app #page-messages.nf48-peek .msg-sidebar.nf39-side{flex:0 0 384px !important;width:384px !important;max-width:none !important;padding-left:84px !important;}
+  html body #view-app #page-messages .messages-shell.nf18-ctx .nf39-fold, html body #view-app #page-messages.nf48-peek .nf39-fold{top:0;width:84px;padding:10px 4px;}
+  html body #view-app #page-messages .messages-shell.nf18-ctx .nf39-fh, html body #view-app #page-messages .messages-shell.nf18-ctx .nf39-l,
+  html body #view-app #page-messages.nf48-peek .nf39-fh, html body #view-app #page-messages.nf48-peek .nf39-l{display:none;}
+  html body #view-app #page-messages .messages-shell.nf18-ctx .nf39-fi, html body #view-app #page-messages.nf48-peek .nf39-fi{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 0 9px;font-size:11px;font-weight:800;text-align:center;line-height:1.1;position:relative;}
+  html body #view-app #page-messages .messages-shell.nf18-ctx .nf39-s, html body #view-app #page-messages.nf48-peek .nf39-s{display:block;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:10px;font-weight:700;letter-spacing:-.02em;}
+  html body #view-app #page-messages .messages-shell.nf18-ctx .nf39-fi em, html body #view-app #page-messages.nf48-peek .nf39-fi em{position:absolute;top:3px;right:calc(50% - 22px);min-width:19px;height:19px;font-size:11px;padding:0 5px;box-shadow:0 0 0 2px #FAFAFB;}
+  html body #view-app #page-messages .messages-shell.nf18-ctx .nf39-fi[data-f="pers"], html body #view-app #page-messages.nf48-peek .nf39-fi[data-f="pers"]{border-top:1px solid #E9ECEF;padding-top:12px;}
+}
+/* the order chips above a chat (All messages · Order 0810 · Order 0871) were squeezed to 25px tall with the words cut off */
+html body #view-app #page-messages .msg-po-tabs{flex:0 0 auto !important;min-height:min-content;}
+html body #view-app #page-messages .msg-po-tab{white-space:nowrap;flex:0 0 auto;}
+/* ready-made replies beside an order: a row you can swipe instead of three squashed cards */
+@media (min-width:901px){
+  html body #view-app #page-messages .messages-shell.nf18-ctx .nf18-chl{display:flex !important;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin;}
+  html body #view-app #page-messages .messages-shell.nf18-ctx .nf18-c{flex:0 0 232px;min-width:0;}
+  html body #view-app #page-messages .nf18-c small{font-size:12.5px !important;line-height:1.3;overflow-wrap:anywhere;}
+  html body #view-app #page-messages .messages-shell.nf18-ctx .nf18-c p{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;}
+}
+/* the Nifti / Viber switch above the reply box was squeezed to 13px and sat on top of the last message */
+html body #view-app #page-messages .nf36v-bar, html body #view-app #page-messages .msg-composer, html body #view-app #page-messages .msg-thread-head, html body #view-app #page-messages .nf18task{flex-shrink:0 !important;}
+html body #view-app #page-messages .msg-thread-body{min-height:0;}
+@media (min-width:901px){
+  html body #view-app #page-messages .messages-shell.nf18-ctx .nf37v-acts, html body #view-app #page-messages.nf48-peek .nf37v-acts{padding-left:14px !important;padding-right:14px !important;}
+  html body #view-app #page-messages .messages-shell.nf18-ctx .nf37v-acts button, html body #view-app #page-messages.nf48-peek .nf37v-acts button{font-size:13px !important;padding:7px 4px !important;}
+}
+
+/* Nifti-styled questions (replace the browser's prompt / confirm boxes) */
+.nf48-ask{position:fixed;inset:0;z-index:10045;background:rgba(11,15,20,.42);display:flex;align-items:center;justify-content:center;padding:16px;animation:nf48fade .12s ease-out;}
+.nf48-askbox{width:min(460px,100%);background:#FFFFFF;border-radius:18px;padding:22px 22px 18px;box-shadow:0 24px 64px rgba(11,15,20,.28);font-family:var(--font-b, inherit);}
+.nf48-askq{margin:0 0 6px;font-size:18px;font-weight:800;line-height:1.35;color:#0B0F14;}
+.nf48-askd{margin:0 0 10px;font-size:15px;line-height:1.5;color:#344054;}
+.nf48-askin{display:block;width:100%;box-sizing:border-box;margin:10px 0 4px;min-height:46px;padding:11px 14px;border:1.5px solid #D0D5DD;border-radius:12px;font:inherit;font-size:16px;color:#0B0F14;background:#FFFFFF;resize:vertical;}
+.nf48-askin:focus{outline:none;border-color:#1F6B45;box-shadow:0 0 0 3px rgba(31,107,69,.18);}
+textarea.nf48-askin{min-height:84px;line-height:1.45;}
+.nf48-askchips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 2px;}
+.nf48-askchip{min-height:40px;padding:8px 14px;border-radius:999px;border:1.5px solid #D0D5DD;background:#FFFFFF;font:inherit;font-size:15px;font-weight:700;color:#0B0F14;cursor:pointer;}
+.nf48-askchip.on{border-color:#1F6B45;background:#E3F1E8;color:#14532D;}
+.nf48-askb{display:flex;justify-content:flex-end;gap:10px;margin-top:16px;flex-wrap:wrap;}
+.nf48-askb .btn{min-height:44px;min-width:110px;justify-content:center;}
+.nf48-askb .nf48-askdanger{background:#B42318;border:1.5px solid #B42318;color:#FFFFFF;}
+.nf48-askb .nf48-askdanger:hover{background:#912018;}
+.nf48-copyta{width:100%;box-sizing:border-box;min-height:96px;padding:10px 12px;border:1.5px solid #D0D5DD;border-radius:12px;font:inherit;font-size:15px;}
+@keyframes nf48fade{from{opacity:0;}to{opacity:1;}}
+@media (max-width:560px){ .nf48-ask{align-items:flex-end;padding:0;} .nf48-askbox{border-radius:20px 20px 0 0;padding:20px 16px calc(16px + env(safe-area-inset-bottom));} .nf48-askb .btn{flex:1;} }
+/* an older rule centers every [role=dialog] with translateX(-50%): this one covers the whole screen itself */
+html body #nf48Ask.nf48-ask{position:fixed !important;inset:0 !important;transform:none !important;width:auto !important;height:auto !important;max-width:none !important;max-height:none !important;margin:0 !important;}
+html body #nf48Ask .nf48-askbox{transform:none !important;position:relative !important;left:auto !important;top:auto !important;}
