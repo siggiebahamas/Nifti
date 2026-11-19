@@ -212,7 +212,7 @@ function nf49FbSetup(){ nf45Pop('nf49FbSetup', 'Answer buyers on Facebook automa
       NF49S.next = false; NF49S.inlineId = id; NF49S.view = 'inline';
       const w = document.createElement('div'); w.className = 'nf49-tool'; w.id = id;
       w.innerHTML = `<div class="nf49-tbody">${body}</div>${foot ? `<div class="nf49-tfoot">${foot}</div>` : ''}`;
-      host.innerHTML = ''; host.appendChild(w);
+      host.innerHTML = ''; delete host.dataset.k49; host.appendChild(w);
       w.querySelectorAll('.nf43-cancel').forEach(c => c.remove());
       w.querySelectorAll('.nf49-tfoot button').forEach(b => { if(/^(Close|Cancel|Not now|Done)$/i.test(b.textContent.trim()) && /slClose\(/.test(b.getAttribute('onclick') || '')) b.classList.add('nf49-quiet'); });
       return w;
@@ -343,7 +343,7 @@ function nf49PostSteps(){
     if(NF49S.view === 'home'){
       page.classList.add('nf49-home'); page.classList.remove('nf49-in');
       const top = page.querySelector('.nf22s-top'); if(top) top.replaceWith(nf22Top());
-      const body = document.getElementById('nf22sBody'); if(body){ const h = nf49HomeHtml(); if(body.dataset.k49 !== h){ body.dataset.k49 = h; body.innerHTML = h; } }
+      const body = document.getElementById('nf22sBody'); if(body){ const h = nf49HomeHtml(); if(body.dataset.k49 !== h || !body.querySelector(':scope > .nf49-hm')){ body.dataset.k49 = h; body.innerHTML = h; } }
       const keep = page.querySelector('.nf22s-keep'); if(keep) keep.hidden = true;
       try{ nf48LoadPhotos(); }catch(e){}
       return;
