@@ -130,11 +130,11 @@ html body #storeContent .nf48-tool.main small{color:#E3F2E9 !important;font-size
 /* Pages open beside you */
 .app-page.nf48-under{display:block !important;}
 @media (min-width:761px){
-  .app-page.nf48-peek{position:fixed !important;top:0;right:0;bottom:0;left:auto;width:min(1000px, calc(100vw - var(--nf48-l, 0px) - 140px));z-index:4200;background:#FFFFFF;overflow-y:auto;overscroll-behavior:contain;padding:0 28px 48px !important;margin:0 !important;box-shadow:-24px 0 60px rgba(11,15,20,.22);border-left:1px solid #E4E7EC;animation:nf48slide .2s ease-out;}
-  .nf48-dim{position:fixed;top:0;right:0;bottom:0;z-index:4190;background:rgba(11,15,20,.28);cursor:pointer;}
+  .app-page.nf48-peek{position:fixed !important;top:0;right:0;bottom:0;left:auto;width:min(1000px, calc(100vw - var(--nf48-l, 0px) - 140px));z-index:1140;background:#FFFFFF;overflow-y:auto;overscroll-behavior:contain;padding:0 28px 48px !important;margin:0 !important;box-shadow:-24px 0 60px rgba(11,15,20,.22);border-left:1px solid #E4E7EC;animation:nf48slide .2s ease-out;}
+  .nf48-dim{position:fixed;top:0;right:0;bottom:0;z-index:1130;background:rgba(11,15,20,.28);cursor:pointer;}
 }
 @media (max-width:760px){
-  .app-page.nf48-peek{position:fixed !important;inset:0;z-index:4200;background:#FFFFFF;overflow-y:auto;overscroll-behavior:contain;padding:0 16px 96px !important;margin:0 !important;animation:nf48up .2s ease-out;}
+  .app-page.nf48-peek{position:fixed !important;inset:0;z-index:1140;background:#FFFFFF;overflow-y:auto;overscroll-behavior:contain;padding:0 16px 96px !important;margin:0 !important;animation:nf48up .2s ease-out;}
   .nf48-dim{display:none !important;}
 }
 .nf48-dim[hidden]{display:none !important;}
@@ -252,3 +252,12 @@ textarea.nf48-askin{min-height:84px;line-height:1.45;}
 /* an older rule centers every [role=dialog] with translateX(-50%): this one covers the whole screen itself */
 html body #nf48Ask.nf48-ask{position:fixed !important;inset:0 !important;transform:none !important;width:auto !important;height:auto !important;max-width:none !important;max-height:none !important;margin:0 !important;}
 html body #nf48Ask .nf48-askbox{transform:none !important;position:relative !important;left:auto !important;top:auto !important;}
+
+/* Side panels sit at layer 1140: every popup, sheet, notebook and toast opened from inside one shows above it.
+   The few old popups that used low layers (100-150, and the order popup at 130) are lifted while a panel is open. */
+body.nf48-peeking [id$="Modal"]:not(.share-modal-backdrop){z-index:1160 !important;}
+html body.nf48-peeking #orderDetailModal, html body.nf48-peeking #docPreviewModal, html body.nf48-peeking #createPoModal, html body.nf48-peeking #photoImportModal, html body.nf48-peeking #upgradePromptModal, html body.nf48-peeking #helpCenterModal, html body.nf48-peeking #barcodeScannerModal, html body.nf48-peeking #sendConfirmModal, html body.nf48-peeking #manageWarehousesModal, html body.nf48-peeking #importInvModal, html body.nf48-peeking #compareSuppliersModal, html body.nf48-peeking #announcementComposerModal, html body.nf48-peeking #bulkInviteModal, html body.nf48-peeking #supplierPreviewModal{z-index:1160 !important;}
+html body #appToastStack.app-toast-stack, body.nf48-peeking .notif-toast{z-index:1250 !important;}
+html.nf-phone body.nf48-peeking #orderDetailModal.nff-modal, html body.nf48-peeking #orderDetailModal.nff-modal, html.nf-phone body.nf48-peeking #orderDetailModal{z-index:1160 !important;}
+html body.nf48-peeking #mhSheet{z-index:1160 !important;}
+.nf26-side.nf48-nocount b{display:none !important;}

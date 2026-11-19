@@ -790,3 +790,6 @@ function nf48DCopy(text){
   try{ prompt = window.prompt; confirm = window.confirm; alert = window.alert; }catch(e){}
 })();
 
+
+/* phone Selling / Buying switch: no "0 · 0" counts on pages where it has nothing to count (2307s, books, credits, profit) */
+NF45_AFTER.push(page => { if(!page) return; page.querySelectorAll('.nf26-side').forEach(sw => { const n = [...sw.querySelectorAll('b')].map(b => Number(b.textContent) || 0); sw.classList.toggle('nf48-nocount', n.length > 0 && n.every(x => x === 0)); }); });
