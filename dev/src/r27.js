@@ -8,7 +8,7 @@
   if(typeof ss === 'function' && !ss._nf27){ const w = function(){ return (ss.apply(this, arguments) || []).filter(s => !/Telegram/i.test(s.label || '')); }; w._nf27 = true; window.setupSteps = w; try{ setupSteps = w; }catch(e){} }
 })();
 /* ---------- Settings: the six things people change, then "More settings" ---------- */
-const NF27_KEEP = /^(Business profile|How buyers pay you|Team & roles|Who sees what|Your plan|Help & support|Account & security)/;
+const NF27_KEEP = /^(Business profile|How buyers pay you|Team & roles|Who sees what|Pages you use|Your plan|Help & support|Account & security)/;
 function nf27Settings(page){
   if(!page || page.id !== 'page-settings') return;
   const cards = [...page.querySelectorAll('.settings-card')].filter(c => !c.classList.contains('owner-only'));

@@ -146,12 +146,13 @@
       var m = document.createElement('div'); m.className = 'ns-modal'; m.id = 'ns-modal';
       m.onclick = function(e){ if(e.target === m) m.remove(); };
       m.innerHTML = '<div class="ns-sheet"><h2>Your order with ' + esc(d.name) + '</h2>' + lines
-        + '<div class="ns-line ns-total"><span>Total</span><span>' + (t.priced ? peso(t.total) : 'Price to follow') + '</span></div>'
+        + '<div id="ns-sums">' + NS.sumsHtml() + '</div>'
         + (signed ? '<div class="ns-note">Ordering as your Nifti account. You\'ll see it in your Orders.</div>'
           : '<label>Your name</label><input id="ns-name" maxlength="80" autocomplete="name" value="' + esc(saved.name || '') + '">'
           + '<label>Business name (optional)</label><input id="ns-biz" maxlength="120" autocomplete="organization" value="' + esc(saved.biz || '') + '">'
           + '<label>Mobile number</label><input id="ns-phone" type="tel" inputmode="tel" maxlength="20" placeholder="0917 123 4567" autocomplete="tel" value="' + esc(saved.phone || '') + '">')
         + '<label>Deliver to</label><input id="ns-addr" maxlength="300" placeholder="Street, barangay, city" autocomplete="street-address" value="' + esc(saved.addr || '') + '">'
+        + NS.areaHtml(saved) + NS.payHtml(saved)
         + '<label>Needed by (optional)</label><input id="ns-date" type="date">'
         + '<label>Your PO number (optional)</label><input id="ns-ref" maxlength="60" placeholder="e.g. PO-1234">'
         + '<label>Note (optional)</label><input id="ns-note" maxlength="500" placeholder="e.g. Please deliver before 10am">'
@@ -160,6 +161,36 @@
         + '<div class="ns-small ns-center">No payment now. ' + esc(d.name) + ' confirms your order first, then you pay them directly.</div></div>';
       document.body.appendChild(m);
     },
+    // delivery fee by barangay or city, set by the store
+    fee: function(){ var co = S.co, sel = document.getElementById('ns-area'), t = totals(); if(!co || !sel) return null; var v = sel.value; if(!v) return null;
+      if(co.free_over && t.priced && t.total >= Number(co.free_over)) return 0;
+      if(v === '__other') return co.other === 'fee' && co.other_fee != null ? Number(co.other_fee) : null;
+      var f = (co.fees || []).filter(function(x){ return x.area === v; })[0]; return f ? Number(f.fee) || 0 : null; },
+    areaHtml: function(saved){ var co = S.co; if(!co || !(co.fees || []).length) return '';
+      return '<label>Your barangay or city</label><select id="ns-area" onchange="NS.sums()"><option value="">Pick one…</option>' + co.fees.map(function(f){ return '<option value="' + esc(f.area) + '"' + (saved.area === f.area ? ' selected' : '') + '>' + esc(f.area) + ' · ' + (Number(f.fee) ? peso(f.fee) : 'free') + '</option>'; }).join('')
+        + (co.other !== 'no' ? '<option value="__other"' + (saved.area === '__other' ? ' selected' : '') + '>Somewhere else' + (co.other === 'fee' && co.other_fee != null ? ' · ' + peso(co.other_fee) : ' · they\'ll tell you the fee') + '</option>' : '') + '</select>'
+        + (co.free_over ? '<div class="ns-small">Free delivery for orders of ' + peso(co.free_over) + ' and up.</div>' : ''); },
+    pays: function(){ var co = S.co, d = S.d, out = []; var m = co ? (co.methods || {}) : null;
+      if(m){ if(m.cod) out.push(['cod', 'Cash on delivery']); if(m.gcash) out.push(['gcash', 'GCash']); if(m.maya) out.push(['maya', 'Maya']); if(m.bank) out.push(['bank', 'Bank transfer' + (co.bank && co.bank.bank ? ' (' + co.bank.bank + ')' : '')]); }
+      else { if(d.cod) out.push(['cod', 'Cash on delivery']); (d.pay_methods || []).forEach(function(p){ var n = {gcash: 'GCash', maya: 'Maya', bank: 'Bank transfer', grabpay: 'GrabPay', shopeepay: 'ShopeePay'}[p]; if(n) out.push([p, n]); }); }
+      return out; },
+    payHtml: function(saved){ var ps = NS.pays(); if(!ps.length) return '';
+      return '<label>How will you pay?</label><div class="ns-pays">' + ps.map(function(p, i){ return '<label class="ns-pay"><input type="radio" name="ns-pay" value="' + p[0] + '"' + ((saved.pay ? saved.pay === p[0] : i === 0) ? ' checked' : '') + ' onchange="NS.payInfo()"><span>' + esc(p[1]) + '</span></label>'; }).join('') + '</div><div id="ns-payinfo">' + NS.payInfoHtml(saved.pay || ps[0][0]) + '</div>'; },
+    payInfoHtml: function(k){ var co = S.co || {}, a = co[k] || {};
+      if(k === 'cod') return '<div class="ns-small">Pay the driver when your order arrives.</div>';
+      var det = a.number ? '<div class="ns-payd"><b>' + esc(a.number) + '</b>' + (a.name ? ' · ' + esc(a.name) : '') + (k === 'bank' && a.bank ? ' · ' + esc(a.bank) : '') + (a.qr ? '<img src="' + a.qr + '" alt="QR to pay">' : '') + '</div>' : '<div class="ns-small">' + esc(S.d.name) + ' sends you their details when they confirm.</div>';
+      return det + '<label>Paid already? Reference number (optional)</label><input id="ns-payref" maxlength="40" inputmode="numeric" placeholder="e.g. 1009 876 543 210">'; },
+    payInfo: function(){ var r = document.querySelector('input[name="ns-pay"]:checked'), b = document.getElementById('ns-payinfo'); if(r && b) b.innerHTML = NS.payInfoHtml(r.value); },
+    sumsHtml: function(){ var t = totals(), f = NS.fee(), area = document.getElementById('ns-area');
+      var rows = ''; if(area && area.value){ rows += '<div class="ns-line"><span>Items</span><span>' + (t.priced ? peso(t.total) : 'Price to follow') + '</span></div><div class="ns-line"><span>Delivery</span><span>' + (f == null ? 'They\'ll tell you' : f === 0 ? 'Free' : peso(f)) + '</span></div>'; }
+      return rows + '<div class="ns-line ns-total"><span>Total</span><span>' + (t.priced ? peso(t.total + (f || 0)) + (area && area.value && f == null ? ' + delivery' : '') : 'Price to follow') + '</span></div>'; },
+    afterPay: function(r, pay, fee, ref){ if(!pay || pay === 'cod'){ return pay === 'cod' ? '<div class="ns-note">Pay the driver ' + (r.prices_known ? peso(Number(r.total || 0) + (fee || 0)) : '') + ' when it arrives.</div>' : ''; }
+      var a = (S.co || {})[pay] || {}, amt = r.prices_known ? peso(Number(r.total || 0) + (fee || 0)) : 'the total';
+      var phoneDigits = S.d.phone ? String(S.d.phone).replace(/[^0-9]/g, '').replace(/^63/, '').replace(/^0/, '') : '';
+      return '<div class="ns-card ns-green" style="text-align:left"><b>' + (ref ? 'Thanks! They\'ll check your payment.' : 'Pay ' + esc(amt) + ' by ' + esc(pay === 'gcash' ? 'GCash' : pay === 'maya' ? 'Maya' : 'bank transfer')) + '</b>'
+        + (a.number && !ref ? '<div class="ns-payd"><b>' + esc(a.number) + '</b>' + (a.name ? ' · ' + esc(a.name) : '') + (a.bank ? ' · ' + esc(a.bank) : '') + (a.qr ? '<img src="' + a.qr + '" alt="QR to pay">' : '') + '</div>' : '')
+        + (!ref ? '<div class="ns-small">After paying, send your screenshot so they can confirm faster.</div>' + (phoneDigits ? '<a class="ns-btn2 ns-big" href="viber://chat?number=%2B63' + phoneDigits + '">Send screenshot on Viber</a>' : '') : '') + '</div>'; },
+    sums: function(){ var b = document.getElementById('ns-sums'); if(b) b.innerHTML = NS.sumsHtml(); },
     submit: function(){
       var d = S.d, err = document.getElementById('ns-err'), btn = document.getElementById('ns-send');
       function v(id){ var e = document.getElementById(id); return e ? e.value.trim() : ''; }
@@ -168,14 +199,25 @@
       if(document.getElementById('ns-name') && who.name.length < 2){ err.textContent = 'Please enter your name.'; return; }
       if(document.getElementById('ns-phone') && who.phone.replace(/\D/g, '').length < 10){ err.textContent = 'Please enter your mobile number so they can reach you.'; return; }
       if(who.addr.length < 4){ err.textContent = 'Where should they deliver?'; return; }
+      var areaSel = document.getElementById('ns-area'), area = areaSel ? areaSel.value : '';
+      if(areaSel && !area){ err.textContent = 'Pick your barangay or city so they know the delivery fee.'; return; }
+      var payR = document.querySelector('input[name="ns-pay"]:checked'), pay = payR ? payR.value : '', payRef = v('ns-payref').replace(/[^A-Za-z0-9 -]/g, '').slice(0, 40), fee = NS.fee();
+      var payName = pay ? (NS.pays().filter(function(p){ return p[0] === pay; })[0] || [pay, pay])[1] : '';
+      var areaName = area === '__other' ? 'Other area' : area;
+      var tagLine = (payName ? '[Pay: ' + payName + (payRef ? ' · ref ' + payRef : '') + '] ' : '') + (area ? '[Delivery: ' + areaName + (fee != null ? ' ₱' + fee : '') + '] ' : '');
+      who.area = area; who.pay = pay;
       try{ localStorage.setItem('nifti-store-buyer', JSON.stringify(who)); }catch(e){}
       btn.disabled = true; btn.textContent = 'Sending…';
-      rpc('submit_store_order', {p_slug: SLUG, p_name: who.name || null, p_business: who.biz || null, p_phone: who.phone || null, p_address: who.addr,
-        p_items: Object.keys(S.cart).map(function(p){ return {product: p, qty: S.cart[p]}; }), p_note: v('ns-note') || null, p_src: src() || null, p_needed_by: v('ns-date') || null, p_ref: v('ns-ref') || null})
+      var base = {p_slug: SLUG, p_name: who.name || null, p_business: who.biz || null, p_phone: who.phone || null, p_address: who.addr,
+        p_items: Object.keys(S.cart).map(function(p){ return {product: p, qty: S.cart[p]}; }), p_src: src() || null, p_needed_by: v('ns-date') || null, p_ref: v('ns-ref') || null};
+      var call = S.v2 ? rpc('submit_store_order_v2', Object.assign({}, base, {p_note: v('ns-note') || null, p_area: areaName || null, p_pay: payName || null, p_pay_ref: payRef || null}))
+        : rpc('submit_store_order', Object.assign({}, base, {p_note: (tagLine + v('ns-note')).trim().slice(0, 500) || null}));
+      call
       .then(function(r){
         S.cart = {}; save(); document.getElementById('ns-modal').remove();
         root.innerHTML = '<div class="ns-wrap"><div class="ns-card ns-center"><div style="font-size:46px">✅</div><h1>Order sent to ' + esc(d.name) + '</h1>'
-          + '<div class="ns-about">' + esc(r.po_number) + (r.prices_known ? ' · ' + peso(r.total) : '') + '. They\'ll confirm it soon' + (d.phone ? ', or call them at ' + esc(d.phone) : '') + '.</div>'
+          + '<div class="ns-about">' + esc(r.po_number) + (r.prices_known ? ' · ' + peso(Number(r.total || 0) + (fee || 0)) + (fee ? ' with delivery' : '') : '') + '. They\'ll confirm it soon' + (d.phone ? ', or call them at ' + esc(d.phone) : '') + '.</div>'
+          + NS.afterPay(r, pay, fee, payRef)
           + '<a class="ns-btn ns-big" href="' + BASE + '#o/' + encodeURIComponent(r.token) + '">Track your order →</a><div class="ns-small">Save this link or screenshot this page. It shows every update.</div></div>'
           + (r.claim_code ? '<div class="ns-card ns-green"><b>Reorder in one tap next time</b><div class="ns-about">Create a free Nifti account. This order and your details will already be there.</div><a class="ns-btn2 ns-big" href="' + BASE + '#join/' + encodeURIComponent(r.claim_code) + '/b">Create free account →</a></div>' : '')
           + '</div>';
@@ -199,6 +241,9 @@
     + '.ns-modal{position:fixed;inset:0;background:rgba(20,20,20,.45);z-index:10;display:flex;align-items:flex-end;justify-content:center}.ns-sheet{background:#fff;border-radius:16px 16px 0 0;padding:18px 16px 24px;width:100%;max-width:560px;max-height:92vh;overflow-y:auto;box-sizing:border-box}'
     + '.ns-sheet label{display:block;font-size:13.5px;font-weight:700;margin:10px 0 4px}.ns-sheet input{width:100%;box-sizing:border-box;padding:11px 12px;border:1px solid #D5DDD8;border-radius:10px;font-size:16px;font-family:inherit}'
     + '.ns-line{display:flex;justify-content:space-between;gap:8px;font-size:14.5px;padding:3px 0}.ns-total{font-weight:800;border-top:1px solid #E1E7E3;margin-top:6px;padding-top:6px}.ns-note{background:#E6F2EA;border-radius:10px;padding:10px;font-size:14px;margin-top:8px}.ns-err{color:#C0392B;font-weight:600;font-size:14px;margin-top:8px}';
+  css.textContent += '.ns-sheet select{width:100%;box-sizing:border-box;padding:11px 12px;border:1px solid #D5DDD8;border-radius:10px;font-size:16px;font-family:inherit;background:#fff}'
+    + '.ns-pays{display:grid;gap:6px}.ns-pay{display:flex!important;align-items:center;gap:10px;border:1px solid #D5DDD8;border-radius:10px;padding:10px 12px;margin:0!important;font-weight:600!important;cursor:pointer}.ns-pay input{width:20px!important;height:20px}'
+    + '.ns-payd{background:#F4F7F5;border:1px solid #E1E7E3;border-radius:10px;padding:10px 12px;margin:8px 0;font-size:15px}.ns-payd img{display:block;width:180px;max-width:100%;margin-top:8px;border-radius:8px;background:#fff}';
   document.head.appendChild(css);
 
   if(!SLUG){ root.innerHTML = '<div class="ns-wrap"><div class="ns-card">This store link looks incomplete.</div></div>'; return; }
@@ -207,6 +252,8 @@
   rpc('get_store', {p_slug: SLUG, p_src: src() || null}).then(function(d){
     if(!d){ root.innerHTML = '<div class="ns-wrap"><div class="ns-card ns-center"><div style="font-size:40px">🏪</div><h1>This store isn\'t open right now</h1><p class="ns-about">The link may be wrong, or the store is closed for now. Message the seller directly.</p></div></div>'; return; }
     S.d = d; document.title = d.name + ' · Order online';
+    S.co = d.checkout || null;
+    rpc('get_store_checkout', {p_slug: SLUG}).then(function(c){ if(c && typeof c === 'object'){ S.co = c; S.v2 = true; } }).catch(function(){});
     Object.keys(S.cart).forEach(function(p){ if(!d.items.some(function(i){ return i.product === p; })) delete S.cart[p]; });
     var re = new URLSearchParams(location.search).get('re');
     if(!re) return render();

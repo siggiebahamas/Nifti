@@ -288,7 +288,8 @@ function nf47ScrollTo(y){ try{ window.scrollTo({top: y, behavior: 'auto'}); }cat
 ['pointerdown', 'keydown'].forEach(ev => document.addEventListener(ev, e => {
   if(ev === 'keydown' && e.key !== 'Enter' && e.key !== ' ') return;
   const t = e.target && e.target.closest ? e.target : null; if(!t) return; NF47J.t = Date.now();
-  NF47J.src = t.closest('.sidebar, #moreSheet, .bottom-nav, .mobile-bottom-nav, .bnav-item, .topbar, .nf47-jback, .nf26-find, #nf26FindBox') ? 'menu' : t.closest('#view-app .app-page, .sl-sheet, .sl-modal, .share-modal, .modal, .nf20-band, .nf22-nb') ? 'content' : 'other';
+  // the menu, the bottom bar, the top bar and the back buttons switch pages for real; a tap anywhere else (a page, a popup, a sheet) is a jump
+  NF47J.src = t.closest('.sidebar, #moreSheet, .bottom-nav, .mobile-bottom-nav, .bnav-item, .topbar, .nf47-jback, .nf26-find, #nf26FindBox, .nf48-pbar, .marketing-view, #view-login') ? 'menu' : 'content';
 }, true));
 (function(){
   const nav = navigate;
@@ -311,7 +312,7 @@ function nf47JumpBar(page){
   let wrap = page.querySelector(':scope > .nf47-jbar');
   if(NF47J.to && NF47J.to !== id && Date.now() - NF47J.at < 1500 && NF47J.from !== id) NF47J.to = id;
   const want = NF47J.to === id && NF47J.from && NF47J.from !== id;
-  if(!want){ if(wrap) wrap.remove(); return; }
+  if(!want || page.classList.contains('nf48-peek')){ if(wrap) wrap.remove(); return; }
   const label = 'Back to ' + nf47PageName(NF47J.from);
   if(!wrap){ wrap = document.createElement('div'); wrap.className = 'nf47-jbar'; const bar = document.createElement('button'); bar.type = 'button'; bar.className = 'nf47-jback'; bar.addEventListener('click', nf47GoBack); wrap.appendChild(bar); page.insertBefore(wrap, page.firstChild); }
   const bar = wrap.firstElementChild;
@@ -487,7 +488,10 @@ async function nf47Grow(){ if(!nf25Real()){ try{ localStorage.setItem('nifti-men
 function nf47PagesCard(page){
   if(!page || page.id !== 'page-settings') return;
   let c = document.getElementById('nf47Pages');
-  if(!c){ c = document.createElement('div'); c.id = 'nf47Pages'; c.className = 'settings-card nf47-pages'; const head = page.querySelector('.page-head'); if(head) head.after(c); else page.prepend(c); }
+  if(!c){ c = document.createElement('div'); c.id = 'nf47Pages'; c.className = 'settings-card nf47-pages'; }
+  if(c.parentElement !== page){ const ss = page.querySelector(':scope > .nf18-ss'), head = page.querySelector(':scope > .page-head'); const after = ss || head; if(after) after.after(c); else page.prepend(c); } // placed once, never moved
+  if(c.classList.contains('nf27-more')) c.classList.remove('nf27-more');
+  if(!c.classList.contains('open')) c.classList.add('open');
   // the old Deliveries switch lives here now
   const old = document.getElementById('routesMenuToggle'); if(old){ const r = old.closest('.toggle-row'); if(r && !r.hidden) r.hidden = true; }
   nf47PagesPaint();
