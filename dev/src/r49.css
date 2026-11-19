@@ -268,3 +268,32 @@ html body #nf48COtherFee[hidden]{display:none !important;}
 /* pill titles wrap to two lines instead of being cut off */
 html body #view-app .nf43-pills .nf43-pill .k{white-space:normal !important;overflow:hidden !important;text-overflow:clip !important;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;}
 html body #view-app .nf43-pill{align-items:center;}
+/* Deliveries on a phone: the stop's status and buttons go under the name instead of over it */
+@media (max-width:560px){
+  html body #view-app .nf46-stop{grid-template-columns:30px minmax(0,1fr);row-gap:8px;padding:12px;}
+  html body #view-app .nf46-stop .nf46-sr{grid-column:2;justify-self:start;flex-wrap:wrap;}
+  html body #view-app .nf46-stop .nf46-sr i{display:none;}
+  html body #view-app .nf46-stop b{white-space:normal;}
+}
+/* Checks: the action button fits inside the column */
+@media (min-width:761px){
+  html body #view-app #page-cheques .nf25-t th, html body #view-app #page-cheques .nf25-t td{padding-left:6px !important;padding-right:6px !important;}
+  html body #view-app #page-cheques .nf25-t td.a .btn{padding:6px 10px !important;font-size:13.5px !important;min-height:34px;}
+  html body #view-app #page-cheques .nf25-t td.a a, html body #view-app #page-cheques .nf25-t td.a button.nf43-link{white-space:normal;font-size:14px;}
+}
+/* Payroll tiles on a phone: one per row, label left and number right like the other pills */
+@media (max-width:560px){
+  html body #view-app .nf44-prs{grid-template-columns:minmax(0,1fr) !important;gap:8px !important;}
+  html body #view-app .nf44-prs > div{display:grid !important;grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:10px;padding:12px 14px !important;}
+  html body #view-app .nf44-prs > div > span{grid-column:1;grid-row:1;font-size:17px !important;}
+  html body #view-app .nf44-prs > div > b{grid-column:2;grid-row:1 / span 2;font-size:24px !important;text-align:right;}
+  html body #view-app .nf44-prs > div > small{grid-column:1;grid-row:2;}
+}
+@media (min-width:761px){
+  #view-app#view-app#view-app#view-app #page-cheques .nf25-tw table.nf25-t th, #view-app#view-app#view-app#view-app #page-cheques .nf25-tw table.nf25-t td{padding:9px 5px !important;font-size:14.5px !important;}
+  #view-app#view-app#view-app#view-app #page-cheques .nf25-tw table.nf25-t td.a{white-space:normal !important;width:1%;}
+  #view-app#view-app#view-app#view-app #page-cheques .nf25-tw table.nf25-t td.a a, #view-app#view-app#view-app#view-app #page-cheques .nf25-tw table.nf25-t td.a .nf43-link{white-space:normal !important;display:inline-block;max-width:92px;line-height:1.25;text-align:center;font-size:14px !important;}
+  #view-app#view-app#view-app#view-app #page-cheques .nf25-tw table.nf25-t td.a button{white-space:nowrap;padding:6px 9px !important;font-size:14px !important;}
+}
+
+@media (min-width:761px){ #view-app#view-app#view-app#view-app #page-cheques .nf25-tw table.nf25-t td.a button:not(.btn), #view-app#view-app#view-app#view-app #page-cheques .nf25-tw table.nf25-t td.a a{white-space:normal !important;max-width:92px;line-height:1.25;} }
