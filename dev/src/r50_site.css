@@ -512,3 +512,4 @@
   .nf50lp .lp-mphone.sm.t1{left:0;top:6px;transform:scale(.66) rotate(-4deg);}
   .nf50lp .lp-mphone.sm.t2{left:auto;right:-4px;top:40px;transform:scale(.66) rotate(4deg);transform-origin:top right;}
 }
+@media (max-width:1080px) and (min-width:641px){ .nf50lp .lp-hero h1{font-size:clamp(48px,8vw,72px);} }
