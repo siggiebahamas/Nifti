@@ -22,9 +22,10 @@ html body #storeContent .nf48-tool.main small{color:#E3F2E9 !important;font-size
 .nf48-fbbtn:hover{background:#1466D1 !important;}
 .nf48-photobtn{display:inline-flex;align-items:center;gap:8px;border:1.5px dashed #9CC9AE;background:#F7FBF8;color:#14532D;font:inherit;font-weight:800;border-radius:12px;padding:10px 14px;cursor:pointer;width:100%;justify-content:center;margin-top:10px;}
 @media (max-width:760px){ .nf48-post3{grid-template-columns:minmax(0,1fr) !important;} }
-.nf48-ask{position:fixed;left:50%;transform:translateX(-50%);bottom:24px;z-index:5300;display:flex;gap:10px;align-items:center;background:#FFFFFF;border:1.5px solid #9CC9AE;border-radius:16px;padding:10px 14px;box-shadow:0 14px 40px rgba(11,15,20,.18);}
+.nf48-posted{position:fixed;left:50%;transform:translateX(-50%);bottom:24px;z-index:1250;display:flex;gap:10px;align-items:center;background:#FFFFFF;border:1.5px solid #9CC9AE;border-radius:16px;padding:10px 14px;box-shadow:0 14px 40px rgba(11,15,20,.18);}
 .nf48-ask[hidden]{display:none;}
-@media (max-width:640px){ .nf48-ask{bottom:86px;width:calc(100vw - 32px);justify-content:center;flex-wrap:wrap;} }
+@media (max-width:640px){ .nf48-posted{bottom:86px;width:calc(100vw - 32px);justify-content:center;flex-wrap:wrap;} }
+.nf48-posted[hidden]{display:none !important;}
 .nf48-steps{margin:0;padding-left:22px;display:grid;gap:10px;}
 .nf48-steps b{display:block;font-size:16px;} .nf48-steps span{display:block;font-size:14px;color:#344054;}
 
@@ -249,8 +250,8 @@ textarea.nf48-askin{min-height:84px;line-height:1.45;}
 .nf48-copyta{width:100%;box-sizing:border-box;min-height:96px;padding:10px 12px;border:1.5px solid #D0D5DD;border-radius:12px;font:inherit;font-size:15px;}
 @keyframes nf48fade{from{opacity:0;}to{opacity:1;}}
 @media (max-width:560px){ .nf48-ask{align-items:flex-end;padding:0;} .nf48-askbox{border-radius:20px 20px 0 0;padding:20px 16px calc(16px + env(safe-area-inset-bottom));} .nf48-askb .btn{flex:1;} }
-/* an older rule centers every [role=dialog] with translateX(-50%): this one covers the whole screen itself */
-html body #nf48Ask.nf48-ask{position:fixed !important;inset:0 !important;transform:none !important;width:auto !important;height:auto !important;max-width:none !important;max-height:none !important;margin:0 !important;}
+/* the question popup covers the whole screen */
+html body #nf48Ask.nf48-ask{position:fixed !important;inset:0 !important;transform:none !important;width:auto !important;height:auto !important;max-width:none !important;max-height:none !important;margin:0 !important;bottom:0;}
 html body #nf48Ask .nf48-askbox{transform:none !important;position:relative !important;left:auto !important;top:auto !important;}
 
 /* Side panels sit at layer 1140: every popup, sheet, notebook and toast opened from inside one shows above it.

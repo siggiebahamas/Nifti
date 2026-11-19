@@ -58,7 +58,7 @@ async function nf48PostFacebook(cv, text, kind, onDone){
 }
 function nf48Counted(kind){ try{ nf22Logged(kind || 'post', 'marked'); }catch(e){} showToast('Nice! That counts for this week.', 'success'); try{ if(document.querySelector('#storeContent .nf22s')) nf22Paint(); }catch(e){} }
 function nf48AskPosted(kind, onDone){
-  let n = document.getElementById('nf48Ask'); if(!n){ n = document.createElement('div'); n.id = 'nf48Ask'; n.className = 'nf48-ask'; document.body.appendChild(n); }
+  let n = document.getElementById('nf48Posted'); if(!n){ n = document.createElement('div'); n.id = 'nf48Posted'; n.className = 'nf48-posted'; n.setAttribute('role', 'status'); document.body.appendChild(n); }
   n.innerHTML = `<b>Did it post?</b><button type="button" class="btn btn-primary btn-sm" onclick="this.parentElement.hidden = true; nf48Counted('${kind || 'post'}')">Yes, count it</button><button type="button" class="btn btn-outline btn-sm" onclick="this.parentElement.hidden = true">Not yet</button>`;
   n.hidden = false; clearTimeout(n._t); n._t = setTimeout(() => { n.hidden = true; }, 20000); if(onDone) onDone(false);
 }

@@ -146,17 +146,13 @@ async function settings(){
       <div style="display:flex;gap:8px;flex-wrap:wrap"><input id="aiKey" type="password" autocomplete="off" placeholder="Paste the key (sk-ant-...)" style="flex:1;min-width:220px;padding:12px 14px;border:1.5px solid #D0D5DD;border-radius:12px;font:inherit">
         <button class="btn" onclick="saveKey()">${s.reader ? 'Replace key' : 'Switch on'}</button>${s.reader ? `<button class="btn o" onclick="offKey()">Switch off</button>` : ''}</div>
       <p class="sub" style="margin:10px 0 0;font-size:13.5px">Each shop's monthly allowance still applies: Free 10, Pro 100, Business 400 pages a month, plus 300 extra pages in a shop's first 30 days to bring in its old notebooks. Worst case on your bill: about ₱250 a month for a Pro shop, ₱1,000 for a Business shop.</p></div>
-    <div class="card"><h2 style="margin:0 0 6px">Facebook posting and "how much?" auto-replies</h2>
-      <p class="sub" style="margin:0 0 10px">Shops can already post to Facebook and Viber from Nifti (the share sheet opens with the picture and words ready). These steps turn on posting <b>straight to their Page</b> and answering "how much?" comments by themselves. Meta must approve the app first, which usually takes 1 to 3 weeks.</p>
-      <ol style="margin:0 0 12px;padding-left:20px;line-height:1.7">
-        <li>Open <b>developers.facebook.com</b>, tap <b>My Apps → Create app</b>, pick <b>Business</b>, name it "Nifti".</li>
-        <li>Add the products <b>Facebook Login for Business</b> and <b>Webhooks</b>. In Facebook Login settings, add this redirect: <code>https://siggiebahamas.github.io/Nifti/</code> (and your own domain later).</li>
-        <li>In <b>App Review → Permissions</b>, request: pages_show_list, pages_manage_posts, pages_read_engagement, pages_manage_engagement. Use the short screen recording of a shop posting from Nifti as the demo video.</li>
-        <li>In <b>Supabase → Edge Functions → Secrets</b>, add <code>FB_APP_ID</code>, <code>FB_APP_SECRET</code> (App settings → Basic) and <code>FB_VERIFY_TOKEN</code> (any long random word you make up).</li>
-        <li>Deploy the two functions from the repo folder <code>supabase_functions</code>: <b>fb-page</b> (keep "Verify JWT" on) and <b>fb-webhook</b> (turn "Verify JWT" off). Then run <code>supabase_migrations/2026-11-18-store-checkout-and-facebook.sql</code> in the SQL editor.</li>
-        <li>In the Meta app, <b>Webhooks → Page</b>: callback URL = the fb-webhook function URL, verify token = your FB_VERIFY_TOKEN, subscribe to <b>feed</b>.</li>
-        <li>Send Claude the App ID (it's not secret). It goes into the app once, and every shop then sees "Connect my Facebook Page" in Online store.</li></ol>
-      <p class="sub" style="margin:0;font-size:13.5px">The same SQL file also turns on <b>delivery fees by barangay and GCash, Maya or bank details at checkout</b> for buyers on store links. Until it runs, buyers still choose how they pay and their barangay, and it shows on the order for the shop.</p></div>`;
+    <div class="card"><h2 style="margin:0 0 6px">Facebook: nothing to set up on your side</h2>
+      <p class="sub" style="margin:0 0 10px">Nifti uses Facebook's own free tools, so there is no Meta app, no App Review, no business documents and no cost. Posting straight to a shop's Page through an app would need Meta's Advanced Access (App Review plus Business Verification), and Facebook no longer lets any app post into Groups at all, so the share route is also the one that reaches Groups.</p>
+      <ul style="margin:0 0 10px;padding-left:20px;line-height:1.7">
+        <li><b>Posting:</b> on a phone, the share sheet opens with the picture attached and the words copied; shops pick Facebook (profile or group) or Business Suite (their Page). On a computer, the picture is copied so it pastes straight into Business Suite's post box, then the words.</li>
+        <li><b>"How much?" replies and Messenger answers:</b> each shop switches on Facebook's free automations once (Online store → Answer buyers automatically). Nifti fills in the keywords, the reply with their store link, the instant reply and 4 common questions, ready to copy.</li>
+        <li><b>Order button:</b> the same screen walks them through putting a "Shop now" button with their store link on their Page.</li></ul>
+      <p class="sub" style="margin:0;font-size:13.5px">Store checkout (delivery fee by barangay, GCash, Maya or bank details) and shared store photos are already live in the database (applied 2026-11-19).</p></div>`;
 }
 async function saveKey(){
   const v = ($('aiKey').value || '').trim(); if(!v){ toast('Paste the key first.'); return; }

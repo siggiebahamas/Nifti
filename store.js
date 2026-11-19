@@ -5,6 +5,7 @@
 (function(){
   var API = 'https://ctryvcloavfpecbrbzxy.supabase.co/rest/v1/rpc/';
   var KEY = 'sb_publishable_oWW-IMSOeNNFiQDjUnpWdQ_hlezb7wS';
+  var STORAGE = 'https://ctryvcloavfpecbrbzxy.supabase.co/storage/v1/object/public/store-photos/';
   var script = document.currentScript;
   var BASE = script ? script.src.replace(/store\.js(\?.*)?$/, '') : (location.origin + '/');
   var slugMatch = location.pathname.match(/\/s\/([a-z0-9-]{3,40})\/?$/);
@@ -56,7 +57,8 @@
       var n = S.cart[it.product] || 0, k = esc(JSON.stringify(it.product));
       var p = it.promo_price != null ? '<b class="ns-sale">' + peso(it.promo_price) + '</b> <s>' + peso(it.price) + '</s> <span class="ns-tag">Sale until ' + niceDate(it.promo_until) + '</span>'
         : it.price != null ? '<b>' + peso(it.price) + '</b>' : '<span class="ns-dim">Price on request</span>';
-      return '<div class="ns-item"><div class="ns-grow"><div class="ns-name">' + (feat.indexOf(it.product) >= 0 ? '⭐ ' : '') + esc(it.product) + '</div>'
+      var ph = S.d.photos && S.d.photos[it.product] ? STORAGE + encodeURI(S.d.photos[it.product]) : '';
+      return '<div class="ns-item">' + (ph ? '<img class="ns-ph" src="' + esc(ph) + '" alt="" loading="lazy" onerror="this.remove()">' : '') + '<div class="ns-grow"><div class="ns-name">' + (feat.indexOf(it.product) >= 0 ? '⭐ ' : '') + esc(it.product) + '</div>'
         + '<div class="ns-price">' + p + (it.unit ? ' <span class="ns-dim">/ ' + esc(it.unit) + '</span>' : '') + '</div>'
         + (it.moq > 1 ? '<div class="ns-small">Min. ' + esc(it.moq) + ' ' + esc(it.unit || '') + '</div>' : '') + '</div>'
         + '<div class="ns-qty">' + (n ? '<button onclick=\'NS.step(' + k + ',-1)\'>−</button><input type="number" inputmode="numeric" value="' + n + '" onchange=\'NS.set(' + k + ',this.value)\'><button onclick=\'NS.step(' + k + ',1)\'>+</button>'
@@ -214,6 +216,7 @@
         : rpc('submit_store_order', Object.assign({}, base, {p_note: (tagLine + v('ns-note')).trim().slice(0, 500) || null}));
       call
       .then(function(r){
+        if(S.v2 && r && Object.prototype.hasOwnProperty.call(r, 'delivery_fee')) fee = r.delivery_fee == null ? null : Number(r.delivery_fee);
         S.cart = {}; save(); document.getElementById('ns-modal').remove();
         root.innerHTML = '<div class="ns-wrap"><div class="ns-card ns-center"><div style="font-size:46px">✅</div><h1>Order sent to ' + esc(d.name) + '</h1>'
           + '<div class="ns-about">' + esc(r.po_number) + (r.prices_known ? ' · ' + peso(Number(r.total || 0) + (fee || 0)) + (fee ? ' with delivery' : '') : '') + '. They\'ll confirm it soon' + (d.phone ? ', or call them at ' + esc(d.phone) : '') + '.</div>'
@@ -234,7 +237,7 @@
     + 'h1{font-size:21px;margin:0;line-height:1.25}h2{font-size:19px;margin:0 0 8px}.ns-ok{color:#1B6B40}.ns-dim{opacity:.72;font-size:14px}.ns-small{font-size:12.5px;opacity:.7;margin-top:4px}.ns-center{text-align:center}'
     + '.ns-head{font-weight:700;margin-top:10px}.ns-about{font-size:14.5px;opacity:.85;margin:4px 0 8px;white-space:pre-line}.ns-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.ns-chips span{font-size:13px;background:#F4F7F5;border:1px solid #E1E7E3;border-radius:999px;padding:4px 10px}'
     + '.ns-btn,.ns-btn2{display:inline-block;border-radius:10px;padding:10px 16px;font-size:15px;font-weight:700;text-decoration:none;cursor:pointer;border:1.5px solid #1B6B40;font-family:inherit}.ns-btn{background:#1B6B40;color:#fff}.ns-btn2{background:#fff;color:#1B1D21;border-color:#D5DDD8}.ns-big{display:block;width:100%;box-sizing:border-box;text-align:center;margin:12px 0 6px;padding:13px}'
-    + '.ns-search{width:100%;box-sizing:border-box;padding:11px 12px;border:1px solid #D5DDD8;border-radius:10px;font-size:16px;margin-bottom:6px}.ns-item{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid #EEF2EF}.ns-grow{flex:1;min-width:0}.ns-name{font-weight:700}.ns-price{font-size:14px}.ns-sale{color:#C0392B}.ns-price s{opacity:.55}.ns-tag{font-size:11.5px;font-weight:800;color:#C0392B;background:#FBE6E3;border-radius:6px;padding:1px 6px}'
+    + '.ns-search{width:100%;box-sizing:border-box;padding:11px 12px;border:1px solid #D5DDD8;border-radius:10px;font-size:16px;margin-bottom:6px}.ns-item{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid #EEF2EF}.ns-ph{width:64px;height:64px;flex:none;border-radius:10px;object-fit:cover;background:#F4F7F5;border:1px solid #E3EAE6}.ns-grow{flex:1;min-width:0}.ns-name{font-weight:700}.ns-price{font-size:14px}.ns-sale{color:#C0392B}.ns-price s{opacity:.55}.ns-tag{font-size:11.5px;font-weight:800;color:#C0392B;background:#FBE6E3;border-radius:6px;padding:1px 6px}'
     + '.ns-qty{display:flex;align-items:center;gap:4px}.ns-qty button{min-width:38px;height:38px;border-radius:10px;border:1px solid #D5DDD8;background:#fff;font-size:19px;font-weight:800;cursor:pointer}.ns-qty input{width:58px;height:38px;text-align:center;border:1px solid #D5DDD8;border-radius:10px;font-size:16px;box-sizing:border-box}.ns-qty .ns-add{padding:0 16px;background:#1B6B40;color:#fff;border-color:#1B6B40;font-size:15px}'
     + '.ns-empty{padding:16px;text-align:center;opacity:.7}.ns-foot{text-align:center;font-size:13px;opacity:.65;margin:14px 0}.ns-foot a{color:#1B6B40}'
     + '.ns-cart{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid #E1E7E3;box-shadow:0 -4px 16px rgba(0,0,0,.08);padding:12px 16px calc(12px + env(safe-area-inset-bottom));display:flex;justify-content:space-between;align-items:center;gap:10px}.ns-hide{display:none}'
