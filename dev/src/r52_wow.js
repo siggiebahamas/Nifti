@@ -13,31 +13,32 @@ const MK52_ITEMS = [
 const MK52_NUM = {isa: 1, isang: 1, dalawa: 2, dalawang: 2, tatlo: 3, tatlong: 3, apat: 4, lima: 5, limang: 5, anim: 6, pito: 7, walo: 8, siyam: 9, sampu: 10, sampung: 10, bente: 20, trenta: 30, kwarenta: 40, singkwenta: 50, one: 1, two: 2, three: 3, four: 4, five: 5, six: 6, ten: 10, twenty: 20, fifty: 50};
 function mk52Peso(n){ return '₱' + Math.round(n).toLocaleString('en-PH'); }
 function mk52Esc(s){ return String(s).replace(/[&<>"]/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'})[c]); }
+// uses the SAME order reader as the app (nfwParse + nfwMatch): only items it can tell are filled in; anything else is asked, never guessed
 function mk52Parse(msg){
-  const text = ' ' + String(msg || '').toLowerCase().replace(/\s+/g, ' ') + ' ';
-  const parts = text.split(/,|\btsaka\b|\bsaka\b|\bat\b|\band\b|\+|\n|;|\. /);
-  const lines = [], seen = {};
-  parts.forEach(seg => {
-    let item = MK52_ITEMS.find(it => it.words.some(w => seg.includes(w)));
-    if(!item){ // not in the sample price list: keep it as a line Nifti asks about once
-      const STOP = /^(boss|po|pa|naman|lang|na|ng|sa|ang|mga|pls|please|sir|maam|ma'am|hi|hello|order|pabili|bili|kami|ako|deliver|delivery|bukas|tomorrow|today|ngayon|monday|lunes|pick|up|pickup|mamaya|later|hatid|the|a|of|for|pcs|pc|piraso|sako|bags?|rolyo|rolls?|box(es)?|kahon|lata|gallon|galon|kilo|kg|x|to|us|me|i|we|need|want|ko|namin|thanks|salamat|ty)$/;
-      const w = seg.replace(/[^a-z0-9ñ\s-]/g, ' ').split(/\s+/).filter(x => x && !/^\d+$/.test(x) && !MK52_NUM[x] && !STOP.test(x));
-      if(!w.length) return;
-      const nm = w.slice(0, 3).join(' '); item = {name: nm.charAt(0).toUpperCase() + nm.slice(1), price: null};
+  const text = String(msg || ''), lines = [], ask = [], seen = {};
+  const cands = MK52_ITEMS.map(it => ({product: it.name, it}));
+  let rows = [];
+  try { rows = nfwParse(text).rows; } catch(e) { rows = []; }
+  rows.forEach(r => {
+    let m = {product: ''}; try { m = nfwMatch(r.name || '', cands); } catch(e){}
+    if(!m.product){ // try the sample shop's own Taglish words too
+      const low = ' ' + String(r.raw || r.name || '').toLowerCase() + ' ';
+      const it = MK52_ITEMS.find(x => x.words.some(w => low.includes(' ' + w)));
+      if(it) m = {product: it.name};
     }
-    if(seen[item.name]) return;
-    let q = null; const m = seg.match(/(\d+)/);
-    if(m) q = parseInt(m[1], 10);
-    else { const w = seg.split(/[^a-z]+/).find(x => MK52_NUM[x]); if(w) q = MK52_NUM[w]; }
-    if(/isang daan|100/.test(seg) && !m) q = 100;
-    seen[item.name] = 1; lines.push({item, q: q || 1, guessed: !q});
+    const it = m.product ? MK52_ITEMS.find(x => x.name === m.product) : null;
+    if(it){ if(seen[it.name]) return; seen[it.name] = 1; lines.push({item: it, q: r.qty || 1, guessed: !r.qty}); return; }
+    const words = String(r.name || '').toLowerCase().replace(/[^a-zñ0-9\s-]/g, ' ').split(/\s+/).filter(w => w && !(typeof NFW_FILL !== 'undefined' && NFW_FILL.has(w)));
+    if(!words.length) return;
+    const nm = words.join(' ');
+    ask.push({name: nm.charAt(0).toUpperCase() + nm.slice(1), q: r.qty, unit: r.unit});
   });
-  let when = '';
-  if(/bukas|tomorrow/.test(text)) when = 'Deliver tomorrow';
-  else if(/pick ?up|pickup|kunin|mamaya|later/.test(text)) when = 'Pick up today';
-  else if(/monday|lunes/.test(text)) when = 'Deliver Monday';
-  else if(/deliver|hatid/.test(text)) when = 'Deliver';
-  return {lines, when};
+  let when = ''; const t = text.toLowerCase();
+  if(/bukas|tomorrow/.test(t)) when = 'Deliver tomorrow';
+  else if(/pick ?up|pickup|kunin|mamaya|later/.test(t)) when = 'Pick up today';
+  else if(/monday|lunes/.test(t)) when = 'Deliver Monday';
+  else if(/deliver|hatid/.test(t)) when = 'Deliver';
+  return {lines, ask, when};
 }
 function mk52Try(){
   const out = document.getElementById('mkTryOut'), msg = (document.getElementById('mkTryIn') || {}).value || ''; if(!out) return;
@@ -45,20 +46,21 @@ function mk52Try(){
   clearTimeout(mk52Try.t);
   mk52Try.t = setTimeout(() => {
     const r = mk52Parse(msg);
-    if(!r.lines.length){ out.innerHTML = '<div class="mk-try-order"><div class="mk-try-oh"><span class="spark">✦</span><b>Nifti needs a little help</b></div><p class="mk-try-note">Add what they want and how many, like “10 sako semento, 5 wire”. In your own shop Nifti knows all your items.</p></div>'; return; }
-    const total = r.lines.reduce((a, l) => a + (l.item.price ? l.q * l.item.price : 0), 0), ask = r.lines.filter(l => !l.item.price).length;
+    if(!r.lines.length && !r.ask.length){ out.innerHTML = '<div class="mk-try-order"><div class="mk-try-oh"><span class="spark">✦</span><b>Nifti needs a little help</b></div><p class="mk-try-note">Add what they want and how many, like “10 sako semento, 5 wire”. In your own shop Nifti knows all your items.</p></div>'; return; }
+    const total = r.lines.reduce((a, l) => a + l.q * l.item.price, 0), ask = r.ask.length;
     const no = 1044 + Math.floor(Math.random() * 40);
-    out.innerHTML = `<div class="mk-try-order"><div class="mk-try-oh"><span class="spark">✦</span><b>Order #${no} <span>· Bayview Construction</span></b><small>${r.lines.length} item${r.lines.length === 1 ? '' : 's'}</small></div>
-      ${r.lines.map((l, i) => `<div class="mk-try-row${l.guessed ? ' q' : ''}" style="animation-delay:${.08 * i}s"><span>${mk52Esc(l.item.name)} × ${l.q}${l.guessed ? ' (check the qty)' : ''}</span><b>${l.item.price ? mk52Peso(l.q * l.item.price) : '<i class="mk-try-ask">Set price</i>'}</b></div>`).join('')}
-      <div class="mk-try-tot"><span>Total</span><b id="mkTryTot">₱0</b></div>
+    out.innerHTML = `<div class="mk-try-order"><div class="mk-try-oh"><span class="spark">✦</span><b>Order #${no} <span>· Bayview Construction</span></b><small>${r.lines.length + r.ask.length} item${r.lines.length + r.ask.length === 1 ? '' : 's'}</small></div>
+      ${r.lines.map((l, i) => `<div class="mk-try-row${l.guessed ? ' q' : ''}" style="animation-delay:${.08 * i}s"><span>${mk52Esc(l.item.name)} × ${l.q}${l.guessed ? ' (check the qty)' : ''}</span><b>${mk52Peso(l.q * l.item.price)}</b></div>`).join('')}
+      ${r.ask.map(a => `<div class="mk-try-row q"><span>${mk52Esc(a.name)}${a.q ? ' × ' + a.q + (a.unit ? ' ' + a.unit : '') : ''}</span><b><i class="mk-try-ask">Not on your list yet</i></b></div>`).join('')}
+      ${r.lines.length ? '<div class="mk-try-tot"><span>Total</span><b id="mkTryTot">₱0</b></div>' : ''}
       ${r.when ? `<p class="mk-try-note">🚚 ${mk52Esc(r.when)} · prices from your price list</p>` : '<p class="mk-try-note">Prices from your price list</p>'}
-      ${ask ? `<p class="mk-try-note mk-try-new">✦ ${ask === 1 ? 'One item is' : ask + ' items are'} new to this sample shop. Nifti asks you the price once, then remembers it.</p>` : ''}</div>`;
+      ${ask ? `<p class="mk-try-note mk-try-new">✦ ${ask === 1 ? 'That item isn’t' : 'Those items aren’t'} on this sample shop’s list. In your shop Nifti matches your own items, and asks you about anything new once, then remembers it.</p>` : ''}</div>`;
     // count the total up
     const el = document.getElementById('mkTryTot'), t0 = performance.now(), dur = 700;
     const step = now => { const k = Math.min(1, (now - t0) / dur); if(el) el.textContent = mk52Peso(total * (1 - Math.pow(1 - k, 3))); if(k < 1) requestAnimationFrame(step); };
     requestAnimationFrame(step);
     setTimeout(() => { if(!out.querySelector('.mk-try-order')) return;
-      out.insertAdjacentHTML('beforeend', `<div class="mk-try-send"><span class="ok">✓</span><div><b>${out.querySelector('.mk-try-ask') ? 'Add the missing price, then it goes to Bayview' : 'Sent to Bayview for their OK'}</b><small>They tap a link on Viber. No app, no sign-up.</small></div><a onclick="mk52Start()">Do this for real →</a></div>`); }, 900);
+      out.insertAdjacentHTML('beforeend', `<div class="mk-try-send"><span class="ok">✓</span><div><b>${out.querySelector('.mk-try-ask') ? 'You pick the item once, then it goes to Bayview' : 'Sent to Bayview for their OK'}</b><small>They tap a link on Viber. No app, no sign-up.</small></div><a onclick="mk52Start()">Do this for real →</a></div>`); }, 900);
   }, 650);
 }
 // the real app, playing on a phone

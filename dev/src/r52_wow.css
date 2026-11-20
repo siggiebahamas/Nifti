@@ -180,3 +180,4 @@
 #view-index .nf20-sp .f4-art .mk-store-head b{white-space:nowrap;display:flex;align-items:center;gap:4px;}
 @media (max-width:760px){ #view-index .nf20-sp .f4-art .mk-store-tags{flex-wrap:wrap;} #view-index .nf20-sp .f4-art .mk-store-head small{white-space:normal;} }
 @media (max-width:760px){ #view-index .nf20-sp .f4-art .mk-cart{white-space:nowrap;font-size:12px;gap:6px;} }
+#view-index .h4-meta em{background:#E8F3EC !important;color:#14532D !important;border:1px solid #B7DCC4 !important;font-weight:800 !important;letter-spacing:.06em;}

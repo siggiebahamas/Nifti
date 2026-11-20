@@ -10,7 +10,7 @@ const NFW_UNIT = {bag: 'bags', bags: 'bags', sack: 'bags', sacks: 'bags', sako: 
   dozen: 'dozens', dozens: 'dozens', doz: 'dozens', ream: 'reams', reams: 'reams', sheet: 'sheets', sheets: 'sheets', liter: 'liters', liters: 'liters', litro: 'liters', ltr: 'liters', ltrs: 'liters',
   meter: 'meters', meters: 'meters', metro: 'meters', mtr: 'meters', mtrs: 'meters', 'cu.m': 'cu.m', cum: 'cu.m', cubic: 'cu.m', truck: 'trucks', trucks: 'trucks', pair: 'pairs', pairs: 'pairs', bottle: 'bottles', bottles: 'bottles',
   tray: 'trays', trays: 'trays', case: 'cases', cases: 'cases', tub: 'tubs', sachet: 'sachets', sachets: 'sachets', pack_: 'packs'};
-const NFW_SYN = {semento: 'cement', cemento: 'cement', buhangin: 'sand', pako: 'nail', pakong: 'nail', lansang: 'nail', nails: 'nail', alambre: 'wire', kawad: 'wire', tie: 'tie', wires: 'wire', bakal: 'steel',
+const NFW_SYN = {bigas: 'rice', palay: 'rice', asukal: 'sugar', mantika: 'oil', itlog: 'egg', harina: 'flour', asin: 'salt', manok: 'chicken', baboy: 'pork', isda: 'fish', sabon: 'soap', kape: 'coffee', gatas: 'milk', semento: 'cement', cemento: 'cement', buhangin: 'sand', pako: 'nail', pakong: 'nail', lansang: 'nail', nails: 'nail', alambre: 'wire', kawad: 'wire', tie: 'tie', wires: 'wire', bakal: 'steel',
   graba: 'gravel', kahoy: 'lumber', tubo: 'pipe', pintura: 'paint', yero: 'roofing', bareta: 'rebar', bareta_: 'rebar', varilla: 'rebar', kabilya: 'rebar', rebars: 'rebar', gi: 'galvanized', chb: 'hollow block',
   liha: 'sandpaper', plywud: 'plywood', ibeam: 'ibeam', ibeams: 'ibeam', anggulo: 'angle', welding: 'welding', rod: 'rod', rods: 'rod', kamatis: 'tomato', tomatoes: 'tomato', sibuyas: 'onion', onions: 'onion', bawang: 'garlic'};
 const NFW_NUMW = {isa: 1, isang: 1, one: 1, dalawa: 2, dalawang: 2, two: 2, tatlo: 3, tatlong: 3, three: 3, apat: 4, four: 4, lima: 5, limang: 5, five: 5, anim: 6, six: 6, pito: 7, pitong: 7, seven: 7, walo: 8, walong: 8, eight: 8,
@@ -42,6 +42,7 @@ function nfwNorm(s){
   t = t.replace(/\s(\w+)\s/g, (m, w) => ' ' + (NFW_SYN[w] || w) + ' ').replace(/\s(\w+)\s/g, (m, w) => ' ' + (NFW_SYN[w] || w) + ' ');
   return t.replace(/\s+/g, ' ').trim();
 }
+const NFW_FILL = new Set(['gusto','ko','kami','namin','niyo','nyo','ninyo','inyo','yung','ung','iyong','yong','variant','klase','uri','brand','yan','iyan','yun','iyon','ito','eto','po','pa','naman','lang','sana','din','rin','ba','ha','i','we','can','could','get','please','pls','want','need','some','tomorrow','today','bukas','ngayon','deliver','delivery','hatid','order','pabili','bili','bigay','kuha','pakuha','mga','sa','ang','yung','with','like','would','me','us','send','padala','thanks','salamat','boss','sir','maam','kuya','ate','and','or','tsaka','saka','pati','ng','na','of','the','a','an','po.']);
 const NFW_SOFT = new Set(['steel', 'structural', 'portland', 'fresh', 'grade', 'a', 'the', 'of', 'and', 'for', 'na', 'ng', 'type', 'size', 'brand', 'new', 'per', 'w/', 'with', 'washed', 'crushed', 'common', 'regular']);
 function nfwStem(w){ return w.length > 3 && /s$/.test(w) && !/ss$/.test(w) ? w.slice(0, -1) : w; }
 function nfwWords(s){ return nfwNorm(s).replace(/#?\d+(?:\.\d+)?\s?(mm|cm|kg|g|ga|in|ft|ml|l|m|")?(?![a-z])/g, ' ').replace(/\d\/\d+/g, ' ').split(' ').map(nfwStem).filter(w => w.length > 1 && !/^\d/.test(w)); }
@@ -54,7 +55,7 @@ function nfwChunks(text){
     if(!l) return;
     if(NFW_SKIP_LINE.test(l) && !/\d+\s*(?:bags?|pcs?|rolls?|box|sako)/i.test(l)) return;
     // one line can hold many items: "30 bags cement, 100 pcs rebar 10mm saka 5 rolls GI wire"
-    l.split(/\s*(?:;|,(?!\d{3})|\s\+\s|\s&\s|\band\b|\bsaka\b|\btapos\b|\bat\s+(?=\d))\s*/i).forEach(p => { if(p && p.trim()) out.push(p.trim()); });
+    l.split(/\s*(?:;|,(?!\d{3})|\s\+\s|\s&\s|\band\b|\bsaka\b|\btsaka\b|\bpati\b|\btapos\b|\bat\s+(?=\d|(?:isang|dalawang|tatlong|apat|limang|anim|pitong|walong|siyam|sampung|bente|one|two|three|four|five|six|ten|twenty|fifty)\b))\s*/i).forEach(p => { if(p && p.trim()) out.push(p.trim()); });
   });
   return out;
 }
@@ -118,7 +119,7 @@ function nfwSizeOk(ts, cs){
 }
 function nfwMatch(name, cands, alias){
   if(alias && cands.some(c => c.product === alias)) return {product: alias, conf: 'saved', options: []};
-  const tw = nfwWords(name), tsz = nfwSizes(nfwNorm(name)), bareT = (nfwNorm(name).match(/(?:^|\s)(\d+(?:\.\d+)?)(?=\s|$)/g) || []).map(x => Number(x));
+  const tw = nfwWords(name).filter(w => !NFW_FILL.has(w)), tsz = nfwSizes(nfwNorm(name)), bareT = (nfwNorm(name).match(/(?:^|\s)(\d+(?:\.\d+)?)(?=\s|$)/g) || []).map(x => Number(x));
   if(!tw.length) return {product: '', conf: 'none', options: []};
   const scored = [];
   cands.forEach(c => {
