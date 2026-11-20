@@ -12129,6 +12129,18 @@ body.nf55-on #getStartedCard{display:none !important;}
 .nf55-dock.away{opacity:0;pointer-events:none;transform:translateY(20px);}
 .nf55-dock{transition:opacity .2s, transform .2s;}
 body.nf55-on #view-app .main{padding-bottom:84px;}
+/* Round 55: coach is solid green, bottom right */
+.nf55-dock{left:auto !important;right:20px;bottom:20px;flex-direction:row-reverse;}
+.nf55-pill{background:linear-gradient(135deg,#1B6B40,#14532D);border:0;color:#FFFFFF;padding:10px 16px 10px 10px;box-shadow:0 16px 36px -10px rgba(20,83,45,.6),0 0 0 3px rgba(253,224,71,.0);animation:nf55glow 2.2s ease-in-out 3;}
+@keyframes nf55glow{50%{box-shadow:0 16px 36px -10px rgba(20,83,45,.6),0 0 0 6px rgba(253,224,71,.55);}}
+.nf55-pill small{color:#D1FAE5;} .nf55-pill b{color:#FFFFFF;} .nf55-pill i{color:#FDE047;}
+.nf55-pill.mini{background:#1B6B40;} .nf55-pill.mini b{color:#FFFFFF;}
+.nf55-dock.open{left:auto !important;right:20px;bottom:20px;}
+.nf55-ph .nf55-ring circle:first-child{stroke:#DCEBE1;} .nf55-ph .nf55-ring circle:last-child{stroke:#1B6B40;}
+@media (max-width:760px){
+  .nf55-dock{right:10px;bottom:calc(140px + env(safe-area-inset-bottom,0px));}
+  .nf55-dock.open{right:0;left:0 !important;bottom:0;}
+}
 
   .settings-card:empty{display:none;}
   #supplierChips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;} #supplierChips .chip{flex-shrink:0;}
@@ -46010,11 +46022,11 @@ function nf55Paint(){
   else if(!st.seenDone){ nf55Set('seenDone', done.map(s => s.k)); }
   if(!dock){ dock = document.createElement('div'); dock.id = 'nf55Dock'; document.body.appendChild(dock); }
   document.body.classList.add('nf55-on');
-  const sbar = document.querySelector('#view-app .sidebar'); dock.style.left = (innerWidth > 760 && sbar && sbar.offsetParent !== null) ? (sbar.getBoundingClientRect().right + 16) + 'px' : '';
+  dock.style.left = '';
   const pct = Math.round(done.length / steps.length * 100), allMust = mustDone === must.length;
   const sig = [NF55.open, done.length, nextS && nextS.k, st.mini ? 1 : 0, JSON.stringify(Object.keys(st).filter(k => /^skip_|^d_/.test(k)))].join('|');
   if(dock.dataset.sig === sig) return; dock.dataset.sig = sig;
-  const ring = `<svg class="nf55-ring" viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="15.5" fill="none" stroke="#DCEBE1" stroke-width="4"/><circle cx="18" cy="18" r="15.5" fill="none" stroke="#1B6B40" stroke-width="4" stroke-linecap="round" stroke-dasharray="${(pct * 97.4 / 100).toFixed(1)} 97.4" transform="rotate(-90 18 18)"/></svg>`;
+  const ring = `<svg class="nf55-ring" viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="15.5" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="4"/><circle cx="18" cy="18" r="15.5" fill="none" stroke="#FDE047" stroke-width="4" stroke-linecap="round" stroke-dasharray="${(pct * 97.4 / 100).toFixed(1)} 97.4" transform="rotate(-90 18 18)"/></svg>`;
   if(!NF55.open){
     dock.className = 'nf55-dock' + (st.mini ? ' mini' : '');
     dock.innerHTML = st.mini ? `<button type="button" class="nf55-pill mini" onclick="nf55Set('mini',false);nf55Open()" aria-label="Open setup coach">${ring}<b>${done.length}/${steps.length}</b></button>`

@@ -61,11 +61,11 @@ function nf55Paint(){
   else if(!st.seenDone){ nf55Set('seenDone', done.map(s => s.k)); }
   if(!dock){ dock = document.createElement('div'); dock.id = 'nf55Dock'; document.body.appendChild(dock); }
   document.body.classList.add('nf55-on');
-  const sbar = document.querySelector('#view-app .sidebar'); dock.style.left = (innerWidth > 760 && sbar && sbar.offsetParent !== null) ? (sbar.getBoundingClientRect().right + 16) + 'px' : '';
+  dock.style.left = '';
   const pct = Math.round(done.length / steps.length * 100), allMust = mustDone === must.length;
   const sig = [NF55.open, done.length, nextS && nextS.k, st.mini ? 1 : 0, JSON.stringify(Object.keys(st).filter(k => /^skip_|^d_/.test(k)))].join('|');
   if(dock.dataset.sig === sig) return; dock.dataset.sig = sig;
-  const ring = `<svg class="nf55-ring" viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="15.5" fill="none" stroke="#DCEBE1" stroke-width="4"/><circle cx="18" cy="18" r="15.5" fill="none" stroke="#1B6B40" stroke-width="4" stroke-linecap="round" stroke-dasharray="${(pct * 97.4 / 100).toFixed(1)} 97.4" transform="rotate(-90 18 18)"/></svg>`;
+  const ring = `<svg class="nf55-ring" viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="15.5" fill="none" stroke="rgba(255,255,255,.28)" stroke-width="4"/><circle cx="18" cy="18" r="15.5" fill="none" stroke="#FDE047" stroke-width="4" stroke-linecap="round" stroke-dasharray="${(pct * 97.4 / 100).toFixed(1)} 97.4" transform="rotate(-90 18 18)"/></svg>`;
   if(!NF55.open){
     dock.className = 'nf55-dock' + (st.mini ? ' mini' : '');
     dock.innerHTML = st.mini ? `<button type="button" class="nf55-pill mini" onclick="nf55Set('mini',false);nf55Open()" aria-label="Open setup coach">${ring}<b>${done.length}/${steps.length}</b></button>`
