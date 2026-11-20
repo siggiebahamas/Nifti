@@ -162,3 +162,21 @@
   .mk-try-order, .mk-try-row, .mk-try-send{animation:none !important;}
   .mk-loop-screen img{transition:none;}
 }
+
+.mk-try-ask{font-style:normal;font-size:13px;font-weight:800;color:#92400E;background:#FEF3C7;border-radius:999px;padding:3px 10px;}
+.mk-try-new{color:#1B6B40;font-weight:600;}
+
+/* ---------- Round 53: See it in action pictures bigger and cleaner ---------- */
+#view-index .nf20-sp .f4-art{zoom:1.24;}
+#view-index .nf20-sp .f4-art .mk-store-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:5px;}
+#view-index .nf20-sp .f4-art .mk-store-tags span{display:inline-flex;align-items:center;gap:4px;white-space:nowrap;}
+#view-index .nf20-sp .f4-art .mk-store-tags span svg{display:inline-block;flex:0 0 auto;width:12px;height:12px;margin:0;}
+#view-index .nf20-sp .f4-art .mk-store-head small, #view-index .nf20-sp .f4-art .mk-store-head span{white-space:normal;}
+@media (max-width:760px){
+  #view-index .nf20-sp .f4-art{zoom:1;}
+}
+#view-index .nf20-sp .f4-art .mk-store-tags span:nth-child(n+3){display:none;}
+#view-index .nf20-sp .f4-art .mk-store-tags{flex-wrap:nowrap;}
+#view-index .nf20-sp .f4-art .mk-store-head b{white-space:nowrap;display:flex;align-items:center;gap:4px;}
+@media (max-width:760px){ #view-index .nf20-sp .f4-art .mk-store-tags{flex-wrap:wrap;} #view-index .nf20-sp .f4-art .mk-store-head small{white-space:normal;} }
+@media (max-width:760px){ #view-index .nf20-sp .f4-art .mk-cart{white-space:nowrap;font-size:12px;gap:6px;} }

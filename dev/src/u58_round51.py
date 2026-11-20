@@ -55,7 +55,7 @@ R('<li>Ready-made posts for your Page</li><li>Link in your Messenger auto-reply<
   '<li>Buyers pay by GCash, Maya or cash on delivery</li><li>Your delivery fee, set per barangay</li><li>One-tap Facebook posts and a Monday price list picture</li>')
 R('<span class="mk-av g">MS</span><div><b>Metro Steel Co. ', '<span class="mk-av g">DC</span><div><b>Dela Cruz Hardware ')
 R('<small>Construction supplies · Valenzuela</small>', '<small>Hardware &amp; construction · Marikina</small>')
-R(' Next-day</span><span> COD</span>', ' Delivery by barangay</span><span> GCash · Maya · COD</span>')
+R(' Next-day</span><span> COD</span>', ' Barangay fee</span><span>GCash · Maya · COD</span>')
 R('<b>Portland Cement 40kg</b><small><s>₱245</s> <b class="mk-red">₱235</b> /bag · sale</small>', '<b>Portland Cement 40kg</b><small><s>₱240</s> <b class="mk-red">₱228</b> /bag · sale</small>')
 R('<b>Rebar 10mm</b><small>₱180 /pc</small>', '<b>Steel Rebar 12mm</b><small>₱65 /pc</small>')
 R('<b>GI Wire #16</b><small>₱95 /roll</small>', '<b>Galvanized Wire 12ga</b><small>₱850 /roll</small>')

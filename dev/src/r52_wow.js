@@ -18,8 +18,14 @@ function mk52Parse(msg){
   const parts = text.split(/,|\btsaka\b|\bsaka\b|\bat\b|\band\b|\+|\n|;|\. /);
   const lines = [], seen = {};
   parts.forEach(seg => {
-    const item = MK52_ITEMS.find(it => it.words.some(w => seg.includes(w)));
-    if(!item || seen[item.name]) return;
+    let item = MK52_ITEMS.find(it => it.words.some(w => seg.includes(w)));
+    if(!item){ // not in the sample price list: keep it as a line Nifti asks about once
+      const STOP = /^(boss|po|pa|naman|lang|na|ng|sa|ang|mga|pls|please|sir|maam|ma'am|hi|hello|order|pabili|bili|kami|ako|deliver|delivery|bukas|tomorrow|today|ngayon|monday|lunes|pick|up|pickup|mamaya|later|hatid|the|a|of|for|pcs|pc|piraso|sako|bags?|rolyo|rolls?|box(es)?|kahon|lata|gallon|galon|kilo|kg|x|to|us|me|i|we|need|want|ko|namin|thanks|salamat|ty)$/;
+      const w = seg.replace(/[^a-z0-9ñ\s-]/g, ' ').split(/\s+/).filter(x => x && !/^\d+$/.test(x) && !MK52_NUM[x] && !STOP.test(x));
+      if(!w.length) return;
+      const nm = w.slice(0, 3).join(' '); item = {name: nm.charAt(0).toUpperCase() + nm.slice(1), price: null};
+    }
+    if(seen[item.name]) return;
     let q = null; const m = seg.match(/(\d+)/);
     if(m) q = parseInt(m[1], 10);
     else { const w = seg.split(/[^a-z]+/).find(x => MK52_NUM[x]); if(w) q = MK52_NUM[w]; }
@@ -39,19 +45,20 @@ function mk52Try(){
   clearTimeout(mk52Try.t);
   mk52Try.t = setTimeout(() => {
     const r = mk52Parse(msg);
-    if(!r.lines.length){ out.innerHTML = '<div class="mk-try-order"><div class="mk-try-oh"><span class="spark">✦</span><b>Nifti needs a little help</b></div><p class="mk-try-note">Try naming an item from the sample shop: cement, rebar, wire, angle bars, welding rods, I-beams or plates. In your own shop Nifti knows your items.</p></div>'; return; }
-    const total = r.lines.reduce((a, l) => a + l.q * l.item.price, 0);
+    if(!r.lines.length){ out.innerHTML = '<div class="mk-try-order"><div class="mk-try-oh"><span class="spark">✦</span><b>Nifti needs a little help</b></div><p class="mk-try-note">Add what they want and how many, like “10 sako semento, 5 wire”. In your own shop Nifti knows all your items.</p></div>'; return; }
+    const total = r.lines.reduce((a, l) => a + (l.item.price ? l.q * l.item.price : 0), 0), ask = r.lines.filter(l => !l.item.price).length;
     const no = 1044 + Math.floor(Math.random() * 40);
     out.innerHTML = `<div class="mk-try-order"><div class="mk-try-oh"><span class="spark">✦</span><b>Order #${no} <span>· Bayview Construction</span></b><small>${r.lines.length} item${r.lines.length === 1 ? '' : 's'}</small></div>
-      ${r.lines.map((l, i) => `<div class="mk-try-row${l.guessed ? ' q' : ''}" style="animation-delay:${.08 * i}s"><span>${mk52Esc(l.item.name)} × ${l.q}${l.guessed ? ' (check the qty)' : ''}</span><b>${mk52Peso(l.q * l.item.price)}</b></div>`).join('')}
+      ${r.lines.map((l, i) => `<div class="mk-try-row${l.guessed ? ' q' : ''}" style="animation-delay:${.08 * i}s"><span>${mk52Esc(l.item.name)} × ${l.q}${l.guessed ? ' (check the qty)' : ''}</span><b>${l.item.price ? mk52Peso(l.q * l.item.price) : '<i class="mk-try-ask">Set price</i>'}</b></div>`).join('')}
       <div class="mk-try-tot"><span>Total</span><b id="mkTryTot">₱0</b></div>
-      ${r.when ? `<p class="mk-try-note">🚚 ${mk52Esc(r.when)} · prices from your price list</p>` : '<p class="mk-try-note">Prices from your price list</p>'}</div>`;
+      ${r.when ? `<p class="mk-try-note">🚚 ${mk52Esc(r.when)} · prices from your price list</p>` : '<p class="mk-try-note">Prices from your price list</p>'}
+      ${ask ? `<p class="mk-try-note mk-try-new">✦ ${ask === 1 ? 'One item is' : ask + ' items are'} new to this sample shop. Nifti asks you the price once, then remembers it.</p>` : ''}</div>`;
     // count the total up
     const el = document.getElementById('mkTryTot'), t0 = performance.now(), dur = 700;
     const step = now => { const k = Math.min(1, (now - t0) / dur); if(el) el.textContent = mk52Peso(total * (1 - Math.pow(1 - k, 3))); if(k < 1) requestAnimationFrame(step); };
     requestAnimationFrame(step);
     setTimeout(() => { if(!out.querySelector('.mk-try-order')) return;
-      out.insertAdjacentHTML('beforeend', `<div class="mk-try-send"><span class="ok">✓</span><div><b>Sent to Bayview for their OK</b><small>They tap a link on Viber. No app, no sign-up.</small></div><a onclick="mk52Start()">Do this for real →</a></div>`); }, 900);
+      out.insertAdjacentHTML('beforeend', `<div class="mk-try-send"><span class="ok">✓</span><div><b>${out.querySelector('.mk-try-ask') ? 'Add the missing price, then it goes to Bayview' : 'Sent to Bayview for their OK'}</b><small>They tap a link on Viber. No app, no sign-up.</small></div><a onclick="mk52Start()">Do this for real →</a></div>`); }, 900);
   }, 650);
 }
 // the real app, playing on a phone

@@ -12252,6 +12252,24 @@ html body .sl-tile small::after, html body .sl-tile.nf45-tap small::after, html 
   .mk-loop-screen img{transition:none;}
 }
 
+.mk-try-ask{font-style:normal;font-size:13px;font-weight:800;color:#92400E;background:#FEF3C7;border-radius:999px;padding:3px 10px;}
+.mk-try-new{color:#1B6B40;font-weight:600;}
+
+/* ---------- Round 53: See it in action pictures bigger and cleaner ---------- */
+#view-index .nf20-sp .f4-art{zoom:1.24;}
+#view-index .nf20-sp .f4-art .mk-store-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:5px;}
+#view-index .nf20-sp .f4-art .mk-store-tags span{display:inline-flex;align-items:center;gap:4px;white-space:nowrap;}
+#view-index .nf20-sp .f4-art .mk-store-tags span svg{display:inline-block;flex:0 0 auto;width:12px;height:12px;margin:0;}
+#view-index .nf20-sp .f4-art .mk-store-head small, #view-index .nf20-sp .f4-art .mk-store-head span{white-space:normal;}
+@media (max-width:760px){
+  #view-index .nf20-sp .f4-art{zoom:1;}
+}
+#view-index .nf20-sp .f4-art .mk-store-tags span:nth-child(n+3){display:none;}
+#view-index .nf20-sp .f4-art .mk-store-tags{flex-wrap:nowrap;}
+#view-index .nf20-sp .f4-art .mk-store-head b{white-space:nowrap;display:flex;align-items:center;gap:4px;}
+@media (max-width:760px){ #view-index .nf20-sp .f4-art .mk-store-tags{flex-wrap:wrap;} #view-index .nf20-sp .f4-art .mk-store-head small{white-space:normal;} }
+@media (max-width:760px){ #view-index .nf20-sp .f4-art .mk-cart{white-space:nowrap;font-size:12px;gap:6px;} }
+
 
 /* Round 51: marketing pages keep their original type sizes (the six-size scale is for the app) */
 .marketing-view, #view-login{--ty-k:1.0625;--ty-min:14px;--ty-body:17px;--ty-lead:17.5px;--ty-display:40px;--ty-h1:36px;--ty-h2:22px;--ty-cap:14px;--ty-lbl:17px;--ty-val:29px;--ty-sub:16px;--ty-th:14.5px;--ty-td:16.5px;--ty-row:17.5px;--ty-small:16px;--ty-pill:14px;--ty-tab:16.5px;--ty-btn:16.5px;--ty-nav:16.5px}
@@ -12386,7 +12404,7 @@ html[data-ty] #view-login p.fine{font-size:calc(15px*var(--ty-k,1))}
     <div class="f4-out"><b>2 min</b><span>to open your store</span></div></div>
   <div class="f4-art warm"><div class="f4-main"><div class="mk-phone "><div class="mk-notch"></div><div class="mk-screen">
   <div class="mk-store-head"><span class="mk-av g">DC</span><div><b>Dela Cruz Hardware <span class="mk-green"><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></svg></span></b><small>Hardware &amp; construction · Marikina</small></div></div>
-  <div class="mk-store-tags"><span><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg> Delivery by barangay</span><span> GCash · Maya · COD</span><span><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 20+ orders</span></div>
+  <div class="mk-store-tags"><span><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.62l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg> Barangay fee</span><span>GCash · Maya · COD</span><span><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 20+ orders</span></div>
   <div class="mk-prod"><div class="mk-prod-ic"><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></div><div><b>Portland Cement 40kg</b><small><s>₱240</s> <b class="mk-red">₱228</b> /bag · sale</small></div><span class="mk-qty">20</span></div>
   <div class="mk-prod"><div class="mk-prod-ic"><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></div><div><b>Steel Rebar 12mm</b><small>₱65 /pc</small></div><span class="mk-qty">10</span></div>
   <div class="mk-prod"><div class="mk-prod-ic"><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg></div><div><b>Galvanized Wire 12ga</b><small>₱850 /roll</small></div><span class="mk-add">+</span></div>
@@ -45553,8 +45571,14 @@ function mk52Parse(msg){
   const parts = text.split(/,|\btsaka\b|\bsaka\b|\bat\b|\band\b|\+|\n|;|\. /);
   const lines = [], seen = {};
   parts.forEach(seg => {
-    const item = MK52_ITEMS.find(it => it.words.some(w => seg.includes(w)));
-    if(!item || seen[item.name]) return;
+    let item = MK52_ITEMS.find(it => it.words.some(w => seg.includes(w)));
+    if(!item){ // not in the sample price list: keep it as a line Nifti asks about once
+      const STOP = /^(boss|po|pa|naman|lang|na|ng|sa|ang|mga|pls|please|sir|maam|ma'am|hi|hello|order|pabili|bili|kami|ako|deliver|delivery|bukas|tomorrow|today|ngayon|monday|lunes|pick|up|pickup|mamaya|later|hatid|the|a|of|for|pcs|pc|piraso|sako|bags?|rolyo|rolls?|box(es)?|kahon|lata|gallon|galon|kilo|kg|x|to|us|me|i|we|need|want|ko|namin|thanks|salamat|ty)$/;
+      const w = seg.replace(/[^a-z0-9ñ\s-]/g, ' ').split(/\s+/).filter(x => x && !/^\d+$/.test(x) && !MK52_NUM[x] && !STOP.test(x));
+      if(!w.length) return;
+      const nm = w.slice(0, 3).join(' '); item = {name: nm.charAt(0).toUpperCase() + nm.slice(1), price: null};
+    }
+    if(seen[item.name]) return;
     let q = null; const m = seg.match(/(\d+)/);
     if(m) q = parseInt(m[1], 10);
     else { const w = seg.split(/[^a-z]+/).find(x => MK52_NUM[x]); if(w) q = MK52_NUM[w]; }
@@ -45574,19 +45598,20 @@ function mk52Try(){
   clearTimeout(mk52Try.t);
   mk52Try.t = setTimeout(() => {
     const r = mk52Parse(msg);
-    if(!r.lines.length){ out.innerHTML = '<div class="mk-try-order"><div class="mk-try-oh"><span class="spark">✦</span><b>Nifti needs a little help</b></div><p class="mk-try-note">Try naming an item from the sample shop: cement, rebar, wire, angle bars, welding rods, I-beams or plates. In your own shop Nifti knows your items.</p></div>'; return; }
-    const total = r.lines.reduce((a, l) => a + l.q * l.item.price, 0);
+    if(!r.lines.length){ out.innerHTML = '<div class="mk-try-order"><div class="mk-try-oh"><span class="spark">✦</span><b>Nifti needs a little help</b></div><p class="mk-try-note">Add what they want and how many, like “10 sako semento, 5 wire”. In your own shop Nifti knows all your items.</p></div>'; return; }
+    const total = r.lines.reduce((a, l) => a + (l.item.price ? l.q * l.item.price : 0), 0), ask = r.lines.filter(l => !l.item.price).length;
     const no = 1044 + Math.floor(Math.random() * 40);
     out.innerHTML = `<div class="mk-try-order"><div class="mk-try-oh"><span class="spark">✦</span><b>Order #${no} <span>· Bayview Construction</span></b><small>${r.lines.length} item${r.lines.length === 1 ? '' : 's'}</small></div>
-      ${r.lines.map((l, i) => `<div class="mk-try-row${l.guessed ? ' q' : ''}" style="animation-delay:${.08 * i}s"><span>${mk52Esc(l.item.name)} × ${l.q}${l.guessed ? ' (check the qty)' : ''}</span><b>${mk52Peso(l.q * l.item.price)}</b></div>`).join('')}
+      ${r.lines.map((l, i) => `<div class="mk-try-row${l.guessed ? ' q' : ''}" style="animation-delay:${.08 * i}s"><span>${mk52Esc(l.item.name)} × ${l.q}${l.guessed ? ' (check the qty)' : ''}</span><b>${l.item.price ? mk52Peso(l.q * l.item.price) : '<i class="mk-try-ask">Set price</i>'}</b></div>`).join('')}
       <div class="mk-try-tot"><span>Total</span><b id="mkTryTot">₱0</b></div>
-      ${r.when ? `<p class="mk-try-note">🚚 ${mk52Esc(r.when)} · prices from your price list</p>` : '<p class="mk-try-note">Prices from your price list</p>'}</div>`;
+      ${r.when ? `<p class="mk-try-note">🚚 ${mk52Esc(r.when)} · prices from your price list</p>` : '<p class="mk-try-note">Prices from your price list</p>'}
+      ${ask ? `<p class="mk-try-note mk-try-new">✦ ${ask === 1 ? 'One item is' : ask + ' items are'} new to this sample shop. Nifti asks you the price once, then remembers it.</p>` : ''}</div>`;
     // count the total up
     const el = document.getElementById('mkTryTot'), t0 = performance.now(), dur = 700;
     const step = now => { const k = Math.min(1, (now - t0) / dur); if(el) el.textContent = mk52Peso(total * (1 - Math.pow(1 - k, 3))); if(k < 1) requestAnimationFrame(step); };
     requestAnimationFrame(step);
     setTimeout(() => { if(!out.querySelector('.mk-try-order')) return;
-      out.insertAdjacentHTML('beforeend', `<div class="mk-try-send"><span class="ok">✓</span><div><b>Sent to Bayview for their OK</b><small>They tap a link on Viber. No app, no sign-up.</small></div><a onclick="mk52Start()">Do this for real →</a></div>`); }, 900);
+      out.insertAdjacentHTML('beforeend', `<div class="mk-try-send"><span class="ok">✓</span><div><b>${out.querySelector('.mk-try-ask') ? 'Add the missing price, then it goes to Bayview' : 'Sent to Bayview for their OK'}</b><small>They tap a link on Viber. No app, no sign-up.</small></div><a onclick="mk52Start()">Do this for real →</a></div>`); }, 900);
   }, 650);
 }
 // the real app, playing on a phone
