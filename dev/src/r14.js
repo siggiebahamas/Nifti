@@ -258,8 +258,8 @@ function nfwCheckHtml(){
   const unsure = NFW.rows.filter(r => !r.product && !r.isNew).length;
   const rowsHtml = NFW.rows.map((r, i) => {
     const sure = r.product || r.isNew;
-    const head = r.product ? `<b>${nffE(r.product)}</b>` : r.isNew ? `<b>${nffE(r.words)}</b> <span class="nfw-tag">New item</span>` : `<b class="q">“${nffE(r.words || r.raw)}”</b>`;
-    const ask = !sure ? `<div class="nfw-ask">${r.options.length ? (r.why === 'size' ? 'Which size?' : 'Which item is this?') : `Not in ${sell ? 'your items' : 'what you buy from them'}.`}</div>
+    const head = r.product ? `<b>${nffE(r.product)}</b><button type="button" class="nfw-chg" data-nfw="chg" data-i="${i}">Change item</button>` : r.isNew ? `<b>${nffE(r.words)}</b> <span class="nfw-tag">New item</span>` : `<b class="q">“${nffE(r.words || r.raw)}”</b>`;
+    const ask = !sure ? `<div class="nfw-ask">${r.options.length ? (r.why === 'size' ? 'Which size?' : r.why === 'chg' ? 'Pick the right item, or search your list' : 'Which item is this?') : `Not in ${sell ? 'your items' : 'what you buy from them'}.`}</div>
       <div class="nff-chips">${r.options.map(o => `<button type="button" class="nff-chip" data-nfw="pick" data-i="${i}" data-v="${nffE(o)}">${nffE(o)}</button>`).join('')}
         <button type="button" class="nff-chip ghost" data-nfw="findopen" data-i="${i}">${r.options.length ? 'Something else' : 'Find it in your list'}</button>
         <button type="button" class="nff-chip ghost" data-nfw="asnew" data-i="${i}">${sell ? 'Keep their words' : `New item for ${nffE(nffFirst(who))}`}</button></div>
@@ -435,6 +435,7 @@ document.addEventListener('click', e => {
   if(a === 'read') return nfwRead();
   if(a === 'form'){ const id = NFW.who, nm = nfwWhoName(); nfwClose(); if(typeof CPO !== 'undefined'){ CPO = Object.assign(CPO || {}, {buyerId: id || '', name: nm}); } if(typeof cpoSendForm === 'function') cpoSendForm(); return; }
   if(a === 'pick' && r){ r.product = b.dataset.v; r.conf = 'ok'; r.isNew = false; r.finding = false; const p = nfwPrice(r.product); if(p) r.price = p; nfwRender(true); return; }
+  if(a === 'chg' && r){ let o = []; try{ o = (nfwMatch(r.words || r.raw || r.product, nfwCands()).options || []); }catch(e){} const cur = r.product; o = o.filter(x => x !== cur); if(o.length < 4) nfwCands().forEach(c => { if(o.length < 4 && c.product !== cur && !o.includes(c.product)) o.push(c.product); }); r.options = o.slice(0, 4); r.was = cur; r.product = ''; r.isNew = false; r.finding = true; r.why = 'chg'; nfwRender(true); setTimeout(() => { const f = document.querySelector(`#nfwModal [data-nfw-in="find"][data-i="${i}"]`); if(f && window.innerWidth > 760) f.focus(); }, 40); return; }
   if(a === 'findopen' && r){ r.finding = true; nfwRender(true); setTimeout(() => { const f = document.querySelector(`#nfwModal [data-nfw-in="find"][data-i="${i}"]`); if(f) f.focus(); }, 40); return; }
   if(a === 'asnew' && r){ r.isNew = true; r.product = ''; r.finding = false; nfwRender(true); return; }
   if(a === 'del'){ NFW.rows.splice(i, 1); nfwRender(true); return; }

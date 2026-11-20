@@ -181,3 +181,9 @@
 @media (max-width:760px){ #view-index .nf20-sp .f4-art .mk-store-tags{flex-wrap:wrap;} #view-index .nf20-sp .f4-art .mk-store-head small{white-space:normal;} }
 @media (max-width:760px){ #view-index .nf20-sp .f4-art .mk-cart{white-space:nowrap;font-size:12px;gap:6px;} }
 #view-index .h4-meta em{background:#E8F3EC !important;color:#14532D !important;border:1px solid #B7DCC4 !important;font-weight:800 !important;letter-spacing:.06em;}
+
+/* Round 53: the order picture is now a still, not a try-it box */
+.mk-sx-bub{background:#E3F1E8;border-radius:18px 18px 18px 6px;padding:13px 16px;font-size:17px;line-height:1.5;color:#18191E;max-width:92%;}
+.mk-sx-arrow{display:flex;justify-content:center;margin:12px 0;} .mk-sx-arrow span{font-size:14px;font-weight:800;color:#1B6B40;background:#FFFFFF;border:1px solid #CFE3D6;border-radius:999px;padding:5px 14px;}
+.mk-sx .mk-try-send{animation:none;}
+.mk-sx-ways{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;justify-content:center;} .mk-sx-ways span{font-size:14px;font-weight:700;color:#14532D;background:#F1F7F3;border-radius:999px;padding:6px 12px;}

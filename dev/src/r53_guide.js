@@ -14,7 +14,7 @@ const NF53 = {
     {e: '🔗', h: 'They confirm with one tap', p: 'Send the order link on Viber. Your customer taps Confirm. No app, no sign-up for them.', ui: ['Order 0855 · ₱6,530', '<u>Tap to confirm →</u>']},
     {e: '🧭', h: 'Follow it to paid', p: 'Each order moves: To confirm → Preparing → Delivered → Paid. Customers left, suppliers right.', ui: ['To confirm · Preparing · Delivered · <b>Paid</b>']}]},
   messages: {t: 'Messages', c: '#7C3AED', s: [
-    {e: '📱', h: 'Viber messages need the Nifti Android app', p: 'Nifti reads Viber only through the free Nifti app on YOUR Android phone, with Viber installed and logged in on that phone.', ui: ['Android + Nifti app → <i class=g>automatic</i>', 'iPhone → <i class=y>share or copy</i>', 'Computer only → <i class=y>copy and paste</i>']},
+    {e: '📱', h: 'Viber messages need the Nifti Android app', p: 'Nifti reads Viber only through the free Nifti app on your Android phone, with Viber logged in on that same phone.', ui: ['Android phone + Nifti app → <i class=g>automatic</i>', 'Viber logged in on that phone', 'Without the app → copy and paste']},
     {e: '🔌', h: 'Keep that phone on and online', p: 'If the phone is off or has no signal, messages wait and arrive once it is back. Only messages after setup come in.', ui: ['Phone on · Viber logged in · internet ✓']},
     {e: '🗂️', h: 'Every chat in one place', p: 'Customers, suppliers and your team in folders, with the order beside each chat.', ui: ['Customers · Suppliers · Team', 'Bayview: “Boss, 10 sako…” → <u>Make order</u>']},
     {e: '↩️', h: 'Reply from Nifti', p: 'Type your reply here and it goes out through Viber on your phone, from your own number.', ui: ['You: “Noted po, deliver bukas” ✓']}]},
@@ -69,14 +69,20 @@ const NF53_ALIAS = {getpaid: 'collections', followups: 'collections', stock: 'in
 function nf53Page(){ const el = [...document.querySelectorAll('.main [id^="page-"]')].find(p => p.offsetParent !== null && !p.hidden && p.getBoundingClientRect().height > 40); if(!el) return null; const k = el.id.slice(5); return {el, k: NF53[k] ? k : NF53_ALIAS[k]}; }
 function nf53Paint(){
   const off = nf53S(NF53_OFF), cur = nf53Page();
-  document.querySelectorAll('.nf53-btn').forEach(b => { if(off || !cur || b.parentNode !== cur.el) b.remove(); });
+  document.querySelectorAll('.nf53-btn').forEach(b => { if(off || !cur || !cur.el.contains(b)) b.remove(); });
   if(off || !cur || !cur.k || !NF53[cur.k]) return;
-  if(cur.el.querySelector(':scope > .nf53-btn')) return;
-  const seen = (nf53S(NF53_SEEN) || {})[cur.k];
-  const b = document.createElement('button'); b.type = 'button'; b.className = 'nf53-btn' + (seen ? ' seen' : '');
-  b.innerHTML = `<span class="nf53-play">▶</span><span class="nf53-bt">${seen ? 'Guide' : 'What this page does · 1 min'}</span>`;
-  b.title = 'A one-minute guide to this page'; b.onclick = () => nf53Open(cur.k);
-  cur.el.insertBefore(b, cur.el.firstChild);
+  const seen = !!(nf53S(NF53_SEEN) || {})[cur.k];
+  let b = cur.el.querySelector('.nf53-btn');
+  let help = cur.el.querySelector('.nf22-help'); if(help && help.offsetParent === null) help = null;
+  const vb = cur.k === 'messages' ? cur.el.querySelector('.nf53-vb') : null;
+  if(b && b.classList.contains('seen') === seen && (help ? b.previousElementSibling === help : vb ? b.parentNode === vb : b.parentNode.classList.contains('nf53-row'))) return;
+  if(b) b.remove();
+  b = document.createElement('button'); b.type = 'button'; b.className = 'nf53-btn' + (seen ? ' seen' : ' fresh');
+  b.innerHTML = `<span class="nf53-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span><em>${seen ? 'Replay tour' : '1-min tour'}</em>`;
+  b.title = 'A one-minute tour of this page'; b.setAttribute('aria-label', 'One-minute tour of this page'); b.onclick = () => nf53Open(cur.k);
+  if(help) help.insertAdjacentElement('afterend', b);
+  else if(vb) vb.appendChild(b);
+  else { let row = cur.el.querySelector(':scope > .nf53-row'); if(!row){ row = document.createElement('div'); row.className = 'nf53-row'; cur.el.insertBefore(row, cur.el.firstChild); } row.appendChild(b); }
 }
 const NF53G = {k: null, i: 0, t: null, paused: false, t0: 0, dur: 6500};
 function nf53Open(k){
@@ -91,46 +97,30 @@ function nf53Draw(){
   const g = NF53[NF53G.k], st = g.s[NF53G.i], last = NF53G.i === g.s.length - 1, ov = document.getElementById('nf53Ov');
   ov.style.setProperty('--g', g.c);
   ov.innerHTML = `<div class="nf53-card" role="dialog" aria-label="${g.t} guide">
-    <div class="nf53-bars">${g.s.map((x, j) => `<i class="${j < NF53G.i ? 'done' : j === NF53G.i ? 'now' : ''}"><u></u></i>`).join('')}</div>
+    <div class="nf53-bars">${g.s.map((x, j) => `<i class="${j <= NF53G.i ? 'done' : ''}"><u></u></i>`).join('')}</div>
     <div class="nf53-top"><span>${g.t} · 1-minute guide</span><button class="nf53-x" onclick="nf53Close()" aria-label="Close">×</button></div>
-    <div class="nf53-stage" onmouseenter="NF53G.paused=true" onmouseleave="NF53G.paused=false">
+    <div class="nf53-stage">
       <button class="nf53-tap l" onclick="nf53Go(-1)" aria-label="Back"></button><button class="nf53-tap r" onclick="nf53Go(1)" aria-label="Next"></button>
       <div class="nf53-ico">${st.e}</div>
       <div class="nf53-ui">${st.ui.map((r, j) => `<div style="animation-delay:${.25 + j * .18}s">${r}</div>`).join('')}</div>
     </div>
     <div class="nf53-txt"><small>Step ${NF53G.i + 1} of ${g.s.length}</small><h3>${st.h}</h3><p>${st.p}</p></div>
     <div class="nf53-foot"><button class="nf53-hide" onclick="nf53Hide()">Hide guide buttons</button>
-      <span>${NF53G.i ? '<button class="btn btn-outline" onclick="nf53Go(-1)">Back</button>' : ''}<button class="btn btn-primary" onclick="${last ? 'nf53Close()' : 'nf53Go(1)'}">${last ? 'Got it, let’s go' : 'Next'}</button></span></div></div>`;
-  NF53G.t0 = performance.now(); cancelAnimationFrame(NF53G.t);
-  const bar = ov.querySelector('.nf53-bars i.now u'); let acc = 0, prev = performance.now();
-  const tick = now => { if(!document.getElementById('nf53Ov') || document.getElementById('nf53Ov').hidden) return; if(!NF53G.paused) acc += now - prev; prev = now;
-    const k = Math.min(1, acc / NF53G.dur); if(bar) bar.style.width = (k * 100) + '%';
-    if(k >= 1){ if(!last) nf53Go(1); return; } NF53G.t = requestAnimationFrame(tick); };
-  if(!matchMedia('(prefers-reduced-motion: reduce)').matches) NF53G.t = requestAnimationFrame(tick); else if(bar) bar.style.width = '100%';
+      <span><button class="btn btn-outline" onclick="nf53Go(-1)"${NF53G.i ? '' : ' disabled'}>Back</button><button class="btn btn-primary" onclick="${last ? 'nf53Close()' : 'nf53Go(1)'}">${last ? 'Got it, let’s go' : 'Next'}</button></span></div></div>`;
 }
 function nf53Go(d){ const g = NF53[NF53G.k]; NF53G.i = Math.max(0, Math.min(g.s.length - 1, NF53G.i + d)); nf53Draw(); }
 function nf53Close(){ cancelAnimationFrame(NF53G.t); const ov = document.getElementById('nf53Ov'); if(ov) ov.hidden = true; document.body.classList.remove('nf53-lock'); nf53Paint(); }
 function nf53Hide(){ nf53S(NF53_OFF, true); nf53Close(); nf53Paint(); if(typeof showToast === 'function') showToast('Guides hidden. Turn them back on in Settings or Help.', 'success'); }
 function nf53Show(){ nf53S(NF53_OFF, false); nf53Paint(); if(typeof showToast === 'function') showToast('Page guides are back on every page.', 'success'); }
 
-// ---- Viber notice on Messages: always clear what is needed, never hidden completely ----
+// ---- Viber notice on Messages: Android only, one clear line ----
 function nf53Viber(){
   const pg = document.getElementById('page-messages'); if(!pg || pg.offsetParent === null) return;
-  const on = !!window.NiftiAndroid;
-  let box = pg.querySelector('.nf53-vb');
-  if(!box){ box = document.createElement('div'); box.className = 'nf53-vb'; const b = pg.querySelector('.nf53-btn'); pg.insertBefore(box, b ? b.nextSibling : pg.firstChild); }
-  const small = nf53S('nifti-vb-small');
-  const k = (on ? 'on' : 'off') + (small ? 's' : '');
-  if(box.dataset.k === k) return; box.dataset.k = k;
-  if(small){ box.innerHTML = `<span class="nf53-vb-i">📱</span><b>Viber messages come in through the Nifti Android app${on ? ' (this phone)' : ''}.</b><button onclick="nf53S('nifti-vb-small',false);nf53Viber()">How it works</button>`; box.classList.add('s'); return; }
-  box.classList.remove('s');
-  box.innerHTML = `<div class="nf53-vb-h"><span class="nf53-vb-i">📱</span><div><b>How Viber messages get into Nifti</b><small>Read this once so nothing surprises you.</small></div><button class="nf53-vb-x" onclick="nf53S('nifti-vb-small',true);nf53Viber()" aria-label="Make smaller">Got it</button></div>
-    <div class="nf53-vb-g">
-      <div class="ok"><b>Android phone + Nifti app</b><span>Automatic. Viber must be installed and logged in on that same phone. Keep it on and online.</span></div>
-      <div class="mid"><b>iPhone</b><span>Not automatic (Apple does not allow it). Share or copy a message into Nifti in one tap.</span></div>
-      <div class="mid"><b>Computer only</b><span>Not automatic yet. Copy and paste a message, or use the Android app on your phone.</span></div>
-    </div>
-    <p class="nf53-vb-n">Only messages that arrive after setup come in. If the phone is off or offline, they arrive once it is back.${on ? '' : ' <a onclick="typeof nf37Install===\'function\'?nf37Install():navigate(\'settings\')">Get the Android app</a>'}</p>`;
+  const on = !!window.NiftiAndroid; let box = pg.querySelector('.nf53-vb');
+  const k = on ? 'on' : 'off'; if(box && box.dataset.k === k) return;
+  if(!box){ box = document.createElement('div'); box.className = 'nf53-vb'; const head = pg.querySelector('.page-head, .nf23-th'); if(head && head.parentElement === pg) head.insertAdjacentElement('afterend', box); else pg.insertBefore(box, pg.firstChild); }
+  box.dataset.k = k; setTimeout(nf53Paint, 0);
+  box.innerHTML = `<span class="nf53-vb-i" aria-hidden="true">📱</span><span class="nf53-vb-t"><b>Viber messages come in only through the Nifti Android app.</b> Viber must be logged in on that same Android phone, and the phone kept on and online. Only messages after setup come in.</span>${on ? '<em class="nf53-vb-ok">Connected on this phone</em>' : '<a class="nf53-vb-a" onclick="typeof nf37Install===\'function\'?nf37Install():navigate(\'settings\')">Get the Android app</a>'}`;
 }
 // Settings: a line to turn guides back on
 function nf53SettingsLine(){

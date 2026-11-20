@@ -121,5 +121,5 @@ function mk52Sticky(){
     io.observe(ba);
   }
   // show the Try it result straight away so the box never looks empty
-  setTimeout(() => { const v = document.getElementById('view-index'); if(v && !document.getElementById('mkTryOut').innerHTML) mk52Try(); }, 1200);
+  
 })();
