@@ -75,13 +75,15 @@ function nf53Paint(){
   let b = cur.el.querySelector('.nf53-btn');
   let help = cur.el.querySelector('.nf22-help'); if(help && help.offsetParent === null) help = null;
   const vb = cur.k === 'messages' ? cur.el.querySelector('.nf53-vb') : null;
-  if(b && b.classList.contains('seen') === seen && (help ? b.previousElementSibling === help : vb ? b.parentNode === vb : b.parentNode.classList.contains('nf53-row'))) return;
+  const hd = (!help && !vb) ? [...cur.el.querySelectorAll('h1, h2')].find(h => h.offsetParent !== null && h.getBoundingClientRect().top < 520 && h.textContent.trim().length > 2 && !h.closest('.nf53-ov, .modal, [role=dialog]')) : null;
+  if(b && b.classList.contains('seen') === seen && (help ? b.previousElementSibling === help : vb ? b.parentNode === vb : hd ? b.parentNode === hd : b.parentNode.classList.contains('nf53-row'))) return;
   if(b) b.remove();
   b = document.createElement('button'); b.type = 'button'; b.className = 'nf53-btn' + (seen ? ' seen' : ' fresh');
   b.innerHTML = `<span class="nf53-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span><em>${seen ? 'Replay tour' : '1-min tour'}</em>`;
   b.title = 'A one-minute tour of this page'; b.setAttribute('aria-label', 'One-minute tour of this page'); b.onclick = () => nf53Open(cur.k);
   if(help) help.insertAdjacentElement('afterend', b);
   else if(vb) vb.appendChild(b);
+  else if(hd) hd.appendChild(b);
   else { let row = cur.el.querySelector(':scope > .nf53-row'); if(!row){ row = document.createElement('div'); row.className = 'nf53-row'; cur.el.insertBefore(row, cur.el.firstChild); } row.appendChild(b); }
 }
 const NF53G = {k: null, i: 0, t: null, paused: false, t0: 0, dur: 6500};
