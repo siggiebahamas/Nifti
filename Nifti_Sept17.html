@@ -12006,6 +12006,52 @@ html body .sl-tile small::after, html body .sl-tile.nf45-tap small::after, html 
 /* on phones the page area clips sideways; "clip" keeps that without breaking the sticky bottom buttons on these pages */
 @media (max-width:900px){ #view-app .main:has(.nf50-page.active){overflow-x:clip !important;overflow-y:visible !important;} }
 
+/* Round 53: page guides + Viber notice */
+.nf53-btn{display:inline-flex;align-items:center;gap:8px;float:right;position:relative;z-index:3;margin:0 0 8px 12px;padding:6px 14px 6px 6px;border-radius:999px;border:1px solid #CFE3D6;background:#FFFFFF;color:#14532D;font:700 14px Inter,system-ui,sans-serif;cursor:pointer;box-shadow:0 2px 8px rgba(16,24,40,.06);transition:box-shadow .2s, transform .15s;}
+.nf53-btn:hover{box-shadow:0 6px 16px rgba(27,107,64,.18);transform:translateY(-1px);}
+.nf53-play{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#1B6B40;color:#FFFFFF;font-size:14px;padding-left:2px;box-sizing:border-box;}
+.nf53-btn.seen{padding:5px 12px 5px 5px;background:#F7FAF8;border-color:#E2ECE5;color:#374151;box-shadow:none;}
+.nf53-btn.seen .nf53-play{width:22px;height:22px;background:#4B7A5E;}
+body.nf53-lock{overflow:hidden;}
+.nf53-ov{position:fixed;inset:0;z-index:10050;background:rgba(15,23,20,.55);backdrop-filter:blur(4px);display:grid;place-items:center;padding:16px;}
+.nf53-ov[hidden]{display:none;}
+.nf53-card{width:min(560px,100%);max-height:calc(100vh - 32px);overflow:auto;background:#FFFFFF;border-radius:24px;box-shadow:0 30px 80px -20px rgba(0,0,0,.45);padding:16px 18px 18px;animation:nf53in .3s ease;}
+@keyframes nf53in{from{opacity:0;transform:translateY(16px) scale(.98);}to{opacity:1;transform:none;}}
+.nf53-bars{display:flex;gap:6px;}
+.nf53-bars i{flex:1;height:4px;border-radius:4px;background:#E5E7EB;overflow:hidden;} .nf53-bars i u{display:block;height:100%;width:0;background:var(--g);} .nf53-bars i.done u{width:100%;}
+.nf53-top{display:flex;justify-content:space-between;align-items:center;margin:10px 0 12px;font-size:14px;font-weight:700;color:#0B0F14;}
+.nf53-x{border:0;background:#F3F4F6;width:36px;height:36px;border-radius:50%;font-size:24px;line-height:1;cursor:pointer;color:#18191E;}
+.nf53-stage{position:relative;border-radius:18px;padding:22px 18px;min-height:210px;background:linear-gradient(135deg,color-mix(in srgb,var(--g) 14%,#FFFFFF),#FFFFFF 70%);border:1px solid color-mix(in srgb,var(--g) 22%,#FFFFFF);display:flex;flex-direction:column;align-items:center;gap:14px;overflow:hidden;}
+.nf53-tap{position:absolute;top:0;bottom:0;width:30%;border:0;background:transparent;cursor:pointer;z-index:2;} .nf53-tap.l{left:0;} .nf53-tap.r{right:0;}
+.nf53-ico{font-size:36px;width:72px;height:72px;border-radius:22px;display:grid;place-items:center;background:#FFFFFF;box-shadow:0 10px 24px -8px rgba(16,24,40,.25);animation:nf53pop .45s cubic-bezier(.2,.9,.3,1.3) both;}
+@keyframes nf53pop{from{opacity:0;transform:scale(.6);}to{opacity:1;transform:none;}}
+.nf53-ui{width:100%;max-width:380px;display:grid;gap:8px;}
+.nf53-ui > div{background:#FFFFFF;border:1px solid #E5E7EB;border-radius:12px;padding:10px 14px;font-size:16px;color:#18191E;text-align:center;box-shadow:0 2px 6px rgba(16,24,40,.05);animation:nf53row .4s ease both;}
+@keyframes nf53row{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+.nf53-ui u{color:var(--g);font-weight:800;text-decoration:none;} .nf53-ui b{font-weight:800;}
+.nf53-ui i{font-style:normal;font-weight:800;border-radius:999px;padding:2px 9px;font-size:14px;} .nf53-ui i.g{background:#DCFCE7;color:#14532D;} .nf53-ui i.y{background:#FEF3C7;color:#78350F;} .nf53-ui i.r{background:#FEE2E2;color:#7F1D1D;}
+.nf53-txt{padding:16px 4px 6px;} .nf53-txt small{font-size:14px;font-weight:800;color:var(--g);letter-spacing:.04em;}
+.nf53-txt h3{margin:4px 0 6px;font-size:24px;line-height:1.2;color:#18191E;} .nf53-txt p{margin:0;font-size:18px;line-height:1.5;color:#374151;}
+.nf53-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:14px;flex-wrap:wrap;}
+.nf53-foot span{display:flex;gap:8px;margin-left:auto;}
+.nf53-hide{border:0;background:none;color:#0B0F14;font-size:14px;text-decoration:underline;cursor:pointer;padding:6px 0;}
+.nf53-vb{clear:both;border:1.5px solid #DDD6FE;background:#FAF8FF;border-radius:16px;padding:14px 16px;margin:0 0 14px;}
+.nf53-vb-h{display:flex;align-items:center;gap:12px;} .nf53-vb-h > div{flex:1;} .nf53-vb-h b{display:block;font-size:16px;color:#18191E;} .nf53-vb-h small{font-size:14px;color:#0B0F14;}
+.nf53-vb-i{font-size:24px;}
+.nf53-vb-x{border:1px solid #DDD6FE;background:#FFFFFF;border-radius:999px;padding:6px 14px;font-weight:700;font-size:14px;cursor:pointer;color:#4C1D95;}
+.nf53-vb-g{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:12px;}
+.nf53-vb-g > div{background:#FFFFFF;border-radius:12px;padding:10px 12px;border:1px solid #E5E7EB;} .nf53-vb-g b{display:block;font-size:14px;color:#18191E;margin-bottom:2px;} .nf53-vb-g span{font-size:14px;color:#374151;line-height:1.4;}
+.nf53-vb-g .ok{border-color:#86EFAC;background:#F0FDF4;} .nf53-vb-g .mid{border-color:#FDE68A;background:#FFFBEB;}
+.nf53-vb-n{margin:10px 0 0;font-size:14px;color:#0B0F14;} .nf53-vb-n a{color:#6D28D9;font-weight:800;cursor:pointer;}
+.nf53-vb.s{display:flex;align-items:center;gap:10px;padding:8px 12px;} .nf53-vb.s b{flex:1;font-size:14px;font-weight:600;color:#18191E;} .nf53-vb.s button{border:0;background:none;color:#6D28D9;font-weight:800;font-size:14px;cursor:pointer;text-decoration:underline;}
+.nf53-set{display:flex;justify-content:space-between;align-items:center;gap:12px;clear:both;padding:12px 14px;margin:0 0 14px;border:1px solid #E5E7EB;border-radius:14px;background:#FFFFFF;font-size:14px;} .nf53-set b{margin-right:6px;}
+@media (max-width:760px){
+  .nf53-btn{float:none;display:flex;width:max-content;margin:0 0 10px auto;} .nf53-btn:not(.seen) .nf53-bt{font-size:14px;}
+  .nf53-vb-g{grid-template-columns:1fr;}
+  .nf53-ov{padding:0;align-items:end;} .nf53-card{border-radius:22px 22px 0 0;max-height:94vh;}
+  .nf53-txt h3{font-size:24px;} .nf53-txt p{font-size:16px;}
+}
+
   .settings-card:empty{display:none;}
   #supplierChips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;} #supplierChips .chip{flex-shrink:0;}
 
@@ -45678,6 +45724,149 @@ function mk52Sticky(){
   // show the Try it result straight away so the box never looks empty
   setTimeout(() => { const v = document.getElementById('view-index'); if(v && !document.getElementById('mkTryOut').innerHTML) mk52Try(); }, 1200);
 })();
+
+/* ===== Round 53: one-minute page guides ("pre-ride videos") + clear Viber notice ===== */
+const NF53_OFF = 'nifti-guides-off', NF53_SEEN = 'nifti-guides-seen';
+function nf53S(k, v){ try{ if(v === undefined) return JSON.parse(localStorage.getItem(k) || 'null'); localStorage.setItem(k, JSON.stringify(v)); }catch(e){ return null; } }
+// each step: e = big icon, h = headline, p = one plain sentence, ui = what it looks like (mini screen rows)
+const NF53 = {
+  dashboard: {t: 'Home', c: '#1B6B40', s: [
+    {e: '☀️', h: 'Your day on one screen', p: 'Open Nifti in the morning. Home shows only what needs you today.', ui: ['<b>3</b> orders to confirm', '<b>₱18,200</b> to collect today', '<b>2</b> items running low']},
+    {e: '👆', h: 'Tap a box to act', p: 'Every number opens the list behind it, so you can finish the job right there.', ui: ['Orders to confirm → <u>Open</u>', 'Who owes you → <u>Remind</u>']},
+    {e: '📦', h: 'Know what runs out', p: 'Nifti watches your stock and tells you what to reorder before you run out.', ui: ['Cement 40kg · <i class=r>4 days left</i>', 'Rebar 12mm · <i class=y>9 days left</i>']},
+    {e: '✅', h: 'All green = done for the day', p: 'When every box is clear, you are on top of everything. Go home.', ui: ['<i class=g>All good</i> nothing needs you']}]},
+  orders: {t: 'Orders', c: '#1D4ED8', s: [
+    {e: '💬', h: 'Orders come in any way', p: 'Paste a Viber message, upload their PO, or type it. Nifti lays it out as an order.', ui: ['“10 sako semento tsaka 5 wire”', '⬇', 'Cement 40kg × 10 · Wire 12ga × 5']},
+    {e: '✏️', h: 'You always check before saving', p: 'Nifti fills in what it is sure of. Anything unsure is marked for you to pick. Tap a line to fix it.', ui: ['Cement 40kg × 10 <i class=g>✓</i>', 'Paint × 3 <i class=y>Pick item</i>']},
+    {e: '🔗', h: 'They confirm with one tap', p: 'Send the order link on Viber. Your customer taps Confirm. No app, no sign-up for them.', ui: ['Order 0855 · ₱6,530', '<u>Tap to confirm →</u>']},
+    {e: '🧭', h: 'Follow it to paid', p: 'Each order moves: To confirm → Preparing → Delivered → Paid. Customers left, suppliers right.', ui: ['To confirm · Preparing · Delivered · <b>Paid</b>']}]},
+  messages: {t: 'Messages', c: '#7C3AED', s: [
+    {e: '📱', h: 'Viber messages need the Nifti Android app', p: 'Nifti reads Viber only through the free Nifti app on YOUR Android phone, with Viber installed and logged in on that phone.', ui: ['Android + Nifti app → <i class=g>automatic</i>', 'iPhone → <i class=y>share or copy</i>', 'Computer only → <i class=y>copy and paste</i>']},
+    {e: '🔌', h: 'Keep that phone on and online', p: 'If the phone is off or has no signal, messages wait and arrive once it is back. Only messages after setup come in.', ui: ['Phone on · Viber logged in · internet ✓']},
+    {e: '🗂️', h: 'Every chat in one place', p: 'Customers, suppliers and your team in folders, with the order beside each chat.', ui: ['Customers · Suppliers · Team', 'Bayview: “Boss, 10 sako…” → <u>Make order</u>']},
+    {e: '↩️', h: 'Reply from Nifti', p: 'Type your reply here and it goes out through Viber on your phone, from your own number.', ui: ['You: “Noted po, deliver bukas” ✓']}]},
+  collections: {t: 'Who owes you', c: '#B91C1C', s: [
+    {e: '💰', h: 'Every unpaid bill in one list', p: 'See who owes you, how much, and how late. Oldest first.', ui: ['Riverside · ₱63,400 · <i class=r>12 days late</i>', 'Bayview · ₱14,800 · promised Fri']},
+    {e: '🔔', h: 'Remind in one tap', p: 'Send a polite reminder by Viber, SMS, Messenger, WhatsApp or email. Or let Nifti send them on time.', ui: ['<u>Remind</u> · <u>Send statement</u>']},
+    {e: '🧾', h: 'They mark it paid, you confirm', p: 'Customers tap “I paid” on their link with a GCash or bank photo. You check and confirm.', ui: ['Corazon paid ₱6,000 · <u>Confirm</u>']},
+    {e: '📈', h: 'Watch the number go down', p: 'The total at the top is money still out. Your goal: make it small.', ui: ['Owed to you <b>₱84,200</b>']}]},
+  inventory: {t: 'Stock', c: '#0F766E', s: [
+    {e: '📦', h: 'Your items and how many you have', p: 'Add items once (Excel, photo or typing). Sales and deliveries update the count by themselves.', ui: ['Cement 40kg · 120 bags', 'Rebar 12mm · 340 pcs']},
+    {e: '⏳', h: 'Days left, not just counts', p: 'Nifti uses how fast each item sells to tell you how many days it will last.', ui: ['Wire 12ga · <i class=r>3 days left</i>']},
+    {e: '🛒', h: 'Reorder in one tap', p: 'Tap Reorder and Nifti makes the supplier order for you to check and send.', ui: ['<u>Reorder 50 bags from Metro Steel</u>']},
+    {e: '🔍', h: 'Count once in a while', p: 'Do a quick stock count. Differences are shown so missing stock never hides.', ui: ['Counted 118 · expected 120 · <i class=y>2 short</i>']}]},
+  routes: {t: 'Deliveries', c: '#CA8A04', s: [
+    {e: '🗺️', h: 'Today’s run, stop by stop', p: 'Pick the orders going out today. Nifti lists the stops for your driver.', ui: ['1 Cavite Steel · 2 Bayview · 3 Riverside']},
+    {e: '📲', h: 'Send it to your driver', p: 'Your driver opens the list on their phone. No account needed for them either.', ui: ['Sent to Mark Santos on Viber ✓']},
+    {e: '📸', h: 'Done with a photo', p: 'At each stop the driver taps Done or Couldn’t, and adds a photo as proof.', ui: ['Bayview · <i class=g>Done</i> · photo saved']},
+    {e: '💵', h: 'Cash checked the same day', p: 'Cash the driver collected is matched against what was due. Short? You see it today.', ui: ['Collected ₱18,200 of ₱18,200 ✓']}]},
+  store: {t: 'Online store', c: '#DB2777', s: [
+    {e: '🏪', h: 'Your own store link', p: 'Your items, photos and prices on one page. Share the link anywhere.', ui: ['nifti.ph/delacruz-hardware']},
+    {e: '📣', h: 'Post to Facebook in one tap', p: 'Nifti writes the post and makes a Monday price list picture for you.', ui: ['<u>Post today</u> · <u>Price list picture</u>']},
+    {e: '🛍️', h: 'Buyers order and pay', p: 'GCash, Maya or cash on delivery. Delivery fee set by barangay.', ui: ['New store order · GCash · ₱5,290']},
+    {e: '🔁', h: 'Orders land in Orders', p: 'Store orders show up with your other orders. Nothing to retype.', ui: ['Orders → <b>Store</b> · 2 new']}]},
+  money: {t: 'Money', c: '#1B6B40', s: [
+    {e: '📊', h: 'Your money at a glance', p: 'Cash, bank, what is coming in and what is going out, in plain words.', ui: ['Coming in <b>₱84,200</b>', 'Going out <b>₱41,600</b>']},
+    {e: '📅', h: 'What is coming up', p: 'Bills to pay and payments to collect, by date, so nothing surprises you.', ui: ['Fri · Pay Metro Steel ₱22,000']},
+    {e: '🧮', h: 'Profit that is real', p: 'Sales minus costs and expenses, worked out for you every day.', ui: ['Profit this month <b>₱38,400</b>']},
+    {e: '📁', h: 'Ready for your accountant', p: 'Books, tax forms and summaries are kept as you go. Export any time.', ui: ['<u>Monthly summary</u> · <u>Export</u>']}]},
+  expenses: {t: 'Expenses', c: '#B45309', s: [
+    {e: '🧾', h: 'Snap the receipt', p: 'Add an expense with a photo of the receipt. Takes a few seconds.', ui: ['Diesel · ₱2,500 · photo ✓']},
+    {e: '⚡', h: 'Same as before', p: 'Regular bills (rent, power, diesel) are one tap with last time’s details.', ui: ['<u>Same as last month</u>']},
+    {e: '🚩', h: 'Odd bills are flagged', p: 'If a bill is much higher than usual, Nifti points it out.', ui: ['Electric bill · <i class=y>32% higher than usual</i>']},
+    {e: '👥', h: 'Staff spending limits', p: 'Set limits per person. You are told at 80% and when someone pays above the agreed price.', ui: ['Ana · ₱49,200 of ₱60,000']}]},
+  team: {t: 'Team', c: '#4338CA', s: [
+    {e: '👥', h: 'Add your people', p: 'Invite staff and choose what each person can see. Cashiers do not see profit.', ui: ['Ana · Buyer · Mark · Driver']},
+    {e: '📋', h: 'Tasks on one board', p: 'To do → Doing → Done. Drag a card when it moves.', ui: ['To do 3 · Doing 2 · Done 8']},
+    {e: '🕘', h: 'See what happened', p: 'Every change is logged with who did it and when.', ui: ['Ana confirmed Order 0855 · 9:14']},
+    {e: '🔒', h: 'Your data stays yours', p: 'Each business only ever sees its own records.', ui: ['Only Dela Cruz Hardware can see this']}]},
+  sales: {t: 'Sales', c: '#1D4ED8', s: [
+    {e: '🛒', h: 'Walk-in sales in seconds', p: 'Tap best sellers, set how many, and choose how they paid.', ui: ['Cement × 2 · Nails × 1 · ₱1,240']},
+    {e: '💵', h: 'Change worked out', p: 'Type what they gave. Nifti shows the change.', ui: ['Gave ₱1,500 · Change <b>₱260</b>']},
+    {e: '📦', h: 'Stock goes down by itself', p: 'Every sale takes the items off your stock count.', ui: ['Cement 40kg · 118 left']},
+    {e: '🧮', h: 'Cash count at closing', p: 'Count the drawer at the end of the day. Short or over is shown with a reason.', ui: ['Drawer ₱12,450 · expected ₱12,450 ✓']}]}
+};
+NF53.notebook = {t: 'Notebook reader', c: '#92400E', s: [
+  {e: '📓', h: 'Your old notebook, in Nifti', p: 'Take photos of your utang or sales notebook pages.', ui: ['3 photos added']},
+  {e: '🤖', h: 'AI reads the handwriting', p: 'Nifti turns each line into a record. Taglish and shortcuts are fine.', ui: ['11/3 Bayvw semento 10 · 2,280']},
+  {e: '✅', h: 'You check every line', p: 'Nothing is saved until you tick it. Fix any line by tapping it.', ui: ['Bayview Construction · ₱2,280 <i class=g>✓</i>']},
+  {e: '➕', h: 'Add to your books', p: 'Ticked lines go into Who owes you or your books.', ui: ['<u>Add 5 lines</u>']}]};
+const NF53_ALIAS = {getpaid: 'collections', followups: 'collections', stock: 'inventory', deliveries: 'routes', home: 'dashboard'};
+
+function nf53Page(){ const el = [...document.querySelectorAll('.main [id^="page-"]')].find(p => p.offsetParent !== null && !p.hidden && p.getBoundingClientRect().height > 40); if(!el) return null; const k = el.id.slice(5); return {el, k: NF53[k] ? k : NF53_ALIAS[k]}; }
+function nf53Paint(){
+  const off = nf53S(NF53_OFF), cur = nf53Page();
+  document.querySelectorAll('.nf53-btn').forEach(b => { if(off || !cur || b.parentNode !== cur.el) b.remove(); });
+  if(off || !cur || !cur.k || !NF53[cur.k]) return;
+  if(cur.el.querySelector(':scope > .nf53-btn')) return;
+  const seen = (nf53S(NF53_SEEN) || {})[cur.k];
+  const b = document.createElement('button'); b.type = 'button'; b.className = 'nf53-btn' + (seen ? ' seen' : '');
+  b.innerHTML = `<span class="nf53-play">▶</span><span class="nf53-bt">${seen ? 'Guide' : 'What this page does · 1 min'}</span>`;
+  b.title = 'A one-minute guide to this page'; b.onclick = () => nf53Open(cur.k);
+  cur.el.insertBefore(b, cur.el.firstChild);
+}
+const NF53G = {k: null, i: 0, t: null, paused: false, t0: 0, dur: 6500};
+function nf53Open(k){
+  if(!NF53[k]) return; NF53G.k = k; NF53G.i = 0;
+  let ov = document.getElementById('nf53Ov');
+  if(!ov){ ov = document.createElement('div'); ov.id = 'nf53Ov'; ov.className = 'nf53-ov'; ov.onclick = e => { if(e.target === ov) nf53Close(); }; document.body.appendChild(ov);
+    document.addEventListener('keydown', e => { if(!document.getElementById('nf53Ov') || document.getElementById('nf53Ov').hidden) return; if(e.key === 'Escape') nf53Close(); if(e.key === 'ArrowRight') nf53Go(1); if(e.key === 'ArrowLeft') nf53Go(-1); }); }
+  ov.hidden = false; nf53Draw(); document.body.classList.add('nf53-lock');
+  const s = nf53S(NF53_SEEN) || {}; s[k] = 1; nf53S(NF53_SEEN, s);
+}
+function nf53Draw(){
+  const g = NF53[NF53G.k], st = g.s[NF53G.i], last = NF53G.i === g.s.length - 1, ov = document.getElementById('nf53Ov');
+  ov.style.setProperty('--g', g.c);
+  ov.innerHTML = `<div class="nf53-card" role="dialog" aria-label="${g.t} guide">
+    <div class="nf53-bars">${g.s.map((x, j) => `<i class="${j < NF53G.i ? 'done' : j === NF53G.i ? 'now' : ''}"><u></u></i>`).join('')}</div>
+    <div class="nf53-top"><span>${g.t} · 1-minute guide</span><button class="nf53-x" onclick="nf53Close()" aria-label="Close">×</button></div>
+    <div class="nf53-stage" onmouseenter="NF53G.paused=true" onmouseleave="NF53G.paused=false">
+      <button class="nf53-tap l" onclick="nf53Go(-1)" aria-label="Back"></button><button class="nf53-tap r" onclick="nf53Go(1)" aria-label="Next"></button>
+      <div class="nf53-ico">${st.e}</div>
+      <div class="nf53-ui">${st.ui.map((r, j) => `<div style="animation-delay:${.25 + j * .18}s">${r}</div>`).join('')}</div>
+    </div>
+    <div class="nf53-txt"><small>Step ${NF53G.i + 1} of ${g.s.length}</small><h3>${st.h}</h3><p>${st.p}</p></div>
+    <div class="nf53-foot"><button class="nf53-hide" onclick="nf53Hide()">Hide guide buttons</button>
+      <span>${NF53G.i ? '<button class="btn btn-outline" onclick="nf53Go(-1)">Back</button>' : ''}<button class="btn btn-primary" onclick="${last ? 'nf53Close()' : 'nf53Go(1)'}">${last ? 'Got it, let’s go' : 'Next'}</button></span></div></div>`;
+  NF53G.t0 = performance.now(); cancelAnimationFrame(NF53G.t);
+  const bar = ov.querySelector('.nf53-bars i.now u'); let acc = 0, prev = performance.now();
+  const tick = now => { if(!document.getElementById('nf53Ov') || document.getElementById('nf53Ov').hidden) return; if(!NF53G.paused) acc += now - prev; prev = now;
+    const k = Math.min(1, acc / NF53G.dur); if(bar) bar.style.width = (k * 100) + '%';
+    if(k >= 1){ if(!last) nf53Go(1); return; } NF53G.t = requestAnimationFrame(tick); };
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches) NF53G.t = requestAnimationFrame(tick); else if(bar) bar.style.width = '100%';
+}
+function nf53Go(d){ const g = NF53[NF53G.k]; NF53G.i = Math.max(0, Math.min(g.s.length - 1, NF53G.i + d)); nf53Draw(); }
+function nf53Close(){ cancelAnimationFrame(NF53G.t); const ov = document.getElementById('nf53Ov'); if(ov) ov.hidden = true; document.body.classList.remove('nf53-lock'); nf53Paint(); }
+function nf53Hide(){ nf53S(NF53_OFF, true); nf53Close(); nf53Paint(); if(typeof showToast === 'function') showToast('Guides hidden. Turn them back on in Settings or Help.', 'success'); }
+function nf53Show(){ nf53S(NF53_OFF, false); nf53Paint(); if(typeof showToast === 'function') showToast('Page guides are back on every page.', 'success'); }
+
+// ---- Viber notice on Messages: always clear what is needed, never hidden completely ----
+function nf53Viber(){
+  const pg = document.getElementById('page-messages'); if(!pg || pg.offsetParent === null) return;
+  const on = !!window.NiftiAndroid;
+  let box = pg.querySelector('.nf53-vb');
+  if(!box){ box = document.createElement('div'); box.className = 'nf53-vb'; const b = pg.querySelector('.nf53-btn'); pg.insertBefore(box, b ? b.nextSibling : pg.firstChild); }
+  const small = nf53S('nifti-vb-small');
+  const k = (on ? 'on' : 'off') + (small ? 's' : '');
+  if(box.dataset.k === k) return; box.dataset.k = k;
+  if(small){ box.innerHTML = `<span class="nf53-vb-i">📱</span><b>Viber messages come in through the Nifti Android app${on ? ' (this phone)' : ''}.</b><button onclick="nf53S('nifti-vb-small',false);nf53Viber()">How it works</button>`; box.classList.add('s'); return; }
+  box.classList.remove('s');
+  box.innerHTML = `<div class="nf53-vb-h"><span class="nf53-vb-i">📱</span><div><b>How Viber messages get into Nifti</b><small>Read this once so nothing surprises you.</small></div><button class="nf53-vb-x" onclick="nf53S('nifti-vb-small',true);nf53Viber()" aria-label="Make smaller">Got it</button></div>
+    <div class="nf53-vb-g">
+      <div class="ok"><b>Android phone + Nifti app</b><span>Automatic. Viber must be installed and logged in on that same phone. Keep it on and online.</span></div>
+      <div class="mid"><b>iPhone</b><span>Not automatic (Apple does not allow it). Share or copy a message into Nifti in one tap.</span></div>
+      <div class="mid"><b>Computer only</b><span>Not automatic yet. Copy and paste a message, or use the Android app on your phone.</span></div>
+    </div>
+    <p class="nf53-vb-n">Only messages that arrive after setup come in. If the phone is off or offline, they arrive once it is back.${on ? '' : ' <a onclick="typeof nf37Install===\'function\'?nf37Install():navigate(\'settings\')">Get the Android app</a>'}</p>`;
+}
+// Settings: a line to turn guides back on
+function nf53SettingsLine(){
+  const pg = document.getElementById('page-settings'); if(!pg || pg.offsetParent === null || pg.querySelector('.nf53-set')) return;
+  const d = document.createElement('div'); d.className = 'nf53-set'; d.innerHTML = '<span><b>Page guides</b> One-minute guides at the top of each page.</span><button class="btn btn-outline btn-sm" onclick="nf53Show()">Show guides</button>';
+  pg.insertBefore(d, pg.querySelector('.nf53-btn') ? pg.querySelector('.nf53-btn').nextSibling : pg.firstChild);
+}
+NF45_AFTER.push(() => { nf53Paint(); nf53Viber(); nf53SettingsLine(); });
+setInterval(() => { if(!document.hidden && !(document.getElementById('nf53Ov') && !document.getElementById('nf53Ov').hidden)){ nf53Paint(); nf53Viber(); } }, 1500);
 
 function renderSidebarForViewAsRole(){
   const allowed = computeAllowedPages(getEffectiveRoles());
