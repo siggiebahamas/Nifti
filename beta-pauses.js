@@ -36,6 +36,41 @@
     section.innerHTML = '<div class="wrap"><div class="f5-head"><div class="p2-burst">COMING LATER</div><h2>Manual records and Excel import, <span>available today.</span></h2><p>AI notebook reading is temporarily paused during beta. The implementation is being retained for a later release. Notebook photos will not be sent for AI processing, and no AI API charges will occur.</p></div></div>';
   }
   replaceMarketingTeaser();
+  // Keep public pricing consistent with the Business-level free beta entitlement.
+  function patchMarketingBetaPricing() {
+    const roots = [document.querySelector("#mkPlans"), document.querySelector("#view-pricing")].filter(Boolean);
+    roots.forEach(function (root) {
+      const cards = root.querySelector(".nf26-pls");
+      if (!cards || cards.dataset.niftiBetaPricing === "1") return;
+      cards.dataset.niftiBetaPricing = "1";
+      const banner = document.createElement("div");
+      banner.className = "nf26-pbanner good";
+      banner.style.cssText = "margin:0 0 18px";
+      banner.innerHTML = "<b>Business-level software access is free during the Nifti beta.</b> Every signed-in beta business gets the Business feature set at ₱0. Your assigned plan and subscription records stay unchanged. Standard plan prices are shown below for reference; no payment is due during beta.";
+      cards.parentNode.insertBefore(banner, cards);
+      ["pro", "business"].forEach(function (key) {
+        const card = cards.querySelector(".nf26-pl." + key);
+        if (!card) return;
+        const price = card.querySelector(".nf26-pl-p b");
+        const period = card.querySelector(".nf26-pl-p span");
+        const note = card.querySelector(".nf26-pl-alt");
+        const button = card.querySelector(".plan-btn");
+        const standard = key === "business" ? "₱2,990/month standard price" : "₱990/month standard price";
+        if (price) price.textContent = "₱0";
+        if (period) period.textContent = "during beta";
+        if (note) note.textContent = standard + " after beta";
+        if (button) {
+          button.textContent = "Included during beta · ₱0";
+          button.disabled = true;
+          button.removeAttribute("onclick");
+          button.style.cssText += ";opacity:.85;cursor:default";
+        }
+      });
+      const paying = root.querySelector(".nf26-pay");
+      if (paying) paying.innerHTML = "<b>During beta</b><p>There is no payment step. Create an account and use Business-level software features at ₱0. Your assigned plan is preserved; no subscription or payment record is changed.</p>";
+    });
+  }
+  patchMarketingBetaPricing();
   // Keep the plan display honest: Business feature access is temporary beta access, not a paid subscription.
   function patchBetaPlanUi() {
     if (typeof window.nf26PlanNow === "function" && !window.nf26PlanNow._niftiBeta) {
