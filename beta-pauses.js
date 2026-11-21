@@ -28,6 +28,14 @@
     document.body.appendChild(overlay);
     document.getElementById("niftiReaderPausedClose").focus();
   }
+  // Do not market the paused AI reader as available during beta.
+  function replaceMarketingTeaser() {
+    const section = document.getElementById("mkNotebook");
+    if (!section) return;
+    section.setAttribute("aria-label", "AI notebook reader temporarily paused");
+    section.innerHTML = '<div class="wrap"><div class="f5-head"><div class="p2-burst">COMING LATER</div><h2>Manual records and Excel import, <span>available today.</span></h2><p>AI notebook reading is temporarily paused during beta. The implementation is being retained for a later release. Notebook photos will not be sent for AI processing, and no AI API charges will occur.</p></div></div>';
+  }
+  replaceMarketingTeaser();
   // Replace the entry point, not the reader implementation. This prevents uploads/queueing
   // from the UI until the owner explicitly approves reactivation.
   window.nf22NbOpen = openReaderPause;
