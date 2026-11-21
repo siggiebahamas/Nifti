@@ -65,7 +65,7 @@ body.one .tabs{display:none}body.one .sec{margin-bottom:34px}body.one .sec > h1{
 const sb = supabase.createClient('https://ctryvcloavfpecbrbzxy.supabase.co', 'sb_publishable_oWW-IMSOeNNFiQDjUnpWdQ_hlezb7wS');
 const QS = new URLSearchParams(location.search), LAYOUT = ['tabs', 'side', 'one'].includes(QS.get('layout')) ? QS.get('layout') : 'side', PREVIEW = QS.get('preview') === '1';
 if(LAYOUT !== 'tabs') document.body.classList.add(LAYOUT);
-const S = {tab: (location.hash || '#overview').slice(1), shops: [], growth: null, pays: [], inbox: [], openBiz: null, filter: 'all', q: ''};
+const S = {tab: (location.hash || '#overview').slice(1), shops: [], people: [], peopleQ: '', growth: null, pays: [], inbox: [], openBiz: null, filter: 'all', q: ''};
 const $ = id => document.getElementById(id);
 const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'})[c]);
 const peso = n => '₱' + Math.round(Number(n) || 0).toLocaleString('en-US');
@@ -110,23 +110,29 @@ async function signIn(){
   boot();
 }
 async function load(){
-  const r = await Promise.allSettled([rpc('admin_growth'), rpc('admin_businesses', {p_query: '', p_filter: 'all', p_limit: 200, p_offset: 0}), rpc('admin_upgrade_requests'), rpc('admin_help_inbox'), rpc('admin_setup_jobs')]);
-  S.growth = r[0].value || {}; S.shops = r[1].value || []; S.pays = (r[2].value || []); S.inbox = r[3].value || []; S.jobs = r[4].value || [];
+  const r = await Promise.allSettled([rpc('admin_growth'), rpc('admin_businesses', {p_query: '', p_filter: 'all', p_limit: 200, p_offset: 0}), rpc('admin_upgrade_requests'), rpc('admin_help_inbox'), rpc('admin_setup_jobs'), rpc('admin_people', {p_query: ''})]);
+  S.growth = r[0].status === 'fulfilled' ? r[0].value || {} : {};
+  S.shops = r[1].status === 'fulfilled' ? r[1].value || [] : [];
+  S.pays = r[2].status === 'fulfilled' ? r[2].value || [] : [];
+  S.inbox = r[3].status === 'fulfilled' ? r[3].value || [] : [];
+  S.jobs = r[4].status === 'fulfilled' ? r[4].value || [] : [];
+  S.people = r[5].status === 'fulfilled' ? r[5].value || [] : [];
 }
-const TABS = [['overview', 'Overview'], ['shops', 'Subscriptions'], ['setups', 'Setups'], ['money', 'Money'], ['help', 'Help'], ['settings', 'AI & settings']];
+const TABS = [['overview', 'Overview'], ['people', 'People'], ['shops', 'Subscriptions'], ['setups', 'Setups'], ['money', 'Money'], ['help', 'Help'], ['settings', 'AI & settings']];
 function paint(){
   const pend = S.pays.filter(p => p.status === 'pending').length, unread = S.inbox.reduce((s, x) => s + (x.unread || 0), 0);
   const badge = {money: pend, help: unread, setups: (S.jobs || []).filter(j => j.status !== 'done').length};
   $('tabs').innerHTML = TABS.map(([k, l]) => `<button class="${S.tab === k ? 'on' : ''}" onclick="go('${k}')">${l}${badge[k] ? `<b>${badge[k]}</b>` : ''}</button>`).join('');
   $('sidenav').innerHTML = TABS.map(([k, l]) => `<button class="${S.tab === k ? 'on' : ''}" onclick="go('${k}')"><span>${l}</span>${badge[k] ? `<b>${badge[k]}</b>` : ''}</button>`).join('');
   if(LAYOUT === 'one') return onePage();
-  ({overview, shops, setups, money, help, settings})[S.tab] ? ({overview, shops, setups, money, help, settings})[S.tab]() : overview();
+  ({overview, people, shops, setups, money, help, settings})[S.tab] ? ({overview, people, shops, setups, money, help, settings})[S.tab]() : overview();
 }
 async function onePage(){
-  const parts = []; for(const f of [overview, money, help, setups, shops]){ await f(); parts.push('<section class="sec">' + $('main').innerHTML + '</section>'); }
+  const parts = [];
+  for(const f of [overview, people, shops, setups, money, help, settings]){ await f(); parts.push('<section class="sec">' + $('main').innerHTML + '</section>'); }
   $('main').innerHTML = parts.join('');
 }
-function go(t){ S.tab = t; if(LAYOUT === 'one'){ paint(); const i = TABS.findIndex(x => x[0] === t); const sec = document.querySelectorAll('.sec')[[0, 4, 3, 1, 2][i]]; if(sec) sec.scrollIntoView({behavior: 'smooth'}); return; } location.hash = t; paint(); window.scrollTo(0, 0); }
+function go(t){ S.tab = t; if(LAYOUT === 'one'){ paint(); const i = TABS.findIndex(x => x[0] === t); const sec = document.querySelectorAll('.sec')[i]; if(sec) sec.scrollIntoView({behavior: 'smooth'}); return; } location.hash = t; paint(); window.scrollTo(0, 0); }
 
 async function settings(){
   $('main').innerHTML = `<h1>AI &amp; settings</h1>
@@ -172,27 +178,56 @@ function overview(){
     <div class="card"><h2>Shops by plan</h2><div class="bars">
       ${[['Free', g.free], ['Pro', g.pro], ['Business', g.business]].map(([l, n]) => `<div><span>${l}</span><u><i style="width:${Math.round((n || 0) / tot * 100)}%"></i></u><b>${n || 0}</b></div>`).join('')}</div></div>`;
 }
+
+function people(){
+  const q = (S.peopleQ || '').trim().toLowerCase();
+  const list = (S.people || []).filter(p => !q || [p.name, p.email, p.business_name, (p.roles || []).join(' ')].some(v => String(v || '').toLowerCase().includes(q)));
+  sb.auth.getUser().then(({data}) => {
+    const me = data && data.user ? data.user.id : null;
+    $('main').innerHTML = `<h1>People &amp; access</h1>
+      <p class="sub">Every Nifti login and the business membership it belongs to. You can suspend or restore a login; this affects that person's access across Nifti, not just one shop. It never deletes their business records. Only the platform owner can open this page or use these controls.</p>
+      <div class="bar"><input placeholder="Search name, email, business or role" value="${esc(S.peopleQ)}" oninput="S.peopleQ=this.value; people()"></div>
+      <div class="card" style="padding:4px 8px">${list.length ? `<table><thead><tr><th>Person</th><th>Email</th><th>Business</th><th>Role</th><th>Status</th><th class="hide-m">Last sign-in</th><th>Access</th></tr></thead><tbody>
+        ${list.map(p => {
+          const status = p.banned ? '<span class="tag bad">Suspended</span>' : p.auth_id ? '<span class="tag pro">Active</span>' : '<span class="tag">Invited</span>';
+          const action = p.member_id && p.auth_id && p.auth_id !== me
+            ? `<button class="link" onclick="togglePerson('${p.member_id}', ${p.banned ? 'false' : 'true'})">${p.banned ? 'Restore access' : 'Suspend login'}</button>`
+            : p.auth_id === me ? '<span class="sub">You</span>' : '<span class="sub">—</span>';
+          return `<tr><td><b>${esc(p.name || '—')}</b></td><td>${esc(p.email || '—')}</td><td>${esc(p.business_name || 'No business')}</td><td>${esc((p.roles || []).join(', ') || '—')}</td><td>${status}</td><td class="hide-m">${ago(p.last_sign_in_at)}</td><td>${action}</td></tr>`;
+        }).join('')}
+      </tbody></table>` : '<p class="empty" style="padding:12px">No matching accounts.</p>'}</div>`;
+  }).catch(e => { $('main').innerHTML = '<h1>People &amp; access</h1><p class="err">Could not load account information. Refresh and try again.</p>'; });
+}
+async function togglePerson(memberId, ban){
+  const message = ban
+    ? 'Suspend this person's Nifti login? They will lose access across every Nifti business they belong to. Their business data will not be deleted. You can restore access later.'
+    : 'Restore this person's Nifti login? They will be able to sign in to their existing business memberships again.';
+  if(!confirm(message)) return;
+  try{ await rpc('admin_ban_person', {p_member: memberId, p_ban: ban}); toast(ban ? 'Login suspended.' : 'Login restored.'); await load(); people(); }
+  catch(e){ toast(e.message); }
+}
+
 function shops(){
   const F = [['all', 'All'], ['new', 'New this week'], ['paying', 'Paying'], ['inactive', 'Quiet 30 days'], ['banned', 'Suspended']];
   const q = S.q.toLowerCase(), now = Date.now();
   const list = S.shops.filter(b => (!q || (b.name || '').toLowerCase().includes(q) || (b.owner_email || '').toLowerCase().includes(q)) &&
-    (S.filter === 'all' || (S.filter === 'new' && now - new Date(b.created_at) < 7 * 864e5) || (S.filter === 'paying' && planOf(b.plan) !== 'free') ||
+    (S.filter === 'all' || (S.filter === 'new' && now - new Date(b.created_at) < 7 * 864e5) || (S.filter === 'paying' && b.billing_status === 'Paid') ||
      (S.filter === 'banned' && b.banned_at) || (S.filter === 'inactive' && now - new Date(b.last_active || b.created_at) > 30 * 864e5)));
   const g = S.growth || {};
   $('main').innerHTML = `<h1>Subscriptions</h1><p class="sub">Every business on Nifti and its plan. Tap one to see it, change its plan or suspend it.</p>
     <div class="grid" style="margin-bottom:14px"><div class="k"><em>Free</em><b>${g.free || 0}</b><span>₱0</span></div><div class="k g"><em>Pro</em><b>${g.pro || 0}</b><span>${peso((g.pro || 0) * 990)} a month</span></div><div class="k" style="background:#E8F1FB;border-color:#CBE0F4"><em>Business</em><b>${g.business || 0}</b><span>${peso((g.business || 0) * 2990)} a month</span></div><div class="k"><em>All</em><b>${g.total || 0}</b><span>${g.suspended || 0} suspended</span></div></div>
     <div class="bar"><input id="q" placeholder="Search name or email" value="${esc(S.q)}" oninput="S.q=this.value; shops(); const i=$('q'); i.focus(); i.setSelectionRange(i.value.length,i.value.length)"></div>
     <div class="chips" style="margin-bottom:12px">${F.map(([k, l]) => `<button class="${S.filter === k ? 'on' : ''}" onclick="S.filter='${k}'; shops()">${l}</button>`).join('')}</div>
-    <div class="card" style="padding:4px 8px">${list.length ? `<table><thead><tr><th>Shop</th><th>Plan</th><th class="hide-m">People</th><th class="hide-m">Orders, 30 days</th><th>Last active</th><th class="hide-m">Joined</th></tr></thead><tbody>
-      ${list.map(b => `<tr class="click" onclick="openShop('${b.id}')"><td><b>${esc(b.name)}</b>${b.banned_at ? ' <span class="tag bad">Suspended</span>' : ''}<br><span style="font-size:13.5px;color:var(--ink2)">${esc(b.owner_email || '')}</span></td><td>${planTag(b.plan)}</td><td class="hide-m">${b.members}</td><td class="hide-m">${b.orders_30d}</td><td>${ago(b.last_active)}</td><td class="hide-m">${ago(b.created_at)}</td></tr>`).join('')}</tbody></table>`
+    <div class="card" style="padding:4px 8px">${list.length ? `<table><thead><tr><th>Shop</th><th>Access / billing</th><th class="hide-m">People</th><th class="hide-m">Orders, 30 days</th><th>Last active</th><th class="hide-m">Joined</th></tr></thead><tbody>
+      ${list.map(b => `<tr class="click" onclick="openShop('${b.id}')"><td><b>${esc(b.name)}</b>${b.banned_at ? ' <span class="tag bad">Suspended</span>' : ''}<br><span style="font-size:13.5px;color:var(--ink2)">${esc(b.owner_email || '')}</span></td><td>${planTag(b.effective_plan || b.plan)}<div style="font-size:12px;color:var(--ink2);margin-top:4px">Assigned: ${planTag(b.assigned_plan || b.plan)} · ${esc(b.billing_status || '—')}</div></td><td class="hide-m">${b.members}</td><td class="hide-m">${b.orders_30d}</td><td>${ago(b.last_active)}</td><td class="hide-m">${ago(b.created_at)}</td></tr>`).join('')}</tbody></table>`
       : '<p class="empty" style="padding:12px">No shops yet. Once people sign up, they show here.</p>'}</div>`;
 }
 function openShop(id){
-  const b = S.shops.find(x => x.id === id); if(!b) return; const k = planOf(b.plan);
+  const b = S.shops.find(x => x.id === id); if(!b) return; const k = planOf(b.assigned_plan || b.plan);
   $('dp').innerHTML = `<div class="sw"><h1 style="margin:0">${esc(b.name)}</h1><button class="link" onclick="$('drawer').hidden=true">Close</button></div>
-    <dl class="kv" style="margin:16px 0"><dt>Plan</dt><dd>${planTag(b.plan)}${b.paid_until ? ' until ' + esc(b.paid_until) : ''}</dd><dt>Owner email</dt><dd>${esc(b.owner_email || '—')}</dd><dt>People</dt><dd>${b.members}</dd>
+    <dl class="kv" style="margin:16px 0"><dt>Effective access</dt><dd>${planTag(b.effective_plan || b.plan)}</dd><dt>Assigned plan</dt><dd>${planTag(b.assigned_plan || b.plan)}</dd><dt>Billing status</dt><dd>${esc(b.billing_status || '—')}</dd><dt>Paid until</dt><dd>${b.paid_until ? esc(b.paid_until) : '—'}</dd><dt>Owner email</dt><dd>${esc(b.owner_email || '—')}</dd><dt>People</dt><dd>${b.members}</dd>
       <dt>Orders, 30 days</dt><dd>${b.orders_30d}</dd><dt>Last active</dt><dd>${ago(b.last_active)}</dd><dt>Joined</dt><dd>${new Date(b.created_at).toLocaleDateString('en-PH', {month: 'short', day: 'numeric', year: 'numeric'})}</dd></dl>
-    <div class="card"><h2>Change the plan</h2><p class="sub" style="margin:0 0 10px">Only for special cases, like a free month for a pilot shop. Normal upgrades turn on by themselves when you confirm their payment under Money.</p>
+    <div class="card"><h2>Change the assigned plan</h2><p class="sub" style="margin:0 0 10px">This changes the real subscription record, not the temporary beta access. During beta, leave the assigned plan unchanged unless you intentionally need to alter the customer's actual paid subscription. Business access remains free while the pilot switch is on.</p>
       <div class="chips">${['free', 'pro', 'business'].map(p => `<button class="${k === p ? 'on' : ''}" onclick="setPlan('${b.id}','${p}')">${p === 'free' ? 'Free' : p === 'pro' ? 'Pro' : 'Business'}</button>`).join('')}</div>
       <p class="sub" style="margin:8px 0 0;font-size:13.5px">Pro and Business set this way run for one month.</p></div>
     <div class="card"><h2>${b.banned_at ? 'Suspended' : 'Suspend this shop'}</h2>${b.banned_at ? `<p class="sub">Reason: ${esc(b.ban_reason || '—')}</p><button class="btn o" onclick="unban('${b.id}')">Let them back in</button>`
