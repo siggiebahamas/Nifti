@@ -179,10 +179,11 @@ function overview(){
       ${[['Free', g.free], ['Pro', g.pro], ['Business', g.business]].map(([l, n]) => `<div><span>${l}</span><u><i style="width:${Math.round((n || 0) / tot * 100)}%"></i></u><b>${n || 0}</b></div>`).join('')}</div></div>`;
 }
 
-function people(){
+async function people(){
   const q = (S.peopleQ || '').trim().toLowerCase();
   const list = (S.people || []).filter(p => !q || [p.name, p.email, p.business_name, (p.roles || []).join(' ')].some(v => String(v || '').toLowerCase().includes(q)));
-  sb.auth.getUser().then(({data}) => {
+  try{
+    const {data} = await sb.auth.getUser();
     const me = data && data.user ? data.user.id : null;
     $('main').innerHTML = `<h1>People &amp; access</h1>
       <p class="sub">Every Nifti login and the business membership it belongs to. You can suspend or restore a login; this affects that person's access across Nifti, not just one shop. It never deletes their business records. Only the platform owner can open this page or use these controls.</p>
@@ -196,7 +197,7 @@ function people(){
           return `<tr><td><b>${esc(p.name || '—')}</b></td><td>${esc(p.email || '—')}</td><td>${esc(p.business_name || 'No business')}</td><td>${esc((p.roles || []).join(', ') || '—')}</td><td>${status}</td><td class="hide-m">${ago(p.last_sign_in_at)}</td><td>${action}</td></tr>`;
         }).join('')}
       </tbody></table>` : '<p class="empty" style="padding:12px">No matching accounts.</p>'}</div>`;
-  }).catch(e => { $('main').innerHTML = '<h1>People &amp; access</h1><p class="err">Could not load account information. Refresh and try again.</p>'; });
+  }catch(e){ $('main').innerHTML = '<h1>People &amp; access</h1><p class="err">Could not load account information. Refresh and try again.</p>'; }
 }
 async function togglePerson(memberId, ban){
   const message = ban
