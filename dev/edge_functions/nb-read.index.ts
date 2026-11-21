@@ -1,6 +1,9 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "jsr:@supabase/supabase-js@2";
 import Anthropic from "npm:@anthropic-ai/sdk";
+
+// Temporary Nifti beta hold. Keep the implementation intact; re-enable only after explicit owner approval.
+const NOTEBOOK_READER_PAUSED = true;
 // Reads one photo of a handwritten notebook page and returns the lines it finds, matched to the
 // shop's own customers, suppliers and items. Called by the app with the person's own sign-in, so the
 // database (nb_read_start) only ever hands over that person's business names and counts the page
@@ -78,6 +81,7 @@ Deno.serve(async (req) => {
   if (req.method !== "POST") return json({ error: "Use POST." }, 405);
   const auth = req.headers.get("Authorization") || "";
   if (!auth.startsWith("Bearer ")) return json({ error: "Sign in first." }, 401);
+  if (NOTEBOOK_READER_PAUSED) return json({ error: "The Nifti AI notebook reader is temporarily paused during beta. Your photo will not be processed by AI. Manual bookkeeping remains available, and no AI API charges will be incurred.", code: "paused" }, 503);
   let body: any;
   try { body = await req.json(); } catch (_) { return json({ error: "Send a photo." }, 400); }
   let data = String(body?.image || "");
