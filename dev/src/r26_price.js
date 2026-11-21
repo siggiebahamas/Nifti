@@ -16,11 +16,12 @@ function nf26Peso(n){ return '₱' + Number(n || 0).toLocaleString('en-US'); }
 function nf26PlanNow(){
   if(!nf25Real()) return {plan: 'free', demo: true};
   const i = (typeof myPlanInfo !== 'undefined' && myPlanInfo) || {};
-  return {plan: i.plan === 'business' ? 'business' : ['pro', 'supplier_pro', 'buyer_pro'].includes(i.plan) ? 'pro' : 'free', pilot: !!i.pilot, paidUntil: i.paid_until || null, pending: i.pending_request || null, seats: i.seats_used, seatLimit: i.seat_limit};
+  return {plan: i.effective_plan === 'business' || i.plan === 'business' ? 'business' : ['pro', 'supplier_pro', 'buyer_pro'].includes(i.effective_plan || i.plan) ? 'pro' : 'free', assignedPlan: i.assigned_plan || 'free', billingStatus: i.billing_status || (i.pilot ? 'Beta — Free' : ''), pilot: !!i.pilot, paidUntil: i.paid_until || null, pending: i.pending_request || null, seats: i.seats_used, seatLimit: i.seat_limit};
 }
 function nf26Day(d){ try{ return new Date(String(d).slice(0, 10) + 'T00:00:00').toLocaleDateString('en-PH', {month: 'short', day: 'numeric', year: 'numeric'}); }catch(e){ return String(d || ''); } }
 function nf26PlanLine(){
   const s = nf26PlanNow(), name = NF26_PLANS.find(p => p.k === s.plan).name;
+  if(s.pilot) return 'Business access · Beta — Free';
   if(s.pending) return 'Payment sent, being checked';
   if(s.plan !== 'free') return `You're on ${name}` + (s.paidUntil ? ` until ${nf26Day(s.paidUntil)}` : '');
   return "You're on Free. See what Pro adds";
@@ -74,23 +75,24 @@ function nf26PaintPlans(){
           : `<button type="button" class="btn btn-primary" id="nf26PayBtn" ${NF26P.busy ? 'disabled' : ''} onclick="nf26Pay()">${NF26P.busy ? 'Sending…' : `I've paid ${nf26Peso(amt)}`}</button>`}</div></div>`;
     return;
   }
-  const head = s.pending ? `<div class="nf26-pbanner wait"><b>Payment sent for ${NF26_PLANS.find(z => z.k === (s.pending.plan === 'business' ? 'business' : 'pro')).name} (${escapeHtml(s.pending.cycle || '')}).</b> We're checking it now. You'll get an alert when your plan is on.</div>`
-    : s.plan !== 'free' ? `<div class="nf26-pbanner good"><b>You're on ${NF26_PLANS.find(z => z.k === s.plan).name}.</b> ${s.paidUntil ? `Paid until ${nf26Day(s.paidUntil)}. Renew any time; extra time is added on.` : ''}</div>`
-    : s.pilot ? `<div class="nf26-pbanner good"><b>Launch period: every Pro tool is switched on for you at no charge.</b> Subscribe any time to keep them when the launch period ends.</div>` : '';
+  const head = s.pilot ? `<div class="nf26-pbanner good"><b>Business access is active during beta — ₱0.</b> Your assigned plan remains ${escapeHtml(s.assignedPlan || 'free')}. Your subscription and payment records have not been changed.</div>`
+    : s.pending ? `<div class="nf26-pbanner wait"><b>Payment sent for ${NF26_PLANS.find(z => z.k === (s.pending.plan === 'business' ? 'business' : 'pro')).name} (${escapeHtml(s.pending.cycle || '')}).</b> We're checking it now. You'll get an alert when your plan is on.</div>`
+    : s.plan !== 'free' ? `<div class="nf26-pbanner good"><b>You're on ${NF26_PLANS.find(z => z.k === s.plan).name}.</b> ${s.paidUntil ? `Paid until ${nf26Day(s.paidUntil)}. Renew any time; extra time is added on.` : ''}</div>` : '';
   ov.innerHTML = `<div class="nf20-sheet nf26-psheet">
     <div class="nf20-sh"><div><h2>Plans &amp; pricing</h2><p>Start free. Upgrade when it pays for itself. One plan covers buying, selling and your books.</p></div>${x}</div>
     ${NF26P.note ? `<div class="nf26-pbanner note">${NF26P.note}</div>` : ''}${head}
     <div class="nf26-cyc top" role="group" aria-label="How often"><button type="button" class="${NF26P.cycle === 'monthly' ? 'on' : ''}" onclick="NF26P.cycle='monthly'; nf26PaintPlans()"><b>Monthly</b></button><button type="button" class="${NF26P.cycle === 'yearly' ? 'on' : ''}" onclick="NF26P.cycle='yearly'; nf26PaintPlans()"><b>Yearly</b><span>2 months free</span></button></div>
     <div class="nf26-pcards">${NF26_PLANS.map(p => { const cur = s.plan === p.k && !s.demo, amt = NF26P.cycle === 'yearly' ? p.y : p.m;
-      const btn = p.k === 'free' ? (s.plan === 'free' ? `<span class="nf26-cur">${s.demo ? 'Where everyone starts' : 'Your plan now'}</span>` : `<span class="nf26-cur soft">Always there if you stop paying</span>`)
+      const btn = p.k === 'free' ? (s.pilot ? `<span class="nf26-cur">Assigned plan: ${escapeHtml(s.assignedPlan || 'free')}</span>` : s.plan === 'free' ? `<span class="nf26-cur">${s.demo ? 'Where everyone starts' : 'Your plan now'}</span>` : `<span class="nf26-cur soft">Always there if you stop paying</span>`)
+        : s.pilot ? `<span class="nf26-cur soft">Included during beta · ₱0</span>`
         : s.pending ? `<span class="nf26-cur soft">Payment being checked</span>`
         : !owner ? `<span class="nf26-cur soft">Ask your owner to subscribe</span>`
         : `<button type="button" class="btn ${p.k === 'pro' ? 'btn-primary' : 'btn-outline'}" onclick="nf26Choose('${p.k}')">${cur ? 'Renew ' + p.name : 'Choose ' + p.name}</button>`;
-      return `<section class="nf26-pc ${p.k}${cur ? ' cur' : ''}">${p.k === 'pro' ? '<span class="nf26-flag">MOST SHOPS</span>' : ''}<h3>${p.name}${cur ? '<em>Your plan</em>' : ''}</h3>
+      return `<section class="nf26-pc ${p.k}${cur ? ' cur' : ''}">${p.k === 'pro' ? '<span class="nf26-flag">MOST SHOPS</span>' : ''}<h3>${p.name}${cur ? (s.pilot ? '<em>Beta access</em>' : '<em>Your plan</em>') : ''}</h3>
         <div class="nf26-price"><b>${nf26Peso(amt)}</b><span>${p.k === 'free' ? 'forever' : NF26P.cycle === 'yearly' ? 'a year' : 'a month'}</span></div>
         <p class="nf26-who">${p.who}</p><ul>${p.f.map(f => `<li>${NF26_CHK}<span>${f}</span></li>`).join('')}</ul>${btn}</section>`; }).join('')}</div>
-    <div class="nf26-how"><b>How paying works</b><ol><li><span>1</span>Choose a plan and scan our QR with GCash, Maya or any bank app.</li><li><span>2</span>Type the reference number, or snap the receipt.</li><li><span>3</span>We switch your plan on, usually within a few hours.</li></ol>
-      <p>No card and no contract. If you stop, you go back to Free and keep all your records. Questions? <a onclick="nf26ClosePlans(); nf26Help()">Message the Nifti team</a>.</p></div>
+    ${s.pilot ? '<div class="nf26-how"><b>During beta</b><p>Business-level features are enabled at no charge. No payment is due and no subscription record is changed. Your assigned plan is retained for billing after the beta period.</p></div>' : '<div class="nf26-how"><b>How paying works</b><ol>'}<li><span>1</span>Choose a plan and scan our QR with GCash, Maya or any bank app.</li><li><span>2</span>Type the reference number, or snap the receipt.</li><li><span>3</span>We switch your plan on, usually within a few hours.</li></ol>
+      <p>No card and no contract. If you stop, you go back to Free and keep all your records. Questions? <a onclick="nf26ClosePlans(); nf26Help()">Message the Nifti team</a>.</p></div>}
   </div>`;
 }
 function nf26Keep(){ const r = document.getElementById('nf26Ref'); if(r) NF26P.ref = r.value; }
