@@ -129,23 +129,12 @@ async function onePage(){
 function go(t){ S.tab = t; if(LAYOUT === 'one'){ paint(); const i = TABS.findIndex(x => x[0] === t); const sec = document.querySelectorAll('.sec')[[0, 4, 3, 1, 2][i]]; if(sec) sec.scrollIntoView({behavior: 'smooth'}); return; } location.hash = t; paint(); window.scrollTo(0, 0); }
 
 async function settings(){
-  $('main').innerHTML = `<h1>AI &amp; settings</h1><p class="sub">Switch on the AI that reads notebook pages and the files suppliers send in chat.</p><div class="card"><p class="empty">Loading…</p></div>`;
-  let s = {}; if(PREVIEW){ s = {reader: false, reader_pages_month: 0}; } else { try{ s = await rpc('admin_service_status') || {}; }catch(e){ s = {}; } }
-  const cost = Math.round((s.reader_pages_month || 0) * 2.5);
-  $('main').innerHTML = `<h1>AI &amp; settings</h1><p class="sub">Switch on the AI that reads notebook pages and the files suppliers send in chat (invoices, price lists, delivery receipts).</p>
-    <div class="card"><div class="sw"><h2 style="margin:0">AI reading</h2><span class="tag ${s.reader ? 'ok' : ''}" style="${s.reader ? 'background:#DCFCE7;color:#15803D' : 'background:#F2F4F7;color:#475467'}">${s.reader ? 'On' : 'Off'}</span></div>
-      <p class="sub" style="margin:8px 0 12px">${s.reader ? `${s.reader_pages_month || 0} page${(s.reader_pages_month || 0) === 1 ? '' : 's'} and files read this month, about ₱${cost.toLocaleString('en-PH')} on your Anthropic bill.` : 'Off. Chats still spot quotations, invoices and deliveries from the words; reading the numbers inside files and notebook photos starts once this is on.'}</p>
-      <ol style="margin:0 0 12px;padding-left:20px;line-height:1.7">
-        <li>Open <b>platform.claude.com</b> (the Claude Console for developers) and sign in. This is separate from a claude.ai chat plan: a Pro or Max subscription does not cover it, and its billing is separate.</li>
-        <li>If it asks, create an organization (any name, e.g. "Nifti").</li>
-        <li>Go to <b>Settings → Billing</b>, add a card and tap <b>Buy credits</b>. US$10 is enough to start. A file from a chat costs about ₱0.20 to read; a handwritten notebook page about ₱2 to ₱3.</li>
-        <li>On the same page, make sure <b>Auto-reload is off</b>. Then the credit you bought is the most you can ever spend: when it runs out, only AI reading pauses (the rest of Nifti keeps working) until you top up.</li>
-        <li>Optional extra safety: <b>Settings → Limits</b>, set a monthly spend limit, e.g. US$20.</li>
-        <li>Go to <b>Settings → API keys</b>, tap <b>Create key</b>, name it "Nifti", leave the workspace as Default, then copy the key. It starts with <code>sk-ant-</code> and is shown only once.</li>
-        <li>Paste it below and tap Switch on. It's saved on the server only and never shown again, not even to you.</li></ol>
-      <div style="display:flex;gap:8px;flex-wrap:wrap"><input id="aiKey" type="password" autocomplete="off" placeholder="Paste the key (sk-ant-...)" style="flex:1;min-width:220px;padding:12px 14px;border:1.5px solid #D0D5DD;border-radius:12px;font:inherit">
-        <button class="btn" onclick="saveKey()">${s.reader ? 'Replace key' : 'Switch on'}</button>${s.reader ? `<button class="btn o" onclick="offKey()">Switch off</button>` : ''}</div>
-      <p class="sub" style="margin:10px 0 0;font-size:13.5px">Each shop's monthly allowance still applies: Free 10, Pro 100, Business 400 pages a month, plus 300 extra pages in a shop's first 30 days to bring in its old notebooks. Worst case on your bill: about ₱250 a month for a Pro shop, ₱1,000 for a Business shop.</p></div>
+  $('main').innerHTML = `<h1>AI &amp; settings</h1>
+    <div class="card" style="border-color:#F5D58A;background:#FFFCF3">
+      <h2 style="margin:0 0 8px">AI notebook reader — temporarily paused for beta</h2>
+      <p style="margin:0 0 8px">AI processing is suspended. The reader implementation remains in Nifti, but the app will not send notebook photos to an AI provider, process them, or incur AI API charges.</p>
+      <p style="margin:0">No API key is configured. Do not add a key or enable this feature during beta. Manual bookkeeping and existing spreadsheet import remain available. Reactivation requires the founder's explicit approval after a separate cost and privacy review.</p>
+    </div>
     <div class="card"><h2 style="margin:0 0 6px">Facebook: nothing to set up on your side</h2>
       <p class="sub" style="margin:0 0 10px">Nifti uses Facebook's own free tools, so there is no Meta app, no App Review, no business documents and no cost. Posting straight to a shop's Page through an app would need Meta's Advanced Access (App Review plus Business Verification), and Facebook no longer lets any app post into Groups at all, so the share route is also the one that reaches Groups.</p>
       <ul style="margin:0 0 10px;padding-left:20px;line-height:1.7">
@@ -153,6 +142,7 @@ async function settings(){
         <li><b>"How much?" replies and Messenger answers:</b> each shop switches on Facebook's free automations once (Online store → Answer buyers automatically). Nifti fills in the keywords, the reply with their store link, the instant reply and 4 common questions, ready to copy.</li>
         <li><b>Order button:</b> the same screen walks them through putting a "Shop now" button with their store link on their Page.</li></ul>
       <p class="sub" style="margin:0;font-size:13.5px">Store checkout (delivery fee by barangay, GCash, Maya or bank details) and shared store photos are already live in the database (applied 2026-11-19).</p></div>`;
+}`;
 }
 async function saveKey(){
   const v = ($('aiKey').value || '').trim(); if(!v){ toast('Paste the key first.'); return; }
