@@ -54,8 +54,26 @@ jobs:
           cp Nifti_Sept17.html _site/index.html
           cp manifest.json sw.js icon-512.png icon-192.png icon-maskable-512.png apple-touch-icon.png favicon-32.png favicon-48.png robots.txt sitemap.xml 404.html store.js pay-qr.png founder.html privacy.html _site/
           cp beta-pauses.js _site/
-          # Add the temporary beta pause notice without altering the preserved app source.
-          sed -i 's#</body>#<script src="./beta-pauses.js"></script></body>#' _site/index.html
+          # Add the beta pause notice exactly once, before the real final body tag.
+          # A global sed replacement corrupts JavaScript template strings that contain
+          # literal </body> markup for printable receipts, truncating the main app script.
+          python3 - <<'PY'
+          from pathlib import Path
+
+          page = Path("_site/index.html")
+          html = page.read_text(encoding="utf-8")
+          script = '<script src="./beta-pauses.js"></script>'
+          if html.count(script) == 0:
+              pos = html.rfind("</body>")
+              if pos < 0:
+                  raise SystemExit("Could not find final </body> tag in index.html")
+              html = html[:pos] + script + html[pos:]
+              page.write_text(html, encoding="utf-8")
+          if html.count(script) != 1:
+              raise SystemExit("Expected exactly one beta-pauses.js reference")
+          if html.count("</body>") < 3:
+              raise SystemExit("Unexpectedly low body-tag count; refusing to publish")
+          PY
           # Design lab: standalone prototype of 10 dashboard concepts (sample data only), served at /design-lab/.
           cp -r design-lab _site/design-lab
           # Theme gallery: the real app in an iframe with 10 optional visual themes, served at /themes/.
