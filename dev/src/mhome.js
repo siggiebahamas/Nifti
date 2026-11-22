@@ -75,10 +75,10 @@ function renderMistHome(){
   const date = new Date(APP_TODAY + 'T00:00:00').toLocaleDateString('en-PH', {weekday: 'long', month: 'long', day: 'numeric'});
   host.innerHTML = `<div id="mhHome" class="mh-root">
     <div class="hero page-head lg-head"><div><h3>${hmGreeting()}, ${mhEsc(myBusiness && typeof myTeamMember !== 'undefined' && myTeamMember && myTeamMember.name ? mhFirst(myTeamMember.name) : selfName())}</h3><p>${date} · ${lanes.r.length ? `${lanes.r.length} thing${lanes.r.length > 1 ? 's' : ''} today` : 'Nothing urgent today'}${lanes.y.length ? `, ${lanes.y.length} this week` : ''}</p></div></div>
-    <div class="mosaic num">${mhTiles(boss).join('')}</div>
     <div class="rows">
+      <section class="sect glass"><div class="sect-h"><h4>What to do first</h4></div><div class="lanes">${['r', 'y', 'g'].map(k => mhLane(k, lanes[k])).join('')}</div></section>
       ${mhAlerts(boss)}
-      <section class="sect glass"><div class="sect-h"><h4>What to do</h4></div><div class="lanes">${['r', 'y', 'g'].map(k => mhLane(k, lanes[k])).join('')}</div></section>
+      <div class="mosaic num">${mhTiles(boss).join('')}</div>
       <section class="sect glass"><div class="sect-h"><h4>Where every order is</h4><button class="sch-btn" type="button" onclick="go('orders')">All orders ›</button></div>
         <div class="legend"><span class="lg"><span class="spl r">Late</span>late or waiting on you</span><span class="lg"><span class="spl y">Pending</span>coming up, on track</span><span class="lg"><span class="spl g">Done</span>completed</span></div>
         <div class="num">${mhBoard()}</div></section>
@@ -129,10 +129,10 @@ function mhLanes(items, boss){
   return L;
 }
 function mhLane(k, list){
-  const name = {r: 'Act Today', y: 'This Week', g: 'Fine'}[k], key = 'lane' + k, open = MH.open[key], show = open ? list : list.slice(0, 5);
+  const name = {r: 'Act Today', y: 'This Week', g: 'Fine'}[k], key = 'lane' + k, open = MH.open[key], limit = k === 'r' ? 3 : (k === 'y' ? 3 : 2), show = open ? list : list.slice(0, limit);
   return `<div class="lane"><div class="lane-h ${k}"><span>${name}</span><span>${list.length}</span></div>
     ${show.map(a => `<div class="task"><div><h5>${a.h}</h5>${a.d ? `<p>${a.d}</p>` : ''}</div>${a.b ? `<button class="btn" type="button" onclick="${a.act}">${mhEsc(a.b)}</button>` : ''}</div>`).join('') || `<div class="task"><div><p>Nothing here.</p></div></div>`}
-    ${list.length > 5 ? `<button class="more" type="button" onclick="MH.open['${key}']=!MH.open['${key}']; renderMistHome()">${open ? 'Show less' : '+ ' + (list.length - 5) + ' more'}</button>` : ''}</div>`;
+    ${list.length > limit ? `<button class="more" type="button" onclick="MH.open['${key}']=!MH.open['${key}']; renderMistHome()">${open ? 'Show less' : '+ ' + (list.length - limit) + ' more'}</button>` : ''}</div>`;
 }
 
 /* order board (compact) */
