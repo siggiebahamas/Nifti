@@ -157,6 +157,49 @@
     }
   }
 
+  function dashboard(){
+    if(typeof window.renderMistHome === 'function' && !window.renderMistHome._nf62){
+      const base = window.renderMistHome;
+      const wrapped = function(){
+        const result = base.apply(this, arguments);
+        setTimeout(prioritizeHome, 0);
+        return result;
+      };
+      wrapped._nf62 = true; window.renderMistHome = wrapped;
+      try{ renderMistHome = wrapped; }catch(e){}
+      try{ window.renderHomeV2 = wrapped; renderHomeV2 = wrapped; }catch(e){}
+    }
+  }
+  function prioritizeHome(){
+    const home = document.getElementById('mhHome'); if(!home) return;
+    const rows = home.querySelector('.rows'), mosaic = home.querySelector('.mosaic'); if(!rows) return;
+    const sections = Array.from(rows.querySelectorAll(':scope > .sect'));
+    const what = sections.find(el => /What to do/i.test((el.querySelector('h4') || {}).textContent || ''));
+    const order = sections.find(el => /Where every order is/i.test((el.querySelector('h4') || {}).textContent || ''));
+    const stock = document.getElementById('srCard');
+    const alerts = Array.from(rows.children).filter(el => el.classList && el.classList.contains('alertline'));
+    if(what) rows.insertBefore(what, rows.firstChild);
+    let anchor = what || rows.firstChild;
+    alerts.forEach(el => { rows.insertBefore(el, anchor ? anchor.nextSibling : rows.firstChild); anchor = el; });
+    if(mosaic) rows.insertBefore(mosaic, anchor ? anchor.nextSibling : rows.firstChild);
+    if(stock && order) rows.insertBefore(stock, order);
+    // Show the three most urgent actions first, with an explicit way to expand the rest.
+    if(what){
+      const urgent = what.querySelector('.lane');
+      if(urgent){
+        const tasks = Array.from(urgent.querySelectorAll('.task'));
+        if(tasks.length > 3){
+          let more = urgent.querySelector('.nf62-more');
+          if(!more){ more = document.createElement('button'); more.type = 'button'; more.className = 'more nf62-more'; urgent.appendChild(more); }
+          let expanded = false; try{ expanded = !!MH.open.laner; }catch(e){}
+          tasks.forEach((task,i) => { task.hidden = !expanded && i >= 3; });
+          more.textContent = expanded ? 'Show fewer' : '+ ' + (tasks.length - 3) + ' more urgent tasks';
+          more.onclick = function(){ try{ MH.open.laner = !MH.open.laner; renderMistHome(); }catch(e){} };
+        }
+      }
+    }
+  }
+
   ready(function(){
     marketing();
     onboarding();
