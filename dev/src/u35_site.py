@@ -45,7 +45,7 @@ S['text'] = t[:i] + '<div class="nf26-pls">' + ''.join(card(p) for p in PLANS) +
 import re
 t = S['text']; i = t.index('<div class="p2-biz">')
 depth = 0; j = None
-for m in re.finditer(r'<div\\b[^>]*>|</div\\s*>', t[i:], re.I):
+for m in re.finditer(r'<div\b[^>]*>|</div\s*>', t[i:], re.I):
     if m.group(0).lower().startswith('</div'):
         depth -= 1
     else:
