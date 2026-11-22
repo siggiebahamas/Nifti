@@ -1,0 +1,18 @@
+/* Round 62 additions: inherit the existing marketing type, palette and controls. */
+#view-index .nf62-link-promise{margin:14px 0 0;max-width:760px;line-height:1.55}
+#view-index .nf62-link-promise strong{font-weight:700}
+#mkTry .nf62-demo textarea{display:block;width:100%;box-sizing:border-box;min-height:78px;margin:8px 0 12px;padding:12px;border:1px solid rgba(90,110,140,.28);border-radius:10px;font:inherit;line-height:1.45;resize:vertical}
+#mkTry .nf62-demo>.btn{margin:0 0 10px}
+#mkTryOut{margin-top:12px}
+#mkTryOut .mk-try-send{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+#mkTryOut .mk-try-send .btn{margin-left:auto}
+#nf62CustomerPreview{margin-top:12px}
+#nf62CustomerPreview .mk-try-send{display:flex;gap:8px;flex-wrap:wrap}
+#nf62CustomerPreview .mk-try-send .btn{margin:0}
+#view-index .cta-band .wrap{max-width:1120px}
+#view-index .cta-band .f4-hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+#view-index .cta-band .f4-hero-cta .btn{cursor:pointer}
+@media(max-width:640px){
+  #mkTryOut .mk-try-send .btn{margin-left:0;width:100%}
+  #view-index .cta-band .f4-hero-cta .btn{width:100%}
+}
