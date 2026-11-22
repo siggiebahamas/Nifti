@@ -60,7 +60,7 @@ function mk52Try(){
     const step = now => { const k = Math.min(1, (now - t0) / dur); if(el) el.textContent = mk52Peso(total * (1 - Math.pow(1 - k, 3))); if(k < 1) requestAnimationFrame(step); };
     requestAnimationFrame(step);
     setTimeout(() => { if(!out.querySelector('.mk-try-order')) return;
-      out.insertAdjacentHTML('beforeend', `<div class="mk-try-send"><span class="ok">✓</span><div><b>${out.querySelector('.mk-try-ask') ? 'You pick the item once, then it goes to Bayview' : 'Sent to Bayview for their OK'}</b><small>They tap a link on Viber. No app, no sign-up.</small></div><a onclick="mk52Start()">Do this for real →</a></div>`); }, 900);
+      out.insertAdjacentHTML('beforeend', `<div class="mk-try-send"><span class="ok">✓</span><div><b>${out.querySelector('.mk-try-ask') ? 'Preview only — review this item before sending' : 'Preview only — nothing has been sent'}</b><small>In the real workflow, the customer opens a secure browser link. A Nifti account is optional.</small></div><button type="button" class="btn btn-outline" onclick="nf62PreviewCustomer()">Preview customer link →</button></div>`); }, 900);
   }, 650);
 }
 // the real app, playing on a phone
