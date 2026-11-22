@@ -74,6 +74,15 @@ jobs:
           if html.count("</body>") < 3:
               raise SystemExit("Unexpectedly low body-tag count; refusing to publish")
           PY
+          # Final publishing guard: the beta script must be injected once, not into
+          # receipt HTML templates or any other inline JavaScript string.
+          python3 - <<'PY'
+          from pathlib import Path
+          html = Path("_site/index.html").read_text(encoding="utf-8")
+          assert html.count('<script src="./beta-pauses.js"></script>') == 1
+          assert html.rstrip().endswith("</html>")
+          assert html.rfind("</body>") > html.rfind('<script src="./beta-pauses.js"></script>')
+          PY
           # Design lab: standalone prototype of 10 dashboard concepts (sample data only), served at /design-lab/.
           cp -r design-lab _site/design-lab
           # Theme gallery: the real app in an iframe with 10 optional visual themes, served at /themes/.
