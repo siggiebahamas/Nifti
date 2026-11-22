@@ -40,8 +40,22 @@ P('''    <div class="p2-burst"> PILOT</div>
     <p>Free runs a small shop every day. Pro chases payments and keeps your books. Business runs deliveries, branches and a team you need to keep an eye on.</p>''')
 t = S['text']; i = t.index('<div class="p2-plans">'); j = t.index('<div class="f6-roi">', i)
 S['text'] = t[:i] + '<div class="nf26-pls">' + ''.join(card(p) for p in PLANS) + '</div>' + HOW + '\n  ' + t[j:]
-t = S['text']; i = t.index('<div class="p2-biz">'); j = t.index('</section>', i)
-S['text'] = t[:i] + '</div>\n' + t[j:]
+# Remove only the obsolete business-plan detail block. The previous section-based
+# slice could swallow following FAQ/footer markup and leave stray text at the bottom.
+import re
+t = S['text']; i = t.index('<div class="p2-biz">')
+depth = 0; j = None
+for m in re.finditer(r'<div\\b[^>]*>|</div\\s*>', t[i:], re.I):
+    if m.group(0).lower().startswith('</div'):
+        depth -= 1
+    else:
+        depth += 1
+    if depth == 0:
+        j = i + m.end()
+        break
+if j is None:
+    raise SystemExit('u35_site: could not find closing div for p2-biz')
+S['text'] = t[:i] + t[j:]
 P('<div class="faq-item"><div class="q">I buy and I sell. Do I need two plans?</div><div class="a">No. One Pro plan covers buying, selling and your books.</div></div>',
   '<div class="faq-item"><div class="q">I buy and I sell. Do I need two plans?</div><div class="a">No. One plan covers buying, selling and your books.</div></div>'
   '<div class="faq-item"><div class="q">How do I pay?</div><div class="a">By GCash, Maya or bank transfer. Pick a plan in Nifti, send the amount, and type the reference number. We switch you on within a few hours.</div></div>'
