@@ -51,7 +51,7 @@
   // Drop the two showcase tiles that imply unproven chat-reading or supplier-scoring capabilities.
   if(!show.dataset.nf64Pruned){
    const rows=[...show.querySelectorAll('.nf20-stabs button')], views=[...show.querySelectorAll('.nf20-sp')];
-   rows.forEach((tab,i)=>{if(/orders from any chat|know when staff overpay/i.test(tab.textContent||'')){tab.remove();if(views[i])views[i].remove();}});
+   rows.forEach((tab,i)=>{if(/orders from chat|staff overspending/i.test(tab.textContent||'')){tab.remove();if(views[i])views[i].remove();}});
    const remaining=[...show.querySelectorAll('.nf20-stabs button')], remainingPanels=[...show.querySelectorAll('.nf20-sp')];
    remaining.forEach((tab,i)=>{tab.id='nf64St'+i;tab.setAttribute('aria-controls','nf64Sp'+i);tab.setAttribute('aria-selected',String(i===0));tab.classList.toggle('on',i===0);tab.setAttribute('tabindex',i===0?'0':'-1');tab.setAttribute('onclick','nf20ShowGo('+i+', true)');});
    remainingPanels.forEach((panel,i)=>{panel.id='nf64Sp'+i;panel.setAttribute('aria-labelledby','nf64St'+i);panel.hidden=i!==0;panel.classList.toggle('on',i===0);});
