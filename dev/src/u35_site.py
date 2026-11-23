@@ -3,13 +3,13 @@
 CHK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>'
 PLANS = [
   ('free', 'Free', '₱0', 'forever', '', 'A small shop running day to day.',
-   ['Orders with customers and suppliers', 'Who owes you, with payment reminders sent for you', 'Promises to pay, and your own GCash or bank QR on every bill', 'Messages, stock, shop sales, expenses', 'Online store and Facebook posts', '10 notebook pages a month', 'Up to 3 people', 'Download everything any time'],
+   ['Orders with customers and suppliers', 'Who owes you, with payment reminders sent for you', 'Promises to pay, and your own GCash or bank QR on every bill', 'Messages, stock, shop sales, expenses', 'Online store and Facebook posts', 'Up to 3 people', 'Download everything any time'],
    'Start free', "navigate('login'); try{ nf20ToSignup(); }catch(e){}", 'outline'),
   ('pro', 'Pro', '₱990', '/ month', 'or ₱9,900 a year (2 months free)', 'Owner-run shops that want Nifti to chase money and keep the books.',
-   ['Everything in Free', 'We load your items and utang list for you', 'Books, profit and summaries for your bookkeeper', 'Payroll and check tracking', 'Credits and returns that take themselves off', 'Price announcements to all customers', 'Store results, promos, reorder reminders', '300 notebook pages a month', 'Up to 15 people'],
+   ['Everything in Free', 'We load your items and utang list for you', 'Books, profit and summaries for your bookkeeper', 'Payroll and check tracking', 'Credits and returns that take themselves off', 'Price announcements to all customers', 'Store results, promos, reorder reminders', 'Up to 15 people'],
    'Start with Pro', "navigate('login'); try{ nf20ToSignup(); }catch(e){} try{ localStorage.setItem('nifti-want-plan','pro'); }catch(e){}", 'primary'),
   ('business', 'Business', '₱2,990', '/ month', 'or ₱29,900 a year', 'Distributors with drivers, branches and staff who order and collect.',
-   ['Everything in Pro', 'Delivery routes and driver lists', 'Branches: each with its own drawer and stock', 'Spending caps and alerts when staff overpay', 'Credit limits and a who-pays-late list', 'Supplier report card and price checks', 'Setup by the Nifti team, verified badge, priority help', '1,500 notebook pages a month', 'Up to 75 people (more? message us)'],
+   ['Everything in Pro', 'Delivery routes and driver lists', 'Branches: each with its own drawer and stock', 'Spending caps and alerts when staff overpay', 'Credit limits and a who-pays-late list', 'Purchase history and supplier records', 'Setup by the Nifti team, verified badge, priority help', 'Up to 75 people (more? message us)'],
    'Start with Business', "navigate('login'); try{ nf20ToSignup(); }catch(e){} try{ localStorage.setItem('nifti-want-plan','business'); }catch(e){}", 'outline'),
 ]
 def card(p, short=False):
@@ -64,7 +64,7 @@ P('<div class="faq-item"><div class="q">I buy and I sell. Do I need two plans?</
 P('<tr><td>Teammates</td>', '<tr><td>Payroll</td><td>—</td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr>'
   '<tr><td>Books and summaries for your bookkeeper</td><td>—</td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr>'
   '<tr><td>Setup by the Nifti team</td><td>—</td><td><span class="mk-y">✓</span></td><td><span class="mk-y">✓</span></td></tr>'
-  '<tr><td>Notebook pages read a month</td><td>10</td><td>300</td><td>1,500</td></tr><tr><td>Teammates</td>')
+  '<tr><td>Teammates</td>')
 
 # compare table: what moved from Pro to Business
 Y = '<td><span class="mk-y">✓</span></td>'
