@@ -8,7 +8,7 @@
   const hero=page.querySelector('.f4-hero');
   if(hero&&!hero.dataset.nf66){
    hero.dataset.nf66='1';
-   const p=hero.querySelector('p');if(p){p.classList.add('nf66-tagline');p.innerHTML='<span>ORDERS.</span><span>STOCK.</span><span>CASH.</span><strong>ALL UNDER CONTROL.</strong>';}
+   const p=hero.querySelector('p');if(p){p.classList.add('nf66-tagline');p.innerHTML='<span>ORDERS.</span><span>STOCK.</span><span>CASH.</span><strong>UNDER CONTROL.</strong>';}
    const points=hero.querySelector('.nf64-hero-points');
    if(points){
     points.innerHTML=[
