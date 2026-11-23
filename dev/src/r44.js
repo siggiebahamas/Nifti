@@ -238,7 +238,7 @@ function nf44PrCorrect(id){
       const s = document.createElement('div'); s.className = 'nf44-prs';
       s.innerHTML = `<div><span>Next payday</span><b>${escapeHtml(bkDayLabel(pd))}</b><small>${days === 0 ? 'today' : 'in ' + days + ' day' + (days === 1 ? '' : 's')}</small></div>
         <div><span>Last payroll</span><b>${last ? bkPeso(net(last.id)) : '—'}</b><small>${last ? 'paid ' + escapeHtml(bkDayLabel(last.paid_on || last.period_to)) : 'none yet'}</small></div>
-        <div><span>Vale to collect</span><b>${bkPeso(valeTot)}</b><small>${(n => n + (n === 1 ? ' person' : ' people'))(Object.values(vale).filter(v => v > 0).length)}</small></div>
+        <div><span>Value to collect</span><b>${bkPeso(valeTot)}</b><small>${(n => n + (n === 1 ? ' person' : ' people'))(Object.values(vale).filter(v => v > 0).length)}</small></div>
         <div><span>People on payroll</span><b>${people.length}</b><small>from your payrolls</small></div>`;
       body.prepend(s);
     }
