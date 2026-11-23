@@ -9,6 +9,7 @@ const NF26_WORDS = [
   [/\bStart [Ss]tocktake\b/g, 'Count all stock'], [/\bStocktakes?\b/g, 'Stock count'], [/\bstocktakes?\b/g, 'stock count'],
   [/\bSpot [Cc]ounts?\b/g, 'Count a few items'], [/\bspot counts?\b/g, 'count a few items'],
   [/\bDraft [Rr]eorder\b/g, 'Reorder'], [/\bGetting Low\b/g, 'Running low'],
+  [/\bVale to collect\b/gi, 'Value to collect'],
   [/\bAll Warehouses\b/g, 'All storage places'], [/\b[Mm]anage warehouses\b/g, 'Manage storage places'],
   [/\bWarehouses\b/g, 'Storage places'], [/\bwarehouses\b/g, 'storage places'], [/\bWarehouse\b(?! Manager)/g, 'Storage place'], [/\bwarehouse\b(?! manager)/g, 'storage place'],
   [/\bVAT-?able\b/gi, 'Before VAT'],
