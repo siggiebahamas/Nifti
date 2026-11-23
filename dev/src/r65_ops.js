@@ -5,13 +5,18 @@
   const host=document.getElementById('publicOrderView');if(!host||!d||host.querySelector('.nf65-progress'))return;
   const status=String(d.status||'').toLowerCase();
   if(['cancelled','declined','rejected','draft'].includes(status))return;
-  const idx=status==='sent'?0:['confirmed','preparing'].includes(status)?1:['shipped','in_customs'].includes(status)?2:['partially_delivered','delivered','invoiced','paid'].includes(status)?3:-1;
+  const idx=status==='sent'?0:['confirmed','preparing'].includes(status)?1:['shipped','in_customs'].includes(status)?2:status==='partially_delivered'?3:['delivered','invoiced','paid'].includes(status)?4:-1;
   if(idx<0)return;
   const badge=host.querySelector('.po-public-status');if(!badge)return;
   const labels=['Order sent','Confirmed','On the way','Delivered'];
   const el=document.createElement('div');el.className='nf65-progress';el.setAttribute('aria-label','Order progress');
   el.innerHTML=labels.map((label,i)=>'<div class="nf65-progress-step '+(i<idx?'done':i===idx?'current':'')+'"><span>'+(i<idx?'✓':String(i+1))+'</span><b>'+label+'</b></div>').join('');
   badge.insertAdjacentElement('afterend',el);
+  if(!host.querySelector('.nf65-powered')){
+   const foot=document.createElement('div');foot.className='nf65-powered';
+   foot.innerHTML='<span>Order managed with</span> <a href="https://siggiebahamas.github.io/Nifti/" target="_blank" rel="noopener">Nifti</a><small>One clearer way to keep business moving.</small>';
+   host.appendChild(foot);
+  }
  }
  function wrap(name){
   const base=window[name];if(typeof base!=='function'||base._nf65)return;
