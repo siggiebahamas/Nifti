@@ -82,11 +82,15 @@
   let pulse=home.querySelector('.nf67-pulse');
   if(!pulse){pulse=document.createElement('section');pulse.className='nf67-pulse';hero.insertAdjacentElement('afterend',pulse);}
   const urgent=count(red),week=count(amber),clear=count(green);
-  pulse.innerHTML='<div class="nf67-pulse-top"><div><small>YOUR BUSINESS, AT A GLANCE</small><h4>Today’s control room</h4><p>Live priorities from the records and tasks already in Nifti.</p></div><span class="nf67-pulse-date">'+esc(typeof APP_TODAY!=='undefined'?APP_TODAY:'')+'</span></div><div class="nf67-pulse-grid"><button type="button" data-lane="r"><b>'+urgent+'</b><span>Needs attention</span><small>Review today</small></button><button type="button" data-lane="y"><b>'+week+'</b><span>Coming up</span><small>This week</small></button><button type="button" data-lane="g"><b>'+clear+'</b><span>On track</span><small>Recorded as clear</small></button></div>';
-  pulse.querySelectorAll('[data-lane]').forEach(b=>b.addEventListener('click',()=>{
-   const target=lanes.find(x=>x.querySelector('.lane-h.'+b.dataset.lane));
-   if(target)target.scrollIntoView({behavior:'smooth',block:'center'});
-  }));
+  const pulseSig=[urgent,week,clear,typeof APP_TODAY!=='undefined'?APP_TODAY:''].join('|');
+  if(pulse.dataset.sig!==pulseSig){
+   pulse.innerHTML='<div class="nf67-pulse-top"><div><small>YOUR BUSINESS, AT A GLANCE</small><h4>Today’s control room</h4><p>Live priorities from the records and tasks already in Nifti.</p></div><span class="nf67-pulse-date">'+esc(typeof APP_TODAY!=='undefined'?APP_TODAY:'')+'</span></div><div class="nf67-pulse-grid"><button type="button" data-lane="r"><b>'+urgent+'</b><span>Needs attention</span><small>Review today</small></button><button type="button" data-lane="y"><b>'+week+'</b><span>Coming up</span><small>This week</small></button><button type="button" data-lane="g"><b>'+clear+'</b><span>On track</span><small>Recorded as clear</small></button></div>';
+   pulse.dataset.sig=pulseSig;
+   pulse.querySelectorAll('[data-lane]').forEach(b=>b.addEventListener('click',()=>{
+    const target=lanes.find(x=>x.querySelector('.lane-h.'+b.dataset.lane));
+    if(target)target.scrollIntoView({behavior:'smooth',block:'center'});
+   }));
+  }
   // Owner-only financial intelligence. All figures come from the existing bookkeeping ledger.
   let owner=false;try{owner=typeof booksCanSeeTotals==='function'&&booksCanSeeTotals()&&typeof BK!=='undefined'&&BK.loaded&&typeof bkPnl==='function';}catch(e){}
   let intel=home.querySelector('.nf67-intel');
@@ -98,7 +102,7 @@
    intel.innerHTML='<div class="nf67-intel-head"><div><small>OWNER VIEW · RECORDED FIGURES</small><h4>Business intelligence</h4><p>Know where the month stands before deciding what to do next.</p></div><button type="button" class="nf67-text-btn" data-go="money">Open financials →</button></div><div class="nf67-intel-grid"><div><span>Sales this month</span><b>'+fmt(sales)+'</b></div><div><span>Recorded costs & expenses</span><b>'+fmt(spend)+'</b></div><div class="'+(profit<0?'negative':'positive')+'"><span>'+(profit<0?'Operating loss':'Operating profit')+'</span><b>'+(profit<0?'−':'')+fmt(Math.abs(profit))+'</b></div><div><span>Operating margin</span><b>'+(margin===null?'—':margin.toFixed(1)+'%')+'</b></div></div><div class="nf67-intel-foot">'+(sales?'Based on entries recorded for '+esc(month)+'.':'No sales recorded for this month yet. Add a sale to start building this view.')+' Figures reflect recorded entries; they are not forecasts.</div><div class="nf67-flags"><b>Items worth reviewing</b><div class="nf67-flag-list"></div></div>';
    intel.querySelector('[data-go="money"]').addEventListener('click',()=>go('money'));
    const list=intel.querySelector('.nf67-flag-list');
-   if(flags.length)flags.forEach(f=>{const b=document.createElement('button');b.type='button';b.className='nf67-flag '+(f.lvl==='red'?'red':'amber');const t=document.createElement('span');t.textContent=String(f.t||'Review item')+': '+String(f.v||'');b.appendChild(t);const s=document.createElement('small');s.textContent=String(f.s||'Open to review');b.appendChild(s);b.addEventListener('click',()=>{if(f.a){try{Function('go',String(f.a))(go);}catch(e){go('money');}}else go('money');});list.appendChild(b);});
+   if(flags.length)flags.forEach(f=>{const b=document.createElement('button');b.type='button';b.className='nf67-flag '+(f.lvl==='red'?'red':'amber');const t=document.createElement('span');t.textContent=String(f.t||'Review item')+': '+String(f.v||'');b.appendChild(t);const s=document.createElement('small');s.textContent=String(f.s||'Open to review');b.appendChild(s);b.addEventListener('click',()=>go('money'));list.appendChild(b);});
    else list.innerHTML='<span class="nf67-no-flags">No flagged bookkeeping items right now. Keep records up to date for a clearer picture.</span>';
   }catch(e){console.warn('Nifti intelligence panel',e);}
   // Staff accountability: owner-only reconciliation context, never a misconduct score.
