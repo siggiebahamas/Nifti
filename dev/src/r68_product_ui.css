@@ -126,3 +126,14 @@
  #view-app .app-page button,#view-app .app-page .btn{transition:background-color .16s ease,border-color .16s ease,box-shadow .16s ease,transform .16s ease}
  #view-app .app-page button:hover:not(:disabled),#view-app .app-page .btn:hover{transform:translateY(-1px)}
 }
+
+/* The approved Mist home uses compact semantic letters rather than words on its pills. */
+#view-app .app-page .pill.r,#view-app .app-page .pill.red,
+#view-app .app-page .pill.danger{background:#fff0ee;border-color:#efc2bd;color:#a52820}
+#view-app .app-page .pill.y,#view-app .app-page .pill.yellow,
+#view-app .app-page .pill.warn{background:#fff2d8;border-color:#ebd09a;color:#754008}
+#view-app .app-page .pill.g,#view-app .app-page .pill.green,
+#view-app .app-page .pill.success{background:#e7f3eb;border-color:#b9d9c2;color:#145b35}
+#view-app .app-page .pill.b,#view-app .app-page .pill.blue,
+#view-app .app-page .pill.info{background:#eaf2fb;border-color:#c6d9ef;color:#24558a}
+#view-app .app-page .pill.n{background:#eef2ef;border-color:#d8e1db;color:#34483b}
