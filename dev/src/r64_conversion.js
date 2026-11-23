@@ -15,6 +15,7 @@
    let chips=hero.querySelector('.nf64-hero-points');
    if(!chips){chips=document.createElement('div');chips.className='nf64-hero-points';chips.innerHTML='<span>SELL WITH CONFIDENCE</span><span>KEEP STOCK MOVING</span><span>KNOW YOUR NUMBERS</span>';const cta=hero.querySelector('.f4-hero-cta'); if(cta)cta.insertAdjacentElement('beforebegin',chips);else hero.appendChild(chips);}
   }
+  page.querySelectorAll('#mkBuy .f4-spot').forEach(card=>{if(/report card for every supplier|supplier grades|grades from your real orders/i.test(card.textContent||''))card.remove();});
   const out=page.querySelector('#nf63Outcomes');
   if(out){
    const h=out.querySelector('.f5-head h2'); if(h)h.innerHTML='A calmer day. <span>A stronger business.</span>';
@@ -46,6 +47,15 @@
  }
  function fixTabs(){
   const show=document.getElementById('mkShow');if(!show)return;
+  // Drop the two showcase tiles that imply unproven chat-reading or supplier-scoring capabilities.
+  if(!show.dataset.nf64Pruned){
+   const rows=[...show.querySelectorAll('.nf20-stabs button')], views=[...show.querySelectorAll('.nf20-sp')];
+   rows.forEach((tab,i)=>{if(/orders from any chat|know when staff overpay/i.test(tab.textContent||'')){tab.remove();if(views[i])views[i].remove();}});
+   const remaining=[...show.querySelectorAll('.nf20-stabs button')], remainingPanels=[...show.querySelectorAll('.nf20-sp')];
+   remaining.forEach((tab,i)=>{tab.id='nf64St'+i;tab.setAttribute('aria-controls','nf64Sp'+i);tab.setAttribute('aria-selected',String(i===0));tab.classList.toggle('on',i===0);tab.setAttribute('tabindex',i===0?'0':'-1');tab.setAttribute('onclick','nf20ShowGo('+i+', true)');});
+   remainingPanels.forEach((panel,i)=>{panel.id='nf64Sp'+i;panel.setAttribute('aria-labelledby','nf64St'+i);panel.hidden=i!==0;panel.classList.toggle('on',i===0);});
+   show.dataset.nf64Pruned='1';
+  }
   const tabs=[...show.querySelectorAll('.nf20-stabs button')],panels=[...show.querySelectorAll('.nf20-sp')];if(!tabs.length||!panels.length)return;
   // Stop auto-advancing: users choose what they want to inspect, and the selection stays put.
   try{if(window.NF20S){NF20S.stop=true;clearTimeout(NF20S.t);}}catch(e){}
