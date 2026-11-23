@@ -5,7 +5,7 @@ HERE=os.path.dirname(__file__)
 rd=lambda n:open(os.path.join(HERE,n),encoding='utf-8').read()
 t=S['text'];k=t.index('</style>')
 S['text']=t[:k]+'\n'+rd('r65_ops.css')+'\n'+t[k:]
-P("  if(typeof checkOnboardingActivation === 'function') checkOnboardingActivation();", """  try{
+P("  try{ const wk = document.getElementById('wkCard'); if(wk) wk.remove(); }catch(e){}", """  try{
     const root=document.getElementById('mhHome'), rows=root && root.querySelector('.rows'), mosaic=root && root.querySelector('.mosaic');
     if(root && rows && mosaic && !root.querySelector('.mh-priority')){
       const priority=document.createElement('div'); priority.className='rows mh-priority';
@@ -21,5 +21,5 @@ P("  if(typeof checkOnboardingActivation === 'function') checkOnboardingActivati
       }
     }
   }catch(e){console.warn('Home priorities',e);}
-  if(typeof checkOnboardingActivation === 'function') checkOnboardingActivation();""")
+  try{ const wk = document.getElementById('wkCard'); if(wk) wk.remove(); }catch(e){}""")
 P("function renderSidebarForViewAsRole(){",rd('r65_ops.js')+"\nfunction renderSidebarForViewAsRole(){")
