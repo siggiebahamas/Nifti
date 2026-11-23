@@ -75,3 +75,13 @@
  #view-index .nf66-benefit small{font-size:14px}
  #view-index .nf26-pl-p.nf64-beta-price b{font-size:48px!important}
 }
+
+#view-index .nf20-how{padding:76px 0 60px!important}
+#view-index .nf20-how .f5-head h2{font-size:clamp(34px,4vw,48px)!important;line-height:1.08!important}
+#view-index .nf20-how .f5-head p{font-size:18px!important;line-height:1.55!important;color:#26382e!important}
+#view-index .nf20-how .h4-flow{font-size:16px!important}
+#view-index .nf20-how .h4-flow b{font-size:18px!important}
+#view-index .nf20-how .h4-facts{font-size:16px!important}
+#view-index .nf20-how .h4-facts b{font-size:22px!important}
+#view-index .nf20-how .nf20-how-step h3{font-size:22px!important}
+#view-index .nf20-how .nf20-how-step p{font-size:17px!important;color:#26382e!important}
