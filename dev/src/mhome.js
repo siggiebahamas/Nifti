@@ -75,17 +75,19 @@ function renderMistHome(){
   const date = new Date(APP_TODAY + 'T00:00:00').toLocaleDateString('en-PH', {weekday: 'long', month: 'long', day: 'numeric'});
   host.innerHTML = `<div id="mhHome" class="mh-root">
     <div class="hero page-head lg-head"><div><h3>${hmGreeting()}, ${mhEsc(myBusiness && typeof myTeamMember !== 'undefined' && myTeamMember && myTeamMember.name ? mhFirst(myTeamMember.name) : selfName())}</h3><p>${date} · ${lanes.r.length ? `${lanes.r.length} thing${lanes.r.length > 1 ? 's' : ''} today` : 'Nothing urgent today'}${lanes.y.length ? `, ${lanes.y.length} this week` : ''}</p></div></div>
-    <div class="mosaic num">${mhTiles(boss).join('')}</div>
-    <div class="rows">
+    <div class="rows mh-priority">
       ${mhAlerts(boss)}
-      <section class="sect glass"><div class="sect-h"><h4>What to do</h4></div><div class="lanes">${['r', 'y', 'g'].map(k => mhLane(k, lanes[k])).join('')}</div></section>
+      <section class="sect glass"><div class="sect-h"><h4>Needs your attention</h4><span class="hint">Start with what needs you today</span></div><div class="lanes">${['r', 'y', 'g'].map(k => mhLane(k, lanes[k])).join('')}</div></section>
+    </div>
+    <div class="mosaic num">${nf18Tiles(mhTiles(boss))}</div>
+    <div class="rows">
       <section class="sect glass"><div class="sect-h"><h4>Where every order is</h4><button class="sch-btn" type="button" onclick="go('orders')">All orders ›</button></div>
-        <div class="legend"><span class="lg"><span class="spl r">Late</span>late or waiting on you</span><span class="lg"><span class="spl y">Pending</span>coming up, on track</span><span class="lg"><span class="spl g">Done</span>completed</span></div>
+        <div class="legend nf-lg16"><span class="lg"><span class="spl r">Late</span></span><span class="lg"><span class="spl y">Pending</span></span><span class="lg"><span class="spl g">Done</span></span></div>
         <div class="num">${mhBoard()}</div></section>
       ${isPageAllowedForViewAsRole('inventory') && typeof srSection === 'function' ? `<section class="sect glass" id="srCard">${srSection()}</section>` : ''}
-      ${boss && BK.loaded ? `<section class="sect glass" id="mhDrawer">${mhDrawer()}</section>` : ''}
+      ${boss && BK.loaded ? `<details class="mh-cash-fold"><summary><span><b>Cash accountability</b><small>Daily counts, staff handovers and drawer protections</small></span><i>＋</i></summary><div class="sect glass" id="mhDrawer">${mhDrawer()}</div></details>` : ''}
     </div>
-  </div>`;
+  </div>`
   if(typeof checkOnboardingActivation === 'function') checkOnboardingActivation();
   try{ renderGetStartedCard(); }catch(e){}
   try{ renderPhoneNotifNudge(); }catch(e){}
