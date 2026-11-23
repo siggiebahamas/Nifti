@@ -21,6 +21,11 @@
   // Remove the redundant "Picture your next Monday" / calculator block; its promises are now
   // represented by the concrete benefits and the interactive outcome cards above.
   const calc=page.querySelector('#mkCalc');if(calc)calc.remove();
+  page.querySelectorAll('#mkShow h3, #mkShow .f4-spot-t h3').forEach(h=>{
+   if(/^Your own store,?\\s*ready for Facebook$/i.test(h.textContent.trim())&&!h.dataset.nf66){
+    h.dataset.nf66='1';h.innerHTML='Your own store,<br>ready for Facebook';
+   }
+  });
   page.querySelectorAll('#mkShow .nf20-stabs button').forEach(btn=>{
    const label=btn.querySelector('span');if(label&&/Your own store,?\s*ready for Facebook/i.test(label.textContent)&&!label.dataset.nf66){
     label.dataset.nf66='1';label.innerHTML='Your own store,<br>ready for Facebook';
