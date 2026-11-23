@@ -69,6 +69,7 @@
   function paintDiscoverGuide(){
     const page=document.getElementById('page-discover'), intro=page && page.querySelector('#nf63DiscoverIntro'); if(!intro) return;
     let mode='suppliers'; try{ mode=typeof NFX!=='undefined' ? NFX.mode : 'suppliers'; }catch(e){}
+    if(intro.dataset.mode===mode) return; intro.dataset.mode=mode;
     const title=intro.querySelector('b'), p=intro.querySelector('p'), actions=intro.querySelector('.nf63-discover-actions');
     if(mode==='customers'){
       if(title) title.textContent='Find businesses that buy what you sell';
