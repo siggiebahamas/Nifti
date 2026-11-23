@@ -8,10 +8,10 @@ t = S['text']
 # Keep the paused implementation and beta notice in the app; only remove unsupported marketing claims.
 import re
 def remove_section_by_id(html, ident):
-    m = re.search(r'<section\\b[^>]*\\bid=["\\']' + re.escape(ident) + r'["\\'][^>]*>', html, re.I)
+    m = re.search(r'<section\b[^>]*\bid=["\\']' + re.escape(ident) + r'["\\'][^>]*>', html, re.I)
     if not m: return html
     depth = 1
-    for tag in re.finditer(r'<section\\b[^>]*>|</section\\s*>', html[m.end():], re.I):
+    for tag in re.finditer(r'<section\b[^>]*>|</section\s*>', html[m.end():], re.I):
         if tag.group(0).lower().startswith('</section'): depth -= 1
         else: depth += 1
         if depth == 0:
