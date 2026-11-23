@@ -52,11 +52,12 @@
     page.querySelectorAll('a,button').forEach(el=>{
       if(/notebook reader|try the order reader|orders from chat/i.test(el.textContent||'')) el.remove();
     });
-    addHow(); addOutcomes();
+    const duplicate=page.querySelector('#nf63How'); if(duplicate) duplicate.remove();
+    addOutcomes();
     const h=page.querySelector('#nf63Outcomes .f5-head h2');
-    if(h) h.innerHTML='Less chasing. <span>More control.</span>';
+    if(h && h.innerHTML !== 'Less chasing. <span>More control.</span>') h.innerHTML='Less chasing. <span>More control.</span>';
     const old=page.querySelector('#mkHow .f5-head h2');
-    if(old && /what this means for you/i.test(old.textContent)) old.innerHTML='A calmer day. <span>A business you can see.</span>';
+    if(old && /what this means for you/i.test(old.textContent) && old.innerHTML !== 'A calmer day. <span>A business you can see.</span>') old.innerHTML='A calmer day. <span>A business you can see.</span>';
   }
   function dashboardOnlySetup(){
     const dock=document.getElementById('nf55Dock'); if(!dock) return;
