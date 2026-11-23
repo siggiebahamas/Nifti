@@ -84,12 +84,13 @@
   const urgent=count(red),week=count(amber),clear=count(green);
   const pulseSig=[urgent,week,clear,typeof APP_TODAY!=='undefined'?APP_TODAY:''].join('|');
   if(pulse.dataset.sig!==pulseSig){
-   pulse.innerHTML='<div class="nf67-pulse-top"><div><small>YOUR BUSINESS, AT A GLANCE</small><h4>Today’s control room</h4><p>Live priorities from the records and tasks already in Nifti.</p></div><span class="nf67-pulse-date">'+esc(typeof APP_TODAY!=='undefined'?APP_TODAY:'')+'</span></div><div class="nf67-pulse-grid"><button type="button" data-lane="r"><b>'+urgent+'</b><span>Needs attention</span><small>Review today</small></button><button type="button" data-lane="y"><b>'+week+'</b><span>Coming up</span><small>This week</small></button><button type="button" data-lane="g"><b>'+clear+'</b><span>On track</span><small>Recorded as clear</small></button></div>';
+   pulse.innerHTML='<div class="nf67-pulse-top"><div><small>YOUR BUSINESS, AT A GLANCE</small><h4>Today’s control room</h4><p>Live priorities from the records and tasks already in Nifti.</p></div><div class="nf67-pulse-actions"><span class="nf67-pulse-date">'+esc(typeof APP_TODAY!=='undefined'?APP_TODAY:'')+'</span><button type="button" data-share>Share Nifti ↗</button></div></div><div class="nf67-pulse-grid"><button type="button" data-lane="r"><b>'+urgent+'</b><span>Needs attention</span><small>Review today</small></button><button type="button" data-lane="y"><b>'+week+'</b><span>Coming up</span><small>This week</small></button><button type="button" data-lane="g"><b>'+clear+'</b><span>On track</span><small>Recorded as clear</small></button></div>
    pulse.dataset.sig=pulseSig;
    pulse.querySelectorAll('[data-lane]').forEach(b=>b.addEventListener('click',()=>{
     const target=lanes.find(x=>x.querySelector('.lane-h.'+b.dataset.lane));
     if(target)target.scrollIntoView({behavior:'smooth',block:'center'});
    }));
+   const share=pulse.querySelector('[data-share]');if(share)share.addEventListener('click',()=>{try{copyPlainText('https://siggiebahamas.github.io/Nifti/','Nifti link copied. Share it with another business owner.');}catch(e){window.open('https://siggiebahamas.github.io/Nifti/','_blank','noopener');}});
   }
   // Owner-only financial intelligence. All figures come from the existing bookkeeping ledger.
   let owner=false;try{owner=typeof booksCanSeeTotals==='function'&&booksCanSeeTotals()&&typeof BK!=='undefined'&&BK.loaded&&typeof bkPnl==='function';}catch(e){}
@@ -127,7 +128,7 @@
    });
    panel.querySelector('[data-team]').addEventListener('click',()=>go('team'));
    panel.querySelector('[data-schedule]').addEventListener('click',()=>mhOpenSched());
-   drawer.insertAdjacentElement('beforebegin',panel);
+   fold.insertAdjacentElement('beforebegin',panel);
   }
   // The existing drawer detail can be re-rendered; preserve the enhanced panel on refresh.
  }
