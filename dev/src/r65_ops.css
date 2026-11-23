@@ -4,6 +4,13 @@
 #publicOrderView .nf65-progress-step>span{display:grid;place-items:center;width:27px;height:27px;border-radius:50%;border:1.5px solid #d7e1da;background:#fff;font-size:12px;font-weight:900}
 #publicOrderView .nf65-progress-step b{font-size:11px;line-height:1.2;font-weight:800}
 #publicOrderView .nf65-progress-step.done>span{background:#1f6b45;border-color:#1f6b45;color:#fff}
-#publicOrderView .nf65-progress-step.current>span{background:#e1f1e6;border:2px solid #1f6b45;color:#1f6b45}
-#publicOrderView .nf65-progress-step.current b{color:#1f6b45}
+#publicOrderView .nf65-progress-step.current>span{background:#fff1d6;border:2px solid #d97706;color:#9a4d08;box-shadow:0 0 0 4px rgba(217,119,6,.12)}
+#publicOrderView .nf65-progress-step:not(.done):not(.current)>span{background:#fff7e6;border-color:#edbd65;color:#a85a08}
+#publicOrderView .nf65-progress-step:not(.done):not(.current) b{color:#87500f}
+#publicOrderView .nf65-progress-step.current b{color:#9a4d08}
 @media(max-width:430px){#publicOrderView .nf65-progress{gap:3px}#publicOrderView .nf65-progress-step b{font-size:10px}}
+
+/* Larger, unmistakable progress states: green means completed; amber means pending. */
+#publicOrderView .nf65-progress-step.done b{color:#1f6b45}
+#publicOrderView .nf65-progress-step.current b,#publicOrderView .nf65-progress-step:not(.done):not(.current) b{font-size:13px;font-weight:850}
+#publicOrderView .nf65-progress-step>span{width:34px;height:34px;font-size:14px}
