@@ -4,7 +4,7 @@ on:
   push:
     branches: ["claude/supabase-mcp-connection-j8plcc"]
   # Rebuild every 2 hours so new online stores get their own Facebook-ready page.
-  # Round 66 also removes the unused calculator at build time and enforces large type.
+  # Round 66 removes the unused calculator at build time, enforces large type, and improves external order progress.
   schedule:
     - cron: "41 */2 * * *"
   workflow_dispatch:
