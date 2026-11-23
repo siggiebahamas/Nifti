@@ -7,6 +7,10 @@
   function addHow(){
     const page = document.getElementById('view-index'), hero = page && page.querySelector('.f4-hero');
     if(!page || !hero || page.querySelector('#nf63How')) return;
+    const heroTitle=hero.querySelector('h1'), heroCopy=hero.querySelector('p');
+    if(heroTitle) heroTitle.innerHTML='Run your business. <span>Not the daily chaos.</span>';
+    if(heroCopy) heroCopy.textContent='Built for Philippine distributors and wholesalers who need orders, stock, purchasing, deliveries, collections and books to work together. Your team uses Nifti. Customers and suppliers just tap a link.';
+    const pick=page.querySelector('.f4-pickh'); if(pick) pick.textContent='One connected place for selling, buying and your books.';
     const section = document.createElement('section');
     section.id = 'nf63How'; section.className = 'nf63-how';
     section.innerHTML = '<div class="wrap"><div class="f5-head"><div class="p2-burst">HOW IT WORKS</div><h2>One business. <span>One connected way to work.</span></h2><p>Nifti keeps the moving parts of your business connected—while the people you work with use the simple links they already understand.</p></div><div class="nf63-flow"><article class="nf63-step"><div class="nf63-num">01</div><div class="nf63-visual nf63-v1"><span class="nf63-bubble">New order received</span><span class="nf63-bubble alt">Viber · Call · Store</span><span class="nf63-visual-icon">↗</span></div><h3>Orders come in</h3><p>Record customer orders and supplier purchases in one clear place. Review the details before anything is confirmed.</p></article><article class="nf63-step"><div class="nf63-num">02</div><div class="nf63-visual nf63-v2"><span class="nf63-node">Orders</span><i>↔</i><span class="nf63-node">Stock</span><i>↔</i><span class="nf63-node">Delivery</span><span class="nf63-node wide">Collections · Books</span></div><h3>One action updates the work around it</h3><p>Orders connect to stock, purchasing, delivery, collections and your records—so your team spends less time copying information between places.</p></article><article class="nf63-step"><div class="nf63-num">03</div><div class="nf63-visual nf63-v3"><span class="nf63-link">Secure link ↗</span><span class="nf63-check">✓</span><span class="nf63-small">Customer confirmed</span></div><h3>Everyone stays in sync</h3><p>Your team uses Nifti. Customers and suppliers can confirm, respond and follow their part through a browser link—no Nifti account or download required for basic actions.</p></article></div><div class="nf63-foot"><b>One business runs Nifti. Everyone else just taps a link.</b><span>Joining Nifti is always optional for a richer connected experience.</span></div></div>';
@@ -100,7 +104,7 @@
     }
     if(typeof window.nfDiscoverLayout==='function' && !window.nfDiscoverLayout._nf63){
       const base=window.nfDiscoverLayout;
-      const wrapped=function(){const r=base.apply(this,arguments);setTimeout(paintDiscoverGuide,0);return r;};
+      const wrapped=function(){const r=base.apply(this,arguments);setTimeout(()=>{paintDiscoverGuide();try{const supplier=page.querySelector('.nfx-switch button:nth-child(2) small');if(supplier)supplier.textContent='Suppliers who choose to be found';}catch(e){}},0);return r;};
       wrapped._nf63=true;window.nfDiscoverLayout=wrapped;
       try{nfDiscoverLayout=wrapped;}catch(e){}
     }
