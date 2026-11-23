@@ -1,0 +1,128 @@
+/* Round 68 — product-wide interaction and legibility system.
+   Keeps Nifti's existing visual identity; improves contrast, rhythm and control clarity. */
+#view-app{
+ --nf68-ink:#17251d;--nf68-muted:#45564b;--nf68-line:#dce6df;
+ --nf68-green:#17643b;--nf68-green-bg:#e7f3eb;
+ --nf68-amber:#8a4b08;--nf68-amber-bg:#fff2d8;
+ --nf68-red:#a52820;--nf68-red-bg:#fff0ee;
+ --nf68-blue:#24558a;--nf68-blue-bg:#eaf2fb;
+}
+#view-app .app-page{color:var(--nf68-ink)}
+#view-app .app-page h1,#view-app .app-page h2,#view-app .app-page h3,
+#view-app .app-page h4,#view-app .app-page .sect-h,
+#view-app .app-page .page-title{color:var(--nf68-ink)}
+#view-app .app-page p,#view-app .app-page .hint,
+#view-app .app-page .subtle,#view-app .app-page .muted{color:var(--nf68-muted)}
+/* Status pills: a consistent shape, readable type and a distinct foreground/background pair. */
+#view-app .app-page .pill,#view-app .app-page .badge,
+#view-app .app-page .chip,#view-app .app-page .status-pill,
+#view-app .app-page .status-badge,#view-app .app-page .tag,
+#view-app .app-page [class~="state-pill"]{
+ display:inline-flex;align-items:center;justify-content:center;gap:5px;
+ min-height:27px;padding:5px 10px;border:1px solid #d8e1db;border-radius:999px;
+ background:#eef2ef;color:#293a30;font-size:12px;font-weight:850;line-height:1.2;
+ letter-spacing:0;white-space:nowrap;text-shadow:none;box-shadow:none;
+}
+#view-app .app-page .pill.green,#view-app .app-page .badge.green,
+#view-app .app-page .chip.green,#view-app .app-page .status-pill.green,
+#view-app .app-page .pill.success,#view-app .app-page .badge.success,
+#view-app .app-page .pill.ok,#view-app .app-page .pill.paid,
+#view-app .app-page .pill.done,#view-app .app-page .pill.valid,
+#view-app .app-page .pill.active,#view-app .app-page .status-badge.success{
+ background:var(--nf68-green-bg);border-color:#b9d9c2;color:#145b35;
+}
+#view-app .app-page .pill.yellow,#view-app .app-page .badge.yellow,
+#view-app .app-page .chip.yellow,#view-app .app-page .pill.warn,
+#view-app .app-page .pill.warning,#view-app .app-page .pill.pending,
+#view-app .app-page .pill.due,#view-app .app-page .pill.partial,
+#view-app .app-page .pill.processing,#view-app .app-page .pill.review,
+#view-app .app-page .status-badge.warning{
+ background:var(--nf68-amber-bg);border-color:#ebd09a;color:var(--nf68-amber);
+}
+#view-app .app-page .pill.red,#view-app .app-page .badge.red,
+#view-app .app-page .chip.red,#view-app .app-page .pill.danger,
+#view-app .app-page .pill.overdue,#view-app .app-page .pill.failed,
+#view-app .app-page .pill.error,#view-app .app-page .pill.late,
+#view-app .app-page .status-badge.danger{
+ background:var(--nf68-red-bg);border-color:#efc2bd;color:var(--nf68-red);
+}
+#view-app .app-page .pill.blue,#view-app .app-page .badge.blue,
+#view-app .app-page .chip.blue,#view-app .app-page .pill.info,
+#view-app .app-page .pill.draft,#view-app .app-page .pill.new,
+#view-app .app-page .pill.confirmed,#view-app .app-page .status-badge.info{
+ background:var(--nf68-blue-bg);border-color:#c6d9ef;color:var(--nf68-blue);
+}
+/* Section headers and page titles should read as structure, not decorative labels. */
+#view-app .app-page .sect-h{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+#view-app .app-page .sect-h h3,#view-app .app-page .sect-h h4,
+#view-app .app-page .page-head h1,#view-app .app-page .page-head h2{
+ font-size:clamp(20px,2vw,25px);font-weight:900;line-height:1.2;letter-spacing:-.02em;
+}
+#view-app .app-page .sect-h .hint{font-size:14px;line-height:1.45}
+#view-app .app-page .sect-h .pill,#view-app .app-page .sect-h .badge,
+#view-app .app-page .sect-h .chip{margin-left:2px}
+/* Consistent spacing and clear boundaries for work areas. */
+#view-app .app-page .sect,#view-app .app-page .panel,
+#view-app .app-page .card:not(.stat-card),#view-app .app-page .table-card{
+ border-color:var(--nf68-line);
+}
+#view-app .app-page .sect{margin-bottom:16px}
+#view-app .app-page .sect-h{margin-bottom:12px}
+#view-app .app-page .hint,#view-app .app-page .help-text,
+#view-app .app-page .form-hint{font-size:14px;line-height:1.5}
+/* Buttons: comfortable hit areas, stronger labels and visible keyboard focus. */
+#view-app .app-page button,#view-app .app-page .btn,
+#view-app .app-page [role="button"]{
+ font-weight:750;line-height:1.25;
+}
+#view-app .app-page button:not(.icon-btn):not(.tiny-btn),
+#view-app .app-page .btn:not(.icon-btn):not(.tiny-btn){
+ min-height:40px;
+}
+#view-app .app-page button:focus-visible,#view-app .app-page a:focus-visible,
+#view-app .app-page input:focus-visible,#view-app .app-page select:focus-visible,
+#view-app .app-page textarea:focus-visible,#view-app .app-page [tabindex]:focus-visible{
+ outline:3px solid rgba(23,100,59,.32);outline-offset:2px;
+}
+#view-app .app-page input:not([type="checkbox"]):not([type="radio"]),
+#view-app .app-page select,#view-app .app-page textarea{
+ font-size:15px;line-height:1.4;min-height:42px;color:var(--nf68-ink);
+}
+#view-app .app-page input::placeholder,#view-app .app-page textarea::placeholder{color:#68786d;opacity:1}
+/* Tables: strengthen scanning and stop cramped, low-contrast data presentation. */
+#view-app .app-page table{border-collapse:separate;border-spacing:0;width:100%;font-size:14px;color:var(--nf68-ink)}
+#view-app .app-page table th{
+ padding:12px 13px;background:#f3f7f4;color:#34483b;font-size:12px;
+ font-weight:900;letter-spacing:.035em;line-height:1.3;text-align:left;
+ border-bottom:1px solid #dce6df;white-space:nowrap;
+}
+#view-app .app-page table td{
+ padding:12px 13px;color:#26372d;font-size:14px;line-height:1.45;
+ border-bottom:1px solid #e8eee9;vertical-align:middle;
+}
+#view-app .app-page table tbody tr:hover td{background:#f8fbf8}
+#view-app .app-page .table-wrap,#view-app .app-page .tbl-wrap,
+#view-app .app-page .table-scroll,#view-app .app-page .table-responsive{
+ max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;
+}
+#view-app .app-page table td .pill,#view-app .app-page table td .badge{vertical-align:middle}
+/* Navigation and tab controls: selected state must be unmistakable. */
+#view-app .app-page [role="tablist"]{gap:7px}
+#view-app .app-page [role="tab"]{
+ min-height:40px;padding:9px 13px;border-radius:12px;font-size:14px;font-weight:800;
+}
+#view-app .app-page [role="tab"][aria-selected="true"],
+#view-app .app-page [role="tab"].active,#view-app .app-page [role="tab"].on{
+ background:#e5f2e9;color:#145b35;border:1px solid #b8d8c1;
+ box-shadow:inset 0 -2px 0 #17643b;
+}
+#view-app .app-page .empty-state{padding:26px 20px;border:1px dashed #cbd9cf;border-radius:16px;background:#f8fbf8;color:#405247;text-align:center}
+@media(max-width:760px){
+ #view-app .app-page .sect-h{align-items:flex-start}
+ #view-app .app-page table th,#view-app .app-page table td{padding:10px 11px}
+ #view-app .app-page .sect-h .hint{width:100%}
+}
+@media(prefers-reduced-motion:no-preference){
+ #view-app .app-page button,#view-app .app-page .btn{transition:background-color .16s ease,border-color .16s ease,box-shadow .16s ease,transform .16s ease}
+ #view-app .app-page button:hover:not(:disabled),#view-app .app-page .btn:hover{transform:translateY(-1px)}
+}
