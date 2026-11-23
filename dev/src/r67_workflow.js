@@ -112,9 +112,9 @@
   }catch(e){console.warn('Nifti intelligence panel',e);}
   // Staff accountability: owner-only reconciliation context, never a misconduct score.
   const drawer=home.querySelector('#mhDrawer'),fold=drawer&&drawer.closest('.mh-cash-fold');
-  if(drawer&&fold&&owner&&!fold.querySelector('.nf67-staff')){
+  if(drawer&&fold&&owner&&!home.querySelector('.nf67-staff')){
    const panel=document.createElement('div');panel.className='nf67-staff';
-   let counts=[];try{counts=Object.values(mhCounts()).filter(c=>bkMonth(c.day)===bkMonth(APP_TODAY));}catch(e){}
+   let counts=[];try{counts=(BK.counts||[]).filter(c=>c.day&&bkMonth(c.day)===bkMonth(APP_TODAY)&&!c.reopenedAt).map(c=>({day:c.day,by:c.by,diff:Number(c.difference)||0}));}catch(e){}
    const names=[...new Set(counts.map(c=>String(c.by||'').replace(/ \(You\)$/,'')))];
    const today=counts.find(c=>c.day===APP_TODAY);
    const scheduled=typeof mhWho==='function'?mhWho(APP_TODAY):'';
