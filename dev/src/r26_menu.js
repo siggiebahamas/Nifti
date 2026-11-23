@@ -86,7 +86,6 @@ const NF26_FIND = [
   {p: 'followups', t: 'Follow-ups', d: 'Who to call back and sell to again', w: 'follow followup follow-up leads balikan tawag reorder'},
   {p: 'discover', t: 'Find customers', d: 'New buyers and suppliers', w: 'find new customers bagong customer supplier hanap'},
   {p: 'settings', t: 'Settings', d: 'Your business, team and account', w: 'settings setting password account setup business ayos'},
-  {p: '@notebook', t: 'Notebook reader', d: 'Turn a notebook photo into records', w: 'notebook kuwaderno kwaderno listahan sulat photo litrato'},
   {p: '@plans', t: 'Plans & pricing', d: 'Free, Pro and Business', w: 'plan plans pro upgrade subscribe subscription pricing bayad nifti business'},
   {p: '@help', t: 'Need help?', d: 'Message the Nifti team', w: 'help tulong saklolo support question tanong'},
   {p: '@start', t: 'Bring your shop in', d: 'Set up items, customers and utang', w: 'setup start simula import excel bring'}
