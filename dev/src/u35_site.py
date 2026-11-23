@@ -15,7 +15,7 @@ PLANS = [
 def card(p, short=False):
     k, name, price, per, alt, who, feats, btn, act, kind = p
     fl = feats[:5] if short else feats
-    more = f'<li class="more"><a onclick="navigate(\\'pricing\\')">See everything in {name} →</a></li>' if short and len(feats) > 5 else ''
+    more = f'<li class="more"><a onclick="navigate(\'pricing\')">See everything in {name} →</a></li>' if short and len(feats) > 5 else ''
     if k == 'free':
         price_html = f'<div class="nf26-pl-p"><b>{price}</b><span>{per}</span></div>'
         alt_html = '<small class="nf26-pl-alt">&nbsp;</small>'
