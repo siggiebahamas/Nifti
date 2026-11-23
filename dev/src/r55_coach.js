@@ -48,7 +48,7 @@ const NF55_STEPS = [
 ];
 const NF55 = {open: false, spotT: null};
 function nf55Done(s, st){ st = st || nf55St(); if(st['d_' + s.k]) return true; try{ return !!(s.done && s.done()); }catch(e){ return false; } }
-function nf55Allowed(){ try{ if(typeof isPrivilegedUser === 'function' && !isPrivilegedUser()) return false; }catch(e){} return !!document.querySelector('#view-app:not(.hidden)') || !!document.querySelector('#view-app .app-page.active'); }
+function nf55Allowed(){ try{ if(typeof isPrivilegedUser === 'function' && !isPrivilegedUser()) return false; }catch(e){ return false; } const app=document.querySelector('#view-app:not(.hidden)'); const home=document.getElementById('mhHome'); const realBusiness=typeof myBusiness!=='undefined' && !!myBusiness; const demo=typeof nfIsDemo==='function' && nfIsDemo(); return !!(app && home && realBusiness && !demo); }
 function nf55Paint(){
   const st = nf55St();
   let dock = document.getElementById('nf55Dock');
