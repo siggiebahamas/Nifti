@@ -57,8 +57,8 @@
     const dock=document.getElementById('nf55Dock'); if(!dock) return;
     const app=document.getElementById('view-app'), active=app && app.querySelector('.app-page.active');
     const dash=!!(active && active.id==='page-dashboard');
-    dock.hidden=!dash;
-    dock.setAttribute('aria-hidden',String(!dash));
+    if(dock.hidden === dash) dock.hidden=!dash;
+    const aria=String(!dash); if(dock.getAttribute('aria-hidden') !== aria) dock.setAttribute('aria-hidden',aria);
   }
   function wording(){
     const root=document.getElementById('page-payroll') || document.getElementById('view-app');
