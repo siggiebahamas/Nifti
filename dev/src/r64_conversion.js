@@ -3,7 +3,7 @@
  'use strict';
  const ready=fn=>document.readyState==='loading'?document.addEventListener('DOMContentLoaded',fn,{once:true}):fn();
  function marketing(){
-  const page=document.getElementById('view-index'); if(!page) return;
+  const page=document.getElementById('view-index'); if(!page || page.dataset.nf64Marketing==='1') return;
   // Keep the original three-step How It Works section created by NF20.
   const duplicate=page.querySelector('#nf63How'); if(duplicate) duplicate.remove();
   page.querySelectorAll('#mkPick .p2-burst').forEach(el=>{if(/daily workflow/i.test(el.textContent))el.textContent='SELL · BUY · MANAGE';});
@@ -44,6 +44,7 @@
   page.querySelectorAll('.f6-faq-g .faq-item').forEach(item=>{const a=item.querySelector('.a');if(a)a.style.opacity='1';});
   const cta=page.querySelector('.cta-band');
   if(cta){const h=cta.querySelector('h2');if(h)h.textContent='Keep your whole operation in view.';let hook=cta.querySelector('.nf64-cta-hook');if(!hook){hook=document.createElement('p');hook.className='nf64-cta-hook';hook.textContent='Know your numbers. Protect your margins. Find your peace of mind.';h&&h.insertAdjacentElement('afterend',hook);}const p=cta.querySelector('.wrap > p');if(p)p.textContent='One calmer way to run your business.';}
+  page.dataset.nf64Marketing='1';
  }
  function fixTabs(){
   const show=document.getElementById('mkShow');if(!show)return;
