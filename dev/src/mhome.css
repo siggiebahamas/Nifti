@@ -35,3 +35,20 @@
   #mhSheet button.attach{border:1.5px dashed #F3C5BC;background:#fff;border-radius:10px;padding:5px 10px;cursor:pointer;}
   #mhHome .tile .v .cpill{display:inline-flex;align-items:baseline;white-space:nowrap;flex-wrap:nowrap;gap:6px;font-size:14px;padding:3px 12px;}
   #mhHome .tile .v .cpill b{font-size:clamp(18px,1.6vw,24px);}
+
+/* Round 65: owner-first daily control and optional cash accountability. */
+#mhHome .mh-priority{display:grid;gap:12px;margin:8px 0 16px}
+#mhHome .mh-priority .sect{margin:0}
+#mhHome .mh-priority .sect-h h4{font-size:19px;font-weight:850}
+#mhHome .mh-priority .hint{font-size:13px;color:#526477}
+#mhHome .mh-priority .alertline{margin-bottom:8px}
+#mhHome .mh-priority .alertline:last-child{margin-bottom:0}
+#mhHome .mh-cash-fold{margin-top:14px;border:1px solid var(--border);border-radius:18px;background:#fff;overflow:hidden}
+#mhHome .mh-cash-fold>summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:17px 20px;cursor:pointer}
+#mhHome .mh-cash-fold>summary::-webkit-details-marker{display:none}
+#mhHome .mh-cash-fold>summary b{display:block;font-size:16px;color:#13243A}
+#mhHome .mh-cash-fold>summary small{display:block;margin-top:3px;font-size:13px;color:#526477}
+#mhHome .mh-cash-fold>summary i{font-style:normal;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#E7F3EC;color:#1F6B45;font-size:19px;font-weight:800}
+#mhHome .mh-cash-fold[open]>summary{border-bottom:1px solid var(--border);background:#F8FBF9}
+#mhHome .mh-cash-fold[open]>summary i{transform:rotate(45deg)}
+#mhHome .mh-cash-fold #mhDrawer{border:0;box-shadow:none;padding:16px}
