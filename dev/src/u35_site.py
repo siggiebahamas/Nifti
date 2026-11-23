@@ -20,10 +20,8 @@ def card(p, short=False):
         price_html = f'<div class="nf26-pl-p"><b>{price}</b><span>{per}</span></div>'
         alt_html = '<small class="nf26-pl-alt">&nbsp;</small>'
     else:
-        regular_year = '₱9,900' if k == 'pro' else '₱29,900'
-        save_month = '₱990' if k == 'pro' else '₱2,990'
-        price_html = f'<div class="nf26-pl-p nf64-beta-price"><s>{price}</s><b>₱0</b><span>/ month during beta</span></div>'
-        alt_html = f'<small class="nf26-pl-alt nf64-beta-save"><s>Regularly {regular_year}/year</s> · <b>Save {save_month} every month</b></small>'
+        price_html = f'<div class="nf26-pl-p nf64-beta-price"><s>{price}</s><b>₱0</b><span>per month during beta</span></div>'
+        alt_html = '<small class="nf26-pl-alt nf64-beta-save"><b>100% off while the beta is open.</b> No subscription charge during the pilot.</small>'
     return (f'<div class="nf26-pl {k}">' + ('<span class="nf26-pl-flag">MOST SHOPS</span>' if k == 'pro' else '') +
             f'<h3>{name}</h3>' + price_html + alt_html +
             f'<p class="nf26-pl-who">{who}</p><ul>' + ''.join(f'<li>{CHK}<span>{f}</span></li>' for f in fl) + more + '</ul>' +
