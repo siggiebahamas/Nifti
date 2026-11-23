@@ -494,7 +494,7 @@ nf45I('payroll', /^Last payroll/i, () => {
     table: nf45T([['Person'], ['Days', 'n'], ['Rate', 'n'], ['Gross pay', 'n'], ['Deductions', 'n'], ['Take-home', 'n']], ls.map(l => { const c = prCalc(l); return [`<b>${nf45Esc(l.staff_name)}</b>`, l.basis === 'month' ? 'monthly' : String(l.days || ''), nf45Peso(l.rate), nf45Peso(c.gross), nf45Peso((c.gross || 0) - (c.net || 0)), `<b>${nf45Peso(c.net)}</b>`]; }), ['Total', '', '', nf45Peso(nf45Sum(ls, l => prCalc(l).gross)), '', `<b>${nf45Peso(tot)}</b>`]),
     acts: [['Payslips', `prPayslip('${last.id}')`, true]]};
 });
-nf45I('payroll', /^Vale to collect/i, () => {
+nf45I('payroll', /^Value to collect/i, () => {
   const v = prValeBalances(), adv = BK.expenses.filter(e => !e.deletedAt && e.category === 'Staff advance (vale)' && (e.status || 'approved') === 'approved');
   const people = Object.keys(v).filter(k => v[k] > 0 || adv.some(e => String(e.staff || '').trim() === k));
   return {what: "Cash advances (vale) your people took and haven't paid back yet. Nifti takes them off their next payslip when you tell it to.",
