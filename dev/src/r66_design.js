@@ -25,13 +25,13 @@
   const show=page.querySelector('#mkShow');
   if(show&&!show.dataset.nf66){
    show.querySelectorAll('h3').forEach(h=>{
-    if(/^Your own store,?\\s*ready for Facebook$/i.test(h.textContent.trim())){
+    if(/^Your own store,?\s*ready for Facebook$/i.test(h.textContent.trim())){
      h.innerHTML='Your own store,<br>ready for Facebook';h.dataset.nf66='1';
     }
    });
    show.querySelectorAll('.nf20-stabs button').forEach(btn=>{
     const label=btn.querySelector('span');
-    if(label&&/Your own store,?\\s*ready for Facebook/i.test(label.textContent)){
+    if(label&&/Your own store,?\s*ready for Facebook/i.test(label.textContent)){
      label.innerHTML='Your own store,<br>ready for Facebook';label.dataset.nf66='1';btn.classList.add('nf66-store-tab');
     }
    });
