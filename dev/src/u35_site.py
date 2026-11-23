@@ -15,9 +15,17 @@ PLANS = [
 def card(p, short=False):
     k, name, price, per, alt, who, feats, btn, act, kind = p
     fl = feats[:5] if short else feats
-    more = f'<li class="more"><a onclick="navigate(\'pricing\')">See everything in {name} →</a></li>' if short and len(feats) > 5 else ''
+    more = f'<li class="more"><a onclick="navigate(\\'pricing\\')">See everything in {name} →</a></li>' if short and len(feats) > 5 else ''
+    if k == 'free':
+        price_html = f'<div class="nf26-pl-p"><b>{price}</b><span>{per}</span></div>'
+        alt_html = '<small class="nf26-pl-alt">&nbsp;</small>'
+    else:
+        regular_year = '₱9,900' if k == 'pro' else '₱29,900'
+        save_month = '₱990' if k == 'pro' else '₱2,990'
+        price_html = f'<div class="nf26-pl-p nf64-beta-price"><s>{price}</s><b>₱0</b><span>/ month during beta</span></div>'
+        alt_html = f'<small class="nf26-pl-alt nf64-beta-save"><s>Regularly {regular_year}/year</s> · <b>Save {save_month} every month</b></small>'
     return (f'<div class="nf26-pl {k}">' + ('<span class="nf26-pl-flag">MOST SHOPS</span>' if k == 'pro' else '') +
-            f'<h3>{name}</h3><div class="nf26-pl-p"><b>{price}</b><span>{per}</span></div>' + (f'<small class="nf26-pl-alt">{alt}</small>' if alt else '<small class="nf26-pl-alt">&nbsp;</small>') +
+            f'<h3>{name}</h3>' + price_html + alt_html +
             f'<p class="nf26-pl-who">{who}</p><ul>' + ''.join(f'<li>{CHK}<span>{f}</span></li>' for f in fl) + more + '</ul>' +
             f'<button type="button" class="plan-btn {kind}" onclick="{act}">{btn}</button></div>')
 HOW = ('<div class="nf26-pay"><b>How paying works</b><ol><li><span>1</span>Pick a plan in Nifti and scan our QR with GCash, Maya or any bank app.</li>'
