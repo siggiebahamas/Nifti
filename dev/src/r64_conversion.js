@@ -58,10 +58,10 @@
   }
   const tabs=[...show.querySelectorAll('.nf20-stabs button')],panels=[...show.querySelectorAll('.nf20-sp')];if(!tabs.length||!panels.length)return;
   // Stop auto-advancing: users choose what they want to inspect, and the selection stays put.
-  try{if(window.NF20S){NF20S.stop=true;clearTimeout(NF20S.t);}}catch(e){}
+  try{if(typeof NF20S!=='undefined'){NF20S.stop=true;clearTimeout(NF20S.t);}}catch(e){}
   if(!show.dataset.nf64){
    show.dataset.nf64='1';
-   tabs.forEach((tab,i)=>{tab.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();tabs.forEach((t,j)=>{const active=j===i;t.classList.toggle('on',active);t.setAttribute('aria-selected',String(active));t.setAttribute('tabindex',active?'0':'-1');});panels.forEach((panel,j)=>{const active=j===i;panel.hidden=!active;panel.classList.toggle('on',active);});try{if(window.NF20S){NF20S.i=i;NF20S.stop=true;clearTimeout(NF20S.t);}}catch(e){}},{capture:true});});
+   tabs.forEach((tab,i)=>{tab.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();tabs.forEach((t,j)=>{const active=j===i;t.classList.toggle('on',active);t.setAttribute('aria-selected',String(active));t.setAttribute('tabindex',active?'0':'-1');});panels.forEach((panel,j)=>{const active=j===i;panel.hidden=!active;panel.classList.toggle('on',active);});try{if(typeof NF20S!=='undefined'){NF20S.i=i;NF20S.stop=true;clearTimeout(NF20S.t);}}catch(e){}},{capture:true});});
   }
  }
  function run(){marketing();fixTabs();}
