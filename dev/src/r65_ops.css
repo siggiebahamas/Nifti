@@ -1,0 +1,9 @@
+/* Round 65: public links explain progress at a glance, without adding a sign-up wall. */
+#publicOrderView .nf65-progress{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin:15px 0 4px}
+#publicOrderView .nf65-progress-step{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:0;text-align:center;color:#77847b}
+#publicOrderView .nf65-progress-step>span{display:grid;place-items:center;width:27px;height:27px;border-radius:50%;border:1.5px solid #d7e1da;background:#fff;font-size:12px;font-weight:900}
+#publicOrderView .nf65-progress-step b{font-size:11px;line-height:1.2;font-weight:800}
+#publicOrderView .nf65-progress-step.done>span{background:#1f6b45;border-color:#1f6b45;color:#fff}
+#publicOrderView .nf65-progress-step.current>span{background:#e1f1e6;border:2px solid #1f6b45;color:#1f6b45}
+#publicOrderView .nf65-progress-step.current b{color:#1f6b45}
+@media(max-width:430px){#publicOrderView .nf65-progress{gap:3px}#publicOrderView .nf65-progress-step b{font-size:10px}}
