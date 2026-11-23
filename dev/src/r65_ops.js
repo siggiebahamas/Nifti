@@ -16,7 +16,7 @@
  function wrap(name){
   const base=window[name];if(typeof base!=='function'||base._nf65)return;
   const wrapped=function(d){const result=base.apply(this,arguments);setTimeout(()=>progress(d),0);return result;};
-  wrapped._nf65=true;window[name]=wrapped;try{eval(name+' = wrapped')}catch(e){}
+  wrapped._nf65=true;window[name]=wrapped;if(name==='renderPublicOrderView')renderPublicOrderView=wrapped;else if(name==='renderDeliveryLinkView')renderDeliveryLinkView=wrapped;
  }
  function run(){wrap('renderPublicOrderView');wrap('renderDeliveryLinkView');}
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run,{once:true});else run();
