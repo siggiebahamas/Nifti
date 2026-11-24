@@ -22,12 +22,12 @@
     const root = document.getElementById('mhHome'); if(!root || root.dataset.nf69Role === '1') return;
     root.dataset.nf69Role = '1';
     const orderAccess = can('orders');
-    if(!boss()){
+    if(!boss() && !( !can('orders') && can('routes'))){
       const actions = [];
       if(can('sales')) actions.push(['Record a sale',"openQuickSale()"]);
       if(can('cashcount')) actions.push(['Count cash',"ccStart(APP_TODAY); go('cashcount')"]);
-      if(can('orders')) actions.push(['Manage orders',"go('orders')"]);
       if(can('inventory')) actions.push(['Check stock',"go('inventory')"]);
+      if(can('orders')) actions.push(['Manage orders',"go('orders')"]);
       if(can('routes')) actions.push(['My routes',"go('routes')"]);
       if(can('expenses')) actions.push(['Add expense',"openExpenseForm()"]);
       if(can('messages')) actions.push(['Messages',"go('messages')"]);
@@ -74,6 +74,24 @@
         }
       }catch(e){}
     }
+    root.querySelectorAll('.task button').forEach(button=>{
+      const action = button.getAttribute('onclick') || '';
+      const guarded = [
+        ['collections', /(?:go|pickLens)\\(['"]collections/],
+        ['money', /go\\(['"]money/],
+        ['expenses', /go\\(['"]expenses/],
+        ['cashcount', /go\\(['"]cashcount/],
+        ['profit', /go\\(['"]profit/],
+        ['ledger', /go\\(['"]ledger/],
+        ['issues', /go\\(['"]issues/],
+        ['payroll', /go\\(['"]payroll/],
+        ['close', /go\\(['"]close/],
+        ['inventory', /go\\(['"]inventory/],
+        ['routes', /go\\(['"]routes/],
+        ['messages', /go\\(['"]messages/]
+      ];
+      if(guarded.some(([page,pattern])=>pattern.test(action) && !can(page))) button.closest('.task')?.remove();
+    });
     root.querySelectorAll('.lane').forEach(lane=>{
       const task = lane.querySelector('.task');
       if(task && task.textContent.trim() === 'Nothing here.'){
@@ -165,6 +183,11 @@
       journal:'Journal: the detailed accounting entries that make up the reports.',
       accounts:'Accounts: the categories Nifti uses to organize assets, liabilities, income and expenses.'
     };
+    tabs.querySelectorAll('[role="tab"]').forEach(tab=>{
+      const active = tab.classList.contains('on');
+      tab.setAttribute('aria-selected', active ? 'true' : 'false');
+      tab.tabIndex = active ? 0 : -1;
+    });
     help.textContent = copy[(typeof LGV !== 'undefined' && LGV.tab) || 'summary'] || copy.summary;
   }
   function wrapLedger(){
@@ -180,6 +203,15 @@
     window.renderLedgerPage = wrapped;
   }
   wrapHome(); wrapSales(); wrapExpenses(); wrapLedger();
+  if(!document.documentElement.dataset.nf69Keyboard){
+    document.documentElement.dataset.nf69Keyboard = '1';
+    document.addEventListener('keydown', event=>{
+      if(event.key !== 'Enter' && event.key !== ' ') return;
+      const target = event.target && event.target.closest && event.target.closest('[role="button"][tabindex="0"]');
+      if(!target || target.matches('button,a,input,select,textarea')) return;
+      event.preventDefault(); target.click();
+    });
+  }
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ()=>{wrapHome();wrapSales();wrapExpenses();wrapLedger();decorateHome();});
   else setTimeout(()=>{wrapHome();wrapSales();wrapExpenses();wrapLedger();decorateHome();},0);
 })();
