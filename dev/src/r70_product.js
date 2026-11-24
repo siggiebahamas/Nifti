@@ -20,7 +20,7 @@
   if(typeof renderSalesBooksPage!=='function'||renderSalesBooksPage._nf70)return;
   const base=renderSalesBooksPage;
   const wrapped=function(){
-   const all=BK.sales,priv=typeof booksCanSeeTotals==='function'&&booksCanSeeTotals(),restrict=!priv&&salesVisibility()==='own';
+   const all=BK.sales;let isOwner=false;try{isOwner=typeof getEffectiveRoles==='function'&&getEffectiveRoles().includes('Owner');}catch(e){}const restrict=!isOwner&&salesVisibility()==='own';
    if(restrict&&Array.isArray(all))BK.sales=all.filter(own);
    try{return base.apply(this,arguments);}finally{BK.sales=all;}
   };
