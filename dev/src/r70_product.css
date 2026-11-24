@@ -82,3 +82,9 @@
 #view-app .nf67-intel.nf70-intel-refined .nf67-intel-grid>div span,#view-app .nf67-intel.nf70-intel-refined .nf67-intel-grid>div b{color:#0B0F14}
 #view-app .nf67-intel.nf70-intel-refined .nf67-intel-foot,#view-app .nf67-intel.nf70-intel-refined .nf67-flags{color:#0B0F14}
 @media(max-width:720px){#view-app #page-discover.nf70-discover-page .nf36f-tools{grid-template-columns:1fr}#view-app #page-discover.nf70-discover-page .nf36f-google{grid-template-columns:1fr}}
+
+#view-app .nf70-movement-detail{margin-top:16px;padding:14px;border:1px solid #dce6df;border-radius:14px;background:#f8fbf8}
+#view-app .nf70-movement-detail h3{margin:0;color:#0B0F14;font-size:16px}
+#view-app .nf70-movement-detail .panel-head p{margin:4px 0 0;color:#0B0F14;font-size:13px}
+#view-app .nf70-legacy-warning{margin:12px 0;padding:12px 14px;border-left:4px solid #c58a23;background:#fff7e8;color:#0B0F14;font-size:13px;line-height:1.5}
+#view-app .nf70-movement-detail>p{color:#0B0F14;font-size:13px}
