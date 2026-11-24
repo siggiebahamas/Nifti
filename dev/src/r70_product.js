@@ -12,7 +12,7 @@
  };
  function salesVisibility(){try{return bkSettings().sales_visibility==='own'?'own':'business';}catch(e){return 'business';}}
  function salesControl(){
-  if(!(typeof booksCanSeeTotals==='function'&&booksCanSeeTotals()))return '';
+  let owner=false;try{owner=typeof getEffectiveRoles==='function'&&getEffectiveRoles().includes('Owner');}catch(e){}if(!owner)return '';
   const mode=salesVisibility();
   return '<section class="panel-card nf70-sales-control"><div><b>Who can view the sales book?</b><p>Sales are shared business records. Choose whether staff can review the full store or only records entered under their own Nifti account.</p></div><label><span>Staff sales visibility</span><select aria-label="Staff sales visibility" onchange="bkSaveSettings({sales_visibility:this.value}).then(()=>{showToast(this.value===\'business\'?\'Staff can now view business-wide sales.\':\'Staff will see records entered under their own account.\',\'success\');renderSalesBooksPage()})"><option value="business" '+(mode==='business'?'selected':'')+'>Business-wide sales for staff</option><option value="own" '+(mode==='own'?'selected':'')+'>Only their own recorded entries</option></select></label></section>';
  }
