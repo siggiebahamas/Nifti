@@ -45,6 +45,7 @@ jobs:
           node --check r69_dashboard_ux.js
           node --check r70_product.js
           node --check r71_product.js
+          node --check r71_product.js
           node --check mhome.js
           node --check one.js
           node --check books_core.js
