@@ -88,3 +88,24 @@
 #view-app .nf70-movement-detail .panel-head p{margin:4px 0 0;color:#0B0F14;font-size:13px}
 #view-app .nf70-legacy-warning{margin:12px 0;padding:12px 14px;border-left:4px solid #c58a23;background:#fff7e8;color:#0B0F14;font-size:13px;line-height:1.5}
 #view-app .nf70-movement-detail>p{color:#0B0F14;font-size:13px}
+
+/* Round 72: restore all original Home information and improve hero hierarchy. */
+#view-index .f4-hero .nf66-tagline.nf70-hero-type{font-family:inherit!important;font-weight:850!important;font-size:clamp(36px,4.6vw,58px)!important;line-height:1.02!important;letter-spacing:-.045em!important;color:#171a1e!important}
+#view-index .f4-hero .nf66-tagline.nf70-hero-type span,#view-index .f4-hero .nf66-tagline.nf70-hero-type strong{font:inherit!important;letter-spacing:inherit!important;line-height:inherit!important;color:inherit!important}
+#view-index .f4-hero .nf66-tagline.nf70-hero-type strong{display:inline!important;margin:0!important}
+#view-index .nf70-hero-benefits{max-width:610px!important;gap:10px!important}
+#view-index .nf70-hero-benefits .nf66-benefit{grid-template-columns:42px minmax(0,1fr) 24px!important;min-height:72px!important;padding:12px 15px!important;gap:12px!important;background:#fff!important;border:1px solid #dce8df!important;border-radius:15px!important;box-shadow:0 5px 16px rgba(20,55,34,.055)!important}
+#view-index .nf70-hero-benefits .nf66-benefit-icon{width:40px!important;height:40px!important}
+#view-index .nf70-hero-benefits .nf66-benefit b{font-size:17px!important;line-height:1.2!important;color:#111!important}
+#view-index .nf70-hero-benefits .nf66-benefit small{font-size:14px!important;line-height:1.35!important;color:#111!important}
+#view-index .nf70-hero-benefits .nf66-benefit>i{width:23px!important;height:23px!important}
+#mhHome .nf67-pulse-grid button:nth-child(1){background:#fff1ef!important;border-color:#efc2bd!important}
+#mhHome .nf67-pulse-grid button:nth-child(1) b,#mhHome .nf67-pulse-grid button:nth-child(1) span{color:#a52820!important}
+#mhHome .nf67-pulse-grid button:nth-child(2){background:#fff6e4!important;border-color:#ead29c!important}
+#mhHome .nf67-pulse-grid button:nth-child(2) b,#mhHome .nf67-pulse-grid button:nth-child(2) span{color:#754008!important}
+#mhHome .nf67-pulse-grid button:nth-child(3){background:#edf7ef!important;border-color:#b9d9c2!important}
+#mhHome .nf67-pulse-grid button:nth-child(3) b,#mhHome .nf67-pulse-grid button:nth-child(3) span{color:#145b35!important}
+#mhHome .nf67-intel.nf70-intel-refined .nf67-intel-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important}
+#mhHome .nf67-intel.nf70-intel-refined .nf67-intel-grid>div{background:#f8fbf8!important;border-color:#dce6df!important}
+#mhHome .nf67-intel.nf70-intel-refined .nf67-intel-grid span,#mhHome .nf67-intel.nf70-intel-refined .nf67-intel-grid b{color:#0B0F14!important}
+@media(max-width:720px){#mhHome .nf67-intel.nf70-intel-refined .nf67-intel-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
