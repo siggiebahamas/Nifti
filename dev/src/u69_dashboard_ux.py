@@ -17,7 +17,7 @@ P("was short ${per[n]} times this month.",
 P("were short ${wd[w]} times this month.",
   "had a cash variance on ${wd[w]} days this month.")
 P("Check for a leak, a wrong bill, or someone using it.",
-  "Review receipts, timing and category coding before deciding what changed.")
+  "Review receipts, timing and category coding before deciding what changed.", 2)
 
 # Preserve the creator ID on sales for exact staff-owned record filtering.
 P("paidWith: r.paid_with || '', payments: r.payments || [], branch: r.branch || null, by: r.created_by_name || '', note: r.note || '',",
