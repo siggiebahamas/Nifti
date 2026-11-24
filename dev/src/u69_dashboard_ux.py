@@ -10,6 +10,8 @@ P("""function mhPersonNet(name, m){ const by = mhCounts(); return Object.values(
 
 P("A different counter the next day exposes a gap someone is hiding.",
   "A second person provides an independent check and reduces single-person handling risk.")
+P("Warn me on Home when one person is short twice in a month, or when the same weekday keeps coming up short.",
+  "Warn me on Home when cash variances repeat for a person or on the same weekday.")
 P("Missing stock plus missing cash points to theft, not a miscount.",
   "A stock variance near a cash variance is a reason to review both records and recount. Neither one proves theft or misconduct.")
 P("was short ${per[n]} times this month.",
