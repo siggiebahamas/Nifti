@@ -116,6 +116,4 @@
     cleanMarketing(); dashboardOnlySetup(); wording(); discoverGuard();
   }
   ready(run);
-  const mo=new MutationObserver(()=>{clearTimeout(window.__nf63t);window.__nf63t=setTimeout(run,180);});
-  ready(()=>mo.observe(document.body,{subtree:true,childList:true,characterData:true}));
 })();
