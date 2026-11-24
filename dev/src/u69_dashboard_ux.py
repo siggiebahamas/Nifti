@@ -23,18 +23,19 @@ P("Check for a leak, a wrong bill, or someone using it.",
 P("paidWith: r.paid_with || '', payments: r.payments || [], branch: r.branch || null, by: r.created_by_name || '', note: r.note || '',",
   "paidWith: r.paid_with || '', payments: r.payments || [], branch: r.branch || null, by: r.created_by_name || '', byId: r.created_by, note: r.note || '',")
 
+# Replace the per-person variance cards using the exact maintained Home source
+# as the anchor, avoiding drift if whitespace changes in the original template.
+home_src=rd('mhome.js')
+start=home_src.index('const mo = mhKey(y, m, 1).slice(0, 7)')
+end=home_src.index('  const on = MH_PROTS.filter', start)
+old=home_src[start:end].rstrip()
+new="""const mo = mhKey(y, m, 1).slice(0, 7), rawCounts = BK.counts.filter(c => !c.reopenedAt && bkMonth(c.day) === mo), people = [...new Set(rawCounts.map(c => mhFirst(c.by)))];
+  const pp = people.map(n => { const rows = rawCounts.filter(c => mhFirst(c.by) === n), net = rows.reduce((a, c) => a + (Number(c.difference) || 0), 0), offs = rows.filter(c => Math.abs(Number(c.difference) || 0) >= 1).sort((a, b) => a.day.localeCompare(b.day));
+    const lastDay = rows.map(c => c.day).sort().pop();
+    return `<button class="cdpp" type="button" onclick="mhOpenDay('${lastDay}')">${mhEsc(mhFull(n))} · net <b class="t${mhTone(net)}">${mhSigned(net)}</b>${offs.length ? `<span class="muted">· ${offs.map(c => mhLabel(c.day) + ' ' + mhSigned(Number(c.difference) || 0)).join(', ')}</span>` : ''}</button>`; }).join('');"""
+P(old, new)
+
 t=S['text']
 k=t.index('</style>')
 S['text']=t[:k]+'\n'+rd('r69_dashboard_ux.css')+'\n'+t[k:]
 P("function renderSidebarForViewAsRole(){", rd('r69_dashboard_ux.js')+"\nfunction renderSidebarForViewAsRole(){")
-
-# The employee variance cards use each person's own count rows, not a daily
-# aggregate that could assign two people's counts to the first name in the day.
-P("""const mo = mhKey(y, m, 1).slice(0, 7), people = [...new Set(Object.values(by).filter(c => bkMonth(c.day) === mo).map(c => mhFirst(c.by)))];
-  const pp = people.map(n => { const net = mhPersonNet(n, mo), offs = Object.values(by).filter(c => bkMonth(c.day) === mo && mhFirst(c.by) === n && Math.abs(c.diff) >= 1).sort((a, b) => a.day.localeCompare(b.day));
-    const lastDay = Object.values(by).filter(c => mhFirst(c.by) === n).map(c => c.day).sort().pop();
-    return `<button class="cdpp" type="button" onclick="mhOpenDay('${lastDay}')">${mhEsc(mhFull(n))} · net <b class="t${mhTone(net)}">${mhSigned(net)}</b>${offs.length ? `<span class="muted">· ${offs.map(c => mhLabel(c.day) + ' ' + mhSigned(c.diff)).join(', ')}</span>` : ''}</button>`; }).join('');""",
-"""const mo = mhKey(y, m, 1).slice(0, 7), rawCounts = BK.counts.filter(c => !c.reopenedAt && bkMonth(c.day) === mo), people = [...new Set(rawCounts.map(c => mhFirst(c.by)))];
-  const pp = people.map(n => { const rows = rawCounts.filter(c => mhFirst(c.by) === n), net = rows.reduce((a, c) => a + (Number(c.difference) || 0), 0), offs = rows.filter(c => Math.abs(Number(c.difference) || 0) >= 1).sort((a, b) => a.day.localeCompare(b.day));
-    const lastDay = rows.map(c => c.day).sort().pop();
-    return `<button class="cdpp" type="button" onclick="mhOpenDay('${lastDay}')">${mhEsc(mhFull(n))} · net <b class="t${mhTone(net)}">${mhSigned(net)}</b>${offs.length ? `<span class="muted">· ${offs.map(c => mhLabel(c.day) + ' ' + mhSigned(Number(c.difference) || 0)).join(', ')}</span>` : ''}</button>`; }).join('');""")
