@@ -18,6 +18,34 @@
     try { me = typeof bkMe === 'function' ? bkMe() : ''; } catch(e){}
     return !!(me && row.by && String(row.by).trim().toLowerCase() === String(me).trim().toLowerCase());
   };
+  function actionAllowed(action){
+    if(!action) return true;
+    const guarded = [
+      ['collections', /(?:go|pickLens)\(['"]collections/],
+      ['money', /go\(['"]money/],
+      ['expenses', /go\(['"]expenses/],
+      ['cashcount', /go\(['"]cashcount/],
+      ['profit', /go\(['"]profit/],
+      ['ledger', /go\(['"]ledger/],
+      ['issues', /go\(['"]issues/],
+      ['payroll', /go\(['"]payroll/],
+      ['close', /go\(['"]close/],
+      ['inventory', /go\(['"]inventory/],
+      ['routes', /go\(['"]routes/],
+      ['messages', /go\(['"]messages/]
+    ];
+    return !guarded.some(([page,pattern])=>pattern.test(String(action)) && !can(page));
+  }
+  function wrapLanes(){
+    if(typeof mhLanes !== 'function' || mhLanes._nf69) return;
+    const base = mhLanes;
+    const wrapped = function(items, privileged){
+      return base.call(this, (items || []).filter(item => actionAllowed(item && item.a)), privileged);
+    };
+    wrapped._nf69 = true;
+    try { mhLanes = wrapped; } catch(e){}
+    window.mhLanes = wrapped;
+  }
   function decorateHome(){
     const root = document.getElementById('mhHome'); if(!root || root.dataset.nf69Role === '1') return;
     root.dataset.nf69Role = '1';
@@ -74,24 +102,6 @@
         }
       }catch(e){}
     }
-    root.querySelectorAll('.task button').forEach(button=>{
-      const action = button.getAttribute('onclick') || '';
-      const guarded = [
-        ['collections', /(?:go|pickLens)\(['"]collections/],
-        ['money', /go\(['"]money/],
-        ['expenses', /go\(['"]expenses/],
-        ['cashcount', /go\(['"]cashcount/],
-        ['profit', /go\(['"]profit/],
-        ['ledger', /go\(['"]ledger/],
-        ['issues', /go\(['"]issues/],
-        ['payroll', /go\(['"]payroll/],
-        ['close', /go\(['"]close/],
-        ['inventory', /go\(['"]inventory/],
-        ['routes', /go\(['"]routes/],
-        ['messages', /go\(['"]messages/]
-      ];
-      if(guarded.some(([page,pattern])=>pattern.test(action) && !can(page))) button.closest('.task')?.remove();
-    });
     root.querySelectorAll('.lane').forEach(lane=>{
       const task = lane.querySelector('.task');
       if(task && task.textContent.trim() === 'Nothing here.'){
@@ -202,7 +212,7 @@
     try { renderLedgerPage = wrapped; } catch(e){}
     window.renderLedgerPage = wrapped;
   }
-  wrapHome(); wrapSales(); wrapExpenses(); wrapLedger();
+  wrapLanes(); wrapHome(); wrapSales(); wrapExpenses(); wrapLedger();
   if(!document.documentElement.dataset.nf69Keyboard){
     document.documentElement.dataset.nf69Keyboard = '1';
     document.addEventListener('keydown', event=>{
@@ -212,6 +222,6 @@
       event.preventDefault(); target.click();
     });
   }
-  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ()=>{wrapHome();wrapSales();wrapExpenses();wrapLedger();decorateHome();});
-  else setTimeout(()=>{wrapHome();wrapSales();wrapExpenses();wrapLedger();decorateHome();},0);
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ()=>{wrapLanes();wrapHome();wrapSales();wrapExpenses();wrapLedger();decorateHome();});
+  else setTimeout(()=>{wrapLanes();wrapHome();wrapSales();wrapExpenses();wrapLedger();decorateHome();},0);
 })();
