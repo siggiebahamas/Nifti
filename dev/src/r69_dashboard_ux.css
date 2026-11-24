@@ -1,0 +1,42 @@
+/* Round 69 — role-specific workspace, empty states and semantic status readability. */
+#view-app .app-page .spl{display:inline-flex;align-items:center;min-height:25px;padding:4px 9px;border:1px solid #d8e1db;border-radius:999px;background:#eef2ef;color:#34483b;font-size:12px;font-weight:850;line-height:1.2;white-space:normal}
+#view-app .app-page .spl.r,#view-app .app-page .pill.r{background:#fff0ee;border-color:#efc2bd;color:#a52820}
+#view-app .app-page .spl.y,#view-app .app-page .pill.y{background:#fff2d8;border-color:#ebd09a;color:#754008}
+#view-app .app-page .spl.g,#view-app .app-page .pill.g{background:#e7f3eb;border-color:#b9d9c2;color:#145b35}
+#view-app .app-page .spl.b,#view-app .app-page .pill.b{background:#eaf2fb;border-color:#c6d9ef;color:#24558a}
+#view-app .app-page .lg-pill{display:inline-flex;align-items:center;min-height:25px;padding:4px 9px;border:1px solid #d8e1db;border-radius:999px;background:#eef2ef;color:#34483b;font-size:12px;font-weight:800;line-height:1.2;white-space:normal}
+#view-app .app-page .lg-pill.demo{background:#fff2d8;border-color:#ebd09a;color:#754008}
+#view-app .app-page .lg-pill.st{background:#eaf2fb;border-color:#c6d9ef;color:#24558a}
+#view-app .app-page .bk-tag,#view-app .app-page .pending-sync-tag{display:inline-flex;align-items:center;min-height:23px;padding:3px 8px;border:1px solid #ebd09a;border-radius:999px;background:#fff2d8;color:#754008;font-size:12px;font-weight:800;line-height:1.2}
+#view-app .app-page .cpill.ok{background:#e7f3eb;border:1px solid #b9d9c2;color:#145b35}
+#view-app .app-page .cpill.wait{background:#fff2d8;border:1px solid #ebd09a;color:#754008}
+#view-app .app-page .tbl,#view-app .app-page .lg-tbl-wrap,#view-app .app-page .lg-tbl-wrap>table{max-width:100%}
+#view-app .app-page .tbl,#view-app .app-page .lg-tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+#view-app .app-page .lg-tbl th{font-size:12px;font-weight:900;color:#34483b;background:#f3f7f4;padding:12px 13px}
+#view-app .app-page .lg-tbl td{font-size:14px;color:#26372d;padding:12px 13px;line-height:1.45}
+#view-app .app-page .bk-tile-v{font-size:clamp(22px,2vw,27px);font-weight:850}
+#view-app .app-page .panel-head h2,#view-app .app-page .panel-head h3{font-size:19px;font-weight:900;color:#17251d;line-height:1.25}
+#view-app .app-page .nf69-empty{display:grid;justify-items:center;text-align:center;gap:8px;padding:32px 20px;border:1px dashed #cbd9cf;border-radius:17px;background:#f8fbf8;color:#26372d}
+#view-app .app-page .nf69-empty-mark{display:grid;place-items:center;width:42px;height:42px;border-radius:13px;background:#e7f3eb;color:#17643b;font-size:25px;font-weight:900}
+#view-app .app-page .nf69-empty b{font-size:18px;color:#17251d}
+#view-app .app-page .nf69-empty p{max-width:520px;margin:0;font-size:14px;line-height:1.5;color:#45564b}
+#view-app .app-page .nf69-empty button,#view-app .app-page .nf69-role-actions button{min-height:40px;padding:10px 15px;border:1px solid #17643b;border-radius:11px;background:#17643b;color:#fff;font-size:14px;font-weight:850;cursor:pointer}
+#view-app .app-page .nf69-role-work{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:20px 22px;border:1px solid #d7e5da;border-radius:18px;background:linear-gradient(120deg,#f1f8f2,#fff)}
+#view-app .app-page .nf69-role-work small,#view-app .app-page .nf69-own-summary small{display:block;font-size:11px;letter-spacing:.12em;font-weight:950;color:#17643b}
+#view-app .app-page .nf69-role-work h4{margin:5px 0;font-size:21px;font-weight:900;color:#17251d}
+#view-app .app-page .nf69-role-work p{max-width:640px;margin:0;font-size:14px;line-height:1.5;color:#45564b}
+#view-app .app-page .nf69-role-actions{display:flex;gap:8px;flex-wrap:wrap}
+#view-app .app-page .nf69-role-actions button.secondary{background:#fff;color:#17643b;border-color:#bfd8c5}
+#view-app .app-page .nf69-lane-empty b{font-size:14px;color:#34483b}
+#view-app .app-page .nf69-lane-empty p{margin:3px 0 0;font-size:13px;color:#596a5f;line-height:1.4}
+#view-app .app-page .nf69-own-summary{display:flex;flex-direction:column;gap:5px;padding:15px 18px;margin:10px 0 14px;background:#f6faf7}
+#view-app .app-page .nf69-own-summary b{font-size:21px;font-weight:900;color:#17251d}
+#view-app .app-page .nf69-own-summary span{font-size:13px;line-height:1.45;color:#45564b}
+#view-app .app-page .nf69-role-note{margin:10px 0 14px;padding:11px 14px;border-left:3px solid #7b9f84;border-radius:0 10px 10px 0;background:#f4f8f5;color:#405347;font-size:13px;line-height:1.45}
+#view-app .app-page .nf69-tab-help{margin:0 0 12px;padding:11px 14px;border:1px solid #dce6df;border-radius:12px;background:#f6faf7;color:#405347;font-size:13px;line-height:1.5}
+@media(max-width:680px){
+ #view-app .app-page .nf69-role-work{align-items:flex-start;flex-direction:column}
+ #view-app .app-page .nf69-role-actions{width:100%}
+ #view-app .app-page .nf69-role-actions button{flex:1}
+ #view-app .app-page .nf69-empty{padding:24px 15px}
+}
