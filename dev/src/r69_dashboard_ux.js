@@ -11,9 +11,9 @@
   };
   const own = row => {
     if(!row) return false;
-    let uid = null;
-    try { uid = typeof currentUserId !== 'undefined' ? currentUserId : null; } catch(e){}
-    if(uid && row.byId) return String(uid) === String(row.byId);
+    let mid = null;
+    try { mid = typeof myTeamMember !== 'undefined' && myTeamMember ? myTeamMember.id : null; } catch(e){}
+    if(mid && row.byId) return String(mid) === String(row.byId);   // created_by on sales/expenses = team_members.id
     let me = '';
     try { me = typeof bkMe === 'function' ? bkMe() : ''; } catch(e){}
     return !!(me && row.by && String(row.by).trim().toLowerCase() === String(me).trim().toLowerCase());
@@ -134,30 +134,7 @@
     try { renderHomeV2 = wrapped; } catch(e){}
     window.renderOneHome = wrapped; window.renderMistHome = wrapped; window.renderHomeV2 = wrapped;
   }
-  function wrapSales(){
-    if(typeof renderSalesBooksPage !== 'function' || renderSalesBooksPage._nf69) return;
-    const base = renderSalesBooksPage;
-    const wrapped = function(){
-      const privileged = boss(), all = BK.sales;
-      if(!privileged && Array.isArray(all)) BK.sales = all.filter(own);
-      let result;
-      try { result = base.apply(this, arguments); }
-      finally { BK.sales = all; }
-      if(!privileged) setTimeout(()=>{
-        const body = document.getElementById('bkSalesBody'); if(!body) return;
-        const day = (typeof bkSalesDay !== 'undefined' && bkSalesDay) || APP_TODAY;
-        const mine = (all || []).filter(s => s.date === day && !s.voidedAt && own(s)).length;
-        const tiles = body.querySelector('.bk-tiles');
-        if(tiles) tiles.outerHTML = '<section class="panel-card nf69-own-summary"><small>YOUR SALES</small><b>'+mine+' recorded '+(mine === 1 ? 'sale' : 'sales')+'</b><span>These are your own transaction records. Business-wide sales and payment totals are reserved for authorized owner, management and Finance roles.</span></section>';
-        const bar = body.querySelector('.bk-daybar');
-        if(bar && !body.querySelector('.nf69-role-note')) bar.insertAdjacentHTML('afterend','<div class="nf69-role-note">Showing transactions recorded under your account. Open a sale to view its receipt or payment details.</div>');
-      },0);
-      return result;
-    };
-    wrapped._nf69 = true;
-    try { renderSalesBooksPage = wrapped; } catch(e){}
-    window.renderSalesBooksPage = wrapped;
-  }
+
   function wrapExpenses(){
     if(typeof renderExpensesPage !== 'function' || renderExpensesPage._nf69) return;
     const base = renderExpensesPage;
@@ -212,7 +189,7 @@
     try { renderLedgerPage = wrapped; } catch(e){}
     window.renderLedgerPage = wrapped;
   }
-  wrapLanes(); wrapHome(); wrapSales(); wrapExpenses(); wrapLedger();
+  wrapLanes(); wrapHome(); wrapExpenses(); wrapLedger(); // Round 72: sales visibility follows the owner's setting (r72.js)
   if(!document.documentElement.dataset.nf69Keyboard){
     document.documentElement.dataset.nf69Keyboard = '1';
     document.addEventListener('keydown', event=>{
@@ -222,6 +199,6 @@
       event.preventDefault(); target.click();
     });
   }
-  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ()=>{wrapLanes();wrapHome();wrapSales();wrapExpenses();wrapLedger();decorateHome();});
-  else setTimeout(()=>{wrapLanes();wrapHome();wrapSales();wrapExpenses();wrapLedger();decorateHome();},0);
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', ()=>{wrapLanes();wrapHome();wrapExpenses();wrapLedger();decorateHome();});
+  else setTimeout(()=>{wrapLanes();wrapHome();wrapExpenses();wrapLedger();decorateHome();},0);
 })();

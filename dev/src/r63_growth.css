@@ -1,27 +1,6 @@
-/* Round 63 — connected workflow story; retain the existing Nifti palette and typography. */
-#view-index .nf63-how,#view-index .nf63-outcomes{padding:66px 0 58px;background:linear-gradient(180deg,#fff 0%,#f6fbf8 100%);}
-#view-index .nf63-how .f5-head,#view-index .nf63-outcomes .f5-head{max-width:850px;margin:0 auto 30px;text-align:center}
-.nf63-flow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-.nf63-step{position:relative;min-width:0;padding:22px;background:#fff;border:1px solid #e4eae6;border-radius:22px;box-shadow:0 16px 38px rgba(16,24,40,.06)}
-.nf63-num{font-size:12px;font-weight:900;letter-spacing:.14em;color:#1b6b40;margin-bottom:15px}
-.nf63-step h3{font-size:20px;line-height:1.2;color:#18191e;margin:18px 0 8px}
-.nf63-step p{font-size:15px;line-height:1.55;color:#59635e;margin:0}
-.nf63-visual{min-height:148px;border-radius:16px;background:linear-gradient(135deg,#edf7f0,#f8fbf8);display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;padding:16px;box-sizing:border-box}
-.nf63-bubble,.nf63-node,.nf63-link{display:inline-flex;align-items:center;justify-content:center;padding:10px 13px;border-radius:12px;background:#fff;color:#1b6b40;font-size:13px;font-weight:800;box-shadow:0 5px 15px rgba(24,50,35,.08)}
-.nf63-bubble.alt{background:#e3f1e8;color:#315c43}.nf63-visual-icon{font-size:34px;color:#1b6b40}
-.nf63-v2{gap:8px}.nf63-v2 i{font-style:normal;color:#1b6b40;font-weight:900}.nf63-node{font-size:12px}.nf63-node.wide{flex-basis:85%;background:#1b6b40;color:#fff}
-.nf63-v3{flex-direction:column}.nf63-link{background:#1b6b40;color:#fff;padding:12px 20px}.nf63-check{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:#dff2e5;color:#1b6b40;font-size:25px;font-weight:900}.nf63-small{font-size:13px;color:#46544b;font-weight:700}
-.nf63-foot{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;margin:24px auto 0;padding:16px 20px;border-radius:15px;background:#173f2c;color:#fff;text-align:center}.nf63-foot span{color:#d9e8dd;font-size:13px}
-.nf63-outcomes{background:#fff!important}.nf63-out-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
-.nf63-out{appearance:none;text-align:left;border:1px solid #e2e9e4;border-radius:17px;padding:18px;background:#fff;color:#1b2520;cursor:pointer;display:flex;flex-direction:column;gap:9px;min-height:178px;transition:transform .18s,border-color .18s,box-shadow .18s}
-.nf63-out:hover,.nf63-out.on{border-color:#78b28d;box-shadow:0 12px 28px rgba(25,80,45,.10);transform:translateY(-2px)}
-.nf63-out-ic{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:#e7f3eb;color:#1b6b40;font-size:20px;font-weight:900}
-.nf63-out b{font-size:16px;line-height:1.25}.nf63-out small{font-size:13px;line-height:1.45;color:#66716a}.nf63-out em{font-style:normal;font-size:12px;font-weight:800;color:#1b6b40;margin-top:auto}
-.nf63-out-detail{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:center;margin-top:18px;padding:24px;border-radius:20px;background:#f3f8f4;border:1px solid #e1ece4}
-.nf63-out-detail small{display:block;color:#1b6b40;font-size:11px;font-weight:900;letter-spacing:.13em;margin-bottom:8px}.nf63-out-detail b{font-size:21px;color:#17251c}.nf63-out-detail p{color:#5d6b61;line-height:1.55;margin:8px 0 0}
-.nf63-out-art{display:flex;justify-content:center;align-items:center;gap:8px;flex-wrap:wrap;font-size:11px;font-weight:900;letter-spacing:.05em;color:#1b6b40}.nf63-out-art span{padding:10px 12px;border-radius:10px;background:#fff;border:1px solid #d9e8de}.nf63-out-art i{font-style:normal}
+
 .nf63-discover{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:18px 20px;margin:0 0 18px;border:1px solid #dfe9e2;border-radius:17px;background:linear-gradient(110deg,#f2f8f3,#fff)}
 .nf63-discover b{font-size:16px}.nf63-discover p{margin:5px 0 0;color:#65716a;font-size:13px;line-height:1.45;max-width:640px}.nf63-discover-actions{display:flex;gap:8px;flex-wrap:wrap}
 #nf55Dock[hidden]{display:none!important}
-@media(max-width:820px){.nf63-flow{grid-template-columns:1fr}.nf63-visual{min-height:120px}.nf63-out-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.nf63-out-detail{grid-template-columns:1fr}.nf63-discover{align-items:flex-start;flex-direction:column}}
-@media(max-width:520px){#view-index .nf63-how,#view-index .nf63-outcomes{padding:44px 0 38px}.nf63-step{padding:18px}.nf63-out-grid{grid-template-columns:1fr 1fr}.nf63-out{min-height:195px;padding:14px}.nf63-out b{font-size:14px}.nf63-discover-actions{width:100%}.nf63-discover-actions .btn{flex:1}}
+@media(max-width:820px){.nf63-discover{align-items:flex-start;flex-direction:column}}
+@media(max-width:520px){.nf63-discover-actions{width:100%}.nf63-discover-actions .btn{flex:1}}

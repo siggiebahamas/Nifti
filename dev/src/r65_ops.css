@@ -15,25 +15,6 @@
 #publicOrderView .nf65-progress-step.current b,#publicOrderView .nf65-progress-step:not(.done):not(.current) b{font-size:13px;font-weight:850}
 #publicOrderView .nf65-progress-step>span{width:34px;height:34px;font-size:14px}
 
-/* Owner-facing staff cash accountability: readable controls, no duplicated drawer. */
-#mhHome .mh-cash-fold{margin-top:16px;border:1px solid #dce5de;border-radius:20px;background:#fff;overflow:hidden}
-#mhHome .mh-cash-fold>summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 22px;cursor:pointer;background:linear-gradient(100deg,#f3f8f4,#fff)}
-#mhHome .mh-cash-fold>summary::-webkit-details-marker{display:none}
-#mhHome .mh-cash-fold>summary b{display:block;font-size:19px;line-height:1.2;color:#13251a;font-weight:900}
-#mhHome .mh-cash-fold>summary small{display:block;margin-top:5px;font-size:15px;line-height:1.35;color:#34483b;font-weight:600}
-#mhHome .mh-cash-fold>summary i{display:grid;place-items:center;flex:none;width:36px;height:36px;border-radius:50%;background:#e4f2e8;color:#17643b;font-size:22px;font-style:normal;font-weight:800}
-#mhHome .mh-cash-fold[open]>summary{border-bottom:1px solid #dce5de}
-#mhHome .mh-cash-fold #mhDrawer{border:0;box-shadow:none;padding:20px}
-#mhHome .mh-cash-fold #mhDrawer .sect-h h4{font-size:19px;font-weight:900;color:#14251a}
-#mhHome .mh-cash-fold #mhDrawer .sect-h .hint{font-size:14px;color:#34483b}
-#mhHome .mh-cash-fold #mhDrawer .cdpp{font-size:15px;color:#17251c}
-#mhHome .mh-cash-fold #mhDrawer .calhead b{font-size:18px}
-#mhHome .mh-cash-fold #mhDrawer .calstat .pill{font-size:13px;font-weight:850}
-#mhHome .mh-cash-fold #mhDrawer .cal .dow{font-size:13px;font-weight:850;color:#34483b}
-#mhHome .mh-cash-fold #mhDrawer .cal .day .dn{font-size:13px}
-#mhHome .mh-cash-fold #mhDrawer .cal .day .nm{font-size:13px}
-#mhHome .mh-cash-fold #mhDrawer .cal .day .st{font-size:12px;font-weight:800}
-
 #publicOrderView .nf65-powered{display:flex;align-items:baseline;justify-content:center;gap:5px;flex-wrap:wrap;margin:24px 0 4px;padding:13px 12px;border-top:1px solid #e5ebe6;color:#34483b;font-size:14px;font-weight:650;text-align:center}
 #publicOrderView .nf65-powered a{color:#17643b;font-weight:950;text-decoration:none}
 #publicOrderView .nf65-powered a:hover{text-decoration:underline}

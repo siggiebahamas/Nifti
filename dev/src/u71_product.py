@@ -9,7 +9,7 @@ new="function bkRowSale(r){ return {id: r.id, byId: r.created_by || null, date:"
 if old not in t: raise SystemExit("Round 71 could not find sales row mapper")
 t=t.replace(old,new,1)
 old="by: bkMe(), note: String(QS.note || '').trim().slice(0, 300), branch: bkHereBranch()};"
-new="by: bkMe(), byId: (typeof currentUserId !== 'undefined' ? currentUserId : null), note: String(QS.note || '').trim().slice(0, 300), branch: bkHereBranch()};"
+new="by: bkMe(), byId: (typeof myTeamMember !== 'undefined' && myTeamMember ? myTeamMember.id : null), note: String(QS.note || '').trim().slice(0, 300), branch: bkHereBranch()};"
 if old not in t: raise SystemExit("Round 71 could not find sale creator field")
 t=t.replace(old,new,1)
 def once(old,new,label):

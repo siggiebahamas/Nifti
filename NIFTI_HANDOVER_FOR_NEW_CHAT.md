@@ -1,5 +1,5 @@
 # NIFTI — FULL HANDOVER FOR A NEW CLAUDE CHAT
-_Last updated 24 Nov 2026 (read section 8 first for the latest state). Paste this whole document into the new chat. Everything built so far lives in the GitHub repo and the live Supabase project listed below; this document tells you where each piece is and how it fits together._
+_Last updated 24 Nov 2026 (read section 9 first, then section 8, for the latest state). Paste this whole document into the new chat. Everything built so far lives in the GitHub repo and the live Supabase project listed below; this document tells you where each piece is and how it fits together._
 
 ---
 
@@ -433,7 +433,7 @@ The original schema is in `supabase_schema.sql` and `supabase_schema_part2.sql`.
   - Header buttons grouped right; on computers they move onto the toolbar row below (month picker/date chips) when it has room (.nf55-bar/.nf55-acts), re-pinned to top if a page reorders panels. Fixed Stock, Prices & profit, Walk-in sales, Expenses.
   - SETUP COACH: 10 steps (items, first customer, first supplier, first order, who owes you, walk-in sale, expense, staff*, online store*, phone alerts*; *optional). Each: minutes, one-line why, "Show me how" (opens page/tool, dims screen, pulsing ring on the exact button found by its text, one-line tip), "I did it", "Later". Auto-done from inventoryData/buyersData/suppliersData. Celebration per step. Hides while any popup is open. Minimize / hide (Settings → "Show coach"). Old "Get set up" card hidden while coach is on. State: localStorage nifti-coach:<business>.
   - Round 55: coach is a SOLID GREEN card at the BOTTOM RIGHT (phone: above the bottom bar, bottom 140px), yellow progress ring, glow pulses 3x.
-- Build: `cd dev/src && python3 apply.py <module list>` (list in section 3, now ending: … u58_round51 u59_round52 u60_round53 u61_round54 u97_black_text u98_demo_dates u99_dates u99z_scale). Output = Nifti_Sept17.html, which GitHub Pages serves.
+- Build: `cd dev/src && python3 apply.py <module list>` (list in section 3, now ending: … u58_round51 u59_round52 u60_round53 u61_round54 u62_cro u63_growth u65_ops u67_workflow u68_product_ui u69_dashboard_ux u70_product u71_product u72_site u73_app u97_black_text u98_demo_dates u99_dates u99z_scale — the exact list is in .github/workflows/deploy-pages.yml). Output = Nifti_Sept17.html, which GitHub Pages serves.
 - Tests used (Playwright, in the old session scratchpad, not in repo): t26, err, smoke, flow, r48t, pg50, r47t, flick, diff51. Known expected results: flow ends "STUCK at paid on Print the receipt" (normal); smoke logs one 404 console line (pre-existing); flick 390 sometimes flags one page (timing).
 
 ### 8.3 Answers the founder asked for at the end (not yet acted on)
@@ -467,3 +467,35 @@ Key from console.anthropic.com → API keys. Then test with one notebook photo i
 - Viber on computer (Viber Desktop keeps messages in a local file; a signed Windows/Mac helper could read it). Needs a session with the founder's computer attached + a code-signing certificate. Founder said: Android only for now.
 - Buyer "Got it" confirmation exists server-side (confirm_receipt_by_link).
 - Separate e-invoicing product for Shopee/Lazada/TikTok sellers: recommended as a separate brand on Nifti's engine, validate manually with 5 sellers first.
+
+---
+
+## 9. ROUND 72 (24 Nov 2026): the "Nifti Revisions" brief — read this first
+
+### 9.1 What happened before this round
+Between the handover above and Round 72, ten rounds were made outside Claude (u62_cro … u71_product, r62–r71 files, beta-pauses.js changes). Most of them rewrote the landing page and Home **at runtime** with stacked DOM overrides that fought each other. Problems found and fixed in Round 72:
+- The 3 Home status cards (r67 `decorateHome`) never appeared: the function ran once before Home existed, and r70 called it by a name it couldn't see.
+- u65 cut Home apart (moved "What to do" above the summary boxes and renamed it).
+- "See it in action": tabs were removed at runtime, so tab N opened panel N+1 (e.g. "Who owes you" showed "Orders from chat").
+- r71 "SKU-first" edited the ORIGINAL quick-sale code, but Round 44 replaces `qsRender` at runtime, so the live popup still allowed a typed total with no items.
+- r69 forced staff to see only their own sales whatever the owner chose; r69/r70 compared the login id (`currentUserId`) with `created_by`, which is a **team_members.id** → in real accounts staff would see zero sales/expenses.
+- A full-document MutationObserver in r64 re-ran the landing rewrite on every DOM change.
+
+### 9.2 What Round 72 changed (modules `u72_site`, `u73_app`; files r72_site.js/css, r72_journey.html, r72.js/css)
+- **Removed from the build:** u64_conversion, u66_design (+ r64/r66 js/css). Marketing parts deleted from r62/r63/r67/r70 (their app parts kept). u65 now only adds the shared-link progress bar. beta-pauses.js no longer rewrites public pricing.
+- **Landing (u72_site, build time):** hero = "Run your business. Not the daily chaos." + "Orders. Stock. Cash. Under control." in the same heading font (31px deck); 3 benefits in one grouped card; the real app on a phone (4 demo screens; Viber screen left out) with the alerts around it. How it works kept (voice-note claims removed). "See it in action" = 6 tabs in a 3×2 grid set in `NF20_SHOW` (Who owes you, Driver routes, Buying, What runs out, Your own store, Books), no auto-advance. New **"Follow one order"** section (#mkJourney): 6 clickable steps with a live ledger (status, stock, owed, cash, profit), plays once on view. "What changes for you" = 4 static cards, title beside icon, 17px black text, bigger green footers. Removed: One Connected Business, See the Difference, Picture your next Monday, the calculator (#mkCalc), #mkTry and #mkNotebook. Prices: regular price crossed out + Beta tag, then ₱0; beta box instead of "How paying works". FAQ: icon per question, 17px dark answers. Final CTA centered: "Know where your business stands. Every day." Reminder copy corrected (automatic reminders go by email/Nifti chat, not Viber — see `send_payment_reminders`).
+- **Home (r72.js `nf72Home`, hooked on `booksAfterHome`):** 3 status cards on top (Needs attention red / Coming up amber / On track green, counts and first items read from the What-to-do lanes; tap scrolls to the lane). Original section order restored. Each summary box shown once. **Owner view** (Owner/GM/Finance only): costs & expenses, operating profit, margin vs last month, "Worth reviewing" = top expense categories, items sold with no cost, margin change. Sales is not repeated.
+- **AI tools hidden** (CSS in r72.css + tip/copy patches in u73): menu group, phone menu row, notebook buttons, photo options in Add items / Bring in old records. Code untouched.
+- **Deliveries:** `nf46StopRow` override: fixed columns (status 190px | action 120px), larger status pills, "Delivered · not collected" amber.
+- **Find customers:** title follows the tab, one helper line, the misplaced r63/r67 guide box removed, separate loading / nobody-listed / no-match states, demo messages signed "Dela Cruz Hardware". **Leads:** `nf18Leads` override with a roomy status + follow-up column.
+- **Sales visibility:** Settings card "Who can see sales" (Owner only, beside Who sees what, kept out of "More settings"), saved in `books_settings.sales_visibility` ('business' default | 'own'). Search entries "Who can see sales" and "Team permissions" (`@salesvis`, `@who`). Owner/GM/Finance always see everything. Staff identity = `myTeamMember.id`.
+- **New sale (SKU first):** final `qsRender` in r72.js: scan box (USB/Bluetooth scanners: code + Enter), search by name/SKU, repeat scan adds 1, prices from the item list (read-only; Owner/GM/Finance can "Change" a line → saved as a discount vs list price), no total-only path (also blocked in `qsSave` via u73), an item with no price blocks the sale, unknown items must be added in Stock first. Sales list rows have **Details** (`nf72SaleDetail`): items, price, list price, discount, cost (Owner/GM/Finance), customer, payment, balance, who entered it.
+- **Cash reconciliation** (r70 `lineDetails`, rewritten): summary (sales, payment split, cost, discounts) → every item sold → stock that left because of sales vs other stock changes (damage, count differences, returns, received) → "Worth a second look" in neutral words.
+
+### 9.3 Tests run (scratchpad scripts, Playwright, demo mode)
+Landing: 6 tabs open their own panels; journey; no leftover old sections; footer inside the page. Find customers: search, filters, no-match + clear, Message, ☆ save lead, Google Maps, add lead, suppliers tab, connection request, category chips. Checkout: scan, rescan, search, unknown item refused, change, save (lines with list price + cost), stock down, details, total-only blocked, no-price blocked, cashier can't change prices. Visibility: card owner-only, own mode, search finds it. All 28 pages at 1440 and 390: 0 errors, no sideways scroll. 7 roles previewed (Owner, GM, Finance, Cashier, Purchasing Agent, Warehouse Manager, Driver). Navigation ≈90–95 ms average (live ChatGPT build ≈115–150 ms). **Not done:** signed-in tests with real accounts (needs test logins; no auth/RLS changes made).
+
+### 9.4 Security findings for the founder (NOT changed — need approval)
+- `downstream_sales` RLS (`ds_select`, `ds_update`) lets ANY team member read and update every sale of the business through the API. "Each person sees only their own sales" is therefore a screen setting, not a lock. Recommended: select policy `nifti_books_viewer(business_id) OR created_by = nifti_me_member(business_id) OR books_settings.sales_visibility <> 'own'`, and limit `ds_update` to books viewers (staff only insert).
+- Expenses are already locked correctly (staff see only their own).
+
