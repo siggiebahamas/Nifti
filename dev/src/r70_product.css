@@ -62,3 +62,23 @@
 #view-app .nf70-routes-page .page-head{padding:14px 18px!important;margin-bottom:14px!important;min-height:0!important}
 #view-app .nf70-routes-page .page-head .nf70-route-pill{min-height:24px!important;padding:4px 9px!important;font-size:12px!important}
 @media(max-width:680px){#view-app .nf70-sales-control{align-items:stretch;flex-direction:column}#view-app .nf70-sales-control label{min-width:0}#view-app .nf70-detail-summary{grid-template-columns:1fr} }
+
+/* Find customers: clearer responsive cards and uncramped action/status area. */
+#view-app #page-discover.nf70-discover-page .nf36f-tools{display:grid;grid-template-columns:minmax(220px,1fr) minmax(150px,190px) minmax(150px,190px);gap:10px;margin:8px 0 18px}
+#view-app #page-discover.nf70-discover-page .nf36f-tools input,#view-app #page-discover.nf70-discover-page .nf36f-tools select{width:100%;min-width:0;min-height:46px;background:#fff;color:#0B0F14;border:1px solid #cbd9cf;border-radius:12px}
+#view-app #page-discover.nf70-discover-page .nf36f-grid{grid-template-columns:repeat(auto-fill,minmax(min(100%,330px),1fr));gap:14px}
+#view-app #page-discover.nf70-discover-page .nf36f-card{border-color:#dce6df;border-radius:18px;box-shadow:0 5px 18px rgba(20,55,34,.045)}
+#view-app #page-discover.nf70-discover-page .nf36f-acts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;align-items:stretch}
+#view-app #page-discover.nf70-discover-page .nf36f-acts .btn{width:100%;min-width:0;min-height:42px;white-space:normal}
+#view-app #page-discover.nf70-discover-page .nf36f-acts .nf-pill{grid-column:1/-1;justify-self:start;max-width:100%;padding:6px 11px;white-space:normal;text-align:center}
+#view-app #page-discover.nf70-discover-page .nf36f-google{grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);background:#f4f8f5;border-color:#dce6df}
+#view-app #page-discover.nf70-discover-page .nf36f-google>div{grid-column:1/-1}
+#view-app #page-discover.nf70-discover-page .nf36f-google .btn{white-space:normal}
+#view-app .nf67-intel.nf70-intel-refined{padding:18px 20px;border:1px solid #dce6df;border-radius:18px;background:#f7faf8}
+#view-app .nf67-intel.nf70-intel-refined .nf67-intel-head h4{color:#0B0F14}
+#view-app .nf67-intel.nf70-intel-refined .nf67-intel-head p{color:#0B0F14;font-size:14px}
+#view-app .nf67-intel.nf70-intel-refined .nf67-intel-grid{grid-template-columns:minmax(0,260px);gap:10px}
+#view-app .nf67-intel.nf70-intel-refined .nf67-intel-grid>div{padding:13px 15px;border:1px solid #b9d9c2;border-radius:13px;background:#e7f3eb}
+#view-app .nf67-intel.nf70-intel-refined .nf67-intel-grid>div span,#view-app .nf67-intel.nf70-intel-refined .nf67-intel-grid>div b{color:#0B0F14}
+#view-app .nf67-intel.nf70-intel-refined .nf67-intel-foot,#view-app .nf67-intel.nf70-intel-refined .nf67-flags{color:#0B0F14}
+@media(max-width:720px){#view-app #page-discover.nf70-discover-page .nf36f-tools{grid-template-columns:1fr}#view-app #page-discover.nf70-discover-page .nf36f-google{grid-template-columns:1fr}}
