@@ -40,3 +40,15 @@
  #view-app .app-page .nf69-role-actions button{flex:1}
  #view-app .app-page .nf69-empty{padding:24px 15px}
 }
+
+#view-app .app-page .nf69-shortcuts{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:0 0 16px;padding:13px 16px;border:1px solid #dce6df;border-radius:15px;background:#f7faf8}
+#view-app .app-page .nf69-shortcuts small{display:block;color:#17643b;font-size:10px;font-weight:950;letter-spacing:.12em}
+#view-app .app-page .nf69-shortcuts b{display:block;margin-top:2px;color:#26372d;font-size:14px;font-weight:850}
+#view-app .app-page .nf69-shortcut-buttons{display:flex;gap:8px;flex-wrap:wrap}
+#view-app .app-page .nf69-shortcut-buttons button{min-height:38px;padding:9px 13px;border:1px solid #bfd8c5;border-radius:10px;background:#fff;color:#17643b;font-size:13px;font-weight:850;cursor:pointer}
+#view-app .app-page .nf69-shortcut-buttons button:first-child{background:#17643b;border-color:#17643b;color:#fff}
+@media(max-width:680px){
+ #view-app .app-page .nf69-shortcuts{align-items:flex-start;flex-direction:column}
+ #view-app .app-page .nf69-shortcut-buttons{width:100%}
+ #view-app .app-page .nf69-shortcut-buttons button{flex:1}
+}
