@@ -28,7 +28,7 @@ once("""lines = QS.lines.filter(l => String(l.product).trim()).map(l => ({produc
     lines.forEach(l => { l.unitCost = bkItemCost(l.product); l.listPrice = bkItemPrice(l.product) || 0; if(bkMenuFind(l.product)) l.menu = true; });""","SKU save")
 anchor="function renderSidebarForViewAsRole(){"
 if anchor not in t: raise SystemExit("Round 71 insertion point missing")
-t=t.replace(anchor,rd('r71_product.js')+"\\n"+anchor,1)
+t=t.replace(anchor,rd('r71_product.js')+"\n"+anchor,1)
 i=t.index('</style>')
 t=t[:i]+'\\n'+rd('r71_product.css')+'\\n'+t[i:]
 S['text']=t
