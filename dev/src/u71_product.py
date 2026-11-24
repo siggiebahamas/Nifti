@@ -33,7 +33,7 @@ once("""lines = QS.lines.filter(l => String(l.product).trim()).map(l => ({produc
     if(!lines.length) return err('Scan an SKU or add at least one item.');
     if(lines.some(l => l.qty <= 0)) return err('Each item needs a quantity.');
     if(lines.some(l => l.unitPrice <= 0)) return err('A selling price is missing. Ask the owner to set the item price in Price list before selling it.');
-    lines.forEach(l => { l.unitCost = bkItemCost(l.product); l.listPrice = bkItemPrice(l.product) || 0; if(bkMenuFind(l.product)) l.menu = true; });""","SKU save")
+    lines.forEach(l => { l.unitCost = bkItemCost(l.product); l.listPrice = bkItemPrice(l.product) || 0; if(bkMenuFind(l.product)) l.menu = true; });\n  }""","SKU save")
 anchor="function renderSidebarForViewAsRole(){"
 if anchor not in t: raise SystemExit("Round 71 insertion point missing")
 t=t.replace(anchor,rd('r71_product.js')+"\n"+anchor,1)
