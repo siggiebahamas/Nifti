@@ -120,6 +120,11 @@ jobs:
           name: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
           path: '_site'
 
+      # GitHub sometimes can't see a just-uploaded artifact for a few seconds ("No artifacts named ... were found").
+      # A short pause before deploying avoids that failed first attempt.
+      - name: Wait for the artifact to be visible
+        run: sleep 20
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
