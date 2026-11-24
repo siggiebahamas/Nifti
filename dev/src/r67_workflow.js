@@ -195,6 +195,4 @@
   decorateHome();
  }
  ready(run);
- const mo=new MutationObserver(()=>{clearTimeout(window.__nf67Timer);window.__nf67Timer=setTimeout(run,180);});
- ready(()=>mo.observe(document.body,{subtree:true,childList:true}));
 })();
