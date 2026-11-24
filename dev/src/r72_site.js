@@ -34,11 +34,8 @@ function nf72Phone(){
 
 // "Follow one order": six steps, the ledger on the right updates itself
 const NF72_JR = [
-  {status: ['New', 'y'], stock: '120 bags', owed: '₱0', cash: '₱0', profit: '—'},
   {status: ['Confirmed', 'b'], stock: '120 bags', owed: '₱0', cash: '₱0', profit: '—'},
-  {status: ['On the way', 'b'], stock: '120 bags', owed: '₱0', cash: '₱0', profit: '—'},
-  {status: ['Delivered', 'b'], stock: '100 bags', owed: '₱0', cash: '₱0', profit: '—'},
-  {status: ['Billed · due Dec 8', 'y'], stock: '100 bags', owed: '₱4,560', cash: '₱0', profit: '—'},
+  {status: ['Delivered', 'b'], stock: '100 bags', owed: '₱4,560', cash: '₱0', profit: '—'},
   {status: ['Paid', 'g'], stock: '100 bags', owed: '₱0', cash: '₱4,560', profit: '₱880'}
 ];
 const NF72J = {i: 0, t: null, auto: false, started: false};
@@ -46,7 +43,7 @@ function nf72JrGo(i, user){
   const box = document.getElementById('mkJourney'); if(!box) return;
   const prev = NF72_JR[NF72J.i] || NF72_JR[0], now = NF72_JR[i]; NF72J.i = i;
   box.querySelectorAll('.r72-ph button[data-i]').forEach(b => { const k = Number(b.dataset.i); b.classList.toggle('on', k === i); b.classList.toggle('done', k < i); b.setAttribute('aria-selected', String(k === i)); b.tabIndex = k === i ? 0 : -1; });
-  box.querySelectorAll('.r72-ph-g').forEach((g, n) => { g.classList.toggle('on', Math.floor(i / 2) === n); g.classList.toggle('done', Math.floor(i / 2) > n); });
+  const line = box.querySelector('.r72-ph-line i'); if(line) line.style.width = (i / (NF72_JR.length - 1) * 100) + '%';
   box.querySelectorAll('.r72-win-nav span').forEach(s => s.classList.toggle('on', (' ' + s.dataset.on + ' ').includes(' ' + i + ' ')));
   box.querySelectorAll('.r72-sc').forEach((s, k) => s.classList.toggle('on', k === i));
   box.querySelectorAll('.r72-led').forEach(row => {
@@ -65,7 +62,7 @@ function nf72JrGo(i, user){
 function nf72JrPlay(){
   clearTimeout(NF72J.t); NF72J.auto = true; nf72JrGo(0);
   const step = () => { if(!NF72J.auto) return; if(NF72J.i >= NF72_JR.length - 1){ NF72J.auto = false; return; }
-    NF72J.t = setTimeout(() => { if(!NF72J.auto) return; const v = document.getElementById('view-index'); if(v && v.classList.contains('hidden')){ step(); return; } nf72JrGo(NF72J.i + 1); step(); }, 2600); };
+    NF72J.t = setTimeout(() => { if(!NF72J.auto) return; const v = document.getElementById('view-index'); if(v && v.classList.contains('hidden')){ step(); return; } nf72JrGo(NF72J.i + 1); step(); }, 3600); };
   step();
 }
 function nf72JrInit(){

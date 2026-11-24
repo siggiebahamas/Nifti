@@ -527,3 +527,35 @@ Hero alerts stay inside the right column and the phone is straight. "How it work
 ### 10.4 Tests this round
 landtest (6 tabs, journey incl. click-before-autoplay), saletest (19 checks), rectest (menu link, hub, paste → match → check, AI blocked), findtest/sw.js, full.js (28 pages × 2 widths, 0 errors; 7 roles), muts.js (0 loops), prof.js (speed). Still not done: signed-in tests with real accounts.
 
+
+## 11. ROUND 74 (24 Nov 2026): third revision pass — read this first
+New module: `u74_app` (build patches) + `r74.js` / `r74.css` (runtime), placed after u73_app in the workflow and mods list.
+
+### 11.1 Decisions from the founder
+- "Value to collect" → **"Cash advances to collect"** (Payroll).
+- Keep the month comparison, but make it fair: **this month so far vs the same days last month** (Nov 1–24 vs Oct 1–24). One helper (`nf74SameRange`, `nf74PnlRange`) feeds Money overview (`nf74ProfitChip`), the Monthly summary tiles/table (lgPrevRange override + r45/r47 patches) and the Home owner view. A finished month still compares with the whole month before.
+- **Sales visibility is enforced in the database** (migration `supabase_migrations/2026-11-24-sales-visibility-enforced.sql`, applied live as `r73_sales_visibility_enforced`): `nifti_sales_see_all(business)`, `ds_select`/`ds_update` policies, `guard_sales_visibility_settings` trigger. Tested rollback-only: business mode cashier 2/2, own mode 1/2, cashier can't flip the setting or edit others' sales, per-role override works, owner unaffected.
+
+### 11.2 Home
+- Order: 4 pills → What to do → the price-list and notebook cards (moved under What to do by `nf74HomeOrder`; r43's order keeper patched to allow them, otherwise the two fought in a loop). Closing a card shows where it lives: price list button on Prices & profit and Online store, "Bring in old utang/records" on Getting paid and Stock, plus the menu row.
+- Board stage counts: calm count chip (same 22–24px size, no blue display numeral, no dash).
+- Owner view rebuilt (`nf74OwnerHtml` replaces nf72OwnerHtml): 3 clickable tiles (Profit so far + vs same days, You keep ₱X of every ₱100 + pts change, Biggest costs top-3 ranked list) and at most one "worth a look" row. Stacked bar removed.
+- One profit everywhere (demo): the sample ledger is rebuilt once the demo stock moves are synced (Home showed ₱10,874 while Money overview showed ₱12,674). Demo history now has a sale after the 24th each month so the same-days comparison means something.
+
+### 11.3 Pages
+- Walk-in sales: two tabs (Sales | Count the cash, `NF74T`, CSS on `#page-sales[data-nf74t]`); pills stay on both; go('cashcount') and "Count the cash ›" links open the cash tab. Row buttons (Details/Receipt/Remove/Paid/Edit) one height, centered. Sale details rebuilt (`nf74SaleDetail`): aligned table + receipt-style totals. Cash day summary rebuilt in owner-view style (How they paid list, Kept before expenses, Discounts by person); no repeats of the pills.
+- Cash drawer: owner/GM/Finance can **Fix the count** (existing edit flow) or **Settle the difference** with a note (`review_cash_count` RPC; demo sets reviewedAt). A settled day shows green "✓ Settled −₱800"; the shortage stays in the books.
+- Number popups: big figure alone, its note on its own line; totals same size as the lines; payment names capitalised.
+- Money overview: coming-up WHAT second line normal weight; supplier popup column "Paid, awaiting OK".
+- Monthly summary: losing months red; "Balance at the start/end" starts at the left; table note explains the same-days comparison.
+- Expenses: All expenses has a Date column first, centred headers, 16px text; "Where the money went" is a ring + ranked list (tap to filter, +% vs usual tags).
+- Team: every card has Edit (title, person, due date, lane, delete inside); header buttons in one row; full first names in card footers; no "+ Add a task" in Done.
+- Plans & pricing: demo/beta shows the regular price crossed out, ₱0, "You save …", an offer banner and "Get Pro/Business free"; the stray "}" under the table was a template bug (fixed). Real non-beta accounts still see normal prices and the pay flow.
+- Prices & profit: Edit prices no longer on the table border. Checks: "Get a new check". Delivery orders: card buttons padded off the border.
+- Every table: headers follow their column's alignment (`nf74AlignHeads`, runs on repaint and 0.7/1.6 s after navigation).
+
+### 11.4 Proposals (not built)
+Artifact "Nifti Page Proposals": honest take on side-by-side pages + 10 alternatives, 5 Deliveries revamps, 3 options each for Prices & profit (incl. announce to top/picked buyers + backend outline), To check, Monthly summary, Follow-ups, BIR 2307 (download + filled form). Founder picks numbers; build next round.
+
+### 11.5 Tests this round
+landtest, saletest, rectest, full.js (28 pages × 2 widths, 7 roles, 0 errors), muts.js on 14 pages (0 idle loops after the Home fix), prof.js (avg click→paint 82 ms), audit.js (alignment / tiny text / truncation / buttons on borders on every page, 1440 and 390), popsweep.js (dialogs), test74.js (19 checks for this round). Still not done: signed-in tests with real accounts; checks/sales stay non-editable by design (audit trail).

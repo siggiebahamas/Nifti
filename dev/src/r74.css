@@ -1,0 +1,188 @@
+/* ===== Round 74 ===== */
+/* Home: board stage counts as a calm count chip (same size and weight, no bright blue display number) */
+#view-app .ob .hdr .sh-c .sc-d{display:none !important;}
+#view-app .ob .hdr .sh-c{display:inline-flex;align-items:center;margin-left:8px;vertical-align:middle;}
+#view-app .ob .hdr .sh-c .sc{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:34px;padding:0 9px;border-radius:10px;
+  background:#EEF3FB;border:1.5px solid #C9D6EA;color:#0B1F3A !important;font:800 22px/1 "Plus Jakarta Sans",system-ui,sans-serif;font-variant-numeric:tabular-nums;letter-spacing:0;}
+#view-app .ob .hdr .sh-t{display:flex;flex-direction:column-reverse;align-items:flex-start;gap:6px;}
+#view-app .ob .hdr .sh-c{margin-left:0;}
+
+/* Home: the price list and notebook cards now sit under What to do */
+#mhHome .rows > .nf48-home, #mhHome .rows > .nf45-oldhint{margin:0;}
+/* permanent homes on their pages */
+.nf74-homes{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+.nf74-home-btn{display:inline-flex;align-items:center;gap:8px;min-height:40px;font-weight:700;}
+
+/* Owner view: three answers, each one a door to its page */
+.nf74-owner .nf74-ow{display:grid;grid-template-columns:1fr 1fr 1.25fr;gap:12px;margin-top:6px;}
+.nf74-ot{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:4px;text-align:left;padding:16px 36px 16px 18px;border-radius:16px;border:1.5px solid #E4E7EC;background:#fff;cursor:pointer;font:inherit;color:#0B0F14;min-height:132px;transition:border-color .15s, box-shadow .15s, transform .15s;}
+.nf74-ot:hover{border-color:#98A2B3;box-shadow:0 6px 18px rgba(16,24,40,.08);transform:translateY(-1px);}
+.nf74-ot:focus-visible{outline:3px solid #2563EB;outline-offset:2px;}
+.nf74-ot .lb{font-size:14px;font-weight:800;letter-spacing:.02em;text-transform:uppercase;color:#1D2939;}
+.nf74-ot > b{font-size:28px;line-height:1.15;font-weight:800;font-variant-numeric:tabular-nums;}
+.nf74-ot > b .u{font-size:16px;font-weight:700;margin-left:2px;}
+.nf74-ot small{font-size:14px;color:#1D2939;font-weight:500;}
+.nf74-ot .go{position:absolute;right:14px;top:14px;font-style:normal;font-size:24px;line-height:1;color:#344054;}
+.nf74-ot.t-g{background:#F2FBF5;border-color:#B7E4C7;} .nf74-ot.t-g > b{color:#14653A;}
+.nf74-ot.t-y{background:#FFFBEB;border-color:#F2D46B;} .nf74-ot.t-y > b{color:#7A4D00;}
+.nf74-ot.t-r{background:#FEF3F2;border-color:#F9B8B0;} .nf74-ot.t-r > b{color:#B42318;}
+.nf74-ot.t-b{background:#F5F8FF;border-color:#C9D6EA;}
+.nf74-ch{display:inline-flex;align-items:center;gap:4px;font-style:normal;font-size:14px;font-weight:800;padding:3px 10px;border-radius:999px;}
+.nf74-ch.g{background:#DCFAE6;color:#085D3A;} .nf74-ch.r{background:#FEE4E2;color:#912018;} .nf74-ch.z{background:#F2F4F7;color:#1D2939;}
+.nf74-costs ol{list-style:none;margin:4px 0 0;padding:0;width:100%;display:flex;flex-direction:column;gap:6px;}
+.nf74-costs li{display:grid;grid-template-columns:24px 1fr auto 44px;align-items:center;gap:8px;font-size:16px;}
+.nf74-costs li .n{width:24px;height:24px;border-radius:50%;background:#DCE6F5;color:#0B1F3A;font-size:14px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;}
+.nf74-costs li .k{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.nf74-costs li b{font-variant-numeric:tabular-nums;font-weight:800;}
+.nf74-costs li em{font-style:normal;font-size:14px;font-weight:700;text-align:right;color:#1D2939;}
+.nf74-ow-r{display:flex;align-items:center;gap:12px;margin-top:12px;padding:12px 14px;border-radius:14px;border:1.5px solid #E4E7EC;background:#fff;}
+.nf74-ow-r .d{width:10px;height:10px;border-radius:50%;flex:none;background:#98A2B3;}
+.nf74-ow-r.t-r{border-color:#F9B8B0;background:#FEF3F2;} .nf74-ow-r.t-r .d{background:#D92D20;}
+.nf74-ow-r.t-y{border-color:#F2D46B;background:#FFFBEB;} .nf74-ow-r.t-y .d{background:#F5B800;}
+.nf74-ow-r.t-g{border-color:#B7E4C7;background:#F2FBF5;} .nf74-ow-r.t-g .d{background:#16A34A;}
+.nf74-ow-r .tx{flex:1;display:flex;flex-direction:column;gap:2px;} .nf74-ow-r .tx b{font-size:16px;} .nf74-ow-r .tx small{font-size:14px;color:#1D2939;}
+@media (max-width: 900px){ .nf74-owner .nf74-ow{grid-template-columns:1fr;} .nf74-ot{min-height:0;} .nf74-ow-r{flex-wrap:wrap;} }
+
+/* running comparison chips (Money overview profit, Monthly summary) */
+.nf74-cmp, #view-app small.nf74-cmp{display:block !important;text-align:right;margin-top:6px;font-size:14px;font-weight:800;line-height:1.5;}
+.nf74-cmp.up{color:#14653A;} .nf74-cmp.down{color:#B42318;} .nf74-cmp.z{color:#1D2939;}
+.nf74-cmp span{display:block;font-weight:600;color:#1D2939 !important;}
+.nf45-gk .nf74-was{display:block;font-size:14px;font-weight:600;color:#1D2939 !important;margin-top:2px;}
+/* Monthly summary: a month you lost money in is red, "Balance at the start" reads from the left */
+#view-app .nf47-mt td.dn{color:#B42318 !important;font-weight:800;}
+
+/* Money overview: coming up, WHAT = bold name over a normal-weight detail */
+#view-app .nf37-what small{font-weight:500 !important;}
+#view-app .nf37-what b{font-weight:800;}
+#view-app .nf23-gl td.nf74-bal{text-align:left !important;padding-left:16px !important;white-space:nowrap;}
+
+/* Walk-in sales: two tabs; the pills show on both */
+#page-sales > .nf74-tabs{display:flex;gap:6px;padding:5px;margin:4px 0 16px;background:#F2F4F7;border-radius:14px;width:max-content;max-width:100%;}
+#page-sales > .nf74-tabs button{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border:0;border-radius:10px;background:transparent;font-family:inherit;font-size:16px;font-weight:700;line-height:1;color:#1D2939;cursor:pointer;}
+#page-sales > .nf74-tabs button.on{background:#fff;color:#0B0F14;box-shadow:0 1px 3px rgba(16,24,40,.12);}
+#page-sales > .nf74-tabs button em{font-style:normal;font-size:14px;font-weight:800;padding:3px 8px;border-radius:999px;background:#FEF0C7;color:#7A4D00;}
+#page-sales[data-nf74t="sales"] #nf18Count{display:none !important;}
+#page-sales[data-nf74t="cash"] #bkSalesBody > :not(.nf43-pills){display:none !important;}
+#page-sales[data-nf74t="cash"] #nf18Count > .nf18-mh2{display:none !important;}
+#page-sales[data-nf74t="cash"] #nf18Count{margin-top:4px;}
+@media (max-width: 600px){ #page-sales > .nf74-tabs{width:100%;} #page-sales > .nf74-tabs button{flex:1;justify-content:center;padding:0 10px;} #page-sales > .nf74-tabs button em{display:none;} }
+
+/* Row actions (Details, Receipt, Remove, Paid, Edit): one line, same height, centred on the row */
+#view-app .bk-row-a{display:inline-flex !important;align-items:center;justify-content:flex-end;gap:16px;flex-wrap:nowrap;}
+#view-app .bk-row-a > button, #view-app .bk-row-a > a{display:inline-flex !important;align-items:center;justify-content:center;height:36px;min-height:36px;margin:0 !important;padding:0 2px !important;line-height:1 !important;font-size:16px !important;font-weight:700;vertical-align:middle;white-space:nowrap;}
+#view-app table td.a, #view-app .nf25-t td.a{vertical-align:middle !important;white-space:nowrap;}
+#view-app .nf25-t td.a .bk-row-a{display:flex !important;}
+
+/* Number popups: one size for the big figure, its note on its own line; totals the same size as the lines */
+.nf45-ib b{display:block;}
+.nf45-ib span{display:block;font-size:16px;font-weight:600;margin-top:4px;}
+.nf45-t tbody td, .nf45-t tfoot td{font-size:16px !important;}
+.nf45-t tfoot td{font-weight:800 !important;border-top:2px solid #D0D5DD;}
+.nf45-t tfoot td b, .nf45-t tfoot td strong{font-size:16px !important;}
+
+/* Sale details */
+.nf74-sd .nf74-sdh{display:grid;grid-template-columns:repeat(5, minmax(0, 1fr));gap:10px;margin-bottom:14px;}
+.nf74-sdh > div{border:1.5px solid #E4E7EC;border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:4px;min-width:0;}
+.nf74-sdh small{font-size:14px;font-weight:600;color:#1D2939;} .nf74-sdh b{font-size:16px;overflow-wrap:anywhere;} .nf74-sdh b.ok{color:#14653A;} .nf74-sdh b.due{color:#B42318;}
+.nf74-sdt{border:1.5px solid #E4E7EC;border-radius:12px;overflow-x:auto;}
+.nf74-sdt table{width:100%;border-collapse:collapse;}
+.nf74-sdt th{background:#F2F4F7;font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;padding:12px 14px;white-space:nowrap;color:#1D2939;}
+.nf74-sdt td{padding:12px 14px;font-size:16px;border-top:1px solid #EAECF0;vertical-align:middle;}
+.nf74-sdt .t{text-align:left;} .nf74-sdt .n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums;}
+.nf74-sdt td small{display:block;font-size:14px;color:#1D2939;font-weight:500;}
+.nf74-disc{color:#B42318;font-weight:700;}
+.nf74-sds{margin:12px 0 0 auto;max-width:380px;display:flex;flex-direction:column;gap:6px;}
+.nf74-sds > div{display:flex;justify-content:space-between;gap:16px;font-size:16px;padding:2px 14px;}
+.nf74-sds > div b{font-variant-numeric:tabular-nums;}
+.nf74-sds .tot{font-size:18px;font-weight:800;border-bottom:1.5px solid #E4E7EC;padding-bottom:8px;}
+.nf74-sds .disc b{color:#B42318;} .nf74-sds .keep b{color:#14653A;} .nf74-sds .neg b{color:#B42318;}
+@media (max-width: 700px){ .nf74-sd .nf74-sdh{grid-template-columns:1fr 1fr;} .nf74-sds{max-width:none;} }
+
+/* Cash day: fix or settle */
+.nf74-settle{border:1.5px solid #C9D6EA;background:#F5F8FF;}
+.nf74-settle .actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+.nf74-sl{display:flex;flex-direction:column;gap:6px;margin-top:8px;font-weight:700;}
+.nf74-sl textarea{min-height:72px;border:1.5px solid #D0D5DD;border-radius:10px;padding:10px 12px;font:inherit;font-size:16px;}
+
+/* Expenses: All expenses table — bigger text, headers centred, Date first, action buttons on the text line */
+#page-expenses .nf25-t th{text-align:center !important;font-size:14px !important;}
+#page-expenses .nf25-t td{font-size:16px !important;text-align:center;vertical-align:middle !important;padding-top:14px !important;padding-bottom:14px !important;}
+#page-expenses .nf25-t td.d{text-align:left !important;white-space:nowrap;font-weight:700;}
+#page-expenses .nf25-t th.d{text-align:left !important;}
+#page-expenses .nf25-t td.t{text-align:center !important;}
+#page-expenses .nf25-t td.t small{font-size:14px !important;}
+#page-expenses .nf25-t th.t, #page-expenses .nf25-t td.t{width:auto !important;min-width:0 !important;}
+#page-expenses .nf25-t{table-layout:auto !important;}
+/* Where the money went: ring + ranked list */
+.nf74-where .nf74-wb{display:grid;grid-template-columns:180px 1fr;gap:24px;align-items:center;padding:4px 0;}
+.nf74-ring{position:relative;width:170px;height:170px;}
+.nf74-ring svg{width:100%;height:100%;display:block;}
+.nf74-ring .c{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 34px;}
+.nf74-ring .c b{font-size:24px;font-weight:800;} .nf74-ring .c small{font-size:14px;font-weight:600;color:#1D2939;line-height:1.2;}
+.nf74-wl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px;}
+.nf74-wl button{width:100%;display:grid;grid-template-columns:14px 1fr 56px 110px;align-items:center;gap:12px;padding:10px 12px;border:0;border-radius:10px;background:transparent;font:inherit;font-size:16px;color:#0B0F14;cursor:pointer;text-align:left;}
+.nf74-wl button:hover:not([disabled]){background:#F2F4F7;} .nf74-wl button[disabled]{cursor:default;}
+.nf74-wl i{width:14px;height:14px;border-radius:4px;}
+.nf74-wl .k{font-weight:700;display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;}
+.nf74-wl .k em{font-style:normal;font-size:14px;font-weight:800;padding:2px 8px;border-radius:999px;background:#FEE4E2;color:#912018;}
+.nf74-wl .pc{text-align:right;font-weight:700;color:#1D2939;} .nf74-wl b{text-align:right;font-variant-numeric:tabular-nums;}
+.nf74-wn{font-size:14px;color:#1D2939;margin:8px 0 0;}
+@media (max-width: 700px){ .nf74-where .nf74-wb{grid-template-columns:1fr;justify-items:center;} .nf74-wl{width:100%;} .nf74-wl button{grid-template-columns:14px 1fr 44px 92px;gap:8px;padding:10px 6px;} }
+
+/* Team: edit on every card, a tidy header, full names in the card footer, no "add" in Done */
+.nf74-ed{flex:none;display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;border:1.5px solid #E4E7EC;background:#fff;color:#1D2939;cursor:pointer;}
+.nf74-ed:hover{border-color:#98A2B3;background:#F9FAFB;}
+.nf39-ct b[role="button"]{cursor:pointer;} .nf39-ct b[role="button"]:hover{text-decoration:underline;text-underline-offset:3px;}
+#page-team .nf39-cf{gap:8px;}
+#page-team .nf39-who{min-width:0;flex:1 1 auto;}
+#page-team .nf39-who > span:last-child{overflow:visible !important;text-overflow:clip !important;max-width:none !important;white-space:nowrap;}
+#page-team .nf39-go{padding:0 12px !important;min-height:38px;flex:none;}
+#page-team .nf33t-col[data-col="done"] > .nf46-addt{display:none !important;}
+#page-team .nf45-teamhd{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:8px;}
+#page-team .nf45-teamhd .r1, #page-team .nf45-teamhd .r2, #page-team .nf45-teamhd .nf36-tbar{display:contents;}
+#page-team .nf45-teamhd .nf40-tb{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:12px;border:1.5px solid #D0D5DD;background:#fff;font-weight:700;font-size:16px;color:#0B0F14;}
+.nf74-lanes{display:flex;gap:8px;margin-top:12px;}
+.nf74-lanes label{flex:1;display:flex;align-items:center;justify-content:center;min-height:44px;border:1.5px solid #D0D5DD;border-radius:10px;font-weight:700;cursor:pointer;}
+.nf74-lanes label.on{border-color:#1F6B45;background:#ECFDF3;color:#085D3A;}
+.nf74-lanes input{position:absolute;opacity:0;pointer-events:none;}
+.nf74-del{color:#B42318 !important;border-color:#F9B8B0 !important;}
+
+/* Plans & pricing: crossed price, ₱0, what you save */
+.nf74-was{display:flex;align-items:center;gap:8px;min-height:26px;margin-top:6px;}
+.nf74-was s{font-size:16px;font-weight:700;color:#475467;text-decoration-thickness:2px;text-decoration-color:#D92D20;}
+.nf74-was em{font-style:normal;font-size:14px;font-weight:800;padding:2px 10px;border-radius:999px;background:#FEF0C7;color:#7A4D00;}
+.nf74-save{display:block;margin:4px 0 6px;font-size:14px;font-weight:800;color:#085D3A;background:#DCFAE6;border-radius:8px;padding:6px 10px;width:max-content;max-width:100%;}
+.nf74-was.blank, .nf74-save.blank{visibility:hidden;}
+.nf74-save.blank{visibility:visible;background:#F2F4F7;color:#1D2939;}
+.nf74-offer{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin:14px 0 6px;padding:16px 18px;border-radius:16px;background:linear-gradient(135deg,#ECFDF3,#FEF7E0);border:1.5px solid #A6E3BE;}
+.nf74-offer > div{flex:1;min-width:240px;display:flex;flex-direction:column;gap:4px;}
+.nf74-offer b{font-size:18px;color:#0B0F14;} .nf74-offer span{font-size:16px;color:#1D2939;}
+
+/* Prices & profit: Edit prices sits inside the table frame, not on its border */
+#page-profit .nf47-editp, #page-profit .nf26-editp{margin:14px 0 12px 16px !important;}
+/* Count the cash tab: what needs doing first (count, calendar), then the day's summary, then settings */
+#nf18Count{display:flex;flex-direction:column;gap:16px;}
+#nf18Count > #bkCashBody{display:contents;}
+#nf18Count #bkCashBody > .nf30-pills, #nf18Count #bkCashBody > .bk-tiles{order:1;margin:0;}
+#nf18Count > #nf18DrawerWrap{order:3;}
+#nf18Count #bkCashBody > .nf70-cash-detail{order:2;margin:0;}
+#nf18Count #bkCashBody > .cc-grid{order:4;}
+#nf18Count #bkCashBody > .nf-cc-set{order:5;margin:0;}
+#nf18Count #bkCashBody > section, #nf18Count #bkCashBody > div{order:6;}
+#nf18Count #bkCashBody > .nf30-pills{order:1;} #nf18Count #bkCashBody > .nf70-cash-detail{order:2;} #nf18Count #bkCashBody > .nf-cc-set{order:5;}
+.nf74-day{grid-template-columns:1.3fr 1fr 1fr !important;margin:6px 0 12px;}
+.nf74-day .nf74-ot{cursor:default;min-height:0;padding-right:18px;}
+.nf74-day .nf74-ot:hover{transform:none;box-shadow:none;border-color:inherit;}
+@media (max-width: 900px){ .nf74-day{grid-template-columns:1fr !important;} }
+#view-app .nf74-sdt th.t, .nf74-sdt th.t, .nf74-sdt td.t{text-align:left !important;}
+.nf74-sdt th.n, .nf74-sdt td.n{text-align:right !important;}
+.nf74-wl .k em, #view-app .nf74-wl .k em{color:#912018 !important;background:#FEE4E2 !important;}
+.nf74-wl{max-width:620px;}
+#nf26Plans .nf74-offer{margin:12px 24px 6px;}
+@media (max-width: 600px){ #nf26Plans .nf74-offer{margin:12px 16px 6px;} }
+/* Delivery orders: the order card's buttons sit inside the card, not on its border */
+#view-app .nfo-po > .nf43-act{padding:0 14px !important;box-sizing:border-box;}
+@media (max-width: 600px){ .nf74-costs li .k{white-space:normal;overflow:visible;} .nf74-costs li{grid-template-columns:24px 1fr auto 40px;} }
+/* popups: no text under 14px */
+.nf46-tr label small, .nf45-pop small{font-size:14px !important;}
+#nf48Pl small, .nf48-pl small, .nf48-sheet small{font-size:14px !important;}

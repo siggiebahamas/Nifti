@@ -13026,6 +13026,28 @@ body.nf55-on #view-app .main{padding-bottom:84px;}
 #view-index .r72-led-h{flex-direction:column;align-items:flex-start;gap:0;}
 @media(max-width:760px){ #view-index .r72-led[data-k="status"]{grid-column:1/-1;} }
 
+/* How it works: three steps (Round 73b) */
+#view-index .r72-ph.r72-ph3{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:0 0 18px;}
+#view-index .r72-st{position:relative;z-index:1;display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-areas:"n tx" "ic tx" ". em";column-gap:12px;row-gap:6px;align-items:start;text-align:left;background:#fff;border:1.5px solid var(--r72-line);border-radius:18px;padding:16px;cursor:pointer;font:inherit;color:var(--r72-ink);transition:all .3s ease;}
+#view-index .r72-st:hover{border-color:#9FD0B2;}
+#view-index .r72-st:focus-visible{outline:3px solid #8CC9A4;outline-offset:2px;}
+#view-index .r72-st .n{grid-area:n;width:34px;height:34px;border-radius:50%;background:#EEF3EF;color:#3B4B42;display:grid;place-items:center;font-family:var(--font-h);font-weight:800;font-size:16px;transition:all .3s ease;}
+#view-index .r72-st .ic{grid-area:ic;width:34px;height:34px;border-radius:10px;background:var(--r72-soft);color:var(--r72-green);display:grid;place-items:center;}
+#view-index .r72-st .ic svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;}
+#view-index .r72-st .tx{grid-area:tx;}
+#view-index .r72-st .tx b{display:block;font-family:var(--font-h);font-size:20px;font-weight:800;line-height:1.2;}
+#view-index .r72-st .tx small{display:block;font-size:15.5px;line-height:1.45;color:var(--r72-text);margin-top:4px;}
+#view-index .r72-st em{grid-area:em;font-style:normal;font-size:13px;font-weight:700;color:var(--r72-text);}
+#view-index .r72-st.on{border-color:var(--r72-green);background:linear-gradient(160deg,#F1FAF4,#FFFFFF 70%);box-shadow:0 22px 40px -30px rgba(27,107,64,.7);}
+#view-index .r72-st.on .n, #view-index .r72-st.done .n{background:var(--r72-green);color:#fff;}
+#view-index .r72-st.done{border-color:#BFE2CB;}
+#view-index .r72-ph-line{position:absolute;left:16.6%;right:16.6%;top:33px;height:3px;background:#DDE8E0;z-index:0;border-radius:3px;}
+#view-index .r72-ph-line i{display:block;height:100%;width:0;background:var(--r72-green);border-radius:3px;transition:width .5s ease;}
+#view-index .r72-sc.on .r72-pop2{animation:r72Pop .6s cubic-bezier(.2,.9,.3,1.2) .8s both;}
+@media(max-width:760px){ #view-index .r72-ph.r72-ph3{grid-template-columns:1fr;gap:8px;} #view-index .r72-ph-line{display:none;} #view-index .r72-st{padding:12px 14px;grid-template-areas:"n tx" "ic tx" ". em";} #view-index .r72-st .tx b{font-size:18px;} #view-index .r72-st .tx small{font-size:15px;} }
+#view-index .r72-win .r72-jr-scenes{min-height:452px;}
+@media(max-width:760px){ #view-index .r72-win .r72-jr-scenes{min-height:560px;} }
+
 
 /* ===== Round 72: dashboard ===== */
 /* Home: three status cards. Red = needs attention, amber = coming up, green = on track. Dark text everywhere. */
@@ -13352,6 +13374,196 @@ html body #view-app [id^="nf22Nb"].nf22-nbbtn, html body #view-app #nf22NbLed, h
 #mhHome.nf73-staff ~ .bk-count-nudge, #page-dashboard:has(#mhHome.nf73-staff) .bk-count-nudge{display:none !important;}
 
 
+/* ===== Round 74 ===== */
+/* Home: board stage counts as a calm count chip (same size and weight, no bright blue display number) */
+#view-app .ob .hdr .sh-c .sc-d{display:none !important;}
+#view-app .ob .hdr .sh-c{display:inline-flex;align-items:center;margin-left:8px;vertical-align:middle;}
+#view-app .ob .hdr .sh-c .sc{display:inline-flex;align-items:center;justify-content:center;min-width:34px;height:34px;padding:0 9px;border-radius:10px;
+  background:#EEF3FB;border:1.5px solid #C9D6EA;color:#0B1F3A !important;font:800 24px/1 "Plus Jakarta Sans",system-ui,sans-serif;font-variant-numeric:tabular-nums;letter-spacing:0;}
+#view-app .ob .hdr .sh-t{display:flex;flex-direction:column-reverse;align-items:flex-start;gap:6px;}
+#view-app .ob .hdr .sh-c{margin-left:0;}
+
+/* Home: the price list and notebook cards now sit under What to do */
+#mhHome .rows > .nf48-home, #mhHome .rows > .nf45-oldhint{margin:0;}
+/* permanent homes on their pages */
+.nf74-homes{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+.nf74-home-btn{display:inline-flex;align-items:center;gap:8px;min-height:40px;font-weight:700;}
+
+/* Owner view: three answers, each one a door to its page */
+.nf74-owner .nf74-ow{display:grid;grid-template-columns:1fr 1fr 1.25fr;gap:12px;margin-top:6px;}
+.nf74-ot{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:4px;text-align:left;padding:16px 36px 16px 18px;border-radius:16px;border:1.5px solid #E4E7EC;background:#fff;cursor:pointer;font:inherit;color:#0B0F14;min-height:132px;transition:border-color .15s, box-shadow .15s, transform .15s;}
+.nf74-ot:hover{border-color:#98A2B3;box-shadow:0 6px 18px rgba(16,24,40,.08);transform:translateY(-1px);}
+.nf74-ot:focus-visible{outline:3px solid #2563EB;outline-offset:2px;}
+.nf74-ot .lb{font-size:14px;font-weight:800;letter-spacing:.02em;text-transform:uppercase;color:#1D2939;}
+.nf74-ot > b{font-size:28px;line-height:1.15;font-weight:800;font-variant-numeric:tabular-nums;}
+.nf74-ot > b .u{font-size:16px;font-weight:700;margin-left:2px;}
+.nf74-ot small{font-size:14px;color:#1D2939;font-weight:500;}
+.nf74-ot .go{position:absolute;right:14px;top:14px;font-style:normal;font-size:24px;line-height:1;color:#0B0F14;}
+.nf74-ot.t-g{background:#F2FBF5;border-color:#B7E4C7;} .nf74-ot.t-g > b{color:#14653A;}
+.nf74-ot.t-y{background:#FFFBEB;border-color:#F2D46B;} .nf74-ot.t-y > b{color:#7A4D00;}
+.nf74-ot.t-r{background:#FEF3F2;border-color:#F9B8B0;} .nf74-ot.t-r > b{color:#B42318;}
+.nf74-ot.t-b{background:#F5F8FF;border-color:#C9D6EA;}
+.nf74-ch{display:inline-flex;align-items:center;gap:4px;font-style:normal;font-size:14px;font-weight:800;padding:3px 10px;border-radius:999px;}
+.nf74-ch.g{background:#DCFAE6;color:#085D3A;} .nf74-ch.r{background:#FEE4E2;color:#912018;} .nf74-ch.z{background:#F2F4F7;color:#1D2939;}
+.nf74-costs ol{list-style:none;margin:4px 0 0;padding:0;width:100%;display:flex;flex-direction:column;gap:6px;}
+.nf74-costs li{display:grid;grid-template-columns:24px 1fr auto 44px;align-items:center;gap:8px;font-size:16px;}
+.nf74-costs li .n{width:24px;height:24px;border-radius:50%;background:#DCE6F5;color:#0B1F3A;font-size:14px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;}
+.nf74-costs li .k{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.nf74-costs li b{font-variant-numeric:tabular-nums;font-weight:800;}
+.nf74-costs li em{font-style:normal;font-size:14px;font-weight:700;text-align:right;color:#1D2939;}
+.nf74-ow-r{display:flex;align-items:center;gap:12px;margin-top:12px;padding:12px 14px;border-radius:14px;border:1.5px solid #E4E7EC;background:#fff;}
+.nf74-ow-r .d{width:10px;height:10px;border-radius:50%;flex:none;background:#98A2B3;}
+.nf74-ow-r.t-r{border-color:#F9B8B0;background:#FEF3F2;} .nf74-ow-r.t-r .d{background:#D92D20;}
+.nf74-ow-r.t-y{border-color:#F2D46B;background:#FFFBEB;} .nf74-ow-r.t-y .d{background:#F5B800;}
+.nf74-ow-r.t-g{border-color:#B7E4C7;background:#F2FBF5;} .nf74-ow-r.t-g .d{background:#16A34A;}
+.nf74-ow-r .tx{flex:1;display:flex;flex-direction:column;gap:2px;} .nf74-ow-r .tx b{font-size:16px;} .nf74-ow-r .tx small{font-size:14px;color:#1D2939;}
+@media (max-width: 900px){ .nf74-owner .nf74-ow{grid-template-columns:1fr;} .nf74-ot{min-height:0;} .nf74-ow-r{flex-wrap:wrap;} }
+
+/* running comparison chips (Money overview profit, Monthly summary) */
+.nf74-cmp, #view-app small.nf74-cmp{display:block !important;text-align:right;margin-top:6px;font-size:14px;font-weight:800;line-height:1.5;}
+.nf74-cmp.up{color:#14653A;} .nf74-cmp.down{color:#B42318;} .nf74-cmp.z{color:#1D2939;}
+.nf74-cmp span{display:block;font-weight:600;color:#1D2939 !important;}
+.nf45-gk .nf74-was{display:block;font-size:14px;font-weight:600;color:#1D2939 !important;margin-top:2px;}
+/* Monthly summary: a month you lost money in is red, "Balance at the start" reads from the left */
+#view-app .nf47-mt td.dn{color:#B42318 !important;font-weight:800;}
+
+/* Money overview: coming up, WHAT = bold name over a normal-weight detail */
+#view-app .nf37-what small{font-weight:500 !important;}
+#view-app .nf37-what b{font-weight:800;}
+#view-app .nf23-gl td.nf74-bal{text-align:left !important;padding-left:16px !important;white-space:nowrap;}
+
+/* Walk-in sales: two tabs; the pills show on both */
+#page-sales > .nf74-tabs{display:flex;gap:6px;padding:5px;margin:4px 0 16px;background:#F2F4F7;border-radius:14px;width:max-content;max-width:100%;}
+#page-sales > .nf74-tabs button{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border:0;border-radius:10px;background:transparent;font-family:inherit;font-size:16px;font-weight:700;line-height:1;color:#1D2939;cursor:pointer;}
+#page-sales > .nf74-tabs button.on{background:#fff;color:#0B0F14;box-shadow:0 1px 3px rgba(16,24,40,.12);}
+#page-sales > .nf74-tabs button em{font-style:normal;font-size:14px;font-weight:800;padding:3px 8px;border-radius:999px;background:#FEF0C7;color:#7A4D00;}
+#page-sales[data-nf74t="sales"] #nf18Count{display:none !important;}
+#page-sales[data-nf74t="cash"] #bkSalesBody > :not(.nf43-pills){display:none !important;}
+#page-sales[data-nf74t="cash"] #nf18Count > .nf18-mh2{display:none !important;}
+#page-sales[data-nf74t="cash"] #nf18Count{margin-top:4px;}
+@media (max-width: 600px){ #page-sales > .nf74-tabs{width:100%;} #page-sales > .nf74-tabs button{flex:1;justify-content:center;padding:0 10px;} #page-sales > .nf74-tabs button em{display:none;} }
+
+/* Row actions (Details, Receipt, Remove, Paid, Edit): one line, same height, centred on the row */
+#view-app .bk-row-a{display:inline-flex !important;align-items:center;justify-content:flex-end;gap:16px;flex-wrap:nowrap;}
+#view-app .bk-row-a > button, #view-app .bk-row-a > a{display:inline-flex !important;align-items:center;justify-content:center;height:36px;min-height:36px;margin:0 !important;padding:0 2px !important;line-height:1 !important;font-size:16px !important;font-weight:700;vertical-align:middle;white-space:nowrap;}
+#view-app table td.a, #view-app .nf25-t td.a{vertical-align:middle !important;white-space:nowrap;}
+#view-app .nf25-t td.a .bk-row-a{display:flex !important;}
+
+/* Number popups: one size for the big figure, its note on its own line; totals the same size as the lines */
+.nf45-ib b{display:block;}
+.nf45-ib span{display:block;font-size:16px;font-weight:600;margin-top:4px;}
+.nf45-t tbody td, .nf45-t tfoot td{font-size:16px !important;}
+.nf45-t tfoot td{font-weight:800 !important;border-top:2px solid #D0D5DD;}
+.nf45-t tfoot td b, .nf45-t tfoot td strong{font-size:16px !important;}
+
+/* Sale details */
+.nf74-sd .nf74-sdh{display:grid;grid-template-columns:repeat(5, minmax(0, 1fr));gap:10px;margin-bottom:14px;}
+.nf74-sdh > div{border:1.5px solid #E4E7EC;border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:4px;min-width:0;}
+.nf74-sdh small{font-size:14px;font-weight:600;color:#1D2939;} .nf74-sdh b{font-size:16px;overflow-wrap:anywhere;} .nf74-sdh b.ok{color:#14653A;} .nf74-sdh b.due{color:#B42318;}
+.nf74-sdt{border:1.5px solid #E4E7EC;border-radius:12px;overflow-x:auto;}
+.nf74-sdt table{width:100%;border-collapse:collapse;}
+.nf74-sdt th{background:#F2F4F7;font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;padding:12px 14px;white-space:nowrap;color:#1D2939;}
+.nf74-sdt td{padding:12px 14px;font-size:16px;border-top:1px solid #EAECF0;vertical-align:middle;}
+.nf74-sdt .t{text-align:left;} .nf74-sdt .n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums;}
+.nf74-sdt td small{display:block;font-size:14px;color:#1D2939;font-weight:500;}
+.nf74-disc{color:#B42318;font-weight:700;}
+.nf74-sds{margin:12px 0 0 auto;max-width:380px;display:flex;flex-direction:column;gap:6px;}
+.nf74-sds > div{display:flex;justify-content:space-between;gap:16px;font-size:16px;padding:2px 14px;}
+.nf74-sds > div b{font-variant-numeric:tabular-nums;}
+.nf74-sds .tot{font-size:18px;font-weight:800;border-bottom:1.5px solid #E4E7EC;padding-bottom:8px;}
+.nf74-sds .disc b{color:#B42318;} .nf74-sds .keep b{color:#14653A;} .nf74-sds .neg b{color:#B42318;}
+@media (max-width: 700px){ .nf74-sd .nf74-sdh{grid-template-columns:1fr 1fr;} .nf74-sds{max-width:none;} }
+
+/* Cash day: fix or settle */
+.nf74-settle{border:1.5px solid #C9D6EA;background:#F5F8FF;}
+.nf74-settle .actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+.nf74-sl{display:flex;flex-direction:column;gap:6px;margin-top:8px;font-weight:700;}
+.nf74-sl textarea{min-height:72px;border:1.5px solid #D0D5DD;border-radius:10px;padding:10px 12px;font:inherit;font-size:16px;}
+
+/* Expenses: All expenses table — bigger text, headers centred, Date first, action buttons on the text line */
+#page-expenses .nf25-t th{text-align:center !important;font-size:14px !important;}
+#page-expenses .nf25-t td{font-size:16px !important;text-align:center;vertical-align:middle !important;padding-top:14px !important;padding-bottom:14px !important;}
+#page-expenses .nf25-t td.d{text-align:left !important;white-space:nowrap;font-weight:700;}
+#page-expenses .nf25-t th.d{text-align:left !important;}
+#page-expenses .nf25-t td.t{text-align:center !important;}
+#page-expenses .nf25-t td.t small{font-size:14px !important;}
+#page-expenses .nf25-t th.t, #page-expenses .nf25-t td.t{width:auto !important;min-width:0 !important;}
+#page-expenses .nf25-t{table-layout:auto !important;}
+/* Where the money went: ring + ranked list */
+.nf74-where .nf74-wb{display:grid;grid-template-columns:180px 1fr;gap:24px;align-items:center;padding:4px 0;}
+.nf74-ring{position:relative;width:170px;height:170px;}
+.nf74-ring svg{width:100%;height:100%;display:block;}
+.nf74-ring .c{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 34px;}
+.nf74-ring .c b{font-size:24px;font-weight:800;} .nf74-ring .c small{font-size:14px;font-weight:600;color:#1D2939;line-height:1.2;}
+.nf74-wl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px;}
+.nf74-wl button{width:100%;display:grid;grid-template-columns:14px 1fr 56px 110px;align-items:center;gap:12px;padding:10px 12px;border:0;border-radius:10px;background:transparent;font:inherit;font-size:16px;color:#0B0F14;cursor:pointer;text-align:left;}
+.nf74-wl button:hover:not([disabled]){background:#F2F4F7;} .nf74-wl button[disabled]{cursor:default;}
+.nf74-wl i{width:14px;height:14px;border-radius:4px;}
+.nf74-wl .k{font-weight:700;display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;}
+.nf74-wl .k em{font-style:normal;font-size:14px;font-weight:800;padding:2px 8px;border-radius:999px;background:#FEE4E2;color:#912018;}
+.nf74-wl .pc{text-align:right;font-weight:700;color:#1D2939;} .nf74-wl b{text-align:right;font-variant-numeric:tabular-nums;}
+.nf74-wn{font-size:14px;color:#1D2939;margin:8px 0 0;}
+@media (max-width: 700px){ .nf74-where .nf74-wb{grid-template-columns:1fr;justify-items:center;} .nf74-wl{width:100%;} .nf74-wl button{grid-template-columns:14px 1fr 44px 92px;gap:8px;padding:10px 6px;} }
+
+/* Team: edit on every card, a tidy header, full names in the card footer, no "add" in Done */
+.nf74-ed{flex:none;display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;border:1.5px solid #E4E7EC;background:#fff;color:#1D2939;cursor:pointer;}
+.nf74-ed:hover{border-color:#98A2B3;background:#F9FAFB;}
+.nf39-ct b[role="button"]{cursor:pointer;} .nf39-ct b[role="button"]:hover{text-decoration:underline;text-underline-offset:3px;}
+#page-team .nf39-cf{gap:8px;}
+#page-team .nf39-who{min-width:0;flex:1 1 auto;}
+#page-team .nf39-who > span:last-child{overflow:visible !important;text-overflow:clip !important;max-width:none !important;white-space:nowrap;}
+#page-team .nf39-go{padding:0 12px !important;min-height:38px;flex:none;}
+#page-team .nf33t-col[data-col="done"] > .nf46-addt{display:none !important;}
+#page-team .nf45-teamhd{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:8px;}
+#page-team .nf45-teamhd .r1, #page-team .nf45-teamhd .r2, #page-team .nf45-teamhd .nf36-tbar{display:contents;}
+#page-team .nf45-teamhd .nf40-tb{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border-radius:12px;border:1.5px solid #D0D5DD;background:#fff;font-weight:700;font-size:16px;color:#0B0F14;}
+.nf74-lanes{display:flex;gap:8px;margin-top:12px;}
+.nf74-lanes label{flex:1;display:flex;align-items:center;justify-content:center;min-height:44px;border:1.5px solid #D0D5DD;border-radius:10px;font-weight:700;cursor:pointer;}
+.nf74-lanes label.on{border-color:#1F6B45;background:#ECFDF3;color:#085D3A;}
+.nf74-lanes input{position:absolute;opacity:0;pointer-events:none;}
+.nf74-del{color:#B42318 !important;border-color:#F9B8B0 !important;}
+
+/* Plans & pricing: crossed price, ₱0, what you save */
+.nf74-was{display:flex;align-items:center;gap:8px;min-height:26px;margin-top:6px;}
+.nf74-was s{font-size:16px;font-weight:700;color:#0B0F14;text-decoration-thickness:2px;text-decoration-color:#D92D20;}
+.nf74-was em{font-style:normal;font-size:14px;font-weight:800;padding:2px 10px;border-radius:999px;background:#FEF0C7;color:#7A4D00;}
+.nf74-save{display:block;margin:4px 0 6px;font-size:14px;font-weight:800;color:#085D3A;background:#DCFAE6;border-radius:8px;padding:6px 10px;width:max-content;max-width:100%;}
+.nf74-was.blank, .nf74-save.blank{visibility:hidden;}
+.nf74-save.blank{visibility:visible;background:#F2F4F7;color:#1D2939;}
+.nf74-offer{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin:14px 0 6px;padding:16px 18px;border-radius:16px;background:linear-gradient(135deg,#ECFDF3,#FEF7E0);border:1.5px solid #A6E3BE;}
+.nf74-offer > div{flex:1;min-width:240px;display:flex;flex-direction:column;gap:4px;}
+.nf74-offer b{font-size:18px;color:#0B0F14;} .nf74-offer span{font-size:16px;color:#1D2939;}
+
+/* Prices & profit: Edit prices sits inside the table frame, not on its border */
+#page-profit .nf47-editp, #page-profit .nf26-editp{margin:14px 0 12px 16px !important;}
+/* Count the cash tab: what needs doing first (count, calendar), then the day's summary, then settings */
+#nf18Count{display:flex;flex-direction:column;gap:16px;}
+#nf18Count > #bkCashBody{display:contents;}
+#nf18Count #bkCashBody > .nf30-pills, #nf18Count #bkCashBody > .bk-tiles{order:1;margin:0;}
+#nf18Count > #nf18DrawerWrap{order:3;}
+#nf18Count #bkCashBody > .nf70-cash-detail{order:2;margin:0;}
+#nf18Count #bkCashBody > .cc-grid{order:4;}
+#nf18Count #bkCashBody > .nf-cc-set{order:5;margin:0;}
+#nf18Count #bkCashBody > section, #nf18Count #bkCashBody > div{order:6;}
+#nf18Count #bkCashBody > .nf30-pills{order:1;} #nf18Count #bkCashBody > .nf70-cash-detail{order:2;} #nf18Count #bkCashBody > .nf-cc-set{order:5;}
+.nf74-day{grid-template-columns:1.3fr 1fr 1fr !important;margin:6px 0 12px;}
+.nf74-day .nf74-ot{cursor:default;min-height:0;padding-right:18px;}
+.nf74-day .nf74-ot:hover{transform:none;box-shadow:none;border-color:inherit;}
+@media (max-width: 900px){ .nf74-day{grid-template-columns:1fr !important;} }
+#view-app .nf74-sdt th.t, .nf74-sdt th.t, .nf74-sdt td.t{text-align:left !important;}
+.nf74-sdt th.n, .nf74-sdt td.n{text-align:right !important;}
+.nf74-wl .k em, #view-app .nf74-wl .k em{color:#912018 !important;background:#FEE4E2 !important;}
+.nf74-wl{max-width:620px;}
+#nf26Plans .nf74-offer{margin:12px 24px 6px;}
+@media (max-width: 600px){ #nf26Plans .nf74-offer{margin:12px 16px 6px;} }
+/* Delivery orders: the order card's buttons sit inside the card, not on its border */
+#view-app .nfo-po > .nf43-act{padding:0 14px !important;box-sizing:border-box;}
+@media (max-width: 600px){ .nf74-costs li .k{white-space:normal;overflow:visible;} .nf74-costs li{grid-template-columns:24px 1fr auto 40px;} }
+/* popups: no text under 14px */
+.nf46-tr label small, .nf45-pop small{font-size:14px !important;}
+#nf48Pl small, .nf48-pl small, .nf48-sheet small{font-size:14px !important;}
+
+
 /* Round 51: marketing pages keep their original type sizes (the six-size scale is for the app) */
 .marketing-view, #view-login{--ty-k:1.0625;--ty-min:14px;--ty-body:17px;--ty-lead:17.5px;--ty-display:40px;--ty-h1:36px;--ty-h2:22px;--ty-cap:14px;--ty-lbl:17px;--ty-val:29px;--ty-sub:16px;--ty-th:14.5px;--ty-td:16.5px;--ty-row:17.5px;--ty-small:16px;--ty-pill:14px;--ty-tab:16.5px;--ty-btn:16.5px;--ty-nav:16.5px}
 html[data-ty] .marketing-view details.p2-compare > summary, html[data-ty] .marketing-view .mk-table td{font-size:calc(16px*var(--ty-k,1))}
@@ -13407,48 +13619,35 @@ html[data-ty] #view-login p.fine{font-size:calc(15px*var(--ty-k,1))}
 </section>
 <section class="r72-jr" id="mkJourney" aria-labelledby="r72JrTitle">
   <div class="wrap">
-    <div class="f5-head"><div class="p2-burst">HOW IT WORKS</div><h2 id="r72JrTitle">From order to paid, <span>without the chasing.</span></h2><p>Follow one real order through Nifti, step by step. Your customers and suppliers just tap a link. They don't need the app.</p></div>
+    <div class="f5-head"><div class="p2-burst">HOW IT WORKS</div><h2 id="r72JrTitle">From order to paid, <span>without the chasing.</span></h2><p>Three steps. One order. Everything else keeps up by itself.</p></div>
     <div class="r72-jr-box">
-      <div class="r72-ph" role="tablist" aria-label="Steps of one order"><div class="r72-ph-g"><div class="r72-ph-h"><span class="n">1</span><b>Orders come in</b></div><div class="r72-ph-s"><button type="button" role="tab" data-i="0" aria-selected="true" class=on><i aria-hidden="true"></i><span><b>Order in</b><small>7:42 AM</small></span></button><button type="button" role="tab" data-i="1" aria-selected="false"><i aria-hidden="true"></i><span><b>They confirm</b><small>7:50 AM</small></span></button></div></div><div class="r72-ph-g"><div class="r72-ph-h"><span class="n">2</span><b>Deliver</b></div><div class="r72-ph-s"><button type="button" role="tab" data-i="2" aria-selected="false"><i aria-hidden="true"></i><span><b>On the way</b><small>10:15 AM</small></span></button><button type="button" role="tab" data-i="3" aria-selected="false"><i aria-hidden="true"></i><span><b>Delivered</b><small>11:05 AM</small></span></button></div></div><div class="r72-ph-g"><div class="r72-ph-h"><span class="n">3</span><b>Get paid</b></div><div class="r72-ph-s"><button type="button" role="tab" data-i="4" aria-selected="false"><i aria-hidden="true"></i><span><b>Billed</b><small>11:06 AM</small></span></button><button type="button" role="tab" data-i="5" aria-selected="false"><i aria-hidden="true"></i><span><b>Paid</b><small>Dec 3</small></span></button></div></div></div>
+      <div class="r72-ph r72-ph3" role="tablist" aria-label="Three steps of one order"><button type="button" role="tab" data-i="0" aria-selected="true" class="r72-st on"><span class="n">1</span><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.6 8.6 0 0 1-3.8-.9L3 21l1.9-5.2A8.4 8.4 0 1 1 21 11.5z"/></svg></span><span class="tx"><b>Order in</b><small>They message you. You make the order from your price list. They confirm with one tap.</small></span><em>7:42 AM</em></button><button type="button" role="tab" data-i="1" aria-selected="false" class="r72-st"><span class="n">2</span><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="7" width="13" height="10" rx="1"/><path d="M14 10h4l3 3v4h-7"/><circle cx="5.5" cy="18" r="1.8"/><circle cx="17.5" cy="18" r="1.8"/></svg></span><span class="tx"><b>Delivered</b><small>Your driver delivers with a photo. The stock goes down by itself.</small></span><em>11:05 AM</em></button><button type="button" role="tab" data-i="2" aria-selected="false" class="r72-st"><span class="n">3</span><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 20V4h6a4 4 0 0 1 0 8H7"/><path d="M4 8h16M4 11h16"/></svg></span><span class="tx"><b>Paid</b><small>The bill goes out, they pay by GCash, and your books are done.</small></span><em>Dec 3</em></button><span class="r72-ph-line" aria-hidden="true"><i></i></span></div>
       <div class="r72-win">
         <div class="r72-win-top" aria-hidden="true"><i></i><i></i><i></i><span>nifti · Dela Cruz Hardware</span></div>
         <div class="r72-win-body">
-          <nav class="r72-win-nav" aria-hidden="true"><span data-on=""><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11 12 4l9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><b>Home</b></span><span data-on="0 1"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="7" width="13" height="10" rx="1"/><path d="M14 10h4l3 3v4h-7"/><circle cx="5.5" cy="18" r="1.8"/><circle cx="17.5" cy="18" r="1.8"/></svg><b>Delivery orders</b></span><span data-on="2"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8 19h8a3 3 0 0 0 0-6H8a3 3 0 0 1 0-6h8"/></svg><b>Deliveries</b></span><span data-on="3"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg><b>Stock</b></span><span data-on="4"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 20V4h6a4 4 0 0 1 0 8H7"/><path d="M4 8h16M4 11h16"/></svg><b>Getting paid</b></span><span data-on="5"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 6-7"/></svg><b>Money overview</b></span></nav>
+          <nav class="r72-win-nav" aria-hidden="true"><span data-on=""><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11 12 4l9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><b>Home</b></span><span data-on="0"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="1" y="7" width="13" height="10" rx="1"/><path d="M14 10h4l3 3v4h-7"/><circle cx="5.5" cy="18" r="1.8"/><circle cx="17.5" cy="18" r="1.8"/></svg><b>Delivery orders</b></span><span data-on="1"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8 19h8a3 3 0 0 0 0-6H8a3 3 0 0 1 0-6h8"/></svg><b>Deliveries</b></span><span data-on=""><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg><b>Stock</b></span><span data-on="2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 20V4h6a4 4 0 0 1 0 8H7"/><path d="M4 8h16M4 11h16"/></svg><b>Getting paid</b></span><span data-on=""><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 6-7"/></svg><b>Money overview</b></span></nav>
           <div class="r72-jr-scenes" aria-live="polite">
           <div class="r72-sc on" data-i="0">
-            <div class="r72-sc-cap"><b>Bayview sends the order the way they always do.</b><span>You add it from your own price list. No retyping prices, no math.</span></div>
+            <div class="r72-sc-cap"><b>An order comes in, and it's confirmed in writing.</b><span>No retyping, no math, and your customer doesn't need the app.</span></div>
             <div class="r72-chat"><span class="r72-av">BC</span><div><small>Bayview Construction · Viber</small><p>Boss, 20 bags cement po. Deliver bukas 🙏</p></div></div>
-            <div class="r72-card r72-pop"><div class="r72-card-h"><b>Order 0856</b><span class="r72-pill y">New</span></div><div class="r72-line"><span>Portland Cement 40kg × 20 bags</span><b>₱4,560</b></div><div class="r72-line sub"><span>Price from your list · ₱228 a bag</span><span>Deliver tomorrow</span></div></div>
+            <div class="r72-card r72-pop"><div class="r72-card-h"><b>Order 0856</b><span class="r72-pill b">Confirmed</span></div><div class="r72-line"><span>Portland Cement 40kg × 20 bags</span><b>₱4,560</b></div><div class="r72-line sub"><span>Price from your list · ₱228 a bag</span><span>Deliver tomorrow</span></div></div>
+            <div class="r72-toast r72-pop2"><span class="ok">✓</span><div><b>Bayview tapped Confirm on their phone</b><small>From a link. No app, no sign-up.</small></div></div>
           </div>
           <div class="r72-sc" data-i="1">
-            <div class="r72-sc-cap"><b>They open a link and tap Confirm.</b><span>No app, no sign-up for your customer. The price and date are agreed in writing.</span></div>
-            <div class="r72-browser"><div class="r72-url"><i></i>nifti · order link</div><p><b>Dela Cruz Hardware</b> sent you Order 0856</p><div class="r72-line"><span>Portland Cement 40kg × 20</span><b>₱4,560</b></div><div class="r72-btns"><span class="r72-btn">Ask for a change</span><span class="r72-btn p r72-tap">Confirm</span></div></div>
-            <div class="r72-toast r72-pop"><span class="ok">✓</span><div><b>Bayview confirmed Order 0856</b><small>Delivery tomorrow, 20 bags</small></div></div>
+            <div class="r72-sc-cap"><b>Delivered, with a photo. Stock updates itself.</b><span>Your driver sees every stop. The 20 bags leave your stock the moment it's delivered.</span></div>
+            <div class="r72-card"><div class="r72-card-h"><b>Today · Mark Santos · L300</b><span class="r72-pill g">2 of 3 done</span></div>
+              <div class="r72-stop done"><i>✓</i><span><b>Cavite Steel Works</b><small>Delivered · 9:40 AM</small></span></div>
+              <div class="r72-stop done"><i>✓</i><span><b>Bayview Construction</b><small>Delivered 20 bags · photo saved · 11:05 AM</small></span></div></div>
+            <div class="r72-card r72-pop"><div class="r72-card-h"><b>Stock · Portland Cement 40kg</b></div><div class="r72-stock"><span><small>Before</small><b>120 bags</b></span><em>− 20</em><span><small>Now</small><b class="g">100 bags</b></span></div></div>
           </div>
           <div class="r72-sc" data-i="2">
-            <div class="r72-sc-cap"><b>It joins your driver's run for the day.</b><span>Mark sees every stop, what to drop off and what to collect.</span></div>
-            <div class="r72-card"><div class="r72-card-h"><b>Today · Mark Santos · L300</b><span class="r72-pill b">On the road</span></div>
-              <div class="r72-stop done"><i>✓</i><span><b>Cavite Steel Works</b><small>Delivered · 9:40 AM</small></span></div>
-              <div class="r72-stop next"><i>2</i><span><b>Bayview Construction</b><small>Deliver 20 bags cement</small></span></div>
-              <div class="r72-stop"><i>3</i><span><b>Riverside Builders</b><small>Collect ₱6,000</small></span></div></div>
-          </div>
-          <div class="r72-sc" data-i="3">
-            <div class="r72-sc-cap"><b>Delivered, with a photo. Stock goes down by itself.</b><span>Bayview taps "Got it". The 20 bags leave your stock list the moment it is delivered.</span></div>
-            <div class="r72-toast"><span class="ok">✓</span><div><b>Delivered: Order 0856</b><small>Received at Bayview · photo saved</small></div></div>
-            <div class="r72-card r72-pop"><div class="r72-card-h"><b>Stock · Portland Cement 40kg</b></div><div class="r72-stock"><span><small>Before</small><b>120 bags</b></span><em>− 20</em><span><small>Now</small><b class="g">100 bags</b></span></div><div class="r72-line sub"><span>Reason: Delivered to Bayview · Order 0856</span></div></div>
-          </div>
-          <div class="r72-sc" data-i="4">
-            <div class="r72-sc-cap"><b>One tap turns it into a bill.</b><span>Same lines, same prices. It lands on "Who owes you" with its due date.</span></div>
-            <div class="r72-card r72-pop"><div class="r72-card-h"><b>Bill · Bayview Construction</b><span class="r72-pill y">Due Dec 8</span></div><div class="r72-line"><span>Order 0856 · 20 bags cement</span><b>₱4,560</b></div><div class="r72-line sub"><span>Your GCash and bank QR are on the bill</span></div></div>
-            <div class="r72-toast"><span class="bell">🔔</span><div><b>Reminder set for Dec 8</b><small>Sent for you by email or Nifti chat, or by Viber in one tap</small></div></div>
-          </div>
-          <div class="r72-sc" data-i="5">
-            <div class="r72-sc-cap"><b>They pay by GCash. You confirm. The books are done.</b><span>The sale, the cost of the cement and your profit are recorded. Nothing to copy into a notebook.</span></div>
-            <div class="r72-toast r72-pop"><span class="ok">✓</span><div><b>Bayview paid ₱4,560</b><small>GCash · ref 4432 · you confirmed</small></div></div>
-            <div class="r72-card"><div class="r72-card-h"><b>In your books</b><span class="r72-pill g">Recorded</span></div><div class="r72-line"><span>Sale</span><b>₱4,560</b></div><div class="r72-line"><span>Cost of 20 bags (₱184 each)</span><b>₱3,680</b></div><div class="r72-line tot"><span>Profit on this order</span><b class="g">₱880</b></div></div>
+            <div class="r72-sc-cap"><b>Billed, paid, and in your books.</b><span>One tap turns it into a bill. When they pay, you confirm, and the profit is counted for you.</span></div>
+            <div class="r72-toast"><span class="bell">🧾</span><div><b>Bill sent to Bayview · ₱4,560</b><small>Due Dec 8 · your GCash QR is on it · reminder set</small></div></div>
+            <div class="r72-toast r72-pop"><span class="ok">✓</span><div><b>Bayview paid ₱4,560 by GCash</b><small>Ref 4432 · you confirmed</small></div></div>
+            <div class="r72-card r72-pop2"><div class="r72-card-h"><b>In your books</b><span class="r72-pill g">Done</span></div><div class="r72-line"><span>Sale</span><b>₱4,560</b></div><div class="r72-line"><span>Cost of 20 bags</span><b>₱3,680</b></div><div class="r72-line tot"><span>Profit on this order</span><b class="g">₱880</b></div></div>
           </div>
         </div>
-          <aside class="r72-jr-ledger" aria-label="What Nifti updated"><div class="r72-led-h"><b>Updated by Nifti</b><small>nobody typed these</small></div><div class="r72-led" data-k="status"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 3 3 5-6"/></svg></span><span class="lb">Order 0856</span><b><em class="r72-pill y">New</em></b></div><div class="r72-led" data-k="stock"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg></span><span class="lb">Cement on hand</span><b>120 bags</b></div><div class="r72-led" data-k="owed"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h4"/></svg></span><span class="lb">Bayview owes you</span><b>₱0</b></div><div class="r72-led" data-k="cash"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/></svg></span><span class="lb">Money received</span><b>₱0</b></div><div class="r72-led" data-k="profit"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span><span class="lb">Profit on this order</span><b>—</b></div></aside>
+        <aside class="r72-jr-ledger" aria-label="What Nifti updated"><div class="r72-led-h"><b>Updated by Nifti</b><small>nobody typed these</small></div><div class="r72-led" data-k="status"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12.5 3 3 5-6"/></svg></span><span class="lb">Order 0856</span><b><em class="r72-pill y">New</em></b></div><div class="r72-led" data-k="stock"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg></span><span class="lb">Cement on hand</span><b>120 bags</b></div><div class="r72-led" data-k="owed"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h4"/></svg></span><span class="lb">Bayview owes you</span><b>₱0</b></div><div class="r72-led" data-k="cash"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/></svg></span><span class="lb">Money received</span><b>₱0</b></div><div class="r72-led" data-k="profit"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span><span class="lb">Profit on this order</span><b>—</b></div></aside>
         </div>
         <div class="r72-win-foot"><span class="r72-prog"><i></i></span><button type="button" class="r72-replay" hidden>↻ Play again</button></div>
       </div>
@@ -26144,7 +26343,7 @@ function renderExpensesPage(){
         ${bkTile('Stock bought in cash', bkPeso(mx.cogs), 'counted as cost of goods')}${bkTile('Owner took', bkPeso(mx.drawings), 'not an expense')}</div>
       ${un.spikes.length || un.missing.length ? `<section class="panel-card bk-alerts">${un.spikes.map(x => `<div class="bk-alert red"><b>${escapeHtml(x.cat)} is ${x.pct}% higher than usual</b><span>${bkPeso(x.now)} this month. Your last months averaged ${bkPeso(x.avg)}. Review receipts, timing and category coding before deciding what changed.</span></div>`).join('')}
         ${un.missing.map(x => `<div class="bk-alert amber"><b>${escapeHtml(x.cat)} isn't in yet</b><span>Usually ${bkPeso(x.usual)} around the ${x.day}${['th', 'st', 'nd', 'rd'][(x.day % 10 > 3 || [11, 12, 13].includes(x.day)) ? 0 : x.day % 10]}. <a class="lg-link" onclick="openExpenseForm(); EXF.category='${x.cat.replace(/'/g, "\\'")}'; EXF.amount='${x.usual}'; EXF.repeat=true; exRender()">Add it</a></span></div>`).join('')}</section>` : ''}
-      ${cats.length ? `<section class="panel-card"><div class="panel-head"><h2>Where the money went</h2></div><div class="bk-bars">${cats.map(([k, v]) => `<button class="bk-bar" onclick="bkExpFilter='${k.replace(/'/g, "\\'")}'; renderExpensesPage()"><span class="bk-bar-l">${escapeHtml(k)}</span><span class="bk-bar-t"><i style="width:${Math.max(3, v / max * 100).toFixed(1)}%"></i></span><span class="bk-bar-v">${bkPeso(v)}</span></button>`).join('')}</div></section>` : ''}
+      ${cats.length ? (typeof nf74Where === 'function' ? nf74Where(cats, m, un) : '') : ''}
       ${bkValeHtml(m)}`
     : `<div class="bk-note">You see the expenses you added. The owner sees everyone's.</div>`}
     <section class="panel-card bk-list"><div class="panel-head"><h2>${bkExpFilter ? escapeHtml(bkExpFilter) : 'All expenses'}</h2><span class="bk-dim">${list.filter(e => !e.deletedAt).length} entries</span></div>
@@ -26372,7 +26571,7 @@ function renderMoneyPage(){
         <div class="pl-r tot"><span>Gross profit</span><b>${bkPeso(p.gross)}</b></div>
         <div class="pl-r pl-neg"><span>− Expenses</span><b>${bkPeso(p.expenses)}</b></div>
         ${cats.length ? `<div class="pl-grp">${cats.map(([k, v]) => `<div class="pl-r pl-sub"><span>${escapeHtml(k)}</span><span>${bkPeso(v)}</span></div>`).join('')}</div>` : ''}
-        <div class="pl-r big ${p.net < 0 ? 'neg' : ''}"><span>${p.net < 0 ? 'Loss' : 'Profit'}</span><b>${bkPeso(Math.abs(p.net))}</b></div>${dl(p.net, prev.sales ? prev.net : 0)}
+        <div class="pl-r big ${p.net < 0 ? 'neg' : ''}"><span>${p.net < 0 ? 'Loss' : 'Profit'}</span><b>${bkPeso(Math.abs(p.net))}</b></div>${typeof nf74ProfitChip === 'function' ? nf74ProfitChip(m, p.net) : dl(p.net, prev.sales ? prev.net : 0)}
         ${p.drawings ? `<div class="bk-note">The owner took ${bkPeso(p.drawings)} this month. That comes out of profit, but it isn't an expense.</div>` : ''}
         ${p.missingCost ? `<div class="bk-note">Some items have no cost yet, so profit looks higher than it is. <a class="lg-link" onclick="go('profit')">Add costs</a></div>` : ''}</section>
       <div>
@@ -31177,9 +31376,9 @@ function mhDrawer(){
     if(k === APP_TODAY && !c){ const w = mhWho(k, s); cells += `<button class="day today" type="button" onclick="mhOpenSched()"><span class="dn">${d} · Today</span><span class="nm ini-row"><span class="ini">${mhEsc(mhIni(w))}</span>${mhEsc(mhFull(w))}</span><span class="st tcount">To Count</span></button>`; continue; }
     if(k > APP_TODAY){ const w = mhWho(k, s); cells += `<button class="day future${s.over && s.over[k] ? ' swapped' : ''}" type="button" onclick="mhOpenSched()"><span class="dn">${d}</span><span class="nm ini-row"><span class="ini">${mhEsc(mhIni(w))}</span>${mhEsc(mhFull(w))}</span><span class="st">Scheduled</span></button>`; continue; }
     if(!c){ const sold = (BK.sales || []).some(x => x.date === k && !x.voided); cells += `<div class="day none${sold ? ' miss' : ''}"><span class="dn">${d}</span><span class="st">${sold ? 'Not counted' : ''}</span></div>`; continue; }
-    const tn = mhTone(c.diff); if(c.diff < -0.5) shorts++; else if(c.diff > 0.5) overs++; else ok++;
+    const settled = typeof nf74Settled === 'function' && nf74Settled(c), tn = settled ? 'g' : mhTone(c.diff); if(c.diff < -0.5) shorts++; else if(c.diff > 0.5) overs++; else ok++;
     const edited = c.recs.some(r => r.reviewedAt) || BK.counts.some(r => r.day === k && r.reopenedAt);
-    cells += `<button class="day ${tn}" type="button" onclick="mhOpenDay('${k}')" aria-label="${mhLabel(k)}, ${mhEsc(mhFull(c.by))}, ${tn === 'g' ? 'matched' : mhSigned(c.diff)}"><span class="dn">${d}${edited ? ' <span class="ed">edited</span>' : ''}</span><span class="nm">${mhEsc(mhFull(c.by))}</span><span class="st t${tn}">${tn === 'g' ? 'Matched' : mhSigned(c.diff)}</span></button>`; }
+    cells += `<button class="day ${tn}" type="button" onclick="mhOpenDay('${k}')" aria-label="${mhLabel(k)}, ${mhEsc(mhFull(c.by))}, ${tn === 'g' ? 'matched' : mhSigned(c.diff)}"><span class="dn">${d}${edited ? ' <span class="ed">edited</span>' : ''}</span><span class="nm">${mhEsc(mhFull(c.by))}</span><span class="st t${tn}">${settled ? '✓ Settled ' + mhSigned(c.diff) : tn === 'g' ? 'Matched' : mhSigned(c.diff)}</span></button>`; }
   const tail = (7 - (pad + dim) % 7) % 7; for(let i = 0; i < tail; i++) cells += '<div class="day blank" aria-hidden="true"></div>';
   const mo = mhKey(y, m, 1).slice(0, 7), rawCounts = BK.counts.filter(c => !c.reopenedAt && bkMonth(c.day) === mo), people = [...new Set(rawCounts.map(c => mhFirst(c.by)))];
   const pp = people.map(n => { const rows = rawCounts.filter(c => mhFirst(c.by) === n), net = rows.reduce((a, c) => a + (Number(c.difference) || 0), 0), offs = rows.filter(c => Math.abs(Number(c.difference) || 0) >= 1).sort((a, b) => a.day.localeCompare(b.day));
@@ -31242,7 +31441,7 @@ function mhTally(c){
   const verdict = big ? `<div class="box red"><b class="t">Things to check for ${mhLabel(c.day)}</b><span>• Recount with a second person before deciding anything.</span>${cash.length <= 1 ? '<span>• Only ' + cash.length + ' cash sale recorded that day.</span>' : ''}${missing.map(x => `<span>• Stock count ${mhLabel(x.date)}: ${mhEsc(x.item)} ${x.qty} (${mhEsc(x.reason)})</span>`).join('')}${rec.note ? `<span>• ${mhEsc(who)}'s note: "${mhEsc(rec.note)}"</span>` : ''}</div>`
     : Math.round(df) === 0 ? `<div class="box green">Every peso accounted for.</div>` : df < 0 ? `<div class="box red"><b class="t">Short ${mhPeso(df)}</b><span>Small amount, often loose change or a miscount. Worth a quick recount if it repeats.</span></div>` : `<div class="box blue"><b class="t">Over ${mhPeso(df)}</b><span>Extra cash in the drawer. Often a sale that wasn't recorded or change not given.</span></div>`;
   return `<div class="sum4 num"><div><small>Counted by</small><b>${mhEsc(who)}</b></div><div><small>Should be in drawer</small><b>${mhPeso(expected)}</b></div><div><small>Actually counted</small><b>${mhPeso(counted)}</b></div><div><small>Difference</small><b class="t${tn}">${tn === 'g' ? 'Matched' : mhSigned(df)}</b></div></div>
-    ${verdict}
+    ${typeof nf74SettleBox === 'function' ? nf74SettleBox(c, verdict) : verdict}
     <div><div class="sec">CASH SALES THAT DAY · ${cash.length} ITEM${cash.length === 1 ? '' : 'S'}</div>${cash.length ? tbl(cash) : '<span style="font-size:16px">No cash sales recorded.</span>'}</div>
     ${gc.length ? `<div><div class="sec">PAID BY GCASH OR MAYA (NOT IN THE DRAWER)</div>${tbl(gc)}</div>` : ''}
     <div><div class="sec">CASH PAID OUT FROM THE DRAWER</div>${outs.length ? `<div class="paid-out num">${outs.map(o => `<div class="po"><span><b style="color:#13243A">${mhEsc(o.category)}</b>${o.note || o.vendor ? ` · ${mhEsc(o.note || o.vendor)}` : ''}</span><b>−${mhPeso(o.amount)}</b><span class="att">${o.receipt ? `<span class="attach">${mhIco('clip')}Receipt attached</span>` : `<button type="button" class="attach missing" onclick="mhClose(); openExpenseForm('${o.id}')">${mhIco('clip')}No receipt · attach one</button>`}<button type="button" class="linkish po-ed" onclick="mhClose(); openExpenseForm('${o.id}')">Edit</button></span></div>`).join('')}</div>` : '<span style="font-size:16px">None that day.</span>'}</div>
@@ -31615,7 +31814,7 @@ function nfDemoBooks(){
   if(!BK.sales.some(x => daysBetween(x.date, APP_TODAY) > 40)){
     [[1, 1.0], [2, 0.86], [3, 0.92], [4, 0.74], [5, 0.8]].forEach(([k, f]) => {
       BK.sales.push(sale(30 * k + 3, 'Bayview Construction Co.', [['Portland Cement 40kg', Math.round(560 * f), 225]]), sale(30 * k + 11, 'JRC Builders', [['Steel Rebar 12mm', Math.round(1600 * f), 63]]),
-        sale(30 * k + 19, 'Riverside Builders Corp', [['Structural I-Beams', Math.round(22 * f), 3650]]));
+        sale(30 * k + 19, 'Riverside Builders Corp', [['Structural I-Beams', Math.round(22 * f), 3650]]), sale(30 * k - 2, 'Cavite Steel Works', [['Galvanized Wire 12ga', Math.round(40 * f), 520]]));
       if(k >= 4) BK.expenses.push(exp(30 * k + 1, 'Electricity', 5600, 'bank', 'Meralco'), exp(30 * k + 20, 'Rent', 18000, 'bank', 'Bldg. owner'), exp(30 * k + 10, 'Salaries', 14000, 'cash', ''));
     });
   }
@@ -31772,7 +31971,7 @@ renderChequesPage = function(){
     let act = '';
     if(got && c.status === 'due') act = `<button class="btn btn-primary btn-sm" onclick="chequeDeposited(${key})">I deposited it</button>`;
     else if(got && c.status === 'deposited') act = `<button class="btn btn-primary btn-sm" onclick="chequeCleared(${key})">It cleared</button><button class="btn btn-outline btn-sm nf-bad" onclick="chequeBounced(${key})">It bounced</button>`;
-    else if(got && c.status === 'bounced') act = `<button class="btn btn-outline btn-sm" onclick="askReplacementCheque(${key})">Ask for a new check</button>`;
+    else if(got && c.status === 'bounced') act = `<button class="btn btn-outline btn-sm" onclick="askReplacementCheque(${key})">Get a new check</button>`;
     else if(got && c.status === 'hold') act = `<button class="btn btn-outline btn-sm" onclick="chequeDeposited(${key}, true)">Deposit early</button>`;
     return `<div class="nf-row nf-${c.status}"><span class="nf-ic-chq" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 14h5M15 11h3"/></svg></span>
       <div class="nf-row-m"><b>${escapeHtml(c.party || '—')}</b><small>${escapeHtml(c.bank || 'Bank')} · check #${escapeHtml(c.no || '—')} · ${escapeHtml(nfChqWhen(c))}</small></div>
@@ -32686,7 +32885,7 @@ function nfChequesPage(){
     ? grp('t-y', 'Deposit today', n(due) + ' can go to the bank now', due, c => `<button class="btn btn-primary btn-sm" onclick="chequeDeposited(${key(c)})">Deposited</button>`)
       + grp('t-b', 'Coming up', n(later) + ' · deposit on the date shown', later)
       + grp('t-n', 'In the bank, waiting to clear', n(dep) + ' · usually 1 to 3 days', dep, c => `<button class="btn btn-outline btn-sm" onclick="chequeCleared(${key(c)})">Cleared</button><button class="nfc-link" onclick="chequeBounced(${key(c)})">Bounced?</button>`)
-      + grp('t-r', 'Bounced', n(bounced) + ' · last 90 days', bounced, c => `<button class="nfc-link" onclick="askReplacementCheque(${key(c)})">Ask for a new check</button>`)
+      + grp('t-r', 'Bounced', n(bounced) + ' · last 90 days', bounced, c => `<button class="nfc-link" onclick="askReplacementCheque(${key(c)})">Get a new check</button>`)
       + grp('t-g', 'Cleared', n(cleared) + ' · last 60 days', cleared)
     : grp('t-y', 'Will come out of your bank soon', 'keep enough money in the account', due.concat(dep, later).sort((a, b) => String(a.date).localeCompare(String(b.date))))
       + grp('t-r', 'Bounced', n(bounced), bounced) + grp('t-g', 'Cleared', n(cleared) + ' · last 60 days', cleared))
@@ -36579,9 +36778,9 @@ function nf23GlHtml(){
   return `<section class="panel-card bk-list nf23-glc"><div class="panel-head"><h2>Every peso, line by line</h2><div class="bk-head-act"><select aria-label="Which account" onchange="LGV.acct=this.value; renderLedgerPage()">${LG.accounts.slice().sort((a, b) => a.code.localeCompare(b.code)).map(a => `<option value="${a.code}" ${a.code === code ? 'selected' : ''}>${escapeHtml(a.name)}</option>`).join('')}</select>
       <button class="btn btn-outline" onclick="lgExport('gl')">⬇ CSV</button></div></div>
     <div class="nf23-glw"><table class="nf23-gl ${money ? 'money' : ''}"><thead><tr><th class="d">Date</th><th class="w">What</th><th class="p">Who or where</th><th class="n">${money ? 'Money in' : 'Goes up'}</th><th class="n">${money ? 'Money out' : 'Goes down'}</th><th class="n">Balance</th></tr></thead><tbody>
-      <tr class="tot"><td class="d"></td><td class="w"><b>Balance at the start</b></td><td class="p"></td><td class="n"></td><td class="n"></td><td class="n bal">${bkPeso(open)}</td></tr>
+      <tr class="tot"><td class="d nf74-bal" colspan="2"><b>Balance at the start</b></td><td class="p"></td><td class="n"></td><td class="n"></td><td class="n bal">${bkPeso(open)}</td></tr>
       ${body || '<tr><td class="w" colspan="6">No entries in this period.</td></tr>'}
-      <tr class="tot end"><td class="d"></td><td class="w"><b>Balance at the end</b></td><td class="p"></td><td class="n"></td><td class="n"></td><td class="n bal">${bkPeso(run)}</td></tr></tbody></table></div>
+      <tr class="tot end"><td class="d nf74-bal" colspan="2"><b>Balance at the end</b></td><td class="p"></td><td class="n"></td><td class="n"></td><td class="n bal">${bkPeso(run)}</td></tr></tbody></table></div>
     <p class="nf23-note">Tap a line to see where it came from. Faded lines were undone (the record was changed or removed).</p></section>`;
 }
 // Tax books: every total says what it is
@@ -37433,9 +37632,9 @@ const NF25_TBL = [
   {page: 'expenses', h: /^Waiting for your OK/, cols: [['What', 't'], ['Paid to'], ['When'], ['By'], ['Note', 'w'], ['Amount', 'n'], ['', 'a']],
     cells: p => { const [c, v] = nf25Split(p.title), m = p.meta, bi = nf25By(m); return [c, v, (bi >= 0 ? m.slice(0, bi) : m).join(' · '), bi >= 0 ? nf25Strip(m[bi], /^(by|ni)\s+/i) : '', bi >= 0 ? m.slice(bi + 1).join(' · ') : '', p.amt, p.act]; }},
   {page: 'expenses', h: /^Vale/, cols: [['Staff', 't'], ['Note', 'w'], ['Amount', 'n']], cells: p => [p.title, p.meta.join(' · '), p.amt], total: 2},
-  {page: 'expenses', h: /^All expenses/, cols: [['What', 't'], ['Paid to'], ['Paid from'], ['By'], ['Amount', 'n'], ['', 'a']],
+  {page: 'expenses', h: /^All expenses/, dayCol: true, cols: [['Date', 'd'], ['What', 't'], ['Paid to'], ['Paid from'], ['By'], ['Amount', 'n'], ['', 'a']],
     cells: p => { const [c, v] = nf25Split(p.title), tagged = [], m = p.meta.map(x => x.replace(/<span class="bk-tag">[^<]*<\/span>\s*/g, t => { tagged.push(t.trim()); return ''; }).trim()).filter(Boolean), bi = nf25By(m), before = bi >= 0 ? m.slice(0, bi) : m, after = (bi >= 0 ? m.slice(bi + 1) : []).concat(tagged);
-      const from = before.length ? before[before.length - 1] : '', tags = before.slice(0, -1); return [c + nf25Sm(tags.concat(after)), v, from, bi >= 0 ? nf25Strip(m[bi], /^(by|ni)\s+/i) : '', p.amt, p.act]; }},
+      const from = before.length ? before[before.length - 1] : '', tags = before.slice(0, -1); return [p.day, c + nf25Sm(tags.concat(after)), v, from, bi >= 0 ? nf25Strip(m[bi], /^(by|ni)\s+/i) : '', p.amt, p.act]; }},
   {page: 'payroll', h: /^Vale/, cols: [['Staff', 't'], ['Note', 'w'], ['Amount', 'n']], cells: p => [p.title, p.meta.join(' · '), p.amt], total: 2},
   {page: 'payroll', h: /^Payroll$/, cols: [['Pay period', 't'], ['People'], ['Status', 'w'], ['Total', 'n']], cells: p => [p.title, p.meta[0], p.meta.slice(1).join(' · '), p.amt]},
   {page: 'money', h: /^Cash outlook/, cols: [['What', 't'], ['Who'], ['When'], ['Amount', 'n']], cells: p => { const [a, b] = nf25Split(p.title); return [a, b, p.meta.join(' · '), p.amt]; }},
@@ -37456,8 +37655,8 @@ function nf25Tablize(sec, cfg){
   const wrap = document.createElement('div'); wrap.className = 'nf25-tw'; wrap.appendChild(tbl); parent.insertBefore(wrap, first);
   let sum = 0, n = 0;
   nodes.forEach(node => {
-    if(node.matches('.bk-day')){ const tr = document.createElement('tr'); tr.className = 'nf25-g'; tr.innerHTML = `<td colspan="${cfg.cols.length}">${node.innerHTML}</td>`; tb.appendChild(tr); node.remove(); return; }
-    const p = nf25Parts(node), cells = cfg.cells(p, node), tr = document.createElement('tr');
+    if(node.matches('.bk-day') && cfg.dayCol){ cfg._day = node.textContent.trim(); node.remove(); return; } if(node.matches('.bk-day')){ const tr = document.createElement('tr'); tr.className = 'nf25-g'; tr.innerHTML = `<td colspan="${cfg.cols.length}">${node.innerHTML}</td>`; tb.appendChild(tr); node.remove(); return; }
+    const p = Object.assign(nf25Parts(node), {day: cfg._day || ''}), cells = cfg.cells(p, node), tr = document.createElement('tr');
     [...node.classList].filter(c => !/-row$/.test(c)).forEach(c => tr.classList.add(c));
     ['onclick', 'role', 'tabindex'].forEach(a => { if(node.hasAttribute(a)) tr.setAttribute(a, node.getAttribute(a)); });
     if(node.hasAttribute('onclick')) tr.classList.add('nf25-click');
@@ -38247,19 +38446,18 @@ function nf26PaintPlans(){
     : s.plan !== 'free' ? `<div class="nf26-pbanner good"><b>You're on ${NF26_PLANS.find(z => z.k === s.plan).name}.</b> ${s.paidUntil ? `Paid until ${nf26Day(s.paidUntil)}. Renew any time; extra time is added on.` : ''}</div>` : '';
   ov.innerHTML = `<div class="nf20-sheet nf26-psheet">
     <div class="nf20-sh"><div><h2>Plans &amp; pricing</h2><p>Start free. Upgrade when it pays for itself. One plan covers buying, selling and your books.</p></div>${x}</div>
-    ${NF26P.note ? `<div class="nf26-pbanner note">${NF26P.note}</div>` : ''}${head}
+    ${NF26P.note ? `<div class="nf26-pbanner note">${NF26P.note}</div>` : ''}${head}${typeof nf74PlanOffer === 'function' ? nf74PlanOffer(s) : ''}
     <div class="nf26-cyc top" role="group" aria-label="How often"><button type="button" class="${NF26P.cycle === 'monthly' ? 'on' : ''}" onclick="NF26P.cycle='monthly'; nf26PaintPlans()"><b>Monthly</b></button><button type="button" class="${NF26P.cycle === 'yearly' ? 'on' : ''}" onclick="NF26P.cycle='yearly'; nf26PaintPlans()"><b>Yearly</b><span>2 months free</span></button></div>
     <div class="nf26-pcards">${NF26_PLANS.map(p => { const cur = s.plan === p.k && !s.demo, amt = NF26P.cycle === 'yearly' ? p.y : p.m;
       const btn = p.k === 'free' ? (s.pilot ? `<span class="nf26-cur">Assigned plan: ${escapeHtml(s.assignedPlan || 'free')}</span>` : s.plan === 'free' ? `<span class="nf26-cur">${s.demo ? 'Where everyone starts' : 'Your plan now'}</span>` : `<span class="nf26-cur soft">Always there if you stop paying</span>`)
         : s.pilot ? `<span class="nf26-cur soft">Included during beta · ₱0</span>`
         : s.pending ? `<span class="nf26-cur soft">Payment being checked</span>`
-        : !owner ? `<span class="nf26-cur soft">Ask your owner to subscribe</span>`
+        : s.demo ? `<button type="button" class="btn ${p.k === 'pro' ? 'btn-primary' : 'btn-outline'}" onclick="nf74PlanDemo('${p.k}')">Get ${p.name} free</button>` : !owner ? `<span class="nf26-cur soft">Ask your owner to subscribe</span>`
         : `<button type="button" class="btn ${p.k === 'pro' ? 'btn-primary' : 'btn-outline'}" onclick="nf26Choose('${p.k}')">${cur ? 'Renew ' + p.name : 'Choose ' + p.name}</button>`;
       return `<section class="nf26-pc ${p.k}${cur ? ' cur' : ''}">${p.k === 'pro' ? '<span class="nf26-flag">MOST SHOPS</span>' : ''}<h3>${p.name}${cur ? (s.pilot ? '<em>Beta access</em>' : '<em>Your plan</em>') : ''}</h3>
-        <div class="nf26-price"><b>${nf26Peso(amt)}</b><span>${p.k === 'free' ? 'forever' : NF26P.cycle === 'yearly' ? 'a year' : 'a month'}</span></div>
+        ${typeof nf74PlanPrice === 'function' ? nf74PlanPrice(p, amt, s) : `<div class="nf26-price"><b>${nf26Peso(amt)}</b><span>${p.k === 'free' ? 'forever' : NF26P.cycle === 'yearly' ? 'a year' : 'a month'}</span></div>`}
         <p class="nf26-who">${p.who}</p><ul>${p.f.map(f => `<li>${NF26_CHK}<span>${f}</span></li>`).join('')}</ul>${btn}</section>`; }).join('')}</div>
-    ${s.pilot ? '<div class="nf26-how"><b>During beta</b><p>Business-level features are enabled at no charge. No payment is due and no subscription record is changed. Your assigned plan is retained for billing after the beta period.</p></div>' : '<div class="nf26-how"><b>How paying works</b><ol>'}<li><span>1</span>Choose a plan and scan our QR with GCash, Maya or any bank app.</li><li><span>2</span>Type the reference number, or snap the receipt.</li><li><span>3</span>We switch your plan on, usually within a few hours.</li></ol>
-      <p>No card and no contract. If you stop, you go back to Free and keep all your records. Questions? <a onclick="nf26ClosePlans(); nf26Help()">Message the Nifti team</a>.</p></div>}
+    ${typeof nf74PlanFoot === 'function' ? nf74PlanFoot(s) : ''}
   </div>`;
 }
 function nf26Keep(){ const r = document.getElementById('nf26Ref'); if(r) NF26P.ref = r.value; }
@@ -42912,7 +43110,7 @@ function nf43Home(page){
   const kids = [...rows.children];
   const find = re => kids.find(k => re.test(((k.querySelector('h2,h3,h4,.sect-h,.tip-k,b') || {}).textContent || k.textContent || '').trim().slice(0, 60)));
   hide(kids.find(k => /^TIP OF THE WEEK|Tip of the week/i.test(k.textContent.trim().slice(0, 30))));
-  const order = [find(/^What to do/i), document.getElementById('srCard') || find(/^What runs out/i), find(/^Where every order is/i)].filter(Boolean);
+  const order = [find(/^What to do/i), rows.querySelector(':scope > .nf48-home'), rows.querySelector(':scope > .nf45-oldhint'), document.getElementById('srCard') || find(/^What runs out/i), find(/^Where every order is/i)].filter(Boolean);
   order.forEach((el, i) => { const want = order[i - 1] ? order[i - 1].nextElementSibling : rows.firstElementChild; if(el !== want){ if(i === 0) rows.prepend(el); else order[i - 1].after(el); } });
 }
 (function(){
@@ -43668,11 +43866,11 @@ let NF45_LAST = null;
 function nf45InfoOpen(hit, el, title){
   let r; try{ r = hit.build({el, title}) || {}; }catch(e){ console.warn('nf45 info', e); r = {}; }
   NF45_LAST = el;
-  const v = (el.querySelector('.v') || el.querySelector('b') || {}).textContent || '';
+  const v = typeof nf74BigText === 'function' ? nf74BigText(el) : ((el.querySelector('.v') || el.querySelector('b') || {}).textContent || '');
   const big = r.big || v.replace(/\s+/g, ' ').trim();
   const acts = (r.acts || []).map(([label, js, prim]) => `<button type="button" class="btn ${prim ? 'btn-primary' : 'btn-outline'}" onclick="slClose('nf45Info'); ${js}">${label}</button>`).join('');
   const pass = r.pass ? `<button type="button" class="btn ${(r.acts || []).some(a => a[2]) ? 'btn-outline' : 'btn-primary'}" onclick="slClose('nf45Info'); nf45Pass(NF45_LAST)">${r.pass}</button>` : '';
-  nf45Pop('nf45Info', nf45Esc(r.title || title), `<div class="nf45-ib"><b>${nf45Esc(big)}</b>${r.sub ? `<span>${r.sub}</span>` : ''}</div>
+  nf45Pop('nf45Info', nf45Esc(r.title || title), `<div class="nf45-ib"><b>${nf45Esc(big)}</b>${r.sub ? `<span>${r.sub}</span>` : (typeof nf74BigSub === 'function' && nf74BigSub(el) ? `<span>${nf45Esc(nf74BigSub(el))}</span>` : '')}</div>
     ${r.what ? `<div class="nf45-sec"><h4>What this is</h4><p>${r.what}</p></div>` : ''}
     ${r.how ? `<div class="nf45-sec"><h4>How Nifti works it out</h4><p class="nf45-calc">${r.how}</p></div>` : ''}
     ${r.table ? `<div class="nf45-sec"><h4>${r.tableTitle || 'Where the number comes from'}</h4>${r.table}</div>` : (r.empty ? `<div class="nf45-sec"><p class="nf45-empty">${r.empty}</p></div>` : '')}
@@ -43799,7 +43997,7 @@ function nf45Bills(){
   const rows = unpaidInvoicesFor('buyer').sort((a, b) => String(a.due || '9').localeCompare(String(b.due || '9'))), tot = nf45Sum(rows, r => r.balance);
   return {what: 'Bills from your suppliers that you have not fully paid yet, soonest due first.',
     how: `What's left on each bill (total minus what you already paid) = <b>${nf45Peso(tot)}</b>.`,
-    table: nf45T([['Supplier'], ['Bill'], ['Due'], ['You paid, waiting for their OK', 'n'], ['You owe', 'n']], rows.map(r => [`<b>${nf45Esc(r.po.supplierName)}</b>`, nf45Esc((r.po.invoice && r.po.invoice.number) || r.po.poNumber), r.due ? nf45Esc(nf45Day(r.due)) + (r.daysOverdue > 0 ? ` <span class="nf45-bad">· ${r.daysOverdue} days late</span>` : '') : 'no due date', r.pending ? nf45Peso(r.pending) : '', `<b>${nf45Peso(r.balance)}</b>`]), ['Total', '', '', '', `<b>${nf45Peso(tot)}</b>`]),
+    table: nf45T([['Supplier'], ['Bill'], ['Due'], ['Paid, awaiting OK', 'n'], ['You owe', 'n']], rows.map(r => [`<b>${nf45Esc(r.po.supplierName)}</b>`, nf45Esc((r.po.invoice && r.po.invoice.number) || r.po.poNumber), r.due ? nf45Esc(nf45Day(r.due)) + (r.daysOverdue > 0 ? ` <span class="nf45-bad">· ${r.daysOverdue} days late</span>` : '') : 'no due date', r.pending ? nf45Peso(r.pending) : '', `<b>${nf45Peso(r.balance)}</b>`]), ['Total', '', '', '', `<b>${nf45Peso(tot)}</b>`]),
     empty: 'You have no unpaid supplier bills.', src: '"Waiting for their OK" means you recorded a payment and the supplier has not confirmed it yet.'};
 }
 nf45I('dashboard', /^Supplier bills due/i, nf45Bills);
@@ -43810,7 +44008,7 @@ function nf45SalesDay(){ return (typeof bkSalesDay !== 'undefined' && bkSalesDay
 nf45I('sales', /^Sales today/i, () => {
   const d = nf45SalesDay(), list = bkLiveSales().filter(s => s.date === d), tot = nf45Sum(list, s => s.total);
   return {what: 'Every sale your team saved at the counter on this day, however it was paid.', how: `${list.length} sale${list.length === 1 ? '' : 's'} added up = <b>${nf45Peso(tot)}</b>.`,
-    table: nf45T([['Time'], ['Customer'], ['What was sold'], ['Paid with'], ['By'], ['Amount', 'n']], list.map(s => [nf45Esc(s.at ? new Date(s.at).toLocaleTimeString('en-PH', {hour: 'numeric', minute: '2-digit', timeZone: 'Asia/Manila'}) : ''), nf45Esc(s.customer || 'Walk-in'), nf45Esc((s.lines || []).map(l => l.qty + ' × ' + l.product).join(', ') || 'No items recorded'), nf45Esc(s.paidWith || ''), nf45Esc(s.by || ''), `<b>${nf45Peso(s.total)}</b>`]), ['Total', '', '', '', '', `<b>${nf45Peso(tot)}</b>`]),
+    table: nf45T([['Time'], ['Customer'], ['What was sold'], ['Paid with'], ['By'], ['Amount', 'n']], list.map(s => [nf45Esc(s.at ? new Date(s.at).toLocaleTimeString('en-PH', {hour: 'numeric', minute: '2-digit', timeZone: 'Asia/Manila'}) : ''), nf45Esc(s.customer || 'Walk-in'), nf45Esc((s.lines || []).map(l => l.qty + ' × ' + l.product).join(', ') || 'No items recorded'), nf45Esc(({cash: 'Cash', gcash: 'GCash', maya: 'Maya', credit: 'Utang', bank: 'Bank', card: 'Card'})[s.paidWith] || s.paidWith || ''), nf45Esc(s.by || ''), `<b>${nf45Peso(s.total)}</b>`]), ['Total', '', '', '', '', `<b>${nf45Peso(tot)}</b>`]),
     empty: 'No sales saved on this day yet.', src: 'Removed sales are left out, but they stay in the history with the reason.'};
 });
 function nf45PayRows(day, f){
@@ -44327,17 +44525,17 @@ function nf45LedgerMonths(page){
   // a small picture of the month, on the summary tab only
   if(LGV.tab !== 'summary' || !LGV.range || LGV.range !== 'month') { const o = page.querySelector('.nf45-glance'); if(o) o.remove(); return; }
   const r = lgRangeNow(), p = lgPnlFor(r.from, r.to), pr = lgPrevRange(r), pp = lgPnlFor(pr.from, pr.to);
-  const hist = months.map(x => { const rr = lgRange('month', x + '-01'), q = lgPnlFor(rr.from, rr.to); return {m: x, s: q.revenue || 0, k: q.net || 0}; }).filter(h => h.s > 0);
+  const hist = months.map(x => { const rr = lgRange('month', x + '-01'), q = lgPnlFor(rr.from, rr.to); return {m: x, s: q.revenue || 0, k: q.net || 0, pk: (x === String(APP_TODAY).slice(0, 7) && typeof nf74SameRange === 'function') ? (lgPnlFor(nf74SameRange(x).from, nf74SameRange(x).to).net || 0) : null, pl: (x === String(APP_TODAY).slice(0, 7) && typeof nf74SameRange === 'function') ? nf74SameRange(x).label : ''}; }).filter(h => h.s > 0);
   const gsig = r.from + '|' + p.revenue + '|' + p.net;
   let g = page.querySelector('.nf45-glance');
   if(g && g.dataset.sig === gsig) return;
   if(!g){ g = document.createElement('section'); g.className = 'nf45-glance panel-card'; const anchor = page.querySelector('#lgBody') || tb.parentElement; const first = anchor.querySelector('section, .panel-card, .lg-card'); if(first) first.before(g); else anchor.appendChild(g); }
   g.dataset.sig = gsig;
-  const d = (a, b, goodUp) => { if(!b) return ''; const ch = Math.round((a - b) / Math.abs(b) * 100); if(!isFinite(ch) || !ch) return '<small class="nf45-dz">same as last month</small>'; const up = ch > 0, good = goodUp ? up : !up; return `<small class="${good ? 'nf45-good' : 'nf45-bad'}">${up ? '▲' : '▼'} ${Math.abs(ch)}% vs last month</small>`; };
+  const d = (a, b, goodUp) => { if(!b) return ''; const ch = Math.round((a - b) / Math.abs(b) * 100); if(!isFinite(ch) || !ch) return `<small class="nf45-dz">same as ${nf45Esc(pr.label)}</small>`; const up = ch > 0, good = goodUp ? up : !up; return `<small class="${good ? 'nf45-good' : 'nf45-bad'}">${up ? '▲' : '▼'} ${Math.abs(ch)}% vs ${nf45Esc(pr.label)}</small>`; };
   const opex = (p.opexTot || 0) - (p.other || 0), popex = (pp.opexTot || 0) - (pp.other || 0);
   const max = Math.max(1, ...hist.map(h => h.s));
   g.innerHTML = `<div class="nf45-gh"><h3>${nf45Esc(r.label)} at a glance</h3><span>From your posted books</span></div>
-    <div class="nf45-gk"><div><span>Sales</span><b>${nf45Peso(p.revenue)}</b>${d(p.revenue, pp.revenue, true)}</div><div><span>Cost of what you sold</span><b>${nf45Peso(p.cogs)}</b>${d(p.cogs, pp.cogs, false)}</div><div><span>Running costs</span><b>${nf45Peso(opex)}</b>${d(opex, popex, false)}</div><div class="${p.net < 0 ? 'neg' : 'pos'}"><span>${p.net < 0 ? 'You lost' : 'You kept'}</span><b>${nf45Peso(Math.abs(p.net))}</b>${pp.revenue ? (Math.abs(p.net - pp.net) < 1 ? '<small class="nf45-dz">same as last month</small>' : `<small class="${p.net > pp.net ? 'nf45-good' : 'nf45-bad'}">${nf45Peso(Math.abs(p.net - pp.net))} ${p.net > pp.net ? 'better' : 'worse'} than last month</small>`) : ''}</div></div>
+    <div class="nf45-gk"><div><span>Sales</span><b>${nf45Peso(p.revenue)}</b>${d(p.revenue, pp.revenue, true)}</div><div><span>Cost of what you sold</span><b>${nf45Peso(p.cogs)}</b>${d(p.cogs, pp.cogs, false)}</div><div><span>Running costs</span><b>${nf45Peso(opex)}</b>${d(opex, popex, false)}</div><div class="${p.net < 0 ? 'neg' : 'pos'}"><span>${p.net < 0 ? 'You lost' : 'You kept'}</span><b>${nf45Peso(Math.abs(p.net))}</b>${pp.revenue ? (Math.abs(p.net - pp.net) < 1 ? '<small class="nf45-dz">same as ' + nf45Esc(pr.label) + '</small>' : `<small class="${p.net > pp.net ? 'nf45-good' : 'nf45-bad'}">${p.net > pp.net ? '▲' : '▼'} ${nf45Peso(Math.abs(p.net - pp.net))} vs ${nf45Esc(pr.label)}</small><small class="nf74-was">${nf45Esc(pr.label)}: ${nf45Peso(pp.net)}</small>`) : ''}</div></div>
     ${hist.length ? nf47MonthViews(hist, r.from.slice(0, 7)) : ''}`;
 }
 NF45_AFTER.push(nf45LedgerMonths);
@@ -44762,7 +44960,7 @@ function nf47Prices(page){
 function nf47K(n){ const a = Math.abs(n); return (n < 0 ? '−' : '') + '₱' + (a >= 1e6 ? (a / 1e6).toFixed(1).replace(/\.0$/, '') + 'M' : a >= 1000 ? (a / 1000).toFixed(1).replace(/\.0$/, '') + 'K' : Math.round(a)); }
 function nf47MonthViews(hist, cur){
   const mon = m => new Date(m + '-01T00:00:00').toLocaleDateString('en-PH', {month: 'short'});
-  const rows = hist.map((h, i) => { const prev = hist[i - 1], diff = prev ? h.k - prev.k : null, costs = h.s - h.k;
+  const rows = hist.map((h, i) => { const prev = hist[i - 1], diff = prev ? h.k - (h.pk != null ? h.pk : prev.k) : null, costs = h.s - h.k;
     return `<tr class="${h.m === cur ? 'on' : ''}" onclick="nf45LgMonth('${h.m}')" title="Open ${nf47E(bkMonthLabel(h.m))}"><td>${nf47E(mon(h.m))}${h.m === APP_TODAY.slice(0, 7) ? ' <small>so far</small>' : ''}</td><td>${nf47P(h.s)}</td><td>${nf47P(costs)}</td><td class="${h.k < 0 ? 'dn' : 'up'}">${h.k < 0 ? '−' : ''}${nf47P(Math.abs(h.k))}</td><td class="${diff == null ? '' : diff < 0 ? 'dn' : 'up'}">${diff == null ? '—' : (diff < 0 ? '▼ ' : '▲ ') + nf47P(Math.abs(diff))}</td></tr>`; }).join('');
   const table = `<div class="nf47-mt"><table><thead><tr><th>Month</th><th>Sales</th><th>Costs</th><th>You kept</th><th>Change</th></tr></thead><tbody>${rows}</tbody></table></div>`;
   let line = '';
@@ -44776,7 +44974,7 @@ function nf47MonthViews(hist, cur){
       ${hist.map((h, i) => { const cx = Math.round(x(i)), cy = Math.round(y(h.k)), neg = h.k < 0, on = h.m === cur; return `<g class="nf47-pt" onclick="nf45LgMonth('${h.m}')"><circle cx="${cx}" cy="${cy}" r="${on ? 8 : 6}" fill="${neg ? '#D92D20' : '#16A34A'}" ${on ? 'stroke="#0B0F14" stroke-width="2"' : ''}/><text x="${cx}" y="${neg ? cy + 22 : cy - 12}" font-size="13" font-weight="800" text-anchor="middle" fill="${neg ? '#B42318' : '#15803D'}">${nf47K(h.k)}</text><text x="${cx}" y="20" font-size="13" text-anchor="middle" fill="#0B0F14" font-weight="${on ? 800 : 600}">${nf47E(mon(h.m))}</text></g>`; }).join('')}
     </svg><p>Above the gray line you made money, below it you lost money.</p></div>`;
   }
-  return `<div class="nf47-mv${line ? '' : ' one'}">${table}${line || '<p class="nf47-mone">The line shows up once you have two months of sales.</p>'}</div><p class="nf45-gl"><span>Tap a month to open it.</span></p>`;
+  return `<div class="nf47-mv${line ? '' : ' one'}">${table}${line || '<p class="nf47-mone">The line shows up once you have two months of sales.</p>'}</div><p class="nf45-gl"><span>Tap a month to open it.${hist.some(h => h.pk != null) ? ` The change for this month compares it with ${nf47E(hist.find(h => h.pk != null).pl)}, the same days last month.` : ''}</span></p>`;
 }
 // "What changed" keeps only what the glance above doesn't already say, in short rows
 (function(){
@@ -47557,7 +47755,7 @@ setInterval(() => { const d = document.getElementById('nf55Dock'); if(!d || NF55
   if(unitemized.length)look.push(unitemized.length+' sale'+(unitemized.length>1?'s':'')+' recorded as a total only, with no items. Stock could not move for '+(unitemized.length>1?'them':'it')+', so these cannot be matched to stock. Older history like this stays incomplete.');
   const est=lines.filter(l=>l.costEst).length; if(est)look.push(est+' sold line'+(est>1?'s':'')+' had no cost saved at the time; today\'s item cost is used instead.');
   const head='<div class="panel-head"><div><h2>Sales, stock and cash for '+esc(typeof bkDayLabel==='function'?bkDayLabel(day):day)+'</h2><p>What was sold, what left the shelf, and anything worth a second look</p></div><span class="nf70-detail-count">'+lines.length+' item line'+(lines.length===1?'':'s')+'</span></div>';
-  const summary='<div class="nf70-detail-summary"><div><small>Sales recorded</small><b>'+peso(salesTotal)+'</b><span>'+sales.length+' sale'+(sales.length===1?'':'s')+'</span></div><div><small>How they paid</small><b class="nf72-pays">'+(Object.keys(pays).length?Object.entries(pays).map(([k,v])=>esc(k)+' '+peso(v)).join(' · '):'—')+'</b></div><div><small>Cost of items sold</small><b>'+peso(tot.cost)+'</b><span>'+(tot.revenue?'kept '+peso(tot.revenue-tot.cost)+' before expenses':'')+'</span></div><div><small>Discounts from the price list</small><b>'+peso(tot.discount)+'</b></div></div>';
+  const summary=(typeof nf74DaySummary==='function'?nf74DaySummary(sales,pays,tot,lines,salesTotal):'');
   const itemized=lines.length?'<h3 class="nf72-dh">Every item sold</h3><div class="nf70-detail-table"><table><thead><tr><th>Item</th><th>Qty</th><th>Price each</th><th>List price</th><th>Discount</th><th>Cost each</th><th>Line total</th><th>Customer · paid by</th></tr></thead><tbody>'+lines.map(l=>'<tr><td><b>'+esc(l.name)+'</b>'+(l.by?'<small>Entered by '+esc(l.by)+'</small>':'')+'</td><td>'+l.qty+'</td><td>'+peso(l.unit)+'</td><td>'+(l.list?peso(l.list):'not saved')+'</td><td>'+(l.discount?peso(l.discount):'—')+'</td><td>'+(l.cost?peso(l.cost)+(l.costEst?' *':''):'not saved')+'</td><td><b>'+peso(l.total)+'</b></td><td>'+esc(l.customer)+' · '+esc(payLbl[l.pay]||l.pay||'—')+'</td></tr>').join('')+'</tbody><tfoot><tr><td>Total</td><td>'+tot.qty+'</td><td colspan="4">Cost of items sold: '+peso(tot.cost)+'</td><td>'+peso(tot.revenue)+'</td><td></td></tr></tfoot></table></div>':'<p class="nf72-dnone">No item lines were recorded for this day.</p>';
   const stock='<section class="nf70-movement-detail"><h3 class="nf72-dh">Stock that left because of sales</h3>'+(salesMoves.length?mv(salesMoves):'<p class="nf72-dnone">None recorded.</p>')+'<h3 class="nf72-dh">Other stock changes</h3><p class="nf72-dsub">Damage, count differences, returns, deliveries in and changes by hand. Kept apart from sales.</p>'+(other.length?mv(other):'<p class="nf72-dnone">None recorded.</p>')+'</section>';
   const looks='<section class="nf72-look"><h3 class="nf72-dh">Worth a second look</h3>'+(look.length?'<ul>'+look.map(x=>'<li>'+x+'</li>').join('')+'</ul><p class="nf72-dsub">A difference is a reason to check the records and recount. It does not prove that anyone did anything wrong.</p>':'<p class="nf72-dnone">Nothing stands out for this day.</p>')+'</section>';
@@ -47642,11 +47840,8 @@ function nf72Phone(){
 
 // "Follow one order": six steps, the ledger on the right updates itself
 const NF72_JR = [
-  {status: ['New', 'y'], stock: '120 bags', owed: '₱0', cash: '₱0', profit: '—'},
   {status: ['Confirmed', 'b'], stock: '120 bags', owed: '₱0', cash: '₱0', profit: '—'},
-  {status: ['On the way', 'b'], stock: '120 bags', owed: '₱0', cash: '₱0', profit: '—'},
-  {status: ['Delivered', 'b'], stock: '100 bags', owed: '₱0', cash: '₱0', profit: '—'},
-  {status: ['Billed · due Dec 8', 'y'], stock: '100 bags', owed: '₱4,560', cash: '₱0', profit: '—'},
+  {status: ['Delivered', 'b'], stock: '100 bags', owed: '₱4,560', cash: '₱0', profit: '—'},
   {status: ['Paid', 'g'], stock: '100 bags', owed: '₱0', cash: '₱4,560', profit: '₱880'}
 ];
 const NF72J = {i: 0, t: null, auto: false, started: false};
@@ -47654,7 +47849,7 @@ function nf72JrGo(i, user){
   const box = document.getElementById('mkJourney'); if(!box) return;
   const prev = NF72_JR[NF72J.i] || NF72_JR[0], now = NF72_JR[i]; NF72J.i = i;
   box.querySelectorAll('.r72-ph button[data-i]').forEach(b => { const k = Number(b.dataset.i); b.classList.toggle('on', k === i); b.classList.toggle('done', k < i); b.setAttribute('aria-selected', String(k === i)); b.tabIndex = k === i ? 0 : -1; });
-  box.querySelectorAll('.r72-ph-g').forEach((g, n) => { g.classList.toggle('on', Math.floor(i / 2) === n); g.classList.toggle('done', Math.floor(i / 2) > n); });
+  const line = box.querySelector('.r72-ph-line i'); if(line) line.style.width = (i / (NF72_JR.length - 1) * 100) + '%';
   box.querySelectorAll('.r72-win-nav span').forEach(s => s.classList.toggle('on', (' ' + s.dataset.on + ' ').includes(' ' + i + ' ')));
   box.querySelectorAll('.r72-sc').forEach((s, k) => s.classList.toggle('on', k === i));
   box.querySelectorAll('.r72-led').forEach(row => {
@@ -47673,7 +47868,7 @@ function nf72JrGo(i, user){
 function nf72JrPlay(){
   clearTimeout(NF72J.t); NF72J.auto = true; nf72JrGo(0);
   const step = () => { if(!NF72J.auto) return; if(NF72J.i >= NF72_JR.length - 1){ NF72J.auto = false; return; }
-    NF72J.t = setTimeout(() => { if(!NF72J.auto) return; const v = document.getElementById('view-index'); if(v && v.classList.contains('hidden')){ step(); return; } nf72JrGo(NF72J.i + 1); step(); }, 2600); };
+    NF72J.t = setTimeout(() => { if(!NF72J.auto) return; const v = document.getElementById('view-index'); if(v && v.classList.contains('hidden')){ step(); return; } nf72JrGo(NF72J.i + 1); step(); }, 3600); };
   step();
 }
 function nf72JrInit(){
@@ -48320,7 +48515,7 @@ function nf73DemoSync(){
 function nf73FoldRecon(){
   document.querySelectorAll('.nf70-cash-detail').forEach(sec => {
     if(sec.querySelector(':scope > details.nf73-rfold')) return;
-    const kids = [...sec.children].filter(k => !k.matches('.panel-head, .nf70-detail-summary'));
+    const kids = [...sec.children].filter(k => !k.matches('.panel-head, .nf70-detail-summary, .nf74-day'));
     if(!kids.length) return;
     const d = document.createElement('details'); d.className = 'nf73-rfold';
     const look = sec.querySelector('.nf72-look li') ? sec.querySelectorAll('.nf72-look li').length : 0;
@@ -48355,6 +48550,328 @@ function nf73StaffHome(home){
 }
 (function(){ const b = booksAfterHome; booksAfterHome = function(){ const r = b.apply(this, arguments); Promise.resolve().then(() => { const h = document.getElementById('mhHome'); if(h) try{ nf73StaffHome(h); }catch(e){} }); return r; }; })();
 try{ NF45_AFTER.push(page => { if(page && page.id === 'page-dashboard'){ const h = document.getElementById('mhHome'); if(h) try{ nf73StaffHome(h); }catch(e){} } }); }catch(e){}
+
+/* ===== Round 74: Home order, owner view, running "vs last month", page fixes, edits everywhere ===== */
+function nf74E(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c])); }
+function nf74P(n){ const v = Math.round(Number(n) || 0); return (v < 0 ? '−₱' : '₱') + Math.abs(v).toLocaleString('en-PH'); }
+function nf74Mon(m, len){ return new Date(m + '-01T00:00:00').toLocaleDateString('en-PH', {month: len || 'short'}); }
+
+/* ---------- 1. One running comparison everywhere: this month so far vs the same days last month ---------- */
+// Nov 1-24 is compared with Oct 1-24, not with all of October. A finished month is compared with the whole month before.
+function nf74SameRange(m){
+  const pm = bkPrevMonth(m), pEnd = lgRange('month', pm + '-01').to, cur = String(APP_TODAY).slice(0, 7);
+  if(m !== cur) return {from: pm + '-01', to: pEnd, label: nf74Mon(pm), full: true, pm};
+  let to = pm + '-' + String(APP_TODAY).slice(8, 10); if(to > pEnd) to = pEnd;
+  return {from: pm + '-01', to, label: `${nf74Mon(pm)} 1–${Number(to.slice(8))}`, full: false, pm};
+}
+function nf74PnlRange(R){
+  try{
+    if(typeof LG !== 'undefined' && LG.loaded && LG.lines && LG.lines.length && booksCanSeeTotals()){
+      const p = lgPnlFor(R.from, R.to); return {sales: p.revenue || 0, cogs: p.cogs || 0, opex: lgR((p.opexTot || 0) - (p.other || 0)), net: p.net || 0};
+    }
+    if(R.full){ const p = bkPnl(R.pm); return {sales: p.sales || 0, cogs: p.cost || 0, opex: p.expenses || 0, net: p.net || 0}; }
+  }catch(e){}
+  return null;
+}
+// the chip under a profit: "▲ ₱2,100 vs Oct 1–24" and what those days made
+function nf74ProfitChip(m, net){
+  const R = nf74SameRange(m), q = nf74PnlRange(R);
+  if(!q || !q.sales) return '';
+  const d = (Number(net) || 0) - q.net; if(Math.abs(d) < 1) return `<small class="nf74-cmp z">Same as ${nf74E(R.label)}</small>`;
+  return `<small class="nf74-cmp ${d > 0 ? 'up' : 'down'}" title="${R.full ? 'Compared with the whole of ' + nf74E(nf74Mon(R.pm, 'long')) : 'This month so far, compared with the same days last month'}">${d > 0 ? '▲' : '▼'} ${nf74P(Math.abs(d))} vs ${nf74E(R.label)}<span>${nf74E(R.label)}: ${nf74P(q.net)}</span></small>`;
+}
+// the ledger's "previous period" for a month still in progress is the same days of last month
+if(typeof lgPrevRange === 'function'){
+  const _pr = lgPrevRange;
+  lgPrevRange = function(r){
+    try{ const days = daysBetween(r.from, r.to) + 1, m = r.from.slice(0, 7);
+      if(/-01$/.test(r.from) && days <= 31 && m === String(APP_TODAY).slice(0, 7)){ const R = nf74SameRange(m); return {from: R.from, to: R.to, label: R.label}; } }catch(e){}
+    return _pr.apply(this, arguments);
+  };
+}
+
+/* ---------- 2. Demo: the books are rebuilt once the sample stock moves match the sample sales (one profit everywhere) ---------- */
+(function(){
+  const b = booksAfterHome;
+  booksAfterHome = function(){
+    const was = !!window._nf73Synced, r = b.apply(this, arguments);
+    try{
+      if(!was && window._nf73Synced && !myBusiness && !window._nf74Rebuilt && typeof lgLoad === 'function'){
+        window._nf74Rebuilt = true;
+        Promise.resolve(lgLoad(true)).then(() => { const h = document.querySelector('#page-dashboard.active'); if(h && typeof renderOneHome === 'function') renderOneHome(); });
+      }
+    }catch(e){}
+    return r;
+  };
+})();
+
+/* ---------- 3. Home: the 4 pills, then What to do. The price list and notebook cards sit under it, and both have a permanent home ---------- */
+function nf74HomeOrder(){
+  const home = document.getElementById('mhHome') || document.getElementById('page-dashboard'); if(!home) return;
+  const what = [...home.querySelectorAll('.sect')].find(s => /^What to do/.test(((s.querySelector('.sect-h h4') || {}).textContent || '').trim()));
+  if(!what) return;
+  let after = what;
+  ['.nf48-home', '.nf45-oldhint'].forEach(sel => {
+    const el = home.querySelector(sel); if(!el) return;
+    if(after.nextElementSibling !== el) after.after(el);
+    after = el;
+  });
+}
+NF45_AFTER.push(() => { try{ if(document.querySelector('#page-dashboard.active')) nf74HomeOrder(); }catch(e){} });
+(function(){ const b = booksAfterHome; booksAfterHome = function(){ const r = b.apply(this, arguments); Promise.resolve().then(() => { try{ nf74HomeOrder(); }catch(e){} }); return r; }; })();
+// closing a card says where the feature lives from now on
+document.addEventListener('click', e => {
+  const t = e.target && e.target.closest ? e.target : null; if(!t) return;
+  if(t.closest('.nf45-oldhint .nf45-icon')) setTimeout(() => showToast('Hidden. Bring in old records anytime from the menu, or from Getting paid and Stock.', 'success'), 50);
+  const nb = t.closest('.nf48-home button'); if(nb && /Not this week/i.test(nb.textContent)) setTimeout(() => showToast("OK. This week's price list is always in Prices & profit and Online store.", 'success'), 50);
+}, true);
+// permanent buttons on the pages these features belong to
+const NF74_HOMES = {
+  profit: {id: 'nf74PlBtn', html: () => `<button type="button" class="btn btn-outline nf74-home-btn" id="nf74PlBtn" onclick="nf48PriceList()">${nf74Ic('<path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>')}This week's price list</button>`, ok: () => typeof nf48PriceList === 'function'},
+  store: {id: 'nf74PlBtn', html: () => `<button type="button" class="btn btn-outline nf74-home-btn" id="nf74PlBtn" onclick="nf48PriceList()">${nf74Ic('<path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>')}This week's price list</button>`, ok: () => typeof nf48PriceList === 'function'},
+  collections: {id: 'nf74RecBtn', html: () => `<button type="button" class="btn btn-outline nf74-home-btn" id="nf74RecBtn" onclick="(window.nf45Old || function(){})()">${nf74Ic('<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M12 18v-6M9 15l3-3 3 3"/>')}Bring in old utang</button>`, ok: () => typeof nf45Old === 'function'},
+  inventory: {id: 'nf74RecBtn', html: () => `<button type="button" class="btn btn-outline nf74-home-btn" id="nf74RecBtn" onclick="(window.nf45Old || function(){})()">${nf74Ic('<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M12 18v-6M9 15l3-3 3 3"/>')}Bring in old records</button>`, ok: () => typeof nf45Old === 'function'}
+};
+function nf74Ic(d){ return `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`; }
+function nf74PageHomes(){
+  const a = document.querySelector('#view-app .app-page.active'); if(!a) return;
+  const key = a.id.replace(/^page-/, ''), cfg = NF74_HOMES[key]; if(!cfg || !cfg.ok()) return;
+  let full = true; try{ full = key === 'collections' || key === 'inventory' ? isPageAllowedForViewAsRole('datacenter') !== false : booksCanSeeTotals(); }catch(e){}
+  const have = a.querySelector('#' + cfg.id);
+  if(!full){ if(have) have.remove(); return; }
+  if(have) return;
+  const head = a.querySelector(':scope > .page-head, .page-head'); if(!head) return;
+  let bar = head.querySelector('.nf74-homes');
+  if(!bar){ bar = document.createElement('div'); bar.className = 'nf74-homes'; head.appendChild(bar); }
+  bar.insertAdjacentHTML('beforeend', cfg.html());
+}
+NF45_AFTER.push(() => { try{ nf74PageHomes(); }catch(e){} });
+
+/* ---------- 4. Owner view: three answers at a glance, each one opens its page ---------- */
+function nf74OwnerHtml(){
+  const m = bkMonth(APP_TODAY), p = bkPnl(m), mon = nf74Mon(m, 'long');
+  const sales = Number(p.sales) || 0, cogs = Number(p.cost) || 0, opex = Number(p.expenses) || 0, spend = cogs + opex, profit = sales - spend;
+  const R = nf74SameRange(m), q = nf74PnlRange(R);
+  const margin = sales ? profit / sales * 100 : null, qm = q && q.sales ? q.net / q.sales * 100 : null, mDelta = margin != null && qm != null ? margin - qm : null;
+  const pDelta = q && q.sales ? profit - q.net : null;
+  const tone = v => v == null ? 'n' : v < 0 ? 'r' : v < 10 ? 'y' : 'g';
+  const chip = (v, pts) => v == null || !isFinite(v) || Math.abs(v) < (pts ? .05 : 1) ? `<em class="nf74-ch z">${q && q.sales ? 'Same as ' + nf74E(R.label) : 'No ' + nf74E(nf74Mon(R.pm)) + ' numbers yet'}</em>`
+    : `<em class="nf74-ch ${v > 0 ? 'g' : 'r'}">${v > 0 ? '▲' : '▼'} ${pts ? Math.abs(v).toFixed(1) + ' pts' : nf74P(Math.abs(v))} vs ${nf74E(R.label)}</em>`;
+  const keep = margin == null ? null : Math.round(margin);
+  const parts = [['Stock you sold', cogs]].concat(Object.entries(p.byCat || {}).filter(([, v]) => Number(v) > 0).sort((a, b) => b[1] - a[1]));
+  const top = parts.filter(([, v]) => v > 0).slice(0, 3);
+  const review = [];
+  try{
+    const noCost = new Set();
+    bkLiveSales().filter(s => bkMonth(s.date) === m).forEach(s => (s.lines || []).forEach(l => { if(!l.totalOnly && l.product && !(Number(l.unitCost) || bkItemCost(l.product))) noCost.add(l.product); }));
+    if(noCost.size) review.push({tone: 'y', t: `${noCost.size} item${noCost.size === 1 ? '' : 's'} sold with no cost saved`, s: 'Profit looks higher than it is until each item has a cost.', b: 'Add costs', a: "go('profit')"});
+  }catch(e){}
+  if(mDelta != null && mDelta <= -2) review.push({tone: 'r', t: `You keep less per sale than ${R.label}`, s: 'Check supplier prices, discounts given, and any price you haven\'t raised yet.', b: 'Prices & profit', a: "go('profit')"});
+  else if(mDelta != null && mDelta >= 2) review.push({tone: 'g', t: `You keep more per sale than ${R.label}`, s: 'Your prices and costs are working better this month.', b: 'See why', a: "go('money')"});
+  const r1 = review[0];
+  return `<section class="sect glass nf72-owner nf74-owner" aria-labelledby="nf74OwH">
+    <div class="sect-h"><h4 id="nf74OwH">Owner view · ${nf74E(mon)} so far</h4><button class="sch-btn" type="button" onclick="go('money')">Money overview ›</button></div>
+    <div class="nf74-ow">
+      <button type="button" class="nf74-ot t-${profit < 0 ? 'r' : 'g'}" onclick="go('money')"><span class="lb">${profit < 0 ? 'Loss so far' : 'Profit so far'}</span><b>${nf74P(profit)}</b>${chip(pDelta, false)}<small>${q && q.sales ? `${nf74E(R.label)}: ${nf74P(q.net)}` : `Sales ${nf74P(sales)} minus every cost`}</small><i class="go" aria-hidden="true">›</i></button>
+      <button type="button" class="nf74-ot t-${tone(margin)}" onclick="go('profit')"><span class="lb">You keep</span><b>${keep == null ? '—' : '₱' + Math.max(keep, 0)}<span class="u">${keep == null ? '' : ' of every ₱100'}</span></b>${chip(mDelta, true)}<small>${margin == null ? 'Shows once you record a sale' : `Margin ${margin.toFixed(1)}% after every cost`}</small><i class="go" aria-hidden="true">›</i></button>
+      <button type="button" class="nf74-ot t-b nf74-costs" onclick="go('expenses')"><span class="lb">Biggest costs · ${nf74P(spend)} in all</span>${top.length ? `<ol>${top.map(([k, v], i) => `<li><span class="n">${i + 1}</span><span class="k">${nf74E(k)}</span><b>${nf74P(v)}</b><em>${spend ? Math.round(v / spend * 100) : 0}%</em></li>`).join('')}</ol>` : '<small>No costs recorded yet this month.</small>'}<i class="go" aria-hidden="true">›</i></button>
+    </div>
+    ${r1 ? `<div class="nf74-ow-r t-${r1.tone}"><span class="d" aria-hidden="true"></span><span class="tx"><b>${nf74E(r1.t)}</b><small>${nf74E(r1.s)}</small></span><button type="button" class="btn btn-outline" onclick="${r1.a}">${nf74E(r1.b)}</button></div>` : ''}
+  </section>`;
+}
+if(typeof nf72OwnerHtml === 'function'){ nf72OwnerHtml = nf74OwnerHtml; window.nf72OwnerHtml = nf74OwnerHtml; }
+
+/* ---------- 5. Money overview: short words where a column was a sentence ---------- */
+
+/* ---------- 6. Walk-in sales: two tabs. Sales (what was sold) and Count the cash (the drawer). The pills stay on both ---------- */
+const NF74T = {sales: 'sales'};
+function nf74SalesTabs(){
+  const pg = document.getElementById('page-sales'); if(!pg || !pg.classList.contains('active')) return;
+  const head = pg.querySelector(':scope > .page-head'); if(!head) return;
+  let bar = pg.querySelector(':scope > .nf74-tabs');
+  const cash = document.getElementById('nf18Count');
+  if(!cash){ if(bar) bar.remove(); if(pg.dataset.nf74t) delete pg.dataset.nf74t; return; }
+  let notCounted = false; try{ notCounted = !BK.counts.some(c => c.day === APP_TODAY && !c.reopenedAt); }catch(e){}
+  const k = NF74T.sales + '|' + notCounted;
+  if(!bar){ bar = document.createElement('div'); bar.className = 'nf74-tabs'; bar.setAttribute('role', 'tablist'); bar.setAttribute('aria-label', 'Walk-in sales'); head.after(bar); }
+  if(bar.dataset.k !== k){ bar.dataset.k = k;
+    bar.innerHTML = `<button type="button" role="tab" aria-selected="${NF74T.sales === 'sales'}" class="${NF74T.sales === 'sales' ? 'on' : ''}" onclick="nf74SalesTab('sales')">${nf74Ic('<path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/>')}Sales</button>`
+      + `<button type="button" role="tab" aria-selected="${NF74T.sales === 'cash'}" class="${NF74T.sales === 'cash' ? 'on' : ''}" onclick="nf74SalesTab('cash')">${nf74Ic('<rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01M18 12h.01"/>')}Count the cash${notCounted ? '<em>Not counted today</em>' : ''}</button>`; }
+  if(pg.dataset.nf74t !== NF74T.sales) pg.dataset.nf74t = NF74T.sales;
+}
+function nf74SalesTab(t){ NF74T.sales = t === 'cash' ? 'cash' : 'sales'; nf74SalesTabs(); try{ window.scrollTo({top: 0, behavior: 'smooth'}); }catch(e){} }
+NF45_AFTER.push(() => { try{ nf74SalesTabs(); }catch(e){} });
+(function(){
+  const nav = window.navigate; if(typeof nav !== 'function' || nav._nf74) return;
+  const w = function(page){ if(page === 'cashcount') NF74T.sales = 'cash'; else if(page === 'sales' && !w._keep) NF74T.sales = NF74T.sales || 'sales'; const r = nav.apply(this, arguments); try{ nf74SalesTabs(); }catch(e){} [700, 1600].forEach(ms => setTimeout(() => { try{ nf74AlignHeads(); }catch(e){} }, ms)); return r; };
+  Object.keys(nav).forEach(k => { w[k] = nav[k]; }); w._nf74 = true; window.navigate = w; try{ navigate = w; }catch(e){}
+})();
+// "Count the cash ›" links on the Sales tab switch tabs instead of scrolling down a long page
+document.addEventListener('click', e => {
+  const a = e.target && e.target.closest ? e.target.closest('#page-sales a, #page-sales button, #page-sales .lg-link') : null; if(!a || a.closest('.nf74-tabs')) return;
+  if(/^Count the cash/i.test((a.textContent || '').trim()) && document.getElementById('nf18Count')){ e.preventDefault(); e.stopPropagation(); nf74SalesTab('cash'); }
+}, true);
+
+/* ---------- 7. Cash drawer: the owner fixes a wrong count, or settles a real difference with a note. Either way the day turns green ---------- */
+function nf74Settled(c){ return !!(c && c.recs && c.recs.length && c.recs.every(r => r.reviewedAt) && Math.round(c.diff) !== 0); }
+function nf74SettleBox(c, verdict){
+  let boss = false; try{ boss = booksCanSeeTotals(); }catch(e){}
+  const S = MH.sheet || {};
+  if(nf74Settled(c)){ const r = c.recs.find(x => x.reviewNote) || c.recs[0];
+    return `<div class="box green nf74-settled"><b class="t">Settled by ${mhEsc(r.reviewedBy || 'the owner')}${r.reviewedAt ? ' · ' + mhEsc(new Date(r.reviewedAt).toLocaleDateString('en-PH', {month: 'short', day: 'numeric'})) : ''}</b><span>${r.reviewNote ? '“' + mhEsc(r.reviewNote) + '”' : 'Checked and accepted.'} The ${c.diff < 0 ? 'shortage' : 'extra'} of ${mhPeso(Math.abs(c.diff))} stays in your books as ${c.diff < 0 ? 'Cash short' : 'Cash over'}, and the first count stays on record.</span></div>`; }
+  if(!boss || Math.round(c.diff) === 0) return verdict;
+  if(S.settle) return `${verdict}<div class="box nf74-settle"><b class="t">Settle ${mhLabel(c.day)}</b>
+    <label class="nf74-sl">What happened? (required, kept with the day)<textarea id="nf74SetNote" maxlength="300" placeholder="e.g. Talked to ${mhEsc(mhFirst(c.by))}: ₱${Math.abs(Math.round(c.diff))} change given by mistake to a customer.">${mhEsc(S.settleNote || '')}</textarea></label>
+    ${S.settleErr ? `<span class="err">${mhEsc(S.settleErr)}</span>` : ''}
+    <div class="actions"><button class="btn ghost" type="button" onclick="MH.sheet.settle=false; MH.sheet.settleErr=''; mhRenderDay()">Cancel</button><button class="btn" type="button" onclick="nf74SettleSave()">Settle the day</button></div></div>`;
+  return `${verdict}<div class="box nf74-settle"><b class="t">Fix or settle this day</b>
+    <span>Recounted and found the money? <b>Fix the count</b>. Checked and the ${c.diff < 0 ? 'shortage' : 'extra'} is real? <b>Settle it</b> with a short note. Either way the day turns green, and the first count stays on record.</span>
+    <div class="actions"><button class="btn" type="button" onclick="mhStartEdit()">Fix the count</button><button class="btn ghost" type="button" onclick="MH.sheet.settle=true; mhRenderDay()">Settle the ${c.diff < 0 ? 'shortage' : 'extra'}</button></div></div>`;
+}
+async function nf74SettleSave(){
+  const S = MH.sheet; if(!S) return; const c = mhCounts()[S.k]; if(!c) return;
+  const note = String((document.getElementById('nf74SetNote') || {}).value || '').trim(); S.settleNote = note;
+  if(note.length < 5){ S.settleErr = 'Add a short note first. It is kept with the day.'; mhRenderDay(); return; }
+  for(const r of c.recs.filter(x => !x.reviewedAt)){
+    if(myBusiness){ const { error } = await sb.rpc('review_cash_count', {p_id: r.id, p_note: note}); if(error){ S.settleErr = error.message; mhRenderDay(); return; } }
+    else { r.reviewedAt = new Date().toISOString(); r.reviewedBy = bkMe(); r.reviewNote = note; }
+  }
+  if(myBusiness) await bkLoad(true); else try{ bkSaveDemo(); }catch(e){}
+  S.settle = false; S.settleErr = ''; S.settleNote = '';
+  try{ renderMistHome(); }catch(e){} mhRenderDay(); showToast('Settled. The day is green, and your note is kept with it.', 'success');
+}
+
+/* ---------- 8. Sale details: the table lines up, the money adds up underneath like a receipt ---------- */
+function nf74SaleDetail(id){
+  const s = (BK.sales || []).find(x => x.id === id); if(!s) return;
+  const full = nf72FullView(), pay = {cash: 'Cash', gcash: 'GCash', maya: 'Maya', credit: 'Utang (on credit)', bank: 'Bank', other: 'Other'}[s.paidWith] || s.paidWith || '—';
+  const bal = typeof bkSaleBalance === 'function' ? bkSaleBalance(s) : 0, lines = s.lines || [];
+  let disc = 0, cost = 0, noCost = false;
+  const rows = lines.map(l => {
+    if(l.totalOnly) return `<tr><td class="t" colspan="${full ? 5 : 4}"><b>Total only, no items</b><small>Recorded before item-by-item sales, so the items can't be shown.</small></td><td class="n"><b>${bkPeso(l.unitPrice)}</b></td></tr>`;
+    const q = Number(l.qty) || 0, u = Number(l.unitPrice) || 0, list = Number(l.listPrice) || 0, c = Number(l.unitCost) || 0, d = list > u ? (list - u) * q : 0;
+    disc += d; cost += c * q; if(!c) noCost = true;
+    return `<tr><td class="t"><b>${escapeHtml(l.product)}</b>${d ? `<small>${bkPeso(list)} on the price list</small>` : ''}</td><td class="n">${q}</td><td class="n">${bkPeso(u)}</td><td class="n">${d ? `<span class="nf74-disc">−${bkPeso(d)}</span>` : '—'}</td>${full ? `<td class="n">${c ? bkPeso(c) : '<small>not saved</small>'}</td>` : ''}<td class="n"><b>${bkPeso(q * u)}</b></td></tr>`;
+  }).join('');
+  const when = (typeof bkDayLabel === 'function' ? bkDayLabel(s.date) : s.date) + (s.at ? ' · ' + new Date(s.at).toLocaleTimeString('en-PH', {hour: 'numeric', minute: '2-digit', timeZone: 'Asia/Manila'}) : '');
+  const sum = [['Total', bkPeso(s.total), 'tot']];
+  if(disc) sum.push(['Discount from the price list', '−' + bkPeso(disc), 'disc']);
+  if(full && cost) sum.push(['Cost of these items' + (noCost ? ' (some not saved)' : ''), bkPeso(cost), ''], ['Kept before expenses', bkPeso(s.total - cost), (s.total - cost) < 0 ? 'neg' : 'keep']);
+  slModal('nf72Sale', `<div class="sl-sheet-h"><b>Sale details</b><button class="sl-x" onclick="slClose('nf72Sale')" aria-label="Close">✕</button></div>
+    <div class="nf72-sd nf74-sd">
+      <div class="nf74-sdh"><div><small>Customer</small><b>${escapeHtml(s.customer || 'Walk-in')}</b></div><div><small>Paid with</small><b>${escapeHtml(pay)}</b></div><div><small>Payment</small><b class="${bal > 0 ? 'due' : 'ok'}">${bal > 0 ? bkPeso(bal) + ' still owed' : 'Paid in full'}</b></div><div><small>Entered by</small><b>${escapeHtml(s.by || '—')}</b></div><div><small>When</small><b>${escapeHtml(when)}</b></div></div>
+      <div class="nf74-sdt"><table><thead><tr><th class="t">Item</th><th class="n">Qty</th><th class="n">Price each</th><th class="n">Discount</th>${full ? '<th class="n">Cost each</th>' : ''}<th class="n">Amount</th></tr></thead><tbody>${rows}</tbody></table></div>
+      <div class="nf74-sds">${sum.map(([k, v, c]) => `<div class="${c}"><span>${k}</span><b>${v}</b></div>`).join('')}</div>
+      ${s.note ? `<p class="nf72-sdn"><b>Note:</b> ${escapeHtml(s.note)}</p>` : ''}
+      ${s.voidedAt ? `<p class="nf72-sdn"><b>Removed</b>${s.voidReason ? ': ' + escapeHtml(s.voidReason) : ''}${s.voidedBy ? ' · by ' + escapeHtml(s.voidedBy) : ''}</p>` : ''}
+    </div>
+    <div class="nf43-btns"><button type="button" class="btn btn-outline" onclick="slClose('nf72Sale')">Close</button><button type="button" class="btn btn-primary" onclick="slClose('nf72Sale'); bkReceipt('${s.id}')">Receipt</button></div>`);
+}
+if(typeof nf72SaleDetail === 'function'){ nf72SaleDetail = nf74SaleDetail; window.nf72SaleDetail = nf74SaleDetail; }
+
+/* ---------- 9. Every number popup: the big number stands alone, its note sits under it ---------- */
+function nf74BigText(el){
+  const src = el.querySelector('.v') || el.querySelector('b'); if(!src) return '';
+  const c = src.cloneNode(true); c.querySelectorAll('small, span, em, i, svg').forEach(x => x.remove());
+  return (c.textContent || '').replace(/\s+/g, ' ').trim() || (src.textContent || '').replace(/\s+/g, ' ').trim();
+}
+
+/* ---------- 10. Expenses: where the money went, as a ring and a ranked list (tap a kind to see its lines) ---------- */
+function nf74Where(cats, m, un){
+  const total = cats.reduce((a, [, v]) => a + (Number(v) || 0), 0); if(!total) return '';
+  const COL = ['#1F6B45', '#2563EB', '#F59E0B', '#8B5CF6', '#EC4899', '#0EA5E9', '#64748B'];
+  const top = cats.slice(0, 6), rest = cats.slice(6).reduce((a, [, v]) => a + v, 0); if(rest > 0) top.push(['Everything else', rest]);
+  const spikes = {}; ((un && un.spikes) || []).forEach(x => { spikes[x.cat] = x.pct; });
+  const R = 54, C = 2 * Math.PI * R; let off = 0;
+  const arcs = top.map(([k, v], i) => { const len = v / total * C, a = `<circle cx="70" cy="70" r="${R}" fill="none" stroke="${COL[i % COL.length]}" stroke-width="22" stroke-dasharray="${len.toFixed(2)} ${(C - len).toFixed(2)}" stroke-dashoffset="${(-off).toFixed(2)}" transform="rotate(-90 70 70)"><title>${nf74E(k)}: ${nf74P(v)}</title></circle>`; off += len; return a; }).join('');
+  const days = Math.max(1, m === String(APP_TODAY).slice(0, 7) ? Number(String(APP_TODAY).slice(8, 10)) : new Date(Number(m.slice(0, 4)), Number(m.slice(5, 7)), 0).getDate());
+  return `<section class="panel-card nf74-where"><div class="panel-head"><h2>Where the money went</h2><span class="bk-dim">${nf74P(total)} · about ${nf74P(total / days)} a day</span></div>
+    <div class="nf74-wb"><div class="nf74-ring"><svg viewBox="0 0 140 140" role="img" aria-label="Share of spending by kind">${arcs}</svg><div class="c"><b>${top.length > 1 ? Math.round(top[0][1] / total * 100) + '%' : '100%'}</b><small>${nf74E(top[0][0])}</small></div></div>
+      <ol class="nf74-wl">${top.map(([k, v], i) => `<li><button type="button" ${k === 'Everything else' ? 'disabled' : `onclick="bkExpFilter='${String(k).replace(/\\/g, '\\\\').replace(/'/g, "\\'")}'; renderExpensesPage()"`}><i style="background:${COL[i % COL.length]}"></i><span class="k">${nf74E(k)}${spikes[k] ? `<em class="up">+${spikes[k]}% vs usual</em>` : ''}</span><span class="pc">${Math.round(v / total * 100)}%</span><b>${nf74P(v)}</b></button></li>`).join('')}</ol></div>
+    <p class="nf74-wn">Tap a kind to see only its lines. A tag shows when a kind is much higher than usual.</p></section>`;
+}
+
+/* ---------- 11. Team: every task can be edited (what, who, when, which lane) and deleted from the same place ---------- */
+function nf74TaskEdit(id){
+  const t = (teamTasks || []).find(x => x.id === id); if(!t) return;
+  const people = typeof getActiveTeamMembers === 'function' ? getActiveTeamMembers().filter(m => m.status !== 'invited') : [];
+  const col = typeof nf33TCol === 'function' ? nf33TCol(t) : 'todo';
+  nf45Pop('nf74Task', 'Edit task', `<label class="nf45-lbl" for="nf74TT">What needs to get done?</label><input id="nf74TT" class="nf45-ta" maxlength="300" value="${nf74E(t.title)}" onkeydown="if(event.key==='Enter') nf74TaskSave('${t.id}')">
+    <div class="nf46-tr"><label><span>For</span><select id="nf74TA"><option value="">Anyone</option>${people.map(m => `<option value="${nf74E(m.id)}" ${m.id === t.assignedTo ? 'selected' : ''}>${nf74E(m.name)}</option>`).join('')}</select></label><label><span>Due <small>optional</small></span><input id="nf74TD" type="date" value="${nf74E(t.dueDate || '')}"></label></div>
+    <div class="nf74-lanes" role="radiogroup" aria-label="Lane">${[['todo', 'To do'], ['doing', 'Doing'], ['done', 'Done']].map(([k, l]) => `<label class="${k === col ? 'on' : ''}"><input type="radio" name="nf74TL" value="${k}" ${k === col ? 'checked' : ''} onchange="this.closest('.nf74-lanes').querySelectorAll('label').forEach(x => x.classList.toggle('on', x.contains(this)))">${l}</label>`).join('')}</div>
+    ${t.createdBy ? `<p class="nf45-sm">Added by ${nf74E(t.createdBy)}${t.createdAt ? ' · ' + nf74E(String(t.createdAt).slice(0, 10)) : ''}</p>` : ''}`,
+    `<button type="button" class="btn btn-outline nf74-del" onclick="slClose('nf74Task'); deleteTask('${t.id}')">Delete</button><span style="flex:1"></span><button type="button" class="btn btn-outline" onclick="slClose('nf74Task')">Cancel</button><button type="button" class="btn btn-primary" onclick="nf74TaskSave('${t.id}')">Save</button>`);
+  setTimeout(() => { const i = document.getElementById('nf74TT'); if(i){ i.focus(); i.select(); } }, 50);
+}
+async function nf74TaskSave(id){
+  const t = (teamTasks || []).find(x => x.id === id); if(!t) return;
+  const title = String((document.getElementById('nf74TT') || {}).value || '').trim(); if(!title){ showToast('Type what needs to get done.', 'warn'); return; }
+  const who = (document.getElementById('nf74TA') || {}).value || null, due = (document.getElementById('nf74TD') || {}).value || null;
+  const lane = (document.querySelector('input[name="nf74TL"]:checked') || {}).value || 'todo';
+  slClose('nf74Task');
+  if(title !== t.title || (who || null) !== (t.assignedTo || null) || (due || null) !== (t.dueDate || null))
+    await setTaskFields(id, {title, assignedTo: who, dueDate: due}, {title, assigned_to: who, due_date: due}, `Edited: "${title}"`);
+  if(typeof nf33TMove === 'function' && nf33TCol(t) !== lane) nf33TMove(id, lane);
+  showToast('Task saved.', 'success');
+}
+if(typeof nf33TCard === 'function'){
+  const _card = nf33TCard;
+  nf33TCard = function(t){
+    return _card(t).replace(/<button type="button" class="nf39-x"[^>]*>✕<\/button>/, `<button type="button" class="nf74-ed" title="Edit" aria-label="Edit task" onclick="nf74TaskEdit('${t.id}')">${nf74Ic('<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/>')}</button>`)
+      .replace('<div class="nf39-ct"><b', `<div class="nf39-ct"><b role="button" tabindex="0" title="Edit" onclick="nf74TaskEdit('${t.id}')" onkeydown="if(event.key==='Enter') nf74TaskEdit('${t.id}')"`);
+  };
+  window.nf33TCard = nf33TCard;
+}
+
+/* ---------- 12. Plans & pricing: the ₱0 beta offer, front and centre ---------- */
+function nf74Beta(s){ return !!(s && (s.demo || s.pilot)); }
+function nf74PlanPrice(p, amt, s){
+  const per = p.k === 'free' ? 'forever' : NF26P.cycle === 'yearly' ? 'a year' : 'a month';
+  if(!nf74Beta(s) || p.k === 'free') return `${nf74Beta(s) ? '<div class="nf74-was blank" aria-hidden="true">&nbsp;</div>' : ''}<div class="nf26-price"><b>${nf26Peso(amt)}</b><span>${per}</span></div>${nf74Beta(s) ? '<small class="nf74-save blank">Free for good</small>' : ''}`;
+  return `<div class="nf74-was"><s>${nf26Peso(amt)} ${per}</s><em>Beta</em></div><div class="nf26-price"><b>₱0</b><span>during beta</span></div><small class="nf74-save">You save ${nf26Peso(amt)} ${NF26P.cycle === 'yearly' ? 'a year' : 'every month'}</small>`;
+}
+function nf74PlanOffer(s){
+  if(!s || !s.demo) return '';
+  return `<div class="nf74-offer"><div><b>Beta offer: every Pro and Business feature, ₱0.</b><span>That is up to ₱2,990 a month you don't pay while Nifti is in beta. No card, no contract. When the beta ends, we tell you first and you choose.</span></div><button type="button" class="btn btn-primary" onclick="nf74PlanDemo('business')">Start free now</button></div>`;
+}
+function nf74PlanDemo(k){ nf26ClosePlans(); try{ localStorage.setItem('nifti-want-plan', k); }catch(e){} navigate('login'); try{ nf20ToSignup(); }catch(e){} }
+function nf74PlanFoot(s){
+  if(nf74Beta(s)) return `<div class="nf26-how"><b>During beta</b><p>${s.pilot ? 'Business-level features are enabled at no charge. No payment is due and no subscription record is changed. Your assigned plan is retained for billing after the beta period.' : 'There is no payment step while Nifti is in beta. When the beta ends, we tell you first, and you choose a plan or stay on Free. Your records stay either way.'}</p></div>`;
+  return `<div class="nf26-how"><b>How paying works</b><ol><li><span>1</span>Choose a plan and scan our QR with GCash, Maya or any bank app.</li><li><span>2</span>Type the reference number, or snap the receipt.</li><li><span>3</span>We switch your plan on, usually within a few hours.</li></ol>
+    <p>No card and no contract. If you stop, you go back to Free and keep all your records. Questions? <a onclick="nf26ClosePlans(); nf26Help()">Message the Nifti team</a>.</p></div>`;
+}
+
+/* ---------- 13. Count the cash: the day's summary, same look as the owner view ---------- */
+function nf74DaySummary(sales, pays, tot, lines, salesTotal){
+  const P = n => nf74P(n), list = Object.entries(pays || {}).sort((a, b) => b[1] - a[1]);
+  const byWho = {}; (lines || []).forEach(l => { if(l.discount > 0) byWho[l.by || 'Someone'] = (byWho[l.by || 'Someone'] || 0) + l.discount; });
+  const who = Object.entries(byWho).sort((a, b) => b[1] - a[1]);
+  const kept = (tot.revenue || 0) - (tot.cost || 0);
+  return `<div class="nf74-ow nf74-day">
+    <div class="nf74-ot t-b nf74-costs"><span class="lb">How they paid · ${P(salesTotal)} in all</span>${list.length ? `<ol>${list.map(([k, v], i) => `<li><span class="n">${i + 1}</span><span class="k">${nf74E(k)}</span><b>${P(v)}</b><em>${salesTotal ? Math.round(v / salesTotal * 100) : 0}%</em></li>`).join('')}</ol>` : '<small>No sales recorded this day.</small>'}<small>${sales.length} sale${sales.length === 1 ? '' : 's'}${(pays.Cash || 0) ? ` · ${P(pays.Cash)} should be in the drawer from sales` : ''}</small></div>
+    <div class="nf74-ot t-${kept < 0 ? 'r' : 'g'}"><span class="lb">${kept < 0 ? 'Lost before expenses' : 'Kept before expenses'}</span><b>${P(kept)}</b><small>Sold ${P(tot.revenue)} · the items cost ${P(tot.cost)}</small></div>
+    <div class="nf74-ot t-${tot.discount ? 'y' : 'g'}"><span class="lb">Discounts given</span><b>${P(tot.discount)}</b><small>${who.length ? who.map(([k, v]) => `${nf74E(k)} ${P(v)}`).join(' · ') : 'Everything sold at the price list'}</small></div>
+  </div>`;
+}
+function nf74BigSub(el){
+  const src = el.querySelector('.v') || el.querySelector('b'); if(!src) return '';
+  return [...src.querySelectorAll('small, span, em')].map(x => x.textContent.trim()).filter(Boolean).join(' · ');
+}
+
+/* ---------- 14. Every table: a column's header lines up with its cells (left, centre or right) ---------- */
+function nf74AlignHeads(){
+  const page = document.querySelector('#view-app .app-page.active'); if(!page) return;
+  page.querySelectorAll('table').forEach(t => {
+    if(!t.offsetParent || t.closest('.nf74-sdt')) return;
+    const head = t.tHead && t.tHead.rows[0]; if(!head) return;
+    const row = [...(t.tBodies[0] ? t.tBodies[0].rows : [])].find(r => r.cells.length === head.cells.length && !r.querySelector('td[colspan]')); if(!row) return;
+    [...head.cells].forEach((th, i) => { const td = row.cells[i]; if(!td) return;
+      let want = getComputedStyle(td).textAlign; if(want === 'start') want = 'left'; if(want === 'end') want = 'right';
+      let have = getComputedStyle(th).textAlign; if(have === 'start') have = 'left'; if(have === 'end') have = 'right';
+      if(want !== have) th.style.setProperty('text-align', want, 'important'); });
+  });
+}
+NF45_AFTER.push(() => { try{ nf74AlignHeads(); }catch(e){} });
 
 function renderSidebarForViewAsRole(){
   const allowed = computeAllowedPages(getEffectiveRoles());
