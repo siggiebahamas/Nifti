@@ -123,7 +123,18 @@
   const routes=document.getElementById('page-routes');
   if(routes){routes.classList.add('nf70-routes-page');routes.querySelectorAll('.page-head .pill,.page-head .badge,.page-head .chip').forEach(p=>p.classList.add('nf70-route-pill'));}
  }
- function run(){wrapSales();wrapCash();marketing();polishDashboard();}
+ function addSalesPermissionShortcut(){
+  let owner=false;try{owner=typeof getEffectiveRoles==='function'&&getEffectiveRoles().includes('Owner');}catch(e){}
+  if(!owner)return;
+  const settings=document.getElementById('page-settings');
+  if(settings&&!settings.querySelector('.nf70-sales-setting-shortcut')){
+   const card=document.createElement('section');card.className='settings-card nf70-sales-setting-shortcut';
+   card.innerHTML='<h2>Sales visibility</h2><p>Choose whether staff can see the full business sales book or only entries recorded under their own Nifti accounts.</p><button type="button" class="btn btn-outline">Manage sales visibility →</button>';
+   card.querySelector('button').addEventListener('click',()=>{if(typeof go==='function')go('sales');setTimeout(()=>document.querySelector('.nf70-sales-control')?.scrollIntoView({behavior:'smooth',block:'center'}),120);});
+   settings.appendChild(card);
+  }
+ }
+ function run(){wrapSales();wrapCash();marketing();polishDashboard();addSalesPermissionShortcut();}
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run,{once:true});else run();
  // The only observed subtree is the app; a short debounce prevents repeated full-document scans.
  let timer=null, lastPage='';
