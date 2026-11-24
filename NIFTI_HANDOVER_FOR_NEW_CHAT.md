@@ -1,5 +1,5 @@
 # NIFTI — FULL HANDOVER FOR A NEW CLAUDE CHAT
-_Last updated 3 Nov 2026. Paste this whole document into the new chat. Everything built so far lives in the GitHub repo and the live Supabase project listed below; this document tells you where each piece is and how it fits together._
+_Last updated 24 Nov 2026 (read section 8 first for the latest state). Paste this whole document into the new chat. Everything built so far lives in the GitHub repo and the live Supabase project listed below; this document tells you where each piece is and how it fits together._
 
 ---
 
@@ -405,3 +405,65 @@ The original schema is in `supabase_schema.sql` and `supabase_schema_part2.sql`.
 - WebView: offline page (assets/offline.html, retries when back online), window.print → PrintManager, navigator.share → Android share, blob/data downloads → Bridge.saveFile into Downloads, http downloads via DownloadManager, camera offered in file pickers (MediaStore insert, no CAMERA permission), intent:/viber: links, Supabase storage files open outside. Splash on Android 12+. isAccessibilityTool=false.
 - Files: app/nifti.apk (direct download), app/index.html (install page with QR, Android/iPhone/computer), android/release/nifti-1.2-play.aab, android/store/ (listing.md, data-safety.md, permissions-declarations.md, release-notes.md, PLAY_LAUNCH_GUIDE.md, icon, feature graphic, 6 screenshots).
 - When Play approves: set NF37_PLAY_URL in dev/src/r37_viber.js to the Play link and rebuild.
+
+
+---
+
+## 8. LATEST STATE (Rounds 51–55, 17–24 Nov 2026) — read this first
+
+### 8.1 Founder rules added in these rounds
+- Marketing pages stay LIGHT (no dark hero). The original landing (as of Round 49) is the approved one: keep its fonts, colors, sizes, spacing, and the dark-navy before/after day section. Rounds 50–51 redesigns were rejected (archived in design-lab/r51).
+- No fake testimonials, user counts or customer logos. A real "Trusted by" strip only once pilot shops agree.
+- Don't put the founder's real name on public pages (demo uses "Rico").
+- Never ask for or accept an API key in chat. Never print app_secrets values.
+- Never touch the other Supabase project "Permit Pal" (zeaiwvgktakbwnqpchbo).
+- Viber: talk about the ANDROID app only. Do not mention iPhone/computer Viber sync (not built; don't overpromise).
+- Order reader = a careful helper, not magic AI. User always checks; editing must be easy.
+- Buttons must never sit alone in an "island" or leave white gaps; group them.
+
+### 8.2 What changed (all deployed to https://siggiebahamas.github.io/Nifti/)
+- u58_round51: original landing + pricing restored; product pictures match the demo shop.
+- u99z_scale fix: the six-size font snap no longer touches marketing pages (MKT skip + restored type variables). Verified 0 style diffs vs the Nov 17 landing at 1440 and 390.
+- u59_round52: landing extras — bigger CTAs (18.5px, 56px tall), hero alerts pop in, notebook before/after slider (#mkNotebook), time-back calculator (#mkCalc), phone sticky Start free/Try the demo bar, real-app phone loop (loop52_*.jpg). The "Try it" section (#mkTry) is now a STILL picture (Viber message → order → "You check it, then tap Send"), no typing box.
+- See it in action panels zoomed 1.24x on computer; store picture chips cleaned ("Barangay fee", "GCash · Maya · COD").
+- How it works step tags: dark green on light green (no more brown on yellow).
+- u60_round53 (r53_guide.js/css): "1-min tour" button beside "What's this page?" on 12 pages (falls back to the page title, or the Viber line on Messages). Fresh = solid green + 3 pulses; after viewing = white "Replay tour". Tour modal: fixed size so Back/Next never move, manual steps only, "Hide guide buttons" (Settings → "Show guides" brings back). Messages: one-line Android-only Viber notice.
+- Order reader (r14_read.js / r14.js): ignores Taglish filler (NFW_FILL: gusto, ko, niyo, yung, variant…), splits on tsaka/pati/at+number, food synonyms (bigas=rice etc.). Review screen: "Change item" on matched lines → 4 nearby choices + search; −/+ quantity 48px wide; type qty/price; remove line.
+- u61_round54 (r55_coach.js, r55.css):
+  - Header buttons grouped right; on computers they move onto the toolbar row below (month picker/date chips) when it has room (.nf55-bar/.nf55-acts), re-pinned to top if a page reorders panels. Fixed Stock, Prices & profit, Walk-in sales, Expenses.
+  - SETUP COACH: 10 steps (items, first customer, first supplier, first order, who owes you, walk-in sale, expense, staff*, online store*, phone alerts*; *optional). Each: minutes, one-line why, "Show me how" (opens page/tool, dims screen, pulsing ring on the exact button found by its text, one-line tip), "I did it", "Later". Auto-done from inventoryData/buyersData/suppliersData. Celebration per step. Hides while any popup is open. Minimize / hide (Settings → "Show coach"). Old "Get set up" card hidden while coach is on. State: localStorage nifti-coach:<business>.
+  - Round 55: coach is a SOLID GREEN card at the BOTTOM RIGHT (phone: above the bottom bar, bottom 140px), yellow progress ring, glow pulses 3x.
+- Build: `cd dev/src && python3 apply.py <module list>` (list in section 3, now ending: … u58_round51 u59_round52 u60_round53 u61_round54 u97_black_text u98_demo_dates u99_dates u99z_scale). Output = Nifti_Sept17.html, which GitHub Pages serves.
+- Tests used (Playwright, in the old session scratchpad, not in repo): t26, err, smoke, flow, r48t, pg50, r47t, flick, diff51. Known expected results: flow ends "STUCK at paid on Print the receipt" (normal); smoke logs one 404 console line (pre-existing); flick 390 sometimes flags one page (timing).
+
+### 8.3 Answers the founder asked for at the end (not yet acted on)
+**Beta plan tier (founder wants: everyone free on the max Business plan):**
+- Already effectively true: app_secrets flag `pilot_all_free` is ON (`select public.nifti_pilot_free()` returns true). While on, `has_feature()` gives every business every feature, whatever its plan. Only 1 business exists so far (plan 'free').
+- Optional next step: also set new and existing businesses to plan 'business' with a note 'Beta' (change subscriptions.plan_id default to 'business', update existing rows) so the plan label matches.
+
+**How the founder gives someone a tier themselves:**
+- In the app, signed in as the platform admin (app_secrets `platform_admin_email`): the Admin page (`#page-admin`, function `admin_overview`) lists businesses, plans and usage, and can set a plan.
+- Backend way: Supabase dashboard → SQL editor: `select admin_set_plan('<business uuid>', 'business', '2027-03-31', 'Beta');` (plans: free, pro, supplier_pro, buyer_pro, business). Must be run as the admin user, or directly: `update subscriptions set plan_id='business', paid_until='2027-03-31', plan_note='Beta' where business_id='<uuid>';`
+- Pilot switch: `admin_set_pilot(true/false)`.
+
+**Admin monitoring:** Admin page in the app (businesses, plans, paid-until, usage such as notebook reads, upgrade_requests). Also Supabase dashboard → Table editor: businesses, subscriptions, upgrade_requests, plus Authentication → Users for sign-ups.
+
+**"Database timed out":** the Claude ↔ Supabase connector failed to connect for one session (a connection hiccup on the tool side). The database itself was fine; it reconnected next session. Nothing to fix.
+
+**AI notebook reader:** edge function `nb-read` (dev/edge_functions/nb-read.index.ts) reads the AI key from table app_secrets, row name `anthropic_api_key`. That row does NOT exist yet, so the reader can't run for real accounts. The FOUNDER must add it (never paste the key into chat): Supabase dashboard → SQL editor:
+`insert into app_secrets(name, value) values ('anthropic_api_key', 'PASTE-KEY-HERE');`
+Key from console.anthropic.com → API keys. Then test with one notebook photo in a real (non-demo) account.
+
+**Beta readiness (honest):** OK for a small closed beta (5–10 people) on https://siggiebahamas.github.io/Nifti/ (share the website, NOT the GitHub link). Before inviting:
+1. Founder signs up with a second email and runs one full order (items → customer → order → open link on another phone → Confirm).
+2. Sign-up emails: Supabase's default email sender allows only a few emails per hour. Set custom SMTP (Gmail/Resend) in Supabase → Authentication → Emails, or turn off email confirmation for the beta. (An `auth-email` edge function exists; check whether it is wired as the Send Email hook.)
+3. Nifti does not auto-send Viber/SMS; links and reminders open the user's own apps.
+4. Payments/subscribe flow is demo only — keep everyone on pilot free.
+5. Viber Android app untested on a real phone — leave out of beta.
+6. Supabase free plan pauses after ~7 idle days and has no backups — upgrade (~$25/mo) before real business data.
+
+### 8.4 Open ideas the founder liked / may ask for
+- AI fallback for the order reader: send only unsure lines + the shop's item list to an AI model.
+- Viber on computer (Viber Desktop keeps messages in a local file; a signed Windows/Mac helper could read it). Needs a session with the founder's computer attached + a code-signing certificate. Founder said: Android only for now.
+- Buyer "Got it" confirmation exists server-side (confirm_receipt_by_link).
+- Separate e-invoicing product for Shopee/Lazada/TikTok sellers: recommended as a separate brand on Nifti's engine, validate manually with 5 sellers first.
