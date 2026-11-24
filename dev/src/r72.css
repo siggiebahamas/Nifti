@@ -271,3 +271,53 @@ html body #view-app .nf43-pills .nf43-pill .v.nf47-sp .m small::before{content:'
 #nf45Old .nf73-way b{font-size:18px !important;font-weight:800 !important;line-height:1.25;color:#0B0F14;}
 #nf45Old .nf73-way small{font-size:16px !important;font-weight:400 !important;line-height:1.45;color:#0B0F14;}
 #nf45Old .nf73-way em{font-size:14px !important;font-weight:800 !important;color:#1F6B45;margin-top:auto;}
+
+/* both-sides headers with a total */
+html body #view-app .nf-half-h:has(.nf73-hsum){display:grid !important;grid-template-columns:14px minmax(0,1fr) auto;grid-template-areas:"i b s" ". sm s";column-gap:10px;row-gap:2px;align-items:center;}
+html body #view-app .nf-half-h:has(.nf73-hsum) > i{grid-area:i;} html body #view-app .nf-half-h:has(.nf73-hsum) > b{grid-area:b;} html body #view-app .nf-half-h:has(.nf73-hsum) > small{grid-area:sm;}
+.nf-half-h .nf73-hsum{grid-area:s;text-align:right;display:flex;flex-direction:column;align-items:flex-end;}
+.nf-half-h .nf73-hsum b{font-size:24px;font-weight:800;line-height:1.1;font-variant-numeric:tabular-nums;color:#0B0F14;}
+.nf-half-h .nf73-hsum small{font-size:14px;font-weight:700;color:#0B0F14;}
+.nf-half-h .nf73-hsum em{font-style:normal;color:#B42318;}
+.nf-half-h .nf73-hsum.g b{color:#0F6B3A;} .nf-half-h .nf73-hsum.r b{color:#B42318;} .nf-half-h .nf73-hsum.y b{color:#7A5600;}
+@media(max-width:760px){ html body #view-app .nf-half-h:has(.nf73-hsum){grid-template-areas:"i b b" ". sm sm" ". s s";} .nf-half-h .nf73-hsum{align-items:flex-start;margin-top:6px;text-align:left;} }
+/* tables inside a half: buttons and links never wrap into four lines */
+.nf-half table td:last-child .sl-link, .nf-half table td:last-child a, .nf-half table td:last-child button{white-space:nowrap;}
+.nf-half table th, .nf-half table td{padding-left:8px;padding-right:8px;}
+/* the AI notebook buttons, wherever an older pass moved them */
+html body #view-app [id^="nf22Nb"].nf22-nbbtn, html body #view-app #nf22NbLed, html body #view-app .nf55-acts .nf22-nbbtn{display:none !important;}
+/* To check: the "put someone in charge" box fits its words */
+#page-issues .nf44-it select{min-width:200px;}
+#page-issues .nf44-it td{vertical-align:middle;}
+/* Walk-in sales: the reconciliation folds */
+.nf70-cash-detail details.nf73-rfold{margin-top:12px;border:1px solid #E3E8E5;border-radius:12px;background:#fff;}
+.nf70-cash-detail details.nf73-rfold > summary{cursor:pointer;display:flex;align-items:center;gap:10px;padding:12px 14px;font-size:16px;font-weight:800;color:#145233;list-style:none;}
+.nf70-cash-detail details.nf73-rfold > summary::before{content:'▸';font-size:14px;transition:transform .2s;}
+.nf70-cash-detail details.nf73-rfold[open] > summary::before{transform:rotate(90deg);}
+.nf70-cash-detail details.nf73-rfold > summary em{font-style:normal;font-size:14px;background:#FFF4C2;color:#3A2C00;border-radius:999px;padding:2px 10px;}
+.nf70-cash-detail details.nf73-rfold > *:not(summary){margin-left:14px;margin-right:14px;}
+.nf70-cash-detail details.nf73-rfold[open]{padding-bottom:12px;}
+
+/* Staff Home: the day's jobs as big tiles; owner setup cards hidden for staff */
+#mhHome.nf73-staff #getStartedCard, #mhHome.nf73-staff .nf45-oldhint, #mhHome.nf73-staff #nf26Start{display:none !important;}
+#mhHome .nf69-shortcuts.nf73-shift{display:block;border:1px solid #DCE7E0;border-radius:18px;background:linear-gradient(135deg,#F3FAF5,#FFFFFF 70%);padding:16px;margin:12px 0 14px;}
+#mhHome .nf73-shh{display:flex;align-items:baseline;gap:10px;margin-bottom:12px;}
+#mhHome .nf73-shh b{font-size:18px;font-weight:800;color:#0B0F14;} #mhHome .nf73-shh small{font-size:14px;color:#0B0F14;}
+#mhHome .nf73-sht{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;}
+#mhHome .nf73-tile{display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-align:left;min-height:120px;padding:16px;border-radius:16px;border:1.5px solid #DCE2DF;background:#fff;cursor:pointer;font:inherit;color:#0B0F14;transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;}
+#mhHome .nf73-tile:hover{transform:translateY(-2px);border-color:#9FD0B2;box-shadow:0 14px 26px -18px rgba(20,55,34,.5);}
+#mhHome .nf73-tile:focus-visible{outline:3px solid #2563EB;outline-offset:2px;}
+#mhHome .nf73-tile .ic{width:44px;height:44px;border-radius:13px;background:#E6F4EA;color:#145233;display:grid;place-items:center;}
+#mhHome .nf73-tile .ic svg{width:24px;height:24px;}
+#mhHome .nf73-tile b{font-size:18px;font-weight:800;}
+#mhHome .nf73-tile small{font-size:14px;color:#0B0F14;}
+#mhHome .nf73-tile.p{background:#1F6B45;border-color:#1F6B45;color:#fff;}
+#mhHome .nf73-tile.p .ic{background:rgba(255,255,255,.18);color:#fff;} #mhHome .nf73-tile.p small{color:#E6F4EA;}
+@media(max-width:760px){ #mhHome .nf73-sht{grid-template-columns:1fr 1fr;} #mhHome .nf73-tile{min-height:104px;padding:12px;} }
+#mhHome .nf69-shortcuts.nf73-shift .nf73-tile b{display:block;margin:0;font-size:18px !important;font-weight:800;color:#0B0F14;letter-spacing:0;text-transform:none;}
+#mhHome .nf69-shortcuts.nf73-shift .nf73-tile small{display:block;font-size:14px !important;font-weight:500;color:#0B0F14;letter-spacing:0;text-transform:none;}
+#mhHome .nf69-shortcuts.nf73-shift .nf73-tile.p b, #mhHome .nf69-shortcuts.nf73-shift .nf73-tile.p small{color:#fff;}
+#mhHome .nf69-shortcuts.nf73-shift .nf73-shh b{font-size:18px !important;color:#0B0F14;letter-spacing:0;margin:0;}
+#mhHome .nf69-shortcuts.nf73-shift .nf73-shh small{font-size:14px !important;font-weight:500;color:#0B0F14;letter-spacing:0;}
+/* staff: the count-the-cash reminder is already a job tile and a box; no third copy */
+#mhHome.nf73-staff ~ .bk-count-nudge, #page-dashboard:has(#mhHome.nf73-staff) .bk-count-nudge{display:none !important;}

@@ -560,3 +560,98 @@ function nf73DemoFill(){
   if(typeof myBusiness !== 'undefined' && myBusiness) return;
   (BK.sales || []).forEach(s => (s.lines || []).forEach(l => { if(!l.totalOnly && l.product && !l.listPrice){ l.listPrice = Number(bkItemPrice(l.product)) || Number(l.unitPrice) || 0; } }));
 }
+
+/* ---------- Both-sides pages (Round 73): each side names what it holds on this page; Getting paid shows its totals ---------- */
+const NF73_HALF_SUB = {
+  collections: ['Who owes you, payments to confirm, promises', 'Bills from your suppliers, oldest first'],
+  prices: ['The prices you sell at, and changes you announce', 'Price changes your suppliers announced'],
+  cheques: ['Checks your customers gave you', 'Checks you wrote to your suppliers'],
+  returns: ['Credits and returns for your customers', 'Credits and returns from your suppliers'],
+  books: ['VAT on what you sold', 'VAT on what you bought'],
+  taxforms: ['2307 forms your customers owe you', '2307 forms you give your suppliers']
+};
+function nf73HalfSum(page, side){
+  if(page !== 'collections') return '';
+  try{
+    if(side === 'supplier'){
+      const rows = unpaidInvoicesFor('supplier'); let amt = rows.reduce((a, r) => a + (r.balance || 0), 0), late = rows.filter(r => r.daysOverdue > 0).length;
+      const who = new Set(rows.map(r => r.po && r.po.buyerName));
+      bkLiveSales().forEach(s => { const b = bkSaleBalance(s); if(b > 0){ amt += b; who.add(s.customer); if(daysBetween(s.date, APP_TODAY) > 30) late++; } });
+      who.delete(undefined);
+      return `<span class="nf73-hsum ${late ? 'r' : amt ? 'g' : 'n'}"><b>${nf72Peso(amt)}</b><small>owed to you · ${who.size} customer${who.size === 1 ? '' : 's'}${late ? ` · <em>${late} late</em>` : ''}</small></span>`;
+    }
+    const rows = unpaidInvoicesFor('buyer'), amt = rows.reduce((a, r) => a + (r.balance || 0), 0), late = rows.filter(r => r.daysOverdue > 0).length, next = rows.filter(r => r.due && r.daysOverdue <= 0).map(r => r.due).sort()[0];
+    return `<span class="nf73-hsum ${late ? 'r' : amt ? 'y' : 'n'}"><b>${nf72Peso(amt)}</b><small>you owe${late ? ` · <em>${late} late</em>` : next ? ' · next due ' + new Date(next + 'T00:00:00').toLocaleDateString('en-PH', {month: 'short', day: 'numeric'}) : ''}</small></span>`;
+  }catch(e){ return ''; }
+}
+if(typeof nfHalfHead === 'function'){
+  nfHalfHead = function(side, extra, page){
+    const h = NF_SIDE_HEAD[side], sub = page && NF73_HALF_SUB[page] ? NF73_HALF_SUB[page][side === 'supplier' ? 0 : 1] : h[1];
+    return `<div class="nf-half-h"><i aria-hidden="true"></i><b>${h[0]}</b><small>${sub}</small>${extra || ''}${page ? nf73HalfSum(page, side) : ''}</div>`;
+  };
+}
+
+/* ---------- One profit everywhere: pages drawn before the books finished loading redraw once they have ---------- */
+if(typeof lgLoad === 'function'){
+  const ll = lgLoad;
+  lgLoad = function(){
+    const was = typeof LG !== 'undefined' && LG.loaded, pr = ll.apply(this, arguments);
+    Promise.resolve(pr).then(() => { try{ if(was || !(typeof LG !== 'undefined' && LG.loaded)) return; const a = document.querySelector('#view-app .app-page.active'); if(a && /^page-(profit|money|ledger|sales|cashcount)$/.test(a.id) && typeof bkRefreshViews === 'function') bkRefreshViews(); }catch(e){} });
+    return pr;
+  };
+}
+
+/* ---------- Demo shop coherence: one price per item everywhere; today's sales match today's stock moves ---------- */
+function nf73DemoSync(){
+  if(typeof myBusiness !== 'undefined' && myBusiness) return; if(window._nf73Synced) return;
+  try{
+    (typeof myCatalog !== 'undefined' && myCatalog || []).forEach(c => { const it = (inventoryData || []).find(i => i.name === c.product); if(it && Number(it.sellPrice) > 0 && Number(c.price) !== Number(it.sellPrice)) c.price = Number(it.sellPrice); });
+    if(BK && BK.loaded && Array.isArray(BK.moves)){
+      const days = new Set((BK.sales || []).filter(s => !s.voidedAt).map(s => s.date));
+      BK.moves = BK.moves.filter(m => !(m.kind === 'sold' && days.has(m.date)));
+      (BK.sales || []).filter(s => !s.voidedAt).forEach(s => (s.lines || []).filter(l => !l.totalOnly).forEach(l => BK.moves.push({id: 'nf73-' + s.id + '-' + l.product, item: l.product, qty: -(Number(l.qty) || 0), kind: 'sold', unitCost: Number(l.unitCost) || null, reason: s.customer && s.customer !== 'Walk-in' ? 'Sold to ' + s.customer : 'Shop sale', ref: 'Sale', date: s.date, at: s.at, by: s.by})));
+      window._nf73Synced = true;
+    }
+  }catch(e){ console.warn('demo sync', e); }
+}
+(function(){ const b = booksAfterHome; booksAfterHome = function(){ try{ nf73DemoSync(); }catch(e){} return b.apply(this, arguments); }; })();
+
+/* ---------- Walk-in sales: the day's reconciliation keeps its summary in view, the long tables fold open on tap ---------- */
+function nf73FoldRecon(){
+  document.querySelectorAll('.nf70-cash-detail').forEach(sec => {
+    if(sec.querySelector(':scope > details.nf73-rfold')) return;
+    const kids = [...sec.children].filter(k => !k.matches('.panel-head, .nf70-detail-summary'));
+    if(!kids.length) return;
+    const d = document.createElement('details'); d.className = 'nf73-rfold';
+    const look = sec.querySelector('.nf72-look li') ? sec.querySelectorAll('.nf72-look li').length : 0;
+    d.innerHTML = `<summary><span>See every item sold and every stock change</span>${look ? `<em>${look} worth a second look</em>` : ''}</summary>`;
+    kids.forEach(k => d.appendChild(k)); sec.appendChild(d);
+  });
+}
+if(typeof renderCashCountPage === 'function'){ const rc = renderCashCountPage; renderCashCountPage = function(){ const r = rc.apply(this, arguments); try{ nf73FoldRecon(); }catch(e){} return r; }; Object.keys(rc).forEach(k => { renderCashCountPage[k] = rc[k]; }); window.renderCashCountPage = renderCashCountPage; }
+try{ NF45_AFTER.push(() => { try{ nf73FoldRecon(); }catch(e){} }); }catch(e){}
+
+/* ---------- Staff Home (Round 73): big, friendly tiles for the jobs of the day; owner setup cards stay with the owner ---------- */
+const NF73_SHIFT = {
+  'Record a sale': ['<path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2M7 8v8M10 8v8M13 8v8M17 8v8"/>', 'New sale', 'Scan or pick the items', 'p'],
+  'Count cash': ['<rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/>', 'Count the cash', 'At closing, before you go', ''],
+  'Check stock': ['<path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/>', 'Check stock', "What's low, what came in", ''],
+  'Manage orders': ['<rect x="1" y="7" width="13" height="10" rx="1"/><path d="M14 10h4l3 3v4h-7"/><circle cx="5.5" cy="18" r="1.8"/><circle cx="17.5" cy="18" r="1.8"/>', 'Delivery orders', 'Confirm, pack and deliver', ''],
+  'My routes': ['<circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8 19h8a3 3 0 0 0 0-6H8a3 3 0 0 1 0-6h8"/>', 'My deliveries', 'Your stops for today', 'p'],
+  'Add expense': ['<path d="M3 7h16a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M3 7l12-4v4M17 13.5h.01"/>', 'Add an expense', 'With a photo of the receipt', ''],
+  'Messages': ['<path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.6 8.6 0 0 1-3.8-.9L3 21l1.9-5.2A8.4 8.4 0 1 1 21 11.5z"/>', 'Messages', 'Customers, suppliers, team', '']
+};
+function nf73StaffHome(home){
+  const owner = nf72IsOwner();
+  home.classList.toggle('nf73-staff', !owner);
+  if(owner) return;
+  const strip = home.querySelector('.nf69-shortcuts'); if(!strip || strip.dataset.nf73) return;
+  const btns = [...strip.querySelectorAll('button')].map(b => [b.textContent.trim(), b.getAttribute('onclick') || '']);
+  if(!btns.length) return;
+  let name = ''; try{ name = (myTeamMember && myTeamMember.name) || ''; }catch(e){}
+  strip.dataset.nf73 = '1'; strip.classList.add('nf73-shift');
+  strip.innerHTML = `<div class="nf73-shh"><b>Your jobs today</b><small>Tap one to start.</small></div><div class="nf73-sht">${btns.map(([l, a]) => { const x = NF73_SHIFT[l] || ['<circle cx="12" cy="12" r="9"/>', l, '', ''];
+    return `<button type="button" class="nf73-tile ${x[3]}" onclick="${a.replace(/"/g, '&quot;')}"><span class="ic">${nf73Ic(x[0])}</span><b>${x[1]}</b><small>${x[2]}</small></button>`; }).join('')}</div>`;
+}
+(function(){ const b = booksAfterHome; booksAfterHome = function(){ const r = b.apply(this, arguments); Promise.resolve().then(() => { const h = document.getElementById('mhHome'); if(h) try{ nf73StaffHome(h); }catch(e){} }); return r; }; })();
+try{ NF45_AFTER.push(page => { if(page && page.id === 'page-dashboard'){ const h = document.getElementById('mhHome'); if(h) try{ nf73StaffHome(h); }catch(e){} } }); }catch(e){}

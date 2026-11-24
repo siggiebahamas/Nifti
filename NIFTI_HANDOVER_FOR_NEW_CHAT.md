@@ -1,5 +1,5 @@
 # NIFTI — FULL HANDOVER FOR A NEW CLAUDE CHAT
-_Last updated 24 Nov 2026 (read section 9 first, then section 8, for the latest state). Paste this whole document into the new chat. Everything built so far lives in the GitHub repo and the live Supabase project listed below; this document tells you where each piece is and how it fits together._
+_Last updated 24 Nov 2026 (read section 10 first, then 9 and 8, for the latest state). Paste this whole document into the new chat. Everything built so far lives in the GitHub repo and the live Supabase project listed below; this document tells you where each piece is and how it fits together._
 
 ---
 
@@ -498,4 +498,32 @@ Landing: 6 tabs open their own panels; journey; no leftover old sections; footer
 ### 9.4 Security findings for the founder (NOT changed — need approval)
 - `downstream_sales` RLS (`ds_select`, `ds_update`) lets ANY team member read and update every sale of the business through the API. "Each person sees only their own sales" is therefore a screen setting, not a lock. Recommended: select policy `nifti_books_viewer(business_id) OR created_by = nifti_me_member(business_id) OR books_settings.sales_visibility <> 'own'`, and limit `ds_update` to books viewers (staff only insert).
 - Expenses are already locked correctly (staff see only their own).
+
+---
+
+## 10. ROUND 73 (24 Nov 2026): second revision pass — read this first
+
+### 10.1 Page lag (root cause, fixed)
+Three endless repaint loops kept the browser busy all the time (2–6 s of blocked work per page click):
+- r62 rewrote the Home start card's HTML on every repaint pass, which triggered the next pass (~150 rewrites/s, on every page once Home had drawn). The override was removed (r62_cro.js).
+- nf43Expenses (r43) and nf55Heads (r55) swapped the Expenses toolbar back and forth (pre-existing). nf43Expenses now treats `.nf55-bar` as the toolbar (u73 patch).
+- nf41ImportButtons re-added the Excel button to the Prices/Stock header whenever nf55Heads moved it (pre-existing). It now looks page-wide (u73 patch).
+Result: 0 idle DOM mutations on all 22 checked pages; background busy ≈3 ms per click (was ≈2,800 ms; pre-ChatGPT ≈146 ms); click→paint ≈76 ms. Test scripts: prof.js (timing + CPU profile), muts.js (idle mutation counter).
+
+### 10.2 Landing
+Hero alerts stay inside the right column and the phone is straight. "How it works" and "Follow one order" are one section right after the hero (#mkJourney, r72_journey.html): 3 phases × 2 steps, a light app window (mini sidebar that highlights the page in use, the scene, live tiles colored by meaning). The old 3-step block is no longer drawn (nf20Landing patch in u72). "What changes for you" moved to r72_changes.html. Final CTA: "Know where your business stands." / "Every day." on its own line, 4 quick tiles (What came in / Who owes you / What's running low / What you really made), larger checkmarks.
+
+### 10.3 Dashboard
+- Home: the 3 status cards are off (founder: redundant with What to do). Owner view rebuilt: colored KPI cards (profit green/red, margin gauge green ≥10% / amber 0–10% / red <0, change vs last month), "Where the money went" stacked bar, "Worth a look" rows. No profit delta (month-to-date vs a full month would mislead).
+- Staff Home (non-owner): "Your jobs today" big tiles built from their allowed actions; Get set up, start card, notebook hint and the duplicate count reminder are hidden for staff.
+- Bring in old records (no AI): hub rebuilt (Upload Excel/CSV · Paste from Google Sheets (new, tab/CSV parsing) · Type them in), left-menu row "Bring in old records" next to Plans & pricing, search entry (@records), phone menu row renamed "Your records". It was broken before: beta-pauses.js had replaced the reader opener, so Excel/typing hit the "AI paused" popup; beta-pauses now keeps `nf22NbOpenForImport` for imports. `NIFTI_AI_ON = false` blocks the only two AI calls (nb-read, chat-read) right where they're made. Imported sales need an item name and save cost + list price.
+- Weekly price list: ▲/▼ compare with the last list sent, else prices before the last 5 weeks of price changes (price_changes), demo gets a sample last week; the side panel lists what went up/down/new.
+- Where every order is: clear yellow pending (r68/r69/r70 brown-beige palette replaced everywhere).
+- Delivery orders boxes: Stock-style layout (icon centered, peso big, "2 orders · to handle").
+- Sales visibility: per-role override in the Settings card (books_settings.sales_visibility_roles), owner only.
+- One profit everywhere: pages drawn before the ledger loaded now redraw once it has (lgLoad wrapper). Home "Owed to you" now includes shop utang (matches Money overview).
+- Both-sides pages: side subtitles per page; Getting paid sides show their totals. Payroll "Value to collect" → "Cash advances to collect". Walk-in sales reconciliation folds (summary stays visible). AI notebook button on Monthly summary hidden. Demo: one price per item (catalog = stock price), today's stock moves match today's sales.
+
+### 10.4 Tests this round
+landtest (6 tabs, journey incl. click-before-autoplay), saletest (19 checks), rectest (menu link, hub, paste → match → check, AI blocked), findtest/sw.js, full.js (28 pages × 2 widths, 0 errors; 7 roles), muts.js (0 loops), prof.js (speed). Still not done: signed-in tests with real accounts.
 

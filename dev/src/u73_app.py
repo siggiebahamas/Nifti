@@ -72,3 +72,14 @@ _t = S['text']; _n = _t.count("|| 'Just"); S['text'] = _t.replace("|| 'Just the 
 # Home start card: "Snap your notebook" (AI) becomes "Bring in old records" (Excel, Sheets or typing)
 P("<button type=\"button\" onclick=\"nf26OpenStart('snap')\">${nf26Svg('cam')}<b>Snap your notebook</b><span>Nifti types it in</span></button>",
   "<button type=\"button\" onclick=\"navigate('oldrecords')\">${nf26Svg('file')}<b>Bring in old records</b><span>Excel, Sheets or typing</span></button>")
+
+# --- Audit fixes (Round 73) ---
+# Home "Owed to you" = order bills + shop utang, the same number Money overview shows (it left out shop utang)
+P("  const owed = hmSum(owedRows, r => r.balance), owedLate = hmSum(owedRows.filter(r => r.daysOverdue > 0), r => r.balance);",
+  "  let shopOwed = 0, shopLate = 0; try{ bkLiveSales().forEach(s => { const b = bkSaleBalance(s); if(b > 0){ shopOwed += b; if(daysBetween(s.date, APP_TODAY) > 30) shopLate += b; } }); }catch(e){}\n"
+  "  const owed = hmSum(owedRows, r => r.balance) + shopOwed, owedLate = hmSum(owedRows.filter(r => r.daysOverdue > 0), r => r.balance) + shopLate;")
+# "Vale" is a staff cash advance: say it in plain words instead of "Value to collect"
+S['text'] = S['text'].replace("'Value to collect'", "'Cash advances to collect'").replace('<span>Value to collect</span>', '<span>Cash advances to collect</span>').replace('/^Value to collect/i', '/^Cash advances to collect/i')
+# both-sides pages: each side says what it holds on THIS page (and Getting paid shows the totals)
+P("      sec.innerHTML = nfHalfHead(side); const b = document.createElement('div'); b.className = 'nf-half-b';",
+  "      sec.innerHTML = nfHalfHead(side, '', page); const b = document.createElement('div'); b.className = 'nf-half-b';")

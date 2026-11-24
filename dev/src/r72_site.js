@@ -60,7 +60,7 @@ function nf72JrGo(i, user){
   });
   const bar = box.querySelector('.r72-prog i'); if(bar) bar.style.width = ((i + 1) / NF72_JR.length * 100) + '%';
   const again = box.querySelector('.r72-replay'); if(again) again.hidden = i < NF72_JR.length - 1;
-  if(user){ NF72J.auto = false; clearTimeout(NF72J.t); }
+  if(user){ NF72J.auto = false; NF72J.started = true; clearTimeout(NF72J.t); }   // a visitor's tap always wins over the autoplay
 }
 function nf72JrPlay(){
   clearTimeout(NF72J.t); NF72J.auto = true; nf72JrGo(0);
