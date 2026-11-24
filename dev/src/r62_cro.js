@@ -56,14 +56,8 @@
       wrapped._nf62 = true; window.nf26PaintStart = wrapped;
       try{ nf26PaintStart = wrapped; }catch(e){}
     }
-    if(typeof window.nf26StartCard === 'function' && !window.nf26StartCard._nf62){
-      const base = window.nf26StartCard;
-      const wrapped = function(){ const r = base.apply(this, arguments); const card = document.getElementById('nf26Start'); if(card){
-        html(card, '<div class="nf26-sch"><div><b>Get your first workflow running</b><span>Three small steps. Everyone outside your business can respond through links without registering.</span></div><button type="button" class="nf26-link" onclick="nf26StartSet(\'hide\',1); document.getElementById(\'nf26Start\').remove()">Hide</button></div><div class="nf26-scb"><button type="button" onclick="go(\'inventory\')"><b>Add one item</b><span>Enter a product and price</span></button><button type="button" onclick="go(\'collections\'); setTimeout(()=>{if(typeof openAddCustomerForm===\'function\')openAddCustomerForm()},200)"><b>Add your first customer</b><span>Save one key customer contact</span></button><button type="button" onclick="go(\'orders\'); setTimeout(()=>{if(typeof openCustomerPoImport===\'function\')openCustomerPoImport()},200)"><b>Create and share an order</b><span>Send a link for confirmation</span></button></div>');
-      } return r; };
-      wrapped._nf62 = true; window.nf26StartCard = wrapped;
-      try{ nf26StartCard = wrapped; }catch(e){}
-    }
+    // Round 73: the Home start-card rewrite was removed. It replaced the card's HTML on every repaint pass, which
+    // triggered another pass: an endless loop (~150 rewrites a second) that made every page click lag.
     if(typeof window.nf55Paint === 'function' && !window.nf55Paint._nf62){
       const base = window.nf55Paint;
       const wrapped = function(){ const r = base.apply(this, arguments); const dock = document.getElementById('nf55Dock'); if(dock){

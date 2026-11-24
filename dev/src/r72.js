@@ -61,31 +61,42 @@ function nf72Status(home){
    "Worth reviewing" lists things the What-to-do lanes don't already show: where the money went, how sure the profit is, margin trend. */
 function nf72OwnerHtml(){
   const m = bkMonth(APP_TODAY), pm = bkPrevMonth(m), p = bkPnl(m), q = bkPnl(pm);
-  const mon = new Date(m + '-01T00:00:00').toLocaleDateString('en-PH', {month: 'long'}), pmon = new Date(pm + '-01T00:00:00').toLocaleDateString('en-PH', {month: 'long'});
-  const sales = Number(p.sales) || 0, spend = (Number(p.cost) || 0) + (Number(p.expenses) || 0), profit = sales - spend;
-  const margin = sales ? profit / sales * 100 : null, qs = Number(q.sales) || 0, qm = qs ? (qs - (Number(q.cost) || 0) - (Number(q.expenses) || 0)) / qs * 100 : null;
-  const delta = margin != null && qm != null ? margin - qm : null;
+  const mon = new Date(m + '-01T00:00:00').toLocaleDateString('en-PH', {month: 'long'}), pmon = new Date(pm + '-01T00:00:00').toLocaleDateString('en-PH', {month: 'short'});
+  const sales = Number(p.sales) || 0, cogs = Number(p.cost) || 0, opex = Number(p.expenses) || 0, spend = cogs + opex, profit = sales - spend;
+  const qs = Number(q.sales) || 0, qprofit = qs - (Number(q.cost) || 0) - (Number(q.expenses) || 0);
+  const margin = sales ? profit / sales * 100 : null, qm = qs ? qprofit / qs * 100 : null, delta = margin != null && qm != null ? margin - qm : null;
+  const mTone = margin == null ? 'n' : margin < 0 ? 'r' : margin < 10 ? 'y' : 'g';
+  const chip = (v, unit, good) => v == null || !isFinite(v) || Math.abs(v) < (unit === 'pt' ? .05 : 1) ? '' : `<span class="nf73-dchip ${(v > 0) === good ? 'g' : 'r'}">${v > 0 ? '▲' : '▼'} ${unit === 'pt' ? Math.abs(v).toFixed(1) + ' pts' : nf72Peso(Math.abs(v))} vs ${pmon}</span>`;
+  // margin gauge (0..30% maps to the ring; negative shows an empty red ring)
+  const pct = margin == null ? 0 : Math.max(0, Math.min(1, margin / 30)), C = 2 * Math.PI * 34;
+  const gauge = `<svg class="nf73-gauge t-${mTone}" viewBox="0 0 84 84" aria-hidden="true"><circle cx="42" cy="42" r="34" class="bg"/><circle cx="42" cy="42" r="34" class="fg" stroke-dasharray="${(C * pct).toFixed(1)} ${C.toFixed(1)}" transform="rotate(-90 42 42)"/></svg>`;
+  // where the money went: cost of goods + each expense kind, as one stacked bar
+  const parts = [['Cost of what you sold', cogs]].concat(Object.entries(p.byCat || {}).filter(([, v]) => Number(v) > 0).sort((a, b) => b[1] - a[1]));
+  const top = parts.slice(0, 4), rest = parts.slice(4).reduce((a, [, v]) => a + Number(v), 0); if(rest > 0) top.push(['Everything else', rest]);
+  const COL = ['#1F6B45', '#3B82F6', '#F59E0B', '#8B5CF6', '#94A3B8'];
+  const bar = spend > 0 ? `<div class="nf73-stack" role="img" aria-label="Where the money went">${top.map(([k, v], n) => `<i style="width:${(v / spend * 100).toFixed(2)}%;background:${COL[n]}" title="${nf72Esc(k)}: ${nf72Peso(v)}"></i>`).join('')}</div>
+    <ul class="nf73-legend">${top.map(([k, v], n) => `<li><i style="background:${COL[n]}"></i><span>${nf72Esc(k)}</span><b>${nf72Peso(v)}</b><em>${sales ? Math.round(v / sales * 100) + '% of sales' : ''}</em></li>`).join('')}</ul>` : '<p class="nf72-ow-none">No costs or expenses recorded yet this month.</p>';
+  // worth a look: only things the What-to-do lanes don't already list
   const review = [];
-  const cats = Object.entries(p.byCat || {}).filter(([, v]) => Number(v) > 0).sort((a, b) => b[1] - a[1]).slice(0, 2);
-  cats.forEach(([c, v]) => review.push({tone: 'plain', ic: 'wallet', t: `${c}: ${nf72Peso(v)}`, s: sales ? `${Math.round(v / sales * 100)}% of this month's sales went here` : 'Your biggest expense so far this month', b: 'See expenses', a: "go('expenses')"}));
   const noCost = new Set();
   try{ bkLiveSales().filter(s => bkMonth(s.date) === m).forEach(s => (s.lines || []).forEach(l => { if(!l.totalOnly && l.product && !(Number(l.unitCost) || bkItemCost(l.product))) noCost.add(l.product); }));
     getSupplierPOs().filter(o => bkMonth(o.createdDate) === m && !['draft', 'cancelled'].includes(o.status)).forEach(o => (o.lineItems || []).forEach(l => { if(l.product && !bkItemCost(l.product)) noCost.add(l.product); })); }catch(e){}
-  const nc = noCost.size;
-  if(nc > 0) review.push({tone: 'amber', ic: 'tag', t: `${nc} item${nc === 1 ? '' : 's'} sold with no cost saved`, s: 'Profit looks higher than it is until each item has a cost', b: 'Add costs', a: "go('profit')"});
-  if(delta != null && delta <= -2) review.push({tone: 'amber', ic: 'down', t: `Margin down ${Math.abs(delta).toFixed(1)} points from ${pmon}`, s: `You kept ${margin.toFixed(1)}% of sales, ${qm.toFixed(1)}% last month. Check costs and discounts.`, b: 'Prices & profit', a: "go('profit')"});
-  else if(delta != null && delta >= 2) review.push({tone: 'green', ic: 'up', t: `Margin up ${delta.toFixed(1)} points from ${pmon}`, s: `You kept ${margin.toFixed(1)}% of sales, up from ${qm.toFixed(1)}%.`, b: 'See why', a: "go('money')"});
-  const stat = (lbl, val, sub, cls) => `<div class="nf72-ow-stat ${cls || ''}"><span>${lbl}</span><b>${val}</b><small>${sub}</small></div>`;
-  return `<section class="sect glass nf72-owner" aria-labelledby="nf72OwH">
+  if(noCost.size) review.push({tone: 'y', ic: 'tag', t: `${noCost.size} item${noCost.size === 1 ? '' : 's'} sold with no cost saved`, s: 'Your profit looks higher than it is until each item has a cost.', b: 'Add costs', a: "go('profit')"});
+  if(delta != null && delta <= -2) review.push({tone: 'r', ic: 'down', t: `Margin down ${Math.abs(delta).toFixed(1)} points from ${pmon}`, s: 'Check what you paid suppliers, discounts given and any price you haven\'t raised yet.', b: 'Prices & profit', a: "go('profit')"});
+  else if(delta != null && delta >= 2) review.push({tone: 'g', ic: 'up', t: `Margin up ${delta.toFixed(1)} points from ${pmon}`, s: 'Nice. Your prices and costs are working better than last month.', b: 'See why', a: "go('money')"});
+  const big = top.filter(([k]) => k !== 'Cost of what you sold' && k !== 'Everything else')[0];
+  if(big && sales && big[1] / sales > .08) review.push({tone: 'n', ic: 'wallet', t: `${big[0]} is your biggest expense`, s: `${nf72Peso(big[1])} so far, ${Math.round(big[1] / sales * 100)}% of sales.`, b: 'See expenses', a: "go('expenses')"});
+  return `<section class="sect glass nf72-owner nf73-owner" aria-labelledby="nf72OwH">
     <div class="sect-h"><h4 id="nf72OwH">Owner view · ${mon} so far</h4><button class="sch-btn" type="button" onclick="go('money')">Money overview ›</button></div>
-    <div class="nf72-ow-grid">
-      ${stat('Costs and expenses', nf72Peso(spend), `Cost of goods ${nf72Peso(p.cost)} · expenses ${nf72Peso(p.expenses)}`)}
-      ${stat(profit < 0 ? 'Operating loss' : 'Operating profit', nf72Peso(profit), sales ? 'Sales minus costs and expenses' : 'No sales recorded yet', profit < 0 ? 'neg' : 'pos')}
-      ${stat('Operating margin', margin == null ? '—' : margin.toFixed(1) + '%', margin == null ? 'Shows once you record a sale' : qm == null ? `Of every ₱100 sold, ₱${Math.round(margin)} stays` : `${pmon}: ${qm.toFixed(1)}%`, margin != null && margin < 0 ? 'neg' : '')}
+    <div class="nf73-kpis">
+      <div class="nf73-kpi t-${profit < 0 ? 'r' : 'g'}"><span class="lb">${profit < 0 ? 'Operating loss' : 'Operating profit'}</span><b>${nf72Peso(profit)}</b><small>Sales ${nf72Peso(sales)} minus costs and expenses</small></div>
+      <div class="nf73-kpi t-${mTone} has-g">${gauge}<div><span class="lb">Operating margin</span><b>${margin == null ? '—' : margin.toFixed(1) + '%'}</b>${chip(delta, 'pt', true)}<small>${margin == null ? 'Shows once you record a sale' : `Of every ₱100 sold, you keep ₱${Math.max(0, Math.round(margin))}`}</small></div></div>
+      <div class="nf73-kpi t-b"><span class="lb">Costs and expenses</span><b>${nf72Peso(spend)}</b><small>Cost of goods ${nf72Peso(cogs)} · expenses ${nf72Peso(opex)}</small></div>
     </div>
-    <div class="nf72-ow-rev"><b>Worth reviewing</b>${review.length ? review.map(r => `<div class="nf72-ow-row ${r.tone}"><span class="ic">${nf72Svg(r.ic)}</span><span class="tx"><b>${nf72Esc(r.t)}</b><small>${nf72Esc(r.s)}</small></span><button type="button" class="btn btn-outline" onclick="${r.a}">${r.b}</button></div>`).join('')
-      : '<p class="nf72-ow-none">Nothing extra to review. Urgent items are in What to do above.</p>'}</div>
-    <p class="nf72-ow-foot">From the sales, costs and expenses recorded in Nifti for ${mon}. Not a forecast.</p>
+    <div class="nf73-where"><div class="nf73-wh"><b>Where the money went</b><small>${mon} so far</small></div>${bar}</div>
+    <div class="nf72-ow-rev"><b>Worth a look</b>${review.length ? review.map(r => `<div class="nf72-ow-row t-${r.tone}"><span class="ic">${nf72Svg(r.ic)}</span><span class="tx"><b>${nf72Esc(r.t)}</b><small>${nf72Esc(r.s)}</small></span><button type="button" class="btn btn-outline" onclick="${r.a}">${r.b}</button></div>`).join('')
+      : '<p class="nf72-ow-none">Nothing extra stands out. Urgent items are in What to do above.</p>'}</div>
+    <p class="nf72-ow-foot">From the sales, costs and expenses recorded in Nifti for ${mon}. Not a forecast. <span class="nf73-key"><i class="g"></i>good <i class="y"></i>watch <i class="r"></i>needs attention</span></p>
   </section>`;
 }
 function nf72Owner(home){
@@ -117,7 +128,8 @@ function nf72Dedupe(home){
 function nf72Home(){
   const home = document.getElementById('mhHome'); if(!home) return;
   try{ nf72Dedupe(home); }catch(e){}
-  try{ nf72Status(home); }catch(e){ console.warn('status cards', e); }
+  // Round 73: the three status cards are off (the founder found them repeating What to do). nf72Status stays for later.
+  home.querySelectorAll('.nf72-status').forEach(x => x.remove());
   try{ nf72Owner(home); }catch(e){ console.warn('owner view', e); }
 }
 (function(){
@@ -214,6 +226,13 @@ if(typeof nf18Leads === 'function'){
 
 /* ---------- Sales visibility (brief 9): the owner chooses; Owner, GM and Finance always see everything ---------- */
 function nf72SalesMode(){ try{ return bkSettings().sales_visibility === 'own' ? 'own' : 'business'; }catch(e){ return 'business'; } }
+// what THIS person sees: a per-role choice wins over the shop-wide one; if any of their roles may see all sales, they do
+function nf72MyMode(){
+  let per = {}, roles = []; try{ per = bkSettings().sales_visibility_roles || {}; roles = getEffectiveRoles(); }catch(e){}
+  const picks = roles.map(r => per[r]).filter(v => v === 'own' || v === 'business');
+  if(picks.includes('business')) return 'business'; if(picks.length) return 'own';
+  return nf72SalesMode();
+}
 function nf72IsOwner(){ try{ return getEffectiveRoles().includes('Owner'); }catch(e){ return true; } }
 function nf72FullView(){ try{ return booksCanSeeTotals(); }catch(e){ return true; } }
 function nf72Mine(row){
@@ -226,7 +245,8 @@ function nf72Mine(row){
 (function(){
   const base = window.renderSalesBooksPage; if(typeof base !== 'function' || base._nf72) return;
   const w = function(){
-    const own = !nf72FullView() && nf72SalesMode() === 'own', all = BK.sales;
+    try{ nf73DemoFill(); }catch(e){}
+    const own = !nf72FullView() && nf72MyMode() === 'own', all = BK.sales;
     if(own && Array.isArray(all)) BK.sales = all.filter(nf72Mine);
     let r; try{ r = base.apply(this, arguments); } finally { BK.sales = all; }
     try{
@@ -235,7 +255,7 @@ function nf72Mine(row){
       if(body){
         let note = body.querySelector('.nf72-svnote');
         const html = own ? 'Showing the sales <b>you</b> recorded. Your owner chose this in Settings.'
-          : nf72IsOwner() ? `Staff see: <b>${nf72SalesMode() === 'own' ? 'only the sales they recorded' : 'all shop sales'}</b>. <button type="button" class="nf43-link" onclick="nf72GoSalesVis()">Change who sees sales</button>` : '';
+          : nf72IsOwner() ? `Staff see: <b>${nf72SalesMode() === 'own' ? 'only the sales they recorded' : 'all shop sales'}</b>${Object.keys((bkSettings().sales_visibility_roles) || {}).length ? ' (some roles set differently)' : ''}. <button type="button" class="nf43-link" onclick="nf72GoSalesVis()">Change who sees sales</button>` : '';
         if(!html){ if(note) note.remove(); }
         else { if(!note){ note = document.createElement('p'); note.className = 'nf72-svnote'; body.prepend(note); } if(note.innerHTML !== html) note.innerHTML = html; }
       }
@@ -252,6 +272,7 @@ function nf72SalesVisCard(){
       ${opt('business', 'Everyone sees all shop sales', 'Best when a few people share one counter or one cashier rings up for the team. Staff see the whole day of sales and its totals.')}
       ${opt('own', 'Each person sees only the sales they recorded', 'Best when each cashier has their own drawer or shift. Staff see their own entries and their own totals.')}
     </div>
+    ${nf73RoleVisHtml()}
     <p class="nf72-svfoot">Either way, every sale keeps the name of the person who entered it. This choice only changes what staff see in Nifti. It does not change who served the customer, and it is not a sales quota.</p>`;
 }
 async function nf72SetSalesVis(v){
@@ -401,4 +422,141 @@ function nf72SaleDetail(id){
       ${s.voidedAt ? `<p class="nf72-sdn"><b>Removed</b>${s.voidReason ? ': ' + escapeHtml(s.voidReason) : ''}${s.voidedBy ? ' · by ' + escapeHtml(s.voidedBy) : ''}</p>` : ''}
     </div>
     <div class="nf43-btns"><button type="button" class="btn btn-outline" onclick="slClose('nf72Sale')">Close</button><button type="button" class="btn btn-primary" onclick="slClose('nf72Sale'); bkReceipt('${s.id}')">Receipt</button></div>`);
+}
+
+/* ---------- Bring in old records (Round 73): Excel, Google Sheets or typing. No AI anywhere. ----------
+   The notebook-photo reader is the only part that calls an AI service (edge function nb-read). It is off
+   (NIFTI_AI_ON = false, checked right where the call is made). Excel, pasted sheets and typed rows go to the same
+   "check each line" screen and are saved straight into Getting paid, Sales, Expenses, supplier bills or Stock. */
+const NIFTI_AI_ON = false;
+function nf73Ic(d){ return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`; }
+const NF73_REC_IC = '<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M12 18v-6M9 15l3-3 3 3"/>';
+nf45Old = function(){
+  const way = (ic, title, sub, tag, attrs) => `<div role="button" tabindex="0" class="nf45-way nf73-way" ${attrs} onkeydown="if(event.key==='Enter'||event.key===' '){ event.preventDefault(); this.click(); }"><span class="ic">${nf73Ic(ic)}</span><b>${title}</b><small>${sub}</small><em>${tag}</em></div>`;
+  nf45Pop('nf45Old', 'Bring in your old records', `
+    <div class="nf73-rhead"><div class="nf73-rsteps"><span><i>1</i>Your list, as it is</span><span><i>2</i>Upload, paste or type</span><span><i>3</i>Check each line</span><span><i>4</i>It's in your books</span></div>
+      <p>Utang, sales, supplier bills, expenses or your item list. Nothing goes into your books until you check it, and nothing here uses AI.</p></div>
+    <div class="nf45-ways nf73-ways">
+      <label class="nf45-way nf73-way"><input type="file" accept=".xlsx,.xls,.csv,text/csv" hidden onchange="nf45OldFile(this)"><span class="ic">${nf73Ic('<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/>')}</span><b>Upload an Excel or CSV file</b><small>Any columns, any order. Nifti matches them for you.</small><em>From your computer or phone</em></label>
+      ${way('<rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M8 12h8M8 16h5"/>', 'Paste from Google Sheets', 'Select the cells in Google Sheets or Excel, copy, and paste them here.', 'Fastest for Google Sheets', 'onclick="nf73Paste()"')}
+      ${way('<rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"/>', 'Type them in', 'A simple table, like a spreadsheet. Enter goes to the next line.', 'Best for a notebook', 'onclick="nf45OldType()"')}
+    </div>
+    <details class="nf45-how"><summary>What can I bring in?</summary>${NF45O_KINDS.map(([k, l, ex]) => `<div><b>${nf45Esc(l)}</b><span>e.g. ${nf45Esc(ex)}</span></div>`).join('')}</details>
+    <p class="nf45-sm">Free on every plan, with no limit.</p>`,
+    `<button type="button" class="btn btn-outline" onclick="slClose('nf45Old')">Close</button>`, {wide: true});
+};
+window.nf45Old = nf45Old;
+function nf73Paste(){
+  nf45Pop('nf45Old', 'Paste from Google Sheets or Excel', `
+    <ol class="nf73-pst"><li>Open your sheet and select the rows, <b>including the header row</b> if you have one.</li><li>Copy them (Ctrl+C, or long-press → Copy on a phone).</li><li>Paste in the box below.</li></ol>
+    <textarea id="nf73PasteBox" class="nf73-pbox" rows="9" placeholder="Customer&#9;Amount owed&#9;Date&#10;Aling Nena Store&#9;600&#9;11/3&#10;Mang Bert Construction&#9;5700&#9;11/5"></textarea>
+    <p class="nf45-err" id="nf73PasteErr"></p>`,
+    `<button type="button" class="btn btn-outline" onclick="nf45Old()">Back</button><button type="button" class="btn btn-primary" onclick="nf73PasteGo()">Next: match the columns</button>`, {wide: true});
+  setTimeout(() => { const b = document.getElementById('nf73PasteBox'); if(b) b.focus(); }, 60);
+}
+function nf73PasteGo(){
+  const raw = String((document.getElementById('nf73PasteBox') || {}).value || '').replace(/\r/g, '');
+  const lines = raw.split('\n').filter(l => l.trim());
+  if(!lines.length){ const e = document.getElementById('nf73PasteErr'); if(e) e.textContent = 'Paste at least one row first.'; return; }
+  const tabbed = lines.some(l => l.includes('\t'));
+  let rows = tabbed ? lines.map(l => l.split('\t')) : (typeof colParseCsv === 'function' && lines.some(l => l.includes(',')) ? colParseCsv(lines.join('\n')) : lines.map(l => l.split(/\s{2,}/)));
+  rows = rows.map(r => (r || []).map(c => String(c == null ? '' : c).trim())).filter(r => r.some(Boolean)).slice(0, 1001);
+  const head = rows[0], hasHead = head.filter(c => c && !/^[\d.,₱\s/-]+$/.test(c)).length >= Math.ceil(head.length / 2);
+  NF45O.cols = hasHead ? head : head.map((c, i) => 'Column ' + (i + 1)); NF45O.rows = hasHead ? rows.slice(1) : rows; NF45O.file = 'Pasted from your sheet';
+  const hs = NF45O.cols.join(' ').toLowerCase();
+  if(/utang|balance|owe|debt/.test(hs)) NF45O.kind = 'utang'; else if(/supplier|bill/.test(hs)) NF45O.kind = 'bills'; else if(/expense|category/.test(hs)) NF45O.kind = 'exp'; else if(/stock|count|on hand/.test(hs) && !/customer/.test(hs)) NF45O.kind = 'stock'; else if(/qty|item|product/.test(hs)) NF45O.kind = 'sales';
+  nf45OldGuessMap(); nf45OldMapRender();
+}
+// the left menu: "Bring in records" sits at the bottom with Alerts and Who sees what (it's a setup tool, not a daily page)
+function nf73RecLink(){
+  const foot = document.getElementById('nf26Foot'); if(!foot) return;   // the bottom of the menu, with Plans & pricing and Need help?
+  let ok = true; try{ ok = isPageAllowedForViewAsRole('datacenter'); }catch(e){}
+  let b = document.getElementById('nf73RecLink');
+  if(!ok){ if(b) b.remove(); return; }
+  if(b && b.parentElement === foot) return;
+  if(!b){ b = document.createElement('button'); b.type = 'button'; b.id = 'nf73RecLink'; b.className = 'nf26-help nf73-rec';
+    b.innerHTML = `${nf73Ic(NF73_REC_IC)}<span><b>Bring in old records</b></span>`; b.title = 'Excel, Google Sheets or typing';
+    b.onclick = () => { try{ closeMobileSidebar(); }catch(e){} navigate('oldrecords'); }; }
+  foot.insertBefore(b, foot.firstChild);
+}
+try{ NF45_AFTER.push(nf73RecLink); }catch(e){}
+// phone menu: the old "AI tools" row becomes "Your records" with only Excel or typing in it
+(function(){ const om = window.openMoreSheet; if(typeof om !== 'function' || om._nf73) return; const w = function(){ const r = om.apply(this, arguments); try{ const h = document.querySelector('#moreSheet .nf23-mai h6'); if(h && h.textContent !== 'Your records') h.textContent = 'Your records'; const o = document.querySelector('#nf45OldMore span'); if(o && o.textContent !== 'Bring in old records') o.textContent = 'Bring in old records'; }catch(e){} return r; }; Object.keys(om).forEach(k => { w[k] = om[k]; }); w._nf73 = true; window.openMoreSheet = w; try{ openMoreSheet = w; }catch(e){} })();
+// search: "import", "excel", "google sheets", "old records"
+try{ NF26_FIND.push({p: '@records', t: 'Bring in old records', d: 'Excel, Google Sheets or typing', w: 'import excel google sheets sheet csv old records notebook utang list upload paste bring in lumang listahan'});
+  const g2 = nf26Go; nf26Go = function(p){ if(p === '@records'){ try{ document.getElementById('globalSearchResults').classList.add('hidden'); }catch(e){} return navigate('oldrecords'); } return g2.apply(this, arguments); }; window.nf26Go = nf26Go; }catch(e){}
+
+/* ---------- Weekly price list (Round 73): red ▲ / green ▼ always have something to compare with ----------
+   1) the last list you sent; 2) if none yet, the prices before your price changes of the last 5 weeks;
+   3) the demo shop gets a sample "last week". The picture AND the side panel show the changes. */
+function nf73PlBaseline(){
+  const items = typeof nf48Items === 'function' ? nf48Items().filter(i => i.price > 0) : []; if(!items.length) return null;
+  const since = addDaysIso(APP_TODAY, -35), base = {}; let any = false;
+  const ch = (typeof myBusiness !== 'undefined' && myBusiness) ? (typeof priceChangesCache !== 'undefined' && priceChangesCache || []) : (typeof demoPriceChanges !== 'undefined' ? demoPriceChanges : []);
+  items.forEach(i => { base[i.name] = i.price; });
+  ch.filter(c => !c.cancelled_at && c.old_price != null && c.effective_date && c.effective_date <= APP_TODAY && c.effective_date >= since)
+    .sort((a, b) => String(a.effective_date).localeCompare(String(b.effective_date)))
+    .forEach(c => { if(base[c.product] != null && !base['__' + c.product]){ base[c.product] = Number(c.old_price); base['__' + c.product] = 1; any = true; } });
+  if(!(typeof myBusiness !== 'undefined' && myBusiness)){   // demo: a believable last week
+    const w = items.find(i => /wire/i.test(i.name)); if(w){ base[w.name] = Math.round(w.price * .96); any = true; }
+    const n = items.find(i => /angle/i.test(i.name)); if(n){ delete base[n.name]; any = true; }
+  }
+  Object.keys(base).forEach(k => { if(k.startsWith('__')) delete base[k]; });
+  if(!any) return null;
+  return {d: addDaysIso(nf48WeekStart(), -7), p: base, from: 'history'};
+}
+if(typeof nf48Get === 'function'){
+  const g = nf48Get;
+  nf48Get = function(k, d){ const v = g(k, null); if(k === 'pl-last' && v == null){ const b = nf73PlBaseline(); return b || d; } return v == null ? d : v; };
+  window.nf73PlSent = () => g('pl-last', null);   // the real 'last sent' record, without the comparison fallback
+}
+function nf73PlChanges(items){
+  const last = nf48Get('pl-last', null); if(!last || !last.p) return {last: null, up: [], down: [], nu: []};
+  const up = [], down = [], nu = [];
+  items.forEach(i => { const was = last.p[i.name]; if(was == null) nu.push(i); else if(Math.round(i.price) > Math.round(was)) up.push([i, i.price - was]); else if(Math.round(i.price) < Math.round(was)) down.push([i, was - i.price]); });
+  return {last, up, down, nu};
+}
+if(typeof nf48ListPaint === 'function'){
+  const lp = nf48ListPaint;
+  nf48ListPaint = async function(){
+    if(typeof myBusiness !== 'undefined' && myBusiness && typeof priceChangesCache !== 'undefined' && priceChangesCache === null){
+      try{ const { data } = await sb.from('price_changes').select('*').order('created_at', {ascending: false}).limit(60); priceChangesCache = data || []; }catch(e){ priceChangesCache = []; } }
+    const r = await lp.apply(this, arguments);
+    try{
+      const side = document.querySelector('#nf48List .nf48-lside'); if(!side) return r;
+      const items = nf48ListItems(), c = nf73PlChanges(items);
+      let box = side.querySelector('.nf73-plc'); if(!box){ box = document.createElement('div'); box.className = 'nf73-plc'; const p = side.querySelector('.nf45-p'); if(p) p.after(box); else side.prepend(box); }
+      const when = c.last ? new Date(c.last.d + 'T00:00:00').toLocaleDateString('en-PH', {month: 'short', day: 'numeric'}) : '';
+      box.innerHTML = !c.last ? '<p class="nf73-plnone">Arrows show from your second list: Nifti compares each price with the last list you sent.</p>'
+        : `<div class="nf73-plchips"><span class="up">▲ ${c.up.length} up</span><span class="dn">▼ ${c.down.length} down</span>${c.nu.length ? `<span class="nu">NEW ${c.nu.length}</span>` : ''}</div>
+           <p class="nf73-plwhen">Compared with ${c.last.from === 'history' ? 'your prices before the recent changes' : 'the list you sent ' + when}.</p>
+           ${c.up.concat(c.down).length ? `<ul class="nf73-pll">${c.up.map(([i, d]) => `<li class="up"><span>${nf48E(i.name)}</span><b>▲ ${nf48P(d)}</b></li>`).join('')}${c.down.map(([i, d]) => `<li class="dn"><span>${nf48E(i.name)}</span><b>▼ ${nf48P(d)}</b></li>`).join('')}</ul>` : ''}`;
+      // tags beside each item in "Items on the list"
+      const map = {}; c.up.forEach(([i, d]) => { map[i.name] = ['up', '▲ ' + nf48P(d)]; }); c.down.forEach(([i, d]) => { map[i.name] = ['dn', '▼ ' + nf48P(d)]; }); c.nu.forEach(i => { map[i.name] = ['nu', 'NEW']; });
+      document.querySelectorAll('#nf48LItems label').forEach(l => { const n = (l.querySelector('input') || {}).value, m = map[n]; if(m && !l.querySelector('.nf73-plt')) l.querySelector('span').insertAdjacentHTML('afterend', `<em class="nf73-plt ${m[0]}">${m[1]}</em>`); });
+      if(!window.nf73PlSent()){ const ll = document.getElementById('nf48LLast'); if(ll) ll.textContent = 'Not sent yet. Send it every Monday so buyers know your prices.'; }
+    }catch(e){ console.warn('price list changes', e); }
+    return r;
+  };
+}
+
+function nf73RoleVisHtml(){
+  let roles = []; try{ roles = (typeof nf20Roles === 'function' ? nf20Roles() : ['General Manager', 'Finance', 'Cashier', 'Purchasing Agent', 'Warehouse Manager', 'Driver']).filter(r => !['General Manager', 'Finance'].includes(r)); }catch(e){}
+  const per = (bkSettings().sales_visibility_roles) || {}, n = Object.keys(per).length;
+  const sel = r => `<select aria-label="What ${nf72Esc(r)} sees" onchange="nf73SetRoleVis(${JSON.stringify(r).replace(/"/g, '&quot;')}, this.value)"><option value="" ${!per[r] ? 'selected' : ''}>Same as above</option><option value="business" ${per[r] === 'business' ? 'selected' : ''}>All shop sales</option><option value="own" ${per[r] === 'own' ? 'selected' : ''}>Only their own</option></select>`;
+  return `<details class="nf73-rolevis" ${n ? 'open' : ''}><summary>Different for some roles?${n ? ` <em>${n} set</em>` : ''}</summary>
+    <p>For example, cashiers see only their own sales while your purchasing person sees them all. General Manager and Finance always see everything.</p>
+    <div class="nf73-rvl">${roles.map(r => `<label><span>${nf72Esc(r)}</span>${sel(r)}</label>`).join('')}</div></details>`;
+}
+async function nf73SetRoleVis(role, v){
+  if(!nf72IsOwner()){ showToast('Only the owner can change this.', 'warn'); return; }
+  const per = Object.assign({}, bkSettings().sales_visibility_roles || {}); if(v) per[role] = v; else delete per[role];
+  const ok = await bkSaveSettings({sales_visibility_roles: per});
+  if(ok !== false) showToast(v ? `Saved. ${role}: ${v === 'own' ? 'only their own sales' : 'all shop sales'}.` : `Saved. ${role} follows the shop-wide choice.`, 'success');
+  const c = document.getElementById('nf72SalesVis'); if(c) c.innerHTML = nf72SalesVisCard();
+}
+// demo shop: sales lines carry their list price, so the review shows list price and discounts (real sales save it at checkout)
+function nf73DemoFill(){
+  if(typeof myBusiness !== 'undefined' && myBusiness) return;
+  (BK.sales || []).forEach(s => (s.lines || []).forEach(l => { if(!l.totalOnly && l.product && !l.listPrice){ l.listPrice = Number(bkItemPrice(l.product)) || Number(l.unitPrice) || 0; } }));
 }

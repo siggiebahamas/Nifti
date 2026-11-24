@@ -60,9 +60,12 @@ for old, new in [
     if v.count(old) != 1: raise SystemExit('u72_site: copy not found: ' + old[:60])
     v = v.replace(old, new)
 
-# 4. "Follow one order" (brief 3.4 + 3.6) and "What changes for you" (3.5), right before the before/after day
+# 4. How it works = "Follow one order" (Round 73: one section instead of two, right after the hero; the old 3-step
+#    "How it works" block is no longer drawn, see the nf20Landing patch below). "What changes for you" before the day.
+a = v.index('<section class="f4-hero">'); b = v.index('</section>', a) + len('</section>')
+v = v[:b] + '\n' + rd('r72_journey.html') + v[b:]
 a = v.index('<section class="f6-ba-sec nf26-nd" id="mkHow">')
-v = v[:a] + rd('r72_journey.html') + '\n' + v[a:]
+v = v[:a] + rd('r72_changes.html') + '\n' + v[a:]
 
 # 5. FAQ: a clear icon per question instead of the question-mark bubble; larger, darker answers (3.7)
 FQ_IC = {
@@ -91,10 +94,20 @@ v = faq(v)
 # 6. Final call to action: centered, peace of mind and control, no promises we can't keep (3.7)
 CTA_OLD = re.search(r'<div class="cta-band">.*?</div>\s*</div>', v, re.S)
 if not CTA_OLD: raise SystemExit('u72_site: final CTA not found')
-v = v[:CTA_OLD.start()] + ('<div class="cta-band r72-cta">\n    <h2>Know where your business stands. <span>Every day.</span></h2>\n'
-    '    <p>See what came in, what is owed, what is running low and what needs you next. Calmer days, better decisions, and a clear view of the profit you are really making.</p>\n'
+CK = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>'
+CTA_IT = [
+  ('<path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.5 5.1 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.5-6.9A2 2 0 0 0 16.8 4H7.2a2 2 0 0 0-1.7 1.1z"/>', 'What came in', 'Every order and payment, in one list'),
+  ('<path d="M7 20V4h6a4 4 0 0 1 0 8H7"/><path d="M4 8h16M4 11h16"/>', 'Who owes you', 'With the days late beside each name'),
+  ('<path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/>', "What's running low", "Before your supplier's delivery time"),
+  ('<path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/>', 'What you really made', 'Profit after costs, not a guess'),
+]
+v = v[:CTA_OLD.start()] + ('<div class="cta-band r72-cta">\n    <div class="p2-burst">START TODAY · FREE DURING BETA</div>\n'
+    '    <h2>Know where your business stands.<span>Every day.</span></h2>\n'
+    '    <p class="r72-cta-lead">Open Nifti in the morning and see it all on one screen:</p>\n'
+    '    <ul class="r72-cta-grid">' + ''.join(f'<li><span class="ic">{SVG(d)}</span><span><b>{a}</b><small>{b}</small></span></li>' for d, a, b in CTA_IT) + '</ul>\n'
+    '    <p class="r72-cta-tag">Calmer days. Better decisions. <b>More of the profit you work for.</b></p>\n'
     '    <div class="f5-cta"><a onclick="mk52Start()" class="btn btn-hero-primary btn-lg mk-big">Start free</a><a onclick="startDemoOrder()" class="btn btn-hero-outline btn-lg mk-big">Try the demo</a></div>\n'
-    '    <div class="r72-cta-points"><span>✓ Free during beta</span><span>✓ No card needed</span><span>✓ Your customers don\'t need an app</span></div>\n'
+    f'    <div class="r72-cta-points"><span><i>{CK}</i>Free during beta</span><span><i>{CK}</i>No card needed</span><span><i>{CK}</i>Your customers don\'t need an app</span></div>\n'
     '  </div>') + v[CTA_OLD.end():]
 
 # 7. Prices on the landing: the regular price crossed out, then the beta price (3.7)
@@ -137,6 +150,8 @@ P("""const NF20_SHOW = [
 P("  book: '<path d=\"M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z\"/><path d=\"M8 7h8M8 11h6\"/>'\n};",
   "  book: '<path d=\"M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z\"/><path d=\"M8 7h8M8 11h6\"/>',\n  box: '<path d=\"M21 8 12 3 3 8v8l9 5 9-5z\"/><path d=\"m3 8 9 5 9-5M12 13v8\"/>'\n};")
 P("    if(t === '__books') inner = nf20BooksPanel();", "    if(t === '__books') inner = nf20BooksPanel();\n    else if(t === '__stock') inner = nf72StockPanel();")
+# Round 73: the 3-step How it works block is folded into "Follow one order" (#mkJourney), so it is not drawn
+P("  pick.replaceWith(how); how.after(show);", "  pick.replaceWith(show);")
 # no auto-advancing tabs: a visitor picks, the choice stays
 P("  if(!reduce) nf20ShowTimer();\n  show.addEventListener", "  NF20S.stop = true;\n  show.addEventListener")
 

@@ -45,17 +45,18 @@ const NF72J = {i: 0, t: null, auto: false, started: false};
 function nf72JrGo(i, user){
   const box = document.getElementById('mkJourney'); if(!box) return;
   const prev = NF72_JR[NF72J.i] || NF72_JR[0], now = NF72_JR[i]; NF72J.i = i;
-  box.querySelectorAll('.r72-jr-track button').forEach((b, k) => { b.classList.toggle('on', k === i); b.classList.toggle('done', k < i); b.setAttribute('aria-selected', String(k === i)); b.tabIndex = k === i ? 0 : -1; });
-  box.querySelectorAll('.r72-jr-track li').forEach((li, k) => li.classList.toggle('r72-lit', k < i));
+  box.querySelectorAll('.r72-ph button[data-i]').forEach(b => { const k = Number(b.dataset.i); b.classList.toggle('on', k === i); b.classList.toggle('done', k < i); b.setAttribute('aria-selected', String(k === i)); b.tabIndex = k === i ? 0 : -1; });
+  box.querySelectorAll('.r72-ph-g').forEach((g, n) => { g.classList.toggle('on', Math.floor(i / 2) === n); g.classList.toggle('done', Math.floor(i / 2) > n); });
+  box.querySelectorAll('.r72-win-nav span').forEach(s => s.classList.toggle('on', (' ' + s.dataset.on + ' ').includes(' ' + i + ' ')));
   box.querySelectorAll('.r72-sc').forEach((s, k) => s.classList.toggle('on', k === i));
   box.querySelectorAll('.r72-led').forEach(row => {
     const k = row.dataset.k, b = row.querySelector('b'); if(!b) return;
-    if(k === 'status'){ b.innerHTML = `<em class="r72-pill ${now.status[1]}">${now.status[0]}</em>`; }
-    else b.textContent = now[k];
+    if(k === 'status') b.innerHTML = `<em class="r72-pill ${now.status[1]}">${now.status[0]}</em>`; else b.textContent = now[k];
     const changed = k === 'status' ? prev.status[0] !== now.status[0] : prev[k] !== now[k];
     row.classList.remove('flash'); if(changed && i !== 0){ void row.offsetWidth; row.classList.add('flash'); }
     row.classList.toggle('g', (k === 'cash' || k === 'profit') && now[k] !== '₱0' && now[k] !== '—');
     row.classList.toggle('y', k === 'owed' && now[k] !== '₱0');
+    row.classList.toggle('b', k === 'stock' && now[k] !== NF72_JR[0].stock);
   });
   const bar = box.querySelector('.r72-prog i'); if(bar) bar.style.width = ((i + 1) / NF72_JR.length * 100) + '%';
   const again = box.querySelector('.r72-replay'); if(again) again.hidden = i < NF72_JR.length - 1;
@@ -69,9 +70,9 @@ function nf72JrPlay(){
 }
 function nf72JrInit(){
   const box = document.getElementById('mkJourney'); if(!box || box.dataset.r72) return; box.dataset.r72 = '1';
-  const tabs = [...box.querySelectorAll('.r72-jr-track button')];
-  tabs.forEach((b, k) => b.addEventListener('click', () => nf72JrGo(k, true)));
-  box.querySelector('.r72-jr-track').addEventListener('keydown', e => {
+  const tabs = [...box.querySelectorAll('.r72-ph button[data-i]')];
+  tabs.forEach(b => b.addEventListener('click', () => nf72JrGo(Number(b.dataset.i), true)));
+  box.querySelector('.r72-ph').addEventListener('keydown', e => {
     if(e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return; e.preventDefault();
     const n = (NF72J.i + (e.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length; nf72JrGo(n, true); tabs[n].focus();
   });

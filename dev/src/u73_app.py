@@ -41,3 +41,34 @@ P("""<span class="bk-row-a">${!s.voidedAt ? `<button class="sl-link" onclick="bk
 # --- Settings (brief 9.1): "Who can see sales" is an everyday card, never folded under "More settings" ---
 P("const NF27_KEEP = /^(Business profile|How buyers pay you|Team & roles|Who sees what|",
   "const NF27_KEEP = /^(Business profile|How buyers pay you|Team & roles|Who sees what|Who can see sales|")
+
+# --- Speed (Round 73): two old passes swapped the Expenses toolbar back and forth forever (nf43Expenses vs nf55Heads).
+#     The toolbar row that nf55Heads builds (.nf55-bar) now counts as "the toolbar", so both agree on the order. ---
+P("  const tool = body.querySelector(':scope > .bk-toolbar'), pills = body.querySelector(':scope > .nf43-pills'), wait = body.querySelector(':scope > .bk-approve');",
+  "  const tool = body.querySelector(':scope > .nf55-bar') || body.querySelector(':scope > .bk-toolbar'), pills = body.querySelector(':scope > .nf43-pills'), wait = body.querySelector(':scope > .bk-approve');")
+#     Same kind of loop on Prices & profit and Stock: the Excel button was re-added to the header whenever nf55Heads had
+#     moved it to the toolbar row. Look for it anywhere on the page, not only in the header.
+P("    if(head && !head.querySelector('.nf41-impbtn')){", "    if(head && !page.querySelector('.nf41-impbtn')){")
+P("    if(host && !host.querySelector('.nf41-impbtn')){", "    if(host && !page.querySelector('.nf41-impbtn')){")
+
+# --- Bring in old records without AI (Round 73) ---
+# Excel / pasted / typed rows open the "check each line" screen directly (beta-pauses.js keeps the real opener for this).
+P("  slClose('nf45Old');\n  nf22NbOpen();\n  NB.kind = NF45O.kind;", "  slClose('nf45Old');\n  (window.nf22NbOpenForImport || nf22NbOpen)();\n  NB.kind = NF45O.kind;")
+# the only two AI calls in the app stay off while NIFTI_AI_ON is false (no tokens can be spent from the screen)
+P("    const { data, error } = await sb.functions.invoke('nb-read', {body: {image: x.photo, kind: x.kind, page_id: x.id}});",
+  "    if(typeof NIFTI_AI_ON !== 'undefined' && !NIFTI_AI_ON) throw new Error('Reading photos is paused for now. Upload Excel, paste from Google Sheets, or type the lines instead.');\n    const { data, error } = await sb.functions.invoke('nb-read', {body: {image: x.photo, kind: x.kind, page_id: x.id}});")
+P("    const { data, error } = await sb.functions.invoke('chat-read', {body: {path: a.path, name: a.name, message_id: id, party: f.c.name}});",
+  "    if(typeof NIFTI_AI_ON !== 'undefined' && !NIFTI_AI_ON) return;\n    const { data, error } = await sb.functions.invoke('chat-read', {body: {path: a.path, name: a.name, message_id: id, party: f.c.name}});")
+# imported sales are item lines too: an item name is required, the price falls back to the item list, cost and list price are saved
+P("""      const rows = keep.filter(l => nb25Amt(l) > 0).map(l => { const amt = nb25Amt(l), credit = l.paid === 'credit';
+        return {business_id: biz, sale_date: nb25Day(l), customer_name: String(l.who || 'Walk-in').slice(0, 120), line_items: [{product: String(l.item || 'Item').slice(0, 120), qty: Number(l.q) || 1, unitPrice: Number(l.price) || amt, unitCost: 0}],""",
+"""      const noItem = keep.filter(l => kind === 'sales' && !String(l.item || '').trim()).length;
+      if(noItem) showToast(noItem + ' line' + (noItem === 1 ? '' : 's') + ' had no item and ' + (noItem === 1 ? 'was' : 'were') + ' left out. Every sale needs the item sold.', 'warn');
+      const rows = keep.filter(l => nb25Amt(l) > 0 && (kind !== 'sales' || String(l.item || '').trim())).map(l => { const amt = nb25Amt(l), credit = l.paid === 'credit', it = String(l.item || 'Item').trim().slice(0, 120), q = Number(l.q) || 1;
+        return {business_id: biz, sale_date: nb25Day(l), customer_name: String(l.who || 'Walk-in').slice(0, 120), line_items: [{product: it, qty: q, unitPrice: Number(l.price) || (typeof bkItemPrice === 'function' && bkItemPrice(it)) || Math.round(amt / q * 100) / 100, unitCost: (typeof bkItemCost === 'function' && bkItemCost(it)) || 0, listPrice: (typeof bkItemPrice === 'function' && bkItemPrice(it)) || 0}],""")
+# sales info popups: a sale with no items reads "No items recorded" (old history only; new sales always have items)
+import re as _re
+_t = S['text']; _n = _t.count("|| 'Just"); S['text'] = _t.replace("|| 'Just the total'", "|| 'No items recorded'")
+# Home start card: "Snap your notebook" (AI) becomes "Bring in old records" (Excel, Sheets or typing)
+P("<button type=\"button\" onclick=\"nf26OpenStart('snap')\">${nf26Svg('cam')}<b>Snap your notebook</b><span>Nifti types it in</span></button>",
+  "<button type=\"button\" onclick=\"navigate('oldrecords')\">${nf26Svg('file')}<b>Bring in old records</b><span>Excel, Sheets or typing</span></button>")

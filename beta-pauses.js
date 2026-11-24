@@ -93,6 +93,9 @@
   patchBetaPlanUi();
   // Replace the entry point, not the reader implementation. This prevents uploads/queueing
   // from the UI until the owner explicitly approves reactivation.
+  // Excel, pasted sheets and typed rows still use the reader's "check each line" screen (no AI involved):
+  // keep the real opener for them before the photo reader's entry point is replaced.
+  if (!window.nf22NbOpenForImport && typeof window.nf22NbOpen === 'function') window.nf22NbOpenForImport = window.nf22NbOpen;
   window.nf22NbOpen = openReaderPause;
   window.nf22NbClose = closeReaderPause;
 })();

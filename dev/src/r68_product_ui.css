@@ -3,7 +3,7 @@
 #view-app{
  --nf68-ink:#17251d;--nf68-muted:#45564b;--nf68-line:#dce6df;
  --nf68-green:#17643b;--nf68-green-bg:#e7f3eb;
- --nf68-amber:#8a4b08;--nf68-amber-bg:#fff2d8;
+ --nf68-amber:#3A2C00;--nf68-amber-bg:#FFF4C2;
  --nf68-red:#a52820;--nf68-red-bg:#fff0ee;
  --nf68-blue:#24558a;--nf68-blue-bg:#eaf2fb;
 }
@@ -37,7 +37,7 @@
 #view-app .app-page .pill.due,#view-app .app-page .pill.partial,
 #view-app .app-page .pill.processing,#view-app .app-page .pill.review,
 #view-app .app-page .status-badge.warning{
- background:var(--nf68-amber-bg);border-color:#ebd09a;color:var(--nf68-amber);
+ background:var(--nf68-amber-bg);border-color:#F2D46B;color:var(--nf68-amber);
 }
 #view-app .app-page .pill.red,#view-app .app-page .badge.red,
 #view-app .app-page .chip.red,#view-app .app-page .pill.danger,
@@ -131,7 +131,7 @@
 #view-app .app-page .pill.r,#view-app .app-page .pill.red,
 #view-app .app-page .pill.danger{background:#fff0ee;border-color:#efc2bd;color:#a52820}
 #view-app .app-page .pill.y,#view-app .app-page .pill.yellow,
-#view-app .app-page .pill.warn{background:#fff2d8;border-color:#ebd09a;color:#754008}
+#view-app .app-page .pill.warn{background:#FFF4C2;border-color:#F2D46B;color:#3A2C00}
 #view-app .app-page .pill.g,#view-app .app-page .pill.green,
 #view-app .app-page .pill.success{background:#e7f3eb;border-color:#b9d9c2;color:#145b35}
 #view-app .app-page .pill.b,#view-app .app-page .pill.blue,

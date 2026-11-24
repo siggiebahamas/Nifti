@@ -51,7 +51,7 @@
 }
 
 /* AI tools: hidden everywhere in the app while AI reading is paused (brief section 8). The code stays for later. */
-html body #view-app .sidebar .nf20-g[data-g="ai"], html body #view-app .nf20-g.nf23-ai, #nf23NbNav, #nf45OldNav, #moreSheet .nf23-mai, .nf22-nbbtn, .nf22-um, .nf22-paper,
+html body #view-app .sidebar .nf20-g[data-g="ai"], html body #view-app .nf20-g.nf23-ai, #nf23NbNav, #nf45OldNav, #nf23NbMore, .nf22-nbbtn, .nf22-um, .nf22-paper,
 #view-app .nf47-ai, .nf45-way[onclick*="nf47Read"], .nf45-alt{display:none !important;}
 
 /* Deliveries: fixed columns. circle | who and what | status | action | open */
@@ -176,3 +176,98 @@ html body #view-app .sidebar .nf20-g[data-g="ai"], html body #view-app .nf20-g.n
 #view-app .nf70-cash-detail .nf72-look ul{margin:0 0 8px;padding-left:20px;} #view-app .nf70-cash-detail .nf72-look li{font-size:14px;color:#0B0F14;line-height:1.5;margin-bottom:4px;}
 #view-app .nf70-cash-detail .nf70-detail-summary{grid-template-columns:repeat(4,minmax(0,1fr)) !important;}
 @media(max-width:900px){ #view-app .nf70-cash-detail .nf70-detail-summary{grid-template-columns:repeat(2,minmax(0,1fr)) !important;} }
+
+/* Bring in old records */
+.nf73-rhead{border:1px solid #DCE7E0;background:#F5FAF7;border-radius:14px;padding:14px 16px;margin-bottom:14px;}
+.nf73-rsteps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:8px;}
+.nf73-rsteps span{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:#0B0F14;}
+.nf73-rsteps i{font-style:normal;width:24px;height:24px;border-radius:50%;background:#1F6B45;color:#fff;display:grid;place-items:center;font-size:14px;flex:none;}
+.nf73-rhead p{margin:0;font-size:16px;color:#0B0F14;}
+.nf73-ways{grid-template-columns:repeat(3,minmax(0,1fr)) !important;}
+.nf73-way em{font-style:normal;}
+.nf73-pst{margin:0 0 10px;padding-left:22px;font-size:16px;color:#0B0F14;line-height:1.6;}
+.nf73-pbox{width:100%;min-height:200px;border:1.5px solid #CFD8D3;border-radius:12px;padding:12px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:14px;color:#0B0F14;resize:vertical;}
+.nf73-pbox:focus{outline:none;border-color:#1F6B45;box-shadow:0 0 0 3px rgba(31,107,69,.15);}
+@media(max-width:760px){ .nf73-rsteps{grid-template-columns:1fr 1fr;} .nf73-ways{grid-template-columns:1fr !important;} }
+/* weekly price list: what went up and down */
+#nf48List .nf73-plc{border:1px solid #E3E8E5;border-radius:12px;padding:10px 12px;margin:8px 0 12px;background:#FAFCFB;}
+#nf48List .nf73-plchips{display:flex;gap:8px;flex-wrap:wrap;}
+#nf48List .nf73-plchips span{font-size:14px;font-weight:800;padding:4px 10px;border-radius:999px;}
+#nf48List .nf73-plchips .up{background:#FDECEA;color:#B42318;} #nf48List .nf73-plchips .dn{background:#E6F4EA;color:#15803D;} #nf48List .nf73-plchips .nu{background:#E8F0FD;color:#2563EB;}
+#nf48List .nf73-plwhen, #nf48List .nf73-plnone{margin:6px 0 0;font-size:14px;color:#0B0F14;}
+#nf48List .nf73-pll{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:4px;}
+#nf48List .nf73-pll li{display:flex;justify-content:space-between;gap:10px;font-size:14px;color:#0B0F14;}
+#nf48List .nf73-pll li.up b{color:#B42318;} #nf48List .nf73-pll li.dn b{color:#15803D;}
+#nf48List .nf73-plt{font-style:normal;font-size:14px;font-weight:800;margin-left:6px;} #nf48List .nf73-plt.up{color:#B42318;} #nf48List .nf73-plt.dn{color:#15803D;} #nf48List .nf73-plt.nu{color:#2563EB;}
+
+/* Where every order is: pending = clear yellow (not tan/brown); late = red; done = green */
+:is(#mhHome,.nf18-mh,#mhSheet) .ob3.cmp .ln.y{background:#FFFBE0 !important;border-color:#F5D13D !important;}
+:is(#mhHome,.nf18-mh,#mhSheet) .ob3.cmp .ln.y .spl, :is(#mhHome,.nf18-mh,#mhSheet) .spl.y{background:#FDE68A !important;color:#3A2C00 !important;border-color:#F5D13D !important;}
+:is(#mhHome,.nf18-mh,#mhSheet) .ob3.cmp .ln.r{background:#FFF1EF !important;border-color:#F2B8B0 !important;}
+:is(#mhHome,.nf18-mh,#mhSheet) .ob3.cmp .ln.r .spl, :is(#mhHome,.nf18-mh,#mhSheet) .spl.r{background:#FCD9D4 !important;color:#8F1D14 !important;}
+:is(#mhHome,.nf18-mh,#mhSheet) .ob3.cmp .ln.g{background:#F0FAF3 !important;border-color:#AEDDBD !important;}
+:is(#mhHome,.nf18-mh,#mhSheet) .ob3.cmp .ln.g .spl, :is(#mhHome,.nf18-mh,#mhSheet) .spl.g{background:#CDEFD8 !important;color:#0F5A32 !important;}
+
+/* Owner view (Round 73): colors say good / watch / needs attention */
+#mhHome .nf73-kpis{display:grid;grid-template-columns:1.1fr 1.1fr 1fr;gap:12px;margin-top:4px;}
+#mhHome .nf73-kpi{position:relative;display:flex;flex-direction:column;gap:4px;border-radius:16px;padding:14px 16px 14px 18px;border:1px solid #E3E8E5;background:#fff;overflow:hidden;min-width:0;}
+#mhHome .nf73-kpi::before{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;background:#CBD5D0;}
+#mhHome .nf73-kpi.has-g{flex-direction:row;align-items:center;gap:14px;}
+#mhHome .nf73-kpi.has-g > div{display:flex;flex-direction:column;gap:4px;min-width:0;}
+#mhHome .nf73-kpi .lb{font-size:14px;font-weight:800;color:#0B0F14;text-transform:uppercase;letter-spacing:.04em;}
+#mhHome .nf73-kpi b{font-size:28px;font-weight:800;line-height:1.1;font-variant-numeric:tabular-nums;color:#0B0F14;}
+#mhHome .nf73-kpi small{font-size:14px;color:#0B0F14;line-height:1.35;}
+#mhHome .nf73-kpi.t-g{background:linear-gradient(135deg,#F1FAF4,#FFFFFF 70%);border-color:#BFE2CB;} #mhHome .nf73-kpi.t-g::before{background:#1F9254;} #mhHome .nf73-kpi.t-g b{color:#0F6B3A;}
+#mhHome .nf73-kpi.t-r{background:linear-gradient(135deg,#FFF2F0,#FFFFFF 70%);border-color:#F3C1BA;} #mhHome .nf73-kpi.t-r::before{background:#D92D20;} #mhHome .nf73-kpi.t-r b{color:#B42318;}
+#mhHome .nf73-kpi.t-y{background:linear-gradient(135deg,#FFFBE6,#FFFFFF 70%);border-color:#F2D46B;} #mhHome .nf73-kpi.t-y::before{background:#E0A800;} #mhHome .nf73-kpi.t-y b{color:#7A5600;}
+#mhHome .nf73-kpi.t-b{background:linear-gradient(135deg,#F3F7FE,#FFFFFF 70%);border-color:#C9D9F3;} #mhHome .nf73-kpi.t-b::before{background:#3B82F6;}
+#mhHome .nf73-dchip{align-self:flex-start;font-size:14px;font-weight:800;padding:3px 10px;border-radius:999px;}
+#mhHome .nf73-dchip.g{background:#DCF5E5;color:#0F5A32;} #mhHome .nf73-dchip.r{background:#FDE2DE;color:#9B1C12;}
+#mhHome .nf73-gauge{width:72px;height:72px;flex:none;}
+#mhHome .nf73-gauge circle{fill:none;stroke-width:10;stroke-linecap:round;}
+#mhHome .nf73-gauge .bg{stroke:#EDF1EE;}
+#mhHome .nf73-gauge.t-g .fg{stroke:#1F9254;} #mhHome .nf73-gauge.t-y .fg{stroke:#E0A800;} #mhHome .nf73-gauge.t-r .bg{stroke:#FBD5D0;} #mhHome .nf73-gauge.t-n .fg{stroke:#CBD5D0;}
+#mhHome .nf73-where{margin-top:14px;border:1px solid #E3E8E5;border-radius:16px;padding:14px 16px;background:#fff;}
+#mhHome .nf73-wh{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;}
+#mhHome .nf73-wh b{font-size:16px;font-weight:800;color:#0B0F14;} #mhHome .nf73-wh small{font-size:14px;color:#0B0F14;}
+#mhHome .nf73-stack{display:flex;height:14px;border-radius:8px;overflow:hidden;background:#EDF1EE;gap:2px;}
+#mhHome .nf73-stack i{display:block;height:100%;}
+#mhHome .nf73-legend{list-style:none;margin:10px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:6px 16px;}
+#mhHome .nf73-legend li{display:grid;grid-template-columns:10px minmax(0,1fr) auto;gap:8px;align-items:center;font-size:14px;color:#0B0F14;}
+#mhHome .nf73-legend li i{width:10px;height:10px;border-radius:3px;}
+#mhHome .nf73-legend li b{font-weight:800;font-variant-numeric:tabular-nums;}
+#mhHome .nf73-legend li em{grid-column:2/-1;font-style:normal;font-size:14px;color:#0B0F14;opacity:.75;margin-top:-4px;}
+#mhHome .nf73-owner .nf72-ow-row{border-left-width:4px;}
+#mhHome .nf73-owner .nf72-ow-row.t-y{border-color:#F2D46B;background:#FFFBEB;} #mhHome .nf73-owner .nf72-ow-row.t-y .ic{background:#FFF0C2;color:#7A5600;}
+#mhHome .nf73-owner .nf72-ow-row.t-r{border-color:#F3C1BA;background:#FFF5F3;} #mhHome .nf73-owner .nf72-ow-row.t-r .ic{background:#FDE2DE;color:#B42318;}
+#mhHome .nf73-owner .nf72-ow-row.t-g{border-color:#BFE2CB;background:#F2FAF5;} #mhHome .nf73-owner .nf72-ow-row.t-g .ic{background:#DCF5E5;color:#0F5A32;}
+#mhHome .nf73-key{display:inline-flex;gap:6px;align-items:center;margin-left:8px;}
+#mhHome .nf73-key i{width:10px;height:10px;border-radius:50%;display:inline-block;margin-left:6px;}
+#mhHome .nf73-key i.g{background:#1F9254;} #mhHome .nf73-key i.y{background:#E0A800;} #mhHome .nf73-key i.r{background:#D92D20;}
+@media(max-width:900px){ #mhHome .nf73-kpis{grid-template-columns:1fr;} }
+
+/* Delivery orders boxes (Round 73): same build as Stock / Expenses. Icon in the middle on the left, the title,
+   the peso amount big, and "2 orders · to handle" in one line under it. No split divider, no dead space. */
+html body #view-app .nf43-pills .nf43-pill:has(.nf47-sp){display:grid;grid-template-columns:46px minmax(0,1fr);grid-template-rows:auto auto auto;grid-template-areas:"ic k" "ic mb" "ic sub";column-gap:12px;row-gap:2px;align-items:center;padding:14px 16px 14px 14px;}
+html body #view-app .nf43-pills .nf43-pill:has(.nf47-sp) .ic{grid-area:ic;align-self:center;width:42px;height:42px;}
+html body #view-app .nf43-pills .nf43-pill:has(.nf47-sp) .k{grid-area:k;}
+html body #view-app .nf43-pills .nf43-pill .v.nf47-sp{grid-area:mb / mb / sub / sub;display:grid;grid-template-columns:auto auto auto 1fr;grid-template-areas:"mb mb mb mb" "cb cs ms .";column-gap:5px;row-gap:1px;align-items:baseline;padding:0;}
+html body #view-app .nf43-pills .nf43-pill .v.nf47-sp .c, html body #view-app .nf43-pills .nf43-pill .v.nf47-sp .m{display:contents;}
+html body #view-app .nf43-pills .nf43-pill .v.nf47-sp .m b{grid-area:mb;font-size:28px !important;line-height:1.15;}
+html body #view-app .nf43-pills .nf43-pill .v.nf47-sp .c b{grid-area:cb;font-size:14px !important;font-weight:800;}
+html body #view-app .nf43-pills .nf43-pill .v.nf47-sp .c small{grid-area:cs;margin:0;}
+html body #view-app .nf43-pills .nf43-pill .v.nf47-sp .m small{grid-area:ms;margin:0;}
+html body #view-app .nf43-pills .nf43-pill .v.nf47-sp .m small::before{content:'· ';}
+@media(max-width:760px){ html body #view-app .nf43-pills .nf43-pill .v.nf47-sp .m b{font-size:24px !important;} }
+#page-settings .nf73-rolevis{margin:0 0 12px;border:1px solid #E3E8E5;border-radius:12px;padding:10px 14px;background:#FAFCFB;}
+#page-settings .nf73-rolevis summary{cursor:pointer;font-size:16px;font-weight:800;color:#0B0F14;}
+#page-settings .nf73-rolevis summary em{font-style:normal;font-size:14px;background:#E6F4EA;color:#0F5A32;border-radius:999px;padding:2px 8px;margin-left:6px;}
+#page-settings .nf73-rolevis p{margin:8px 0;font-size:14px;color:#0B0F14;}
+#page-settings .nf73-rvl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 16px;}
+#page-settings .nf73-rvl label{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:16px;color:#0B0F14;}
+#page-settings .nf73-rvl select{min-height:40px;border:1px solid #CFD8D3;border-radius:10px;padding:0 10px;font-size:14px;}
+@media(max-width:760px){ #page-settings .nf73-rvl{grid-template-columns:1fr;} }
+#nf45Old .nf73-way{display:flex;flex-direction:column;align-items:flex-start;gap:6px;text-align:left;}
+#nf45Old .nf73-way b{font-size:18px !important;font-weight:800 !important;line-height:1.25;color:#0B0F14;}
+#nf45Old .nf73-way small{font-size:16px !important;font-weight:400 !important;line-height:1.45;color:#0B0F14;}
+#nf45Old .nf73-way em{font-size:14px !important;font-weight:800 !important;color:#1F6B45;margin-top:auto;}

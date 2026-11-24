@@ -1,15 +1,15 @@
 /* Round 69 — role-specific workspace, empty states and semantic status readability. */
 #view-app .app-page .spl{display:inline-flex;align-items:center;min-height:25px;padding:4px 9px;border:1px solid #d8e1db;border-radius:999px;background:#eef2ef;color:#34483b;font-size:12px;font-weight:850;line-height:1.2;white-space:normal}
 #view-app .app-page .spl.r,#view-app .app-page .pill.r{background:#fff0ee;border-color:#efc2bd;color:#a52820}
-#view-app .app-page .spl.y,#view-app .app-page .pill.y{background:#fff2d8;border-color:#ebd09a;color:#754008}
+#view-app .app-page .spl.y,#view-app .app-page .pill.y{background:#FFF4C2;border-color:#F2D46B;color:#3A2C00}
 #view-app .app-page .spl.g,#view-app .app-page .pill.g{background:#e7f3eb;border-color:#b9d9c2;color:#145b35}
 #view-app .app-page .spl.b,#view-app .app-page .pill.b{background:#eaf2fb;border-color:#c6d9ef;color:#24558a}
 #view-app .app-page .lg-pill{display:inline-flex;align-items:center;min-height:25px;padding:4px 9px;border:1px solid #d8e1db;border-radius:999px;background:#eef2ef;color:#34483b;font-size:12px;font-weight:800;line-height:1.2;white-space:normal}
-#view-app .app-page .lg-pill.demo{background:#fff2d8;border-color:#ebd09a;color:#754008}
+#view-app .app-page .lg-pill.demo{background:#FFF4C2;border-color:#F2D46B;color:#3A2C00}
 #view-app .app-page .lg-pill.st{background:#eaf2fb;border-color:#c6d9ef;color:#24558a}
-#view-app .app-page .bk-tag,#view-app .app-page .pending-sync-tag{display:inline-flex;align-items:center;min-height:23px;padding:3px 8px;border:1px solid #ebd09a;border-radius:999px;background:#fff2d8;color:#754008;font-size:12px;font-weight:800;line-height:1.2}
+#view-app .app-page .bk-tag,#view-app .app-page .pending-sync-tag{display:inline-flex;align-items:center;min-height:23px;padding:3px 8px;border:1px solid #F2D46B;border-radius:999px;background:#FFF4C2;color:#3A2C00;font-size:12px;font-weight:800;line-height:1.2}
 #view-app .app-page .cpill.ok{background:#e7f3eb;border:1px solid #b9d9c2;color:#145b35}
-#view-app .app-page .cpill.wait{background:#fff2d8;border:1px solid #ebd09a;color:#754008}
+#view-app .app-page .cpill.wait{background:#FFF4C2;border:1px solid #F2D46B;color:#3A2C00}
 #view-app .app-page .tbl,#view-app .app-page .lg-tbl-wrap,#view-app .app-page .lg-tbl-wrap>table{max-width:100%}
 #view-app .app-page .tbl,#view-app .app-page .lg-tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
 #view-app .app-page .lg-tbl th{font-size:12px;font-weight:900;color:#34483b;background:#f3f7f4;padding:12px 13px}
