@@ -50,10 +50,4 @@
   }
  }
  ready(apply);
- const observer=new MutationObserver(()=>{
-  const p=document.getElementById('view-index');if(!p)return;
-  const hero=p.querySelector('.f4-hero'),points=hero&&hero.querySelector('.nf64-hero-points'),out=p.querySelector('#nf63Outcomes'),show=p.querySelector('#mkShow');
-  if((hero&&!hero.dataset.nf66)||(points&&!points.dataset.nf66)||(out&&!out.dataset.nf66)||(show&&!show.dataset.nf66))apply();
- });
- ready(()=>observer.observe(document.body,{childList:true,subtree:true}));
 })();
