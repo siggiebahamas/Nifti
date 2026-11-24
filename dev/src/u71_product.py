@@ -38,5 +38,5 @@ anchor="function renderSidebarForViewAsRole(){"
 if anchor not in t: raise SystemExit("Round 71 insertion point missing")
 t=t.replace(anchor,rd('r71_product.js')+"\n"+anchor,1)
 i=t.index('</style>')
-t=t[:i]+'\\n'+rd('r71_product.css')+'\\n'+t[i:]
+t=t[:i]+'\n'+rd('r71_product.css')+'\n'+t[i:]
 S['text']=t
