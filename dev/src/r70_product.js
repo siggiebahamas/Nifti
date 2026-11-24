@@ -142,7 +142,7 @@
  if(app&&window.MutationObserver){
   const mo=new MutationObserver(()=>{
    const active=app.querySelector('.app-page.active');const id=active&&active.id||'';
-   if(id===lastPage)return;lastPage=id;clearTimeout(timer);timer=setTimeout(()=>{wrapSales();wrapCash();polishDashboard();},80);
+   if(id===lastPage)return;lastPage=id;clearTimeout(timer);timer=setTimeout(()=>{wrapSales();wrapCash();polishDashboard();addSalesPermissionShortcut();},80);
   });
   mo.observe(app,{childList:true,subtree:true});
  }
