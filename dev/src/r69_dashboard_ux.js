@@ -77,18 +77,18 @@
     root.querySelectorAll('.task button').forEach(button=>{
       const action = button.getAttribute('onclick') || '';
       const guarded = [
-        ['collections', /(?:go|pickLens)\\(['"]collections/],
-        ['money', /go\\(['"]money/],
-        ['expenses', /go\\(['"]expenses/],
-        ['cashcount', /go\\(['"]cashcount/],
-        ['profit', /go\\(['"]profit/],
-        ['ledger', /go\\(['"]ledger/],
-        ['issues', /go\\(['"]issues/],
-        ['payroll', /go\\(['"]payroll/],
-        ['close', /go\\(['"]close/],
-        ['inventory', /go\\(['"]inventory/],
-        ['routes', /go\\(['"]routes/],
-        ['messages', /go\\(['"]messages/]
+        ['collections', /(?:go|pickLens)\(['"]collections/],
+        ['money', /go\(['"]money/],
+        ['expenses', /go\(['"]expenses/],
+        ['cashcount', /go\(['"]cashcount/],
+        ['profit', /go\(['"]profit/],
+        ['ledger', /go\(['"]ledger/],
+        ['issues', /go\(['"]issues/],
+        ['payroll', /go\(['"]payroll/],
+        ['close', /go\(['"]close/],
+        ['inventory', /go\(['"]inventory/],
+        ['routes', /go\(['"]routes/],
+        ['messages', /go\(['"]messages/]
       ];
       if(guarded.some(([page,pattern])=>pattern.test(action) && !can(page))) button.closest('.task')?.remove();
     });
