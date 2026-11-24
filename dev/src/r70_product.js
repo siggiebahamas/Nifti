@@ -98,8 +98,9 @@
   const app=document.getElementById('view-app');if(!app)return;
   const home=document.getElementById('mhHome');
   if(home){
+   if(typeof decorateHome==='function')try{decorateHome();}catch(e){}
    const intel=home.querySelector('.nf67-intel');
-   if(intel){const grid=intel.querySelector('.nf67-intel-grid');if(grid){const metrics=[...grid.children];metrics.slice(0,Math.max(0,metrics.length-1)).forEach(n=>n.remove());}const h=intel.querySelector('.nf67-intel-head h4'),p=intel.querySelector('.nf67-intel-head p'),k=intel.querySelector('.nf67-intel-grid>div span');if(h)h.textContent='Profitability check';if(p)p.textContent='One useful signal, without repeating the sales and cost totals already shown above.';if(k)k.textContent='Operating margin';intel.classList.add('nf70-intel-refined');}
+   if(intel){const grid=intel.querySelector('.nf67-intel-grid');const h=intel.querySelector('.nf67-intel-head h4'),p=intel.querySelector('.nf67-intel-head p'),k=intel.querySelector('.nf67-intel-grid>div span');if(h)h.textContent='Profitability check';if(p)p.textContent='One useful signal, without repeating the sales and cost totals already shown above.';if(k)k.textContent='Operating margin';intel.classList.add('nf70-intel-refined');}
    const discover=document.getElementById('page-discover');if(discover)discover.classList.add('nf70-discover-page');
    // Remove duplicate headline tiles only; never remove distinct alerts or their underlying records.
    const seen=new Set();
