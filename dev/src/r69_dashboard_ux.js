@@ -22,6 +22,24 @@
     const root = document.getElementById('mhHome'); if(!root || root.dataset.nf69Role === '1') return;
     root.dataset.nf69Role = '1';
     const orderAccess = can('orders');
+    if(!boss()){
+      const actions = [];
+      if(can('sales')) actions.push(['Record a sale',"openQuickSale()"]);
+      if(can('cashcount')) actions.push(['Count cash',"ccStart(APP_TODAY); go('cashcount')"]);
+      if(can('orders')) actions.push(['Manage orders',"go('orders')"]);
+      if(can('inventory')) actions.push(['Check stock',"go('inventory')"]);
+      if(can('routes')) actions.push(['My routes',"go('routes')"]);
+      if(can('expenses')) actions.push(['Add expense',"openExpenseForm()"]);
+      if(can('messages')) actions.push(['Messages',"go('messages')"]);
+      const selected = actions.slice(0,3);
+      const hero = root.querySelector('.hero');
+      if(hero && selected.length && !root.querySelector('.nf69-shortcuts')){
+        const strip = document.createElement('section');
+        strip.className = 'nf69-shortcuts';
+        strip.innerHTML = '<div><small>QUICK ACTIONS</small><b>Start with what you need to do</b></div><div class="nf69-shortcut-buttons">'+selected.map(([label,action])=>'<button type="button" onclick="'+action.replace(/"/g,'&quot;')+'">'+label+'</button>').join('')+'</div>';
+        hero.insertAdjacentElement('afterend',strip);
+      }
+    }
     if(!orderAccess){
       root.querySelectorAll('.sect').forEach(section=>{
         const h = section.querySelector('.sect-h h4');
@@ -102,7 +120,7 @@
         const day = (typeof bkSalesDay !== 'undefined' && bkSalesDay) || APP_TODAY;
         const mine = (all || []).filter(s => s.date === day && !s.voidedAt && own(s)).length;
         const tiles = body.querySelector('.bk-tiles');
-        if(tiles) tiles.outerHTML = '<section class="panel-card nf69-own-summary"><small>YOUR SALES</small><b>'+mine+' recorded '+(mine === 1 ? 'sale' : 'sales')+'</b><span>These are your own transaction records. Business-wide sales and payment totals are reserved for authorized owner and finance roles.</span></section>';
+        if(tiles) tiles.outerHTML = '<section class="panel-card nf69-own-summary"><small>YOUR SALES</small><b>'+mine+' recorded '+(mine === 1 ? 'sale' : 'sales')+'</b><span>These are your own transaction records. Business-wide sales and payment totals are reserved for authorized owner, management and Finance roles.</span></section>';
         const bar = body.querySelector('.bk-daybar');
         if(bar && !body.querySelector('.nf69-role-note')) bar.insertAdjacentHTML('afterend','<div class="nf69-role-note">Showing transactions recorded under your account. Open a sale to view its receipt or payment details.</div>');
       },0);
