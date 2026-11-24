@@ -1,0 +1,14 @@
+/* Round 71: fast, SKU-first counter workflow. */
+#view-app .qs-scan-wrap{margin:8px 0 14px;padding:12px 14px;border:1px solid #cfe0d3;border-radius:13px;background:#f3f8f4}
+#view-app .qs-scan-wrap>label{display:block;margin-bottom:7px;color:#0B0F14;font-size:13px;font-weight:900}
+#view-app .qs-scan-row{display:flex;align-items:center;gap:9px}
+#view-app .qs-scan-row>span{display:grid;place-items:center;width:36px;height:36px;border-radius:10px;background:#e0efe4;color:#145b35;font-size:21px}
+#view-app .qs-scan-row input{flex:1;min-width:0;min-height:44px;border:1px solid #b9d0c0;border-radius:10px;background:#fff;color:#0B0F14;padding:9px 12px;font-size:15px}
+#view-app .qs-scan-wrap>small{display:block;margin-top:6px;color:#0B0F14;font-size:12px}
+#view-app .qs-line .qs-price input[readonly]{background:#f2f5f2;color:#0B0F14;font-weight:800;cursor:default}
+#view-app .qs-line-total{align-self:center;min-width:84px;text-align:right;color:#0B0F14;font-weight:900;font-size:14px}
+#view-app .qs-lines .qs-line{grid-template-columns:minmax(130px,1fr) 76px 14px minmax(95px,120px) minmax(80px,auto) 28px}
+#view-app .nf70-sales-setting-shortcut{border:1px solid #cfe0d3;background:#f5faf6}
+#view-app .nf70-sales-setting-shortcut h2,#view-app .nf70-sales-setting-shortcut p{color:#0B0F14}
+#view-app .nf70-sales-setting-shortcut p{font-size:14px;line-height:1.5}
+@media(max-width:600px){#view-app .qs-lines .qs-line{grid-template-columns:minmax(0,1fr) 72px 12px minmax(85px,105px);gap:6px}#view-app .qs-line-total{grid-column:1/-2;text-align:right}#view-app .qs-scan-row input{font-size:14px}}
