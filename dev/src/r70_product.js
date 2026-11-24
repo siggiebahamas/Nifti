@@ -42,7 +42,7 @@
   const sales=(BK.sales||[]).filter(s=>s.date===day&&!s.voidedAt);
   const lines=[];
   sales.forEach(s=>(s.lines||[]).filter(l=>!l.totalOnly).forEach(l=>{
-   const qty=Number(l.qty)||0,unit=Number(l.unitPrice)||0,cost=Number(l.unitCost)||0,list=Number(l.listPrice)||0;
+   const qty=Number(l.qty)||0,unit=Number(l.unitPrice)||0,cost=Number(l.unitCost)||Number((typeof bkItemCost==='function'&&bkItemCost(l.product))||0),list=Number(l.listPrice)||0;
    lines.push({name:l.product,qty,unit,cost,list,customer:s.customer||'Walk-in',pay:s.paidWith||'—',total:qty*unit,costTotal:qty*cost,discount:Math.max(0,list-unit)});
   }));
   if(!lines.length)return '<section class="panel-card nf70-cash-detail"><div class="panel-head"><h2>Sales and stock detail</h2></div><p>No item-level sales were recorded for this date. Sales entered as “Just the total” cannot be split into individual products.</p></section>';
