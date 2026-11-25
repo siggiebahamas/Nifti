@@ -624,7 +624,7 @@ function nf73FoldRecon(){
     if(!kids.length) return;
     const d = document.createElement('details'); d.className = 'nf73-rfold';
     const look = sec.querySelector('.nf72-look li') ? sec.querySelectorAll('.nf72-look li').length : 0;
-    d.innerHTML = `<summary><span>See every item sold and every stock change</span>${look ? `<em>${look} worth a second look</em>` : ''}</summary>`;
+    d.innerHTML = `<summary><span>Item-by-item breakdown</span>${look ? `<em>${look} worth a second look</em>` : ''}</summary>`;
     kids.forEach(k => d.appendChild(k)); sec.appendChild(d);
   });
 }

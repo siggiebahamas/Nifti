@@ -56,13 +56,15 @@ function nf72JrGo(i, user){
     row.classList.toggle('b', k === 'stock' && now[k] !== NF72_JR[0].stock);
   });
   const bar = box.querySelector('.r72-prog i'); if(bar) bar.style.width = ((i + 1) / NF72_JR.length * 100) + '%';
+  box.querySelectorAll('.r76-track span').forEach(sp => { const k = Number(sp.dataset.s); sp.classList.toggle('done', k < i); sp.classList.remove('on'); if(k === i){ void sp.offsetWidth; sp.classList.add('on'); } });
+  box.classList.toggle('r76-auto', !!NF72J.auto);
   const again = box.querySelector('.r72-replay'); if(again) again.hidden = i < NF72_JR.length - 1;
-  if(user){ NF72J.auto = false; NF72J.started = true; clearTimeout(NF72J.t); }   // a visitor's tap always wins over the autoplay
+  if(user){ NF72J.auto = false; NF72J.started = true; clearTimeout(NF72J.t); box.classList.remove('r76-auto'); }   // a visitor's tap always wins over the autoplay
 }
 function nf72JrPlay(){
   clearTimeout(NF72J.t); NF72J.auto = true; nf72JrGo(0);
   const step = () => { if(!NF72J.auto) return; if(NF72J.i >= NF72_JR.length - 1){ NF72J.auto = false; return; }
-    NF72J.t = setTimeout(() => { if(!NF72J.auto) return; const v = document.getElementById('view-index'); if(v && v.classList.contains('hidden')){ step(); return; } nf72JrGo(NF72J.i + 1); step(); }, 3600); };
+    NF72J.t = setTimeout(() => { if(!NF72J.auto) return; const v = document.getElementById('view-index'); if(v && v.classList.contains('hidden')){ step(); return; } nf72JrGo(NF72J.i + 1); step(); }, 5600); };
   step();
 }
 function nf72JrInit(){
@@ -82,7 +84,23 @@ function nf72JrInit(){
     io.observe(box.querySelector('.r72-jr-box'));
   } else { NF72J.started = true; nf72JrPlay(); }
 }
+// "See it in action": a short hook and three quick wins per tab
+const NF76_SHOW = {
+  'Know exactly who owes you': ['Know exactly who owes you', 'Every peso owed, on one screen. Nifti reminds them so you don\u2019t have to.', ['See who\u2019s late at a glance', 'One-tap reminders, or let Nifti send them', 'They mark it paid, you confirm']],
+  'Routes your drivers can follow': ['Routes your drivers can follow', 'Every stop and every peso collected. No more \u201cBoss, nasaan na?\u201d', ['Send the day\u2019s stops in one tap', 'Each stop turns green when done', 'Photo proof, cash checked the same day']],
+  'Order from every supplier in one place': ['All your suppliers, one list', 'Even suppliers not on Nifti: they get a link and tap Confirm.', ['Price and date agreed in writing', 'Reorder your usual in one tap', 'Chat right beside every order']],
+  'Know what runs out before it does': ['Know what runs out first', 'Nifti tells you what to order today, before the shelf is empty.', ['Days of stock left, from real sales', 'Alerts timed to your supplier\u2019s delivery', 'One tap drafts the order']],
+  'Your own store, ready for Facebook': ['Your own online store', 'One link with your items and prices. Buyers order and pay, no back-and-forth.', ['GCash, Maya or cash on delivery', 'Delivery fee set per barangay', 'Ready-made Facebook posts']],
+  'Books that keep themselves': ['Books that keep themselves', 'Every sale and expense lands in your books. Know your real profit, any day.', ['A receipt photo with every expense', 'Cash short and odd bills flagged', 'Profit and loss, ready for your accountant']]
+};
+function nf76ShowCopy(){
+  const sps = document.querySelectorAll('#mkShow .nf20-sp .f4-spot-t'); if(!sps.length) return false;
+  sps.forEach(t => { const h = t.querySelector('h3'); if(!h || t.dataset.r76) return; const c = NF76_SHOW[h.textContent.trim()]; t.dataset.r76 = '1'; t.classList.add('r76-copy'); if(!c) return;
+    h.textContent = c[0]; const p = t.querySelector('p'); if(p) p.textContent = c[1];
+    const ul = t.querySelector('.m2-ticks'); if(ul) ul.innerHTML = c[2].map(x => `<li>${x}</li>`).join(''); });
+  return true;
+}
 (function(){
-  const go = () => { try{ nf72Phone(); }catch(e){} try{ nf72JrInit(); }catch(e){} };
+  const go = () => { try{ nf72Phone(); }catch(e){} try{ nf72JrInit(); }catch(e){} let n = 0; const tick = () => { let ok = false; try{ ok = nf76ShowCopy(); }catch(e){} if(!ok && n++ < 40) setTimeout(tick, 150); }; tick(); };
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', go, {once: true}); else setTimeout(go, 0);
 })();

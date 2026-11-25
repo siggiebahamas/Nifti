@@ -592,3 +592,31 @@ How it works: 3 big steps (64px icons, one short line each, no times), and one c
 
 ### 12.6 Tests this round
 landtest, saletest, rectest, full.js (28 pages × 2 widths, 7 roles, 0 errors), muts.js (12 pages, 0 idle loops), prof.js (avg click→paint 83 ms), audit.js 1440 + 390 (clean), test75.js (12 checks), rt75.js (rider, send ready, free-form delivery, stop sheet), hang.js (the freeze above). Not done: signed-in tests with real accounts (proof upload and buyer-picked announcements were tested in the demo path only; the server functions were applied and compile).
+
+## 13. ROUND 76 (25 Nov 2026): fifth revision pass — read this first
+New module `dev/src/u76_app.py` with `r76.css` / `r76.js` (runs after u75, before u97–u99z). Landing changes live in `r72_journey.html`, `r72_site.js`, `r72_site.css`.
+
+### 13.1 Bugs fixed
+- Printing: every printable sheet (customer statements, 2307 helper) printed BLANK. An old base print rule (`body > *:not(#docPreviewModal){display:none}`) hid `#statementView`. Fixed in r76.css for `body.statement-open`.
+- Monthly summary "Pick a date" did nothing on most clicks: a capture click handler now calls `input.showPicker()` on any `.nf75-dpick` (also fixes the Prices composer date).
+- Monthly tabs flickered: the books_ledger tab line is patched to draw the big styled tabs (`nf76LgTabsHtml`) at render time, so no late restyle.
+
+### 13.2 No brown anywhere
+u76 rewrites the built HTML at build time: a fixed list of brown hexes plus any dark orange-brown hex (hue 10–48°, lightness < 42%) becomes black (#0B0F14) for text, yellow (#EAB308) for borders/fills. Kept on purpose: #CA8A04 (dark yellow). Avatars and the warn toast icon are yellow with black text. A scan of every page in both roles finds no brown.
+
+### 13.3 Landing
+How it works: active step pill has a thick border + "You are here", done steps get a check, a 3-part track under the visual fills per step (5.6 s each), all text black, step 2 is a route map with a moving truck + delivery photo stamp, stock 100 → 120. See it in action: bigger, shorter copy with 3 ticks per tab.
+
+### 13.4 Dashboard
+- Home: more space under the date; blue count chip (#E3EDFF / #2459C9); owner view margin is green (good) or red (bad) with "₱X costs / ₱Y kept out of every ₱100", no ring; bigger Biggest costs text.
+- Walk-in sales: discounts purple; day summary = two sum boxes (How they paid / Discounts) with totals under a line, no %; breakdown table columns Item, Qty, Original price, Price now, Cost per unit, Total cost, Total, Customer · paid by (colour chip); Other stock changes on purple; Worth a second look in plain words.
+- Expenses: tinted chip under each Expense type; Where the money went = one breakdown card (total once, vs last month, donut + legend, bars).
+- Getting paid: subtotal boxes under each section instead of header totals.
+- Deliveries: no rider banner; light-blue "ready to go" box with the rider dropdown inline; the free-form parcel option is gone (orders only); bigger board text, yellow lane with black text.
+- Prices: Who hears it = tidy 3 options + buyer checklist; "New" placeholder; supplier rows Was/New on the right with a light date chip last.
+- To check: What to do as check bullets, bigger headers, "Assign task" button with a clear assigned state; recount shows before → after; tapping a day opens a short popup (sales that day, counts).
+- Follow-ups: customer messages are green chat bubbles, order details stay grey. Send on Viber copies the message, opens Viber by a link tap (chat with number, message typed on phones), then the popup says what to do and shows the number + Copy again if Viber didn't open.
+- BIR 2307: Proof column centred; spaced action buttons (Undo is a pill). Fill-in helper rebuilt (`nf76Worksheet`): one-line header + quarter chip, "not the BIR form" note, every field editable (empty ones dashed yellow), your own TIN/address saves to your business details (tax_profiles upsert for real accounts), "Ask them for it" sends a chat message (or copies it), Part III table, signature boxes (payor + Conforme payee with title and date), how-to-finish steps. Print hides buttons and placeholders.
+
+### 13.5 Tests this round
+landtest, saletest, rectest, test76.js (12 checks, replaces test75 expectations), rt76.js (rider, send ready, parcel option gone), full.js (28 pages × 2 widths, 7 roles, 0 errors), muts.js (0 idle loops), prof.js (avg click→paint ~100 ms), audit.js 1440 + 390 (clean), hang.js, brown scan (none), worksheet printed to PDF (renders). Not done: signed-in tests with real accounts (tax_profiles save and chat ask were tested in demo only).
