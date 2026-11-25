@@ -95,6 +95,7 @@ const NF76_SHOW = {
 };
 // Round 77: one short line next to the big green number, same size as the ticks
 const NF77_STAT = {'Know what runs out first': ['2 days', 'warning before it runs out'], 'Know exactly who owes you': ['\u20b184,200', 'owed to you right now'], 'Routes your drivers can follow': ['5 stops', 'planned, done and collected'], 'All your suppliers, one list': ['1 list', 'for every supplier you buy from'], 'Your own online store': ['2 min', 'to open your store'], 'Books that keep themselves': ['\u20b138,400', 'real profit this month']};
+const NF78_STAT_IC = {_: '<path d="M20 6 9 17l-5-5"/>', 'Know what runs out first': '<path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/>', 'Know exactly who owes you': '<path d="M7 20V4h6a4 4 0 0 1 0 8H7"/><path d="M4 8h16M4 11h16"/>', 'Routes your drivers can follow': '<rect x="1" y="7" width="13" height="10" rx="1"/><path d="M14 10h4l3 3v4h-7"/><circle cx="5.5" cy="18" r="1.8"/><circle cx="17.5" cy="18" r="1.8"/>', 'All your suppliers, one list': '<path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>', 'Your own online store': '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>', 'Books that keep themselves': '<path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 6-7"/>'};
 // the pictures use the same words and buttons as the app's pages
 function nf77ShowArt(){
   const box = document.getElementById('mkShow'); if(!box || box.dataset.r77) return; box.dataset.r77 = '1';
@@ -109,7 +110,7 @@ function nf76ShowCopy(){
   sps.forEach(t => { const h = t.querySelector('h3'); if(!h || t.dataset.r76) return; const c = NF76_SHOW[h.textContent.trim()]; t.dataset.r76 = '1'; t.classList.add('r76-copy'); if(!c) return;
     h.textContent = c[0]; const p = t.querySelector('p'); if(p) p.textContent = c[1];
     const ul = t.querySelector('.m2-ticks'); if(ul) ul.innerHTML = c[2].map(x => `<li>${x}</li>`).join('');
-    const o = t.querySelector('.f4-out'), st = NF77_STAT[c[0]]; if(o && st) o.innerHTML = `<b>${st[0]}</b><span>${st[1]}</span>`; });
+    const o = t.querySelector('.f4-out'), st = NF77_STAT[c[0]]; if(o && st){ o.classList.add('r78-out'); o.innerHTML = `<span class="ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${NF78_STAT_IC[c[0]] || NF78_STAT_IC._}</svg></span><span class="tx"><small>What you get</small><b>${st[0]}</b><span>${st[1]}</span></span>`; } });
   try{ nf77ShowArt(); }catch(e){}
   return true;
 }

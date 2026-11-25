@@ -77,8 +77,8 @@ function nfDemoMoney(){
   const po8 = inv('po8'), po14 = inv('po14');
   pay(po8, {id: 'nf-cash-1', method: 'cash', amount: 4000, date: nfDay(-1), confirmStatus: 'confirmed', recordedBy: 'Rico', reference: ''});
   pay(po8, {id: 'nf-chq-1', method: 'check', amount: 6000, reference: '004512', bank: 'BDO', checkDate: nfDay(0), date: nfDay(-3), confirmStatus: 'pending', checkStatus: 'pending', submittedBy: 'supplier'});
-  pay(po8, {id: 'nf-chq-2', method: 'check', amount: 5000, reference: '118834', bank: 'Metrobank', checkDate: nfDay(6), date: nfDay(-3), confirmStatus: 'pending', checkStatus: 'pending', submittedBy: 'supplier'});
-  pay(po8, {id: 'nf-chq-3', method: 'check', amount: 3500, reference: '220190', bank: 'BPI', checkDate: nfDay(-2), date: nfDay(-6), depositedAt: nfDay(-1), confirmStatus: 'pending', checkStatus: 'pending', submittedBy: 'supplier'});
+  pay(po8, {id: 'nf-bank-1', method: 'bank', amount: 1000, reference: '88213', bank: 'BDO', date: nfDay(-2), confirmStatus: 'pending', submittedBy: 'buyer'});
+  pay(po8, {id: 'nf-gcash-1', method: 'gcash', amount: 504, reference: '1029 384 5521', date: nfDay(-1), confirmStatus: 'pending', submittedBy: 'buyer'});
   pay(po8, {id: 'nf-chq-4', method: 'check', amount: 3004, reference: '771002', bank: 'Security Bank', checkDate: nfDay(-9), date: nfDay(-12), confirmStatus: 'rejected', checkStatus: 'bounced', rejectReason: 'Not enough money in their account', submittedBy: 'supplier'});
   pay(po14, {id: 'nf-chq-5', method: 'check', amount: 15400, reference: '000781', bank: 'BPI', checkDate: nfDay(2), date: nfDay(-1), confirmStatus: 'pending', checkStatus: 'pending', submittedBy: 'buyer'});
   const dep = window._demoDeposits || (window._demoDeposits = []);

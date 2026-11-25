@@ -645,3 +645,23 @@ See it in action: What runs out is the first tab; the stat line under each tab i
 
 ### 14.4 Tests this round
 landtest, saletest, rectest, test77.js (15 checks incl. Getting paid, Money overview sums, store note), rt76.js, full.js (28 pages × 2 widths, 7 roles, 0 errors), muts.js (0 idle loops), hang.js, prof.js (avg click→paint ~110 ms; Walk-in sales ~290 ms), audit.js 1440 + 390, gray scan 0, brown scan 0, phone overflow scan 0. Not done: signed-in tests with real accounts (contact_prefs, tax_profiles were exercised in the demo path only).
+
+## 15. ROUND 78 (25 Nov 2026): seventh revision pass — read this first
+New module `dev/src/u78_app.py` with `r78.css` / `r78.js` (after u77, before u97–u99z). Landing in `r72_site.js/.css`; demo payments in `r7_demo.js`.
+
+### 15.1 Easy confirmations ("finish later")
+- Paying a bill (buyer) or recording a payment (seller) needs only the method (and amount if partial). Reference number and photo are optional; if left out the payment gets `missing: ['ref'|'proof']` and a toast says it's marked "add proof later". Base `submitRecordPayment` no longer blocks on reference or the ₱20,000 proof rule.
+- "It arrived" (seller delivery confirm): receiver name and signature/photo optional; without proof `po.deliveryConfirmation.missing = ['proof']`. Freight "delivered" milestone no longer requires a photo (same tag).
+- `nf78Incomplete()` lists all of these. They show: on Home "What to do" (This Week lane, "Finish later: …", Add now), on Getting paid (yellow "Finish later" box on each side), and inside the order sheet. `nf78Fix()` adds the number/photo later and clears the tag.
+
+### 15.2 Dashboard
+- Home owner view: margin % at 28px (same as profit), "Oct 1–25: 9.7%" pill (same days last month), no gray bar; Biggest costs header shows "TOTAL ₱…" on the right above the amounts.
+- Getting paid: `nf77CollHtml` replaced — compact payment rows (method badge Check/Bank/GCash, ref, date, amount, two small buttons; one line when wide); customer cards "Name … Owes ₱X"; "They promised to pay" button removed. Totals (`nf76PaidTotals` replaced): no dropdowns; each total lists its lines right under it with amounts in one column and a red "N days late" or "Due …" chip; a single item is one tidy line with "Open ›". Demo payments: one check ₱6,000, one bank ₱1,000, one GCash ₱504 (adds up to the ₱7,504 owed).
+- Money overview (`nf77MoneyAfter` replaced): side panel, cash line and the vs-last-month chip removed; profit table is full width in two columns (sales/cost left, expenses right); under Profit: "− Owner took out" (red) and "Left in the business"; "I took money out" button. The same button (`nf78TookMoney`, opens the expense form on "Owner took money") is in +Create, Expenses (next to + Add expense) and Walk-in sales (Count the cash header).
+- BIR 2307 (`nf78TaxForms`, re-wrapped with nfRewrap): header box icons differ from the switch; columns "The form" (upload), "Ask for it" (Remind them) and "Got the form?" (customers) / "Gave the form?" (suppliers); Undo is a light-red pill; the fill-in helper and its signature section are gone (open2307Worksheet shows a hint). Remind them opens the Getting paid reminder sheet with a 2307 message and remembers the app.
+
+### 15.3 Landing
+See it in action: the stat under each feature is a green-tinted result card with an icon, "WHAT YOU GET", big number and one line.
+
+### 15.4 Tests this round
+test78.js (Owner view, Getting paid rows/lines, Money overview, BIR, store), landtest, saletest, rectest, rt76, full.js (0 errors), muts.js, hang.js, audit.js 1440 + 390, phone overflow 0, gray 0, brown 0, pay-without-proof + finish-later flow, owner draw entry points.
