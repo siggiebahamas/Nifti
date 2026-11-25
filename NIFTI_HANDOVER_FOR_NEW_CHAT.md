@@ -620,3 +620,28 @@ How it works: active step pill has a thick border + "You are here", done steps g
 
 ### 13.5 Tests this round
 landtest, saletest, rectest, test76.js (12 checks, replaces test75 expectations), rt76.js (rider, send ready, parcel option gone), full.js (28 pages × 2 widths, 7 roles, 0 errors), muts.js (0 idle loops), prof.js (avg click→paint ~100 ms), audit.js 1440 + 390 (clean), hang.js, brown scan (none), worksheet printed to PDF (renders). Not done: signed-in tests with real accounts (tax_profiles save and chat ask were tested in demo only).
+
+## 14. ROUND 77 (25 Nov 2026): sixth revision pass — read this first
+New module `dev/src/u77_app.py` with `r77.css` / `r77.js` (runs after u76, before u97–u99z). Landing changes in `r72_site.js/.css` and `u72_site.py` (tab order).
+
+### 14.1 Build-time sweeps
+- No gray text: u77 turns every neutral gray text colour (hex or rgba, lightness 14–62%) and the text-only gray variables (--body, --faint, --muted, --nf68-muted, --r72-text, --lowstock, --ty-ink2, --st-ink) into #0B0F14. Placeholder hints keep their gray. A scan of every page in both roles finds 0 gray text.
+- The Round 76 brown sweep still applies.
+
+### 14.2 Landing
+See it in action: What runs out is the first tab; the stat line under each tab is a big green number with a 20px black caption on one line (NF77_STAT); the pictures use app words (Getting paid, Monthly summary, Confirm, To check) and bigger text.
+
+### 14.3 Dashboard
+- Home owner view: the three tile titles are 16px black; greens = #14532D (the "What's this page?" green).
+- Getting paid, selling side, rebuilt (`nf77CollHtml`, painted after the dual render; older passes nf43Collections / nf33RStrip skip it): blue "Payments to confirm" box with the total in its header; customer cards with the amount + "owes you" (no TOTAL label); status rows (says paid / late / promised / not due) and buttons that match (says paid → Check and confirm; late → Remind + They promised; not due → Friendly reminder); one reminders line; the four tiles are gone. Remind remembers each customer's app (contact_prefs) and opens straight to "Send on <app>" with "Use another app". Totals under each side (`nf76PaidTotals` replaced): big header total, rows with icons, each row opens to its lines (also on Bank & deposits). Supplier bills status shortened to "You paid ₱X, unconfirmed".
+- Delivery orders: bigger side titles/icons; selling total says "to collect, incl. not billed" (it includes delivered orders not billed yet).
+- Pay this bill: big calendar + amount, due date pill on the right, dark text on the "waiting for them to confirm" note.
+- Money overview: Money in and out card and the Owed/Owe tiles removed; "Cash left over" is a line in the profit table; labels "Walk-in sales (shop)" / "Delivery order sales" (they are sales, paid or not); right column = "Out of every ₱100 you sold" bar + "Compared with Oct 1–25" (same-days, nf74SameRange). Coming up rebuilt (`nf77NextHtml`): Coming in and Going out lists, each with its own total that matches the top boxes; shop utang counts as coming in; popups show title left / amount + date right, and an order's lines add up (Items + VAT 12% or other charges = Order total). Shop utang rows open their own popup.
+- Online store: no "example numbers" note. Bank & deposits: duplicate bank notice hidden.
+- BIR 2307 helper: Print is locked until "I checked every detail. I am responsible for what goes on the official form." is ticked; the note says Nifti fills from records and is not responsible for mistakes; Copy button per field; what you type for the other business is remembered per counterparty (localStorage `nifti-2307-parties:<biz>`). Terms §6 has a sentence on forms Nifti fills in.
+- Tax books: the buying side no longer says "No supplier bills" when it has one (all boxes are checked now); "Sales (gross)" shows as "Sales, VAT included"; purchase boxes get pills.
+- Printing fix (statements and 2307 printed blank) from Round 76 stays; the Close/Print bar is never under the top banner.
+- Phone: Messages Viber note wraps, Follow-up cards use the full width, Monthly tabs stack, BIR 2307 no longer pushes the page sideways (.nf-half min-width:0), the side switch hides 0 counts.
+
+### 14.4 Tests this round
+landtest, saletest, rectest, test77.js (15 checks incl. Getting paid, Money overview sums, store note), rt76.js, full.js (28 pages × 2 widths, 7 roles, 0 errors), muts.js (0 idle loops), hang.js, prof.js (avg click→paint ~110 ms; Walk-in sales ~290 ms), audit.js 1440 + 390, gray scan 0, brown scan 0, phone overflow scan 0. Not done: signed-in tests with real accounts (contact_prefs, tax_profiles were exercised in the demo path only).

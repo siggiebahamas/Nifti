@@ -1,0 +1,174 @@
+/* ===== Round 77 ===== */
+/* Home owner view: all three tile titles the same size, black; greens match the "What's this page" green */
+html body #view-app #mhHome .nf75-owner .lb{font-size:16px !important;color:#0B0F14 !important;font-weight:800;}
+html body #view-app #mhHome .nf75-owner .nf75-pt.t-g > b, html body #view-app #mhHome .nf75-owner .nf76-mg.t-g .nf76-mgb b,
+html body #view-app #mhHome .nf75-owner .nf75-pt.t-g .nf75-cb b{color:#14532D !important;}
+html body #view-app #mhHome .nf75-owner .nf75-cb .l{color:#0B0F14 !important;}
+html body #view-app #mhHome .nf75-owner .nf75-cost *, html body #view-app #mhHome .nf75-owner .nf75-costs *{color:#0B0F14 !important;}
+/* ---------- Getting paid ---------- */
+#page-collections .nf-half-supplier #colBody[data-nf77]{display:flex;flex-direction:column;gap:16px;}
+.nf77-b{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 18px;border-radius:12px;font:inherit;font-size:16px;font-weight:800;cursor:pointer;border:1.5px solid transparent;white-space:nowrap;}
+.nf77-b.p{background:#1F6B45;color:#fff;} .nf77-b.p:hover{background:#17593A;}
+.nf77-b.s{background:#fff;color:#0B0F14;border-color:#D0D5DD;} .nf77-b.s:hover{border-color:#0B0F14;}
+.nf77-b small{font-size:13px;font-weight:700;opacity:.9;margin-left:-2px;}
+.nf77-b .ch{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:6px;background:var(--c);color:#fff;} .nf77-b .ch svg{width:14px;height:14px;}
+.nf77-link{border:0;background:none;padding:0;font:inherit;font-size:15px;font-weight:800;color:#1F6B45;cursor:pointer;text-decoration:underline;text-underline-offset:3px;}
+.nf77-x{border:0;background:none;padding:0;margin-left:auto;font:inherit;font-size:14px;font-weight:700;color:#0B0F14;text-decoration:underline;cursor:pointer;}
+/* payments to confirm: light blue, one row per payment */
+.nf77-conf{border:1.5px solid #B7D3F7;background:#F2F7FF;border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:10px;scroll-margin-top:90px;}
+.nf77-conf .h{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
+.nf77-conf .h b{display:block;font-size:20px;color:#0B0F14;} .nf77-conf .h span{display:block;font-size:15px;color:#0B0F14;margin-top:2px;}
+.nf77-conf .h em{font-style:normal;text-align:right;font-size:22px;font-weight:900;color:#1D4ED8;white-space:nowrap;} .nf77-conf .h em small{display:block;font-size:14px;font-weight:700;color:#0B0F14;}
+.nf77-conf .r{display:grid;grid-template-columns:1fr auto;gap:10px 14px;align-items:center;background:#fff;border:1.5px solid #DCE7F7;border-radius:14px;padding:14px 16px;transition:box-shadow .2s;}
+.nf77-conf .r.hl{box-shadow:0 0 0 3px #2563EB;}
+.nf77-conf .r .w b{display:block;font-size:17px;color:#0B0F14;} .nf77-conf .r .w span{display:block;font-size:15px;color:#0B0F14;}
+.nf77-conf .r em{font-style:normal;font-size:20px;font-weight:900;color:#0B0F14;text-align:right;}
+.nf77-conf .r .bt{grid-column:1 / -1;display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+/* customers with a balance */
+.nf77-list{border:1.5px solid #E4E7EC;background:#fff;border-radius:18px;padding:16px;display:flex;flex-direction:column;gap:12px;}
+.nf77-list > .h{display:flex;align-items:baseline;justify-content:space-between;gap:10px;} .nf77-list > .h b{font-size:20px;color:#0B0F14;} .nf77-list > .h span{font-size:15px;font-weight:700;color:#0B0F14;}
+.nf77-cu{border:1.5px solid #E4E7EC;border-radius:16px;padding:16px 16px 18px;display:flex;flex-direction:column;gap:12px;background:#fff;}
+.nf77-cu.late{border-left:5px solid #D92D20;} .nf77-cu.says{border-left:5px solid #2563EB;}
+.nf77-cu .top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
+.nf77-cu .nm{font-size:19px;line-height:1.25;color:#0B0F14;}
+.nf77-cu .amt{text-align:right;flex:none;} .nf77-cu .amt b{display:block;font-size:24px;font-weight:900;line-height:1.1;color:#0B0F14;font-variant-numeric:tabular-nums;} .nf77-cu .amt small{display:block;font-size:14px;font-weight:700;color:#0B0F14;margin-top:2px;}
+.nf77-cu .sts{display:flex;flex-direction:column;gap:8px;}
+.nf77-cu .st{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;font-size:16px;color:#0B0F14;line-height:1.35;}
+.nf77-cu .st svg{flex:none;} .nf77-cu .st.b{background:#EEF4FF;} .nf77-cu .st.b svg{color:#1D4ED8;} .nf77-cu .st.r{background:#FEF0EF;} .nf77-cu .st.r svg, .nf77-cu .st.r b{color:#B42318;}
+.nf77-cu .st.g{background:#ECF8F0;} .nf77-cu .st.g svg{color:#14532D;} .nf77-cu .st.n{background:#F6F7F9;}
+.nf77-cu .acts{display:flex;flex-wrap:wrap;gap:10px;} .nf77-cu .acts:empty{display:none;}
+.nf77-empty{padding:18px;border-radius:14px;background:#F6F7F9;font-size:16px;color:#0B0F14;text-align:center;}
+.nf77-rem{display:flex;align-items:center;flex-wrap:wrap;gap:10px 12px;padding:12px 16px;border:1.5px solid #E4E7EC;border-radius:14px;background:#fff;font-size:15px;color:#0B0F14;}
+.nf77-rem > span{flex:1 1 200px;} .nf77-rem svg{flex:none;color:#1F6B45;}
+/* totals under each side */
+.nf77-tot{margin-top:16px;border:1.5px solid #D6E4DB;border-radius:18px;background:#fff;overflow:hidden;}
+.nf77-tot .hd{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 18px;background:#F2F8F4;border-bottom:1.5px solid #D6E4DB;}
+.nf77-tot .hd span{font-size:20px;font-weight:900;color:#0B0F14;} .nf77-tot .hd b{font-size:30px;font-weight:900;color:#0B0F14;font-variant-numeric:tabular-nums;white-space:nowrap;}
+.nf77-tot.b{border-color:#E4E7EC;} .nf77-tot.b .hd{background:#F6F7F9;border-bottom-color:#E4E7EC;}
+.nf77-tot .r{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:12px;align-items:center;padding:14px 18px;}
+.nf77-tot .r + .r{border-top:1px solid #EEF0F2;}
+.nf77-tot .r .i{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:#EEF4FF;color:#1D4ED8;}
+.nf77-tot .r .w b{display:block;font-size:17px;color:#0B0F14;line-height:1.3;} .nf77-tot .r .w small{display:block;font-size:15px;color:#0B0F14;margin-top:2px;line-height:1.35;}
+.nf77-tot .r .a{font-size:19px;font-weight:900;color:#0B0F14;white-space:nowrap;font-variant-numeric:tabular-nums;}
+.nf77-tot em.r{font-style:normal;font-weight:800;color:#B42318;}
+/* buyer bills: due date stays on one line */
+#page-collections .nf-half-buyer table.nf25-t td[data-l="Due"], #page-collections .nf-half-buyer table.nf25-t th:nth-child(4){white-space:nowrap;}
+/* reminder sheet: saved app first */
+.nf77-via{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;border:1.5px solid var(--c);background:#fff;margin:8px 0;}
+.nf77-via .ic{width:40px;height:40px;border-radius:12px;background:var(--c);color:#fff;display:grid;place-items:center;flex:none;} .nf77-via .ic svg{width:22px;height:22px;}
+.nf77-via b{display:block;font-size:17px;color:#0B0F14;} .nf77-via small{display:block;font-size:14px;color:#0B0F14;} .nf77-via .nf77-link{margin-left:auto;font-size:14px;}
+@media (max-width:520px){ .nf77-conf .r .bt{grid-template-columns:1fr;} .nf77-cu .acts .nf77-b{flex:1 1 100%;} .nf77-tot .hd b{font-size:24px;} }
+html[data-ty] #view-app .nf77-conf .h em small, html[data-ty] #view-app .nf77-cu .amt small, html[data-ty] #view-app .nf77-b small, html[data-ty] #view-app .nf77-via small, html[data-ty] body .nf77-via small{font-size:14px !important;}
+html[data-ty] #view-app .nf77-tot .r .w small{font-size:15px !important;}
+/* ---------- Delivery orders: bigger side titles and icons ---------- */
+html body #view-app #page-orders .nf20-ch .nf20-ct b{font-size:22px !important;line-height:1.2;}
+html body #view-app #page-orders .nf20-ch .nf20-ct small{font-size:16px !important;color:#0B0F14 !important;}
+html body #view-app #page-orders .nf20-ch .nf20-ci{width:54px !important;height:54px !important;border-radius:16px !important;flex:none;}
+html body #view-app #page-orders .nf20-ch .nf20-ci svg{width:30px !important;height:30px !important;}
+/* ---------- Pay this bill: the amount and the due date, big and easy ---------- */
+html body .nff-due{display:flex !important;align-items:center;gap:18px !important;padding:18px 20px !important;}
+html body .nff-due .nff-cal{width:74px !important;min-width:74px;height:auto !important;padding:8px 0 !important;flex:none;}
+html body .nff-due .nff-cal small{font-size:15px !important;} html body .nff-due .nff-cal b{font-size:34px !important;line-height:1.05;}
+html body .nff-due > p{flex:1;display:grid !important;grid-template-columns:minmax(0,1fr) auto;column-gap:14px;row-gap:2px;align-items:center;margin:0 !important;}
+html body .nff-due > p > b{grid-column:1;font-size:34px !important;line-height:1.1;color:#0B0F14;}
+html body .nff-due > p > span.of{grid-column:1;font-size:17px !important;color:#0B0F14 !important;}
+html body .nff-due > p > span.dd{grid-column:2;grid-row:1 / span 2;font-size:17px !important;font-weight:800;color:#0B0F14 !important;background:#fff;border:1.5px solid #E4E7EC;border-radius:12px;padding:8px 14px;white-space:nowrap;text-align:center;}
+html body .nff-due > p > span.dd.late{border-color:#F4B4AE;color:#B42318 !important;}
+html body .nff-note{background:#EEF4FF !important;border:1.5px solid #B7D3F7 !important;color:#0B0F14 !important;}
+html body .nff-note span{color:#0B0F14 !important;font-weight:700;font-size:16px !important;} html body .nff-note svg{color:#1D4ED8 !important;stroke:#1D4ED8;}
+@media (max-width:480px){ html body .nff-due > p{grid-template-columns:1fr;} html body .nff-due > p > span.dd{grid-column:1;grid-row:auto;justify-self:start;margin-top:6px;} html body .nff-due > p > b{font-size:28px !important;} }
+/* ---------- Money overview ---------- */
+#page-money .nf77-cash{border-top:1.5px dashed #D0D5DD;margin-top:10px;padding-top:12px !important;}
+#page-money .nf77-cash > span{display:flex;flex-direction:column;font-weight:800;font-size:17px;color:#0B0F14;}
+#page-money .nf77-cash > span small{font-size:14px;font-weight:600;color:#0B0F14;margin-top:2px;}
+#page-money .nf77-cash > b{font-size:20px;color:#14532D;} #page-money .nf77-cash > b.neg{color:#B42318;}
+#page-money .nf77-side{display:flex;flex-direction:column;gap:16px;}
+#page-money .nf77-split .nf77-bar{display:flex;height:26px;border-radius:999px;overflow:hidden;background:#EEF0F2;margin:4px 0 16px;}
+#page-money .nf77-bar i{display:block;height:100%;} #page-money .nf77-bar i.c{background:#93B4E8;} #page-money .nf77-bar i.e{background:#F2B866;} #page-money .nf77-bar i.n{background:#1F6B45;}
+#page-money .nf77-split .lgs{display:flex;flex-direction:column;gap:10px;}
+#page-money .nf77-split .lg{display:grid;grid-template-columns:14px minmax(0,1fr) auto auto;gap:12px;align-items:center;font-size:16px;color:#0B0F14;}
+#page-money .nf77-split .lg .d{width:14px;height:14px;border-radius:4px;} #page-money .nf77-split .lg .d.c{background:#93B4E8;} #page-money .nf77-split .lg .d.e{background:#F2B866;} #page-money .nf77-split .lg .d.n{background:#1F6B45;} #page-money .nf77-split .lg .d.r{background:#D92D20;}
+#page-money .nf77-split .lg b{font-size:20px;font-weight:900;min-width:56px;text-align:right;} #page-money .nf77-split .lg small{font-size:15px;color:#0B0F14;min-width:96px;text-align:right;}
+#page-money .nf77-cmp .crs{display:flex;flex-direction:column;}
+#page-money .nf77-cmp .cr{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:14px;align-items:center;padding:11px 0;border-top:1px solid #EEF0F2;font-size:16px;color:#0B0F14;}
+#page-money .nf77-cmp .cr:first-child{border-top:0;} #page-money .nf77-cmp .cr b{font-size:17px;font-variant-numeric:tabular-nums;}
+#page-money .nf77-cmp .cr em{font-style:normal;font-weight:800;font-size:15px;padding:3px 10px;border-radius:999px;min-width:96px;text-align:center;}
+#page-money .nf77-cmp .cr em.g{background:#ECF8F0;color:#14532D;} #page-money .nf77-cmp .cr em.r{background:#FEF0EF;color:#B42318;} #page-money .nf77-cmp .cr em.z{background:#F2F4F7;color:#0B0F14;}
+#page-money .nf77-cnote{margin:10px 0 0;font-size:14px;color:#0B0F14;}
+.nf77-none{margin:6px 0;font-size:15px;color:#0B0F14;}
+/* coming up: two lists with their own totals */
+.nf77-ngs{display:grid;grid-template-columns:1fr;gap:16px;margin-top:14px;}
+.nf77-ng{border:1.5px solid #E4E7EC;border-radius:16px;overflow:hidden;background:#fff;}
+.nf77-ng .gh{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;font-size:17px;color:#0B0F14;}
+.nf77-ng.in .gh{background:#ECF8F0;} .nf77-ng.out .gh{background:#FEF3F2;} .nf77-ng .gh span{font-size:14px;font-weight:700;}
+.nf77-nr{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1.2fr) 120px 110px 130px;gap:12px;align-items:center;width:100%;padding:12px 16px;border:0;border-top:1px solid #EEF0F2;background:#fff;font:inherit;text-align:left;cursor:pointer;color:#0B0F14;}
+.nf77-nr:hover{background:#F9FAFB;}
+.nf77-nr .w b{display:block;font-size:16px;} .nf77-nr .w small{display:block;font-size:14px;color:#0B0F14;}
+.nf77-nr .who, .nf77-nr .due{font-size:15px;} .nf77-nr .a{font-size:17px;font-weight:900;text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;}
+.nf77-nr.in .a{color:#14532D;} .nf77-nr.out .a{color:#B42318;}
+.nf77-ng .gt{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-top:2px solid #0B0F14;font-size:17px;font-weight:900;color:#0B0F14;}
+.nf77-ng.in .gt b{color:#14532D;} .nf77-ng.out .gt b{color:#B42318;} .nf77-ng .gt b{font-size:19px;}
+.nf77-more{display:block;margin:8px auto;border:1.5px solid #D0D5DD;background:#fff;border-radius:999px;padding:8px 16px;font:inherit;font-size:15px;font-weight:800;cursor:pointer;color:#0B0F14;}
+.nf77-ng .nf77-none{padding:12px 16px;margin:0;border-top:1px solid #EEF0F2;}
+@media (max-width:760px){ .nf77-nr{grid-template-columns:minmax(0,1fr) auto;} .nf77-nr .who{grid-column:1;font-size:14px;} .nf77-nr .due{display:none;} .nf77-nr .stt{grid-column:2;grid-row:2;justify-self:end;} .nf77-nr .a{grid-column:2;grid-row:1;} }
+/* popups (coming up and others): title on the left, amount and date on the right */
+.nf31-pop .nf31-ph{display:grid !important;grid-template-columns:minmax(0,1fr) auto;column-gap:16px;align-items:center;}
+.nf31-pop .nf31-ph > *{grid-column:1;} .nf31-pop .nf31-ph h3{font-size:22px !important;margin:2px 0 !important;}
+.nf31-pop .nf31-ph .nf31-big{grid-column:2;grid-row:1 / span 3;align-self:center;text-align:right;margin:0 !important;font-size:32px !important;white-space:nowrap;}
+.nf31-pop .nf31-ph .nf31-due, .nf31-pop .nf31-ph .nf31-late{grid-column:2;grid-row:4;justify-self:end;margin-top:6px;}
+.nf31-pop .nf31-ph p{font-size:16px !important;}
+@media (max-width:480px){ .nf31-pop .nf31-ph{grid-template-columns:1fr;} .nf31-pop .nf31-ph .nf31-big, .nf31-pop .nf31-ph .nf31-due, .nf31-pop .nf31-ph .nf31-late{grid-column:1;grid-row:auto;justify-self:start;text-align:left;} }
+html body #view-app #page-money .nf77-cash > span{font-size:17px !important;font-weight:800 !important;}
+html[data-ty] body #view-app #page-money .nf77-cash > span small{font-size:14px !important;font-weight:500 !important;}
+html body #view-app #page-money .nf77-cash > b{font-size:20px !important;color:#14532D !important;} html body #view-app #page-money .nf77-cash > b.neg{color:#B42318 !important;}
+html body #view-app .nf77-nr .w b{font-size:16px !important;font-weight:800 !important;} html[data-ty] body #view-app .nf77-nr .w small{font-size:14px !important;font-weight:500 !important;}
+html body #view-app .nf77-nr .who{font-weight:600 !important;} html body #view-app .nf77-nr .due{font-weight:600 !important;}
+/* totals that open to their lines */
+.nf77-tot .r.tg{grid-template-columns:40px minmax(0,1fr) auto;grid-template-areas:"i w a" ". tg tg" "tl tl tl";}
+.nf77-tot .r.tg > .i{grid-area:i;} .nf77-tot .r.tg > .w{grid-area:w;} .nf77-tot .r.tg > .a{grid-area:a;}
+.nf77-tg{grid-area:tg;justify-self:start;border:1.5px solid #B7D3F7;background:#F2F7FF;color:#1D4ED8;border-radius:999px;padding:6px 14px;font:inherit;font-size:14px;font-weight:800;cursor:pointer;}
+.nf77-tg .c{display:none;} .nf77-tot .r.open .nf77-tg .o{display:none;} .nf77-tot .r.open .nf77-tg .c{display:inline;}
+.nf77-tl{grid-area:tl;display:none;flex-direction:column;gap:6px;margin-top:4px;} .nf77-tot .r.open .nf77-tl{display:flex;}
+.nf77-tl .it{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;padding:10px 12px;border:1.5px solid #E4E7EC;border-radius:12px;background:#fff;font:inherit;text-align:left;cursor:pointer;color:#0B0F14;}
+.nf77-tl .it:hover{border-color:#0B0F14;} .nf77-tl .it b{font-size:16px;} .nf77-tl .it small{display:block;font-size:14px;color:#0B0F14;} .nf77-tl .it em.r{font-style:normal;color:#B42318;font-weight:800;}
+/* 2307 helper: confirm before printing, copy buttons, remembered fields */
+.nf77-ack{display:flex;align-items:center;gap:10px;flex:1 1 300px;padding:8px 12px;border-radius:12px;background:#FFF8DB;border:1.5px solid #FACC15;font-size:15px;font-weight:700;color:#0B0F14;cursor:pointer;}
+.nf77-ack input{width:20px;height:20px;flex:none;}
+#statementView .stmt-toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;}
+#nf77Print.off{opacity:.45;cursor:not-allowed;}
+.nf76-wf{grid-template-columns:118px minmax(0,1fr) auto !important;} .nf77-cp{border:1.5px solid #D0D5DD;background:#fff;border-radius:8px;padding:4px 10px;font:inherit;font-size:13px;font-weight:800;cursor:pointer;color:#0B0F14;}
+.nf76-wf.kept input{background:#F2F7FF;border:1.5px solid #B7D3F7;}
+@media print{ .nf77-cp{display:none !important;} .nf76-wf{grid-template-columns:118px 1fr !important;} .nf76-wf.kept input{background:transparent !important;border:0 !important;border-bottom:1px solid #0B0F14 !important;} }
+@media (max-width:700px){ .nf76-wf{grid-template-columns:1fr auto !important;} .nf76-wf .l{grid-column:1 / -1;} }
+/* printable sheets: the Close / Print bar is never hidden under the top banner */
+body.statement-open #statementView{padding-top:54px !important;}
+body.statement-open #statementView .stmt-toolbar{position:sticky;top:0;z-index:5;background:var(--bg, #F6F7F9);padding:8px 0;}
+@media print{ body.statement-open #statementView{padding-top:0 !important;} }
+/* Bank & deposits: one notice about bank statements, not two */
+#nf26BankNote{display:none !important;}
+/* BIR 2307 list: due date on one line */
+html body #view-app #page-taxforms .nf75-bt td:nth-child(4){white-space:nowrap;}
+.nf26-side b:empty{display:none;}
+/* ---------- phone fixes ---------- */
+@media (max-width:640px){
+  /* Messages: the Viber note wraps properly; the link and tour sit under the text */
+  html body #view-app #page-messages .nf53-vb{flex-wrap:wrap !important;align-items:flex-start;gap:8px 10px;}
+  html body #view-app #page-messages .nf53-vb .nf53-vb-t{flex:1 1 calc(100% - 50px) !important;min-width:0;}
+  html body #view-app #page-messages .nf53-vb .nf53-vb-a{margin-left:45px;}
+  /* Follow-ups: name and message get the full width; amount and buttons go under */
+  html body #view-app #page-followups .nf45-fur{grid-template-columns:44px minmax(0,1fr) !important;row-gap:8px;}
+  html body #view-app #page-followups .nf45-fur .nf45-fuv{grid-column:2 !important;justify-self:start;text-align:left;}
+  html body #view-app #page-followups .nf45-fur .nf45-fua{grid-column:1 / -1 !important;}
+  /* Monthly summary: the three big tabs stack instead of being cut off */
+  html body #view-app #page-ledger .lg-tabs.nf75-lgt{display:flex !important;flex-direction:column !important;gap:8px !important;overflow:visible !important;}
+  html body #view-app #page-ledger .lg-tabs.nf75-lgt button{width:100% !important;min-width:0 !important;max-width:none !important;}
+  /* Money overview: the ₱100 legend reads in one line each */
+  #page-money .nf77-split .lg{grid-template-columns:14px minmax(0,1fr) auto;} #page-money .nf77-split .lg small{grid-column:2 / -1;text-align:left;min-width:0;margin-top:-6px;}
+}
+@media (max-width:640px){
+  html body #view-app #page-orders .nf20-ch .nf20-ci{width:42px !important;height:42px !important;border-radius:12px !important;}
+  html body #view-app #page-orders .nf20-ch .nf20-ci svg{width:24px !important;height:24px !important;}
+  html body #view-app #page-orders .nf20-ch .nf20-ct b{font-size:19px !important;}
+}
+/* both-sides pages: a wide table scrolls inside its box instead of pushing the page off the screen */
+html body #view-app .nf-half{min-width:0;max-width:100%;} html body #view-app .nf-half-b{min-width:0;}

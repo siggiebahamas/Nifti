@@ -144,8 +144,8 @@ P("""const NF20_SHOW = [
   ['Cheques you never miss', 'Checks', 'check'], ['Order from every supplier', 'Buying', 'cart'], ['Know when staff overpay', 'Staff overspending', 'shield'],
   ['Your own store', 'Your own store', 'store'], ['__books', 'Books', 'book']
 ];""", """const NF20_SHOW = [
-  ['Know exactly who owes you', 'Who owes you', 'peso'], ['Routes your drivers', 'Driver routes', 'truck'], ['Order from every supplier', 'Buying', 'cart'],
-  ['__stock', 'What runs out', 'box'], ['Your own store', 'Your own store', 'store'], ['__books', 'Books', 'book']
+  ['__stock', 'What runs out', 'box'], ['Know exactly who owes you', 'Who owes you', 'peso'], ['Routes your drivers', 'Driver routes', 'truck'],
+  ['Order from every supplier', 'Buying', 'cart'], ['Your own store', 'Your own store', 'store'], ['__books', 'Books', 'book']
 ];""")
 P("  book: '<path d=\"M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z\"/><path d=\"M8 7h8M8 11h6\"/>'\n};",
   "  book: '<path d=\"M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5A2.5 2.5 0 0 0 4 5.5z\"/><path d=\"M8 7h8M8 11h6\"/>',\n  box: '<path d=\"M21 8 12 3 3 8v8l9 5 9-5z\"/><path d=\"m3 8 9 5 9-5M12 13v8\"/>'\n};")

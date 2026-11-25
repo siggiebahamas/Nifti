@@ -307,7 +307,7 @@ html body #view-app .ob .hdr .sh-c .sc, html[data-ty] body #mhHome .ob .hdr .sh 
 .nf75-if button.on{background:#fff;box-shadow:0 1px 3px rgba(16,24,40,.12);} .nf75-if em{font-style:normal;font-size:13px;font-weight:800;min-width:22px;padding:1px 6px;border-radius:999px;background:#E4E7EC;}
 .nf75-il{display:flex;flex-direction:column;gap:12px;}
 .nf75-ic{display:grid;grid-template-columns:48px 1fr auto;gap:14px;align-items:start;padding:16px 18px;border-radius:16px;background:#fff;border:1.5px solid #E4E7EC;border-left:6px solid #F5B800;}
-.nf75-ic.l-r{border-left-color:#D92D20;} .nf75-ic.done{border-left-color:#16A34A;opacity:.9;}
+.nf75-ic.l-r{border-left-color:#D92D20;} .nf75-ic.done{border-left-color:#16A34A;}
 .nf75-ic .ico{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:#FFFAEB;color:#8A5A00;}
 .nf75-ic.l-r .ico{background:#FEF3F2;color:#B42318;} .nf75-ic.done .ico{background:#ECFDF3;color:#14653A;}
 .nf75-ic .tx{min-width:0;display:flex;flex-direction:column;gap:4px;}

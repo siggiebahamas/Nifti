@@ -303,7 +303,7 @@ async function nf76Worksheet(cpId, quarter){
       : (missing ? `<button type="button" class="btn btn-outline btn-sm nf76-noprint" onclick="nf76WsAsk()">${nf76Ic('<path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.6 8.6 0 0 1-3.8-.9L3 21l1.9-5.2A8.4 8.4 0 1 1 21 11.5z"/>', 16)}Ask them for it</button>` : '');
     return `<div class="nf76-wp ${who}"><div class="h"><span class="pt">${part}</span><b>${label}</b><em>${who === 'me' ? 'You' : 'Them'}</em></div>
       ${nf76WsField(who, 'name', 'Name', p.name, 'Business name')}${nf76WsField(who, 'tin', 'TIN', p.tin, who === 'me' ? 'Type your TIN' : 'Type their TIN')}${nf76WsField(who, 'address', 'Registered address', p.address, who === 'me' ? 'Type your registered address' : 'Type their registered address')}
-      ${missing || who === 'me' ? `<div class="f">${who === 'me' ? (missing ? '<span>Type what\'s missing here. Save it once and it fills in every time.</span>' : '<span>Change anything here, then save.</span>') : '<span>Type it in if you know it, or ask them. What you type goes on this sheet only.</span>'}${act}</div>` : ''}</div>`;
+      ${missing || who === 'me' ? `<div class="f">${who === 'me' ? (missing ? '<span>Type what\'s missing here. Save it once and it fills in every time.</span>' : '<span>Change anything here, then save.</span>') : '<span>Type it in if you know it, or ask them. Nifti remembers it for next time.</span>'}${act}</div>` : ''}</div>`;
   };
   const html = `<div class="stmt-paper nf76-wsheet">
     <div class="nf76-ws-h"><div class="tt"><b>BIR Form 2307 fill-in helper</b><span>Certificate of Creditable Tax Withheld at Source</span></div><div class="q"><b>${nf76E(nf75BQLabel(quarter))}</b><span>${nf76E(stmtDate(w.period_from))} to ${nf76E(stmtDate(w.period_to))}</span></div></div>

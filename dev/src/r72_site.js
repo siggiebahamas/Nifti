@@ -10,9 +10,9 @@ function nf72StockPanel(){
     <div class="f4-out"><b>2 days</b><span>warning before the wire runs out, not after</span></div></div>
   <div class="f4-art green"><div class="f4-main"><div class="mk-stack">
     <div class="r72-sr"><div class="r72-sr-h"><b>What runs out</b><small>Days of stock left</small></div>
-      <div class="r72-sr-row"><span><b>Galvanized Wire 12ga</b><small>Sells 3 a day · Metro Steel · 5-day delivery</small></span><i class="r72-sr-bar r"><em style="width:8%"></em></i><strong class="r">2 days</strong></div>
-      <div class="r72-sr-row"><span><b>Portland Cement 40kg</b><small>Sells 5 a day · Cebu Aggregates · 3-day delivery</small></span><i class="r72-sr-bar y"><em style="width:22%"></em></i><strong class="y">6 days</strong></div>
-      <div class="r72-sr-row"><span><b>Steel Rebar 12mm</b><small>Sells 6 a day · Metro Steel · 5-day delivery</small></span><i class="r72-sr-bar g"><em style="width:84%"></em></i><strong class="g">38 days</strong></div></div>
+      <div class="r72-sr-row"><span><b>Galvanized Wire 12ga</b><small>Sells 3 a day · 5-day delivery</small></span><i class="r72-sr-bar r"><em style="width:8%"></em></i><strong class="r">2 days</strong></div>
+      <div class="r72-sr-row"><span><b>Portland Cement 40kg</b><small>Sells 5 a day · 3-day delivery</small></span><i class="r72-sr-bar y"><em style="width:22%"></em></i><strong class="y">6 days</strong></div>
+      <div class="r72-sr-row"><span><b>Steel Rebar 12mm</b><small>Sells 6 a day · 5-day delivery</small></span><i class="r72-sr-bar g"><em style="width:84%"></em></i><strong class="g">38 days</strong></div></div>
     <div class="mk-owe"><div><b>Order wire from Metro Steel</b><small>60 rolls drafted · arrives in 5 days</small></div><span class="mk-btnsm p">Send</span></div>
   </div></div></div>`;
 }
@@ -93,11 +93,24 @@ const NF76_SHOW = {
   'Your own store, ready for Facebook': ['Your own online store', 'One link with your items and prices. Buyers order and pay, no back-and-forth.', ['GCash, Maya or cash on delivery', 'Delivery fee set per barangay', 'Ready-made Facebook posts']],
   'Books that keep themselves': ['Books that keep themselves', 'Every sale and expense lands in your books. Know your real profit, any day.', ['A receipt photo with every expense', 'Cash short and odd bills flagged', 'Profit and loss, ready for your accountant']]
 };
+// Round 77: one short line next to the big green number, same size as the ticks
+const NF77_STAT = {'Know what runs out first': ['2 days', 'warning before it runs out'], 'Know exactly who owes you': ['\u20b184,200', 'owed to you right now'], 'Routes your drivers can follow': ['5 stops', 'planned, done and collected'], 'All your suppliers, one list': ['1 list', 'for every supplier you buy from'], 'Your own online store': ['2 min', 'to open your store'], 'Books that keep themselves': ['\u20b138,400', 'real profit this month']};
+// the pictures use the same words and buttons as the app's pages
+function nf77ShowArt(){
+  const box = document.getElementById('mkShow'); if(!box || box.dataset.r77) return; box.dataset.r77 = '1';
+  box.querySelectorAll('.mk-bigstat small').forEach(s => { const t = s.textContent.trim(); if(t === 'WHO OWES YOU') s.textContent = 'GETTING PAID \u00b7 OWED TO YOU'; else if(t === 'PROFIT THIS MONTH') s.textContent = 'MONTHLY SUMMARY \u00b7 PROFIT SO FAR'; });
+  box.querySelectorAll('.mk-owe').forEach(r => { const b = r.querySelector('b'), sm = r.querySelector('small'), btn = r.querySelector('.mk-btnsm'); if(!b || !sm) return; const n = b.textContent.trim();
+    if(n === 'Bayview Construction Co.'){ sm.textContent = '\u20b114,800 \u00b7 says they paid by GCash'; if(btn){ btn.textContent = 'Confirm'; btn.classList.add('p'); } }
+    if(n === 'Cash count, Tuesday' && btn) btn.textContent = 'To check';
+    if(/summary$/.test(n)){ sm.textContent = 'ready to download for your accountant'; } });
+}
 function nf76ShowCopy(){
   const sps = document.querySelectorAll('#mkShow .nf20-sp .f4-spot-t'); if(!sps.length) return false;
   sps.forEach(t => { const h = t.querySelector('h3'); if(!h || t.dataset.r76) return; const c = NF76_SHOW[h.textContent.trim()]; t.dataset.r76 = '1'; t.classList.add('r76-copy'); if(!c) return;
     h.textContent = c[0]; const p = t.querySelector('p'); if(p) p.textContent = c[1];
-    const ul = t.querySelector('.m2-ticks'); if(ul) ul.innerHTML = c[2].map(x => `<li>${x}</li>`).join(''); });
+    const ul = t.querySelector('.m2-ticks'); if(ul) ul.innerHTML = c[2].map(x => `<li>${x}</li>`).join('');
+    const o = t.querySelector('.f4-out'), st = NF77_STAT[c[0]]; if(o && st) o.innerHTML = `<b>${st[0]}</b><span>${st[1]}</span>`; });
+  try{ nf77ShowArt(); }catch(e){}
   return true;
 }
 (function(){

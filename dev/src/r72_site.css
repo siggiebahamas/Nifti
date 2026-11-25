@@ -407,3 +407,17 @@
 #view-index #mkShow .f4-spot-t.r76-copy .f4-out{padding:14px 18px;margin-top:6px;}
 #view-index #mkShow .f4-spot-t.r76-copy .f4-out b{font-size:34px;} #view-index #mkShow .f4-spot-t.r76-copy .f4-out span{font-size:17px;color:#0B0F14;}
 @media(max-width:760px){ #view-index #mkShow .f4-spot-t.r76-copy h3{font-size:28px;} #view-index #mkShow .f4-spot-t.r76-copy p{font-size:18px;} #view-index #mkShow .f4-spot-t.r76-copy .m2-ticks li{font-size:17px;} }
+/* ===== Round 77: See it in action, the stat line reads at the same size as everything else ===== */
+#view-index #mkShow .f4-spot-t.r76-copy .f4-out{display:flex;align-items:center;gap:16px;padding:16px 22px;flex-wrap:nowrap;}
+#view-index #mkShow .f4-spot-t.r76-copy .f4-out b{font-size:38px;line-height:1;color:#14653A;white-space:nowrap;flex:none;letter-spacing:-.01em;}
+#view-index #mkShow .f4-spot-t.r76-copy .f4-out span{font-size:20px;line-height:1.3;font-weight:700;color:#0B0F14;}
+/* the pictures: app-sized text, black */
+#view-index #mkShow .f4-art .mk-owe b{font-size:17px;color:#0B0F14;} #view-index #mkShow .f4-art .mk-owe small{font-size:15px;color:#0B0F14;}
+#view-index #mkShow .f4-art .mk-bigstat small{font-size:13px;color:#0B0F14;letter-spacing:.04em;font-weight:800;} #view-index #mkShow .f4-art .mk-bigstat span{font-size:16px;color:#0B0F14;}
+#view-index #mkShow .f4-art .mk-btnsm{font-size:14px;padding:6px 12px;}
+#view-index #mkShow .f4-art .v-notif small{font-size:14px;color:#0B0F14;} #view-index #mkShow .f4-art .v-notif strong{font-size:16px;}
+@media(max-width:760px){ #view-index #mkShow .f4-spot-t.r76-copy .f4-out b{font-size:30px;} #view-index #mkShow .f4-spot-t.r76-copy .f4-out span{font-size:17px;} }
+#view-index #mkShow .f4-spot-t.r76-copy .f4-out{align-self:stretch;width:100%;box-sizing:border-box;}
+@media(min-width:761px){ #view-index #mkShow .r72-sr-row{grid-template-columns:minmax(0,1fr) 56px 74px !important;gap:10px !important;} #view-index #mkShow .r72-sr-row small{white-space:nowrap;} }
+#view-index #mkShow .r72-sr-row b{font-size:17px;color:#0B0F14;white-space:nowrap;} #view-index #mkShow .r72-sr-row small{font-size:14px;color:#0B0F14;}
+#view-index #mkShow .r72-sr-row strong{font-size:17px;text-align:right;} #view-index #mkShow .r72-sr-h b{font-size:17px;} #view-index #mkShow .r72-sr-h small{font-size:14px;color:#0B0F14;}

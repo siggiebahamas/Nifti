@@ -141,7 +141,7 @@ html body #view-app .ob .hdr .sh-c .sc, html[data-ty] body #mhHome .ob .hdr .sh 
 .nf76-inc .when.f{background:#E7F0FF;color:#1D3F8F;} .nf76-inc .when.p{background:#ECFDF3;color:#085D3A;}
 .nf76-inc .pr{display:flex;flex-direction:column;align-items:flex-end;gap:2px;}
 .nf76-inc .ov{display:flex;align-items:center;gap:12px;}
-.nf76-inc .ov span{display:flex;flex-direction:column;align-items:flex-end;} .nf76-inc .ov small{font-size:12.5px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:#0B0F14;opacity:.7;}
+.nf76-inc .ov span{display:flex;flex-direction:column;align-items:flex-end;} .nf76-inc .ov small{font-size:12.5px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:#0B0F14;}
 .nf76-inc .ov b{font-size:20px;font-variant-numeric:tabular-nums;color:#0B0F14;} .nf76-inc .ov b.old{font-weight:700;color:#475467;} .nf76-inc .ov i{font-style:normal;font-size:18px;color:#0B0F14;}
 .nf76-inc .pr .u{font-size:13px;color:#0B0F14;}
 .nf76-inc .pct{font-size:16px;font-weight:800;padding:6px 12px;border-radius:999px;white-space:nowrap;min-width:84px;text-align:center;}
