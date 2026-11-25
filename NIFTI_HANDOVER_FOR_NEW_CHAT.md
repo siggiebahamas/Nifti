@@ -559,3 +559,36 @@ Artifact "Nifti Page Proposals": honest take on side-by-side pages + 10 alternat
 
 ### 11.5 Tests this round
 landtest, saletest, rectest, full.js (28 pages × 2 widths, 7 roles, 0 errors), muts.js on 14 pages (0 idle loops after the Home fix), prof.js (avg click→paint 82 ms), audit.js (alignment / tiny text / truncation / buttons on borders on every page, 1440 and 390), popsweep.js (dialogs), test74.js (19 checks for this round). Still not done: signed-in tests with real accounts; checks/sales stay non-editable by design (audit trail).
+
+## 12. ROUND 75 (25 Nov 2026): fourth revision pass — read this first
+New module: `u75_app` (build patches) + `r75.js` / `r75.css` (runtime), after u74_app in the workflow and mods list. Two additive migrations were applied live (files in `supabase_migrations/`).
+
+### 12.1 Database (applied, additive only)
+- `r75_price_announce_audience`: `price_changes.audience`, `price_changes.sent_buyer_ids`, and a 4-argument `announce_price_changes(p_changes, p_effective, p_note, p_buyers uuid[])`. `p_buyers` null = all buyers; otherwise only those buyers (still limited to business_relationships) get the message. The 3-argument version is unchanged.
+- `r75_form2307_proof_files`: private bucket `tax-forms` (PDF/JPG/PNG/WebP, 10 MB, per-business folder policies) and table `form2307_files` (business_id, counterparty_id text, quarter, side collect|give, file_path, file_name, mime, uploaded_by_name) with RLS by my_business_ids().
+
+### 12.2 Bug fixed (was live in Round 74)
+Approving an expense (or any save that calls bkRefreshViews) and then opening Monthly summary froze the page: the Round 73 lgLoad "redraw once loaded" wrapper and bkRefreshViews (which invalidates the ledger) called each other forever. The wrapper now redraws only once per session (`window._nf73LgOnce`).
+
+### 12.3 Landing
+How it works: 3 big steps (64px icons, one short line each, no times), and one clean benefit scene per step (chat → confirmed order; delivery photo → stock 120→100; GCash paid → ₱880 profit) with a big "1 tap / 0 typing / Books done" line. No app window.
+
+### 12.4 Dashboard
+- Home: board count chip sits right of the stage name (small, dark on light grey). Owner view: Profit so far with two same-days bars (this month vs last month); You keep = "4.9% profit margin" + ring, no points; Biggest costs list.
+- Walk-in sales: one page again (tabs removed). Order: pills → Today → day summary (How they paid / Kept / Discounts) → Utang + Discounts side by side (Customer/Owes/Paid; Staff member/What happened/Amount) → Count the cash (calendar with Short/Over/Not counted/Matched chips in its header, "Tonight: X counts" box saying anyone with Walk-in access can count, saved under their name) → change-fund line.
+- Expenses: Expense type header, N/A for no payee, Approve/Send back right on a "needs your OK" row, approval rule (one amount) in the All expenses header with Change, the second-approval option removed, Where the money went as tiles.
+- Team: titles 18px, done not struck, roomier card footer, no add in Done. Demo owner is "Ramon Dela Cruz" (short name Ramon). Demo keys are cleared once (`nifti-demo-clean = r75`) and leftover pending invites / non-seed tasks dropped once.
+- Plans: an icon per feature, short lines, "Worth ₱33 a day · yours free in beta" hooks.
+- Getting paid: customers with a balance show just TOTAL.
+- Deliveries: standing rider (`books_settings.route_rider`: member, period week|month|always, until); "N orders ready to go out → Send all to <rider> today"; "+ Add a delivery" (from an order, or anything else: name, address, items, cash to collect in the note); board To go (yellow) / Done (green) / Couldn't do (red) with times; tap a card for the existing stop sheet. Demo has one confirmed order (po_r75) ready to deliver; demo rider list merges both rosters.
+- Prices & profit: composer rebuilt (`nf75Composer`): short copy, Starts presets + date picker with one selected state (bug fixed), Who hears it (Top 3 / All / Pick, each buyer with this year's purchases), message preview, Send to N buyers. Supplier changes: big rows, Was → New, ▲/▼ %. 
+- To check: cards with one fix button per kind, "It's fine, close it" with quick reasons, Give to someone; Recount opens a one-item popup (expected vs counted, last 5 changes of that item only).
+- Monthly summary: three large tabs with icons and a line each; What you own and owe has ‹ › day steps and Today / Yesterday / 2 days / 1 week / 2 weeks / End of last month.
+- Follow-ups: concern shown as its own speech line; Reply / Send a price / Remind / Say hello open one composer (prefilled message, a price worked out from "200 bags cement", follow-up in 2 days) and "Send on Viber" opens that person's Viber chat with the message typed (viber://chat?number=…&draft=…, copy as fallback). Viber still needs the user's final tap on Send; no free API sends for them.
+- BIR 2307: From customers / To suppliers switch (one side at a time, full width), big quarter tabs + All quarters, Proof column (attach PDF/photo, open, remove), Download this list (CSV), link to bir.gov.ph for the blank form. Filled official PDF was NOT built (liability); the existing worksheet is the "Fill-in helper" and now flags missing TIN and address in red with a check-before-signing note. Every action pins currentAppRole to its side.
+
+### 12.5 Proposals
+"Nifti Page Proposals" artifact now starts with 10 colour options for Buying from suppliers (pick: Violet #6D3FC4). Not applied yet.
+
+### 12.6 Tests this round
+landtest, saletest, rectest, full.js (28 pages × 2 widths, 7 roles, 0 errors), muts.js (12 pages, 0 idle loops), prof.js (avg click→paint 83 ms), audit.js 1440 + 390 (clean), test75.js (12 checks), rt75.js (rider, send ready, free-form delivery, stop sheet), hang.js (the freeze above). Not done: signed-in tests with real accounts (proof upload and buyer-picked announcements were tested in the demo path only; the server functions were applied and compile).

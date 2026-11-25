@@ -596,7 +596,7 @@ if(typeof lgLoad === 'function'){
   const ll = lgLoad;
   lgLoad = function(){
     const was = typeof LG !== 'undefined' && LG.loaded, pr = ll.apply(this, arguments);
-    Promise.resolve(pr).then(() => { try{ if(was || !(typeof LG !== 'undefined' && LG.loaded)) return; const a = document.querySelector('#view-app .app-page.active'); if(a && /^page-(profit|money|ledger|sales|cashcount)$/.test(a.id) && typeof bkRefreshViews === 'function') bkRefreshViews(); }catch(e){} });
+    Promise.resolve(pr).then(() => { try{ if(was || window._nf73LgOnce || !(typeof LG !== 'undefined' && LG.loaded)) return; window._nf73LgOnce = true; const a = document.querySelector('#view-app .app-page.active'); if(a && /^page-(profit|money|ledger|sales|cashcount)$/.test(a.id) && typeof bkRefreshViews === 'function') bkRefreshViews(); }catch(e){} });
     return pr;
   };
 }
