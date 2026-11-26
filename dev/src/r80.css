@@ -1,0 +1,120 @@
+/* ===== Round 80 ===== */
+/* ---------- Money overview: statement + cost changes, side by side ---------- */
+html body #view-app #page-money .bk-two.nf80-two{display:grid !important;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:start;max-width:1240px;margin:0 auto;}
+html body #view-app #page-money .bk-two.nf80-two #bkPnlPrint{max-width:none !important;margin:0 !important;}
+@media (max-width:1100px){ html body #view-app #page-money .bk-two.nf80-two{grid-template-columns:1fr;} }
+.nf80-jumps .sub{margin:-4px 0 12px;font-size:15px;color:#0B0F14;}
+.nf80-jumps .tot{display:flex;align-items:center;flex-wrap:wrap;gap:10px 16px;padding:14px 16px;border-radius:14px;background:#F6F7F9;border:1.5px solid #EAECF0;margin-bottom:14px;}
+.nf80-jumps .tot small{display:block;font-size:13px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;color:#0B0F14;}
+.nf80-jumps .tot b{font-size:24px;font-weight:900;font-variant-numeric:tabular-nums;color:#0B0F14;}
+.nf80-jumps .tot .ar{font-size:14px;font-weight:800;color:#0B0F14;}
+.nf80-jumps .chip{font-size:13px;font-weight:900;padding:4px 10px;border-radius:999px;white-space:nowrap;}
+.nf80-jumps .chip.big{font-size:15px;padding:6px 12px;margin-left:auto;}
+.nf80-jumps .chip.r{background:#FEF0EF;color:#B42318;} .nf80-jumps .chip.g{background:#ECF8F0;color:#14532D;} .nf80-jumps .chip.n{background:#fff;color:#0B0F14;border:1px solid #E4E7EC;}
+.nf80-jumps h3{display:flex;align-items:center;gap:6px;margin:14px 0 6px;font-size:14px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#0B0F14;}
+.nf80-jumps h3.hu svg{color:#B42318;} .nf80-jumps h3.hd svg{color:#14532D;}
+.nf80-jumps .jr{border-top:1px solid #EEF0F2;}
+.nf80-jumps .jh{display:grid;grid-template-columns:minmax(0,1fr) auto auto 14px;gap:10px;align-items:center;width:100%;padding:11px 4px 6px;border:0;background:none;font:inherit;text-align:left;cursor:pointer;color:#0B0F14;}
+.nf80-jumps .jh .n{font-size:16px;font-weight:800;} .nf80-jumps .jh .ft{font-size:14px;font-variant-numeric:tabular-nums;white-space:nowrap;} .nf80-jumps .jh .ft i{font-style:normal;margin:0 2px;}
+.nf80-jumps .jh .cv{font-size:20px;font-weight:700;color:#1F6B45;transition:transform .15s;} .nf80-jumps .jr.open .jh .cv{transform:rotate(90deg);color:#0B0F14;}
+.nf80-jumps .jh:hover .n{text-decoration:underline;text-underline-offset:3px;}
+.nf80-jumps .bars{display:flex;flex-direction:column;gap:3px;padding:0 4px 10px;}
+.nf80-jumps .bars span{display:block;height:7px;border-radius:999px;background:#F2F4F7;overflow:hidden;}
+.nf80-jumps .bars i{display:block;height:100%;border-radius:999px;} .nf80-jumps .bars i.was{background:#C9D1DB;} .nf80-jumps .bars i.now.up{background:#E5675C;} .nf80-jumps .bars i.now.dn{background:#3E9E6B;}
+.nf80-jumps .jd{display:none;padding:0 4px 12px;} .nf80-jumps .jr.open .jd{display:block;}
+.nf80-jumps .jl{display:flex;flex-direction:column;border-radius:12px;background:#F6F7F9;padding:6px 12px;}
+.nf80-jumps .jl > div{display:flex;justify-content:space-between;gap:10px;padding:6px 0;font-size:14.5px;color:#0B0F14;border-top:1px dashed #E4E7EC;} .nf80-jumps .jl > div:first-child{border-top:0;}
+.nf80-jumps .jl b{font-variant-numeric:tabular-nums;}
+.nf80-jumps .jn{margin:0 0 6px;font-size:14.5px;color:#0B0F14;}
+html body #view-app #page-money .nf78-took > b{white-space:nowrap;}
+html body #view-app #page-money .nf78-took{gap:12px;}
+/* ---------- inputs that sit inside a box: no second box, no square focus ring inside; the outer box lights up instead ---------- */
+html body .nf79-rp .pe input, html body .ob-peso input, html body .nf43-amt input, html body .nf75-dpick input, html body .msg-composer textarea, html body .nf72-scan input{border:0 !important;box-shadow:none !important;background:transparent !important;}
+html body .nf79-rp .pe input:focus, html body .nf79-rp .pe input:focus-visible, html body .ob-peso input:focus, html body .ob-peso input:focus-visible, html body .nf43-amt input:focus, html body .nf43-amt input:focus-visible,
+html body .nf75-dpick input:focus, html body .nf75-dpick input:focus-visible, html body .msg-composer textarea:focus, html body .msg-composer textarea:focus-visible, html body .nf72-scan input:focus, html body .nf72-scan input:focus-visible{outline:none !important;box-shadow:none !important;}
+html body .nf79-rp .pe:focus-within, html body .ob-peso:focus-within, html body .nf43-amt:focus-within, html body .nf75-dpick:focus-within, html body .nf72-scan:focus-within{border-color:#1F6B45 !important;box-shadow:0 0 0 3px rgba(31,107,69,.18) !important;}
+html body .msg-composer:focus-within{box-shadow:0 0 0 3px rgba(31,107,69,.18);}
+/* payments to confirm: bigger name and amount, date + order bottom-right beside the buttons */
+.nf78-conf .r.nf79-cr{grid-template-columns:44px minmax(0,1fr) auto !important;grid-template-areas:"mi w am" "mi bt wn" "why why why";row-gap:10px !important;padding:14px 16px !important;}
+.nf79-cr .mi{grid-area:mi;align-self:start;} .nf79-cr .w{grid-area:w;} .nf79-cr > em{grid-area:am;font-size:20px !important;}
+.nf79-cr .bt{grid-area:bt !important;grid-column:auto !important;} .nf79-cr .when{grid-area:wn;align-self:center;justify-self:end;text-align:right;font-size:13.5px !important;color:#0B0F14;white-space:nowrap;}
+.nf79-cr .w b{font-size:17px !important;} .nf79-cr .w small.how{font-size:14.5px !important;margin-top:2px;}
+.nf79-cr .nf79-why{grid-area:why;}
+html[data-ty] body #view-app .nf79-cr .when{font-size:13.5px !important;}
+@media (max-width:520px){ .nf78-conf .r.nf79-cr{grid-template-areas:"mi w am" "mi bt bt" "mi wn wn" "why why why";} .nf79-cr .when{justify-self:start;} }
+/* owed-to-you lines: bigger, easier "Settle" */
+.nf78-tot .nf79-lw > .ln.o1 .go{font-size:16px !important;font-weight:900 !important;}
+.nf78-tot .nf79-lw > .ln .n b{font-size:16px !important;} .nf78-tot .nf79-lw > .ln .a{font-size:17px !important;}
+/* customer cards: one tidy row of equal buttons; the app a reminder goes on shows as its icon only */
+html body #view-app .nf78-cu .acts{display:grid !important;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px !important;}
+html body #view-app .nf78-cu .acts .nf77-b{width:100%;min-height:46px;justify-content:center;white-space:nowrap;padding:0 12px;}
+html body #view-app .nf78-cu .acts .nf77-b small{display:none !important;}
+html body #view-app .nf78-cu .acts .nf77-b .ch{width:20px;height:20px;}
+.nf78-conf .r.nf79-cr{grid-template-areas:"mi w am" "mi ft ft" "why why why" !important;}
+.nf79-cr .ft{grid-area:ft;display:flex;align-items:center;flex-wrap:wrap;gap:8px 12px;}
+.nf79-cr .ft .bt{display:flex;gap:8px;flex-wrap:wrap;}
+.nf79-cr .ft .when{margin-left:auto;text-align:right;white-space:nowrap;}
+@media (max-width:520px){ .nf78-conf .r.nf79-cr{grid-template-areas:"mi w am" "mi ft ft" "why why why" !important;} }
+html body #view-app .nf78-cu .acts{grid-template-columns:1fr 1fr !important;}
+html body #view-app .nf78-cu .acts .nf77-b.p{grid-column:1 / -1;}
+html body #view-app .nf78-cu .acts .nf77-b:only-child, html body #view-app .nf78-cu .acts .nf77-b.p + .nf77-b.s:last-child{grid-column:1 / -1;}
+/* ---------- Utang tracker (Walk-in sales) ---------- */
+html body #view-app #page-sales .nf75-utang.nf80-ut{grid-column:1 / -1 !important;width:auto !important;max-width:none !important;}
+html body #view-app #page-sales .nf75-disc{grid-column:1 / -1 !important;}
+.nf80-uh{display:flex !important;align-items:flex-start !important;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.nf80-uh h2{margin:0 !important;} .nf80-uh p{margin:4px 0 0;font-size:15px;color:#0B0F14;}
+.nf80-ut-tabs{display:flex;gap:6px;margin:12px 0;}
+.nf80-ut-tabs button{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-radius:999px;border:1.5px solid #D0D5DD;background:#fff;font:inherit;font-size:15px;font-weight:800;color:#0B0F14;cursor:pointer;}
+.nf80-ut-tabs button em{font-style:normal;font-size:13px;min-width:22px;height:22px;border-radius:999px;display:inline-grid;place-items:center;background:#F2F4F7;color:#0B0F14;padding:0 6px;}
+.nf80-ut-tabs button.on{background:#0B0F14;border-color:#0B0F14;color:#fff;} .nf80-ut-tabs button.on em{background:#fff;color:#0B0F14;}
+.nf80-ul{display:flex;flex-direction:column;gap:10px;}
+.nf80-ur{border:1.5px solid #E4E7EC;border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:8px;background:#fff;}
+.nf80-ur .top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
+.nf80-ur .who b{display:block;font-size:17px;color:#0B0F14;} .nf80-ur .who small{display:block;font-size:14px;color:#0B0F14;margin-top:2px;line-height:1.4;}
+html[data-ty] body #view-app .nf80-ur .who small{font-size:14px !important;}
+.nf80-ur .amt{text-align:right;flex:none;} .nf80-ur .amt span{display:block;font-size:13px;font-weight:800;color:#0B0F14;} .nf80-ur .amt b{font-size:21px;font-weight:900;font-variant-numeric:tabular-nums;color:#0B0F14;}
+.nf80-ur .amt .done{display:inline-flex;align-items:center;gap:4px;color:#14532D;}
+.nf80-ur .prog{display:flex;align-items:center;gap:10px;} .nf80-ur .prog span{flex:1;height:8px;border-radius:999px;background:#F2F4F7;overflow:hidden;} .nf80-ur .prog i{display:block;height:100%;background:#1F6B45;border-radius:999px;}
+.nf80-ur .prog small{font-size:14px;font-weight:700;color:#0B0F14;white-space:nowrap;}
+html[data-ty] body #view-app .nf80-ur .prog small{font-size:14px !important;}
+.nf80-ur .acts{display:flex;gap:8px;flex-wrap:wrap;}
+.nf80-ur .hwrap{display:none;} .nf80-ur.hopen .hwrap{display:block;}
+.nf80-hist{display:flex;flex-direction:column;border-radius:12px;background:#F6F7F9;padding:4px 12px;}
+.nf80-hist .hr{display:grid;grid-template-columns:96px minmax(0,1fr) auto auto;gap:10px;align-items:center;padding:8px 0;border-top:1px dashed #E4E7EC;font-size:14.5px;color:#0B0F14;}
+.nf80-hist .hr:first-child{border-top:0;}
+.nf80-hist .hr .dt{font-weight:700;} .nf80-hist .hr .tx small{display:block;font-size:13px;color:#0B0F14;}
+.nf80-hist .hr b{font-variant-numeric:tabular-nums;white-space:nowrap;} .nf80-hist .hr.pay b{color:#14532D;} .nf80-hist .hr.undo{opacity:1;} .nf80-hist .hr.undo .tx, .nf80-hist .hr.undo b{text-decoration:line-through;}
+.nf80-ph{display:inline-flex;align-items:center;gap:3px;border:0;background:none;padding:0;font:inherit;font-weight:800;color:#1F6B45;cursor:pointer;}
+.nf80-uempty{padding:16px;border-radius:12px;background:#F6F7F9;font-size:15px;color:#0B0F14;}
+.nf80-unote{margin:10px 0 0;font-size:14px;color:#0B0F14;}
+@media (max-width:520px){ .nf80-hist .hr{grid-template-columns:72px minmax(0,1fr) auto;} .nf80-hist .hr > :last-child{grid-column:1 / -1;justify-self:end;} }
+/* Getting paid: shop utang foot and paid-off list */
+.nf80-gfoot{display:flex;justify-content:space-between;gap:10px;padding:0 18px 12px 70px;} .nf80-gfoot .nf77-link{font-size:14.5px;}
+.nf80-paid{margin:0 18px 14px 70px;padding:10px 12px;border-radius:12px;background:#F6F7F9;display:flex;flex-direction:column;gap:6px;}
+.nf80-paid > b{font-size:14px;font-weight:900;color:#0B0F14;}
+.nf80-paid .pr{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:15px;color:#0B0F14;} .nf80-paid .pr small{display:block;font-size:13.5px;color:#0B0F14;}
+@media (max-width:520px){ .nf80-gfoot, .nf80-paid{padding-left:18px;margin-left:18px;} .nf80-gfoot{flex-direction:column;} }
+/* Home: profit margin tile with what pulled it down */
+html body #view-app #mhHome .nf75-owner .nf80-mg{display:grid !important;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;align-items:center;}
+html body #view-app #mhHome .nf75-owner .nf80-mg > .l{display:flex;flex-direction:column;gap:2px;min-width:0;}
+html body #view-app #mhHome .nf75-owner .nf78-was{font-size:17px !important;} html body #view-app #mhHome .nf75-owner .nf78-was b{font-size:19px !important;}
+html body #view-app #mhHome .nf75-owner .nf80-mg .drag{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:12px;background:#fff;border:1.5px solid #F4C7C2;min-width:0;}
+html body #view-app #mhHome .nf75-owner .nf80-mg .drag small{font-size:12px !important;font-weight:900;letter-spacing:.05em;text-transform:uppercase;color:#B42318;}
+html body #view-app #mhHome .nf75-owner .nf80-mg .drag b{font-size:15px;font-weight:900;color:#0B0F14;line-height:1.2;}
+html body #view-app #mhHome .nf75-owner .nf80-mg .drag span{font-size:14px;font-weight:700;color:#0B0F14;}
+html body #view-app #mhHome .nf75-owner .nf80-mg .drag em{font-style:normal;font-size:14px;font-weight:900;color:#B42318;}
+html body #view-app #mhHome .nf75-owner .nf80-oth{display:grid;grid-template-columns:24px 1fr auto 44px;align-items:center;gap:8px;width:100%;margin-top:6px;font-size:16px;color:#0B0F14;}
+html body #view-app #mhHome .nf75-owner .nf80-oth .n{width:24px;height:24px;border-radius:50%;background:#EEF0F2;font-size:14px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;}
+html body #view-app #mhHome .nf75-owner .nf80-oth .k{font-weight:600;} html body #view-app #mhHome .nf75-owner .nf80-oth b{font-weight:800;font-variant-numeric:tabular-nums;font-size:18px;} html body #view-app #mhHome .nf75-owner .nf80-oth em{font-style:normal;font-size:14px;font-weight:700;text-align:right;}
+@media (max-width:640px){ html body #view-app #mhHome .nf75-owner .nf80-mg{grid-template-columns:1fr;} }
+html body #view-app #mhHome .nf75-owner .nf80-mg{display:flex !important;flex-direction:column;align-items:stretch;gap:10px;}
+html body #view-app #mhHome .nf75-owner .nf80-mg .drag{display:flex !important;flex-direction:row !important;flex-wrap:wrap;align-items:baseline;gap:4px 8px;padding:8px 10px !important;}
+html body #view-app #mhHome .nf75-owner .nf80-mg .drag small{flex-basis:100%;}
+html body #view-app #mhHome .nf75-owner .nf78-was span{white-space:nowrap;}
+html body #view-app #mhHome .nf75-owner .nf80-oth .k{font-size:17px !important;}
+/* + Create menu: the three groups read as headers */
+html body .create-menu .notif-head{font-size:13px !important;font-weight:900 !important;letter-spacing:.08em !important;text-transform:uppercase !important;color:#14532D !important;background:#F1F7F3 !important;padding:10px 16px 8px !important;border-top:1px solid #E4E7EC;margin:0 !important;}
+html body .create-menu .notif-head:first-child{border-top:0;border-radius:12px 12px 0 0;}
+html body .create-menu .notif-item{padding-left:20px !important;}
+html body .create-menu .notif-item .notif-text{font-size:15px;color:#0B0F14 !important;}
+html body .nf-cc-dot{color:#0B0F14 !important;} html body #view-app .nf23-add{color:#0B0F14 !important;}

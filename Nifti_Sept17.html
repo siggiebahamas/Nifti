@@ -13182,11 +13182,8 @@ body.nf55-on #view-app .main{padding-bottom:84px;}
 @media(max-width:760px){ #view-index #mkShow .f4-out.r78-out .ic{width:48px;height:48px;} #view-index #mkShow .f4-spot-t.r76-copy .f4-out.r78-out .tx b{font-size:32px;} #view-index #mkShow .f4-spot-t.r76-copy .f4-out.r78-out .tx > span{font-size:16px;} }
 #view-index #mkShow .f4-spot-t.r76-copy .f4-out.r78-out .tx > span{font-size:19px !important;font-weight:700 !important;}
 #view-index #mkShow .r72-sr-row > span{min-width:0;} #view-index #mkShow .r72-sr-row b{white-space:normal !important;}
-/* ===== Round 79: light, friendly icon tiles (green on white) ===== */
-#view-index #mkShow .f4-out.r78-out{background:linear-gradient(135deg,#F3FBF6 0%,#FFFFFF 100%) !important;border-color:#CDEBD8 !important;}
-#view-index #mkShow .f4-out.r78-out .ic{background:#FFFFFF !important;color:#1F8A4C !important;border:2px solid #BFE6CC;box-shadow:0 6px 16px -10px rgba(31,138,76,.55) !important;}
-#view-index #mkShow .f4-out.r78-out .tx small{color:#1F8A4C !important;}
-#view-index #mkShow .f4-spot-t.r76-copy .f4-out.r78-out .tx b{color:#167A3F !important;}
+/* ===== Round 80: only the icon tile changes: white tile, dark green border and icon ===== */
+#view-index #mkShow .f4-out.r78-out .ic{background:#FFFFFF !important;color:#14532D !important;border:2px solid #14532D;box-shadow:0 4px 12px -8px rgba(20,83,45,.45) !important;}
 
 
 /* ===== Round 72: dashboard ===== */
@@ -14683,7 +14680,7 @@ html body #view-app #mhHome .nf75-owner .nf79-ctot em{font-style:normal;font-wei
 .nf78-tot .nf79-lw{border-top:1px dashed #E4E7EC;}
 .nf78-tot .nf79-lw:first-child{border-top:0;}
 .nf78-tot .nf79-lw > .ln{border-top:0 !important;grid-template-columns:minmax(0,1fr) auto auto 16px !important;border-radius:10px;padding:9px 6px !important;margin:0 -6px;width:calc(100% + 12px) !important;}
-.nf78-tot .nf79-lw > .ln::after{content:"›";font-size:18px;font-weight:700;color:#0B0F14;line-height:1;transition:transform .15s;}
+.nf78-tot .nf79-lw > .ln::after{content:"›";font-size:18px;font-weight:700;color:#1F6B45;line-height:1;transition:transform .15s;}
 .nf78-tot .nf79-lw > .ln:hover{background:#F6F7F9;} .nf78-tot .nf79-lw.open > .ln{background:#F2F8F4;} .nf78-tot .nf79-lw.open > .ln::after{transform:rotate(90deg);color:#1F6B45;}
 .nf78-tot .nf79-lw > .ln.o1 .go{color:#1F6B45;}
 .nf79-la{display:none;flex-direction:column;gap:6px;padding:4px 0 12px;} .nf79-lw.open .nf79-la{display:flex;}
@@ -14709,6 +14706,128 @@ html[data-ty] body .nf79-of{font-size:14px !important;}
 .nf79-guide svg{flex:none;margin-top:2px;color:#0B0F14;}
 html body #view-app #page-taxforms .nf78-bt .nf75-proof .add{white-space:nowrap;}
 tr.nf79-inl td{padding:6px 8px 12px !important;background:transparent !important;} .nf79-inl .nf79-rp{margin:4px 0 8px;}
+
+
+/* ===== Round 80 ===== */
+/* ---------- Money overview: statement + cost changes, side by side ---------- */
+html body #view-app #page-money .bk-two.nf80-two{display:grid !important;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px;align-items:start;max-width:1240px;margin:0 auto;}
+html body #view-app #page-money .bk-two.nf80-two #bkPnlPrint{max-width:none !important;margin:0 !important;}
+@media (max-width:1100px){ html body #view-app #page-money .bk-two.nf80-two{grid-template-columns:1fr;} }
+.nf80-jumps .sub{margin:-4px 0 12px;font-size:16px;color:#0B0F14;}
+.nf80-jumps .tot{display:flex;align-items:center;flex-wrap:wrap;gap:10px 16px;padding:14px 16px;border-radius:14px;background:#F6F7F9;border:1.5px solid #EAECF0;margin-bottom:14px;}
+.nf80-jumps .tot small{display:block;font-size:14px;font-weight:800;letter-spacing:.03em;text-transform:uppercase;color:#0B0F14;}
+.nf80-jumps .tot b{font-size:24px;font-weight:900;font-variant-numeric:tabular-nums;color:#0B0F14;}
+.nf80-jumps .tot .ar{font-size:14px;font-weight:800;color:#0B0F14;}
+.nf80-jumps .chip{font-size:14px;font-weight:900;padding:4px 10px;border-radius:999px;white-space:nowrap;}
+.nf80-jumps .chip.big{font-size:16px;padding:6px 12px;margin-left:auto;}
+.nf80-jumps .chip.r{background:#FEF0EF;color:#B42318;} .nf80-jumps .chip.g{background:#ECF8F0;color:#14532D;} .nf80-jumps .chip.n{background:#fff;color:#0B0F14;border:1px solid #E4E7EC;}
+.nf80-jumps h3{display:flex;align-items:center;gap:6px;margin:14px 0 6px;font-size:14px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#0B0F14;}
+.nf80-jumps h3.hu svg{color:#B42318;} .nf80-jumps h3.hd svg{color:#14532D;}
+.nf80-jumps .jr{border-top:1px solid #EEF0F2;}
+.nf80-jumps .jh{display:grid;grid-template-columns:minmax(0,1fr) auto auto 14px;gap:10px;align-items:center;width:100%;padding:11px 4px 6px;border:0;background:none;font:inherit;text-align:left;cursor:pointer;color:#0B0F14;}
+.nf80-jumps .jh .n{font-size:16px;font-weight:800;} .nf80-jumps .jh .ft{font-size:14px;font-variant-numeric:tabular-nums;white-space:nowrap;} .nf80-jumps .jh .ft i{font-style:normal;margin:0 2px;}
+.nf80-jumps .jh .cv{font-size:18px;font-weight:700;color:#1F6B45;transition:transform .15s;} .nf80-jumps .jr.open .jh .cv{transform:rotate(90deg);color:#0B0F14;}
+.nf80-jumps .jh:hover .n{text-decoration:underline;text-underline-offset:3px;}
+.nf80-jumps .bars{display:flex;flex-direction:column;gap:3px;padding:0 4px 10px;}
+.nf80-jumps .bars span{display:block;height:7px;border-radius:999px;background:#F2F4F7;overflow:hidden;}
+.nf80-jumps .bars i{display:block;height:100%;border-radius:999px;} .nf80-jumps .bars i.was{background:#C9D1DB;} .nf80-jumps .bars i.now.up{background:#E5675C;} .nf80-jumps .bars i.now.dn{background:#3E9E6B;}
+.nf80-jumps .jd{display:none;padding:0 4px 12px;} .nf80-jumps .jr.open .jd{display:block;}
+.nf80-jumps .jl{display:flex;flex-direction:column;border-radius:12px;background:#F6F7F9;padding:6px 12px;}
+.nf80-jumps .jl > div{display:flex;justify-content:space-between;gap:10px;padding:6px 0;font-size:14px;color:#0B0F14;border-top:1px dashed #E4E7EC;} .nf80-jumps .jl > div:first-child{border-top:0;}
+.nf80-jumps .jl b{font-variant-numeric:tabular-nums;}
+.nf80-jumps .jn{margin:0 0 6px;font-size:14px;color:#0B0F14;}
+html body #view-app #page-money .nf78-took > b{white-space:nowrap;}
+html body #view-app #page-money .nf78-took{gap:12px;}
+/* ---------- inputs that sit inside a box: no second box, no square focus ring inside; the outer box lights up instead ---------- */
+html body .nf79-rp .pe input, html body .ob-peso input, html body .nf43-amt input, html body .nf75-dpick input, html body .msg-composer textarea, html body .nf72-scan input{border:0 !important;box-shadow:none !important;background:transparent !important;}
+html body .nf79-rp .pe input:focus, html body .nf79-rp .pe input:focus-visible, html body .ob-peso input:focus, html body .ob-peso input:focus-visible, html body .nf43-amt input:focus, html body .nf43-amt input:focus-visible,
+html body .nf75-dpick input:focus, html body .nf75-dpick input:focus-visible, html body .msg-composer textarea:focus, html body .msg-composer textarea:focus-visible, html body .nf72-scan input:focus, html body .nf72-scan input:focus-visible{outline:none !important;box-shadow:none !important;}
+html body .nf79-rp .pe:focus-within, html body .ob-peso:focus-within, html body .nf43-amt:focus-within, html body .nf75-dpick:focus-within, html body .nf72-scan:focus-within{border-color:#1F6B45 !important;box-shadow:0 0 0 3px rgba(31,107,69,.18) !important;}
+html body .msg-composer:focus-within{box-shadow:0 0 0 3px rgba(31,107,69,.18);}
+/* payments to confirm: bigger name and amount, date + order bottom-right beside the buttons */
+.nf78-conf .r.nf79-cr{grid-template-columns:44px minmax(0,1fr) auto !important;grid-template-areas:"mi w am" "mi bt wn" "why why why";row-gap:10px !important;padding:14px 16px !important;}
+.nf79-cr .mi{grid-area:mi;align-self:start;} .nf79-cr .w{grid-area:w;} .nf79-cr > em{grid-area:am;font-size:18px !important;}
+.nf79-cr .bt{grid-area:bt !important;grid-column:auto !important;} .nf79-cr .when{grid-area:wn;align-self:center;justify-self:end;text-align:right;font-size:14px !important;color:#0B0F14;white-space:nowrap;}
+.nf79-cr .w b{font-size:18px !important;} .nf79-cr .w small.how{font-size:14px !important;margin-top:2px;}
+.nf79-cr .nf79-why{grid-area:why;}
+html[data-ty] body #view-app .nf79-cr .when{font-size:14px !important;}
+@media (max-width:520px){ .nf78-conf .r.nf79-cr{grid-template-areas:"mi w am" "mi bt bt" "mi wn wn" "why why why";} .nf79-cr .when{justify-self:start;} }
+/* owed-to-you lines: bigger, easier "Settle" */
+.nf78-tot .nf79-lw > .ln.o1 .go{font-size:16px !important;font-weight:900 !important;}
+.nf78-tot .nf79-lw > .ln .n b{font-size:16px !important;} .nf78-tot .nf79-lw > .ln .a{font-size:18px !important;}
+/* customer cards: one tidy row of equal buttons; the app a reminder goes on shows as its icon only */
+html body #view-app .nf78-cu .acts{display:grid !important;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px !important;}
+html body #view-app .nf78-cu .acts .nf77-b{width:100%;min-height:46px;justify-content:center;white-space:nowrap;padding:0 12px;}
+html body #view-app .nf78-cu .acts .nf77-b small{display:none !important;}
+html body #view-app .nf78-cu .acts .nf77-b .ch{width:20px;height:20px;}
+.nf78-conf .r.nf79-cr{grid-template-areas:"mi w am" "mi ft ft" "why why why" !important;}
+.nf79-cr .ft{grid-area:ft;display:flex;align-items:center;flex-wrap:wrap;gap:8px 12px;}
+.nf79-cr .ft .bt{display:flex;gap:8px;flex-wrap:wrap;}
+.nf79-cr .ft .when{margin-left:auto;text-align:right;white-space:nowrap;}
+@media (max-width:520px){ .nf78-conf .r.nf79-cr{grid-template-areas:"mi w am" "mi ft ft" "why why why" !important;} }
+html body #view-app .nf78-cu .acts{grid-template-columns:1fr 1fr !important;}
+html body #view-app .nf78-cu .acts .nf77-b.p{grid-column:1 / -1;}
+html body #view-app .nf78-cu .acts .nf77-b:only-child, html body #view-app .nf78-cu .acts .nf77-b.p + .nf77-b.s:last-child{grid-column:1 / -1;}
+/* ---------- Utang tracker (Walk-in sales) ---------- */
+html body #view-app #page-sales .nf75-utang.nf80-ut{grid-column:1 / -1 !important;width:auto !important;max-width:none !important;}
+html body #view-app #page-sales .nf75-disc{grid-column:1 / -1 !important;}
+.nf80-uh{display:flex !important;align-items:flex-start !important;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+.nf80-uh h2{margin:0 !important;} .nf80-uh p{margin:4px 0 0;font-size:16px;color:#0B0F14;}
+.nf80-ut-tabs{display:flex;gap:6px;margin:12px 0;}
+.nf80-ut-tabs button{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-radius:999px;border:1.5px solid #D0D5DD;background:#fff;font:inherit;font-size:16px;font-weight:800;color:#0B0F14;cursor:pointer;}
+.nf80-ut-tabs button em{font-style:normal;font-size:14px;min-width:22px;height:22px;border-radius:999px;display:inline-grid;place-items:center;background:#F2F4F7;color:#0B0F14;padding:0 6px;}
+.nf80-ut-tabs button.on{background:#0B0F14;border-color:#0B0F14;color:#fff;} .nf80-ut-tabs button.on em{background:#fff;color:#0B0F14;}
+.nf80-ul{display:flex;flex-direction:column;gap:10px;}
+.nf80-ur{border:1.5px solid #E4E7EC;border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:8px;background:#fff;}
+.nf80-ur .top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
+.nf80-ur .who b{display:block;font-size:18px;color:#0B0F14;} .nf80-ur .who small{display:block;font-size:14px;color:#0B0F14;margin-top:2px;line-height:1.4;}
+html[data-ty] body #view-app .nf80-ur .who small{font-size:14px !important;}
+.nf80-ur .amt{text-align:right;flex:none;} .nf80-ur .amt span{display:block;font-size:14px;font-weight:800;color:#0B0F14;} .nf80-ur .amt b{font-size:24px;font-weight:900;font-variant-numeric:tabular-nums;color:#0B0F14;}
+.nf80-ur .amt .done{display:inline-flex;align-items:center;gap:4px;color:#14532D;}
+.nf80-ur .prog{display:flex;align-items:center;gap:10px;} .nf80-ur .prog span{flex:1;height:8px;border-radius:999px;background:#F2F4F7;overflow:hidden;} .nf80-ur .prog i{display:block;height:100%;background:#1F6B45;border-radius:999px;}
+.nf80-ur .prog small{font-size:14px;font-weight:700;color:#0B0F14;white-space:nowrap;}
+html[data-ty] body #view-app .nf80-ur .prog small{font-size:14px !important;}
+.nf80-ur .acts{display:flex;gap:8px;flex-wrap:wrap;}
+.nf80-ur .hwrap{display:none;} .nf80-ur.hopen .hwrap{display:block;}
+.nf80-hist{display:flex;flex-direction:column;border-radius:12px;background:#F6F7F9;padding:4px 12px;}
+.nf80-hist .hr{display:grid;grid-template-columns:96px minmax(0,1fr) auto auto;gap:10px;align-items:center;padding:8px 0;border-top:1px dashed #E4E7EC;font-size:14px;color:#0B0F14;}
+.nf80-hist .hr:first-child{border-top:0;}
+.nf80-hist .hr .dt{font-weight:700;} .nf80-hist .hr .tx small{display:block;font-size:14px;color:#0B0F14;}
+.nf80-hist .hr b{font-variant-numeric:tabular-nums;white-space:nowrap;} .nf80-hist .hr.pay b{color:#14532D;} .nf80-hist .hr.undo{opacity:1;} .nf80-hist .hr.undo .tx, .nf80-hist .hr.undo b{text-decoration:line-through;}
+.nf80-ph{display:inline-flex;align-items:center;gap:3px;border:0;background:none;padding:0;font:inherit;font-weight:800;color:#1F6B45;cursor:pointer;}
+.nf80-uempty{padding:16px;border-radius:12px;background:#F6F7F9;font-size:16px;color:#0B0F14;}
+.nf80-unote{margin:10px 0 0;font-size:14px;color:#0B0F14;}
+@media (max-width:520px){ .nf80-hist .hr{grid-template-columns:72px minmax(0,1fr) auto;} .nf80-hist .hr > :last-child{grid-column:1 / -1;justify-self:end;} }
+/* Getting paid: shop utang foot and paid-off list */
+.nf80-gfoot{display:flex;justify-content:space-between;gap:10px;padding:0 18px 12px 70px;} .nf80-gfoot .nf77-link{font-size:14px;}
+.nf80-paid{margin:0 18px 14px 70px;padding:10px 12px;border-radius:12px;background:#F6F7F9;display:flex;flex-direction:column;gap:6px;}
+.nf80-paid > b{font-size:14px;font-weight:900;color:#0B0F14;}
+.nf80-paid .pr{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:16px;color:#0B0F14;} .nf80-paid .pr small{display:block;font-size:14px;color:#0B0F14;}
+@media (max-width:520px){ .nf80-gfoot, .nf80-paid{padding-left:18px;margin-left:18px;} .nf80-gfoot{flex-direction:column;} }
+/* Home: profit margin tile with what pulled it down */
+html body #view-app #mhHome .nf75-owner .nf80-mg{display:grid !important;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;align-items:center;}
+html body #view-app #mhHome .nf75-owner .nf80-mg > .l{display:flex;flex-direction:column;gap:2px;min-width:0;}
+html body #view-app #mhHome .nf75-owner .nf78-was{font-size:18px !important;} html body #view-app #mhHome .nf75-owner .nf78-was b{font-size:18px !important;}
+html body #view-app #mhHome .nf75-owner .nf80-mg .drag{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:12px;background:#fff;border:1.5px solid #F4C7C2;min-width:0;}
+html body #view-app #mhHome .nf75-owner .nf80-mg .drag small{font-size:14px !important;font-weight:900;letter-spacing:.05em;text-transform:uppercase;color:#B42318;}
+html body #view-app #mhHome .nf75-owner .nf80-mg .drag b{font-size:16px;font-weight:900;color:#0B0F14;line-height:1.2;}
+html body #view-app #mhHome .nf75-owner .nf80-mg .drag span{font-size:14px;font-weight:700;color:#0B0F14;}
+html body #view-app #mhHome .nf75-owner .nf80-mg .drag em{font-style:normal;font-size:14px;font-weight:900;color:#B42318;}
+html body #view-app #mhHome .nf75-owner .nf80-oth{display:grid;grid-template-columns:24px 1fr auto 44px;align-items:center;gap:8px;width:100%;margin-top:6px;font-size:16px;color:#0B0F14;}
+html body #view-app #mhHome .nf75-owner .nf80-oth .n{width:24px;height:24px;border-radius:50%;background:#EEF0F2;font-size:14px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;}
+html body #view-app #mhHome .nf75-owner .nf80-oth .k{font-weight:600;} html body #view-app #mhHome .nf75-owner .nf80-oth b{font-weight:800;font-variant-numeric:tabular-nums;font-size:18px;} html body #view-app #mhHome .nf75-owner .nf80-oth em{font-style:normal;font-size:14px;font-weight:700;text-align:right;}
+@media (max-width:640px){ html body #view-app #mhHome .nf75-owner .nf80-mg{grid-template-columns:1fr;} }
+html body #view-app #mhHome .nf75-owner .nf80-mg{display:flex !important;flex-direction:column;align-items:stretch;gap:10px;}
+html body #view-app #mhHome .nf75-owner .nf80-mg .drag{display:flex !important;flex-direction:row !important;flex-wrap:wrap;align-items:baseline;gap:4px 8px;padding:8px 10px !important;}
+html body #view-app #mhHome .nf75-owner .nf80-mg .drag small{flex-basis:100%;}
+html body #view-app #mhHome .nf75-owner .nf78-was span{white-space:nowrap;}
+html body #view-app #mhHome .nf75-owner .nf80-oth .k{font-size:18px !important;}
+/* + Create menu: the three groups read as headers */
+html body .create-menu .notif-head{font-size:14px !important;font-weight:900 !important;letter-spacing:.08em !important;text-transform:uppercase !important;color:#14532D !important;background:#F1F7F3 !important;padding:10px 16px 8px !important;border-top:1px solid #E4E7EC;margin:0 !important;}
+html body .create-menu .notif-head:first-child{border-top:0;border-radius:12px 12px 0 0;}
+html body .create-menu .notif-item{padding-left:20px !important;}
+html body .create-menu .notif-item .notif-text{font-size:16px;color:#0B0F14 !important;}
+html body .nf-cc-dot{color:#0B0F14 !important;} html body #view-app .nf23-add{color:#0B0F14 !important;}
 
 
 /* Round 51: marketing pages keep their original type sizes (the six-size scale is for the app) */
@@ -15612,10 +15731,11 @@ html[data-ty] #view-login p.fine{font-size:calc(15px*var(--ty-k,1))}
           <div id="createMenuDropdown" class="notif-dropdown hidden create-menu" style="width:260px;">
             <div class="notif-head">Money</div>
             <div class="notif-item" style="cursor:pointer;" onclick="closeCreateMenu(); go('sales'); setTimeout(()=>{ if(typeof openQuickSale==='function') openQuickSale(); }, 60);"><div><div class="notif-text">Record a sale</div></div></div>
+            <div class="notif-item" style="cursor:pointer;" onclick="closeCreateMenu(); nf80NewUtang();"><div><div class="notif-text">Record utang (pay later)</div></div></div>
             <div class="notif-item" style="cursor:pointer;" onclick="closeCreateMenu(); go('expenses'); setTimeout(()=>{ if(typeof openExpenseForm==='function') openExpenseForm(); }, 60);"><div><div class="notif-text">Add an expense</div></div></div>
             <div class="notif-item" style="cursor:pointer;" onclick="closeCreateMenu(); go('cashcount');"><div><div class="notif-text">Count today's cash</div></div></div>
             <div class="notif-item" style="cursor:pointer;" onclick="closeCreateMenu(); nf78TookMoney();"><div><div class="notif-text">I took money out (owner)</div></div></div>
-            <div class="notif-item" style="cursor:pointer;" onclick="createAs('supplier', openOpeningBalances)"><div><div class="notif-text">Add what a customer owes you</div></div></div>
+            <div class="notif-item" style="cursor:pointer;" onclick="createAs('supplier', openOpeningBalances)"><div><div class="notif-text">Someone owes me</div></div></div>
             <div class="notif-head">Orders</div>
             <div class="notif-item" id="createMenuPoItem" style="cursor:pointer;" onclick="createAs('buyer', openCreatePOModal)"><div><div class="notif-text">Order from a supplier</div></div></div>
             <div class="notif-item" style="cursor:pointer;" onclick="createAs('supplier', openCustomerPoImport)"><div><div class="notif-text">Enter a customer's order</div></div></div>
@@ -16416,7 +16536,7 @@ html[data-ty] #view-login p.fine{font-size:calc(15px*var(--ty-k,1))}
       </div>
 
       <div id="page-collections" class="app-page">
-        <div class="page-head" style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;"><div><h1>Collections</h1><p>Who to chase today, promises to pay, and where every peso is.</p></div><button class="btn btn-outline only-supplier" onclick="openOpeningBalances()">+ Add what a customer owes</button></div>
+        <div class="page-head" style="display:flex;justify-content:space-between;align-items:flex-end;gap:12px;flex-wrap:wrap;"><div><h1>Collections</h1><p>Who to chase today, promises to pay, and where every peso is.</p></div><button class="btn btn-outline only-supplier" onclick="openOpeningBalances()">+ Someone owes me</button></div>
         <div id="collectionsContent"></div>
       </div>
 
@@ -26844,7 +26964,7 @@ function bkSeedDemo(){
 function bkRowExpense(r){ return {id: r.id, date: r.spent_on, category: r.category, amount: Number(r.amount), paidFrom: r.paid_from, vendor: r.vendor || '', note: r.note || '', staff: r.staff_name || '',
   receipt: r.receipt_path || '', repeat: !!r.repeat_monthly, by: r.created_by_name || '', byId: r.created_by, at: r.created_at, status: r.status || 'approved', approvedBy: r.approved_by_name || '', reviewNote: r.review_note || '', branch: r.branch || null, editedBy: r.edited_by_name || '', deletedAt: r.deleted_at, deletedBy: r.deleted_by_name || '', deleteReason: r.delete_reason || ''}; }
 function bkRowSale(r){ return {id: r.id, byId: r.created_by || null, date: r.sale_date, at: r.created_at, customer: r.customer_name || 'Walk-in', customerId: r.customer_id, lines: r.line_items || [], total: Number(r.total) || 0,
-  paidWith: r.paid_with || '', payments: r.payments || [], branch: r.branch || null, by: r.created_by_name || '', byId: r.created_by, note: r.note || '', voidedAt: r.voided_at, voidedBy: r.voided_by_name || '', voidReason: r.void_reason || '', photo: r.photo_path || ''}; }
+  paidWith: r.paid_with || '', payments: r.payments || [], branch: r.branch || null, by: r.created_by_name || '', byId: r.created_by, note: r.note || '', voidedAt: r.voided_at, voidedBy: r.voided_by_name || '', voidReason: r.void_reason || '', photo: r.photo_path || '', payLog: Array.isArray(r.payment_log) ? r.payment_log : []}; }
 function bkRowMove(r){ return {id: r.id, itemId: r.item_id, item: r.item_name, qty: Number(r.qty), kind: r.kind, unitCost: r.unit_cost != null ? Number(r.unit_cost) : null, reason: r.reason || '', ref: r.ref || '',
   photo: r.photo_path || '', date: r.moved_on, at: r.created_at, by: r.created_by_name || ''}; }
 function bkRowMenu(r){ return {id: r.id, name: r.name, price: Number(r.price) || 0, recipe: Array.isArray(r.recipe) ? r.recipe : [], active: r.active !== false}; }
@@ -28708,6 +28828,9 @@ Object.assign(I18N_FIL, {
 "+ Add to my catalog": "+ Idagdag sa catalog ko",
 "+ Add warehouse": "+ Magdagdag ng bodega",
 "+ Add what a customer owes": "+ Itala ang utang ng customer",
+"+ Someone owes me": "+ May utang sa akin",
+"Someone owes me": "May utang sa akin",
+"Bring in old records": "Ipasok ang lumang tala",
 "+ Create": "+ Gumawa",
 "+ Create custom role": "+ Gumawa ng sariling role",
 "+ Invite a Supplier": "+ Mag-imbita ng supplier",
@@ -40990,7 +41113,7 @@ function nf31DemoSeed(){
 
 /* ===== Round 32: Help is its own page (chat with the Nifti team + short guides) ===== */
 const NF32_GUIDES = [
-  {t: 'Record what a customer owes', k: 'utang owe credit balance', go: "go('collections')", s: ['Open Getting paid.', 'Tap "+ Add what a customer owes".', 'Pick the customer, type the amount and the due date. Reminders go out by themselves.']},
+  {t: 'Record what a customer owes', k: 'utang owe credit balance', go: "go('collections')", s: ['Open Getting paid.', 'Tap "+ Someone owes me".', 'Pick the customer, type the amount and the due date. Reminders go out by themselves.']},
   {t: 'Send an order to a supplier who is not on Nifti', k: 'order supplier outside link viber', go: "go('orders')", s: ['Open Orders and tap "+ New order".', 'Pick the supplier (or add a new one with just a name and phone).', 'Tap Send. Nifti gives you a link to paste in Viber or SMS. They confirm in their browser, no sign-up.']},
   {t: 'Snap a receipt as an expense', k: 'expense receipt resibo gastos', go: "go('expenses')", s: ['Open Expenses and tap "+ Add expense".', 'Take a photo of the receipt.', 'Pick who paid and where the money came from (drawer, GCash, bank).']},
   {t: 'Receive a delivery into stock', k: 'delivery receive stock dr', go: "go('orders')", s: ['Open the order that arrived.', 'Tap Receive and check the quantities.', 'Stock goes up by itself. Anything short or damaged is noted on the order.']},
@@ -41286,7 +41409,7 @@ const NF33H_FAQ = [
   {c: 'start', q: 'Do my customers and suppliers need Nifti too?', a: ['No. You can do everything with only your side on Nifti.', 'They get a link by Viber or SMS: they can confirm an order, see what they owe, and tell you they paid, all in their browser with no sign-up.']},
   {c: 'orders', q: 'How do I send an order to a supplier who is not on Nifti?', a: ['Open Orders and tap "+ New order".', 'Pick the supplier, or add one with just a name and phone.', 'Tap Send. Nifti gives you a link to paste in Viber or SMS. They confirm in their browser.'], go: "go('orders')", gl: 'Open Orders'},
   {c: 'orders', q: 'How do I receive a delivery into stock?', a: ['Open the order that arrived and tap Receive.', 'Check the quantities. Stock goes up by itself, and anything short or damaged is noted on the order.'], go: "go('orders')", gl: 'Open Orders'},
-  {c: 'money', q: 'How do I record what a customer owes (utang)?', a: ['Open Getting paid and tap "+ Add what a customer owes".', 'Pick the customer, type the amount and the due date. Reminders go out on your schedule.'], go: "go('collections')", gl: 'Open Getting paid'},
+  {c: 'money', q: 'How do I record what a customer owes (utang)?', a: ['Open Getting paid and tap "+ Someone owes me".', 'Pick the customer, type the amount and the due date. Reminders go out on your schedule.'], go: "go('collections')", gl: 'Open Getting paid'},
   {c: 'money', q: 'How do reminders reach customers?', a: ['Each customer can get reminders on the app they use: Viber, WhatsApp, Messenger, SMS or email.', 'Email goes out by itself. For the others, Nifti lines up the message and you send it with one tap.', 'Set each customer\'s app in Getting paid.'], go: "go('collections')", gl: 'Open Getting paid'},
   {c: 'money', q: 'How do I put my GCash or bank QR on every bill?', a: ['Open Settings, then "How customers pay you".', 'Tap Add GCash QR and take a photo of your QR. Every bill and statement shows it from now on.'], go: "go('settings')", gl: 'Open Settings'},
   {c: 'money', q: 'Why is my cash count short or over?', a: ['Open Sales, Count the cash, and tap the day.', 'Nifti shows what should be in the drawer: change fund, cash sales, collections, minus cash paid out. Compare it with what was counted.'], go: "go('sales')", gl: 'Open Sales'},
@@ -48222,13 +48345,14 @@ setInterval(() => { if(!document.hidden && !(document.getElementById('nf53Ov') &
 function nf55Heads(){
   const pg = document.querySelector('#view-app .app-page.active'); if(!pg) return;
   const head = pg.querySelector(':scope > .page-head') || pg.querySelector('.page-head'); if(!head || head.offsetParent === null) return;
+  if(head._nf55b) head._nf55b.forEach(b => { if(!b.isConnected || !pg.contains(b)) head.appendChild(b); });
   pg.querySelectorAll('.nf55-bar').forEach(x => { const w = x.parentElement; if(w && w === head.nextElementSibling && w.firstElementChild !== x) w.insertBefore(x, w.firstChild); });
   const btns = [...head.children].filter(c => c.matches('button, a.btn, .nf45-teamhd, .bk-head-act') && c.offsetParent !== null);
   if(!btns.length || btns.some(b => b.matches('.nf45-teamhd'))) return;
   if(innerWidth <= 760) return;
   pg.querySelectorAll('.nf55-acts').forEach(a => a.remove()); // a redraw put fresh buttons back in the header
   const have = [...pg.querySelectorAll('.nf55-bar')].find(x => x.offsetParent !== null);
-  if(have){ const acts = document.createElement('div'); acts.className = 'nf55-acts'; btns.forEach(b => acts.appendChild(b)); have.appendChild(acts); return; }
+  if(have){ head._nf55b = btns; const acts = document.createElement('div'); acts.className = 'nf55-acts'; btns.forEach(b => acts.appendChild(b)); have.appendChild(acts); return; }
   let next = head.nextElementSibling; while(next && (next.offsetParent === null || next.matches('.nf53-vb, script, style'))) next = next.nextElementSibling;
   if(!next) return;
   const ok = el => { if(!el || el.offsetParent === null || el.classList.contains('nf55-bar') || el.closest('.nf55-bar')) return false;
@@ -48243,7 +48367,7 @@ function nf55Heads(){
   if(!next) return;
   const bar = document.createElement('div'); bar.className = 'nf55-bar';
   next.parentNode.insertBefore(bar, next); bar.appendChild(next);
-  const acts = document.createElement('div'); acts.className = 'nf55-acts'; btns.forEach(b => acts.appendChild(b)); bar.appendChild(acts);
+  head._nf55b = btns; const acts = document.createElement('div'); acts.className = 'nf55-acts'; btns.forEach(b => acts.appendChild(b)); bar.appendChild(acts);
 }
 
 /* ---------- 2. Setup coach ---------- */
@@ -49789,7 +49913,7 @@ document.addEventListener('click', e => {
 const NF74_HOMES = {
   profit: {id: 'nf74PlBtn', html: () => `<button type="button" class="btn btn-outline nf74-home-btn" id="nf74PlBtn" onclick="nf48PriceList()">${nf74Ic('<path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>')}This week's price list</button>`, ok: () => typeof nf48PriceList === 'function'},
   store: {id: 'nf74PlBtn', html: () => `<button type="button" class="btn btn-outline nf74-home-btn" id="nf74PlBtn" onclick="nf48PriceList()">${nf74Ic('<path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>')}This week's price list</button>`, ok: () => typeof nf48PriceList === 'function'},
-  collections: {id: 'nf74RecBtn', html: () => `<button type="button" class="btn btn-outline nf74-home-btn" id="nf74RecBtn" onclick="(window.nf45Old || function(){})()">${nf74Ic('<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M12 18v-6M9 15l3-3 3 3"/>')}Bring in old utang</button>`, ok: () => typeof nf45Old === 'function'},
+  collections: {id: 'nf74RecBtn', html: () => `<button type="button" class="btn btn-outline nf74-home-btn" id="nf74RecBtn" onclick="(window.nf45Old || function(){})()">${nf74Ic('<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M12 18v-6M9 15l3-3 3 3"/>')}Bring in old records</button>`, ok: () => typeof nf45Old === 'function'},
   inventory: {id: 'nf74RecBtn', html: () => `<button type="button" class="btn btn-outline nf74-home-btn" id="nf74RecBtn" onclick="(window.nf45Old || function(){})()">${nf74Ic('<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M12 18v-6M9 15l3-3 3 3"/>')}Bring in old records</button>`, ok: () => typeof nf45Old === 'function'}
 };
 function nf74Ic(d){ return `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`; }
@@ -51308,7 +51432,7 @@ function nf78CustCard(g){
   if(pr) lines.push(`<div class="st g">${nf78Ic(NF77I.check, 18)}<span>Promised <b>${nf78P(pr.amount)}</b> by ${nf78E(nf77Day(pr.promised_date))}</span><button type="button" class="nf77-x" onclick="colCancelPromise('${pr.id}')">Cancel</button></div>`);
   if(!lines.length) lines.push(`<div class="st n">${nf78Ic(NF77I.clock, 18)}<span>${g.nextDue ? `Not due yet · due <b>${nf78E(nf77Day(g.nextDue))}</b>` : 'Not due yet'}</span></div>`);
   if(says > 0) acts.push(`<button type="button" class="nf77-b p" onclick="nf77GoConfirm('${g.id}')">${nf78Ic('<path d="M20 6 9 17l-5-5"/>', 16)}${says >= g.total ? 'Check and confirm' : 'Confirm ' + nf78P(says)}</button>`);
-  if(left > 0 && (late || !(says > 0))) acts.push(nf77RemindBtn(g.id, late && !(says > 0) && !pr, late ? (says > 0 ? 'Remind for the rest' : 'Remind') : 'Friendly reminder'));
+  if(left > 0 && (late || !(says > 0))) acts.push(nf77RemindBtn(g.id, late && !(says > 0) && !pr, 'Remind'));
   return `<div class="nf77-cu nf78-cu${late && left > 0 ? ' late' : says > 0 ? ' says' : ''}"><div class="top"><b class="nm">${nf78E(g.name)}</b><span class="amt">Owes <b>${nf78P(g.total)}</b></span></div>
     <div class="sts">${lines.join('')}</div>${acts.length ? `<div class="acts">${acts.join('')}</div>` : ''}</div>`;
 }
@@ -51542,9 +51666,9 @@ nf78ConfRow = function(c){
   const k = `${c.po.id}|${c.kind}|${c.key}`.replace(/"/g, '');
   const why = (m === 'check' ? ['Not enough funds (DAIF)', 'Account closed', 'Signature or date problem'] : ['Not in my account yet', 'Wrong amount', "Can't find this payment"]);
   return `<div class="r nf79-cr" data-b="${nf79E(c.po.buyerId || who)}" data-k="${nf79E(k)}"><span class="mi" title="${nf79E(mi.l)}">${nf79Ic(mi.ic, 20)}</span>
-    <div class="w"><b>${nf79E(who)}</b><small class="how">${nf79E(how)}</small>${when ? `<small>${nf79E(when)}</small>` : ''}</div>
+    <div class="w"><b>${nf79E(who)}</b><small class="how">${nf79E(how)}</small></div>
     <em>${nf79P(c.p.amount)}</em>
-    <div class="bt"><button type="button" class="nf77-b p sm" onclick="confirmPaymentReceived('${c.po.id}','${c.kind}','${c.key}'); setTimeout(renderCollectionsPage, 60)">${nf79Ic('<path d="M20 6 9 17l-5-5"/>', 15)}${yes}</button><button type="button" class="nf77-b s sm" onclick="this.closest('.nf79-cr').classList.toggle('why')">${no}</button></div>
+    <div class="ft"><div class="bt"><button type="button" class="nf77-b p sm" onclick="confirmPaymentReceived('${c.po.id}','${c.kind}','${c.key}'); setTimeout(renderCollectionsPage, 60)">${nf79Ic('<path d="M20 6 9 17l-5-5"/>', 15)}${yes}</button><button type="button" class="nf77-b s sm" onclick="this.closest('.nf79-cr').classList.toggle('why')">${no}</button></div>${when ? `<small class="when">${nf79E(when)}</small>` : ''}</div>
     <div class="nf79-why"><span>What happened?</span>${why.map(w => `<button type="button" onclick="nf79Reject('${c.po.id}','${c.kind}','${c.key}', ${JSON.stringify(w).replace(/"/g, '&quot;')})">${nf79E(w)}</button>`).join('')}</div></div>`;
 };
 function nf79Reject(poId, kind, key, reason){
@@ -51605,7 +51729,7 @@ async function nf79UtSave(btn){
 nf78CustCard = (function(base){ return function(g){
   let html = base.apply(this, arguments); const says = Math.min(g.pending || 0, g.total), left = Math.max(0, g.total - says);
   if(left <= 0) return html;
-  const btn = `<button type="button" class="nf77-b s nf79-rpb" onclick="nf79RpOpen(this)">${nf79Ic('<path d="M12 5v14M5 12h14"/>', 16)}Record a payment</button>`;
+  const btn = `<button type="button" class="nf77-b s nf79-rpb" onclick="nf79RpOpen(this)">${nf79Ic('<path d="M12 5v14M5 12h14"/>', 16)}Record payment</button>`;
   html = html.replace(/<div class="acts">([\s\S]*?)<\/div><\/div>$/, (m0, a) => `<div class="acts">${a}${btn}</div>${nf79RpHtml(g.id, left)}</div>`);
   if(!/nf79-rpb/.test(html)) html = html.replace(/<\/div>$/, `<div class="acts">${btn}</div>${nf79RpHtml(g.id, left)}</div>`);
   return html.replace('class="nf77-cu nf78-cu', 'class="nf77-cu nf78-cu nf79-rph');
@@ -51684,6 +51808,168 @@ if(typeof bkPaySale === 'function'){
     }catch(e){ return _bps.apply(this, arguments); }
   };
   window.bkPaySale = bkPaySale;
+}
+
+/* ===== Round 80 ===== */
+function nf80E(s){ return escapeHtml(String(s == null ? "" : s)); }
+function nf80P(n){ return typeof bkPeso === "function" ? bkPeso(n) : fmtPHP(n); }
+function nf80Ic(d, s){ return `<svg viewBox="0 0 24 24" width="${s || 18}" height="${s || 18}" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${d}</svg>`; }
+
+/* ---------- 1. Money overview: what costs went up or down vs the same days last month, beside the profit statement ---------- */
+function nf80Names(o){ const r = {}; Object.entries(o || {}).forEach(([c, v]) => { const n = lgAcct(c).name; r[n] = (r[n] || 0) + (Number(v) || 0); }); return r; }
+function nf80CostJumps(m){
+  try{
+    if(typeof LG === 'undefined' || !LG.loaded) return null;
+    const R = nf74SameRange(m), p = bkPnl(m), cur = Object.assign({}, p.byCat || {}), pq = lgPnlFor(R.from, R.to), prev = nf80Names(pq.opex);
+    const keys = [...new Set(Object.keys(cur).concat(Object.keys(prev)))];
+    const rows = keys.map(k => ({k, now: Math.round(cur[k] || 0), was: Math.round(prev[k] || 0)})).map(r => Object.assign(r, {d: r.now - r.was})).filter(r => Math.abs(r.d) >= 1);
+    const nowT = Number(p.expenses) || 0, wasT = Object.values(prev).reduce((a, v) => a + (Number(v) || 0), 0) - (Number(pq.other) || 0);
+    return {R, rows, ups: rows.filter(r => r.d > 0).sort((a, b) => b.d - a.d), downs: rows.filter(r => r.d < 0).sort((a, b) => a.d - b.d), nowT: Math.round(nowT), wasT: Math.round(wasT), sales: Number(p.sales) || 0};
+  }catch(e){ return null; }
+}
+const NF80_NONEXP = {'Bad and missing stock': 'From stock counts and items marked damaged or missing.', 'Cash short': 'From cash counts that came up short.', 'Stock changed by hand': 'From stock numbers changed by hand.'};
+function nf80JRow(r, max, m){
+  const pct = r.was ? Math.round(r.d / r.was * 100) : null, up = r.d > 0;
+  const chip = `<span class="chip ${up ? 'r' : 'g'}">${up ? '▲' : '▼'} ${nf80P(Math.abs(r.d))}${!up && r.now === 0 ? ' · not in yet' : pct != null ? ` · ${up ? '+' : ''}${pct}%` : up ? ' · new' : ''}</span>`;
+  const lines = (BK.expenses || []).filter(e => !e.deletedAt && e.category === r.k && bkMonth(e.date) === m && (e.status || 'approved') === 'approved').sort((a, b) => b.date.localeCompare(a.date));
+  const detail = NF80_NONEXP[r.k] ? `<p class="jn">${nf80E(NF80_NONEXP[r.k])}</p><button type="button" class="nf77-link" onclick="go('issues')">See them in To check</button>`
+    : lines.length ? `<div class="jl">${lines.slice(0, 6).map(e => `<div><span>${nf80E(bkDayLabel(e.date))}${e.vendor ? ' · ' + nf80E(e.vendor) : ''}</span><b>${nf80P(e.amount)}</b></div>`).join('')}</div>${up ? '' : ''}`
+    : `<p class="jn">${up ? 'No lines recorded yet.' : r.now ? '' : 'Nothing recorded yet this month. If it is a monthly bill, it may still be coming.'}</p>`;
+  return `<div class="jr ${up ? 'up' : 'dn'}"><button type="button" class="jh" aria-expanded="false" onclick="const j=this.parentElement; j.classList.toggle('open'); this.setAttribute('aria-expanded', j.classList.contains('open'))"><span class="n">${nf80E(r.k)}</span><span class="ft">${nf80P(r.was)} <i>→</i> <b>${nf80P(r.now)}</b></span>${chip}<span class="cv" aria-hidden="true">›</span></button>
+    <div class="bars" aria-hidden="true"><span><i class="was" style="width:${max ? Math.max(2, r.was / max * 100) : 0}%"></i></span><span><i class="now ${up ? 'up' : 'dn'}" style="width:${max ? Math.max(2, r.now / max * 100) : 0}%"></i></span></div>
+    <div class="jd">${detail}</div></div>`;
+}
+function nf80JumpsHtml(m){
+  const J = nf80CostJumps(m);
+  if(!J) return `<section class="panel-card nf80-jumps"><div class="panel-head"><h2>Costs vs last month</h2></div><p class="sub">Loading your books…</p></section>`;
+  const max = Math.max(1, ...J.rows.map(r => Math.max(r.now, r.was))), d = J.nowT - J.wasT, pct = J.wasT ? Math.round(d / J.wasT * 100) : null;
+  return `<section class="panel-card nf80-jumps"><div class="panel-head"><h2>Costs vs ${nf80E(J.R.label)}</h2></div>
+    <p class="sub">${J.R.full ? 'Compared with the whole month before.' : 'This month so far, compared with the same days last month.'} Tap a cost to see what's in it.</p>
+    <div class="tot"><div><small>${nf80E(bkMonthLabel(m).split(' ')[0])} so far</small><b>${nf80P(J.nowT)}</b></div><span class="ar" aria-hidden="true">vs</span><div><small>${nf80E(J.R.label)}</small><b>${nf80P(J.wasT)}</b></div>${Math.abs(d) >= 1 ? `<span class="chip big ${d > 0 ? 'r' : 'g'}">${d > 0 ? '▲' : '▼'} ${nf80P(Math.abs(d))}${pct != null ? ` · ${d > 0 ? '+' : ''}${pct}%` : ''}</span>` : '<span class="chip big n">Same</span>'}</div>
+    ${J.ups.length ? `<h3 class="hu">${nf80Ic('<path d="M12 19V5M5 12l7-7 7 7"/>', 16)}Went up</h3>${J.ups.map(r => nf80JRow(r, max, m)).join('')}` : '<p class="sub">No cost went up. Nice.</p>'}
+    ${J.downs.length ? `<h3 class="hd">${nf80Ic('<path d="M12 5v14M19 12l-7 7-7-7"/>', 16)}Went down</h3>${J.downs.map(r => nf80JRow(r, max, m)).join('')}` : ''}
+  </section>`;
+}
+if(typeof nf77MoneyAfter === 'function'){
+  const _ma = nf77MoneyAfter;
+  nf77MoneyAfter = function(){
+    _ma.apply(this, arguments);
+    try{ const body = document.getElementById('bkMoneyBody'); const two = body && body.querySelector('.bk-two'); if(!two) return;
+      const m = bkMonthSel || bkMonth(APP_TODAY); two.classList.add('nf80-two');
+      let side = two.querySelector('.nf80-jumps'); const html = nf80JumpsHtml(m);
+      if(side){ if(side.dataset.k !== html){ side.outerHTML = html; side = two.querySelector('.nf80-jumps'); } } else { two.insertAdjacentHTML('beforeend', html); side = two.querySelector('.nf80-jumps'); }
+      if(side) side.dataset.k = html;
+    }catch(e){ console.warn('nf80 jumps', e); }
+  };
+  window.nf77MoneyAfter = nf77MoneyAfter;
+}
+
+// the statement: when the drawer had extra cash, that small credit is shown so the expense lines add up to the total
+if(typeof nf77MoneyAfter === 'function'){
+  const _mb = nf77MoneyAfter;
+  nf77MoneyAfter = function(){
+    _mb.apply(this, arguments);
+    try{ const card = document.getElementById('bkPnlPrint'); if(!card || card.querySelector('.nf80-over')) return;
+      const m = bkMonthSel || bkMonth(APP_TODAY), p = bkPnl(m), sum = Object.values(p.byCat || {}).reduce((a, v) => a + (Number(v) || 0), 0), diff = Math.round((sum - (Number(p.expenses) || 0)) * 100) / 100;
+      if(Math.abs(diff) < 0.5) return; const grp = card.querySelector('.pl-grp'); if(!grp) return;
+      grp.insertAdjacentHTML('beforeend', `<div class="pl-r pl-sub nf80-over"><span>${diff > 0 ? 'Less: extra cash found in counts' : 'Other costs'}</span><span>${diff > 0 ? '−' : ''}${nf80P(Math.abs(diff))}</span></div>`);
+    }catch(e){}
+  };
+  window.nf77MoneyAfter = nf77MoneyAfter;
+}
+
+/* ---------- 2. Utang: easy to start, easy to follow, every peso traceable ---------- */
+const NF80U = {tab: 'open', open: {}};
+function nf80NewUtang(){
+  const go2 = () => { try{ openQuickSale(); QS.paidWith = 'credit'; qsRender(); setTimeout(() => { const c = document.querySelector('#qsModal .nf44-cust input, #qsModal input[placeholder*="ustomer"]'); if(c) c.focus(); }, 120); }catch(e){ console.warn(e); } };
+  if(typeof BK !== 'undefined' && !BK.loaded){ bkLoad().then(go2); return; } go2();
+}
+function nf80UtAll(){ return bkLiveSales().filter(s => s.paidWith === 'credit' || bkSaleBalance(s) > 0); }
+function nf80LastPay(s){ const ps = (s.payments || []).map(p => bkPayDate(p) || s.date).sort(); return ps[ps.length - 1] || s.date; }
+function nf80Items(s){ const ls = (s.lines || []).filter(l => !l.totalOnly); return ls.length ? ls.slice(0, 2).map(l => `${Number(l.qty) || 0} × ${l.product}`).join(', ') + (ls.length > 2 ? ` +${ls.length - 2} more` : '') : 'Sale'; }
+function nf80UtHist(s, canUndo){
+  const ev = [{d: s.date, at: s.at || s.date, t: 'Utang started', amt: s.total, by: s.by, k: 'start'}];
+  (s.payments || []).forEach((p, i) => ev.push({d: bkPayDate(p) || s.date, at: p.at || bkPayDate(p) || s.date, t: 'Paid · ' + (NF79ML[String(p.method || '').toLowerCase()] || p.method || 'payment'), amt: p.amount, by: p.by, k: 'pay', i}));
+  (s.payLog || []).filter(l => l.a === 'undone').forEach(l => ev.push({d: String(l.at || '').slice(0, 10), at: l.at, t: 'Payment taken back · ' + (NF79ML[String(l.m || '').toLowerCase()] || l.m || ''), amt: l.amt, by: l.by, k: 'undo'}));
+  ev.sort((a, b) => String(a.at).localeCompare(String(b.at)));
+  return `<div class="nf80-hist">${ev.map(e => `<div class="hr ${e.k}"><span class="dt">${nf80E(bkDayLabel(String(e.d).slice(0, 10)))}</span><span class="tx">${nf80E(e.t)}${e.by ? `<small>by ${nf80E(e.by)}</small>` : ''}</span><b>${e.k === 'pay' ? '−' : ''}${nf80P(e.amt)}</b>${e.k === 'pay' && canUndo ? `<button type="button" class="nf78-undo" onclick="nf80UtUndo('${s.id}', ${e.i})">Undo</button>` : '<span></span>'}</div>`).join('')}</div>`;
+}
+async function nf80UtUndo(id, i){
+  if(!booksCanSeeTotals()){ showToast('Only the owner can take back a payment.', 'warn'); return; }
+  const s = BK.sales.find(x => x.id === id); if(!s) return; const p = (s.payments || [])[i]; if(!p) return;
+  const payments = (s.payments || []).filter((_, k) => k !== i), payLog = (s.payLog || []).concat([{a: 'undone', at: new Date().toISOString(), m: p.method, amt: p.amount, by: bkMe(), paidOn: bkPayDate(p) || null}]);
+  if(myBusiness){ const { error } = await sb.from('downstream_sales').update({payments, payment_log: payLog}).eq('id', id); if(error){ showToast(error.message, 'error'); return; } }
+  s.payments = payments; s.payLog = payLog; try{ bkSaveDemo(); }catch(e){}
+  showToast(`Taken back: ${nf80P(p.amount)}. It shows in the history.`, 'success');
+  try{ bkRefreshViews(); }catch(e){} try{ if(document.querySelector('#page-collections.active')) renderCollectionsPage(); }catch(e){}
+}
+function nf80UtRow(s, canUndo){
+  const bal = bkSaleBalance(s), paid = Math.max(0, Number(s.total) - bal), pct = s.total ? Math.round(paid / s.total * 100) : 0, n = (s.payments || []).length + (s.payLog || []).filter(l => l.a === 'undone').length;
+  const age = daysBetween(s.date, APP_TODAY);
+  return `<div class="nf80-ur nf79-rph${NF80U.open[s.id] ? ' hopen' : ''}" data-id="${s.id}">
+    <div class="top"><div class="who"><b>${nf80E(s.customer || 'Walk-in')}</b><small>${nf80E(bkDayLabel(s.date))}${age > 0 ? ` · ${age} day${age === 1 ? '' : 's'} ago` : ''} · ${nf80E(nf80Items(s))}${s.by ? ' · by ' + nf80E(s.by) : ''}${s.photo ? ` · <button type="button" class="nf80-ph" onclick="bkShowPhoto(${JSON.stringify(s.photo).replace(/"/g, '&quot;')})">${nf80Ic('<path d="M14.5 4h-5L7.5 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3.5z"/><circle cx="12" cy="13" r="3.5"/>', 13)}Photo</button>` : ''}</small></div>
+      <div class="amt">${bal > 0 ? `<span>Owes</span><b>${nf80P(bal)}</b>` : `<span class="done">${nf80Ic('<path d="M20 6 9 17l-5-5"/>', 15)}Paid off</span><b>${nf80P(s.total)}</b>`}</div></div>
+    <div class="prog"><span><i style="width:${pct}%"></i></span><small>Paid ${nf80P(paid)} of ${nf80P(s.total)}</small></div>
+    <div class="acts">${bal > 0 ? `<button type="button" class="nf77-b p sm" onclick="nf79RpOpen(this)">${nf80Ic('<path d="M12 5v14M5 12h14"/>', 15)}Record payment</button>` : ''}<button type="button" class="nf77-b s sm" onclick="NF80U.open['${s.id}'] = !NF80U.open['${s.id}']; this.closest('.nf80-ur').classList.toggle('hopen')">History${n ? ` (${n + 1})` : ''}</button></div>
+    ${bal > 0 ? nf79RpHtml('ut:' + s.id, bal, {utang: true}) : ''}
+    <div class="hwrap">${nf80UtHist(s, canUndo)}</div></div>`;
+}
+function nf80UtTracker(){
+  const all = nf80UtAll(), open = all.filter(s => bkSaleBalance(s) > 0).sort((a, b) => a.date.localeCompare(b.date)), paid = all.filter(s => bkSaleBalance(s) <= 0 && daysBetween(nf80LastPay(s), APP_TODAY) <= 60).sort((a, b) => nf80LastPay(b).localeCompare(nf80LastPay(a)));
+  const tot = open.reduce((a, s) => a + bkSaleBalance(s), 0), who = new Set(open.map(s => s.customer)).size, can = booksCanSeeTotals();
+  const list = NF80U.tab === 'paid' ? paid : open;
+  return `<div class="panel-head nf80-uh"><div><h2>Utang (pay later)</h2><p>${open.length ? `<b>${nf80P(tot)}</b> still owed by ${who} customer${who === 1 ? '' : 's'}` : 'Nobody owes you from the shop right now.'}</p></div><button type="button" class="btn btn-primary nf80-newut" onclick="nf80NewUtang()">+ New utang</button></div>
+    <div class="nf80-ut-tabs" role="tablist"><button type="button" role="tab" aria-selected="${NF80U.tab !== 'paid'}" class="${NF80U.tab !== 'paid' ? 'on' : ''}" onclick="NF80U.tab='open'; nf80UtPaint(true)">Still owed <em>${open.length}</em></button><button type="button" role="tab" aria-selected="${NF80U.tab === 'paid'}" class="${NF80U.tab === 'paid' ? 'on' : ''}" onclick="NF80U.tab='paid'; nf80UtPaint(true)">Paid off <em>${paid.length}</em></button></div>
+    ${list.length ? `<div class="nf80-ul">${list.map(s => nf80UtRow(s, can)).join('')}</div>` : `<div class="nf80-uempty">${NF80U.tab === 'paid' ? 'No utang paid off in the last 60 days.' : 'When someone takes items and pays later, tap <b>+ New utang</b>. It shows here until it is paid, with every payment and who took it.'}</div>`}
+    ${can ? '' : '<p class="nf80-unote">Only the owner can take back a payment. Ask them if one was typed wrong.</p>'}`;
+}
+function nf80UtPaint(force){
+  const pg = document.querySelector('#page-sales.active'); if(!pg || typeof BK === 'undefined' || !BK.loaded) return;
+  let sec = pg.querySelector('.nf75-utang');
+  if(!sec){ const today = pg.querySelector('.nf75-today'); if(!today) return; sec = document.createElement('section'); sec.className = 'panel-card bk-list nf75-utang'; today.after(sec); }
+  sec.classList.add('nf80-ut'); sec.classList.remove('nf75-mini');
+  const html = nf80UtTracker(); if(!force && sec.dataset.k === html) return; if(sec.querySelector('.nf79-rp.open') && !force) return;
+  sec.dataset.k = html; sec.innerHTML = html;
+}
+NF45_AFTER.push(page => { if(page && page.id === 'page-sales') try{ nf80UtPaint(); }catch(e){ console.warn('nf80 ut', e); } });
+// "+ Utang" next to "+ New sale" on Walk-in sales
+NF45_AFTER.push(page => { if(!page || page.id !== 'page-sales') return; try{ const ns = [...page.querySelectorAll('button')].find(b => /^\+ ?New sale$/.test(b.textContent.trim()) && b.offsetParent); if(ns && !page.querySelector('.nf80-utbtn')){ const b = document.createElement('button'); b.type = 'button'; b.className = 'btn btn-outline nf80-utbtn'; b.textContent = '+ Utang (pay later)'; b.onclick = () => nf80NewUtang(); ns.insertAdjacentElement('afterend', b); } }catch(e){} });
+// Getting paid: the shop utang group also shows what was paid off lately (with Undo), and how to add one
+(function(){
+  const base = nf76PaidTotals;
+  nf76PaidTotals = function(){
+    base.apply(this, arguments);
+    try{ const pg = document.querySelector('#page-collections.active'); if(!pg) return; const g = pg.querySelectorAll('#nf76TotS .nf78-tot > .g')[1]; if(!g || g.dataset.nf80) return; g.dataset.nf80 = '1';
+      const paid = nf80UtAll().filter(s => bkSaleBalance(s) <= 0 && daysBetween(nf80LastPay(s), APP_TODAY) <= 30).slice(0, 4), can = booksCanSeeTotals();
+      const gh = g.querySelector('.gh'); if(gh && !gh.querySelector('.nf80-gadd')) gh.insertAdjacentHTML('beforeend', '');
+      g.insertAdjacentHTML('beforeend', `<div class="nf80-gfoot"><button type="button" class="nf77-link" onclick="nf80NewUtang()">+ New utang</button><button type="button" class="nf77-link" onclick="go('sales')">See all utang and history</button></div>${paid.length ? `<div class="nf80-paid"><b>Paid off lately</b>${paid.map(s => { const lp = (s.payments || [])[(s.payments || []).length - 1]; return `<div class="pr"><span>${nf80E(s.customer)}<small>${nf80P(s.total)} utang · paid ${nf80E(bkDayLabel(nf80LastPay(s)))}${lp ? ' · ' + nf80E(NF79ML[String(lp.method || '').toLowerCase()] || lp.method || '') : ''}</small></span>${can && lp ? `<button type="button" class="nf78-undo" onclick="nf80UtUndo('${s.id}', ${(s.payments || []).length - 1})">Undo</button>` : ''}</div>`; }).join('')}</div>` : ''}`);
+    }catch(e){ console.warn('nf80 gp', e); }
+  };
+  window.nf76PaidTotals = nf76PaidTotals;
+})();
+// a payment on an utang refreshes the tracker too
+if(typeof nf79UtSave === 'function'){ const _us = nf79UtSave; nf79UtSave = async function(){ const r = await _us.apply(this, arguments); try{ setTimeout(() => nf80UtPaint(true), 80); }catch(e){} return r; }; window.nf79UtSave = nf79UtSave; }
+
+/* ---------- 3. Home: Profit margin tile with what pulled it down; costs list gets an "Others" row ---------- */
+if(typeof nf75OwnerHtml === 'function'){
+  const _o80 = nf75OwnerHtml;
+  nf75OwnerHtml = function(){
+    let html = _o80.apply(this, arguments);
+    try{
+      html = html.replace('<span class="lb">You keep</span>', '<span class="lb">Profit margin</span>').replace(/<span class="u">profit margin[^<]*<\/span>/, '');
+      const m = bkMonth(APP_TODAY), J = nf80CostJumps(m);
+      if(J && J.ups.length && J.sales){ const u = J.ups[0], pts = u.d / J.sales * 100;
+        html = html.replace(/(<button type="button" class="nf74-ot nf75-mg nf78-mg[^"]*"[^>]*>)([\s\S]*?)(<i class="go" aria-hidden="true">›<\/i><\/button>)/, (m0, a, body, c) => `${a.replace('nf78-mg', 'nf78-mg nf80-mg')}<div class="l">${body}</div><div class="drag"><small>Pulled it down</small><b>${nf80E(u.k)}</b><span>+${nf80P(u.d)}</span><em>−${pts.toFixed(1)} pts</em></div>${c}`); }
+      // Others row before the Total row
+      const tm = html.match(/<div class="nf79-ctot">[\s\S]*?<b>(₱[\d,.]+)<\/b>/);
+      if(tm){ const total = Number(tm[1].replace(/[₱,]/g, '')) || 0, costBtn = html.match(/<button type="button" class="nf74-ot t-b nf74-costs"[\s\S]*?<\/ol>/);
+        if(costBtn){ const tops = [...costBtn[0].matchAll(/<li>[\s\S]*?<b>(₱[\d,.]+)<\/b>/g)].map(x => Number(x[1].replace(/[₱,]/g, '')) || 0), others = Math.round(total - tops.reduce((a, v) => a + v, 0));
+          if(others >= 1) html = html.replace('<div class="nf79-ctot">', `<div class="nf80-oth"><span class="n">+</span><span class="k">Others</span><b>${nf80P(others)}</b><em>${total ? Math.round(others / total * 100) : 0}%</em></div><div class="nf79-ctot">`); } }
+    }catch(e){ console.warn('nf80 owner', e); }
+    return html;
+  };
+  window.nf75OwnerHtml = nf75OwnerHtml;
+  if(typeof nf72OwnerHtml === 'function'){ nf72OwnerHtml = nf75OwnerHtml; window.nf72OwnerHtml = nf75OwnerHtml; }
 }
 
 function renderSidebarForViewAsRole(){

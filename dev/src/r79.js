@@ -21,9 +21,9 @@ nf78ConfRow = function(c){
   const k = `${c.po.id}|${c.kind}|${c.key}`.replace(/"/g, '');
   const why = (m === 'check' ? ['Not enough funds (DAIF)', 'Account closed', 'Signature or date problem'] : ['Not in my account yet', 'Wrong amount', "Can't find this payment"]);
   return `<div class="r nf79-cr" data-b="${nf79E(c.po.buyerId || who)}" data-k="${nf79E(k)}"><span class="mi" title="${nf79E(mi.l)}">${nf79Ic(mi.ic, 20)}</span>
-    <div class="w"><b>${nf79E(who)}</b><small class="how">${nf79E(how)}</small>${when ? `<small>${nf79E(when)}</small>` : ''}</div>
+    <div class="w"><b>${nf79E(who)}</b><small class="how">${nf79E(how)}</small></div>
     <em>${nf79P(c.p.amount)}</em>
-    <div class="bt"><button type="button" class="nf77-b p sm" onclick="confirmPaymentReceived('${c.po.id}','${c.kind}','${c.key}'); setTimeout(renderCollectionsPage, 60)">${nf79Ic('<path d="M20 6 9 17l-5-5"/>', 15)}${yes}</button><button type="button" class="nf77-b s sm" onclick="this.closest('.nf79-cr').classList.toggle('why')">${no}</button></div>
+    <div class="ft"><div class="bt"><button type="button" class="nf77-b p sm" onclick="confirmPaymentReceived('${c.po.id}','${c.kind}','${c.key}'); setTimeout(renderCollectionsPage, 60)">${nf79Ic('<path d="M20 6 9 17l-5-5"/>', 15)}${yes}</button><button type="button" class="nf77-b s sm" onclick="this.closest('.nf79-cr').classList.toggle('why')">${no}</button></div>${when ? `<small class="when">${nf79E(when)}</small>` : ''}</div>
     <div class="nf79-why"><span>What happened?</span>${why.map(w => `<button type="button" onclick="nf79Reject('${c.po.id}','${c.kind}','${c.key}', ${JSON.stringify(w).replace(/"/g, '&quot;')})">${nf79E(w)}</button>`).join('')}</div></div>`;
 };
 function nf79Reject(poId, kind, key, reason){
@@ -84,7 +84,7 @@ async function nf79UtSave(btn){
 nf78CustCard = (function(base){ return function(g){
   let html = base.apply(this, arguments); const says = Math.min(g.pending || 0, g.total), left = Math.max(0, g.total - says);
   if(left <= 0) return html;
-  const btn = `<button type="button" class="nf77-b s nf79-rpb" onclick="nf79RpOpen(this)">${nf79Ic('<path d="M12 5v14M5 12h14"/>', 16)}Record a payment</button>`;
+  const btn = `<button type="button" class="nf77-b s nf79-rpb" onclick="nf79RpOpen(this)">${nf79Ic('<path d="M12 5v14M5 12h14"/>', 16)}Record payment</button>`;
   html = html.replace(/<div class="acts">([\s\S]*?)<\/div><\/div>$/, (m0, a) => `<div class="acts">${a}${btn}</div>${nf79RpHtml(g.id, left)}</div>`);
   if(!/nf79-rpb/.test(html)) html = html.replace(/<\/div>$/, `<div class="acts">${btn}</div>${nf79RpHtml(g.id, left)}</div>`);
   return html.replace('class="nf77-cu nf78-cu', 'class="nf77-cu nf78-cu nf79-rph');

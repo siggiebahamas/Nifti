@@ -38,7 +38,7 @@ html body #view-app #mhHome .nf75-owner .nf79-ctot em{font-style:normal;font-wei
 .nf78-tot .nf79-lw{border-top:1px dashed #E4E7EC;}
 .nf78-tot .nf79-lw:first-child{border-top:0;}
 .nf78-tot .nf79-lw > .ln{border-top:0 !important;grid-template-columns:minmax(0,1fr) auto auto 16px !important;border-radius:10px;padding:9px 6px !important;margin:0 -6px;width:calc(100% + 12px) !important;}
-.nf78-tot .nf79-lw > .ln::after{content:"›";font-size:20px;font-weight:700;color:#98A2B3;line-height:1;transition:transform .15s;}
+.nf78-tot .nf79-lw > .ln::after{content:"›";font-size:20px;font-weight:700;color:#1F6B45;line-height:1;transition:transform .15s;}
 .nf78-tot .nf79-lw > .ln:hover{background:#F6F7F9;} .nf78-tot .nf79-lw.open > .ln{background:#F2F8F4;} .nf78-tot .nf79-lw.open > .ln::after{transform:rotate(90deg);color:#1F6B45;}
 .nf78-tot .nf79-lw > .ln.o1 .go{color:#1F6B45;}
 .nf79-la{display:none;flex-direction:column;gap:6px;padding:4px 0 12px;} .nf79-lw.open .nf79-la{display:flex;}

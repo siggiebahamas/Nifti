@@ -43,7 +43,7 @@ function nf78CustCard(g){
   if(pr) lines.push(`<div class="st g">${nf78Ic(NF77I.check, 18)}<span>Promised <b>${nf78P(pr.amount)}</b> by ${nf78E(nf77Day(pr.promised_date))}</span><button type="button" class="nf77-x" onclick="colCancelPromise('${pr.id}')">Cancel</button></div>`);
   if(!lines.length) lines.push(`<div class="st n">${nf78Ic(NF77I.clock, 18)}<span>${g.nextDue ? `Not due yet · due <b>${nf78E(nf77Day(g.nextDue))}</b>` : 'Not due yet'}</span></div>`);
   if(says > 0) acts.push(`<button type="button" class="nf77-b p" onclick="nf77GoConfirm('${g.id}')">${nf78Ic('<path d="M20 6 9 17l-5-5"/>', 16)}${says >= g.total ? 'Check and confirm' : 'Confirm ' + nf78P(says)}</button>`);
-  if(left > 0 && (late || !(says > 0))) acts.push(nf77RemindBtn(g.id, late && !(says > 0) && !pr, late ? (says > 0 ? 'Remind for the rest' : 'Remind') : 'Friendly reminder'));
+  if(left > 0 && (late || !(says > 0))) acts.push(nf77RemindBtn(g.id, late && !(says > 0) && !pr, 'Remind'));
   return `<div class="nf77-cu nf78-cu${late && left > 0 ? ' late' : says > 0 ? ' says' : ''}"><div class="top"><b class="nm">${nf78E(g.name)}</b><span class="amt">Owes <b>${nf78P(g.total)}</b></span></div>
     <div class="sts">${lines.join('')}</div>${acts.length ? `<div class="acts">${acts.join('')}</div>` : ''}</div>`;
 }

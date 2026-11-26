@@ -684,3 +684,22 @@ New module `dev/src/u79_app.py` with `r79.css` / `r79.js` (after u78). Migration
 
 ### 16.3 Tests
 test79.js, landtest, saletest, rectest, rt76, full.js (0 errors), muts, hang, audit 1440/390, phone overflow 0, gray 0, brown 0, settle flows (utang inline, ₱2,000 phone payment, bounce reasons), Walk-in inline utang.
+
+## 17. ROUND 80 (26 Nov 2026): ninth revision pass — read this first
+New modules: `dev/src/u80_app.py` (+ `r80.css` / `r80.js`) and `dev/src/u96_no_gray.py` (the no-gray pass, now run after every round's styles: any new gray text colour becomes black automatically). Migration `r80_sale_payment_log`: downstream_sales.payment_log jsonb default '[]' + trigger `downstream_sales_payment_guard` (removing a payment = owner only, written to audit_log as sale_payment_undone). SQL in `supabase_migrations/2026-11-26-sale-payment-log.sql`.
+
+### 17.1 Utang
+- Ways in: + Create → "Record utang (pay later)"; Walk-in sales "+ Utang (pay later)" beside "+ New sale"; Getting paid shop-utang group "+ New utang"; all open New sale with Utang preselected (`nf80NewUtang`).
+- Walk-in sales "Utang (pay later)" tracker (replaces the small utang table; `nf80UtPaint`): Still owed / Paid off (60 days) tabs; each utang shows customer, sale date, items, who, photo, Owes, a progress bar "Paid ₱x of ₱total", Record payment (inline form, `nf79UtSave`) and History (started, each payment with method and who, taken-back payments struck through). Undo on a payment (owner only) removes it from `payments` and appends {a:'undone', at, m, amt, by} to `payLog` / payment_log, so all totals keep working.
+- Getting paid shop-utang group: "Paid off lately" with Undo, and "See all utang and history".
+
+### 17.2 Other changes
+- Money overview: "Costs vs Oct 1–26" panel beside the statement (`nf80CostJumps`: bkPnl byCat vs lgPnlFor same days); went up / went down, was → now bars, each row opens its expense lines; totals match the statement. Statement now shows "Less: extra cash found in counts −₱20" so the expense lines add up to the total (older ₱20 mismatch).
+- Home: tile label "Profit margin", bigger same-days row, "Pulled it down: Electricity +₱3,040 −1.2 pts" strip; Biggest costs has an "Others" row above TOTAL.
+- Getting paid: inputs inside boxes no longer draw a second box or square focus ring (also Walk-in scan box, date pills, peso fields, Messages box); payment rows: name + method on top, amount right, buttons with date · order beside them; card buttons: main action full width, Remind (app icon only) + Record payment side by side; "Settle" bigger. Buttons renamed "+ Someone owes me" and "Bring in old records".
+- + Create menu: Money / Orders / People are real section headers (green, uppercase, tinted band).
+- Bug fixed: header buttons moved onto the toolbar (r55) vanished after a page redrew (e.g. "+ New sale" missing on a second visit to Walk-in sales).
+- Landing: result cards back to the Round 78 look; only the icon tile is white with a dark green border and icon.
+
+### 17.3 Tests
+test80.js, landtest, saletest, rectest, rt76, full.js (0 errors), muts, hang, audit 1440/390, phone overflow 0, gray (strict, incl. dark slates) 0 on pages and popups, brown 0, utang pay/undo/new flows, header buttons on repeat visits.
