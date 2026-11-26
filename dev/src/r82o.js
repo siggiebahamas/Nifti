@@ -59,54 +59,57 @@ function nf82HiddenBanner(page){
 async function nf82ShowPage(k){ const h = nf82Hidden().filter(x => x !== k); if(await nf82OnbSave({hidden: h})){ showToast(`${nf82PageLabel(k)} is back in your menu.`, 'success'); document.querySelectorAll('.nf82-hb').forEach(x => x.remove()); try{ if(typeof nf47PagesPaint === 'function') nf47PagesPaint(); }catch(e){} } }
 NF45_AFTER.push(page => { try{ nf82HiddenBanner(page); if(page && page.id === 'page-settings') nf82SettingsCard(); }catch(e){} });
 
-/* ---------- welcome setup ---------- */
-function nf82OnbOpen(step){
+/* ---------- one popup at a time: anything new closes what is open ---------- */
+function nf83CloseOverlays(keep){
+  try{ if(keep !== 'onb') nf82OnbClose(); }catch(e){}
+  try{ if(keep !== 'spot') nf82SpotClose(); }catch(e){}
+  try{ document.querySelectorAll('.share-modal-backdrop').forEach(bk => { if(bk.id){ try{ slClose(bk.id); }catch(e){ bk.remove(); } } else bk.remove(); }); }catch(e){}
+  try{ if(typeof nf26CloseStart === 'function' && document.getElementById('nf26StartOv') && !document.getElementById('nf26StartOv').hidden) nf26CloseStart(); }catch(e){}
   try{ if(typeof closeUserMenu === 'function') closeUserMenu(); if(typeof closeMobileSidebar === 'function') closeMobileSidebar(); }catch(e){}
+}
+
+/* ---------- welcome setup: 2 short steps ---------- */
+function nf82OnbOpen(step){
+  nf83CloseOverlays('onb');
   const o = nf82Onb();
-  NF82O.draft = {type: o.type || null, goals: Array.isArray(o.goals) && o.goals.length ? o.goals.slice() : ['paid'], hidden: Array.isArray(o.hidden) ? o.hidden.slice() : null};
+  NF82O.draft = {type: o.type || null, goals: Array.isArray(o.goals) && o.goals.length ? o.goals.slice() : ['paid']};
   NF82O.step = step || 1;
   let ov = document.getElementById('nf82Onb');
   if(!ov){ ov = document.createElement('div'); ov.id = 'nf82Onb'; ov.className = 'nf82-ov'; ov.setAttribute('role', 'dialog'); ov.setAttribute('aria-modal', 'true'); ov.setAttribute('aria-labelledby', 'nf82OnbH'); document.body.appendChild(ov);
-    ov.addEventListener('keydown', e => { if(e.key === 'Escape') nf82OnbClose(); }); }
+    ov.addEventListener('keydown', e => { if(e.key === 'Escape') nf82OnbClose(); });
+    ov.addEventListener('click', e => { if(e.target === ov) nf82OnbClose(); }); }
   ov.hidden = false; document.body.classList.add('nf82-noscroll'); nf82OnbPaint();
   try{ localStorage.setItem('nifti-onb-seen:' + (myBusiness ? myBusiness.id : 'demo'), '1'); }catch(e){}
 }
 function nf82OnbClose(){ const ov = document.getElementById('nf82Onb'); if(ov){ ov.hidden = true; ov.innerHTML = ''; } document.body.classList.remove('nf82-noscroll'); }
-function nf82OnbPick(k){ const d = NF82O.draft; d.type = k; d.goals = (NF82_TYPE_GOALS[k] || ['paid']).slice(); d.hidden = null; nf82OnbPaint(); }
-function nf82OnbGoal(k){ const d = NF82O.draft, i = d.goals.indexOf(k); if(i >= 0) d.goals.splice(i, 1); else d.goals.push(k); d.hidden = null; nf82OnbPaint(); }
-function nf82OnbTog(k){ const d = NF82O.draft; if(!d.hidden) d.hidden = nf82ProposeHidden(d.type, d.goals); const i = d.hidden.indexOf(k); if(i >= 0) d.hidden.splice(i, 1); else d.hidden.push(k); nf82OnbPaint(); }
+function nf82OnbPick(k){ const d = NF82O.draft; d.type = k; d.goals = (NF82_TYPE_GOALS[k] || ['paid']).slice(); nf82OnbPaint(); }
+function nf82OnbGoal(k){ const d = NF82O.draft, i = d.goals.indexOf(k); if(i >= 0) d.goals.splice(i, 1); else d.goals.push(k); nf82OnbPaint(); }
 function nf82OnbGo(n){ if(n === 2 && !NF82O.draft.type){ showToast('Pick the one closest to your business.', 'warn'); return; } NF82O.step = n; nf82OnbPaint(); const c = document.querySelector('#nf82Onb .card'); if(c) c.scrollTop = 0; }
 async function nf82OnbFinish(){
-  const d = NF82O.draft, hidden = d.hidden || nf82ProposeHidden(d.type, d.goals);
+  const d = NF82O.draft, hidden = nf82ProposeHidden(d.type, d.goals);
   const ok = await nf82OnbSave({type: d.type, goals: d.goals, hidden, done_at: new Date().toISOString()});
   if(!ok) return;
-  NF82O.step = 4; nf82OnbPaint();
-  try{ if(typeof renderDashboard === 'function') renderDashboard(); }catch(e){}
+  NF82O.hiddenNow = hidden; NF82O.step = 3; nf82OnbPaint();
   setTimeout(() => { try{ nf82StartPaint(true); }catch(e){} }, 120);
-}
-function nf82PagesListHtml(hidden, tog){
-  return NF82_PAGES.map(g => `<div class="pg"><h4>${nf82E(g.g)}</h4>${g.items.map(([k, l, dsc, lock]) => { const on = !hidden.includes(k);
-    return `<button type="button" class="pr${on ? ' on' : ''}" role="switch" aria-checked="${on}" ${lock ? 'disabled aria-disabled="true"' : `onclick="${tog}('${k}')"`}><span class="t"><b>${nf82E(l)}</b><small>${nf82E(dsc)}</small></span><span class="sw" aria-hidden="true"><i></i></span>${lock ? '<em>Always on</em>' : ''}</button>`; }).join('')}</div>`).join('');
 }
 function nf82OnbPaint(){
   const ov = document.getElementById('nf82Onb'); if(!ov) return;
   const d = NF82O.draft, s = NF82O.step, name = myBusiness ? myBusiness.name : 'Dela Cruz Hardware';
-  const dots = `<div class="dots" aria-label="Step ${Math.min(s, 3)} of 3">${[1, 2, 3].map(i => `<i class="${i < s ? 'done' : i === s ? 'on' : ''}"></i>`).join('')}</div>`;
+  const x = `<button type="button" class="x" onclick="nf82OnbClose()" aria-label="Close">${nf82Ic('<path d="M18 6 6 18M6 6l12 12"/>', 20)}</button>`;
+  const dots = s < 3 ? `<div class="top"><div class="dots" aria-label="Step ${s} of 2"><i class="${s >= 1 ? 'on' : ''}"></i><i class="${s >= 2 ? 'on' : ''}"></i></div><span class="st">Step ${s} of 2</span>${x}</div>` : `<div class="top"><span></span>${x}</div>`;
   let body = '';
-  if(s === 1) body = `<div class="wel"><span class="tl">Mabayaran nang mas mabilis. Alam ang tunay na kita, araw-araw.</span><h2 id="nf82OnbH">Welcome to Nifti, ${nf82E(name)}</h2><p>Let's set up Nifti for your shop. It takes about 2 minutes, and you can change anything later.</p></div>
+  if(s === 1) body = `<h2 id="nf82OnbH">Welcome to Nifti, ${nf82E(name)}</h2><p>Two quick questions so Nifti fits your shop. You can change everything later.</p>
     <h3>What kind of business is it?</h3>
     <div class="types">${NF82_TYPES.map(t => `<button type="button" class="ty${d.type === t.k ? ' on' : ''}" aria-pressed="${d.type === t.k}" onclick="nf82OnbPick('${t.k}')"><span class="ic">${nf82Ic(t.ic, 26)}</span><span class="tx"><b>${nf82E(t.l)}</b><small>${nf82E(t.d)}</small></span><span class="ck" aria-hidden="true">${nf82Ic('<path d="M20 6 9 17l-5-5"/>', 16)}</span></button>`).join('')}</div>
     <div class="ft"><button type="button" class="nf82-lk" onclick="nf82OnbClose()">I'll do this later</button><button type="button" class="nf82-btn p" onclick="nf82OnbGo(2)">Next</button></div>`;
-  else if(s === 2) body = `<h2 id="nf82OnbH">What should Nifti help with first?</h2><p>Pick as many as you like. We picked the usual ones for ${nf82E((NF82_TYPES.find(t => t.k === d.type) || {}).l || 'your shop').toLowerCase()}.</p>
-    <div class="goals">${NF82_GOALS.map(g => `<button type="button" class="gl${d.goals.includes(g.k) ? ' on' : ''}" aria-pressed="${d.goals.includes(g.k)}" onclick="nf82OnbGoal('${g.k}')"><span class="ck" aria-hidden="true">${nf82Ic('<path d="M20 6 9 17l-5-5"/>', 15)}</span>${nf82E(g.l)}</button>`).join('')}</div>
-    <div class="ft"><button type="button" class="nf82-btn s" onclick="nf82OnbGo(1)">Back</button><button type="button" class="nf82-btn p" onclick="nf82OnbGo(3)">Next</button></div>`;
-  else if(s === 3){ const hid = d.hidden || nf82ProposeHidden(d.type, d.goals), on = NF82_PAGES.reduce((a, g) => a + g.items.filter(x => !hid.includes(x[0])).length, 0);
-    body = `<h2 id="nf82OnbH">Your menu</h2><p>These ${on} pages will show in your menu. Turn any on or off. <b>Nothing is deleted:</b> a hidden page still opens from search, and you can bring it back any time in Settings, Pages you use.</p>
-    <div class="pages">${nf82PagesListHtml(hid, 'nf82OnbTog')}</div>
-    <div class="ft"><button type="button" class="nf82-btn s" onclick="nf82OnbGo(2)">Back</button><button type="button" class="nf82-btn p" onclick="nf82OnbFinish()">Start using Nifti</button></div>`; }
-  else body = `<div class="done"><span class="big" aria-hidden="true">${nf82Ic('<path d="M20 6 9 17l-5-5"/>', 34)}</span><h2 id="nf82OnbH">You're ready</h2><p>Your menu is set. On Home you'll find <b>Start here</b>: a few short steps, each with a "Show me" button that points at exactly what to press.</p>
-    <div class="ft col"><button type="button" class="nf82-btn p" onclick="nf82OnbClose(); go('dashboard'); setTimeout(nf82TourStart, 450)">Show me around (1 minute)</button><button type="button" class="nf82-btn s" onclick="nf82OnbClose(); go('dashboard')">I'll explore on my own</button></div></div>`;
-  ov.innerHTML = `<div class="card" tabindex="-1">${s < 4 ? dots : ''}${body}</div>`;
+  else if(s === 2) body = `<h2 id="nf82OnbH">What should Nifti help you with?</h2><p>We ticked the usual ones for your kind of shop. Tap to change.</p>
+    <div class="goals">${NF82_GOALS.map(g => `<button type="button" class="gl${d.goals.includes(g.k) ? ' on' : ''}" aria-pressed="${d.goals.includes(g.k)}" onclick="nf82OnbGoal('${g.k}')"><span class="lb">${nf82E(g.l)}</span><span class="ck" aria-hidden="true">${nf82Ic('<path d="M20 6 9 17l-5-5"/>', 15)}</span></button>`).join('')}</div>
+    <div class="ft"><button type="button" class="nf82-btn s" onclick="nf82OnbGo(1)">Back</button><button type="button" class="nf82-btn p" onclick="nf82OnbFinish()">Done</button></div>`;
+  else { const hid = NF82O.hiddenNow || []; body = `<div class="done"><span class="big" aria-hidden="true">${nf82Ic('<path d="M20 6 9 17l-5-5"/>', 34)}</span><h2 id="nf82OnbH">You're all set</h2>
+    <p>Your menu now shows only what your shop uses.${hid.length ? ` ${hid.length} page${hid.length === 1 ? ' is' : 's are'} tucked away, like ${hid.slice(0, 2).map(nf82PageLabel).map(nf82E).join(' and ')}. Bring any back in Settings.` : ''}</p>
+    <p>On Home, <b>Start here</b> walks you through the first few things, one at a time.</p>
+    <div class="ft col"><button type="button" class="nf82-btn p" onclick="nf82OnbClose(); go('dashboard'); setTimeout(nf82TourStart, 450)">Show me around (1 minute)</button><button type="button" class="nf82-btn s" onclick="nf82OnbClose(); go('dashboard')">Go to Home</button></div></div>`; }
+  ov.innerHTML = `<div class="card" tabindex="-1">${dots}${body}</div>`;
   const h = ov.querySelector('#nf82OnbH'); if(h){ h.setAttribute('tabindex', '-1'); try{ h.focus({preventScroll: true}); }catch(e){} }
 }
 
@@ -129,38 +132,69 @@ function nf82SettingsCard(){
   if(c.dataset.k !== html){ c.dataset.k = html; c.innerHTML = html; }
 }
 
-/* ---------- Start here (Home) ---------- */
+/* ---------- Start here (Home): one step at a time, each can be skipped, the whole card can be closed ---------- */
+function nf82Skipped(){ const k = nf82Onb().skipped; return Array.isArray(k) ? k : []; }
 function nf82Steps(){
   const o = nf82Onb(), sales = (BK.sales || []).filter(s => !s.voidedAt);
   let pay = 0; try{ pay = (getMyPaymentAccounts() || []).length; }catch(e){}
   let items = 0; try{ items = (inventoryData || []).length + ((typeof myCatalog !== 'undefined' && myCatalog) ? myCatalog.length : 0); }catch(e){}
   let members = 1; try{ members = getActiveTeamMembers().length; }catch(e){}
   let reminded = (NF82G.remlog || []).length > 0; try{ reminded = reminded || (typeof remLogCache !== 'undefined' && (remLogCache || []).length > 0); }catch(e){}
-  const utang = sales.some(s => s.paidWith === 'credit' || bkSaleBalance(s) > 0);
+  let owed = false; try{ owed = sales.some(s => s.paidWith === 'credit' || bkSaleBalance(s) > 0) || unpaidInvoicesFor('supplier').length > 0; }catch(e){}
+  const sk = nf82Skipped();
   return [
-    {k: 'type', t: 'Tell Nifti about your shop', d: 'So the menu only shows what you use.', m: '1 min', done: !!o.type, go: () => nf82OnbOpen(1)},
-    {k: 'pay', t: 'Add how customers pay you', d: 'Your GCash or bank goes on every bill and pay link.', m: '1 min', done: pay > 0, go: () => { openSettingsCard('paymentDetailsCard'); setTimeout(() => nf82Spot('#paymentDetailsCard, [id*="paymentDetails"]', 'Add your GCash or bank', 'Customers see these on their bill and on their pay link.'), 450); }},
-    {k: 'items', t: 'Add your items and prices', d: 'Pick your kind of shop for starter items, or upload your Excel.', m: '3 min', done: items >= 3, go: () => { if(typeof nf26OpenStart === 'function') nf26OpenStart('kind'); else go('inventory'); }},
-    {k: 'sale', t: 'Record your first sale', d: 'Scan or pick items. The total and change add up for you.', m: '30 sec', done: sales.length > 0, go: () => { go('sales'); setTimeout(() => { if(typeof openQuickSale === 'function') openQuickSale(); }, 250); }},
-    {k: 'utang', t: 'Write down an utang', d: 'Who owes you, how much, and when they pay.', m: '30 sec', done: utang, go: () => { if(typeof nf80NewUtang === 'function') nf80NewUtang(); }},
-    {k: 'remind', t: 'Send your first reminder', d: 'They get a message with a link to pay you by GCash.', m: '1 min', done: reminded, go: () => { go('dashboard'); setTimeout(() => nf82Spot('#nf82Home .nf82-btn.p, #nf82Home', 'Tap Remind', 'Pick Viber, WhatsApp, Messenger or text. The message and pay link are ready.'), 500); }},
-    {k: 'team', t: 'Add a teammate', d: 'A cashier or helper, with only what they need to see.', m: '1 min', opt: true, done: members > 1, go: () => go('team')}
-  ];
+    {k: 'type', t: 'Tell Nifti about your shop', d: 'Two quick questions so your menu shows only what you use.', m: '1 min', done: !!o.type},
+    {k: 'pay', t: 'Add how customers pay you', d: 'Your GCash number shows on every bill and pay link.', m: '1 min', done: pay > 0},
+    {k: 'items', t: 'Add your items and prices', d: 'Type them in, or start from a ready list for your kind of shop.', m: '3 min', done: items >= 3},
+    {k: 'sale', t: 'Record your first sale', d: 'Pick the items. Total and change add up for you.', m: '30 sec', done: sales.length > 0},
+    {k: 'utang', t: 'Write down who owes you', d: 'Name, how much, and when they should pay.', m: '1 min', done: owed},
+    {k: 'remind', t: 'Send your first reminder', d: 'They get a message with a link to pay you by GCash.', m: '1 min', done: reminded},
+    {k: 'team', t: 'Add a teammate', d: 'A cashier or helper, who sees only what you allow.', m: '1 min', opt: true, done: members > 1}
+  ].map(x => Object.assign(x, {skipped: !x.done && sk.includes(x.k)}));
+}
+function nf82PayFormHtml(){
+  return `<div class="pf" role="group" aria-label="Add your GCash"><label><span>GCash number</span><input id="nf83PayNum" inputmode="tel" maxlength="16" placeholder="0917 123 4567"></label><label><span>Name on your GCash</span><input id="nf83PayName" maxlength="120" placeholder="e.g. Ramon Dela Cruz"></label>
+    <div class="pa"><button type="button" class="nf82-btn p" onclick="nf83PaySave()">Save GCash</button><button type="button" class="nf82-lk" onclick="nf83CloseOverlays(); openSettingsCard('paymentDetailsCard')">Bank, Maya or QR instead</button></div><p class="pe" id="nf83PayErr" role="alert"></p></div>`;
+}
+async function nf83PaySave(){
+  let num = String((document.getElementById('nf83PayNum') || {}).value || '').replace(/[\s-]/g, ''); const name = stripMarkup(String((document.getElementById('nf83PayName') || {}).value || '')).trim().slice(0, 120); const err = document.getElementById('nf83PayErr');
+  if(num.startsWith('+63')) num = '0' + num.slice(3);
+  if(!/^09\d{9}$/.test(num)){ if(err) err.textContent = 'Type an 11-digit mobile number starting with 09.'; const i = document.getElementById('nf83PayNum'); if(i) i.focus(); return; }
+  if(name.length < 2){ if(err) err.textContent = 'Type the name exactly as it shows on your GCash.'; const i = document.getElementById('nf83PayName'); if(i) i.focus(); return; }
+  const ok = await savePaymentAccounts([...(getMyPaymentAccounts() || []), {id: newRecordId(), type: 'gcash', accountName: name, accountNumber: num, bankName: null, notes: null, qr: null}], 'GCash saved. Customers see it on their bill and pay link.');
+  if(ok !== false){ NF82O.open = null; nf82StartPaint(true); }
 }
 function nf82StartHtml(){
-  const st = nf82Steps(), need = st.filter(s => !s.opt), done = st.filter(s => s.done).length, all = need.every(s => s.done), next = st.find(s => !s.done);
-  const mins = st.filter(s => !s.done).reduce((a, s) => a + (s.m === '30 sec' ? 0.5 : parseFloat(s.m) || 1), 0);
-  const pct = Math.round(done / st.length * 100), R = 22, C = 2 * Math.PI * R;
-  if(all) return `<section class="panel-card nf82-start ok" id="nf82Start"><div class="hd"><span class="ring ok" aria-hidden="true">${nf82Ic('<path d="M20 6 9 17l-5-5"/>', 22)}</span><div class="tt"><h2>You're set up</h2><p>Your shop is in. From here, Home shows what to do each day.</p></div><div class="ha"><button type="button" class="nf82-btn s" onclick="nf82TourStart()">Show me around</button><button type="button" class="nf82-lk" onclick="nf82StartHide()">Hide</button></div></div></section>`;
+  const st = nf82Steps(), active = st.filter(s => !s.skipped), done = active.filter(s => s.done).length, need = active.filter(s => !s.opt), all = need.every(s => s.done), next = active.find(s => !s.done), skipped = st.filter(s => s.skipped);
+  const mins = active.filter(s => !s.done).reduce((a, s) => a + (s.m === '30 sec' ? 0.5 : parseFloat(s.m) || 1), 0);
+  const pct = active.length ? Math.round(done / active.length * 100) : 100, R = 22, C = 2 * Math.PI * R;
+  const close = `<button type="button" class="cx" onclick="nf82StartHide()" aria-label="Close Start here" title="Close">${nf82Ic('<path d="M18 6 6 18M6 6l12 12"/>', 18)}</button>`;
+  if(all) return `<section class="panel-card nf82-start ok" id="nf82Start"><div class="hd"><span class="ring ok" aria-hidden="true">${nf82Ic('<path d="M20 6 9 17l-5-5"/>', 22)}</span><div class="tt"><h2>You're set up</h2><p>From here, Home shows what to do each day.</p></div><div class="ha"><button type="button" class="nf82-btn s" onclick="nf82TourStart()">Show me around</button>${close}</div></div></section>`;
+  const row = (s, i) => { const isNext = s === next, open = NF82O.open === s.k;
+    return `<li class="${s.done ? 'done' : isNext ? 'next' : ''}${open ? ' open' : ''}"><span class="n" aria-hidden="true">${s.done ? nf82Ic('<path d="M20 6 9 17l-5-5"/>', 15) : i + 1}</span><div class="w"><b>${nf82E(s.t)}${s.opt ? ' <em>optional</em>' : ''}</b><small>${nf82E(s.d)}</small></div><span class="m">${s.done ? 'Done' : nf82E(s.m)}</span>
+      ${s.done ? '<span></span><span></span>' : `<button type="button" class="nf82-btn ${isNext && !open ? 'p' : 's'}" onclick="nf82StepGo('${s.k}')">${open ? 'Close' : isNext ? 'Start' : 'Go'}</button><button type="button" class="sk" onclick="nf83Skip('${s.k}')" aria-label="Skip ${nf82E(s.t)}" title="Skip for now">${nf82Ic('<path d="M18 6 6 18M6 6l12 12"/>', 15)}</button>`}
+      ${open && s.k === 'pay' ? nf82PayFormHtml() : ''}</li>`; };
   return `<section class="panel-card nf82-start" id="nf82Start" aria-labelledby="nf82StartH"><div class="hd">
-      <span class="ring" aria-hidden="true"><svg viewBox="0 0 52 52" width="52" height="52"><circle cx="26" cy="26" r="${R}" fill="none" stroke="#E4E7EC" stroke-width="5"/><circle cx="26" cy="26" r="${R}" fill="none" stroke="#1F6B45" stroke-width="5" stroke-linecap="round" stroke-dasharray="${(pct / 100 * C).toFixed(1)} ${C.toFixed(1)}" transform="rotate(-90 26 26)"/></svg><b>${done}/${st.length}</b></span>
-      <div class="tt"><h2 id="nf82StartH">Start here</h2><p>${done} of ${st.length} done · about ${Math.max(1, Math.round(mins))} minute${Math.round(mins) === 1 ? '' : 's'} left. Each "Show me" opens the right screen and points at what to press.</p></div>
-      <div class="ha"><button type="button" class="nf82-btn s" onclick="nf82TourStart()">${nf82Ic('<circle cx="12" cy="12" r="10"/><path d="m10 8 6 4-6 4z"/>', 16)}Show me around</button><button type="button" class="nf82-lk" onclick="nf82StartHide()">Hide for now</button></div></div>
-    <ol class="st">${st.map((s, i) => `<li class="${s.done ? 'done' : s === next ? 'next' : ''}"><span class="n" aria-hidden="true">${s.done ? nf82Ic('<path d="M20 6 9 17l-5-5"/>', 15) : i + 1}</span><div class="w"><b>${nf82E(s.t)}${s.opt ? ' <em>optional</em>' : ''}</b><small>${nf82E(s.d)}</small></div><span class="m">${s.done ? 'Done' : nf82E(s.m)}</span>${s.done ? '<span></span>' : `<button type="button" class="nf82-btn ${s === next ? 'p' : 's'}" onclick="nf82StepGo('${s.k}')">${s === next ? 'Show me' : 'Go'}</button>`}</li>`).join('')}</ol>
+      <span class="ring" aria-hidden="true"><svg viewBox="0 0 52 52" width="52" height="52"><circle cx="26" cy="26" r="${R}" fill="none" stroke="#E4E7EC" stroke-width="5"/><circle cx="26" cy="26" r="${R}" fill="none" stroke="#1F6B45" stroke-width="5" stroke-linecap="round" stroke-dasharray="${(pct / 100 * C).toFixed(1)} ${C.toFixed(1)}" transform="rotate(-90 26 26)"/></svg><b>${done}/${active.length}</b></span>
+      <div class="tt"><h2 id="nf82StartH">Start here</h2><p>${done} of ${active.length} done · about ${Math.max(1, Math.round(mins))} minute${Math.round(mins) === 1 ? '' : 's'} left. Skip anything you don't need with the ×.</p></div>
+      <div class="ha"><button type="button" class="nf82-btn s" onclick="nf82TourStart()">${nf82Ic('<circle cx="12" cy="12" r="10"/><path d="m10 8 6 4-6 4z"/>', 16)}Show me around</button>${close}</div></div>
+    <ol class="st">${active.map((s) => row(s, st.indexOf(s))).join('')}</ol>
+    ${skipped.length ? `<p class="skl">Skipped: ${skipped.map(s => `<span>${nf82E(s.t)} <button type="button" class="nf82-lk" onclick="nf83Unskip('${s.k}')">Bring back</button></span>`).join('')}</p>` : ''}
   </section>`;
 }
-function nf82StepGo(k){ const s = nf82Steps().find(x => x.k === k); if(s) s.go(); }
-function nf82StartHide(){ try{ localStorage.setItem('nifti-start-hide:' + (myBusiness ? myBusiness.id : 'demo'), APP_TODAY); }catch(e){} const el = document.getElementById('nf82StartW'); if(el) el.remove(); showToast('Start here is hidden. Open it again from Settings, Your shop and menu.', 'info'); }
+async function nf83Skip(k){ const sk = nf82Skipped(); if(!sk.includes(k)) sk.push(k); NF82O.open = null; await bkSaveSettings({nf_onb: Object.assign(nf82Onb(), {skipped: sk})}); nf82StartPaint(true); }
+async function nf83Unskip(k){ const sk = nf82Skipped().filter(x => x !== k); await bkSaveSettings({nf_onb: Object.assign(nf82Onb(), {skipped: sk})}); nf82StartPaint(true); }
+function nf82StepGo(k){
+  if(k === 'pay'){ NF82O.open = NF82O.open === 'pay' ? null : 'pay'; nf82StartPaint(true); if(NF82O.open) setTimeout(() => { const i = document.getElementById('nf83PayNum'); if(i){ i.scrollIntoView({block: 'center'}); i.focus(); } }, 60); return; }
+  nf83CloseOverlays();
+  if(k === 'type') return nf82OnbOpen(1);
+  if(k === 'items') return typeof nf83BringOpen === 'function' ? nf83BringOpen('items') : go('inventory');
+  if(k === 'utang') return typeof nf83BringOpen === 'function' ? nf83BringOpen('utang') : (typeof openOpeningBalances === 'function' && openOpeningBalances());
+  if(k === 'sale'){ go('sales'); return setTimeout(() => { if(typeof openQuickSale === 'function') openQuickSale(); }, 250); }
+  if(k === 'remind'){ go('dashboard'); return setTimeout(() => { const b = document.querySelector('#nf82Home .nf82-btn.p'); if(b) nf82Spot(() => [b], 'Tap Remind', 'Pick Viber, WhatsApp, Messenger or text. The message and their pay link are already written.'); else showToast('Nobody is due yet. When someone is, they show up under Who owes you with Remind ready.', 'info'); }, 450); }
+  if(k === 'team'){ go('team'); return setTimeout(() => nf82Spot(() => [...document.querySelectorAll('#page-team button')].filter(x => /add|invite/i.test(x.textContent)), 'Add your teammate', 'Type their name and phone or email. Then choose what they can see.'), 700); }
+}
+function nf82StartHide(){ try{ localStorage.setItem('nifti-start-hide:' + (myBusiness ? myBusiness.id : 'demo'), APP_TODAY); }catch(e){} const el = document.getElementById('nf82StartW'); if(el) el.remove(); showToast('Start here is closed. Open it again from your name menu, Start here guide.', 'info'); }
 function nf82StartPaint(force){
   const home = document.getElementById('mhHome'); if(!home || !home.offsetParent) return;
   let own = true; try{ own = isPrivilegedUser() && !previewRole; }catch(e){}
@@ -170,11 +204,11 @@ function nf82StartPaint(force){
   const html = nf82StartHtml(); const o = nf82Onb();
   if(/ ok"/.test(html.slice(0, 80)) && o.done_at && daysBetween(String(o.done_at).slice(0, 10), APP_TODAY) > 3){ if(w) w.remove(); return; }
   if(!w){ w = document.createElement('div'); w.id = 'nf82StartW'; }
-  if(w.dataset.k !== html){ w.dataset.k = html; w.innerHTML = html; }
+  if(w.dataset.k !== html){ const keep = document.activeElement && w.contains(document.activeElement) && document.activeElement.id; w.dataset.k = html; w.innerHTML = html; if(keep){ const e = document.getElementById(keep); if(e) e.focus(); } }
   const old26 = document.getElementById('nf26Start'); if(old26) old26.classList.add('nf82-merged');
   const head = home.querySelector('.hero, .page-head'); if(head){ if(head.nextElementSibling !== w) head.insertAdjacentElement('afterend', w); } else if(!w.isConnected) home.prepend(w);
 }
-NF45_AFTER.push(page => { try{ if(page && page.id === 'page-dashboard') nf82StartPaint(); }catch(e){} });
+NF45_AFTER.push(page => { try{ if(page && page.id === 'page-dashboard' && !(document.activeElement && document.activeElement.closest && document.activeElement.closest('#nf82StartW .pf'))) nf82StartPaint(); }catch(e){} });
 
 /* first visit of a new real shop: the welcome setup opens by itself, once */
 function nf82AutoOnb(){
@@ -191,7 +225,9 @@ NF45_AFTER.push(page => { if(page && page.id === 'page-dashboard' && !NF82O.auto
 function nf82VisEl(sel){ const list = typeof sel === 'function' ? [].concat(sel() || []) : [...document.querySelectorAll(sel)]; return list.find(e => { if(!e) return false; const r = e.getBoundingClientRect(); return r.width > 4 && r.height > 4 && getComputedStyle(e).visibility !== 'hidden'; }) || null; }
 function nf82SpotDraw(el, title, text, foot){
   let ov = document.getElementById('nf82Spot');
-  if(!ov){ ov = document.createElement('div'); ov.id = 'nf82Spot'; ov.innerHTML = '<div class="hole"></div><div class="tip" role="dialog" aria-live="polite"></div>'; document.body.appendChild(ov); }
+  if(!ov){ ov = document.createElement('div'); ov.id = 'nf82Spot'; ov.innerHTML = '<div class="hole"></div><div class="tip" role="dialog" aria-live="polite"></div>'; document.body.appendChild(ov);
+    ov.addEventListener('click', e => { if(e.target.closest('.tip')) return; e.preventDefault(); e.stopPropagation(); const h = ov.querySelector('.hole').getBoundingClientRect(), inHole = e.clientX >= h.left && e.clientX <= h.right && e.clientY >= h.top && e.clientY <= h.bottom && ov._el && !NF82O.tour;
+      nf82SpotClose(); if(inHole){ const t = document.elementFromPoint(e.clientX, e.clientY); if(t && t.click) t.click(); } }, true); }
   ov.hidden = false; ov.classList.toggle('nohole', !el);
   const hole = ov.querySelector('.hole'), tip = ov.querySelector('.tip');
   tip.innerHTML = `<b>${nf82E(title)}</b><p>${nf82E(text)}</p>${foot || `<div class="tf"><span></span><button type="button" class="nf82-btn p" onclick="nf82SpotClose()">Got it</button></div>`}`;
@@ -221,6 +257,7 @@ function nf82ScrollTo(el){
   try{ window.scrollTo({top: Math.max(0, y), behavior: 'instant'}); }catch(e){ window.scrollTo(0, Math.max(0, y)); }
 }
 function nf82Spot(sel, title, text){
+  nf83CloseOverlays('spot');
   const el = nf82VisEl(sel); nf82ScrollTo(el);
   setTimeout(() => { nf82SpotDraw(el, title, text); document.addEventListener('keydown', nf82SpotKey, true); }, 60);
 }
@@ -240,7 +277,7 @@ function nf82TourSteps(){
   ];
 }
 function nf82TourStart(){
-  try{ if(typeof closeMobileSidebar === 'function') closeMobileSidebar(); }catch(e){}
+  nf83CloseOverlays('spot');
   NF82O.tour = nf82TourSteps(); NF82O.tourI = 0; document.addEventListener('keydown', nf82SpotKey, true); nf82TourStep(0);
 }
 function nf82TourStep(i, dir){

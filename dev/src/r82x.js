@@ -156,3 +156,87 @@ function nf82UtImport(inp){
   };
   rd.readAsText(f);
 }
+
+/* ===== Round 83: bringing records in, the easy way (type or paste first; photo or spreadsheet if they prefer) ===== */
+const NF83B = {tab: 'items', items: null, owed: null, paste: false, pasteText: ''};
+function nf83BringOpen(tab){
+  if(typeof nf83CloseOverlays === 'function') nf83CloseOverlays();
+  NF83B.tab = tab === 'utang' ? 'utang' : 'items'; NF83B.paste = false;
+  if(!NF83B.items) NF83B.items = [{n: '', p: '', q: ''}, {n: '', p: '', q: ''}, {n: '', p: '', q: ''}];
+  if(!NF83B.owed) NF83B.owed = [{n: '', a: '', d: 'd15'}, {n: '', a: '', d: 'd15'}];
+  slModal('nf83Bring', `<div class="sl-sheet-h"><b>Bring in your records</b><button class="sl-x" onclick="slClose('nf83Bring')" aria-label="Close">✕</button></div><div class="nf83-br" id="nf83BrBody"></div>`);
+  nf83BringPaint();
+}
+function nf83Grab(){
+  const b = document.getElementById('nf83BrBody'); if(!b) return;
+  b.querySelectorAll('[data-r]').forEach(inp => { const [list, i, f] = inp.dataset.r.split(':'); const arr = list === 'i' ? NF83B.items : NF83B.owed; if(arr[+i]) arr[+i][f] = inp.value; });
+  const pt = document.getElementById('nf83Paste'); if(pt) NF83B.pasteText = pt.value;
+}
+function nf83BringPaint(){
+  const b = document.getElementById('nf83BrBody'); if(!b) return; const t = NF83B.tab;
+  const tabs = `<div class="tb" role="tablist"><button type="button" role="tab" aria-selected="${t === 'items'}" class="${t === 'items' ? 'on' : ''}" onclick="nf83Grab(); NF83B.tab='items'; nf83BringPaint()">Your items and prices</button><button type="button" role="tab" aria-selected="${t === 'utang'}" class="${t === 'utang' ? 'on' : ''}" onclick="nf83Grab(); NF83B.tab='utang'; nf83BringPaint()">Who owes you</button></div>`;
+  const way = (ic, ti, d, fn) => `<button type="button" class="wy" onclick="${fn}"><span class="ic">${nf82Ic(ic, 20)}</span><span><b>${ti}</b><small>${d}</small></span></button>`;
+  let body = '';
+  if(t === 'items') body = `<p class="ld">Type a few items now. You can add the rest any time in Stock.</p>
+    <div class="rows it"><div class="rh"><span>Item name</span><span>Selling price</span><span>In stock</span><span></span></div>
+      ${NF83B.items.map((r, i) => `<div class="rr"><input data-r="i:${i}:n" value="${nf82E(r.n)}" placeholder="${['e.g. Portland Cement 40kg', 'e.g. Coke 1.5L', 'e.g. Rebar 10mm'][i % 3]}" aria-label="Item name ${i + 1}"><span class="pe"><i>₱</i><input data-r="i:${i}:p" value="${nf82E(r.p)}" inputmode="decimal" placeholder="0" aria-label="Selling price ${i + 1}"></span><input data-r="i:${i}:q" value="${nf82E(r.q)}" inputmode="numeric" placeholder="0" aria-label="How many ${i + 1}"><button type="button" class="rm" onclick="nf83Grab(); NF83B.items.splice(${i},1); if(!NF83B.items.length) NF83B.items.push({n:'',p:'',q:''}); nf83BringPaint()" aria-label="Remove row">${nf82Ic('<path d="M18 6 6 18M6 6l12 12"/>', 15)}</button></div>`).join('')}
+      <button type="button" class="nf82-lk add" onclick="nf83Grab(); NF83B.items.push({n:'',p:'',q:''}); nf83BringPaint()">+ Add another item</button></div>
+    <div class="ft"><span class="er" id="nf83BrErr" role="alert"></span><button type="button" class="nf82-btn p" onclick="nf83SaveItems()">Save items</button></div>
+    <div class="or"><span>Or, if it's easier</span></div>
+    <div class="ways">${way('<path d="M12 2 15 8.5 22 9.3 17 14 18.2 21 12 17.8 5.8 21 7 14 2 9.3 9 8.5z"/>', 'Start from a ready list', 'Common items for your kind of shop. Just fix the prices.', "slClose('nf83Bring'); nf26OpenStart('kind')")}
+      ${way('<path d="M14.5 4h-5L7.5 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3.5z"/><circle cx="12" cy="13" r="3"/>', 'Send us a photo', 'Snap your price list or notebook. The Nifti team types it in for you.', "nf83PhotoHelp('items')")}
+      ${way('<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/>', 'Have a spreadsheet?', 'Upload Excel or Google Sheets. Nifti reads the columns.', "slClose('nf83Bring'); if(typeof nf41ImportOpen === 'function') nf41ImportOpen(); else nf26OpenStart('file')")}</div>`;
+  else body = NF83B.paste ? `<p class="ld">Paste or type one customer per line, like you'd write in a notebook. Nifti finds the name, the amount and the date.</p>
+    <textarea id="nf83Paste" rows="7" placeholder="Aling Nena 1,500 Dec 15&#10;JM Builders 12400 30 days&#10;Kuya Ramil 640">${nf82E(NF83B.pasteText)}</textarea>
+    <div class="ft"><button type="button" class="nf82-btn s" onclick="nf83Grab(); NF83B.paste=false; nf83BringPaint()">Back</button><button type="button" class="nf82-btn p" onclick="nf83ReadPaste()">Read my list</button></div>`
+    : `<p class="ld">Who owes you from before Nifti? Add them here. They show up in Who owes you, with reminders on their pay-by date.</p>
+    <div class="rows ow"><div class="rh"><span>Customer</span><span>Amount owed</span><span>Pay by</span><span></span></div>
+      ${NF83B.owed.map((r, i) => `<div class="rr"><input data-r="o:${i}:n" value="${nf82E(r.n)}" placeholder="${['e.g. Aling Nena', 'e.g. JM Builders'][i % 2]}" aria-label="Customer ${i + 1}"><span class="pe"><i>₱</i><input data-r="o:${i}:a" value="${nf82E(r.a)}" inputmode="decimal" placeholder="0" aria-label="Amount ${i + 1}"></span><select data-r="o:${i}:d" aria-label="Pay by ${i + 1}">${[['d7', 'In 1 week'], ['d15', 'In 15 days'], ['d30', 'In 30 days'], ['payday', 'Next payday'], ['late', 'Already late']].map(([k, l]) => `<option value="${k}" ${r.d === k ? 'selected' : ''}>${l}</option>`).join('')}</select><button type="button" class="rm" onclick="nf83Grab(); NF83B.owed.splice(${i},1); if(!NF83B.owed.length) NF83B.owed.push({n:'',a:'',d:'d15'}); nf83BringPaint()" aria-label="Remove row">${nf82Ic('<path d="M18 6 6 18M6 6l12 12"/>', 15)}</button></div>`).join('')}
+      <button type="button" class="nf82-lk add" onclick="nf83Grab(); NF83B.owed.push({n:'',a:'',d:'d15'}); nf83BringPaint()">+ Add another customer</button></div>
+    <div class="ft"><span class="er" id="nf83BrErr" role="alert"></span><button type="button" class="nf82-btn p" onclick="nf83SaveOwed()">Save who owes you</button></div>
+    <div class="or"><span>Or, if it's easier</span></div>
+    <div class="ways">${way('<path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/>', 'Paste from your notes', 'Copy a list from your phone notes or Viber. One customer per line.', "nf83Grab(); NF83B.paste=true; nf83BringPaint(); setTimeout(() => { const t = document.getElementById('nf83Paste'); if(t) t.focus(); }, 30)")}
+      ${way('<path d="M14.5 4h-5L7.5 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3.5z"/><circle cx="12" cy="13" r="3"/>', 'Send us a photo', 'Snap your utang notebook. The Nifti team types it in for you.', "nf83PhotoHelp('utang')")}
+      ${way('<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/>', 'Have a spreadsheet?', 'Upload a CSV with name, amount and pay-by date.', "nf83CsvPick()")}</div>
+      <input type="file" id="nf83Csv" accept=".csv,text/csv,.txt" hidden onchange="nf82UtImport(this)">`;
+  b.innerHTML = tabs + body;
+}
+function nf83CsvPick(){ const i = document.getElementById('nf83Csv'); if(i) i.click(); }
+function nf83PhotoHelp(kind){ slClose('nf83Bring'); NF82X.text = kind === 'items' ? 'Please type in my items and prices from this photo.' : 'Please type in who owes me from this photo of my notebook.'; NF82X.shot = null; nf82FbOpen('question'); }
+function nf83DueOf(k){ return k === 'payday' ? nf82Payday(APP_TODAY) : k === 'late' ? APP_TODAY : addDaysIso(APP_TODAY, Number(String(k).slice(1)) || 15); }
+async function nf83SaveItems(){
+  nf83Grab(); const err = document.getElementById('nf83BrErr');
+  const rows = NF83B.items.map(r => ({n: String(r.n || '').trim().slice(0, 120), p: Number(String(r.p || '').replace(/[,₱\s]/g, '')) || 0, q: Math.max(0, parseInt(String(r.q || '').replace(/[,\s]/g, '')) || 0)})).filter(r => r.n);
+  if(!rows.length){ if(err) err.textContent = 'Type at least one item name.'; return; }
+  const dup = rows.find(r => (inventoryData || []).some(x => String(x.name).toLowerCase() === r.n.toLowerCase())); if(dup){ if(err) err.textContent = `${dup.n} is already in Stock.`; return; }
+  if(typeof requirePermission === 'function' && !requirePermission('editInventory')) return;
+  const made = rows.map(r => { const code = generateUniqueSkuCode('SKU-', inventoryData, 1000, 8999), rop = 5; const it = {id: newRecordId(), code, name: r.n, warehouse: (inventoryData[0] && inventoryData[0].warehouse) || 'main', onHand: r.q, rop, maxLevel: rop * 3, lot: null, exp: null, status: r.q <= rop ? 'critical' : 'healthy', supplier: 'Not set', daysLeft: 14, leadTime: 5, sellPrice: r.p || null}; try{ assignBarcodeIfMissing(it, '48'); }catch(e){} inventoryData.push(it); return it; });
+  try{ syncInventoryToSupabase(made); }catch(e){}
+  try{ scheduleNiftiSave(); }catch(e){}
+  NF83B.items = null; slClose('nf83Bring');
+  showToast(`${made.length} item${made.length === 1 ? '' : 's'} added to Stock.`, 'success');
+  try{ nf82StartPaint(true); }catch(e){}
+}
+async function nf83SaveOwed(){
+  nf83Grab(); const err = document.getElementById('nf83BrErr');
+  const rows = NF83B.owed.map(r => ({n: String(r.n || '').trim().slice(0, 120), a: Number(String(r.a || '').replace(/[,₱\s]/g, '')) || 0, d: nf83DueOf(r.d)})).filter(r => r.n || r.a);
+  if(!rows.length){ if(err) err.textContent = 'Add at least one customer and how much they owe.'; return; }
+  const bad = rows.find(r => r.n.length < 2 || !(r.a >= 1)); if(bad){ if(err) err.textContent = bad.n.length < 2 ? 'Each line needs the customer name.' : `How much does ${bad.n} owe?`; return; }
+  slClose('nf83Bring');
+  try{
+    if(typeof currentAppRole !== 'undefined' && currentAppRole !== 'supplier' && typeof switchAppRole === 'function') switchAppRole('supplier');
+    openOpeningBalances();
+    OB.rows = rows.map(r => obNewRow({buyerId: '', name: r.n, amount: String(r.a), due: r.d, dueKind: 'date'}));
+    obRender(); await obSave();
+    NF83B.owed = null; try{ nf82StartPaint(true); nf82Repaint(); }catch(e){}
+  }catch(e){ console.warn('nf83 owed', e); showToast("Couldn't save. Try again.", 'error'); }
+}
+function nf83ReadPaste(){
+  nf83Grab(); const lines = String(NF83B.pasteText || '').split(/\n+/).map(x => x.trim()).filter(Boolean);
+  const got = lines.map(l => { try{ return obParseLine(l); }catch(e){ return null; } }).filter(Boolean);
+  if(!got.length){ showToast('Write one customer per line, with a name and an amount. Example: Aling Nena 1500 Dec 15', 'warn'); return; }
+  NF83B.owed = got.map(g => ({n: g.name, a: g.amount, d: g.due ? 'pick:' + g.due : 'd15'}));
+  NF83B.owed.forEach(r => { if(r.d.startsWith('pick:')){ const dd = r.d.slice(5), days = daysBetween(APP_TODAY, dd); r.d = days <= 0 ? 'late' : days <= 8 ? 'd7' : days <= 20 ? 'd15' : 'd30'; } });
+  NF83B.paste = false; nf83BringPaint(); showToast(`${got.length} customer${got.length === 1 ? '' : 's'} read. Check them, then save.`, 'success');
+}
+nf82ImpOpen = function(){ nf83BringOpen('items'); };

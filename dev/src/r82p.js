@@ -494,3 +494,100 @@ stmtSubmitPaid = async function(){
   box.innerHTML = `<div class="share-box stmt-paid nf82-ok"><b>${nf82Ic('<path d="M20 6 9 17l-5-5"/>', 18)}Sent.</b> ${fmtPHP(data.applied)} is waiting for ${escapeHtml(d.supplier.name)} to confirm.${data.extra >= 1 ? ` ${fmtPHP(data.extra)} was more than what's due, so message them about it.` : ''}${proof ? ' Your screenshot is attached.' : ''} This page updates once they do.</div>`;
 };
 window.stmtSubmitPaid = stmtSubmitPaid;
+
+/* ===== Round 83: one simple "Who owes you" (Home and Getting paid) =====
+   Everyone who owes you in one list: late first, then due soon, then later. Three tiles on top filter it.
+   Each row: name, one clear status, the amount, one main button. Tap the row for the bills and everything else. */
+NF82G.f = NF82G.f || 'all'; NF82G.open = NF82G.open || {};
+function nf83Rows(){
+  let promises = []; try{ promises = (promisesCache || []).filter(p => p.status === 'open'); }catch(e){}
+  return nf82Custs().filter(g => g.total >= 1).map(g => {
+    const ml = g.maxLate, sent = g.src === 'ut' ? nf82UtToday(g) : NF82G['sent:' + g.key] === APP_TODAY;
+    const pr = g.src === 'po' ? promises.find(p => p.buyer_business_id === g.key) : null;
+    const bucket = ml != null && ml > 0 ? 'late' : ml != null && ml >= -7 ? 'soon' : 'later';
+    return Object.assign(g, {sent, pr, bucket, score: g.total * Math.max(1, (ml || 0) + 1)});
+  }).sort((a, b) => ({late: 0, soon: 1, later: 2}[a.bucket] - {late: 0, soon: 1, later: 2}[b.bucket]) || (a.bucket === 'later' ? String(a.nextDue || '9').localeCompare(String(b.nextDue || '9')) : b.score - a.score));
+}
+function nf83Status(g){
+  if(g.pending >= 1) return `<span class="s b">Says they paid ${nf82P(Math.min(g.pending, g.total))}</span>`;
+  if(g.pr && g.pr.promised_date >= APP_TODAY) return `<span class="s g">Promised ${nf82P(g.pr.amount)} by ${nf82E(nf82Day(g.pr.promised_date))}</span>`;
+  if(g.maxLate == null) return '<span class="s">No due date</span>';
+  if(g.maxLate > 0) return `<span class="s r">${g.maxLate} day${g.maxLate === 1 ? '' : 's'} late</span>`;
+  if(g.maxLate === 0) return '<span class="s a">Due today</span>';
+  return `<span class="s">Due ${nf82E(nf82Day(g.nextDue || addDaysIso(APP_TODAY, -g.maxLate)))}</span>`;
+}
+function nf83Main(g){
+  if(g.pending >= 1) return `<button type="button" class="nf82-btn p" onclick="event.stopPropagation(); ${g.src === 'po' ? `nf77GoConfirm('${g.key}')` : `nf83GoConf()`}">${nf82Ic('<path d="M20 6 9 17l-5-5"/>', 16)}Check & confirm</button>`;
+  if(g.bucket === 'later') return `<button type="button" class="nf82-btn s" onclick="event.stopPropagation(); nf83Open('${g.id}', 'pay')">Record payment</button>`;
+  return `<button type="button" class="nf82-btn ${g.sent ? 's' : 'p'}" onclick="event.stopPropagation(); nf82Remind('${g.id}')">${nf82Ic('<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>', 16)}${g.sent ? 'Remind again' : 'Remind'}</button>`;
+}
+function nf83GoConf(){ const c = document.getElementById('nf77Conf'); if(c){ c.scrollIntoView({behavior: 'smooth', block: 'start'}); } else go('collections'); }
+function nf83Bills(g){
+  return `<div class="bl" role="table"><div class="bh" role="row"><span>Bill</span><span>Date</span><span>Due</span><span>Owes</span></div>${g.items.slice().sort((a, b) => String(a.due || '9').localeCompare(String(b.due || '9'))).map(x => {
+    const what = x.src === 'ut' ? ((x.sale && x.sale.lines || []).slice(0, 2).map(l => l.qty + ' × ' + l.product).join(', ') || 'Shop utang') : 'Order ' + String(x.po.poNumber || '').replace(/^PO-\d{4}-/, '');
+    return `<div class="br" role="row"><span class="w">${nf82E(what)}</span><span>${nf82E(nf82Day(x.date))}</span><span class="${x.late > 0 ? 'r' : ''}">${x.due ? nf82E(nf82Day(x.due)) + (x.late > 0 ? ` · ${x.late}d late` : '') : '—'}</span><b>${nf82P(x.bal)}</b></div>`; }).join('')}</div>`;
+}
+function nf83Row(g){
+  const o = NF82G.open[g.id], kind = g.src === 'ut' ? 'Shop utang' : 'Delivery order' + (g.items.length === 1 ? '' : 's');
+  const pay = g.src === 'ut' ? nf79RpHtml('uc:' + g.id, Math.max(0, g.total - (g.pending || 0)), {utang: true}) : nf79RpHtml(g.key, Math.max(0, g.total - (g.pending || 0)));
+  return `<div class="wr nf79-rph ${g.bucket}${o ? ' open' : ''}" data-g="${g.id}">
+    <div class="hd" role="button" tabindex="0" aria-expanded="${!!o}" onclick="nf83Open('${g.id}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); nf83Open('${g.id}');}">
+      <span class="av" aria-hidden="true">${nf82E(nf82Initials(g.name))}</span>
+      <span class="nm"><b>${nf82E(g.name)}</b><small>${nf83Status(g)}<span class="k">${kind}${g.items.length > 1 ? ' · ' + g.items.length + ' bills' : ''}${g.sent ? ' · reminded today' : ''}</span></small></span>
+      <b class="am">${nf82P(g.total)}</b>
+      <span class="ac">${nf83Main(g)}</span>
+      <span class="cv" aria-hidden="true">${nf82Ic('<path d="m9 18 6-6-6-6"/>', 18)}</span>
+    </div>
+    ${o ? `<div class="dt">${nf83Bills(g)}
+      <div class="mo"><button type="button" class="nf82-btn s" onclick="nf79RpOpen(this)">${nf82Ic('<path d="M12 5v14M5 12h14"/>', 15)}Record payment</button><button type="button" class="nf82-btn s" onclick="nf82Remind('${g.id}')">${nf82Ic('<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>', 15)}Send pay link</button><button type="button" class="nf82-btn s" onclick="nf83Qr('${g.id}')">${nf82Ic('<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM20 14v.01M17 20h4v-3"/>', 15)}Show QR to scan</button>${g.src === 'po' ? (g.pr ? `<button type="button" class="nf82-lk" onclick="colCancelPromise('${g.pr.id}')">Cancel promise</button>` : `<button type="button" class="nf82-lk" onclick="colPromise('${g.key}')">They promised to pay</button>`) : ''}</div>
+      ${pay}</div>` : ''}
+  </div>`;
+}
+function nf83Open(id, what){ NF82G.open[id] = what === 'pay' ? true : !NF82G.open[id]; nf82Repaint(); if(what === 'pay') setTimeout(() => { const r = document.querySelector(`.nf83-who .wr[data-g="${id}"] .nf79-rp`); if(r){ r.classList.add('open'); const i = r.querySelector('input'); if(i){ i.focus(); i.select(); } } }, 60); }
+function nf83WhoHtml(where){
+  const rows = nf83Rows(), home = where === 'home';
+  const sum = b => rows.filter(g => b === 'all' || g.bucket === b), tot = b => sum(b).reduce((a, g) => a + g.total, 0);
+  const f = home ? 'all' : NF82G.f, list = sum(f).slice(0, home ? 5 : 999);
+  const tile = (k, l, cls) => { const n = sum(k).length; return `<button type="button" class="tl ${cls}${!home && f === k ? ' on' : ''}" ${home ? `onclick="NF82G.f='${k}'; go('collections')"` : `onclick="NF82G.f = NF82G.f === '${k}' ? 'all' : '${k}'; nf82Repaint()"`} aria-pressed="${!home && f === k}"><small>${l}</small><b>${nf82P(tot(k))}</b><span>${n} customer${n === 1 ? '' : 's'}</span></button>`; };
+  let po = 0, ut = 0; rows.forEach(g => { if(g.src === 'po') po += g.total; else ut += g.total; });
+  return `<section class="panel-card nf83-who" aria-labelledby="nf83WhoH${where}">
+    <div class="top"><span class="ic" aria-hidden="true">${nf82Ic('<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>', 22)}</span>
+      <div class="tt"><h2 id="nf83WhoH${where}">Who owes you</h2><p><b>${nf82P(tot('all'))}</b> in utang and unpaid bills${po && ut ? ` · Shop utang ${nf82P(ut)} · Delivery orders ${nf82P(po)}` : ''}</p></div>${nf82DTPHtml()}</div>
+    ${rows.length ? `<div class="tls">${tile('late', 'Late', 'r')}${tile('soon', 'Due in 7 days', 'a')}${tile('later', 'Not due yet', 'g')}</div>
+      <div class="ls">${list.length ? list.map(nf83Row).join('') : '<p class="em">Nobody in this group. Tap the tile again to see everyone.</p>'}</div>`
+      : `<div class="em">${nf82Ic('<path d="M20 6 9 17l-5-5"/>', 22)}<span>Nobody owes you right now. Utang and unpaid orders show up here.</span></div>`}
+    <div class="ft">${home ? `<button type="button" class="nf82-lk" onclick="go('collections')">${rows.length > list.length ? `See all ${rows.length} customers ›` : 'Open Getting paid ›'}</button>` : `<button type="button" class="nf82-lk" onclick="go('sales'); setTimeout(() => { const u = document.querySelector('#page-sales .nf80-ut'); if(u) u.scrollIntoView({behavior: 'smooth', block: 'start'}); }, 600)">Paid off and history ›</button>`}<button type="button" class="nf82-btn s" onclick="nf83BringOpen('utang')">${nf82Ic('<path d="M12 5v14M5 12h14"/>', 15)}Someone owes me</button></div>
+  </section>`;
+}
+/* pay link + QR: for customers who aren't on Nifti, the link goes in the Viber/SMS message; at the counter they can scan this QR */
+async function nf83Qr(id){
+  const g = NF82G.reg[id]; if(!g) return;
+  let link = null;
+  if(g.src === 'ut') link = await nf82UtLink(g.name);
+  else { try{ if(myBusiness){ const { data } = await sb.rpc('create_statement_link', {p_buyer: g.key}); if(data) link = appBaseUrl() + '#st/' + data; } else link = appBaseUrl() + '#st/demo'; }catch(e){} }
+  if(!link){ showToast("Couldn't make the link. Check your internet.", 'warn'); return; }
+  slModal('nf83Qr', `<div class="sl-sheet-h"><b>${nf82E(g.name)}'s pay link</b><button class="sl-x" onclick="slClose('nf83Qr')" aria-label="Close">✕</button></div>
+    <div class="nf83-qr"><p>At the counter? Let them scan this with their phone camera. They see what they owe and how to pay you, no app or account needed.</p><div class="qb" id="nf83QrBox" aria-label="QR code for the pay link"></div><div class="ln"><span>${nf82E(link)}</span></div>
+      <div class="ac"><button type="button" class="nf82-btn s" onclick="nf33RCopy(${JSON.stringify(link).replace(/"/g, '&quot;')}).then(ok => showToast(ok ? 'Link copied. Paste it in Viber or a text.' : 'Copy the link above.', ok ? 'success' : 'warn'))">Copy link</button><button type="button" class="nf82-btn p" onclick="slClose('nf83Qr'); nf82Remind('${g.id}')">Send in a message</button></div></div>`);
+  try{ if(!window.QRCode) await nf82LoadScript2('https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js', () => window.QRCode); const box = document.getElementById('nf83QrBox'); if(box && window.QRCode) new QRCode(box, {text: link, width: 220, height: 220, colorDark: '#0B0F14', colorLight: '#FFFFFF', correctLevel: QRCode.CorrectLevel.M}); }catch(e){ const box = document.getElementById('nf83QrBox'); if(box) box.innerHTML = '<p>The QR code needs internet. Copy the link instead.</p>'; }
+}
+function nf82LoadScript2(src, ready){ return new Promise((res, rej) => { if(ready()) return res(); const s = document.createElement('script'); s.src = src; s.async = true; s.onload = () => res(); s.onerror = rej; document.head.appendChild(s); }); }
+
+/* Getting paid: Payments to confirm, then Who owes you, then settings. Nothing repeated. */
+if(typeof nf77CollHtml === 'function' && !nf77CollHtml._nf83){
+  const _c83 = nf77CollHtml;
+  nf77CollHtml = function(){
+    let html = _c83.apply(this, arguments);
+    try{
+      if(nf82Boss()){
+        html = html.replace(/<div class="nf82-top">[\s\S]*?<\/section><\/div>/, '');
+        const conf = (html.match(/<section class="nf77-conf nf78-conf" id="nf77Conf">[\s\S]*?<\/section>(?=<section|<div class="nf77-rem|<section class="panel-card nf82-set|$)/) || [''])[0];
+        const set = (html.match(/<section class="panel-card nf82-set[\s\S]*$/) || [''])[0];
+        html = conf + nf83WhoHtml('gp') + set;
+      }
+    }catch(e){ console.warn('nf83 coll', e); }
+    return html;
+  };
+  nf77CollHtml._nf83 = true; window.nf77CollHtml = nf77CollHtml;
+}
+nf82CollectHtml = function(where){ return nf83WhoHtml(where); };

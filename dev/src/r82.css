@@ -76,7 +76,20 @@ html body #view-app #page-expenses tr.nf82-need .bk-dim{display:inline-flex !imp
 
 .nf81-ct .th, .nf81-ct .rw, .nf81-ct .tt{grid-template-columns:minmax(0,1fr) 100px 104px 92px;}
 @media (max-width:560px){ .nf81-ct .th, .nf81-ct .rw, .nf81-ct .tt{grid-template-columns:repeat(3, minmax(0,1fr)) !important;} }
-/* landing: Taglish promise */
-#view-index .nf82-tl{display:inline-flex;align-items:center;gap:9px;margin:14px 0 6px;padding:9px 16px;border-radius:999px;background:#E7F3EC;border:1.5px solid #B7DCC5;color:#14532D;font-weight:800;font-size:17px;line-height:1.35;}
-#view-index .nf82-tl svg{flex:none;}
-@media (max-width:640px){ #view-index .nf82-tl{font-size:15px;padding:8px 13px;border-radius:14px;} }
+/* cost table: roomier, centred month columns, black totals */
+.nf81-ct .th, .nf81-ct .rw, .nf81-ct .tt{grid-template-columns:minmax(0,1fr) 104px 112px 100px !important;column-gap:14px !important;}
+.nf81-ct .th span:not(:first-child){text-align:center !important;}
+.nf81-ct .th span.pm, .nf81-ct .th span.cm{align-items:center !important;}
+.nf81-ct .rw > .v, .nf81-ct .tt > .v{text-align:center !important;justify-content:center !important;}
+.nf81-ct .c{align-items:center !important;text-align:center !important;}
+.nf81-ct .th span.pm{background:#F5F7FA;border:1.5px dashed #98A2B3;border-bottom:0;border-radius:10px 10px 0 0;padding:6px 8px;margin:-6px 0 -8px;}
+.nf81-ct .rw > .v:nth-child(2), .nf81-ct .tt > .v:nth-child(2){background:#F8F9FB;align-self:stretch;display:flex;align-items:center;margin:-10px 0;padding:10px 6px;border-left:1.5px dashed #98A2B3;border-right:1.5px dashed #98A2B3;}
+.nf81-ct .tt > .v:nth-child(2){margin:-12px 0 -4px;padding:12px 6px 8px;border-bottom:1.5px dashed #98A2B3;border-radius:0 0 10px 10px;}
+html body .nf81-ct .tt .k, html body .nf81-ct .tt .v, html body .nf81-ct .rw .v{color:#0B0F14 !important;}
+html body .nf81-ct .tt > .v:nth-child(2){font-weight:800 !important;}
+html body .nf81-ct .c.up, html body .nf81-ct .c.up *{color:#B42318 !important;} html body .nf81-ct .c.dn, html body .nf81-ct .c.dn *{color:#067647 !important;}
+@media (max-width:560px){ .nf81-ct .th span.pm{margin:0;border-radius:8px;border-bottom:1.5px dashed #98A2B3;} .nf81-ct .rw > .v:nth-child(2), .nf81-ct .tt > .v:nth-child(2){margin:0;padding:4px 6px;border:1.5px dashed #98A2B3;border-radius:8px;} }
+/* dark buttons always carry white text and icons */
+html body .nf82-btn.p, html body .nf82-btn.p *, html[data-ty] body #view-app .nf82-btn.p, html[data-ty] body #view-app .nf82-btn.p *, html[data-ty] body #view-app #mhHome .nf82-btn.p, html[data-ty] body #view-app #mhHome .nf82-btn.p *{color:#FFFFFF !important;}
+html[data-ty] body #view-app .nf53-btn.fresh, html[data-ty] body #view-app .nf53-btn.fresh *, html[data-ty] body #view-app #mhHome .nf53-btn.fresh em{color:#FFFFFF !important;}
+html body .nf83-lt, html body .nf83-lt *, html[data-ty] body #view-app .nf83-lt, html[data-ty] body #view-app .nf83-lt *, html[data-ty] body #view-app #mhHome .nf83-lt, html[data-ty] body #view-app #mhHome .nf83-lt *{color:#FFFFFF !important;}

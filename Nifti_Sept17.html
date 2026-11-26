@@ -15060,10 +15060,23 @@ html body #view-app #page-expenses tr.nf82-need .bk-dim{display:inline-flex !imp
 
 .nf81-ct .th, .nf81-ct .rw, .nf81-ct .tt{grid-template-columns:minmax(0,1fr) 100px 104px 92px;}
 @media (max-width:560px){ .nf81-ct .th, .nf81-ct .rw, .nf81-ct .tt{grid-template-columns:repeat(3, minmax(0,1fr)) !important;} }
-/* landing: Taglish promise */
-#view-index .nf82-tl{display:inline-flex;align-items:center;gap:9px;margin:14px 0 6px;padding:9px 16px;border-radius:999px;background:#E7F3EC;border:1.5px solid #B7DCC5;color:#14532D;font-weight:800;font-size:17px;line-height:1.35;}
-#view-index .nf82-tl svg{flex:none;}
-@media (max-width:640px){ #view-index .nf82-tl{font-size:15px;padding:8px 13px;border-radius:14px;} }
+/* cost table: roomier, centred month columns, black totals */
+.nf81-ct .th, .nf81-ct .rw, .nf81-ct .tt{grid-template-columns:minmax(0,1fr) 104px 112px 100px !important;column-gap:14px !important;}
+.nf81-ct .th span:not(:first-child){text-align:center !important;}
+.nf81-ct .th span.pm, .nf81-ct .th span.cm{align-items:center !important;}
+.nf81-ct .rw > .v, .nf81-ct .tt > .v{text-align:center !important;justify-content:center !important;}
+.nf81-ct .c{align-items:center !important;text-align:center !important;}
+.nf81-ct .th span.pm{background:#F5F7FA;border:1.5px dashed #98A2B3;border-bottom:0;border-radius:10px 10px 0 0;padding:6px 8px;margin:-6px 0 -8px;}
+.nf81-ct .rw > .v:nth-child(2), .nf81-ct .tt > .v:nth-child(2){background:#F8F9FB;align-self:stretch;display:flex;align-items:center;margin:-10px 0;padding:10px 6px;border-left:1.5px dashed #98A2B3;border-right:1.5px dashed #98A2B3;}
+.nf81-ct .tt > .v:nth-child(2){margin:-12px 0 -4px;padding:12px 6px 8px;border-bottom:1.5px dashed #98A2B3;border-radius:0 0 10px 10px;}
+html body .nf81-ct .tt .k, html body .nf81-ct .tt .v, html body .nf81-ct .rw .v{color:#0B0F14 !important;}
+html body .nf81-ct .tt > .v:nth-child(2){font-weight:800 !important;}
+html body .nf81-ct .c.up, html body .nf81-ct .c.up *{color:#B42318 !important;} html body .nf81-ct .c.dn, html body .nf81-ct .c.dn *{color:#067647 !important;}
+@media (max-width:560px){ .nf81-ct .th span.pm{margin:0;border-radius:8px;border-bottom:1.5px dashed #98A2B3;} .nf81-ct .rw > .v:nth-child(2), .nf81-ct .tt > .v:nth-child(2){margin:0;padding:4px 6px;border:1.5px dashed #98A2B3;border-radius:8px;} }
+/* dark buttons always carry white text and icons */
+html body .nf82-btn.p, html body .nf82-btn.p *, html[data-ty] body #view-app .nf82-btn.p, html[data-ty] body #view-app .nf82-btn.p *, html[data-ty] body #view-app #mhHome .nf82-btn.p, html[data-ty] body #view-app #mhHome .nf82-btn.p *{color:#FFFFFF !important;}
+html[data-ty] body #view-app .nf53-btn.fresh, html[data-ty] body #view-app .nf53-btn.fresh *, html[data-ty] body #view-app #mhHome .nf53-btn.fresh em{color:#FFFFFF !important;}
+html body .nf83-lt, html body .nf83-lt *, html[data-ty] body #view-app .nf83-lt, html[data-ty] body #view-app .nf83-lt *, html[data-ty] body #view-app #mhHome .nf83-lt, html[data-ty] body #view-app #mhHome .nf83-lt *{color:#FFFFFF !important;}
 
 /* ===== Round 82 · Get paid faster ===== */
 .nf82-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:42px;padding:9px 16px;border-radius:11px;font:inherit;font-size:16px;font-weight:800;cursor:pointer;border:1.5px solid transparent;white-space:nowrap;}
@@ -15238,8 +15251,9 @@ html body .nf82-ov .ty small{font-size:14px !important;color:#0B0F14 !important;
 .nf82-ov .ty .ck, .nf82-ov .gl .ck{width:24px;height:24px;border-radius:50%;border:1.5px solid #D0D5DD;display:grid;place-items:center;color:transparent;flex:none;margin-left:auto;}
 .nf82-ov .ty.on .ck, .nf82-ov .gl.on .ck{background:#1F6B45;border-color:#1F6B45;color:#FFFFFF;}
 .nf82-ov .goals{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;}
-.nf82-ov .gl{display:flex;flex-direction:row-reverse;justify-content:flex-end;align-items:center;gap:10px;padding:13px 14px;border-radius:14px;border:1.5px solid #E4E7EC;background:#FFFFFF;font:inherit;font-size:16px;font-weight:700;color:#0B0F14;text-align:left;cursor:pointer;min-height:56px;}
-.nf82-ov .gl .ck{margin-left:0;}
+.nf82-ov .gl{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px 14px 13px 16px;border-radius:14px;border:1.5px solid #E4E7EC;background:#FFFFFF;font:inherit;font-size:16px;font-weight:700;color:#0B0F14;text-align:left;cursor:pointer;min-height:56px;}
+.nf82-ov .gl .lb{flex:1;min-width:0;}
+.nf82-ov .gl .ck{margin-left:auto;}
 .nf82-ov .gl.on{border-color:#1F6B45;background:#F3FAF5;}
 .nf82-ov .ft{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:20px;padding:16px 0 2px;border-top:1px solid #EEF0F2;position:sticky;bottom:-22px;background:#FFFFFF;z-index:2;}
 .nf82-ov .card:focus, .nf82-ov h2:focus{outline:none;}
@@ -15288,7 +15302,8 @@ html body .nf82-start .tt h2{margin:0;font-size:24px !important;font-weight:900 
 .nf82-start .tt p{margin:3px 0 0;font-size:16px;color:#0B0F14;line-height:1.4;}
 .nf82-start .ha{display:flex;align-items:center;gap:10px;}
 .nf82-start .st{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;gap:6px;}
-.nf82-start .st li{display:grid;grid-template-columns:32px minmax(0,1fr) 64px 118px;gap:12px;align-items:center;padding:10px 12px;border-radius:13px;border:1.5px solid #EEF0F2;background:#FFFFFF;}
+.nf82-start .st li{display:grid;grid-template-columns:32px minmax(0,1fr) 60px 104px 34px;grid-template-areas:"n w m b x" "f f f f f";gap:0 12px;align-items:center;padding:10px 10px 10px 12px;border-radius:13px;border:1.5px solid #EEF0F2;background:#FFFFFF;}
+.nf82-start .st li > .n{grid-area:n;} .nf82-start .st li > .w{grid-area:w;} .nf82-start .st li > .m{grid-area:m;} .nf82-start .st li > .nf82-btn{grid-area:b;} .nf82-start .st li > .sk{grid-area:x;} .nf82-start .st li > .pf{grid-area:f;}
 .nf82-start .st li.next{border-color:#9DCBB0;background:#F6FBF7;}
 .nf82-start .st li.done{background:#FAFBFA;}
 .nf82-start .st .n{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:14px;background:#F2F4F7;color:#0B0F14;}
@@ -15308,7 +15323,7 @@ html body .nf82-start .st .w small{font-size:14px !important;color:#0B0F14 !impo
   .nf82-start .ha{width:100%;justify-content:space-between;}
 }
 /* spotlight */
-#nf82Spot{position:fixed;inset:0;z-index:9600;pointer-events:none;}
+#nf82Spot{position:fixed;inset:0;z-index:9600;pointer-events:auto;cursor:default;}
 #nf82Spot[hidden]{display:none !important;}
 #nf82Spot .hole{position:fixed;border-radius:14px;box-shadow:0 0 0 9999px rgba(11,15,20,.55),0 0 0 3px #FFFFFF inset;}
 #nf82Spot.nohole{background:rgba(11,15,20,.55);}
@@ -15380,6 +15395,206 @@ html body .offline-banner.nf82-ob.nf82-up{background:#E7F3EC;border-bottom-color
 .offline-banner.nf82-ob b{font-weight:900;}
 .offline-banner.nf82-ob em{font-style:normal;font-weight:800;margin-left:6px;padding:1px 8px;border-radius:999px;background:rgba(255,255,255,.7);white-space:nowrap;}
 
+/* welcome setup header: dots, step, close */
+.nf82-ov .top{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+.nf82-ov .top .dots{margin:0;} .nf82-ov .top .st{font-size:14px;font-weight:800;color:#0B0F14;}
+.nf82-ov .top .x{margin-left:auto;width:40px;height:40px;border-radius:50%;border:0;background:#F2F4F7;color:#0B0F14;display:grid;place-items:center;cursor:pointer;}
+.nf82-ov .top .x:hover{background:#E4E7EC;}
+.nf82-ov .done p{max-width:520px;margin-left:auto;margin-right:auto;}
+
+/* Start here: close, skip, inline GCash form */
+.nf82-start .cx, .nf82-start .sk{width:34px;height:34px;border-radius:50%;border:0;background:transparent;color:#0B0F14;display:grid;place-items:center;cursor:pointer;}
+.nf82-start .cx{width:40px;height:40px;background:#F2F4F7;} .nf82-start .cx:hover, .nf82-start .sk:hover{background:#E4E7EC;}
+.nf82-start .st li.open{border-color:#9DCBB0;background:#F6FBF7;}
+.nf82-start .pf{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 12px;margin-top:12px;padding-top:12px;border-top:1px dashed #CFE3D6;}
+.nf82-start .pf label{display:flex;flex-direction:column;gap:5px;font-size:14px;font-weight:800;color:#0B0F14;}
+.nf82-start .pf input{min-height:46px;border:1.5px solid #D0D5DD;border-radius:12px;padding:0 12px;font:inherit;font-size:16px;color:#0B0F14;background:#FFFFFF;}
+.nf82-start .pf input:focus{outline:none;border-color:#1F6B45;box-shadow:0 0 0 3px rgba(31,107,69,.15);}
+.nf82-start .pf .pa{grid-column:1 / -1;display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.nf82-start .pf .pe{grid-column:1 / -1;margin:0;color:#B42318;font-weight:700;font-size:14px;min-height:0;}
+.nf82-start .pf .pe:empty{display:none;}
+.nf82-start .skl{margin:12px 2px 0;font-size:14px;color:#0B0F14;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;}
+.nf82-start .skl span{display:inline-flex;align-items:center;gap:6px;}
+@media (max-width:640px){
+  .nf82-start .st li{grid-template-columns:30px minmax(0,1fr) 34px;grid-template-areas:"n w x" "n m m" "b b b" "f f f";row-gap:6px;}
+  .nf82-start .st li > .m{text-align:left;} .nf82-start .st li > .nf82-btn{margin-top:4px;}
+  .nf82-start .pf{grid-template-columns:1fr;}
+}
+
+
+/* ===== Round 83 ===== */
+/* Bring in your records */
+.nf83-br .tb{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:5px;border-radius:14px;background:#F2F4F7;margin-bottom:14px;}
+.nf83-br .tb button{border:0;border-radius:10px;background:transparent;padding:10px 12px;font:inherit;font-size:16px;font-weight:800;color:#0B0F14;cursor:pointer;min-height:44px;}
+.nf83-br .tb button.on{background:#FFFFFF;box-shadow:0 1px 3px rgba(11,15,20,.12);color:#14532D;}
+.nf83-br .ld{margin:0 0 12px;font-size:16px;line-height:1.45;color:#0B0F14;}
+.nf83-br .rows{display:flex;flex-direction:column;gap:8px;}
+.nf83-br .rh, .nf83-br .rr{display:grid;gap:10px;align-items:center;}
+.nf83-br .it .rh, .nf83-br .it .rr{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr) minmax(0,.9fr) 34px;}
+.nf83-br .ow .rh, .nf83-br .ow .rr{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr) 34px;}
+.nf83-br .rh span{font-size:14px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#0B0F14;}
+.nf83-br .rr input, .nf83-br .rr select{width:100%;box-sizing:border-box;min-height:46px;border:1.5px solid #D0D5DD;border-radius:12px;padding:0 12px;font:inherit;font-size:16px;color:#0B0F14;background:#FFFFFF;}
+.nf83-br .rr input:focus, .nf83-br .rr select:focus, .nf83-br textarea:focus{outline:none;border-color:#1F6B45;box-shadow:0 0 0 3px rgba(31,107,69,.15);}
+.nf83-br .rr .pe{display:flex;align-items:center;border:1.5px solid #D0D5DD;border-radius:12px;background:#FFFFFF;padding-left:12px;min-height:46px;box-sizing:border-box;}
+.nf83-br .rr .pe:focus-within{border-color:#1F6B45;box-shadow:0 0 0 3px rgba(31,107,69,.15);}
+.nf83-br .rr .pe i{font-style:normal;font-weight:800;color:#0B0F14;}
+.nf83-br .rr .pe input{border:0 !important;box-shadow:none !important;min-height:42px;padding-left:6px;}
+.nf83-br .rm{width:34px;height:34px;border-radius:50%;border:0;background:transparent;color:#0B0F14;display:grid;place-items:center;cursor:pointer;}
+.nf83-br .rm:hover{background:#F2F4F7;}
+.nf83-br .add{align-self:flex-start;margin-top:2px;}
+.nf83-br textarea{width:100%;box-sizing:border-box;border:1.5px solid #D0D5DD;border-radius:12px;padding:12px;font:inherit;font-size:16px;line-height:1.5;color:#0B0F14;resize:vertical;}
+.nf83-br .ft{display:flex;justify-content:flex-end;align-items:center;gap:12px;margin-top:14px;}
+.nf83-br .ft .er{margin-right:auto;color:#B42318;font-weight:700;font-size:14px;}
+.nf83-br .or{display:flex;align-items:center;gap:10px;margin:18px 0 10px;font-size:14px;font-weight:800;color:#0B0F14;}
+.nf83-br .or::before, .nf83-br .or::after{content:'';flex:1;height:1px;background:#E4E7EC;}
+.nf83-br .ways{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;}
+.nf83-br .wy{display:flex;align-items:flex-start;gap:10px;padding:12px;border-radius:14px;border:1.5px solid #E4E7EC;background:#FFFFFF;font:inherit;color:#0B0F14;text-align:left;cursor:pointer;}
+.nf83-br .wy:hover{border-color:#9DCBB0;background:#FAFDFB;}
+.nf83-br .wy .ic{width:38px;height:38px;border-radius:11px;background:#E7F3EC;color:#14532D;display:grid;place-items:center;flex:none;}
+.nf83-br .wy b{display:block;font-size:16px;font-weight:800;margin-bottom:2px;}
+html body .nf83-br .wy small{font-size:14px !important;line-height:1.35;color:#0B0F14 !important;font-weight:500;}
+@media (max-width:640px){
+  .nf83-br .rh{display:none;}
+  .nf83-br .it .rr, .nf83-br .ow .rr{grid-template-columns:1fr 1fr 34px;grid-template-areas:"a a x" "b c c";padding:10px;border:1px solid #EEF0F2;border-radius:14px;}
+  .nf83-br .rr > :nth-child(1){grid-area:a;} .nf83-br .rr > :nth-child(2){grid-area:b;} .nf83-br .rr > :nth-child(3){grid-area:c;} .nf83-br .rr > .rm{grid-area:x;}
+  .nf83-br .ways{grid-template-columns:1fr;}
+}
+.nf83-br .ways{grid-template-columns:1fr !important;gap:8px;}
+.nf83-br .wy{align-items:center;padding:12px 14px;}
+.nf83-br .wy > span:last-child{display:flex;flex-direction:column;}
+/* Who owes you (Home + Getting paid) */
+#page-collections .nf-half-supplier #nf76TotS{display:none !important;}
+.nf83-who{border:1.5px solid #DCE5DF !important;padding:18px 18px 14px !important;container-type:inline-size;}
+.nf83-who .top{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:14px;}
+.nf83-who .top .ic{width:48px;height:48px;border-radius:14px;background:#E7F3EC;color:#14532D;display:grid;place-items:center;flex:none;}
+.nf83-who .tt{flex:1;min-width:220px;}
+html body .nf83-who .tt h2{margin:0;font-size:24px !important;font-weight:900 !important;color:#0B0F14 !important;letter-spacing:0 !important;text-transform:none !important;}
+.nf83-who .tt p{margin:3px 0 0;font-size:16px;color:#0B0F14;line-height:1.4;} .nf83-who .tt p b{font-size:18px;}
+.nf83-who .dtp{display:flex;flex-direction:column;align-items:flex-end;text-align:right;gap:1px;padding:8px 14px;border-radius:12px;background:#F8FAF9;border:1px solid #E4E7EC;}
+html body .nf83-who .dtp small{font-size:14px !important;font-weight:900;letter-spacing:.05em;text-transform:uppercase;color:#0B0F14 !important;}
+.nf83-who .dtp b{font-size:24px;font-weight:900;color:#0B0F14;line-height:1.15;}
+.nf83-who .dtp em{font-style:normal;font-size:14px;font-weight:700;color:#0B0F14;}
+html body .nf83-who .dtp em.g{color:#067647 !important;} html body .nf83-who .dtp em.r{color:#B42318 !important;}
+.nf83-who .tls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:14px;}
+.nf83-who .tl{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:12px 14px 12px 18px;border-radius:14px;border:1.5px solid #E4E7EC;background:#FFFFFF;font:inherit;color:#0B0F14;text-align:left;cursor:pointer;overflow:hidden;}
+.nf83-who .tl::before{content:'';position:absolute;left:0;top:0;bottom:0;width:5px;background:#98A2B3;}
+.nf83-who .tl.r::before{background:#D92D20;} .nf83-who .tl.a::before{background:#F79009;} .nf83-who .tl.g::before{background:#15803D;}
+.nf83-who .tl:hover{border-color:#B9C3BD;}
+.nf83-who .tl.on.r{background:#FFF6F5;border-color:#F4C7C2;} .nf83-who .tl.on.a{background:#FFFAEB;border-color:#FEDF89;} .nf83-who .tl.on.g{background:#F3FAF5;border-color:#B7DCC5;}
+html body .nf83-who .tl small{font-size:14px !important;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#0B0F14 !important;}
+html body .nf83-who .tl.r small{color:#B42318 !important;}
+.nf83-who .tl b{font-size:24px;font-weight:900;font-variant-numeric:tabular-nums;line-height:1.2;}
+.nf83-who .tl span{font-size:14px;font-weight:600;color:#0B0F14;}
+.nf83-who .ls{display:flex;flex-direction:column;border:1.5px solid #EEF0F2;border-radius:14px;overflow:hidden;}
+.nf83-who .wr{border-top:1px solid #EEF0F2;background:#FFFFFF;}
+.nf83-who .wr:first-child{border-top:0;}
+.nf83-who .wr > .hd{display:grid;grid-template-columns:42px minmax(0,1fr) 120px 172px 22px;gap:12px;align-items:center;padding:12px 12px 12px 14px;cursor:pointer;}
+.nf83-who .wr > .hd:hover{background:#FAFBFA;}
+.nf83-who .wr > .hd:focus-visible{outline:2px solid #1F6B45;outline-offset:-2px;}
+.nf83-who .av{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#E7F3EC;color:#14532D;font-weight:900;font-size:14.5px;}
+.nf83-who .wr.late .av{background:#FDECEA;color:#9B1C12;} .nf83-who .wr.soon .av{background:#FEF0C7;color:#0B0F14;}
+.nf83-who .nm{display:flex;flex-direction:column;gap:3px;min-width:0;}
+.nf83-who .nm b{font-size:16px;font-weight:800;color:#0B0F14;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+html body .nf83-who .nm small{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;font-size:14px !important;color:#0B0F14 !important;}
+.nf83-who .s{font-weight:800;}
+html body .nf83-who .s.r{color:#B42318 !important;} html body .nf83-who .s.b{color:#1D4ED8 !important;} html body .nf83-who .s.g{color:#067647 !important;}
+.nf83-who .s.a{display:inline-flex;align-items:center;gap:6px;color:#0B0F14;} .nf83-who .s.a::before{content:'';width:8px;height:8px;border-radius:50%;background:#F79009;}
+.nf83-who .k{font-weight:500;}
+.nf83-who .am{text-align:right;font-size:18px;font-weight:900;color:#0B0F14;font-variant-numeric:tabular-nums;white-space:nowrap;}
+.nf83-who .ac{display:flex;justify-content:flex-end;} .nf83-who .ac .nf82-btn{width:100%;min-height:42px;}
+.nf83-who .cv{display:grid;place-items:center;color:#0B0F14;transition:transform .15s;}
+.nf83-who .wr.open .cv{transform:rotate(90deg);}
+.nf83-who .wr.open{background:#FBFCFB;}
+.nf83-who .dt{padding:4px 14px 14px 68px;}
+.nf83-who .bl{border:1px solid #EEF0F2;border-radius:12px;background:#FFFFFF;overflow:hidden;}
+.nf83-who .bh, .nf83-who .br{display:grid;grid-template-columns:minmax(0,1.7fr) 90px 150px 110px;gap:10px;align-items:center;padding:9px 12px;}
+.nf83-who .bh{background:#F8FAF9;border-bottom:1px solid #EEF0F2;}
+.nf83-who .bh span{font-size:14px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#0B0F14;}
+.nf83-who .bh span:last-child, .nf83-who .br b{text-align:right;}
+.nf83-who .br{border-top:1px solid #F2F4F7;font-size:16px;color:#0B0F14;} .nf83-who .br:first-of-type{border-top:0;}
+.nf83-who .br .w{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+html body .nf83-who .br .r{color:#B42318 !important;font-weight:700;}
+.nf83-who .br b{font-size:16px;font-weight:800;font-variant-numeric:tabular-nums;}
+.nf83-who .mo{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin-top:10px;}
+.nf83-who .mo .nf82-btn{min-height:40px;padding:8px 12px;font-size:14px;}
+.nf83-who .nf79-rp{margin-top:10px;}
+.nf83-who .em{display:flex;align-items:center;gap:10px;padding:16px;font-size:16px;color:#0B0F14;margin:0;}
+.nf83-who .em svg{color:#1F6B45;flex:none;}
+.nf83-who .ft{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:12px;}
+@container (max-width:700px){
+  .nf83-who .tls{gap:8px;} .nf83-who .tl{padding:10px 10px 10px 14px;} .nf83-who .tl b{font-size:18px;}
+  .nf83-who .wr > .hd{grid-template-columns:40px minmax(0,1fr) auto 18px;grid-template-areas:"av nm am cv" "ac ac ac ac";row-gap:10px;}
+  .nf83-who .av{grid-area:av;} .nf83-who .nm{grid-area:nm;} .nf83-who .am{grid-area:am;} .nf83-who .cv{grid-area:cv;} .nf83-who .ac{grid-area:ac;}
+  .nf83-who .nm b{white-space:normal;}
+  .nf83-who .dt{padding:4px 12px 12px;}
+  .nf83-who .bh{display:none;} .nf83-who .br{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"w b" "d u";row-gap:2px;}
+  .nf83-who .br .w{grid-area:w;white-space:normal;} .nf83-who .br b{grid-area:b;} .nf83-who .br > span:nth-child(2){grid-area:d;font-size:14px;} .nf83-who .br > span:nth-child(3){grid-area:u;text-align:right;font-size:14px;}
+  .nf83-who .dtp{align-items:flex-start;text-align:left;width:100%;box-sizing:border-box;}
+}
+@container (max-width:420px){ .nf83-who .tls{grid-template-columns:1fr;} .nf83-who .tl{flex-direction:row;align-items:baseline;flex-wrap:wrap;column-gap:10px;} }
+#nf82Home .nf83-who{margin:0;}
+/* pay link QR */
+.nf83-qr p{margin:0 0 12px;font-size:16px;line-height:1.45;color:#0B0F14;}
+.nf83-qr .qb{display:grid;place-items:center;padding:14px;border-radius:16px;border:1.5px solid #E4E7EC;background:#FFFFFF;min-height:230px;}
+.nf83-qr .qb img, .nf83-qr .qb canvas{display:block;}
+.nf83-qr .ln{margin:10px 0 0;padding:10px 12px;border-radius:10px;background:#F8FAF9;font-size:14px;color:#0B0F14;word-break:break-all;}
+.nf83-qr .ac{display:flex;justify-content:flex-end;gap:10px;margin-top:12px;flex-wrap:wrap;}
+/* Expenses: calm colours, one font size, last month clearly marked, recent changes */
+.nf82-where .wr .k, .nf82-where .wr b, .nf82-where .wr em, .nf82-where .v, .nf82-where .c, .nf82-where .tr .k, .nf82-where .tr b, .nf82-where .tr em{font-size:16px !important;}
+.nf82-where .th span:nth-child(4){background:#F5F7FA;border:1.5px dashed #98A2B3;border-bottom:0;border-radius:10px 10px 0 0;padding:6px 8px;margin:-6px 0 -9px;text-align:center !important;}
+.nf82-where .wr > .v, .nf82-where .tr > .v{background:#F8F9FB;align-self:stretch;display:flex;align-items:center;justify-content:center;margin:-11px 0;padding:11px 6px;border-left:1.5px dashed #98A2B3;border-right:1.5px dashed #98A2B3;}
+.nf82-where .tr > .v{margin:-12px 0 -4px;padding:12px 6px 8px;border-bottom:1.5px dashed #98A2B3;border-radius:0 0 10px 10px;}
+.nf82-where .stk span{color:#FFFFFF !important;text-shadow:0 1px 1px rgba(0,0,0,.18);}
+.nf83-chg{margin:0 0 14px;padding:12px 14px;border-radius:14px;background:#F8FAF9;border:1.5px solid #E4E7EC;}
+.nf83-chg .h{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px;color:#0B0F14;} .nf83-chg .h b{font-size:16px;} .nf83-chg .h span{font-size:14px;}
+.nf83-chg .r{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 0;border-top:1px solid #EEF0F2;font-size:16px;color:#0B0F14;}
+.nf83-chg .r em{font-style:normal;font-size:14px;margin-left:6px;}
+.nf83-chg .r .nf82-btn{min-height:36px;padding:6px 12px;font-size:14px;}
+@media (max-width:640px){ .nf82-where .wr > .v, .nf82-where .tr > .v{margin:0;padding:3px 6px;border:1.5px dashed #98A2B3;border-radius:8px;} }
+/* phone bar (phones only) */
+@media (max-width: 980px){
+
+#bottomNav.nf83-bb > .nf83-hid{display:none !important;}
+#bottomNav.nf83-bb{display:grid !important;grid-template-columns:repeat(5,minmax(0,1fr)) !important;}
+#bottomNav.nf83-bb .nf83-b{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;min-width:0;}
+#bottomNav.nf83-bb .nf83-b svg{width:24px;height:24px;}
+html body #bottomNav.nf83-bb .nf83-b .bnav-label{font-size:12.5px !important;font-weight:800;white-space:nowrap;color:inherit;}
+html body #bottomNav.nf83-bb .nf83-b{color:#0B0F14 !important;}
+html body #bottomNav.nf83-bb .nf83-b.active{color:#1F6B45 !important;}
+#bottomNav.nf83-bb .nf83-b.active::before{content:'';position:absolute;top:0;left:22%;right:22%;height:3px;border-radius:0 0 3px 3px;background:#1F6B45;}
+#bottomNav.nf83-bb .nf83-bd{position:absolute;top:4px;left:calc(50% + 6px);min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:#D92D20;color:#FFFFFF;font-size:14px;font-weight:900;display:grid;place-items:center;box-sizing:border-box;}
+#bottomNav.nf83-bb .nf83-bd[hidden]{display:none;}
+}
+.nf82-where .stk i span{color:#0B0F14 !important;text-shadow:none !important;}
+/* tour button: a light chip with a play icon, not a dark pill that looks like a switch */
+html body .nf53-btn, html body .nf53-btn.fresh{background:#E8F3EC !important;color:#1F6B45 !important;border:0 !important;box-shadow:none !important;animation:none !important;}
+html body .nf53-btn em, html body .nf53-btn.fresh em, html[data-ty] body #view-app .nf53-btn.fresh, html[data-ty] body #view-app .nf53-btn.fresh em, html[data-ty] body #view-app #mhHome .nf53-btn.fresh em, html body #view-app .nf53-btn.nf83-lt, html body #view-app .nf53-btn.nf83-lt em{color:#1F6B45 !important;font-style:normal;}
+html body .nf53-btn .nf53-play{background:#1F6B45 !important;color:#FFFFFF !important;}
+html body .nf53-btn .nf53-play svg{color:#FFFFFF !important;fill:#FFFFFF;}
+/* page headers on a phone: title row, then the buttons as an even grid */
+@media (max-width: 600px){
+  .nf23-th{flex-wrap:wrap;row-gap:6px;}
+  .nf23-th .nf22-help, .nf23-th .nf53-btn{font-size:14px !important;padding:4px 10px 4px 4px !important;min-height:32px;}
+  #view-app .app-page > .page-head, #view-app .app-page #buyerInventoryView > .page-head{display:grid !important;grid-template-columns:1fr 1fr;gap:10px !important;align-items:stretch !important;}
+  #view-app .app-page .page-head > div:first-child{grid-column:1 / -1;}
+  #view-app .app-page .page-head > .btn{width:100%;min-height:48px;white-space:nowrap;font-size:16px;padding:0 10px;justify-content:center;margin:0 !important;}
+  #view-app .app-page .page-head > .nf74-homes{grid-column:1 / -1;display:block;margin:0 !important;}
+  #view-app .app-page .page-head > .nf74-homes .btn{width:100%;min-height:44px;justify-content:center;}
+  #view-app .app-page .page-head > :only-child{grid-column:1 / -1;}
+}
+@media (max-width: 600px){
+  #view-app .app-page .page-head > p, #view-app .app-page .page-head > .nf23-th{grid-column:1 / -1;}
+  #view-app .app-page .page-head > .nf45-teamhd{grid-column:1 / -1;display:grid !important;grid-template-columns:1fr 1fr;gap:10px;margin:0 !important;}
+  #view-app .app-page .page-head > .nf45-teamhd > .btn, #view-app .app-page .page-head > .nf45-teamhd > button{width:100%;min-height:48px;justify-content:center;font-size:14px;line-height:1.2;margin:0 !important;}
+}
+
+/* Orders: one title, not two */
+#page-orders.nf83-oh .nfo-top > div:first-child > h1, #page-orders.nf83-oh .nfo-top > div:first-child > p{display:none !important;}
+@media (max-width: 600px){
+  #view-app .app-page .page-head > .nf45-teamhd .r1, #view-app .app-page .page-head > .nf45-teamhd .r2{display:contents !important;}
+  #view-app .app-page .page-head > .nf45-teamhd button{width:100%;min-height:48px;justify-content:center;font-size:14px;line-height:1.2;margin:0 !important;}
+}
+
 
 /* Round 51: marketing pages keep their original type sizes (the six-size scale is for the app) */
 .marketing-view, #view-login{--ty-k:1.0625;--ty-min:14px;--ty-body:17px;--ty-lead:17.5px;--ty-display:40px;--ty-h1:36px;--ty-h2:22px;--ty-cap:14px;--ty-lbl:17px;--ty-val:29px;--ty-sub:16px;--ty-th:14.5px;--ty-td:16.5px;--ty-row:17.5px;--ty-small:16px;--ty-pill:14px;--ty-tab:16.5px;--ty-btn:16.5px;--ty-nav:16.5px}
@@ -15421,7 +15636,6 @@ html[data-ty] #view-login p.fine{font-size:calc(15px*var(--ty-k,1))}
       <div class="p2-burst">ONE APP · BOTH SIDES</div>
       <h1 class="r72-h1">Run your business. <span>Not the daily chaos.</span></h1>
       <p class="r72-deck">Orders. Stock. Cash. <span>Under control.</span></p>
-      <p class="nf82-tl"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Mabayaran nang mas mabilis. Alam ang tunay na kita, araw-araw.</span></p>
       <ul class="r72-ben" aria-label="What Nifti does for you"><li><span class="r72-ben-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l2.2 10.2a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 1.9-1.4L21 8H6"/><circle cx="10" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg></span><span><b>Sell with confidence</b><small>Every customer order, clearly accounted for.</small></span><span class="r72-tick"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></li><li><span class="r72-ben-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 7 8-4 8 4v10l-8 4-8-4z"/><path d="m4 7 8 4 8-4M12 11v10"/></svg></span><span><b>Keep stock moving</b><small>Purchases, stock and deliveries connected.</small></span><span class="r72-tick"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></li><li><span class="r72-ben-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="m7 14 4-4 3 3 6-7"/></svg></span><span><b>Know your numbers</b><small>See sales, costs, collections and profit.</small></span><span class="r72-tick"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span></li></ul>
       <div class="f4-hero-cta"><a onclick="navigate('login')" class="btn btn-hero-primary">Start free</a><a onclick="startDemoOrder()" class="btn btn-hero-outline">Try the demo</a></div>
       <div class="f5-proof"><span><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Works on any phone</span><span><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>Customers don’t need an app</span><span><svg class="mi" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>You get paid directly</span></div>
@@ -52671,7 +52885,7 @@ function nf82ExpByCat(from, to){
   try{ (BK.expenses || []).filter(e => !e.deletedAt && (e.status || 'approved') === 'approved' && e.date >= from && e.date <= to).forEach(e => { const c = bkCat(e.category); if(c.transfer || c.drawing || c.cogs) return; o[e.category] = (o[e.category] || 0) + (Number(e.amount) || 0); }); }catch(e){}
   return o;
 }
-const NF82_COL = ['#2459C9', '#15803D', '#7C3AED', '#0E7490', '#C026D3', '#B45309', '#475467'];
+const NF82_COL = ['#6F7FB6', '#D29A4A', '#6FA593', '#B07CA4', '#8E9B5A', '#7C9CB8', '#C27C6B'];
 function nf82Where(cats, m, un){
   const total = cats.reduce((a, [, v]) => a + (Number(v) || 0), 0); if(!total) return '';
   const top = cats.slice(0, 6), rest = cats.slice(6).reduce((a, [, v]) => a + v, 0); if(rest > 0) top.push(['Everything else', rest]);
@@ -52719,11 +52933,12 @@ try{
     const set = (k, o) => { const p = NF26_PLANS.find(x => x.k === k); if(p) Object.assign(p, o); };
     set('free', {who: 'For a small shop, every day. Free for good.', f: ['orders|Orders with customers and suppliers', 'credit|Collect today: who to remind, with the message ready', 'money|A pay link for each customer, with "I paid" and screenshots', 'qr|Your GCash or bank QR on every bill', 'shield|Due dates and utang limits', 'box|Stock, shop sales and expenses', 'history|Purchase history and supplier records', 'store|Online store and Facebook posts', 'users|Up to 3 people', 'download|Download everything, any time']});
     set('pro', {m: 990, y: 9900, who: 'Nifti keeps your books and watches your staff spending.', f: ['star|Everything in Free, plus:', 'upload|We load your items and utang for you', 'book|Profit and books, ready for your bookkeeper', 'wallet|Payroll and check tracking', 'shield|Spending limits and alerts when staff overpay', 'undo|Returns and credits, handled', 'megaphone|Price announcements to the buyers you pick', 'chart|Store results and reorder reminders', 'users|Up to 10 people · more for ₱99 each a month']});
-    set('business', {m: 2490, y: 24900, who: 'For drivers, branches and bigger teams.', f: ['star|Everything in Pro, plus:', 'truck|Delivery routes and a driver for each run', 'branch|2 branches included, each with its own drawer and stock · more for ₱490 each a month', 'chart|Market price check against other shops', 'badge|Setup by the Nifti team and priority help', 'users|Up to 30 people · more for ₱99 each a month']});
+    set('business', {m: 2490, y: 24900, who: 'For owners who can\'t be at every branch or every delivery.', f: ['star|Everything in Pro, plus:', 'branch|Branches side by side: sales, cash and stock for each, and which one is slipping · 2 included, more for ₱490 each a month', 'truck|Delivery runs: each driver gets a route, marks drops and collected cash from their phone', 'shield|Who did what: a log of every edit, delete and price change, by person', 'lock|Roles you set: what each person can see and approve, with peso limits', 'chart|Owner summary every morning: yesterday\'s sales, cash, utang and stock alerts for all branches', 'badge|We set it all up with you, and you get help first', 'users|Up to 30 people · more for ₱99 each a month']});
   }
-  if(typeof PRO_PLANS !== 'undefined' && PRO_PLANS.business){ PRO_PLANS.business.features = ['Up to 30 people (more for ₱99 each a month)', 'Delivery routes and drivers', '2 branches included (more for ₱490 each a month)', 'Verified badge (green ✔) included', 'Priority support: we reply first', 'Free done-for-you setup on yearly']; }
+  if(typeof PRO_PLANS !== 'undefined' && PRO_PLANS.business){ PRO_PLANS.business.features = ['Branches side by side: sales, cash and stock for each', 'Delivery runs with routes and cash collected per driver', 'Log of who edited, deleted or changed prices', 'Roles with peso approval limits', 'Owner summary every morning for all branches', 'Done-with-you setup and help first', 'Up to 30 people (more for ₱99 each a month)']; }
   if(typeof FREE_PLAN_FEATURES !== 'undefined' && Array.isArray(FREE_PLAN_FEATURES) && !FREE_PLAN_FEATURES.some(x => /Collect today/.test(x))){ FREE_PLAN_FEATURES.unshift('Collect today, payment reminders and a pay link for every customer', 'Due dates, utang limits and who pays late', 'Purchase history and supplier records'); }
 }catch(e){ console.warn('nf82 plans', e); }
+try{ if(typeof NF75_FI !== 'undefined'){ NF75_FI.lock = NF75_FI.lock || '<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>'; NF75_FI.qr = NF75_FI.qr || '<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM18 18h3v3h-3z"/>'; NF75_FI.wallet = NF75_FI.wallet || '<rect x="2" y="6" width="20" height="14" rx="2"/><path d="M16 13h2M2 10h20"/>'; NF75_FI.upload = NF75_FI.upload || '<path d="M12 21V9M7 14l5-5 5 5"/><path d="M4 3h16"/>'; } }catch(e){}
 
 /* ===== Round 82 · Get paid faster (free for everyone) =====
    One list of everyone who owes you (shop utang + delivery orders), "Collect today" ranked by amount × days late,
@@ -53222,6 +53437,103 @@ stmtSubmitPaid = async function(){
 };
 window.stmtSubmitPaid = stmtSubmitPaid;
 
+/* ===== Round 83: one simple "Who owes you" (Home and Getting paid) =====
+   Everyone who owes you in one list: late first, then due soon, then later. Three tiles on top filter it.
+   Each row: name, one clear status, the amount, one main button. Tap the row for the bills and everything else. */
+NF82G.f = NF82G.f || 'all'; NF82G.open = NF82G.open || {};
+function nf83Rows(){
+  let promises = []; try{ promises = (promisesCache || []).filter(p => p.status === 'open'); }catch(e){}
+  return nf82Custs().filter(g => g.total >= 1).map(g => {
+    const ml = g.maxLate, sent = g.src === 'ut' ? nf82UtToday(g) : NF82G['sent:' + g.key] === APP_TODAY;
+    const pr = g.src === 'po' ? promises.find(p => p.buyer_business_id === g.key) : null;
+    const bucket = ml != null && ml > 0 ? 'late' : ml != null && ml >= -7 ? 'soon' : 'later';
+    return Object.assign(g, {sent, pr, bucket, score: g.total * Math.max(1, (ml || 0) + 1)});
+  }).sort((a, b) => ({late: 0, soon: 1, later: 2}[a.bucket] - {late: 0, soon: 1, later: 2}[b.bucket]) || (a.bucket === 'later' ? String(a.nextDue || '9').localeCompare(String(b.nextDue || '9')) : b.score - a.score));
+}
+function nf83Status(g){
+  if(g.pending >= 1) return `<span class="s b">Says they paid ${nf82P(Math.min(g.pending, g.total))}</span>`;
+  if(g.pr && g.pr.promised_date >= APP_TODAY) return `<span class="s g">Promised ${nf82P(g.pr.amount)} by ${nf82E(nf82Day(g.pr.promised_date))}</span>`;
+  if(g.maxLate == null) return '<span class="s">No due date</span>';
+  if(g.maxLate > 0) return `<span class="s r">${g.maxLate} day${g.maxLate === 1 ? '' : 's'} late</span>`;
+  if(g.maxLate === 0) return '<span class="s a">Due today</span>';
+  return `<span class="s">Due ${nf82E(nf82Day(g.nextDue || addDaysIso(APP_TODAY, -g.maxLate)))}</span>`;
+}
+function nf83Main(g){
+  if(g.pending >= 1) return `<button type="button" class="nf82-btn p" onclick="event.stopPropagation(); ${g.src === 'po' ? `nf77GoConfirm('${g.key}')` : `nf83GoConf()`}">${nf82Ic('<path d="M20 6 9 17l-5-5"/>', 16)}Check & confirm</button>`;
+  if(g.bucket === 'later') return `<button type="button" class="nf82-btn s" onclick="event.stopPropagation(); nf83Open('${g.id}', 'pay')">Record payment</button>`;
+  return `<button type="button" class="nf82-btn ${g.sent ? 's' : 'p'}" onclick="event.stopPropagation(); nf82Remind('${g.id}')">${nf82Ic('<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>', 16)}${g.sent ? 'Remind again' : 'Remind'}</button>`;
+}
+function nf83GoConf(){ const c = document.getElementById('nf77Conf'); if(c){ c.scrollIntoView({behavior: 'smooth', block: 'start'}); } else go('collections'); }
+function nf83Bills(g){
+  return `<div class="bl" role="table"><div class="bh" role="row"><span>Bill</span><span>Date</span><span>Due</span><span>Owes</span></div>${g.items.slice().sort((a, b) => String(a.due || '9').localeCompare(String(b.due || '9'))).map(x => {
+    const what = x.src === 'ut' ? ((x.sale && x.sale.lines || []).slice(0, 2).map(l => l.qty + ' × ' + l.product).join(', ') || 'Shop utang') : 'Order ' + String(x.po.poNumber || '').replace(/^PO-\d{4}-/, '');
+    return `<div class="br" role="row"><span class="w">${nf82E(what)}</span><span>${nf82E(nf82Day(x.date))}</span><span class="${x.late > 0 ? 'r' : ''}">${x.due ? nf82E(nf82Day(x.due)) + (x.late > 0 ? ` · ${x.late}d late` : '') : '—'}</span><b>${nf82P(x.bal)}</b></div>`; }).join('')}</div>`;
+}
+function nf83Row(g){
+  const o = NF82G.open[g.id], kind = g.src === 'ut' ? 'Shop utang' : 'Delivery order' + (g.items.length === 1 ? '' : 's');
+  const pay = g.src === 'ut' ? nf79RpHtml('uc:' + g.id, Math.max(0, g.total - (g.pending || 0)), {utang: true}) : nf79RpHtml(g.key, Math.max(0, g.total - (g.pending || 0)));
+  return `<div class="wr nf79-rph ${g.bucket}${o ? ' open' : ''}" data-g="${g.id}">
+    <div class="hd" role="button" tabindex="0" aria-expanded="${!!o}" onclick="nf83Open('${g.id}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault(); nf83Open('${g.id}');}">
+      <span class="av" aria-hidden="true">${nf82E(nf82Initials(g.name))}</span>
+      <span class="nm"><b>${nf82E(g.name)}</b><small>${nf83Status(g)}<span class="k">${kind}${g.items.length > 1 ? ' · ' + g.items.length + ' bills' : ''}${g.sent ? ' · reminded today' : ''}</span></small></span>
+      <b class="am">${nf82P(g.total)}</b>
+      <span class="ac">${nf83Main(g)}</span>
+      <span class="cv" aria-hidden="true">${nf82Ic('<path d="m9 18 6-6-6-6"/>', 18)}</span>
+    </div>
+    ${o ? `<div class="dt">${nf83Bills(g)}
+      <div class="mo"><button type="button" class="nf82-btn s" onclick="nf79RpOpen(this)">${nf82Ic('<path d="M12 5v14M5 12h14"/>', 15)}Record payment</button><button type="button" class="nf82-btn s" onclick="nf82Remind('${g.id}')">${nf82Ic('<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>', 15)}Send pay link</button><button type="button" class="nf82-btn s" onclick="nf83Qr('${g.id}')">${nf82Ic('<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM20 14v.01M17 20h4v-3"/>', 15)}Show QR to scan</button>${g.src === 'po' ? (g.pr ? `<button type="button" class="nf82-lk" onclick="colCancelPromise('${g.pr.id}')">Cancel promise</button>` : `<button type="button" class="nf82-lk" onclick="colPromise('${g.key}')">They promised to pay</button>`) : ''}</div>
+      ${pay}</div>` : ''}
+  </div>`;
+}
+function nf83Open(id, what){ NF82G.open[id] = what === 'pay' ? true : !NF82G.open[id]; nf82Repaint(); if(what === 'pay') setTimeout(() => { const r = document.querySelector(`.nf83-who .wr[data-g="${id}"] .nf79-rp`); if(r){ r.classList.add('open'); const i = r.querySelector('input'); if(i){ i.focus(); i.select(); } } }, 60); }
+function nf83WhoHtml(where){
+  const rows = nf83Rows(), home = where === 'home';
+  const sum = b => rows.filter(g => b === 'all' || g.bucket === b), tot = b => sum(b).reduce((a, g) => a + g.total, 0);
+  const f = home ? 'all' : NF82G.f, list = sum(f).slice(0, home ? 5 : 999);
+  const tile = (k, l, cls) => { const n = sum(k).length; return `<button type="button" class="tl ${cls}${!home && f === k ? ' on' : ''}" ${home ? `onclick="NF82G.f='${k}'; go('collections')"` : `onclick="NF82G.f = NF82G.f === '${k}' ? 'all' : '${k}'; nf82Repaint()"`} aria-pressed="${!home && f === k}"><small>${l}</small><b>${nf82P(tot(k))}</b><span>${n} customer${n === 1 ? '' : 's'}</span></button>`; };
+  let po = 0, ut = 0; rows.forEach(g => { if(g.src === 'po') po += g.total; else ut += g.total; });
+  return `<section class="panel-card nf83-who" aria-labelledby="nf83WhoH${where}">
+    <div class="top"><span class="ic" aria-hidden="true">${nf82Ic('<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>', 22)}</span>
+      <div class="tt"><h2 id="nf83WhoH${where}">Who owes you</h2><p><b>${nf82P(tot('all'))}</b> in utang and unpaid bills${po && ut ? ` · Shop utang ${nf82P(ut)} · Delivery orders ${nf82P(po)}` : ''}</p></div>${nf82DTPHtml()}</div>
+    ${rows.length ? `<div class="tls">${tile('late', 'Late', 'r')}${tile('soon', 'Due in 7 days', 'a')}${tile('later', 'Not due yet', 'g')}</div>
+      <div class="ls">${list.length ? list.map(nf83Row).join('') : '<p class="em">Nobody in this group. Tap the tile again to see everyone.</p>'}</div>`
+      : `<div class="em">${nf82Ic('<path d="M20 6 9 17l-5-5"/>', 22)}<span>Nobody owes you right now. Utang and unpaid orders show up here.</span></div>`}
+    <div class="ft">${home ? `<button type="button" class="nf82-lk" onclick="go('collections')">${rows.length > list.length ? `See all ${rows.length} customers ›` : 'Open Getting paid ›'}</button>` : `<button type="button" class="nf82-lk" onclick="go('sales'); setTimeout(() => { const u = document.querySelector('#page-sales .nf80-ut'); if(u) u.scrollIntoView({behavior: 'smooth', block: 'start'}); }, 600)">Paid off and history ›</button>`}<button type="button" class="nf82-btn s" onclick="nf83BringOpen('utang')">${nf82Ic('<path d="M12 5v14M5 12h14"/>', 15)}Someone owes me</button></div>
+  </section>`;
+}
+/* pay link + QR: for customers who aren't on Nifti, the link goes in the Viber/SMS message; at the counter they can scan this QR */
+async function nf83Qr(id){
+  const g = NF82G.reg[id]; if(!g) return;
+  let link = null;
+  if(g.src === 'ut') link = await nf82UtLink(g.name);
+  else { try{ if(myBusiness){ const { data } = await sb.rpc('create_statement_link', {p_buyer: g.key}); if(data) link = appBaseUrl() + '#st/' + data; } else link = appBaseUrl() + '#st/demo'; }catch(e){} }
+  if(!link){ showToast("Couldn't make the link. Check your internet.", 'warn'); return; }
+  slModal('nf83Qr', `<div class="sl-sheet-h"><b>${nf82E(g.name)}'s pay link</b><button class="sl-x" onclick="slClose('nf83Qr')" aria-label="Close">✕</button></div>
+    <div class="nf83-qr"><p>At the counter? Let them scan this with their phone camera. They see what they owe and how to pay you, no app or account needed.</p><div class="qb" id="nf83QrBox" aria-label="QR code for the pay link"></div><div class="ln"><span>${nf82E(link)}</span></div>
+      <div class="ac"><button type="button" class="nf82-btn s" onclick="nf33RCopy(${JSON.stringify(link).replace(/"/g, '&quot;')}).then(ok => showToast(ok ? 'Link copied. Paste it in Viber or a text.' : 'Copy the link above.', ok ? 'success' : 'warn'))">Copy link</button><button type="button" class="nf82-btn p" onclick="slClose('nf83Qr'); nf82Remind('${g.id}')">Send in a message</button></div></div>`);
+  try{ if(!window.QRCode) await nf82LoadScript2('https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js', () => window.QRCode); const box = document.getElementById('nf83QrBox'); if(box && window.QRCode) new QRCode(box, {text: link, width: 220, height: 220, colorDark: '#0B0F14', colorLight: '#FFFFFF', correctLevel: QRCode.CorrectLevel.M}); }catch(e){ const box = document.getElementById('nf83QrBox'); if(box) box.innerHTML = '<p>The QR code needs internet. Copy the link instead.</p>'; }
+}
+function nf82LoadScript2(src, ready){ return new Promise((res, rej) => { if(ready()) return res(); const s = document.createElement('script'); s.src = src; s.async = true; s.onload = () => res(); s.onerror = rej; document.head.appendChild(s); }); }
+
+/* Getting paid: Payments to confirm, then Who owes you, then settings. Nothing repeated. */
+if(typeof nf77CollHtml === 'function' && !nf77CollHtml._nf83){
+  const _c83 = nf77CollHtml;
+  nf77CollHtml = function(){
+    let html = _c83.apply(this, arguments);
+    try{
+      if(nf82Boss()){
+        html = html.replace(/<div class="nf82-top">[\s\S]*?<\/section><\/div>/, '');
+        const conf = (html.match(/<section class="nf77-conf nf78-conf" id="nf77Conf">[\s\S]*?<\/section>(?=<section|<div class="nf77-rem|<section class="panel-card nf82-set|$)/) || [''])[0];
+        const set = (html.match(/<section class="panel-card nf82-set[\s\S]*$/) || [''])[0];
+        html = conf + nf83WhoHtml('gp') + set;
+      }
+    }catch(e){ console.warn('nf83 coll', e); }
+    return html;
+  };
+  nf77CollHtml._nf83 = true; window.nf77CollHtml = nf77CollHtml;
+}
+nf82CollectHtml = function(where){ return nf83WhoHtml(where); };
+
 /* ===== Round 82 · Onboarding & ease of use =====
    1) Welcome setup (3 short steps): kind of business, what to help with first, which pages show in the menu.
    2) Pages you use: any page can be turned off in the menu and back on any time. Nothing is deleted; a hidden page still opens from search or a link.
@@ -53283,54 +53595,57 @@ function nf82HiddenBanner(page){
 async function nf82ShowPage(k){ const h = nf82Hidden().filter(x => x !== k); if(await nf82OnbSave({hidden: h})){ showToast(`${nf82PageLabel(k)} is back in your menu.`, 'success'); document.querySelectorAll('.nf82-hb').forEach(x => x.remove()); try{ if(typeof nf47PagesPaint === 'function') nf47PagesPaint(); }catch(e){} } }
 NF45_AFTER.push(page => { try{ nf82HiddenBanner(page); if(page && page.id === 'page-settings') nf82SettingsCard(); }catch(e){} });
 
-/* ---------- welcome setup ---------- */
-function nf82OnbOpen(step){
+/* ---------- one popup at a time: anything new closes what is open ---------- */
+function nf83CloseOverlays(keep){
+  try{ if(keep !== 'onb') nf82OnbClose(); }catch(e){}
+  try{ if(keep !== 'spot') nf82SpotClose(); }catch(e){}
+  try{ document.querySelectorAll('.share-modal-backdrop').forEach(bk => { if(bk.id){ try{ slClose(bk.id); }catch(e){ bk.remove(); } } else bk.remove(); }); }catch(e){}
+  try{ if(typeof nf26CloseStart === 'function' && document.getElementById('nf26StartOv') && !document.getElementById('nf26StartOv').hidden) nf26CloseStart(); }catch(e){}
   try{ if(typeof closeUserMenu === 'function') closeUserMenu(); if(typeof closeMobileSidebar === 'function') closeMobileSidebar(); }catch(e){}
+}
+
+/* ---------- welcome setup: 2 short steps ---------- */
+function nf82OnbOpen(step){
+  nf83CloseOverlays('onb');
   const o = nf82Onb();
-  NF82O.draft = {type: o.type || null, goals: Array.isArray(o.goals) && o.goals.length ? o.goals.slice() : ['paid'], hidden: Array.isArray(o.hidden) ? o.hidden.slice() : null};
+  NF82O.draft = {type: o.type || null, goals: Array.isArray(o.goals) && o.goals.length ? o.goals.slice() : ['paid']};
   NF82O.step = step || 1;
   let ov = document.getElementById('nf82Onb');
   if(!ov){ ov = document.createElement('div'); ov.id = 'nf82Onb'; ov.className = 'nf82-ov'; ov.setAttribute('role', 'dialog'); ov.setAttribute('aria-modal', 'true'); ov.setAttribute('aria-labelledby', 'nf82OnbH'); document.body.appendChild(ov);
-    ov.addEventListener('keydown', e => { if(e.key === 'Escape') nf82OnbClose(); }); }
+    ov.addEventListener('keydown', e => { if(e.key === 'Escape') nf82OnbClose(); });
+    ov.addEventListener('click', e => { if(e.target === ov) nf82OnbClose(); }); }
   ov.hidden = false; document.body.classList.add('nf82-noscroll'); nf82OnbPaint();
   try{ localStorage.setItem('nifti-onb-seen:' + (myBusiness ? myBusiness.id : 'demo'), '1'); }catch(e){}
 }
 function nf82OnbClose(){ const ov = document.getElementById('nf82Onb'); if(ov){ ov.hidden = true; ov.innerHTML = ''; } document.body.classList.remove('nf82-noscroll'); }
-function nf82OnbPick(k){ const d = NF82O.draft; d.type = k; d.goals = (NF82_TYPE_GOALS[k] || ['paid']).slice(); d.hidden = null; nf82OnbPaint(); }
-function nf82OnbGoal(k){ const d = NF82O.draft, i = d.goals.indexOf(k); if(i >= 0) d.goals.splice(i, 1); else d.goals.push(k); d.hidden = null; nf82OnbPaint(); }
-function nf82OnbTog(k){ const d = NF82O.draft; if(!d.hidden) d.hidden = nf82ProposeHidden(d.type, d.goals); const i = d.hidden.indexOf(k); if(i >= 0) d.hidden.splice(i, 1); else d.hidden.push(k); nf82OnbPaint(); }
+function nf82OnbPick(k){ const d = NF82O.draft; d.type = k; d.goals = (NF82_TYPE_GOALS[k] || ['paid']).slice(); nf82OnbPaint(); }
+function nf82OnbGoal(k){ const d = NF82O.draft, i = d.goals.indexOf(k); if(i >= 0) d.goals.splice(i, 1); else d.goals.push(k); nf82OnbPaint(); }
 function nf82OnbGo(n){ if(n === 2 && !NF82O.draft.type){ showToast('Pick the one closest to your business.', 'warn'); return; } NF82O.step = n; nf82OnbPaint(); const c = document.querySelector('#nf82Onb .card'); if(c) c.scrollTop = 0; }
 async function nf82OnbFinish(){
-  const d = NF82O.draft, hidden = d.hidden || nf82ProposeHidden(d.type, d.goals);
+  const d = NF82O.draft, hidden = nf82ProposeHidden(d.type, d.goals);
   const ok = await nf82OnbSave({type: d.type, goals: d.goals, hidden, done_at: new Date().toISOString()});
   if(!ok) return;
-  NF82O.step = 4; nf82OnbPaint();
-  try{ if(typeof renderDashboard === 'function') renderDashboard(); }catch(e){}
+  NF82O.hiddenNow = hidden; NF82O.step = 3; nf82OnbPaint();
   setTimeout(() => { try{ nf82StartPaint(true); }catch(e){} }, 120);
-}
-function nf82PagesListHtml(hidden, tog){
-  return NF82_PAGES.map(g => `<div class="pg"><h4>${nf82E(g.g)}</h4>${g.items.map(([k, l, dsc, lock]) => { const on = !hidden.includes(k);
-    return `<button type="button" class="pr${on ? ' on' : ''}" role="switch" aria-checked="${on}" ${lock ? 'disabled aria-disabled="true"' : `onclick="${tog}('${k}')"`}><span class="t"><b>${nf82E(l)}</b><small>${nf82E(dsc)}</small></span><span class="sw" aria-hidden="true"><i></i></span>${lock ? '<em>Always on</em>' : ''}</button>`; }).join('')}</div>`).join('');
 }
 function nf82OnbPaint(){
   const ov = document.getElementById('nf82Onb'); if(!ov) return;
   const d = NF82O.draft, s = NF82O.step, name = myBusiness ? myBusiness.name : 'Dela Cruz Hardware';
-  const dots = `<div class="dots" aria-label="Step ${Math.min(s, 3)} of 3">${[1, 2, 3].map(i => `<i class="${i < s ? 'done' : i === s ? 'on' : ''}"></i>`).join('')}</div>`;
+  const x = `<button type="button" class="x" onclick="nf82OnbClose()" aria-label="Close">${nf82Ic('<path d="M18 6 6 18M6 6l12 12"/>', 20)}</button>`;
+  const dots = s < 3 ? `<div class="top"><div class="dots" aria-label="Step ${s} of 2"><i class="${s >= 1 ? 'on' : ''}"></i><i class="${s >= 2 ? 'on' : ''}"></i></div><span class="st">Step ${s} of 2</span>${x}</div>` : `<div class="top"><span></span>${x}</div>`;
   let body = '';
-  if(s === 1) body = `<div class="wel"><span class="tl">Mabayaran nang mas mabilis. Alam ang tunay na kita, araw-araw.</span><h2 id="nf82OnbH">Welcome to Nifti, ${nf82E(name)}</h2><p>Let's set up Nifti for your shop. It takes about 2 minutes, and you can change anything later.</p></div>
+  if(s === 1) body = `<h2 id="nf82OnbH">Welcome to Nifti, ${nf82E(name)}</h2><p>Two quick questions so Nifti fits your shop. You can change everything later.</p>
     <h3>What kind of business is it?</h3>
     <div class="types">${NF82_TYPES.map(t => `<button type="button" class="ty${d.type === t.k ? ' on' : ''}" aria-pressed="${d.type === t.k}" onclick="nf82OnbPick('${t.k}')"><span class="ic">${nf82Ic(t.ic, 26)}</span><span class="tx"><b>${nf82E(t.l)}</b><small>${nf82E(t.d)}</small></span><span class="ck" aria-hidden="true">${nf82Ic('<path d="M20 6 9 17l-5-5"/>', 16)}</span></button>`).join('')}</div>
     <div class="ft"><button type="button" class="nf82-lk" onclick="nf82OnbClose()">I'll do this later</button><button type="button" class="nf82-btn p" onclick="nf82OnbGo(2)">Next</button></div>`;
-  else if(s === 2) body = `<h2 id="nf82OnbH">What should Nifti help with first?</h2><p>Pick as many as you like. We picked the usual ones for ${nf82E((NF82_TYPES.find(t => t.k === d.type) || {}).l || 'your shop').toLowerCase()}.</p>
-    <div class="goals">${NF82_GOALS.map(g => `<button type="button" class="gl${d.goals.includes(g.k) ? ' on' : ''}" aria-pressed="${d.goals.includes(g.k)}" onclick="nf82OnbGoal('${g.k}')"><span class="ck" aria-hidden="true">${nf82Ic('<path d="M20 6 9 17l-5-5"/>', 15)}</span>${nf82E(g.l)}</button>`).join('')}</div>
-    <div class="ft"><button type="button" class="nf82-btn s" onclick="nf82OnbGo(1)">Back</button><button type="button" class="nf82-btn p" onclick="nf82OnbGo(3)">Next</button></div>`;
-  else if(s === 3){ const hid = d.hidden || nf82ProposeHidden(d.type, d.goals), on = NF82_PAGES.reduce((a, g) => a + g.items.filter(x => !hid.includes(x[0])).length, 0);
-    body = `<h2 id="nf82OnbH">Your menu</h2><p>These ${on} pages will show in your menu. Turn any on or off. <b>Nothing is deleted:</b> a hidden page still opens from search, and you can bring it back any time in Settings, Pages you use.</p>
-    <div class="pages">${nf82PagesListHtml(hid, 'nf82OnbTog')}</div>
-    <div class="ft"><button type="button" class="nf82-btn s" onclick="nf82OnbGo(2)">Back</button><button type="button" class="nf82-btn p" onclick="nf82OnbFinish()">Start using Nifti</button></div>`; }
-  else body = `<div class="done"><span class="big" aria-hidden="true">${nf82Ic('<path d="M20 6 9 17l-5-5"/>', 34)}</span><h2 id="nf82OnbH">You're ready</h2><p>Your menu is set. On Home you'll find <b>Start here</b>: a few short steps, each with a "Show me" button that points at exactly what to press.</p>
-    <div class="ft col"><button type="button" class="nf82-btn p" onclick="nf82OnbClose(); go('dashboard'); setTimeout(nf82TourStart, 450)">Show me around (1 minute)</button><button type="button" class="nf82-btn s" onclick="nf82OnbClose(); go('dashboard')">I'll explore on my own</button></div></div>`;
-  ov.innerHTML = `<div class="card" tabindex="-1">${s < 4 ? dots : ''}${body}</div>`;
+  else if(s === 2) body = `<h2 id="nf82OnbH">What should Nifti help you with?</h2><p>We ticked the usual ones for your kind of shop. Tap to change.</p>
+    <div class="goals">${NF82_GOALS.map(g => `<button type="button" class="gl${d.goals.includes(g.k) ? ' on' : ''}" aria-pressed="${d.goals.includes(g.k)}" onclick="nf82OnbGoal('${g.k}')"><span class="lb">${nf82E(g.l)}</span><span class="ck" aria-hidden="true">${nf82Ic('<path d="M20 6 9 17l-5-5"/>', 15)}</span></button>`).join('')}</div>
+    <div class="ft"><button type="button" class="nf82-btn s" onclick="nf82OnbGo(1)">Back</button><button type="button" class="nf82-btn p" onclick="nf82OnbFinish()">Done</button></div>`;
+  else { const hid = NF82O.hiddenNow || []; body = `<div class="done"><span class="big" aria-hidden="true">${nf82Ic('<path d="M20 6 9 17l-5-5"/>', 34)}</span><h2 id="nf82OnbH">You're all set</h2>
+    <p>Your menu now shows only what your shop uses.${hid.length ? ` ${hid.length} page${hid.length === 1 ? ' is' : 's are'} tucked away, like ${hid.slice(0, 2).map(nf82PageLabel).map(nf82E).join(' and ')}. Bring any back in Settings.` : ''}</p>
+    <p>On Home, <b>Start here</b> walks you through the first few things, one at a time.</p>
+    <div class="ft col"><button type="button" class="nf82-btn p" onclick="nf82OnbClose(); go('dashboard'); setTimeout(nf82TourStart, 450)">Show me around (1 minute)</button><button type="button" class="nf82-btn s" onclick="nf82OnbClose(); go('dashboard')">Go to Home</button></div></div>`; }
+  ov.innerHTML = `<div class="card" tabindex="-1">${dots}${body}</div>`;
   const h = ov.querySelector('#nf82OnbH'); if(h){ h.setAttribute('tabindex', '-1'); try{ h.focus({preventScroll: true}); }catch(e){} }
 }
 
@@ -53353,38 +53668,69 @@ function nf82SettingsCard(){
   if(c.dataset.k !== html){ c.dataset.k = html; c.innerHTML = html; }
 }
 
-/* ---------- Start here (Home) ---------- */
+/* ---------- Start here (Home): one step at a time, each can be skipped, the whole card can be closed ---------- */
+function nf82Skipped(){ const k = nf82Onb().skipped; return Array.isArray(k) ? k : []; }
 function nf82Steps(){
   const o = nf82Onb(), sales = (BK.sales || []).filter(s => !s.voidedAt);
   let pay = 0; try{ pay = (getMyPaymentAccounts() || []).length; }catch(e){}
   let items = 0; try{ items = (inventoryData || []).length + ((typeof myCatalog !== 'undefined' && myCatalog) ? myCatalog.length : 0); }catch(e){}
   let members = 1; try{ members = getActiveTeamMembers().length; }catch(e){}
   let reminded = (NF82G.remlog || []).length > 0; try{ reminded = reminded || (typeof remLogCache !== 'undefined' && (remLogCache || []).length > 0); }catch(e){}
-  const utang = sales.some(s => s.paidWith === 'credit' || bkSaleBalance(s) > 0);
+  let owed = false; try{ owed = sales.some(s => s.paidWith === 'credit' || bkSaleBalance(s) > 0) || unpaidInvoicesFor('supplier').length > 0; }catch(e){}
+  const sk = nf82Skipped();
   return [
-    {k: 'type', t: 'Tell Nifti about your shop', d: 'So the menu only shows what you use.', m: '1 min', done: !!o.type, go: () => nf82OnbOpen(1)},
-    {k: 'pay', t: 'Add how customers pay you', d: 'Your GCash or bank goes on every bill and pay link.', m: '1 min', done: pay > 0, go: () => { openSettingsCard('paymentDetailsCard'); setTimeout(() => nf82Spot('#paymentDetailsCard, [id*="paymentDetails"]', 'Add your GCash or bank', 'Customers see these on their bill and on their pay link.'), 450); }},
-    {k: 'items', t: 'Add your items and prices', d: 'Pick your kind of shop for starter items, or upload your Excel.', m: '3 min', done: items >= 3, go: () => { if(typeof nf26OpenStart === 'function') nf26OpenStart('kind'); else go('inventory'); }},
-    {k: 'sale', t: 'Record your first sale', d: 'Scan or pick items. The total and change add up for you.', m: '30 sec', done: sales.length > 0, go: () => { go('sales'); setTimeout(() => { if(typeof openQuickSale === 'function') openQuickSale(); }, 250); }},
-    {k: 'utang', t: 'Write down an utang', d: 'Who owes you, how much, and when they pay.', m: '30 sec', done: utang, go: () => { if(typeof nf80NewUtang === 'function') nf80NewUtang(); }},
-    {k: 'remind', t: 'Send your first reminder', d: 'They get a message with a link to pay you by GCash.', m: '1 min', done: reminded, go: () => { go('dashboard'); setTimeout(() => nf82Spot('#nf82Home .nf82-btn.p, #nf82Home', 'Tap Remind', 'Pick Viber, WhatsApp, Messenger or text. The message and pay link are ready.'), 500); }},
-    {k: 'team', t: 'Add a teammate', d: 'A cashier or helper, with only what they need to see.', m: '1 min', opt: true, done: members > 1, go: () => go('team')}
-  ];
+    {k: 'type', t: 'Tell Nifti about your shop', d: 'Two quick questions so your menu shows only what you use.', m: '1 min', done: !!o.type},
+    {k: 'pay', t: 'Add how customers pay you', d: 'Your GCash number shows on every bill and pay link.', m: '1 min', done: pay > 0},
+    {k: 'items', t: 'Add your items and prices', d: 'Type them in, or start from a ready list for your kind of shop.', m: '3 min', done: items >= 3},
+    {k: 'sale', t: 'Record your first sale', d: 'Pick the items. Total and change add up for you.', m: '30 sec', done: sales.length > 0},
+    {k: 'utang', t: 'Write down who owes you', d: 'Name, how much, and when they should pay.', m: '1 min', done: owed},
+    {k: 'remind', t: 'Send your first reminder', d: 'They get a message with a link to pay you by GCash.', m: '1 min', done: reminded},
+    {k: 'team', t: 'Add a teammate', d: 'A cashier or helper, who sees only what you allow.', m: '1 min', opt: true, done: members > 1}
+  ].map(x => Object.assign(x, {skipped: !x.done && sk.includes(x.k)}));
+}
+function nf82PayFormHtml(){
+  return `<div class="pf" role="group" aria-label="Add your GCash"><label><span>GCash number</span><input id="nf83PayNum" inputmode="tel" maxlength="16" placeholder="0917 123 4567"></label><label><span>Name on your GCash</span><input id="nf83PayName" maxlength="120" placeholder="e.g. Ramon Dela Cruz"></label>
+    <div class="pa"><button type="button" class="nf82-btn p" onclick="nf83PaySave()">Save GCash</button><button type="button" class="nf82-lk" onclick="nf83CloseOverlays(); openSettingsCard('paymentDetailsCard')">Bank, Maya or QR instead</button></div><p class="pe" id="nf83PayErr" role="alert"></p></div>`;
+}
+async function nf83PaySave(){
+  let num = String((document.getElementById('nf83PayNum') || {}).value || '').replace(/[\s-]/g, ''); const name = stripMarkup(String((document.getElementById('nf83PayName') || {}).value || '')).trim().slice(0, 120); const err = document.getElementById('nf83PayErr');
+  if(num.startsWith('+63')) num = '0' + num.slice(3);
+  if(!/^09\d{9}$/.test(num)){ if(err) err.textContent = 'Type an 11-digit mobile number starting with 09.'; const i = document.getElementById('nf83PayNum'); if(i) i.focus(); return; }
+  if(name.length < 2){ if(err) err.textContent = 'Type the name exactly as it shows on your GCash.'; const i = document.getElementById('nf83PayName'); if(i) i.focus(); return; }
+  const ok = await savePaymentAccounts([...(getMyPaymentAccounts() || []), {id: newRecordId(), type: 'gcash', accountName: name, accountNumber: num, bankName: null, notes: null, qr: null}], 'GCash saved. Customers see it on their bill and pay link.');
+  if(ok !== false){ NF82O.open = null; nf82StartPaint(true); }
 }
 function nf82StartHtml(){
-  const st = nf82Steps(), need = st.filter(s => !s.opt), done = st.filter(s => s.done).length, all = need.every(s => s.done), next = st.find(s => !s.done);
-  const mins = st.filter(s => !s.done).reduce((a, s) => a + (s.m === '30 sec' ? 0.5 : parseFloat(s.m) || 1), 0);
-  const pct = Math.round(done / st.length * 100), R = 22, C = 2 * Math.PI * R;
-  if(all) return `<section class="panel-card nf82-start ok" id="nf82Start"><div class="hd"><span class="ring ok" aria-hidden="true">${nf82Ic('<path d="M20 6 9 17l-5-5"/>', 22)}</span><div class="tt"><h2>You're set up</h2><p>Your shop is in. From here, Home shows what to do each day.</p></div><div class="ha"><button type="button" class="nf82-btn s" onclick="nf82TourStart()">Show me around</button><button type="button" class="nf82-lk" onclick="nf82StartHide()">Hide</button></div></div></section>`;
+  const st = nf82Steps(), active = st.filter(s => !s.skipped), done = active.filter(s => s.done).length, need = active.filter(s => !s.opt), all = need.every(s => s.done), next = active.find(s => !s.done), skipped = st.filter(s => s.skipped);
+  const mins = active.filter(s => !s.done).reduce((a, s) => a + (s.m === '30 sec' ? 0.5 : parseFloat(s.m) || 1), 0);
+  const pct = active.length ? Math.round(done / active.length * 100) : 100, R = 22, C = 2 * Math.PI * R;
+  const close = `<button type="button" class="cx" onclick="nf82StartHide()" aria-label="Close Start here" title="Close">${nf82Ic('<path d="M18 6 6 18M6 6l12 12"/>', 18)}</button>`;
+  if(all) return `<section class="panel-card nf82-start ok" id="nf82Start"><div class="hd"><span class="ring ok" aria-hidden="true">${nf82Ic('<path d="M20 6 9 17l-5-5"/>', 22)}</span><div class="tt"><h2>You're set up</h2><p>From here, Home shows what to do each day.</p></div><div class="ha"><button type="button" class="nf82-btn s" onclick="nf82TourStart()">Show me around</button>${close}</div></div></section>`;
+  const row = (s, i) => { const isNext = s === next, open = NF82O.open === s.k;
+    return `<li class="${s.done ? 'done' : isNext ? 'next' : ''}${open ? ' open' : ''}"><span class="n" aria-hidden="true">${s.done ? nf82Ic('<path d="M20 6 9 17l-5-5"/>', 15) : i + 1}</span><div class="w"><b>${nf82E(s.t)}${s.opt ? ' <em>optional</em>' : ''}</b><small>${nf82E(s.d)}</small></div><span class="m">${s.done ? 'Done' : nf82E(s.m)}</span>
+      ${s.done ? '<span></span><span></span>' : `<button type="button" class="nf82-btn ${isNext && !open ? 'p' : 's'}" onclick="nf82StepGo('${s.k}')">${open ? 'Close' : isNext ? 'Start' : 'Go'}</button><button type="button" class="sk" onclick="nf83Skip('${s.k}')" aria-label="Skip ${nf82E(s.t)}" title="Skip for now">${nf82Ic('<path d="M18 6 6 18M6 6l12 12"/>', 15)}</button>`}
+      ${open && s.k === 'pay' ? nf82PayFormHtml() : ''}</li>`; };
   return `<section class="panel-card nf82-start" id="nf82Start" aria-labelledby="nf82StartH"><div class="hd">
-      <span class="ring" aria-hidden="true"><svg viewBox="0 0 52 52" width="52" height="52"><circle cx="26" cy="26" r="${R}" fill="none" stroke="#E4E7EC" stroke-width="5"/><circle cx="26" cy="26" r="${R}" fill="none" stroke="#1F6B45" stroke-width="5" stroke-linecap="round" stroke-dasharray="${(pct / 100 * C).toFixed(1)} ${C.toFixed(1)}" transform="rotate(-90 26 26)"/></svg><b>${done}/${st.length}</b></span>
-      <div class="tt"><h2 id="nf82StartH">Start here</h2><p>${done} of ${st.length} done · about ${Math.max(1, Math.round(mins))} minute${Math.round(mins) === 1 ? '' : 's'} left. Each "Show me" opens the right screen and points at what to press.</p></div>
-      <div class="ha"><button type="button" class="nf82-btn s" onclick="nf82TourStart()">${nf82Ic('<circle cx="12" cy="12" r="10"/><path d="m10 8 6 4-6 4z"/>', 16)}Show me around</button><button type="button" class="nf82-lk" onclick="nf82StartHide()">Hide for now</button></div></div>
-    <ol class="st">${st.map((s, i) => `<li class="${s.done ? 'done' : s === next ? 'next' : ''}"><span class="n" aria-hidden="true">${s.done ? nf82Ic('<path d="M20 6 9 17l-5-5"/>', 15) : i + 1}</span><div class="w"><b>${nf82E(s.t)}${s.opt ? ' <em>optional</em>' : ''}</b><small>${nf82E(s.d)}</small></div><span class="m">${s.done ? 'Done' : nf82E(s.m)}</span>${s.done ? '<span></span>' : `<button type="button" class="nf82-btn ${s === next ? 'p' : 's'}" onclick="nf82StepGo('${s.k}')">${s === next ? 'Show me' : 'Go'}</button>`}</li>`).join('')}</ol>
+      <span class="ring" aria-hidden="true"><svg viewBox="0 0 52 52" width="52" height="52"><circle cx="26" cy="26" r="${R}" fill="none" stroke="#E4E7EC" stroke-width="5"/><circle cx="26" cy="26" r="${R}" fill="none" stroke="#1F6B45" stroke-width="5" stroke-linecap="round" stroke-dasharray="${(pct / 100 * C).toFixed(1)} ${C.toFixed(1)}" transform="rotate(-90 26 26)"/></svg><b>${done}/${active.length}</b></span>
+      <div class="tt"><h2 id="nf82StartH">Start here</h2><p>${done} of ${active.length} done · about ${Math.max(1, Math.round(mins))} minute${Math.round(mins) === 1 ? '' : 's'} left. Skip anything you don't need with the ×.</p></div>
+      <div class="ha"><button type="button" class="nf82-btn s" onclick="nf82TourStart()">${nf82Ic('<circle cx="12" cy="12" r="10"/><path d="m10 8 6 4-6 4z"/>', 16)}Show me around</button>${close}</div></div>
+    <ol class="st">${active.map((s) => row(s, st.indexOf(s))).join('')}</ol>
+    ${skipped.length ? `<p class="skl">Skipped: ${skipped.map(s => `<span>${nf82E(s.t)} <button type="button" class="nf82-lk" onclick="nf83Unskip('${s.k}')">Bring back</button></span>`).join('')}</p>` : ''}
   </section>`;
 }
-function nf82StepGo(k){ const s = nf82Steps().find(x => x.k === k); if(s) s.go(); }
-function nf82StartHide(){ try{ localStorage.setItem('nifti-start-hide:' + (myBusiness ? myBusiness.id : 'demo'), APP_TODAY); }catch(e){} const el = document.getElementById('nf82StartW'); if(el) el.remove(); showToast('Start here is hidden. Open it again from Settings, Your shop and menu.', 'info'); }
+async function nf83Skip(k){ const sk = nf82Skipped(); if(!sk.includes(k)) sk.push(k); NF82O.open = null; await bkSaveSettings({nf_onb: Object.assign(nf82Onb(), {skipped: sk})}); nf82StartPaint(true); }
+async function nf83Unskip(k){ const sk = nf82Skipped().filter(x => x !== k); await bkSaveSettings({nf_onb: Object.assign(nf82Onb(), {skipped: sk})}); nf82StartPaint(true); }
+function nf82StepGo(k){
+  if(k === 'pay'){ NF82O.open = NF82O.open === 'pay' ? null : 'pay'; nf82StartPaint(true); if(NF82O.open) setTimeout(() => { const i = document.getElementById('nf83PayNum'); if(i){ i.scrollIntoView({block: 'center'}); i.focus(); } }, 60); return; }
+  nf83CloseOverlays();
+  if(k === 'type') return nf82OnbOpen(1);
+  if(k === 'items') return typeof nf83BringOpen === 'function' ? nf83BringOpen('items') : go('inventory');
+  if(k === 'utang') return typeof nf83BringOpen === 'function' ? nf83BringOpen('utang') : (typeof openOpeningBalances === 'function' && openOpeningBalances());
+  if(k === 'sale'){ go('sales'); return setTimeout(() => { if(typeof openQuickSale === 'function') openQuickSale(); }, 250); }
+  if(k === 'remind'){ go('dashboard'); return setTimeout(() => { const b = document.querySelector('#nf82Home .nf82-btn.p'); if(b) nf82Spot(() => [b], 'Tap Remind', 'Pick Viber, WhatsApp, Messenger or text. The message and their pay link are already written.'); else showToast('Nobody is due yet. When someone is, they show up under Who owes you with Remind ready.', 'info'); }, 450); }
+  if(k === 'team'){ go('team'); return setTimeout(() => nf82Spot(() => [...document.querySelectorAll('#page-team button')].filter(x => /add|invite/i.test(x.textContent)), 'Add your teammate', 'Type their name and phone or email. Then choose what they can see.'), 700); }
+}
+function nf82StartHide(){ try{ localStorage.setItem('nifti-start-hide:' + (myBusiness ? myBusiness.id : 'demo'), APP_TODAY); }catch(e){} const el = document.getElementById('nf82StartW'); if(el) el.remove(); showToast('Start here is closed. Open it again from your name menu, Start here guide.', 'info'); }
 function nf82StartPaint(force){
   const home = document.getElementById('mhHome'); if(!home || !home.offsetParent) return;
   let own = true; try{ own = isPrivilegedUser() && !previewRole; }catch(e){}
@@ -53394,11 +53740,11 @@ function nf82StartPaint(force){
   const html = nf82StartHtml(); const o = nf82Onb();
   if(/ ok"/.test(html.slice(0, 80)) && o.done_at && daysBetween(String(o.done_at).slice(0, 10), APP_TODAY) > 3){ if(w) w.remove(); return; }
   if(!w){ w = document.createElement('div'); w.id = 'nf82StartW'; }
-  if(w.dataset.k !== html){ w.dataset.k = html; w.innerHTML = html; }
+  if(w.dataset.k !== html){ const keep = document.activeElement && w.contains(document.activeElement) && document.activeElement.id; w.dataset.k = html; w.innerHTML = html; if(keep){ const e = document.getElementById(keep); if(e) e.focus(); } }
   const old26 = document.getElementById('nf26Start'); if(old26) old26.classList.add('nf82-merged');
   const head = home.querySelector('.hero, .page-head'); if(head){ if(head.nextElementSibling !== w) head.insertAdjacentElement('afterend', w); } else if(!w.isConnected) home.prepend(w);
 }
-NF45_AFTER.push(page => { try{ if(page && page.id === 'page-dashboard') nf82StartPaint(); }catch(e){} });
+NF45_AFTER.push(page => { try{ if(page && page.id === 'page-dashboard' && !(document.activeElement && document.activeElement.closest && document.activeElement.closest('#nf82StartW .pf'))) nf82StartPaint(); }catch(e){} });
 
 /* first visit of a new real shop: the welcome setup opens by itself, once */
 function nf82AutoOnb(){
@@ -53415,7 +53761,9 @@ NF45_AFTER.push(page => { if(page && page.id === 'page-dashboard' && !NF82O.auto
 function nf82VisEl(sel){ const list = typeof sel === 'function' ? [].concat(sel() || []) : [...document.querySelectorAll(sel)]; return list.find(e => { if(!e) return false; const r = e.getBoundingClientRect(); return r.width > 4 && r.height > 4 && getComputedStyle(e).visibility !== 'hidden'; }) || null; }
 function nf82SpotDraw(el, title, text, foot){
   let ov = document.getElementById('nf82Spot');
-  if(!ov){ ov = document.createElement('div'); ov.id = 'nf82Spot'; ov.innerHTML = '<div class="hole"></div><div class="tip" role="dialog" aria-live="polite"></div>'; document.body.appendChild(ov); }
+  if(!ov){ ov = document.createElement('div'); ov.id = 'nf82Spot'; ov.innerHTML = '<div class="hole"></div><div class="tip" role="dialog" aria-live="polite"></div>'; document.body.appendChild(ov);
+    ov.addEventListener('click', e => { if(e.target.closest('.tip')) return; e.preventDefault(); e.stopPropagation(); const h = ov.querySelector('.hole').getBoundingClientRect(), inHole = e.clientX >= h.left && e.clientX <= h.right && e.clientY >= h.top && e.clientY <= h.bottom && ov._el && !NF82O.tour;
+      nf82SpotClose(); if(inHole){ const t = document.elementFromPoint(e.clientX, e.clientY); if(t && t.click) t.click(); } }, true); }
   ov.hidden = false; ov.classList.toggle('nohole', !el);
   const hole = ov.querySelector('.hole'), tip = ov.querySelector('.tip');
   tip.innerHTML = `<b>${nf82E(title)}</b><p>${nf82E(text)}</p>${foot || `<div class="tf"><span></span><button type="button" class="nf82-btn p" onclick="nf82SpotClose()">Got it</button></div>`}`;
@@ -53445,6 +53793,7 @@ function nf82ScrollTo(el){
   try{ window.scrollTo({top: Math.max(0, y), behavior: 'instant'}); }catch(e){ window.scrollTo(0, Math.max(0, y)); }
 }
 function nf82Spot(sel, title, text){
+  nf83CloseOverlays('spot');
   const el = nf82VisEl(sel); nf82ScrollTo(el);
   setTimeout(() => { nf82SpotDraw(el, title, text); document.addEventListener('keydown', nf82SpotKey, true); }, 60);
 }
@@ -53464,7 +53813,7 @@ function nf82TourSteps(){
   ];
 }
 function nf82TourStart(){
-  try{ if(typeof closeMobileSidebar === 'function') closeMobileSidebar(); }catch(e){}
+  nf83CloseOverlays('spot');
   NF82O.tour = nf82TourSteps(); NF82O.tourI = 0; document.addEventListener('keydown', nf82SpotKey, true); nf82TourStep(0);
 }
 function nf82TourStep(i, dir){
@@ -53636,6 +53985,90 @@ function nf82UtImport(inp){
   rd.readAsText(f);
 }
 
+/* ===== Round 83: bringing records in, the easy way (type or paste first; photo or spreadsheet if they prefer) ===== */
+const NF83B = {tab: 'items', items: null, owed: null, paste: false, pasteText: ''};
+function nf83BringOpen(tab){
+  if(typeof nf83CloseOverlays === 'function') nf83CloseOverlays();
+  NF83B.tab = tab === 'utang' ? 'utang' : 'items'; NF83B.paste = false;
+  if(!NF83B.items) NF83B.items = [{n: '', p: '', q: ''}, {n: '', p: '', q: ''}, {n: '', p: '', q: ''}];
+  if(!NF83B.owed) NF83B.owed = [{n: '', a: '', d: 'd15'}, {n: '', a: '', d: 'd15'}];
+  slModal('nf83Bring', `<div class="sl-sheet-h"><b>Bring in your records</b><button class="sl-x" onclick="slClose('nf83Bring')" aria-label="Close">✕</button></div><div class="nf83-br" id="nf83BrBody"></div>`);
+  nf83BringPaint();
+}
+function nf83Grab(){
+  const b = document.getElementById('nf83BrBody'); if(!b) return;
+  b.querySelectorAll('[data-r]').forEach(inp => { const [list, i, f] = inp.dataset.r.split(':'); const arr = list === 'i' ? NF83B.items : NF83B.owed; if(arr[+i]) arr[+i][f] = inp.value; });
+  const pt = document.getElementById('nf83Paste'); if(pt) NF83B.pasteText = pt.value;
+}
+function nf83BringPaint(){
+  const b = document.getElementById('nf83BrBody'); if(!b) return; const t = NF83B.tab;
+  const tabs = `<div class="tb" role="tablist"><button type="button" role="tab" aria-selected="${t === 'items'}" class="${t === 'items' ? 'on' : ''}" onclick="nf83Grab(); NF83B.tab='items'; nf83BringPaint()">Your items and prices</button><button type="button" role="tab" aria-selected="${t === 'utang'}" class="${t === 'utang' ? 'on' : ''}" onclick="nf83Grab(); NF83B.tab='utang'; nf83BringPaint()">Who owes you</button></div>`;
+  const way = (ic, ti, d, fn) => `<button type="button" class="wy" onclick="${fn}"><span class="ic">${nf82Ic(ic, 20)}</span><span><b>${ti}</b><small>${d}</small></span></button>`;
+  let body = '';
+  if(t === 'items') body = `<p class="ld">Type a few items now. You can add the rest any time in Stock.</p>
+    <div class="rows it"><div class="rh"><span>Item name</span><span>Selling price</span><span>In stock</span><span></span></div>
+      ${NF83B.items.map((r, i) => `<div class="rr"><input data-r="i:${i}:n" value="${nf82E(r.n)}" placeholder="${['e.g. Portland Cement 40kg', 'e.g. Coke 1.5L', 'e.g. Rebar 10mm'][i % 3]}" aria-label="Item name ${i + 1}"><span class="pe"><i>₱</i><input data-r="i:${i}:p" value="${nf82E(r.p)}" inputmode="decimal" placeholder="0" aria-label="Selling price ${i + 1}"></span><input data-r="i:${i}:q" value="${nf82E(r.q)}" inputmode="numeric" placeholder="0" aria-label="How many ${i + 1}"><button type="button" class="rm" onclick="nf83Grab(); NF83B.items.splice(${i},1); if(!NF83B.items.length) NF83B.items.push({n:'',p:'',q:''}); nf83BringPaint()" aria-label="Remove row">${nf82Ic('<path d="M18 6 6 18M6 6l12 12"/>', 15)}</button></div>`).join('')}
+      <button type="button" class="nf82-lk add" onclick="nf83Grab(); NF83B.items.push({n:'',p:'',q:''}); nf83BringPaint()">+ Add another item</button></div>
+    <div class="ft"><span class="er" id="nf83BrErr" role="alert"></span><button type="button" class="nf82-btn p" onclick="nf83SaveItems()">Save items</button></div>
+    <div class="or"><span>Or, if it's easier</span></div>
+    <div class="ways">${way('<path d="M12 2 15 8.5 22 9.3 17 14 18.2 21 12 17.8 5.8 21 7 14 2 9.3 9 8.5z"/>', 'Start from a ready list', 'Common items for your kind of shop. Just fix the prices.', "slClose('nf83Bring'); nf26OpenStart('kind')")}
+      ${way('<path d="M14.5 4h-5L7.5 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3.5z"/><circle cx="12" cy="13" r="3"/>', 'Send us a photo', 'Snap your price list or notebook. The Nifti team types it in for you.', "nf83PhotoHelp('items')")}
+      ${way('<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/>', 'Have a spreadsheet?', 'Upload Excel or Google Sheets. Nifti reads the columns.', "slClose('nf83Bring'); if(typeof nf41ImportOpen === 'function') nf41ImportOpen(); else nf26OpenStart('file')")}</div>`;
+  else body = NF83B.paste ? `<p class="ld">Paste or type one customer per line, like you'd write in a notebook. Nifti finds the name, the amount and the date.</p>
+    <textarea id="nf83Paste" rows="7" placeholder="Aling Nena 1,500 Dec 15&#10;JM Builders 12400 30 days&#10;Kuya Ramil 640">${nf82E(NF83B.pasteText)}</textarea>
+    <div class="ft"><button type="button" class="nf82-btn s" onclick="nf83Grab(); NF83B.paste=false; nf83BringPaint()">Back</button><button type="button" class="nf82-btn p" onclick="nf83ReadPaste()">Read my list</button></div>`
+    : `<p class="ld">Who owes you from before Nifti? Add them here. They show up in Who owes you, with reminders on their pay-by date.</p>
+    <div class="rows ow"><div class="rh"><span>Customer</span><span>Amount owed</span><span>Pay by</span><span></span></div>
+      ${NF83B.owed.map((r, i) => `<div class="rr"><input data-r="o:${i}:n" value="${nf82E(r.n)}" placeholder="${['e.g. Aling Nena', 'e.g. JM Builders'][i % 2]}" aria-label="Customer ${i + 1}"><span class="pe"><i>₱</i><input data-r="o:${i}:a" value="${nf82E(r.a)}" inputmode="decimal" placeholder="0" aria-label="Amount ${i + 1}"></span><select data-r="o:${i}:d" aria-label="Pay by ${i + 1}">${[['d7', 'In 1 week'], ['d15', 'In 15 days'], ['d30', 'In 30 days'], ['payday', 'Next payday'], ['late', 'Already late']].map(([k, l]) => `<option value="${k}" ${r.d === k ? 'selected' : ''}>${l}</option>`).join('')}</select><button type="button" class="rm" onclick="nf83Grab(); NF83B.owed.splice(${i},1); if(!NF83B.owed.length) NF83B.owed.push({n:'',a:'',d:'d15'}); nf83BringPaint()" aria-label="Remove row">${nf82Ic('<path d="M18 6 6 18M6 6l12 12"/>', 15)}</button></div>`).join('')}
+      <button type="button" class="nf82-lk add" onclick="nf83Grab(); NF83B.owed.push({n:'',a:'',d:'d15'}); nf83BringPaint()">+ Add another customer</button></div>
+    <div class="ft"><span class="er" id="nf83BrErr" role="alert"></span><button type="button" class="nf82-btn p" onclick="nf83SaveOwed()">Save who owes you</button></div>
+    <div class="or"><span>Or, if it's easier</span></div>
+    <div class="ways">${way('<path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/>', 'Paste from your notes', 'Copy a list from your phone notes or Viber. One customer per line.', "nf83Grab(); NF83B.paste=true; nf83BringPaint(); setTimeout(() => { const t = document.getElementById('nf83Paste'); if(t) t.focus(); }, 30)")}
+      ${way('<path d="M14.5 4h-5L7.5 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3.5z"/><circle cx="12" cy="13" r="3"/>', 'Send us a photo', 'Snap your utang notebook. The Nifti team types it in for you.', "nf83PhotoHelp('utang')")}
+      ${way('<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/>', 'Have a spreadsheet?', 'Upload a CSV with name, amount and pay-by date.', "nf83CsvPick()")}</div>
+      <input type="file" id="nf83Csv" accept=".csv,text/csv,.txt" hidden onchange="nf82UtImport(this)">`;
+  b.innerHTML = tabs + body;
+}
+function nf83CsvPick(){ const i = document.getElementById('nf83Csv'); if(i) i.click(); }
+function nf83PhotoHelp(kind){ slClose('nf83Bring'); NF82X.text = kind === 'items' ? 'Please type in my items and prices from this photo.' : 'Please type in who owes me from this photo of my notebook.'; NF82X.shot = null; nf82FbOpen('question'); }
+function nf83DueOf(k){ return k === 'payday' ? nf82Payday(APP_TODAY) : k === 'late' ? APP_TODAY : addDaysIso(APP_TODAY, Number(String(k).slice(1)) || 15); }
+async function nf83SaveItems(){
+  nf83Grab(); const err = document.getElementById('nf83BrErr');
+  const rows = NF83B.items.map(r => ({n: String(r.n || '').trim().slice(0, 120), p: Number(String(r.p || '').replace(/[,₱\s]/g, '')) || 0, q: Math.max(0, parseInt(String(r.q || '').replace(/[,\s]/g, '')) || 0)})).filter(r => r.n);
+  if(!rows.length){ if(err) err.textContent = 'Type at least one item name.'; return; }
+  const dup = rows.find(r => (inventoryData || []).some(x => String(x.name).toLowerCase() === r.n.toLowerCase())); if(dup){ if(err) err.textContent = `${dup.n} is already in Stock.`; return; }
+  if(typeof requirePermission === 'function' && !requirePermission('editInventory')) return;
+  const made = rows.map(r => { const code = generateUniqueSkuCode('SKU-', inventoryData, 1000, 8999), rop = 5; const it = {id: newRecordId(), code, name: r.n, warehouse: (inventoryData[0] && inventoryData[0].warehouse) || 'main', onHand: r.q, rop, maxLevel: rop * 3, lot: null, exp: null, status: r.q <= rop ? 'critical' : 'healthy', supplier: 'Not set', daysLeft: 14, leadTime: 5, sellPrice: r.p || null}; try{ assignBarcodeIfMissing(it, '48'); }catch(e){} inventoryData.push(it); return it; });
+  try{ syncInventoryToSupabase(made); }catch(e){}
+  try{ scheduleNiftiSave(); }catch(e){}
+  NF83B.items = null; slClose('nf83Bring');
+  showToast(`${made.length} item${made.length === 1 ? '' : 's'} added to Stock.`, 'success');
+  try{ nf82StartPaint(true); }catch(e){}
+}
+async function nf83SaveOwed(){
+  nf83Grab(); const err = document.getElementById('nf83BrErr');
+  const rows = NF83B.owed.map(r => ({n: String(r.n || '').trim().slice(0, 120), a: Number(String(r.a || '').replace(/[,₱\s]/g, '')) || 0, d: nf83DueOf(r.d)})).filter(r => r.n || r.a);
+  if(!rows.length){ if(err) err.textContent = 'Add at least one customer and how much they owe.'; return; }
+  const bad = rows.find(r => r.n.length < 2 || !(r.a >= 1)); if(bad){ if(err) err.textContent = bad.n.length < 2 ? 'Each line needs the customer name.' : `How much does ${bad.n} owe?`; return; }
+  slClose('nf83Bring');
+  try{
+    if(typeof currentAppRole !== 'undefined' && currentAppRole !== 'supplier' && typeof switchAppRole === 'function') switchAppRole('supplier');
+    openOpeningBalances();
+    OB.rows = rows.map(r => obNewRow({buyerId: '', name: r.n, amount: String(r.a), due: r.d, dueKind: 'date'}));
+    obRender(); await obSave();
+    NF83B.owed = null; try{ nf82StartPaint(true); nf82Repaint(); }catch(e){}
+  }catch(e){ console.warn('nf83 owed', e); showToast("Couldn't save. Try again.", 'error'); }
+}
+function nf83ReadPaste(){
+  nf83Grab(); const lines = String(NF83B.pasteText || '').split(/\n+/).map(x => x.trim()).filter(Boolean);
+  const got = lines.map(l => { try{ return obParseLine(l); }catch(e){ return null; } }).filter(Boolean);
+  if(!got.length){ showToast('Write one customer per line, with a name and an amount. Example: Aling Nena 1500 Dec 15', 'warn'); return; }
+  NF83B.owed = got.map(g => ({n: g.name, a: g.amount, d: g.due ? 'pick:' + g.due : 'd15'}));
+  NF83B.owed.forEach(r => { if(r.d.startsWith('pick:')){ const dd = r.d.slice(5), days = daysBetween(APP_TODAY, dd); r.d = days <= 0 ? 'late' : days <= 8 ? 'd7' : days <= 20 ? 'd15' : 'd30'; } });
+  NF83B.paste = false; nf83BringPaint(); showToast(`${got.length} customer${got.length === 1 ? '' : 's'} read. Check them, then save.`, 'success');
+}
+nf82ImpOpen = function(){ nf83BringOpen('items'); };
+
 /* ===== Round 82 · Works without internet =====
    - The app is kept on the phone by the service worker (sw.js), so Nifti opens with no signal.
    - A signed-in shop keeps a copy of its business and its books on the phone (IndexedDB), so it can reopen with no signal.
@@ -53715,6 +54148,83 @@ function nf82FakeQ(){
     sb._nf82 = true;
   }catch(e){ console.warn('nf82 offline client', e); }
 })();
+
+/* ===== Round 83 ===== */
+function nf83E(s){ return escapeHtml(String(s == null ? '' : s)); }
+/* any dark button (green, black, red) always shows white text and icons, wherever it is */
+function nf83Lum(c){ const m = String(c || '').match(/[\d.]+/g); if(!m) return null; const [r, g, b, a] = m.map(Number); if(m.length > 3 && a < 0.6) return null; const f = v => { v /= 255; return v <= .03928 ? v / 12.92 : Math.pow((v + .055) / 1.055, 2.4); }; return .2126 * f(r) + .7152 * f(g) + .0722 * f(b); }
+function nf83FixContrast(root){
+  try{
+    (root || document).querySelectorAll('button, a.btn, .btn, [role="button"], label.nf82-btn, .nf77-b, .nf53-btn').forEach(el => {
+      if(el.classList.contains('nf83-lt') || !el.offsetParent) return;
+      const cs = getComputedStyle(el), lb = nf83Lum(cs.backgroundColor); if(lb == null || lb > 0.2) return;
+      const lt = nf83Lum(cs.color); if(lt != null && lt < 0.45) el.classList.add('nf83-lt');
+    });
+  }catch(e){}
+}
+NF45_AFTER.push(page => { try{ nf83FixContrast(page || document); }catch(e){} });
+(function(){ if(typeof slModal !== 'function' || slModal._nf83) return; const base = slModal; const w = function(){ const m = base.apply(this, arguments); setTimeout(() => nf83FixContrast(m || document), 30); return m; }; Object.assign(w, base); w._nf83 = true; slModal = w; window.slModal = w; })();
+setInterval(() => { if(document.visibilityState === 'visible') nf83FixContrast(document); }, 2000);
+
+/* ---------- Expenses: undo an edit, bring back a removed expense; "Staff advance" without "(vale)" ---------- */
+function nf83XKey(){ return 'nifti-exp-undo:' + (myBusiness ? myBusiness.id : 'demo'); }
+function nf83XLog(){ try{ return JSON.parse(localStorage.getItem(nf83XKey()) || '[]'); }catch(e){ return []; } }
+function nf83XPush(it){ const l = [it].concat(nf83XLog()).slice(0, 20); try{ localStorage.setItem(nf83XKey(), JSON.stringify(l)); }catch(e){} }
+const NF83_XF = ['category', 'amount', 'paidFrom', 'date', 'vendor', 'staff', 'note', 'repeat'];
+function nf83XRow(o){ return {category: o.category, amount: o.amount, paid_from: o.paidFrom, spent_on: o.date, vendor: o.vendor || null, staff_name: o.staff || null, note: o.note || null, repeat_monthly: !!o.repeat}; }
+if(typeof exSave === 'function' && !exSave._nf83){ const _xs = exSave; exSave = async function(){ const id = EXF && EXF.id, e = id && BK.expenses.find(x => x.id === id), before = e ? NF83_XF.reduce((a, k) => (a[k] = e[k], a), {}) : null; const r = await _xs.apply(this, arguments);
+  try{ const now = id && BK.expenses.find(x => x.id === id); if(before && now && NF83_XF.some(k => String(before[k] ?? '') !== String(now[k] ?? ''))) nf83XPush({t: 'edit', id, before, label: now.category, amt: now.amount, was: before.amount, at: new Date().toISOString()}); setTimeout(nf83XPaint, 120); }catch(err){} return r; }; exSave._nf83 = true; window.exSave = exSave; }
+if(typeof bkRemoveExpense === 'function' && !bkRemoveExpense._nf83){ const _xr = bkRemoveExpense; bkRemoveExpense = async function(id){ const r = await _xr.apply(this, arguments); try{ const e = BK.expenses.find(x => x.id === id); if(e && e.deletedAt) nf83XPush({t: 'remove', id, label: e.category, amt: e.amount, at: new Date().toISOString()}); setTimeout(nf83XPaint, 120); }catch(err){} return r; }; bkRemoveExpense._nf83 = true; window.bkRemoveExpense = bkRemoveExpense; }
+async function nf83XUndo(i){
+  const l = nf83XLog(), it = l[i]; if(!it) return; const e = BK.expenses.find(x => x.id === it.id); if(!e){ showToast('That expense is no longer here.', 'warn'); return; }
+  if(it.t === 'edit'){ if(myBusiness){ const { error } = await sb.from('expenses').update(nf83XRow(it.before)).eq('id', it.id); if(error){ showToast(error.message, 'error'); return; } } Object.assign(e, it.before); showToast(`${e.category} is back to how it was.`, 'success'); }
+  else { if(myBusiness){ const { error } = await sb.from('expenses').update({deleted_at: null, delete_reason: null}).eq('id', it.id); if(error){ showToast(error.message, 'error'); return; } } e.deletedAt = null; e.deleteReason = ''; showToast(`${e.category} ${nf83P(e.amount)} is back.`, 'success'); }
+  l.splice(i, 1); try{ localStorage.setItem(nf83XKey(), JSON.stringify(l)); }catch(err){} try{ bkSaveDemo(); }catch(err){} bkRefreshViews(); setTimeout(nf83XPaint, 150);
+}
+function nf83P(n){ return typeof bkPeso === 'function' ? bkPeso(n) : fmtPHP(n); }
+function nf83Ago(iso){ const m = Math.round((Date.now() - Date.parse(iso)) / 60000); return m < 1 ? 'just now' : m < 60 ? m + ' min ago' : m < 1440 ? Math.round(m / 60) + ' h ago' : Math.round(m / 1440) + ' days ago'; }
+function nf83XPaint(){
+  const pg = document.getElementById('page-expenses'); if(!pg || !pg.classList.contains('active')) return;
+  const sec = [...pg.querySelectorAll('section.panel-card')].find(s => /^All expenses/.test(((s.querySelector('.panel-head h2') || {}).textContent || '').trim())); if(!sec) return;
+  const l = nf83XLog().filter(it => { const e = BK.expenses.find(x => x.id === it.id); return e && (it.t === 'edit' || e.deletedAt); }).slice(0, 5);
+  const known = new Set(l.filter(x => x.t === 'remove').map(x => x.id));
+  const old = (BK.expenses || []).filter(e => e.deletedAt && !known.has(e.id) && daysBetween(String(e.deletedAt).slice(0, 10), APP_TODAY) <= 30).slice(0, 5).map(e => ({t: 'remove', id: e.id, label: e.category, amt: e.amount, at: e.deletedAt, old: true}));
+  const all = l.concat(old); let box = sec.querySelector('.nf83-chg');
+  if(!all.length){ if(box) box.remove(); return; }
+  const full = nf83XLog();
+  const html = `<div class="h">${'<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7v6h6"/><path d="M21 17a9 9 0 0 0-15-6.7L3 13"/></svg>'}<b>Recent changes</b><span>Undo a change or bring back something removed by mistake.</span></div>
+    ${all.map(it => { const i = full.findIndex(x => x.id === it.id && x.at === it.at && x.t === it.t); const lbl = it.t === 'edit' ? `Edited <b>${nf83E(it.label)}</b>${it.was != null && it.was !== it.amt ? ` · ${nf83P(it.was)} → ${nf83P(it.amt)}` : ''}` : `Removed <b>${nf83E(it.label)}</b> · ${nf83P(it.amt)}`;
+      return `<div class="r"><span>${lbl} <em>${nf83E(nf83Ago(it.at))}</em></span>${it.old ? `<button type="button" class="nf82-btn s" onclick="nf83XBring('${it.id}')">Bring back</button>` : `<button type="button" class="nf82-btn s" onclick="nf83XUndo(${i})">${it.t === 'edit' ? 'Undo' : 'Bring back'}</button>`}</div>`; }).join('')}`;
+  if(!box){ box = document.createElement('div'); box.className = 'nf83-chg'; const head = sec.querySelector('.panel-head'); if(head) head.insertAdjacentElement('afterend', box); else sec.prepend(box); }
+  if(box.dataset.k !== html){ box.dataset.k = html; box.innerHTML = html; }
+}
+async function nf83XBring(id){ nf83XPush({t: 'remove', id, label: '', amt: 0, at: new Date().toISOString()}); await nf83XUndo(0); }
+function nf83Vale(root){ try{ const w = document.createTreeWalker(root || document.body, NodeFilter.SHOW_TEXT); let n; const hit = []; while((n = w.nextNode())){ if(n.nodeValue.indexOf('(vale)') >= 0) hit.push(n); } hit.forEach(t => { t.nodeValue = t.nodeValue.replace(/\s*\(vale\)/g, ''); }); }catch(e){} }
+NF45_AFTER.push(page => { try{ if(page && page.id === 'page-expenses'){ nf83XPaint(); nf83Vale(page); } }catch(e){} });
+(function(){ if(typeof exRender !== 'function' || exRender._nf83) return; const _er = exRender; exRender = function(){ const r = _er.apply(this, arguments); try{ document.querySelectorAll('.share-modal-backdrop').forEach(m => nf83Vale(m)); }catch(e){} return r; }; exRender._nf83 = true; window.exRender = exRender; })();
+
+/* ---------- Phone: 5 buttons for the daily jobs. Everything else is in Menu (with its red counts). ---------- */
+const NF83_BB = [['dashboard', 'Home', '<rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/>'], ['sales', 'Sell', '<path d="M3 9l1.5-5h15L21 9"/><path d="M4 9v11h16V9"/><path d="M3 9h18"/><path d="M9 20v-6h6v6"/>'], ['collections', 'Get paid', '<rect x="2" y="6" width="20" height="13" rx="2"/><path d="M2 10h20M6 15h4"/>'], ['inventory', 'Stock', '<path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/>']];
+function nf83Num(id){ const b = document.getElementById(id); return b && b.style.display !== 'none' ? (parseInt(b.textContent, 10) || 0) : 0; }
+function nf83BottomBar(){
+  const bn = document.getElementById('bottomNav'); if(!bn) return;
+  bn.classList.add('nf83-bb');
+  [...bn.children].forEach(c => { if(!c.classList.contains('nf83-b') && !c.classList.contains('nf83-hid')) c.classList.add('nf83-hid'); });
+  let wrap = bn.querySelector('.nf83-b'); if(!wrap){ NF83_BB.forEach(([p, l, ic]) => { const b = document.createElement('button'); b.type = 'button'; b.className = 'bnav-item nf83-b'; b.dataset.page = p; b.setAttribute('aria-label', l); b.onclick = () => { go(p); }; b.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ic}</svg><span class="bnav-label">${l}</span>`; bn.appendChild(b); });
+    const m = document.createElement('button'); m.type = 'button'; m.className = 'bnav-item nf83-b nf83-menu'; m.setAttribute('aria-label', 'Menu: every page'); m.onclick = () => { if(typeof toggleMobileSidebar === 'function') toggleMobileSidebar(); else if(typeof openMoreSheet === 'function') openMoreSheet(); };
+    m.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg><span class="bnav-label">Menu</span><span class="nf83-bd" hidden></span>'; bn.appendChild(m); }
+  const n = nf83Num('ordersNavBadge') + nf83Num('messagesNavBadge'), bd = bn.querySelector('.nf83-bd'); if(bd){ bd.hidden = !n; bd.textContent = n > 99 ? '99+' : String(n); }
+  const act = (document.querySelector('#view-app .app-page.active') || {}).id || ''; bn.querySelectorAll('.nf83-b[data-page]').forEach(b => b.classList.toggle('active', act === 'page-' + b.dataset.page));
+  [...bn.children].forEach(c => { if(!c.classList.contains('nf83-b')) c.classList.add('nf83-hid'); });
+}
+NF45_AFTER.push(() => { try{ if(innerWidth <= 980) nf83BottomBar(); }catch(e){} });
+setInterval(() => { try{ if(innerWidth <= 980) nf83BottomBar(); }catch(e){} }, 1500);
+
+/* ---------- BIR 2307 on a phone: one switch only (From customers / To suppliers), not a second Selling/Buying one ---------- */
+try{ if(typeof nf26SideSwitch === 'function' && !nf26SideSwitch._nf83){ const o = nf26SideSwitch; nf26SideSwitch = function(page){ if(page && page.id === 'page-taxforms'){ const sw = page.querySelector('.nf26-side'); if(sw) sw.remove(); page.querySelectorAll('.nf26-off').forEach(x => x.classList.remove('nf26-off')); return; } return o.apply(this, arguments); }; nf26SideSwitch._nf83 = 1; window.nf26SideSwitch = nf26SideSwitch; } }catch(e){}
+/* Orders subtitle: "left/right" only makes sense on a wide screen */
+NF45_AFTER.push(() => { try{ const p = document.querySelector('#page-orders.active .page-head p'); if(!p) return; if(!p.dataset.nf83w) p.dataset.nf83w = p.innerHTML; p.innerHTML = innerWidth < 900 ? p.dataset.nf83w.replace(/\s*Customers on the left, suppliers on the right\.?/, ' Switch between customers and suppliers below.') : p.dataset.nf83w; }catch(e){} });
+NF45_AFTER.push(() => { try{ const pg = document.getElementById('page-orders'), h = pg && pg.querySelector(':scope > .nf-orders-head'); if(pg) pg.classList.toggle('nf83-oh', !!(h && h.offsetParent && h.querySelector('h1'))); }catch(e){} });
 
 function renderSidebarForViewAsRole(){
   const allowed = computeAllowedPages(getEffectiveRoles());

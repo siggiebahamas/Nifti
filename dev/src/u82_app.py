@@ -56,6 +56,3 @@ P("""    BK.loaded = true; BK.loading = null;
 P("  const { data: { session } } = await sb.auth.getSession();\n  let signedIn = false;", "  const { data: { session } } = (typeof nf82Offline === 'function' && nf82Offline()) ? await Promise.race([sb.auth.getSession().catch(() => ({data: {session: null}})), new Promise(r => setTimeout(() => r({data: {session: null}}), 1200))]) : await sb.auth.getSession();\n  let signedIn = false;")
 P("    const { data: acct } = await sb.rpc('my_account_status');", "    const { data: acct } = NF82_OFFBOOT ? {data: null} : await sb.rpc('my_account_status');")
 
-# --- landing: the promise in Taglish, right under the headline ---
-P('<p class="r72-deck">Orders. Stock. Cash. <span>Under control.</span></p>',
-  '<p class="r72-deck">Orders. Stock. Cash. <span>Under control.</span></p>\n      <p class="nf82-tl"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Mabayaran nang mas mabilis. Alam ang tunay na kita, araw-araw.</span></p>')

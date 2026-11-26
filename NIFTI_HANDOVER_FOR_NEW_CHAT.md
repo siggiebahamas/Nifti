@@ -744,3 +744,17 @@ New files: `dev/src/u82_app.py` (+ `r82.css/js` polish & plans, `r82p.css/js` ge
 
 ### 19.5 Tests
 test82.js (36 checks), full.js 1440/390 0 errors, muts, audit, overflow 0, gray 0 (incl. every new popup and the pay page), brown 0, offline reload (demo) and offline reopen of a signed-in shop (simulated session), CI build = local.
+
+## 20. ROUND 83 (26 Nov 2026): simpler setup, Who owes you, phone bar — read this first
+New: `dev/src/u83_app.py` (injects `r83.css/js`); large edits in `r82o.js/css` (onboarding), `r82x.js` (bring-in sheet), `r82p.js` (Who owes you), `r82.js` (expense palette, Business copy). No migrations. `sw.js` cache → nifti-app-v83.
+- Rules from the owner: never gray text (always #0B0F14); white text/icons on every dark button (r83 `nf83FixContrast` adds `.nf83-lt` automatically); only one popup at a time (`nf83CloseOverlays`).
+- Taglish landing line removed.
+- Welcome setup = 2 steps (type of business, what you want; ticks aligned right) + done screen; no page-toggle wall. Start here: per-step skip ×, card close ×, pay step has an inline GCash form; spotlight blocks clicks behind it.
+- Bring in items/utang (`nf83BringOpen('items'|'owed')`): type rows, or paste from notes; spreadsheet/photo/ready list are optional "other ways". Old Excel template entry redirects here.
+- Who owes you (`nf83WhoHtml`) replaces Collect today, aging, owed-to-you and customer cards: header total (shop utang vs delivery split), 3 tiles (late / due this week / later), aligned rows that expand to bills + Record payment / Send pay link / Show QR. Home uses the compact version. Getting paid = Payments to confirm + Who owes you + settings.
+- Pay link for non-Nifti customers: link goes inside the Viber/SMS reminder and receipt; QR sheet to scan at the counter; copy link.
+- Money cost table: wider centred columns, last-month column dashed border, black totals.
+- Expenses: calmer palette, one font size in the table, dashed last-month column, "Recent changes" panel in All expenses (Undo edits, Bring back removed items, 30 days, stored per business in localStorage `nifti-exp-undo:<biz>`), "(vale)" hidden from labels (data key unchanged).
+- Business plan copy: branches side by side, delivery runs with cash per driver, who-did-what log, roles with peso limits, morning owner summary, done-with-you setup, 30 people.
+- Phone (≤980px): bottom bar Home · Sell · Get paid · Stock · Menu (Menu badge = orders + messages). Page headers on phones lay buttons out as an even 2-column grid; tour button is a light chip; BIR 2307 shows one side switch; Orders shows one title.
+- Tests: test83.js, t83e.js (expenses undo/bring back + phone bar), full.js 0 errors, muts/ovf/contrast/gray/brown clean, CI build = local.
