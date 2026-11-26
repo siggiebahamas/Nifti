@@ -1,0 +1,3 @@
+-- Round 84: reclassify_contact(p_other uuid, p_as 'customer'|'supplier')
+-- Only for outside contacts (businesses.is_outside). No orders in the old direction: swaps the relationship and chat.
+-- Orders exist: adds the other direction too (they become both). Applied via MCP as migration r84_reclassify_contact.

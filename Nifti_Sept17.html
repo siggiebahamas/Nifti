@@ -15596,6 +15596,151 @@ html body .nf53-btn .nf53-play svg{color:#FFFFFF !important;fill:#FFFFFF;}
 }
 
 
+/* ===== Round 84 ===== */
+/* Orders: dates follow their band colour; today gets a ring, not black */
+#nfOrd .nfo-dt.nf84-today{box-shadow:0 0 0 2px currentColor, 0 0 0 4px #FFFFFF !important;}
+#nfOrd .nfo-dt.nf84-today .m{font-size:14px;letter-spacing:.03em;}
+#nfOrd .nfo-dt.yel{background:#FEF3C7 !important;color:#8A5A00 !important;}
+/* cards */
+#nfOrd .nf84-pc{background:#FFFFFF;border:1px solid #E4E7EC;border-radius:16px;margin:10px 0;padding:0;overflow:visible;}
+#nfOrd .nf84-pc .nfo-tl{display:none;}
+#nfOrd .nf84-hd{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:12px;align-items:center;padding:14px 16px 10px;}
+#nfOrd .nf84-hd .nm, #nfOrd .nf84-row .nm{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:18px;color:#0B0F14;}
+#nfOrd .nf84-hd .fx{font-size:14px;color:#0B0F14;margin-top:2px;}
+#nfOrd .nf84-ls{border-top:1px solid #EEF0F3;}
+#nfOrd .nf84-row{display:grid;grid-template-columns:52px minmax(0,1fr) auto;column-gap:14px;row-gap:10px;align-items:center;padding:12px 16px;cursor:pointer;border-left:4px solid transparent;}
+#nfOrd .nf84-ls .nf84-row + .nf84-row{border-top:1px solid #EEF0F3;}
+#nfOrd .nf84-row:hover{background:#F8FAF9;}
+#nfOrd .nf84-pc.one .nf84-row{border-radius:15px;padding:14px 16px;}
+#nfOrd .nf84-row.b-red{border-left-color:#D92D20;} #nfOrd .nf84-row.b-yel{border-left-color:#E8B004;}
+#nfOrd .nf84-row.b-blue{border-left-color:#2E6BE6;} #nfOrd .nf84-row.b-green{border-left-color:#1F9D55;}
+#nfOrd .nf84-row .m{min-width:0;display:grid;gap:4px;}
+#nfOrd .nf84-row .o{display:flex;gap:8px;flex-wrap:wrap;align-items:baseline;font-size:16px;color:#0B0F14;}
+#nfOrd .nf84-row .o .n{font-weight:800;} #nfOrd .nf84-row .o .it{font-weight:600;}
+#nfOrd .nf84-row .s{display:flex;gap:8px;flex-wrap:wrap;align-items:center;font-size:14px;color:#0B0F14;}
+#nfOrd .nf84-row .s .when{font-weight:800;}
+#nfOrd .nf84-row .a{text-align:right;display:grid;justify-items:end;}
+#nfOrd .nf84-row .a b{font-size:18px;font-weight:800;color:#0B0F14;white-space:nowrap;}
+#nfOrd .nf84-row .a span{font-size:14px;color:#0B0F14;}
+#nfOrd .nf84-row .x{grid-column:2 / -1;display:flex;gap:8px;align-items:center;justify-content:flex-end;min-width:0;}
+#nfOrd .nf84-b{min-height:40px;padding:0 16px;white-space:nowrap;font-weight:800;}
+#nfOrd .nf84-done{display:inline-flex;align-items:center;min-height:36px;padding:0 14px;border-radius:999px;background:#DCF5E5;color:#146C3C;font-weight:800;font-size:14px;white-space:nowrap;}
+#nfOrd .nf84-pl{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 12px;border-radius:10px;border:1px solid #B7E1C6;background:#E8F3EC;color:#14532D;font-weight:800;font-size:14px;cursor:pointer;white-space:nowrap;}
+#nfOrd .nf84-dw{position:relative;}
+#nfOrd .nf84-dw .nf43-dots{width:40px;height:40px;border-radius:10px;border:1px solid #D0D5DD;background:#FFFFFF;color:#0B0F14;font-size:18px;cursor:pointer;}
+#nfOrd .nf84-dw .nf43-menu{position:absolute;right:0;top:44px;z-index:30;min-width:190px;background:#FFFFFF;border:1px solid #E4E7EC;border-radius:12px;box-shadow:0 12px 30px rgba(16,24,40,.14);padding:6px;display:grid;}
+#nfOrd .nf84-dw .nf43-menu[hidden]{display:none;}
+#nfOrd .nf84-dw .nf43-menu button{all:unset;cursor:pointer;padding:10px 12px;border-radius:8px;font-size:16px;font-weight:700;color:#0B0F14;}
+#nfOrd .nf84-dw .nf43-menu button:hover{background:#E8F3EC;}
+/* balance from earlier orders: its own colour so it is never mistaken for this order's amount */
+.nf84-prev{justify-self:start;display:inline-block;line-height:1.35;margin-top:4px;padding:4px 10px;border-radius:999px;background:#F1EAFE;color:#4A1FA8;font-size:14px;font-weight:600;border:1px solid #DCCBFB;}
+.nf84-prev b{font-weight:800;} .nf84-prev.late{background:#FEE4E2;color:#A3160C;border-color:#FBC5C0;}
+@media (max-width: 760px){
+  #nfOrd .nf84-row{grid-template-columns:44px minmax(0,1fr);column-gap:10px;row-gap:8px;padding:12px;}
+  #nfOrd .nf84-pc.one .nf84-row{padding:12px;}
+  #nfOrd .nf84-row .a{grid-column:2;justify-items:start;text-align:left;display:flex;align-items:baseline;gap:6px;flex-wrap:wrap;}
+  #nfOrd .nf84-row .a b{font-size:18px;}
+  #nfOrd .nf84-row .x{grid-column:1 / -1;flex-wrap:wrap;justify-content:stretch;}
+  #nfOrd .nf84-row .x > .nf84-b, #nfOrd .nf84-row .x > .nf84-done{flex:1 1 auto;justify-content:center;}
+  #nfOrd .nf84-row .nm{font-size:16px;}
+  #nfOrd .nfo-dt{width:44px !important;}
+  #nfOrd .nf84-hd{grid-template-columns:40px minmax(0,1fr) auto;padding:12px;}
+}
+#nfOrd .nfo-key span:has(> i.k-today), .nfo-key span:has(> i.k-now){display:none !important;}
+/* Deliveries: icon tile white on the blue square */
+html body .nf75-ready .ic, html body .nf75-ready .ic svg{color:#FFFFFF !important;stroke:#FFFFFF !important;}
+html body .nf76-ready .ic, html body .nf76-ready .ic svg{color:#FFFFFF !important;stroke:#FFFFFF !important;}
+.nf84-paycard{display:grid;grid-template-columns:44px minmax(0,1fr);gap:10px 12px;align-items:center;margin:14px 0 4px;padding:14px;border-radius:14px;background:#E8F3EC;border:1px solid #B7E1C6;}
+.nf84-paycard .ic{width:44px;height:44px;border-radius:12px;background:#FFFFFF;color:#1F6B45;display:grid;place-items:center;border:1px solid #B7E1C6;}
+.nf84-paycard .t{display:grid;gap:2px;} .nf84-paycard .t b{font-size:16px;color:#0B0F14;} .nf84-paycard .t span{font-size:14px;color:#0B0F14;line-height:1.4;}
+.nf84-paycard .nf84-pcb{grid-column:1 / -1;min-height:44px;border-radius:12px;border:0;background:#1F6B45;color:#FFFFFF;font-weight:800;font-size:16px;cursor:pointer;font-family:inherit;}
+/* Messages: kind chip + picker */
+.nf84-kind{display:inline-flex;align-items:center;gap:8px;margin-top:4px;padding:3px 4px 3px 10px;border-radius:999px;border:1px solid #D0D5DD;background:#FFFFFF;font-size:14px;font-weight:800;color:#0B0F14;cursor:pointer;font-family:inherit;}
+.nf84-kind.c{border-color:#B7E1C6;background:#E8F3EC;color:#14532D;} .nf84-kind.s{border-color:#C7D7FE;background:#EEF4FF;color:#1D3F8C;}
+.nf84-kind span{font-size:14px;font-weight:700;padding:2px 8px;border-radius:999px;background:#FFFFFF;color:#0B0F14;}
+.nf84-kinds{display:grid;gap:10px;padding:4px 0;}
+.nf84-ko{display:grid;gap:4px;text-align:left;padding:16px;border-radius:14px;border:1.5px solid #D0D5DD;background:#FFFFFF;cursor:pointer;position:relative;font-family:inherit;color:#0B0F14;}
+.nf84-ko b{font-size:18px;} .nf84-ko span{font-size:14px;line-height:1.4;}
+.nf84-ko:hover:not([disabled]){border-color:#1F6B45;background:#F3FAF5;}
+.nf84-ko.on{border-color:#1F6B45;background:#E8F3EC;cursor:default;} .nf84-ko em{position:absolute;right:14px;top:14px;font-style:normal;font-size:14px;font-weight:800;color:#14532D;background:#FFFFFF;padding:2px 8px;border-radius:999px;border:1px solid #B7E1C6;}
+.nf84-kn{font-size:14px;color:#0B0F14;margin:8px 0 0;}
+/* Undo toast */
+#nf84Toast{position:fixed;left:50%;top:calc(56px + env(safe-area-inset-top));transform:translateX(-50%);z-index:100000;display:flex;align-items:center;gap:12px;max-width:min(560px, calc(100vw - 32px));padding:12px 12px 12px 14px;border-radius:14px;background:#FFFFFF;border:1px solid #B7E1C6;box-shadow:0 14px 40px rgba(16,24,40,.18);font-size:16px;color:#0B0F14;animation:nf84In .2s ease;}
+#nf84Toast.out{opacity:0;transition:opacity .2s;}
+#nf84Toast .ok{width:30px;height:30px;border-radius:50%;background:#E8F3EC;color:#1F6B45;display:grid;place-items:center;flex:none;}
+#nf84Toast .tx{flex:1;line-height:1.35;font-weight:600;}
+#nf84Toast .un{border:0;background:#E8F3EC;color:#14532D;font-weight:800;font-size:16px;padding:9px 14px;border-radius:10px;cursor:pointer;font-family:inherit;}
+#nf84Toast .cl{border:0;background:transparent;font-size:16px;color:#0B0F14;cursor:pointer;padding:6px;}
+
+@keyframes nf84In{from{opacity:0;transform:translate(-50%, -8px);}to{opacity:1;transform:translate(-50%, 0);}}
+/* nothing black: selected = light green */
+html body .nf84-nb, html body #view-app .nf84-nb, html body .nf84-nb.on, html body .nf84-nb.active, html body #view-app .app-page button.nf84-nb.on, html body #view-app .app-page .nf84-nb.nf84-nb.nf84-nb{background:#E8F3EC !important;background-image:none !important;color:#14532D !important;border-color:#1F6B45 !important;box-shadow:inset 0 0 0 1.5px #1F6B45 !important;}
+html body .nf84-nb *, html body #view-app .nf84-nb *, html body #view-app .app-page button.nf84-nb.on *, html body #view-app .app-page .nf84-nb.nf84-nb.nf84-nb *{color:#14532D !important;}
+html body .nf84-nb svg{stroke:currentColor;}
+/* order popup step bar: current step is green, not black */
+html body .nff-segs i.n{background:#1F6B45 !important;opacity:1;}
+html body .nff-segs i.d{background:#7CC59A !important;}
+/* in-app notice: white card with a green edge, not a black bar */
+html body .notif-toast{background:#FFFFFF !important;color:#0B0F14 !important;border:1px solid #B7E1C6 !important;box-shadow:0 14px 40px rgba(16,24,40,.18) !important;}
+html body .notif-toast *{color:#0B0F14 !important;}
+/* Bank & deposits: Every payment list — straight separators, calm second row, equal sizes */
+html body #view-app .sl-card .sl-row.tight{border-radius:0 !important;box-shadow:none !important;border:0 !important;border-bottom:1px solid #EAECF0 !important;background-image:none !important;}
+html body #view-app .sl-card .sl-row.tight::before, html body #view-app .sl-card .sl-row.tight::after{display:none !important;}
+html body #view-app .sl-card .sl-row.tight:last-child{border-bottom:0 !important;}
+html body #view-app .sl-card .sl-row.tight .sl-t{font-size:18px !important;font-weight:700 !important;}
+html body #view-app .sl-card .sl-row.tight .sl-t .sl-dim{font-weight:500 !important;}
+html body #view-app .sl-card .sl-row.tight .sl-s{font-size:16px !important;font-weight:400 !important;color:#0B0F14 !important;}
+html body #view-app .sl-card .sl-row.tight .sl-right b{font-size:18px !important;font-weight:800 !important;}
+html body #view-app .sl-card .sl-row.tight .sl-right small, html body #view-app .sl-card .sl-row.tight .sl-right small span{font-size:16px !important;font-weight:600 !important;line-height:1.3 !important;padding:0 6px !important;}
+/* popups: the main green button uses the page font, bold */
+html body :is(.sl-modal, .sl-sheet, .sl-ov, .nff, .modal, .modal-overlay, [role=dialog], #mhSheet, #nf82Wiz, .nf83-br) :is(.btn-primary, .nff-btn1, .nf82-btn.p, .sl-wide, .nf84-pcb, button.btn-success, button.primary),
+html body :is(.sl-modal, .sl-sheet, .sl-ov, .nff, .modal, .modal-overlay, [role=dialog], #mhSheet, #nf82Wiz, .nf83-br) :is(.btn-primary, .nff-btn1, .nf82-btn.p, .sl-wide, .nf84-pcb) *{font-family:"Plus Jakarta Sans", system-ui, sans-serif !important;font-weight:800 !important;letter-spacing:0 !important;}
+html body #view-app .btn-primary, html body #view-app .btn-primary *{font-weight:800 !important;}
+/* fix-it popups (cash short, missing stock) */
+.nf84-fxw{display:grid;gap:12px;}
+.nf84-fxw .lead{margin:0;font-size:16px;line-height:1.5;color:#0B0F14;}
+.nf84-sum{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.nf84-sum span{display:grid;gap:2px;padding:12px;border-radius:12px;background:#F8FAF9;border:1px solid #EAECF0;}
+.nf84-sum small{font-size:14px;color:#0B0F14;font-weight:600;} .nf84-sum b{font-size:18px;color:#0B0F14;}
+.nf84-fx{border:1px solid #E4E7EC;border-left:4px solid #D92D20;border-radius:14px;padding:14px;display:grid;gap:10px;background:#FFFFFF;}
+.nf84-fx.ok{border-left-color:#1F9D55;}
+.nf84-fx .top{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:start;}
+.nf84-fx .w{display:grid;gap:3px;} .nf84-fx .w b{font-size:16px;color:#0B0F14;} .nf84-fx .w span{font-size:14px;color:#0B0F14;}
+.nf84-fx .w .rs{font-style:italic;}
+.nf84-fx .n{display:grid;justify-items:end;gap:2px;text-align:right;} .nf84-fx .n b{font-size:16px;} .nf84-fx .n span{font-size:14px;color:#0B0F14;}
+.nf84-fxw .neg, .nf84-fx .neg{color:#B42318 !important;} .nf84-fxw .amb, .nf84-fx .amb{color:#8A5A00 !important;}
+.nf84-fx .ask{font-size:14px;font-weight:800;color:#0B0F14;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.nf84-fx .why{display:flex;flex-wrap:wrap;gap:8px;}
+.nf84-fx .why button, .nf84-fx .nf84-rc{border:1px solid #B7E1C6;background:#E8F3EC;color:#14532D;font-weight:700;font-size:14px;padding:8px 12px;border-radius:999px;cursor:pointer;font-family:inherit;}
+.nf84-fx .why button:hover, .nf84-fx .nf84-rc:hover{background:#D3EDDC;}
+.nf84-fx .nf84-rc{border-radius:10px;font-weight:800;}
+.nf84-fx .done{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 12px;border-radius:10px;background:#E8F3EC;font-size:14px;font-weight:700;color:#14532D;}
+.nf84-fx .done.amb{background:#FEF3C7;color:#8A5A00;}
+.nf84-fx .done button{border:0;background:#FFFFFF;border-radius:8px;padding:6px 10px;font-weight:700;font-size:14px;cursor:pointer;color:#0B0F14;font-family:inherit;}
+.nf84-fxe{padding:20px;text-align:center;border-radius:12px;background:#E8F3EC;color:#14532D;font-weight:700;}
+@media (max-width: 600px){ .nf84-sum{grid-template-columns:1fr 1fr;} .nf84-fx .top{grid-template-columns:1fr;} .nf84-fx .n{justify-items:start;text-align:left;} }
+.nf84-dbox{margin-top:12px;padding-top:10px;border-top:1px dashed #B7E1C6;display:grid;gap:8px;}
+.nf84-dbox .dh{display:flex;justify-content:space-between;align-items:center;font-size:14px;font-weight:800;color:#14532D;padding:2px 4px;}
+.nf84-dbox .dh span{background:#E8F3EC;border-radius:999px;padding:1px 9px;}
+#mhHome .nf84-dbox .task.nf84-dn{background:#F3FAF5 !important;border-color:#D3EDDC !important;}
+#mhHome .nf84-dbox .task.nf84-dn h5{color:#0B0F14;text-decoration:none;}
+#mhHome .nf84-dbox .task.nf84-dn .btn{background:#FFFFFF !important;color:#14532D !important;border:1px solid #B7E1C6 !important;}
+
+/* order popup: extra choices folded under one button */
+.nf84-more{width:100%;}
+.nf84-more > summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;min-height:44px;border-radius:12px;border:1px solid #D0D5DD;background:#FFFFFF;font-weight:800;font-size:16px;color:#0B0F14;margin-top:8px;}
+.nf84-more > summary::-webkit-details-marker{display:none;}
+.nf84-more > summary::after{content:'▾';font-size:14px;}
+.nf84-more[open] > summary{background:#E8F3EC;border-color:#B7E1C6;color:#14532D;}
+.nf84-more[open] > summary::after{content:'▴';}
+.nf84-more .nff-sec{margin-top:8px;}
+/* plans: "Soon" lines read as a preview, not a promise */
+li.nf84-soon{opacity:1;}
+li.nf84-soon .nf75-fi{color:#6941C6 !important;}
+li.nf84-soon em.soon{display:inline-block;margin-right:6px;padding:1px 8px;border-radius:999px;background:#F1EAFE;color:#4A1FA8;font-style:normal;font-size:14px;font-weight:800;vertical-align:1px;}
+@media (max-width: 760px){ #nfOrd .nfo-dt.nf84-today .m{font-size:14px;letter-spacing:0;} }
+
+
 /* Round 51: marketing pages keep their original type sizes (the six-size scale is for the app) */
 .marketing-view, #view-login{--ty-k:1.0625;--ty-min:14px;--ty-body:17px;--ty-lead:17.5px;--ty-display:40px;--ty-h1:36px;--ty-h2:22px;--ty-cap:14px;--ty-lbl:17px;--ty-val:29px;--ty-sub:16px;--ty-th:14.5px;--ty-td:16.5px;--ty-row:17.5px;--ty-small:16px;--ty-pill:14px;--ty-tab:16.5px;--ty-btn:16.5px;--ty-nav:16.5px}
 html[data-ty] .marketing-view details.p2-compare > summary, html[data-ty] .marketing-view .mk-table td{font-size:calc(16px*var(--ty-k,1))}
@@ -52933,9 +53078,9 @@ try{
     const set = (k, o) => { const p = NF26_PLANS.find(x => x.k === k); if(p) Object.assign(p, o); };
     set('free', {who: 'For a small shop, every day. Free for good.', f: ['orders|Orders with customers and suppliers', 'credit|Collect today: who to remind, with the message ready', 'money|A pay link for each customer, with "I paid" and screenshots', 'qr|Your GCash or bank QR on every bill', 'shield|Due dates and utang limits', 'box|Stock, shop sales and expenses', 'history|Purchase history and supplier records', 'store|Online store and Facebook posts', 'users|Up to 3 people', 'download|Download everything, any time']});
     set('pro', {m: 990, y: 9900, who: 'Nifti keeps your books and watches your staff spending.', f: ['star|Everything in Free, plus:', 'upload|We load your items and utang for you', 'book|Profit and books, ready for your bookkeeper', 'wallet|Payroll and check tracking', 'shield|Spending limits and alerts when staff overpay', 'undo|Returns and credits, handled', 'megaphone|Price announcements to the buyers you pick', 'chart|Store results and reorder reminders', 'users|Up to 10 people · more for ₱99 each a month']});
-    set('business', {m: 2490, y: 24900, who: 'For owners who can\'t be at every branch or every delivery.', f: ['star|Everything in Pro, plus:', 'branch|Branches side by side: sales, cash and stock for each, and which one is slipping · 2 included, more for ₱490 each a month', 'truck|Delivery runs: each driver gets a route, marks drops and collected cash from their phone', 'shield|Who did what: a log of every edit, delete and price change, by person', 'lock|Roles you set: what each person can see and approve, with peso limits', 'chart|Owner summary every morning: yesterday\'s sales, cash, utang and stock alerts for all branches', 'badge|We set it all up with you, and you get help first', 'users|Up to 30 people · more for ₱99 each a month']});
+    set('business', {m: 2490, y: 24900, who: 'Run every branch, driver and cashier from your phone, without being there.', f: ['star|Everything in Pro, plus:', 'branch|Every branch side by side: sales, cash, stock and who came up short · 2 included, ₱490 each after', 'truck|Delivery runs: each driver gets their stops on their phone, marks drops and hands over cash you can check', 'lock|Approvals on your phone: orders, discounts and expenses above your peso limit wait for your OK', 'shield|Who did what: every edit, delete, discount and price change, by person', 'badge|Setup done with you in one call, and you get help first', 'users|Up to 30 people · ₱99 each after', 'history|Soon: a 7am briefing with yesterday\'s sales, cash short, utang due and what runs out, every branch', 'history|Soon: stock moves between branches, confirmed on both ends', 'history|Soon: price lists per customer group (contractor, wholesale, walk-in), applied by itself', 'history|Soon: suki scores that suggest a safe utang limit for each customer']});
   }
-  if(typeof PRO_PLANS !== 'undefined' && PRO_PLANS.business){ PRO_PLANS.business.features = ['Branches side by side: sales, cash and stock for each', 'Delivery runs with routes and cash collected per driver', 'Log of who edited, deleted or changed prices', 'Roles with peso approval limits', 'Owner summary every morning for all branches', 'Done-with-you setup and help first', 'Up to 30 people (more for ₱99 each a month)']; }
+  if(typeof PRO_PLANS !== 'undefined' && PRO_PLANS.business){ PRO_PLANS.business.features = ['Every branch side by side: sales, cash, stock and who came up short', 'Delivery runs with stops and cash checked per driver', 'Approvals on your phone above your peso limit', 'Log of every edit, delete, discount and price change', 'Setup done with you, and help first', 'Up to 30 people (₱99 each after)', 'Soon: 7am briefing, stock moves between branches, price lists per customer group, suki scores']; }
   if(typeof FREE_PLAN_FEATURES !== 'undefined' && Array.isArray(FREE_PLAN_FEATURES) && !FREE_PLAN_FEATURES.some(x => /Collect today/.test(x))){ FREE_PLAN_FEATURES.unshift('Collect today, payment reminders and a pay link for every customer', 'Due dates, utang limits and who pays late', 'Purchase history and supplier records'); }
 }catch(e){ console.warn('nf82 plans', e); }
 try{ if(typeof NF75_FI !== 'undefined'){ NF75_FI.lock = NF75_FI.lock || '<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>'; NF75_FI.qr = NF75_FI.qr || '<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM18 18h3v3h-3z"/>'; NF75_FI.wallet = NF75_FI.wallet || '<rect x="2" y="6" width="20" height="14" rx="2"/><path d="M16 13h2M2 10h20"/>'; NF75_FI.upload = NF75_FI.upload || '<path d="M12 21V9M7 14l5-5 5 5"/><path d="M4 3h16"/>'; } }catch(e){}
@@ -54225,6 +54370,230 @@ try{ if(typeof nf26SideSwitch === 'function' && !nf26SideSwitch._nf83){ const o 
 /* Orders subtitle: "left/right" only makes sense on a wide screen */
 NF45_AFTER.push(() => { try{ const p = document.querySelector('#page-orders.active .page-head p'); if(!p) return; if(!p.dataset.nf83w) p.dataset.nf83w = p.innerHTML; p.innerHTML = innerWidth < 900 ? p.dataset.nf83w.replace(/\s*Customers on the left, suppliers on the right\.?/, ' Switch between customers and suppliers below.') : p.dataset.nf83w; }catch(e){} });
 NF45_AFTER.push(() => { try{ const pg = document.getElementById('page-orders'), h = pg && pg.querySelector(':scope > .nf-orders-head'); if(pg) pg.classList.toggle('nf83-oh', !!(h && h.offsetParent && h.querySelector('h1'))); }catch(e){} });
+
+/* ===== Round 84 ===== */
+function nf84E(s){ return escapeHtml(String(s == null ? '' : s)); }
+
+/* ---------- 1. Delivery orders: band-coloured dates (never black), compact single orders, "still owes from earlier" only when true ---------- */
+nfoTile = function(r){
+  const [y, m, d] = r.date.split('-').map(Number), today = r.date === APP_TODAY;
+  return `<span class="nfo-dt ${r.band}${today ? ' nf84-today' : ''}" title="${nfoE(new Date(y, m - 1, d).toLocaleDateString('en-PH', {weekday: 'short', month: 'short', day: 'numeric'}))}"><span class="m">${today ? 'TODAY' : NFO_MON[m - 1]}</span><span class="d">${d}</span></span>`;
+}; window.nfoTile = nfoTile;
+function nf84Prior(g){
+  try{ const ids = new Set(g.os.map(r => r.id));
+    const un = unpaidInvoicesFor(g.sell ? 'supplier' : 'buyer').filter(x => x.po && (g.sell ? x.po.buyerId : x.po.supplierId) === g.pid && !ids.has(x.po.id) && (Number(x.balance) || 0) > 0);
+    return {amt: un.reduce((a, x) => a + (Number(x.balance) || 0), 0), n: un.length, late: un.some(x => x.daysOverdue > 0)};
+  }catch(e){ return {amt: 0, n: 0, late: false}; }
+}
+function nf84PriorPill(g){
+  const pr = nf84Prior(g); if(!(pr.amt > 0)) return '';
+  const what = `${pr.n} earlier order${pr.n === 1 ? '' : 's'}`;
+  return `<span class="nf84-prev${pr.late ? ' late' : ''}" title="Not part of the orders shown here">${g.sell ? `Still owes you <b>${nfoPeso(pr.amt)}</b> from ${what}${pr.late ? ' · late' : ''}` : `You still owe <b>${nfoPeso(pr.amt)}</b> from ${what}${pr.late ? ' · late' : ''}`}</span>`;
+}
+const NF84_PAYREG = {};
+function nf84PayLink(pid, name){
+  try{ if(typeof NF82G === 'undefined' || typeof nf83Qr !== 'function') return showToast('Open Getting paid to share a pay link.', 'warn');
+    const id = 'po84_' + pid; NF82G.reg[id] = {src: 'po', key: pid, name}; nf83Qr(id);
+  }catch(e){ showToast("Couldn't open the pay link.", 'warn'); }
+}
+function nf84Dots(btn){ const m = btn.nextElementSibling, open = m.hidden; document.querySelectorAll('.nf43-menu').forEach(x => { x.hidden = true; }); m.hidden = !open; }
+function nf84Menu(g, r){
+  const esc = s => String(s).replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+  const items = [`<button type="button" onclick="nfoChat('${g.pid}', ${g.sell})">Message ${nf84E(g.who.split(' ')[0])}</button>`, `<button type="button" onclick="nfoNew(${g.sell}, '${g.pid}')">New order</button>`];
+  if(g.sell) items.unshift(`<button type="button" onclick="nf84PayLink('${g.pid}', '${esc(g.who)}')">Pay link &amp; QR</button>`);
+  return `<span class="nf43-dotw nf84-dw" onclick="event.stopPropagation()"><button type="button" class="nf43-dots" aria-label="More" onclick="nf84Dots(this)">⋯</button><div class="nf43-menu" hidden onclick="this.hidden=true">${items.join('')}</div></span>`;
+}
+function nf84Act(r, g){
+  if(!r.btn){ if(r.turn === 'done') return `<span class="nf84-done">✓ Done</span>`; return '<span></span>'; }
+  const on = r.act === 'msg' ? `nfMessage('${r.id}')` : `nfoOpen('${r.id}')`;
+  return `<button type="button" class="btn ${r.turn === 'you' ? 'btn-primary' : 'btn-outline'} nf84-b" onclick="event.stopPropagation(); ${on}">${nfoE(r.btn)}</button>`;
+}
+function nf84PayChip(r, g){
+  // a customer's bill that is still open: the pay link sits right on the order, one tap
+  if(!g.sell || !r.o || !r.o.invoice || r.turn === 'done' || !/collect|paid|pay|bill/i.test((r.step || '') + ' ' + (r.todo || '') + ' ' + (r.amtL || ''))) return '';
+  const esc = s => String(s).replace(/'/g, "\\'");
+  return `<button type="button" class="nf84-pl" onclick="event.stopPropagation(); nf84PayLink('${g.pid}', '${esc(g.who)}')"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM18 18h3v3h-3z"/></svg>Pay link</button>`;
+}
+function nf84Row(r, g, one){
+  return `<div class="nf84-row b-${r.band}${one ? ' one' : ''}" role="button" tabindex="0" onclick="nfoOpen('${r.id}')" onkeydown="if(event.key==='Enter')nfoOpen('${r.id}')"><i class="nfo-po" style="display:none !important"></i>
+    ${nfoTile(r)}
+    <div class="m">${one ? `<div class="nm"><b>${nfoE(g.who)}</b>${nfoSideTag(g.sell)}</div>` : ''}
+      <div class="o"><span class="n">${nfoE(r.o.poNumber || '')}</span><span class="it">${nfoE(r.items)}</span></div>
+      <div class="s"><span class="nfo-step t-${r.turn}"><i></i>${nfoE(r.step)}</span><span class="when ${r.tone}">${nfoE(r.when)}</span> <span class="td">${nfoE(r.todo)}</span></div>
+      ${one ? nf84PriorPill(g) : ''}</div>
+    <div class="a"><b>${nfoPeso(r.amt)}</b><span>${nfoE(r.amtL)}</span></div>
+    <div class="x">${nf84PayChip(r, g)}${nf84Act(r, g)}${one ? nf84Menu(g, r) : ''}</div></div>`;
+}
+nfoGroupHtml = function(g){
+  if(g.os.length === 1) return `<div class="nfo-pc nf84-pc one">${nf84Row(g.os[0], g, true)}</div>`;
+  const p = nfoPerson(g.sell, g.pid, g.who);
+  return `<div class="nfo-pc nf84-pc"><div class="nf84-hd"><div class="nfo-a">${nfoAv(g.who)}</div>
+      <div class="hm"><div class="nm"><b>${nfoE(g.who)}</b>${nfoSideTag(g.sell)}</div><div class="fx">${nfoFacts(p, g.sell)}</div>${nf84PriorPill(g)}</div>${nf84Menu(g)}</div>
+    <div class="nf84-ls">${g.os.map(r => nf84Row(r, g, false)).join('')}</div></div>`;
+}; window.nfoGroupHtml = nfoGroupHtml;
+
+/* ---------- 2. Demo: a real month of spending (5–6 kinds), so "Where the money went" looks like a real shop ---------- */
+try{ if(typeof nfDemoBooks === 'function' && !nfDemoBooks._nf84){ const o = nfDemoBooks; nfDemoBooks = function(){ const r = o.apply(this, arguments); try{ nf84DemoExp(); }catch(e){} return r; }; nfDemoBooks._nf84 = 1; window.nfDemoBooks = nfDemoBooks; } }catch(e){}
+function nf84DemoExp(){
+  if(typeof myBusiness !== 'undefined' && myBusiness) return; if(!BK || !Array.isArray(BK.expenses) || BK._nf84) return; BK._nf84 = true;
+  const m = bkMonth(APP_TODAY), have = new Set(BK.expenses.filter(e => !e.deletedAt && bkMonth(e.date) === m && (e.status || 'approved') === 'approved').map(e => e.category));
+  const add = (n, category, amount, paidFrom, vendor, extra) => { if(have.has(category)) return; const date = addDaysIso(APP_TODAY, -Math.min(n, Number(String(APP_TODAY).slice(8, 10)) - 1)); BK.expenses.push(Object.assign({id: bkUid(), date, category, amount, paidFrom, vendor, note: '', staff: '', repeat: false, by: 'Dela Cruz', at: date + 'T17:00:00'}, extra || {})); have.add(category); };
+  add(4, 'Water', 820, 'gcash', 'Maynilad', {repeat: true});
+  add(6, 'Internet & phone', 1299, 'bank', 'PLDT', {repeat: true});
+  add(5, 'Supplies', 640, 'cash', 'National Book Store');
+  add(9, 'Repairs', 1500, 'cash', 'Mang Ben welding', {note: 'shop door'});
+}
+
+/* ---------- 3. Pay link inside the order: any open customer bill shows "Send pay link · Show QR" right in the order popup ---------- */
+try{ if(typeof nffHtml === 'function' && !nffHtml._nf84){ const o84 = nffHtml; nffHtml = function(o, sell){ let h = o84.apply(this, arguments);
+  try{ if(sell && o && o.invoice && nffSpec(o, sell).turn !== 'done' && !o.cancelled){
+    const who = o.buyerName || 'your customer', first = nffFirst(who), esc = s => String(s).replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+    const card = `<div class="nf84-paycard"><span class="ic"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM18 18h3v3h-3z"/></svg></span><div class="t"><b>Get paid faster: send ${nf84E(first)} a pay link</b><span>They open it on their phone, see this bill and pay you by GCash or bank. No app needed.</span></div><button type="button" class="nf84-pcb" onclick="nf84PayLink('${o.buyerId}', '${esc(who)}')">Send pay link or QR</button></div>`;
+    h = h.replace(/<\/div>(\s*)<div class="nff-pane nff-inline">/, () => card + '</div>\n<div class="nff-pane nff-inline">');
+  } }catch(e){ console.warn('nf84 pay card', e); }
+  try{ const m = h.match(/<div class="nff-sec">([\s\S]*?)<\/div>/); if(m && (m[1].match(/<button/g) || []).length >= 3) h = h.replace(m[0], `<details class="nf84-more"><summary>Change something first</summary>${m[0]}</details>`); }catch(e){}
+  return h; }; nffHtml._nf84 = 1; window.nffHtml = nffHtml; } }catch(e){}
+
+/* ---------- 4. Messages: fix a contact tagged as the wrong kind (customer ⇄ supplier) ---------- */
+function nf84KindOf(id){ if((supplierConversations || []).some(c => c.id === id) || (buyersData || []).some(b => b.id === id)) return 'customer'; if((buyerConversations || []).some(c => c.id === id) || (suppliersData || []).some(s => s.id === id)) return 'supplier'; return null; }
+function nf84KindChip(){
+  const head = document.getElementById('threadHeadInfo'); if(!head || !document.querySelector('#page-messages.active')) return;
+  const id = typeof activeConvId !== 'undefined' ? activeConvId : null; const kind = id ? nf84KindOf(id) : null;
+  let chip = head.querySelector('.nf84-kind'); if(!kind){ if(chip) chip.remove(); return; }
+  if(chip && chip.dataset.k === id + kind) return; if(chip) chip.remove();
+  const col = head.children[1]; if(!col) return;
+  col.insertAdjacentHTML('beforeend', `<button type="button" class="nf84-kind ${kind === 'customer' ? 'c' : 's'}" data-k="${id + kind}" onclick="nf84KindOpen('${id}')" title="Wrong? Change it">${kind === 'customer' ? 'Customer' : 'Supplier'}<span>Change</span></button>`);
+}
+NF45_AFTER.push(() => { try{ nf84KindChip(); }catch(e){} });
+setInterval(() => { try{ nf84KindChip(); }catch(e){} }, 1200);
+function nf84KindOpen(id){
+  const kind = nf84KindOf(id), conv = [...(supplierConversations || []), ...(buyerConversations || [])].find(c => c.id === id), name = (conv && conv.name) || 'This contact';
+  const opt = (k, t, s) => `<button type="button" class="nf84-ko${kind === k ? ' on' : ''}" ${kind === k ? 'disabled' : `onclick="nf84KindSet('${id}', '${k}')"`}><b>${t}</b><span>${s}</span>${kind === k ? '<em>Now</em>' : ''}</button>`;
+  slModal('nf84Kind', `<div class="sl-sheet-h"><b>What is ${nf84E(name)} to you?</b><button class="sl-x" onclick="slClose('nf84Kind')" aria-label="Close">✕</button></div>
+    <div class="nf84-kinds">${opt('customer', 'Customer', 'They buy from you. Their orders, bills and utang show under Selling.')}${opt('supplier', 'Supplier', 'You buy from them. Their bills show under Buying.')}</div>
+    <p class="nf84-kn">Your chat history stays. If they already have orders as the other kind, they become both.</p>`);
+}
+async function nf84KindSet(id, as){
+  const conv = [...(supplierConversations || []), ...(buyerConversations || [])].find(c => c.id === id), name = (conv && conv.name) || 'This contact', was = nf84KindOf(id);
+  const moveLocal = () => { const from = as === 'customer' ? buyerConversations : supplierConversations, to = as === 'customer' ? supplierConversations : buyerConversations;
+    const i = from.findIndex(c => c.id === id); if(i >= 0){ const [c] = from.splice(i, 1); if(!to.some(x => x.id === id)) to.push(c); }
+    const fromL = as === 'customer' ? suppliersData : buyersData, toL = as === 'customer' ? buyersData : suppliersData;
+    const j = fromL.findIndex(s => s.id === id); if(j >= 0){ const [s] = fromL.splice(j, 1); if(!toL.some(x => x.id === id)) toL.push(s); } };
+  let res = 'moved';
+  if(typeof myBusiness !== 'undefined' && myBusiness){
+    try{ const { data, error } = await sb.rpc('reclassify_contact', {p_other: id, p_as: as}); if(error) throw error; res = data || 'moved'; }
+    catch(e){ showToast(String((e && e.message) || "Couldn't change it. Check your internet."), 'warn'); return; }
+    if(res === 'moved') moveLocal();
+    try{ if(typeof loadMyConnections === 'function') await loadMyConnections(); }catch(e){}
+  } else moveLocal();
+  slClose('nf84Kind');
+  try{ if(as === 'customer'){ currentAppRole = 'supplier'; } else { currentAppRole = 'buyer'; } activeConvId = id; renderConversationList(); selectConversation(id); }catch(e){}
+  try{ document.querySelector('.nf84-kind') && document.querySelector('.nf84-kind').remove(); nf84KindChip(); }catch(e){}
+  const msg = res === 'both' ? `${name} already has orders as your ${was}, so they're now both a customer and a supplier.` : res === 'already' ? `${name} is already your ${as}.` : `${name} is now your ${as}.`;
+  if(res === 'moved' && !(typeof myBusiness !== 'undefined' && myBusiness)) nf84Undo(msg, () => nf84KindSet(id, was)); else showToast(msg, 'success');
+}
+
+/* ---------- Undo toast: every quick action can be taken back for a few seconds ---------- */
+function nf84Undo(text, undo, secs, label){
+  let t = document.getElementById('nf84Toast'); if(t) t.remove();
+  t = document.createElement('div'); t.id = 'nf84Toast'; t.setAttribute('role', 'status');
+  t.innerHTML = `<span class="ok"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></span><span class="tx"></span>${undo ? `<button type="button" class="un">${label || 'Undo'}</button>` : ''}<button type="button" class="cl" aria-label="Close">✕</button>`;
+  t.querySelector('.tx').textContent = text; document.body.appendChild(t);
+  const close = () => { t.classList.add('out'); setTimeout(() => t.remove(), 250); };
+  if(undo) t.querySelector('.un').onclick = () => { close(); try{ undo(); }catch(e){ console.warn(e); } };
+  t.querySelector('.cl').onclick = close; setTimeout(() => { if(t.isConnected) close(); }, (secs || 8) * 1000);
+}
+
+/* ---------- 5. Nothing black: any black-filled chip, tab, pill or selected button becomes light green ---------- */
+function nf84IsBlack(c){ const m = String(c).match(/rgba?\((\d+), (\d+), (\d+)(?:, ([\d.]+))?/); if(!m) return false; if(m[4] !== undefined && Number(m[4]) < .5) return false; const [r, g, b] = [m[1], m[2], m[3]].map(Number); return r < 56 && g < 56 && b < 64 && Math.abs(r - g) < 22 && Math.abs(g - b) < 26; }
+function nf84NoBlack(root){
+  (root || document).querySelectorAll('button, [role=tab], [role=radio], [role=button], label, a, .on, .active, .sel, .selected, [aria-pressed=true], [aria-selected=true], [class*=pill], [class*=chip], [class*=seg], [class*=tab], span[class], i[class], b[class], em[class]').forEach(e => {
+    if(e.classList.contains('nf84-nb') || e.closest('#bottomNav, .notif-toast')) return;
+    const r = e.getBoundingClientRect(); if(r.width < 8 || r.height < 8) return;
+    if(nf84IsBlack(getComputedStyle(e).backgroundColor)){ e.classList.add('nf84-nb'); e.classList.remove('nf83-lt'); e.querySelectorAll('.nf83-lt').forEach(x => x.classList.remove('nf83-lt')); }
+  });
+}
+let nf84NbT = null;
+function nf84NbSoon(){ clearTimeout(nf84NbT); nf84NbT = setTimeout(() => { try{ const scope = [document.querySelector('#view-app .app-page.active'), ...document.querySelectorAll('.sl-modal, .sl-ov, .modal-overlay.active, .modal.active, [role=dialog], #orderDetailModal, .nff, #mhSheet, .more-sheet')].filter(Boolean); scope.forEach(s => nf84NoBlack(s)); }catch(e){} }, 250); }
+try{ new MutationObserver(nf84NbSoon).observe(document.body, {childList: true, subtree: true, attributes: true, attributeFilter: ['class', 'aria-selected', 'aria-pressed']}); }catch(e){}
+NF45_AFTER.push(nf84NbSoon);
+/* Bank & deposits: "bank" written as a name, "Bank" */
+NF45_AFTER.push(() => { try{ document.querySelectorAll('#page-collections .sl-row .sl-s').forEach(s => { if(/(^|·\s)bank(\s·|$)/.test(s.textContent)) s.textContent = s.textContent.replace(/(^|·\s)bank(\s·|$)/g, '$1Bank$2'); }); }catch(e){} });
+
+/* ---------- 6. Home "Act today": Cash short and Missing & bad stock open a clear popup in the middle, with what happened and what to do ---------- */
+function nf84WhyKey(){ return 'nifti-why:' + ((typeof myBusiness !== 'undefined' && myBusiness && myBusiness.id) || 'demo'); }
+function nf84Why(){ try{ return JSON.parse(localStorage.getItem(nf84WhyKey()) || '{}'); }catch(e){ return {}; } }
+function nf84WhySet(k, v){ const w = nf84Why(); if(v) w[k] = {why: v, at: new Date().toISOString(), by: typeof bkMe === 'function' ? bkMe() : ''}; else delete w[k]; try{ localStorage.setItem(nf84WhyKey(), JSON.stringify(w)); }catch(e){} }
+const NF84_DAYFMT = d => { try{ return new Date(String(d).slice(0, 10) + 'T00:00:00').toLocaleDateString('en-PH', {weekday: 'short', month: 'short', day: 'numeric'}); }catch(e){ return d; } };
+const NF84_CASH_WHY = ['Counted wrong, the cash is there', 'Paid an expense from the drawer', 'Gave the wrong change', 'A sale was recorded twice', 'Cash is missing'];
+const NF84_STOCK_WHY = ['Counted wrong, it is there', 'Sold but not recorded', 'Damaged or expired', 'Used in the shop', 'Lost or stolen'];
+function nf84CashOpen(){
+  const m = bkMonth(APP_TODAY), c = bkCashSummary(m), why = nf84Why();
+  const rows = c.list.filter(x => x.difference < 0).sort((a, b) => String(b.day).localeCompare(String(a.day)));
+  const done = rows.filter(r => why['cash:' + r.id]).length;
+  const row = r => { const k = 'cash:' + r.id, w = why[k], exp = Number((r.expected || {}).cash) || 0, got = Number((r.counted || {}).cash) || 0;
+    return `<div class="nf84-fx${w ? ' ok' : ''}" data-k="${k}"><div class="top"><div class="w"><b>${nf84E(NF84_DAYFMT(r.day))}</b><span>Counted by ${nf84E(r.by || 'staff')}${r.note ? ' · “' + nf84E(r.note) + '”' : ''}</span></div><div class="n"><b class="neg">${bkPeso(-r.difference)} short</b><span>Should be ${bkPeso(exp)} · counted ${bkPeso(got)}</span></div></div>
+      ${w ? `<div class="done"><span>✓ ${nf84E(w.why)}</span><button type="button" onclick="nf84WhySet('${k}'); nf84CashOpen()">Change</button></div>`
+        : `<div class="ask">What happened?</div><div class="why">${NF84_CASH_WHY.map(t => `<button type="button" onclick="nf84CashWhy('${k}', ${JSON.stringify(t).replace(/"/g, '&quot;')}, ${-r.difference}, '${r.day}')">${nf84E(t)}</button>`).join('')}</div>`}</div>`; };
+  nf45Pop('nf84Cash', `Cash short this month: ${bkPeso(c.short)}`, `<div class="nf84-fxw">
+      <p class="lead">On these days the drawer had less cash than your sales said. Go through each day: ask who counted, then pick what happened. ${rows.length ? `<b>${done} of ${rows.length} explained.</b>` : ''}</p>
+      ${rows.length ? rows.map(row).join('') : '<div class="nf84-fxe">No short days this month. 🎉</div>'}</div>`,
+    `<button type="button" class="btn btn-outline" onclick="slClose('nf84Cash')">Close</button><button type="button" class="btn btn-primary" onclick="slClose('nf84Cash'); nf84CountCash()">Count today's cash</button>`, {wide: true});
+}
+function nf84CashWhy(k, why, amt, day){
+  nf84WhySet(k, why); nf84CashOpen();
+  if(/expense from the drawer/i.test(why)){ setTimeout(() => { try{ slClose('nf84Cash'); openExpenseForm(); EXF.amount = String(amt); EXF.paidFrom = 'cash'; EXF.date = day; exRender(); }catch(e){} }, 150); nf84Undo('Saved. Add the expense so the drawer matches next time.', () => { nf84WhySet(k); }); return; }
+  nf84Undo('Saved: ' + why + '.', () => { nf84WhySet(k); if(document.querySelector('#nf84Cash')) nf84CashOpen(); });
+}
+function nf84StockOpen(){
+  const m = bkMonth(APP_TODAY), why = nf84Why();
+  const mv = (BK.moves || []).filter(x => bkMonth(x.date) === m && ((x.kind === 'count' && x.qty < 0) || x.kind === 'bad')).sort((a, b) => String(b.at || b.date).localeCompare(String(a.at || a.date)));
+  const cost = x => ((x.unitCost != null ? x.unitCost : bkItemCost(x.item)) || 0) * Math.abs(Number(x.qty) || 0);
+  const miss = mv.filter(x => x.kind === 'count').reduce((a, x) => a + cost(x), 0), bad = mv.filter(x => x.kind === 'bad').reduce((a, x) => a + cost(x), 0);
+  const done = mv.filter(x => why['stock:' + x.id]).length;
+  const sku = n => { const i = (inventoryData || []).find(z => z.name === n); return i ? (i.code || '') : ''; };
+  const unit = n => { const i = (inventoryData || []).find(z => z.name === n); return i && i.unit ? ' ' + i.unit : ''; };
+  const row = x => { const k = 'stock:' + x.id, w = why[k], isBad = x.kind === 'bad', q = Math.abs(Number(x.qty) || 0);
+    return `<div class="nf84-fx${w || isBad ? ' ok' : ''}"><div class="top"><div class="w"><b>${nf84E(x.item)}</b><span>${sku(x.item) ? nf84E(sku(x.item)) + ' · ' : ''}${nf84E(NF84_DAYFMT(x.date))} · ${isBad ? 'written off' : 'counted'} by ${nf84E(x.by || 'staff')}</span>${x.reason ? `<span class="rs">“${nf84E(String(x.reason).replace(/^Spot count: /, 'Count: '))}”</span>` : ''}</div>
+      <div class="n"><b class="${isBad ? 'amb' : 'neg'}">${q}${nf84E(unit(x.item))} ${isBad ? 'bad' : 'missing'}</b><span>worth ${bkPeso(cost(x))}</span></div></div>
+      ${isBad ? `<div class="done amb"><span>Written off as damaged or expired. Nothing to fix.</span></div>`
+        : w ? `<div class="done"><span>✓ ${nf84E(w.why)}</span><button type="button" onclick="nf84WhySet('${k}'); nf84StockOpen()">Change</button></div>`
+        : `<div class="ask">Step 1 · Count it again <button type="button" class="nf84-rc" onclick="slClose('nf84Stock'); nf75Recount('stock:${x.id}')">Recount ${nf84E(x.item)}</button></div><div class="ask">Step 2 · Still missing? Pick what happened</div><div class="why">${NF84_STOCK_WHY.map(t => `<button type="button" onclick="nf84StockWhy('${k}', ${JSON.stringify(t).replace(/"/g, '&quot;')})">${nf84E(t)}</button>`).join('')}</div>`}</div>`; };
+  nf45Pop('nf84Stock', `Missing & bad stock this month: ${bkPeso(miss + bad)}`, `<div class="nf84-fxw">
+      <div class="nf84-sum"><span><small>Missing in counts</small><b class="neg">${bkPeso(miss)}</b></span><span><small>Damaged or expired</small><b class="amb">${bkPeso(bad)}</b></span><span><small>Explained</small><b>${done} of ${mv.filter(x => x.kind === 'count').length}</b></span></div>
+      <p class="lead"><b>Missing</b> means a count found fewer than Nifti expected. For each item: count it again, and if it's really gone, pick what happened. Nifti keeps the reason so you can spot a pattern.</p>
+      ${mv.length ? mv.map(row).join('') : '<div class="nf84-fxe">Nothing missing or damaged this month.</div>'}</div>`,
+    `<button type="button" class="btn btn-outline" onclick="slClose('nf84Stock')">Close</button><button type="button" class="btn btn-primary" onclick="slClose('nf84Stock'); go('inventory')">Open Stock</button>`, {wide: true});
+}
+function nf84StockWhy(k, why){ nf84WhySet(k, why); nf84StockOpen(); nf84Undo('Saved: ' + why + '.', () => { nf84WhySet(k); if(document.querySelector('#nf84Stock')) nf84StockOpen(); }); }
+try{ if(typeof bkFlags === 'function' && !bkFlags._nf84){ const o = bkFlags; bkFlags = function(){ const r = o.apply(this, arguments); try{ r.forEach(f => { if(f.k === 'cash' && /short/.test(f.v)) f.a = 'nf84CashOpen()'; if(f.k === 'stock' && f.a && /openStockSheet/.test(f.a)) f.a = 'nf84StockOpen()'; }); }catch(e){} return r; }; bkFlags._nf84 = 1; window.bkFlags = bkFlags; } }catch(e){}
+function nf84CountCash(){ try{ if(typeof ccStart === 'function') ccStart(APP_TODAY); }catch(e){} go('cashcount'); setTimeout(() => { const f = document.querySelector('.cc-form'); if(f) f.scrollIntoView({behavior: 'smooth', block: 'center'}); }, 500); }
+
+/* ---------- 7. Home "What to do": a task you finish moves to "Done today" (with See it), it never just vanishes ---------- */
+function nf84WK(n){ return 'nifti-wtd-' + n + ':' + ((typeof myBusiness !== 'undefined' && myBusiness && myBusiness.id) || 'demo') + ':' + APP_TODAY; }
+function nf84WGet(n){ try{ return JSON.parse(localStorage.getItem(nf84WK(n)) || '[]'); }catch(e){ return []; } }
+function nf84WPut(n, v){ try{ localStorage.setItem(nf84WK(n), JSON.stringify(v.slice(-20))); }catch(e){} }
+document.addEventListener('click', e => { const b = e.target.closest && e.target.closest('#mhHome .lanes .task .btn'); if(!b || b.closest('.nf84-dn')) return; const t = b.closest('.task'); const it = {h: (t.querySelector('h5') || {}).textContent || '', p: (t.querySelector('p') || {}).textContent || '', on: b.getAttribute('onclick') || '', at: Date.now()}; const l = nf84WGet('clicked').filter(x => x.on !== it.on); l.push(it); nf84WPut('clicked', l); }, true);
+function nf84WtdSync(){
+  const lanes = document.querySelector('#mhHome .lanes'); if(!lanes) return;
+  const now = [...lanes.querySelectorAll('.task:not(.nf84-dn)')].map(t => ({h: (t.querySelector('h5') || {}).textContent || '', on: ((t.querySelector('.btn') || {}).getAttribute ? t.querySelector('.btn').getAttribute('onclick') : '') || ''}));
+  let clicked = nf84WGet('clicked'), done = nf84WGet('done'); const fresh = [];
+  clicked = clicked.filter(c => { const still = now.some(n => (c.on && n.on === c.on) || n.h === c.h); if(still) return Date.now() - c.at < 6 * 3600e3; if(!done.some(d => d.on === c.on && d.h === c.h)){ done.push(Object.assign({}, c, {doneAt: Date.now()})); fresh.push(c); } return false; });
+  nf84WPut('clicked', clicked); nf84WPut('done', done);
+  const last = lanes.querySelector('.lane:last-child'); if(!last) return;
+  let box = last.querySelector('.nf84-dbox'); const key = done.map(d => d.h).join('|');
+  if(box && box.dataset.k === key) return; if(box) box.remove(); if(!done.length) return;
+  box = document.createElement('div'); box.className = 'nf84-dbox'; box.dataset.k = key;
+  box.innerHTML = `<div class="dh">✓ Done today <span>${done.length}</span></div>` + done.slice().reverse().map((d, i) => `<div class="task nf84-dn"><div><h5>${nf84E(d.h)}</h5><p>${nf84E(d.p)}</p></div><button class="btn" type="button" data-i="${done.length - 1 - i}">See it</button></div>`).join('');
+  box.querySelectorAll('button[data-i]').forEach(b => b.onclick = () => { const d = done[Number(b.dataset.i)]; try{ (0, eval)(d.on); }catch(e){ showToast("Couldn't open it.", 'warn'); } });
+  last.appendChild(box);
+  if(fresh.length) nf84Undo(`Done: ${fresh[0].h}. It's under "Done today" if you want to check it.`, () => { const b = box.querySelector('button[data-i]'); if(b) b.click(); }, 8, 'See it');
+}
+NF45_AFTER.push(() => { try{ nf84WtdSync(); }catch(e){} });
+setInterval(() => { try{ if(document.querySelector('#page-dashboard.active')) nf84WtdSync(); }catch(e){} }, 1500);
+
+/* ---------- 8. Plans: "Soon:" lines get a purple Soon tag ---------- */
+try{ if(typeof nf75Feat === 'function' && !nf75Feat._nf84){ const o = nf75Feat; nf75Feat = function(f){ const m = String(f).match(/^([a-z]+)\|Soon: (.*)$/); if(m) return `<li class="nf84-soon"><i class="nf75-fi">${nf75Ic(NF75_FI.history || NF75_FI.star, 20)}</i><span><em class="soon">Soon</em>${m[2]}</span></li>`; return o.apply(this, arguments); }; nf75Feat._nf84 = 1; window.nf75Feat = nf75Feat; } }catch(e){}
 
 function renderSidebarForViewAsRole(){
   const allowed = computeAllowedPages(getEffectiveRoles());

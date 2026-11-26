@@ -758,3 +758,16 @@ New: `dev/src/u83_app.py` (injects `r83.css/js`); large edits in `r82o.js/css` (
 - Business plan copy: branches side by side, delivery runs with cash per driver, who-did-what log, roles with peso limits, morning owner summary, done-with-you setup, 30 people.
 - Phone (≤980px): bottom bar Home · Sell · Get paid · Stock · Menu (Menu badge = orders + messages). Page headers on phones lay buttons out as an even 2-column grid; tour button is a light chip; BIR 2307 shows one side switch; Orders shows one title.
 - Tests: test83.js, t83e.js (expenses undo/bring back + phone bar), full.js 0 errors, muts/ovf/contrast/gray/brown clean, CI build = local.
+
+## 21. ROUND 84 (26 Nov 2026): calmer orders, pay link in the order, fix-it popups, nothing black
+New: `dev/src/u84_app.py` (injects `r84.css/js`). Migration `r84_reclassify_contact` (RPC `reclassify_contact`, outside contacts only). `sw.js` → nifti-app-v84.
+- Delivery orders: `nfoGroupHtml`/`nfoTile` replaced. Dates take their band colour (red/yellow/blue/green); today = ring + "TODAY", never black. One-order customers are one compact row. "₱0 owes nothing" removed; a purple pill "Still owes you ₱X from N earlier orders" shows only when there is an unpaid balance outside the orders shown (red when late). ⋯ menu: Pay link & QR, Message, New order.
+- Pay link in the flow: "Pay link" chip on any open customer bill row; "Send pay link or QR" card inside the order popup (`nffHtml` wrapper). Order popup folds 3+ secondary choices under "Change something first".
+- Messages: chat header shows a Customer/Supplier chip → picker → `reclassify_contact` (demo: local move with Undo).
+- Nothing black: `nf84NoBlack` (MutationObserver) gives any black-filled chip/tab/selected button the light-green style (`.nf84-nb`); order step bar green; in-app notice white.
+- Bank & deposits list: straight separators, normal second row, "Bank" capitalised, status words = row text size, amount = name size.
+- Home Act today: Cash short → `nf84CashOpen()` (days, who counted, expected vs counted, one-tap reason; "paid an expense from the drawer" opens a prefilled expense). Missing & bad stock → `nf84StockOpen()` (item + SKU + date + who + qty + value; Recount, then reason). Reasons in localStorage `nifti-why:<biz>`.
+- What to do: finished tasks move to "Done today" with See it (`nf84WtdSync`, localStorage `nifti-wtd-*`). `nf84Undo(text, fn, secs, label)` = top toast with Undo/See it.
+- Popup main buttons: page font, weight 800. Demo month now has 6 kinds of expense (profit stays positive).
+- Business plan: real features + purple "Soon" lines (7am briefing, branch stock moves, price lists per customer group, suki scores) — not built yet.
+- Tests: t84a.js, t84b.js, test83/full/muts/ovf/contrast/gray/brown clean, CI build = local.
