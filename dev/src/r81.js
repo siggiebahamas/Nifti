@@ -60,7 +60,7 @@ nf80JumpsHtml = function(m){
     <p class="sub">${T.R.full ? `${nf81E(T.curLabel)} compared with ${nf81E(T.wasLabel)}.` : `${nf81E(T.curLabel)} compared with the same days last month (${nf81E(T.wasLabel)}).`} Tap a cost to see what's in it.</p>
     <p class="say">${say}</p>
     <div class="tb" role="table" aria-label="Costs compared with last month">
-      <div class="th" role="row"><span>Cost</span><span>${nf81E(T.wasLabel)}</span><span>${nf81E(T.curLabel)}</span><span>Change</span></div>
+      <div class="th" role="row"><span>Cost</span><span class="pm"><small>${T.partial ? 'Last month' : 'Month before'}</small>${nf81E(T.wasLabel)}</span><span class="cm"><small>${T.partial ? 'This month' : 'Month shown'}</small>${nf81E(T.curLabel)}</span><span>Change</span></div>
       ${T.rows.map(row).join('')}${ex}
       <div class="tt" role="row"><span class="k">Total costs</span><span class="v">${nf81P(T.wasT)}</span><span class="v">${nf81P(T.nowT)}</span>${nf81Chg(d, T.wasT, '')}</div>
     </div>
@@ -107,8 +107,9 @@ if(typeof nf75OwnerHtml === 'function'){
       // margin tile: no "pulled it down"; same label/number as Profit so far; walk-in vs delivery underneath
       html = html.replace(/<div class="drag">[\s\S]*?<\/div>/, '');
       const m = bkMonth(APP_TODAY), C = nf81Channels(m);
-      const chRow = (lb, c) => `<div class="r"><span>${lb}</span><em>${c.sales ? nf81P(c.gross) : '—'}</em><b>${nf81Pct(c.pct)}</b></div>`;
-      const ch = (C.walk.sales || C.del.sales) ? `<div class="nf81-ch"><small>By sale type (before expenses)</small>${chRow('Walk-in', C.walk)}${chRow('Delivery', C.del)}</div>` : '';
+      const allS = (C.walk.sales || 0) + (C.del.sales || 0), shr = v => allS ? v / allS * 100 : 0;
+      const chRow = (lb, c, cls) => `<div class="r"><span><i class="${cls}" aria-hidden="true"></i>${lb}</span><em>${nf81P(c.sales || 0)}</em><b>${allS ? nf82Share(shr(c.sales || 0)) : '—'}</b></div>`;
+      const ch = allS ? `<div class="nf81-ch"><small>Share of sales · walk-in vs delivery</small><div class="sb" role="img" aria-label="Walk-in ${nf82Share(shr(C.walk.sales || 0))} of sales, delivery ${nf82Share(shr(C.del.sales || 0))}"><i class="w" style="width:${shr(C.walk.sales || 0).toFixed(1)}%"></i><i class="d" style="width:${shr(C.del.sales || 0).toFixed(1)}%"></i></div>${chRow('Walk-in', C.walk, 'w')}${chRow('Delivery', C.del, 'd')}</div>` : '';
       html = html.replace(/(<button type="button" class="nf74-ot nf75-mg[^"]*)("[^>]*>)([\s\S]*?)(<i class="go" aria-hidden="true">›<\/i><\/button>)/, (m0, a, b, body, c) => `${a} nf81-mg${b}${/^<div class="l">/.test(body) ? body : '<div class="l">' + body + '</div>'}${ch}${c}`);
       // Biggest costs: open the breakdown right here instead of leaving the page
       html = html.replace(/class="nf74-ot t-b nf74-costs" onclick="go\('expenses'\)"/, `class="nf74-ot t-b nf74-costs${NF81.costs ? ' on' : ''}" onclick="nf81Costs()" aria-expanded="${NF81.costs ? 'true' : 'false'}" aria-controls="nf81Costs"`);

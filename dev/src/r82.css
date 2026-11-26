@@ -1,0 +1,78 @@
+/* ===== Round 82 ===== */
+/* Money overview: legend colours, Left in the business centred with a green amount */
+html body .nf81-ct .key .up{color:#B42318 !important;} html body .nf81-ct .key .dn{color:#067647 !important;}
+html body #view-app #page-money .nf78-left{display:flex !important;align-items:center !important;justify-content:space-between;gap:12px;min-height:56px;}
+html body #view-app #page-money .nf78-left > span{display:flex !important;align-items:center;justify-content:flex-start;align-self:center;line-height:1.25 !important;margin:0 !important;padding:0 !important;}
+html body #view-app #page-money .nf78-left > b{color:#15803D !important;line-height:1.1 !important;align-self:center;}
+html body #view-app #page-money .nf78-left.neg > b{color:#B42318 !important;}
+/* Cost table: this month is the highlighted column; last month sits plainly beside it */
+.nf81-ct .th span.pm, .nf81-ct .th span.cm{display:flex;flex-direction:column;align-items:flex-end;gap:1px;line-height:1.15;}
+html body .nf81-ct .th span small{font-size:11px !important;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#0B0F14 !important;}
+.nf81-ct .th span.cm{background:#E7F3EC;border-radius:10px 10px 0 0;padding:6px 8px 6px;margin:-6px 0 -8px;color:#14532D;}
+html body .nf81-ct .th span.cm small{color:#14532D !important;}
+.nf81-ct .rw > .v:nth-child(3), .nf81-ct .tt > .v:nth-child(3), .nf81-ct .tr.x .rw > .v:nth-child(3){background:#F1F8F3;align-self:stretch;display:flex;align-items:center;justify-content:flex-end;margin:-10px 0;padding:10px 8px;font-weight:900;color:#0B0F14;}
+.nf81-ct .tt > .v:nth-child(3){margin:-12px 0 -4px;padding:12px 8px 8px;border-radius:0 0 10px 10px;background:#E7F3EC;}
+.nf81-ct .rw > .v:nth-child(2), .nf81-ct .tt > .v:nth-child(2){font-weight:600;}
+.nf81-ct .tr.open .rw > .v:nth-child(3){background:#E7F3EC;}
+@media (max-width:560px){
+  .nf81-ct .th span.cm{margin:0;border-radius:8px;padding:4px 6px;}
+  .nf81-ct .rw > .v:nth-child(3), .nf81-ct .tt > .v:nth-child(3){margin:0;padding:4px 6px;border-radius:8px;}
+}
+/* Home: share of sales, walk-in vs delivery */
+html body #view-app #mhHome .nf75-owner .nf81-ch .sb{display:flex;height:10px;border-radius:99px;overflow:hidden;background:#E4E7EC;margin:2px 0 2px;}
+html body #view-app #mhHome .nf75-owner .nf81-ch .sb i{display:block;height:100%;}
+html body #view-app #mhHome .nf75-owner .nf81-ch .sb i.w, html body #view-app #mhHome .nf75-owner .nf81-ch .r span i.w{background:#15803D;}
+html body #view-app #mhHome .nf75-owner .nf81-ch .sb i.d, html body #view-app #mhHome .nf75-owner .nf81-ch .r span i.d{background:#2459C9;}
+html body #view-app #mhHome .nf75-owner .nf81-ch .r span{display:flex;align-items:center;gap:7px;}
+html body #view-app #mhHome .nf75-owner .nf81-ch .r span i{width:10px;height:10px;border-radius:3px;flex:none;}
+html body #view-app #mhHome .nf75-owner .nf81-ch .r b{color:#0B0F14 !important;}
+
+/* Expenses: Where the money went (one bar + table) */
+.nf82-where .top{display:flex;justify-content:space-between;align-items:flex-end;gap:14px;flex-wrap:wrap;margin:2px 0 14px;}
+.nf82-where .tt{display:flex;flex-direction:column;gap:2px;}
+html body .nf82-where .tt small{font-size:15px !important;font-weight:700;color:#0B0F14 !important;}
+.nf82-where .tt b{font-size:32px;font-weight:900;line-height:1.1;color:#0B0F14;font-variant-numeric:tabular-nums;}
+.nf82-where .tt span{font-size:15px;color:#0B0F14;}
+.nf82-where .say{margin:0;font-size:16px;padding:10px 14px;border-radius:12px;background:#F8FAFC;border:1px solid #E4E7EC;color:#0B0F14;}
+html body .nf82-where .say b.up{color:#B42318 !important;} html body .nf82-where .say b.dn{color:#067647 !important;}
+.nf82-where .stk{display:flex;height:30px;border-radius:10px;overflow:hidden;gap:2px;background:#FFFFFF;margin-bottom:14px;}
+.nf82-where .stk i{font-style:normal;display:flex;align-items:center;justify-content:center;min-width:4px;}
+.nf82-where .stk i span{font-size:13px;font-weight:800;color:#FFFFFF;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 8px;}
+.nf82-where .tb{display:flex;flex-direction:column;}
+.nf82-where .th, .nf82-where .wr, .nf82-where .tr{display:grid;grid-template-columns:minmax(0,1.4fr) 120px 70px 120px 120px;gap:12px;align-items:center;}
+.nf82-where .tb.nr .th, .nf82-where .tb.nr .wr, .nf82-where .tb.nr .tr{grid-template-columns:minmax(0,1.4fr) 120px 70px;}
+.nf82-where .th{padding:0 8px 8px;border-bottom:1.5px solid #D0D5DD;}
+.nf82-where .th span{font-size:13px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;color:#0B0F14;text-align:right;}
+.nf82-where .th span:first-child{text-align:left;}
+.nf82-where .wr{width:100%;border:0;background:none;font:inherit;color:#0B0F14;text-align:left;padding:11px 8px;border-bottom:1px solid #EEF0F2;cursor:pointer;}
+.nf82-where .wr:hover:not([disabled]){background:#F8FAFC;}
+.nf82-where .wr[disabled]{cursor:default;}
+.nf82-where .k{display:flex;align-items:center;gap:10px;font-size:16px;font-weight:700;min-width:0;}
+.nf82-where .k i{width:12px;height:12px;border-radius:4px;flex:none;}
+.nf82-where .wr b, .nf82-where .tr b{text-align:right;font-size:17px;font-weight:900;font-variant-numeric:tabular-nums;}
+.nf82-where .wr em, .nf82-where .tr em{font-style:normal;text-align:right;font-size:15px;font-weight:800;color:#0B0F14;}
+.nf82-where .v{text-align:right;font-size:15px;font-weight:600;color:#0B0F14;font-variant-numeric:tabular-nums;}
+.nf82-where .c{text-align:right;font-size:15px;font-weight:900;font-variant-numeric:tabular-nums;}
+html body .nf82-where .c.up{color:#B42318 !important;} html body .nf82-where .c.dn{color:#067647 !important;} .nf82-where .c.s{color:#0B0F14;font-weight:700;}
+.nf82-where .tr{padding:12px 8px 4px;border-top:2px solid #0B0F14;margin-top:-1px;}
+.nf82-where .tr .k{font-weight:900;font-size:17px;}
+html body .nf82-where .nf76-wn .up{color:#B42318 !important;font-weight:800;} html body .nf82-where .nf76-wn .dn{color:#067647 !important;font-weight:800;}
+@media (max-width:640px){
+  .nf82-where .th, .nf82-where .wr, .nf82-where .tr, .nf82-where .tb.nr .th, .nf82-where .tb.nr .wr, .nf82-where .tb.nr .tr{grid-template-columns:minmax(0,1fr) auto 48px;grid-template-areas:"k b e" "v v c";row-gap:2px;}
+  .nf82-where .th{grid-template-areas:"k b e";} .nf82-where .th span:nth-child(n+4){display:none;}
+  .nf82-where .k{grid-area:k;} .nf82-where .wr b, .nf82-where .tr b{grid-area:b;} .nf82-where .wr em, .nf82-where .tr em{grid-area:e;}
+  .nf82-where .v{grid-area:v;text-align:left;font-size:14px;} .nf82-where .v::before{content:'Last month ';font-weight:700;}
+  .nf82-where .c{grid-area:c;font-size:14px;}
+}
+/* Expenses: waiting-for-OK lines stand out; type + note stack */
+#page-expenses table.nf25-t td.t small{display:block !important;width:fit-content;max-width:100%;margin:5px auto 0 !important;white-space:normal !important;line-height:1.35 !important;text-align:center;}
+#page-expenses table.nf25-t td.t small .bk-tag{display:block !important;width:fit-content;margin:4px auto 0 !important;}
+#page-expenses table.nf25-t tr.nf82-need > td{background:#FFF8EB !important;}
+#page-expenses table.nf25-t tr.nf82-need > td:first-child{box-shadow:inset 4px 0 0 #F79009;}
+#page-expenses table.nf25-t tr.nf82-need .bk-row-a{display:inline-flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end;}
+html body #view-app #page-expenses tr.nf82-need .nf75-ok{display:inline-flex !important;align-items:center;gap:6px;background:#1F6B45 !important;color:#FFFFFF !important;border:0 !important;border-radius:10px !important;padding:8px 14px !important;font-weight:800 !important;font-size:15px !important;text-decoration:none !important;min-height:38px;box-shadow:0 2px 0 rgba(20,83,45,.25);}
+html body #view-app #page-expenses tr.nf82-need .nf75-ok:hover{background:#14532D !important;}
+html body #view-app #page-expenses tr.nf82-need .bk-dim{display:inline-flex !important;align-items:center;background:#FFFFFF !important;color:#0B0F14 !important;border:1.5px solid #D0D5DD !important;border-radius:10px !important;padding:7px 12px !important;font-weight:700 !important;font-size:15px !important;text-decoration:none !important;min-height:38px;}
+
+.nf81-ct .th, .nf81-ct .rw, .nf81-ct .tt{grid-template-columns:minmax(0,1fr) 100px 104px 92px;}
+@media (max-width:560px){ .nf81-ct .th, .nf81-ct .rw, .nf81-ct .tt{grid-template-columns:repeat(3, minmax(0,1fr)) !important;} }
