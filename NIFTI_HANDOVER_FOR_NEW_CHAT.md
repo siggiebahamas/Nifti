@@ -703,3 +703,16 @@ New modules: `dev/src/u80_app.py` (+ `r80.css` / `r80.js`) and `dev/src/u96_no_g
 
 ### 17.3 Tests
 test80.js, landtest, saletest, rectest, rt76, full.js (0 errors), muts, hang, audit 1440/390, phone overflow 0, gray (strict, incl. dark slates) 0 on pages and popups, brown 0, utang pay/undo/new flows, header buttons on repeat visits.
+
+## 18. ROUND 81 (26 Nov 2026): tenth revision pass — read this first
+New module: `dev/src/u81_app.py` (+ `r81.css` / `r81.js`), runs before `u96_no_gray`. No database changes.
+
+### 18.1 Changes
+- New sale popup: search results now sit right under the scan box as one bordered list (the old `.nf44-res` `top:calc(100%+4px)` pushed them down over the item lines); hint text hides while results show; popup 700px wide; Qty / Price each / Amount headers and values centred, 18px column gap.
+- Paid with: when Utang is picked, the "Other" chip reads "Utang ▾" with "(pay later)" under it (`nf81TwoLine`, run after every `slModal`), never "Utang (pay l…".
+- Money overview: the cost panel beside the statement is now one plain table (`nf80JumpsHtml` replaced): a one-line summary ("Costs are up ₱5,973 (18%)… Biggest jump: Electricity"), columns Cost | Oct 1–26 | Nov 1–26 | Change, all costs incl. unchanged ones, "no bill yet" for monthly bills not in yet, "Less: extra cash found" row, Total row; columns add up to the totals. Rows open their expenses and stay open after redraws (`NF81.mopen`). Phones: name on its own line, three numbers under it. Options page (artifact) shows this plus two other ways (paired bars, scorecard).
+- Home owner view: Profit margin label/number now identical to Profit so far (16px label, 30px number, same top); "Pulled it down" removed; margin tile shows same days last month and "By sale type (before expenses)": Walk-in ₱ profit + margin %, Delivery ₱ + % (`nf81Channels`: walk-in cost from sale lines qty × unitCost, delivery = total cost − walk-in; both add up to Profit before expenses). Profit so far tile: each bar under its own label row, chip at the bottom (fills the tile). Biggest costs no longer leaves Home: it opens "Where your money went" under the tiles (`nf81Costs`, `NF81.costs`): every cost with amount, bar and share, extra-cash row, Total = tile total; tap a row for its expenses; Close.
+- Getting paid → Payments to confirm: amount 24px, name 18px, method line 16px, date · order 15.5px, buttons 16px, bigger icon tile.
+
+### 18.2 Tests
+test81.js (27 checks incl. table sums, header alignment, results position, Utang label, inline costs sums), full.js 1440/390 0 errors, muts, audit, overflow 0, gray 0 (pages, popups and the new areas with every row opened), brown 0, CI build matches local.
