@@ -27,9 +27,9 @@ html body .nf82-col .dtp em.g{color:#067647 !important;} html body .nf82-col .dt
 .nf82-col .w b{font-size:17px;font-weight:800;color:#0B0F14;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 html body .nf82-col .w small{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:14.5px !important;color:#0B0F14 !important;}
 .nf82-col .tg{display:inline-flex;align-items:center;padding:2px 9px;border-radius:999px;font-size:13px;font-weight:800;}
-html body .nf82-col .tg.r{background:#FDECEA;color:#9B1C12 !important;} html body .nf82-col .tg.a{background:#FEF0C7;color:#7A2E0E !important;} html body .nf82-col .tg.b{background:#E3EDFF;color:#1D3F8C !important;} html body .nf82-col .tg.n{background:#F2F4F7;color:#0B0F14 !important;}
+html body .nf82-col .tg.r{background:#FDECEA;color:#9B1C12 !important;} html body .nf82-col .tg.a{background:#FEF0C7;color:#0B0F14 !important;} html body .nf82-col .tg.b{background:#E3EDFF;color:#1D3F8C !important;} html body .nf82-col .tg.n{background:#F2F4F7;color:#0B0F14 !important;}
 .nf82-col .st{display:inline-flex;align-items:center;gap:6px;font-weight:700;}
-html body .nf82-col .st.due{color:#7A2E0E !important;} html body .nf82-col .st.ok{color:#067647 !important;}
+html body .nf82-col .st.due{color:#0B0F14 !important;font-weight:800;} html body .nf82-col .st.due svg{color:#DC6803;} html body .nf82-col .st.ok{color:#067647 !important;}
 .nf82-col .am{grid-area:am;display:flex;flex-direction:column;align-items:flex-end;}
 .nf82-col .am b{font-size:20px;font-weight:900;color:#0B0F14;font-variant-numeric:tabular-nums;white-space:nowrap;}
 html body .nf82-col .am small{font-size:13px !important;font-weight:700;color:#1D3F8C !important;}
@@ -122,7 +122,7 @@ html body .nf82-rc .t small{font-size:14px !important;color:#0B0F14 !important;}
 
 /* settings */
 .nf82-set{padding:0 !important;overflow:hidden;}
-.nf82-set > .hd{display:flex;justify-content:space-between;align-items:center;width:100%;border:0;background:none;padding:16px 18px;font:inherit;font-size:16.5px;font-weight:800;color:#0B0F14;cursor:pointer;text-align:left;}
+.nf82-set > .hd{display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;border:0;background:none;padding:16px 22px;font:inherit;font-size:16.5px;font-weight:800;color:#0B0F14;cursor:pointer;text-align:left;}
 .nf82-set > .hd span{display:flex;align-items:center;gap:9px;} .nf82-set > .hd svg{color:#1F6B45;}
 .nf82-set > .hd i{font-style:normal;font-size:20px;transition:transform .15s;}
 .nf82-set.open > .hd i{transform:rotate(90deg);}

@@ -76,3 +76,7 @@ html body #view-app #page-expenses tr.nf82-need .bk-dim{display:inline-flex !imp
 
 .nf81-ct .th, .nf81-ct .rw, .nf81-ct .tt{grid-template-columns:minmax(0,1fr) 100px 104px 92px;}
 @media (max-width:560px){ .nf81-ct .th, .nf81-ct .rw, .nf81-ct .tt{grid-template-columns:repeat(3, minmax(0,1fr)) !important;} }
+/* landing: Taglish promise */
+#view-index .nf82-tl{display:inline-flex;align-items:center;gap:9px;margin:14px 0 6px;padding:9px 16px;border-radius:999px;background:#E7F3EC;border:1.5px solid #B7DCC5;color:#14532D;font-weight:800;font-size:17px;line-height:1.35;}
+#view-index .nf82-tl svg{flex:none;}
+@media (max-width:640px){ #view-index .nf82-tl{font-size:15px;padding:8px 13px;border-radius:14px;} }
