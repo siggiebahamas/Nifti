@@ -1,0 +1,66 @@
+/* ===== Round 79 ===== */
+/* Home owner view: same-days margin as a plain line; costs total as the last row */
+html body #view-app #mhHome .nf75-owner .nf78-was{display:flex !important;justify-content:space-between;align-items:baseline;gap:10px;width:100%;box-sizing:border-box;margin-top:12px !important;padding:10px 0 0 !important;background:none !important;border:0 !important;border-top:1.5px dashed #BFDCC8 !important;border-radius:0 !important;font-size:15px !important;}
+html body #view-app #mhHome .nf75-owner .nf78-was span{font-weight:600;color:#0B0F14;} html body #view-app #mhHome .nf75-owner .nf78-was b{font-size:18px;font-weight:900;color:#0B0F14;}
+html body #view-app #mhHome .nf75-owner .nf79-ctot{display:grid;grid-template-columns:24px 1fr auto 44px;align-items:center;gap:8px;width:100%;margin-top:8px;padding-top:8px;border-top:2px solid #0B0F14;font-size:16px;color:#0B0F14;}
+html body #view-app #mhHome .nf75-owner .nf79-ctot .k{font-weight:900;text-transform:uppercase;letter-spacing:.04em;font-size:15px;}
+html body #view-app #mhHome .nf75-owner .nf79-ctot b{font-weight:900;font-size:18px;font-variant-numeric:tabular-nums;}
+html body #view-app #mhHome .nf75-owner .nf79-ctot em{font-style:normal;font-weight:700;font-size:14px;text-align:right;}
+/* ---------- Getting paid ---------- */
+/* payments to confirm: white, calm, amounts in one column */
+.nf77-conf.nf78-conf{background:#FFFFFF !important;border:1.5px solid #DDE3E9 !important;box-shadow:0 1px 0 rgba(16,24,40,.03);}
+.nf77-conf .h em{color:#0B0F14 !important;}
+.nf78-conf .r.nf79-cr{grid-template-columns:42px minmax(0,1fr) 110px !important;align-items:start !important;border:1.5px solid #EAECF0 !important;background:#FCFCFD !important;}
+@container (min-width:640px){ .nf78-conf .r.nf79-cr{grid-template-columns:42px minmax(0,1fr) 110px !important;} .nf78-conf .r.nf79-cr .bt{grid-column:2 / -1 !important;} }
+.nf79-cr .mi{width:42px;height:42px;border-radius:12px;background:#F2F4F7;border:1px solid #E4E7EC;color:#0B0F14;display:grid;place-items:center;grid-row:1 / span 2;}
+.nf79-cr .w b{display:block;font-size:16px !important;line-height:1.25;} .nf79-cr .w small{display:block;font-size:14px !important;line-height:1.35;color:#0B0F14;} .nf79-cr .w small.how{font-weight:700;}
+.nf79-cr > em{font-style:normal;font-size:18px !important;font-weight:900;text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;align-self:start !important;padding-top:1px;}
+.nf79-cr .bt{grid-column:2 / -1 !important;}
+.nf79-why{grid-column:2 / -1;display:none;flex-wrap:wrap;align-items:center;gap:6px;padding-top:2px;}
+.nf79-cr.why .nf79-why{display:flex;}
+.nf79-why span{font-size:14px;font-weight:800;color:#0B0F14;margin-right:4px;}
+.nf79-why button{border:1.5px solid #F4B4AE;background:#FEF0EF;color:#B42318;border-radius:999px;padding:5px 12px;font:inherit;font-size:13.5px;font-weight:800;cursor:pointer;}
+/* record a payment, inline */
+.nf79-rp{display:none;flex-direction:column;gap:10px;padding:12px;border-radius:14px;background:#F6F7F9;border:1.5px solid #E4E7EC;}
+.nf79-rp.open{display:flex;}
+.nf79-rp .rr{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:flex-end;}
+.nf79-rp label{display:flex;flex-direction:column;gap:4px;font-size:14px;font-weight:800;color:#0B0F14;}
+.nf79-rp .pe{display:flex;align-items:center;gap:4px;background:#fff;border:1.5px solid #D0D5DD;border-radius:10px;padding:0 10px;height:42px;}
+.nf79-rp .pe i{font-style:normal;font-weight:800;} .nf79-rp .pe input{border:0;outline:0;font:inherit;font-size:17px;font-weight:800;width:120px;background:transparent;color:#0B0F14;}
+.nf79-rp .ms > span{display:block;font-size:14px;font-weight:800;color:#0B0F14;margin-bottom:4px;}
+.nf79-rp .mc{display:flex;flex-wrap:wrap;gap:6px;}
+.nf79-rp .mc button{display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 12px;border-radius:10px;border:1.5px solid #D0D5DD;background:#fff;font:inherit;font-size:14px;font-weight:800;color:#0B0F14;cursor:pointer;}
+.nf79-rp .mc button.on{border-color:#1F6B45;background:#ECF8F0;color:#14532D;}
+.nf79-rp .ref{height:42px;border:1.5px solid #D0D5DD;border-radius:10px;padding:0 12px;font:inherit;font-size:15px;background:#fff;color:#0B0F14;}
+.nf79-rp .ra{display:flex;gap:8px;flex-wrap:wrap;}
+.nf79-rph .nf79-rp{margin-top:2px;}
+/* owed to you lines: a quiet chevron says "tap to settle"; tapping opens the settle form right under */
+.nf78-tot .nf79-lw{border-top:1px dashed #E4E7EC;}
+.nf78-tot .nf79-lw:first-child{border-top:0;}
+.nf78-tot .nf79-lw > .ln{border-top:0 !important;grid-template-columns:minmax(0,1fr) auto auto 16px !important;border-radius:10px;padding:9px 6px !important;margin:0 -6px;width:calc(100% + 12px) !important;}
+.nf78-tot .nf79-lw > .ln::after{content:"›";font-size:20px;font-weight:700;color:#98A2B3;line-height:1;transition:transform .15s;}
+.nf78-tot .nf79-lw > .ln:hover{background:#F6F7F9;} .nf78-tot .nf79-lw.open > .ln{background:#F2F8F4;} .nf78-tot .nf79-lw.open > .ln::after{transform:rotate(90deg);color:#1F6B45;}
+.nf78-tot .nf79-lw > .ln.o1 .go{color:#1F6B45;}
+.nf79-la{display:none;flex-direction:column;gap:6px;padding:4px 0 12px;} .nf79-lw.open .nf79-la{display:flex;}
+.nf79-lo{display:flex;justify-content:flex-end;} .nf79-lo .nf77-link{font-size:14px;}
+.nf79-ph{display:inline-flex;align-items:center;gap:4px;margin-top:3px;font-size:12.5px;font-weight:800;color:#1F6B45;cursor:pointer;}
+/* quick sale: utang photo */
+.nf79-uph .pv{display:flex;align-items:center;gap:10px;} .nf79-uph .pv img{width:56px;height:56px;object-fit:cover;border-radius:10px;border:1.5px solid #E4E7EC;}
+.nf79-uph .hint{display:block;margin-top:6px;font-size:13.5px;color:#0B0F14;}
+html[data-ty] body .nf79-uph .hint{font-size:13.5px !important;}
+/* ---------- Money overview: one column going down, centred ---------- */
+html body #view-app #page-money #bkPnlPrint{max-width:760px !important;margin-left:auto !important;margin-right:auto !important;}
+html body #view-app #page-money .nf78-cols{display:block !important;}
+html body #view-app #page-money .nf78-col.r{border-left:0 !important;padding-left:0 !important;border-top:1.5px solid #EEF0F2;margin-top:10px;padding-top:10px;}
+/* left in the business: a calm highlighted row, black amount */
+html body #view-app #page-money .nf78-left{background:#F2F4F7 !important;border:0 !important;border-radius:12px !important;padding:12px 14px !important;margin-top:10px !important;}
+html body #view-app #page-money .nf78-left > b{color:#0B0F14 !important;font-size:22px !important;} html body #view-app #page-money .nf78-left.neg > b{color:#B42318 !important;}
+html body #view-app #page-money .nf78-took-b{max-width:none;}
+@media (min-width:1200px){ html body #view-app #page-money .nf37-next, html body #view-app #page-money > .bk-note{max-width:none;} }
+/* BIR 2307 */
+.nf79-of{display:block;font-size:13px;font-weight:600;color:#0B0F14;white-space:nowrap;margin-top:2px;}
+html[data-ty] body .nf79-of{font-size:13px !important;}
+.nf79-guide{display:flex;gap:10px;align-items:flex-start;margin:12px 0;padding:12px 14px;border-radius:14px;background:#F6F7F9;border:1.5px solid #E4E7EC;font-size:15px;line-height:1.45;color:#0B0F14;}
+.nf79-guide svg{flex:none;margin-top:2px;color:#0B0F14;}
+html body #view-app #page-taxforms .nf78-bt .nf75-proof .add{white-space:nowrap;}
+tr.nf79-inl td{padding:6px 8px 12px !important;background:transparent !important;} .nf79-inl .nf79-rp{margin:4px 0 8px;}

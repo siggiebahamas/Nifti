@@ -11,11 +11,11 @@ if(typeof nf75OwnerHtml === 'function'){
     try{
       const m = bkMonth(APP_TODAY), p = bkPnl(m), sales = Number(p.sales) || 0, spend = (Number(p.cost) || 0) + (Number(p.expenses) || 0), margin = sales ? (sales - spend) / sales * 100 : null;
       let was = '';
-      try{ const R = nf74SameRange(m), q = nf74PnlRange(R); if(q && q.sales){ const pm = (q.sales - q.cogs - q.opex) / q.sales * 100; was = `<div class="nf78-was">${nf78E(R.label)}: <b>${pm.toFixed(1)}%</b></div>`; } }catch(e){}
+      try{ const R = nf74SameRange(m), q = nf74PnlRange(R); if(q && q.sales){ const pm = (q.sales - q.cogs - q.opex) / q.sales * 100; was = `<div class="nf78-was"><span>${nf78E(R.label)}</span><b>${pm.toFixed(1)}%</b></div>`; } }catch(e){}
       const tone = margin == null ? 'n' : margin < 0 ? 'r' : 'g';
       const box = `<button type="button" class="nf74-ot nf75-mg nf78-mg t-${tone}" onclick="go('profit')"><span class="lb">You keep</span><b class="v">${margin == null ? '—' : margin.toFixed(1) + '%'}</b><span class="u">profit margin${margin == null ? ' · shows once you record a sale' : ''}</span>${was}<i class="go" aria-hidden="true">›</i></button>`;
       html = html.replace(/<button type="button" class="nf74-ot nf75-mg[\s\S]*?<i class="go" aria-hidden="true">›<\/i><\/button>/, box);
-      html = html.replace(/<span class="lb">Biggest costs · (₱[\d,.]+) in all<\/span>/, '<span class="lb nf78-ch"><span>Biggest costs</span><em><small>Total</small>$1</em></span>');
+      { const mt = html.match(/<span class="lb">Biggest costs · (₱[\d,.]+) in all<\/span>/); if(mt){ html = html.replace(mt[0], '<span class="lb">Biggest costs</span>'); html = html.replace(/(<button type="button" class="nf74-ot t-b nf74-costs"[\s\S]*?<\/ol>)/, `$1<div class="nf79-ctot"><span class="n"></span><span class="k">Total</span><b>${mt[1]}</b><em>100%</em></div>`); } }
     }catch(e){}
     return html;
   };
@@ -226,7 +226,7 @@ async function nf78TaxForms(){
   const gotCell = r => sell ? (done(r) ? `<span class="nf78-ok">✓ Got it</span>${undo(r)}` : `<button type="button" class="btn btn-primary btn-sm" onclick="${R}mark2307(${a(r)}, 'received')">I got it</button>`)
     : (done(r) ? `<span class="nf78-ok">✓ Given</span>${undo(r)}` : `<button type="button" class="btn btn-primary btn-sm" onclick="${R}mark2307(${a(r)}, 'sent')">I gave it</button>`);
   const proof = r => { const fs = files.filter(f => f.counterparty_id === String(r.counterparty_id) && f.quarter === r.quarter && f.side === fside);
-    return `<div class="nf75-proof">${fs.map(f => `<span class="f"><button type="button" class="nf43-link" onclick="nf75BOpen('${f.id}')">${nf75Ic('<path d="M21.4 11.1 12.2 20.3a6 6 0 0 1-8.5-8.5l9.2-9.2a4 4 0 0 1 5.7 5.7l-9.2 9.2a2 2 0 0 1-2.8-2.8l8.5-8.5"/>', 15)}${nf75E(String(f.file_name || 'File').slice(0, 22))}</button><button type="button" class="x" aria-label="Remove this file" onclick="nf75BDel('${f.id}')">✕</button></span>`).join('')}<label class="add"><input type="file" accept="application/pdf,image/*" hidden data-nf-cam="1" onchange="nf75BAttach(this, ${a(r)}, '${fside}')">${fs.length ? '+ Add' : '+ Upload the form'}</label></div>`; };
+    return `<div class="nf75-proof">${fs.map(f => `<span class="f"><button type="button" class="nf43-link" onclick="nf75BOpen('${f.id}')">${nf75Ic('<path d="M21.4 11.1 12.2 20.3a6 6 0 0 1-8.5-8.5l9.2-9.2a4 4 0 0 1 5.7 5.7l-9.2 9.2a2 2 0 0 1-2.8-2.8l8.5-8.5"/>', 15)}${nf75E(String(f.file_name || 'File').slice(0, 22))}</button><button type="button" class="x" aria-label="Remove this file" onclick="nf75BDel('${f.id}')">✕</button></span>`).join('')}<label class="add"><input type="file" accept="application/pdf,image/*" hidden data-nf-cam="1" onchange="nf75BAttach(this, ${a(r)}, '${fside}')">${fs.length ? '+ Add' : '+ Upload'}</label></div>`; };
   const pct = tot ? Math.round(doneAmt / tot * 100) : 0;
   const hic = sell ? '<path d="M6 2.5h12v19l-3-2-3 2-3-2-3 2z"/><path d="m9 11 2 2 4-4"/>' : '<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M9 15l2 2 4-4"/>';
   el.innerHTML = `<div class="nf75-bh nf78-bh ${sell ? 'c' : 'g'}"><span class="ic">${nf75Ic(hic, 26)}</span>

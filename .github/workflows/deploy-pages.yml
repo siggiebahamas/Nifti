@@ -50,14 +50,15 @@ jobs:
           node --check r76.js
           node --check r77.js
           node --check r78.js
+          node --check r79.js
           node --check mhome.js
           node --check one.js
           node --check books_core.js
           node --check books_pages.js
           node --check books_ledger.js
           node --check books_ops.js
-          python3 -m py_compile u35_site.py u63_growth.py u65_ops.py u67_workflow.py u68_product_ui.py u69_dashboard_ux.py u70_product.py u71_product.py u72_site.py u73_app.py u74_app.py u75_app.py u76_app.py u77_app.py u78_app.py
-          python3 apply.py u1_data u2_shell u3_demo_stock u4_books u5_polish u6_i18n u7_more u8_plans u9_books2 u10_site u11_pricelock u12_stockrun u13_mhome u14_polish u15_round6 u16_round7 u17_round8 u18_round9 u19_round10 u20_round11 u21_round12 u22_round13 u23_round14 u24_round15 u25_round16 u26_round17 u27_round18 u28_round19 u29_round20 u30_round21 u31_round22 u32_round23 u33_round24 u34_round25 u35_round26 u36_round27 u37_round29 u38_round31 u39_round32 u40_round33 u42_round35 u43_round36 u44_round37 u45_round38 u46_round39 u47_round40 u48_round41 u49_round42 u50_round43 u51_round44 u52_round45 u53_round46 u54_round47 u55_round48 u56_round49 u57_round50 u58_round51 u59_round52 u60_round53 u61_round54 u62_cro u63_growth u65_ops u67_workflow u68_product_ui u69_dashboard_ux u70_product u71_product u72_site u73_app u74_app u75_app u76_app u77_app u78_app u97_black_text u98_demo_dates u99_dates u99z_scale
+          python3 -m py_compile u35_site.py u63_growth.py u65_ops.py u67_workflow.py u68_product_ui.py u69_dashboard_ux.py u70_product.py u71_product.py u72_site.py u73_app.py u74_app.py u75_app.py u76_app.py u77_app.py u78_app.py u79_app.py
+          python3 apply.py u1_data u2_shell u3_demo_stock u4_books u5_polish u6_i18n u7_more u8_plans u9_books2 u10_site u11_pricelock u12_stockrun u13_mhome u14_polish u15_round6 u16_round7 u17_round8 u18_round9 u19_round10 u20_round11 u21_round12 u22_round13 u23_round14 u24_round15 u25_round16 u26_round17 u27_round18 u28_round19 u29_round20 u30_round21 u31_round22 u32_round23 u33_round24 u34_round25 u35_round26 u36_round27 u37_round29 u38_round31 u39_round32 u40_round33 u42_round35 u43_round36 u44_round37 u45_round38 u46_round39 u47_round40 u48_round41 u49_round42 u50_round43 u51_round44 u52_round45 u53_round46 u54_round47 u55_round48 u56_round49 u57_round50 u58_round51 u59_round52 u60_round53 u61_round54 u62_cro u63_growth u65_ops u67_workflow u68_product_ui u69_dashboard_ux u70_product u71_product u72_site u73_app u74_app u75_app u76_app u77_app u78_app u79_app u97_black_text u98_demo_dates u99_dates u99z_scale
           cd ../..
           grep -q 'id="view-index"' Nifti_Sept17.html
           grep -q 'id="view-login"' Nifti_Sept17.html

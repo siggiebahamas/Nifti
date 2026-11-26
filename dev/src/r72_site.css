@@ -432,3 +432,8 @@
 @media(max-width:760px){ #view-index #mkShow .f4-out.r78-out .ic{width:48px;height:48px;} #view-index #mkShow .f4-spot-t.r76-copy .f4-out.r78-out .tx b{font-size:32px;} #view-index #mkShow .f4-spot-t.r76-copy .f4-out.r78-out .tx > span{font-size:16px;} }
 #view-index #mkShow .f4-spot-t.r76-copy .f4-out.r78-out .tx > span{font-size:19px !important;font-weight:700 !important;}
 #view-index #mkShow .r72-sr-row > span{min-width:0;} #view-index #mkShow .r72-sr-row b{white-space:normal !important;}
+/* ===== Round 79: light, friendly icon tiles (green on white) ===== */
+#view-index #mkShow .f4-out.r78-out{background:linear-gradient(135deg,#F3FBF6 0%,#FFFFFF 100%) !important;border-color:#CDEBD8 !important;}
+#view-index #mkShow .f4-out.r78-out .ic{background:#FFFFFF !important;color:#1F8A4C !important;border:2px solid #BFE6CC;box-shadow:0 6px 16px -10px rgba(31,138,76,.55) !important;}
+#view-index #mkShow .f4-out.r78-out .tx small{color:#1F8A4C !important;}
+#view-index #mkShow .f4-spot-t.r76-copy .f4-out.r78-out .tx b{color:#167A3F !important;}

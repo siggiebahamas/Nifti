@@ -665,3 +665,22 @@ See it in action: the stat under each feature is a green-tinted result card with
 
 ### 15.4 Tests this round
 test78.js (Owner view, Getting paid rows/lines, Money overview, BIR, store), landtest, saletest, rectest, rt76, full.js (0 errors), muts.js, hang.js, audit.js 1440 + 390, phone overflow 0, gray 0, brown 0, pay-without-proof + finish-later flow, owner draw entry points.
+
+## 16. ROUND 79 (26 Nov 2026): eighth revision pass — read this first
+New module `dev/src/u79_app.py` with `r79.css` / `r79.js` (after u78). Migration `r79_sale_photo` (downstream_sales.photo_path, nullable) applied; SQL in `supabase_migrations/2026-11-26-sale-photo.sql`. Options page for the owner: https://claude.ai/artifact/QkL69MVDG2R49AdHSkXgio (Money overview side panel ×5, You keep filler ×5, Biggest costs total ×3) — nothing from it is built yet except Biggest costs option 1.
+
+### 16.1 Settle everything in place (no popups, no redirects)
+- Getting paid → Payments to confirm: white box, plain gray method icon (check / bank / phone / cash), "Check #… · bank" on one line and date · order under it, amounts in a fixed right column, buttons under. "Bounced" / "Not in yet" opens reason chips in the row (`nf79Reject`, same effect as base submitRejectPayment).
+- Customer cards: "+ Record a payment" opens an inline form (amount, Cash/GCash/Bank/Check, optional reference) → `nf79RpSave` applies it oldest bill first as a supplier-recorded payment (check = pending until it clears; no reference on non-cash → finish-later tag).
+- Owed to you lines: each line has a quiet chevron; tapping opens the same form under it (invoice: `po:<id>`; shop utang: `ut:<saleId>` → `nf79UtSave`, same as bkPaySaleSave). "Open the order/sale" link stays inside.
+- Walk-in sales: any utang "Paid" button opens the form under its row instead of the bkPay popup (bkPaySale wrapped; falls back to the popup if no row is found).
+- Walk-in sale with Utang: optional photo (person, ID, signed note) → `sale.photo`; real accounts upload to receipts bucket `sale-<id>.jpg` and set photo_path; utang lines show a small "Photo" link.
+
+### 16.2 Other changes
+- Landing result cards: white icon tile with green icon and green number.
+- Home: same-days margin is a plain dashed-line row; Biggest costs total is a TOTAL row under the list (the header pill is gone).
+- Money overview: profit statement back to one column, centred (max 760px); Left in the business is a gray highlighted row with a black amount.
+- BIR 2307: marking "I gave it" no longer asks how it was sent (the note went nowhere); amounts show centavos (₱772.80) with "1% of ₱77,280.00" under each; header total exact; a "A guide only. You don't have to use this page." box; recording withheld tax refuses an "amount before VAT" above the bill's pre-VAT total. Demo Riverside tax corrected to ₱772.80. Tax rules checked: 1% goods (WC158/WI158), 2% services (WC160/WI160), on the amount before VAT.
+
+### 16.3 Tests
+test79.js, landtest, saletest, rectest, rt76, full.js (0 errors), muts, hang, audit 1440/390, phone overflow 0, gray 0, brown 0, settle flows (utang inline, ₱2,000 phone payment, bounce reasons), Walk-in inline utang.
