@@ -716,3 +716,31 @@ New module: `dev/src/u81_app.py` (+ `r81.css` / `r81.js`), runs before `u96_no_g
 
 ### 18.2 Tests
 test81.js (27 checks incl. table sums, header alignment, results position, Utang label, inline costs sums), full.js 1440/390 0 errors, muts, audit, overflow 0, gray 0 (pages, popups and the new areas with every row opened), brown 0, CI build matches local.
+
+## 19. ROUND 82 (26 Nov 2026): get paid faster, onboarding, offline — read this first
+New files: `dev/src/u82_app.py` (+ `r82.css/js` polish & plans, `r82p.css/js` get paid faster, `r82o.css/js` onboarding, `r82x.js` operations, `r82f.js` offline), `dev/src/u99y_assets.py` (logo image kept once: −412 KB, gzip download 2.19 MB → 1.87 MB), new `sw.js` (offline caching + push). Migrations (applied via MCP): `r82_get_paid` (downstream_sales.due_date; tables utang_links, utang_claims (+guard trigger), utang_reminder_log; RPCs create_utang_link, get_utang_statement, report_utang_payment, report_payment_by_link_v2; private bucket pay-proofs with link-token policies) and `r82_plans` (plan_features/seat limits/prices, subscriptions.extra_seats/extra_branches, nifti_extra_seats, guard_team_seats, my_plan, admin_set_extras). SQL in `supabase_migrations/2026-11-26-r82-*.sql`.
+
+### 19.1 Get paid faster (Free)
+- Collect today (Home under the owner view, and top of Getting paid): everyone due or late, ranked by amount × days late; Remind opens the existing reminder sheet (Viber/WhatsApp/Messenger/SMS/email, remembered per customer in contact_prefs as `ut:<name>`) with a Taglish message + pay link; shop-utang reminders log to utang_reminder_log (stage = schedule offset), delivery-order reminders keep colLogManual. Record payment inline (shop utang: oldest first across bills, `uc:<id>`).
+- Days to get paid (this month vs same days last month), How old the money owed is (0–30 / 31–60 / 60+, tap to list).
+- Pay link for shop customers `#ut/<token>` (same statement page as delivery orders), "I've paid" on both kinds now takes a screenshot (shrunk to ≤1600px, stored in pay-proofs/<token>/). Shop reports show in Payments to confirm ("Shop utang · from their statement link", See screenshot, It came in / Not in yet with reasons).
+- Due dates on utang: New sale (Utang) "Pay by" chips (next payday 15th/month end, 1 week, 15, 30, pick); default terms in settings (books_settings.utang_terms); change in place on each utang in the tracker. Utang limits (default + per customer, books_settings.utang_limit_default / utang_limits) warn in New sale; never block.
+- Receipt offer after every payment (record, confirm, utang report): "Send receipt" opens the same sheet with a thank-you + remaining balance.
+- Demo: 6 extra shop-utang sales dated outside Oct 1–26 and November (profit numbers unchanged) + one utang report from Aling Nena.
+
+### 19.2 Onboarding & ease of use
+- Welcome setup (`nf82OnbOpen`): kind of business → what to help with first → which pages show (writes the existing Pages you use state `books_settings.menu` with mode 'all' + off list; nothing deleted). Opens by itself once for a new real shop. Hidden pages show a banner with "Show it in my menu".
+- Start here on Home (7 steps with Show me → opens the screen and spotlights the button); the older "Bring your shop in" card hides while it shows. 1-minute spotlight tour (`nf82TourStart`). Settings card "Your shop and menu"; user menu: Start here guide, Pages you use, Send feedback.
+- Help desk card at the bottom of Home: Send feedback (+ capture this screen via html2canvas 1.4.1 from cdnjs, or upload; goes to support_messages 'feedback' with the picture in receipts/<biz>/), Weekly check-in (faces 1–5, support_messages 'checkin', books_settings.nf_ops.checkin), Bring in your records (items Excel template + upload; utang CSV template + upload → prefilled "Someone owes me" form).
+
+### 19.3 Works without internet
+- sw.js keeps the app, icons, supabase-js and fonts; pages network-first (6 s) then the saved copy. Supabase data is never cached by the worker.
+- Signed-in shops reopen offline: business context saved in localStorage `nifti-off-ctx`; books snapshot in IndexedDB `nifti-offline/kv` key `bk:<biz>` after every load; while offline `sb.from/rpc/storage.from` answer "offline" instantly (they used to wait up to 30 s on token refresh). Offline banner shows what still works and how many entries wait to upload.
+
+### 19.4 Other
+- Money overview: legend colours, Left in the business centred + green; cost table header "Last month / This month" with the this-month column tinted. Home margin tile: share of sales walk-in vs delivery (adds to 100%). Expenses: Where the money went = one bar + table with last month; waiting-for-OK rows tinted with a solid Approve button (no extra tag); type and note stacked.
+- Plans: Free 3 people (+ statements, credit limits, who pays late, purchase history), Pro ₱990 10 people (+ spending caps, watchdog), Business ₱2,490 / ₱24,900 30 people, 2 branches; extra people ₱99/month on paid plans. Landing: Taglish promise under the headline.
+- Options artifact: Expenses 3 ways + interface preview (5-item phone bar, one main button per card) — NOT built yet, waiting for the owner's pick.
+
+### 19.5 Tests
+test82.js (36 checks), full.js 1440/390 0 errors, muts, audit, overflow 0, gray 0 (incl. every new popup and the pay page), brown 0, offline reload (demo) and offline reopen of a signed-in shop (simulated session), CI build = local.

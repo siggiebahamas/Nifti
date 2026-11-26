@@ -58,7 +58,7 @@ jobs:
           node --check r82o.js
           node --check r82x.js
           node --check r82f.js
-          node --check sw.js
+          node --check ../../sw.js
           node --check mhome.js
           node --check one.js
           node --check books_core.js
