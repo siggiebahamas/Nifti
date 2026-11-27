@@ -771,3 +771,19 @@ New: `dev/src/u84_app.py` (injects `r84.css/js`). Migration `r84_reclassify_cont
 - Popup main buttons: page font, weight 800. Demo month now has 6 kinds of expense (profit stays positive).
 - Business plan: real features + purple "Soon" lines (7am briefing, branch stock moves, price lists per customer group, suki scores) — not built yet.
 - Tests: t84a.js, t84b.js, test83/full/muts/ovf/contrast/gray/brown clean, CI build = local.
+
+## 22. ROUND 85 (27 Nov 2026): one utang place, price changes you can edit, morning briefing
+New: `dev/src/u85_app.py` (injects `r85.css/js`). Migrations `r85_price_change_edit_end`, `r85_announce_with_end` (see supabase_migrations/2026-11-27-r85-*.sql). `sw.js` → nifti-app-v85.
+- Who owes you (`nf83WhoHtml` replaced): bullet header (total / shop utang / delivery orders), no days-to-pay banner, no "Paid off & history" link, each person is a bordered card with a coloured edge (late red / soon yellow / later green), main action + Details. Suki score (`nf85Suki`) on every card: 0–100 from on-time history + current lateness; safe utang limit (≈ monthly buying × 1.5/1/0.5/0) with "Set this limit" (`nf82SaveLimit`).
+- Walk-in sales: the old utang section is hidden; a summary card points to Who owes you (one utang place).
+- Expenses "Where the money went" (`nf85Where`): rows = this month + last month's kinds so columns add up; "You spent ₱X more/less than…"; red = more, green = less.
+- Inputs: no inner focus box anywhere; number spinners hidden. TODAY date word smaller. Bank list amounts left-aligned with status; Open/Pay same size.
+- Prices: composer rebuilt in 3 steps (new prices → when: start chips + "stays / limited time" with end chips and a timeline → who hears) + "What happens" summary. Sent list: Edit / Cancel (upcoming), Set or change end date / End now (live); buyers are messaged on every change (`edit_price_change`, `end_price_change`, `announce_price_changes2`). Demo mirrors it locally.
+- Deliveries: "To go" → "Pending"; Done/Couldn't do → "Back to Pending" in one tap; "Change day or rider" popup (`nf85StopMove`, re-saves the run and adds to the new day/rider; "Remove from deliveries").
+- Popups: all centred on every screen (share-modal, rt-sheet, stk-sheet, #mhSheet).
+- Messages: chat height fits the window (`nf85MsgFit`); Customer/Supplier tag at the right of the header (blue/purple outline, pencil); quick actions above the box (Send pay link, New order, quick replies).
+- Monthly summary & money: any "see the lines" opens the ledger lines in a centred popup (`nf85LedgerPop`) with "Open the full ledger".
+- Money overview: "Needs your attention" list = the sidebar badge count, each with Fix it.
+- Demo: lists show 3 rows + "See all N" on desktop too.
+- Morning briefing (`nf85Brief`/`nf85BriefCard`) on Home: yesterday vs usual, margin vs last month, late utang; one Focus for today chosen by rules (collect / margin / stock-out of a top seller / slow day / cost spike / grow), with why + 3 steps + button; Today's list (tickable, per day in localStorage); tip library by situation. Viber 7am delivery = "Soon".
+- Business plan copy: briefing live; branch stock moves removed (basic feature, not a Business selling point); customer group price lists + Viber briefing = Soon.

@@ -7,7 +7,7 @@
 //    keeps its own copy and queues sales, utang payments, expenses and cash counts until the
 //    internet is back (see bkQueue in the app).
 
-const CACHE = 'nifti-app-v84';
+const CACHE = 'nifti-app-v85';
 const SHELL = ['./', './index.html', './manifest.json', './icon-192.png', './icon-512.png', './favicon-32.png', './favicon-48.png', './apple-touch-icon.png', './beta-pauses.js'];
 const CDN = /^https:\/\/(cdn\.jsdelivr\.net|cdnjs\.cloudflare\.com|fonts\.googleapis\.com|fonts\.gstatic\.com|unpkg\.com)\//;
 const CDN_SHELL = ['https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2', 'https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap'];

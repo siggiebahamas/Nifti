@@ -84,12 +84,11 @@ try{ if(typeof nffHtml === 'function' && !nffHtml._nf84){ const o84 = nffHtml; n
 /* ---------- 4. Messages: fix a contact tagged as the wrong kind (customer ⇄ supplier) ---------- */
 function nf84KindOf(id){ if((supplierConversations || []).some(c => c.id === id) || (buyersData || []).some(b => b.id === id)) return 'customer'; if((buyerConversations || []).some(c => c.id === id) || (suppliersData || []).some(s => s.id === id)) return 'supplier'; return null; }
 function nf84KindChip(){
-  const head = document.getElementById('threadHeadInfo'); if(!head || !document.querySelector('#page-messages.active')) return;
+  const info = document.getElementById('threadHeadInfo'); if(!info || !document.querySelector('#page-messages.active')) return; const head = info.parentElement;
   const id = typeof activeConvId !== 'undefined' ? activeConvId : null; const kind = id ? nf84KindOf(id) : null;
   let chip = head.querySelector('.nf84-kind'); if(!kind){ if(chip) chip.remove(); return; }
   if(chip && chip.dataset.k === id + kind) return; if(chip) chip.remove();
-  const col = head.children[1]; if(!col) return;
-  col.insertAdjacentHTML('beforeend', `<button type="button" class="nf84-kind ${kind === 'customer' ? 'c' : 's'}" data-k="${id + kind}" onclick="nf84KindOpen('${id}')" title="Wrong? Change it">${kind === 'customer' ? 'Customer' : 'Supplier'}<span>Change</span></button>`);
+  info.insertAdjacentHTML('afterend', `<button type="button" class="nf84-kind ${kind === 'customer' ? 'c' : 's'}" data-k="${id + kind}" onclick="nf84KindOpen('${id}')" title="Wrong? Change it"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${kind === 'customer' ? '<path d="M7 17 17 7M8 7h9v9"/>' : '<path d="M17 7 7 17M16 17H7V8"/>'}</svg><b>${kind === 'customer' ? 'Customer' : 'Supplier'}</b><span aria-label="Change"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></span></button>`);
 }
 NF45_AFTER.push(() => { try{ nf84KindChip(); }catch(e){} });
 setInterval(() => { try{ nf84KindChip(); }catch(e){} }, 1200);

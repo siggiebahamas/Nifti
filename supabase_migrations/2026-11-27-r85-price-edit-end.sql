@@ -1,0 +1,3 @@
+-- Round 85 (applied via MCP): r85_price_change_edit_end + r85_announce_with_end
+-- price_changes.ends_on / ended_at; nifti_price_notify (internal); nifti_apply_price_changes now also reverts limited-time prices on ends_on;
+-- edit_price_change(p_id, p_new_price, p_effective, p_ends, p_note); end_price_change(p_id); announce_price_changes2(..., p_ends).
