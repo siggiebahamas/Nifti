@@ -392,17 +392,17 @@ function nf85Brief(){
   else focus = {tag: 'sell', ic: NF85I.star, t: topItems[0] ? `Sell more ${topItems[0]}` : 'Grow your best customer', why: topItems[0] ? `${topItems[0]} is your best seller this month. The easiest growth is selling more of what already sells.` : 'Things are steady. Use today to grow.', how: ['Ask your top 3 customers if they need more this week.', 'Put it at the front of your price list post.', 'Offer a small discount for buying a full bundle.'], btn: ['Open Messages', "go('messages')"]};
   // today's to-do list, in the order a good manager would do it
   const todo = [];
-  if(yShort) todo.push({t: `Ask about yesterday's cash: ${nf85P(-yShort.difference)} short`, s: `Counted by ${yShort.by || 'staff'}`, a: 'nf84CashOpen()', b: 'Check'});
-  if(need) todo.push({t: `${need} order${need === 1 ? '' : 's'} need you`, s: 'Bill, confirm or answer them first thing', a: "go('orders')", b: 'Open'});
-  if(dueToday.length) todo.push({t: `${dueToday.length} ${dueToday.length === 1 ? 'person' : 'people'} due to pay today`, s: dueToday.slice(0, 2).map(g => g.name).join(', '), a: "go('collections')", b: 'Remind'});
-  if(late.length) todo.push({t: `Follow up ${late.length} late utang (${nf85P(lateAmt)})`, s: late.slice(0, 2).map(g => `${g.name} ${nf85P(g.total)}`).join(' · '), a: "go('collections')", b: 'Collect'});
-  if(stops) todo.push({t: `${stops} deliver${stops === 1 ? 'y' : 'ies'} to send out`, s: 'Check the rider has the list and the items', a: "go('routes')", b: 'Open'});
-  if(low.length) todo.push({t: `Reorder ${low.length} item${low.length === 1 ? '' : 's'}`, s: low.slice(0, 3).map(i => i.name).join(', '), a: "go('inventory')", b: 'Order'});
-  if(bills.length) todo.push({t: `${bills.length} supplier bill${bills.length === 1 ? '' : 's'} due within 3 days`, s: nf85P(bills.reduce((a, r) => a + (Number(r.balance) || 0), 0)) + ' to pay', a: "go('collections')", b: 'Pay'});
-  if(incoming.length) todo.push({t: `${incoming.length} supplier price increase${incoming.length === 1 ? '' : 's'} coming`, s: `Order ${incoming[0].product} before ${nf85Day(incoming[0].effective_date)} to keep today's price`, a: "go('prices')", b: 'See'});
-  todo.push({t: 'Count the cash at closing', s: 'Two minutes. Catches mistakes the same day.', a: 'nf84CountCash()', b: 'Count'});
+  if(yShort) todo.push({t: `Ask about yesterday's cash: ${nf85P(-yShort.difference)} short`, s: `Counted by ${yShort.by || 'staff'}`, a: "nf86Task('cash')", b: 'Check', k: 'cash'});
+  if(need) todo.push({t: `${need} order${need === 1 ? '' : 's'} need you`, s: 'Bill, confirm or answer them first thing', a: "nf86Task('orders')", b: 'Do it', k: 'orders'});
+  if(dueToday.length) todo.push({t: `${dueToday.length} ${dueToday.length === 1 ? 'person' : 'people'} due to pay today`, s: dueToday.slice(0, 2).map(g => g.name).join(', '), a: "nf86Task('due')", b: 'Remind', k: 'due'});
+  if(late.length) todo.push({t: `Follow up ${late.length} late utang (${nf85P(lateAmt)})`, s: late.slice(0, 2).map(g => `${g.name} ${nf85P(g.total)}`).join(' · '), a: "nf86Task('late')", b: 'Collect', k: 'late'});
+  if(stops) todo.push({t: `${stops} deliver${stops === 1 ? 'y' : 'ies'} to send out`, s: 'Check the rider has the list and the items', a: "nf86Task('deliveries')", b: 'Check', k: 'deliveries'});
+  if(low.length) todo.push({t: `Reorder ${low.length} item${low.length === 1 ? '' : 's'}`, s: low.slice(0, 3).map(i => i.name).join(', '), a: "nf86Task('reorder')", b: 'Order', k: 'reorder'});
+  if(bills.length) todo.push({t: `${bills.length} supplier bill${bills.length === 1 ? '' : 's'} due within 3 days`, s: nf85P(bills.reduce((a, r) => a + (Number(r.balance) || 0), 0)) + ' to pay', a: "nf86Task('bills')", b: 'Pay', k: 'bills'});
+  if(incoming.length) todo.push({t: `${incoming.length} supplier price increase${incoming.length === 1 ? '' : 's'} coming`, s: `Order ${incoming[0].product} before ${nf85Day(incoming[0].effective_date)} to keep today's price`, a: "nf86Task('prices')", b: 'Review', k: 'prices'});
+  todo.push({t: 'Count the cash at closing', s: 'Two minutes. Catches mistakes the same day.', a: "nf86Task('count')", b: 'Count', k: 'count'});
   const tips = NF85_TIPS[focus.tag] || NF85_TIPS.sell, tip = tips[(day + focus.tag.length) % tips.length];
-  return {yTot, avg, mg, mgPrev, monthSales, net: pnl ? pnl.net : null, focus, todo, tip, quiet, lateAmt, R};
+  return {yTot, avg, mg, mgPrev, monthSales, net: pnl ? pnl.net : null, focus, todo, tip, quiet, lateAmt, R, late, dueToday, low, bills, need, stops, incoming, yShort};
 }
 function nf85BriefCard(){
   let b; try{ b = nf85Brief(); }catch(e){ console.warn('brief', e); return ''; }

@@ -787,3 +787,20 @@ New: `dev/src/u85_app.py` (injects `r85.css/js`). Migrations `r85_price_change_e
 - Demo: lists show 3 rows + "See all N" on desktop too.
 - Morning briefing (`nf85Brief`/`nf85BriefCard`) on Home: yesterday vs usual, margin vs last month, late utang; one Focus for today chosen by rules (collect / margin / stock-out of a top seller / slow day / cost spike / grow), with why + 3 steps + button; Today's list (tickable, per day in localStorage); tip library by situation. Viber 7am delivery = "Soon".
 - Business plan copy: briefing live; branch stock moves removed (basic feature, not a Business selling point); customer group price lists + Viber briefing = Soon.
+
+## 23. ROUND 86 (27 Nov 2026): compact Home, task popups, one Getting paid page, max 3 examples
+New: `dev/src/u86_app.py` (injects `r86.css/js`). No migrations. `sw.js` → nifti-app-v86.
+- Landing: no visual change found vs Rounds 82–85 (pixel diff); sitewide R83–R85 helpers are now fenced to the app (`#view-app`/popups) so they can never touch the marketing page.
+- Home Who owes you (`nf86HomeWho`): 3 tiles in a row + one person per tier (Late / Due in 7 days / Not due yet) side by side with Remind, Pay link, QR, Details. Getting paid keeps cards; demo shows one per tier + "See all".
+- Walk-in sales: utang section removed (one place: Getting paid).
+- "Order soon" pill = light yellow like "Order by".
+- Briefing v2: no 3 number pills; round checkboxes + progress bar; each task opens a curated popup (`nf86Task(kind)`: orders, due, late, deliveries, reorder, bills, prices, count, cash) with a guide line, inline actions, "Mark as done" and "Open the full page". Side-panel peek disabled (`NF48K.off`).
+- Popups sitewide: light frosted backdrop (no dark gray), soft red ✕, "Close" buttons removed when ✕ exists, single action goes full width (`nf86PopTidy`).
+- Messages: "Sends to" switch (Nifti + Viber default when the contact is on both; Viber only for outside contacts); one Send delivers to both (`send86`); composer field and icons restyled.
+- Getting paid + Bank & deposits = one page: cash/bank section appended (`nf86BankMerge` → `colRenderCash`), tabs hidden, Bank menu item hidden (this also fixes Getting paid opening Bank).
+- To check → Home: non-duplicate items join What to do (Act today / This week) with fix + "It's fine"; Missing receipts opens a curated popup; `navigate('issues')` → Home. Follow-ups → Messages folder + popup (`nf86FuOpen`); `navigate('followups')` → Messages.
+- Menu: Payroll under Money next to Expenses; group renamed "Checks, forms & team".
+- Payroll form rebuilt (period quick picks, one card per person with Pay/Deductions, live take-home, paid-from buttons; `nf86PrPay` feeds prSave).
+- Prices step 2 rebuilt: visible date fields + quick picks + sale switch + one sentence.
+- Monthly: margin notices removed; ledger popup tidy. Returns: details open. Expenses bar labels on white tags. Money month picker tinted.
+- Demo examples: generic limiter (`nf86Cap`, throttled) keeps 3 diverse items per list + "See all"; demo red alerts capped at 3; Orders demo shows one group per status (≤3 per side).

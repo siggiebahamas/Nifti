@@ -11,9 +11,9 @@ function nf83FixContrast(root){
     });
   }catch(e){}
 }
-NF45_AFTER.push(page => { try{ nf83FixContrast(page || document); }catch(e){} });
+NF45_AFTER.push(page => { try{ nf83FixContrast(page || document.getElementById('view-app')); }catch(e){} });
 (function(){ if(typeof slModal !== 'function' || slModal._nf83) return; const base = slModal; const w = function(){ const m = base.apply(this, arguments); setTimeout(() => nf83FixContrast(m || document), 30); return m; }; Object.assign(w, base); w._nf83 = true; slModal = w; window.slModal = w; })();
-setInterval(() => { if(document.visibilityState === 'visible') nf83FixContrast(document); }, 2000);
+setInterval(() => { if(document.visibilityState !== 'visible') return; const app = document.getElementById('view-app'); if(app && app.offsetParent !== null) nf83FixContrast(app); document.querySelectorAll('.sl-modal, .share-modal, .nff, #mhSheet').forEach(m => nf83FixContrast(m)); }, 2000);
 
 /* ---------- Expenses: undo an edit, bring back a removed expense; "Staff advance" without "(vale)" ---------- */
 function nf83XKey(){ return 'nifti-exp-undo:' + (myBusiness ? myBusiness.id : 'demo'); }

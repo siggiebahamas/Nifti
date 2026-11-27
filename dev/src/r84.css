@@ -2,7 +2,7 @@
 /* Orders: dates follow their band colour; today gets a ring, not black */
 #nfOrd .nfo-dt.nf84-today{box-shadow:0 0 0 2px currentColor, 0 0 0 4px #FFFFFF !important;}
 #nfOrd .nfo-dt.nf84-today .m{font-size:10px;letter-spacing:.03em;}
-#nfOrd .nfo-dt.yel{background:#FEF3C7 !important;color:#8A5A00 !important;}
+#nfOrd .nfo-dt.yel{background:#FEF3C7 !important;color:#0B0F14 !important;}
 /* cards */
 #nfOrd .nf84-pc{background:#FFFFFF;border:1px solid #E4E7EC;border-radius:16px;margin:10px 0;padding:0;overflow:visible;}
 #nfOrd .nf84-pc .nfo-tl{display:none;}
@@ -110,14 +110,14 @@ html body #view-app .btn-primary, html body #view-app .btn-primary *{font-weight
 .nf84-fx .w{display:grid;gap:3px;} .nf84-fx .w b{font-size:16.5px;color:#0B0F14;} .nf84-fx .w span{font-size:14px;color:#0B0F14;}
 .nf84-fx .w .rs{font-style:italic;}
 .nf84-fx .n{display:grid;justify-items:end;gap:2px;text-align:right;} .nf84-fx .n b{font-size:16.5px;} .nf84-fx .n span{font-size:13.5px;color:#0B0F14;}
-.nf84-fxw .neg, .nf84-fx .neg{color:#B42318 !important;} .nf84-fxw .amb, .nf84-fx .amb{color:#8A5A00 !important;}
+.nf84-fxw .neg, .nf84-fx .neg{color:#B42318 !important;} .nf84-fxw .amb, .nf84-fx .amb{color:#0B0F14 !important;}
 .nf84-fx .ask{font-size:14px;font-weight:800;color:#0B0F14;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
 .nf84-fx .why{display:flex;flex-wrap:wrap;gap:8px;}
 .nf84-fx .why button, .nf84-fx .nf84-rc{border:1px solid #B7E1C6;background:#E8F3EC;color:#14532D;font-weight:700;font-size:14px;padding:8px 12px;border-radius:999px;cursor:pointer;font-family:inherit;}
 .nf84-fx .why button:hover, .nf84-fx .nf84-rc:hover{background:#D3EDDC;}
 .nf84-fx .nf84-rc{border-radius:10px;font-weight:800;}
 .nf84-fx .done{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 12px;border-radius:10px;background:#E8F3EC;font-size:14.5px;font-weight:700;color:#14532D;}
-.nf84-fx .done.amb{background:#FEF3C7;color:#8A5A00;}
+.nf84-fx .done.amb{background:#FEF3C7;color:#0B0F14;}
 .nf84-fx .done button{border:0;background:#FFFFFF;border-radius:8px;padding:6px 10px;font-weight:700;font-size:13.5px;cursor:pointer;color:#0B0F14;font-family:inherit;}
 .nf84-fxe{padding:20px;text-align:center;border-radius:12px;background:#E8F3EC;color:#14532D;font-weight:700;}
 @media (max-width: 600px){ .nf84-sum{grid-template-columns:1fr 1fr;} .nf84-fx .top{grid-template-columns:1fr;} .nf84-fx .n{justify-items:start;text-align:left;} }
