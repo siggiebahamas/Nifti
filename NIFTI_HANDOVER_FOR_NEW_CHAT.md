@@ -804,3 +804,15 @@ New: `dev/src/u86_app.py` (injects `r86.css/js`). No migrations. `sw.js` → nif
 - Prices step 2 rebuilt: visible date fields + quick picks + sale switch + one sentence.
 - Monthly: margin notices removed; ledger popup tidy. Returns: details open. Expenses bar labels on white tags. Money month picker tinted.
 - Demo examples: generic limiter (`nf86Cap`, throttled) keeps 3 diverse items per list + "See all"; demo red alerts capped at 3; Orders demo shows one group per status (≤3 per side).
+
+## 24. Round 87 (dev/src/r87.js, r87.css, u87_app.py)
+- Demo strictly shows max 3 examples: See-all buttons hidden by CSS (removing them caused an infinite loop with the R86 limiter, freezing Delivery orders). Briefing shows "x of 3".
+- Popup X: floating white circle, red ✕, soft shadow (.sl-x).
+- Chat: always sends to Nifti + Viber (nf36vRoute forced to 'both'); no selector.
+- Home: Who owes you tiles/headers/See everyone open nf87WhoPop (Remind opens the chat with pay link; They paid records). Compact cards nf87MiniCard. Orders popup has Message buttons. Count cash popup tidied. Days-left = coloured text only.
+- Checks: + Add a check (both sides), rows open nf87ChqOpen (steps, photo, fix with history, undo last step), Cleared is green + undo toast.
+- Returns: demo open credit + open problem on both sides; rows/cards open details; Use credit = bill picker with lines, old/new total; undo via RPC unuse_credit_memo.
+- Cash & bank: 3 stacked steps, deposit recorded by team then "Check it" by someone else (cash_deposits.checked_by/checked_at/edits/slip_path), fix with history + undo, Not matched opens its lines.
+- Payroll: "Amount deducted" + gov't contributions only; correction shows Before values; corrections record only increases (difference lines).
+- Walk-in: deleted sales show undo toast + "Removed sales" Bring back.
+- Monthly: demo Sep/Oct get sample order sales in the ledger (lgBuildDemo wrapper) so month changes are realistic; tab border hover fix; month select sized to content.

@@ -261,15 +261,15 @@ try{ if(typeof prFormRender === 'function' && !prFormRender._nf86){
           <b class="th" id="nf86PrTh${i}">${bkPeso(c.net)}</b><span class="cv">${open ? '▴' : '▾'}</span></div>
         ${open ? `<div class="bd">
           <div class="sec pay"><div class="sh"><span>Pay</span><span class="seg"><button type="button" class="${l.basis !== 'month' ? 'on' : ''}" onclick="PRF.lines[${i}].basis='day'; prFormRender()">Per day</button><button type="button" class="${l.basis === 'month' ? 'on' : ''}" onclick="PRF.lines[${i}].basis='month'; prFormRender()">Per month</button></span></div>
-            <div class="g3"><label><small>${l.basis === 'month' ? 'Monthly rate' : 'Daily rate'}</small>${inp(i, 'rate', '0')}</label><label><small>${l.basis === 'month' ? 'Months (0.5 = half)' : 'Days worked'}</small>${inp(i, 'days', l.basis === 'month' ? '0.5' : '0')}</label><label><small>Overtime or extra</small>${inp(i, 'extra', '0')}</label></div></div>
+            <div class="g3"><label><small>${l.basis === 'month' ? 'Monthly rate' : 'Daily rate'}</small>${inp(i, 'rate', '0')}${nf87Was(l, i, 'rate')}</label><label><small>${l.basis === 'month' ? 'Months (0.5 = half)' : 'Days worked'}</small>${inp(i, 'days', l.basis === 'month' ? '0.5' : '0')}${nf87Was(l, i, 'days')}</label><label><small>Overtime or extra</small>${inp(i, 'extra', '0')}${nf87Was(l, i, 'extra')}</label></div></div>
           <div class="sec ded"><div class="sh"><span>Deductions</span></div>
-            <div class="g3"><label><small>Vale to take back${v[l.staff_name] > 0 ? ` · owes ${bkPeso(v[l.staff_name])}` : ''}</small>${inp(i, 'vale_deduct', '0')}</label><label><small>Gov't contributions</small>${inp(i, 'contrib_employee', '0')}</label><label><small>Other deductions</small>${inp(i, 'other_deduct', '0')}</label></div>
-            <label class="emp"><small>Your share of contributions (you pay this; not taken from their pay)</small>${inp(i, 'contrib_employer', '0')}</label></div>
+            <div class="g3 g2"><label><small>Amount deducted${v[l.staff_name] > 0 ? ` · still owes ${bkPeso(v[l.staff_name])}` : ''}</small>${inp(i, 'vale_deduct', '0')}${nf87Was(l, i, 'vale_deduct')}</label><label><small>Gov't contributions (SSS, PhilHealth, Pag-IBIG)</small>${inp(i, 'contrib_employee', '0')}${nf87Was(l, i, 'contrib_employee')}</label></div>
+            </div>
           <div class="eq" id="nf86PrEq${i}">${nf86PrEq(l)}</div>
           <button type="button" class="rm" onclick="PRF.lines.splice(${i},1); PRF.open = -1; prFormRender()">Remove ${escapeHtml(l.staff_name || 'this person')}</button></div>`
         : `<div class="sm">${c.gross ? `Pay ${bkPeso(c.gross)}${ded ? ` · deductions ${bkPeso(ded)}` : ''}` : 'Tap to fill in their pay'}</div>`}</div>`; };
-    slModal('prModal', `<div class="sl-sheet-h"><b>${PRF.id ? 'Payroll (draft)' : 'Pay your staff'}</b><button class="sl-x" onclick="slClose('prModal')">✕</button></div>
-      <div class="nf86-prf">
+    slModal('prModal', `<div class="sl-sheet-h"><b>${PRF.orig ? 'Correct this payroll' : PRF.id ? 'Payroll (draft)' : 'Pay your staff'}</b><button class="sl-x" onclick="slClose('prModal')">✕</button></div>
+      <div class="nf86-prf">${PRF.orig ? '<div class="nf87-corr">Change only what was wrong. The old amount is shown under each box. Nifti records just the difference, so your books stay right.</div>' : ''}
         <div class="per"><span class="lb">Pay period</span><div class="qk">${periods.map(p => `<button type="button" class="${PRF.from === p[0] && PRF.to === p[1] ? 'on' : ''}" onclick="PRF.from='${p[0]}'; PRF.to='${p[1]}'; prFormRender()">${pl(p)}</button>`).join('')}</div>
           <div class="dt"><input type="date" value="${PRF.from}" onchange="PRF.from=this.value" aria-label="From"><span>to</span><input type="date" value="${PRF.to}" onchange="PRF.to=this.value" aria-label="To"></div></div>
         <div class="ls">${PRF.lines.map(card).join('')}</div>
@@ -283,7 +283,7 @@ try{ if(typeof prFormRender === 'function' && !prFormRender._nf86){
   };
   prFormRender._nf86 = 1; window.prFormRender = prFormRender;
 } }catch(e){ console.warn('nf86 payroll', e); }
-function nf86PrEq(l){ const c = prCalc(l), ded = (Number(l.vale_deduct) || 0) + (Number(l.contrib_employee) || 0) + (Number(l.other_deduct) || 0); return `<span>Pay <b>${bkPeso(c.gross)}</b></span><i>−</i><span>Deductions <b>${bkPeso(ded)}</b></span><i>=</i><span class="t">Take home <b class="${c.net < 0 ? 'bad' : ''}">${bkPeso(c.net)}</b></span>`; }
+function nf86PrEq(l){ const c = prCalc(l), ded = (Number(l.vale_deduct) || 0) + (Number(l.contrib_employee) || 0); return `<span>Pay <b>${bkPeso(c.gross)}</b></span><i>−</i><span>Deductions <b>${bkPeso(ded)}</b></span><i>=</i><span class="t">Take home <b class="${c.net < 0 ? 'bad' : ''}">${bkPeso(c.net)}</b></span>`; }
 function nf86PrLive(i){ const l = PRF.lines[i]; const e = document.getElementById('nf86PrEq' + i); if(e) e.innerHTML = nf86PrEq(l); const th = document.getElementById('nf86PrTh' + i); if(th) th.textContent = bkPeso(prCalc(l).net); const t = document.getElementById('prTot'); const tot = PRF.lines.reduce((a, x) => a + prCalc(x).net, 0); if(t) t.textContent = bkPeso(tot); const pb = document.querySelector('#prModal .nf86-prf .ac .btn-primary'); if(pb && !PRF.saving) pb.textContent = `Pay ${bkPeso(tot)} now`; }
 function nf86PrPay(){ const op = window.prompt; window.prompt = () => PRF.payFrom || 'cash'; try{ return prSave(true); } finally { setTimeout(() => { window.prompt = op; }, 0); } }
 
